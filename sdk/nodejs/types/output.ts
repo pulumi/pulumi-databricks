@@ -2945,6 +2945,88 @@ export interface GetNotebookPathsNotebookPathList {
     path?: string;
 }
 
+export interface GetNotificationDestinationsNotificationDestination {
+    /**
+     * The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+     */
+    destinationType?: string;
+    /**
+     * The display name of the Notification Destination.
+     */
+    displayName?: string;
+    /**
+     * The unique ID of the Notification Destination.
+     */
+    id?: string;
+}
+
+export interface GetRegisteredModelModelInfo {
+    /**
+     * the list of aliases associated with this model. Each item is object consisting of following attributes:
+     */
+    aliases?: outputs.GetRegisteredModelModelInfoAlias[];
+    browseOnly?: boolean;
+    /**
+     * The name of the catalog where the schema and the registered model reside.
+     */
+    catalogName?: string;
+    /**
+     * The comment attached to the registered model.
+     */
+    comment?: string;
+    /**
+     * the Unix timestamp at the model's creation
+     */
+    createdAt?: number;
+    /**
+     * the identifier of the user who created the model
+     */
+    createdBy?: string;
+    /**
+     * The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+     */
+    fullName?: string;
+    /**
+     * the unique identifier of the metastore
+     */
+    metastoreId?: string;
+    /**
+     * The name of the registered model.
+     */
+    name?: string;
+    /**
+     * Name of the registered model owner.
+     */
+    owner?: string;
+    /**
+     * The name of the schema where the registered model resides.
+     */
+    schemaName?: string;
+    /**
+     * The storage location under which model version data files are stored.
+     */
+    storageLocation?: string;
+    /**
+     * the timestamp of the last time changes were made to the model
+     */
+    updatedAt?: number;
+    /**
+     * the identifier of the user who updated the model last time
+     */
+    updatedBy?: string;
+}
+
+export interface GetRegisteredModelModelInfoAlias {
+    /**
+     * string with the name of alias
+     */
+    aliasName?: string;
+    /**
+     * associated model version
+     */
+    versionNum?: number;
+}
+
 export interface GetSchemaSchemaInfo {
     /**
      * indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
@@ -6206,39 +6288,84 @@ export interface MlflowWebhookJobSpec {
 }
 
 export interface ModelServingAiGateway {
+    /**
+     * Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+     */
     guardrails?: outputs.ModelServingAiGatewayGuardrails;
+    /**
+     * Block describing the configuration of usage tracking. Consists of the following attributes:
+     */
     inferenceTableConfig?: outputs.ModelServingAiGatewayInferenceTableConfig;
     /**
-     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
      */
     rateLimits?: outputs.ModelServingAiGatewayRateLimit[];
+    /**
+     * Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
+     */
     usageTrackingConfig?: outputs.ModelServingAiGatewayUsageTrackingConfig;
 }
 
 export interface ModelServingAiGatewayGuardrails {
+    /**
+     * A block with configuration for input guardrail filters:
+     */
     input?: outputs.ModelServingAiGatewayGuardrailsInput;
+    /**
+     * A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+     */
     output?: outputs.ModelServingAiGatewayGuardrailsOutput;
 }
 
 export interface ModelServingAiGatewayGuardrailsInput {
+    /**
+     * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+     */
     invalidKeywords?: string[];
+    /**
+     * Block with configuration for guardrail PII filter:
+     */
     pii?: outputs.ModelServingAiGatewayGuardrailsInputPii;
+    /**
+     * the boolean flag that indicates whether the safety filter is enabled.
+     */
     safety?: boolean;
+    /**
+     * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+     */
     validTopics?: string[];
 }
 
 export interface ModelServingAiGatewayGuardrailsInputPii {
+    /**
+     * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+     */
     behavior: string;
 }
 
 export interface ModelServingAiGatewayGuardrailsOutput {
+    /**
+     * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+     */
     invalidKeywords?: string[];
+    /**
+     * Block with configuration for guardrail PII filter:
+     */
     pii?: outputs.ModelServingAiGatewayGuardrailsOutputPii;
+    /**
+     * the boolean flag that indicates whether the safety filter is enabled.
+     */
     safety?: boolean;
+    /**
+     * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+     */
     validTopics?: string[];
 }
 
 export interface ModelServingAiGatewayGuardrailsOutputPii {
+    /**
+     * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+     */
     behavior: string;
 }
 
@@ -6248,7 +6375,7 @@ export interface ModelServingAiGatewayInferenceTableConfig {
      */
     catalogName?: string;
     /**
-     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     * boolean flag specifying if usage tracking is enabled.
      */
     enabled?: boolean;
     /**
@@ -6277,9 +6404,6 @@ export interface ModelServingAiGatewayRateLimit {
 }
 
 export interface ModelServingAiGatewayUsageTrackingConfig {
-    /**
-     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
-     */
     enabled?: boolean;
 }
 
@@ -6310,7 +6434,7 @@ export interface ModelServingConfigAutoCaptureConfig {
      */
     catalogName?: string;
     /**
-     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
      */
     enabled: boolean;
     /**
@@ -6333,11 +6457,11 @@ export interface ModelServingConfigServedEntity {
      */
     entityVersion?: string;
     /**
-     * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+     * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
      */
     environmentVars?: {[key: string]: string};
     /**
-     * The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
+     * The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
      */
     externalModel?: outputs.ModelServingConfigServedEntityExternalModel;
     /**
@@ -6391,6 +6515,9 @@ export interface ModelServingConfigServedEntityExternalModel {
      * Databricks Model Serving Config
      */
     databricksModelServingConfig?: outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig;
+    /**
+     * Google Cloud Vertex AI Config.
+     */
     googleCloudVertexAiConfig?: outputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig;
     /**
      * The name of the external model.
@@ -6405,7 +6532,7 @@ export interface ModelServingConfigServedEntityExternalModel {
      */
     palmConfig?: outputs.ModelServingConfigServedEntityExternalModelPalmConfig;
     /**
-     * The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+     * The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
      */
     provider: string;
     /**
@@ -6419,6 +6546,9 @@ export interface ModelServingConfigServedEntityExternalModelAi21labsConfig {
      * The Databricks secret key reference for an AI21Labs API key.
      */
     ai21labsApiKey?: string;
+    /**
+     * An AI21 Labs API key provided as a plaintext string.
+     */
     ai21labsApiKeyPlaintext?: string;
 }
 
@@ -6427,6 +6557,9 @@ export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig 
      * The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
      */
     awsAccessKeyId?: string;
+    /**
+     * An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
+     */
     awsAccessKeyIdPlaintext?: string;
     /**
      * The AWS region to use. Bedrock has to be enabled there.
@@ -6436,6 +6569,9 @@ export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig 
      * The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
      */
     awsSecretAccessKey?: string;
+    /**
+     * An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
+     */
     awsSecretAccessKeyPlaintext?: string;
     /**
      * The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
@@ -6446,9 +6582,11 @@ export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig 
 export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
     /**
      * The Databricks secret key reference for an Anthropic API key.
-     * The Databricks secret key reference for an Anthropic API key.
      */
     anthropicApiKey?: string;
+    /**
+     * The Anthropic API key provided as a plaintext string.
+     */
     anthropicApiKeyPlaintext?: string;
 }
 
@@ -6458,6 +6596,9 @@ export interface ModelServingConfigServedEntityExternalModelCohereConfig {
      * The Databricks secret key reference for a Cohere API key.
      */
     cohereApiKey?: string;
+    /**
+     * The Cohere API key provided as a plaintext string.
+     */
     cohereApiKeyPlaintext?: string;
 }
 
@@ -6466,6 +6607,9 @@ export interface ModelServingConfigServedEntityExternalModelDatabricksModelServi
      * The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
      */
     databricksApiToken?: string;
+    /**
+     * The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
+     */
     databricksApiTokenPlaintext?: string;
     /**
      * The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
@@ -6474,32 +6618,59 @@ export interface ModelServingConfigServedEntityExternalModelDatabricksModelServi
 }
 
 export interface ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
+    /**
+     * The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
+     */
     privateKey?: string;
+    /**
+     * The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
+     */
     privateKeyPlaintext?: string;
+    /**
+     * This is the Google Cloud project id that the service account is associated with.
+     */
     projectId?: string;
+    /**
+     * This is the region for the Google Cloud Vertex AI Service.
+     */
     region?: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
+    /**
+     * This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
+     */
     microsoftEntraClientId?: string;
+    /**
+     * The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
+     */
     microsoftEntraClientSecret?: string;
+    /**
+     * The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
+     */
     microsoftEntraClientSecretPlaintext?: string;
+    /**
+     * This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
+     */
     microsoftEntraTenantId?: string;
     /**
-     * This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+     * This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
      */
     openaiApiBase?: string;
     /**
      * The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
      */
     openaiApiKey?: string;
+    /**
+     * The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
+     */
     openaiApiKeyPlaintext?: string;
     /**
-     * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+     * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
      */
     openaiApiType?: string;
     /**
-     * This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+     * This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
      */
     openaiApiVersion?: string;
     /**
@@ -6517,12 +6688,15 @@ export interface ModelServingConfigServedEntityExternalModelPalmConfig {
      * The Databricks secret key reference for a PaLM API key.
      */
     palmApiKey?: string;
+    /**
+     * The PaLM API key provided as a plaintext string.
+     */
     palmApiKeyPlaintext?: string;
 }
 
 export interface ModelServingConfigServedModel {
     /**
-     * a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+     * a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      */
     environmentVars?: {[key: string]: string};
     /**
@@ -6558,7 +6732,7 @@ export interface ModelServingConfigServedModel {
      */
     workloadSize?: string;
     /**
-     * The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+     * The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
      */
     workloadType: string;
 }
@@ -7210,8 +7384,24 @@ export interface PipelineIngestionDefinition {
 }
 
 export interface PipelineIngestionDefinitionObject {
+    report?: outputs.PipelineIngestionDefinitionObjectReport;
     schema?: outputs.PipelineIngestionDefinitionObjectSchema;
     table?: outputs.PipelineIngestionDefinitionObjectTable;
+}
+
+export interface PipelineIngestionDefinitionObjectReport {
+    destinationCatalog?: string;
+    destinationSchema?: string;
+    destinationTable?: string;
+    sourceUrl?: string;
+    tableConfiguration?: outputs.PipelineIngestionDefinitionObjectReportTableConfiguration;
+}
+
+export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
+    primaryKeys?: string[];
+    salesforceIncludeFormulaFields?: boolean;
+    scdType?: string;
+    sequenceBies?: string[];
 }
 
 export interface PipelineIngestionDefinitionObjectSchema {
@@ -7226,6 +7416,7 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     primaryKeys?: string[];
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
+    sequenceBies?: string[];
 }
 
 export interface PipelineIngestionDefinitionObjectTable {
@@ -7242,12 +7433,14 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     primaryKeys?: string[];
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
+    sequenceBies?: string[];
 }
 
 export interface PipelineIngestionDefinitionTableConfiguration {
     primaryKeys?: string[];
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
+    sequenceBies?: string[];
 }
 
 export interface PipelineLatestUpdate {

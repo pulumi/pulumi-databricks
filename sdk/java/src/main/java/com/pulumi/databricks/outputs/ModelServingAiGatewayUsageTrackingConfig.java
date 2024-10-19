@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingAiGatewayUsageTrackingConfig {
-    /**
-     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
-     * 
-     */
     private @Nullable Boolean enabled;
 
     private ModelServingAiGatewayUsageTrackingConfig() {}
-    /**
-     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

@@ -14,6 +14,83 @@ namespace Pulumi.Databricks
     /// 
     /// A `databricks.QualityMonitor` is attached to a databricks.SqlTable and can be of type timeseries, snapshot or inference.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     {
+    ///         Name = "sandbox",
+    ///         Comment = "this catalog is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
+    /// 
+    ///     var things = new Databricks.Schema("things", new()
+    ///     {
+    ///         CatalogName = sandbox.Id,
+    ///         Name = "things",
+    ///         Comment = "this database is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "kind", "various" },
+    ///         },
+    ///     });
+    /// 
+    ///     var myTestTable = new Databricks.SqlTable("myTestTable", new()
+    ///     {
+    ///         CatalogName = "main",
+    ///         SchemaName = things.Name,
+    ///         Name = "bar",
+    ///         TableType = "MANAGED",
+    ///         DataSourceFormat = "DELTA",
+    ///         Columns = new[]
+    ///         {
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "timestamp",
+    ///                 Type = "int",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var testTimeseriesMonitor = new Databricks.QualityMonitor("testTimeseriesMonitor", new()
+    ///     {
+    ///         TableName = Output.Tuple(sandbox.Name, things.Name, myTestTable.Name).Apply(values =&gt;
+    ///         {
+    ///             var sandboxName = values.Item1;
+    ///             var thingsName = values.Item2;
+    ///             var myTestTableName = values.Item3;
+    ///             return $"{sandboxName}.{thingsName}.{myTestTableName}";
+    ///         }),
+    ///         AssetsDir = myTestTable.Name.Apply(name =&gt; $"/Shared/provider-test/databricks_quality_monitoring/{name}"),
+    ///         OutputSchemaName = Output.Tuple(sandbox.Name, things.Name).Apply(values =&gt;
+    ///         {
+    ///             var sandboxName = values.Item1;
+    ///             var thingsName = values.Item2;
+    ///             return $"{sandboxName}.{thingsName}";
+    ///         }),
+    ///         TimeSeries = new Databricks.Inputs.QualityMonitorTimeSeriesArgs
+    ///         {
+    ///             Granularities = new[]
+    ///             {
+    ///                 "1 hour",
+    ///             },
+    ///             TimestampCol = "timestamp",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Inference Monitor
     /// 
     /// ```csharp

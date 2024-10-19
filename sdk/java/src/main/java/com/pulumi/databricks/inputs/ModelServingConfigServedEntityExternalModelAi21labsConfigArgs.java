@@ -30,9 +30,17 @@ public final class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs
         return Optional.ofNullable(this.ai21labsApiKey);
     }
 
+    /**
+     * An AI21 Labs API key provided as a plaintext string.
+     * 
+     */
     @Import(name="ai21labsApiKeyPlaintext")
     private @Nullable Output<String> ai21labsApiKeyPlaintext;
 
+    /**
+     * @return An AI21 Labs API key provided as a plaintext string.
+     * 
+     */
     public Optional<Output<String>> ai21labsApiKeyPlaintext() {
         return Optional.ofNullable(this.ai21labsApiKeyPlaintext);
     }
@@ -83,11 +91,23 @@ public final class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs
             return ai21labsApiKey(Output.of(ai21labsApiKey));
         }
 
+        /**
+         * @param ai21labsApiKeyPlaintext An AI21 Labs API key provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ai21labsApiKeyPlaintext(@Nullable Output<String> ai21labsApiKeyPlaintext) {
             $.ai21labsApiKeyPlaintext = ai21labsApiKeyPlaintext;
             return this;
         }
 
+        /**
+         * @param ai21labsApiKeyPlaintext An AI21 Labs API key provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ai21labsApiKeyPlaintext(String ai21labsApiKeyPlaintext) {
             return ai21labsApiKeyPlaintext(Output.of(ai21labsApiKeyPlaintext));
         }

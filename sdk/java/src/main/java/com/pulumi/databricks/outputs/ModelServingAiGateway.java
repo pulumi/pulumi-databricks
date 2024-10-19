@@ -15,29 +15,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingAiGateway {
+    /**
+     * @return Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+     * 
+     */
     private @Nullable ModelServingAiGatewayGuardrails guardrails;
+    /**
+     * @return Block describing the configuration of usage tracking. Consists of the following attributes:
+     * 
+     */
     private @Nullable ModelServingAiGatewayInferenceTableConfig inferenceTableConfig;
     /**
-     * @return A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * @return Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
      * 
      */
     private @Nullable List<ModelServingAiGatewayRateLimit> rateLimits;
+    /**
+     * @return Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+     * 
+     */
     private @Nullable ModelServingAiGatewayUsageTrackingConfig usageTrackingConfig;
 
     private ModelServingAiGateway() {}
+    /**
+     * @return Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+     * 
+     */
     public Optional<ModelServingAiGatewayGuardrails> guardrails() {
         return Optional.ofNullable(this.guardrails);
     }
+    /**
+     * @return Block describing the configuration of usage tracking. Consists of the following attributes:
+     * 
+     */
     public Optional<ModelServingAiGatewayInferenceTableConfig> inferenceTableConfig() {
         return Optional.ofNullable(this.inferenceTableConfig);
     }
     /**
-     * @return A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * @return Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
      * 
      */
     public List<ModelServingAiGatewayRateLimit> rateLimits() {
         return this.rateLimits == null ? List.of() : this.rateLimits;
     }
+    /**
+     * @return Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+     * 
+     */
     public Optional<ModelServingAiGatewayUsageTrackingConfig> usageTrackingConfig() {
         return Optional.ofNullable(this.usageTrackingConfig);
     }

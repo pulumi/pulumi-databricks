@@ -133,6 +133,20 @@ public class OnlineTable extends com.pulumi.resources.CustomResource {
     public Output<String> tableServingUrl() {
         return this.tableServingUrl;
     }
+    /**
+     * The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in &#34;ACTIVE&#34; but the pipeline may be in &#34;PROVISIONING&#34; as it runs asynchronously).
+     * 
+     */
+    @Export(name="unityCatalogProvisioningState", refs={String.class}, tree="[0]")
+    private Output<String> unityCatalogProvisioningState;
+
+    /**
+     * @return The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in &#34;ACTIVE&#34; but the pipeline may be in &#34;PROVISIONING&#34; as it runs asynchronously).
+     * 
+     */
+    public Output<String> unityCatalogProvisioningState() {
+        return this.unityCatalogProvisioningState;
+    }
 
     /**
      *

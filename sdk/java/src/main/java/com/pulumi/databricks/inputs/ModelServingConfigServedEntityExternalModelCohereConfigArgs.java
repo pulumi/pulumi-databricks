@@ -37,9 +37,17 @@ public final class ModelServingConfigServedEntityExternalModelCohereConfigArgs e
         return Optional.ofNullable(this.cohereApiKey);
     }
 
+    /**
+     * The Cohere API key provided as a plaintext string.
+     * 
+     */
     @Import(name="cohereApiKeyPlaintext")
     private @Nullable Output<String> cohereApiKeyPlaintext;
 
+    /**
+     * @return The Cohere API key provided as a plaintext string.
+     * 
+     */
     public Optional<Output<String>> cohereApiKeyPlaintext() {
         return Optional.ofNullable(this.cohereApiKeyPlaintext);
     }
@@ -100,11 +108,23 @@ public final class ModelServingConfigServedEntityExternalModelCohereConfigArgs e
             return cohereApiKey(Output.of(cohereApiKey));
         }
 
+        /**
+         * @param cohereApiKeyPlaintext The Cohere API key provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cohereApiKeyPlaintext(@Nullable Output<String> cohereApiKeyPlaintext) {
             $.cohereApiKeyPlaintext = cohereApiKeyPlaintext;
             return this;
         }
 
+        /**
+         * @param cohereApiKeyPlaintext The Cohere API key provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cohereApiKeyPlaintext(String cohereApiKeyPlaintext) {
             return cohereApiKeyPlaintext(Output.of(cohereApiKeyPlaintext));
         }

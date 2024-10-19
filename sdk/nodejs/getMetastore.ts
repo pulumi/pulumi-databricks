@@ -19,11 +19,16 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
  * import * as databricks from "@pulumi/databricks";
  *
+ * const metastore = new aws.s3.BucketV2("metastore", {
+ *     bucket: `${prefix}-metastore`,
+ *     forceDestroy: true,
+ * });
  * const thisMetastore = new databricks.Metastore("this", {
  *     name: "primary",
- *     storageRoot: `s3://${metastore.id}/metastore`,
+ *     storageRoot: pulumi.interpolate`s3://${metastore.id}/metastore`,
  *     owner: unityAdminGroup,
  *     forceDestroy: true,
  * });
@@ -111,11 +116,16 @@ export interface GetMetastoreResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
  * import * as databricks from "@pulumi/databricks";
  *
+ * const metastore = new aws.s3.BucketV2("metastore", {
+ *     bucket: `${prefix}-metastore`,
+ *     forceDestroy: true,
+ * });
  * const thisMetastore = new databricks.Metastore("this", {
  *     name: "primary",
- *     storageRoot: `s3://${metastore.id}/metastore`,
+ *     storageRoot: pulumi.interpolate`s3://${metastore.id}/metastore`,
  *     owner: unityAdminGroup,
  *     forceDestroy: true,
  * });

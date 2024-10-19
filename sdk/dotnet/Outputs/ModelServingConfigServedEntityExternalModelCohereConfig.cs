@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Outputs
         /// The Databricks secret key reference for a Cohere API key.
         /// </summary>
         public readonly string? CohereApiKey;
+        /// <summary>
+        /// The Cohere API key provided as a plaintext string.
+        /// </summary>
         public readonly string? CohereApiKeyPlaintext;
 
         [OutputConstructor]

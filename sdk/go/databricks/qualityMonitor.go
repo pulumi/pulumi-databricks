@@ -16,6 +16,90 @@ import (
 //
 // A `QualityMonitor` is attached to a SqlTable and can be of type timeseries, snapshot or inference.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:    pulumi.String("sandbox"),
+//				Comment: pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
+//				CatalogName: sandbox.ID(),
+//				Name:        pulumi.String("things"),
+//				Comment:     pulumi.String("this database is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"kind": pulumi.String("various"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myTestTable, err := databricks.NewSqlTable(ctx, "myTestTable", &databricks.SqlTableArgs{
+//				CatalogName:      pulumi.String("main"),
+//				SchemaName:       things.Name,
+//				Name:             pulumi.String("bar"),
+//				TableType:        pulumi.String("MANAGED"),
+//				DataSourceFormat: pulumi.String("DELTA"),
+//				Columns: databricks.SqlTableColumnArray{
+//					&databricks.SqlTableColumnArgs{
+//						Name: pulumi.String("timestamp"),
+//						Type: pulumi.String("int"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewQualityMonitor(ctx, "testTimeseriesMonitor", &databricks.QualityMonitorArgs{
+//				TableName: pulumi.All(sandbox.Name, things.Name, myTestTable.Name).ApplyT(func(_args []interface{}) (string, error) {
+//					sandboxName := _args[0].(string)
+//					thingsName := _args[1].(string)
+//					myTestTableName := _args[2].(string)
+//					return fmt.Sprintf("%v.%v.%v", sandboxName, thingsName, myTestTableName), nil
+//				}).(pulumi.StringOutput),
+//				AssetsDir: myTestTable.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("/Shared/provider-test/databricks_quality_monitoring/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				OutputSchemaName: pulumi.All(sandbox.Name, things.Name).ApplyT(func(_args []interface{}) (string, error) {
+//					sandboxName := _args[0].(string)
+//					thingsName := _args[1].(string)
+//					return fmt.Sprintf("%v.%v", sandboxName, thingsName), nil
+//				}).(pulumi.StringOutput),
+//				TimeSeries: &databricks.QualityMonitorTimeSeriesArgs{
+//					Granularities: pulumi.StringArray{
+//						pulumi.String("1 hour"),
+//					},
+//					TimestampCol: pulumi.String("timestamp"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Inference Monitor
 //
 // ```go

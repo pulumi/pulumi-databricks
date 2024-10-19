@@ -18,7 +18,7 @@ public final class ModelServingAiGatewayInferenceTableConfig {
      */
     private @Nullable String catalogName;
     /**
-     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     * @return boolean flag specifying if usage tracking is enabled.
      * 
      */
     private @Nullable Boolean enabled;
@@ -42,7 +42,7 @@ public final class ModelServingAiGatewayInferenceTableConfig {
         return Optional.ofNullable(this.catalogName);
     }
     /**
-     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     * @return boolean flag specifying if usage tracking is enabled.
      * 
      */
     public Optional<Boolean> enabled() {

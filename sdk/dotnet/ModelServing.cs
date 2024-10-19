@@ -99,6 +99,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/modelServing:ModelServing")]
     public partial class ModelServing : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+        /// </summary>
         [Output("aiGateway")]
         public Output<Outputs.ModelServingAiGateway?> AiGateway { get; private set; } = null!;
 
@@ -109,19 +112,19 @@ namespace Pulumi.Databricks
         public Output<Outputs.ModelServingConfig> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        /// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         /// </summary>
         [Output("rateLimits")]
         public Output<ImmutableArray<Outputs.ModelServingRateLimit>> RateLimits { get; private set; } = null!;
 
         /// <summary>
-        /// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+        /// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
         /// </summary>
         [Output("routeOptimized")]
         public Output<bool?> RouteOptimized { get; private set; } = null!;
@@ -184,6 +187,9 @@ namespace Pulumi.Databricks
 
     public sealed class ModelServingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+        /// </summary>
         [Input("aiGateway")]
         public Input<Inputs.ModelServingAiGatewayArgs>? AiGateway { get; set; }
 
@@ -194,7 +200,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.ModelServingConfigArgs> Config { get; set; } = null!;
 
         /// <summary>
-        /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -203,7 +209,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.ModelServingRateLimitArgs>? _rateLimits;
 
         /// <summary>
-        /// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        /// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         /// </summary>
         public InputList<Inputs.ModelServingRateLimitArgs> RateLimits
         {
@@ -212,7 +218,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+        /// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
         /// </summary>
         [Input("routeOptimized")]
         public Input<bool>? RouteOptimized { get; set; }
@@ -237,6 +243,9 @@ namespace Pulumi.Databricks
 
     public sealed class ModelServingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+        /// </summary>
         [Input("aiGateway")]
         public Input<Inputs.ModelServingAiGatewayGetArgs>? AiGateway { get; set; }
 
@@ -247,7 +256,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.ModelServingConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -256,7 +265,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.ModelServingRateLimitGetArgs>? _rateLimits;
 
         /// <summary>
-        /// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        /// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         /// </summary>
         public InputList<Inputs.ModelServingRateLimitGetArgs> RateLimits
         {
@@ -265,7 +274,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+        /// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
         /// </summary>
         [Input("routeOptimized")]
         public Input<bool>? RouteOptimized { get; set; }

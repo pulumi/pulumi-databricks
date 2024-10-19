@@ -28,6 +28,7 @@ import (
 //
 //	"fmt"
 //
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/s3"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -35,9 +36,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			metastore, err := s3.NewBucketV2(ctx, "metastore", &s3.BucketV2Args{
+//				Bucket:       pulumi.Sprintf("%v-metastore", prefix),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			thisMetastore, err := databricks.NewMetastore(ctx, "this", &databricks.MetastoreArgs{
-//				Name:         pulumi.String("primary"),
-//				StorageRoot:  pulumi.Sprintf("s3://%v/metastore", metastore.Id),
+//				Name: pulumi.String("primary"),
+//				StorageRoot: metastore.ID().ApplyT(func(id string) (string, error) {
+//					return fmt.Sprintf("s3://%v/metastore", id), nil
+//				}).(pulumi.StringOutput),
 //				Owner:        pulumi.Any(unityAdminGroup),
 //				ForceDestroy: pulumi.Bool(true),
 //			})

@@ -32,14 +32,14 @@ public final class ModelServingConfigAutoCaptureConfigArgs extends com.pulumi.re
     }
 
     /**
-     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -125,7 +125,7 @@ public final class ModelServingConfigAutoCaptureConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param enabled If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+         * @param enabled If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ModelServingConfigAutoCaptureConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param enabled If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+         * @param enabled If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
          * 
          * @return builder
          * 

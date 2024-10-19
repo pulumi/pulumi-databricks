@@ -171,6 +171,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aws.AwsFunctions;
+ * import com.pulumi.aws.inputs.GetCallerIdentityArgs;
  * import com.pulumi.aws.iam.IamFunctions;
  * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
  * import com.pulumi.aws.kms.Key;
@@ -196,6 +198,8 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var databricksAccountId = config.get("databricksAccountId");
  *         final var databricksCrossAccountRole = config.get("databricksCrossAccountRole");
+ *         final var current = AwsFunctions.getCallerIdentity();
+ * 
  *         final var databricksStorageCmk = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
  *             .version("2012-10-17")
  *             .statements(            
@@ -204,7 +208,7 @@ import javax.annotation.Nullable;
  *                     .effect("Allow")
  *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
  *                         .type("AWS")
- *                         .identifiers(current.accountId())
+ *                         .identifiers(current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.accountId()))
  *                         .build())
  *                     .actions("kms:*")
  *                     .resources("*")

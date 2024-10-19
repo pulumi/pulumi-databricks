@@ -12,20 +12,32 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
+        /// </summary>
         [Input("microsoftEntraClientId")]
         public Input<string>? MicrosoftEntraClientId { get; set; }
 
+        /// <summary>
+        /// The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
+        /// </summary>
         [Input("microsoftEntraClientSecret")]
         public Input<string>? MicrosoftEntraClientSecret { get; set; }
 
+        /// <summary>
+        /// The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
+        /// </summary>
         [Input("microsoftEntraClientSecretPlaintext")]
         public Input<string>? MicrosoftEntraClientSecretPlaintext { get; set; }
 
+        /// <summary>
+        /// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
+        /// </summary>
         [Input("microsoftEntraTenantId")]
         public Input<string>? MicrosoftEntraTenantId { get; set; }
 
         /// <summary>
-        /// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+        /// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
         /// </summary>
         [Input("openaiApiBase")]
         public Input<string>? OpenaiApiBase { get; set; }
@@ -36,17 +48,20 @@ namespace Pulumi.Databricks.Inputs
         [Input("openaiApiKey")]
         public Input<string>? OpenaiApiKey { get; set; }
 
+        /// <summary>
+        /// The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
+        /// </summary>
         [Input("openaiApiKeyPlaintext")]
         public Input<string>? OpenaiApiKeyPlaintext { get; set; }
 
         /// <summary>
-        /// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+        /// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
         /// </summary>
         [Input("openaiApiType")]
         public Input<string>? OpenaiApiType { get; set; }
 
         /// <summary>
-        /// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+        /// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
         /// </summary>
         [Input("openaiApiVersion")]
         public Input<string>? OpenaiApiVersion { get; set; }

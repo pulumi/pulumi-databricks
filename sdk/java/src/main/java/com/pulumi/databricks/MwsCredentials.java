@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var databricksAccountId = config.get("databricksAccountId");
+ *         final var prefix = config.get("prefix");
  *         final var this = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
  *             .externalId(databricksAccountId)
  *             .build());

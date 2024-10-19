@@ -38,12 +38,20 @@ public final class PipelineIngestionDefinitionTableConfigurationArgs extends com
         return Optional.ofNullable(this.scdType);
     }
 
+    @Import(name="sequenceBies")
+    private @Nullable Output<List<String>> sequenceBies;
+
+    public Optional<Output<List<String>>> sequenceBies() {
+        return Optional.ofNullable(this.sequenceBies);
+    }
+
     private PipelineIngestionDefinitionTableConfigurationArgs() {}
 
     private PipelineIngestionDefinitionTableConfigurationArgs(PipelineIngestionDefinitionTableConfigurationArgs $) {
         this.primaryKeys = $.primaryKeys;
         this.salesforceIncludeFormulaFields = $.salesforceIncludeFormulaFields;
         this.scdType = $.scdType;
+        this.sequenceBies = $.sequenceBies;
     }
 
     public static Builder builder() {
@@ -93,6 +101,19 @@ public final class PipelineIngestionDefinitionTableConfigurationArgs extends com
 
         public Builder scdType(String scdType) {
             return scdType(Output.of(scdType));
+        }
+
+        public Builder sequenceBies(@Nullable Output<List<String>> sequenceBies) {
+            $.sequenceBies = sequenceBies;
+            return this;
+        }
+
+        public Builder sequenceBies(List<String> sequenceBies) {
+            return sequenceBies(Output.of(sequenceBies));
+        }
+
+        public Builder sequenceBies(String... sequenceBies) {
+            return sequenceBies(List.of(sequenceBies));
         }
 
         public PipelineIngestionDefinitionTableConfigurationArgs build() {

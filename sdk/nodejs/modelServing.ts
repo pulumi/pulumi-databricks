@@ -106,21 +106,24 @@ export class ModelServing extends pulumi.CustomResource {
         return obj['__pulumiType'] === ModelServing.__pulumiType;
     }
 
+    /**
+     * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+     */
     public readonly aiGateway!: pulumi.Output<outputs.ModelServingAiGateway | undefined>;
     /**
      * The model serving endpoint configuration.
      */
     public readonly config!: pulumi.Output<outputs.ModelServingConfig>;
     /**
-     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      */
     public readonly rateLimits!: pulumi.Output<outputs.ModelServingRateLimit[] | undefined>;
     /**
-     * A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     * A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
      */
     public readonly routeOptimized!: pulumi.Output<boolean | undefined>;
     /**
@@ -174,21 +177,24 @@ export class ModelServing extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ModelServing resources.
  */
 export interface ModelServingState {
+    /**
+     * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+     */
     aiGateway?: pulumi.Input<inputs.ModelServingAiGateway>;
     /**
      * The model serving endpoint configuration.
      */
     config?: pulumi.Input<inputs.ModelServingConfig>;
     /**
-     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      */
     rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[]>;
     /**
-     * A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     * A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
      */
     routeOptimized?: pulumi.Input<boolean>;
     /**
@@ -205,21 +211,24 @@ export interface ModelServingState {
  * The set of arguments for constructing a ModelServing resource.
  */
 export interface ModelServingArgs {
+    /**
+     * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+     */
     aiGateway?: pulumi.Input<inputs.ModelServingAiGateway>;
     /**
      * The model serving endpoint configuration.
      */
     config: pulumi.Input<inputs.ModelServingConfig>;
     /**
-     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      */
     rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[]>;
     /**
-     * A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     * A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
      */
     routeOptimized?: pulumi.Input<boolean>;
     /**

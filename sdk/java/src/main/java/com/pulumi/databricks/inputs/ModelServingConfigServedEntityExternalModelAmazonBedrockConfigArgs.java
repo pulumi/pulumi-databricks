@@ -31,9 +31,17 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
         return Optional.ofNullable(this.awsAccessKeyId);
     }
 
+    /**
+     * An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
+     * 
+     */
     @Import(name="awsAccessKeyIdPlaintext")
     private @Nullable Output<String> awsAccessKeyIdPlaintext;
 
+    /**
+     * @return An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
+     * 
+     */
     public Optional<Output<String>> awsAccessKeyIdPlaintext() {
         return Optional.ofNullable(this.awsAccessKeyIdPlaintext);
     }
@@ -68,9 +76,17 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
         return Optional.ofNullable(this.awsSecretAccessKey);
     }
 
+    /**
+     * An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
+     * 
+     */
     @Import(name="awsSecretAccessKeyPlaintext")
     private @Nullable Output<String> awsSecretAccessKeyPlaintext;
 
+    /**
+     * @return An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
+     * 
+     */
     public Optional<Output<String>> awsSecretAccessKeyPlaintext() {
         return Optional.ofNullable(this.awsSecretAccessKeyPlaintext);
     }
@@ -140,11 +156,23 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
             return awsAccessKeyId(Output.of(awsAccessKeyId));
         }
 
+        /**
+         * @param awsAccessKeyIdPlaintext An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsAccessKeyIdPlaintext(@Nullable Output<String> awsAccessKeyIdPlaintext) {
             $.awsAccessKeyIdPlaintext = awsAccessKeyIdPlaintext;
             return this;
         }
 
+        /**
+         * @param awsAccessKeyIdPlaintext An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsAccessKeyIdPlaintext(String awsAccessKeyIdPlaintext) {
             return awsAccessKeyIdPlaintext(Output.of(awsAccessKeyIdPlaintext));
         }
@@ -191,11 +219,23 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
             return awsSecretAccessKey(Output.of(awsSecretAccessKey));
         }
 
+        /**
+         * @param awsSecretAccessKeyPlaintext An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsSecretAccessKeyPlaintext(@Nullable Output<String> awsSecretAccessKeyPlaintext) {
             $.awsSecretAccessKeyPlaintext = awsSecretAccessKeyPlaintext;
             return this;
         }
 
+        /**
+         * @param awsSecretAccessKeyPlaintext An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsSecretAccessKeyPlaintext(String awsSecretAccessKeyPlaintext) {
             return awsSecretAccessKeyPlaintext(Output.of(awsSecretAccessKeyPlaintext));
         }

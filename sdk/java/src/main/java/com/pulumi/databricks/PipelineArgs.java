@@ -43,9 +43,17 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.allowDuplicateNames);
     }
 
+    /**
+     * optional string specifying ID of the budget policy for this DLT pipeline.
+     * 
+     */
     @Import(name="budgetPolicyId")
     private @Nullable Output<String> budgetPolicyId;
 
+    /**
+     * @return optional string specifying ID of the budget policy for this DLT pipeline.
+     * 
+     */
     public Optional<Output<String>> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
     }
@@ -472,11 +480,23 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
             return allowDuplicateNames(Output.of(allowDuplicateNames));
         }
 
+        /**
+         * @param budgetPolicyId optional string specifying ID of the budget policy for this DLT pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
             $.budgetPolicyId = budgetPolicyId;
             return this;
         }
 
+        /**
+         * @param budgetPolicyId optional string specifying ID of the budget policy for this DLT pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder budgetPolicyId(String budgetPolicyId) {
             return budgetPolicyId(Output.of(budgetPolicyId));
         }

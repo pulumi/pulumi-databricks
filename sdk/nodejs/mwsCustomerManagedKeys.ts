@@ -103,7 +103,8 @@ import * as utilities from "./utilities";
  * const databricksAccountId = config.requireObject("databricksAccountId");
  * // AWS ARN for the Databricks cross account role
  * const databricksCrossAccountRole = config.requireObject("databricksCrossAccountRole");
- * const databricksStorageCmk = aws.iam.getPolicyDocument({
+ * const current = aws.getCallerIdentity({});
+ * const databricksStorageCmk = current.then(current => aws.iam.getPolicyDocument({
  *     version: "2012-10-17",
  *     statements: [
  *         {
@@ -172,7 +173,7 @@ import * as utilities from "./utilities";
  *             }],
  *         },
  *     ],
- * });
+ * }));
  * const storageCustomerManagedKey = new aws.kms.Key("storage_customer_managed_key", {policy: databricksStorageCmk.then(databricksStorageCmk => databricksStorageCmk.json)});
  * const storageCustomerManagedKeyAlias = new aws.kms.Alias("storage_customer_managed_key_alias", {
  *     name: "alias/storage-customer-managed-key-alias",

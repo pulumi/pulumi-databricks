@@ -100,14 +100,15 @@ import (
 type ModelServing struct {
 	pulumi.CustomResourceState
 
+	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 	AiGateway ModelServingAiGatewayPtrOutput `pulumi:"aiGateway"`
 	// The model serving endpoint configuration.
 	Config ModelServingConfigOutput `pulumi:"config"`
-	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
 	RateLimits ModelServingRateLimitArrayOutput `pulumi:"rateLimits"`
-	// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+	// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 	RouteOptimized pulumi.BoolPtrOutput `pulumi:"routeOptimized"`
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId pulumi.StringOutput `pulumi:"servingEndpointId"`
@@ -148,14 +149,15 @@ func GetModelServing(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ModelServing resources.
 type modelServingState struct {
+	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 	AiGateway *ModelServingAiGateway `pulumi:"aiGateway"`
 	// The model serving endpoint configuration.
 	Config *ModelServingConfig `pulumi:"config"`
-	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name *string `pulumi:"name"`
-	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
 	RateLimits []ModelServingRateLimit `pulumi:"rateLimits"`
-	// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+	// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 	RouteOptimized *bool `pulumi:"routeOptimized"`
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId *string `pulumi:"servingEndpointId"`
@@ -164,14 +166,15 @@ type modelServingState struct {
 }
 
 type ModelServingState struct {
+	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 	AiGateway ModelServingAiGatewayPtrInput
 	// The model serving endpoint configuration.
 	Config ModelServingConfigPtrInput
-	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringPtrInput
-	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
 	RateLimits ModelServingRateLimitArrayInput
-	// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+	// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 	RouteOptimized pulumi.BoolPtrInput
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId pulumi.StringPtrInput
@@ -184,14 +187,15 @@ func (ModelServingState) ElementType() reflect.Type {
 }
 
 type modelServingArgs struct {
+	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 	AiGateway *ModelServingAiGateway `pulumi:"aiGateway"`
 	// The model serving endpoint configuration.
 	Config ModelServingConfig `pulumi:"config"`
-	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name *string `pulumi:"name"`
-	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
 	RateLimits []ModelServingRateLimit `pulumi:"rateLimits"`
-	// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+	// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 	RouteOptimized *bool `pulumi:"routeOptimized"`
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
 	Tags []ModelServingTag `pulumi:"tags"`
@@ -199,14 +203,15 @@ type modelServingArgs struct {
 
 // The set of arguments for constructing a ModelServing resource.
 type ModelServingArgs struct {
+	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 	AiGateway ModelServingAiGatewayPtrInput
 	// The model serving endpoint configuration.
 	Config ModelServingConfigInput
-	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringPtrInput
-	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
 	RateLimits ModelServingRateLimitArrayInput
-	// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+	// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 	RouteOptimized pulumi.BoolPtrInput
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
 	Tags ModelServingTagArrayInput
@@ -299,6 +304,7 @@ func (o ModelServingOutput) ToModelServingOutputWithContext(ctx context.Context)
 	return o
 }
 
+// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 func (o ModelServingOutput) AiGateway() ModelServingAiGatewayPtrOutput {
 	return o.ApplyT(func(v *ModelServing) ModelServingAiGatewayPtrOutput { return v.AiGateway }).(ModelServingAiGatewayPtrOutput)
 }
@@ -308,17 +314,17 @@ func (o ModelServingOutput) Config() ModelServingConfigOutput {
 	return o.ApplyT(func(v *ModelServing) ModelServingConfigOutput { return v.Config }).(ModelServingConfigOutput)
 }
 
-// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 func (o ModelServingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ModelServing) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
 func (o ModelServingOutput) RateLimits() ModelServingRateLimitArrayOutput {
 	return o.ApplyT(func(v *ModelServing) ModelServingRateLimitArrayOutput { return v.RateLimits }).(ModelServingRateLimitArrayOutput)
 }
 
-// A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 func (o ModelServingOutput) RouteOptimized() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ModelServing) pulumi.BoolPtrOutput { return v.RouteOptimized }).(pulumi.BoolPtrOutput)
 }

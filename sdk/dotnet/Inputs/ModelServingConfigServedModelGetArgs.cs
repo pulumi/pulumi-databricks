@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Inputs
         private InputMap<string>? _environmentVars;
 
         /// <summary>
-        /// a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+        /// a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
         /// </summary>
         public InputMap<string> EnvironmentVars
         {
@@ -73,7 +73,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? WorkloadSize { get; set; }
 
         /// <summary>
-        /// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+        /// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
         /// </summary>
         [Input("workloadType")]
         public Input<string>? WorkloadType { get; set; }

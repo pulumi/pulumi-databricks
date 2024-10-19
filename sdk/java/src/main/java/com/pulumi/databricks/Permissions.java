@@ -386,6 +386,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.Group;
  * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.Notebook;
@@ -411,6 +412,8 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
+ *         final var me = DatabricksFunctions.getCurrentUser();
+ * 
  *         var eng = new Group("eng", GroupArgs.builder()
  *             .displayName("Engineering")
  *             .build());
@@ -428,11 +431,11 @@ import javax.annotation.Nullable;
  *                 """)
  *                 .build()).result())
  *             .language("PYTHON")
- *             .path(String.format("%s/DLT_Demo", me.home()))
+ *             .path(String.format("%s/DLT_Demo", me.applyValue(getCurrentUserResult -> getCurrentUserResult.home())))
  *             .build());
  * 
  *         var this_ = new Pipeline("this", PipelineArgs.builder()
- *             .name(String.format("DLT Demo Pipeline (%s)", me.alphanumeric()))
+ *             .name(String.format("DLT Demo Pipeline (%s)", me.applyValue(getCurrentUserResult -> getCurrentUserResult.alphanumeric())))
  *             .storage("/test/tf-pipeline")
  *             .configuration(Map.ofEntries(
  *                 Map.entry("key1", "value1"),

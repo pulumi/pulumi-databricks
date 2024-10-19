@@ -13,15 +13,19 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineIngestionDefinitionObject
     {
+        public readonly Outputs.PipelineIngestionDefinitionObjectReport? Report;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchema? Schema;
         public readonly Outputs.PipelineIngestionDefinitionObjectTable? Table;
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObject(
+            Outputs.PipelineIngestionDefinitionObjectReport? report,
+
             Outputs.PipelineIngestionDefinitionObjectSchema? schema,
 
             Outputs.PipelineIngestionDefinitionObjectTable? table)
         {
+            Report = report;
             Schema = schema;
             Table = table;
         }

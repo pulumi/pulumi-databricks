@@ -125,6 +125,12 @@ namespace Pulumi.Databricks
         public Output<bool?> AlwaysRunning { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        /// </summary>
+        [Output("budgetPolicyId")]
+        public Output<string?> BudgetPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration block to configure pause status. See continuous Configuration Block.
         /// </summary>
         [Output("continuous")]
@@ -359,6 +365,12 @@ namespace Pulumi.Databricks
         public Input<bool>? AlwaysRunning { get; set; }
 
         /// <summary>
+        /// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        /// </summary>
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
+
+        /// <summary>
         /// Configuration block to configure pause status. See continuous Configuration Block.
         /// </summary>
         [Input("continuous")]
@@ -582,6 +594,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
+
+        /// <summary>
+        /// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        /// </summary>
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
         /// Configuration block to configure pause status. See continuous Configuration Block.

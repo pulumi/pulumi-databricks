@@ -6,6 +6,28 @@ import * as utilities from "./utilities";
 
 /**
  * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thisBucketV2 = new aws.s3.BucketV2("this", {
+ *     bucket: "<unique_bucket_name>",
+ *     forceDestroy: true,
+ * });
+ * const this = databricks.getAwsBucketPolicyOutput({
+ *     bucket: thisBucketV2.bucket,
+ * });
+ * const thisBucketPolicy = new aws.s3.BucketPolicy("this", {
+ *     bucket: thisBucketV2.id,
+ *     policy: _this.apply(_this => _this.json),
+ * });
+ * ```
+ *
+ * Bucket policy with full access:
  */
 export function getAwsBucketPolicy(args: GetAwsBucketPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsBucketPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,6 +77,28 @@ export interface GetAwsBucketPolicyResult {
 }
 /**
  * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thisBucketV2 = new aws.s3.BucketV2("this", {
+ *     bucket: "<unique_bucket_name>",
+ *     forceDestroy: true,
+ * });
+ * const this = databricks.getAwsBucketPolicyOutput({
+ *     bucket: thisBucketV2.bucket,
+ * });
+ * const thisBucketPolicy = new aws.s3.BucketPolicy("this", {
+ *     bucket: thisBucketV2.id,
+ *     policy: _this.apply(_this => _this.json),
+ * });
+ * ```
+ *
+ * Bucket policy with full access:
  */
 export function getAwsBucketPolicyOutput(args: GetAwsBucketPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsBucketPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

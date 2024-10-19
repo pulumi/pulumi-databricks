@@ -64,13 +64,15 @@ class _OnlineTableState:
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['OnlineTableSpecArgs']] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['OnlineTableStatusArgs']]]] = None,
-                 table_serving_url: Optional[pulumi.Input[str]] = None):
+                 table_serving_url: Optional[pulumi.Input[str]] = None,
+                 unity_catalog_provisioning_state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OnlineTable resources.
         :param pulumi.Input[str] name: 3-level name of the Online Table to create.
         :param pulumi.Input['OnlineTableSpecArgs'] spec: object containing specification of the online table:
         :param pulumi.Input[Sequence[pulumi.Input['OnlineTableStatusArgs']]] statuses: object describing status of the online table:
         :param pulumi.Input[str] table_serving_url: Data serving REST API URL for this table.
+        :param pulumi.Input[str] unity_catalog_provisioning_state: The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -80,6 +82,8 @@ class _OnlineTableState:
             pulumi.set(__self__, "statuses", statuses)
         if table_serving_url is not None:
             pulumi.set(__self__, "table_serving_url", table_serving_url)
+        if unity_catalog_provisioning_state is not None:
+            pulumi.set(__self__, "unity_catalog_provisioning_state", unity_catalog_provisioning_state)
 
     @property
     @pulumi.getter
@@ -128,6 +132,18 @@ class _OnlineTableState:
     @table_serving_url.setter
     def table_serving_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "table_serving_url", value)
+
+    @property
+    @pulumi.getter(name="unityCatalogProvisioningState")
+    def unity_catalog_provisioning_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+        """
+        return pulumi.get(self, "unity_catalog_provisioning_state")
+
+    @unity_catalog_provisioning_state.setter
+    def unity_catalog_provisioning_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unity_catalog_provisioning_state", value)
 
 
 class OnlineTable(pulumi.CustomResource):
@@ -239,6 +255,7 @@ class OnlineTable(pulumi.CustomResource):
             __props__.__dict__["spec"] = spec
             __props__.__dict__["statuses"] = None
             __props__.__dict__["table_serving_url"] = None
+            __props__.__dict__["unity_catalog_provisioning_state"] = None
         super(OnlineTable, __self__).__init__(
             'databricks:index/onlineTable:OnlineTable',
             resource_name,
@@ -252,7 +269,8 @@ class OnlineTable(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict']]]]] = None,
-            table_serving_url: Optional[pulumi.Input[str]] = None) -> 'OnlineTable':
+            table_serving_url: Optional[pulumi.Input[str]] = None,
+            unity_catalog_provisioning_state: Optional[pulumi.Input[str]] = None) -> 'OnlineTable':
         """
         Get an existing OnlineTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -264,6 +282,7 @@ class OnlineTable(pulumi.CustomResource):
         :param pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']] spec: object containing specification of the online table:
         :param pulumi.Input[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict']]]] statuses: object describing status of the online table:
         :param pulumi.Input[str] table_serving_url: Data serving REST API URL for this table.
+        :param pulumi.Input[str] unity_catalog_provisioning_state: The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -273,6 +292,7 @@ class OnlineTable(pulumi.CustomResource):
         __props__.__dict__["spec"] = spec
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["table_serving_url"] = table_serving_url
+        __props__.__dict__["unity_catalog_provisioning_state"] = unity_catalog_provisioning_state
         return OnlineTable(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -306,4 +326,12 @@ class OnlineTable(pulumi.CustomResource):
         Data serving REST API URL for this table.
         """
         return pulumi.get(self, "table_serving_url")
+
+    @property
+    @pulumi.getter(name="unityCatalogProvisioningState")
+    def unity_catalog_provisioning_state(self) -> pulumi.Output[str]:
+        """
+        The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+        """
+        return pulumi.get(self, "unity_catalog_provisioning_state")
 

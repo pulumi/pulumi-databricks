@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingAiGatewayGuardrails {
+    /**
+     * @return A block with configuration for input guardrail filters:
+     * 
+     */
     private @Nullable ModelServingAiGatewayGuardrailsInput input;
+    /**
+     * @return A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+     * 
+     */
     private @Nullable ModelServingAiGatewayGuardrailsOutput output;
 
     private ModelServingAiGatewayGuardrails() {}
+    /**
+     * @return A block with configuration for input guardrail filters:
+     * 
+     */
     public Optional<ModelServingAiGatewayGuardrailsInput> input() {
         return Optional.ofNullable(this.input);
     }
+    /**
+     * @return A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+     * 
+     */
     public Optional<ModelServingAiGatewayGuardrailsOutput> output() {
         return Optional.ofNullable(this.output);
     }

@@ -48944,10 +48944,13 @@ func (o MlflowWebhookJobSpecPtrOutput) WorkspaceUrl() pulumi.StringPtrOutput {
 }
 
 type ModelServingAiGateway struct {
-	Guardrails           *ModelServingAiGatewayGuardrails           `pulumi:"guardrails"`
+	// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+	Guardrails *ModelServingAiGatewayGuardrails `pulumi:"guardrails"`
+	// Block describing the configuration of usage tracking. Consists of the following attributes:
 	InferenceTableConfig *ModelServingAiGatewayInferenceTableConfig `pulumi:"inferenceTableConfig"`
-	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
-	RateLimits          []ModelServingAiGatewayRateLimit          `pulumi:"rateLimits"`
+	// Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
+	RateLimits []ModelServingAiGatewayRateLimit `pulumi:"rateLimits"`
+	// Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
 	UsageTrackingConfig *ModelServingAiGatewayUsageTrackingConfig `pulumi:"usageTrackingConfig"`
 }
 
@@ -48963,10 +48966,13 @@ type ModelServingAiGatewayInput interface {
 }
 
 type ModelServingAiGatewayArgs struct {
-	Guardrails           ModelServingAiGatewayGuardrailsPtrInput           `pulumi:"guardrails"`
+	// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+	Guardrails ModelServingAiGatewayGuardrailsPtrInput `pulumi:"guardrails"`
+	// Block describing the configuration of usage tracking. Consists of the following attributes:
 	InferenceTableConfig ModelServingAiGatewayInferenceTableConfigPtrInput `pulumi:"inferenceTableConfig"`
-	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
-	RateLimits          ModelServingAiGatewayRateLimitArrayInput         `pulumi:"rateLimits"`
+	// Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
+	RateLimits ModelServingAiGatewayRateLimitArrayInput `pulumi:"rateLimits"`
+	// Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
 	UsageTrackingConfig ModelServingAiGatewayUsageTrackingConfigPtrInput `pulumi:"usageTrackingConfig"`
 }
 
@@ -49047,21 +49053,24 @@ func (o ModelServingAiGatewayOutput) ToModelServingAiGatewayPtrOutputWithContext
 	}).(ModelServingAiGatewayPtrOutput)
 }
 
+// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
 func (o ModelServingAiGatewayOutput) Guardrails() ModelServingAiGatewayGuardrailsPtrOutput {
 	return o.ApplyT(func(v ModelServingAiGateway) *ModelServingAiGatewayGuardrails { return v.Guardrails }).(ModelServingAiGatewayGuardrailsPtrOutput)
 }
 
+// Block describing the configuration of usage tracking. Consists of the following attributes:
 func (o ModelServingAiGatewayOutput) InferenceTableConfig() ModelServingAiGatewayInferenceTableConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingAiGateway) *ModelServingAiGatewayInferenceTableConfig {
 		return v.InferenceTableConfig
 	}).(ModelServingAiGatewayInferenceTableConfigPtrOutput)
 }
 
-// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+// Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
 func (o ModelServingAiGatewayOutput) RateLimits() ModelServingAiGatewayRateLimitArrayOutput {
 	return o.ApplyT(func(v ModelServingAiGateway) []ModelServingAiGatewayRateLimit { return v.RateLimits }).(ModelServingAiGatewayRateLimitArrayOutput)
 }
 
+// Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
 func (o ModelServingAiGatewayOutput) UsageTrackingConfig() ModelServingAiGatewayUsageTrackingConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingAiGateway) *ModelServingAiGatewayUsageTrackingConfig { return v.UsageTrackingConfig }).(ModelServingAiGatewayUsageTrackingConfigPtrOutput)
 }
@@ -49090,6 +49099,7 @@ func (o ModelServingAiGatewayPtrOutput) Elem() ModelServingAiGatewayOutput {
 	}).(ModelServingAiGatewayOutput)
 }
 
+// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
 func (o ModelServingAiGatewayPtrOutput) Guardrails() ModelServingAiGatewayGuardrailsPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGateway) *ModelServingAiGatewayGuardrails {
 		if v == nil {
@@ -49099,6 +49109,7 @@ func (o ModelServingAiGatewayPtrOutput) Guardrails() ModelServingAiGatewayGuardr
 	}).(ModelServingAiGatewayGuardrailsPtrOutput)
 }
 
+// Block describing the configuration of usage tracking. Consists of the following attributes:
 func (o ModelServingAiGatewayPtrOutput) InferenceTableConfig() ModelServingAiGatewayInferenceTableConfigPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGateway) *ModelServingAiGatewayInferenceTableConfig {
 		if v == nil {
@@ -49108,7 +49119,7 @@ func (o ModelServingAiGatewayPtrOutput) InferenceTableConfig() ModelServingAiGat
 	}).(ModelServingAiGatewayInferenceTableConfigPtrOutput)
 }
 
-// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+// Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
 func (o ModelServingAiGatewayPtrOutput) RateLimits() ModelServingAiGatewayRateLimitArrayOutput {
 	return o.ApplyT(func(v *ModelServingAiGateway) []ModelServingAiGatewayRateLimit {
 		if v == nil {
@@ -49118,6 +49129,7 @@ func (o ModelServingAiGatewayPtrOutput) RateLimits() ModelServingAiGatewayRateLi
 	}).(ModelServingAiGatewayRateLimitArrayOutput)
 }
 
+// Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
 func (o ModelServingAiGatewayPtrOutput) UsageTrackingConfig() ModelServingAiGatewayUsageTrackingConfigPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGateway) *ModelServingAiGatewayUsageTrackingConfig {
 		if v == nil {
@@ -49128,7 +49140,9 @@ func (o ModelServingAiGatewayPtrOutput) UsageTrackingConfig() ModelServingAiGate
 }
 
 type ModelServingAiGatewayGuardrails struct {
-	Input  *ModelServingAiGatewayGuardrailsInputType  `pulumi:"input"`
+	// A block with configuration for input guardrail filters:
+	Input *ModelServingAiGatewayGuardrailsInputType `pulumi:"input"`
+	// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
 	Output *ModelServingAiGatewayGuardrailsOutputType `pulumi:"output"`
 }
 
@@ -49144,7 +49158,9 @@ type ModelServingAiGatewayGuardrailsInput interface {
 }
 
 type ModelServingAiGatewayGuardrailsArgs struct {
-	Input  ModelServingAiGatewayGuardrailsInputTypePtrInput  `pulumi:"input"`
+	// A block with configuration for input guardrail filters:
+	Input ModelServingAiGatewayGuardrailsInputTypePtrInput `pulumi:"input"`
+	// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
 	Output ModelServingAiGatewayGuardrailsOutputTypePtrInput `pulumi:"output"`
 }
 
@@ -49225,10 +49241,12 @@ func (o ModelServingAiGatewayGuardrailsOutput) ToModelServingAiGatewayGuardrails
 	}).(ModelServingAiGatewayGuardrailsPtrOutput)
 }
 
+// A block with configuration for input guardrail filters:
 func (o ModelServingAiGatewayGuardrailsOutput) Input() ModelServingAiGatewayGuardrailsInputTypePtrOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayGuardrails) *ModelServingAiGatewayGuardrailsInputType { return v.Input }).(ModelServingAiGatewayGuardrailsInputTypePtrOutput)
 }
 
+// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
 func (o ModelServingAiGatewayGuardrailsOutput) Output() ModelServingAiGatewayGuardrailsOutputTypePtrOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayGuardrails) *ModelServingAiGatewayGuardrailsOutputType { return v.Output }).(ModelServingAiGatewayGuardrailsOutputTypePtrOutput)
 }
@@ -49257,6 +49275,7 @@ func (o ModelServingAiGatewayGuardrailsPtrOutput) Elem() ModelServingAiGatewayGu
 	}).(ModelServingAiGatewayGuardrailsOutput)
 }
 
+// A block with configuration for input guardrail filters:
 func (o ModelServingAiGatewayGuardrailsPtrOutput) Input() ModelServingAiGatewayGuardrailsInputTypePtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayGuardrails) *ModelServingAiGatewayGuardrailsInputType {
 		if v == nil {
@@ -49266,6 +49285,7 @@ func (o ModelServingAiGatewayGuardrailsPtrOutput) Input() ModelServingAiGatewayG
 	}).(ModelServingAiGatewayGuardrailsInputTypePtrOutput)
 }
 
+// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
 func (o ModelServingAiGatewayGuardrailsPtrOutput) Output() ModelServingAiGatewayGuardrailsOutputTypePtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayGuardrails) *ModelServingAiGatewayGuardrailsOutputType {
 		if v == nil {
@@ -49276,10 +49296,14 @@ func (o ModelServingAiGatewayGuardrailsPtrOutput) Output() ModelServingAiGateway
 }
 
 type ModelServingAiGatewayGuardrailsInputType struct {
-	InvalidKeywords []string                                 `pulumi:"invalidKeywords"`
-	Pii             *ModelServingAiGatewayGuardrailsInputPii `pulumi:"pii"`
-	Safety          *bool                                    `pulumi:"safety"`
-	ValidTopics     []string                                 `pulumi:"validTopics"`
+	// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+	InvalidKeywords []string `pulumi:"invalidKeywords"`
+	// Block with configuration for guardrail PII filter:
+	Pii *ModelServingAiGatewayGuardrailsInputPii `pulumi:"pii"`
+	// the boolean flag that indicates whether the safety filter is enabled.
+	Safety *bool `pulumi:"safety"`
+	// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+	ValidTopics []string `pulumi:"validTopics"`
 }
 
 // ModelServingAiGatewayGuardrailsInputTypeInput is an input type that accepts ModelServingAiGatewayGuardrailsInputTypeArgs and ModelServingAiGatewayGuardrailsInputTypeOutput values.
@@ -49294,10 +49318,14 @@ type ModelServingAiGatewayGuardrailsInputTypeInput interface {
 }
 
 type ModelServingAiGatewayGuardrailsInputTypeArgs struct {
-	InvalidKeywords pulumi.StringArrayInput                         `pulumi:"invalidKeywords"`
-	Pii             ModelServingAiGatewayGuardrailsInputPiiPtrInput `pulumi:"pii"`
-	Safety          pulumi.BoolPtrInput                             `pulumi:"safety"`
-	ValidTopics     pulumi.StringArrayInput                         `pulumi:"validTopics"`
+	// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+	InvalidKeywords pulumi.StringArrayInput `pulumi:"invalidKeywords"`
+	// Block with configuration for guardrail PII filter:
+	Pii ModelServingAiGatewayGuardrailsInputPiiPtrInput `pulumi:"pii"`
+	// the boolean flag that indicates whether the safety filter is enabled.
+	Safety pulumi.BoolPtrInput `pulumi:"safety"`
+	// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+	ValidTopics pulumi.StringArrayInput `pulumi:"validTopics"`
 }
 
 func (ModelServingAiGatewayGuardrailsInputTypeArgs) ElementType() reflect.Type {
@@ -49377,20 +49405,24 @@ func (o ModelServingAiGatewayGuardrailsInputTypeOutput) ToModelServingAiGatewayG
 	}).(ModelServingAiGatewayGuardrailsInputTypePtrOutput)
 }
 
+// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
 func (o ModelServingAiGatewayGuardrailsInputTypeOutput) InvalidKeywords() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsInputType) []string { return v.InvalidKeywords }).(pulumi.StringArrayOutput)
 }
 
+// Block with configuration for guardrail PII filter:
 func (o ModelServingAiGatewayGuardrailsInputTypeOutput) Pii() ModelServingAiGatewayGuardrailsInputPiiPtrOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsInputType) *ModelServingAiGatewayGuardrailsInputPii {
 		return v.Pii
 	}).(ModelServingAiGatewayGuardrailsInputPiiPtrOutput)
 }
 
+// the boolean flag that indicates whether the safety filter is enabled.
 func (o ModelServingAiGatewayGuardrailsInputTypeOutput) Safety() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsInputType) *bool { return v.Safety }).(pulumi.BoolPtrOutput)
 }
 
+// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
 func (o ModelServingAiGatewayGuardrailsInputTypeOutput) ValidTopics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsInputType) []string { return v.ValidTopics }).(pulumi.StringArrayOutput)
 }
@@ -49419,6 +49451,7 @@ func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) Elem() ModelServingAi
 	}).(ModelServingAiGatewayGuardrailsInputTypeOutput)
 }
 
+// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
 func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) InvalidKeywords() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsInputType) []string {
 		if v == nil {
@@ -49428,6 +49461,7 @@ func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) InvalidKeywords() pul
 	}).(pulumi.StringArrayOutput)
 }
 
+// Block with configuration for guardrail PII filter:
 func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) Pii() ModelServingAiGatewayGuardrailsInputPiiPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsInputType) *ModelServingAiGatewayGuardrailsInputPii {
 		if v == nil {
@@ -49437,6 +49471,7 @@ func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) Pii() ModelServingAiG
 	}).(ModelServingAiGatewayGuardrailsInputPiiPtrOutput)
 }
 
+// the boolean flag that indicates whether the safety filter is enabled.
 func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) Safety() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsInputType) *bool {
 		if v == nil {
@@ -49446,6 +49481,7 @@ func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) Safety() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
 func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) ValidTopics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsInputType) []string {
 		if v == nil {
@@ -49456,6 +49492,7 @@ func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) ValidTopics() pulumi.
 }
 
 type ModelServingAiGatewayGuardrailsInputPii struct {
+	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
 	Behavior string `pulumi:"behavior"`
 }
 
@@ -49471,6 +49508,7 @@ type ModelServingAiGatewayGuardrailsInputPiiInput interface {
 }
 
 type ModelServingAiGatewayGuardrailsInputPiiArgs struct {
+	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
 	Behavior pulumi.StringInput `pulumi:"behavior"`
 }
 
@@ -49551,6 +49589,7 @@ func (o ModelServingAiGatewayGuardrailsInputPiiOutput) ToModelServingAiGatewayGu
 	}).(ModelServingAiGatewayGuardrailsInputPiiPtrOutput)
 }
 
+// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
 func (o ModelServingAiGatewayGuardrailsInputPiiOutput) Behavior() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsInputPii) string { return v.Behavior }).(pulumi.StringOutput)
 }
@@ -49579,6 +49618,7 @@ func (o ModelServingAiGatewayGuardrailsInputPiiPtrOutput) Elem() ModelServingAiG
 	}).(ModelServingAiGatewayGuardrailsInputPiiOutput)
 }
 
+// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
 func (o ModelServingAiGatewayGuardrailsInputPiiPtrOutput) Behavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsInputPii) *string {
 		if v == nil {
@@ -49589,10 +49629,14 @@ func (o ModelServingAiGatewayGuardrailsInputPiiPtrOutput) Behavior() pulumi.Stri
 }
 
 type ModelServingAiGatewayGuardrailsOutputType struct {
-	InvalidKeywords []string                                  `pulumi:"invalidKeywords"`
-	Pii             *ModelServingAiGatewayGuardrailsOutputPii `pulumi:"pii"`
-	Safety          *bool                                     `pulumi:"safety"`
-	ValidTopics     []string                                  `pulumi:"validTopics"`
+	// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+	InvalidKeywords []string `pulumi:"invalidKeywords"`
+	// Block with configuration for guardrail PII filter:
+	Pii *ModelServingAiGatewayGuardrailsOutputPii `pulumi:"pii"`
+	// the boolean flag that indicates whether the safety filter is enabled.
+	Safety *bool `pulumi:"safety"`
+	// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+	ValidTopics []string `pulumi:"validTopics"`
 }
 
 // ModelServingAiGatewayGuardrailsOutputTypeInput is an input type that accepts ModelServingAiGatewayGuardrailsOutputTypeArgs and ModelServingAiGatewayGuardrailsOutputTypeOutput values.
@@ -49607,10 +49651,14 @@ type ModelServingAiGatewayGuardrailsOutputTypeInput interface {
 }
 
 type ModelServingAiGatewayGuardrailsOutputTypeArgs struct {
-	InvalidKeywords pulumi.StringArrayInput                          `pulumi:"invalidKeywords"`
-	Pii             ModelServingAiGatewayGuardrailsOutputPiiPtrInput `pulumi:"pii"`
-	Safety          pulumi.BoolPtrInput                              `pulumi:"safety"`
-	ValidTopics     pulumi.StringArrayInput                          `pulumi:"validTopics"`
+	// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+	InvalidKeywords pulumi.StringArrayInput `pulumi:"invalidKeywords"`
+	// Block with configuration for guardrail PII filter:
+	Pii ModelServingAiGatewayGuardrailsOutputPiiPtrInput `pulumi:"pii"`
+	// the boolean flag that indicates whether the safety filter is enabled.
+	Safety pulumi.BoolPtrInput `pulumi:"safety"`
+	// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+	ValidTopics pulumi.StringArrayInput `pulumi:"validTopics"`
 }
 
 func (ModelServingAiGatewayGuardrailsOutputTypeArgs) ElementType() reflect.Type {
@@ -49690,20 +49738,24 @@ func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) ToModelServingAiGateway
 	}).(ModelServingAiGatewayGuardrailsOutputTypePtrOutput)
 }
 
+// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
 func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) InvalidKeywords() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsOutputType) []string { return v.InvalidKeywords }).(pulumi.StringArrayOutput)
 }
 
+// Block with configuration for guardrail PII filter:
 func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) Pii() ModelServingAiGatewayGuardrailsOutputPiiPtrOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsOutputType) *ModelServingAiGatewayGuardrailsOutputPii {
 		return v.Pii
 	}).(ModelServingAiGatewayGuardrailsOutputPiiPtrOutput)
 }
 
+// the boolean flag that indicates whether the safety filter is enabled.
 func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) Safety() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsOutputType) *bool { return v.Safety }).(pulumi.BoolPtrOutput)
 }
 
+// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
 func (o ModelServingAiGatewayGuardrailsOutputTypeOutput) ValidTopics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsOutputType) []string { return v.ValidTopics }).(pulumi.StringArrayOutput)
 }
@@ -49732,6 +49784,7 @@ func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) Elem() ModelServingA
 	}).(ModelServingAiGatewayGuardrailsOutputTypeOutput)
 }
 
+// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
 func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) InvalidKeywords() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsOutputType) []string {
 		if v == nil {
@@ -49741,6 +49794,7 @@ func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) InvalidKeywords() pu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Block with configuration for guardrail PII filter:
 func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) Pii() ModelServingAiGatewayGuardrailsOutputPiiPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsOutputType) *ModelServingAiGatewayGuardrailsOutputPii {
 		if v == nil {
@@ -49750,6 +49804,7 @@ func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) Pii() ModelServingAi
 	}).(ModelServingAiGatewayGuardrailsOutputPiiPtrOutput)
 }
 
+// the boolean flag that indicates whether the safety filter is enabled.
 func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) Safety() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsOutputType) *bool {
 		if v == nil {
@@ -49759,6 +49814,7 @@ func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) Safety() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
 func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) ValidTopics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsOutputType) []string {
 		if v == nil {
@@ -49769,6 +49825,7 @@ func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) ValidTopics() pulumi
 }
 
 type ModelServingAiGatewayGuardrailsOutputPii struct {
+	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
 	Behavior string `pulumi:"behavior"`
 }
 
@@ -49784,6 +49841,7 @@ type ModelServingAiGatewayGuardrailsOutputPiiInput interface {
 }
 
 type ModelServingAiGatewayGuardrailsOutputPiiArgs struct {
+	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
 	Behavior pulumi.StringInput `pulumi:"behavior"`
 }
 
@@ -49864,6 +49922,7 @@ func (o ModelServingAiGatewayGuardrailsOutputPiiOutput) ToModelServingAiGatewayG
 	}).(ModelServingAiGatewayGuardrailsOutputPiiPtrOutput)
 }
 
+// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
 func (o ModelServingAiGatewayGuardrailsOutputPiiOutput) Behavior() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsOutputPii) string { return v.Behavior }).(pulumi.StringOutput)
 }
@@ -49892,6 +49951,7 @@ func (o ModelServingAiGatewayGuardrailsOutputPiiPtrOutput) Elem() ModelServingAi
 	}).(ModelServingAiGatewayGuardrailsOutputPiiOutput)
 }
 
+// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
 func (o ModelServingAiGatewayGuardrailsOutputPiiPtrOutput) Behavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayGuardrailsOutputPii) *string {
 		if v == nil {
@@ -49904,7 +49964,7 @@ func (o ModelServingAiGatewayGuardrailsOutputPiiPtrOutput) Behavior() pulumi.Str
 type ModelServingAiGatewayInferenceTableConfig struct {
 	// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
 	CatalogName *string `pulumi:"catalogName"`
-	// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+	// boolean flag specifying if usage tracking is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
 	SchemaName *string `pulumi:"schemaName"`
@@ -49926,7 +49986,7 @@ type ModelServingAiGatewayInferenceTableConfigInput interface {
 type ModelServingAiGatewayInferenceTableConfigArgs struct {
 	// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
 	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
-	// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+	// boolean flag specifying if usage tracking is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
 	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
@@ -50016,7 +50076,7 @@ func (o ModelServingAiGatewayInferenceTableConfigOutput) CatalogName() pulumi.St
 	return o.ApplyT(func(v ModelServingAiGatewayInferenceTableConfig) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
-// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+// boolean flag specifying if usage tracking is enabled.
 func (o ModelServingAiGatewayInferenceTableConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayInferenceTableConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -50065,7 +50125,7 @@ func (o ModelServingAiGatewayInferenceTableConfigPtrOutput) CatalogName() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+// boolean flag specifying if usage tracking is enabled.
 func (o ModelServingAiGatewayInferenceTableConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayInferenceTableConfig) *bool {
 		if v == nil {
@@ -50211,7 +50271,6 @@ func (o ModelServingAiGatewayRateLimitArrayOutput) Index(i pulumi.IntInput) Mode
 }
 
 type ModelServingAiGatewayUsageTrackingConfig struct {
-	// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -50227,7 +50286,6 @@ type ModelServingAiGatewayUsageTrackingConfigInput interface {
 }
 
 type ModelServingAiGatewayUsageTrackingConfigArgs struct {
-	// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -50308,7 +50366,6 @@ func (o ModelServingAiGatewayUsageTrackingConfigOutput) ToModelServingAiGatewayU
 	}).(ModelServingAiGatewayUsageTrackingConfigPtrOutput)
 }
 
-// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
 func (o ModelServingAiGatewayUsageTrackingConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ModelServingAiGatewayUsageTrackingConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -50337,7 +50394,6 @@ func (o ModelServingAiGatewayUsageTrackingConfigPtrOutput) Elem() ModelServingAi
 	}).(ModelServingAiGatewayUsageTrackingConfigOutput)
 }
 
-// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
 func (o ModelServingAiGatewayUsageTrackingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ModelServingAiGatewayUsageTrackingConfig) *bool {
 		if v == nil {
@@ -50552,7 +50608,7 @@ func (o ModelServingConfigPtrOutput) TrafficConfig() ModelServingConfigTrafficCo
 type ModelServingConfigAutoCaptureConfig struct {
 	// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
 	CatalogName *string `pulumi:"catalogName"`
-	// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+	// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
 	Enabled *bool `pulumi:"enabled"`
 	// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
 	SchemaName *string `pulumi:"schemaName"`
@@ -50574,7 +50630,7 @@ type ModelServingConfigAutoCaptureConfigInput interface {
 type ModelServingConfigAutoCaptureConfigArgs struct {
 	// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
 	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
-	// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+	// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
 	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
@@ -50664,7 +50720,7 @@ func (o ModelServingConfigAutoCaptureConfigOutput) CatalogName() pulumi.StringPt
 	return o.ApplyT(func(v ModelServingConfigAutoCaptureConfig) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
-// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
 func (o ModelServingConfigAutoCaptureConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigAutoCaptureConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -50713,7 +50769,7 @@ func (o ModelServingConfigAutoCaptureConfigPtrOutput) CatalogName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
 func (o ModelServingConfigAutoCaptureConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigAutoCaptureConfig) *bool {
 		if v == nil {
@@ -50748,9 +50804,9 @@ type ModelServingConfigServedEntity struct {
 	EntityName *string `pulumi:"entityName"`
 	// The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
 	EntityVersion *string `pulumi:"entityVersion"`
-	// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+	// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
 	EnvironmentVars map[string]string `pulumi:"environmentVars"`
-	// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
+	// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
 	ExternalModel *ModelServingConfigServedEntityExternalModel `pulumi:"externalModel"`
 	// ARN of the instance profile that the served entity uses to access AWS resources.
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
@@ -50784,9 +50840,9 @@ type ModelServingConfigServedEntityArgs struct {
 	EntityName pulumi.StringPtrInput `pulumi:"entityName"`
 	// The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
 	EntityVersion pulumi.StringPtrInput `pulumi:"entityVersion"`
-	// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+	// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
 	EnvironmentVars pulumi.StringMapInput `pulumi:"environmentVars"`
-	// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
+	// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
 	ExternalModel ModelServingConfigServedEntityExternalModelPtrInput `pulumi:"externalModel"`
 	// ARN of the instance profile that the served entity uses to access AWS resources.
 	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
@@ -50865,12 +50921,12 @@ func (o ModelServingConfigServedEntityOutput) EntityVersion() pulumi.StringPtrOu
 	return o.ApplyT(func(v ModelServingConfigServedEntity) *string { return v.EntityVersion }).(pulumi.StringPtrOutput)
 }
 
-// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+// An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
 func (o ModelServingConfigServedEntityOutput) EnvironmentVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntity) map[string]string { return v.EnvironmentVars }).(pulumi.StringMapOutput)
 }
 
-// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
+// The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
 func (o ModelServingConfigServedEntityOutput) ExternalModel() ModelServingConfigServedEntityExternalModelPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntity) *ModelServingConfigServedEntityExternalModel {
 		return v.ExternalModel
@@ -50943,14 +50999,15 @@ type ModelServingConfigServedEntityExternalModel struct {
 	CohereConfig *ModelServingConfigServedEntityExternalModelCohereConfig `pulumi:"cohereConfig"`
 	// Databricks Model Serving Config
 	DatabricksModelServingConfig *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig `pulumi:"databricksModelServingConfig"`
-	GoogleCloudVertexAiConfig    *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig    `pulumi:"googleCloudVertexAiConfig"`
+	// Google Cloud Vertex AI Config.
+	GoogleCloudVertexAiConfig *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig `pulumi:"googleCloudVertexAiConfig"`
 	// The name of the external model.
 	Name string `pulumi:"name"`
 	// OpenAI Config
 	OpenaiConfig *ModelServingConfigServedEntityExternalModelOpenaiConfig `pulumi:"openaiConfig"`
 	// PaLM Config
 	PalmConfig *ModelServingConfigServedEntityExternalModelPalmConfig `pulumi:"palmConfig"`
-	// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+	// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
 	Provider string `pulumi:"provider"`
 	// The task type of the external model.
 	Task string `pulumi:"task"`
@@ -50978,14 +51035,15 @@ type ModelServingConfigServedEntityExternalModelArgs struct {
 	CohereConfig ModelServingConfigServedEntityExternalModelCohereConfigPtrInput `pulumi:"cohereConfig"`
 	// Databricks Model Serving Config
 	DatabricksModelServingConfig ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrInput `pulumi:"databricksModelServingConfig"`
-	GoogleCloudVertexAiConfig    ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrInput    `pulumi:"googleCloudVertexAiConfig"`
+	// Google Cloud Vertex AI Config.
+	GoogleCloudVertexAiConfig ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrInput `pulumi:"googleCloudVertexAiConfig"`
 	// The name of the external model.
 	Name pulumi.StringInput `pulumi:"name"`
 	// OpenAI Config
 	OpenaiConfig ModelServingConfigServedEntityExternalModelOpenaiConfigPtrInput `pulumi:"openaiConfig"`
 	// PaLM Config
 	PalmConfig ModelServingConfigServedEntityExternalModelPalmConfigPtrInput `pulumi:"palmConfig"`
-	// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+	// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
 	Provider pulumi.StringInput `pulumi:"provider"`
 	// The task type of the external model.
 	Task pulumi.StringInput `pulumi:"task"`
@@ -51103,6 +51161,7 @@ func (o ModelServingConfigServedEntityExternalModelOutput) DatabricksModelServin
 	}).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput)
 }
 
+// Google Cloud Vertex AI Config.
 func (o ModelServingConfigServedEntityExternalModelOutput) GoogleCloudVertexAiConfig() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
 		return v.GoogleCloudVertexAiConfig
@@ -51128,7 +51187,7 @@ func (o ModelServingConfigServedEntityExternalModelOutput) PalmConfig() ModelSer
 	}).(ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput)
 }
 
-// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
 func (o ModelServingConfigServedEntityExternalModelOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModel) string { return v.Provider }).(pulumi.StringOutput)
 }
@@ -51212,6 +51271,7 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) DatabricksModelSer
 	}).(ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput)
 }
 
+// Google Cloud Vertex AI Config.
 func (o ModelServingConfigServedEntityExternalModelPtrOutput) GoogleCloudVertexAiConfig() ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
 		if v == nil {
@@ -51251,7 +51311,7 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) PalmConfig() Model
 	}).(ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput)
 }
 
-// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
 func (o ModelServingConfigServedEntityExternalModelPtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModel) *string {
 		if v == nil {
@@ -51273,7 +51333,8 @@ func (o ModelServingConfigServedEntityExternalModelPtrOutput) Task() pulumi.Stri
 
 type ModelServingConfigServedEntityExternalModelAi21labsConfig struct {
 	// The Databricks secret key reference for an AI21Labs API key.
-	Ai21labsApiKey          *string `pulumi:"ai21labsApiKey"`
+	Ai21labsApiKey *string `pulumi:"ai21labsApiKey"`
+	// An AI21 Labs API key provided as a plaintext string.
 	Ai21labsApiKeyPlaintext *string `pulumi:"ai21labsApiKeyPlaintext"`
 }
 
@@ -51290,7 +51351,8 @@ type ModelServingConfigServedEntityExternalModelAi21labsConfigInput interface {
 
 type ModelServingConfigServedEntityExternalModelAi21labsConfigArgs struct {
 	// The Databricks secret key reference for an AI21Labs API key.
-	Ai21labsApiKey          pulumi.StringPtrInput `pulumi:"ai21labsApiKey"`
+	Ai21labsApiKey pulumi.StringPtrInput `pulumi:"ai21labsApiKey"`
+	// An AI21 Labs API key provided as a plaintext string.
 	Ai21labsApiKeyPlaintext pulumi.StringPtrInput `pulumi:"ai21labsApiKeyPlaintext"`
 }
 
@@ -51376,6 +51438,7 @@ func (o ModelServingConfigServedEntityExternalModelAi21labsConfigOutput) Ai21lab
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAi21labsConfig) *string { return v.Ai21labsApiKey }).(pulumi.StringPtrOutput)
 }
 
+// An AI21 Labs API key provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelAi21labsConfigOutput) Ai21labsApiKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAi21labsConfig) *string {
 		return v.Ai21labsApiKeyPlaintext
@@ -51416,6 +51479,7 @@ func (o ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput) Ai21
 	}).(pulumi.StringPtrOutput)
 }
 
+// An AI21 Labs API key provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput) Ai21labsApiKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAi21labsConfig) *string {
 		if v == nil {
@@ -51427,12 +51491,14 @@ func (o ModelServingConfigServedEntityExternalModelAi21labsConfigPtrOutput) Ai21
 
 type ModelServingConfigServedEntityExternalModelAmazonBedrockConfig struct {
 	// The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-	AwsAccessKeyId          *string `pulumi:"awsAccessKeyId"`
+	AwsAccessKeyId *string `pulumi:"awsAccessKeyId"`
+	// An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
 	AwsAccessKeyIdPlaintext *string `pulumi:"awsAccessKeyIdPlaintext"`
 	// The AWS region to use. Bedrock has to be enabled there.
 	AwsRegion string `pulumi:"awsRegion"`
 	// The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-	AwsSecretAccessKey          *string `pulumi:"awsSecretAccessKey"`
+	AwsSecretAccessKey *string `pulumi:"awsSecretAccessKey"`
+	// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
 	AwsSecretAccessKeyPlaintext *string `pulumi:"awsSecretAccessKeyPlaintext"`
 	// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
 	BedrockProvider string `pulumi:"bedrockProvider"`
@@ -51451,12 +51517,14 @@ type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigInput interfa
 
 type ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs struct {
 	// The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-	AwsAccessKeyId          pulumi.StringPtrInput `pulumi:"awsAccessKeyId"`
+	AwsAccessKeyId pulumi.StringPtrInput `pulumi:"awsAccessKeyId"`
+	// An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
 	AwsAccessKeyIdPlaintext pulumi.StringPtrInput `pulumi:"awsAccessKeyIdPlaintext"`
 	// The AWS region to use. Bedrock has to be enabled there.
 	AwsRegion pulumi.StringInput `pulumi:"awsRegion"`
 	// The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-	AwsSecretAccessKey          pulumi.StringPtrInput `pulumi:"awsSecretAccessKey"`
+	AwsSecretAccessKey pulumi.StringPtrInput `pulumi:"awsSecretAccessKey"`
+	// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
 	AwsSecretAccessKeyPlaintext pulumi.StringPtrInput `pulumi:"awsSecretAccessKeyPlaintext"`
 	// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
 	BedrockProvider pulumi.StringInput `pulumi:"bedrockProvider"`
@@ -51546,6 +51614,7 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) Aw
 	}).(pulumi.StringPtrOutput)
 }
 
+// An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) AwsAccessKeyIdPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
 		return v.AwsAccessKeyIdPlaintext
@@ -51564,6 +51633,7 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) Aw
 	}).(pulumi.StringPtrOutput)
 }
 
+// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigOutput) AwsSecretAccessKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
 		return v.AwsSecretAccessKeyPlaintext
@@ -51611,6 +51681,7 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
+// An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) AwsAccessKeyIdPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
 		if v == nil {
@@ -51640,6 +51711,7 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
+// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput) AwsSecretAccessKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAmazonBedrockConfig) *string {
 		if v == nil {
@@ -51661,8 +51733,8 @@ func (o ModelServingConfigServedEntityExternalModelAmazonBedrockConfigPtrOutput)
 
 type ModelServingConfigServedEntityExternalModelAnthropicConfig struct {
 	// The Databricks secret key reference for an Anthropic API key.
-	// The Databricks secret key reference for an Anthropic API key.
-	AnthropicApiKey          *string `pulumi:"anthropicApiKey"`
+	AnthropicApiKey *string `pulumi:"anthropicApiKey"`
+	// The Anthropic API key provided as a plaintext string.
 	AnthropicApiKeyPlaintext *string `pulumi:"anthropicApiKeyPlaintext"`
 }
 
@@ -51679,8 +51751,8 @@ type ModelServingConfigServedEntityExternalModelAnthropicConfigInput interface {
 
 type ModelServingConfigServedEntityExternalModelAnthropicConfigArgs struct {
 	// The Databricks secret key reference for an Anthropic API key.
-	// The Databricks secret key reference for an Anthropic API key.
-	AnthropicApiKey          pulumi.StringPtrInput `pulumi:"anthropicApiKey"`
+	AnthropicApiKey pulumi.StringPtrInput `pulumi:"anthropicApiKey"`
+	// The Anthropic API key provided as a plaintext string.
 	AnthropicApiKeyPlaintext pulumi.StringPtrInput `pulumi:"anthropicApiKeyPlaintext"`
 }
 
@@ -51762,11 +51834,11 @@ func (o ModelServingConfigServedEntityExternalModelAnthropicConfigOutput) ToMode
 }
 
 // The Databricks secret key reference for an Anthropic API key.
-// The Databricks secret key reference for an Anthropic API key.
 func (o ModelServingConfigServedEntityExternalModelAnthropicConfigOutput) AnthropicApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAnthropicConfig) *string { return v.AnthropicApiKey }).(pulumi.StringPtrOutput)
 }
 
+// The Anthropic API key provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelAnthropicConfigOutput) AnthropicApiKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelAnthropicConfig) *string {
 		return v.AnthropicApiKeyPlaintext
@@ -51798,7 +51870,6 @@ func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) Ele
 }
 
 // The Databricks secret key reference for an Anthropic API key.
-// The Databricks secret key reference for an Anthropic API key.
 func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) AnthropicApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAnthropicConfig) *string {
 		if v == nil {
@@ -51808,6 +51879,7 @@ func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) Ant
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Anthropic API key provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) AnthropicApiKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelAnthropicConfig) *string {
 		if v == nil {
@@ -51820,7 +51892,8 @@ func (o ModelServingConfigServedEntityExternalModelAnthropicConfigPtrOutput) Ant
 type ModelServingConfigServedEntityExternalModelCohereConfig struct {
 	CohereApiBase *string `pulumi:"cohereApiBase"`
 	// The Databricks secret key reference for a Cohere API key.
-	CohereApiKey          *string `pulumi:"cohereApiKey"`
+	CohereApiKey *string `pulumi:"cohereApiKey"`
+	// The Cohere API key provided as a plaintext string.
 	CohereApiKeyPlaintext *string `pulumi:"cohereApiKeyPlaintext"`
 }
 
@@ -51838,7 +51911,8 @@ type ModelServingConfigServedEntityExternalModelCohereConfigInput interface {
 type ModelServingConfigServedEntityExternalModelCohereConfigArgs struct {
 	CohereApiBase pulumi.StringPtrInput `pulumi:"cohereApiBase"`
 	// The Databricks secret key reference for a Cohere API key.
-	CohereApiKey          pulumi.StringPtrInput `pulumi:"cohereApiKey"`
+	CohereApiKey pulumi.StringPtrInput `pulumi:"cohereApiKey"`
+	// The Cohere API key provided as a plaintext string.
 	CohereApiKeyPlaintext pulumi.StringPtrInput `pulumi:"cohereApiKeyPlaintext"`
 }
 
@@ -51928,6 +52002,7 @@ func (o ModelServingConfigServedEntityExternalModelCohereConfigOutput) CohereApi
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCohereConfig) *string { return v.CohereApiKey }).(pulumi.StringPtrOutput)
 }
 
+// The Cohere API key provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelCohereConfigOutput) CohereApiKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelCohereConfig) *string {
 		return v.CohereApiKeyPlaintext
@@ -51977,6 +52052,7 @@ func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) Cohere
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Cohere API key provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) CohereApiKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelCohereConfig) *string {
 		if v == nil {
@@ -51988,7 +52064,8 @@ func (o ModelServingConfigServedEntityExternalModelCohereConfigPtrOutput) Cohere
 
 type ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig struct {
 	// The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-	DatabricksApiToken          *string `pulumi:"databricksApiToken"`
+	DatabricksApiToken *string `pulumi:"databricksApiToken"`
+	// The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
 	DatabricksApiTokenPlaintext *string `pulumi:"databricksApiTokenPlaintext"`
 	// The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
 	DatabricksWorkspaceUrl string `pulumi:"databricksWorkspaceUrl"`
@@ -52007,7 +52084,8 @@ type ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigInpu
 
 type ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs struct {
 	// The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-	DatabricksApiToken          pulumi.StringPtrInput `pulumi:"databricksApiToken"`
+	DatabricksApiToken pulumi.StringPtrInput `pulumi:"databricksApiToken"`
+	// The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
 	DatabricksApiTokenPlaintext pulumi.StringPtrInput `pulumi:"databricksApiTokenPlaintext"`
 	// The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
 	DatabricksWorkspaceUrl pulumi.StringInput `pulumi:"databricksWorkspaceUrl"`
@@ -52097,6 +52175,7 @@ func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigOutput) DatabricksApiTokenPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) *string {
 		return v.DatabricksApiTokenPlaintext
@@ -52144,6 +52223,7 @@ func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigP
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigPtrOutput) DatabricksApiTokenPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig) *string {
 		if v == nil {
@@ -52164,10 +52244,14 @@ func (o ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigP
 }
 
 type ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig struct {
-	PrivateKey          *string `pulumi:"privateKey"`
+	// The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
+	PrivateKey *string `pulumi:"privateKey"`
+	// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
 	PrivateKeyPlaintext *string `pulumi:"privateKeyPlaintext"`
-	ProjectId           *string `pulumi:"projectId"`
-	Region              *string `pulumi:"region"`
+	// This is the Google Cloud project id that the service account is associated with.
+	ProjectId *string `pulumi:"projectId"`
+	// This is the region for the Google Cloud Vertex AI Service.
+	Region *string `pulumi:"region"`
 }
 
 // ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs and ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput values.
@@ -52182,10 +52266,14 @@ type ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigInput i
 }
 
 type ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs struct {
-	PrivateKey          pulumi.StringPtrInput `pulumi:"privateKey"`
+	// The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
 	PrivateKeyPlaintext pulumi.StringPtrInput `pulumi:"privateKeyPlaintext"`
-	ProjectId           pulumi.StringPtrInput `pulumi:"projectId"`
-	Region              pulumi.StringPtrInput `pulumi:"region"`
+	// This is the Google Cloud project id that the service account is associated with.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// This is the region for the Google Cloud Vertex AI Service.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs) ElementType() reflect.Type {
@@ -52265,24 +52353,28 @@ func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutp
 	}).(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput)
 }
 
+// The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
 func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
 		return v.PrivateKey
 	}).(pulumi.StringPtrOutput)
 }
 
+// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
 func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) PrivateKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
 		return v.PrivateKeyPlaintext
 	}).(pulumi.StringPtrOutput)
 }
 
+// This is the Google Cloud project id that the service account is associated with.
 func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
 		return v.ProjectId
 	}).(pulumi.StringPtrOutput)
 }
 
+// This is the region for the Google Cloud Vertex AI Service.
 func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -52311,6 +52403,7 @@ func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrO
 	}).(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput)
 }
 
+// The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
 func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
 		if v == nil {
@@ -52320,6 +52413,7 @@ func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
 func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput) PrivateKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
 		if v == nil {
@@ -52329,6 +52423,7 @@ func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// This is the Google Cloud project id that the service account is associated with.
 func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
 		if v == nil {
@@ -52338,6 +52433,7 @@ func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// This is the region for the Google Cloud Vertex AI Service.
 func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
 		if v == nil {
@@ -52348,18 +52444,23 @@ func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrO
 }
 
 type ModelServingConfigServedEntityExternalModelOpenaiConfig struct {
-	MicrosoftEntraClientId              *string `pulumi:"microsoftEntraClientId"`
-	MicrosoftEntraClientSecret          *string `pulumi:"microsoftEntraClientSecret"`
+	// This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
+	MicrosoftEntraClientId *string `pulumi:"microsoftEntraClientId"`
+	// The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
+	MicrosoftEntraClientSecret *string `pulumi:"microsoftEntraClientSecret"`
+	// The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
 	MicrosoftEntraClientSecretPlaintext *string `pulumi:"microsoftEntraClientSecretPlaintext"`
-	MicrosoftEntraTenantId              *string `pulumi:"microsoftEntraTenantId"`
-	// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+	// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
+	MicrosoftEntraTenantId *string `pulumi:"microsoftEntraTenantId"`
+	// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
 	OpenaiApiBase *string `pulumi:"openaiApiBase"`
 	// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-	OpenaiApiKey          *string `pulumi:"openaiApiKey"`
+	OpenaiApiKey *string `pulumi:"openaiApiKey"`
+	// The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
 	OpenaiApiKeyPlaintext *string `pulumi:"openaiApiKeyPlaintext"`
-	// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+	// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
 	OpenaiApiType *string `pulumi:"openaiApiType"`
-	// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+	// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
 	OpenaiApiVersion *string `pulumi:"openaiApiVersion"`
 	// This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
 	OpenaiDeploymentName *string `pulumi:"openaiDeploymentName"`
@@ -52379,18 +52480,23 @@ type ModelServingConfigServedEntityExternalModelOpenaiConfigInput interface {
 }
 
 type ModelServingConfigServedEntityExternalModelOpenaiConfigArgs struct {
-	MicrosoftEntraClientId              pulumi.StringPtrInput `pulumi:"microsoftEntraClientId"`
-	MicrosoftEntraClientSecret          pulumi.StringPtrInput `pulumi:"microsoftEntraClientSecret"`
+	// This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
+	MicrosoftEntraClientId pulumi.StringPtrInput `pulumi:"microsoftEntraClientId"`
+	// The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
+	MicrosoftEntraClientSecret pulumi.StringPtrInput `pulumi:"microsoftEntraClientSecret"`
+	// The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
 	MicrosoftEntraClientSecretPlaintext pulumi.StringPtrInput `pulumi:"microsoftEntraClientSecretPlaintext"`
-	MicrosoftEntraTenantId              pulumi.StringPtrInput `pulumi:"microsoftEntraTenantId"`
-	// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+	// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
+	MicrosoftEntraTenantId pulumi.StringPtrInput `pulumi:"microsoftEntraTenantId"`
+	// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
 	OpenaiApiBase pulumi.StringPtrInput `pulumi:"openaiApiBase"`
 	// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-	OpenaiApiKey          pulumi.StringPtrInput `pulumi:"openaiApiKey"`
+	OpenaiApiKey pulumi.StringPtrInput `pulumi:"openaiApiKey"`
+	// The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
 	OpenaiApiKeyPlaintext pulumi.StringPtrInput `pulumi:"openaiApiKeyPlaintext"`
-	// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+	// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
 	OpenaiApiType pulumi.StringPtrInput `pulumi:"openaiApiType"`
-	// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+	// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
 	OpenaiApiVersion pulumi.StringPtrInput `pulumi:"openaiApiVersion"`
 	// This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
 	OpenaiDeploymentName pulumi.StringPtrInput `pulumi:"openaiDeploymentName"`
@@ -52475,31 +52581,35 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) ToModelSe
 	}).(ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput)
 }
 
+// This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) MicrosoftEntraClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		return v.MicrosoftEntraClientId
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) MicrosoftEntraClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		return v.MicrosoftEntraClientSecret
 	}).(pulumi.StringPtrOutput)
 }
 
+// The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) MicrosoftEntraClientSecretPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		return v.MicrosoftEntraClientSecretPlaintext
 	}).(pulumi.StringPtrOutput)
 }
 
+// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) MicrosoftEntraTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		return v.MicrosoftEntraTenantId
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiBase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiApiBase }).(pulumi.StringPtrOutput)
 }
@@ -52509,18 +52619,19 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApi
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiApiKey }).(pulumi.StringPtrOutput)
 }
 
+// The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		return v.OpenaiApiKeyPlaintext
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiApiType }).(pulumi.StringPtrOutput)
 }
 
-// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigOutput) OpenaiApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelOpenaiConfig) *string { return v.OpenaiApiVersion }).(pulumi.StringPtrOutput)
 }
@@ -52559,6 +52670,7 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Elem()
 	}).(ModelServingConfigServedEntityExternalModelOpenaiConfigOutput)
 }
 
+// This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) MicrosoftEntraClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -52568,6 +52680,7 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Micros
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) MicrosoftEntraClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -52577,6 +52690,7 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Micros
 	}).(pulumi.StringPtrOutput)
 }
 
+// The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) MicrosoftEntraClientSecretPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -52586,6 +52700,7 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Micros
 	}).(pulumi.StringPtrOutput)
 }
 
+// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) MicrosoftEntraTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -52595,7 +52710,7 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Micros
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiBase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -52615,6 +52730,7 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Openai
 	}).(pulumi.StringPtrOutput)
 }
 
+// The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -52624,7 +52740,7 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Openai
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -52634,7 +52750,7 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Openai
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
 func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) OpenaiApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelOpenaiConfig) *string {
 		if v == nil {
@@ -52666,7 +52782,8 @@ func (o ModelServingConfigServedEntityExternalModelOpenaiConfigPtrOutput) Openai
 
 type ModelServingConfigServedEntityExternalModelPalmConfig struct {
 	// The Databricks secret key reference for a PaLM API key.
-	PalmApiKey          *string `pulumi:"palmApiKey"`
+	PalmApiKey *string `pulumi:"palmApiKey"`
+	// The PaLM API key provided as a plaintext string.
 	PalmApiKeyPlaintext *string `pulumi:"palmApiKeyPlaintext"`
 }
 
@@ -52683,7 +52800,8 @@ type ModelServingConfigServedEntityExternalModelPalmConfigInput interface {
 
 type ModelServingConfigServedEntityExternalModelPalmConfigArgs struct {
 	// The Databricks secret key reference for a PaLM API key.
-	PalmApiKey          pulumi.StringPtrInput `pulumi:"palmApiKey"`
+	PalmApiKey pulumi.StringPtrInput `pulumi:"palmApiKey"`
+	// The PaLM API key provided as a plaintext string.
 	PalmApiKeyPlaintext pulumi.StringPtrInput `pulumi:"palmApiKeyPlaintext"`
 }
 
@@ -52769,6 +52887,7 @@ func (o ModelServingConfigServedEntityExternalModelPalmConfigOutput) PalmApiKey(
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelPalmConfig) *string { return v.PalmApiKey }).(pulumi.StringPtrOutput)
 }
 
+// The PaLM API key provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelPalmConfigOutput) PalmApiKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelPalmConfig) *string { return v.PalmApiKeyPlaintext }).(pulumi.StringPtrOutput)
 }
@@ -52807,6 +52926,7 @@ func (o ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput) PalmApiK
 	}).(pulumi.StringPtrOutput)
 }
 
+// The PaLM API key provided as a plaintext string.
 func (o ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput) PalmApiKeyPlaintext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelServingConfigServedEntityExternalModelPalmConfig) *string {
 		if v == nil {
@@ -52817,7 +52937,7 @@ func (o ModelServingConfigServedEntityExternalModelPalmConfigPtrOutput) PalmApiK
 }
 
 type ModelServingConfigServedModel struct {
-	// a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+	// a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
 	EnvironmentVars map[string]string `pulumi:"environmentVars"`
 	// ARN of the instance profile that the served model will use to access AWS resources.
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
@@ -52835,7 +52955,7 @@ type ModelServingConfigServedModel struct {
 	ScaleToZeroEnabled *bool `pulumi:"scaleToZeroEnabled"`
 	// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
 	WorkloadSize *string `pulumi:"workloadSize"`
-	// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+	// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
 	WorkloadType *string `pulumi:"workloadType"`
 }
 
@@ -52851,7 +52971,7 @@ type ModelServingConfigServedModelInput interface {
 }
 
 type ModelServingConfigServedModelArgs struct {
-	// a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+	// a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
 	EnvironmentVars pulumi.StringMapInput `pulumi:"environmentVars"`
 	// ARN of the instance profile that the served model will use to access AWS resources.
 	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
@@ -52869,7 +52989,7 @@ type ModelServingConfigServedModelArgs struct {
 	ScaleToZeroEnabled pulumi.BoolPtrInput `pulumi:"scaleToZeroEnabled"`
 	// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
 	WorkloadSize pulumi.StringPtrInput `pulumi:"workloadSize"`
-	// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+	// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
 	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
 }
 
@@ -52924,7 +53044,7 @@ func (o ModelServingConfigServedModelOutput) ToModelServingConfigServedModelOutp
 	return o
 }
 
-// a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+// a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
 func (o ModelServingConfigServedModelOutput) EnvironmentVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ModelServingConfigServedModel) map[string]string { return v.EnvironmentVars }).(pulumi.StringMapOutput)
 }
@@ -52969,7 +53089,7 @@ func (o ModelServingConfigServedModelOutput) WorkloadSize() pulumi.StringPtrOutp
 	return o.ApplyT(func(v ModelServingConfigServedModel) *string { return v.WorkloadSize }).(pulumi.StringPtrOutput)
 }
 
-// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
 func (o ModelServingConfigServedModelOutput) WorkloadType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelServingConfigServedModel) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
 }
@@ -63800,6 +63920,7 @@ func (o PipelineIngestionDefinitionPtrOutput) TableConfiguration() PipelineInges
 }
 
 type PipelineIngestionDefinitionObject struct {
+	Report *PipelineIngestionDefinitionObjectReport `pulumi:"report"`
 	Schema *PipelineIngestionDefinitionObjectSchema `pulumi:"schema"`
 	Table  *PipelineIngestionDefinitionObjectTable  `pulumi:"table"`
 }
@@ -63816,6 +63937,7 @@ type PipelineIngestionDefinitionObjectInput interface {
 }
 
 type PipelineIngestionDefinitionObjectArgs struct {
+	Report PipelineIngestionDefinitionObjectReportPtrInput `pulumi:"report"`
 	Schema PipelineIngestionDefinitionObjectSchemaPtrInput `pulumi:"schema"`
 	Table  PipelineIngestionDefinitionObjectTablePtrInput  `pulumi:"table"`
 }
@@ -63871,6 +63993,10 @@ func (o PipelineIngestionDefinitionObjectOutput) ToPipelineIngestionDefinitionOb
 	return o
 }
 
+func (o PipelineIngestionDefinitionObjectOutput) Report() PipelineIngestionDefinitionObjectReportPtrOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObject) *PipelineIngestionDefinitionObjectReport { return v.Report }).(PipelineIngestionDefinitionObjectReportPtrOutput)
+}
+
 func (o PipelineIngestionDefinitionObjectOutput) Schema() PipelineIngestionDefinitionObjectSchemaPtrOutput {
 	return o.ApplyT(func(v PipelineIngestionDefinitionObject) *PipelineIngestionDefinitionObjectSchema { return v.Schema }).(PipelineIngestionDefinitionObjectSchemaPtrOutput)
 }
@@ -63897,6 +64023,381 @@ func (o PipelineIngestionDefinitionObjectArrayOutput) Index(i pulumi.IntInput) P
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineIngestionDefinitionObject {
 		return vs[0].([]PipelineIngestionDefinitionObject)[vs[1].(int)]
 	}).(PipelineIngestionDefinitionObjectOutput)
+}
+
+type PipelineIngestionDefinitionObjectReport struct {
+	DestinationCatalog *string                                                    `pulumi:"destinationCatalog"`
+	DestinationSchema  *string                                                    `pulumi:"destinationSchema"`
+	DestinationTable   *string                                                    `pulumi:"destinationTable"`
+	SourceUrl          *string                                                    `pulumi:"sourceUrl"`
+	TableConfiguration *PipelineIngestionDefinitionObjectReportTableConfiguration `pulumi:"tableConfiguration"`
+}
+
+// PipelineIngestionDefinitionObjectReportInput is an input type that accepts PipelineIngestionDefinitionObjectReportArgs and PipelineIngestionDefinitionObjectReportOutput values.
+// You can construct a concrete instance of `PipelineIngestionDefinitionObjectReportInput` via:
+//
+//	PipelineIngestionDefinitionObjectReportArgs{...}
+type PipelineIngestionDefinitionObjectReportInput interface {
+	pulumi.Input
+
+	ToPipelineIngestionDefinitionObjectReportOutput() PipelineIngestionDefinitionObjectReportOutput
+	ToPipelineIngestionDefinitionObjectReportOutputWithContext(context.Context) PipelineIngestionDefinitionObjectReportOutput
+}
+
+type PipelineIngestionDefinitionObjectReportArgs struct {
+	DestinationCatalog pulumi.StringPtrInput                                             `pulumi:"destinationCatalog"`
+	DestinationSchema  pulumi.StringPtrInput                                             `pulumi:"destinationSchema"`
+	DestinationTable   pulumi.StringPtrInput                                             `pulumi:"destinationTable"`
+	SourceUrl          pulumi.StringPtrInput                                             `pulumi:"sourceUrl"`
+	TableConfiguration PipelineIngestionDefinitionObjectReportTableConfigurationPtrInput `pulumi:"tableConfiguration"`
+}
+
+func (PipelineIngestionDefinitionObjectReportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineIngestionDefinitionObjectReport)(nil)).Elem()
+}
+
+func (i PipelineIngestionDefinitionObjectReportArgs) ToPipelineIngestionDefinitionObjectReportOutput() PipelineIngestionDefinitionObjectReportOutput {
+	return i.ToPipelineIngestionDefinitionObjectReportOutputWithContext(context.Background())
+}
+
+func (i PipelineIngestionDefinitionObjectReportArgs) ToPipelineIngestionDefinitionObjectReportOutputWithContext(ctx context.Context) PipelineIngestionDefinitionObjectReportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineIngestionDefinitionObjectReportOutput)
+}
+
+func (i PipelineIngestionDefinitionObjectReportArgs) ToPipelineIngestionDefinitionObjectReportPtrOutput() PipelineIngestionDefinitionObjectReportPtrOutput {
+	return i.ToPipelineIngestionDefinitionObjectReportPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineIngestionDefinitionObjectReportArgs) ToPipelineIngestionDefinitionObjectReportPtrOutputWithContext(ctx context.Context) PipelineIngestionDefinitionObjectReportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineIngestionDefinitionObjectReportOutput).ToPipelineIngestionDefinitionObjectReportPtrOutputWithContext(ctx)
+}
+
+// PipelineIngestionDefinitionObjectReportPtrInput is an input type that accepts PipelineIngestionDefinitionObjectReportArgs, PipelineIngestionDefinitionObjectReportPtr and PipelineIngestionDefinitionObjectReportPtrOutput values.
+// You can construct a concrete instance of `PipelineIngestionDefinitionObjectReportPtrInput` via:
+//
+//	        PipelineIngestionDefinitionObjectReportArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineIngestionDefinitionObjectReportPtrInput interface {
+	pulumi.Input
+
+	ToPipelineIngestionDefinitionObjectReportPtrOutput() PipelineIngestionDefinitionObjectReportPtrOutput
+	ToPipelineIngestionDefinitionObjectReportPtrOutputWithContext(context.Context) PipelineIngestionDefinitionObjectReportPtrOutput
+}
+
+type pipelineIngestionDefinitionObjectReportPtrType PipelineIngestionDefinitionObjectReportArgs
+
+func PipelineIngestionDefinitionObjectReportPtr(v *PipelineIngestionDefinitionObjectReportArgs) PipelineIngestionDefinitionObjectReportPtrInput {
+	return (*pipelineIngestionDefinitionObjectReportPtrType)(v)
+}
+
+func (*pipelineIngestionDefinitionObjectReportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineIngestionDefinitionObjectReport)(nil)).Elem()
+}
+
+func (i *pipelineIngestionDefinitionObjectReportPtrType) ToPipelineIngestionDefinitionObjectReportPtrOutput() PipelineIngestionDefinitionObjectReportPtrOutput {
+	return i.ToPipelineIngestionDefinitionObjectReportPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineIngestionDefinitionObjectReportPtrType) ToPipelineIngestionDefinitionObjectReportPtrOutputWithContext(ctx context.Context) PipelineIngestionDefinitionObjectReportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineIngestionDefinitionObjectReportPtrOutput)
+}
+
+type PipelineIngestionDefinitionObjectReportOutput struct{ *pulumi.OutputState }
+
+func (PipelineIngestionDefinitionObjectReportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineIngestionDefinitionObjectReport)(nil)).Elem()
+}
+
+func (o PipelineIngestionDefinitionObjectReportOutput) ToPipelineIngestionDefinitionObjectReportOutput() PipelineIngestionDefinitionObjectReportOutput {
+	return o
+}
+
+func (o PipelineIngestionDefinitionObjectReportOutput) ToPipelineIngestionDefinitionObjectReportOutputWithContext(ctx context.Context) PipelineIngestionDefinitionObjectReportOutput {
+	return o
+}
+
+func (o PipelineIngestionDefinitionObjectReportOutput) ToPipelineIngestionDefinitionObjectReportPtrOutput() PipelineIngestionDefinitionObjectReportPtrOutput {
+	return o.ToPipelineIngestionDefinitionObjectReportPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineIngestionDefinitionObjectReportOutput) ToPipelineIngestionDefinitionObjectReportPtrOutputWithContext(ctx context.Context) PipelineIngestionDefinitionObjectReportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineIngestionDefinitionObjectReport) *PipelineIngestionDefinitionObjectReport {
+		return &v
+	}).(PipelineIngestionDefinitionObjectReportPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportOutput) DestinationCatalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReport) *string { return v.DestinationCatalog }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportOutput) DestinationSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReport) *string { return v.DestinationSchema }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportOutput) DestinationTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReport) *string { return v.DestinationTable }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportOutput) SourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReport) *string { return v.SourceUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportOutput) TableConfiguration() PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReport) *PipelineIngestionDefinitionObjectReportTableConfiguration {
+		return v.TableConfiguration
+	}).(PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput)
+}
+
+type PipelineIngestionDefinitionObjectReportPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineIngestionDefinitionObjectReportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineIngestionDefinitionObjectReport)(nil)).Elem()
+}
+
+func (o PipelineIngestionDefinitionObjectReportPtrOutput) ToPipelineIngestionDefinitionObjectReportPtrOutput() PipelineIngestionDefinitionObjectReportPtrOutput {
+	return o
+}
+
+func (o PipelineIngestionDefinitionObjectReportPtrOutput) ToPipelineIngestionDefinitionObjectReportPtrOutputWithContext(ctx context.Context) PipelineIngestionDefinitionObjectReportPtrOutput {
+	return o
+}
+
+func (o PipelineIngestionDefinitionObjectReportPtrOutput) Elem() PipelineIngestionDefinitionObjectReportOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReport) PipelineIngestionDefinitionObjectReport {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineIngestionDefinitionObjectReport
+		return ret
+	}).(PipelineIngestionDefinitionObjectReportOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportPtrOutput) DestinationCatalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReport) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationCatalog
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportPtrOutput) DestinationSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReport) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportPtrOutput) DestinationTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReport) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationTable
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportPtrOutput) SourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReport) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportPtrOutput) TableConfiguration() PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReport) *PipelineIngestionDefinitionObjectReportTableConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.TableConfiguration
+	}).(PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput)
+}
+
+type PipelineIngestionDefinitionObjectReportTableConfiguration struct {
+	PrimaryKeys                    []string `pulumi:"primaryKeys"`
+	SalesforceIncludeFormulaFields *bool    `pulumi:"salesforceIncludeFormulaFields"`
+	ScdType                        *string  `pulumi:"scdType"`
+	SequenceBies                   []string `pulumi:"sequenceBies"`
+}
+
+// PipelineIngestionDefinitionObjectReportTableConfigurationInput is an input type that accepts PipelineIngestionDefinitionObjectReportTableConfigurationArgs and PipelineIngestionDefinitionObjectReportTableConfigurationOutput values.
+// You can construct a concrete instance of `PipelineIngestionDefinitionObjectReportTableConfigurationInput` via:
+//
+//	PipelineIngestionDefinitionObjectReportTableConfigurationArgs{...}
+type PipelineIngestionDefinitionObjectReportTableConfigurationInput interface {
+	pulumi.Input
+
+	ToPipelineIngestionDefinitionObjectReportTableConfigurationOutput() PipelineIngestionDefinitionObjectReportTableConfigurationOutput
+	ToPipelineIngestionDefinitionObjectReportTableConfigurationOutputWithContext(context.Context) PipelineIngestionDefinitionObjectReportTableConfigurationOutput
+}
+
+type PipelineIngestionDefinitionObjectReportTableConfigurationArgs struct {
+	PrimaryKeys                    pulumi.StringArrayInput `pulumi:"primaryKeys"`
+	SalesforceIncludeFormulaFields pulumi.BoolPtrInput     `pulumi:"salesforceIncludeFormulaFields"`
+	ScdType                        pulumi.StringPtrInput   `pulumi:"scdType"`
+	SequenceBies                   pulumi.StringArrayInput `pulumi:"sequenceBies"`
+}
+
+func (PipelineIngestionDefinitionObjectReportTableConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineIngestionDefinitionObjectReportTableConfiguration)(nil)).Elem()
+}
+
+func (i PipelineIngestionDefinitionObjectReportTableConfigurationArgs) ToPipelineIngestionDefinitionObjectReportTableConfigurationOutput() PipelineIngestionDefinitionObjectReportTableConfigurationOutput {
+	return i.ToPipelineIngestionDefinitionObjectReportTableConfigurationOutputWithContext(context.Background())
+}
+
+func (i PipelineIngestionDefinitionObjectReportTableConfigurationArgs) ToPipelineIngestionDefinitionObjectReportTableConfigurationOutputWithContext(ctx context.Context) PipelineIngestionDefinitionObjectReportTableConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineIngestionDefinitionObjectReportTableConfigurationOutput)
+}
+
+func (i PipelineIngestionDefinitionObjectReportTableConfigurationArgs) ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput() PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput {
+	return i.ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineIngestionDefinitionObjectReportTableConfigurationArgs) ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutputWithContext(ctx context.Context) PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineIngestionDefinitionObjectReportTableConfigurationOutput).ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutputWithContext(ctx)
+}
+
+// PipelineIngestionDefinitionObjectReportTableConfigurationPtrInput is an input type that accepts PipelineIngestionDefinitionObjectReportTableConfigurationArgs, PipelineIngestionDefinitionObjectReportTableConfigurationPtr and PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput values.
+// You can construct a concrete instance of `PipelineIngestionDefinitionObjectReportTableConfigurationPtrInput` via:
+//
+//	        PipelineIngestionDefinitionObjectReportTableConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineIngestionDefinitionObjectReportTableConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput() PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput
+	ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutputWithContext(context.Context) PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput
+}
+
+type pipelineIngestionDefinitionObjectReportTableConfigurationPtrType PipelineIngestionDefinitionObjectReportTableConfigurationArgs
+
+func PipelineIngestionDefinitionObjectReportTableConfigurationPtr(v *PipelineIngestionDefinitionObjectReportTableConfigurationArgs) PipelineIngestionDefinitionObjectReportTableConfigurationPtrInput {
+	return (*pipelineIngestionDefinitionObjectReportTableConfigurationPtrType)(v)
+}
+
+func (*pipelineIngestionDefinitionObjectReportTableConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineIngestionDefinitionObjectReportTableConfiguration)(nil)).Elem()
+}
+
+func (i *pipelineIngestionDefinitionObjectReportTableConfigurationPtrType) ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput() PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput {
+	return i.ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineIngestionDefinitionObjectReportTableConfigurationPtrType) ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutputWithContext(ctx context.Context) PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput)
+}
+
+type PipelineIngestionDefinitionObjectReportTableConfigurationOutput struct{ *pulumi.OutputState }
+
+func (PipelineIngestionDefinitionObjectReportTableConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineIngestionDefinitionObjectReportTableConfiguration)(nil)).Elem()
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationOutput) ToPipelineIngestionDefinitionObjectReportTableConfigurationOutput() PipelineIngestionDefinitionObjectReportTableConfigurationOutput {
+	return o
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationOutput) ToPipelineIngestionDefinitionObjectReportTableConfigurationOutputWithContext(ctx context.Context) PipelineIngestionDefinitionObjectReportTableConfigurationOutput {
+	return o
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationOutput) ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput() PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput {
+	return o.ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationOutput) ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutputWithContext(ctx context.Context) PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineIngestionDefinitionObjectReportTableConfiguration) *PipelineIngestionDefinitionObjectReportTableConfiguration {
+		return &v
+	}).(PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationOutput) PrimaryKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReportTableConfiguration) []string { return v.PrimaryKeys }).(pulumi.StringArrayOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationOutput) SalesforceIncludeFormulaFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReportTableConfiguration) *bool {
+		return v.SalesforceIncludeFormulaFields
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationOutput) ScdType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReportTableConfiguration) *string { return v.ScdType }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationOutput) SequenceBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectReportTableConfiguration) []string { return v.SequenceBies }).(pulumi.StringArrayOutput)
+}
+
+type PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineIngestionDefinitionObjectReportTableConfiguration)(nil)).Elem()
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput() PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput {
+	return o
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) ToPipelineIngestionDefinitionObjectReportTableConfigurationPtrOutputWithContext(ctx context.Context) PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput {
+	return o
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) Elem() PipelineIngestionDefinitionObjectReportTableConfigurationOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReportTableConfiguration) PipelineIngestionDefinitionObjectReportTableConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineIngestionDefinitionObjectReportTableConfiguration
+		return ret
+	}).(PipelineIngestionDefinitionObjectReportTableConfigurationOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) PrimaryKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReportTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) SalesforceIncludeFormulaFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReportTableConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SalesforceIncludeFormulaFields
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) ScdType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReportTableConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScdType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput) SequenceBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectReportTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SequenceBies
+	}).(pulumi.StringArrayOutput)
 }
 
 type PipelineIngestionDefinitionObjectSchema struct {
@@ -64098,6 +64599,7 @@ type PipelineIngestionDefinitionObjectSchemaTableConfiguration struct {
 	PrimaryKeys                    []string `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields *bool    `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        *string  `pulumi:"scdType"`
+	SequenceBies                   []string `pulumi:"sequenceBies"`
 }
 
 // PipelineIngestionDefinitionObjectSchemaTableConfigurationInput is an input type that accepts PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs and PipelineIngestionDefinitionObjectSchemaTableConfigurationOutput values.
@@ -64115,6 +64617,7 @@ type PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs struct {
 	PrimaryKeys                    pulumi.StringArrayInput `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields pulumi.BoolPtrInput     `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        pulumi.StringPtrInput   `pulumi:"scdType"`
+	SequenceBies                   pulumi.StringArrayInput `pulumi:"sequenceBies"`
 }
 
 func (PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs) ElementType() reflect.Type {
@@ -64208,6 +64711,10 @@ func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationOutput) ScdType
 	return o.ApplyT(func(v PipelineIngestionDefinitionObjectSchemaTableConfiguration) *string { return v.ScdType }).(pulumi.StringPtrOutput)
 }
 
+func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationOutput) SequenceBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectSchemaTableConfiguration) []string { return v.SequenceBies }).(pulumi.StringArrayOutput)
+}
+
 type PipelineIngestionDefinitionObjectSchemaTableConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (PipelineIngestionDefinitionObjectSchemaTableConfigurationPtrOutput) ElementType() reflect.Type {
@@ -64257,6 +64764,15 @@ func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationPtrOutput) ScdT
 		}
 		return v.ScdType
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionObjectSchemaTableConfigurationPtrOutput) SequenceBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectSchemaTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SequenceBies
+	}).(pulumi.StringArrayOutput)
 }
 
 type PipelineIngestionDefinitionObjectTable struct {
@@ -64488,6 +65004,7 @@ type PipelineIngestionDefinitionObjectTableTableConfiguration struct {
 	PrimaryKeys                    []string `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields *bool    `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        *string  `pulumi:"scdType"`
+	SequenceBies                   []string `pulumi:"sequenceBies"`
 }
 
 // PipelineIngestionDefinitionObjectTableTableConfigurationInput is an input type that accepts PipelineIngestionDefinitionObjectTableTableConfigurationArgs and PipelineIngestionDefinitionObjectTableTableConfigurationOutput values.
@@ -64505,6 +65022,7 @@ type PipelineIngestionDefinitionObjectTableTableConfigurationArgs struct {
 	PrimaryKeys                    pulumi.StringArrayInput `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields pulumi.BoolPtrInput     `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        pulumi.StringPtrInput   `pulumi:"scdType"`
+	SequenceBies                   pulumi.StringArrayInput `pulumi:"sequenceBies"`
 }
 
 func (PipelineIngestionDefinitionObjectTableTableConfigurationArgs) ElementType() reflect.Type {
@@ -64598,6 +65116,10 @@ func (o PipelineIngestionDefinitionObjectTableTableConfigurationOutput) ScdType(
 	return o.ApplyT(func(v PipelineIngestionDefinitionObjectTableTableConfiguration) *string { return v.ScdType }).(pulumi.StringPtrOutput)
 }
 
+func (o PipelineIngestionDefinitionObjectTableTableConfigurationOutput) SequenceBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionObjectTableTableConfiguration) []string { return v.SequenceBies }).(pulumi.StringArrayOutput)
+}
+
 type PipelineIngestionDefinitionObjectTableTableConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (PipelineIngestionDefinitionObjectTableTableConfigurationPtrOutput) ElementType() reflect.Type {
@@ -64649,10 +65171,20 @@ func (o PipelineIngestionDefinitionObjectTableTableConfigurationPtrOutput) ScdTy
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o PipelineIngestionDefinitionObjectTableTableConfigurationPtrOutput) SequenceBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionObjectTableTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SequenceBies
+	}).(pulumi.StringArrayOutput)
+}
+
 type PipelineIngestionDefinitionTableConfiguration struct {
 	PrimaryKeys                    []string `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields *bool    `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        *string  `pulumi:"scdType"`
+	SequenceBies                   []string `pulumi:"sequenceBies"`
 }
 
 // PipelineIngestionDefinitionTableConfigurationInput is an input type that accepts PipelineIngestionDefinitionTableConfigurationArgs and PipelineIngestionDefinitionTableConfigurationOutput values.
@@ -64670,6 +65202,7 @@ type PipelineIngestionDefinitionTableConfigurationArgs struct {
 	PrimaryKeys                    pulumi.StringArrayInput `pulumi:"primaryKeys"`
 	SalesforceIncludeFormulaFields pulumi.BoolPtrInput     `pulumi:"salesforceIncludeFormulaFields"`
 	ScdType                        pulumi.StringPtrInput   `pulumi:"scdType"`
+	SequenceBies                   pulumi.StringArrayInput `pulumi:"sequenceBies"`
 }
 
 func (PipelineIngestionDefinitionTableConfigurationArgs) ElementType() reflect.Type {
@@ -64761,6 +65294,10 @@ func (o PipelineIngestionDefinitionTableConfigurationOutput) ScdType() pulumi.St
 	return o.ApplyT(func(v PipelineIngestionDefinitionTableConfiguration) *string { return v.ScdType }).(pulumi.StringPtrOutput)
 }
 
+func (o PipelineIngestionDefinitionTableConfigurationOutput) SequenceBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineIngestionDefinitionTableConfiguration) []string { return v.SequenceBies }).(pulumi.StringArrayOutput)
+}
+
 type PipelineIngestionDefinitionTableConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (PipelineIngestionDefinitionTableConfigurationPtrOutput) ElementType() reflect.Type {
@@ -64810,6 +65347,15 @@ func (o PipelineIngestionDefinitionTableConfigurationPtrOutput) ScdType() pulumi
 		}
 		return v.ScdType
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIngestionDefinitionTableConfigurationPtrOutput) SequenceBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineIngestionDefinitionTableConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SequenceBies
+	}).(pulumi.StringArrayOutput)
 }
 
 type PipelineLatestUpdate struct {
@@ -83086,211 +83632,6 @@ func (o GetClusterClusterInfoSpecClusterMountInfoArrayOutput) Index(i pulumi.Int
 	}).(GetClusterClusterInfoSpecClusterMountInfoOutput)
 }
 
-type GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo struct {
-	MountOptions  *string `pulumi:"mountOptions"`
-	ServerAddress string  `pulumi:"serverAddress"`
-}
-
-// GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoInput is an input type that accepts GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs and GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput values.
-// You can construct a concrete instance of `GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoInput` via:
-//
-//	GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs{...}
-type GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoInput interface {
-	pulumi.Input
-
-	ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput() GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput
-	ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutputWithContext(context.Context) GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput
-}
-
-type GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs struct {
-	MountOptions  pulumi.StringPtrInput `pulumi:"mountOptions"`
-	ServerAddress pulumi.StringInput    `pulumi:"serverAddress"`
-}
-
-func (GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo)(nil)).Elem()
-}
-
-func (i GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs) ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput() GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput {
-	return i.ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutputWithContext(context.Background())
-}
-
-func (i GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs) ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput)
-}
-
-type GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput struct{ *pulumi.OutputState }
-
-func (GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo)(nil)).Elem()
-}
-
-func (o GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput) ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput() GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput {
-	return o
-}
-
-func (o GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput) ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput {
-	return o
-}
-
-func (o GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput) MountOptions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo) *string { return v.MountOptions }).(pulumi.StringPtrOutput)
-}
-
-func (o GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput) ServerAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo) string { return v.ServerAddress }).(pulumi.StringOutput)
-}
-
-type GetClusterClusterInfoSpecDockerImage struct {
-	BasicAuth *GetClusterClusterInfoSpecDockerImageBasicAuth `pulumi:"basicAuth"`
-	Url       string                                         `pulumi:"url"`
-}
-
-// GetClusterClusterInfoSpecDockerImageInput is an input type that accepts GetClusterClusterInfoSpecDockerImageArgs and GetClusterClusterInfoSpecDockerImageOutput values.
-// You can construct a concrete instance of `GetClusterClusterInfoSpecDockerImageInput` via:
-//
-//	GetClusterClusterInfoSpecDockerImageArgs{...}
-type GetClusterClusterInfoSpecDockerImageInput interface {
-	pulumi.Input
-
-	ToGetClusterClusterInfoSpecDockerImageOutput() GetClusterClusterInfoSpecDockerImageOutput
-	ToGetClusterClusterInfoSpecDockerImageOutputWithContext(context.Context) GetClusterClusterInfoSpecDockerImageOutput
-}
-
-type GetClusterClusterInfoSpecDockerImageArgs struct {
-	BasicAuth GetClusterClusterInfoSpecDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	Url       pulumi.StringInput                                    `pulumi:"url"`
-}
-
-func (GetClusterClusterInfoSpecDockerImageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterClusterInfoSpecDockerImage)(nil)).Elem()
-}
-
-func (i GetClusterClusterInfoSpecDockerImageArgs) ToGetClusterClusterInfoSpecDockerImageOutput() GetClusterClusterInfoSpecDockerImageOutput {
-	return i.ToGetClusterClusterInfoSpecDockerImageOutputWithContext(context.Background())
-}
-
-func (i GetClusterClusterInfoSpecDockerImageArgs) ToGetClusterClusterInfoSpecDockerImageOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecDockerImageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecDockerImageOutput)
-}
-
-func (i GetClusterClusterInfoSpecDockerImageArgs) ToGetClusterClusterInfoSpecDockerImagePtrOutput() GetClusterClusterInfoSpecDockerImagePtrOutput {
-	return i.ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(context.Background())
-}
-
-func (i GetClusterClusterInfoSpecDockerImageArgs) ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecDockerImagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecDockerImageOutput).ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(ctx)
-}
-
-// GetClusterClusterInfoSpecDockerImagePtrInput is an input type that accepts GetClusterClusterInfoSpecDockerImageArgs, GetClusterClusterInfoSpecDockerImagePtr and GetClusterClusterInfoSpecDockerImagePtrOutput values.
-// You can construct a concrete instance of `GetClusterClusterInfoSpecDockerImagePtrInput` via:
-//
-//	        GetClusterClusterInfoSpecDockerImageArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetClusterClusterInfoSpecDockerImagePtrInput interface {
-	pulumi.Input
-
-	ToGetClusterClusterInfoSpecDockerImagePtrOutput() GetClusterClusterInfoSpecDockerImagePtrOutput
-	ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(context.Context) GetClusterClusterInfoSpecDockerImagePtrOutput
-}
-
-type getClusterClusterInfoSpecDockerImagePtrType GetClusterClusterInfoSpecDockerImageArgs
-
-func GetClusterClusterInfoSpecDockerImagePtr(v *GetClusterClusterInfoSpecDockerImageArgs) GetClusterClusterInfoSpecDockerImagePtrInput {
-	return (*getClusterClusterInfoSpecDockerImagePtrType)(v)
-}
-
-func (*getClusterClusterInfoSpecDockerImagePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetClusterClusterInfoSpecDockerImage)(nil)).Elem()
-}
-
-func (i *getClusterClusterInfoSpecDockerImagePtrType) ToGetClusterClusterInfoSpecDockerImagePtrOutput() GetClusterClusterInfoSpecDockerImagePtrOutput {
-	return i.ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(context.Background())
-}
-
-func (i *getClusterClusterInfoSpecDockerImagePtrType) ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecDockerImagePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecDockerImagePtrOutput)
-}
-
-type GetClusterClusterInfoSpecDockerImageOutput struct{ *pulumi.OutputState }
-
-func (GetClusterClusterInfoSpecDockerImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterClusterInfoSpecDockerImage)(nil)).Elem()
-}
-
-func (o GetClusterClusterInfoSpecDockerImageOutput) ToGetClusterClusterInfoSpecDockerImageOutput() GetClusterClusterInfoSpecDockerImageOutput {
-	return o
-}
-
-func (o GetClusterClusterInfoSpecDockerImageOutput) ToGetClusterClusterInfoSpecDockerImageOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecDockerImageOutput {
-	return o
-}
-
-func (o GetClusterClusterInfoSpecDockerImageOutput) ToGetClusterClusterInfoSpecDockerImagePtrOutput() GetClusterClusterInfoSpecDockerImagePtrOutput {
-	return o.ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(context.Background())
-}
-
-func (o GetClusterClusterInfoSpecDockerImageOutput) ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecDockerImagePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoSpecDockerImage) *GetClusterClusterInfoSpecDockerImage {
-		return &v
-	}).(GetClusterClusterInfoSpecDockerImagePtrOutput)
-}
-
-func (o GetClusterClusterInfoSpecDockerImageOutput) BasicAuth() GetClusterClusterInfoSpecDockerImageBasicAuthPtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoSpecDockerImage) *GetClusterClusterInfoSpecDockerImageBasicAuth {
-		return v.BasicAuth
-	}).(GetClusterClusterInfoSpecDockerImageBasicAuthPtrOutput)
-}
-
-func (o GetClusterClusterInfoSpecDockerImageOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoSpecDockerImage) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GetClusterClusterInfoSpecDockerImagePtrOutput struct{ *pulumi.OutputState }
-
-func (GetClusterClusterInfoSpecDockerImagePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetClusterClusterInfoSpecDockerImage)(nil)).Elem()
-}
-
-func (o GetClusterClusterInfoSpecDockerImagePtrOutput) ToGetClusterClusterInfoSpecDockerImagePtrOutput() GetClusterClusterInfoSpecDockerImagePtrOutput {
-	return o
-}
-
-func (o GetClusterClusterInfoSpecDockerImagePtrOutput) ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecDockerImagePtrOutput {
-	return o
-}
-
-func (o GetClusterClusterInfoSpecDockerImagePtrOutput) Elem() GetClusterClusterInfoSpecDockerImageOutput {
-	return o.ApplyT(func(v *GetClusterClusterInfoSpecDockerImage) GetClusterClusterInfoSpecDockerImage {
-		if v != nil {
-			return *v
-		}
-		var ret GetClusterClusterInfoSpecDockerImage
-		return ret
-	}).(GetClusterClusterInfoSpecDockerImageOutput)
-}
-
-func (o GetClusterClusterInfoSpecDockerImagePtrOutput) BasicAuth() GetClusterClusterInfoSpecDockerImageBasicAuthPtrOutput {
-	return o.ApplyT(func(v *GetClusterClusterInfoSpecDockerImage) *GetClusterClusterInfoSpecDockerImageBasicAuth {
-		if v == nil {
-			return nil
-		}
-		return v.BasicAuth
-	}).(GetClusterClusterInfoSpecDockerImageBasicAuthPtrOutput)
-}
-
-func (o GetClusterClusterInfoSpecDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetClusterClusterInfoSpecDockerImage) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -84054,6 +84395,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIngestionDefinitionPtrInput)(nil)).Elem(), PipelineIngestionDefinitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIngestionDefinitionObjectInput)(nil)).Elem(), PipelineIngestionDefinitionObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIngestionDefinitionObjectArrayInput)(nil)).Elem(), PipelineIngestionDefinitionObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIngestionDefinitionObjectReportInput)(nil)).Elem(), PipelineIngestionDefinitionObjectReportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIngestionDefinitionObjectReportPtrInput)(nil)).Elem(), PipelineIngestionDefinitionObjectReportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIngestionDefinitionObjectReportTableConfigurationInput)(nil)).Elem(), PipelineIngestionDefinitionObjectReportTableConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIngestionDefinitionObjectReportTableConfigurationPtrInput)(nil)).Elem(), PipelineIngestionDefinitionObjectReportTableConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIngestionDefinitionObjectSchemaInput)(nil)).Elem(), PipelineIngestionDefinitionObjectSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIngestionDefinitionObjectSchemaPtrInput)(nil)).Elem(), PipelineIngestionDefinitionObjectSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIngestionDefinitionObjectSchemaTableConfigurationInput)(nil)).Elem(), PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs{})
@@ -84282,9 +84627,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfS3PtrInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterLogConfS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterMountInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoArrayInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterMountInfoArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecDockerImageInput)(nil)).Elem(), GetClusterClusterInfoSpecDockerImageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecDockerImagePtrInput)(nil)).Elem(), GetClusterClusterInfoSpecDockerImageArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(ArtifactAllowlistArtifactMatcherOutput{})
@@ -85047,6 +85389,10 @@ func init() {
 	pulumi.RegisterOutputType(PipelineIngestionDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(PipelineIngestionDefinitionObjectOutput{})
 	pulumi.RegisterOutputType(PipelineIngestionDefinitionObjectArrayOutput{})
+	pulumi.RegisterOutputType(PipelineIngestionDefinitionObjectReportOutput{})
+	pulumi.RegisterOutputType(PipelineIngestionDefinitionObjectReportPtrOutput{})
+	pulumi.RegisterOutputType(PipelineIngestionDefinitionObjectReportTableConfigurationOutput{})
+	pulumi.RegisterOutputType(PipelineIngestionDefinitionObjectReportTableConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(PipelineIngestionDefinitionObjectSchemaOutput{})
 	pulumi.RegisterOutputType(PipelineIngestionDefinitionObjectSchemaPtrOutput{})
 	pulumi.RegisterOutputType(PipelineIngestionDefinitionObjectSchemaTableConfigurationOutput{})
@@ -85275,7 +85621,4 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterLogConfS3PtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterMountInfoOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterMountInfoArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput{})
-	pulumi.RegisterOutputType(GetClusterClusterInfoSpecDockerImageOutput{})
-	pulumi.RegisterOutputType(GetClusterClusterInfoSpecDockerImagePtrOutput{})
 }

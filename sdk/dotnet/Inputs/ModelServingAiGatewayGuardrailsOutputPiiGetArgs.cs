@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingAiGatewayGuardrailsOutputPiiGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+        /// </summary>
         [Input("behavior", required: true)]
         public Input<string> Behavior { get; set; } = null!;
 

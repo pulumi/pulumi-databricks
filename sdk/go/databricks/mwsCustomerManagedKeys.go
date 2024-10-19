@@ -168,6 +168,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws"
 //	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
 //	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/kms"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
@@ -182,6 +183,11 @@ import (
 // databricksAccountId := cfg.RequireObject("databricksAccountId")
 // // AWS ARN for the Databricks cross account role
 // databricksCrossAccountRole := cfg.RequireObject("databricksCrossAccountRole")
+// current, err := aws.GetCallerIdentity(ctx, &aws.GetCallerIdentityArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
 // databricksStorageCmk, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 // Version: pulumi.StringRef("2012-10-17"),
 // Statements: []iam.GetPolicyDocumentStatement{

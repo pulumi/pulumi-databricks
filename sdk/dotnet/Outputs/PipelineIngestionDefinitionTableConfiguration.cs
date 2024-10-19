@@ -16,6 +16,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<string> PrimaryKeys;
         public readonly bool? SalesforceIncludeFormulaFields;
         public readonly string? ScdType;
+        public readonly ImmutableArray<string> SequenceBies;
 
         [OutputConstructor]
         private PipelineIngestionDefinitionTableConfiguration(
@@ -23,11 +24,14 @@ namespace Pulumi.Databricks.Outputs
 
             bool? salesforceIncludeFormulaFields,
 
-            string? scdType)
+            string? scdType,
+
+            ImmutableArray<string> sequenceBies)
         {
             PrimaryKeys = primaryKeys;
             SalesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
             ScdType = scdType;
+            SequenceBies = sequenceBies;
         }
     }
 }

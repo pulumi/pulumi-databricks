@@ -33,6 +33,8 @@ import (
 //			cfg := config.New(ctx, "")
 //			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			// Names of created resources will be prefixed with this value
+//			prefix := cfg.RequireObject("prefix")
 //			this, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
 //				ExternalId: databricksAccountId,
 //			}, nil)

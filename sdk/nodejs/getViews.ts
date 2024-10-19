@@ -8,6 +8,42 @@ import * as utilities from "./utilities";
  * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
  *
  * Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
+ *
+ * ## Example Usage
+ *
+ * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * export = async () => {
+ *     const things = await databricks.getViews({
+ *         catalogName: "sandbox",
+ *         schemaName: "things",
+ *     });
+ *     const thingsGrants: databricks.Grants[] = [];
+ *     for (const range of things.ids.map((v, k) => ({key: k, value: v}))) {
+ *         thingsGrants.push(new databricks.Grants(`things-${range.key}`, {
+ *             table: range.value,
+ *             grants: [{
+ *                 principal: "sensitive",
+ *                 privileges: [
+ *                     "SELECT",
+ *                     "MODIFY",
+ *                 ],
+ *             }],
+ *         }));
+ *     }
+ * }
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getViews(args: GetViewsArgs, opts?: pulumi.InvokeOptions): Promise<GetViewsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,6 +91,42 @@ export interface GetViewsResult {
  * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
  *
  * Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
+ *
+ * ## Example Usage
+ *
+ * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * export = async () => {
+ *     const things = await databricks.getViews({
+ *         catalogName: "sandbox",
+ *         schemaName: "things",
+ *     });
+ *     const thingsGrants: databricks.Grants[] = [];
+ *     for (const range of things.ids.map((v, k) => ({key: k, value: v}))) {
+ *         thingsGrants.push(new databricks.Grants(`things-${range.key}`, {
+ *             table: range.value,
+ *             grants: [{
+ *                 principal: "sensitive",
+ *                 privileges: [
+ *                     "SELECT",
+ *                     "MODIFY",
+ *                 ],
+ *             }],
+ *         }));
+ *     }
+ * }
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getViewsOutput(args: GetViewsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetViewsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -50,14 +50,14 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
     }
 
     /**
-     * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
+     * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
      * 
      */
     @Import(name="environmentVars")
     private @Nullable Output<Map<String,String>> environmentVars;
 
     /**
-     * @return An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
+     * @return An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
      * 
      */
     public Optional<Output<Map<String,String>>> environmentVars() {
@@ -65,14 +65,14 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
     }
 
     /**
-     * The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. For an existing endpoint with `external_model`, it can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+     * The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
      * 
      */
     @Import(name="externalModel")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelArgs> externalModel;
 
     /**
-     * @return The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. For an existing endpoint with `external_model`, it can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+     * @return The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
      * 
      */
     public Optional<Output<ModelServingConfigServedEntityExternalModelArgs>> externalModel() {
@@ -261,7 +261,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param environmentVars An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
+         * @param environmentVars An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param environmentVars An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
+         * @param environmentVars An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param externalModel The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. For an existing endpoint with `external_model`, it can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+         * @param externalModel The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param externalModel The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. For an existing endpoint with `external_model`, it can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+         * @param externalModel The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
          * 
          * @return builder
          * 

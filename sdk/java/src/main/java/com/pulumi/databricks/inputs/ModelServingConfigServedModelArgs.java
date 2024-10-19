@@ -20,14 +20,14 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
     public static final ModelServingConfigServedModelArgs Empty = new ModelServingConfigServedModelArgs();
 
     /**
-     * a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+     * a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      * 
      */
     @Import(name="environmentVars")
     private @Nullable Output<Map<String,String>> environmentVars;
 
     /**
-     * @return a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+     * @return a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      * 
      */
     public Optional<Output<Map<String,String>>> environmentVars() {
@@ -155,14 +155,14 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
     }
 
     /**
-     * The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+     * The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
      * 
      */
     @Import(name="workloadType")
     private @Nullable Output<String> workloadType;
 
     /**
-     * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+     * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
      * 
      */
     public Optional<Output<String>> workloadType() {
@@ -203,7 +203,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param environmentVars a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+         * @param environmentVars a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param environmentVars a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+         * @param environmentVars a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param workloadType The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+         * @param workloadType The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param workloadType The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+         * @param workloadType The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
          * 
          * @return builder
          * 

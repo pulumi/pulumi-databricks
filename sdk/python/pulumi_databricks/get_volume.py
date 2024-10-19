@@ -83,6 +83,36 @@ def get_volume(id: Optional[str] = None,
     Retrieves details about Volume that was created by Pulumi or manually.
     A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using get_volumes data source.
 
+    ## Example Usage
+
+    * Retrieve details of all volumes in in a _things_ Schema of a  _sandbox_ databricks_catalog:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_volumes(catalog_name="sandbox",
+        schema_name="things")
+    this = {__key: databricks.get_volume(name=__value) for __key, __value in all.ids}
+    ```
+
+    * Search for a specific volume by its fully qualified name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_volume(name="catalog.schema.volume")
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Volume to manage volumes within Unity Catalog.
+    * Schema to manage schemas within Unity Catalog.
+    * Catalog to manage catalogs within Unity Catalog.
+
 
     :param str id: ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
     :param str name: a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
@@ -106,6 +136,36 @@ def get_volume_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     """
     Retrieves details about Volume that was created by Pulumi or manually.
     A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using get_volumes data source.
+
+    ## Example Usage
+
+    * Retrieve details of all volumes in in a _things_ Schema of a  _sandbox_ databricks_catalog:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_volumes(catalog_name="sandbox",
+        schema_name="things")
+    this = {__key: databricks.get_volume(name=__value) for __key, __value in all.ids}
+    ```
+
+    * Search for a specific volume by its fully qualified name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_volume(name="catalog.schema.volume")
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Volume to manage volumes within Unity Catalog.
+    * Schema to manage schemas within Unity Catalog.
+    * Catalog to manage catalogs within Unity Catalog.
 
 
     :param str id: ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.

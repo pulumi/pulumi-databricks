@@ -70,8 +70,12 @@ import com.pulumi.databricks.inputs.GetNotebookArgs;
 import com.pulumi.databricks.inputs.GetNotebookPathsArgs;
 import com.pulumi.databricks.inputs.GetNotebookPathsPlainArgs;
 import com.pulumi.databricks.inputs.GetNotebookPlainArgs;
+import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
+import com.pulumi.databricks.inputs.GetNotificationDestinationsPlainArgs;
 import com.pulumi.databricks.inputs.GetPipelinesArgs;
 import com.pulumi.databricks.inputs.GetPipelinesPlainArgs;
+import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
+import com.pulumi.databricks.inputs.GetRegisteredModelPlainArgs;
 import com.pulumi.databricks.inputs.GetSchemaArgs;
 import com.pulumi.databricks.inputs.GetSchemaPlainArgs;
 import com.pulumi.databricks.inputs.GetSchemasArgs;
@@ -141,7 +145,9 @@ import com.pulumi.databricks.outputs.GetMwsWorkspacesResult;
 import com.pulumi.databricks.outputs.GetNodeTypeResult;
 import com.pulumi.databricks.outputs.GetNotebookPathsResult;
 import com.pulumi.databricks.outputs.GetNotebookResult;
+import com.pulumi.databricks.outputs.GetNotificationDestinationsResult;
 import com.pulumi.databricks.outputs.GetPipelinesResult;
+import com.pulumi.databricks.outputs.GetRegisteredModelResult;
 import com.pulumi.databricks.outputs.GetSchemaResult;
 import com.pulumi.databricks.outputs.GetSchemasResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalResult;
@@ -550,19 +556,18 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new BucketV2("this", BucketV2Args.builder()
+     *         var thisBucketV2 = new BucketV2("thisBucketV2", BucketV2Args.builder()
      *             .bucket("<unique_bucket_name>")
-     *             .acl("private")
      *             .forceDestroy(true)
      *             .build());
      * 
-     *         final var stuff = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucketName(this_.bucket())
+     *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
+     *             .bucket(thisBucketV2.bucket())
      *             .build());
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(this_.id())
-     *             .policy(thisDatabricksAwsBucketPolicy.json())
+     *             .bucket(thisBucketV2.id())
+     *             .policy(this_.applyValue(this_ -> this_.json()))
      *             .build());
      * 
      *     }
@@ -609,19 +614,18 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new BucketV2("this", BucketV2Args.builder()
+     *         var thisBucketV2 = new BucketV2("thisBucketV2", BucketV2Args.builder()
      *             .bucket("<unique_bucket_name>")
-     *             .acl("private")
      *             .forceDestroy(true)
      *             .build());
      * 
-     *         final var stuff = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucketName(this_.bucket())
+     *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
+     *             .bucket(thisBucketV2.bucket())
      *             .build());
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(this_.id())
-     *             .policy(thisDatabricksAwsBucketPolicy.json())
+     *             .bucket(thisBucketV2.id())
+     *             .policy(this_.applyValue(this_ -> this_.json()))
      *             .build());
      * 
      *     }
@@ -668,19 +672,18 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new BucketV2("this", BucketV2Args.builder()
+     *         var thisBucketV2 = new BucketV2("thisBucketV2", BucketV2Args.builder()
      *             .bucket("<unique_bucket_name>")
-     *             .acl("private")
      *             .forceDestroy(true)
      *             .build());
      * 
-     *         final var stuff = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucketName(this_.bucket())
+     *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
+     *             .bucket(thisBucketV2.bucket())
      *             .build());
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(this_.id())
-     *             .policy(thisDatabricksAwsBucketPolicy.json())
+     *             .bucket(thisBucketV2.id())
+     *             .policy(this_.applyValue(this_ -> this_.json()))
      *             .build());
      * 
      *     }
@@ -727,19 +730,18 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new BucketV2("this", BucketV2Args.builder()
+     *         var thisBucketV2 = new BucketV2("thisBucketV2", BucketV2Args.builder()
      *             .bucket("<unique_bucket_name>")
-     *             .acl("private")
      *             .forceDestroy(true)
      *             .build());
      * 
-     *         final var stuff = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucketName(this_.bucket())
+     *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
+     *             .bucket(thisBucketV2.bucket())
      *             .build());
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(this_.id())
-     *             .policy(thisDatabricksAwsBucketPolicy.json())
+     *             .bucket(thisBucketV2.id())
+     *             .policy(this_.applyValue(this_ -> this_.json()))
      *             .build());
      * 
      *     }
@@ -1403,7 +1405,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1472,7 +1474,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1541,7 +1543,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -1610,7 +1612,7 @@ public final class DatabricksFunctions {
      * 
      *         var metastoreDataAccess = new Role("metastoreDataAccess", RoleArgs.builder()
      *             .name(String.format("%s-uc-access", prefix))
-     *             .assumeRolePolicy(thisAwsIamPolicyDocument.json())
+     *             .assumeRolePolicy(thisGetAwsUnityCatalogAssumeRolePolicy.applyValue(getAwsUnityCatalogAssumeRolePolicyResult -> getAwsUnityCatalogAssumeRolePolicyResult.json()))
      *             .managedPolicyArns(unityMetastore.arn())
      *             .build());
      * 
@@ -5289,7 +5291,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .instancePoolId(poolDatabricksInstancePool.id())
+     *             .instancePoolId(pool.applyValue(getInstancePoolResult -> getInstancePoolResult.id()))
      *             .build());
      * 
      *     }
@@ -5341,7 +5343,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .instancePoolId(poolDatabricksInstancePool.id())
+     *             .instancePoolId(pool.applyValue(getInstancePoolResult -> getInstancePoolResult.id()))
      *             .build());
      * 
      *     }
@@ -5393,7 +5395,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .instancePoolId(poolDatabricksInstancePool.id())
+     *             .instancePoolId(pool.applyValue(getInstancePoolResult -> getInstancePoolResult.id()))
      *             .build());
      * 
      *     }
@@ -5445,7 +5447,7 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster("myCluster", ClusterArgs.builder()
-     *             .instancePoolId(poolDatabricksInstancePool.id())
+     *             .instancePoolId(pool.applyValue(getInstancePoolResult -> getInstancePoolResult.id()))
      *             .build());
      * 
      *     }
@@ -6701,6 +6703,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -6718,9 +6722,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *             .bucket(String.format("%s-metastore", prefix))
+     *             .forceDestroy(true)
+     *             .build());
+     * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -6767,6 +6776,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -6784,9 +6795,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *             .bucket(String.format("%s-metastore", prefix))
+     *             .forceDestroy(true)
+     *             .build());
+     * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -6833,6 +6849,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -6850,9 +6868,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *             .bucket(String.format("%s-metastore", prefix))
+     *             .forceDestroy(true)
+     *             .build());
+     * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -6899,6 +6922,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -6916,9 +6941,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *             .bucket(String.format("%s-metastore", prefix))
+     *             .forceDestroy(true)
+     *             .build());
+     * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -6965,6 +6995,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -6982,9 +7014,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *             .bucket(String.format("%s-metastore", prefix))
+     *             .forceDestroy(true)
+     *             .build());
+     * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -7031,6 +7068,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -7048,9 +7087,14 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *             .bucket(String.format("%s-metastore", prefix))
+     *             .forceDestroy(true)
+     *             .build());
+     * 
      *         var thisMetastore = new Metastore("thisMetastore", MetastoreArgs.builder()
      *             .name("primary")
-     *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+     *             .storageRoot(metastore.id().applyValue(id -> String.format("s3://%s/metastore", id)))
      *             .owner(unityAdminGroup)
      *             .forceDestroy(true)
      *             .build());
@@ -9671,6 +9715,426 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getNotebookPaths:getNotebookPaths", TypeShape.of(GetNotebookPathsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.NotificationDestination;
+     * import com.pulumi.databricks.NotificationDestinationArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigEmailArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         var email = new NotificationDestination("email", NotificationDestinationArgs.builder()
+     *             .displayName("Email Destination")
+     *             .config(NotificationDestinationConfigArgs.builder()
+     *                 .email(NotificationDestinationConfigEmailArgs.builder()
+     *                     .addresses("abc}{@literal @}{@code gmail.com")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var slack = new NotificationDestination("slack", NotificationDestinationArgs.builder()
+     *             .displayName("Slack Destination")
+     *             .config(NotificationDestinationConfigArgs.builder()
+     *                 .slack(NotificationDestinationConfigSlackArgs.builder()
+     *                     .url("https://hooks.slack.com/services/...")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // Lists all notification desitnations
+     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     * 
+     *         // List destinations of specific type and name
+     *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .displayNameContains("Destination")
+     *             .type("EMAIL")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNotificationDestinationsResult> getNotificationDestinations() {
+        return getNotificationDestinations(GetNotificationDestinationsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.NotificationDestination;
+     * import com.pulumi.databricks.NotificationDestinationArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigEmailArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         var email = new NotificationDestination("email", NotificationDestinationArgs.builder()
+     *             .displayName("Email Destination")
+     *             .config(NotificationDestinationConfigArgs.builder()
+     *                 .email(NotificationDestinationConfigEmailArgs.builder()
+     *                     .addresses("abc}{@literal @}{@code gmail.com")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var slack = new NotificationDestination("slack", NotificationDestinationArgs.builder()
+     *             .displayName("Slack Destination")
+     *             .config(NotificationDestinationConfigArgs.builder()
+     *                 .slack(NotificationDestinationConfigSlackArgs.builder()
+     *                     .url("https://hooks.slack.com/services/...")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // Lists all notification desitnations
+     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     * 
+     *         // List destinations of specific type and name
+     *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .displayNameContains("Destination")
+     *             .type("EMAIL")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNotificationDestinationsResult> getNotificationDestinationsPlain() {
+        return getNotificationDestinationsPlain(GetNotificationDestinationsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.NotificationDestination;
+     * import com.pulumi.databricks.NotificationDestinationArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigEmailArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         var email = new NotificationDestination("email", NotificationDestinationArgs.builder()
+     *             .displayName("Email Destination")
+     *             .config(NotificationDestinationConfigArgs.builder()
+     *                 .email(NotificationDestinationConfigEmailArgs.builder()
+     *                     .addresses("abc}{@literal @}{@code gmail.com")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var slack = new NotificationDestination("slack", NotificationDestinationArgs.builder()
+     *             .displayName("Slack Destination")
+     *             .config(NotificationDestinationConfigArgs.builder()
+     *                 .slack(NotificationDestinationConfigSlackArgs.builder()
+     *                     .url("https://hooks.slack.com/services/...")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // Lists all notification desitnations
+     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     * 
+     *         // List destinations of specific type and name
+     *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .displayNameContains("Destination")
+     *             .type("EMAIL")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNotificationDestinationsResult> getNotificationDestinations(GetNotificationDestinationsArgs args) {
+        return getNotificationDestinations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.NotificationDestination;
+     * import com.pulumi.databricks.NotificationDestinationArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigEmailArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         var email = new NotificationDestination("email", NotificationDestinationArgs.builder()
+     *             .displayName("Email Destination")
+     *             .config(NotificationDestinationConfigArgs.builder()
+     *                 .email(NotificationDestinationConfigEmailArgs.builder()
+     *                     .addresses("abc}{@literal @}{@code gmail.com")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var slack = new NotificationDestination("slack", NotificationDestinationArgs.builder()
+     *             .displayName("Slack Destination")
+     *             .config(NotificationDestinationConfigArgs.builder()
+     *                 .slack(NotificationDestinationConfigSlackArgs.builder()
+     *                     .url("https://hooks.slack.com/services/...")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // Lists all notification desitnations
+     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     * 
+     *         // List destinations of specific type and name
+     *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .displayNameContains("Destination")
+     *             .type("EMAIL")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNotificationDestinationsResult> getNotificationDestinationsPlain(GetNotificationDestinationsPlainArgs args) {
+        return getNotificationDestinationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.NotificationDestination;
+     * import com.pulumi.databricks.NotificationDestinationArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigEmailArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         var email = new NotificationDestination("email", NotificationDestinationArgs.builder()
+     *             .displayName("Email Destination")
+     *             .config(NotificationDestinationConfigArgs.builder()
+     *                 .email(NotificationDestinationConfigEmailArgs.builder()
+     *                     .addresses("abc}{@literal @}{@code gmail.com")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var slack = new NotificationDestination("slack", NotificationDestinationArgs.builder()
+     *             .displayName("Slack Destination")
+     *             .config(NotificationDestinationConfigArgs.builder()
+     *                 .slack(NotificationDestinationConfigSlackArgs.builder()
+     *                     .url("https://hooks.slack.com/services/...")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // Lists all notification desitnations
+     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     * 
+     *         // List destinations of specific type and name
+     *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .displayNameContains("Destination")
+     *             .type("EMAIL")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNotificationDestinationsResult> getNotificationDestinations(GetNotificationDestinationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getNotificationDestinations:getNotificationDestinations", TypeShape.of(GetNotificationDestinationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.NotificationDestination;
+     * import com.pulumi.databricks.NotificationDestinationArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigEmailArgs;
+     * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         var email = new NotificationDestination("email", NotificationDestinationArgs.builder()
+     *             .displayName("Email Destination")
+     *             .config(NotificationDestinationConfigArgs.builder()
+     *                 .email(NotificationDestinationConfigEmailArgs.builder()
+     *                     .addresses("abc}{@literal @}{@code gmail.com")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var slack = new NotificationDestination("slack", NotificationDestinationArgs.builder()
+     *             .displayName("Slack Destination")
+     *             .config(NotificationDestinationConfigArgs.builder()
+     *                 .slack(NotificationDestinationConfigSlackArgs.builder()
+     *                     .url("https://hooks.slack.com/services/...")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // Lists all notification desitnations
+     *         final var this = DatabricksFunctions.getNotificationDestinations();
+     * 
+     *         // List destinations of specific type and name
+     *         final var filteredNotification = DatabricksFunctions.getNotificationDestinations(GetNotificationDestinationsArgs.builder()
+     *             .displayNameContains("Destination")
+     *             .type("EMAIL")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNotificationDestinationsResult> getNotificationDestinationsPlain(GetNotificationDestinationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getNotificationDestinations:getNotificationDestinations", TypeShape.of(GetNotificationDestinationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
      * 
      * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
@@ -10431,6 +10895,214 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetPipelinesResult> getPipelinesPlain(GetPipelinesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPipelines:getPipelines", TypeShape.of(GetPipelinesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRegisteredModel(GetRegisteredModelArgs.builder()
+     *             .fullName("main.default.my_model")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.RegisteredModel resource to manage models within Unity Catalog.
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+     * 
+     */
+    public static Output<GetRegisteredModelResult> getRegisteredModel(GetRegisteredModelArgs args) {
+        return getRegisteredModel(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRegisteredModel(GetRegisteredModelArgs.builder()
+     *             .fullName("main.default.my_model")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.RegisteredModel resource to manage models within Unity Catalog.
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+     * 
+     */
+    public static CompletableFuture<GetRegisteredModelResult> getRegisteredModelPlain(GetRegisteredModelPlainArgs args) {
+        return getRegisteredModelPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRegisteredModel(GetRegisteredModelArgs.builder()
+     *             .fullName("main.default.my_model")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.RegisteredModel resource to manage models within Unity Catalog.
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+     * 
+     */
+    public static Output<GetRegisteredModelResult> getRegisteredModel(GetRegisteredModelArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getRegisteredModel:getRegisteredModel", TypeShape.of(GetRegisteredModelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRegisteredModel(GetRegisteredModelArgs.builder()
+     *             .fullName("main.default.my_model")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.RegisteredModel resource to manage models within Unity Catalog.
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+     * 
+     */
+    public static CompletableFuture<GetRegisteredModelResult> getRegisteredModelPlain(GetRegisteredModelPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getRegisteredModel:getRegisteredModel", TypeShape.of(GetRegisteredModelResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.
@@ -14920,6 +15592,60 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetViewsArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
+     *             .build());
+     * 
+     *         final var thingsGrants = things.applyValue(getViewsResult -> {
+     *             final var resources = new ArrayList<Grants>();
+     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
+     *                     .table(range.value())
+     *                     .grants(GrantsGrantArgs.builder()
+     *                         .principal("sensitive")
+     *                         .privileges(                        
+     *                             "SELECT",
+     *                             "MODIFY")
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -14943,6 +15669,60 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetViewsArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
+     *             .build());
+     * 
+     *         final var thingsGrants = things.applyValue(getViewsResult -> {
+     *             final var resources = new ArrayList<Grants>();
+     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
+     *                     .table(range.value())
+     *                     .grants(GrantsGrantArgs.builder()
+     *                         .principal("sensitive")
+     *                         .privileges(                        
+     *                             "SELECT",
+     *                             "MODIFY")
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -14966,6 +15746,60 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetViewsArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
+     *             .build());
+     * 
+     *         final var thingsGrants = things.applyValue(getViewsResult -> {
+     *             final var resources = new ArrayList<Grants>();
+     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
+     *                     .table(range.value())
+     *                     .grants(GrantsGrantArgs.builder()
+     *                         .principal("sensitive")
+     *                         .privileges(                        
+     *                             "SELECT",
+     *                             "MODIFY")
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -14989,6 +15823,60 @@ public final class DatabricksFunctions {
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetViewsArgs;
+     * import com.pulumi.databricks.Grants;
+     * import com.pulumi.databricks.GrantsArgs;
+     * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
+     *             .catalogName("sandbox")
+     *             .schemaName("things")
+     *             .build());
+     * 
+     *         final var thingsGrants = things.applyValue(getViewsResult -> {
+     *             final var resources = new ArrayList<Grants>();
+     *             for (var range : KeyedValue.of(getViewsResult.ids()) {
+     *                 var resource = new Grants("thingsGrants-" + range.key(), GrantsArgs.builder()
+     *                     .table(range.value())
+     *                     .grants(GrantsGrantArgs.builder()
+     *                         .principal("sensitive")
+     *                         .privileges(                        
+     *                             "SELECT",
+     *                             "MODIFY")
+     *                         .build())
+     *                     .build());
+     * 
+     *                 resources.add(resource);
+     *             }
+     * 
+     *             return resources;
+     *         });
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -15006,6 +15894,56 @@ public final class DatabricksFunctions {
      * Retrieves details about databricks.Volume that was created by Pulumi or manually.
      * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
      * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * * Search for a specific volume by its fully qualified name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolume(GetVolumeArgs.builder()
+     *             .name("catalog.schema.volume")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args) {
         return getVolume(args, InvokeOptions.Empty);
@@ -15013,6 +15951,56 @@ public final class DatabricksFunctions {
     /**
      * Retrieves details about databricks.Volume that was created by Pulumi or manually.
      * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * * Search for a specific volume by its fully qualified name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolume(GetVolumeArgs.builder()
+     *             .name("catalog.schema.volume")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args) {
@@ -15022,6 +16010,56 @@ public final class DatabricksFunctions {
      * Retrieves details about databricks.Volume that was created by Pulumi or manually.
      * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
      * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * * Search for a specific volume by its fully qualified name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolume(GetVolumeArgs.builder()
+     *             .name("catalog.schema.volume")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
@@ -15029,6 +16067,56 @@ public final class DatabricksFunctions {
     /**
      * Retrieves details about databricks.Volume that was created by Pulumi or manually.
      * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * * Search for a specific volume by its fully qualified name
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolume(GetVolumeArgs.builder()
+     *             .name("catalog.schema.volume")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args, InvokeOptions options) {

@@ -151,9 +151,17 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> allowDuplicateNames() {
         return Codegen.optional(this.allowDuplicateNames);
     }
+    /**
+     * optional string specifying ID of the budget policy for this DLT pipeline.
+     * 
+     */
     @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> budgetPolicyId;
 
+    /**
+     * @return optional string specifying ID of the budget policy for this DLT pipeline.
+     * 
+     */
     public Output<Optional<String>> budgetPolicyId() {
         return Codegen.optional(this.budgetPolicyId);
     }

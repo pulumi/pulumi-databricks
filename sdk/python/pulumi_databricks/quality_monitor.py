@@ -613,6 +613,54 @@ class QualityMonitor(pulumi.CustomResource):
 
         A `QualityMonitor` is attached to a SqlTable and can be of type timeseries, snapshot or inference.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        things = databricks.Schema("things",
+            catalog_name=sandbox.id,
+            name="things",
+            comment="this database is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        my_test_table = databricks.SqlTable("myTestTable",
+            catalog_name="main",
+            schema_name=things.name,
+            name="bar",
+            table_type="MANAGED",
+            data_source_format="DELTA",
+            columns=[{
+                "name": "timestamp",
+                "type": "int",
+            }])
+        test_timeseries_monitor = databricks.QualityMonitor("testTimeseriesMonitor",
+            table_name=pulumi.Output.all(
+                sandboxName=sandbox.name,
+                thingsName=things.name,
+                myTestTableName=my_test_table.name
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['sandboxName']}.{resolved_outputs['thingsName']}.{resolved_outputs['myTestTableName']}")
+        ,
+            assets_dir=my_test_table.name.apply(lambda name: f"/Shared/provider-test/databricks_quality_monitoring/{name}"),
+            output_schema_name=pulumi.Output.all(
+                sandboxName=sandbox.name,
+                thingsName=things.name
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['sandboxName']}.{resolved_outputs['thingsName']}")
+        ,
+            time_series={
+                "granularities": ["1 hour"],
+                "timestamp_col": "timestamp",
+            })
+        ```
+
         ### Inference Monitor
 
         ```python
@@ -679,6 +727,54 @@ class QualityMonitor(pulumi.CustomResource):
         This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks.
 
         A `QualityMonitor` is attached to a SqlTable and can be of type timeseries, snapshot or inference.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        things = databricks.Schema("things",
+            catalog_name=sandbox.id,
+            name="things",
+            comment="this database is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        my_test_table = databricks.SqlTable("myTestTable",
+            catalog_name="main",
+            schema_name=things.name,
+            name="bar",
+            table_type="MANAGED",
+            data_source_format="DELTA",
+            columns=[{
+                "name": "timestamp",
+                "type": "int",
+            }])
+        test_timeseries_monitor = databricks.QualityMonitor("testTimeseriesMonitor",
+            table_name=pulumi.Output.all(
+                sandboxName=sandbox.name,
+                thingsName=things.name,
+                myTestTableName=my_test_table.name
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['sandboxName']}.{resolved_outputs['thingsName']}.{resolved_outputs['myTestTableName']}")
+        ,
+            assets_dir=my_test_table.name.apply(lambda name: f"/Shared/provider-test/databricks_quality_monitoring/{name}"),
+            output_schema_name=pulumi.Output.all(
+                sandboxName=sandbox.name,
+                thingsName=things.name
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['sandboxName']}.{resolved_outputs['thingsName']}")
+        ,
+            time_series={
+                "granularities": ["1 hour"],
+                "timestamp_col": "timestamp",
+            })
+        ```
 
         ### Inference Monitor
 

@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingAiGatewayUsageTrackingConfig
     {
-        /// <summary>
-        /// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
-        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

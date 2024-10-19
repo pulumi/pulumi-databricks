@@ -15,17 +15,9 @@ public final class ModelServingAiGatewayUsageTrackingConfigArgs extends com.pulu
 
     public static final ModelServingAiGatewayUsageTrackingConfigArgs Empty = new ModelServingAiGatewayUsageTrackingConfigArgs();
 
-    /**
-     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
-     * 
-     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -54,23 +46,11 @@ public final class ModelServingAiGatewayUsageTrackingConfigArgs extends com.pulu
             $ = new ModelServingAiGatewayUsageTrackingConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param enabled If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

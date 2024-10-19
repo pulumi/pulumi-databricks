@@ -68,6 +68,21 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+     * 
+     */
+    @Import(name="budgetPolicyId")
+    private @Nullable Output<String> budgetPolicyId;
+
+    /**
+     * @return The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+     * 
+     */
+    public Optional<Output<String>> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
+
+    /**
      * Configuration block to configure pause status. See continuous Configuration Block.
      * 
      */
@@ -630,6 +645,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     private JobArgs(JobArgs $) {
         this.alwaysRunning = $.alwaysRunning;
+        this.budgetPolicyId = $.budgetPolicyId;
         this.continuous = $.continuous;
         this.controlRunState = $.controlRunState;
         this.dbtTask = $.dbtTask;
@@ -714,6 +730,27 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* always_running will be replaced by control_run_state in the next major release. */
         public Builder alwaysRunning(Boolean alwaysRunning) {
             return alwaysRunning(Output.of(alwaysRunning));
+        }
+
+        /**
+         * @param budgetPolicyId The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+
+        /**
+         * @param budgetPolicyId The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            return budgetPolicyId(Output.of(budgetPolicyId));
         }
 
         /**

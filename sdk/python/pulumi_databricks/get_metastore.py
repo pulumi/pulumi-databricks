@@ -112,11 +112,15 @@ def get_metastore(id: Optional[str] = None,
 
     ```python
     import pulumi
+    import pulumi_aws as aws
     import pulumi_databricks as databricks
 
+    metastore = aws.s3.BucketV2("metastore",
+        bucket=f"{prefix}-metastore",
+        force_destroy=True)
     this_metastore = databricks.Metastore("this",
         name="primary",
-        storage_root=f"s3://{metastore['id']}/metastore",
+        storage_root=metastore.id.apply(lambda id: f"s3://{id}/metastore"),
         owner=unity_admin_group,
         force_destroy=True)
     this = databricks.get_metastore_output(metastore_id=this_metastore.id)
@@ -172,11 +176,15 @@ def get_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ```python
     import pulumi
+    import pulumi_aws as aws
     import pulumi_databricks as databricks
 
+    metastore = aws.s3.BucketV2("metastore",
+        bucket=f"{prefix}-metastore",
+        force_destroy=True)
     this_metastore = databricks.Metastore("this",
         name="primary",
-        storage_root=f"s3://{metastore['id']}/metastore",
+        storage_root=metastore.id.apply(lambda id: f"s3://{id}/metastore"),
         owner=unity_admin_group,
         force_destroy=True)
     this = databricks.get_metastore_output(metastore_id=this_metastore.id)

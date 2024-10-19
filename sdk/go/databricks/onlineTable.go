@@ -68,6 +68,8 @@ type OnlineTable struct {
 	Statuses OnlineTableStatusArrayOutput `pulumi:"statuses"`
 	// Data serving REST API URL for this table.
 	TableServingUrl pulumi.StringOutput `pulumi:"tableServingUrl"`
+	// The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+	UnityCatalogProvisioningState pulumi.StringOutput `pulumi:"unityCatalogProvisioningState"`
 }
 
 // NewOnlineTable registers a new resource with the given unique name, arguments, and options.
@@ -108,6 +110,8 @@ type onlineTableState struct {
 	Statuses []OnlineTableStatus `pulumi:"statuses"`
 	// Data serving REST API URL for this table.
 	TableServingUrl *string `pulumi:"tableServingUrl"`
+	// The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+	UnityCatalogProvisioningState *string `pulumi:"unityCatalogProvisioningState"`
 }
 
 type OnlineTableState struct {
@@ -119,6 +123,8 @@ type OnlineTableState struct {
 	Statuses OnlineTableStatusArrayInput
 	// Data serving REST API URL for this table.
 	TableServingUrl pulumi.StringPtrInput
+	// The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+	UnityCatalogProvisioningState pulumi.StringPtrInput
 }
 
 func (OnlineTableState) ElementType() reflect.Type {
@@ -245,6 +251,11 @@ func (o OnlineTableOutput) Statuses() OnlineTableStatusArrayOutput {
 // Data serving REST API URL for this table.
 func (o OnlineTableOutput) TableServingUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *OnlineTable) pulumi.StringOutput { return v.TableServingUrl }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+func (o OnlineTableOutput) UnityCatalogProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *OnlineTable) pulumi.StringOutput { return v.UnityCatalogProvisioningState }).(pulumi.StringOutput)
 }
 
 type OnlineTableArrayOutput struct{ *pulumi.OutputState }

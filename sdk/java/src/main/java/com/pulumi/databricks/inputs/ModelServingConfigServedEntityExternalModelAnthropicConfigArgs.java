@@ -17,7 +17,6 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfigArg
 
     /**
      * The Databricks secret key reference for an Anthropic API key.
-     * The Databricks secret key reference for an Anthropic API key.
      * 
      */
     @Import(name="anthropicApiKey")
@@ -25,16 +24,23 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfigArg
 
     /**
      * @return The Databricks secret key reference for an Anthropic API key.
-     * The Databricks secret key reference for an Anthropic API key.
      * 
      */
     public Optional<Output<String>> anthropicApiKey() {
         return Optional.ofNullable(this.anthropicApiKey);
     }
 
+    /**
+     * The Anthropic API key provided as a plaintext string.
+     * 
+     */
     @Import(name="anthropicApiKeyPlaintext")
     private @Nullable Output<String> anthropicApiKeyPlaintext;
 
+    /**
+     * @return The Anthropic API key provided as a plaintext string.
+     * 
+     */
     public Optional<Output<String>> anthropicApiKeyPlaintext() {
         return Optional.ofNullable(this.anthropicApiKeyPlaintext);
     }
@@ -66,7 +72,6 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfigArg
 
         /**
          * @param anthropicApiKey The Databricks secret key reference for an Anthropic API key.
-         * The Databricks secret key reference for an Anthropic API key.
          * 
          * @return builder
          * 
@@ -78,7 +83,6 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfigArg
 
         /**
          * @param anthropicApiKey The Databricks secret key reference for an Anthropic API key.
-         * The Databricks secret key reference for an Anthropic API key.
          * 
          * @return builder
          * 
@@ -87,11 +91,23 @@ public final class ModelServingConfigServedEntityExternalModelAnthropicConfigArg
             return anthropicApiKey(Output.of(anthropicApiKey));
         }
 
+        /**
+         * @param anthropicApiKeyPlaintext The Anthropic API key provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder anthropicApiKeyPlaintext(@Nullable Output<String> anthropicApiKeyPlaintext) {
             $.anthropicApiKeyPlaintext = anthropicApiKeyPlaintext;
             return this;
         }
 
+        /**
+         * @param anthropicApiKeyPlaintext The Anthropic API key provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder anthropicApiKeyPlaintext(String anthropicApiKeyPlaintext) {
             return anthropicApiKeyPlaintext(Output.of(anthropicApiKeyPlaintext));
         }

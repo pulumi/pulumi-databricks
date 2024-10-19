@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * });
  * const metastoreDataAccess = new aws.iam.Role("metastore_data_access", {
  *     name: `${prefix}-uc-access`,
- *     assumeRolePolicy: thisAwsIamPolicyDocument.json,
+ *     assumeRolePolicy: thisGetAwsUnityCatalogAssumeRolePolicy.then(thisGetAwsUnityCatalogAssumeRolePolicy => thisGetAwsUnityCatalogAssumeRolePolicy.json),
  *     managedPolicyArns: [unityMetastore.arn],
  * });
  * ```
@@ -116,7 +116,7 @@ export interface GetAwsUnityCatalogPolicyResult {
  * });
  * const metastoreDataAccess = new aws.iam.Role("metastore_data_access", {
  *     name: `${prefix}-uc-access`,
- *     assumeRolePolicy: thisAwsIamPolicyDocument.json,
+ *     assumeRolePolicy: thisGetAwsUnityCatalogAssumeRolePolicy.then(thisGetAwsUnityCatalogAssumeRolePolicy => thisGetAwsUnityCatalogAssumeRolePolicy.json),
  *     managedPolicyArns: [unityMetastore.arn],
  * });
  * ```

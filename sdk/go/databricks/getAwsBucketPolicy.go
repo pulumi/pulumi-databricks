@@ -12,6 +12,49 @@ import (
 )
 
 // This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/s3"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisBucketV2, err := s3.NewBucketV2(ctx, "this", &s3.BucketV2Args{
+//				Bucket:       pulumi.String("<unique_bucket_name>"),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			this := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
+//				Bucket: thisBucketV2.Bucket,
+//			}, nil)
+//			_, err = s3.NewBucketPolicy(ctx, "this", &s3.BucketPolicyArgs{
+//				Bucket: thisBucketV2.ID(),
+//				Policy: pulumi.String(this.ApplyT(func(this databricks.GetAwsBucketPolicyResult) (*string, error) {
+//					return &this.Json, nil
+//				}).(pulumi.StringPtrOutput)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Bucket policy with full access:
 func GetAwsBucketPolicy(ctx *pulumi.Context, args *GetAwsBucketPolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsBucketPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAwsBucketPolicyResult

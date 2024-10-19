@@ -9,6 +9,42 @@ import * as utilities from "./utilities";
 /**
  * Retrieves details about databricks.Volume that was created by Pulumi or manually.
  * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+ *
+ * ## Example Usage
+ *
+ * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getVolumes({
+ *     catalogName: "sandbox",
+ *     schemaName: "things",
+ * });
+ * const this = all.then(all => .reduce((__obj, [, ]) => ({ ...__obj, [__key]: databricks.getVolume({
+ *     name: __value,
+ * }) })));
+ * ```
+ *
+ * * Search for a specific volume by its fully qualified name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getVolume({
+ *     name: "catalog.schema.volume",
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Volume to manage volumes within Unity Catalog.
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,6 +93,42 @@ export interface GetVolumeResult {
 /**
  * Retrieves details about databricks.Volume that was created by Pulumi or manually.
  * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+ *
+ * ## Example Usage
+ *
+ * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getVolumes({
+ *     catalogName: "sandbox",
+ *     schemaName: "things",
+ * });
+ * const this = all.then(all => .reduce((__obj, [, ]) => ({ ...__obj, [__key]: databricks.getVolume({
+ *     name: __value,
+ * }) })));
+ * ```
+ *
+ * * Search for a specific volume by its fully qualified name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getVolume({
+ *     name: "catalog.schema.volume",
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Volume to manage volumes within Unity Catalog.
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

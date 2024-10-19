@@ -13,9 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig
     {
+        /// <summary>
+        /// The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
+        /// </summary>
         public readonly string? PrivateKey;
+        /// <summary>
+        /// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
+        /// </summary>
         public readonly string? PrivateKeyPlaintext;
+        /// <summary>
+        /// This is the Google Cloud project id that the service account is associated with.
+        /// </summary>
         public readonly string? ProjectId;
+        /// <summary>
+        /// This is the region for the Google Cloud Vertex AI Service.
+        /// </summary>
         public readonly string? Region;
 
         [OutputConstructor]

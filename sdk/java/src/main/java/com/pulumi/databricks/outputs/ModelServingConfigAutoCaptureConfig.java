@@ -18,7 +18,7 @@ public final class ModelServingConfigAutoCaptureConfig {
      */
     private @Nullable String catalogName;
     /**
-     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
      * 
      */
     private @Nullable Boolean enabled;
@@ -42,7 +42,7 @@ public final class ModelServingConfigAutoCaptureConfig {
         return Optional.ofNullable(this.catalogName);
     }
     /**
-     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
      * 
      */
     public Optional<Boolean> enabled() {

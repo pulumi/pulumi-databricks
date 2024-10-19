@@ -17,6 +17,10 @@ public final class ModelServingConfigServedEntityExternalModelCohereConfig {
      * 
      */
     private @Nullable String cohereApiKey;
+    /**
+     * @return The Cohere API key provided as a plaintext string.
+     * 
+     */
     private @Nullable String cohereApiKeyPlaintext;
 
     private ModelServingConfigServedEntityExternalModelCohereConfig() {}
@@ -30,6 +34,10 @@ public final class ModelServingConfigServedEntityExternalModelCohereConfig {
     public Optional<String> cohereApiKey() {
         return Optional.ofNullable(this.cohereApiKey);
     }
+    /**
+     * @return The Cohere API key provided as a plaintext string.
+     * 
+     */
     public Optional<String> cohereApiKeyPlaintext() {
         return Optional.ofNullable(this.cohereApiKeyPlaintext);
     }
