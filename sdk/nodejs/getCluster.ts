@@ -20,9 +20,9 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getClusters({});
- * const allGetCluster = .reduce((__obj, [, ]) => ({ ...__obj, [__key]: databricks.getCluster({
+ * const allGetCluster = all.then(all => .reduce((__obj, [, ]) => ({ ...__obj, [__key]: databricks.getCluster({
  *     clusterId: __value,
- * }) }));
+ * }) })));
  * ```
  *
  * ## Related Resources
@@ -102,9 +102,9 @@ export interface GetClusterResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getClusters({});
- * const allGetCluster = .reduce((__obj, [, ]) => ({ ...__obj, [__key]: databricks.getCluster({
+ * const allGetCluster = all.then(all => .reduce((__obj, [, ]) => ({ ...__obj, [__key]: databricks.getCluster({
  *     clusterId: __value,
- * }) }));
+ * }) })));
  * ```
  *
  * ## Related Resources

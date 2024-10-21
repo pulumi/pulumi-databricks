@@ -115,6 +115,8 @@ type Job struct {
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning pulumi.BoolPtrOutput `pulumi:"alwaysRunning"`
+	// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
 	// Configuration block to configure pause status. See continuous Configuration Block.
 	Continuous JobContinuousPtrOutput `pulumi:"continuous"`
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
@@ -225,6 +227,8 @@ type jobState struct {
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning *bool `pulumi:"alwaysRunning"`
+	// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// Configuration block to configure pause status. See continuous Configuration Block.
 	Continuous *JobContinuous `pulumi:"continuous"`
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
@@ -306,6 +310,8 @@ type JobState struct {
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning pulumi.BoolPtrInput
+	// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+	BudgetPolicyId pulumi.StringPtrInput
 	// Configuration block to configure pause status. See continuous Configuration Block.
 	Continuous JobContinuousPtrInput
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
@@ -391,6 +397,8 @@ type jobArgs struct {
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning *bool `pulumi:"alwaysRunning"`
+	// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// Configuration block to configure pause status. See continuous Configuration Block.
 	Continuous *JobContinuous `pulumi:"continuous"`
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
@@ -471,6 +479,8 @@ type JobArgs struct {
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning pulumi.BoolPtrInput
+	// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+	BudgetPolicyId pulumi.StringPtrInput
 	// Configuration block to configure pause status. See continuous Configuration Block.
 	Continuous JobContinuousPtrInput
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
@@ -637,6 +647,11 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 // Deprecated: always_running will be replaced by controlRunState in the next major release.
 func (o JobOutput) AlwaysRunning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.AlwaysRunning }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+func (o JobOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
 
 // Configuration block to configure pause status. See continuous Configuration Block.

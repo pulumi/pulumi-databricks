@@ -33,6 +33,9 @@ namespace Pulumi.Databricks.Outputs
         /// Databricks Model Serving Config
         /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig? DatabricksModelServingConfig;
+        /// <summary>
+        /// Google Cloud Vertex AI Config.
+        /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig? GoogleCloudVertexAiConfig;
         /// <summary>
         /// The name of the external model.
@@ -47,7 +50,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelPalmConfig? PalmConfig;
         /// <summary>
-        /// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+        /// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
         /// </summary>
         public readonly string Provider;
         /// <summary>

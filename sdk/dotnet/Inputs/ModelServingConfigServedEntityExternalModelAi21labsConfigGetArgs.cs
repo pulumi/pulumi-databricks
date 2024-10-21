@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("ai21labsApiKey")]
         public Input<string>? Ai21labsApiKey { get; set; }
 
+        /// <summary>
+        /// An AI21 Labs API key provided as a plaintext string.
+        /// </summary>
         [Input("ai21labsApiKeyPlaintext")]
         public Input<string>? Ai21labsApiKeyPlaintext { get; set; }
 

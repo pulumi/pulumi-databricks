@@ -24,6 +24,8 @@ namespace Pulumi.Databricks
     ///     var config = new Config();
     ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     // Names of created resources will be prefixed with this value
+    ///     var prefix = config.RequireObject&lt;dynamic&gt;("prefix");
     ///     var @this = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
     ///     {
     ///         ExternalId = databricksAccountId,

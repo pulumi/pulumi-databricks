@@ -81,6 +81,10 @@ export class OnlineTable extends pulumi.CustomResource {
      * Data serving REST API URL for this table.
      */
     public /*out*/ readonly tableServingUrl!: pulumi.Output<string>;
+    /**
+     * The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+     */
+    public /*out*/ readonly unityCatalogProvisioningState!: pulumi.Output<string>;
 
     /**
      * Create a OnlineTable resource with the given unique name, arguments, and options.
@@ -99,12 +103,14 @@ export class OnlineTable extends pulumi.CustomResource {
             resourceInputs["spec"] = state ? state.spec : undefined;
             resourceInputs["statuses"] = state ? state.statuses : undefined;
             resourceInputs["tableServingUrl"] = state ? state.tableServingUrl : undefined;
+            resourceInputs["unityCatalogProvisioningState"] = state ? state.unityCatalogProvisioningState : undefined;
         } else {
             const args = argsOrState as OnlineTableArgs | undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
             resourceInputs["statuses"] = undefined /*out*/;
             resourceInputs["tableServingUrl"] = undefined /*out*/;
+            resourceInputs["unityCatalogProvisioningState"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OnlineTable.__pulumiType, name, resourceInputs, opts);
@@ -131,6 +137,10 @@ export interface OnlineTableState {
      * Data serving REST API URL for this table.
      */
     tableServingUrl?: pulumi.Input<string>;
+    /**
+     * The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+     */
+    unityCatalogProvisioningState?: pulumi.Input<string>;
 }
 
 /**

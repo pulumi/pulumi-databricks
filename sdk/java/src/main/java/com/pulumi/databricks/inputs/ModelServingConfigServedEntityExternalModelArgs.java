@@ -99,9 +99,17 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
         return Optional.ofNullable(this.databricksModelServingConfig);
     }
 
+    /**
+     * Google Cloud Vertex AI Config.
+     * 
+     */
     @Import(name="googleCloudVertexAiConfig")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs> googleCloudVertexAiConfig;
 
+    /**
+     * @return Google Cloud Vertex AI Config.
+     * 
+     */
     public Optional<Output<ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs>> googleCloudVertexAiConfig() {
         return Optional.ofNullable(this.googleCloudVertexAiConfig);
     }
@@ -152,14 +160,14 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
     }
 
     /**
-     * The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+     * The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
      * 
      */
     @Import(name="provider", required=true)
     private Output<String> provider;
 
     /**
-     * @return The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+     * @return The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
      * 
      */
     public Output<String> provider() {
@@ -320,11 +328,23 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
             return databricksModelServingConfig(Output.of(databricksModelServingConfig));
         }
 
+        /**
+         * @param googleCloudVertexAiConfig Google Cloud Vertex AI Config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder googleCloudVertexAiConfig(@Nullable Output<ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs> googleCloudVertexAiConfig) {
             $.googleCloudVertexAiConfig = googleCloudVertexAiConfig;
             return this;
         }
 
+        /**
+         * @param googleCloudVertexAiConfig Google Cloud Vertex AI Config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder googleCloudVertexAiConfig(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs googleCloudVertexAiConfig) {
             return googleCloudVertexAiConfig(Output.of(googleCloudVertexAiConfig));
         }
@@ -393,7 +413,7 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
         }
 
         /**
-         * @param provider The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+         * @param provider The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
          * 
          * @return builder
          * 
@@ -404,7 +424,7 @@ public final class ModelServingConfigServedEntityExternalModelArgs extends com.p
         }
 
         /**
-         * @param provider The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+         * @param provider The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
          * 
          * @return builder
          * 

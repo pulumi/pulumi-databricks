@@ -2307,6 +2307,26 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "report": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "table_configuration": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "primary_keys": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "sequence_by": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "schema": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -2316,6 +2336,9 @@
                                                             "elem": {
                                                                 "fields": {
                                                                     "primary_keys": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "sequence_by": {
                                                                         "maxItemsOne": false
                                                                     }
                                                                 }
@@ -2334,6 +2357,9 @@
                                                                 "fields": {
                                                                     "primary_keys": {
                                                                         "maxItemsOne": false
+                                                                    },
+                                                                    "sequence_by": {
+                                                                        "maxItemsOne": false
                                                                     }
                                                                 }
                                                             }
@@ -2349,6 +2375,9 @@
                                     "elem": {
                                         "fields": {
                                             "primary_keys": {
+                                                "maxItemsOne": false
+                                            },
+                                            "sequence_by": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -4475,12 +4504,37 @@
                     }
                 }
             },
+            "databricks_notification_destinations": {
+                "current": "databricks:index/getNotificationDestinations:getNotificationDestinations",
+                "majorVersion": 1,
+                "fields": {
+                    "notification_destinations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_pipelines": {
                 "current": "databricks:index/getPipelines:getPipelines",
                 "majorVersion": 1,
                 "fields": {
                     "ids": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_registered_model": {
+                "current": "databricks:index/getRegisteredModel:getRegisteredModel",
+                "majorVersion": 1,
+                "fields": {
+                    "model_info": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "aliases": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -4966,7 +5020,9 @@
             "databricks:index/getNodeType:getNodeType": 0,
             "databricks:index/getNotebook:getNotebook": 0,
             "databricks:index/getNotebookPaths:getNotebookPaths": 0,
+            "databricks:index/getNotificationDestinations:getNotificationDestinations": 1,
             "databricks:index/getPipelines:getPipelines": 0,
+            "databricks:index/getRegisteredModel:getRegisteredModel": 1,
             "databricks:index/getSchema:getSchema": 0,
             "databricks:index/getSchemas:getSchemas": 0,
             "databricks:index/getServicePrincipal:getServicePrincipal": 0,

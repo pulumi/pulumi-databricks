@@ -26,6 +26,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("scdType")]
         public Input<string>? ScdType { get; set; }
 
+        [Input("sequenceBies")]
+        private InputList<string>? _sequenceBies;
+        public InputList<string> SequenceBies
+        {
+            get => _sequenceBies ?? (_sequenceBies = new InputList<string>());
+            set => _sequenceBies = value;
+        }
+
         public PipelineIngestionDefinitionObjectTableTableConfigurationArgs()
         {
         }

@@ -126,7 +126,7 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
         policy=this.json)
     metastore_data_access = aws.iam.Role("metastore_data_access",
         name=f"{prefix}-uc-access",
-        assume_role_policy=this_aws_iam_policy_document["json"],
+        assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json,
         managed_policy_arns=[unity_metastore.arn])
     ```
 
@@ -180,7 +180,7 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
         policy=this.json)
     metastore_data_access = aws.iam.Role("metastore_data_access",
         name=f"{prefix}-uc-access",
-        assume_role_policy=this_aws_iam_policy_document["json"],
+        assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json,
         managed_policy_arns=[unity_metastore.arn])
     ```
 

@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * const pool = databricks.getInstancePool({
  *     name: "All spot",
  * });
- * const myCluster = new databricks.Cluster("my_cluster", {instancePoolId: poolDatabricksInstancePool.id});
+ * const myCluster = new databricks.Cluster("my_cluster", {instancePoolId: pool.then(pool => pool.id)});
  * ```
  */
 export function getInstancePool(args: GetInstancePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancePoolResult> {
@@ -77,7 +77,7 @@ export interface GetInstancePoolResult {
  * const pool = databricks.getInstancePool({
  *     name: "All spot",
  * });
- * const myCluster = new databricks.Cluster("my_cluster", {instancePoolId: poolDatabricksInstancePool.id});
+ * const myCluster = new databricks.Cluster("my_cluster", {instancePoolId: pool.then(pool => pool.id)});
  * ```
  */
 export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolResult> {

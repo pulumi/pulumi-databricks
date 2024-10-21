@@ -56,7 +56,9 @@ from .get_mws_workspaces import *
 from .get_node_type import *
 from .get_notebook import *
 from .get_notebook_paths import *
+from .get_notification_destinations import *
 from .get_pipelines import *
+from .get_registered_model import *
 from .get_schema import *
 from .get_schemas import *
 from .get_service_principal import *

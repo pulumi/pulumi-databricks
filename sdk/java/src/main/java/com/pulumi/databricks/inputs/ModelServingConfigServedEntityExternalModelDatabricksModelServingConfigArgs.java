@@ -31,9 +31,17 @@ public final class ModelServingConfigServedEntityExternalModelDatabricksModelSer
         return Optional.ofNullable(this.databricksApiToken);
     }
 
+    /**
+     * The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
+     * 
+     */
     @Import(name="databricksApiTokenPlaintext")
     private @Nullable Output<String> databricksApiTokenPlaintext;
 
+    /**
+     * @return The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
+     * 
+     */
     public Optional<Output<String>> databricksApiTokenPlaintext() {
         return Optional.ofNullable(this.databricksApiTokenPlaintext);
     }
@@ -100,11 +108,23 @@ public final class ModelServingConfigServedEntityExternalModelDatabricksModelSer
             return databricksApiToken(Output.of(databricksApiToken));
         }
 
+        /**
+         * @param databricksApiTokenPlaintext The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksApiTokenPlaintext(@Nullable Output<String> databricksApiTokenPlaintext) {
             $.databricksApiTokenPlaintext = databricksApiTokenPlaintext;
             return this;
         }
 
+        /**
+         * @param databricksApiTokenPlaintext The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksApiTokenPlaintext(String databricksApiTokenPlaintext) {
             return databricksApiTokenPlaintext(Output.of(databricksApiTokenPlaintext));
         }

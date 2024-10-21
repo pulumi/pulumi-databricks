@@ -324,7 +324,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
     import pulumi_databricks as databricks
 
     all = databricks.get_sql_warehouses()
-    all_get_sql_warehouse = {__key: databricks.get_sql_warehouse(id=__value) for __key, __value in warehouses["ids"]}
+    this = {__key: databricks.get_sql_warehouse(id=__value) for __key, __value in all.ids}
     ```
 
     * Search for a specific SQL Warehouse by name:
@@ -451,7 +451,7 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
     import pulumi_databricks as databricks
 
     all = databricks.get_sql_warehouses()
-    all_get_sql_warehouse = {__key: databricks.get_sql_warehouse(id=__value) for __key, __value in warehouses["ids"]}
+    this = {__key: databricks.get_sql_warehouse(id=__value) for __key, __value in all.ids}
     ```
 
     * Search for a specific SQL Warehouse by name:

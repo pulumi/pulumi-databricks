@@ -120,6 +120,9 @@ export class Pipeline extends pulumi.CustomResource {
      * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
      */
     public readonly allowDuplicateNames!: pulumi.Output<boolean | undefined>;
+    /**
+     * optional string specifying ID of the budget policy for this DLT pipeline.
+     */
     public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
     /**
      * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
@@ -296,6 +299,9 @@ export interface PipelineState {
      * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
      */
     allowDuplicateNames?: pulumi.Input<boolean>;
+    /**
+     * optional string specifying ID of the budget policy for this DLT pipeline.
+     */
     budgetPolicyId?: pulumi.Input<string>;
     /**
      * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
@@ -388,6 +394,9 @@ export interface PipelineArgs {
      * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
      */
     allowDuplicateNames?: pulumi.Input<boolean>;
+    /**
+     * optional string specifying ID of the budget policy for this DLT pipeline.
+     */
     budgetPolicyId?: pulumi.Input<string>;
     /**
      * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).

@@ -119,9 +119,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/modelServing:ModelServing")
 public class ModelServing extends com.pulumi.resources.CustomResource {
+    /**
+     * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+     * 
+     */
     @Export(name="aiGateway", refs={ModelServingAiGateway.class}, tree="[0]")
     private Output</* @Nullable */ ModelServingAiGateway> aiGateway;
 
+    /**
+     * @return A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+     * 
+     */
     public Output<Optional<ModelServingAiGateway>> aiGateway() {
         return Codegen.optional(this.aiGateway);
     }
@@ -140,42 +148,42 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
         return this.config;
     }
     /**
-     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+     * @return The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      * 
      */
     @Export(name="rateLimits", refs={List.class,ModelServingRateLimit.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ModelServingRateLimit>> rateLimits;
 
     /**
-     * @return A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * @return A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      * 
      */
     public Output<Optional<List<ModelServingRateLimit>>> rateLimits() {
         return Codegen.optional(this.rateLimits);
     }
     /**
-     * A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     * A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
      * 
      */
     @Export(name="routeOptimized", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeOptimized;
 
     /**
-     * @return A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     * @return A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
      * 
      */
     public Output<Optional<Boolean>> routeOptimized() {

@@ -336,6 +336,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         databricks_account_id = config.require_object("databricksAccountId")
         # AWS ARN for the Databricks cross account role
         databricks_cross_account_role = config.require_object("databricksCrossAccountRole")
+        current = aws.get_caller_identity()
         databricks_storage_cmk = aws.iam.get_policy_document(version="2012-10-17",
             statements=[
                 {
@@ -343,7 +344,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                     "effect": "Allow",
                     "principals": [{
                         "type": "AWS",
-                        "identifiers": [current["accountId"]],
+                        "identifiers": [current.account_id],
                     }],
                     "actions": ["kms:*"],
                     "resources": ["*"],
@@ -560,6 +561,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         databricks_account_id = config.require_object("databricksAccountId")
         # AWS ARN for the Databricks cross account role
         databricks_cross_account_role = config.require_object("databricksCrossAccountRole")
+        current = aws.get_caller_identity()
         databricks_storage_cmk = aws.iam.get_policy_document(version="2012-10-17",
             statements=[
                 {
@@ -567,7 +569,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                     "effect": "Allow",
                     "principals": [{
                         "type": "AWS",
-                        "identifiers": [current["accountId"]],
+                        "identifiers": [current.account_id],
                     }],
                     "actions": ["kms:*"],
                     "resources": ["*"],

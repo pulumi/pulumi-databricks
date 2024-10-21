@@ -14,9 +14,17 @@ public final class ModelServingAiGatewayGuardrailsInputPiiArgs extends com.pulum
 
     public static final ModelServingAiGatewayGuardrailsInputPiiArgs Empty = new ModelServingAiGatewayGuardrailsInputPiiArgs();
 
+    /**
+     * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+     * 
+     */
     @Import(name="behavior", required=true)
     private Output<String> behavior;
 
+    /**
+     * @return a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+     * 
+     */
     public Output<String> behavior() {
         return this.behavior;
     }
@@ -45,11 +53,23 @@ public final class ModelServingAiGatewayGuardrailsInputPiiArgs extends com.pulum
             $ = new ModelServingAiGatewayGuardrailsInputPiiArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param behavior a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder behavior(Output<String> behavior) {
             $.behavior = behavior;
             return this;
         }
 
+        /**
+         * @param behavior a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder behavior(String behavior) {
             return behavior(Output.of(behavior));
         }

@@ -175,6 +175,20 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.alwaysRunning);
     }
     /**
+     * The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+     * 
+     */
+    @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> budgetPolicyId;
+
+    /**
+     * @return The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+     * 
+     */
+    public Output<Optional<String>> budgetPolicyId() {
+        return Codegen.optional(this.budgetPolicyId);
+    }
+    /**
      * Configuration block to configure pause status. See continuous Configuration Block.
      * 
      */

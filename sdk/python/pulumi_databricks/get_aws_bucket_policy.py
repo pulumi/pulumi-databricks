@@ -105,6 +105,24 @@ def get_aws_bucket_policy(bucket: Optional[str] = None,
     """
     This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_databricks as databricks
+
+    this_bucket_v2 = aws.s3.BucketV2("this",
+        bucket="<unique_bucket_name>",
+        force_destroy=True)
+    this = databricks.get_aws_bucket_policy_output(bucket=this_bucket_v2.bucket)
+    this_bucket_policy = aws.s3.BucketPolicy("this",
+        bucket=this_bucket_v2.id,
+        policy=this.json)
+    ```
+
+    Bucket policy with full access:
+
 
     :param str bucket: AWS S3 Bucket name for which to generate the policy document.
     :param str databricks_e2_account_id: Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
@@ -132,6 +150,24 @@ def get_aws_bucket_policy_output(bucket: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsBucketPolicyResult]:
     """
     This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_databricks as databricks
+
+    this_bucket_v2 = aws.s3.BucketV2("this",
+        bucket="<unique_bucket_name>",
+        force_destroy=True)
+    this = databricks.get_aws_bucket_policy_output(bucket=this_bucket_v2.bucket)
+    this_bucket_policy = aws.s3.BucketPolicy("this",
+        bucket=this_bucket_v2.id,
+        policy=this.json)
+    ```
+
+    Bucket policy with full access:
 
 
     :param str bucket: AWS S3 Bucket name for which to generate the policy document.

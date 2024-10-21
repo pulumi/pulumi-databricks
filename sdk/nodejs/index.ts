@@ -260,10 +260,20 @@ export const getNotebookPaths: typeof import("./getNotebookPaths").getNotebookPa
 export const getNotebookPathsOutput: typeof import("./getNotebookPaths").getNotebookPathsOutput = null as any;
 utilities.lazyLoad(exports, ["getNotebookPaths","getNotebookPathsOutput"], () => require("./getNotebookPaths"));
 
+export { GetNotificationDestinationsArgs, GetNotificationDestinationsResult, GetNotificationDestinationsOutputArgs } from "./getNotificationDestinations";
+export const getNotificationDestinations: typeof import("./getNotificationDestinations").getNotificationDestinations = null as any;
+export const getNotificationDestinationsOutput: typeof import("./getNotificationDestinations").getNotificationDestinationsOutput = null as any;
+utilities.lazyLoad(exports, ["getNotificationDestinations","getNotificationDestinationsOutput"], () => require("./getNotificationDestinations"));
+
 export { GetPipelinesArgs, GetPipelinesResult, GetPipelinesOutputArgs } from "./getPipelines";
 export const getPipelines: typeof import("./getPipelines").getPipelines = null as any;
 export const getPipelinesOutput: typeof import("./getPipelines").getPipelinesOutput = null as any;
 utilities.lazyLoad(exports, ["getPipelines","getPipelinesOutput"], () => require("./getPipelines"));
+
+export { GetRegisteredModelArgs, GetRegisteredModelResult, GetRegisteredModelOutputArgs } from "./getRegisteredModel";
+export const getRegisteredModel: typeof import("./getRegisteredModel").getRegisteredModel = null as any;
+export const getRegisteredModelOutput: typeof import("./getRegisteredModel").getRegisteredModelOutput = null as any;
+utilities.lazyLoad(exports, ["getRegisteredModel","getRegisteredModelOutput"], () => require("./getRegisteredModel"));
 
 export { GetSchemaArgs, GetSchemaResult, GetSchemaOutputArgs } from "./getSchema";
 export const getSchema: typeof import("./getSchema").getSchema = null as any;

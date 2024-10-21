@@ -103,7 +103,7 @@ def get_cluster(cluster_id: Optional[str] = None,
     import pulumi_databricks as databricks
 
     all = databricks.get_clusters()
-    all_get_cluster = {__key: databricks.get_cluster(cluster_id=__value) for __key, __value in ids}
+    all_get_cluster = {__key: databricks.get_cluster(cluster_id=__value) for __key, __value in all.ids}
     ```
 
     ## Related Resources
@@ -156,7 +156,7 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi_databricks as databricks
 
     all = databricks.get_clusters()
-    all_get_cluster = {__key: databricks.get_cluster(cluster_id=__value) for __key, __value in ids}
+    all_get_cluster = {__key: databricks.get_cluster(cluster_id=__value) for __key, __value in all.ids}
     ```
 
     ## Related Resources

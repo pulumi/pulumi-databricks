@@ -22,9 +22,17 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ModelServingArgs Empty = new ModelServingArgs();
 
+    /**
+     * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+     * 
+     */
     @Import(name="aiGateway")
     private @Nullable Output<ModelServingAiGatewayArgs> aiGateway;
 
+    /**
+     * @return A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+     * 
+     */
     public Optional<Output<ModelServingAiGatewayArgs>> aiGateway() {
         return Optional.ofNullable(this.aiGateway);
     }
@@ -45,14 +53,14 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+     * @return The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -60,14 +68,14 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      * 
      */
     @Import(name="rateLimits")
     private @Nullable Output<List<ModelServingRateLimitArgs>> rateLimits;
 
     /**
-     * @return A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * @return A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      * 
      */
     public Optional<Output<List<ModelServingRateLimitArgs>>> rateLimits() {
@@ -75,14 +83,14 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     * A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
      * 
      */
     @Import(name="routeOptimized")
     private @Nullable Output<Boolean> routeOptimized;
 
     /**
-     * @return A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+     * @return A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
      * 
      */
     public Optional<Output<Boolean>> routeOptimized() {
@@ -133,11 +141,23 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ModelServingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aiGateway A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+         * 
+         * @return builder
+         * 
+         */
         public Builder aiGateway(@Nullable Output<ModelServingAiGatewayArgs> aiGateway) {
             $.aiGateway = aiGateway;
             return this;
         }
 
+        /**
+         * @param aiGateway A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+         * 
+         * @return builder
+         * 
+         */
         public Builder aiGateway(ModelServingAiGatewayArgs aiGateway) {
             return aiGateway(Output.of(aiGateway));
         }
@@ -164,7 +184,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+         * @param name The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
          * 
          * @return builder
          * 
@@ -175,7 +195,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+         * @param name The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
          * 
          * @return builder
          * 
@@ -185,7 +205,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rateLimits A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+         * @param rateLimits A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
          * 
          * @return builder
          * 
@@ -196,7 +216,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rateLimits A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+         * @param rateLimits A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
          * 
          * @return builder
          * 
@@ -206,7 +226,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rateLimits A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+         * @param rateLimits A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
          * 
          * @return builder
          * 
@@ -216,7 +236,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeOptimized A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+         * @param routeOptimized A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
          * 
          * @return builder
          * 
@@ -227,7 +247,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeOptimized A boolean enabling route optimization for the endpoint. NOTE: only available for custom models.
+         * @param routeOptimized A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
          * 
          * @return builder
          * 

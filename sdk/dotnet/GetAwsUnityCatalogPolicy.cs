@@ -51,7 +51,7 @@ namespace Pulumi.Databricks
         ///     var metastoreDataAccess = new Aws.Iam.Role("metastore_data_access", new()
         ///     {
         ///         Name = $"{prefix}-uc-access",
-        ///         AssumeRolePolicy = thisAwsIamPolicyDocument.Json,
+        ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
         ///         ManagedPolicyArns = new[]
         ///         {
         ///             unityMetastore.Arn,
@@ -104,7 +104,7 @@ namespace Pulumi.Databricks
         ///     var metastoreDataAccess = new Aws.Iam.Role("metastore_data_access", new()
         ///     {
         ///         Name = $"{prefix}-uc-access",
-        ///         AssumeRolePolicy = thisAwsIamPolicyDocument.Json,
+        ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
         ///         ManagedPolicyArns = new[]
         ///         {
         ///             unityMetastore.Arn,

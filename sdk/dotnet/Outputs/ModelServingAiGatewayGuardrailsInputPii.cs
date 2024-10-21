@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingAiGatewayGuardrailsInputPii
     {
+        /// <summary>
+        /// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+        /// </summary>
         public readonly string Behavior;
 
         [OutputConstructor]

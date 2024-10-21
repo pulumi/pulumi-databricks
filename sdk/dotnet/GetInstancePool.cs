@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
         /// 
         ///     var myCluster = new Databricks.Cluster("my_cluster", new()
         ///     {
-        ///         InstancePoolId = poolDatabricksInstancePool.Id,
+        ///         InstancePoolId = pool.Apply(getInstancePoolResult =&gt; getInstancePoolResult.Id),
         ///     });
         /// 
         /// });
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks
         /// 
         ///     var myCluster = new Databricks.Cluster("my_cluster", new()
         ///     {
-        ///         InstancePoolId = poolDatabricksInstancePool.Id,
+        ///         InstancePoolId = pool.Apply(getInstancePoolResult =&gt; getInstancePoolResult.Id),
         ///     });
         /// 
         /// });

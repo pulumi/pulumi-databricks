@@ -122,8 +122,9 @@ type Pipeline struct {
 	pulumi.CustomResourceState
 
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
-	AllowDuplicateNames pulumi.BoolPtrOutput   `pulumi:"allowDuplicateNames"`
-	BudgetPolicyId      pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
+	AllowDuplicateNames pulumi.BoolPtrOutput `pulumi:"allowDuplicateNames"`
+	// optional string specifying ID of the budget policy for this DLT pipeline.
+	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog pulumi.StringPtrOutput `pulumi:"catalog"`
 	Cause   pulumi.StringOutput    `pulumi:"cause"`
@@ -204,8 +205,9 @@ func GetPipeline(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Pipeline resources.
 type pipelineState struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
-	AllowDuplicateNames *bool   `pulumi:"allowDuplicateNames"`
-	BudgetPolicyId      *string `pulumi:"budgetPolicyId"`
+	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
+	// optional string specifying ID of the budget policy for this DLT pipeline.
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog *string `pulumi:"catalog"`
 	Cause   *string `pulumi:"cause"`
@@ -258,7 +260,8 @@ type pipelineState struct {
 type PipelineState struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
 	AllowDuplicateNames pulumi.BoolPtrInput
-	BudgetPolicyId      pulumi.StringPtrInput
+	// optional string specifying ID of the budget policy for this DLT pipeline.
+	BudgetPolicyId pulumi.StringPtrInput
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog pulumi.StringPtrInput
 	Cause   pulumi.StringPtrInput
@@ -314,8 +317,9 @@ func (PipelineState) ElementType() reflect.Type {
 
 type pipelineArgs struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
-	AllowDuplicateNames *bool   `pulumi:"allowDuplicateNames"`
-	BudgetPolicyId      *string `pulumi:"budgetPolicyId"`
+	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
+	// optional string specifying ID of the budget policy for this DLT pipeline.
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog *string `pulumi:"catalog"`
 	Cause   *string `pulumi:"cause"`
@@ -369,7 +373,8 @@ type pipelineArgs struct {
 type PipelineArgs struct {
 	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
 	AllowDuplicateNames pulumi.BoolPtrInput
-	BudgetPolicyId      pulumi.StringPtrInput
+	// optional string specifying ID of the budget policy for this DLT pipeline.
+	BudgetPolicyId pulumi.StringPtrInput
 	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 	Catalog pulumi.StringPtrInput
 	Cause   pulumi.StringPtrInput
@@ -511,6 +516,7 @@ func (o PipelineOutput) AllowDuplicateNames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.AllowDuplicateNames }).(pulumi.BoolPtrOutput)
 }
 
+// optional string specifying ID of the budget policy for this DLT pipeline.
 func (o PipelineOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }

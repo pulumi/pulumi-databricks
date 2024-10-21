@@ -82,7 +82,6 @@ import javax.annotation.Nullable;
  *             .dataSourceFormat("DELTA")
  *             .columns(SqlTableColumnArgs.builder()
  *                 .name("timestamp")
- *                 .position(1)
  *                 .type("int")
  *                 .build())
  *             .build());

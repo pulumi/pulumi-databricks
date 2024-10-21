@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("awsAccessKeyId")]
         public Input<string>? AwsAccessKeyId { get; set; }
 
+        /// <summary>
+        /// An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
+        /// </summary>
         [Input("awsAccessKeyIdPlaintext")]
         public Input<string>? AwsAccessKeyIdPlaintext { get; set; }
 
@@ -33,6 +36,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("awsSecretAccessKey")]
         public Input<string>? AwsSecretAccessKey { get; set; }
 
+        /// <summary>
+        /// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
+        /// </summary>
         [Input("awsSecretAccessKeyPlaintext")]
         public Input<string>? AwsSecretAccessKeyPlaintext { get; set; }
 

@@ -16,6 +16,10 @@ public final class ModelServingConfigServedEntityExternalModelPalmConfig {
      * 
      */
     private @Nullable String palmApiKey;
+    /**
+     * @return The PaLM API key provided as a plaintext string.
+     * 
+     */
     private @Nullable String palmApiKeyPlaintext;
 
     private ModelServingConfigServedEntityExternalModelPalmConfig() {}
@@ -26,6 +30,10 @@ public final class ModelServingConfigServedEntityExternalModelPalmConfig {
     public Optional<String> palmApiKey() {
         return Optional.ofNullable(this.palmApiKey);
     }
+    /**
+     * @return The PaLM API key provided as a plaintext string.
+     * 
+     */
     public Optional<String> palmApiKeyPlaintext() {
         return Optional.ofNullable(this.palmApiKeyPlaintext);
     }

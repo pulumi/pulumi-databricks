@@ -31,14 +31,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupInstancePool(ctx, &databricks.LookupInstancePoolArgs{
+//			pool, err := databricks.LookupInstancePool(ctx, &databricks.LookupInstancePoolArgs{
 //				Name: "All spot",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewCluster(ctx, "my_cluster", &databricks.ClusterArgs{
-//				InstancePoolId: pulumi.Any(poolDatabricksInstancePool.Id),
+//				InstancePoolId: pulumi.String(pool.Id),
 //			})
 //			if err != nil {
 //				return err

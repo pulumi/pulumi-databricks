@@ -323,6 +323,8 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var me = Databricks.GetCurrentUser.Invoke();
+    /// 
     ///     var eng = new Databricks.Group("eng", new()
     ///     {
     ///         DisplayName = "Engineering",
@@ -342,12 +344,12 @@ namespace Pulumi.Databricks
     /// ",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///         Language = "PYTHON",
-    ///         Path = $"{me.Home}/DLT_Demo",
+    ///         Path = $"{me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Home)}/DLT_Demo",
     ///     });
     /// 
     ///     var @this = new Databricks.Pipeline("this", new()
     ///     {
-    ///         Name = $"DLT Demo Pipeline ({me.Alphanumeric})",
+    ///         Name = $"DLT Demo Pipeline ({me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)})",
     ///         Storage = "/test/tf-pipeline",
     ///         Configuration = 
     ///         {

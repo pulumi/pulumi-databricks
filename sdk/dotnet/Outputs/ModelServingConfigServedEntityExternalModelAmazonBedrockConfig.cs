@@ -17,6 +17,9 @@ namespace Pulumi.Databricks.Outputs
         /// The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
         /// </summary>
         public readonly string? AwsAccessKeyId;
+        /// <summary>
+        /// An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
+        /// </summary>
         public readonly string? AwsAccessKeyIdPlaintext;
         /// <summary>
         /// The AWS region to use. Bedrock has to be enabled there.
@@ -26,6 +29,9 @@ namespace Pulumi.Databricks.Outputs
         /// The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
         /// </summary>
         public readonly string? AwsSecretAccessKey;
+        /// <summary>
+        /// An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
+        /// </summary>
         public readonly string? AwsSecretAccessKeyPlaintext;
         /// <summary>
         /// The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.

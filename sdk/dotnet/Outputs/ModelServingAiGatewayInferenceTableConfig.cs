@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? CatalogName;
         /// <summary>
-        /// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        /// boolean flag specifying if usage tracking is enabled.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

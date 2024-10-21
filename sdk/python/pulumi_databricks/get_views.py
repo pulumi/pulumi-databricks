@@ -88,6 +88,36 @@ def get_views(catalog_name: Optional[str] = None,
 
     Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use get_tables for retrieving a list of tables.
 
+    ## Example Usage
+
+    Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ Schema from _sandbox_ databricks_catalog.
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    things = databricks.get_views(catalog_name="sandbox",
+        schema_name="things")
+    things_grants = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
+        things_grants.append(databricks.Grants(f"things-{range['key']}",
+            table=range["value"],
+            grants=[{
+                "principal": "sensitive",
+                "privileges": [
+                    "SELECT",
+                    "MODIFY",
+                ],
+            }]))
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Schema to manage schemas within Unity Catalog.
+    * Catalog to manage catalogs within Unity Catalog.
+
 
     :param str catalog_name: Name of databricks_catalog
     :param Sequence[str] ids: set of databricks_view full names: *`catalog`.`schema`.`view`*
@@ -113,6 +143,36 @@ def get_views_output(catalog_name: Optional[pulumi.Input[str]] = None,
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
     Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use get_tables for retrieving a list of tables.
+
+    ## Example Usage
+
+    Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ Schema from _sandbox_ databricks_catalog.
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    things = databricks.get_views(catalog_name="sandbox",
+        schema_name="things")
+    things_grants = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
+        things_grants.append(databricks.Grants(f"things-{range['key']}",
+            table=range["value"],
+            grants=[{
+                "principal": "sensitive",
+                "privileges": [
+                    "SELECT",
+                    "MODIFY",
+                ],
+            }]))
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Schema to manage schemas within Unity Catalog.
+    * Catalog to manage catalogs within Unity Catalog.
 
 
     :param str catalog_name: Name of databricks_catalog

@@ -12,15 +12,27 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
+        /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
 
+        /// <summary>
+        /// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
+        /// </summary>
         [Input("privateKeyPlaintext")]
         public Input<string>? PrivateKeyPlaintext { get; set; }
 
+        /// <summary>
+        /// This is the Google Cloud project id that the service account is associated with.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// This is the region for the Google Cloud Vertex AI Service.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

@@ -13,6 +13,211 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo struct {
+	MountOptions  *string `pulumi:"mountOptions"`
+	ServerAddress string  `pulumi:"serverAddress"`
+}
+
+// GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoInput is an input type that accepts GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs and GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoInput` via:
+//
+//	GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs{...}
+type GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput() GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput
+	ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutputWithContext(context.Context) GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput
+}
+
+type GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs struct {
+	MountOptions  pulumi.StringPtrInput `pulumi:"mountOptions"`
+	ServerAddress pulumi.StringInput    `pulumi:"serverAddress"`
+}
+
+func (GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs) ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput() GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput {
+	return i.ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs) ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput)
+}
+
+type GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput) ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput() GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput) ToGetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput) MountOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo) *string { return v.MountOptions }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterInfoSpecDockerImage struct {
+	BasicAuth *GetClusterClusterInfoSpecDockerImageBasicAuth `pulumi:"basicAuth"`
+	Url       string                                         `pulumi:"url"`
+}
+
+// GetClusterClusterInfoSpecDockerImageInput is an input type that accepts GetClusterClusterInfoSpecDockerImageArgs and GetClusterClusterInfoSpecDockerImageOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecDockerImageInput` via:
+//
+//	GetClusterClusterInfoSpecDockerImageArgs{...}
+type GetClusterClusterInfoSpecDockerImageInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecDockerImageOutput() GetClusterClusterInfoSpecDockerImageOutput
+	ToGetClusterClusterInfoSpecDockerImageOutputWithContext(context.Context) GetClusterClusterInfoSpecDockerImageOutput
+}
+
+type GetClusterClusterInfoSpecDockerImageArgs struct {
+	BasicAuth GetClusterClusterInfoSpecDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
+	Url       pulumi.StringInput                                    `pulumi:"url"`
+}
+
+func (GetClusterClusterInfoSpecDockerImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecDockerImage)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecDockerImageArgs) ToGetClusterClusterInfoSpecDockerImageOutput() GetClusterClusterInfoSpecDockerImageOutput {
+	return i.ToGetClusterClusterInfoSpecDockerImageOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecDockerImageArgs) ToGetClusterClusterInfoSpecDockerImageOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecDockerImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecDockerImageOutput)
+}
+
+func (i GetClusterClusterInfoSpecDockerImageArgs) ToGetClusterClusterInfoSpecDockerImagePtrOutput() GetClusterClusterInfoSpecDockerImagePtrOutput {
+	return i.ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecDockerImageArgs) ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecDockerImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecDockerImageOutput).ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoSpecDockerImagePtrInput is an input type that accepts GetClusterClusterInfoSpecDockerImageArgs, GetClusterClusterInfoSpecDockerImagePtr and GetClusterClusterInfoSpecDockerImagePtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecDockerImagePtrInput` via:
+//
+//	        GetClusterClusterInfoSpecDockerImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoSpecDockerImagePtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecDockerImagePtrOutput() GetClusterClusterInfoSpecDockerImagePtrOutput
+	ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(context.Context) GetClusterClusterInfoSpecDockerImagePtrOutput
+}
+
+type getClusterClusterInfoSpecDockerImagePtrType GetClusterClusterInfoSpecDockerImageArgs
+
+func GetClusterClusterInfoSpecDockerImagePtr(v *GetClusterClusterInfoSpecDockerImageArgs) GetClusterClusterInfoSpecDockerImagePtrInput {
+	return (*getClusterClusterInfoSpecDockerImagePtrType)(v)
+}
+
+func (*getClusterClusterInfoSpecDockerImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecDockerImage)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoSpecDockerImagePtrType) ToGetClusterClusterInfoSpecDockerImagePtrOutput() GetClusterClusterInfoSpecDockerImagePtrOutput {
+	return i.ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoSpecDockerImagePtrType) ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecDockerImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecDockerImagePtrOutput)
+}
+
+type GetClusterClusterInfoSpecDockerImageOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecDockerImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecDockerImage)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecDockerImageOutput) ToGetClusterClusterInfoSpecDockerImageOutput() GetClusterClusterInfoSpecDockerImageOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecDockerImageOutput) ToGetClusterClusterInfoSpecDockerImageOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecDockerImageOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecDockerImageOutput) ToGetClusterClusterInfoSpecDockerImagePtrOutput() GetClusterClusterInfoSpecDockerImagePtrOutput {
+	return o.ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoSpecDockerImageOutput) ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecDockerImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoSpecDockerImage) *GetClusterClusterInfoSpecDockerImage {
+		return &v
+	}).(GetClusterClusterInfoSpecDockerImagePtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecDockerImageOutput) BasicAuth() GetClusterClusterInfoSpecDockerImageBasicAuthPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecDockerImage) *GetClusterClusterInfoSpecDockerImageBasicAuth {
+		return v.BasicAuth
+	}).(GetClusterClusterInfoSpecDockerImageBasicAuthPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecDockerImageOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecDockerImage) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterInfoSpecDockerImagePtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecDockerImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecDockerImage)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecDockerImagePtrOutput) ToGetClusterClusterInfoSpecDockerImagePtrOutput() GetClusterClusterInfoSpecDockerImagePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecDockerImagePtrOutput) ToGetClusterClusterInfoSpecDockerImagePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecDockerImagePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecDockerImagePtrOutput) Elem() GetClusterClusterInfoSpecDockerImageOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecDockerImage) GetClusterClusterInfoSpecDockerImage {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoSpecDockerImage
+		return ret
+	}).(GetClusterClusterInfoSpecDockerImageOutput)
+}
+
+func (o GetClusterClusterInfoSpecDockerImagePtrOutput) BasicAuth() GetClusterClusterInfoSpecDockerImageBasicAuthPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecDockerImage) *GetClusterClusterInfoSpecDockerImageBasicAuth {
+		if v == nil {
+			return nil
+		}
+		return v.BasicAuth
+	}).(GetClusterClusterInfoSpecDockerImageBasicAuthPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecDockerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetClusterClusterInfoSpecDockerImageBasicAuth struct {
 	Password string `pulumi:"password"`
 	Username string `pulumi:"username"`
@@ -38786,6 +38991,438 @@ func (o GetNotebookPathsNotebookPathListArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetNotebookPathsNotebookPathListOutput)
 }
 
+type GetNotificationDestinationsNotificationDestination struct {
+	// The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+	DestinationType *string `pulumi:"destinationType"`
+	// The display name of the Notification Destination.
+	DisplayName *string `pulumi:"displayName"`
+	// The unique ID of the Notification Destination.
+	Id *string `pulumi:"id"`
+}
+
+// GetNotificationDestinationsNotificationDestinationInput is an input type that accepts GetNotificationDestinationsNotificationDestinationArgs and GetNotificationDestinationsNotificationDestinationOutput values.
+// You can construct a concrete instance of `GetNotificationDestinationsNotificationDestinationInput` via:
+//
+//	GetNotificationDestinationsNotificationDestinationArgs{...}
+type GetNotificationDestinationsNotificationDestinationInput interface {
+	pulumi.Input
+
+	ToGetNotificationDestinationsNotificationDestinationOutput() GetNotificationDestinationsNotificationDestinationOutput
+	ToGetNotificationDestinationsNotificationDestinationOutputWithContext(context.Context) GetNotificationDestinationsNotificationDestinationOutput
+}
+
+type GetNotificationDestinationsNotificationDestinationArgs struct {
+	// The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+	DestinationType pulumi.StringPtrInput `pulumi:"destinationType"`
+	// The display name of the Notification Destination.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The unique ID of the Notification Destination.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (GetNotificationDestinationsNotificationDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationDestinationsNotificationDestination)(nil)).Elem()
+}
+
+func (i GetNotificationDestinationsNotificationDestinationArgs) ToGetNotificationDestinationsNotificationDestinationOutput() GetNotificationDestinationsNotificationDestinationOutput {
+	return i.ToGetNotificationDestinationsNotificationDestinationOutputWithContext(context.Background())
+}
+
+func (i GetNotificationDestinationsNotificationDestinationArgs) ToGetNotificationDestinationsNotificationDestinationOutputWithContext(ctx context.Context) GetNotificationDestinationsNotificationDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationDestinationsNotificationDestinationOutput)
+}
+
+// GetNotificationDestinationsNotificationDestinationArrayInput is an input type that accepts GetNotificationDestinationsNotificationDestinationArray and GetNotificationDestinationsNotificationDestinationArrayOutput values.
+// You can construct a concrete instance of `GetNotificationDestinationsNotificationDestinationArrayInput` via:
+//
+//	GetNotificationDestinationsNotificationDestinationArray{ GetNotificationDestinationsNotificationDestinationArgs{...} }
+type GetNotificationDestinationsNotificationDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGetNotificationDestinationsNotificationDestinationArrayOutput() GetNotificationDestinationsNotificationDestinationArrayOutput
+	ToGetNotificationDestinationsNotificationDestinationArrayOutputWithContext(context.Context) GetNotificationDestinationsNotificationDestinationArrayOutput
+}
+
+type GetNotificationDestinationsNotificationDestinationArray []GetNotificationDestinationsNotificationDestinationInput
+
+func (GetNotificationDestinationsNotificationDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationDestinationsNotificationDestination)(nil)).Elem()
+}
+
+func (i GetNotificationDestinationsNotificationDestinationArray) ToGetNotificationDestinationsNotificationDestinationArrayOutput() GetNotificationDestinationsNotificationDestinationArrayOutput {
+	return i.ToGetNotificationDestinationsNotificationDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GetNotificationDestinationsNotificationDestinationArray) ToGetNotificationDestinationsNotificationDestinationArrayOutputWithContext(ctx context.Context) GetNotificationDestinationsNotificationDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationDestinationsNotificationDestinationArrayOutput)
+}
+
+type GetNotificationDestinationsNotificationDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationDestinationsNotificationDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationDestinationsNotificationDestination)(nil)).Elem()
+}
+
+func (o GetNotificationDestinationsNotificationDestinationOutput) ToGetNotificationDestinationsNotificationDestinationOutput() GetNotificationDestinationsNotificationDestinationOutput {
+	return o
+}
+
+func (o GetNotificationDestinationsNotificationDestinationOutput) ToGetNotificationDestinationsNotificationDestinationOutputWithContext(ctx context.Context) GetNotificationDestinationsNotificationDestinationOutput {
+	return o
+}
+
+// The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+func (o GetNotificationDestinationsNotificationDestinationOutput) DestinationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotificationDestinationsNotificationDestination) *string { return v.DestinationType }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the Notification Destination.
+func (o GetNotificationDestinationsNotificationDestinationOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotificationDestinationsNotificationDestination) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The unique ID of the Notification Destination.
+func (o GetNotificationDestinationsNotificationDestinationOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNotificationDestinationsNotificationDestination) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type GetNotificationDestinationsNotificationDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationDestinationsNotificationDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationDestinationsNotificationDestination)(nil)).Elem()
+}
+
+func (o GetNotificationDestinationsNotificationDestinationArrayOutput) ToGetNotificationDestinationsNotificationDestinationArrayOutput() GetNotificationDestinationsNotificationDestinationArrayOutput {
+	return o
+}
+
+func (o GetNotificationDestinationsNotificationDestinationArrayOutput) ToGetNotificationDestinationsNotificationDestinationArrayOutputWithContext(ctx context.Context) GetNotificationDestinationsNotificationDestinationArrayOutput {
+	return o
+}
+
+func (o GetNotificationDestinationsNotificationDestinationArrayOutput) Index(i pulumi.IntInput) GetNotificationDestinationsNotificationDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNotificationDestinationsNotificationDestination {
+		return vs[0].([]GetNotificationDestinationsNotificationDestination)[vs[1].(int)]
+	}).(GetNotificationDestinationsNotificationDestinationOutput)
+}
+
+type GetRegisteredModelModelInfo struct {
+	// the list of aliases associated with this model. Each item is object consisting of following attributes:
+	Aliases    []GetRegisteredModelModelInfoAlias `pulumi:"aliases"`
+	BrowseOnly *bool                              `pulumi:"browseOnly"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName *string `pulumi:"catalogName"`
+	// The comment attached to the registered model.
+	Comment *string `pulumi:"comment"`
+	// the Unix timestamp at the model's creation
+	CreatedAt *int `pulumi:"createdAt"`
+	// the identifier of the user who created the model
+	CreatedBy *string `pulumi:"createdBy"`
+	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+	FullName *string `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId *string `pulumi:"metastoreId"`
+	// The name of the registered model.
+	Name *string `pulumi:"name"`
+	// Name of the registered model owner.
+	Owner *string `pulumi:"owner"`
+	// The name of the schema where the registered model resides.
+	SchemaName *string `pulumi:"schemaName"`
+	// The storage location under which model version data files are stored.
+	StorageLocation *string `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the model
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// the identifier of the user who updated the model last time
+	UpdatedBy *string `pulumi:"updatedBy"`
+}
+
+// GetRegisteredModelModelInfoInput is an input type that accepts GetRegisteredModelModelInfoArgs and GetRegisteredModelModelInfoOutput values.
+// You can construct a concrete instance of `GetRegisteredModelModelInfoInput` via:
+//
+//	GetRegisteredModelModelInfoArgs{...}
+type GetRegisteredModelModelInfoInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelModelInfoOutput() GetRegisteredModelModelInfoOutput
+	ToGetRegisteredModelModelInfoOutputWithContext(context.Context) GetRegisteredModelModelInfoOutput
+}
+
+type GetRegisteredModelModelInfoArgs struct {
+	// the list of aliases associated with this model. Each item is object consisting of following attributes:
+	Aliases    GetRegisteredModelModelInfoAliasArrayInput `pulumi:"aliases"`
+	BrowseOnly pulumi.BoolPtrInput                        `pulumi:"browseOnly"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// The comment attached to the registered model.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// the Unix timestamp at the model's creation
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// the identifier of the user who created the model
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// The name of the registered model.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the registered model owner.
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// The name of the schema where the registered model resides.
+	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
+	// The storage location under which model version data files are stored.
+	StorageLocation pulumi.StringPtrInput `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the model
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// the identifier of the user who updated the model last time
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+}
+
+func (GetRegisteredModelModelInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelModelInfo)(nil)).Elem()
+}
+
+func (i GetRegisteredModelModelInfoArgs) ToGetRegisteredModelModelInfoOutput() GetRegisteredModelModelInfoOutput {
+	return i.ToGetRegisteredModelModelInfoOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelModelInfoArgs) ToGetRegisteredModelModelInfoOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelModelInfoOutput)
+}
+
+// GetRegisteredModelModelInfoArrayInput is an input type that accepts GetRegisteredModelModelInfoArray and GetRegisteredModelModelInfoArrayOutput values.
+// You can construct a concrete instance of `GetRegisteredModelModelInfoArrayInput` via:
+//
+//	GetRegisteredModelModelInfoArray{ GetRegisteredModelModelInfoArgs{...} }
+type GetRegisteredModelModelInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelModelInfoArrayOutput() GetRegisteredModelModelInfoArrayOutput
+	ToGetRegisteredModelModelInfoArrayOutputWithContext(context.Context) GetRegisteredModelModelInfoArrayOutput
+}
+
+type GetRegisteredModelModelInfoArray []GetRegisteredModelModelInfoInput
+
+func (GetRegisteredModelModelInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelModelInfo)(nil)).Elem()
+}
+
+func (i GetRegisteredModelModelInfoArray) ToGetRegisteredModelModelInfoArrayOutput() GetRegisteredModelModelInfoArrayOutput {
+	return i.ToGetRegisteredModelModelInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelModelInfoArray) ToGetRegisteredModelModelInfoArrayOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelModelInfoArrayOutput)
+}
+
+type GetRegisteredModelModelInfoOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelModelInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelModelInfo)(nil)).Elem()
+}
+
+func (o GetRegisteredModelModelInfoOutput) ToGetRegisteredModelModelInfoOutput() GetRegisteredModelModelInfoOutput {
+	return o
+}
+
+func (o GetRegisteredModelModelInfoOutput) ToGetRegisteredModelModelInfoOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoOutput {
+	return o
+}
+
+// the list of aliases associated with this model. Each item is object consisting of following attributes:
+func (o GetRegisteredModelModelInfoOutput) Aliases() GetRegisteredModelModelInfoAliasArrayOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) []GetRegisteredModelModelInfoAlias { return v.Aliases }).(GetRegisteredModelModelInfoAliasArrayOutput)
+}
+
+func (o GetRegisteredModelModelInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the catalog where the schema and the registered model reside.
+func (o GetRegisteredModelModelInfoOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
+}
+
+// The comment attached to the registered model.
+func (o GetRegisteredModelModelInfoOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// the Unix timestamp at the model's creation
+func (o GetRegisteredModelModelInfoOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the identifier of the user who created the model
+func (o GetRegisteredModelModelInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+func (o GetRegisteredModelModelInfoOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.FullName }).(pulumi.StringPtrOutput)
+}
+
+// the unique identifier of the metastore
+func (o GetRegisteredModelModelInfoOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the registered model.
+func (o GetRegisteredModelModelInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Name of the registered model owner.
+func (o GetRegisteredModelModelInfoOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+// The name of the schema where the registered model resides.
+func (o GetRegisteredModelModelInfoOutput) SchemaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
+}
+
+// The storage location under which model version data files are stored.
+func (o GetRegisteredModelModelInfoOutput) StorageLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.StorageLocation }).(pulumi.StringPtrOutput)
+}
+
+// the timestamp of the last time changes were made to the model
+func (o GetRegisteredModelModelInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the identifier of the user who updated the model last time
+func (o GetRegisteredModelModelInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+type GetRegisteredModelModelInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelModelInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelModelInfo)(nil)).Elem()
+}
+
+func (o GetRegisteredModelModelInfoArrayOutput) ToGetRegisteredModelModelInfoArrayOutput() GetRegisteredModelModelInfoArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelModelInfoArrayOutput) ToGetRegisteredModelModelInfoArrayOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelModelInfoArrayOutput) Index(i pulumi.IntInput) GetRegisteredModelModelInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegisteredModelModelInfo {
+		return vs[0].([]GetRegisteredModelModelInfo)[vs[1].(int)]
+	}).(GetRegisteredModelModelInfoOutput)
+}
+
+type GetRegisteredModelModelInfoAlias struct {
+	// string with the name of alias
+	AliasName *string `pulumi:"aliasName"`
+	// associated model version
+	VersionNum *int `pulumi:"versionNum"`
+}
+
+// GetRegisteredModelModelInfoAliasInput is an input type that accepts GetRegisteredModelModelInfoAliasArgs and GetRegisteredModelModelInfoAliasOutput values.
+// You can construct a concrete instance of `GetRegisteredModelModelInfoAliasInput` via:
+//
+//	GetRegisteredModelModelInfoAliasArgs{...}
+type GetRegisteredModelModelInfoAliasInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelModelInfoAliasOutput() GetRegisteredModelModelInfoAliasOutput
+	ToGetRegisteredModelModelInfoAliasOutputWithContext(context.Context) GetRegisteredModelModelInfoAliasOutput
+}
+
+type GetRegisteredModelModelInfoAliasArgs struct {
+	// string with the name of alias
+	AliasName pulumi.StringPtrInput `pulumi:"aliasName"`
+	// associated model version
+	VersionNum pulumi.IntPtrInput `pulumi:"versionNum"`
+}
+
+func (GetRegisteredModelModelInfoAliasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelModelInfoAlias)(nil)).Elem()
+}
+
+func (i GetRegisteredModelModelInfoAliasArgs) ToGetRegisteredModelModelInfoAliasOutput() GetRegisteredModelModelInfoAliasOutput {
+	return i.ToGetRegisteredModelModelInfoAliasOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelModelInfoAliasArgs) ToGetRegisteredModelModelInfoAliasOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoAliasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelModelInfoAliasOutput)
+}
+
+// GetRegisteredModelModelInfoAliasArrayInput is an input type that accepts GetRegisteredModelModelInfoAliasArray and GetRegisteredModelModelInfoAliasArrayOutput values.
+// You can construct a concrete instance of `GetRegisteredModelModelInfoAliasArrayInput` via:
+//
+//	GetRegisteredModelModelInfoAliasArray{ GetRegisteredModelModelInfoAliasArgs{...} }
+type GetRegisteredModelModelInfoAliasArrayInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelModelInfoAliasArrayOutput() GetRegisteredModelModelInfoAliasArrayOutput
+	ToGetRegisteredModelModelInfoAliasArrayOutputWithContext(context.Context) GetRegisteredModelModelInfoAliasArrayOutput
+}
+
+type GetRegisteredModelModelInfoAliasArray []GetRegisteredModelModelInfoAliasInput
+
+func (GetRegisteredModelModelInfoAliasArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelModelInfoAlias)(nil)).Elem()
+}
+
+func (i GetRegisteredModelModelInfoAliasArray) ToGetRegisteredModelModelInfoAliasArrayOutput() GetRegisteredModelModelInfoAliasArrayOutput {
+	return i.ToGetRegisteredModelModelInfoAliasArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelModelInfoAliasArray) ToGetRegisteredModelModelInfoAliasArrayOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoAliasArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelModelInfoAliasArrayOutput)
+}
+
+type GetRegisteredModelModelInfoAliasOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelModelInfoAliasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelModelInfoAlias)(nil)).Elem()
+}
+
+func (o GetRegisteredModelModelInfoAliasOutput) ToGetRegisteredModelModelInfoAliasOutput() GetRegisteredModelModelInfoAliasOutput {
+	return o
+}
+
+func (o GetRegisteredModelModelInfoAliasOutput) ToGetRegisteredModelModelInfoAliasOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoAliasOutput {
+	return o
+}
+
+// string with the name of alias
+func (o GetRegisteredModelModelInfoAliasOutput) AliasName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfoAlias) *string { return v.AliasName }).(pulumi.StringPtrOutput)
+}
+
+// associated model version
+func (o GetRegisteredModelModelInfoAliasOutput) VersionNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfoAlias) *int { return v.VersionNum }).(pulumi.IntPtrOutput)
+}
+
+type GetRegisteredModelModelInfoAliasArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelModelInfoAliasArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelModelInfoAlias)(nil)).Elem()
+}
+
+func (o GetRegisteredModelModelInfoAliasArrayOutput) ToGetRegisteredModelModelInfoAliasArrayOutput() GetRegisteredModelModelInfoAliasArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelModelInfoAliasArrayOutput) ToGetRegisteredModelModelInfoAliasArrayOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoAliasArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelModelInfoAliasArrayOutput) Index(i pulumi.IntInput) GetRegisteredModelModelInfoAliasOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegisteredModelModelInfoAlias {
+		return vs[0].([]GetRegisteredModelModelInfoAlias)[vs[1].(int)]
+	}).(GetRegisteredModelModelInfoAliasOutput)
+}
+
 type GetSchemaSchemaInfo struct {
 	// indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
 	BrowseOnly *bool `pulumi:"browseOnly"`
@@ -45485,6 +46122,9 @@ func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKm
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecDockerImageInput)(nil)).Elem(), GetClusterClusterInfoSpecDockerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecDockerImagePtrInput)(nil)).Elem(), GetClusterClusterInfoSpecDockerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecDockerImageBasicAuthInput)(nil)).Elem(), GetClusterClusterInfoSpecDockerImageBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecDockerImageBasicAuthPtrInput)(nil)).Elem(), GetClusterClusterInfoSpecDockerImageBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecGcpAttributesInput)(nil)).Elem(), GetClusterClusterInfoSpecGcpAttributesArgs{})
@@ -45954,6 +46594,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMlflowModelTagArrayInput)(nil)).Elem(), GetMlflowModelTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotebookPathsNotebookPathListInput)(nil)).Elem(), GetNotebookPathsNotebookPathListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotebookPathsNotebookPathListArrayInput)(nil)).Elem(), GetNotebookPathsNotebookPathListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationDestinationsNotificationDestinationInput)(nil)).Elem(), GetNotificationDestinationsNotificationDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationDestinationsNotificationDestinationArrayInput)(nil)).Elem(), GetNotificationDestinationsNotificationDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelModelInfoInput)(nil)).Elem(), GetRegisteredModelModelInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelModelInfoArrayInput)(nil)).Elem(), GetRegisteredModelModelInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelModelInfoAliasInput)(nil)).Elem(), GetRegisteredModelModelInfoAliasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelModelInfoAliasArrayInput)(nil)).Elem(), GetRegisteredModelModelInfoAliasArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemaSchemaInfoInput)(nil)).Elem(), GetSchemaSchemaInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemaSchemaInfoPtrInput)(nil)).Elem(), GetSchemaSchemaInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagInput)(nil)).Elem(), GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs{})
@@ -46026,6 +46672,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecDockerImageOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecDockerImagePtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecDockerImageBasicAuthOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecDockerImageBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecGcpAttributesOutput{})
@@ -46495,6 +47144,12 @@ func init() {
 	pulumi.RegisterOutputType(GetMlflowModelTagArrayOutput{})
 	pulumi.RegisterOutputType(GetNotebookPathsNotebookPathListOutput{})
 	pulumi.RegisterOutputType(GetNotebookPathsNotebookPathListArrayOutput{})
+	pulumi.RegisterOutputType(GetNotificationDestinationsNotificationDestinationOutput{})
+	pulumi.RegisterOutputType(GetNotificationDestinationsNotificationDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelModelInfoOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelModelInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelModelInfoAliasOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelModelInfoAliasArrayOutput{})
 	pulumi.RegisterOutputType(GetSchemaSchemaInfoOutput{})
 	pulumi.RegisterOutputType(GetSchemaSchemaInfoPtrOutput{})
 	pulumi.RegisterOutputType(GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput{})

@@ -14,6 +14,61 @@ import (
 // > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 //
 // Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use getTables for retrieving a list of tables.
+//
+// ## Example Usage
+//
+// Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ Schema from _sandbox_ databricks_catalog.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			things, err := databricks.GetViews(ctx, &databricks.GetViewsArgs{
+//				CatalogName: "sandbox",
+//				SchemaName:  "things",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var thingsGrants []*databricks.Grants
+//			for key0, val0 := range things.Ids {
+//				__res, err := databricks.NewGrants(ctx, fmt.Sprintf("things-%v", key0), &databricks.GrantsArgs{
+//					Table: pulumi.String(val0),
+//					Grants: databricks.GrantsGrantArray{
+//						&databricks.GrantsGrantArgs{
+//							Principal: pulumi.String("sensitive"),
+//							Privileges: pulumi.StringArray{
+//								pulumi.String("SELECT"),
+//								pulumi.String("MODIFY"),
+//							},
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				thingsGrants = append(thingsGrants, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Schema to manage schemas within Unity Catalog.
+// * Catalog to manage catalogs within Unity Catalog.
 func GetViews(ctx *pulumi.Context, args *GetViewsArgs, opts ...pulumi.InvokeOption) (*GetViewsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetViewsResult

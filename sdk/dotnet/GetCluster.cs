@@ -30,16 +30,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var all = Databricks.GetClusters.Invoke();
         /// 
-        ///     var allGetCluster = .ToDictionary(item =&gt; {
-        ///         var __key = item.Key;
-        ///         return __key;
-        ///     }, item =&gt; {
-        ///         var __value = item.Value;
-        ///         return Databricks.GetCluster.Invoke(new()
-        ///         {
-        ///             ClusterId = __value,
-        ///         });
-        ///     });
+        ///     var allGetCluster = ;
         /// 
         /// });
         /// ```
@@ -78,16 +69,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var all = Databricks.GetClusters.Invoke();
         /// 
-        ///     var allGetCluster = .ToDictionary(item =&gt; {
-        ///         var __key = item.Key;
-        ///         return __key;
-        ///     }, item =&gt; {
-        ///         var __value = item.Value;
-        ///         return Databricks.GetCluster.Invoke(new()
-        ///         {
-        ///             ClusterId = __value,
-        ///         });
-        ///     });
+        ///     var allGetCluster = ;
         /// 
         /// });
         /// ```

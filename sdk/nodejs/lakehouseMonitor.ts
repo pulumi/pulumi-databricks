@@ -13,6 +13,49 @@ import * as utilities from "./utilities";
  *
  * A `databricks.LakehouseMonitor` is attached to a databricks.SqlTable and can be of type timeseries, snapshot or inference.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const sandbox = new databricks.Catalog("sandbox", {
+ *     name: "sandbox",
+ *     comment: "this catalog is managed by terraform",
+ *     properties: {
+ *         purpose: "testing",
+ *     },
+ * });
+ * const things = new databricks.Schema("things", {
+ *     catalogName: sandbox.id,
+ *     name: "things",
+ *     comment: "this database is managed by terraform",
+ *     properties: {
+ *         kind: "various",
+ *     },
+ * });
+ * const myTestTable = new databricks.SqlTable("myTestTable", {
+ *     catalogName: "main",
+ *     schemaName: things.name,
+ *     name: "bar",
+ *     tableType: "MANAGED",
+ *     dataSourceFormat: "DELTA",
+ *     columns: [{
+ *         name: "timestamp",
+ *         type: "int",
+ *     }],
+ * });
+ * const testTimeseriesMonitor = new databricks.LakehouseMonitor("testTimeseriesMonitor", {
+ *     tableName: pulumi.interpolate`${sandbox.name}.${things.name}.${myTestTable.name}`,
+ *     assetsDir: pulumi.interpolate`/Shared/provider-test/databricks_lakehouse_monitoring/${myTestTable.name}`,
+ *     outputSchemaName: pulumi.interpolate`${sandbox.name}.${things.name}`,
+ *     timeSeries: {
+ *         granularities: ["1 hour"],
+ *         timestampCol: "timestamp",
+ *     },
+ * });
+ * ```
+ *
  * ### Inference Monitor
  *
  * ```typescript

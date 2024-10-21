@@ -400,6 +400,8 @@ __all__ = [
     'PipelineGatewayDefinition',
     'PipelineIngestionDefinition',
     'PipelineIngestionDefinitionObject',
+    'PipelineIngestionDefinitionObjectReport',
+    'PipelineIngestionDefinitionObjectReportTableConfiguration',
     'PipelineIngestionDefinitionObjectSchema',
     'PipelineIngestionDefinitionObjectSchemaTableConfiguration',
     'PipelineIngestionDefinitionObjectTable',
@@ -753,6 +755,9 @@ __all__ = [
     'GetMlflowModelLatestVersionTagResult',
     'GetMlflowModelTagResult',
     'GetNotebookPathsNotebookPathListResult',
+    'GetNotificationDestinationsNotificationDestinationResult',
+    'GetRegisteredModelModelInfoResult',
+    'GetRegisteredModelModelInfoAliasResult',
     'GetSchemaSchemaInfoResult',
     'GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagResult',
     'GetShareObjectResult',
@@ -15989,7 +15994,10 @@ class ModelServingAiGateway(dict):
                  rate_limits: Optional[Sequence['outputs.ModelServingAiGatewayRateLimit']] = None,
                  usage_tracking_config: Optional['outputs.ModelServingAiGatewayUsageTrackingConfig'] = None):
         """
-        :param Sequence['ModelServingAiGatewayRateLimitArgs'] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        :param 'ModelServingAiGatewayGuardrailsArgs' guardrails: Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+        :param 'ModelServingAiGatewayInferenceTableConfigArgs' inference_table_config: Block describing the configuration of usage tracking. Consists of the following attributes:
+        :param Sequence['ModelServingAiGatewayRateLimitArgs'] rate_limits: Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+        :param 'ModelServingAiGatewayUsageTrackingConfigArgs' usage_tracking_config: Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
         """
         if guardrails is not None:
             pulumi.set(__self__, "guardrails", guardrails)
@@ -16003,24 +16011,33 @@ class ModelServingAiGateway(dict):
     @property
     @pulumi.getter
     def guardrails(self) -> Optional['outputs.ModelServingAiGatewayGuardrails']:
+        """
+        Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+        """
         return pulumi.get(self, "guardrails")
 
     @property
     @pulumi.getter(name="inferenceTableConfig")
     def inference_table_config(self) -> Optional['outputs.ModelServingAiGatewayInferenceTableConfig']:
+        """
+        Block describing the configuration of usage tracking. Consists of the following attributes:
+        """
         return pulumi.get(self, "inference_table_config")
 
     @property
     @pulumi.getter(name="rateLimits")
     def rate_limits(self) -> Optional[Sequence['outputs.ModelServingAiGatewayRateLimit']]:
         """
-        A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
         """
         return pulumi.get(self, "rate_limits")
 
     @property
     @pulumi.getter(name="usageTrackingConfig")
     def usage_tracking_config(self) -> Optional['outputs.ModelServingAiGatewayUsageTrackingConfig']:
+        """
+        Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+        """
         return pulumi.get(self, "usage_tracking_config")
 
 
@@ -16029,6 +16046,10 @@ class ModelServingAiGatewayGuardrails(dict):
     def __init__(__self__, *,
                  input: Optional['outputs.ModelServingAiGatewayGuardrailsInput'] = None,
                  output: Optional['outputs.ModelServingAiGatewayGuardrailsOutput'] = None):
+        """
+        :param 'ModelServingAiGatewayGuardrailsInputArgs' input: A block with configuration for input guardrail filters:
+        :param 'ModelServingAiGatewayGuardrailsOutputArgs' output: A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+        """
         if input is not None:
             pulumi.set(__self__, "input", input)
         if output is not None:
@@ -16037,11 +16058,17 @@ class ModelServingAiGatewayGuardrails(dict):
     @property
     @pulumi.getter
     def input(self) -> Optional['outputs.ModelServingAiGatewayGuardrailsInput']:
+        """
+        A block with configuration for input guardrail filters:
+        """
         return pulumi.get(self, "input")
 
     @property
     @pulumi.getter
     def output(self) -> Optional['outputs.ModelServingAiGatewayGuardrailsOutput']:
+        """
+        A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+        """
         return pulumi.get(self, "output")
 
 
@@ -16071,6 +16098,12 @@ class ModelServingAiGatewayGuardrailsInput(dict):
                  pii: Optional['outputs.ModelServingAiGatewayGuardrailsInputPii'] = None,
                  safety: Optional[bool] = None,
                  valid_topics: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] invalid_keywords: List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+        :param 'ModelServingAiGatewayGuardrailsInputPiiArgs' pii: Block with configuration for guardrail PII filter:
+        :param bool safety: the boolean flag that indicates whether the safety filter is enabled.
+        :param Sequence[str] valid_topics: The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+        """
         if invalid_keywords is not None:
             pulumi.set(__self__, "invalid_keywords", invalid_keywords)
         if pii is not None:
@@ -16083,21 +16116,33 @@ class ModelServingAiGatewayGuardrailsInput(dict):
     @property
     @pulumi.getter(name="invalidKeywords")
     def invalid_keywords(self) -> Optional[Sequence[str]]:
+        """
+        List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+        """
         return pulumi.get(self, "invalid_keywords")
 
     @property
     @pulumi.getter
     def pii(self) -> Optional['outputs.ModelServingAiGatewayGuardrailsInputPii']:
+        """
+        Block with configuration for guardrail PII filter:
+        """
         return pulumi.get(self, "pii")
 
     @property
     @pulumi.getter
     def safety(self) -> Optional[bool]:
+        """
+        the boolean flag that indicates whether the safety filter is enabled.
+        """
         return pulumi.get(self, "safety")
 
     @property
     @pulumi.getter(name="validTopics")
     def valid_topics(self) -> Optional[Sequence[str]]:
+        """
+        The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+        """
         return pulumi.get(self, "valid_topics")
 
 
@@ -16105,11 +16150,17 @@ class ModelServingAiGatewayGuardrailsInput(dict):
 class ModelServingAiGatewayGuardrailsInputPii(dict):
     def __init__(__self__, *,
                  behavior: str):
+        """
+        :param str behavior: a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+        """
         pulumi.set(__self__, "behavior", behavior)
 
     @property
     @pulumi.getter
     def behavior(self) -> str:
+        """
+        a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+        """
         return pulumi.get(self, "behavior")
 
 
@@ -16139,6 +16190,12 @@ class ModelServingAiGatewayGuardrailsOutput(dict):
                  pii: Optional['outputs.ModelServingAiGatewayGuardrailsOutputPii'] = None,
                  safety: Optional[bool] = None,
                  valid_topics: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] invalid_keywords: List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+        :param 'ModelServingAiGatewayGuardrailsOutputPiiArgs' pii: Block with configuration for guardrail PII filter:
+        :param bool safety: the boolean flag that indicates whether the safety filter is enabled.
+        :param Sequence[str] valid_topics: The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+        """
         if invalid_keywords is not None:
             pulumi.set(__self__, "invalid_keywords", invalid_keywords)
         if pii is not None:
@@ -16151,21 +16208,33 @@ class ModelServingAiGatewayGuardrailsOutput(dict):
     @property
     @pulumi.getter(name="invalidKeywords")
     def invalid_keywords(self) -> Optional[Sequence[str]]:
+        """
+        List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
+        """
         return pulumi.get(self, "invalid_keywords")
 
     @property
     @pulumi.getter
     def pii(self) -> Optional['outputs.ModelServingAiGatewayGuardrailsOutputPii']:
+        """
+        Block with configuration for guardrail PII filter:
+        """
         return pulumi.get(self, "pii")
 
     @property
     @pulumi.getter
     def safety(self) -> Optional[bool]:
+        """
+        the boolean flag that indicates whether the safety filter is enabled.
+        """
         return pulumi.get(self, "safety")
 
     @property
     @pulumi.getter(name="validTopics")
     def valid_topics(self) -> Optional[Sequence[str]]:
+        """
+        The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
+        """
         return pulumi.get(self, "valid_topics")
 
 
@@ -16173,11 +16242,17 @@ class ModelServingAiGatewayGuardrailsOutput(dict):
 class ModelServingAiGatewayGuardrailsOutputPii(dict):
     def __init__(__self__, *,
                  behavior: str):
+        """
+        :param str behavior: a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+        """
         pulumi.set(__self__, "behavior", behavior)
 
     @property
     @pulumi.getter
     def behavior(self) -> str:
+        """
+        a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
+        """
         return pulumi.get(self, "behavior")
 
 
@@ -16211,7 +16286,7 @@ class ModelServingAiGatewayInferenceTableConfig(dict):
                  table_name_prefix: Optional[str] = None):
         """
         :param str catalog_name: The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-        :param bool enabled: If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        :param bool enabled: boolean flag specifying if usage tracking is enabled.
         :param str schema_name: The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
         :param str table_name_prefix: The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
         """
@@ -16236,7 +16311,7 @@ class ModelServingAiGatewayInferenceTableConfig(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        boolean flag specifying if usage tracking is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -16319,18 +16394,12 @@ class ModelServingAiGatewayRateLimit(dict):
 class ModelServingAiGatewayUsageTrackingConfig(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
-        """
-        :param bool enabled: If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
-        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
-        """
         return pulumi.get(self, "enabled")
 
 
@@ -16443,7 +16512,7 @@ class ModelServingConfigAutoCaptureConfig(dict):
                  table_name_prefix: Optional[str] = None):
         """
         :param str catalog_name: The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-        :param bool enabled: If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        :param bool enabled: If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
         :param str schema_name: The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
         :param str table_name_prefix: The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
         """
@@ -16468,7 +16537,7 @@ class ModelServingConfigAutoCaptureConfig(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
         """
         return pulumi.get(self, "enabled")
 
@@ -16541,8 +16610,8 @@ class ModelServingConfigServedEntity(dict):
         """
         :param str entity_name: The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
         :param str entity_version: The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
-        :param Mapping[str, str] environment_vars: An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
-        :param 'ModelServingConfigServedEntityExternalModelArgs' external_model: The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. For an existing endpoint with `external_model`, it can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+        :param Mapping[str, str] environment_vars: An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+        :param 'ModelServingConfigServedEntityExternalModelArgs' external_model: The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
         :param str instance_profile_arn: ARN of the instance profile that the served entity uses to access AWS resources.
         :param int max_provisioned_throughput: The maximum tokens per second that the endpoint can scale up to.
         :param int min_provisioned_throughput: The minimum tokens per second that the endpoint can scale down to.
@@ -16594,7 +16663,7 @@ class ModelServingConfigServedEntity(dict):
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> Optional[Mapping[str, str]]:
         """
-        An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+        An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
         """
         return pulumi.get(self, "environment_vars")
 
@@ -16602,7 +16671,7 @@ class ModelServingConfigServedEntity(dict):
     @pulumi.getter(name="externalModel")
     def external_model(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModel']:
         """
-        The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. For an existing endpoint with `external_model`, it can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+        The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
         """
         return pulumi.get(self, "external_model")
 
@@ -16710,13 +16779,14 @@ class ModelServingConfigServedEntityExternalModel(dict):
                  palm_config: Optional['outputs.ModelServingConfigServedEntityExternalModelPalmConfig'] = None):
         """
         :param str name: The name of the external model.
-        :param str provider: The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+        :param str provider: The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
         :param str task: The task type of the external model.
         :param 'ModelServingConfigServedEntityExternalModelAi21labsConfigArgs' ai21labs_config: AI21Labs Config
         :param 'ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs' amazon_bedrock_config: Amazon Bedrock Config
         :param 'ModelServingConfigServedEntityExternalModelAnthropicConfigArgs' anthropic_config: Anthropic Config
         :param 'ModelServingConfigServedEntityExternalModelCohereConfigArgs' cohere_config: Cohere Config
         :param 'ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs' databricks_model_serving_config: Databricks Model Serving Config
+        :param 'ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs' google_cloud_vertex_ai_config: Google Cloud Vertex AI Config.
         :param 'ModelServingConfigServedEntityExternalModelOpenaiConfigArgs' openai_config: OpenAI Config
         :param 'ModelServingConfigServedEntityExternalModelPalmConfigArgs' palm_config: PaLM Config
         """
@@ -16752,7 +16822,7 @@ class ModelServingConfigServedEntityExternalModel(dict):
     @pulumi.getter
     def provider(self) -> str:
         """
-        The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+        The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
         """
         return pulumi.get(self, "provider")
 
@@ -16807,6 +16877,9 @@ class ModelServingConfigServedEntityExternalModel(dict):
     @property
     @pulumi.getter(name="googleCloudVertexAiConfig")
     def google_cloud_vertex_ai_config(self) -> Optional['outputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig']:
+        """
+        Google Cloud Vertex AI Config.
+        """
         return pulumi.get(self, "google_cloud_vertex_ai_config")
 
     @property
@@ -16852,6 +16925,7 @@ class ModelServingConfigServedEntityExternalModelAi21labsConfig(dict):
                  ai21labs_api_key_plaintext: Optional[str] = None):
         """
         :param str ai21labs_api_key: The Databricks secret key reference for an AI21Labs API key.
+        :param str ai21labs_api_key_plaintext: An AI21 Labs API key provided as a plaintext string.
         """
         if ai21labs_api_key is not None:
             pulumi.set(__self__, "ai21labs_api_key", ai21labs_api_key)
@@ -16869,6 +16943,9 @@ class ModelServingConfigServedEntityExternalModelAi21labsConfig(dict):
     @property
     @pulumi.getter(name="ai21labsApiKeyPlaintext")
     def ai21labs_api_key_plaintext(self) -> Optional[str]:
+        """
+        An AI21 Labs API key provided as a plaintext string.
+        """
         return pulumi.get(self, "ai21labs_api_key_plaintext")
 
 
@@ -16912,7 +16989,9 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
         :param str aws_region: The AWS region to use. Bedrock has to be enabled there.
         :param str bedrock_provider: The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
         :param str aws_access_key_id: The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+        :param str aws_access_key_id_plaintext: An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
         :param str aws_secret_access_key: The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+        :param str aws_secret_access_key_plaintext: An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
         """
         pulumi.set(__self__, "aws_region", aws_region)
         pulumi.set(__self__, "bedrock_provider", bedrock_provider)
@@ -16952,6 +17031,9 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
     @property
     @pulumi.getter(name="awsAccessKeyIdPlaintext")
     def aws_access_key_id_plaintext(self) -> Optional[str]:
+        """
+        An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
+        """
         return pulumi.get(self, "aws_access_key_id_plaintext")
 
     @property
@@ -16965,6 +17047,9 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
     @property
     @pulumi.getter(name="awsSecretAccessKeyPlaintext")
     def aws_secret_access_key_plaintext(self) -> Optional[str]:
+        """
+        An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
+        """
         return pulumi.get(self, "aws_secret_access_key_plaintext")
 
 
@@ -16994,7 +17079,7 @@ class ModelServingConfigServedEntityExternalModelAnthropicConfig(dict):
                  anthropic_api_key_plaintext: Optional[str] = None):
         """
         :param str anthropic_api_key: The Databricks secret key reference for an Anthropic API key.
-               The Databricks secret key reference for an Anthropic API key.
+        :param str anthropic_api_key_plaintext: The Anthropic API key provided as a plaintext string.
         """
         if anthropic_api_key is not None:
             pulumi.set(__self__, "anthropic_api_key", anthropic_api_key)
@@ -17006,13 +17091,15 @@ class ModelServingConfigServedEntityExternalModelAnthropicConfig(dict):
     def anthropic_api_key(self) -> Optional[str]:
         """
         The Databricks secret key reference for an Anthropic API key.
-        The Databricks secret key reference for an Anthropic API key.
         """
         return pulumi.get(self, "anthropic_api_key")
 
     @property
     @pulumi.getter(name="anthropicApiKeyPlaintext")
     def anthropic_api_key_plaintext(self) -> Optional[str]:
+        """
+        The Anthropic API key provided as a plaintext string.
+        """
         return pulumi.get(self, "anthropic_api_key_plaintext")
 
 
@@ -17045,6 +17132,7 @@ class ModelServingConfigServedEntityExternalModelCohereConfig(dict):
                  cohere_api_key_plaintext: Optional[str] = None):
         """
         :param str cohere_api_key: The Databricks secret key reference for a Cohere API key.
+        :param str cohere_api_key_plaintext: The Cohere API key provided as a plaintext string.
         """
         if cohere_api_base is not None:
             pulumi.set(__self__, "cohere_api_base", cohere_api_base)
@@ -17069,6 +17157,9 @@ class ModelServingConfigServedEntityExternalModelCohereConfig(dict):
     @property
     @pulumi.getter(name="cohereApiKeyPlaintext")
     def cohere_api_key_plaintext(self) -> Optional[str]:
+        """
+        The Cohere API key provided as a plaintext string.
+        """
         return pulumi.get(self, "cohere_api_key_plaintext")
 
 
@@ -17102,6 +17193,7 @@ class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig(di
         """
         :param str databricks_workspace_url: The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
         :param str databricks_api_token: The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+        :param str databricks_api_token_plaintext: The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
         """
         pulumi.set(__self__, "databricks_workspace_url", databricks_workspace_url)
         if databricks_api_token is not None:
@@ -17128,6 +17220,9 @@ class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig(di
     @property
     @pulumi.getter(name="databricksApiTokenPlaintext")
     def databricks_api_token_plaintext(self) -> Optional[str]:
+        """
+        The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
+        """
         return pulumi.get(self, "databricks_api_token_plaintext")
 
 
@@ -17159,6 +17254,12 @@ class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig(dict)
                  private_key_plaintext: Optional[str] = None,
                  project_id: Optional[str] = None,
                  region: Optional[str] = None):
+        """
+        :param str private_key: The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
+        :param str private_key_plaintext: The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
+        :param str project_id: This is the Google Cloud project id that the service account is associated with.
+        :param str region: This is the region for the Google Cloud Vertex AI Service.
+        """
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if private_key_plaintext is not None:
@@ -17171,21 +17272,33 @@ class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig(dict)
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[str]:
+        """
+        The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
+        """
         return pulumi.get(self, "private_key")
 
     @property
     @pulumi.getter(name="privateKeyPlaintext")
     def private_key_plaintext(self) -> Optional[str]:
+        """
+        The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
+        """
         return pulumi.get(self, "private_key_plaintext")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
+        """
+        This is the Google Cloud project id that the service account is associated with.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        This is the region for the Google Cloud Vertex AI Service.
+        """
         return pulumi.get(self, "region")
 
 
@@ -17241,10 +17354,15 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
                  openai_deployment_name: Optional[str] = None,
                  openai_organization: Optional[str] = None):
         """
-        :param str openai_api_base: This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+        :param str microsoft_entra_client_id: This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
+        :param str microsoft_entra_client_secret: The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
+        :param str microsoft_entra_client_secret_plaintext: The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
+        :param str microsoft_entra_tenant_id: This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
+        :param str openai_api_base: This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
         :param str openai_api_key: The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-        :param str openai_api_type: This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
-        :param str openai_api_version: This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+        :param str openai_api_key_plaintext: The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
+        :param str openai_api_type: This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
+        :param str openai_api_version: This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
         :param str openai_deployment_name: This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
         :param str openai_organization: This is an optional field to specify the organization in OpenAI or Azure OpenAI.
         """
@@ -17274,28 +17392,40 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
     @property
     @pulumi.getter(name="microsoftEntraClientId")
     def microsoft_entra_client_id(self) -> Optional[str]:
+        """
+        This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
+        """
         return pulumi.get(self, "microsoft_entra_client_id")
 
     @property
     @pulumi.getter(name="microsoftEntraClientSecret")
     def microsoft_entra_client_secret(self) -> Optional[str]:
+        """
+        The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
+        """
         return pulumi.get(self, "microsoft_entra_client_secret")
 
     @property
     @pulumi.getter(name="microsoftEntraClientSecretPlaintext")
     def microsoft_entra_client_secret_plaintext(self) -> Optional[str]:
+        """
+        The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
+        """
         return pulumi.get(self, "microsoft_entra_client_secret_plaintext")
 
     @property
     @pulumi.getter(name="microsoftEntraTenantId")
     def microsoft_entra_tenant_id(self) -> Optional[str]:
+        """
+        This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
+        """
         return pulumi.get(self, "microsoft_entra_tenant_id")
 
     @property
     @pulumi.getter(name="openaiApiBase")
     def openai_api_base(self) -> Optional[str]:
         """
-        This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+        This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
         """
         return pulumi.get(self, "openai_api_base")
 
@@ -17310,13 +17440,16 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
     @property
     @pulumi.getter(name="openaiApiKeyPlaintext")
     def openai_api_key_plaintext(self) -> Optional[str]:
+        """
+        The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
+        """
         return pulumi.get(self, "openai_api_key_plaintext")
 
     @property
     @pulumi.getter(name="openaiApiType")
     def openai_api_type(self) -> Optional[str]:
         """
-        This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+        This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
         """
         return pulumi.get(self, "openai_api_type")
 
@@ -17324,7 +17457,7 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
     @pulumi.getter(name="openaiApiVersion")
     def openai_api_version(self) -> Optional[str]:
         """
-        This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+        This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
         """
         return pulumi.get(self, "openai_api_version")
 
@@ -17371,6 +17504,7 @@ class ModelServingConfigServedEntityExternalModelPalmConfig(dict):
                  palm_api_key_plaintext: Optional[str] = None):
         """
         :param str palm_api_key: The Databricks secret key reference for a PaLM API key.
+        :param str palm_api_key_plaintext: The PaLM API key provided as a plaintext string.
         """
         if palm_api_key is not None:
             pulumi.set(__self__, "palm_api_key", palm_api_key)
@@ -17388,6 +17522,9 @@ class ModelServingConfigServedEntityExternalModelPalmConfig(dict):
     @property
     @pulumi.getter(name="palmApiKeyPlaintext")
     def palm_api_key_plaintext(self) -> Optional[str]:
+        """
+        The PaLM API key provided as a plaintext string.
+        """
         return pulumi.get(self, "palm_api_key_plaintext")
 
 
@@ -17440,14 +17577,14 @@ class ModelServingConfigServedModel(dict):
         """
         :param str model_name: The name of the model in Databricks Model Registry to be served.
         :param str model_version: The version of the model in Databricks Model Registry to be served.
-        :param Mapping[str, str] environment_vars: a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+        :param Mapping[str, str] environment_vars: a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
         :param str instance_profile_arn: ARN of the instance profile that the served model will use to access AWS resources.
         :param int max_provisioned_throughput: The maximum tokens per second that the endpoint can scale up to.
         :param int min_provisioned_throughput: The minimum tokens per second that the endpoint can scale down to.
         :param str name: The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
         :param bool scale_to_zero_enabled: Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
         :param str workload_size: The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-        :param str workload_type: The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+        :param str workload_type: The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
         """
         pulumi.set(__self__, "model_name", model_name)
         pulumi.set(__self__, "model_version", model_version)
@@ -17488,7 +17625,7 @@ class ModelServingConfigServedModel(dict):
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> Optional[Mapping[str, str]]:
         """
-        a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+        a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
         """
         return pulumi.get(self, "environment_vars")
 
@@ -17544,7 +17681,7 @@ class ModelServingConfigServedModel(dict):
     @pulumi.getter(name="workloadType")
     def workload_type(self) -> Optional[str]:
         """
-        The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+        The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
         """
         return pulumi.get(self, "workload_type")
 
@@ -21102,12 +21239,20 @@ class PipelineIngestionDefinition(dict):
 @pulumi.output_type
 class PipelineIngestionDefinitionObject(dict):
     def __init__(__self__, *,
+                 report: Optional['outputs.PipelineIngestionDefinitionObjectReport'] = None,
                  schema: Optional['outputs.PipelineIngestionDefinitionObjectSchema'] = None,
                  table: Optional['outputs.PipelineIngestionDefinitionObjectTable'] = None):
+        if report is not None:
+            pulumi.set(__self__, "report", report)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if table is not None:
             pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def report(self) -> Optional['outputs.PipelineIngestionDefinitionObjectReport']:
+        return pulumi.get(self, "report")
 
     @property
     @pulumi.getter
@@ -21118,6 +21263,136 @@ class PipelineIngestionDefinitionObject(dict):
     @pulumi.getter
     def table(self) -> Optional['outputs.PipelineIngestionDefinitionObjectTable']:
         return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectReport(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationCatalog":
+            suggest = "destination_catalog"
+        elif key == "destinationSchema":
+            suggest = "destination_schema"
+        elif key == "destinationTable":
+            suggest = "destination_table"
+        elif key == "sourceUrl":
+            suggest = "source_url"
+        elif key == "tableConfiguration":
+            suggest = "table_configuration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectReport. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectReport.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectReport.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_catalog: Optional[str] = None,
+                 destination_schema: Optional[str] = None,
+                 destination_table: Optional[str] = None,
+                 source_url: Optional[str] = None,
+                 table_configuration: Optional['outputs.PipelineIngestionDefinitionObjectReportTableConfiguration'] = None):
+        if destination_catalog is not None:
+            pulumi.set(__self__, "destination_catalog", destination_catalog)
+        if destination_schema is not None:
+            pulumi.set(__self__, "destination_schema", destination_schema)
+        if destination_table is not None:
+            pulumi.set(__self__, "destination_table", destination_table)
+        if source_url is not None:
+            pulumi.set(__self__, "source_url", source_url)
+        if table_configuration is not None:
+            pulumi.set(__self__, "table_configuration", table_configuration)
+
+    @property
+    @pulumi.getter(name="destinationCatalog")
+    def destination_catalog(self) -> Optional[str]:
+        return pulumi.get(self, "destination_catalog")
+
+    @property
+    @pulumi.getter(name="destinationSchema")
+    def destination_schema(self) -> Optional[str]:
+        return pulumi.get(self, "destination_schema")
+
+    @property
+    @pulumi.getter(name="destinationTable")
+    def destination_table(self) -> Optional[str]:
+        return pulumi.get(self, "destination_table")
+
+    @property
+    @pulumi.getter(name="sourceUrl")
+    def source_url(self) -> Optional[str]:
+        return pulumi.get(self, "source_url")
+
+    @property
+    @pulumi.getter(name="tableConfiguration")
+    def table_configuration(self) -> Optional['outputs.PipelineIngestionDefinitionObjectReportTableConfiguration']:
+        return pulumi.get(self, "table_configuration")
+
+
+@pulumi.output_type
+class PipelineIngestionDefinitionObjectReportTableConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryKeys":
+            suggest = "primary_keys"
+        elif key == "salesforceIncludeFormulaFields":
+            suggest = "salesforce_include_formula_fields"
+        elif key == "scdType":
+            suggest = "scd_type"
+        elif key == "sequenceBies":
+            suggest = "sequence_bies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectReportTableConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineIngestionDefinitionObjectReportTableConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineIngestionDefinitionObjectReportTableConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 primary_keys: Optional[Sequence[str]] = None,
+                 salesforce_include_formula_fields: Optional[bool] = None,
+                 scd_type: Optional[str] = None,
+                 sequence_bies: Optional[Sequence[str]] = None):
+        if primary_keys is not None:
+            pulumi.set(__self__, "primary_keys", primary_keys)
+        if salesforce_include_formula_fields is not None:
+            pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
+        if scd_type is not None:
+            pulumi.set(__self__, "scd_type", scd_type)
+        if sequence_bies is not None:
+            pulumi.set(__self__, "sequence_bies", sequence_bies)
+
+    @property
+    @pulumi.getter(name="primaryKeys")
+    def primary_keys(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "primary_keys")
+
+    @property
+    @pulumi.getter(name="salesforceIncludeFormulaFields")
+    def salesforce_include_formula_fields(self) -> Optional[bool]:
+        return pulumi.get(self, "salesforce_include_formula_fields")
+
+    @property
+    @pulumi.getter(name="scdType")
+    def scd_type(self) -> Optional[str]:
+        return pulumi.get(self, "scd_type")
+
+    @property
+    @pulumi.getter(name="sequenceBies")
+    def sequence_bies(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "sequence_bies")
 
 
 @pulumi.output_type
@@ -21201,6 +21476,8 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
             suggest = "salesforce_include_formula_fields"
         elif key == "scdType":
             suggest = "scd_type"
+        elif key == "sequenceBies":
+            suggest = "sequence_bies"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectSchemaTableConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -21216,13 +21493,16 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
     def __init__(__self__, *,
                  primary_keys: Optional[Sequence[str]] = None,
                  salesforce_include_formula_fields: Optional[bool] = None,
-                 scd_type: Optional[str] = None):
+                 scd_type: Optional[str] = None,
+                 sequence_bies: Optional[Sequence[str]] = None):
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
         if salesforce_include_formula_fields is not None:
             pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
         if scd_type is not None:
             pulumi.set(__self__, "scd_type", scd_type)
+        if sequence_bies is not None:
+            pulumi.set(__self__, "sequence_bies", sequence_bies)
 
     @property
     @pulumi.getter(name="primaryKeys")
@@ -21238,6 +21518,11 @@ class PipelineIngestionDefinitionObjectSchemaTableConfiguration(dict):
     @pulumi.getter(name="scdType")
     def scd_type(self) -> Optional[str]:
         return pulumi.get(self, "scd_type")
+
+    @property
+    @pulumi.getter(name="sequenceBies")
+    def sequence_bies(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "sequence_bies")
 
 
 @pulumi.output_type
@@ -21341,6 +21626,8 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
             suggest = "salesforce_include_formula_fields"
         elif key == "scdType":
             suggest = "scd_type"
+        elif key == "sequenceBies":
+            suggest = "sequence_bies"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionObjectTableTableConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -21356,13 +21643,16 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
     def __init__(__self__, *,
                  primary_keys: Optional[Sequence[str]] = None,
                  salesforce_include_formula_fields: Optional[bool] = None,
-                 scd_type: Optional[str] = None):
+                 scd_type: Optional[str] = None,
+                 sequence_bies: Optional[Sequence[str]] = None):
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
         if salesforce_include_formula_fields is not None:
             pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
         if scd_type is not None:
             pulumi.set(__self__, "scd_type", scd_type)
+        if sequence_bies is not None:
+            pulumi.set(__self__, "sequence_bies", sequence_bies)
 
     @property
     @pulumi.getter(name="primaryKeys")
@@ -21379,6 +21669,11 @@ class PipelineIngestionDefinitionObjectTableTableConfiguration(dict):
     def scd_type(self) -> Optional[str]:
         return pulumi.get(self, "scd_type")
 
+    @property
+    @pulumi.getter(name="sequenceBies")
+    def sequence_bies(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "sequence_bies")
+
 
 @pulumi.output_type
 class PipelineIngestionDefinitionTableConfiguration(dict):
@@ -21391,6 +21686,8 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
             suggest = "salesforce_include_formula_fields"
         elif key == "scdType":
             suggest = "scd_type"
+        elif key == "sequenceBies":
+            suggest = "sequence_bies"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PipelineIngestionDefinitionTableConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -21406,13 +21703,16 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
     def __init__(__self__, *,
                  primary_keys: Optional[Sequence[str]] = None,
                  salesforce_include_formula_fields: Optional[bool] = None,
-                 scd_type: Optional[str] = None):
+                 scd_type: Optional[str] = None,
+                 sequence_bies: Optional[Sequence[str]] = None):
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
         if salesforce_include_formula_fields is not None:
             pulumi.set(__self__, "salesforce_include_formula_fields", salesforce_include_formula_fields)
         if scd_type is not None:
             pulumi.set(__self__, "scd_type", scd_type)
+        if sequence_bies is not None:
+            pulumi.set(__self__, "sequence_bies", sequence_bies)
 
     @property
     @pulumi.getter(name="primaryKeys")
@@ -21428,6 +21728,11 @@ class PipelineIngestionDefinitionTableConfiguration(dict):
     @pulumi.getter(name="scdType")
     def scd_type(self) -> Optional[str]:
         return pulumi.get(self, "scd_type")
+
+    @property
+    @pulumi.getter(name="sequenceBies")
+    def sequence_bies(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "sequence_bies")
 
 
 @pulumi.output_type
@@ -35671,6 +35976,251 @@ class GetNotebookPathsNotebookPathListResult(dict):
         Path to workspace directory
         """
         return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetNotificationDestinationsNotificationDestinationResult(dict):
+    def __init__(__self__, *,
+                 destination_type: Optional[str] = None,
+                 display_name: Optional[str] = None,
+                 id: Optional[str] = None):
+        """
+        :param str destination_type: The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+        :param str display_name: The display name of the Notification Destination.
+        :param str id: The unique ID of the Notification Destination.
+        """
+        if destination_type is not None:
+            pulumi.set(__self__, "destination_type", destination_type)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="destinationType")
+    def destination_type(self) -> Optional[str]:
+        """
+        The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+        """
+        return pulumi.get(self, "destination_type")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        The display name of the Notification Destination.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The unique ID of the Notification Destination.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetRegisteredModelModelInfoResult(dict):
+    def __init__(__self__, *,
+                 aliases: Optional[Sequence['outputs.GetRegisteredModelModelInfoAliasResult']] = None,
+                 browse_only: Optional[bool] = None,
+                 catalog_name: Optional[str] = None,
+                 comment: Optional[str] = None,
+                 created_at: Optional[int] = None,
+                 created_by: Optional[str] = None,
+                 full_name: Optional[str] = None,
+                 metastore_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 owner: Optional[str] = None,
+                 schema_name: Optional[str] = None,
+                 storage_location: Optional[str] = None,
+                 updated_at: Optional[int] = None,
+                 updated_by: Optional[str] = None):
+        """
+        :param Sequence['GetRegisteredModelModelInfoAliasArgs'] aliases: the list of aliases associated with this model. Each item is object consisting of following attributes:
+        :param str catalog_name: The name of the catalog where the schema and the registered model reside.
+        :param str comment: The comment attached to the registered model.
+        :param int created_at: the Unix timestamp at the model's creation
+        :param str created_by: the identifier of the user who created the model
+        :param str full_name: The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+        :param str metastore_id: the unique identifier of the metastore
+        :param str name: The name of the registered model.
+        :param str owner: Name of the registered model owner.
+        :param str schema_name: The name of the schema where the registered model resides.
+        :param str storage_location: The storage location under which model version data files are stored.
+        :param int updated_at: the timestamp of the last time changes were made to the model
+        :param str updated_by: the identifier of the user who updated the model last time
+        """
+        if aliases is not None:
+            pulumi.set(__self__, "aliases", aliases)
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
+        if storage_location is not None:
+            pulumi.set(__self__, "storage_location", storage_location)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+
+    @property
+    @pulumi.getter
+    def aliases(self) -> Optional[Sequence['outputs.GetRegisteredModelModelInfoAliasResult']]:
+        """
+        the list of aliases associated with this model. Each item is object consisting of following attributes:
+        """
+        return pulumi.get(self, "aliases")
+
+    @property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[bool]:
+        return pulumi.get(self, "browse_only")
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[str]:
+        """
+        The name of the catalog where the schema and the registered model reside.
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        The comment attached to the registered model.
+        """
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[int]:
+        """
+        the Unix timestamp at the model's creation
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        the identifier of the user who created the model
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[str]:
+        """
+        The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+        """
+        return pulumi.get(self, "full_name")
+
+    @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[str]:
+        """
+        the unique identifier of the metastore
+        """
+        return pulumi.get(self, "metastore_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the registered model.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[str]:
+        """
+        Name of the registered model owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[str]:
+        """
+        The name of the schema where the registered model resides.
+        """
+        return pulumi.get(self, "schema_name")
+
+    @property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> Optional[str]:
+        """
+        The storage location under which model version data files are stored.
+        """
+        return pulumi.get(self, "storage_location")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[int]:
+        """
+        the timestamp of the last time changes were made to the model
+        """
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        the identifier of the user who updated the model last time
+        """
+        return pulumi.get(self, "updated_by")
+
+
+@pulumi.output_type
+class GetRegisteredModelModelInfoAliasResult(dict):
+    def __init__(__self__, *,
+                 alias_name: Optional[str] = None,
+                 version_num: Optional[int] = None):
+        """
+        :param str alias_name: string with the name of alias
+        :param int version_num: associated model version
+        """
+        if alias_name is not None:
+            pulumi.set(__self__, "alias_name", alias_name)
+        if version_num is not None:
+            pulumi.set(__self__, "version_num", version_num)
+
+    @property
+    @pulumi.getter(name="aliasName")
+    def alias_name(self) -> Optional[str]:
+        """
+        string with the name of alias
+        """
+        return pulumi.get(self, "alias_name")
+
+    @property
+    @pulumi.getter(name="versionNum")
+    def version_num(self) -> Optional[int]:
+        """
+        associated model version
+        """
+        return pulumi.get(self, "version_num")
 
 
 @pulumi.output_type

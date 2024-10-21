@@ -206,6 +206,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  * import * as std from "@pulumi/std";
  *
+ * const me = databricks.getCurrentUser({});
  * const eng = new databricks.Group("eng", {displayName: "Engineering"});
  * const dltDemo = new databricks.Notebook("dlt_demo", {
  *     contentBase64: std.base64encode({
@@ -219,10 +220,10 @@ import * as utilities from "./utilities";
  * `,
  *     }).then(invoke => invoke.result),
  *     language: "PYTHON",
- *     path: `${me.home}/DLT_Demo`,
+ *     path: me.then(me => `${me.home}/DLT_Demo`),
  * });
  * const _this = new databricks.Pipeline("this", {
- *     name: `DLT Demo Pipeline (${me.alphanumeric})`,
+ *     name: me.then(me => `DLT Demo Pipeline (${me.alphanumeric})`),
  *     storage: "/test/tf-pipeline",
  *     configuration: {
  *         key1: "value1",

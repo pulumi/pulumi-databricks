@@ -245,6 +245,8 @@ class MwsCredentials(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
+        # Names of created resources will be prefixed with this value
+        prefix = config.require_object("prefix")
         this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
         cross_account_role = aws.iam.Role("cross_account_role",
             name=f"{prefix}-crossaccount",
@@ -306,6 +308,8 @@ class MwsCredentials(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
+        # Names of created resources will be prefixed with this value
+        prefix = config.require_object("prefix")
         this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
         cross_account_role = aws.iam.Role("cross_account_role",
             name=f"{prefix}-crossaccount",

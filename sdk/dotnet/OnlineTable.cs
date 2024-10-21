@@ -78,6 +78,12 @@ namespace Pulumi.Databricks
         [Output("tableServingUrl")]
         public Output<string> TableServingUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+        /// </summary>
+        [Output("unityCatalogProvisioningState")]
+        public Output<string> UnityCatalogProvisioningState { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a OnlineTable resource with the given unique name, arguments, and options.
@@ -173,6 +179,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("tableServingUrl")]
         public Input<string>? TableServingUrl { get; set; }
+
+        /// <summary>
+        /// The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+        /// </summary>
+        [Input("unityCatalogProvisioningState")]
+        public Input<string>? UnityCatalogProvisioningState { get; set; }
 
         public OnlineTableState()
         {

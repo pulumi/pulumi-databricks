@@ -78,6 +78,21 @@ public final class OnlineTableState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tableServingUrl);
     }
 
+    /**
+     * The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in &#34;ACTIVE&#34; but the pipeline may be in &#34;PROVISIONING&#34; as it runs asynchronously).
+     * 
+     */
+    @Import(name="unityCatalogProvisioningState")
+    private @Nullable Output<String> unityCatalogProvisioningState;
+
+    /**
+     * @return The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in &#34;ACTIVE&#34; but the pipeline may be in &#34;PROVISIONING&#34; as it runs asynchronously).
+     * 
+     */
+    public Optional<Output<String>> unityCatalogProvisioningState() {
+        return Optional.ofNullable(this.unityCatalogProvisioningState);
+    }
+
     private OnlineTableState() {}
 
     private OnlineTableState(OnlineTableState $) {
@@ -85,6 +100,7 @@ public final class OnlineTableState extends com.pulumi.resources.ResourceArgs {
         this.spec = $.spec;
         this.statuses = $.statuses;
         this.tableServingUrl = $.tableServingUrl;
+        this.unityCatalogProvisioningState = $.unityCatalogProvisioningState;
     }
 
     public static Builder builder() {
@@ -197,6 +213,27 @@ public final class OnlineTableState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tableServingUrl(String tableServingUrl) {
             return tableServingUrl(Output.of(tableServingUrl));
+        }
+
+        /**
+         * @param unityCatalogProvisioningState The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in &#34;ACTIVE&#34; but the pipeline may be in &#34;PROVISIONING&#34; as it runs asynchronously).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder unityCatalogProvisioningState(@Nullable Output<String> unityCatalogProvisioningState) {
+            $.unityCatalogProvisioningState = unityCatalogProvisioningState;
+            return this;
+        }
+
+        /**
+         * @param unityCatalogProvisioningState The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in &#34;ACTIVE&#34; but the pipeline may be in &#34;PROVISIONING&#34; as it runs asynchronously).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder unityCatalogProvisioningState(String unityCatalogProvisioningState) {
+            return unityCatalogProvisioningState(Output.of(unityCatalogProvisioningState));
         }
 
         public OnlineTableState build() {

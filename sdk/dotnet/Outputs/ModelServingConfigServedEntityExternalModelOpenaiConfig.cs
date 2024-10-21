@@ -13,25 +13,40 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigServedEntityExternalModelOpenaiConfig
     {
+        /// <summary>
+        /// This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
+        /// </summary>
         public readonly string? MicrosoftEntraClientId;
+        /// <summary>
+        /// The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
+        /// </summary>
         public readonly string? MicrosoftEntraClientSecret;
+        /// <summary>
+        /// The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
+        /// </summary>
         public readonly string? MicrosoftEntraClientSecretPlaintext;
+        /// <summary>
+        /// This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
+        /// </summary>
         public readonly string? MicrosoftEntraTenantId;
         /// <summary>
-        /// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+        /// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
         /// </summary>
         public readonly string? OpenaiApiBase;
         /// <summary>
         /// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
         /// </summary>
         public readonly string? OpenaiApiKey;
+        /// <summary>
+        /// The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
+        /// </summary>
         public readonly string? OpenaiApiKeyPlaintext;
         /// <summary>
-        /// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+        /// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
         /// </summary>
         public readonly string? OpenaiApiType;
         /// <summary>
-        /// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+        /// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
         /// </summary>
         public readonly string? OpenaiApiVersion;
         /// <summary>

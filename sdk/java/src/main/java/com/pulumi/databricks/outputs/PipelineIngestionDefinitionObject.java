@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectReport;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchema;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectTable;
 import java.util.Objects;
@@ -12,10 +13,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineIngestionDefinitionObject {
+    private @Nullable PipelineIngestionDefinitionObjectReport report;
     private @Nullable PipelineIngestionDefinitionObjectSchema schema;
     private @Nullable PipelineIngestionDefinitionObjectTable table;
 
     private PipelineIngestionDefinitionObject() {}
+    public Optional<PipelineIngestionDefinitionObjectReport> report() {
+        return Optional.ofNullable(this.report);
+    }
     public Optional<PipelineIngestionDefinitionObjectSchema> schema() {
         return Optional.ofNullable(this.schema);
     }
@@ -32,15 +37,23 @@ public final class PipelineIngestionDefinitionObject {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PipelineIngestionDefinitionObjectReport report;
         private @Nullable PipelineIngestionDefinitionObjectSchema schema;
         private @Nullable PipelineIngestionDefinitionObjectTable table;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObject defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.report = defaults.report;
     	      this.schema = defaults.schema;
     	      this.table = defaults.table;
         }
 
+        @CustomType.Setter
+        public Builder report(@Nullable PipelineIngestionDefinitionObjectReport report) {
+
+            this.report = report;
+            return this;
+        }
         @CustomType.Setter
         public Builder schema(@Nullable PipelineIngestionDefinitionObjectSchema schema) {
 
@@ -55,6 +68,7 @@ public final class PipelineIngestionDefinitionObject {
         }
         public PipelineIngestionDefinitionObject build() {
             final var _resultValue = new PipelineIngestionDefinitionObject();
+            _resultValue.report = report;
             _resultValue.schema = schema;
             _resultValue.table = table;
             return _resultValue;

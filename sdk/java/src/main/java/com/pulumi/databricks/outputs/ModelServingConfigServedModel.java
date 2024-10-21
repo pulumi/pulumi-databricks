@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ModelServingConfigServedModel {
     /**
-     * @return a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+     * @return a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      * 
      */
     private @Nullable Map<String,String> environmentVars;
@@ -61,14 +61,14 @@ public final class ModelServingConfigServedModel {
      */
     private @Nullable String workloadSize;
     /**
-     * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+     * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
      * 
      */
     private @Nullable String workloadType;
 
     private ModelServingConfigServedModel() {}
     /**
-     * @return a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+     * @return a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      * 
      */
     public Map<String,String> environmentVars() {
@@ -131,7 +131,7 @@ public final class ModelServingConfigServedModel {
         return Optional.ofNullable(this.workloadSize);
     }
     /**
-     * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+     * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
      * 
      */
     public Optional<String> workloadType() {

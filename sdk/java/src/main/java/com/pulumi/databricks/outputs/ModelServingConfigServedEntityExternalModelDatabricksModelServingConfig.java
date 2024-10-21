@@ -17,6 +17,10 @@ public final class ModelServingConfigServedEntityExternalModelDatabricksModelSer
      * 
      */
     private @Nullable String databricksApiToken;
+    /**
+     * @return The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
+     * 
+     */
     private @Nullable String databricksApiTokenPlaintext;
     /**
      * @return The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
@@ -32,6 +36,10 @@ public final class ModelServingConfigServedEntityExternalModelDatabricksModelSer
     public Optional<String> databricksApiToken() {
         return Optional.ofNullable(this.databricksApiToken);
     }
+    /**
+     * @return The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
+     * 
+     */
     public Optional<String> databricksApiTokenPlaintext() {
         return Optional.ofNullable(this.databricksApiTokenPlaintext);
     }

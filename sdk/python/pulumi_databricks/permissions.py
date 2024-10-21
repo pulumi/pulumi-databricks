@@ -834,6 +834,7 @@ class Permissions(pulumi.CustomResource):
         import pulumi_databricks as databricks
         import pulumi_std as std
 
+        me = databricks.get_current_user()
         eng = databricks.Group("eng", display_name="Engineering")
         dlt_demo = databricks.Notebook("dlt_demo",
             content_base64=std.base64encode(input=\"\"\"import dlt
@@ -845,9 +846,9 @@ class Permissions(pulumi.CustomResource):
             return (spark.read.format("json").load(json_path))
         \"\"\").result,
             language="PYTHON",
-            path=f"{me['home']}/DLT_Demo")
+            path=f"{me.home}/DLT_Demo")
         this = databricks.Pipeline("this",
-            name=f"DLT Demo Pipeline ({me['alphanumeric']})",
+            name=f"DLT Demo Pipeline ({me.alphanumeric})",
             storage="/test/tf-pipeline",
             configuration={
                 "key1": "value1",
@@ -1570,6 +1571,7 @@ class Permissions(pulumi.CustomResource):
         import pulumi_databricks as databricks
         import pulumi_std as std
 
+        me = databricks.get_current_user()
         eng = databricks.Group("eng", display_name="Engineering")
         dlt_demo = databricks.Notebook("dlt_demo",
             content_base64=std.base64encode(input=\"\"\"import dlt
@@ -1581,9 +1583,9 @@ class Permissions(pulumi.CustomResource):
             return (spark.read.format("json").load(json_path))
         \"\"\").result,
             language="PYTHON",
-            path=f"{me['home']}/DLT_Demo")
+            path=f"{me.home}/DLT_Demo")
         this = databricks.Pipeline("this",
-            name=f"DLT Demo Pipeline ({me['alphanumeric']})",
+            name=f"DLT Demo Pipeline ({me.alphanumeric})",
             storage="/test/tf-pipeline",
             configuration={
                 "key1": "value1",

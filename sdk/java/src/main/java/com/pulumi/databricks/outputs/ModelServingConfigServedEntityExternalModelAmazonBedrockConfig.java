@@ -17,6 +17,10 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
      * 
      */
     private @Nullable String awsAccessKeyId;
+    /**
+     * @return An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
+     * 
+     */
     private @Nullable String awsAccessKeyIdPlaintext;
     /**
      * @return The AWS region to use. Bedrock has to be enabled there.
@@ -28,6 +32,10 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
      * 
      */
     private @Nullable String awsSecretAccessKey;
+    /**
+     * @return An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
+     * 
+     */
     private @Nullable String awsSecretAccessKeyPlaintext;
     /**
      * @return The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
@@ -43,6 +51,10 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
     public Optional<String> awsAccessKeyId() {
         return Optional.ofNullable(this.awsAccessKeyId);
     }
+    /**
+     * @return An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
+     * 
+     */
     public Optional<String> awsAccessKeyIdPlaintext() {
         return Optional.ofNullable(this.awsAccessKeyIdPlaintext);
     }
@@ -60,6 +72,10 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
     public Optional<String> awsSecretAccessKey() {
         return Optional.ofNullable(this.awsSecretAccessKey);
     }
+    /**
+     * @return An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
+     * 
+     */
     public Optional<String> awsSecretAccessKeyPlaintext() {
         return Optional.ofNullable(this.awsSecretAccessKeyPlaintext);
     }

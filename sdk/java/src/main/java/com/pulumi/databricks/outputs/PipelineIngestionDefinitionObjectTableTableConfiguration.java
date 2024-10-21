@@ -16,6 +16,7 @@ public final class PipelineIngestionDefinitionObjectTableTableConfiguration {
     private @Nullable List<String> primaryKeys;
     private @Nullable Boolean salesforceIncludeFormulaFields;
     private @Nullable String scdType;
+    private @Nullable List<String> sequenceBies;
 
     private PipelineIngestionDefinitionObjectTableTableConfiguration() {}
     public List<String> primaryKeys() {
@@ -26,6 +27,9 @@ public final class PipelineIngestionDefinitionObjectTableTableConfiguration {
     }
     public Optional<String> scdType() {
         return Optional.ofNullable(this.scdType);
+    }
+    public List<String> sequenceBies() {
+        return this.sequenceBies == null ? List.of() : this.sequenceBies;
     }
 
     public static Builder builder() {
@@ -40,12 +44,14 @@ public final class PipelineIngestionDefinitionObjectTableTableConfiguration {
         private @Nullable List<String> primaryKeys;
         private @Nullable Boolean salesforceIncludeFormulaFields;
         private @Nullable String scdType;
+        private @Nullable List<String> sequenceBies;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionObjectTableTableConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.primaryKeys = defaults.primaryKeys;
     	      this.salesforceIncludeFormulaFields = defaults.salesforceIncludeFormulaFields;
     	      this.scdType = defaults.scdType;
+    	      this.sequenceBies = defaults.sequenceBies;
         }
 
         @CustomType.Setter
@@ -69,11 +75,21 @@ public final class PipelineIngestionDefinitionObjectTableTableConfiguration {
             this.scdType = scdType;
             return this;
         }
+        @CustomType.Setter
+        public Builder sequenceBies(@Nullable List<String> sequenceBies) {
+
+            this.sequenceBies = sequenceBies;
+            return this;
+        }
+        public Builder sequenceBies(String... sequenceBies) {
+            return sequenceBies(List.of(sequenceBies));
+        }
         public PipelineIngestionDefinitionObjectTableTableConfiguration build() {
             final var _resultValue = new PipelineIngestionDefinitionObjectTableTableConfiguration();
             _resultValue.primaryKeys = primaryKeys;
             _resultValue.salesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
             _resultValue.scdType = scdType;
+            _resultValue.sequenceBies = sequenceBies;
             return _resultValue;
         }
     }

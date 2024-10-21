@@ -19,38 +19,62 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
 
     public static final ModelServingAiGatewayArgs Empty = new ModelServingAiGatewayArgs();
 
+    /**
+     * Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+     * 
+     */
     @Import(name="guardrails")
     private @Nullable Output<ModelServingAiGatewayGuardrailsArgs> guardrails;
 
+    /**
+     * @return Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+     * 
+     */
     public Optional<Output<ModelServingAiGatewayGuardrailsArgs>> guardrails() {
         return Optional.ofNullable(this.guardrails);
     }
 
+    /**
+     * Block describing the configuration of usage tracking. Consists of the following attributes:
+     * 
+     */
     @Import(name="inferenceTableConfig")
     private @Nullable Output<ModelServingAiGatewayInferenceTableConfigArgs> inferenceTableConfig;
 
+    /**
+     * @return Block describing the configuration of usage tracking. Consists of the following attributes:
+     * 
+     */
     public Optional<Output<ModelServingAiGatewayInferenceTableConfigArgs>> inferenceTableConfig() {
         return Optional.ofNullable(this.inferenceTableConfig);
     }
 
     /**
-     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
      * 
      */
     @Import(name="rateLimits")
     private @Nullable Output<List<ModelServingAiGatewayRateLimitArgs>> rateLimits;
 
     /**
-     * @return A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * @return Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
      * 
      */
     public Optional<Output<List<ModelServingAiGatewayRateLimitArgs>>> rateLimits() {
         return Optional.ofNullable(this.rateLimits);
     }
 
+    /**
+     * Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+     * 
+     */
     @Import(name="usageTrackingConfig")
     private @Nullable Output<ModelServingAiGatewayUsageTrackingConfigArgs> usageTrackingConfig;
 
+    /**
+     * @return Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+     * 
+     */
     public Optional<Output<ModelServingAiGatewayUsageTrackingConfigArgs>> usageTrackingConfig() {
         return Optional.ofNullable(this.usageTrackingConfig);
     }
@@ -82,26 +106,50 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
             $ = new ModelServingAiGatewayArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param guardrails Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder guardrails(@Nullable Output<ModelServingAiGatewayGuardrailsArgs> guardrails) {
             $.guardrails = guardrails;
             return this;
         }
 
+        /**
+         * @param guardrails Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder guardrails(ModelServingAiGatewayGuardrailsArgs guardrails) {
             return guardrails(Output.of(guardrails));
         }
 
+        /**
+         * @param inferenceTableConfig Block describing the configuration of usage tracking. Consists of the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder inferenceTableConfig(@Nullable Output<ModelServingAiGatewayInferenceTableConfigArgs> inferenceTableConfig) {
             $.inferenceTableConfig = inferenceTableConfig;
             return this;
         }
 
+        /**
+         * @param inferenceTableConfig Block describing the configuration of usage tracking. Consists of the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder inferenceTableConfig(ModelServingAiGatewayInferenceTableConfigArgs inferenceTableConfig) {
             return inferenceTableConfig(Output.of(inferenceTableConfig));
         }
 
         /**
-         * @param rateLimits A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+         * @param rateLimits Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
          * 
          * @return builder
          * 
@@ -112,7 +160,7 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param rateLimits A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+         * @param rateLimits Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
          * 
          * @return builder
          * 
@@ -122,7 +170,7 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param rateLimits A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+         * @param rateLimits Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
          * 
          * @return builder
          * 
@@ -131,11 +179,23 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
             return rateLimits(List.of(rateLimits));
         }
 
+        /**
+         * @param usageTrackingConfig Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+         * 
+         * @return builder
+         * 
+         */
         public Builder usageTrackingConfig(@Nullable Output<ModelServingAiGatewayUsageTrackingConfigArgs> usageTrackingConfig) {
             $.usageTrackingConfig = usageTrackingConfig;
             return this;
         }
 
+        /**
+         * @param usageTrackingConfig Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+         * 
+         * @return builder
+         * 
+         */
         public Builder usageTrackingConfig(ModelServingAiGatewayUsageTrackingConfigArgs usageTrackingConfig) {
             return usageTrackingConfig(Output.of(usageTrackingConfig));
         }

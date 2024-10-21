@@ -32,14 +32,14 @@ public final class ModelServingAiGatewayInferenceTableConfigArgs extends com.pul
     }
 
     /**
-     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     * boolean flag specifying if usage tracking is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     * @return boolean flag specifying if usage tracking is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -125,7 +125,7 @@ public final class ModelServingAiGatewayInferenceTableConfigArgs extends com.pul
         }
 
         /**
-         * @param enabled If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+         * @param enabled boolean flag specifying if usage tracking is enabled.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ModelServingAiGatewayInferenceTableConfigArgs extends com.pul
         }
 
         /**
-         * @param enabled If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+         * @param enabled boolean flag specifying if usage tracking is enabled.
          * 
          * @return builder
          * 

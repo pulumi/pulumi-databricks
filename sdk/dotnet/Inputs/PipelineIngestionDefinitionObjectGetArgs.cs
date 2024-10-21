@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineIngestionDefinitionObjectGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("report")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectReportGetArgs>? Report { get; set; }
+
         [Input("schema")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaGetArgs>? Schema { get; set; }
 

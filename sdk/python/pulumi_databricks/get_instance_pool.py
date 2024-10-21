@@ -89,7 +89,7 @@ def get_instance_pool(name: Optional[str] = None,
     import pulumi_databricks as databricks
 
     pool = databricks.get_instance_pool(name="All spot")
-    my_cluster = databricks.Cluster("my_cluster", instance_pool_id=pool_databricks_instance_pool["id"])
+    my_cluster = databricks.Cluster("my_cluster", instance_pool_id=pool.id)
     ```
 
 
@@ -123,7 +123,7 @@ def get_instance_pool_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi_databricks as databricks
 
     pool = databricks.get_instance_pool(name="All spot")
-    my_cluster = databricks.Cluster("my_cluster", instance_pool_id=pool_databricks_instance_pool["id"])
+    my_cluster = databricks.Cluster("my_cluster", instance_pool_id=pool.id)
     ```
 
 

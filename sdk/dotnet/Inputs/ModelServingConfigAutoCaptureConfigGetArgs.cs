@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? CatalogName { get; set; }
 
         /// <summary>
-        /// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        /// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

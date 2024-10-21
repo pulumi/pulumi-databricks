@@ -126,6 +126,9 @@ namespace Pulumi.Databricks
         [Output("allowDuplicateNames")]
         public Output<bool?> AllowDuplicateNames { get; private set; } = null!;
 
+        /// <summary>
+        /// optional string specifying ID of the budget policy for this DLT pipeline.
+        /// </summary>
         [Output("budgetPolicyId")]
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
 
@@ -322,6 +325,9 @@ namespace Pulumi.Databricks
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
 
+        /// <summary>
+        /// optional string specifying ID of the budget policy for this DLT pipeline.
+        /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 
@@ -508,6 +514,9 @@ namespace Pulumi.Databricks
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
 
+        /// <summary>
+        /// optional string specifying ID of the budget policy for this DLT pipeline.
+        /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 

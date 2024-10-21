@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectReportArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectTableArgs;
 import java.util.Objects;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class PipelineIngestionDefinitionObjectArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineIngestionDefinitionObjectArgs Empty = new PipelineIngestionDefinitionObjectArgs();
+
+    @Import(name="report")
+    private @Nullable Output<PipelineIngestionDefinitionObjectReportArgs> report;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectReportArgs>> report() {
+        return Optional.ofNullable(this.report);
+    }
 
     @Import(name="schema")
     private @Nullable Output<PipelineIngestionDefinitionObjectSchemaArgs> schema;
@@ -33,6 +41,7 @@ public final class PipelineIngestionDefinitionObjectArgs extends com.pulumi.reso
     private PipelineIngestionDefinitionObjectArgs() {}
 
     private PipelineIngestionDefinitionObjectArgs(PipelineIngestionDefinitionObjectArgs $) {
+        this.report = $.report;
         this.schema = $.schema;
         this.table = $.table;
     }
@@ -53,6 +62,15 @@ public final class PipelineIngestionDefinitionObjectArgs extends com.pulumi.reso
 
         public Builder(PipelineIngestionDefinitionObjectArgs defaults) {
             $ = new PipelineIngestionDefinitionObjectArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder report(@Nullable Output<PipelineIngestionDefinitionObjectReportArgs> report) {
+            $.report = report;
+            return this;
+        }
+
+        public Builder report(PipelineIngestionDefinitionObjectReportArgs report) {
+            return report(Output.of(report));
         }
 
         public Builder schema(@Nullable Output<PipelineIngestionDefinitionObjectSchemaArgs> schema) {

@@ -168,6 +168,8 @@ namespace Pulumi.Databricks
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
     ///     // AWS ARN for the Databricks cross account role
     ///     var databricksCrossAccountRole = config.RequireObject&lt;dynamic&gt;("databricksCrossAccountRole");
+    ///     var current = Aws.GetCallerIdentity.Invoke();
+    /// 
     ///     var databricksStorageCmk = Aws.Iam.GetPolicyDocument.Invoke(new()
     ///     {
     ///         Version = "2012-10-17",
@@ -184,7 +186,7 @@ namespace Pulumi.Databricks
     ///                         Type = "AWS",
     ///                         Identifiers = new[]
     ///                         {
-    ///                             current.AccountId,
+    ///                             current.Apply(getCallerIdentityResult =&gt; getCallerIdentityResult.AccountId),
     ///                         },
     ///                     },
     ///                 },

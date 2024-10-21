@@ -121,6 +121,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly alwaysRunning!: pulumi.Output<boolean | undefined>;
     /**
+     * The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+     */
+    public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
+    /**
      * Configuration block to configure pause status. See continuous Configuration Block.
      */
     public readonly continuous!: pulumi.Output<outputs.JobContinuous | undefined>;
@@ -273,6 +277,7 @@ export class Job extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
             resourceInputs["alwaysRunning"] = state ? state.alwaysRunning : undefined;
+            resourceInputs["budgetPolicyId"] = state ? state.budgetPolicyId : undefined;
             resourceInputs["continuous"] = state ? state.continuous : undefined;
             resourceInputs["controlRunState"] = state ? state.controlRunState : undefined;
             resourceInputs["dbtTask"] = state ? state.dbtTask : undefined;
@@ -314,6 +319,7 @@ export class Job extends pulumi.CustomResource {
         } else {
             const args = argsOrState as JobArgs | undefined;
             resourceInputs["alwaysRunning"] = args ? args.alwaysRunning : undefined;
+            resourceInputs["budgetPolicyId"] = args ? args.budgetPolicyId : undefined;
             resourceInputs["continuous"] = args ? args.continuous : undefined;
             resourceInputs["controlRunState"] = args ? args.controlRunState : undefined;
             resourceInputs["dbtTask"] = args ? args.dbtTask : undefined;
@@ -368,6 +374,10 @@ export interface JobState {
      * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     alwaysRunning?: pulumi.Input<boolean>;
+    /**
+     * The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+     */
+    budgetPolicyId?: pulumi.Input<string>;
     /**
      * Configuration block to configure pause status. See continuous Configuration Block.
      */
@@ -518,6 +528,10 @@ export interface JobArgs {
      * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     alwaysRunning?: pulumi.Input<boolean>;
+    /**
+     * The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+     */
+    budgetPolicyId?: pulumi.Input<string>;
     /**
      * Configuration block to configure pause status. See continuous Configuration Block.
      */

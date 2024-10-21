@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("palmApiKey")]
         public Input<string>? PalmApiKey { get; set; }
 
+        /// <summary>
+        /// The PaLM API key provided as a plaintext string.
+        /// </summary>
         [Input("palmApiKeyPlaintext")]
         public Input<string>? PalmApiKeyPlaintext { get; set; }
 

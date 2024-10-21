@@ -15,43 +15,75 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
 
     public static final ModelServingConfigServedEntityExternalModelOpenaiConfigArgs Empty = new ModelServingConfigServedEntityExternalModelOpenaiConfigArgs();
 
+    /**
+     * This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
+     * 
+     */
     @Import(name="microsoftEntraClientId")
     private @Nullable Output<String> microsoftEntraClientId;
 
+    /**
+     * @return This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
+     * 
+     */
     public Optional<Output<String>> microsoftEntraClientId() {
         return Optional.ofNullable(this.microsoftEntraClientId);
     }
 
+    /**
+     * The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
+     * 
+     */
     @Import(name="microsoftEntraClientSecret")
     private @Nullable Output<String> microsoftEntraClientSecret;
 
+    /**
+     * @return The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
+     * 
+     */
     public Optional<Output<String>> microsoftEntraClientSecret() {
         return Optional.ofNullable(this.microsoftEntraClientSecret);
     }
 
+    /**
+     * The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
+     * 
+     */
     @Import(name="microsoftEntraClientSecretPlaintext")
     private @Nullable Output<String> microsoftEntraClientSecretPlaintext;
 
+    /**
+     * @return The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
+     * 
+     */
     public Optional<Output<String>> microsoftEntraClientSecretPlaintext() {
         return Optional.ofNullable(this.microsoftEntraClientSecretPlaintext);
     }
 
+    /**
+     * This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
+     * 
+     */
     @Import(name="microsoftEntraTenantId")
     private @Nullable Output<String> microsoftEntraTenantId;
 
+    /**
+     * @return This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
+     * 
+     */
     public Optional<Output<String>> microsoftEntraTenantId() {
         return Optional.ofNullable(this.microsoftEntraTenantId);
     }
 
     /**
-     * This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+     * This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
      * 
      */
     @Import(name="openaiApiBase")
     private @Nullable Output<String> openaiApiBase;
 
     /**
-     * @return This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+     * @return This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
      * 
      */
     public Optional<Output<String>> openaiApiBase() {
@@ -73,22 +105,30 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
         return Optional.ofNullable(this.openaiApiKey);
     }
 
+    /**
+     * The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
+     * 
+     */
     @Import(name="openaiApiKeyPlaintext")
     private @Nullable Output<String> openaiApiKeyPlaintext;
 
+    /**
+     * @return The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
+     * 
+     */
     public Optional<Output<String>> openaiApiKeyPlaintext() {
         return Optional.ofNullable(this.openaiApiKeyPlaintext);
     }
 
     /**
-     * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+     * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
      * 
      */
     @Import(name="openaiApiType")
     private @Nullable Output<String> openaiApiType;
 
     /**
-     * @return This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+     * @return This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
      * 
      */
     public Optional<Output<String>> openaiApiType() {
@@ -96,14 +136,14 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
     }
 
     /**
-     * This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+     * This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
      * 
      */
     @Import(name="openaiApiVersion")
     private @Nullable Output<String> openaiApiVersion;
 
     /**
-     * @return This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+     * @return This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
      * 
      */
     public Optional<Output<String>> openaiApiVersion() {
@@ -174,44 +214,92 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
             $ = new ModelServingConfigServedEntityExternalModelOpenaiConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param microsoftEntraClientId This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder microsoftEntraClientId(@Nullable Output<String> microsoftEntraClientId) {
             $.microsoftEntraClientId = microsoftEntraClientId;
             return this;
         }
 
+        /**
+         * @param microsoftEntraClientId This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder microsoftEntraClientId(String microsoftEntraClientId) {
             return microsoftEntraClientId(Output.of(microsoftEntraClientId));
         }
 
+        /**
+         * @param microsoftEntraClientSecret The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder microsoftEntraClientSecret(@Nullable Output<String> microsoftEntraClientSecret) {
             $.microsoftEntraClientSecret = microsoftEntraClientSecret;
             return this;
         }
 
+        /**
+         * @param microsoftEntraClientSecret The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder microsoftEntraClientSecret(String microsoftEntraClientSecret) {
             return microsoftEntraClientSecret(Output.of(microsoftEntraClientSecret));
         }
 
+        /**
+         * @param microsoftEntraClientSecretPlaintext The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder microsoftEntraClientSecretPlaintext(@Nullable Output<String> microsoftEntraClientSecretPlaintext) {
             $.microsoftEntraClientSecretPlaintext = microsoftEntraClientSecretPlaintext;
             return this;
         }
 
+        /**
+         * @param microsoftEntraClientSecretPlaintext The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder microsoftEntraClientSecretPlaintext(String microsoftEntraClientSecretPlaintext) {
             return microsoftEntraClientSecretPlaintext(Output.of(microsoftEntraClientSecretPlaintext));
         }
 
+        /**
+         * @param microsoftEntraTenantId This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder microsoftEntraTenantId(@Nullable Output<String> microsoftEntraTenantId) {
             $.microsoftEntraTenantId = microsoftEntraTenantId;
             return this;
         }
 
+        /**
+         * @param microsoftEntraTenantId This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder microsoftEntraTenantId(String microsoftEntraTenantId) {
             return microsoftEntraTenantId(Output.of(microsoftEntraTenantId));
         }
 
         /**
-         * @param openaiApiBase This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+         * @param openaiApiBase This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
          * 
          * @return builder
          * 
@@ -222,7 +310,7 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
         }
 
         /**
-         * @param openaiApiBase This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+         * @param openaiApiBase This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
          * 
          * @return builder
          * 
@@ -252,17 +340,29 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
             return openaiApiKey(Output.of(openaiApiKey));
         }
 
+        /**
+         * @param openaiApiKeyPlaintext The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder openaiApiKeyPlaintext(@Nullable Output<String> openaiApiKeyPlaintext) {
             $.openaiApiKeyPlaintext = openaiApiKeyPlaintext;
             return this;
         }
 
+        /**
+         * @param openaiApiKeyPlaintext The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder openaiApiKeyPlaintext(String openaiApiKeyPlaintext) {
             return openaiApiKeyPlaintext(Output.of(openaiApiKeyPlaintext));
         }
 
         /**
-         * @param openaiApiType This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+         * @param openaiApiType This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
          * 
          * @return builder
          * 
@@ -273,7 +373,7 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
         }
 
         /**
-         * @param openaiApiType This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+         * @param openaiApiType This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
          * 
          * @return builder
          * 
@@ -283,7 +383,7 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
         }
 
         /**
-         * @param openaiApiVersion This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+         * @param openaiApiVersion This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
          * 
          * @return builder
          * 
@@ -294,7 +394,7 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
         }
 
         /**
-         * @param openaiApiVersion This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+         * @param openaiApiVersion This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
          * 
          * @return builder
          * 

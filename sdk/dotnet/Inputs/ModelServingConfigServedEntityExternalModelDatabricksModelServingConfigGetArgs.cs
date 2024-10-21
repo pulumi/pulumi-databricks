@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("databricksApiToken")]
         public Input<string>? DatabricksApiToken { get; set; }
 
+        /// <summary>
+        /// The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
+        /// </summary>
         [Input("databricksApiTokenPlaintext")]
         public Input<string>? DatabricksApiTokenPlaintext { get; set; }
 

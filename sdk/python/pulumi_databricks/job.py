@@ -22,6 +22,7 @@ __all__ = ['JobArgs', 'Job']
 class JobArgs:
     def __init__(__self__, *,
                  always_running: Optional[pulumi.Input[bool]] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  continuous: Optional[pulumi.Input['JobContinuousArgs']] = None,
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
@@ -62,6 +63,7 @@ class JobArgs:
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        :param pulumi.Input[str] budget_policy_id: The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
         :param pulumi.Input['JobContinuousArgs'] continuous: Configuration block to configure pause status. See continuous Configuration Block.
         :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
@@ -91,6 +93,8 @@ class JobArgs:
             pulumi.log.warn("""always_running is deprecated: always_running will be replaced by control_run_state in the next major release.""")
         if always_running is not None:
             pulumi.set(__self__, "always_running", always_running)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
         if control_run_state is not None:
@@ -211,6 +215,18 @@ class JobArgs:
     @always_running.setter
     def always_running(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "always_running", value)
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        """
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "budget_policy_id", value)
 
     @property
     @pulumi.getter
@@ -626,6 +642,7 @@ class JobArgs:
 class _JobState:
     def __init__(__self__, *,
                  always_running: Optional[pulumi.Input[bool]] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  continuous: Optional[pulumi.Input['JobContinuousArgs']] = None,
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
@@ -667,6 +684,7 @@ class _JobState:
         """
         Input properties used for looking up and filtering Job resources.
         :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        :param pulumi.Input[str] budget_policy_id: The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
         :param pulumi.Input['JobContinuousArgs'] continuous: Configuration block to configure pause status. See continuous Configuration Block.
         :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
@@ -697,6 +715,8 @@ class _JobState:
             pulumi.log.warn("""always_running is deprecated: always_running will be replaced by control_run_state in the next major release.""")
         if always_running is not None:
             pulumi.set(__self__, "always_running", always_running)
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
         if control_run_state is not None:
@@ -819,6 +839,18 @@ class _JobState:
     @always_running.setter
     def always_running(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "always_running", value)
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        """
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "budget_policy_id", value)
 
     @property
     @pulumi.getter
@@ -1248,6 +1280,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_running: Optional[pulumi.Input[bool]] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  continuous: Optional[pulumi.Input[Union['JobContinuousArgs', 'JobContinuousArgsDict']]] = None,
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input[Union['JobDbtTaskArgs', 'JobDbtTaskArgsDict']]] = None,
@@ -1368,6 +1401,7 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        :param pulumi.Input[str] budget_policy_id: The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
         :param pulumi.Input[Union['JobContinuousArgs', 'JobContinuousArgsDict']] continuous: Configuration block to configure pause status. See continuous Configuration Block.
         :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
@@ -1493,6 +1527,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_running: Optional[pulumi.Input[bool]] = None,
+                 budget_policy_id: Optional[pulumi.Input[str]] = None,
                  continuous: Optional[pulumi.Input[Union['JobContinuousArgs', 'JobContinuousArgsDict']]] = None,
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input[Union['JobDbtTaskArgs', 'JobDbtTaskArgsDict']]] = None,
@@ -1540,6 +1575,7 @@ class Job(pulumi.CustomResource):
             __props__ = JobArgs.__new__(JobArgs)
 
             __props__.__dict__["always_running"] = always_running
+            __props__.__dict__["budget_policy_id"] = budget_policy_id
             __props__.__dict__["continuous"] = continuous
             __props__.__dict__["control_run_state"] = control_run_state
             __props__.__dict__["dbt_task"] = dbt_task
@@ -1589,6 +1625,7 @@ class Job(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             always_running: Optional[pulumi.Input[bool]] = None,
+            budget_policy_id: Optional[pulumi.Input[str]] = None,
             continuous: Optional[pulumi.Input[Union['JobContinuousArgs', 'JobContinuousArgsDict']]] = None,
             control_run_state: Optional[pulumi.Input[bool]] = None,
             dbt_task: Optional[pulumi.Input[Union['JobDbtTaskArgs', 'JobDbtTaskArgsDict']]] = None,
@@ -1635,6 +1672,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        :param pulumi.Input[str] budget_policy_id: The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
         :param pulumi.Input[Union['JobContinuousArgs', 'JobContinuousArgsDict']] continuous: Configuration block to configure pause status. See continuous Configuration Block.
         :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
@@ -1665,6 +1703,7 @@ class Job(pulumi.CustomResource):
         __props__ = _JobState.__new__(_JobState)
 
         __props__.__dict__["always_running"] = always_running
+        __props__.__dict__["budget_policy_id"] = budget_policy_id
         __props__.__dict__["continuous"] = continuous
         __props__.__dict__["control_run_state"] = control_run_state
         __props__.__dict__["dbt_task"] = dbt_task
@@ -1713,6 +1752,14 @@ class Job(pulumi.CustomResource):
         (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
         """
         return pulumi.get(self, "always_running")
+
+    @property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        """
+        return pulumi.get(self, "budget_policy_id")
 
     @property
     @pulumi.getter
