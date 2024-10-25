@@ -17,6 +17,39 @@
                     }
                 }
             },
+            "databricks_alert": {
+                "current": "databricks:index/alert:Alert",
+                "majorVersion": 1,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "operand": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "column": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "threshold": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "value": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_artifact_allowlist": {
                 "current": "databricks:index/artifactAllowlist:ArtifactAllowlist",
                 "majorVersion": 1,
@@ -287,6 +320,21 @@
             "databricks_connection": {
                 "current": "databricks:index/connection:Connection",
                 "majorVersion": 1
+            },
+            "databricks_custom_app_integration": {
+                "current": "databricks:index/customAppIntegration:CustomAppIntegration",
+                "majorVersion": 1,
+                "fields": {
+                    "redirect_urls": {
+                        "maxItemsOne": false
+                    },
+                    "scopes": {
+                        "maxItemsOne": false
+                    },
+                    "token_access_policy": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_dashboard": {
                 "current": "databricks:index/dashboard:Dashboard",
@@ -2516,6 +2564,67 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "databricks_query": {
+                "current": "databricks:index/query:Query",
+                "majorVersion": 1,
+                "fields": {
+                    "parameter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "date_range_value": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "date_range_value": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "date_value": {
+                                    "maxItemsOne": true
+                                },
+                                "enum_value": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "multi_values_options": {
+                                                "maxItemsOne": true
+                                            },
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "numeric_value": {
+                                    "maxItemsOne": true
+                                },
+                                "query_backed_value": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "multi_values_options": {
+                                                "maxItemsOne": true
+                                            },
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "text_value": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -4891,6 +5000,7 @@
     "mux": {
         "resources": {
             "databricks:index/accessControlRuleSet:AccessControlRuleSet": 0,
+            "databricks:index/alert:Alert": 0,
             "databricks:index/artifactAllowlist:ArtifactAllowlist": 0,
             "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting": 0,
             "databricks:index/budget:Budget": 0,
@@ -4900,6 +5010,7 @@
             "databricks:index/clusterPolicy:ClusterPolicy": 0,
             "databricks:index/complianceSecurityProfileWorkspaceSetting:ComplianceSecurityProfileWorkspaceSetting": 0,
             "databricks:index/connection:Connection": 0,
+            "databricks:index/customAppIntegration:CustomAppIntegration": 0,
             "databricks:index/dashboard:Dashboard": 0,
             "databricks:index/dbfsFile:DbfsFile": 0,
             "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting": 0,
@@ -4951,6 +5062,7 @@
             "databricks:index/permissions:Permissions": 0,
             "databricks:index/pipeline:Pipeline": 0,
             "databricks:index/qualityMonitor:QualityMonitor": 0,
+            "databricks:index/query:Query": 0,
             "databricks:index/recipient:Recipient": 0,
             "databricks:index/registeredModel:RegisteredModel": 0,
             "databricks:index/repo:Repo": 0,
