@@ -81,6 +81,10 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Access Control
+ * 
+ * databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -89,6 +93,16 @@ import javax.annotation.Nullable;
  * * databricks.SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
  * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
  * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+ * 
+ * ## Import
+ * 
+ * This resource can be imported using alert ID:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/sqlAlert:SqlAlert this &lt;alert-id&gt;
+ * ```
  * 
  */
 @ResourceType(type="databricks:index/sqlAlert:SqlAlert")

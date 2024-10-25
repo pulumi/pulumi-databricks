@@ -30,7 +30,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Parameters;
         /// <summary>
-        /// block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        /// block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
         /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskSqlTaskQuery? Query;
         /// <summary>

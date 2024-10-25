@@ -100,7 +100,7 @@ type GetNodeTypeArgs struct {
 	Fleet *bool `pulumi:"fleet"`
 	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
 	GbPerCore *int `pulumi:"gbPerCore"`
-	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+	// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
 	Graviton *bool `pulumi:"graviton"`
 	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
 	Id *string `pulumi:"id"`
@@ -177,7 +177,7 @@ type GetNodeTypeOutputArgs struct {
 	Fleet pulumi.BoolPtrInput `pulumi:"fleet"`
 	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
 	GbPerCore pulumi.IntPtrInput `pulumi:"gbPerCore"`
-	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+	// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
 	Graviton pulumi.BoolPtrInput `pulumi:"graviton"`
 	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
 	Id pulumi.StringPtrInput `pulumi:"id"`

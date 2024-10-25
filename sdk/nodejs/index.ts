@@ -10,6 +10,11 @@ export type AccessControlRuleSet = import("./accessControlRuleSet").AccessContro
 export const AccessControlRuleSet: typeof import("./accessControlRuleSet").AccessControlRuleSet = null as any;
 utilities.lazyLoad(exports, ["AccessControlRuleSet"], () => require("./accessControlRuleSet"));
 
+export { AlertArgs, AlertState } from "./alert";
+export type Alert = import("./alert").Alert;
+export const Alert: typeof import("./alert").Alert = null as any;
+utilities.lazyLoad(exports, ["Alert"], () => require("./alert"));
+
 export { ArtifactAllowlistArgs, ArtifactAllowlistState } from "./artifactAllowlist";
 export type ArtifactAllowlist = import("./artifactAllowlist").ArtifactAllowlist;
 export const ArtifactAllowlist: typeof import("./artifactAllowlist").ArtifactAllowlist = null as any;
@@ -54,6 +59,11 @@ export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+
+export { CustomAppIntegrationArgs, CustomAppIntegrationState } from "./customAppIntegration";
+export type CustomAppIntegration = import("./customAppIntegration").CustomAppIntegration;
+export const CustomAppIntegration: typeof import("./customAppIntegration").CustomAppIntegration = null as any;
+utilities.lazyLoad(exports, ["CustomAppIntegration"], () => require("./customAppIntegration"));
 
 export { DashboardArgs, DashboardState } from "./dashboard";
 export type Dashboard = import("./dashboard").Dashboard;
@@ -585,6 +595,11 @@ export type QualityMonitor = import("./qualityMonitor").QualityMonitor;
 export const QualityMonitor: typeof import("./qualityMonitor").QualityMonitor = null as any;
 utilities.lazyLoad(exports, ["QualityMonitor"], () => require("./qualityMonitor"));
 
+export { QueryArgs, QueryState } from "./query";
+export type Query = import("./query").Query;
+export const Query: typeof import("./query").Query = null as any;
+utilities.lazyLoad(exports, ["Query"], () => require("./query"));
+
 export { RecipientArgs, RecipientState } from "./recipient";
 export type Recipient = import("./recipient").Recipient;
 export const Recipient: typeof import("./recipient").Recipient = null as any;
@@ -771,6 +786,8 @@ const _module = {
         switch (type) {
             case "databricks:index/accessControlRuleSet:AccessControlRuleSet":
                 return new AccessControlRuleSet(name, <any>undefined, { urn })
+            case "databricks:index/alert:Alert":
+                return new Alert(name, <any>undefined, { urn })
             case "databricks:index/artifactAllowlist:ArtifactAllowlist":
                 return new ArtifactAllowlist(name, <any>undefined, { urn })
             case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
@@ -789,6 +806,8 @@ const _module = {
                 return new ComplianceSecurityProfileWorkspaceSetting(name, <any>undefined, { urn })
             case "databricks:index/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "databricks:index/customAppIntegration:CustomAppIntegration":
+                return new CustomAppIntegration(name, <any>undefined, { urn })
             case "databricks:index/dashboard:Dashboard":
                 return new Dashboard(name, <any>undefined, { urn })
             case "databricks:index/dbfsFile:DbfsFile":
@@ -891,6 +910,8 @@ const _module = {
                 return new Pipeline(name, <any>undefined, { urn })
             case "databricks:index/qualityMonitor:QualityMonitor":
                 return new QualityMonitor(name, <any>undefined, { urn })
+            case "databricks:index/query:Query":
+                return new Query(name, <any>undefined, { urn })
             case "databricks:index/recipient:Recipient":
                 return new Recipient(name, <any>undefined, { urn })
             case "databricks:index/registeredModel:RegisteredModel":
@@ -965,6 +986,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("databricks", "index/accessControlRuleSet", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/alert", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/artifactAllowlist", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/automaticClusterUpdateWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/budget", _module)
@@ -974,6 +996,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/clusterPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/complianceSecurityProfileWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/connection", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/customAppIntegration", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dbfsFile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/defaultNamespaceSetting", _module)
@@ -1025,6 +1048,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/permissionAssignment"
 pulumi.runtime.registerResourceModule("databricks", "index/permissions", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitor", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/query", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/recipient", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/registeredModel", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/repo", _module)

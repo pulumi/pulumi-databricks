@@ -17,6 +17,16 @@ from . import _utilities
 __all__ = [
     'AccessControlRuleSetGrantRuleArgs',
     'AccessControlRuleSetGrantRuleArgsDict',
+    'AlertConditionArgs',
+    'AlertConditionArgsDict',
+    'AlertConditionOperandArgs',
+    'AlertConditionOperandArgsDict',
+    'AlertConditionOperandColumnArgs',
+    'AlertConditionOperandColumnArgsDict',
+    'AlertConditionThresholdArgs',
+    'AlertConditionThresholdArgsDict',
+    'AlertConditionThresholdValueArgs',
+    'AlertConditionThresholdValueArgsDict',
     'ArtifactAllowlistArtifactMatcherArgs',
     'ArtifactAllowlistArtifactMatcherArgsDict',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs',
@@ -103,6 +113,8 @@ __all__ = [
     'ClusterWorkloadTypeClientsArgsDict',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict',
+    'CustomAppIntegrationTokenAccessPolicyArgs',
+    'CustomAppIntegrationTokenAccessPolicyArgsDict',
     'DefaultNamespaceSettingNamespaceArgs',
     'DefaultNamespaceSettingNamespaceArgsDict',
     'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspaceArgs',
@@ -833,6 +845,26 @@ __all__ = [
     'QualityMonitorSnapshotArgsDict',
     'QualityMonitorTimeSeriesArgs',
     'QualityMonitorTimeSeriesArgsDict',
+    'QueryParameterArgs',
+    'QueryParameterArgsDict',
+    'QueryParameterDateRangeValueArgs',
+    'QueryParameterDateRangeValueArgsDict',
+    'QueryParameterDateRangeValueDateRangeValueArgs',
+    'QueryParameterDateRangeValueDateRangeValueArgsDict',
+    'QueryParameterDateValueArgs',
+    'QueryParameterDateValueArgsDict',
+    'QueryParameterEnumValueArgs',
+    'QueryParameterEnumValueArgsDict',
+    'QueryParameterEnumValueMultiValuesOptionsArgs',
+    'QueryParameterEnumValueMultiValuesOptionsArgsDict',
+    'QueryParameterNumericValueArgs',
+    'QueryParameterNumericValueArgsDict',
+    'QueryParameterQueryBackedValueArgs',
+    'QueryParameterQueryBackedValueArgsDict',
+    'QueryParameterQueryBackedValueMultiValuesOptionsArgs',
+    'QueryParameterQueryBackedValueMultiValuesOptionsArgsDict',
+    'QueryParameterTextValueArgs',
+    'QueryParameterTextValueArgsDict',
     'RecipientIpAccessListArgs',
     'RecipientIpAccessListArgsDict',
     'RecipientPropertiesKvpairsArgs',
@@ -1641,6 +1673,261 @@ class AccessControlRuleSetGrantRuleArgs:
     @principals.setter
     def principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "principals", value)
+
+
+if not MYPY:
+    class AlertConditionArgsDict(TypedDict):
+        op: pulumi.Input[str]
+        """
+        Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+        """
+        operand: pulumi.Input['AlertConditionOperandArgsDict']
+        """
+        Name of the column from the query result to use for comparison in alert evaluation:
+        """
+        empty_result_state: NotRequired[pulumi.Input[str]]
+        """
+        Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+        """
+        threshold: NotRequired[pulumi.Input['AlertConditionThresholdArgsDict']]
+        """
+        Threshold value used for comparison in alert evaluation:
+        """
+elif False:
+    AlertConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertConditionArgs:
+    def __init__(__self__, *,
+                 op: pulumi.Input[str],
+                 operand: pulumi.Input['AlertConditionOperandArgs'],
+                 empty_result_state: Optional[pulumi.Input[str]] = None,
+                 threshold: Optional[pulumi.Input['AlertConditionThresholdArgs']] = None):
+        """
+        :param pulumi.Input[str] op: Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+        :param pulumi.Input['AlertConditionOperandArgs'] operand: Name of the column from the query result to use for comparison in alert evaluation:
+        :param pulumi.Input[str] empty_result_state: Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+        :param pulumi.Input['AlertConditionThresholdArgs'] threshold: Threshold value used for comparison in alert evaluation:
+        """
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "operand", operand)
+        if empty_result_state is not None:
+            pulumi.set(__self__, "empty_result_state", empty_result_state)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[str]:
+        """
+        Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[str]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter
+    def operand(self) -> pulumi.Input['AlertConditionOperandArgs']:
+        """
+        Name of the column from the query result to use for comparison in alert evaluation:
+        """
+        return pulumi.get(self, "operand")
+
+    @operand.setter
+    def operand(self, value: pulumi.Input['AlertConditionOperandArgs']):
+        pulumi.set(self, "operand", value)
+
+    @property
+    @pulumi.getter(name="emptyResultState")
+    def empty_result_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+        """
+        return pulumi.get(self, "empty_result_state")
+
+    @empty_result_state.setter
+    def empty_result_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "empty_result_state", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input['AlertConditionThresholdArgs']]:
+        """
+        Threshold value used for comparison in alert evaluation:
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input['AlertConditionThresholdArgs']]):
+        pulumi.set(self, "threshold", value)
+
+
+if not MYPY:
+    class AlertConditionOperandArgsDict(TypedDict):
+        column: pulumi.Input['AlertConditionOperandColumnArgsDict']
+        """
+        Block describing the column from the query result to use for comparison in alert evaluation:
+        """
+elif False:
+    AlertConditionOperandArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertConditionOperandArgs:
+    def __init__(__self__, *,
+                 column: pulumi.Input['AlertConditionOperandColumnArgs']):
+        """
+        :param pulumi.Input['AlertConditionOperandColumnArgs'] column: Block describing the column from the query result to use for comparison in alert evaluation:
+        """
+        pulumi.set(__self__, "column", column)
+
+    @property
+    @pulumi.getter
+    def column(self) -> pulumi.Input['AlertConditionOperandColumnArgs']:
+        """
+        Block describing the column from the query result to use for comparison in alert evaluation:
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: pulumi.Input['AlertConditionOperandColumnArgs']):
+        pulumi.set(self, "column", value)
+
+
+if not MYPY:
+    class AlertConditionOperandColumnArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the column.
+        """
+elif False:
+    AlertConditionOperandColumnArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertConditionOperandColumnArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name of the column.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the column.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class AlertConditionThresholdArgsDict(TypedDict):
+        value: pulumi.Input['AlertConditionThresholdValueArgsDict']
+        """
+        actual value used in comparison (one of the attributes is required):
+        """
+elif False:
+    AlertConditionThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertConditionThresholdArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input['AlertConditionThresholdValueArgs']):
+        """
+        :param pulumi.Input['AlertConditionThresholdValueArgs'] value: actual value used in comparison (one of the attributes is required):
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input['AlertConditionThresholdValueArgs']:
+        """
+        actual value used in comparison (one of the attributes is required):
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input['AlertConditionThresholdValueArgs']):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AlertConditionThresholdValueArgsDict(TypedDict):
+        bool_value: NotRequired[pulumi.Input[bool]]
+        """
+        boolean value (`true` or `false`) to compare against boolean results.
+        """
+        double_value: NotRequired[pulumi.Input[float]]
+        """
+        double value to compare against integer and double results.
+        """
+        string_value: NotRequired[pulumi.Input[str]]
+        """
+        string value to compare against string results.
+        """
+elif False:
+    AlertConditionThresholdValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AlertConditionThresholdValueArgs:
+    def __init__(__self__, *,
+                 bool_value: Optional[pulumi.Input[bool]] = None,
+                 double_value: Optional[pulumi.Input[float]] = None,
+                 string_value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] bool_value: boolean value (`true` or `false`) to compare against boolean results.
+        :param pulumi.Input[float] double_value: double value to compare against integer and double results.
+        :param pulumi.Input[str] string_value: string value to compare against string results.
+        """
+        if bool_value is not None:
+            pulumi.set(__self__, "bool_value", bool_value)
+        if double_value is not None:
+            pulumi.set(__self__, "double_value", double_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter(name="boolValue")
+    def bool_value(self) -> Optional[pulumi.Input[bool]]:
+        """
+        boolean value (`true` or `false`) to compare against boolean results.
+        """
+        return pulumi.get(self, "bool_value")
+
+    @bool_value.setter
+    def bool_value(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bool_value", value)
+
+    @property
+    @pulumi.getter(name="doubleValue")
+    def double_value(self) -> Optional[pulumi.Input[float]]:
+        """
+        double value to compare against integer and double results.
+        """
+        return pulumi.get(self, "double_value")
+
+    @double_value.setter
+    def double_value(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "double_value", value)
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        string value to compare against string results.
+        """
+        return pulumi.get(self, "string_value")
+
+    @string_value.setter
+    def string_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "string_value", value)
 
 
 if not MYPY:
@@ -4480,6 +4767,58 @@ class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspac
     @is_enabled.setter
     def is_enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "is_enabled", value)
+
+
+if not MYPY:
+    class CustomAppIntegrationTokenAccessPolicyArgsDict(TypedDict):
+        access_token_ttl_in_minutes: NotRequired[pulumi.Input[int]]
+        """
+        access token time to live (TTL) in minutes.
+        """
+        refresh_token_ttl_in_minutes: NotRequired[pulumi.Input[int]]
+        """
+        refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+        """
+elif False:
+    CustomAppIntegrationTokenAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CustomAppIntegrationTokenAccessPolicyArgs:
+    def __init__(__self__, *,
+                 access_token_ttl_in_minutes: Optional[pulumi.Input[int]] = None,
+                 refresh_token_ttl_in_minutes: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] access_token_ttl_in_minutes: access token time to live (TTL) in minutes.
+        :param pulumi.Input[int] refresh_token_ttl_in_minutes: refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+        """
+        if access_token_ttl_in_minutes is not None:
+            pulumi.set(__self__, "access_token_ttl_in_minutes", access_token_ttl_in_minutes)
+        if refresh_token_ttl_in_minutes is not None:
+            pulumi.set(__self__, "refresh_token_ttl_in_minutes", refresh_token_ttl_in_minutes)
+
+    @property
+    @pulumi.getter(name="accessTokenTtlInMinutes")
+    def access_token_ttl_in_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        access token time to live (TTL) in minutes.
+        """
+        return pulumi.get(self, "access_token_ttl_in_minutes")
+
+    @access_token_ttl_in_minutes.setter
+    def access_token_ttl_in_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "access_token_ttl_in_minutes", value)
+
+    @property
+    @pulumi.getter(name="refreshTokenTtlInMinutes")
+    def refresh_token_ttl_in_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+        """
+        return pulumi.get(self, "refresh_token_ttl_in_minutes")
+
+    @refresh_token_ttl_in_minutes.setter
+    def refresh_token_ttl_in_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "refresh_token_ttl_in_minutes", value)
 
 
 if not MYPY:
@@ -15149,7 +15488,7 @@ if not MYPY:
         """
         query: NotRequired[pulumi.Input['JobTaskForEachTaskTaskSqlTaskQueryArgsDict']]
         """
-        block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
         """
 elif False:
     JobTaskForEachTaskTaskSqlTaskArgsDict: TypeAlias = Mapping[str, Any]
@@ -15169,7 +15508,7 @@ class JobTaskForEachTaskTaskSqlTaskArgs:
         :param pulumi.Input['JobTaskForEachTaskTaskSqlTaskDashboardArgs'] dashboard: block consisting of following fields:
         :param pulumi.Input['JobTaskForEachTaskTaskSqlTaskFileArgs'] file: block consisting of single string fields:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-        :param pulumi.Input['JobTaskForEachTaskTaskSqlTaskQueryArgs'] query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        :param pulumi.Input['JobTaskForEachTaskTaskSqlTaskQueryArgs'] query: block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
         """
         pulumi.set(__self__, "warehouse_id", warehouse_id)
         if alert is not None:
@@ -15247,7 +15586,7 @@ class JobTaskForEachTaskTaskSqlTaskArgs:
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskSqlTaskQueryArgs']]:
         """
-        block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
         """
         return pulumi.get(self, "query")
 
@@ -15260,7 +15599,7 @@ if not MYPY:
     class JobTaskForEachTaskTaskSqlTaskAlertArgsDict(TypedDict):
         alert_id: pulumi.Input[str]
         """
-        (String) identifier of the Databricks SQL Alert.
+        (String) identifier of the Databricks Alert (databricks_alert).
         """
         pause_subscriptions: NotRequired[pulumi.Input[bool]]
         """
@@ -15280,7 +15619,7 @@ class JobTaskForEachTaskTaskSqlTaskAlertArgs:
                  pause_subscriptions: Optional[pulumi.Input[bool]] = None,
                  subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']]]] = None):
         """
-        :param pulumi.Input[str] alert_id: (String) identifier of the Databricks SQL Alert.
+        :param pulumi.Input[str] alert_id: (String) identifier of the Databricks Alert (databricks_alert).
         :param pulumi.Input[bool] pause_subscriptions: flag that specifies if subscriptions are paused or not.
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs']]] subscriptions: a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
         """
@@ -15294,7 +15633,7 @@ class JobTaskForEachTaskTaskSqlTaskAlertArgs:
     @pulumi.getter(name="alertId")
     def alert_id(self) -> pulumi.Input[str]:
         """
-        (String) identifier of the Databricks SQL Alert.
+        (String) identifier of the Databricks Alert (databricks_alert).
         """
         return pulumi.get(self, "alert_id")
 
@@ -18728,7 +19067,7 @@ if not MYPY:
         """
         query: NotRequired[pulumi.Input['JobTaskSqlTaskQueryArgsDict']]
         """
-        block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
         """
 elif False:
     JobTaskSqlTaskArgsDict: TypeAlias = Mapping[str, Any]
@@ -18748,7 +19087,7 @@ class JobTaskSqlTaskArgs:
         :param pulumi.Input['JobTaskSqlTaskDashboardArgs'] dashboard: block consisting of following fields:
         :param pulumi.Input['JobTaskSqlTaskFileArgs'] file: block consisting of single string fields:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-        :param pulumi.Input['JobTaskSqlTaskQueryArgs'] query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        :param pulumi.Input['JobTaskSqlTaskQueryArgs'] query: block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
         """
         pulumi.set(__self__, "warehouse_id", warehouse_id)
         if alert is not None:
@@ -18826,7 +19165,7 @@ class JobTaskSqlTaskArgs:
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input['JobTaskSqlTaskQueryArgs']]:
         """
-        block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
         """
         return pulumi.get(self, "query")
 
@@ -18839,7 +19178,7 @@ if not MYPY:
     class JobTaskSqlTaskAlertArgsDict(TypedDict):
         alert_id: pulumi.Input[str]
         """
-        (String) identifier of the Databricks SQL Alert.
+        (String) identifier of the Databricks Alert (databricks_alert).
         """
         pause_subscriptions: NotRequired[pulumi.Input[bool]]
         """
@@ -18859,7 +19198,7 @@ class JobTaskSqlTaskAlertArgs:
                  pause_subscriptions: Optional[pulumi.Input[bool]] = None,
                  subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]]] = None):
         """
-        :param pulumi.Input[str] alert_id: (String) identifier of the Databricks SQL Alert.
+        :param pulumi.Input[str] alert_id: (String) identifier of the Databricks Alert (databricks_alert).
         :param pulumi.Input[bool] pause_subscriptions: flag that specifies if subscriptions are paused or not.
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskSqlTaskAlertSubscriptionArgs']]] subscriptions: a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
         """
@@ -18873,7 +19212,7 @@ class JobTaskSqlTaskAlertArgs:
     @pulumi.getter(name="alertId")
     def alert_id(self) -> pulumi.Input[str]:
         """
-        (String) identifier of the Databricks SQL Alert.
+        (String) identifier of the Databricks Alert (databricks_alert).
         """
         return pulumi.get(self, "alert_id")
 
@@ -27639,6 +27978,9 @@ if not MYPY:
     class PipelineIngestionDefinitionObjectArgsDict(TypedDict):
         report: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectReportArgsDict']]
         schema: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectSchemaArgsDict']]
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
         table: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectTableArgsDict']]
 elif False:
     PipelineIngestionDefinitionObjectArgsDict: TypeAlias = Mapping[str, Any]
@@ -27649,6 +27991,9 @@ class PipelineIngestionDefinitionObjectArgs:
                  report: Optional[pulumi.Input['PipelineIngestionDefinitionObjectReportArgs']] = None,
                  schema: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaArgs']] = None,
                  table: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableArgs']] = None):
+        """
+        :param pulumi.Input['PipelineIngestionDefinitionObjectSchemaArgs'] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
         if report is not None:
             pulumi.set(__self__, "report", report)
         if schema is not None:
@@ -27668,6 +28013,9 @@ class PipelineIngestionDefinitionObjectArgs:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaArgs']]:
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -29051,6 +29399,740 @@ class QualityMonitorTimeSeriesArgs:
     @timestamp_col.setter
     def timestamp_col(self, value: pulumi.Input[str]):
         pulumi.set(self, "timestamp_col", value)
+
+
+if not MYPY:
+    class QueryParameterArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Literal parameter marker that appears between double curly braces in the query text.
+        """
+        date_range_value: NotRequired[pulumi.Input['QueryParameterDateRangeValueArgsDict']]
+        """
+        Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+        """
+        date_value: NotRequired[pulumi.Input['QueryParameterDateValueArgsDict']]
+        """
+        Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+        """
+        enum_value: NotRequired[pulumi.Input['QueryParameterEnumValueArgsDict']]
+        """
+        Dropdown parameter value. Consists of following attributes:
+        """
+        numeric_value: NotRequired[pulumi.Input['QueryParameterNumericValueArgsDict']]
+        """
+        Numeric parameter value. Consists of following attributes:
+        """
+        query_backed_value: NotRequired[pulumi.Input['QueryParameterQueryBackedValueArgsDict']]
+        """
+        Query-based dropdown parameter value. Consists of following attributes:
+        """
+        text_value: NotRequired[pulumi.Input['QueryParameterTextValueArgsDict']]
+        """
+        Text parameter value. Consists of following attributes:
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Text displayed in the user-facing parameter widget in the UI.
+        """
+elif False:
+    QueryParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueryParameterArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 date_range_value: Optional[pulumi.Input['QueryParameterDateRangeValueArgs']] = None,
+                 date_value: Optional[pulumi.Input['QueryParameterDateValueArgs']] = None,
+                 enum_value: Optional[pulumi.Input['QueryParameterEnumValueArgs']] = None,
+                 numeric_value: Optional[pulumi.Input['QueryParameterNumericValueArgs']] = None,
+                 query_backed_value: Optional[pulumi.Input['QueryParameterQueryBackedValueArgs']] = None,
+                 text_value: Optional[pulumi.Input['QueryParameterTextValueArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Literal parameter marker that appears between double curly braces in the query text.
+        :param pulumi.Input['QueryParameterDateRangeValueArgs'] date_range_value: Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+        :param pulumi.Input['QueryParameterDateValueArgs'] date_value: Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+        :param pulumi.Input['QueryParameterEnumValueArgs'] enum_value: Dropdown parameter value. Consists of following attributes:
+        :param pulumi.Input['QueryParameterNumericValueArgs'] numeric_value: Numeric parameter value. Consists of following attributes:
+        :param pulumi.Input['QueryParameterQueryBackedValueArgs'] query_backed_value: Query-based dropdown parameter value. Consists of following attributes:
+        :param pulumi.Input['QueryParameterTextValueArgs'] text_value: Text parameter value. Consists of following attributes:
+        :param pulumi.Input[str] title: Text displayed in the user-facing parameter widget in the UI.
+        """
+        pulumi.set(__self__, "name", name)
+        if date_range_value is not None:
+            pulumi.set(__self__, "date_range_value", date_range_value)
+        if date_value is not None:
+            pulumi.set(__self__, "date_value", date_value)
+        if enum_value is not None:
+            pulumi.set(__self__, "enum_value", enum_value)
+        if numeric_value is not None:
+            pulumi.set(__self__, "numeric_value", numeric_value)
+        if query_backed_value is not None:
+            pulumi.set(__self__, "query_backed_value", query_backed_value)
+        if text_value is not None:
+            pulumi.set(__self__, "text_value", text_value)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Literal parameter marker that appears between double curly braces in the query text.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="dateRangeValue")
+    def date_range_value(self) -> Optional[pulumi.Input['QueryParameterDateRangeValueArgs']]:
+        """
+        Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+        """
+        return pulumi.get(self, "date_range_value")
+
+    @date_range_value.setter
+    def date_range_value(self, value: Optional[pulumi.Input['QueryParameterDateRangeValueArgs']]):
+        pulumi.set(self, "date_range_value", value)
+
+    @property
+    @pulumi.getter(name="dateValue")
+    def date_value(self) -> Optional[pulumi.Input['QueryParameterDateValueArgs']]:
+        """
+        Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+        """
+        return pulumi.get(self, "date_value")
+
+    @date_value.setter
+    def date_value(self, value: Optional[pulumi.Input['QueryParameterDateValueArgs']]):
+        pulumi.set(self, "date_value", value)
+
+    @property
+    @pulumi.getter(name="enumValue")
+    def enum_value(self) -> Optional[pulumi.Input['QueryParameterEnumValueArgs']]:
+        """
+        Dropdown parameter value. Consists of following attributes:
+        """
+        return pulumi.get(self, "enum_value")
+
+    @enum_value.setter
+    def enum_value(self, value: Optional[pulumi.Input['QueryParameterEnumValueArgs']]):
+        pulumi.set(self, "enum_value", value)
+
+    @property
+    @pulumi.getter(name="numericValue")
+    def numeric_value(self) -> Optional[pulumi.Input['QueryParameterNumericValueArgs']]:
+        """
+        Numeric parameter value. Consists of following attributes:
+        """
+        return pulumi.get(self, "numeric_value")
+
+    @numeric_value.setter
+    def numeric_value(self, value: Optional[pulumi.Input['QueryParameterNumericValueArgs']]):
+        pulumi.set(self, "numeric_value", value)
+
+    @property
+    @pulumi.getter(name="queryBackedValue")
+    def query_backed_value(self) -> Optional[pulumi.Input['QueryParameterQueryBackedValueArgs']]:
+        """
+        Query-based dropdown parameter value. Consists of following attributes:
+        """
+        return pulumi.get(self, "query_backed_value")
+
+    @query_backed_value.setter
+    def query_backed_value(self, value: Optional[pulumi.Input['QueryParameterQueryBackedValueArgs']]):
+        pulumi.set(self, "query_backed_value", value)
+
+    @property
+    @pulumi.getter(name="textValue")
+    def text_value(self) -> Optional[pulumi.Input['QueryParameterTextValueArgs']]:
+        """
+        Text parameter value. Consists of following attributes:
+        """
+        return pulumi.get(self, "text_value")
+
+    @text_value.setter
+    def text_value(self, value: Optional[pulumi.Input['QueryParameterTextValueArgs']]):
+        pulumi.set(self, "text_value", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Text displayed in the user-facing parameter widget in the UI.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class QueryParameterDateRangeValueArgsDict(TypedDict):
+        date_range_value: NotRequired[pulumi.Input['QueryParameterDateRangeValueDateRangeValueArgsDict']]
+        """
+        Manually specified date-time range value.  Consists of the following attributes:
+        """
+        dynamic_date_range_value: NotRequired[pulumi.Input[str]]
+        """
+        Dynamic date-time range value based on current date-time.  Possible values are `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_YEAR`, `LAST_WEEK`, `LAST_MONTH`, `LAST_YEAR`, `LAST_HOUR`, `LAST_8_HOURS`, `LAST_24_HOURS`, `LAST_7_DAYS`, `LAST_14_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`, `LAST_12_MONTHS`.
+        """
+        precision: NotRequired[pulumi.Input[str]]
+        """
+        Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+        """
+        start_day_of_week: NotRequired[pulumi.Input[int]]
+        """
+        Specify what day that starts the week.
+        """
+elif False:
+    QueryParameterDateRangeValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueryParameterDateRangeValueArgs:
+    def __init__(__self__, *,
+                 date_range_value: Optional[pulumi.Input['QueryParameterDateRangeValueDateRangeValueArgs']] = None,
+                 dynamic_date_range_value: Optional[pulumi.Input[str]] = None,
+                 precision: Optional[pulumi.Input[str]] = None,
+                 start_day_of_week: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['QueryParameterDateRangeValueDateRangeValueArgs'] date_range_value: Manually specified date-time range value.  Consists of the following attributes:
+        :param pulumi.Input[str] dynamic_date_range_value: Dynamic date-time range value based on current date-time.  Possible values are `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_YEAR`, `LAST_WEEK`, `LAST_MONTH`, `LAST_YEAR`, `LAST_HOUR`, `LAST_8_HOURS`, `LAST_24_HOURS`, `LAST_7_DAYS`, `LAST_14_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`, `LAST_12_MONTHS`.
+        :param pulumi.Input[str] precision: Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+        :param pulumi.Input[int] start_day_of_week: Specify what day that starts the week.
+        """
+        if date_range_value is not None:
+            pulumi.set(__self__, "date_range_value", date_range_value)
+        if dynamic_date_range_value is not None:
+            pulumi.set(__self__, "dynamic_date_range_value", dynamic_date_range_value)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if start_day_of_week is not None:
+            pulumi.set(__self__, "start_day_of_week", start_day_of_week)
+
+    @property
+    @pulumi.getter(name="dateRangeValue")
+    def date_range_value(self) -> Optional[pulumi.Input['QueryParameterDateRangeValueDateRangeValueArgs']]:
+        """
+        Manually specified date-time range value.  Consists of the following attributes:
+        """
+        return pulumi.get(self, "date_range_value")
+
+    @date_range_value.setter
+    def date_range_value(self, value: Optional[pulumi.Input['QueryParameterDateRangeValueDateRangeValueArgs']]):
+        pulumi.set(self, "date_range_value", value)
+
+    @property
+    @pulumi.getter(name="dynamicDateRangeValue")
+    def dynamic_date_range_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Dynamic date-time range value based on current date-time.  Possible values are `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_YEAR`, `LAST_WEEK`, `LAST_MONTH`, `LAST_YEAR`, `LAST_HOUR`, `LAST_8_HOURS`, `LAST_24_HOURS`, `LAST_7_DAYS`, `LAST_14_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`, `LAST_12_MONTHS`.
+        """
+        return pulumi.get(self, "dynamic_date_range_value")
+
+    @dynamic_date_range_value.setter
+    def dynamic_date_range_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dynamic_date_range_value", value)
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[str]]:
+        """
+        Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "precision", value)
+
+    @property
+    @pulumi.getter(name="startDayOfWeek")
+    def start_day_of_week(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specify what day that starts the week.
+        """
+        return pulumi.get(self, "start_day_of_week")
+
+    @start_day_of_week.setter
+    def start_day_of_week(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "start_day_of_week", value)
+
+
+if not MYPY:
+    class QueryParameterDateRangeValueDateRangeValueArgsDict(TypedDict):
+        end: pulumi.Input[str]
+        """
+        end of the date range.
+        """
+        start: pulumi.Input[str]
+        """
+        begin of the date range.
+        """
+elif False:
+    QueryParameterDateRangeValueDateRangeValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueryParameterDateRangeValueDateRangeValueArgs:
+    def __init__(__self__, *,
+                 end: pulumi.Input[str],
+                 start: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] end: end of the date range.
+        :param pulumi.Input[str] start: begin of the date range.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> pulumi.Input[str]:
+        """
+        end of the date range.
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: pulumi.Input[str]):
+        pulumi.set(self, "end", value)
+
+    @property
+    @pulumi.getter
+    def start(self) -> pulumi.Input[str]:
+        """
+        begin of the date range.
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start", value)
+
+
+if not MYPY:
+    class QueryParameterDateValueArgsDict(TypedDict):
+        date_value: NotRequired[pulumi.Input[str]]
+        """
+        Manually specified date-time value
+        """
+        dynamic_date_value: NotRequired[pulumi.Input[str]]
+        """
+        Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
+        """
+        precision: NotRequired[pulumi.Input[str]]
+        """
+        Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+        """
+elif False:
+    QueryParameterDateValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueryParameterDateValueArgs:
+    def __init__(__self__, *,
+                 date_value: Optional[pulumi.Input[str]] = None,
+                 dynamic_date_value: Optional[pulumi.Input[str]] = None,
+                 precision: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] date_value: Manually specified date-time value
+        :param pulumi.Input[str] dynamic_date_value: Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
+        :param pulumi.Input[str] precision: Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+        """
+        if date_value is not None:
+            pulumi.set(__self__, "date_value", date_value)
+        if dynamic_date_value is not None:
+            pulumi.set(__self__, "dynamic_date_value", dynamic_date_value)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+
+    @property
+    @pulumi.getter(name="dateValue")
+    def date_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Manually specified date-time value
+        """
+        return pulumi.get(self, "date_value")
+
+    @date_value.setter
+    def date_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "date_value", value)
+
+    @property
+    @pulumi.getter(name="dynamicDateValue")
+    def dynamic_date_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
+        """
+        return pulumi.get(self, "dynamic_date_value")
+
+    @dynamic_date_value.setter
+    def dynamic_date_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dynamic_date_value", value)
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[str]]:
+        """
+        Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "precision", value)
+
+
+if not MYPY:
+    class QueryParameterEnumValueArgsDict(TypedDict):
+        enum_options: NotRequired[pulumi.Input[str]]
+        """
+        List of valid query parameter values, newline delimited.
+        """
+        multi_values_options: NotRequired[pulumi.Input['QueryParameterEnumValueMultiValuesOptionsArgsDict']]
+        """
+        If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of selected query parameter values.
+        """
+elif False:
+    QueryParameterEnumValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueryParameterEnumValueArgs:
+    def __init__(__self__, *,
+                 enum_options: Optional[pulumi.Input[str]] = None,
+                 multi_values_options: Optional[pulumi.Input['QueryParameterEnumValueMultiValuesOptionsArgs']] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] enum_options: List of valid query parameter values, newline delimited.
+        :param pulumi.Input['QueryParameterEnumValueMultiValuesOptionsArgs'] multi_values_options: If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of selected query parameter values.
+        """
+        if enum_options is not None:
+            pulumi.set(__self__, "enum_options", enum_options)
+        if multi_values_options is not None:
+            pulumi.set(__self__, "multi_values_options", multi_values_options)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="enumOptions")
+    def enum_options(self) -> Optional[pulumi.Input[str]]:
+        """
+        List of valid query parameter values, newline delimited.
+        """
+        return pulumi.get(self, "enum_options")
+
+    @enum_options.setter
+    def enum_options(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_options", value)
+
+    @property
+    @pulumi.getter(name="multiValuesOptions")
+    def multi_values_options(self) -> Optional[pulumi.Input['QueryParameterEnumValueMultiValuesOptionsArgs']]:
+        """
+        If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+        """
+        return pulumi.get(self, "multi_values_options")
+
+    @multi_values_options.setter
+    def multi_values_options(self, value: Optional[pulumi.Input['QueryParameterEnumValueMultiValuesOptionsArgs']]):
+        pulumi.set(self, "multi_values_options", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of selected query parameter values.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class QueryParameterEnumValueMultiValuesOptionsArgsDict(TypedDict):
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        Character that prefixes each selected parameter value.
+        """
+        separator: NotRequired[pulumi.Input[str]]
+        """
+        Character that separates each selected parameter value. Defaults to a comma.
+        """
+        suffix: NotRequired[pulumi.Input[str]]
+        """
+        Character that suffixes each selected parameter value.
+        """
+elif False:
+    QueryParameterEnumValueMultiValuesOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueryParameterEnumValueMultiValuesOptionsArgs:
+    def __init__(__self__, *,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 separator: Optional[pulumi.Input[str]] = None,
+                 suffix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] prefix: Character that prefixes each selected parameter value.
+        :param pulumi.Input[str] separator: Character that separates each selected parameter value. Defaults to a comma.
+        :param pulumi.Input[str] suffix: Character that suffixes each selected parameter value.
+        """
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if separator is not None:
+            pulumi.set(__self__, "separator", separator)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Character that prefixes each selected parameter value.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def separator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Character that separates each selected parameter value. Defaults to a comma.
+        """
+        return pulumi.get(self, "separator")
+
+    @separator.setter
+    def separator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "separator", value)
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Character that suffixes each selected parameter value.
+        """
+        return pulumi.get(self, "suffix")
+
+    @suffix.setter
+    def suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "suffix", value)
+
+
+if not MYPY:
+    class QueryParameterNumericValueArgsDict(TypedDict):
+        value: pulumi.Input[float]
+        """
+        actual numeric value.
+        """
+elif False:
+    QueryParameterNumericValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueryParameterNumericValueArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[float]):
+        """
+        :param pulumi.Input[float] value: actual numeric value.
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[float]:
+        """
+        actual numeric value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[float]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class QueryParameterQueryBackedValueArgsDict(TypedDict):
+        query_id: pulumi.Input[str]
+        """
+        ID of the query that provides the parameter values.
+        """
+        multi_values_options: NotRequired[pulumi.Input['QueryParameterQueryBackedValueMultiValuesOptionsArgsDict']]
+        """
+        If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of selected query parameter values.
+        """
+elif False:
+    QueryParameterQueryBackedValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueryParameterQueryBackedValueArgs:
+    def __init__(__self__, *,
+                 query_id: pulumi.Input[str],
+                 multi_values_options: Optional[pulumi.Input['QueryParameterQueryBackedValueMultiValuesOptionsArgs']] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] query_id: ID of the query that provides the parameter values.
+        :param pulumi.Input['QueryParameterQueryBackedValueMultiValuesOptionsArgs'] multi_values_options: If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of selected query parameter values.
+        """
+        pulumi.set(__self__, "query_id", query_id)
+        if multi_values_options is not None:
+            pulumi.set(__self__, "multi_values_options", multi_values_options)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="queryId")
+    def query_id(self) -> pulumi.Input[str]:
+        """
+        ID of the query that provides the parameter values.
+        """
+        return pulumi.get(self, "query_id")
+
+    @query_id.setter
+    def query_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_id", value)
+
+    @property
+    @pulumi.getter(name="multiValuesOptions")
+    def multi_values_options(self) -> Optional[pulumi.Input['QueryParameterQueryBackedValueMultiValuesOptionsArgs']]:
+        """
+        If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+        """
+        return pulumi.get(self, "multi_values_options")
+
+    @multi_values_options.setter
+    def multi_values_options(self, value: Optional[pulumi.Input['QueryParameterQueryBackedValueMultiValuesOptionsArgs']]):
+        pulumi.set(self, "multi_values_options", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of selected query parameter values.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class QueryParameterQueryBackedValueMultiValuesOptionsArgsDict(TypedDict):
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        Character that prefixes each selected parameter value.
+        """
+        separator: NotRequired[pulumi.Input[str]]
+        """
+        Character that separates each selected parameter value. Defaults to a comma.
+        """
+        suffix: NotRequired[pulumi.Input[str]]
+        """
+        Character that suffixes each selected parameter value.
+        """
+elif False:
+    QueryParameterQueryBackedValueMultiValuesOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueryParameterQueryBackedValueMultiValuesOptionsArgs:
+    def __init__(__self__, *,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 separator: Optional[pulumi.Input[str]] = None,
+                 suffix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] prefix: Character that prefixes each selected parameter value.
+        :param pulumi.Input[str] separator: Character that separates each selected parameter value. Defaults to a comma.
+        :param pulumi.Input[str] suffix: Character that suffixes each selected parameter value.
+        """
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if separator is not None:
+            pulumi.set(__self__, "separator", separator)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Character that prefixes each selected parameter value.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def separator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Character that separates each selected parameter value. Defaults to a comma.
+        """
+        return pulumi.get(self, "separator")
+
+    @separator.setter
+    def separator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "separator", value)
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Character that suffixes each selected parameter value.
+        """
+        return pulumi.get(self, "suffix")
+
+    @suffix.setter
+    def suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "suffix", value)
+
+
+if not MYPY:
+    class QueryParameterTextValueArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        actual text value.
+        """
+elif False:
+    QueryParameterTextValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueryParameterTextValueArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] value: actual text value.
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        actual text value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:

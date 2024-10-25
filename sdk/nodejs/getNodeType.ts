@@ -94,7 +94,7 @@ export interface GetNodeTypeArgs {
      */
     gbPerCore?: number;
     /**
-     * if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
      */
     graviton?: boolean;
     /**
@@ -251,7 +251,7 @@ export interface GetNodeTypeOutputArgs {
      */
     gbPerCore?: pulumi.Input<number>;
     /**
-     * if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
      */
     graviton?: pulumi.Input<boolean>;
     /**

@@ -161,7 +161,7 @@ namespace Pulumi.Databricks
         public int? GbPerCore { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+        /// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
         /// </summary>
         [Input("graviton")]
         public bool? Graviton { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.Databricks
         public Input<int>? GbPerCore { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+        /// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
         /// </summary>
         [Input("graviton")]
         public Input<bool>? Graviton { get; set; }

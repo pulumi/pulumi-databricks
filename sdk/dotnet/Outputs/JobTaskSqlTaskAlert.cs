@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTaskSqlTaskAlert
     {
         /// <summary>
-        /// (String) identifier of the Databricks SQL Alert.
+        /// (String) identifier of the Databricks Alert (databricks_alert).
         /// </summary>
         public readonly string AlertId;
         /// <summary>

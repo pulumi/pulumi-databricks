@@ -6,6 +6,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .access_control_rule_set import *
+from .alert import *
 from .artifact_allowlist import *
 from .automatic_cluster_update_workspace_setting import *
 from .budget import *
@@ -15,6 +16,7 @@ from .cluster import *
 from .cluster_policy import *
 from .compliance_security_profile_workspace_setting import *
 from .connection import *
+from .custom_app_integration import *
 from .dashboard import *
 from .dbfs_file import *
 from .default_namespace_setting import *
@@ -121,6 +123,7 @@ from .permissions import *
 from .pipeline import *
 from .provider import *
 from .quality_monitor import *
+from .query import *
 from .recipient import *
 from .registered_model import *
 from .repo import *
@@ -174,6 +177,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/accessControlRuleSet:AccessControlRuleSet": "AccessControlRuleSet"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/alert",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/alert:Alert": "Alert"
   }
  },
  {
@@ -246,6 +257,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/connection:Connection": "Connection"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/customAppIntegration",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/customAppIntegration:CustomAppIntegration": "CustomAppIntegration"
   }
  },
  {
@@ -654,6 +673,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/qualityMonitor:QualityMonitor": "QualityMonitor"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/query",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/query:Query": "Query"
   }
  },
  {

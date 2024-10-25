@@ -240,6 +240,9 @@ namespace Pulumi.Databricks
         [Output("runAsUserName")]
         public Output<string> RunAsUserName { get; private set; } = null!;
 
+        /// <summary>
+        /// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        /// </summary>
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
 
@@ -467,6 +470,9 @@ namespace Pulumi.Databricks
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }
 
+        /// <summary>
+        /// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
@@ -656,6 +662,9 @@ namespace Pulumi.Databricks
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }
 
+        /// <summary>
+        /// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 

@@ -20,14 +20,14 @@ public final class JobTaskForEachTaskTaskSqlTaskAlertArgs extends com.pulumi.res
     public static final JobTaskForEachTaskTaskSqlTaskAlertArgs Empty = new JobTaskForEachTaskTaskSqlTaskAlertArgs();
 
     /**
-     * (String) identifier of the Databricks SQL Alert.
+     * (String) identifier of the Databricks Alert (databricks_alert).
      * 
      */
     @Import(name="alertId", required=true)
     private Output<String> alertId;
 
     /**
-     * @return (String) identifier of the Databricks SQL Alert.
+     * @return (String) identifier of the Databricks Alert (databricks_alert).
      * 
      */
     public Output<String> alertId() {
@@ -91,7 +91,7 @@ public final class JobTaskForEachTaskTaskSqlTaskAlertArgs extends com.pulumi.res
         }
 
         /**
-         * @param alertId (String) identifier of the Databricks SQL Alert.
+         * @param alertId (String) identifier of the Databricks Alert (databricks_alert).
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class JobTaskForEachTaskTaskSqlTaskAlertArgs extends com.pulumi.res
         }
 
         /**
-         * @param alertId (String) identifier of the Databricks SQL Alert.
+         * @param alertId (String) identifier of the Databricks Alert (databricks_alert).
          * 
          * @return builder
          * 
