@@ -13,6 +13,3033 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClusterClusterInfoInitScriptAbfss struct {
+	Destination string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoInitScriptAbfssInput is an input type that accepts GetClusterClusterInfoInitScriptAbfssArgs and GetClusterClusterInfoInitScriptAbfssOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptAbfssInput` via:
+//
+//	GetClusterClusterInfoInitScriptAbfssArgs{...}
+type GetClusterClusterInfoInitScriptAbfssInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptAbfssOutput() GetClusterClusterInfoInitScriptAbfssOutput
+	ToGetClusterClusterInfoInitScriptAbfssOutputWithContext(context.Context) GetClusterClusterInfoInitScriptAbfssOutput
+}
+
+type GetClusterClusterInfoInitScriptAbfssArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoInitScriptAbfssArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptAbfss)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptAbfssArgs) ToGetClusterClusterInfoInitScriptAbfssOutput() GetClusterClusterInfoInitScriptAbfssOutput {
+	return i.ToGetClusterClusterInfoInitScriptAbfssOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptAbfssArgs) ToGetClusterClusterInfoInitScriptAbfssOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptAbfssOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptAbfssOutput)
+}
+
+func (i GetClusterClusterInfoInitScriptAbfssArgs) ToGetClusterClusterInfoInitScriptAbfssPtrOutput() GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptAbfssArgs) ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptAbfssOutput).ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoInitScriptAbfssPtrInput is an input type that accepts GetClusterClusterInfoInitScriptAbfssArgs, GetClusterClusterInfoInitScriptAbfssPtr and GetClusterClusterInfoInitScriptAbfssPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptAbfssPtrInput` via:
+//
+//	        GetClusterClusterInfoInitScriptAbfssArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoInitScriptAbfssPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptAbfssPtrOutput() GetClusterClusterInfoInitScriptAbfssPtrOutput
+	ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(context.Context) GetClusterClusterInfoInitScriptAbfssPtrOutput
+}
+
+type getClusterClusterInfoInitScriptAbfssPtrType GetClusterClusterInfoInitScriptAbfssArgs
+
+func GetClusterClusterInfoInitScriptAbfssPtr(v *GetClusterClusterInfoInitScriptAbfssArgs) GetClusterClusterInfoInitScriptAbfssPtrInput {
+	return (*getClusterClusterInfoInitScriptAbfssPtrType)(v)
+}
+
+func (*getClusterClusterInfoInitScriptAbfssPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptAbfss)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoInitScriptAbfssPtrType) ToGetClusterClusterInfoInitScriptAbfssPtrOutput() GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoInitScriptAbfssPtrType) ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptAbfssPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptAbfssOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptAbfssOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptAbfss)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssOutput) ToGetClusterClusterInfoInitScriptAbfssOutput() GetClusterClusterInfoInitScriptAbfssOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssOutput) ToGetClusterClusterInfoInitScriptAbfssOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptAbfssOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssOutput) ToGetClusterClusterInfoInitScriptAbfssPtrOutput() GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return o.ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssOutput) ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoInitScriptAbfss) *GetClusterClusterInfoInitScriptAbfss {
+		return &v
+	}).(GetClusterClusterInfoInitScriptAbfssPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptAbfss) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterInfoInitScriptAbfssPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptAbfssPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptAbfss)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssPtrOutput) ToGetClusterClusterInfoInitScriptAbfssPtrOutput() GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssPtrOutput) ToGetClusterClusterInfoInitScriptAbfssPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssPtrOutput) Elem() GetClusterClusterInfoInitScriptAbfssOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptAbfss) GetClusterClusterInfoInitScriptAbfss {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoInitScriptAbfss
+		return ret
+	}).(GetClusterClusterInfoInitScriptAbfssOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptAbfssPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptAbfss) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptDbfs struct {
+	Destination string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoInitScriptDbfsInput is an input type that accepts GetClusterClusterInfoInitScriptDbfsArgs and GetClusterClusterInfoInitScriptDbfsOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptDbfsInput` via:
+//
+//	GetClusterClusterInfoInitScriptDbfsArgs{...}
+type GetClusterClusterInfoInitScriptDbfsInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptDbfsOutput() GetClusterClusterInfoInitScriptDbfsOutput
+	ToGetClusterClusterInfoInitScriptDbfsOutputWithContext(context.Context) GetClusterClusterInfoInitScriptDbfsOutput
+}
+
+type GetClusterClusterInfoInitScriptDbfsArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoInitScriptDbfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptDbfs)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptDbfsArgs) ToGetClusterClusterInfoInitScriptDbfsOutput() GetClusterClusterInfoInitScriptDbfsOutput {
+	return i.ToGetClusterClusterInfoInitScriptDbfsOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptDbfsArgs) ToGetClusterClusterInfoInitScriptDbfsOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptDbfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptDbfsOutput)
+}
+
+func (i GetClusterClusterInfoInitScriptDbfsArgs) ToGetClusterClusterInfoInitScriptDbfsPtrOutput() GetClusterClusterInfoInitScriptDbfsPtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptDbfsPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptDbfsArgs) ToGetClusterClusterInfoInitScriptDbfsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptDbfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptDbfsOutput).ToGetClusterClusterInfoInitScriptDbfsPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoInitScriptDbfsPtrInput is an input type that accepts GetClusterClusterInfoInitScriptDbfsArgs, GetClusterClusterInfoInitScriptDbfsPtr and GetClusterClusterInfoInitScriptDbfsPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptDbfsPtrInput` via:
+//
+//	        GetClusterClusterInfoInitScriptDbfsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoInitScriptDbfsPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptDbfsPtrOutput() GetClusterClusterInfoInitScriptDbfsPtrOutput
+	ToGetClusterClusterInfoInitScriptDbfsPtrOutputWithContext(context.Context) GetClusterClusterInfoInitScriptDbfsPtrOutput
+}
+
+type getClusterClusterInfoInitScriptDbfsPtrType GetClusterClusterInfoInitScriptDbfsArgs
+
+func GetClusterClusterInfoInitScriptDbfsPtr(v *GetClusterClusterInfoInitScriptDbfsArgs) GetClusterClusterInfoInitScriptDbfsPtrInput {
+	return (*getClusterClusterInfoInitScriptDbfsPtrType)(v)
+}
+
+func (*getClusterClusterInfoInitScriptDbfsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptDbfs)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoInitScriptDbfsPtrType) ToGetClusterClusterInfoInitScriptDbfsPtrOutput() GetClusterClusterInfoInitScriptDbfsPtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptDbfsPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoInitScriptDbfsPtrType) ToGetClusterClusterInfoInitScriptDbfsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptDbfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptDbfsPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptDbfsOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptDbfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptDbfs)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptDbfsOutput) ToGetClusterClusterInfoInitScriptDbfsOutput() GetClusterClusterInfoInitScriptDbfsOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptDbfsOutput) ToGetClusterClusterInfoInitScriptDbfsOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptDbfsOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptDbfsOutput) ToGetClusterClusterInfoInitScriptDbfsPtrOutput() GetClusterClusterInfoInitScriptDbfsPtrOutput {
+	return o.ToGetClusterClusterInfoInitScriptDbfsPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoInitScriptDbfsOutput) ToGetClusterClusterInfoInitScriptDbfsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptDbfsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoInitScriptDbfs) *GetClusterClusterInfoInitScriptDbfs {
+		return &v
+	}).(GetClusterClusterInfoInitScriptDbfsPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptDbfsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptDbfs) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterInfoInitScriptDbfsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptDbfsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptDbfs)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptDbfsPtrOutput) ToGetClusterClusterInfoInitScriptDbfsPtrOutput() GetClusterClusterInfoInitScriptDbfsPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptDbfsPtrOutput) ToGetClusterClusterInfoInitScriptDbfsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptDbfsPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptDbfsPtrOutput) Elem() GetClusterClusterInfoInitScriptDbfsOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptDbfs) GetClusterClusterInfoInitScriptDbfs {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoInitScriptDbfs
+		return ret
+	}).(GetClusterClusterInfoInitScriptDbfsOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptDbfsPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptDbfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptFile struct {
+	Destination string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoInitScriptFileInput is an input type that accepts GetClusterClusterInfoInitScriptFileArgs and GetClusterClusterInfoInitScriptFileOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptFileInput` via:
+//
+//	GetClusterClusterInfoInitScriptFileArgs{...}
+type GetClusterClusterInfoInitScriptFileInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptFileOutput() GetClusterClusterInfoInitScriptFileOutput
+	ToGetClusterClusterInfoInitScriptFileOutputWithContext(context.Context) GetClusterClusterInfoInitScriptFileOutput
+}
+
+type GetClusterClusterInfoInitScriptFileArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoInitScriptFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptFile)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptFileArgs) ToGetClusterClusterInfoInitScriptFileOutput() GetClusterClusterInfoInitScriptFileOutput {
+	return i.ToGetClusterClusterInfoInitScriptFileOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptFileArgs) ToGetClusterClusterInfoInitScriptFileOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptFileOutput)
+}
+
+func (i GetClusterClusterInfoInitScriptFileArgs) ToGetClusterClusterInfoInitScriptFilePtrOutput() GetClusterClusterInfoInitScriptFilePtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptFileArgs) ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptFileOutput).ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoInitScriptFilePtrInput is an input type that accepts GetClusterClusterInfoInitScriptFileArgs, GetClusterClusterInfoInitScriptFilePtr and GetClusterClusterInfoInitScriptFilePtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptFilePtrInput` via:
+//
+//	        GetClusterClusterInfoInitScriptFileArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoInitScriptFilePtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptFilePtrOutput() GetClusterClusterInfoInitScriptFilePtrOutput
+	ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(context.Context) GetClusterClusterInfoInitScriptFilePtrOutput
+}
+
+type getClusterClusterInfoInitScriptFilePtrType GetClusterClusterInfoInitScriptFileArgs
+
+func GetClusterClusterInfoInitScriptFilePtr(v *GetClusterClusterInfoInitScriptFileArgs) GetClusterClusterInfoInitScriptFilePtrInput {
+	return (*getClusterClusterInfoInitScriptFilePtrType)(v)
+}
+
+func (*getClusterClusterInfoInitScriptFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptFile)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoInitScriptFilePtrType) ToGetClusterClusterInfoInitScriptFilePtrOutput() GetClusterClusterInfoInitScriptFilePtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoInitScriptFilePtrType) ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptFilePtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptFileOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptFile)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptFileOutput) ToGetClusterClusterInfoInitScriptFileOutput() GetClusterClusterInfoInitScriptFileOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptFileOutput) ToGetClusterClusterInfoInitScriptFileOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptFileOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptFileOutput) ToGetClusterClusterInfoInitScriptFilePtrOutput() GetClusterClusterInfoInitScriptFilePtrOutput {
+	return o.ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoInitScriptFileOutput) ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoInitScriptFile) *GetClusterClusterInfoInitScriptFile {
+		return &v
+	}).(GetClusterClusterInfoInitScriptFilePtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptFileOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptFile) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterInfoInitScriptFilePtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptFile)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptFilePtrOutput) ToGetClusterClusterInfoInitScriptFilePtrOutput() GetClusterClusterInfoInitScriptFilePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptFilePtrOutput) ToGetClusterClusterInfoInitScriptFilePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptFilePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptFilePtrOutput) Elem() GetClusterClusterInfoInitScriptFileOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptFile) GetClusterClusterInfoInitScriptFile {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoInitScriptFile
+		return ret
+	}).(GetClusterClusterInfoInitScriptFileOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptFilePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptFile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptGcs struct {
+	Destination string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoInitScriptGcsInput is an input type that accepts GetClusterClusterInfoInitScriptGcsArgs and GetClusterClusterInfoInitScriptGcsOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptGcsInput` via:
+//
+//	GetClusterClusterInfoInitScriptGcsArgs{...}
+type GetClusterClusterInfoInitScriptGcsInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptGcsOutput() GetClusterClusterInfoInitScriptGcsOutput
+	ToGetClusterClusterInfoInitScriptGcsOutputWithContext(context.Context) GetClusterClusterInfoInitScriptGcsOutput
+}
+
+type GetClusterClusterInfoInitScriptGcsArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoInitScriptGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptGcs)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptGcsArgs) ToGetClusterClusterInfoInitScriptGcsOutput() GetClusterClusterInfoInitScriptGcsOutput {
+	return i.ToGetClusterClusterInfoInitScriptGcsOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptGcsArgs) ToGetClusterClusterInfoInitScriptGcsOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptGcsOutput)
+}
+
+func (i GetClusterClusterInfoInitScriptGcsArgs) ToGetClusterClusterInfoInitScriptGcsPtrOutput() GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptGcsArgs) ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptGcsOutput).ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoInitScriptGcsPtrInput is an input type that accepts GetClusterClusterInfoInitScriptGcsArgs, GetClusterClusterInfoInitScriptGcsPtr and GetClusterClusterInfoInitScriptGcsPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptGcsPtrInput` via:
+//
+//	        GetClusterClusterInfoInitScriptGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoInitScriptGcsPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptGcsPtrOutput() GetClusterClusterInfoInitScriptGcsPtrOutput
+	ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(context.Context) GetClusterClusterInfoInitScriptGcsPtrOutput
+}
+
+type getClusterClusterInfoInitScriptGcsPtrType GetClusterClusterInfoInitScriptGcsArgs
+
+func GetClusterClusterInfoInitScriptGcsPtr(v *GetClusterClusterInfoInitScriptGcsArgs) GetClusterClusterInfoInitScriptGcsPtrInput {
+	return (*getClusterClusterInfoInitScriptGcsPtrType)(v)
+}
+
+func (*getClusterClusterInfoInitScriptGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptGcs)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoInitScriptGcsPtrType) ToGetClusterClusterInfoInitScriptGcsPtrOutput() GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoInitScriptGcsPtrType) ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptGcsPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptGcsOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptGcs)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptGcsOutput) ToGetClusterClusterInfoInitScriptGcsOutput() GetClusterClusterInfoInitScriptGcsOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptGcsOutput) ToGetClusterClusterInfoInitScriptGcsOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptGcsOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptGcsOutput) ToGetClusterClusterInfoInitScriptGcsPtrOutput() GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return o.ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoInitScriptGcsOutput) ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoInitScriptGcs) *GetClusterClusterInfoInitScriptGcs {
+		return &v
+	}).(GetClusterClusterInfoInitScriptGcsPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptGcsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterInfoInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptGcs)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptGcsPtrOutput) ToGetClusterClusterInfoInitScriptGcsPtrOutput() GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptGcsPtrOutput) ToGetClusterClusterInfoInitScriptGcsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptGcsPtrOutput) Elem() GetClusterClusterInfoInitScriptGcsOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptGcs) GetClusterClusterInfoInitScriptGcs {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoInitScriptGcs
+		return ret
+	}).(GetClusterClusterInfoInitScriptGcsOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptGcsPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptS3 struct {
+	CannedAcl        *string `pulumi:"cannedAcl"`
+	Destination      string  `pulumi:"destination"`
+	EnableEncryption *bool   `pulumi:"enableEncryption"`
+	EncryptionType   *string `pulumi:"encryptionType"`
+	Endpoint         *string `pulumi:"endpoint"`
+	KmsKey           *string `pulumi:"kmsKey"`
+	Region           *string `pulumi:"region"`
+}
+
+// GetClusterClusterInfoInitScriptS3Input is an input type that accepts GetClusterClusterInfoInitScriptS3Args and GetClusterClusterInfoInitScriptS3Output values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptS3Input` via:
+//
+//	GetClusterClusterInfoInitScriptS3Args{...}
+type GetClusterClusterInfoInitScriptS3Input interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptS3Output() GetClusterClusterInfoInitScriptS3Output
+	ToGetClusterClusterInfoInitScriptS3OutputWithContext(context.Context) GetClusterClusterInfoInitScriptS3Output
+}
+
+type GetClusterClusterInfoInitScriptS3Args struct {
+	CannedAcl        pulumi.StringPtrInput `pulumi:"cannedAcl"`
+	Destination      pulumi.StringInput    `pulumi:"destination"`
+	EnableEncryption pulumi.BoolPtrInput   `pulumi:"enableEncryption"`
+	EncryptionType   pulumi.StringPtrInput `pulumi:"encryptionType"`
+	Endpoint         pulumi.StringPtrInput `pulumi:"endpoint"`
+	KmsKey           pulumi.StringPtrInput `pulumi:"kmsKey"`
+	Region           pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GetClusterClusterInfoInitScriptS3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptS3)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptS3Args) ToGetClusterClusterInfoInitScriptS3Output() GetClusterClusterInfoInitScriptS3Output {
+	return i.ToGetClusterClusterInfoInitScriptS3OutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptS3Args) ToGetClusterClusterInfoInitScriptS3OutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptS3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptS3Output)
+}
+
+func (i GetClusterClusterInfoInitScriptS3Args) ToGetClusterClusterInfoInitScriptS3PtrOutput() GetClusterClusterInfoInitScriptS3PtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptS3PtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptS3Args) ToGetClusterClusterInfoInitScriptS3PtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptS3Output).ToGetClusterClusterInfoInitScriptS3PtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoInitScriptS3PtrInput is an input type that accepts GetClusterClusterInfoInitScriptS3Args, GetClusterClusterInfoInitScriptS3Ptr and GetClusterClusterInfoInitScriptS3PtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptS3PtrInput` via:
+//
+//	        GetClusterClusterInfoInitScriptS3Args{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoInitScriptS3PtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptS3PtrOutput() GetClusterClusterInfoInitScriptS3PtrOutput
+	ToGetClusterClusterInfoInitScriptS3PtrOutputWithContext(context.Context) GetClusterClusterInfoInitScriptS3PtrOutput
+}
+
+type getClusterClusterInfoInitScriptS3PtrType GetClusterClusterInfoInitScriptS3Args
+
+func GetClusterClusterInfoInitScriptS3Ptr(v *GetClusterClusterInfoInitScriptS3Args) GetClusterClusterInfoInitScriptS3PtrInput {
+	return (*getClusterClusterInfoInitScriptS3PtrType)(v)
+}
+
+func (*getClusterClusterInfoInitScriptS3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptS3)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoInitScriptS3PtrType) ToGetClusterClusterInfoInitScriptS3PtrOutput() GetClusterClusterInfoInitScriptS3PtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptS3PtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoInitScriptS3PtrType) ToGetClusterClusterInfoInitScriptS3PtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptS3PtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptS3Output struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptS3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptS3)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptS3Output) ToGetClusterClusterInfoInitScriptS3Output() GetClusterClusterInfoInitScriptS3Output {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptS3Output) ToGetClusterClusterInfoInitScriptS3OutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptS3Output {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptS3Output) ToGetClusterClusterInfoInitScriptS3PtrOutput() GetClusterClusterInfoInitScriptS3PtrOutput {
+	return o.ToGetClusterClusterInfoInitScriptS3PtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoInitScriptS3Output) ToGetClusterClusterInfoInitScriptS3PtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptS3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoInitScriptS3) *GetClusterClusterInfoInitScriptS3 {
+		return &v
+	}).(GetClusterClusterInfoInitScriptS3PtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3Output) CannedAcl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptS3) *string { return v.CannedAcl }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3Output) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptS3) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3Output) EnableEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptS3) *bool { return v.EnableEncryption }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3Output) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptS3) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3Output) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptS3) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3Output) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptS3) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3Output) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptS3) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptS3PtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptS3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptS3)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptS3PtrOutput) ToGetClusterClusterInfoInitScriptS3PtrOutput() GetClusterClusterInfoInitScriptS3PtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptS3PtrOutput) ToGetClusterClusterInfoInitScriptS3PtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptS3PtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptS3PtrOutput) Elem() GetClusterClusterInfoInitScriptS3Output {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptS3) GetClusterClusterInfoInitScriptS3 {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoInitScriptS3
+		return ret
+	}).(GetClusterClusterInfoInitScriptS3Output)
+}
+
+func (o GetClusterClusterInfoInitScriptS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CannedAcl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3PtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptS3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptS3) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3PtrOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptS3PtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptVolumes struct {
+	Destination string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoInitScriptVolumesInput is an input type that accepts GetClusterClusterInfoInitScriptVolumesArgs and GetClusterClusterInfoInitScriptVolumesOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptVolumesInput` via:
+//
+//	GetClusterClusterInfoInitScriptVolumesArgs{...}
+type GetClusterClusterInfoInitScriptVolumesInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptVolumesOutput() GetClusterClusterInfoInitScriptVolumesOutput
+	ToGetClusterClusterInfoInitScriptVolumesOutputWithContext(context.Context) GetClusterClusterInfoInitScriptVolumesOutput
+}
+
+type GetClusterClusterInfoInitScriptVolumesArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoInitScriptVolumesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptVolumes)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptVolumesArgs) ToGetClusterClusterInfoInitScriptVolumesOutput() GetClusterClusterInfoInitScriptVolumesOutput {
+	return i.ToGetClusterClusterInfoInitScriptVolumesOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptVolumesArgs) ToGetClusterClusterInfoInitScriptVolumesOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptVolumesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptVolumesOutput)
+}
+
+func (i GetClusterClusterInfoInitScriptVolumesArgs) ToGetClusterClusterInfoInitScriptVolumesPtrOutput() GetClusterClusterInfoInitScriptVolumesPtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptVolumesPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptVolumesArgs) ToGetClusterClusterInfoInitScriptVolumesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptVolumesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptVolumesOutput).ToGetClusterClusterInfoInitScriptVolumesPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoInitScriptVolumesPtrInput is an input type that accepts GetClusterClusterInfoInitScriptVolumesArgs, GetClusterClusterInfoInitScriptVolumesPtr and GetClusterClusterInfoInitScriptVolumesPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptVolumesPtrInput` via:
+//
+//	        GetClusterClusterInfoInitScriptVolumesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoInitScriptVolumesPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptVolumesPtrOutput() GetClusterClusterInfoInitScriptVolumesPtrOutput
+	ToGetClusterClusterInfoInitScriptVolumesPtrOutputWithContext(context.Context) GetClusterClusterInfoInitScriptVolumesPtrOutput
+}
+
+type getClusterClusterInfoInitScriptVolumesPtrType GetClusterClusterInfoInitScriptVolumesArgs
+
+func GetClusterClusterInfoInitScriptVolumesPtr(v *GetClusterClusterInfoInitScriptVolumesArgs) GetClusterClusterInfoInitScriptVolumesPtrInput {
+	return (*getClusterClusterInfoInitScriptVolumesPtrType)(v)
+}
+
+func (*getClusterClusterInfoInitScriptVolumesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptVolumes)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoInitScriptVolumesPtrType) ToGetClusterClusterInfoInitScriptVolumesPtrOutput() GetClusterClusterInfoInitScriptVolumesPtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptVolumesPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoInitScriptVolumesPtrType) ToGetClusterClusterInfoInitScriptVolumesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptVolumesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptVolumesPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptVolumesOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptVolumesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptVolumes)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptVolumesOutput) ToGetClusterClusterInfoInitScriptVolumesOutput() GetClusterClusterInfoInitScriptVolumesOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptVolumesOutput) ToGetClusterClusterInfoInitScriptVolumesOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptVolumesOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptVolumesOutput) ToGetClusterClusterInfoInitScriptVolumesPtrOutput() GetClusterClusterInfoInitScriptVolumesPtrOutput {
+	return o.ToGetClusterClusterInfoInitScriptVolumesPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoInitScriptVolumesOutput) ToGetClusterClusterInfoInitScriptVolumesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptVolumesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoInitScriptVolumes) *GetClusterClusterInfoInitScriptVolumes {
+		return &v
+	}).(GetClusterClusterInfoInitScriptVolumesPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptVolumesOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptVolumes) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterInfoInitScriptVolumesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptVolumesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptVolumes)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptVolumesPtrOutput) ToGetClusterClusterInfoInitScriptVolumesPtrOutput() GetClusterClusterInfoInitScriptVolumesPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptVolumesPtrOutput) ToGetClusterClusterInfoInitScriptVolumesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptVolumesPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptVolumesPtrOutput) Elem() GetClusterClusterInfoInitScriptVolumesOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptVolumes) GetClusterClusterInfoInitScriptVolumes {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoInitScriptVolumes
+		return ret
+	}).(GetClusterClusterInfoInitScriptVolumesOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptVolumesPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptVolumes) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptWorkspace struct {
+	Destination string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoInitScriptWorkspaceInput is an input type that accepts GetClusterClusterInfoInitScriptWorkspaceArgs and GetClusterClusterInfoInitScriptWorkspaceOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptWorkspaceInput` via:
+//
+//	GetClusterClusterInfoInitScriptWorkspaceArgs{...}
+type GetClusterClusterInfoInitScriptWorkspaceInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptWorkspaceOutput() GetClusterClusterInfoInitScriptWorkspaceOutput
+	ToGetClusterClusterInfoInitScriptWorkspaceOutputWithContext(context.Context) GetClusterClusterInfoInitScriptWorkspaceOutput
+}
+
+type GetClusterClusterInfoInitScriptWorkspaceArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoInitScriptWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptWorkspaceArgs) ToGetClusterClusterInfoInitScriptWorkspaceOutput() GetClusterClusterInfoInitScriptWorkspaceOutput {
+	return i.ToGetClusterClusterInfoInitScriptWorkspaceOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptWorkspaceArgs) ToGetClusterClusterInfoInitScriptWorkspaceOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptWorkspaceOutput)
+}
+
+func (i GetClusterClusterInfoInitScriptWorkspaceArgs) ToGetClusterClusterInfoInitScriptWorkspacePtrOutput() GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptWorkspaceArgs) ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptWorkspaceOutput).ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoInitScriptWorkspacePtrInput is an input type that accepts GetClusterClusterInfoInitScriptWorkspaceArgs, GetClusterClusterInfoInitScriptWorkspacePtr and GetClusterClusterInfoInitScriptWorkspacePtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptWorkspacePtrInput` via:
+//
+//	        GetClusterClusterInfoInitScriptWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoInitScriptWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptWorkspacePtrOutput() GetClusterClusterInfoInitScriptWorkspacePtrOutput
+	ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(context.Context) GetClusterClusterInfoInitScriptWorkspacePtrOutput
+}
+
+type getClusterClusterInfoInitScriptWorkspacePtrType GetClusterClusterInfoInitScriptWorkspaceArgs
+
+func GetClusterClusterInfoInitScriptWorkspacePtr(v *GetClusterClusterInfoInitScriptWorkspaceArgs) GetClusterClusterInfoInitScriptWorkspacePtrInput {
+	return (*getClusterClusterInfoInitScriptWorkspacePtrType)(v)
+}
+
+func (*getClusterClusterInfoInitScriptWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptWorkspace)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoInitScriptWorkspacePtrType) ToGetClusterClusterInfoInitScriptWorkspacePtrOutput() GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return i.ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoInitScriptWorkspacePtrType) ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptWorkspacePtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspaceOutput) ToGetClusterClusterInfoInitScriptWorkspaceOutput() GetClusterClusterInfoInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspaceOutput) ToGetClusterClusterInfoInitScriptWorkspaceOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptWorkspaceOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspaceOutput) ToGetClusterClusterInfoInitScriptWorkspacePtrOutput() GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return o.ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspaceOutput) ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoInitScriptWorkspace) *GetClusterClusterInfoInitScriptWorkspace {
+		return &v
+	}).(GetClusterClusterInfoInitScriptWorkspacePtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterInfoInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoInitScriptWorkspace)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspacePtrOutput) ToGetClusterClusterInfoInitScriptWorkspacePtrOutput() GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspacePtrOutput) ToGetClusterClusterInfoInitScriptWorkspacePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspacePtrOutput) Elem() GetClusterClusterInfoInitScriptWorkspaceOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptWorkspace) GetClusterClusterInfoInitScriptWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoInitScriptWorkspace
+		return ret
+	}).(GetClusterClusterInfoInitScriptWorkspaceOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoInitScriptWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoSpec struct {
+	ApplyPolicyDefaultValues *bool                                     `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                *GetClusterClusterInfoSpecAutoscale       `pulumi:"autoscale"`
+	AwsAttributes            *GetClusterClusterInfoSpecAwsAttributes   `pulumi:"awsAttributes"`
+	AzureAttributes          *GetClusterClusterInfoSpecAzureAttributes `pulumi:"azureAttributes"`
+	// The id of the cluster
+	ClusterId         string                                      `pulumi:"clusterId"`
+	ClusterLogConf    *GetClusterClusterInfoSpecClusterLogConf    `pulumi:"clusterLogConf"`
+	ClusterMountInfos []GetClusterClusterInfoSpecClusterMountInfo `pulumi:"clusterMountInfos"`
+	// The exact name of the cluster to search
+	ClusterName *string `pulumi:"clusterName"`
+	// Additional tags for cluster resources.
+	CustomTags map[string]string `pulumi:"customTags"`
+	// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+	DataSecurityMode *string                               `pulumi:"dataSecurityMode"`
+	DockerImage      *GetClusterClusterInfoSpecDockerImage `pulumi:"dockerImage"`
+	// similar to `instancePoolId`, but for driver node.
+	DriverInstancePoolId string `pulumi:"driverInstancePoolId"`
+	// The node type of the Spark driver.
+	DriverNodeTypeId string `pulumi:"driverNodeTypeId"`
+	// Use autoscaling local storage.
+	EnableElasticDisk bool `pulumi:"enableElasticDisk"`
+	// Enable local disk encryption.
+	EnableLocalDiskEncryption bool                                    `pulumi:"enableLocalDiskEncryption"`
+	GcpAttributes             *GetClusterClusterInfoSpecGcpAttributes `pulumi:"gcpAttributes"`
+	// An optional token to guarantee the idempotency of cluster creation requests.
+	IdempotencyToken *string                               `pulumi:"idempotencyToken"`
+	InitScripts      []GetClusterClusterInfoSpecInitScript `pulumi:"initScripts"`
+	// The pool of idle instances the cluster is attached to.
+	InstancePoolId *string                            `pulumi:"instancePoolId"`
+	Libraries      []GetClusterClusterInfoSpecLibrary `pulumi:"libraries"`
+	// Any supported getNodeType id.
+	NodeTypeId string `pulumi:"nodeTypeId"`
+	NumWorkers *int   `pulumi:"numWorkers"`
+	// Identifier of Cluster Policy to validate cluster and preset certain defaults.
+	PolicyId *string `pulumi:"policyId"`
+	// The type of runtime of the cluster
+	RuntimeEngine *string `pulumi:"runtimeEngine"`
+	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	SingleUserName *string `pulumi:"singleUserName"`
+	// Map with key-value pairs to fine-tune Spark clusters.
+	SparkConf map[string]string `pulumi:"sparkConf"`
+	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+	SparkEnvVars map[string]string `pulumi:"sparkEnvVars"`
+	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+	SparkVersion string `pulumi:"sparkVersion"`
+	// SSH public key contents that will be added to each Spark node in this cluster.
+	SshPublicKeys []string                               `pulumi:"sshPublicKeys"`
+	WorkloadType  *GetClusterClusterInfoSpecWorkloadType `pulumi:"workloadType"`
+}
+
+// GetClusterClusterInfoSpecInput is an input type that accepts GetClusterClusterInfoSpecArgs and GetClusterClusterInfoSpecOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecInput` via:
+//
+//	GetClusterClusterInfoSpecArgs{...}
+type GetClusterClusterInfoSpecInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecOutput() GetClusterClusterInfoSpecOutput
+	ToGetClusterClusterInfoSpecOutputWithContext(context.Context) GetClusterClusterInfoSpecOutput
+}
+
+type GetClusterClusterInfoSpecArgs struct {
+	ApplyPolicyDefaultValues pulumi.BoolPtrInput                              `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                GetClusterClusterInfoSpecAutoscalePtrInput       `pulumi:"autoscale"`
+	AwsAttributes            GetClusterClusterInfoSpecAwsAttributesPtrInput   `pulumi:"awsAttributes"`
+	AzureAttributes          GetClusterClusterInfoSpecAzureAttributesPtrInput `pulumi:"azureAttributes"`
+	// The id of the cluster
+	ClusterId         pulumi.StringInput                                  `pulumi:"clusterId"`
+	ClusterLogConf    GetClusterClusterInfoSpecClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
+	ClusterMountInfos GetClusterClusterInfoSpecClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
+	// The exact name of the cluster to search
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// Additional tags for cluster resources.
+	CustomTags pulumi.StringMapInput `pulumi:"customTags"`
+	// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+	DataSecurityMode pulumi.StringPtrInput                        `pulumi:"dataSecurityMode"`
+	DockerImage      GetClusterClusterInfoSpecDockerImagePtrInput `pulumi:"dockerImage"`
+	// similar to `instancePoolId`, but for driver node.
+	DriverInstancePoolId pulumi.StringInput `pulumi:"driverInstancePoolId"`
+	// The node type of the Spark driver.
+	DriverNodeTypeId pulumi.StringInput `pulumi:"driverNodeTypeId"`
+	// Use autoscaling local storage.
+	EnableElasticDisk pulumi.BoolInput `pulumi:"enableElasticDisk"`
+	// Enable local disk encryption.
+	EnableLocalDiskEncryption pulumi.BoolInput                               `pulumi:"enableLocalDiskEncryption"`
+	GcpAttributes             GetClusterClusterInfoSpecGcpAttributesPtrInput `pulumi:"gcpAttributes"`
+	// An optional token to guarantee the idempotency of cluster creation requests.
+	IdempotencyToken pulumi.StringPtrInput                         `pulumi:"idempotencyToken"`
+	InitScripts      GetClusterClusterInfoSpecInitScriptArrayInput `pulumi:"initScripts"`
+	// The pool of idle instances the cluster is attached to.
+	InstancePoolId pulumi.StringPtrInput                      `pulumi:"instancePoolId"`
+	Libraries      GetClusterClusterInfoSpecLibraryArrayInput `pulumi:"libraries"`
+	// Any supported getNodeType id.
+	NodeTypeId pulumi.StringInput `pulumi:"nodeTypeId"`
+	NumWorkers pulumi.IntPtrInput `pulumi:"numWorkers"`
+	// Identifier of Cluster Policy to validate cluster and preset certain defaults.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// The type of runtime of the cluster
+	RuntimeEngine pulumi.StringPtrInput `pulumi:"runtimeEngine"`
+	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	SingleUserName pulumi.StringPtrInput `pulumi:"singleUserName"`
+	// Map with key-value pairs to fine-tune Spark clusters.
+	SparkConf pulumi.StringMapInput `pulumi:"sparkConf"`
+	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+	SparkEnvVars pulumi.StringMapInput `pulumi:"sparkEnvVars"`
+	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+	SparkVersion pulumi.StringInput `pulumi:"sparkVersion"`
+	// SSH public key contents that will be added to each Spark node in this cluster.
+	SshPublicKeys pulumi.StringArrayInput                       `pulumi:"sshPublicKeys"`
+	WorkloadType  GetClusterClusterInfoSpecWorkloadTypePtrInput `pulumi:"workloadType"`
+}
+
+func (GetClusterClusterInfoSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpec)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecArgs) ToGetClusterClusterInfoSpecOutput() GetClusterClusterInfoSpecOutput {
+	return i.ToGetClusterClusterInfoSpecOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecArgs) ToGetClusterClusterInfoSpecOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecOutput)
+}
+
+func (i GetClusterClusterInfoSpecArgs) ToGetClusterClusterInfoSpecPtrOutput() GetClusterClusterInfoSpecPtrOutput {
+	return i.ToGetClusterClusterInfoSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecArgs) ToGetClusterClusterInfoSpecPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecOutput).ToGetClusterClusterInfoSpecPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoSpecPtrInput is an input type that accepts GetClusterClusterInfoSpecArgs, GetClusterClusterInfoSpecPtr and GetClusterClusterInfoSpecPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecPtrInput` via:
+//
+//	        GetClusterClusterInfoSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoSpecPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecPtrOutput() GetClusterClusterInfoSpecPtrOutput
+	ToGetClusterClusterInfoSpecPtrOutputWithContext(context.Context) GetClusterClusterInfoSpecPtrOutput
+}
+
+type getClusterClusterInfoSpecPtrType GetClusterClusterInfoSpecArgs
+
+func GetClusterClusterInfoSpecPtr(v *GetClusterClusterInfoSpecArgs) GetClusterClusterInfoSpecPtrInput {
+	return (*getClusterClusterInfoSpecPtrType)(v)
+}
+
+func (*getClusterClusterInfoSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpec)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoSpecPtrType) ToGetClusterClusterInfoSpecPtrOutput() GetClusterClusterInfoSpecPtrOutput {
+	return i.ToGetClusterClusterInfoSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoSpecPtrType) ToGetClusterClusterInfoSpecPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecPtrOutput)
+}
+
+type GetClusterClusterInfoSpecOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpec)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecOutput) ToGetClusterClusterInfoSpecOutput() GetClusterClusterInfoSpecOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecOutput) ToGetClusterClusterInfoSpecOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecOutput) ToGetClusterClusterInfoSpecPtrOutput() GetClusterClusterInfoSpecPtrOutput {
+	return o.ToGetClusterClusterInfoSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoSpecOutput) ToGetClusterClusterInfoSpecPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpec {
+		return &v
+	}).(GetClusterClusterInfoSpecPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *bool { return v.ApplyPolicyDefaultValues }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecOutput) Autoscale() GetClusterClusterInfoSpecAutoscalePtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecAutoscale { return v.Autoscale }).(GetClusterClusterInfoSpecAutoscalePtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecOutput) AwsAttributes() GetClusterClusterInfoSpecAwsAttributesPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecAwsAttributes { return v.AwsAttributes }).(GetClusterClusterInfoSpecAwsAttributesPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecOutput) AzureAttributes() GetClusterClusterInfoSpecAzureAttributesPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecAzureAttributes { return v.AzureAttributes }).(GetClusterClusterInfoSpecAzureAttributesPtrOutput)
+}
+
+// The id of the cluster
+func (o GetClusterClusterInfoSpecOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+func (o GetClusterClusterInfoSpecOutput) ClusterLogConf() GetClusterClusterInfoSpecClusterLogConfPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecClusterLogConf { return v.ClusterLogConf }).(GetClusterClusterInfoSpecClusterLogConfPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecOutput) ClusterMountInfos() GetClusterClusterInfoSpecClusterMountInfoArrayOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) []GetClusterClusterInfoSpecClusterMountInfo {
+		return v.ClusterMountInfos
+	}).(GetClusterClusterInfoSpecClusterMountInfoArrayOutput)
+}
+
+// The exact name of the cluster to search
+func (o GetClusterClusterInfoSpecOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// Additional tags for cluster resources.
+func (o GetClusterClusterInfoSpecOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
+}
+
+// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+func (o GetClusterClusterInfoSpecOutput) DataSecurityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.DataSecurityMode }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecOutput) DockerImage() GetClusterClusterInfoSpecDockerImagePtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecDockerImage { return v.DockerImage }).(GetClusterClusterInfoSpecDockerImagePtrOutput)
+}
+
+// similar to `instancePoolId`, but for driver node.
+func (o GetClusterClusterInfoSpecOutput) DriverInstancePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) string { return v.DriverInstancePoolId }).(pulumi.StringOutput)
+}
+
+// The node type of the Spark driver.
+func (o GetClusterClusterInfoSpecOutput) DriverNodeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) string { return v.DriverNodeTypeId }).(pulumi.StringOutput)
+}
+
+// Use autoscaling local storage.
+func (o GetClusterClusterInfoSpecOutput) EnableElasticDisk() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) bool { return v.EnableElasticDisk }).(pulumi.BoolOutput)
+}
+
+// Enable local disk encryption.
+func (o GetClusterClusterInfoSpecOutput) EnableLocalDiskEncryption() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) bool { return v.EnableLocalDiskEncryption }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterClusterInfoSpecOutput) GcpAttributes() GetClusterClusterInfoSpecGcpAttributesPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecGcpAttributes { return v.GcpAttributes }).(GetClusterClusterInfoSpecGcpAttributesPtrOutput)
+}
+
+// An optional token to guarantee the idempotency of cluster creation requests.
+func (o GetClusterClusterInfoSpecOutput) IdempotencyToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.IdempotencyToken }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecOutput) InitScripts() GetClusterClusterInfoSpecInitScriptArrayOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) []GetClusterClusterInfoSpecInitScript { return v.InitScripts }).(GetClusterClusterInfoSpecInitScriptArrayOutput)
+}
+
+// The pool of idle instances the cluster is attached to.
+func (o GetClusterClusterInfoSpecOutput) InstancePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecOutput) Libraries() GetClusterClusterInfoSpecLibraryArrayOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) []GetClusterClusterInfoSpecLibrary { return v.Libraries }).(GetClusterClusterInfoSpecLibraryArrayOutput)
+}
+
+// Any supported getNodeType id.
+func (o GetClusterClusterInfoSpecOutput) NodeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) string { return v.NodeTypeId }).(pulumi.StringOutput)
+}
+
+func (o GetClusterClusterInfoSpecOutput) NumWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *int { return v.NumWorkers }).(pulumi.IntPtrOutput)
+}
+
+// Identifier of Cluster Policy to validate cluster and preset certain defaults.
+func (o GetClusterClusterInfoSpecOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// The type of runtime of the cluster
+func (o GetClusterClusterInfoSpecOutput) RuntimeEngine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.RuntimeEngine }).(pulumi.StringPtrOutput)
+}
+
+// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+func (o GetClusterClusterInfoSpecOutput) SingleUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.SingleUserName }).(pulumi.StringPtrOutput)
+}
+
+// Map with key-value pairs to fine-tune Spark clusters.
+func (o GetClusterClusterInfoSpecOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
+}
+
+// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+func (o GetClusterClusterInfoSpecOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
+}
+
+// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+func (o GetClusterClusterInfoSpecOutput) SparkVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) string { return v.SparkVersion }).(pulumi.StringOutput)
+}
+
+// SSH public key contents that will be added to each Spark node in this cluster.
+func (o GetClusterClusterInfoSpecOutput) SshPublicKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) []string { return v.SshPublicKeys }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClusterClusterInfoSpecOutput) WorkloadType() GetClusterClusterInfoSpecWorkloadTypePtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecWorkloadType { return v.WorkloadType }).(GetClusterClusterInfoSpecWorkloadTypePtrOutput)
+}
+
+type GetClusterClusterInfoSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpec)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) ToGetClusterClusterInfoSpecPtrOutput() GetClusterClusterInfoSpecPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) ToGetClusterClusterInfoSpecPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) Elem() GetClusterClusterInfoSpecOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) GetClusterClusterInfoSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoSpec
+		return ret
+	}).(GetClusterClusterInfoSpecOutput)
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) ApplyPolicyDefaultValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApplyPolicyDefaultValues
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) Autoscale() GetClusterClusterInfoSpecAutoscalePtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecAutoscale {
+		if v == nil {
+			return nil
+		}
+		return v.Autoscale
+	}).(GetClusterClusterInfoSpecAutoscalePtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) AwsAttributes() GetClusterClusterInfoSpecAwsAttributesPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecAwsAttributes {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAttributes
+	}).(GetClusterClusterInfoSpecAwsAttributesPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) AzureAttributes() GetClusterClusterInfoSpecAzureAttributesPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecAzureAttributes {
+		if v == nil {
+			return nil
+		}
+		return v.AzureAttributes
+	}).(GetClusterClusterInfoSpecAzureAttributesPtrOutput)
+}
+
+// The id of the cluster
+func (o GetClusterClusterInfoSpecPtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) ClusterLogConf() GetClusterClusterInfoSpecClusterLogConfPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecClusterLogConf {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterLogConf
+	}).(GetClusterClusterInfoSpecClusterLogConfPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) ClusterMountInfos() GetClusterClusterInfoSpecClusterMountInfoArrayOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) []GetClusterClusterInfoSpecClusterMountInfo {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterMountInfos
+	}).(GetClusterClusterInfoSpecClusterMountInfoArrayOutput)
+}
+
+// The exact name of the cluster to search
+func (o GetClusterClusterInfoSpecPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional tags for cluster resources.
+func (o GetClusterClusterInfoSpecPtrOutput) CustomTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+func (o GetClusterClusterInfoSpecPtrOutput) DataSecurityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataSecurityMode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) DockerImage() GetClusterClusterInfoSpecDockerImagePtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecDockerImage {
+		if v == nil {
+			return nil
+		}
+		return v.DockerImage
+	}).(GetClusterClusterInfoSpecDockerImagePtrOutput)
+}
+
+// similar to `instancePoolId`, but for driver node.
+func (o GetClusterClusterInfoSpecPtrOutput) DriverInstancePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DriverInstancePoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The node type of the Spark driver.
+func (o GetClusterClusterInfoSpecPtrOutput) DriverNodeTypeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DriverNodeTypeId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use autoscaling local storage.
+func (o GetClusterClusterInfoSpecPtrOutput) EnableElasticDisk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableElasticDisk
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable local disk encryption.
+func (o GetClusterClusterInfoSpecPtrOutput) EnableLocalDiskEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableLocalDiskEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) GcpAttributes() GetClusterClusterInfoSpecGcpAttributesPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecGcpAttributes {
+		if v == nil {
+			return nil
+		}
+		return v.GcpAttributes
+	}).(GetClusterClusterInfoSpecGcpAttributesPtrOutput)
+}
+
+// An optional token to guarantee the idempotency of cluster creation requests.
+func (o GetClusterClusterInfoSpecPtrOutput) IdempotencyToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdempotencyToken
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) InitScripts() GetClusterClusterInfoSpecInitScriptArrayOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) []GetClusterClusterInfoSpecInitScript {
+		if v == nil {
+			return nil
+		}
+		return v.InitScripts
+	}).(GetClusterClusterInfoSpecInitScriptArrayOutput)
+}
+
+// The pool of idle instances the cluster is attached to.
+func (o GetClusterClusterInfoSpecPtrOutput) InstancePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstancePoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) Libraries() GetClusterClusterInfoSpecLibraryArrayOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) []GetClusterClusterInfoSpecLibrary {
+		if v == nil {
+			return nil
+		}
+		return v.Libraries
+	}).(GetClusterClusterInfoSpecLibraryArrayOutput)
+}
+
+// Any supported getNodeType id.
+func (o GetClusterClusterInfoSpecPtrOutput) NodeTypeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeTypeId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) NumWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumWorkers
+	}).(pulumi.IntPtrOutput)
+}
+
+// Identifier of Cluster Policy to validate cluster and preset certain defaults.
+func (o GetClusterClusterInfoSpecPtrOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of runtime of the cluster
+func (o GetClusterClusterInfoSpecPtrOutput) RuntimeEngine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeEngine
+	}).(pulumi.StringPtrOutput)
+}
+
+// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+func (o GetClusterClusterInfoSpecPtrOutput) SingleUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SingleUserName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map with key-value pairs to fine-tune Spark clusters.
+func (o GetClusterClusterInfoSpecPtrOutput) SparkConf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkConf
+	}).(pulumi.StringMapOutput)
+}
+
+// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+func (o GetClusterClusterInfoSpecPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkEnvVars
+	}).(pulumi.StringMapOutput)
+}
+
+// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+func (o GetClusterClusterInfoSpecPtrOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SparkVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSH public key contents that will be added to each Spark node in this cluster.
+func (o GetClusterClusterInfoSpecPtrOutput) SshPublicKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SshPublicKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetClusterClusterInfoSpecPtrOutput) WorkloadType() GetClusterClusterInfoSpecWorkloadTypePtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecWorkloadType {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadType
+	}).(GetClusterClusterInfoSpecWorkloadTypePtrOutput)
+}
+
+type GetClusterClusterInfoSpecAutoscale struct {
+	MaxWorkers *int `pulumi:"maxWorkers"`
+	MinWorkers *int `pulumi:"minWorkers"`
+}
+
+// GetClusterClusterInfoSpecAutoscaleInput is an input type that accepts GetClusterClusterInfoSpecAutoscaleArgs and GetClusterClusterInfoSpecAutoscaleOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecAutoscaleInput` via:
+//
+//	GetClusterClusterInfoSpecAutoscaleArgs{...}
+type GetClusterClusterInfoSpecAutoscaleInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecAutoscaleOutput() GetClusterClusterInfoSpecAutoscaleOutput
+	ToGetClusterClusterInfoSpecAutoscaleOutputWithContext(context.Context) GetClusterClusterInfoSpecAutoscaleOutput
+}
+
+type GetClusterClusterInfoSpecAutoscaleArgs struct {
+	MaxWorkers pulumi.IntPtrInput `pulumi:"maxWorkers"`
+	MinWorkers pulumi.IntPtrInput `pulumi:"minWorkers"`
+}
+
+func (GetClusterClusterInfoSpecAutoscaleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecAutoscale)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecAutoscaleArgs) ToGetClusterClusterInfoSpecAutoscaleOutput() GetClusterClusterInfoSpecAutoscaleOutput {
+	return i.ToGetClusterClusterInfoSpecAutoscaleOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecAutoscaleArgs) ToGetClusterClusterInfoSpecAutoscaleOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAutoscaleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecAutoscaleOutput)
+}
+
+func (i GetClusterClusterInfoSpecAutoscaleArgs) ToGetClusterClusterInfoSpecAutoscalePtrOutput() GetClusterClusterInfoSpecAutoscalePtrOutput {
+	return i.ToGetClusterClusterInfoSpecAutoscalePtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecAutoscaleArgs) ToGetClusterClusterInfoSpecAutoscalePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAutoscalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecAutoscaleOutput).ToGetClusterClusterInfoSpecAutoscalePtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoSpecAutoscalePtrInput is an input type that accepts GetClusterClusterInfoSpecAutoscaleArgs, GetClusterClusterInfoSpecAutoscalePtr and GetClusterClusterInfoSpecAutoscalePtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecAutoscalePtrInput` via:
+//
+//	        GetClusterClusterInfoSpecAutoscaleArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoSpecAutoscalePtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecAutoscalePtrOutput() GetClusterClusterInfoSpecAutoscalePtrOutput
+	ToGetClusterClusterInfoSpecAutoscalePtrOutputWithContext(context.Context) GetClusterClusterInfoSpecAutoscalePtrOutput
+}
+
+type getClusterClusterInfoSpecAutoscalePtrType GetClusterClusterInfoSpecAutoscaleArgs
+
+func GetClusterClusterInfoSpecAutoscalePtr(v *GetClusterClusterInfoSpecAutoscaleArgs) GetClusterClusterInfoSpecAutoscalePtrInput {
+	return (*getClusterClusterInfoSpecAutoscalePtrType)(v)
+}
+
+func (*getClusterClusterInfoSpecAutoscalePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecAutoscale)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoSpecAutoscalePtrType) ToGetClusterClusterInfoSpecAutoscalePtrOutput() GetClusterClusterInfoSpecAutoscalePtrOutput {
+	return i.ToGetClusterClusterInfoSpecAutoscalePtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoSpecAutoscalePtrType) ToGetClusterClusterInfoSpecAutoscalePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAutoscalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecAutoscalePtrOutput)
+}
+
+type GetClusterClusterInfoSpecAutoscaleOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecAutoscaleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecAutoscale)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecAutoscaleOutput) ToGetClusterClusterInfoSpecAutoscaleOutput() GetClusterClusterInfoSpecAutoscaleOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAutoscaleOutput) ToGetClusterClusterInfoSpecAutoscaleOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAutoscaleOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAutoscaleOutput) ToGetClusterClusterInfoSpecAutoscalePtrOutput() GetClusterClusterInfoSpecAutoscalePtrOutput {
+	return o.ToGetClusterClusterInfoSpecAutoscalePtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoSpecAutoscaleOutput) ToGetClusterClusterInfoSpecAutoscalePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAutoscalePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoSpecAutoscale) *GetClusterClusterInfoSpecAutoscale {
+		return &v
+	}).(GetClusterClusterInfoSpecAutoscalePtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAutoscaleOutput) MaxWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAutoscale) *int { return v.MaxWorkers }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAutoscaleOutput) MinWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAutoscale) *int { return v.MinWorkers }).(pulumi.IntPtrOutput)
+}
+
+type GetClusterClusterInfoSpecAutoscalePtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecAutoscalePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecAutoscale)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecAutoscalePtrOutput) ToGetClusterClusterInfoSpecAutoscalePtrOutput() GetClusterClusterInfoSpecAutoscalePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAutoscalePtrOutput) ToGetClusterClusterInfoSpecAutoscalePtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAutoscalePtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAutoscalePtrOutput) Elem() GetClusterClusterInfoSpecAutoscaleOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAutoscale) GetClusterClusterInfoSpecAutoscale {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoSpecAutoscale
+		return ret
+	}).(GetClusterClusterInfoSpecAutoscaleOutput)
+}
+
+func (o GetClusterClusterInfoSpecAutoscalePtrOutput) MaxWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAutoscale) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxWorkers
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAutoscalePtrOutput) MinWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAutoscale) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinWorkers
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetClusterClusterInfoSpecAwsAttributes struct {
+	Availability        *string `pulumi:"availability"`
+	EbsVolumeCount      *int    `pulumi:"ebsVolumeCount"`
+	EbsVolumeIops       *int    `pulumi:"ebsVolumeIops"`
+	EbsVolumeSize       *int    `pulumi:"ebsVolumeSize"`
+	EbsVolumeThroughput *int    `pulumi:"ebsVolumeThroughput"`
+	EbsVolumeType       *string `pulumi:"ebsVolumeType"`
+	FirstOnDemand       *int    `pulumi:"firstOnDemand"`
+	InstanceProfileArn  *string `pulumi:"instanceProfileArn"`
+	SpotBidPricePercent *int    `pulumi:"spotBidPricePercent"`
+	ZoneId              *string `pulumi:"zoneId"`
+}
+
+// GetClusterClusterInfoSpecAwsAttributesInput is an input type that accepts GetClusterClusterInfoSpecAwsAttributesArgs and GetClusterClusterInfoSpecAwsAttributesOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecAwsAttributesInput` via:
+//
+//	GetClusterClusterInfoSpecAwsAttributesArgs{...}
+type GetClusterClusterInfoSpecAwsAttributesInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecAwsAttributesOutput() GetClusterClusterInfoSpecAwsAttributesOutput
+	ToGetClusterClusterInfoSpecAwsAttributesOutputWithContext(context.Context) GetClusterClusterInfoSpecAwsAttributesOutput
+}
+
+type GetClusterClusterInfoSpecAwsAttributesArgs struct {
+	Availability        pulumi.StringPtrInput `pulumi:"availability"`
+	EbsVolumeCount      pulumi.IntPtrInput    `pulumi:"ebsVolumeCount"`
+	EbsVolumeIops       pulumi.IntPtrInput    `pulumi:"ebsVolumeIops"`
+	EbsVolumeSize       pulumi.IntPtrInput    `pulumi:"ebsVolumeSize"`
+	EbsVolumeThroughput pulumi.IntPtrInput    `pulumi:"ebsVolumeThroughput"`
+	EbsVolumeType       pulumi.StringPtrInput `pulumi:"ebsVolumeType"`
+	FirstOnDemand       pulumi.IntPtrInput    `pulumi:"firstOnDemand"`
+	InstanceProfileArn  pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
+	SpotBidPricePercent pulumi.IntPtrInput    `pulumi:"spotBidPricePercent"`
+	ZoneId              pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (GetClusterClusterInfoSpecAwsAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecAwsAttributes)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecAwsAttributesArgs) ToGetClusterClusterInfoSpecAwsAttributesOutput() GetClusterClusterInfoSpecAwsAttributesOutput {
+	return i.ToGetClusterClusterInfoSpecAwsAttributesOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecAwsAttributesArgs) ToGetClusterClusterInfoSpecAwsAttributesOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAwsAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecAwsAttributesOutput)
+}
+
+func (i GetClusterClusterInfoSpecAwsAttributesArgs) ToGetClusterClusterInfoSpecAwsAttributesPtrOutput() GetClusterClusterInfoSpecAwsAttributesPtrOutput {
+	return i.ToGetClusterClusterInfoSpecAwsAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecAwsAttributesArgs) ToGetClusterClusterInfoSpecAwsAttributesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAwsAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecAwsAttributesOutput).ToGetClusterClusterInfoSpecAwsAttributesPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoSpecAwsAttributesPtrInput is an input type that accepts GetClusterClusterInfoSpecAwsAttributesArgs, GetClusterClusterInfoSpecAwsAttributesPtr and GetClusterClusterInfoSpecAwsAttributesPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecAwsAttributesPtrInput` via:
+//
+//	        GetClusterClusterInfoSpecAwsAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoSpecAwsAttributesPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecAwsAttributesPtrOutput() GetClusterClusterInfoSpecAwsAttributesPtrOutput
+	ToGetClusterClusterInfoSpecAwsAttributesPtrOutputWithContext(context.Context) GetClusterClusterInfoSpecAwsAttributesPtrOutput
+}
+
+type getClusterClusterInfoSpecAwsAttributesPtrType GetClusterClusterInfoSpecAwsAttributesArgs
+
+func GetClusterClusterInfoSpecAwsAttributesPtr(v *GetClusterClusterInfoSpecAwsAttributesArgs) GetClusterClusterInfoSpecAwsAttributesPtrInput {
+	return (*getClusterClusterInfoSpecAwsAttributesPtrType)(v)
+}
+
+func (*getClusterClusterInfoSpecAwsAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecAwsAttributes)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoSpecAwsAttributesPtrType) ToGetClusterClusterInfoSpecAwsAttributesPtrOutput() GetClusterClusterInfoSpecAwsAttributesPtrOutput {
+	return i.ToGetClusterClusterInfoSpecAwsAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoSpecAwsAttributesPtrType) ToGetClusterClusterInfoSpecAwsAttributesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAwsAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecAwsAttributesPtrOutput)
+}
+
+type GetClusterClusterInfoSpecAwsAttributesOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecAwsAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecAwsAttributes)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) ToGetClusterClusterInfoSpecAwsAttributesOutput() GetClusterClusterInfoSpecAwsAttributesOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) ToGetClusterClusterInfoSpecAwsAttributesOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAwsAttributesOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) ToGetClusterClusterInfoSpecAwsAttributesPtrOutput() GetClusterClusterInfoSpecAwsAttributesPtrOutput {
+	return o.ToGetClusterClusterInfoSpecAwsAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) ToGetClusterClusterInfoSpecAwsAttributesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAwsAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoSpecAwsAttributes) *GetClusterClusterInfoSpecAwsAttributes {
+		return &v
+	}).(GetClusterClusterInfoSpecAwsAttributesPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAwsAttributes) *string { return v.Availability }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) EbsVolumeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAwsAttributes) *int { return v.EbsVolumeCount }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) EbsVolumeIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAwsAttributes) *int { return v.EbsVolumeIops }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) EbsVolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAwsAttributes) *int { return v.EbsVolumeSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) EbsVolumeThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAwsAttributes) *int { return v.EbsVolumeThroughput }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) EbsVolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAwsAttributes) *string { return v.EbsVolumeType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) FirstOnDemand() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAwsAttributes) *int { return v.FirstOnDemand }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) InstanceProfileArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAwsAttributes) *string { return v.InstanceProfileArn }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) SpotBidPricePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAwsAttributes) *int { return v.SpotBidPricePercent }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAwsAttributes) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoSpecAwsAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecAwsAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecAwsAttributes)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) ToGetClusterClusterInfoSpecAwsAttributesPtrOutput() GetClusterClusterInfoSpecAwsAttributesPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) ToGetClusterClusterInfoSpecAwsAttributesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAwsAttributesPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) Elem() GetClusterClusterInfoSpecAwsAttributesOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAwsAttributes) GetClusterClusterInfoSpecAwsAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoSpecAwsAttributes
+		return ret
+	}).(GetClusterClusterInfoSpecAwsAttributesOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAwsAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Availability
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) EbsVolumeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) EbsVolumeIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeIops
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) EbsVolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) EbsVolumeThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) EbsVolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAwsAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) FirstOnDemand() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FirstOnDemand
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) InstanceProfileArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAwsAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceProfileArn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) SpotBidPricePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SpotBidPricePercent
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAwsAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAwsAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZoneId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoSpecAzureAttributes struct {
+	Availability     *string                                                   `pulumi:"availability"`
+	FirstOnDemand    *int                                                      `pulumi:"firstOnDemand"`
+	LogAnalyticsInfo *GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo `pulumi:"logAnalyticsInfo"`
+	SpotBidMaxPrice  *float64                                                  `pulumi:"spotBidMaxPrice"`
+}
+
+// GetClusterClusterInfoSpecAzureAttributesInput is an input type that accepts GetClusterClusterInfoSpecAzureAttributesArgs and GetClusterClusterInfoSpecAzureAttributesOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecAzureAttributesInput` via:
+//
+//	GetClusterClusterInfoSpecAzureAttributesArgs{...}
+type GetClusterClusterInfoSpecAzureAttributesInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecAzureAttributesOutput() GetClusterClusterInfoSpecAzureAttributesOutput
+	ToGetClusterClusterInfoSpecAzureAttributesOutputWithContext(context.Context) GetClusterClusterInfoSpecAzureAttributesOutput
+}
+
+type GetClusterClusterInfoSpecAzureAttributesArgs struct {
+	Availability     pulumi.StringPtrInput                                            `pulumi:"availability"`
+	FirstOnDemand    pulumi.IntPtrInput                                               `pulumi:"firstOnDemand"`
+	LogAnalyticsInfo GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrInput `pulumi:"logAnalyticsInfo"`
+	SpotBidMaxPrice  pulumi.Float64PtrInput                                           `pulumi:"spotBidMaxPrice"`
+}
+
+func (GetClusterClusterInfoSpecAzureAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecAzureAttributes)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecAzureAttributesArgs) ToGetClusterClusterInfoSpecAzureAttributesOutput() GetClusterClusterInfoSpecAzureAttributesOutput {
+	return i.ToGetClusterClusterInfoSpecAzureAttributesOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecAzureAttributesArgs) ToGetClusterClusterInfoSpecAzureAttributesOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAzureAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecAzureAttributesOutput)
+}
+
+func (i GetClusterClusterInfoSpecAzureAttributesArgs) ToGetClusterClusterInfoSpecAzureAttributesPtrOutput() GetClusterClusterInfoSpecAzureAttributesPtrOutput {
+	return i.ToGetClusterClusterInfoSpecAzureAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecAzureAttributesArgs) ToGetClusterClusterInfoSpecAzureAttributesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAzureAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecAzureAttributesOutput).ToGetClusterClusterInfoSpecAzureAttributesPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoSpecAzureAttributesPtrInput is an input type that accepts GetClusterClusterInfoSpecAzureAttributesArgs, GetClusterClusterInfoSpecAzureAttributesPtr and GetClusterClusterInfoSpecAzureAttributesPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecAzureAttributesPtrInput` via:
+//
+//	        GetClusterClusterInfoSpecAzureAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoSpecAzureAttributesPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecAzureAttributesPtrOutput() GetClusterClusterInfoSpecAzureAttributesPtrOutput
+	ToGetClusterClusterInfoSpecAzureAttributesPtrOutputWithContext(context.Context) GetClusterClusterInfoSpecAzureAttributesPtrOutput
+}
+
+type getClusterClusterInfoSpecAzureAttributesPtrType GetClusterClusterInfoSpecAzureAttributesArgs
+
+func GetClusterClusterInfoSpecAzureAttributesPtr(v *GetClusterClusterInfoSpecAzureAttributesArgs) GetClusterClusterInfoSpecAzureAttributesPtrInput {
+	return (*getClusterClusterInfoSpecAzureAttributesPtrType)(v)
+}
+
+func (*getClusterClusterInfoSpecAzureAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecAzureAttributes)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoSpecAzureAttributesPtrType) ToGetClusterClusterInfoSpecAzureAttributesPtrOutput() GetClusterClusterInfoSpecAzureAttributesPtrOutput {
+	return i.ToGetClusterClusterInfoSpecAzureAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoSpecAzureAttributesPtrType) ToGetClusterClusterInfoSpecAzureAttributesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAzureAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecAzureAttributesPtrOutput)
+}
+
+type GetClusterClusterInfoSpecAzureAttributesOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecAzureAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecAzureAttributes)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesOutput) ToGetClusterClusterInfoSpecAzureAttributesOutput() GetClusterClusterInfoSpecAzureAttributesOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesOutput) ToGetClusterClusterInfoSpecAzureAttributesOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAzureAttributesOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesOutput) ToGetClusterClusterInfoSpecAzureAttributesPtrOutput() GetClusterClusterInfoSpecAzureAttributesPtrOutput {
+	return o.ToGetClusterClusterInfoSpecAzureAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesOutput) ToGetClusterClusterInfoSpecAzureAttributesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAzureAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoSpecAzureAttributes) *GetClusterClusterInfoSpecAzureAttributes {
+		return &v
+	}).(GetClusterClusterInfoSpecAzureAttributesPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAzureAttributes) *string { return v.Availability }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesOutput) FirstOnDemand() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAzureAttributes) *int { return v.FirstOnDemand }).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesOutput) LogAnalyticsInfo() GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAzureAttributes) *GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo {
+		return v.LogAnalyticsInfo
+	}).(GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAzureAttributes) *float64 { return v.SpotBidMaxPrice }).(pulumi.Float64PtrOutput)
+}
+
+type GetClusterClusterInfoSpecAzureAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecAzureAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecAzureAttributes)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesPtrOutput) ToGetClusterClusterInfoSpecAzureAttributesPtrOutput() GetClusterClusterInfoSpecAzureAttributesPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesPtrOutput) ToGetClusterClusterInfoSpecAzureAttributesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAzureAttributesPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesPtrOutput) Elem() GetClusterClusterInfoSpecAzureAttributesOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAzureAttributes) GetClusterClusterInfoSpecAzureAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoSpecAzureAttributes
+		return ret
+	}).(GetClusterClusterInfoSpecAzureAttributesOutput)
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAzureAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Availability
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesPtrOutput) FirstOnDemand() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAzureAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FirstOnDemand
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesPtrOutput) LogAnalyticsInfo() GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAzureAttributes) *GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsInfo
+	}).(GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesPtrOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAzureAttributes) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SpotBidMaxPrice
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo struct {
+	LogAnalyticsPrimaryKey  *string `pulumi:"logAnalyticsPrimaryKey"`
+	LogAnalyticsWorkspaceId *string `pulumi:"logAnalyticsWorkspaceId"`
+}
+
+// GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoInput is an input type that accepts GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs and GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoInput` via:
+//
+//	GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs{...}
+type GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput() GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput
+	ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutputWithContext(context.Context) GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput
+}
+
+type GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs struct {
+	LogAnalyticsPrimaryKey  pulumi.StringPtrInput `pulumi:"logAnalyticsPrimaryKey"`
+	LogAnalyticsWorkspaceId pulumi.StringPtrInput `pulumi:"logAnalyticsWorkspaceId"`
+}
+
+func (GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs) ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput() GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput {
+	return i.ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs) ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput)
+}
+
+func (i GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs) ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput() GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput {
+	return i.ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs) ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput).ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrInput is an input type that accepts GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs, GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtr and GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrInput` via:
+//
+//	        GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput() GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput
+	ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Context) GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput
+}
+
+type getClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrType GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs
+
+func GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtr(v *GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs) GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrInput {
+	return (*getClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrType)(v)
+}
+
+func (*getClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrType) ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput() GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput {
+	return i.ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrType) ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+type GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput) ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput() GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput) ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput) ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput() GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput) ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo) *GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo {
+		return &v
+	}).(GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput) LogAnalyticsPrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo) *string {
+		return v.LogAnalyticsPrimaryKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo) *string {
+		return v.LogAnalyticsWorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput) ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput() GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput) ToGetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput) Elem() GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo) GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo
+		return ret
+	}).(GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput)
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyticsPrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsPrimaryKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsWorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoSpecClusterLogConf struct {
+	Dbfs *GetClusterClusterInfoSpecClusterLogConfDbfs `pulumi:"dbfs"`
+	S3   *GetClusterClusterInfoSpecClusterLogConfS3   `pulumi:"s3"`
+}
+
+// GetClusterClusterInfoSpecClusterLogConfInput is an input type that accepts GetClusterClusterInfoSpecClusterLogConfArgs and GetClusterClusterInfoSpecClusterLogConfOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecClusterLogConfInput` via:
+//
+//	GetClusterClusterInfoSpecClusterLogConfArgs{...}
+type GetClusterClusterInfoSpecClusterLogConfInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecClusterLogConfOutput() GetClusterClusterInfoSpecClusterLogConfOutput
+	ToGetClusterClusterInfoSpecClusterLogConfOutputWithContext(context.Context) GetClusterClusterInfoSpecClusterLogConfOutput
+}
+
+type GetClusterClusterInfoSpecClusterLogConfArgs struct {
+	Dbfs GetClusterClusterInfoSpecClusterLogConfDbfsPtrInput `pulumi:"dbfs"`
+	S3   GetClusterClusterInfoSpecClusterLogConfS3PtrInput   `pulumi:"s3"`
+}
+
+func (GetClusterClusterInfoSpecClusterLogConfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConf)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfArgs) ToGetClusterClusterInfoSpecClusterLogConfOutput() GetClusterClusterInfoSpecClusterLogConfOutput {
+	return i.ToGetClusterClusterInfoSpecClusterLogConfOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfArgs) ToGetClusterClusterInfoSpecClusterLogConfOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterLogConfOutput)
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfArgs) ToGetClusterClusterInfoSpecClusterLogConfPtrOutput() GetClusterClusterInfoSpecClusterLogConfPtrOutput {
+	return i.ToGetClusterClusterInfoSpecClusterLogConfPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfArgs) ToGetClusterClusterInfoSpecClusterLogConfPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterLogConfOutput).ToGetClusterClusterInfoSpecClusterLogConfPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoSpecClusterLogConfPtrInput is an input type that accepts GetClusterClusterInfoSpecClusterLogConfArgs, GetClusterClusterInfoSpecClusterLogConfPtr and GetClusterClusterInfoSpecClusterLogConfPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecClusterLogConfPtrInput` via:
+//
+//	        GetClusterClusterInfoSpecClusterLogConfArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoSpecClusterLogConfPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecClusterLogConfPtrOutput() GetClusterClusterInfoSpecClusterLogConfPtrOutput
+	ToGetClusterClusterInfoSpecClusterLogConfPtrOutputWithContext(context.Context) GetClusterClusterInfoSpecClusterLogConfPtrOutput
+}
+
+type getClusterClusterInfoSpecClusterLogConfPtrType GetClusterClusterInfoSpecClusterLogConfArgs
+
+func GetClusterClusterInfoSpecClusterLogConfPtr(v *GetClusterClusterInfoSpecClusterLogConfArgs) GetClusterClusterInfoSpecClusterLogConfPtrInput {
+	return (*getClusterClusterInfoSpecClusterLogConfPtrType)(v)
+}
+
+func (*getClusterClusterInfoSpecClusterLogConfPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecClusterLogConf)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoSpecClusterLogConfPtrType) ToGetClusterClusterInfoSpecClusterLogConfPtrOutput() GetClusterClusterInfoSpecClusterLogConfPtrOutput {
+	return i.ToGetClusterClusterInfoSpecClusterLogConfPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoSpecClusterLogConfPtrType) ToGetClusterClusterInfoSpecClusterLogConfPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterLogConfPtrOutput)
+}
+
+type GetClusterClusterInfoSpecClusterLogConfOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecClusterLogConfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConf)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfOutput) ToGetClusterClusterInfoSpecClusterLogConfOutput() GetClusterClusterInfoSpecClusterLogConfOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfOutput) ToGetClusterClusterInfoSpecClusterLogConfOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfOutput) ToGetClusterClusterInfoSpecClusterLogConfPtrOutput() GetClusterClusterInfoSpecClusterLogConfPtrOutput {
+	return o.ToGetClusterClusterInfoSpecClusterLogConfPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfOutput) ToGetClusterClusterInfoSpecClusterLogConfPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoSpecClusterLogConf) *GetClusterClusterInfoSpecClusterLogConf {
+		return &v
+	}).(GetClusterClusterInfoSpecClusterLogConfPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfOutput) Dbfs() GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterLogConf) *GetClusterClusterInfoSpecClusterLogConfDbfs {
+		return v.Dbfs
+	}).(GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfOutput) S3() GetClusterClusterInfoSpecClusterLogConfS3PtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterLogConf) *GetClusterClusterInfoSpecClusterLogConfS3 {
+		return v.S3
+	}).(GetClusterClusterInfoSpecClusterLogConfS3PtrOutput)
+}
+
+type GetClusterClusterInfoSpecClusterLogConfPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecClusterLogConfPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecClusterLogConf)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfPtrOutput) ToGetClusterClusterInfoSpecClusterLogConfPtrOutput() GetClusterClusterInfoSpecClusterLogConfPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfPtrOutput) ToGetClusterClusterInfoSpecClusterLogConfPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfPtrOutput) Elem() GetClusterClusterInfoSpecClusterLogConfOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConf) GetClusterClusterInfoSpecClusterLogConf {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoSpecClusterLogConf
+		return ret
+	}).(GetClusterClusterInfoSpecClusterLogConfOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfPtrOutput) Dbfs() GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConf) *GetClusterClusterInfoSpecClusterLogConfDbfs {
+		if v == nil {
+			return nil
+		}
+		return v.Dbfs
+	}).(GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfPtrOutput) S3() GetClusterClusterInfoSpecClusterLogConfS3PtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConf) *GetClusterClusterInfoSpecClusterLogConfS3 {
+		if v == nil {
+			return nil
+		}
+		return v.S3
+	}).(GetClusterClusterInfoSpecClusterLogConfS3PtrOutput)
+}
+
+type GetClusterClusterInfoSpecClusterLogConfDbfs struct {
+	Destination string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoSpecClusterLogConfDbfsInput is an input type that accepts GetClusterClusterInfoSpecClusterLogConfDbfsArgs and GetClusterClusterInfoSpecClusterLogConfDbfsOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecClusterLogConfDbfsInput` via:
+//
+//	GetClusterClusterInfoSpecClusterLogConfDbfsArgs{...}
+type GetClusterClusterInfoSpecClusterLogConfDbfsInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecClusterLogConfDbfsOutput() GetClusterClusterInfoSpecClusterLogConfDbfsOutput
+	ToGetClusterClusterInfoSpecClusterLogConfDbfsOutputWithContext(context.Context) GetClusterClusterInfoSpecClusterLogConfDbfsOutput
+}
+
+type GetClusterClusterInfoSpecClusterLogConfDbfsArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoSpecClusterLogConfDbfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfDbfs)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfDbfsArgs) ToGetClusterClusterInfoSpecClusterLogConfDbfsOutput() GetClusterClusterInfoSpecClusterLogConfDbfsOutput {
+	return i.ToGetClusterClusterInfoSpecClusterLogConfDbfsOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfDbfsArgs) ToGetClusterClusterInfoSpecClusterLogConfDbfsOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfDbfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterLogConfDbfsOutput)
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfDbfsArgs) ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput() GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput {
+	return i.ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfDbfsArgs) ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterLogConfDbfsOutput).ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoSpecClusterLogConfDbfsPtrInput is an input type that accepts GetClusterClusterInfoSpecClusterLogConfDbfsArgs, GetClusterClusterInfoSpecClusterLogConfDbfsPtr and GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecClusterLogConfDbfsPtrInput` via:
+//
+//	        GetClusterClusterInfoSpecClusterLogConfDbfsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoSpecClusterLogConfDbfsPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput() GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput
+	ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutputWithContext(context.Context) GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput
+}
+
+type getClusterClusterInfoSpecClusterLogConfDbfsPtrType GetClusterClusterInfoSpecClusterLogConfDbfsArgs
+
+func GetClusterClusterInfoSpecClusterLogConfDbfsPtr(v *GetClusterClusterInfoSpecClusterLogConfDbfsArgs) GetClusterClusterInfoSpecClusterLogConfDbfsPtrInput {
+	return (*getClusterClusterInfoSpecClusterLogConfDbfsPtrType)(v)
+}
+
+func (*getClusterClusterInfoSpecClusterLogConfDbfsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecClusterLogConfDbfs)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoSpecClusterLogConfDbfsPtrType) ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput() GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput {
+	return i.ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoSpecClusterLogConfDbfsPtrType) ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput)
+}
+
+type GetClusterClusterInfoSpecClusterLogConfDbfsOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecClusterLogConfDbfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfDbfs)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfDbfsOutput) ToGetClusterClusterInfoSpecClusterLogConfDbfsOutput() GetClusterClusterInfoSpecClusterLogConfDbfsOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfDbfsOutput) ToGetClusterClusterInfoSpecClusterLogConfDbfsOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfDbfsOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfDbfsOutput) ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput() GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput {
+	return o.ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfDbfsOutput) ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoSpecClusterLogConfDbfs) *GetClusterClusterInfoSpecClusterLogConfDbfs {
+		return &v
+	}).(GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfDbfsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterLogConfDbfs) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecClusterLogConfDbfs)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput) ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput() GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput) ToGetClusterClusterInfoSpecClusterLogConfDbfsPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput) Elem() GetClusterClusterInfoSpecClusterLogConfDbfsOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConfDbfs) GetClusterClusterInfoSpecClusterLogConfDbfs {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoSpecClusterLogConfDbfs
+		return ret
+	}).(GetClusterClusterInfoSpecClusterLogConfDbfsOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConfDbfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoSpecClusterLogConfS3 struct {
+	CannedAcl        *string `pulumi:"cannedAcl"`
+	Destination      string  `pulumi:"destination"`
+	EnableEncryption *bool   `pulumi:"enableEncryption"`
+	EncryptionType   *string `pulumi:"encryptionType"`
+	Endpoint         *string `pulumi:"endpoint"`
+	KmsKey           *string `pulumi:"kmsKey"`
+	Region           *string `pulumi:"region"`
+}
+
+// GetClusterClusterInfoSpecClusterLogConfS3Input is an input type that accepts GetClusterClusterInfoSpecClusterLogConfS3Args and GetClusterClusterInfoSpecClusterLogConfS3Output values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecClusterLogConfS3Input` via:
+//
+//	GetClusterClusterInfoSpecClusterLogConfS3Args{...}
+type GetClusterClusterInfoSpecClusterLogConfS3Input interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecClusterLogConfS3Output() GetClusterClusterInfoSpecClusterLogConfS3Output
+	ToGetClusterClusterInfoSpecClusterLogConfS3OutputWithContext(context.Context) GetClusterClusterInfoSpecClusterLogConfS3Output
+}
+
+type GetClusterClusterInfoSpecClusterLogConfS3Args struct {
+	CannedAcl        pulumi.StringPtrInput `pulumi:"cannedAcl"`
+	Destination      pulumi.StringInput    `pulumi:"destination"`
+	EnableEncryption pulumi.BoolPtrInput   `pulumi:"enableEncryption"`
+	EncryptionType   pulumi.StringPtrInput `pulumi:"encryptionType"`
+	Endpoint         pulumi.StringPtrInput `pulumi:"endpoint"`
+	KmsKey           pulumi.StringPtrInput `pulumi:"kmsKey"`
+	Region           pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GetClusterClusterInfoSpecClusterLogConfS3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfS3)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfS3Args) ToGetClusterClusterInfoSpecClusterLogConfS3Output() GetClusterClusterInfoSpecClusterLogConfS3Output {
+	return i.ToGetClusterClusterInfoSpecClusterLogConfS3OutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfS3Args) ToGetClusterClusterInfoSpecClusterLogConfS3OutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfS3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterLogConfS3Output)
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfS3Args) ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutput() GetClusterClusterInfoSpecClusterLogConfS3PtrOutput {
+	return i.ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfS3Args) ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterLogConfS3Output).ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoSpecClusterLogConfS3PtrInput is an input type that accepts GetClusterClusterInfoSpecClusterLogConfS3Args, GetClusterClusterInfoSpecClusterLogConfS3Ptr and GetClusterClusterInfoSpecClusterLogConfS3PtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecClusterLogConfS3PtrInput` via:
+//
+//	        GetClusterClusterInfoSpecClusterLogConfS3Args{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoSpecClusterLogConfS3PtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutput() GetClusterClusterInfoSpecClusterLogConfS3PtrOutput
+	ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutputWithContext(context.Context) GetClusterClusterInfoSpecClusterLogConfS3PtrOutput
+}
+
+type getClusterClusterInfoSpecClusterLogConfS3PtrType GetClusterClusterInfoSpecClusterLogConfS3Args
+
+func GetClusterClusterInfoSpecClusterLogConfS3Ptr(v *GetClusterClusterInfoSpecClusterLogConfS3Args) GetClusterClusterInfoSpecClusterLogConfS3PtrInput {
+	return (*getClusterClusterInfoSpecClusterLogConfS3PtrType)(v)
+}
+
+func (*getClusterClusterInfoSpecClusterLogConfS3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecClusterLogConfS3)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoSpecClusterLogConfS3PtrType) ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutput() GetClusterClusterInfoSpecClusterLogConfS3PtrOutput {
+	return i.ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoSpecClusterLogConfS3PtrType) ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterLogConfS3PtrOutput)
+}
+
+type GetClusterClusterInfoSpecClusterLogConfS3Output struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecClusterLogConfS3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfS3)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3Output) ToGetClusterClusterInfoSpecClusterLogConfS3Output() GetClusterClusterInfoSpecClusterLogConfS3Output {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3Output) ToGetClusterClusterInfoSpecClusterLogConfS3OutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfS3Output {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3Output) ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutput() GetClusterClusterInfoSpecClusterLogConfS3PtrOutput {
+	return o.ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3Output) ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfS3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoSpecClusterLogConfS3) *GetClusterClusterInfoSpecClusterLogConfS3 {
+		return &v
+	}).(GetClusterClusterInfoSpecClusterLogConfS3PtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3Output) CannedAcl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterLogConfS3) *string { return v.CannedAcl }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3Output) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterLogConfS3) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3Output) EnableEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterLogConfS3) *bool { return v.EnableEncryption }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3Output) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterLogConfS3) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3Output) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterLogConfS3) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3Output) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterLogConfS3) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3Output) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterLogConfS3) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoSpecClusterLogConfS3PtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecClusterLogConfS3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecClusterLogConfS3)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3PtrOutput) ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutput() GetClusterClusterInfoSpecClusterLogConfS3PtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3PtrOutput) ToGetClusterClusterInfoSpecClusterLogConfS3PtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfS3PtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3PtrOutput) Elem() GetClusterClusterInfoSpecClusterLogConfS3Output {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConfS3) GetClusterClusterInfoSpecClusterLogConfS3 {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoSpecClusterLogConfS3
+		return ret
+	}).(GetClusterClusterInfoSpecClusterLogConfS3Output)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConfS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CannedAcl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3PtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConfS3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConfS3) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3PtrOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConfS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConfS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConfS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfS3PtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConfS3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoSpecClusterMountInfo struct {
+	LocalMountDirPath     string                                                         `pulumi:"localMountDirPath"`
+	NetworkFilesystemInfo GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo `pulumi:"networkFilesystemInfo"`
+	RemoteMountDirPath    *string                                                        `pulumi:"remoteMountDirPath"`
+}
+
+// GetClusterClusterInfoSpecClusterMountInfoInput is an input type that accepts GetClusterClusterInfoSpecClusterMountInfoArgs and GetClusterClusterInfoSpecClusterMountInfoOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecClusterMountInfoInput` via:
+//
+//	GetClusterClusterInfoSpecClusterMountInfoArgs{...}
+type GetClusterClusterInfoSpecClusterMountInfoInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecClusterMountInfoOutput() GetClusterClusterInfoSpecClusterMountInfoOutput
+	ToGetClusterClusterInfoSpecClusterMountInfoOutputWithContext(context.Context) GetClusterClusterInfoSpecClusterMountInfoOutput
+}
+
+type GetClusterClusterInfoSpecClusterMountInfoArgs struct {
+	LocalMountDirPath     pulumi.StringInput                                                  `pulumi:"localMountDirPath"`
+	NetworkFilesystemInfo GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoInput `pulumi:"networkFilesystemInfo"`
+	RemoteMountDirPath    pulumi.StringPtrInput                                               `pulumi:"remoteMountDirPath"`
+}
+
+func (GetClusterClusterInfoSpecClusterMountInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfo)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecClusterMountInfoArgs) ToGetClusterClusterInfoSpecClusterMountInfoOutput() GetClusterClusterInfoSpecClusterMountInfoOutput {
+	return i.ToGetClusterClusterInfoSpecClusterMountInfoOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecClusterMountInfoArgs) ToGetClusterClusterInfoSpecClusterMountInfoOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterMountInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterMountInfoOutput)
+}
+
+// GetClusterClusterInfoSpecClusterMountInfoArrayInput is an input type that accepts GetClusterClusterInfoSpecClusterMountInfoArray and GetClusterClusterInfoSpecClusterMountInfoArrayOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecClusterMountInfoArrayInput` via:
+//
+//	GetClusterClusterInfoSpecClusterMountInfoArray{ GetClusterClusterInfoSpecClusterMountInfoArgs{...} }
+type GetClusterClusterInfoSpecClusterMountInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecClusterMountInfoArrayOutput() GetClusterClusterInfoSpecClusterMountInfoArrayOutput
+	ToGetClusterClusterInfoSpecClusterMountInfoArrayOutputWithContext(context.Context) GetClusterClusterInfoSpecClusterMountInfoArrayOutput
+}
+
+type GetClusterClusterInfoSpecClusterMountInfoArray []GetClusterClusterInfoSpecClusterMountInfoInput
+
+func (GetClusterClusterInfoSpecClusterMountInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterClusterInfoSpecClusterMountInfo)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecClusterMountInfoArray) ToGetClusterClusterInfoSpecClusterMountInfoArrayOutput() GetClusterClusterInfoSpecClusterMountInfoArrayOutput {
+	return i.ToGetClusterClusterInfoSpecClusterMountInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecClusterMountInfoArray) ToGetClusterClusterInfoSpecClusterMountInfoArrayOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterMountInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterMountInfoArrayOutput)
+}
+
+type GetClusterClusterInfoSpecClusterMountInfoOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecClusterMountInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfo)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecClusterMountInfoOutput) ToGetClusterClusterInfoSpecClusterMountInfoOutput() GetClusterClusterInfoSpecClusterMountInfoOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterMountInfoOutput) ToGetClusterClusterInfoSpecClusterMountInfoOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterMountInfoOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterMountInfoOutput) LocalMountDirPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterMountInfo) string { return v.LocalMountDirPath }).(pulumi.StringOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterMountInfoOutput) NetworkFilesystemInfo() GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterMountInfo) GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo {
+		return v.NetworkFilesystemInfo
+	}).(GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterMountInfoOutput) RemoteMountDirPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterMountInfo) *string { return v.RemoteMountDirPath }).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoSpecClusterMountInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecClusterMountInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterClusterInfoSpecClusterMountInfo)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecClusterMountInfoArrayOutput) ToGetClusterClusterInfoSpecClusterMountInfoArrayOutput() GetClusterClusterInfoSpecClusterMountInfoArrayOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterMountInfoArrayOutput) ToGetClusterClusterInfoSpecClusterMountInfoArrayOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterMountInfoArrayOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterMountInfoArrayOutput) Index(i pulumi.IntInput) GetClusterClusterInfoSpecClusterMountInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterClusterInfoSpecClusterMountInfo {
+		return vs[0].([]GetClusterClusterInfoSpecClusterMountInfo)[vs[1].(int)]
+	}).(GetClusterClusterInfoSpecClusterMountInfoOutput)
+}
+
 type GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo struct {
 	MountOptions  *string `pulumi:"mountOptions"`
 	ServerAddress string  `pulumi:"serverAddress"`
@@ -46122,6 +49149,38 @@ func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKm
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptAbfssInput)(nil)).Elem(), GetClusterClusterInfoInitScriptAbfssArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptAbfssPtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptAbfssArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptDbfsInput)(nil)).Elem(), GetClusterClusterInfoInitScriptDbfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptDbfsPtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptDbfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptFileInput)(nil)).Elem(), GetClusterClusterInfoInitScriptFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptFilePtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptGcsInput)(nil)).Elem(), GetClusterClusterInfoInitScriptGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptGcsPtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptS3Input)(nil)).Elem(), GetClusterClusterInfoInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptS3PtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptVolumesInput)(nil)).Elem(), GetClusterClusterInfoInitScriptVolumesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptVolumesPtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptVolumesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptWorkspaceInput)(nil)).Elem(), GetClusterClusterInfoInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptWorkspacePtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecInput)(nil)).Elem(), GetClusterClusterInfoSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecPtrInput)(nil)).Elem(), GetClusterClusterInfoSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecAutoscaleInput)(nil)).Elem(), GetClusterClusterInfoSpecAutoscaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecAutoscalePtrInput)(nil)).Elem(), GetClusterClusterInfoSpecAutoscaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecAwsAttributesInput)(nil)).Elem(), GetClusterClusterInfoSpecAwsAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecAwsAttributesPtrInput)(nil)).Elem(), GetClusterClusterInfoSpecAwsAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecAzureAttributesInput)(nil)).Elem(), GetClusterClusterInfoSpecAzureAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecAzureAttributesPtrInput)(nil)).Elem(), GetClusterClusterInfoSpecAzureAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoInput)(nil)).Elem(), GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrInput)(nil)).Elem(), GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterLogConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfPtrInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterLogConfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfDbfsInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterLogConfDbfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfDbfsPtrInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterLogConfDbfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfS3Input)(nil)).Elem(), GetClusterClusterInfoSpecClusterLogConfS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfS3PtrInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterLogConfS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterMountInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoArrayInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterMountInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecDockerImageInput)(nil)).Elem(), GetClusterClusterInfoSpecDockerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecDockerImagePtrInput)(nil)).Elem(), GetClusterClusterInfoSpecDockerImageArgs{})
@@ -46672,6 +49731,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptAbfssOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptAbfssPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptDbfsOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptDbfsPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptFileOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptFilePtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptGcsOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptGcsPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptS3Output{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptS3PtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptVolumesOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptVolumesPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptWorkspaceOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptWorkspacePtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecAutoscaleOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecAutoscalePtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecAwsAttributesOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecAwsAttributesPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecAzureAttributesOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecAzureAttributesPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterLogConfOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterLogConfPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterLogConfDbfsOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterLogConfS3Output{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterLogConfS3PtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterMountInfoOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterMountInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecDockerImageOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecDockerImagePtrOutput{})

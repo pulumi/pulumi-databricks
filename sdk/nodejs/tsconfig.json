@@ -14,6 +14,7 @@
     },
     "files": [
         "accessControlRuleSet.ts",
+        "alert.ts",
         "artifactAllowlist.ts",
         "automaticClusterUpdateWorkspaceSetting.ts",
         "budget.ts",
@@ -25,6 +26,7 @@
         "config/index.ts",
         "config/vars.ts",
         "connection.ts",
+        "customAppIntegration.ts",
         "dashboard.ts",
         "dbfsFile.ts",
         "defaultNamespaceSetting.ts",
@@ -132,6 +134,7 @@
         "pipeline.ts",
         "provider.ts",
         "qualityMonitor.ts",
+        "query.ts",
         "recipient.ts",
         "registeredModel.ts",
         "repo.ts",

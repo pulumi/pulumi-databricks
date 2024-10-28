@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class JobTaskSqlTaskAlertArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (String) identifier of the Databricks SQL Alert.
+        /// (String) identifier of the Databricks Alert (databricks_alert).
         /// </summary>
         [Input("alertId", required: true)]
         public Input<string> AlertId { get; set; } = null!;

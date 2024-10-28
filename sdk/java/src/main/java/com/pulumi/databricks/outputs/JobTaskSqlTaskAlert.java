@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskSqlTaskAlert {
     /**
-     * @return (String) identifier of the Databricks SQL Alert.
+     * @return (String) identifier of the Databricks Alert (databricks_alert).
      * 
      */
     private String alertId;
@@ -33,7 +33,7 @@ public final class JobTaskSqlTaskAlert {
 
     private JobTaskSqlTaskAlert() {}
     /**
-     * @return (String) identifier of the Databricks SQL Alert.
+     * @return (String) identifier of the Databricks Alert (databricks_alert).
      * 
      */
     public String alertId() {

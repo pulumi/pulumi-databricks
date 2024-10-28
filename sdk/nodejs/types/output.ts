@@ -23,6 +23,61 @@ export interface AccessControlRuleSetGrantRule {
     role: string;
 }
 
+export interface AlertCondition {
+    /**
+     * Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+     */
+    emptyResultState?: string;
+    /**
+     * Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+     */
+    op: string;
+    /**
+     * Name of the column from the query result to use for comparison in alert evaluation:
+     */
+    operand: outputs.AlertConditionOperand;
+    /**
+     * Threshold value used for comparison in alert evaluation:
+     */
+    threshold?: outputs.AlertConditionThreshold;
+}
+
+export interface AlertConditionOperand {
+    /**
+     * Block describing the column from the query result to use for comparison in alert evaluation:
+     */
+    column: outputs.AlertConditionOperandColumn;
+}
+
+export interface AlertConditionOperandColumn {
+    /**
+     * Name of the column.
+     */
+    name: string;
+}
+
+export interface AlertConditionThreshold {
+    /**
+     * actual value used in comparison (one of the attributes is required):
+     */
+    value: outputs.AlertConditionThresholdValue;
+}
+
+export interface AlertConditionThresholdValue {
+    /**
+     * boolean value (`true` or `false`) to compare against boolean results.
+     */
+    boolValue?: boolean;
+    /**
+     * double value to compare against integer and double results.
+     */
+    doubleValue?: number;
+    /**
+     * string value to compare against string results.
+     */
+    stringValue?: string;
+}
+
 export interface ArtifactAllowlistArtifactMatcher {
     /**
      * The artifact path or maven coordinate.
@@ -569,6 +624,17 @@ export interface ClusterWorkloadTypeClients {
 export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace {
     complianceStandards: string[];
     isEnabled: boolean;
+}
+
+export interface CustomAppIntegrationTokenAccessPolicy {
+    /**
+     * access token time to live (TTL) in minutes.
+     */
+    accessTokenTtlInMinutes?: number;
+    /**
+     * refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+     */
+    refreshTokenTtlInMinutes?: number;
 }
 
 export interface DefaultNamespaceSettingNamespace {
@@ -5203,7 +5269,7 @@ export interface JobTaskForEachTaskTaskSqlTask {
      */
     parameters?: {[key: string]: string};
     /**
-     * block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
+     * block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
      */
     query?: outputs.JobTaskForEachTaskTaskSqlTaskQuery;
     /**
@@ -5214,7 +5280,7 @@ export interface JobTaskForEachTaskTaskSqlTask {
 
 export interface JobTaskForEachTaskTaskSqlTaskAlert {
     /**
-     * (String) identifier of the Databricks SQL Alert.
+     * (String) identifier of the Databricks Alert (databricks_alert).
      */
     alertId: string;
     /**
@@ -5784,7 +5850,7 @@ export interface JobTaskSqlTask {
      */
     parameters?: {[key: string]: string};
     /**
-     * block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
+     * block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
      */
     query?: outputs.JobTaskSqlTaskQuery;
     /**
@@ -5795,7 +5861,7 @@ export interface JobTaskSqlTask {
 
 export interface JobTaskSqlTaskAlert {
     /**
-     * (String) identifier of the Databricks SQL Alert.
+     * (String) identifier of the Databricks Alert (databricks_alert).
      */
     alertId: string;
     /**
@@ -7385,6 +7451,9 @@ export interface PipelineIngestionDefinition {
 
 export interface PipelineIngestionDefinitionObject {
     report?: outputs.PipelineIngestionDefinitionObjectReport;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
     schema?: outputs.PipelineIngestionDefinitionObjectSchema;
     table?: outputs.PipelineIngestionDefinitionObjectTable;
 }
@@ -7603,6 +7672,160 @@ export interface QualityMonitorTimeSeries {
      * Column of the timestamp of predictions
      */
     timestampCol: string;
+}
+
+export interface QueryParameter {
+    /**
+     * Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamicDateRangeValue` or `dateRangeValue`):
+     */
+    dateRangeValue?: outputs.QueryParameterDateRangeValue;
+    /**
+     * Date query parameter value. Consists of following attributes (Can only specify one of `dynamicDateValue` or `dateValue`):
+     */
+    dateValue?: outputs.QueryParameterDateValue;
+    /**
+     * Dropdown parameter value. Consists of following attributes:
+     */
+    enumValue?: outputs.QueryParameterEnumValue;
+    /**
+     * Literal parameter marker that appears between double curly braces in the query text.
+     */
+    name: string;
+    /**
+     * Numeric parameter value. Consists of following attributes:
+     */
+    numericValue?: outputs.QueryParameterNumericValue;
+    /**
+     * Query-based dropdown parameter value. Consists of following attributes:
+     */
+    queryBackedValue?: outputs.QueryParameterQueryBackedValue;
+    /**
+     * Text parameter value. Consists of following attributes:
+     */
+    textValue?: outputs.QueryParameterTextValue;
+    /**
+     * Text displayed in the user-facing parameter widget in the UI.
+     */
+    title?: string;
+}
+
+export interface QueryParameterDateRangeValue {
+    /**
+     * Manually specified date-time range value.  Consists of the following attributes:
+     */
+    dateRangeValue?: outputs.QueryParameterDateRangeValueDateRangeValue;
+    /**
+     * Dynamic date-time range value based on current date-time.  Possible values are `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_YEAR`, `LAST_WEEK`, `LAST_MONTH`, `LAST_YEAR`, `LAST_HOUR`, `LAST_8_HOURS`, `LAST_24_HOURS`, `LAST_7_DAYS`, `LAST_14_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`, `LAST_12_MONTHS`.
+     */
+    dynamicDateRangeValue?: string;
+    /**
+     * Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+     */
+    precision?: string;
+    /**
+     * Specify what day that starts the week.
+     */
+    startDayOfWeek?: number;
+}
+
+export interface QueryParameterDateRangeValueDateRangeValue {
+    /**
+     * end of the date range.
+     */
+    end: string;
+    /**
+     * begin of the date range.
+     */
+    start: string;
+}
+
+export interface QueryParameterDateValue {
+    /**
+     * Manually specified date-time value
+     */
+    dateValue?: string;
+    /**
+     * Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
+     */
+    dynamicDateValue?: string;
+    /**
+     * Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+     */
+    precision?: string;
+}
+
+export interface QueryParameterEnumValue {
+    /**
+     * List of valid query parameter values, newline delimited.
+     */
+    enumOptions?: string;
+    /**
+     * If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+     */
+    multiValuesOptions?: outputs.QueryParameterEnumValueMultiValuesOptions;
+    /**
+     * List of selected query parameter values.
+     */
+    values?: string[];
+}
+
+export interface QueryParameterEnumValueMultiValuesOptions {
+    /**
+     * Character that prefixes each selected parameter value.
+     */
+    prefix?: string;
+    /**
+     * Character that separates each selected parameter value. Defaults to a comma.
+     */
+    separator?: string;
+    /**
+     * Character that suffixes each selected parameter value.
+     */
+    suffix?: string;
+}
+
+export interface QueryParameterNumericValue {
+    /**
+     * actual numeric value.
+     */
+    value: number;
+}
+
+export interface QueryParameterQueryBackedValue {
+    /**
+     * If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+     */
+    multiValuesOptions?: outputs.QueryParameterQueryBackedValueMultiValuesOptions;
+    /**
+     * ID of the query that provides the parameter values.
+     */
+    queryId: string;
+    /**
+     * List of selected query parameter values.
+     */
+    values?: string[];
+}
+
+export interface QueryParameterQueryBackedValueMultiValuesOptions {
+    /**
+     * Character that prefixes each selected parameter value.
+     */
+    prefix?: string;
+    /**
+     * Character that separates each selected parameter value. Defaults to a comma.
+     */
+    separator?: string;
+    /**
+     * Character that suffixes each selected parameter value.
+     */
+    suffix?: string;
+}
+
+export interface QueryParameterTextValue {
+    /**
+     * actual text value.
+     */
+    value: string;
 }
 
 export interface RecipientIpAccessList {

@@ -175,6 +175,84 @@
                 "role"
             ]
         },
+        "databricks:index/AlertCondition:AlertCondition": {
+            "properties": {
+                "emptyResultState": {
+                    "type": "string",
+                    "description": "Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)\n"
+                },
+                "op": {
+                    "type": "string",
+                    "description": "Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)\n"
+                },
+                "operand": {
+                    "$ref": "#/types/databricks:index/AlertConditionOperand:AlertConditionOperand",
+                    "description": "Name of the column from the query result to use for comparison in alert evaluation:\n"
+                },
+                "threshold": {
+                    "$ref": "#/types/databricks:index/AlertConditionThreshold:AlertConditionThreshold",
+                    "description": "Threshold value used for comparison in alert evaluation:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "op",
+                "operand"
+            ]
+        },
+        "databricks:index/AlertConditionOperand:AlertConditionOperand": {
+            "properties": {
+                "column": {
+                    "$ref": "#/types/databricks:index/AlertConditionOperandColumn:AlertConditionOperandColumn",
+                    "description": "Block describing the column from the query result to use for comparison in alert evaluation:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "column"
+            ]
+        },
+        "databricks:index/AlertConditionOperandColumn:AlertConditionOperandColumn": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the column.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "databricks:index/AlertConditionThreshold:AlertConditionThreshold": {
+            "properties": {
+                "value": {
+                    "$ref": "#/types/databricks:index/AlertConditionThresholdValue:AlertConditionThresholdValue",
+                    "description": "actual value used in comparison (one of the attributes is required):\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ]
+        },
+        "databricks:index/AlertConditionThresholdValue:AlertConditionThresholdValue": {
+            "properties": {
+                "boolValue": {
+                    "type": "boolean",
+                    "description": "boolean value (`true` or `false`) to compare against boolean results.\n"
+                },
+                "doubleValue": {
+                    "type": "number",
+                    "description": "double value to compare against integer and double results.\n"
+                },
+                "stringValue": {
+                    "type": "string",
+                    "description": "string value to compare against string results.\n"
+                }
+            },
+            "type": "object"
+        },
         "databricks:index/ArtifactAllowlistArtifactMatcher:ArtifactAllowlistArtifactMatcher": {
             "properties": {
                 "artifact": {
@@ -968,6 +1046,19 @@
                 "complianceStandards",
                 "isEnabled"
             ]
+        },
+        "databricks:index/CustomAppIntegrationTokenAccessPolicy:CustomAppIntegrationTokenAccessPolicy": {
+            "properties": {
+                "accessTokenTtlInMinutes": {
+                    "type": "integer",
+                    "description": "access token time to live (TTL) in minutes.\n"
+                },
+                "refreshTokenTtlInMinutes": {
+                    "type": "integer",
+                    "description": "refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.\n"
+                }
+            },
+            "type": "object"
         },
         "databricks:index/DefaultNamespaceSettingNamespace:DefaultNamespaceSettingNamespace": {
             "properties": {
@@ -4330,7 +4421,7 @@
                 },
                 "query": {
                     "$ref": "#/types/databricks:index/JobTaskForEachTaskTaskSqlTaskQuery:JobTaskForEachTaskTaskSqlTaskQuery",
-                    "description": "block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).\n"
+                    "description": "block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).\n"
                 },
                 "warehouseId": {
                     "type": "string",
@@ -4346,7 +4437,7 @@
             "properties": {
                 "alertId": {
                     "type": "string",
-                    "description": "(String) identifier of the Databricks SQL Alert.\n"
+                    "description": "(String) identifier of the Databricks Alert (databricks_alert).\n"
                 },
                 "pauseSubscriptions": {
                     "type": "boolean",
@@ -5454,7 +5545,7 @@
                 },
                 "query": {
                     "$ref": "#/types/databricks:index/JobTaskSqlTaskQuery:JobTaskSqlTaskQuery",
-                    "description": "block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).\n"
+                    "description": "block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).\n"
                 },
                 "warehouseId": {
                     "type": "string",
@@ -5470,7 +5561,7 @@
             "properties": {
                 "alertId": {
                     "type": "string",
-                    "description": "(String) identifier of the Databricks SQL Alert.\n"
+                    "description": "(String) identifier of the Databricks Alert (databricks_alert).\n"
                 },
                 "pauseSubscriptions": {
                     "type": "boolean",
@@ -8307,7 +8398,8 @@
                     "$ref": "#/types/databricks:index/PipelineIngestionDefinitionObjectReport:PipelineIngestionDefinitionObjectReport"
                 },
                 "schema": {
-                    "$ref": "#/types/databricks:index/PipelineIngestionDefinitionObjectSchema:PipelineIngestionDefinitionObjectSchema"
+                    "$ref": "#/types/databricks:index/PipelineIngestionDefinitionObjectSchema:PipelineIngestionDefinitionObjectSchema",
+                    "description": "The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.\n"
                 },
                 "table": {
                     "$ref": "#/types/databricks:index/PipelineIngestionDefinitionObjectTable:PipelineIngestionDefinitionObjectTable"
@@ -8759,6 +8851,202 @@
             "required": [
                 "granularities",
                 "timestampCol"
+            ]
+        },
+        "databricks:index/QueryParameter:QueryParameter": {
+            "properties": {
+                "dateRangeValue": {
+                    "$ref": "#/types/databricks:index/QueryParameterDateRangeValue:QueryParameterDateRangeValue",
+                    "description": "Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):\n"
+                },
+                "dateValue": {
+                    "$ref": "#/types/databricks:index/QueryParameterDateValue:QueryParameterDateValue",
+                    "description": "Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):\n"
+                },
+                "enumValue": {
+                    "$ref": "#/types/databricks:index/QueryParameterEnumValue:QueryParameterEnumValue",
+                    "description": "Dropdown parameter value. Consists of following attributes:\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Literal parameter marker that appears between double curly braces in the query text.\n"
+                },
+                "numericValue": {
+                    "$ref": "#/types/databricks:index/QueryParameterNumericValue:QueryParameterNumericValue",
+                    "description": "Numeric parameter value. Consists of following attributes:\n"
+                },
+                "queryBackedValue": {
+                    "$ref": "#/types/databricks:index/QueryParameterQueryBackedValue:QueryParameterQueryBackedValue",
+                    "description": "Query-based dropdown parameter value. Consists of following attributes:\n"
+                },
+                "textValue": {
+                    "$ref": "#/types/databricks:index/QueryParameterTextValue:QueryParameterTextValue",
+                    "description": "Text parameter value. Consists of following attributes:\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Text displayed in the user-facing parameter widget in the UI.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "databricks:index/QueryParameterDateRangeValue:QueryParameterDateRangeValue": {
+            "properties": {
+                "dateRangeValue": {
+                    "$ref": "#/types/databricks:index/QueryParameterDateRangeValueDateRangeValue:QueryParameterDateRangeValueDateRangeValue",
+                    "description": "Manually specified date-time range value.  Consists of the following attributes:\n"
+                },
+                "dynamicDateRangeValue": {
+                    "type": "string",
+                    "description": "Dynamic date-time range value based on current date-time.  Possible values are `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_YEAR`, `LAST_WEEK`, `LAST_MONTH`, `LAST_YEAR`, `LAST_HOUR`, `LAST_8_HOURS`, `LAST_24_HOURS`, `LAST_7_DAYS`, `LAST_14_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`, `LAST_12_MONTHS`.\n"
+                },
+                "precision": {
+                    "type": "string",
+                    "description": "Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).\n"
+                },
+                "startDayOfWeek": {
+                    "type": "integer",
+                    "description": "Specify what day that starts the week.\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/QueryParameterDateRangeValueDateRangeValue:QueryParameterDateRangeValueDateRangeValue": {
+            "properties": {
+                "end": {
+                    "type": "string",
+                    "description": "end of the date range.\n"
+                },
+                "start": {
+                    "type": "string",
+                    "description": "begin of the date range.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "end",
+                "start"
+            ]
+        },
+        "databricks:index/QueryParameterDateValue:QueryParameterDateValue": {
+            "properties": {
+                "dateValue": {
+                    "type": "string",
+                    "description": "Manually specified date-time value\n"
+                },
+                "dynamicDateValue": {
+                    "type": "string",
+                    "description": "Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.\n"
+                },
+                "precision": {
+                    "type": "string",
+                    "description": "Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/QueryParameterEnumValue:QueryParameterEnumValue": {
+            "properties": {
+                "enumOptions": {
+                    "type": "string",
+                    "description": "List of valid query parameter values, newline delimited.\n"
+                },
+                "multiValuesOptions": {
+                    "$ref": "#/types/databricks:index/QueryParameterEnumValueMultiValuesOptions:QueryParameterEnumValueMultiValuesOptions",
+                    "description": "If specified, allows multiple values to be selected for this parameter. Consists of following attributes:\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of selected query parameter values.\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/QueryParameterEnumValueMultiValuesOptions:QueryParameterEnumValueMultiValuesOptions": {
+            "properties": {
+                "prefix": {
+                    "type": "string",
+                    "description": "Character that prefixes each selected parameter value.\n"
+                },
+                "separator": {
+                    "type": "string",
+                    "description": "Character that separates each selected parameter value. Defaults to a comma.\n"
+                },
+                "suffix": {
+                    "type": "string",
+                    "description": "Character that suffixes each selected parameter value.\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/QueryParameterNumericValue:QueryParameterNumericValue": {
+            "properties": {
+                "value": {
+                    "type": "number",
+                    "description": "actual numeric value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ]
+        },
+        "databricks:index/QueryParameterQueryBackedValue:QueryParameterQueryBackedValue": {
+            "properties": {
+                "multiValuesOptions": {
+                    "$ref": "#/types/databricks:index/QueryParameterQueryBackedValueMultiValuesOptions:QueryParameterQueryBackedValueMultiValuesOptions",
+                    "description": "If specified, allows multiple values to be selected for this parameter. Consists of following attributes:\n"
+                },
+                "queryId": {
+                    "type": "string",
+                    "description": "ID of the query that provides the parameter values.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of selected query parameter values.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "queryId"
+            ]
+        },
+        "databricks:index/QueryParameterQueryBackedValueMultiValuesOptions:QueryParameterQueryBackedValueMultiValuesOptions": {
+            "properties": {
+                "prefix": {
+                    "type": "string",
+                    "description": "Character that prefixes each selected parameter value.\n"
+                },
+                "separator": {
+                    "type": "string",
+                    "description": "Character that separates each selected parameter value. Defaults to a comma.\n"
+                },
+                "suffix": {
+                    "type": "string",
+                    "description": "Character that suffixes each selected parameter value.\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/QueryParameterTextValue:QueryParameterTextValue": {
+            "properties": {
+                "value": {
+                    "type": "string",
+                    "description": "actual text value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
             ]
         },
         "databricks:index/RecipientIpAccessList:RecipientIpAccessList": {
@@ -17177,6 +17465,184 @@
                 "type": "object"
             }
         },
+        "databricks:index/alert:Alert": {
+            "description": "\n\n## Import\n\nThis resource can be imported using alert ID:\n\nbash\n\n```sh\n$ pulumi import databricks:index/alert:Alert this \u003calert-id\u003e\n```\n\n",
+            "properties": {
+                "condition": {
+                    "$ref": "#/types/databricks:index/AlertCondition:AlertCondition",
+                    "description": "Trigger conditions of the alert. Block consists of the following attributes:\n"
+                },
+                "createTime": {
+                    "type": "string",
+                    "description": "The timestamp string indicating when the alert was created.\n"
+                },
+                "customBody": {
+                    "type": "string",
+                    "description": "Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.\n"
+                },
+                "customSubject": {
+                    "type": "string",
+                    "description": "Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Name of the alert.\n"
+                },
+                "lifecycleState": {
+                    "type": "string",
+                    "description": "The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).\n"
+                },
+                "notifyOnOk": {
+                    "type": "boolean",
+                    "description": "Whether to notify alert subscribers when alert returns back to normal.\n"
+                },
+                "ownerUserName": {
+                    "type": "string",
+                    "description": "Alert owner's username.\n"
+                },
+                "parentPath": {
+                    "type": "string",
+                    "description": "The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.\n"
+                },
+                "queryId": {
+                    "type": "string",
+                    "description": "ID of the query evaluated by the alert.\n"
+                },
+                "secondsToRetrigger": {
+                    "type": "integer",
+                    "description": "Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.\n"
+                },
+                "triggerTime": {
+                    "type": "string",
+                    "description": "The timestamp string when the alert was last triggered if the alert has been triggered before.\n"
+                },
+                "updateTime": {
+                    "type": "string",
+                    "description": "The timestamp string indicating when the alert was updated.\n"
+                }
+            },
+            "required": [
+                "condition",
+                "createTime",
+                "displayName",
+                "lifecycleState",
+                "queryId",
+                "state",
+                "triggerTime",
+                "updateTime"
+            ],
+            "inputProperties": {
+                "condition": {
+                    "$ref": "#/types/databricks:index/AlertCondition:AlertCondition",
+                    "description": "Trigger conditions of the alert. Block consists of the following attributes:\n"
+                },
+                "customBody": {
+                    "type": "string",
+                    "description": "Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.\n"
+                },
+                "customSubject": {
+                    "type": "string",
+                    "description": "Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Name of the alert.\n"
+                },
+                "notifyOnOk": {
+                    "type": "boolean",
+                    "description": "Whether to notify alert subscribers when alert returns back to normal.\n"
+                },
+                "ownerUserName": {
+                    "type": "string",
+                    "description": "Alert owner's username.\n"
+                },
+                "parentPath": {
+                    "type": "string",
+                    "description": "The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.\n",
+                    "willReplaceOnChanges": true
+                },
+                "queryId": {
+                    "type": "string",
+                    "description": "ID of the query evaluated by the alert.\n"
+                },
+                "secondsToRetrigger": {
+                    "type": "integer",
+                    "description": "Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.\n"
+                }
+            },
+            "requiredInputs": [
+                "condition",
+                "displayName",
+                "queryId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Alert resources.\n",
+                "properties": {
+                    "condition": {
+                        "$ref": "#/types/databricks:index/AlertCondition:AlertCondition",
+                        "description": "Trigger conditions of the alert. Block consists of the following attributes:\n"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "description": "The timestamp string indicating when the alert was created.\n"
+                    },
+                    "customBody": {
+                        "type": "string",
+                        "description": "Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.\n"
+                    },
+                    "customSubject": {
+                        "type": "string",
+                        "description": "Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Name of the alert.\n"
+                    },
+                    "lifecycleState": {
+                        "type": "string",
+                        "description": "The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).\n"
+                    },
+                    "notifyOnOk": {
+                        "type": "boolean",
+                        "description": "Whether to notify alert subscribers when alert returns back to normal.\n"
+                    },
+                    "ownerUserName": {
+                        "type": "string",
+                        "description": "Alert owner's username.\n"
+                    },
+                    "parentPath": {
+                        "type": "string",
+                        "description": "The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "queryId": {
+                        "type": "string",
+                        "description": "ID of the query evaluated by the alert.\n"
+                    },
+                    "secondsToRetrigger": {
+                        "type": "integer",
+                        "description": "Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.\n"
+                    },
+                    "triggerTime": {
+                        "type": "string",
+                        "description": "The timestamp string when the alert was last triggered if the alert has been triggered before.\n"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "The timestamp string indicating when the alert was updated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "databricks:index/artifactAllowlist:ArtifactAllowlist": {
             "description": "\u003e It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.\n\n\u003e This resource can only be used with a workspace-level provider!\n\nIn Databricks Runtime 13.3 and above, you can add libraries and init scripts to the allowlist in UC so that users can leverage these artifacts on compute configured with shared access mode.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst initScripts = new databricks.ArtifactAllowlist(\"init_scripts\", {\n    artifactType: \"INIT_SCRIPT\",\n    artifactMatchers: [{\n        artifact: \"/Volumes/inits\",\n        matchType: \"PREFIX_MATCH\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ninit_scripts = databricks.ArtifactAllowlist(\"init_scripts\",\n    artifact_type=\"INIT_SCRIPT\",\n    artifact_matchers=[{\n        \"artifact\": \"/Volumes/inits\",\n        \"match_type\": \"PREFIX_MATCH\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var initScripts = new Databricks.ArtifactAllowlist(\"init_scripts\", new()\n    {\n        ArtifactType = \"INIT_SCRIPT\",\n        ArtifactMatchers = new[]\n        {\n            new Databricks.Inputs.ArtifactAllowlistArtifactMatcherArgs\n            {\n                Artifact = \"/Volumes/inits\",\n                MatchType = \"PREFIX_MATCH\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewArtifactAllowlist(ctx, \"init_scripts\", \u0026databricks.ArtifactAllowlistArgs{\n\t\t\tArtifactType: pulumi.String(\"INIT_SCRIPT\"),\n\t\t\tArtifactMatchers: databricks.ArtifactAllowlistArtifactMatcherArray{\n\t\t\t\t\u0026databricks.ArtifactAllowlistArtifactMatcherArgs{\n\t\t\t\t\tArtifact:  pulumi.String(\"/Volumes/inits\"),\n\t\t\t\t\tMatchType: pulumi.String(\"PREFIX_MATCH\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.ArtifactAllowlist;\nimport com.pulumi.databricks.ArtifactAllowlistArgs;\nimport com.pulumi.databricks.inputs.ArtifactAllowlistArtifactMatcherArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var initScripts = new ArtifactAllowlist(\"initScripts\", ArtifactAllowlistArgs.builder()\n            .artifactType(\"INIT_SCRIPT\")\n            .artifactMatchers(ArtifactAllowlistArtifactMatcherArgs.builder()\n                .artifact(\"/Volumes/inits\")\n                .matchType(\"PREFIX_MATCH\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  initScripts:\n    type: databricks:ArtifactAllowlist\n    name: init_scripts\n    properties:\n      artifactType: INIT_SCRIPT\n      artifactMatchers:\n        - artifact: /Volumes/inits\n          matchType: PREFIX_MATCH\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.\n\n## Import\n\nThis resource can be imported by name:\n\nbash\n\n```sh\n$ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '\u003cmetastore_id\u003e|\u003cartifact_type\u003e'\n```\n\n",
             "properties": {
@@ -18487,6 +18953,175 @@
                     "readOnly": {
                         "type": "boolean",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/customAppIntegration:CustomAppIntegration": {
+            "description": "\u003e Initialize provider with `alias = \"account\"`, and `host` pointing to the account URL, like, `host = \"https://accounts.cloud.databricks.com\"`. Use `provider = databricks.account` for all account-level resources.\n\nThis resource allows you to enable [custom OAuth applications](https://docs.databricks.com/en/integrations/enable-disable-oauth.html#enable-custom-oauth-applications-using-the-databricks-ui).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst _this = new databricks.CustomAppIntegration(\"this\", {\n    name: \"custom_integration_name\",\n    redirectUrls: [\"https://example.com\"],\n    scopes: [\"all-apis\"],\n    tokenAccessPolicy: {\n        accessTokenTtlInMinutes: 15,\n        refreshTokenTtlInMinutes: 30,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.CustomAppIntegration(\"this\",\n    name=\"custom_integration_name\",\n    redirect_urls=[\"https://example.com\"],\n    scopes=[\"all-apis\"],\n    token_access_policy={\n        \"access_token_ttl_in_minutes\": 15,\n        \"refresh_token_ttl_in_minutes\": 30,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = new Databricks.CustomAppIntegration(\"this\", new()\n    {\n        Name = \"custom_integration_name\",\n        RedirectUrls = new[]\n        {\n            \"https://example.com\",\n        },\n        Scopes = new[]\n        {\n            \"all-apis\",\n        },\n        TokenAccessPolicy = new Databricks.Inputs.CustomAppIntegrationTokenAccessPolicyArgs\n        {\n            AccessTokenTtlInMinutes = 15,\n            RefreshTokenTtlInMinutes = 30,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewCustomAppIntegration(ctx, \"this\", \u0026databricks.CustomAppIntegrationArgs{\n\t\t\tName: pulumi.String(\"custom_integration_name\"),\n\t\t\tRedirectUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"all-apis\"),\n\t\t\t},\n\t\t\tTokenAccessPolicy: \u0026databricks.CustomAppIntegrationTokenAccessPolicyArgs{\n\t\t\t\tAccessTokenTtlInMinutes:  pulumi.Int(15),\n\t\t\t\tRefreshTokenTtlInMinutes: pulumi.Int(30),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.CustomAppIntegration;\nimport com.pulumi.databricks.CustomAppIntegrationArgs;\nimport com.pulumi.databricks.inputs.CustomAppIntegrationTokenAccessPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var this_ = new CustomAppIntegration(\"this\", CustomAppIntegrationArgs.builder()\n            .name(\"custom_integration_name\")\n            .redirectUrls(\"https://example.com\")\n            .scopes(\"all-apis\")\n            .tokenAccessPolicy(CustomAppIntegrationTokenAccessPolicyArgs.builder()\n                .accessTokenTtlInMinutes(15)\n                .refreshTokenTtlInMinutes(30)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  this:\n    type: databricks:CustomAppIntegration\n    properties:\n      name: custom_integration_name\n      redirectUrls:\n        - https://example.com\n      scopes:\n        - all-apis\n      tokenAccessPolicy:\n        accessTokenTtlInMinutes: 15\n        refreshTokenTtlInMinutes: 30\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the context:\n\n* databricks.MwsWorkspaces to set up Databricks workspaces.\n\n## Import\n\nThis resource can be imported by its integration ID.\n\n```sh\n$ pulumi import databricks:index/customAppIntegration:CustomAppIntegration this '\u003cintegration_id\u003e'\n```\n\n",
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "OAuth client-id generated by Databricks\n"
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "OAuth client-secret generated by the Databricks if this is a confidential OAuth app.\n",
+                    "secret": true
+                },
+                "confidential": {
+                    "type": "boolean",
+                    "description": "Indicates whether an OAuth client secret is required to authenticate this client. Default to `false`. Change requires a new resource.\n"
+                },
+                "createTime": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "integer"
+                },
+                "creatorUsername": {
+                    "type": "string"
+                },
+                "integrationId": {
+                    "type": "string",
+                    "description": "Unique integration id for the custom OAuth app.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the custom OAuth app. Change requires a new resource.\n"
+                },
+                "redirectUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of OAuth redirect urls.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.\n"
+                },
+                "tokenAccessPolicy": {
+                    "$ref": "#/types/databricks:index/CustomAppIntegrationTokenAccessPolicy:CustomAppIntegrationTokenAccessPolicy"
+                }
+            },
+            "required": [
+                "clientId",
+                "clientSecret",
+                "createTime",
+                "createdBy",
+                "creatorUsername",
+                "integrationId",
+                "name"
+            ],
+            "inputProperties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "OAuth client-id generated by Databricks\n"
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "OAuth client-secret generated by the Databricks if this is a confidential OAuth app.\n",
+                    "secret": true
+                },
+                "confidential": {
+                    "type": "boolean",
+                    "description": "Indicates whether an OAuth client secret is required to authenticate this client. Default to `false`. Change requires a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "createTime": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "integer"
+                },
+                "creatorUsername": {
+                    "type": "string"
+                },
+                "integrationId": {
+                    "type": "string",
+                    "description": "Unique integration id for the custom OAuth app.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the custom OAuth app. Change requires a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "redirectUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of OAuth redirect urls.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "tokenAccessPolicy": {
+                    "$ref": "#/types/databricks:index/CustomAppIntegrationTokenAccessPolicy:CustomAppIntegrationTokenAccessPolicy"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CustomAppIntegration resources.\n",
+                "properties": {
+                    "clientId": {
+                        "type": "string",
+                        "description": "OAuth client-id generated by Databricks\n"
+                    },
+                    "clientSecret": {
+                        "type": "string",
+                        "description": "OAuth client-secret generated by the Databricks if this is a confidential OAuth app.\n",
+                        "secret": true
+                    },
+                    "confidential": {
+                        "type": "boolean",
+                        "description": "Indicates whether an OAuth client secret is required to authenticate this client. Default to `false`. Change requires a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "createTime": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "integer"
+                    },
+                    "creatorUsername": {
+                        "type": "string"
+                    },
+                    "integrationId": {
+                        "type": "string",
+                        "description": "Unique integration id for the custom OAuth app.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the custom OAuth app. Change requires a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "redirectUrls": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of OAuth redirect urls.\n"
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "tokenAccessPolicy": {
+                        "$ref": "#/types/databricks:index/CustomAppIntegrationTokenAccessPolicy:CustomAppIntegrationTokenAccessPolicy"
                     }
                 },
                 "type": "object"
@@ -24963,7 +25598,8 @@
                     "type": "string"
                 },
                 "schema": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.\n"
                 },
                 "serverless": {
                     "type": "boolean",
@@ -25108,7 +25744,8 @@
                     "type": "string"
                 },
                 "schema": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.\n"
                 },
                 "serverless": {
                     "type": "boolean",
@@ -25244,7 +25881,8 @@
                         "type": "string"
                     },
                     "schema": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.\n"
                     },
                     "serverless": {
                         "type": "boolean",
@@ -25531,6 +26169,229 @@
                     "warehouseId": {
                         "type": "string",
                         "description": "Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/query:Query": {
+            "description": "\n\n## Import\n\nThis resource can be imported using query ID:\n\nbash\n\n```sh\n$ pulumi import databricks:index/query:Query this \u003cquery-id\u003e\n```\n\n",
+            "properties": {
+                "applyAutoLimit": {
+                    "type": "boolean",
+                    "description": "Whether to apply a 1000 row limit to the query result.\n"
+                },
+                "catalog": {
+                    "type": "string",
+                    "description": "Name of the catalog where this query will be executed.\n"
+                },
+                "createTime": {
+                    "type": "string",
+                    "description": "The timestamp string indicating when the query was created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "General description that conveys additional information about this query such as usage notes.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Name of the query.\n"
+                },
+                "lastModifierUserName": {
+                    "type": "string",
+                    "description": "Username of the user who last saved changes to this query.\n"
+                },
+                "lifecycleState": {
+                    "type": "string",
+                    "description": "The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).\n"
+                },
+                "ownerUserName": {
+                    "type": "string",
+                    "description": "Query owner's username.\n"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/QueryParameter:QueryParameter"
+                    },
+                    "description": "Query parameter definition.  Consists of following attributes (one of `*_value` is required):\n"
+                },
+                "parentPath": {
+                    "type": "string",
+                    "description": "The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.\n"
+                },
+                "queryText": {
+                    "type": "string",
+                    "description": "Text of SQL query.\n"
+                },
+                "runAsMode": {
+                    "type": "string",
+                    "description": "Sets the \"Run as\" role for the object.\n"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "Name of the schema where this query will be executed.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags that will be added to the query.\n"
+                },
+                "updateTime": {
+                    "type": "string",
+                    "description": "The timestamp string indicating when the query was updated.\n"
+                },
+                "warehouseId": {
+                    "type": "string",
+                    "description": "ID of a SQL warehouse which will be used to execute this query.\n"
+                }
+            },
+            "required": [
+                "createTime",
+                "displayName",
+                "lastModifierUserName",
+                "lifecycleState",
+                "queryText",
+                "updateTime",
+                "warehouseId"
+            ],
+            "inputProperties": {
+                "applyAutoLimit": {
+                    "type": "boolean",
+                    "description": "Whether to apply a 1000 row limit to the query result.\n"
+                },
+                "catalog": {
+                    "type": "string",
+                    "description": "Name of the catalog where this query will be executed.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "General description that conveys additional information about this query such as usage notes.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Name of the query.\n"
+                },
+                "ownerUserName": {
+                    "type": "string",
+                    "description": "Query owner's username.\n"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/QueryParameter:QueryParameter"
+                    },
+                    "description": "Query parameter definition.  Consists of following attributes (one of `*_value` is required):\n"
+                },
+                "parentPath": {
+                    "type": "string",
+                    "description": "The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.\n",
+                    "willReplaceOnChanges": true
+                },
+                "queryText": {
+                    "type": "string",
+                    "description": "Text of SQL query.\n"
+                },
+                "runAsMode": {
+                    "type": "string",
+                    "description": "Sets the \"Run as\" role for the object.\n"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "Name of the schema where this query will be executed.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags that will be added to the query.\n"
+                },
+                "warehouseId": {
+                    "type": "string",
+                    "description": "ID of a SQL warehouse which will be used to execute this query.\n"
+                }
+            },
+            "requiredInputs": [
+                "displayName",
+                "queryText",
+                "warehouseId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Query resources.\n",
+                "properties": {
+                    "applyAutoLimit": {
+                        "type": "boolean",
+                        "description": "Whether to apply a 1000 row limit to the query result.\n"
+                    },
+                    "catalog": {
+                        "type": "string",
+                        "description": "Name of the catalog where this query will be executed.\n"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "description": "The timestamp string indicating when the query was created.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "General description that conveys additional information about this query such as usage notes.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Name of the query.\n"
+                    },
+                    "lastModifierUserName": {
+                        "type": "string",
+                        "description": "Username of the user who last saved changes to this query.\n"
+                    },
+                    "lifecycleState": {
+                        "type": "string",
+                        "description": "The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).\n"
+                    },
+                    "ownerUserName": {
+                        "type": "string",
+                        "description": "Query owner's username.\n"
+                    },
+                    "parameters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/databricks:index/QueryParameter:QueryParameter"
+                        },
+                        "description": "Query parameter definition.  Consists of following attributes (one of `*_value` is required):\n"
+                    },
+                    "parentPath": {
+                        "type": "string",
+                        "description": "The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "queryText": {
+                        "type": "string",
+                        "description": "Text of SQL query.\n"
+                    },
+                    "runAsMode": {
+                        "type": "string",
+                        "description": "Sets the \"Run as\" role for the object.\n"
+                    },
+                    "schema": {
+                        "type": "string",
+                        "description": "Name of the schema where this query will be executed.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags that will be added to the query.\n"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "The timestamp string indicating when the query was updated.\n"
+                    },
+                    "warehouseId": {
+                        "type": "string",
+                        "description": "ID of a SQL warehouse which will be used to execute this query.\n"
                     }
                 },
                 "type": "object"
@@ -26846,7 +27707,7 @@
             }
         },
         "databricks:index/sqlAlert:SqlAlert": {
-            "description": "This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).\n\n\u003e To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sharedDir = new databricks.Directory(\"shared_dir\", {path: \"/Shared/Queries\"});\nconst _this = new databricks.SqlQuery(\"this\", {\n    dataSourceId: example.dataSourceId,\n    name: \"My Query Name\",\n    query: \"SELECT 1 AS p1, 2 as p2\",\n    parent: pulumi.interpolate`folders/${sharedDir.objectId}`,\n});\nconst alert = new databricks.SqlAlert(\"alert\", {\n    queryId: _this.id,\n    name: \"My Alert\",\n    parent: pulumi.interpolate`folders/${sharedDir.objectId}`,\n    rearm: 1,\n    options: {\n        column: \"p1\",\n        op: \"==\",\n        value: \"2\",\n        muted: false,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nshared_dir = databricks.Directory(\"shared_dir\", path=\"/Shared/Queries\")\nthis = databricks.SqlQuery(\"this\",\n    data_source_id=example[\"dataSourceId\"],\n    name=\"My Query Name\",\n    query=\"SELECT 1 AS p1, 2 as p2\",\n    parent=shared_dir.object_id.apply(lambda object_id: f\"folders/{object_id}\"))\nalert = databricks.SqlAlert(\"alert\",\n    query_id=this.id,\n    name=\"My Alert\",\n    parent=shared_dir.object_id.apply(lambda object_id: f\"folders/{object_id}\"),\n    rearm=1,\n    options={\n        \"column\": \"p1\",\n        \"op\": \"==\",\n        \"value\": \"2\",\n        \"muted\": False,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sharedDir = new Databricks.Directory(\"shared_dir\", new()\n    {\n        Path = \"/Shared/Queries\",\n    });\n\n    var @this = new Databricks.SqlQuery(\"this\", new()\n    {\n        DataSourceId = example.DataSourceId,\n        Name = \"My Query Name\",\n        Query = \"SELECT 1 AS p1, 2 as p2\",\n        Parent = sharedDir.ObjectId.Apply(objectId =\u003e $\"folders/{objectId}\"),\n    });\n\n    var alert = new Databricks.SqlAlert(\"alert\", new()\n    {\n        QueryId = @this.Id,\n        Name = \"My Alert\",\n        Parent = sharedDir.ObjectId.Apply(objectId =\u003e $\"folders/{objectId}\"),\n        Rearm = 1,\n        Options = new Databricks.Inputs.SqlAlertOptionsArgs\n        {\n            Column = \"p1\",\n            Op = \"==\",\n            Value = \"2\",\n            Muted = false,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsharedDir, err := databricks.NewDirectory(ctx, \"shared_dir\", \u0026databricks.DirectoryArgs{\n\t\t\tPath: pulumi.String(\"/Shared/Queries\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tthis, err := databricks.NewSqlQuery(ctx, \"this\", \u0026databricks.SqlQueryArgs{\n\t\t\tDataSourceId: pulumi.Any(example.DataSourceId),\n\t\t\tName:         pulumi.String(\"My Query Name\"),\n\t\t\tQuery:        pulumi.String(\"SELECT 1 AS p1, 2 as p2\"),\n\t\t\tParent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {\n\t\t\t\treturn fmt.Sprintf(\"folders/%v\", objectId), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewSqlAlert(ctx, \"alert\", \u0026databricks.SqlAlertArgs{\n\t\t\tQueryId: this.ID(),\n\t\t\tName:    pulumi.String(\"My Alert\"),\n\t\t\tParent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {\n\t\t\t\treturn fmt.Sprintf(\"folders/%v\", objectId), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t\tRearm: pulumi.Int(1),\n\t\t\tOptions: \u0026databricks.SqlAlertOptionsArgs{\n\t\t\t\tColumn: pulumi.String(\"p1\"),\n\t\t\t\tOp:     pulumi.String(\"==\"),\n\t\t\t\tValue:  pulumi.String(\"2\"),\n\t\t\t\tMuted:  pulumi.Bool(false),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Directory;\nimport com.pulumi.databricks.DirectoryArgs;\nimport com.pulumi.databricks.SqlQuery;\nimport com.pulumi.databricks.SqlQueryArgs;\nimport com.pulumi.databricks.SqlAlert;\nimport com.pulumi.databricks.SqlAlertArgs;\nimport com.pulumi.databricks.inputs.SqlAlertOptionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sharedDir = new Directory(\"sharedDir\", DirectoryArgs.builder()\n            .path(\"/Shared/Queries\")\n            .build());\n\n        var this_ = new SqlQuery(\"this\", SqlQueryArgs.builder()\n            .dataSourceId(example.dataSourceId())\n            .name(\"My Query Name\")\n            .query(\"SELECT 1 AS p1, 2 as p2\")\n            .parent(sharedDir.objectId().applyValue(objectId -\u003e String.format(\"folders/%s\", objectId)))\n            .build());\n\n        var alert = new SqlAlert(\"alert\", SqlAlertArgs.builder()\n            .queryId(this_.id())\n            .name(\"My Alert\")\n            .parent(sharedDir.objectId().applyValue(objectId -\u003e String.format(\"folders/%s\", objectId)))\n            .rearm(1)\n            .options(SqlAlertOptionsArgs.builder()\n                .column(\"p1\")\n                .op(\"==\")\n                .value(\"2\")\n                .muted(false)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sharedDir:\n    type: databricks:Directory\n    name: shared_dir\n    properties:\n      path: /Shared/Queries\n  this:\n    type: databricks:SqlQuery\n    properties:\n      dataSourceId: ${example.dataSourceId}\n      name: My Query Name\n      query: SELECT 1 AS p1, 2 as p2\n      parent: folders/${sharedDir.objectId}\n  alert:\n    type: databricks:SqlAlert\n    properties:\n      queryId: ${this.id}\n      name: My Alert\n      parent: folders/${sharedDir.objectId}\n      rearm: 1\n      options:\n        column: p1\n        op: ==\n        value: '2'\n        muted: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).\n* databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).\n* databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).\n",
+            "description": "This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).\n\n\u003e To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sharedDir = new databricks.Directory(\"shared_dir\", {path: \"/Shared/Queries\"});\nconst _this = new databricks.SqlQuery(\"this\", {\n    dataSourceId: example.dataSourceId,\n    name: \"My Query Name\",\n    query: \"SELECT 1 AS p1, 2 as p2\",\n    parent: pulumi.interpolate`folders/${sharedDir.objectId}`,\n});\nconst alert = new databricks.SqlAlert(\"alert\", {\n    queryId: _this.id,\n    name: \"My Alert\",\n    parent: pulumi.interpolate`folders/${sharedDir.objectId}`,\n    rearm: 1,\n    options: {\n        column: \"p1\",\n        op: \"==\",\n        value: \"2\",\n        muted: false,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nshared_dir = databricks.Directory(\"shared_dir\", path=\"/Shared/Queries\")\nthis = databricks.SqlQuery(\"this\",\n    data_source_id=example[\"dataSourceId\"],\n    name=\"My Query Name\",\n    query=\"SELECT 1 AS p1, 2 as p2\",\n    parent=shared_dir.object_id.apply(lambda object_id: f\"folders/{object_id}\"))\nalert = databricks.SqlAlert(\"alert\",\n    query_id=this.id,\n    name=\"My Alert\",\n    parent=shared_dir.object_id.apply(lambda object_id: f\"folders/{object_id}\"),\n    rearm=1,\n    options={\n        \"column\": \"p1\",\n        \"op\": \"==\",\n        \"value\": \"2\",\n        \"muted\": False,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sharedDir = new Databricks.Directory(\"shared_dir\", new()\n    {\n        Path = \"/Shared/Queries\",\n    });\n\n    var @this = new Databricks.SqlQuery(\"this\", new()\n    {\n        DataSourceId = example.DataSourceId,\n        Name = \"My Query Name\",\n        Query = \"SELECT 1 AS p1, 2 as p2\",\n        Parent = sharedDir.ObjectId.Apply(objectId =\u003e $\"folders/{objectId}\"),\n    });\n\n    var alert = new Databricks.SqlAlert(\"alert\", new()\n    {\n        QueryId = @this.Id,\n        Name = \"My Alert\",\n        Parent = sharedDir.ObjectId.Apply(objectId =\u003e $\"folders/{objectId}\"),\n        Rearm = 1,\n        Options = new Databricks.Inputs.SqlAlertOptionsArgs\n        {\n            Column = \"p1\",\n            Op = \"==\",\n            Value = \"2\",\n            Muted = false,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsharedDir, err := databricks.NewDirectory(ctx, \"shared_dir\", \u0026databricks.DirectoryArgs{\n\t\t\tPath: pulumi.String(\"/Shared/Queries\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tthis, err := databricks.NewSqlQuery(ctx, \"this\", \u0026databricks.SqlQueryArgs{\n\t\t\tDataSourceId: pulumi.Any(example.DataSourceId),\n\t\t\tName:         pulumi.String(\"My Query Name\"),\n\t\t\tQuery:        pulumi.String(\"SELECT 1 AS p1, 2 as p2\"),\n\t\t\tParent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {\n\t\t\t\treturn fmt.Sprintf(\"folders/%v\", objectId), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewSqlAlert(ctx, \"alert\", \u0026databricks.SqlAlertArgs{\n\t\t\tQueryId: this.ID(),\n\t\t\tName:    pulumi.String(\"My Alert\"),\n\t\t\tParent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {\n\t\t\t\treturn fmt.Sprintf(\"folders/%v\", objectId), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t\tRearm: pulumi.Int(1),\n\t\t\tOptions: \u0026databricks.SqlAlertOptionsArgs{\n\t\t\t\tColumn: pulumi.String(\"p1\"),\n\t\t\t\tOp:     pulumi.String(\"==\"),\n\t\t\t\tValue:  pulumi.String(\"2\"),\n\t\t\t\tMuted:  pulumi.Bool(false),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Directory;\nimport com.pulumi.databricks.DirectoryArgs;\nimport com.pulumi.databricks.SqlQuery;\nimport com.pulumi.databricks.SqlQueryArgs;\nimport com.pulumi.databricks.SqlAlert;\nimport com.pulumi.databricks.SqlAlertArgs;\nimport com.pulumi.databricks.inputs.SqlAlertOptionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sharedDir = new Directory(\"sharedDir\", DirectoryArgs.builder()\n            .path(\"/Shared/Queries\")\n            .build());\n\n        var this_ = new SqlQuery(\"this\", SqlQueryArgs.builder()\n            .dataSourceId(example.dataSourceId())\n            .name(\"My Query Name\")\n            .query(\"SELECT 1 AS p1, 2 as p2\")\n            .parent(sharedDir.objectId().applyValue(objectId -\u003e String.format(\"folders/%s\", objectId)))\n            .build());\n\n        var alert = new SqlAlert(\"alert\", SqlAlertArgs.builder()\n            .queryId(this_.id())\n            .name(\"My Alert\")\n            .parent(sharedDir.objectId().applyValue(objectId -\u003e String.format(\"folders/%s\", objectId)))\n            .rearm(1)\n            .options(SqlAlertOptionsArgs.builder()\n                .column(\"p1\")\n                .op(\"==\")\n                .value(\"2\")\n                .muted(false)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sharedDir:\n    type: databricks:Directory\n    name: shared_dir\n    properties:\n      path: /Shared/Queries\n  this:\n    type: databricks:SqlQuery\n    properties:\n      dataSourceId: ${example.dataSourceId}\n      name: My Query Name\n      query: SELECT 1 AS p1, 2 as p2\n      parent: folders/${sharedDir.objectId}\n  alert:\n    type: databricks:SqlAlert\n    properties:\n      queryId: ${this.id}\n      name: My Alert\n      parent: folders/${sharedDir.objectId}\n      rearm: 1\n      options:\n        column: p1\n        op: ==\n        value: '2'\n        muted: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Access Control\n\ndatabricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).\n* databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).\n* databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).\n\n## Import\n\nThis resource can be imported using alert ID:\n\nbash\n\n```sh\n$ pulumi import databricks:index/sqlAlert:SqlAlert this \u003calert-id\u003e\n```\n\n",
             "properties": {
                 "createdAt": {
                     "type": "string"
@@ -31327,7 +32188,7 @@
                     },
                     "graviton": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.\n",
+                        "description": "if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.\n",
                         "willReplaceOnChanges": true
                     },
                     "id": {

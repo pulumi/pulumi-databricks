@@ -70,6 +70,7 @@ class PipelineArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
+        :param pulumi.Input[str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
         :param pulumi.Input[bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
@@ -413,6 +414,9 @@ class PipelineArgs:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -538,6 +542,7 @@ class _PipelineState:
         :param pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
+        :param pulumi.Input[str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
         :param pulumi.Input[bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
@@ -881,6 +886,9 @@ class _PipelineState:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -1090,6 +1098,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
+        :param pulumi.Input[str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
         :param pulumi.Input[bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
@@ -1334,6 +1343,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]] libraries: blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
         :param pulumi.Input[str] name: A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
+        :param pulumi.Input[str] schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
         :param pulumi.Input[bool] serverless: An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
@@ -1550,6 +1560,9 @@ class Pipeline(pulumi.CustomResource):
     @property
     @pulumi.getter
     def schema(self) -> pulumi.Output[Optional[str]]:
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
         return pulumi.get(self, "schema")
 
     @property

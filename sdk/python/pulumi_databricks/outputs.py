@@ -17,6 +17,11 @@ from . import outputs
 
 __all__ = [
     'AccessControlRuleSetGrantRule',
+    'AlertCondition',
+    'AlertConditionOperand',
+    'AlertConditionOperandColumn',
+    'AlertConditionThreshold',
+    'AlertConditionThresholdValue',
     'ArtifactAllowlistArtifactMatcher',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails',
@@ -60,6 +65,7 @@ __all__ = [
     'ClusterWorkloadType',
     'ClusterWorkloadTypeClients',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace',
+    'CustomAppIntegrationTokenAccessPolicy',
     'DefaultNamespaceSettingNamespace',
     'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace',
     'ExternalLocationEncryptionDetails',
@@ -425,6 +431,16 @@ __all__ = [
     'QualityMonitorSchedule',
     'QualityMonitorSnapshot',
     'QualityMonitorTimeSeries',
+    'QueryParameter',
+    'QueryParameterDateRangeValue',
+    'QueryParameterDateRangeValueDateRangeValue',
+    'QueryParameterDateValue',
+    'QueryParameterEnumValue',
+    'QueryParameterEnumValueMultiValuesOptions',
+    'QueryParameterNumericValue',
+    'QueryParameterQueryBackedValue',
+    'QueryParameterQueryBackedValueMultiValuesOptions',
+    'QueryParameterTextValue',
     'RecipientIpAccessList',
     'RecipientPropertiesKvpairs',
     'RecipientToken',
@@ -838,6 +854,194 @@ class AccessControlRuleSetGrantRule(dict):
         * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `ServicePrincipal` resource).
         """
         return pulumi.get(self, "principals")
+
+
+@pulumi.output_type
+class AlertCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emptyResultState":
+            suggest = "empty_result_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 op: str,
+                 operand: 'outputs.AlertConditionOperand',
+                 empty_result_state: Optional[str] = None,
+                 threshold: Optional['outputs.AlertConditionThreshold'] = None):
+        """
+        :param str op: Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+        :param 'AlertConditionOperandArgs' operand: Name of the column from the query result to use for comparison in alert evaluation:
+        :param str empty_result_state: Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+        :param 'AlertConditionThresholdArgs' threshold: Threshold value used for comparison in alert evaluation:
+        """
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "operand", operand)
+        if empty_result_state is not None:
+            pulumi.set(__self__, "empty_result_state", empty_result_state)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter
+    def op(self) -> str:
+        """
+        Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+        """
+        return pulumi.get(self, "op")
+
+    @property
+    @pulumi.getter
+    def operand(self) -> 'outputs.AlertConditionOperand':
+        """
+        Name of the column from the query result to use for comparison in alert evaluation:
+        """
+        return pulumi.get(self, "operand")
+
+    @property
+    @pulumi.getter(name="emptyResultState")
+    def empty_result_state(self) -> Optional[str]:
+        """
+        Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+        """
+        return pulumi.get(self, "empty_result_state")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional['outputs.AlertConditionThreshold']:
+        """
+        Threshold value used for comparison in alert evaluation:
+        """
+        return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class AlertConditionOperand(dict):
+    def __init__(__self__, *,
+                 column: 'outputs.AlertConditionOperandColumn'):
+        """
+        :param 'AlertConditionOperandColumnArgs' column: Block describing the column from the query result to use for comparison in alert evaluation:
+        """
+        pulumi.set(__self__, "column", column)
+
+    @property
+    @pulumi.getter
+    def column(self) -> 'outputs.AlertConditionOperandColumn':
+        """
+        Block describing the column from the query result to use for comparison in alert evaluation:
+        """
+        return pulumi.get(self, "column")
+
+
+@pulumi.output_type
+class AlertConditionOperandColumn(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: Name of the column.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the column.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class AlertConditionThreshold(dict):
+    def __init__(__self__, *,
+                 value: 'outputs.AlertConditionThresholdValue'):
+        """
+        :param 'AlertConditionThresholdValueArgs' value: actual value used in comparison (one of the attributes is required):
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> 'outputs.AlertConditionThresholdValue':
+        """
+        actual value used in comparison (one of the attributes is required):
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AlertConditionThresholdValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boolValue":
+            suggest = "bool_value"
+        elif key == "doubleValue":
+            suggest = "double_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertConditionThresholdValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertConditionThresholdValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertConditionThresholdValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bool_value: Optional[bool] = None,
+                 double_value: Optional[float] = None,
+                 string_value: Optional[str] = None):
+        """
+        :param bool bool_value: boolean value (`true` or `false`) to compare against boolean results.
+        :param float double_value: double value to compare against integer and double results.
+        :param str string_value: string value to compare against string results.
+        """
+        if bool_value is not None:
+            pulumi.set(__self__, "bool_value", bool_value)
+        if double_value is not None:
+            pulumi.set(__self__, "double_value", double_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter(name="boolValue")
+    def bool_value(self) -> Optional[bool]:
+        """
+        boolean value (`true` or `false`) to compare against boolean results.
+        """
+        return pulumi.get(self, "bool_value")
+
+    @property
+    @pulumi.getter(name="doubleValue")
+    def double_value(self) -> Optional[float]:
+        """
+        double value to compare against integer and double results.
+        """
+        return pulumi.get(self, "double_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[str]:
+        """
+        string value to compare against string results.
+        """
+        return pulumi.get(self, "string_value")
 
 
 @pulumi.output_type
@@ -2932,6 +3136,56 @@ class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspac
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         return pulumi.get(self, "is_enabled")
+
+
+@pulumi.output_type
+class CustomAppIntegrationTokenAccessPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessTokenTtlInMinutes":
+            suggest = "access_token_ttl_in_minutes"
+        elif key == "refreshTokenTtlInMinutes":
+            suggest = "refresh_token_ttl_in_minutes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomAppIntegrationTokenAccessPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomAppIntegrationTokenAccessPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomAppIntegrationTokenAccessPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_token_ttl_in_minutes: Optional[int] = None,
+                 refresh_token_ttl_in_minutes: Optional[int] = None):
+        """
+        :param int access_token_ttl_in_minutes: access token time to live (TTL) in minutes.
+        :param int refresh_token_ttl_in_minutes: refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+        """
+        if access_token_ttl_in_minutes is not None:
+            pulumi.set(__self__, "access_token_ttl_in_minutes", access_token_ttl_in_minutes)
+        if refresh_token_ttl_in_minutes is not None:
+            pulumi.set(__self__, "refresh_token_ttl_in_minutes", refresh_token_ttl_in_minutes)
+
+    @property
+    @pulumi.getter(name="accessTokenTtlInMinutes")
+    def access_token_ttl_in_minutes(self) -> Optional[int]:
+        """
+        access token time to live (TTL) in minutes.
+        """
+        return pulumi.get(self, "access_token_ttl_in_minutes")
+
+    @property
+    @pulumi.getter(name="refreshTokenTtlInMinutes")
+    def refresh_token_ttl_in_minutes(self) -> Optional[int]:
+        """
+        refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+        """
+        return pulumi.get(self, "refresh_token_ttl_in_minutes")
 
 
 @pulumi.output_type
@@ -11189,7 +11443,7 @@ class JobTaskForEachTaskTaskSqlTask(dict):
         :param 'JobTaskForEachTaskTaskSqlTaskDashboardArgs' dashboard: block consisting of following fields:
         :param 'JobTaskForEachTaskTaskSqlTaskFileArgs' file: block consisting of single string fields:
         :param Mapping[str, str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-        :param 'JobTaskForEachTaskTaskSqlTaskQueryArgs' query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        :param 'JobTaskForEachTaskTaskSqlTaskQueryArgs' query: block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
         """
         pulumi.set(__self__, "warehouse_id", warehouse_id)
         if alert is not None:
@@ -11247,7 +11501,7 @@ class JobTaskForEachTaskTaskSqlTask(dict):
     @pulumi.getter
     def query(self) -> Optional['outputs.JobTaskForEachTaskTaskSqlTaskQuery']:
         """
-        block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
         """
         return pulumi.get(self, "query")
 
@@ -11278,7 +11532,7 @@ class JobTaskForEachTaskTaskSqlTaskAlert(dict):
                  pause_subscriptions: Optional[bool] = None,
                  subscriptions: Optional[Sequence['outputs.JobTaskForEachTaskTaskSqlTaskAlertSubscription']] = None):
         """
-        :param str alert_id: (String) identifier of the Databricks SQL Alert.
+        :param str alert_id: (String) identifier of the Databricks Alert (databricks_alert).
         :param bool pause_subscriptions: flag that specifies if subscriptions are paused or not.
         :param Sequence['JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs'] subscriptions: a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
         """
@@ -11292,7 +11546,7 @@ class JobTaskForEachTaskTaskSqlTaskAlert(dict):
     @pulumi.getter(name="alertId")
     def alert_id(self) -> str:
         """
-        (String) identifier of the Databricks SQL Alert.
+        (String) identifier of the Databricks Alert (databricks_alert).
         """
         return pulumi.get(self, "alert_id")
 
@@ -13920,7 +14174,7 @@ class JobTaskSqlTask(dict):
         :param 'JobTaskSqlTaskDashboardArgs' dashboard: block consisting of following fields:
         :param 'JobTaskSqlTaskFileArgs' file: block consisting of single string fields:
         :param Mapping[str, str] parameters: (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-        :param 'JobTaskSqlTaskQueryArgs' query: block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        :param 'JobTaskSqlTaskQueryArgs' query: block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
         """
         pulumi.set(__self__, "warehouse_id", warehouse_id)
         if alert is not None:
@@ -13978,7 +14232,7 @@ class JobTaskSqlTask(dict):
     @pulumi.getter
     def query(self) -> Optional['outputs.JobTaskSqlTaskQuery']:
         """
-        block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
         """
         return pulumi.get(self, "query")
 
@@ -14009,7 +14263,7 @@ class JobTaskSqlTaskAlert(dict):
                  pause_subscriptions: Optional[bool] = None,
                  subscriptions: Optional[Sequence['outputs.JobTaskSqlTaskAlertSubscription']] = None):
         """
-        :param str alert_id: (String) identifier of the Databricks SQL Alert.
+        :param str alert_id: (String) identifier of the Databricks Alert (databricks_alert).
         :param bool pause_subscriptions: flag that specifies if subscriptions are paused or not.
         :param Sequence['JobTaskSqlTaskAlertSubscriptionArgs'] subscriptions: a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
         """
@@ -14023,7 +14277,7 @@ class JobTaskSqlTaskAlert(dict):
     @pulumi.getter(name="alertId")
     def alert_id(self) -> str:
         """
-        (String) identifier of the Databricks SQL Alert.
+        (String) identifier of the Databricks Alert (databricks_alert).
         """
         return pulumi.get(self, "alert_id")
 
@@ -21242,6 +21496,9 @@ class PipelineIngestionDefinitionObject(dict):
                  report: Optional['outputs.PipelineIngestionDefinitionObjectReport'] = None,
                  schema: Optional['outputs.PipelineIngestionDefinitionObjectSchema'] = None,
                  table: Optional['outputs.PipelineIngestionDefinitionObjectTable'] = None):
+        """
+        :param 'PipelineIngestionDefinitionObjectSchemaArgs' schema: The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
         if report is not None:
             pulumi.set(__self__, "report", report)
         if schema is not None:
@@ -21257,6 +21514,9 @@ class PipelineIngestionDefinitionObject(dict):
     @property
     @pulumi.getter
     def schema(self) -> Optional['outputs.PipelineIngestionDefinitionObjectSchema']:
+        """
+        The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+        """
         return pulumi.get(self, "schema")
 
     @property
@@ -22431,6 +22691,547 @@ class QualityMonitorTimeSeries(dict):
         Column of the timestamp of predictions
         """
         return pulumi.get(self, "timestamp_col")
+
+
+@pulumi.output_type
+class QueryParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dateRangeValue":
+            suggest = "date_range_value"
+        elif key == "dateValue":
+            suggest = "date_value"
+        elif key == "enumValue":
+            suggest = "enum_value"
+        elif key == "numericValue":
+            suggest = "numeric_value"
+        elif key == "queryBackedValue":
+            suggest = "query_backed_value"
+        elif key == "textValue":
+            suggest = "text_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 date_range_value: Optional['outputs.QueryParameterDateRangeValue'] = None,
+                 date_value: Optional['outputs.QueryParameterDateValue'] = None,
+                 enum_value: Optional['outputs.QueryParameterEnumValue'] = None,
+                 numeric_value: Optional['outputs.QueryParameterNumericValue'] = None,
+                 query_backed_value: Optional['outputs.QueryParameterQueryBackedValue'] = None,
+                 text_value: Optional['outputs.QueryParameterTextValue'] = None,
+                 title: Optional[str] = None):
+        """
+        :param str name: Literal parameter marker that appears between double curly braces in the query text.
+        :param 'QueryParameterDateRangeValueArgs' date_range_value: Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+        :param 'QueryParameterDateValueArgs' date_value: Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+        :param 'QueryParameterEnumValueArgs' enum_value: Dropdown parameter value. Consists of following attributes:
+        :param 'QueryParameterNumericValueArgs' numeric_value: Numeric parameter value. Consists of following attributes:
+        :param 'QueryParameterQueryBackedValueArgs' query_backed_value: Query-based dropdown parameter value. Consists of following attributes:
+        :param 'QueryParameterTextValueArgs' text_value: Text parameter value. Consists of following attributes:
+        :param str title: Text displayed in the user-facing parameter widget in the UI.
+        """
+        pulumi.set(__self__, "name", name)
+        if date_range_value is not None:
+            pulumi.set(__self__, "date_range_value", date_range_value)
+        if date_value is not None:
+            pulumi.set(__self__, "date_value", date_value)
+        if enum_value is not None:
+            pulumi.set(__self__, "enum_value", enum_value)
+        if numeric_value is not None:
+            pulumi.set(__self__, "numeric_value", numeric_value)
+        if query_backed_value is not None:
+            pulumi.set(__self__, "query_backed_value", query_backed_value)
+        if text_value is not None:
+            pulumi.set(__self__, "text_value", text_value)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Literal parameter marker that appears between double curly braces in the query text.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="dateRangeValue")
+    def date_range_value(self) -> Optional['outputs.QueryParameterDateRangeValue']:
+        """
+        Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+        """
+        return pulumi.get(self, "date_range_value")
+
+    @property
+    @pulumi.getter(name="dateValue")
+    def date_value(self) -> Optional['outputs.QueryParameterDateValue']:
+        """
+        Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+        """
+        return pulumi.get(self, "date_value")
+
+    @property
+    @pulumi.getter(name="enumValue")
+    def enum_value(self) -> Optional['outputs.QueryParameterEnumValue']:
+        """
+        Dropdown parameter value. Consists of following attributes:
+        """
+        return pulumi.get(self, "enum_value")
+
+    @property
+    @pulumi.getter(name="numericValue")
+    def numeric_value(self) -> Optional['outputs.QueryParameterNumericValue']:
+        """
+        Numeric parameter value. Consists of following attributes:
+        """
+        return pulumi.get(self, "numeric_value")
+
+    @property
+    @pulumi.getter(name="queryBackedValue")
+    def query_backed_value(self) -> Optional['outputs.QueryParameterQueryBackedValue']:
+        """
+        Query-based dropdown parameter value. Consists of following attributes:
+        """
+        return pulumi.get(self, "query_backed_value")
+
+    @property
+    @pulumi.getter(name="textValue")
+    def text_value(self) -> Optional['outputs.QueryParameterTextValue']:
+        """
+        Text parameter value. Consists of following attributes:
+        """
+        return pulumi.get(self, "text_value")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Text displayed in the user-facing parameter widget in the UI.
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class QueryParameterDateRangeValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dateRangeValue":
+            suggest = "date_range_value"
+        elif key == "dynamicDateRangeValue":
+            suggest = "dynamic_date_range_value"
+        elif key == "startDayOfWeek":
+            suggest = "start_day_of_week"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryParameterDateRangeValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryParameterDateRangeValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryParameterDateRangeValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 date_range_value: Optional['outputs.QueryParameterDateRangeValueDateRangeValue'] = None,
+                 dynamic_date_range_value: Optional[str] = None,
+                 precision: Optional[str] = None,
+                 start_day_of_week: Optional[int] = None):
+        """
+        :param 'QueryParameterDateRangeValueDateRangeValueArgs' date_range_value: Manually specified date-time range value.  Consists of the following attributes:
+        :param str dynamic_date_range_value: Dynamic date-time range value based on current date-time.  Possible values are `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_YEAR`, `LAST_WEEK`, `LAST_MONTH`, `LAST_YEAR`, `LAST_HOUR`, `LAST_8_HOURS`, `LAST_24_HOURS`, `LAST_7_DAYS`, `LAST_14_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`, `LAST_12_MONTHS`.
+        :param str precision: Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+        :param int start_day_of_week: Specify what day that starts the week.
+        """
+        if date_range_value is not None:
+            pulumi.set(__self__, "date_range_value", date_range_value)
+        if dynamic_date_range_value is not None:
+            pulumi.set(__self__, "dynamic_date_range_value", dynamic_date_range_value)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if start_day_of_week is not None:
+            pulumi.set(__self__, "start_day_of_week", start_day_of_week)
+
+    @property
+    @pulumi.getter(name="dateRangeValue")
+    def date_range_value(self) -> Optional['outputs.QueryParameterDateRangeValueDateRangeValue']:
+        """
+        Manually specified date-time range value.  Consists of the following attributes:
+        """
+        return pulumi.get(self, "date_range_value")
+
+    @property
+    @pulumi.getter(name="dynamicDateRangeValue")
+    def dynamic_date_range_value(self) -> Optional[str]:
+        """
+        Dynamic date-time range value based on current date-time.  Possible values are `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_YEAR`, `LAST_WEEK`, `LAST_MONTH`, `LAST_YEAR`, `LAST_HOUR`, `LAST_8_HOURS`, `LAST_24_HOURS`, `LAST_7_DAYS`, `LAST_14_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`, `LAST_12_MONTHS`.
+        """
+        return pulumi.get(self, "dynamic_date_range_value")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[str]:
+        """
+        Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="startDayOfWeek")
+    def start_day_of_week(self) -> Optional[int]:
+        """
+        Specify what day that starts the week.
+        """
+        return pulumi.get(self, "start_day_of_week")
+
+
+@pulumi.output_type
+class QueryParameterDateRangeValueDateRangeValue(dict):
+    def __init__(__self__, *,
+                 end: str,
+                 start: str):
+        """
+        :param str end: end of the date range.
+        :param str start: begin of the date range.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> str:
+        """
+        end of the date range.
+        """
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter
+    def start(self) -> str:
+        """
+        begin of the date range.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class QueryParameterDateValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dateValue":
+            suggest = "date_value"
+        elif key == "dynamicDateValue":
+            suggest = "dynamic_date_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryParameterDateValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryParameterDateValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryParameterDateValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 date_value: Optional[str] = None,
+                 dynamic_date_value: Optional[str] = None,
+                 precision: Optional[str] = None):
+        """
+        :param str date_value: Manually specified date-time value
+        :param str dynamic_date_value: Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
+        :param str precision: Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+        """
+        if date_value is not None:
+            pulumi.set(__self__, "date_value", date_value)
+        if dynamic_date_value is not None:
+            pulumi.set(__self__, "dynamic_date_value", dynamic_date_value)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+
+    @property
+    @pulumi.getter(name="dateValue")
+    def date_value(self) -> Optional[str]:
+        """
+        Manually specified date-time value
+        """
+        return pulumi.get(self, "date_value")
+
+    @property
+    @pulumi.getter(name="dynamicDateValue")
+    def dynamic_date_value(self) -> Optional[str]:
+        """
+        Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
+        """
+        return pulumi.get(self, "dynamic_date_value")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[str]:
+        """
+        Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+        """
+        return pulumi.get(self, "precision")
+
+
+@pulumi.output_type
+class QueryParameterEnumValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enumOptions":
+            suggest = "enum_options"
+        elif key == "multiValuesOptions":
+            suggest = "multi_values_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryParameterEnumValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryParameterEnumValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryParameterEnumValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enum_options: Optional[str] = None,
+                 multi_values_options: Optional['outputs.QueryParameterEnumValueMultiValuesOptions'] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str enum_options: List of valid query parameter values, newline delimited.
+        :param 'QueryParameterEnumValueMultiValuesOptionsArgs' multi_values_options: If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+        :param Sequence[str] values: List of selected query parameter values.
+        """
+        if enum_options is not None:
+            pulumi.set(__self__, "enum_options", enum_options)
+        if multi_values_options is not None:
+            pulumi.set(__self__, "multi_values_options", multi_values_options)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="enumOptions")
+    def enum_options(self) -> Optional[str]:
+        """
+        List of valid query parameter values, newline delimited.
+        """
+        return pulumi.get(self, "enum_options")
+
+    @property
+    @pulumi.getter(name="multiValuesOptions")
+    def multi_values_options(self) -> Optional['outputs.QueryParameterEnumValueMultiValuesOptions']:
+        """
+        If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+        """
+        return pulumi.get(self, "multi_values_options")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        List of selected query parameter values.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class QueryParameterEnumValueMultiValuesOptions(dict):
+    def __init__(__self__, *,
+                 prefix: Optional[str] = None,
+                 separator: Optional[str] = None,
+                 suffix: Optional[str] = None):
+        """
+        :param str prefix: Character that prefixes each selected parameter value.
+        :param str separator: Character that separates each selected parameter value. Defaults to a comma.
+        :param str suffix: Character that suffixes each selected parameter value.
+        """
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if separator is not None:
+            pulumi.set(__self__, "separator", separator)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        Character that prefixes each selected parameter value.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def separator(self) -> Optional[str]:
+        """
+        Character that separates each selected parameter value. Defaults to a comma.
+        """
+        return pulumi.get(self, "separator")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[str]:
+        """
+        Character that suffixes each selected parameter value.
+        """
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class QueryParameterNumericValue(dict):
+    def __init__(__self__, *,
+                 value: float):
+        """
+        :param float value: actual numeric value.
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> float:
+        """
+        actual numeric value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class QueryParameterQueryBackedValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryId":
+            suggest = "query_id"
+        elif key == "multiValuesOptions":
+            suggest = "multi_values_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryParameterQueryBackedValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryParameterQueryBackedValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryParameterQueryBackedValue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_id: str,
+                 multi_values_options: Optional['outputs.QueryParameterQueryBackedValueMultiValuesOptions'] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str query_id: ID of the query that provides the parameter values.
+        :param 'QueryParameterQueryBackedValueMultiValuesOptionsArgs' multi_values_options: If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+        :param Sequence[str] values: List of selected query parameter values.
+        """
+        pulumi.set(__self__, "query_id", query_id)
+        if multi_values_options is not None:
+            pulumi.set(__self__, "multi_values_options", multi_values_options)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="queryId")
+    def query_id(self) -> str:
+        """
+        ID of the query that provides the parameter values.
+        """
+        return pulumi.get(self, "query_id")
+
+    @property
+    @pulumi.getter(name="multiValuesOptions")
+    def multi_values_options(self) -> Optional['outputs.QueryParameterQueryBackedValueMultiValuesOptions']:
+        """
+        If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+        """
+        return pulumi.get(self, "multi_values_options")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        List of selected query parameter values.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class QueryParameterQueryBackedValueMultiValuesOptions(dict):
+    def __init__(__self__, *,
+                 prefix: Optional[str] = None,
+                 separator: Optional[str] = None,
+                 suffix: Optional[str] = None):
+        """
+        :param str prefix: Character that prefixes each selected parameter value.
+        :param str separator: Character that separates each selected parameter value. Defaults to a comma.
+        :param str suffix: Character that suffixes each selected parameter value.
+        """
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if separator is not None:
+            pulumi.set(__self__, "separator", separator)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        Character that prefixes each selected parameter value.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def separator(self) -> Optional[str]:
+        """
+        Character that separates each selected parameter value. Defaults to a comma.
+        """
+        return pulumi.get(self, "separator")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[str]:
+        """
+        Character that suffixes each selected parameter value.
+        """
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class QueryParameterTextValue(dict):
+    def __init__(__self__, *,
+                 value: str):
+        """
+        :param str value: actual text value.
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        actual text value.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

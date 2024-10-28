@@ -186,6 +186,9 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly photon!: pulumi.Output<boolean | undefined>;
     public readonly runAsUserName!: pulumi.Output<string>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
     public readonly schema!: pulumi.Output<string | undefined>;
     /**
      * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
@@ -365,6 +368,9 @@ export interface PipelineState {
      */
     photon?: pulumi.Input<boolean>;
     runAsUserName?: pulumi.Input<string>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
     schema?: pulumi.Input<string>;
     /**
      * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
@@ -460,6 +466,9 @@ export interface PipelineArgs {
      */
     photon?: pulumi.Input<boolean>;
     runAsUserName?: pulumi.Input<string>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
     schema?: pulumi.Input<string>;
     /**
      * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.

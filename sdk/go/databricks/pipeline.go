@@ -159,9 +159,10 @@ type Pipeline struct {
 	Name          pulumi.StringOutput             `pulumi:"name"`
 	Notifications PipelineNotificationArrayOutput `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon        pulumi.BoolPtrOutput   `pulumi:"photon"`
-	RunAsUserName pulumi.StringOutput    `pulumi:"runAsUserName"`
-	Schema        pulumi.StringPtrOutput `pulumi:"schema"`
+	Photon        pulumi.BoolPtrOutput `pulumi:"photon"`
+	RunAsUserName pulumi.StringOutput  `pulumi:"runAsUserName"`
+	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	Schema pulumi.StringPtrOutput `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless pulumi.BoolPtrOutput `pulumi:"serverless"`
 	State      pulumi.StringOutput  `pulumi:"state"`
@@ -244,7 +245,8 @@ type pipelineState struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        *bool   `pulumi:"photon"`
 	RunAsUserName *string `pulumi:"runAsUserName"`
-	Schema        *string `pulumi:"schema"`
+	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	Schema *string `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless *bool   `pulumi:"serverless"`
 	State      *string `pulumi:"state"`
@@ -298,7 +300,8 @@ type PipelineState struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        pulumi.BoolPtrInput
 	RunAsUserName pulumi.StringPtrInput
-	Schema        pulumi.StringPtrInput
+	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	Schema pulumi.StringPtrInput
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless pulumi.BoolPtrInput
 	State      pulumi.StringPtrInput
@@ -356,7 +359,8 @@ type pipelineArgs struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        *bool   `pulumi:"photon"`
 	RunAsUserName *string `pulumi:"runAsUserName"`
-	Schema        *string `pulumi:"schema"`
+	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	Schema *string `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless *bool   `pulumi:"serverless"`
 	State      *string `pulumi:"state"`
@@ -411,7 +415,8 @@ type PipelineArgs struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        pulumi.BoolPtrInput
 	RunAsUserName pulumi.StringPtrInput
-	Schema        pulumi.StringPtrInput
+	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	Schema pulumi.StringPtrInput
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 	Serverless pulumi.BoolPtrInput
 	State      pulumi.StringPtrInput
@@ -626,6 +631,7 @@ func (o PipelineOutput) RunAsUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.RunAsUserName }).(pulumi.StringOutput)
 }
 
+// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 func (o PipelineOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)
 }

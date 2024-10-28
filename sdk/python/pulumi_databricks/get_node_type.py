@@ -232,7 +232,7 @@ def get_node_type(category: Optional[str] = None,
            * `GPU Accelerated` (AWS, Azure)
     :param bool fleet: if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
     :param int gb_per_core: Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
-    :param bool graviton: if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+    :param bool graviton: if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
     :param str id: node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
     :param bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to _false_.
     :param bool local_disk: Pick only nodes with local storage. Defaults to _false_.
@@ -343,7 +343,7 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
            * `GPU Accelerated` (AWS, Azure)
     :param bool fleet: if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
     :param int gb_per_core: Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
-    :param bool graviton: if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+    :param bool graviton: if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
     :param str id: node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
     :param bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to _false_.
     :param bool local_disk: Pick only nodes with local storage. Defaults to _false_.

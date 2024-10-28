@@ -77,14 +77,14 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
      * 
      */
     @Import(name="graviton")
     private @Nullable Output<Boolean> graviton;
 
     /**
-     * @return if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+     * @return if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
      * 
      */
     public Optional<Output<Boolean>> graviton() {
@@ -356,7 +356,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param graviton if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+         * @param graviton if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param graviton if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
+         * @param graviton if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
          * 
          * @return builder
          * 

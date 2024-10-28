@@ -407,9 +407,17 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<String> runAsUserName() {
         return this.runAsUserName;
     }
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     * 
+     */
     @Export(name="schema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schema;
 
+    /**
+     * @return The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     * 
+     */
     public Output<Optional<String>> schema() {
         return Codegen.optional(this.schema);
     }

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "databricks:index/accessControlRuleSet:AccessControlRuleSet":
 		r = &AccessControlRuleSet{}
+	case "databricks:index/alert:Alert":
+		r = &Alert{}
 	case "databricks:index/artifactAllowlist:ArtifactAllowlist":
 		r = &ArtifactAllowlist{}
 	case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
@@ -41,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ComplianceSecurityProfileWorkspaceSetting{}
 	case "databricks:index/connection:Connection":
 		r = &Connection{}
+	case "databricks:index/customAppIntegration:CustomAppIntegration":
+		r = &CustomAppIntegration{}
 	case "databricks:index/dashboard:Dashboard":
 		r = &Dashboard{}
 	case "databricks:index/dbfsFile:DbfsFile":
@@ -143,6 +147,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Pipeline{}
 	case "databricks:index/qualityMonitor:QualityMonitor":
 		r = &QualityMonitor{}
+	case "databricks:index/query:Query":
+		r = &Query{}
 	case "databricks:index/recipient:Recipient":
 		r = &Recipient{}
 	case "databricks:index/registeredModel:RegisteredModel":
@@ -249,6 +255,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/alert",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/artifactAllowlist",
 		&module{version},
 	)
@@ -290,6 +301,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/connection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/customAppIntegration",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -545,6 +561,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/qualityMonitor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/query",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

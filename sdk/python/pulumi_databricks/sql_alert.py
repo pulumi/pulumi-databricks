@@ -283,6 +283,10 @@ class SqlAlert(pulumi.CustomResource):
             })
         ```
 
+        ## Access Control
+
+        Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -291,6 +295,16 @@ class SqlAlert(pulumi.CustomResource):
         * SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
         * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+
+        ## Import
+
+        This resource can be imported using alert ID:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/sqlAlert:SqlAlert this <alert-id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -336,6 +350,10 @@ class SqlAlert(pulumi.CustomResource):
             })
         ```
 
+        ## Access Control
+
+        Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -344,6 +362,16 @@ class SqlAlert(pulumi.CustomResource):
         * SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
         * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+
+        ## Import
+
+        This resource can be imported using alert ID:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/sqlAlert:SqlAlert this <alert-id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param SqlAlertArgs args: The arguments to use to populate this resource's properties.

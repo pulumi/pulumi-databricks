@@ -43,7 +43,7 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// block consisting of single string field: `query_id` - identifier of the Databricks SQL Query (databricks_sql_query).
+        /// block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobTaskSqlTaskQueryGetArgs>? Query { get; set; }

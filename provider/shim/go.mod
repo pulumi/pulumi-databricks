@@ -3,7 +3,7 @@ module github.com/databricks/terraform-provider-databricks/shim
 go 1.23.0
 
 require (
-	github.com/databricks/terraform-provider-databricks v1.54.0
+	github.com/databricks/terraform-provider-databricks v1.55.0
 	github.com/hashicorp/terraform-plugin-framework v1.11.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.34.0
 )

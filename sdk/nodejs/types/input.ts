@@ -23,6 +23,61 @@ export interface AccessControlRuleSetGrantRule {
     role: pulumi.Input<string>;
 }
 
+export interface AlertCondition {
+    /**
+     * Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+     */
+    emptyResultState?: pulumi.Input<string>;
+    /**
+     * Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+     */
+    op: pulumi.Input<string>;
+    /**
+     * Name of the column from the query result to use for comparison in alert evaluation:
+     */
+    operand: pulumi.Input<inputs.AlertConditionOperand>;
+    /**
+     * Threshold value used for comparison in alert evaluation:
+     */
+    threshold?: pulumi.Input<inputs.AlertConditionThreshold>;
+}
+
+export interface AlertConditionOperand {
+    /**
+     * Block describing the column from the query result to use for comparison in alert evaluation:
+     */
+    column: pulumi.Input<inputs.AlertConditionOperandColumn>;
+}
+
+export interface AlertConditionOperandColumn {
+    /**
+     * Name of the column.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface AlertConditionThreshold {
+    /**
+     * actual value used in comparison (one of the attributes is required):
+     */
+    value: pulumi.Input<inputs.AlertConditionThresholdValue>;
+}
+
+export interface AlertConditionThresholdValue {
+    /**
+     * boolean value (`true` or `false`) to compare against boolean results.
+     */
+    boolValue?: pulumi.Input<boolean>;
+    /**
+     * double value to compare against integer and double results.
+     */
+    doubleValue?: pulumi.Input<number>;
+    /**
+     * string value to compare against string results.
+     */
+    stringValue?: pulumi.Input<string>;
+}
+
 export interface ArtifactAllowlistArtifactMatcher {
     /**
      * The artifact path or maven coordinate.
@@ -569,6 +624,17 @@ export interface ClusterWorkloadTypeClients {
 export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace {
     complianceStandards: pulumi.Input<pulumi.Input<string>[]>;
     isEnabled: pulumi.Input<boolean>;
+}
+
+export interface CustomAppIntegrationTokenAccessPolicy {
+    /**
+     * access token time to live (TTL) in minutes.
+     */
+    accessTokenTtlInMinutes?: pulumi.Input<number>;
+    /**
+     * refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+     */
+    refreshTokenTtlInMinutes?: pulumi.Input<number>;
 }
 
 export interface DefaultNamespaceSettingNamespace {
@@ -8120,7 +8186,7 @@ export interface JobTaskForEachTaskTaskSqlTask {
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
+     * block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
      */
     query?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskQuery>;
     /**
@@ -8131,7 +8197,7 @@ export interface JobTaskForEachTaskTaskSqlTask {
 
 export interface JobTaskForEachTaskTaskSqlTaskAlert {
     /**
-     * (String) identifier of the Databricks SQL Alert.
+     * (String) identifier of the Databricks Alert (databricks_alert).
      */
     alertId: pulumi.Input<string>;
     /**
@@ -8701,7 +8767,7 @@ export interface JobTaskSqlTask {
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
+     * block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
      */
     query?: pulumi.Input<inputs.JobTaskSqlTaskQuery>;
     /**
@@ -8712,7 +8778,7 @@ export interface JobTaskSqlTask {
 
 export interface JobTaskSqlTaskAlert {
     /**
-     * (String) identifier of the Databricks SQL Alert.
+     * (String) identifier of the Databricks Alert (databricks_alert).
      */
     alertId: pulumi.Input<string>;
     /**
@@ -10302,6 +10368,9 @@ export interface PipelineIngestionDefinition {
 
 export interface PipelineIngestionDefinitionObject {
     report?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReport>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
     schema?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchema>;
     table?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTable>;
 }
@@ -10520,6 +10589,160 @@ export interface QualityMonitorTimeSeries {
      * Column of the timestamp of predictions
      */
     timestampCol: pulumi.Input<string>;
+}
+
+export interface QueryParameter {
+    /**
+     * Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamicDateRangeValue` or `dateRangeValue`):
+     */
+    dateRangeValue?: pulumi.Input<inputs.QueryParameterDateRangeValue>;
+    /**
+     * Date query parameter value. Consists of following attributes (Can only specify one of `dynamicDateValue` or `dateValue`):
+     */
+    dateValue?: pulumi.Input<inputs.QueryParameterDateValue>;
+    /**
+     * Dropdown parameter value. Consists of following attributes:
+     */
+    enumValue?: pulumi.Input<inputs.QueryParameterEnumValue>;
+    /**
+     * Literal parameter marker that appears between double curly braces in the query text.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Numeric parameter value. Consists of following attributes:
+     */
+    numericValue?: pulumi.Input<inputs.QueryParameterNumericValue>;
+    /**
+     * Query-based dropdown parameter value. Consists of following attributes:
+     */
+    queryBackedValue?: pulumi.Input<inputs.QueryParameterQueryBackedValue>;
+    /**
+     * Text parameter value. Consists of following attributes:
+     */
+    textValue?: pulumi.Input<inputs.QueryParameterTextValue>;
+    /**
+     * Text displayed in the user-facing parameter widget in the UI.
+     */
+    title?: pulumi.Input<string>;
+}
+
+export interface QueryParameterDateRangeValue {
+    /**
+     * Manually specified date-time range value.  Consists of the following attributes:
+     */
+    dateRangeValue?: pulumi.Input<inputs.QueryParameterDateRangeValueDateRangeValue>;
+    /**
+     * Dynamic date-time range value based on current date-time.  Possible values are `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_YEAR`, `LAST_WEEK`, `LAST_MONTH`, `LAST_YEAR`, `LAST_HOUR`, `LAST_8_HOURS`, `LAST_24_HOURS`, `LAST_7_DAYS`, `LAST_14_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`, `LAST_12_MONTHS`.
+     */
+    dynamicDateRangeValue?: pulumi.Input<string>;
+    /**
+     * Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+     */
+    precision?: pulumi.Input<string>;
+    /**
+     * Specify what day that starts the week.
+     */
+    startDayOfWeek?: pulumi.Input<number>;
+}
+
+export interface QueryParameterDateRangeValueDateRangeValue {
+    /**
+     * end of the date range.
+     */
+    end: pulumi.Input<string>;
+    /**
+     * begin of the date range.
+     */
+    start: pulumi.Input<string>;
+}
+
+export interface QueryParameterDateValue {
+    /**
+     * Manually specified date-time value
+     */
+    dateValue?: pulumi.Input<string>;
+    /**
+     * Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
+     */
+    dynamicDateValue?: pulumi.Input<string>;
+    /**
+     * Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+     */
+    precision?: pulumi.Input<string>;
+}
+
+export interface QueryParameterEnumValue {
+    /**
+     * List of valid query parameter values, newline delimited.
+     */
+    enumOptions?: pulumi.Input<string>;
+    /**
+     * If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+     */
+    multiValuesOptions?: pulumi.Input<inputs.QueryParameterEnumValueMultiValuesOptions>;
+    /**
+     * List of selected query parameter values.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface QueryParameterEnumValueMultiValuesOptions {
+    /**
+     * Character that prefixes each selected parameter value.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * Character that separates each selected parameter value. Defaults to a comma.
+     */
+    separator?: pulumi.Input<string>;
+    /**
+     * Character that suffixes each selected parameter value.
+     */
+    suffix?: pulumi.Input<string>;
+}
+
+export interface QueryParameterNumericValue {
+    /**
+     * actual numeric value.
+     */
+    value: pulumi.Input<number>;
+}
+
+export interface QueryParameterQueryBackedValue {
+    /**
+     * If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+     */
+    multiValuesOptions?: pulumi.Input<inputs.QueryParameterQueryBackedValueMultiValuesOptions>;
+    /**
+     * ID of the query that provides the parameter values.
+     */
+    queryId: pulumi.Input<string>;
+    /**
+     * List of selected query parameter values.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface QueryParameterQueryBackedValueMultiValuesOptions {
+    /**
+     * Character that prefixes each selected parameter value.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * Character that separates each selected parameter value. Defaults to a comma.
+     */
+    separator?: pulumi.Input<string>;
+    /**
+     * Character that suffixes each selected parameter value.
+     */
+    suffix?: pulumi.Input<string>;
+}
+
+export interface QueryParameterTextValue {
+    /**
+     * actual text value.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface RecipientIpAccessList {
