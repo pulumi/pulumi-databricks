@@ -43,6 +43,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var sandboxDataEngineers = new Databricks.Grant("sandbox_data_engineers", new()
     ///     {
+    ///         Metastore = "metastore_id",
     ///         Principal = "Data Engineers",
     ///         Privileges = new[]
     ///         {
@@ -53,6 +54,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var sandboxDataSharer = new Databricks.Grant("sandbox_data_sharer", new()
     ///     {
+    ///         Metastore = "metastore_id",
     ///         Principal = "Data Sharer",
     ///         Privileges = new[]
     ///         {
@@ -78,7 +80,6 @@ namespace Pulumi.Databricks
     /// {
     ///     var sandbox = new Databricks.Catalog("sandbox", new()
     ///     {
-    ///         MetastoreId = @this.Id,
     ///         Name = "sandbox",
     ///         Comment = "this catalog is managed by terraform",
     ///         Properties = 

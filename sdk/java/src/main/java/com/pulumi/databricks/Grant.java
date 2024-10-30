@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sandboxDataEngineers = new Grant("sandboxDataEngineers", GrantArgs.builder()
+ *             .metastore("metastore_id")
  *             .principal("Data Engineers")
  *             .privileges(            
  *                 "CREATE_CATALOG",
@@ -70,6 +71,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sandboxDataSharer = new Grant("sandboxDataSharer", GrantArgs.builder()
+ *             .metastore("metastore_id")
  *             .principal("Data Sharer")
  *             .privileges(            
  *                 "CREATE_RECIPIENT",
@@ -112,7 +114,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
- *             .metastoreId(this_.id())
  *             .name("sandbox")
  *             .comment("this catalog is managed by terraform")
  *             .properties(Map.of("purpose", "testing"))

@@ -33,6 +33,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sandboxDataEngineers = new databricks.Grant("sandbox_data_engineers", {
+ *     metastore: "metastore_id",
  *     principal: "Data Engineers",
  *     privileges: [
  *         "CREATE_CATALOG",
@@ -40,6 +41,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * const sandboxDataSharer = new databricks.Grant("sandbox_data_sharer", {
+ *     metastore: "metastore_id",
  *     principal: "Data Sharer",
  *     privileges: [
  *         "CREATE_RECIPIENT",
@@ -57,7 +59,6 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sandbox = new databricks.Catalog("sandbox", {
- *     metastoreId: _this.id,
  *     name: "sandbox",
  *     comment: "this catalog is managed by terraform",
  *     properties: {

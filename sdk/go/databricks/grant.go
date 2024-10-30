@@ -48,6 +48,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewGrant(ctx, "sandbox_data_engineers", &databricks.GrantArgs{
+//				Metastore: pulumi.String("metastore_id"),
 //				Principal: pulumi.String("Data Engineers"),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("CREATE_CATALOG"),
@@ -58,6 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGrant(ctx, "sandbox_data_sharer", &databricks.GrantArgs{
+//				Metastore: pulumi.String("metastore_id"),
 //				Principal: pulumi.String("Data Sharer"),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("CREATE_RECIPIENT"),
@@ -90,9 +92,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
-//				MetastoreId: pulumi.Any(this.Id),
-//				Name:        pulumi.String("sandbox"),
-//				Comment:     pulumi.String("this catalog is managed by terraform"),
+//				Name:    pulumi.String("sandbox"),
+//				Comment: pulumi.String("this catalog is managed by terraform"),
 //				Properties: pulumi.StringMap{
 //					"purpose": pulumi.String("testing"),
 //				},
