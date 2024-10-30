@@ -440,12 +440,14 @@ class Grant(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox_data_engineers = databricks.Grant("sandbox_data_engineers",
+            metastore="metastore_id",
             principal="Data Engineers",
             privileges=[
                 "CREATE_CATALOG",
                 "CREATE_EXTERNAL_LOCATION",
             ])
         sandbox_data_sharer = databricks.Grant("sandbox_data_sharer",
+            metastore="metastore_id",
             principal="Data Sharer",
             privileges=[
                 "CREATE_RECIPIENT",
@@ -462,7 +464,6 @@ class Grant(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox = databricks.Catalog("sandbox",
-            metastore_id=this["id"],
             name="sandbox",
             comment="this catalog is managed by terraform",
             properties={
@@ -815,12 +816,14 @@ class Grant(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox_data_engineers = databricks.Grant("sandbox_data_engineers",
+            metastore="metastore_id",
             principal="Data Engineers",
             privileges=[
                 "CREATE_CATALOG",
                 "CREATE_EXTERNAL_LOCATION",
             ])
         sandbox_data_sharer = databricks.Grant("sandbox_data_sharer",
+            metastore="metastore_id",
             principal="Data Sharer",
             privileges=[
                 "CREATE_RECIPIENT",
@@ -837,7 +840,6 @@ class Grant(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox = databricks.Catalog("sandbox",
-            metastore_id=this["id"],
             name="sandbox",
             comment="this catalog is managed by terraform",
             properties={
