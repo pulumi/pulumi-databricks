@@ -299,7 +299,7 @@ var skipSectionHeadersEdit = tfbridge.DocsEdit{
 				regexp.MustCompile("Authentication"),
 				regexp.MustCompile("Troubleshooting"),
 				regexp.MustCompile("Empty provider block"),
-				regexp.MustCompile("Switching from `databrickslabs` to `databricks` namespace"),
+				regexp.MustCompile("Switching from "),
 			}
 			for _, header := range headerSkipRegexps {
 				if header.Match([]byte(headerText)) {

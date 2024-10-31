@@ -86,22 +86,6 @@ Example currently unavailable in this language
 ```
 {{% /choosable %}}
 {{< /chooser >}}
-## Switching from `databrickslabs` to `databricks` namespace
-
-To make Databricks Pulumi Provider generally available, we've moved it from [https://github.com/databrickslabs](https://github.com/databrickslabs) to [https://github.com/databricks](https://github.com/databricks). We've worked closely with the Pulumi Registry team at Pulumi to ensure a smooth migration. Existing pulumi deployments continue to work as expected without any action from your side. We ask you to replace `databrickslabs/databricks` with `databricks/databricks` in all your `.tf` files.
-
-You should have `.pulumi.lock.hcl` file in your state directory that is checked into source control. pulumi up will give you the following warning.
-
-```text
-Warning: Additional provider information from registry
-
-The remote registry returned warnings for registry.pulumi.io/databrickslabs/databricks:
-- For users on Pulumi 0.13 or greater, this provider has moved to databricks/databricks. Please update your source in required_providers.
-```
-
-After you replace `databrickslabs/databricks` with `databricks/databricks` in the `requiredProviders` block, the warning will disappear. Do a global "search and replace" in `*.tf` files. Alternatively you can run `python3 -c "$(curl -Ls https://dbricks.co/updtfns)"` from the command-line, that would do all the boring work for you.
-
-If you didn't check-in `.pulumi.lock.hcl` to the source code version control, you may see `Failed to install provider` error. Please follow the simple steps described in the troubleshooting guide.
 ## Configuration Reference
 
 > **Note** If you experience technical difficulties with rolling out resources in this example, please make sure that environment variables don't conflict with other provider configuration attributes. When in doubt, please run `TF_LOG=DEBUG pulumi up` to enable debug mode through the `TF_LOG` environment variable. Look specifically for `Explicit and implicit attributes` lines, that should indicate authentication attributes used.
