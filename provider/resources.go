@@ -18,7 +18,10 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"os"
 	"path"
+	"regexp"
 	"strings"
 
 	_ "embed" // embed package is not used directly
@@ -249,8 +252,16 @@ func Provider() tfbridge.ProviderInfo {
 }
 
 func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	edits := []tfbridge.DocsEdit{
+		cleanUpDescription,
+	}
+	edits = append(edits,
+		defaults...,
+	)
+
 	return append(
-		defaults,
+		edits,
+		skipSectionHeadersEdit,
 		rewriteTerraformToPulumi,
 		rewritePermissions,
 	)
@@ -277,5 +288,58 @@ var rewritePermissions = tfbridge.DocsEdit{
 			"```\nterraform import databricks_permissions <object type>/<object id>\n```")
 		returnContent = append(returnContent, importContent...)
 		return returnContent, nil
+	},
+}
+
+var skipSectionHeadersEdit = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+			headerSkipRegexps := []*regexp.Regexp{
+				regexp.MustCompile("Authentication"),
+				regexp.MustCompile("Troubleshooting"),
+				regexp.MustCompile("Empty provider block"),
+				regexp.MustCompile("Switching from `databrickslabs` to `databricks` namespace"),
+			}
+			for _, header := range headerSkipRegexps {
+				if header.Match([]byte(headerText)) {
+					return true
+				}
+			}
+			return false
+		})
+	},
+}
+
+var cleanUpDescription = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		replacesDir := "docs/index-md-replaces/"
+		changes := []string{
+			"description",
+		}
+		for _, file := range changes {
+
+			input, err := os.ReadFile(replacesDir + file + "-input.md")
+			if err != nil {
+				return nil, err
+			}
+			desired, err := os.ReadFile(replacesDir + file + "-desired.md")
+			if err != nil {
+				return nil, err
+			}
+			if bytes.Contains(content, input) {
+				content = bytes.ReplaceAll(
+					content,
+					input,
+					desired)
+			} else {
+				// Hard error to ensure we keep this content up to date
+				return nil, fmt.Errorf("could not find text in upstream index.md, "+
+					"please verify file content at %s\n*****\n%s\n*****\n", replacesDir+file+"-input.md", string(input))
+			}
+		}
+
+		return content, nil
 	},
 }
