@@ -88,8 +88,6 @@ Example currently unavailable in this language
 {{< /chooser >}}
 ## Configuration Reference
 
-> **Note** If you experience technical difficulties with rolling out resources in this example, please make sure that environment variables don't conflict with other provider configuration attributes. When in doubt, please run `TF_LOG=DEBUG pulumi up` to enable debug mode through the `TF_LOG` environment variable. Look specifically for `Explicit and implicit attributes` lines, that should indicate authentication attributes used.
-
 The provider configuration supports the following arguments:
 
 * `host` - (optional) This is the host of the Databricks workspace. It is a URL that you use to login to your workspace.

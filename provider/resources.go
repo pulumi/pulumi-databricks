@@ -253,7 +253,7 @@ func Provider() tfbridge.ProviderInfo {
 
 func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 	edits := []tfbridge.DocsEdit{
-		cleanUpDescription,
+		cleanUpDocument,
 	}
 	edits = append(edits,
 		defaults...,
@@ -311,12 +311,13 @@ var skipSectionHeadersEdit = tfbridge.DocsEdit{
 	},
 }
 
-var cleanUpDescription = tfbridge.DocsEdit{
+var cleanUpDocument = tfbridge.DocsEdit{
 	Path: "index.md",
 	Edit: func(_ string, content []byte) ([]byte, error) {
 		replacesDir := "docs/index-md-replaces/"
 		changes := []string{
-			"description",
+			"description", // Removes description text with broken links and image
+			"note",        // Removes reference to TF guides
 		}
 		for _, file := range changes {
 
@@ -324,15 +325,15 @@ var cleanUpDescription = tfbridge.DocsEdit{
 			if err != nil {
 				return nil, err
 			}
-			desired, err := os.ReadFile(replacesDir + file + "-desired.md")
-			if err != nil {
-				return nil, err
-			}
+			//desired, err := os.ReadFile(replacesDir + file + "-desired.md")
+			//if err != nil {
+			//	return nil, err
+			//}
 			if bytes.Contains(content, input) {
 				content = bytes.ReplaceAll(
 					content,
 					input,
-					desired)
+					nil)
 			} else {
 				// Hard error to ensure we keep this content up to date
 				return nil, fmt.Errorf("could not find text in upstream index.md, "+
