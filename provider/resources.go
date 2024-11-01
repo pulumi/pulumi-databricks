@@ -296,7 +296,7 @@ var skipSectionHeadersEdit = tfbridge.DocsEdit{
 	Edit: func(_ string, content []byte) ([]byte, error) {
 		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
 			headerSkipRegexps := []*regexp.Regexp{
-				regexp.MustCompile("Authentication"),
+				//regexp.MustCompile("Authentication"),
 				regexp.MustCompile("Troubleshooting"),
 				regexp.MustCompile("Empty provider block"),
 				regexp.MustCompile("Switching from "),
@@ -316,19 +316,15 @@ var cleanUpDocument = tfbridge.DocsEdit{
 	Edit: func(_ string, content []byte) ([]byte, error) {
 		replacesDir := "docs/index-md-replaces/"
 		changes := []string{
-			"description", // Removes description text with broken links and image
-			"note",        // Removes reference to TF guides
+			"description",    // Removes description text with broken links and image
+			"note",           // Removes reference to TF guides
+			"secret-warning", // Removes warning about secrets
 		}
 		for _, file := range changes {
-
 			input, err := os.ReadFile(replacesDir + file + "-input.md")
 			if err != nil {
 				return nil, err
 			}
-			//desired, err := os.ReadFile(replacesDir + file + "-desired.md")
-			//if err != nil {
-			//	return nil, err
-			//}
 			if bytes.Contains(content, input) {
 				content = bytes.ReplaceAll(
 					content,

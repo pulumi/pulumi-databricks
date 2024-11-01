@@ -86,6 +86,566 @@ Example currently unavailable in this language
 ```
 {{% /choosable %}}
 {{< /chooser >}}
+## Authentication
+
+There are currently a number of supported methods to [authenticate](https://docs.databricks.com/dev-tools/api/latest/authentication.html) into the Databricks platform to create resources:
+
+* PAT Tokens
+* AWS, Azure and GCP via Databricks-managed Service Principals
+* GCP via Google Cloud CLI
+* Azure Active Directory Tokens via Azure CLI, Azure-managed Service Principals, or Managed Service Identities
+### Authenticating with Databricks CLI credentials
+
+If no configuration option is given, the provider will look up configured credentials in `~/.databrickscfg` file. It is created by the `databricks configure --token` command. Check [this page](https://docs.databricks.com/dev-tools/cli/index.html#set-up-authentication)
+for more details. The provider uses config file credentials only when `host`/`token` or `azureAuth` options are not specified.
+It is the recommended way to use Databricks Pulumi provider, in case you're already using the same approach with
+AWS Shared Credentials File
+or Azure CLI authentication.
+
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{% choosable language typescript %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: nodejs
+
+```
+
+{{% /choosable %}}
+{{% choosable language python %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: python
+
+```
+
+{{% /choosable %}}
+{{% choosable language csharp %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: dotnet
+
+```
+
+{{% /choosable %}}
+{{% choosable language go %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: go
+
+```
+
+{{% /choosable %}}
+{{% choosable language yaml %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: yaml
+
+```
+
+{{% /choosable %}}
+{{% choosable language java %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: java
+
+```
+
+{{% /choosable %}}
+{{< /chooser >}}
+
+You can specify non-standard location of configuration file through `configFile` parameter or `DATABRICKS_CONFIG_FILE` environment variable:
+
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{% choosable language typescript %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: nodejs
+config:
+    databricks:configFile:
+        value: /opt/databricks/cli-config
+
+```
+
+{{% /choosable %}}
+{{% choosable language python %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: python
+config:
+    databricks:configFile:
+        value: /opt/databricks/cli-config
+
+```
+
+{{% /choosable %}}
+{{% choosable language csharp %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: dotnet
+config:
+    databricks:configFile:
+        value: /opt/databricks/cli-config
+
+```
+
+{{% /choosable %}}
+{{% choosable language go %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: go
+config:
+    databricks:configFile:
+        value: /opt/databricks/cli-config
+
+```
+
+{{% /choosable %}}
+{{% choosable language yaml %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: yaml
+config:
+    databricks:configFile:
+        value: /opt/databricks/cli-config
+
+```
+
+{{% /choosable %}}
+{{% choosable language java %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: java
+config:
+    databricks:configFile:
+        value: /opt/databricks/cli-config
+
+```
+
+{{% /choosable %}}
+{{< /chooser >}}
+
+You can specify a [CLI connection profile](https://docs.databricks.com/dev-tools/cli/index.html#connection-profiles) through `profile` parameter or `DATABRICKS_CONFIG_PROFILE` environment variable:
+
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{% choosable language typescript %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: nodejs
+config:
+    databricks:profile:
+        value: ML_WORKSPACE
+
+```
+
+{{% /choosable %}}
+{{% choosable language python %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: python
+config:
+    databricks:profile:
+        value: ML_WORKSPACE
+
+```
+
+{{% /choosable %}}
+{{% choosable language csharp %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: dotnet
+config:
+    databricks:profile:
+        value: ML_WORKSPACE
+
+```
+
+{{% /choosable %}}
+{{% choosable language go %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: go
+config:
+    databricks:profile:
+        value: ML_WORKSPACE
+
+```
+
+{{% /choosable %}}
+{{% choosable language yaml %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: yaml
+config:
+    databricks:profile:
+        value: ML_WORKSPACE
+
+```
+
+{{% /choosable %}}
+{{% choosable language java %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: java
+config:
+    databricks:profile:
+        value: ML_WORKSPACE
+
+```
+
+{{% /choosable %}}
+{{< /chooser >}}
+### Authenticating with hostname and token
+
+You can use `host` and `token` parameters to supply credentials to the workspace. When environment variables are preferred, then you can specify `DATABRICKS_HOST` and `DATABRICKS_TOKEN` instead. Environment variables are the second most recommended way of configuring this provider.
+
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{% choosable language typescript %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: nodejs
+config:
+    databricks:host:
+        value: https://abc-cdef-ghi.cloud.databricks.com
+    databricks:token:
+        value: dapitokenhere
+
+```
+
+{{% /choosable %}}
+{{% choosable language python %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: python
+config:
+    databricks:host:
+        value: https://abc-cdef-ghi.cloud.databricks.com
+    databricks:token:
+        value: dapitokenhere
+
+```
+
+{{% /choosable %}}
+{{% choosable language csharp %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: dotnet
+config:
+    databricks:host:
+        value: https://abc-cdef-ghi.cloud.databricks.com
+    databricks:token:
+        value: dapitokenhere
+
+```
+
+{{% /choosable %}}
+{{% choosable language go %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: go
+config:
+    databricks:host:
+        value: https://abc-cdef-ghi.cloud.databricks.com
+    databricks:token:
+        value: dapitokenhere
+
+```
+
+{{% /choosable %}}
+{{% choosable language yaml %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: yaml
+config:
+    databricks:host:
+        value: https://abc-cdef-ghi.cloud.databricks.com
+    databricks:token:
+        value: dapitokenhere
+
+```
+
+{{% /choosable %}}
+{{% choosable language java %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: java
+config:
+    databricks:host:
+        value: https://abc-cdef-ghi.cloud.databricks.com
+    databricks:token:
+        value: dapitokenhere
+
+```
+
+{{% /choosable %}}
+{{< /chooser >}}
+### Authenticating with Databricks-managed Service Principal
+
+You can use the `clientId` + `clientSecret` attributes to authenticate with a Databricks-managed service principal at both the account and workspace levels in all supported clouds. The `clientId` is the `applicationId` of the Service Principal and `clientSecret` is its secret. You can generate the secret from Databricks Accounts Console (see [instruction](https://docs.databricks.com/dev-tools/authentication-oauth.html#step-2-create-an-oauth-secret-for-a-service-principal)) or by using the Pulumi resource databricks_service_principal_secret.
+
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{% choosable language typescript %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: nodejs
+config:
+    databricks:clientId:
+        value: 'TODO: var.client_id'
+    databricks:clientSecret:
+        value: 'TODO: var.client_secret'
+    databricks:host:
+        value: https://abc-cdef-ghi.cloud.databricks.com
+
+```
+
+{{% /choosable %}}
+{{% choosable language python %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: python
+config:
+    databricks:clientId:
+        value: 'TODO: var.client_id'
+    databricks:clientSecret:
+        value: 'TODO: var.client_secret'
+    databricks:host:
+        value: https://abc-cdef-ghi.cloud.databricks.com
+
+```
+
+{{% /choosable %}}
+{{% choosable language csharp %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: dotnet
+config:
+    databricks:clientId:
+        value: 'TODO: var.client_id'
+    databricks:clientSecret:
+        value: 'TODO: var.client_secret'
+    databricks:host:
+        value: https://abc-cdef-ghi.cloud.databricks.com
+
+```
+
+{{% /choosable %}}
+{{% choosable language go %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: go
+config:
+    databricks:clientId:
+        value: 'TODO: var.client_id'
+    databricks:clientSecret:
+        value: 'TODO: var.client_secret'
+    databricks:host:
+        value: https://abc-cdef-ghi.cloud.databricks.com
+
+```
+
+{{% /choosable %}}
+{{% choosable language yaml %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: yaml
+config:
+    databricks:clientId:
+        value: 'TODO: var.client_id'
+    databricks:clientSecret:
+        value: 'TODO: var.client_secret'
+    databricks:host:
+        value: https://abc-cdef-ghi.cloud.databricks.com
+
+```
+
+{{% /choosable %}}
+{{% choosable language java %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: java
+config:
+    databricks:clientId:
+        value: 'TODO: var.client_id'
+    databricks:clientSecret:
+        value: 'TODO: var.client_secret'
+    databricks:host:
+        value: https://abc-cdef-ghi.cloud.databricks.com
+
+```
+
+{{% /choosable %}}
+{{< /chooser >}}
+
+To create resources at both the account and workspace levels, you can create two providers as shown below
+
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{% choosable language typescript %}}
+
+{{% /choosable %}}
+{{% choosable language python %}}
+
+{{% /choosable %}}
+{{% choosable language csharp %}}
+
+{{% /choosable %}}
+{{% choosable language go %}}
+
+{{% /choosable %}}
+{{% choosable language yaml %}}
+
+{{% /choosable %}}
+{{% choosable language java %}}
+
+{{% /choosable %}}
+{{< /chooser >}}
+
+Next, you can specify the corresponding provider when creating the resource. For example, you can use the workspace provider to create a workspace group
+
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{% choosable language typescript %}}
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as databricks from "@pulumi/databricks";
+
+const clusterAdmin = new databricks.Group("cluster_admin", {
+    displayName: "cluster_admin",
+    allowClusterCreate: true,
+    allowInstancePoolCreate: false,
+});
+```
+{{% /choosable %}}
+{{% choosable language python %}}
+```python
+import pulumi
+import pulumi_databricks as databricks
+
+cluster_admin = databricks.Group("cluster_admin",
+    display_name="cluster_admin",
+    allow_cluster_create=True,
+    allow_instance_pool_create=False)
+```
+{{% /choosable %}}
+{{% choosable language csharp %}}
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Databricks = Pulumi.Databricks;
+
+return await Deployment.RunAsync(() =>
+{
+    var clusterAdmin = new Databricks.Group("cluster_admin", new()
+    {
+        DisplayName = "cluster_admin",
+        AllowClusterCreate = true,
+        AllowInstancePoolCreate = false,
+    });
+
+});
+
+```
+{{% /choosable %}}
+{{% choosable language go %}}
+```go
+package main
+
+import (
+	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		_, err := databricks.NewGroup(ctx, "cluster_admin", &databricks.GroupArgs{
+			DisplayName:             pulumi.String("cluster_admin"),
+			AllowClusterCreate:      pulumi.Bool(true),
+			AllowInstancePoolCreate: pulumi.Bool(false),
+		})
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
+```
+{{% /choosable %}}
+{{% choosable language yaml %}}
+```yaml
+resources:
+  clusterAdmin:
+    type: databricks:Group
+    name: cluster_admin
+    properties:
+      displayName: cluster_admin
+      allowClusterCreate: true
+      allowInstancePoolCreate: false
+```
+{{% /choosable %}}
+{{% choosable language java %}}
+```java
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.databricks.Group;
+import com.pulumi.databricks.GroupArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        var clusterAdmin = new Group("clusterAdmin", GroupArgs.builder()
+            .displayName("cluster_admin")
+            .allowClusterCreate(true)
+            .allowInstancePoolCreate(false)
+            .build());
+
+    }
+}
+```
+{{% /choosable %}}
+{{< /chooser >}}
+
+* `clientId` - The `applicationId` of the Service Principal. Alternatively, you can provide this value as an environment variable `DATABRICKS_CLIENT_ID`.
+* `clientSecret` - Secret of the service principal. Alternatively, you can provide this value as an environment variable `DATABRICKS_CLIENT_SECRET`.
 ## Configuration Reference
 
 The provider configuration supports the following arguments:
