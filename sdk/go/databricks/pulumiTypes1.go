@@ -7561,6 +7561,1539 @@ func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDet
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetFunctionsFunction struct {
+	// Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
+	BrowseOnly *bool `pulumi:"browseOnly"`
+	// Name of databricks_catalog.
+	CatalogName *string `pulumi:"catalogName"`
+	// User-provided free-form text description.
+	Comment *string `pulumi:"comment"`
+	// Time at which this function was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// Username of function creator.
+	CreatedBy *string `pulumi:"createdBy"`
+	// Scalar function return data type.
+	DataType *string `pulumi:"dataType"`
+	// External function language.
+	ExternalLanguage *string `pulumi:"externalLanguage"`
+	// External function name.
+	ExternalName *string `pulumi:"externalName"`
+	// Pretty printed function data type.
+	FullDataType *string `pulumi:"fullDataType"`
+	// Full name of function, in form of catalog_name.schema_name.function__name
+	FullName *string `pulumi:"fullName"`
+	// Id of Function, relative to parent schema.
+	FunctionId *string `pulumi:"functionId"`
+	// object describing input parameters. Consists of the single attribute:
+	InputParams *GetFunctionsFunctionInputParams `pulumi:"inputParams"`
+	// Boolean flag specifying whether the function is deterministic.
+	IsDeterministic *bool `pulumi:"isDeterministic"`
+	// Boolean flag whether function null call.
+	IsNullCall *bool `pulumi:"isNullCall"`
+	// Unique identifier of parent metastore.
+	MetastoreId *string `pulumi:"metastoreId"`
+	// Name of parameter.
+	Name *string `pulumi:"name"`
+	// Username of current owner of function.
+	Owner *string `pulumi:"owner"`
+	// Function parameter style. `S` is the value for SQL.
+	ParameterStyle *string `pulumi:"parameterStyle"`
+	// JSON-serialized key-value pair map, encoded (escaped) as a string.
+	Properties *string `pulumi:"properties"`
+	// Table function return parameters.  See `inputParams` for description.
+	ReturnParams *GetFunctionsFunctionReturnParams `pulumi:"returnParams"`
+	// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
+	RoutineBody *string `pulumi:"routineBody"`
+	// Function body.
+	RoutineDefinition *string `pulumi:"routineDefinition"`
+	// Function dependencies.
+	RoutineDependencies *GetFunctionsFunctionRoutineDependencies `pulumi:"routineDependencies"`
+	// Name of databricks_schema.
+	SchemaName *string `pulumi:"schemaName"`
+	// Function security type. (Enum: `DEFINER`).
+	SecurityType *string `pulumi:"securityType"`
+	// Specific name of the function; Reserved for future use.
+	SpecificName *string `pulumi:"specificName"`
+	// Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+	SqlDataAccess *string `pulumi:"sqlDataAccess"`
+	// List of schemes whose objects can be referenced without qualification.
+	SqlPath *string `pulumi:"sqlPath"`
+	// Time at which this function was created, in epoch milliseconds.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// Username of user who last modified function.
+	UpdatedBy *string `pulumi:"updatedBy"`
+}
+
+// GetFunctionsFunctionInput is an input type that accepts GetFunctionsFunctionArgs and GetFunctionsFunctionOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionInput` via:
+//
+//	GetFunctionsFunctionArgs{...}
+type GetFunctionsFunctionInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionOutput() GetFunctionsFunctionOutput
+	ToGetFunctionsFunctionOutputWithContext(context.Context) GetFunctionsFunctionOutput
+}
+
+type GetFunctionsFunctionArgs struct {
+	// Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
+	BrowseOnly pulumi.BoolPtrInput `pulumi:"browseOnly"`
+	// Name of databricks_catalog.
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// User-provided free-form text description.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Time at which this function was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// Username of function creator.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Scalar function return data type.
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// External function language.
+	ExternalLanguage pulumi.StringPtrInput `pulumi:"externalLanguage"`
+	// External function name.
+	ExternalName pulumi.StringPtrInput `pulumi:"externalName"`
+	// Pretty printed function data type.
+	FullDataType pulumi.StringPtrInput `pulumi:"fullDataType"`
+	// Full name of function, in form of catalog_name.schema_name.function__name
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// Id of Function, relative to parent schema.
+	FunctionId pulumi.StringPtrInput `pulumi:"functionId"`
+	// object describing input parameters. Consists of the single attribute:
+	InputParams GetFunctionsFunctionInputParamsPtrInput `pulumi:"inputParams"`
+	// Boolean flag specifying whether the function is deterministic.
+	IsDeterministic pulumi.BoolPtrInput `pulumi:"isDeterministic"`
+	// Boolean flag whether function null call.
+	IsNullCall pulumi.BoolPtrInput `pulumi:"isNullCall"`
+	// Unique identifier of parent metastore.
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// Name of parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Username of current owner of function.
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// Function parameter style. `S` is the value for SQL.
+	ParameterStyle pulumi.StringPtrInput `pulumi:"parameterStyle"`
+	// JSON-serialized key-value pair map, encoded (escaped) as a string.
+	Properties pulumi.StringPtrInput `pulumi:"properties"`
+	// Table function return parameters.  See `inputParams` for description.
+	ReturnParams GetFunctionsFunctionReturnParamsPtrInput `pulumi:"returnParams"`
+	// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
+	RoutineBody pulumi.StringPtrInput `pulumi:"routineBody"`
+	// Function body.
+	RoutineDefinition pulumi.StringPtrInput `pulumi:"routineDefinition"`
+	// Function dependencies.
+	RoutineDependencies GetFunctionsFunctionRoutineDependenciesPtrInput `pulumi:"routineDependencies"`
+	// Name of databricks_schema.
+	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
+	// Function security type. (Enum: `DEFINER`).
+	SecurityType pulumi.StringPtrInput `pulumi:"securityType"`
+	// Specific name of the function; Reserved for future use.
+	SpecificName pulumi.StringPtrInput `pulumi:"specificName"`
+	// Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+	SqlDataAccess pulumi.StringPtrInput `pulumi:"sqlDataAccess"`
+	// List of schemes whose objects can be referenced without qualification.
+	SqlPath pulumi.StringPtrInput `pulumi:"sqlPath"`
+	// Time at which this function was created, in epoch milliseconds.
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// Username of user who last modified function.
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+}
+
+func (GetFunctionsFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunction)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionArgs) ToGetFunctionsFunctionOutput() GetFunctionsFunctionOutput {
+	return i.ToGetFunctionsFunctionOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionArgs) ToGetFunctionsFunctionOutputWithContext(ctx context.Context) GetFunctionsFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionOutput)
+}
+
+// GetFunctionsFunctionArrayInput is an input type that accepts GetFunctionsFunctionArray and GetFunctionsFunctionArrayOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionArrayInput` via:
+//
+//	GetFunctionsFunctionArray{ GetFunctionsFunctionArgs{...} }
+type GetFunctionsFunctionArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionArrayOutput() GetFunctionsFunctionArrayOutput
+	ToGetFunctionsFunctionArrayOutputWithContext(context.Context) GetFunctionsFunctionArrayOutput
+}
+
+type GetFunctionsFunctionArray []GetFunctionsFunctionInput
+
+func (GetFunctionsFunctionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionsFunction)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionArray) ToGetFunctionsFunctionArrayOutput() GetFunctionsFunctionArrayOutput {
+	return i.ToGetFunctionsFunctionArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionArray) ToGetFunctionsFunctionArrayOutputWithContext(ctx context.Context) GetFunctionsFunctionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionArrayOutput)
+}
+
+type GetFunctionsFunctionOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunction)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionOutput) ToGetFunctionsFunctionOutput() GetFunctionsFunctionOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionOutput) ToGetFunctionsFunctionOutputWithContext(ctx context.Context) GetFunctionsFunctionOutput {
+	return o
+}
+
+// Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
+func (o GetFunctionsFunctionOutput) BrowseOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Name of databricks_catalog.
+func (o GetFunctionsFunctionOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
+}
+
+// User-provided free-form text description.
+func (o GetFunctionsFunctionOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Time at which this function was created, in epoch milliseconds.
+func (o GetFunctionsFunctionOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
+}
+
+// Username of function creator.
+func (o GetFunctionsFunctionOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Scalar function return data type.
+func (o GetFunctionsFunctionOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// External function language.
+func (o GetFunctionsFunctionOutput) ExternalLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.ExternalLanguage }).(pulumi.StringPtrOutput)
+}
+
+// External function name.
+func (o GetFunctionsFunctionOutput) ExternalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.ExternalName }).(pulumi.StringPtrOutput)
+}
+
+// Pretty printed function data type.
+func (o GetFunctionsFunctionOutput) FullDataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.FullDataType }).(pulumi.StringPtrOutput)
+}
+
+// Full name of function, in form of catalog_name.schema_name.function__name
+func (o GetFunctionsFunctionOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.FullName }).(pulumi.StringPtrOutput)
+}
+
+// Id of Function, relative to parent schema.
+func (o GetFunctionsFunctionOutput) FunctionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.FunctionId }).(pulumi.StringPtrOutput)
+}
+
+// object describing input parameters. Consists of the single attribute:
+func (o GetFunctionsFunctionOutput) InputParams() GetFunctionsFunctionInputParamsPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *GetFunctionsFunctionInputParams { return v.InputParams }).(GetFunctionsFunctionInputParamsPtrOutput)
+}
+
+// Boolean flag specifying whether the function is deterministic.
+func (o GetFunctionsFunctionOutput) IsDeterministic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *bool { return v.IsDeterministic }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean flag whether function null call.
+func (o GetFunctionsFunctionOutput) IsNullCall() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *bool { return v.IsNullCall }).(pulumi.BoolPtrOutput)
+}
+
+// Unique identifier of parent metastore.
+func (o GetFunctionsFunctionOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// Name of parameter.
+func (o GetFunctionsFunctionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Username of current owner of function.
+func (o GetFunctionsFunctionOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+// Function parameter style. `S` is the value for SQL.
+func (o GetFunctionsFunctionOutput) ParameterStyle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.ParameterStyle }).(pulumi.StringPtrOutput)
+}
+
+// JSON-serialized key-value pair map, encoded (escaped) as a string.
+func (o GetFunctionsFunctionOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.Properties }).(pulumi.StringPtrOutput)
+}
+
+// Table function return parameters.  See `inputParams` for description.
+func (o GetFunctionsFunctionOutput) ReturnParams() GetFunctionsFunctionReturnParamsPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *GetFunctionsFunctionReturnParams { return v.ReturnParams }).(GetFunctionsFunctionReturnParamsPtrOutput)
+}
+
+// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
+func (o GetFunctionsFunctionOutput) RoutineBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.RoutineBody }).(pulumi.StringPtrOutput)
+}
+
+// Function body.
+func (o GetFunctionsFunctionOutput) RoutineDefinition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.RoutineDefinition }).(pulumi.StringPtrOutput)
+}
+
+// Function dependencies.
+func (o GetFunctionsFunctionOutput) RoutineDependencies() GetFunctionsFunctionRoutineDependenciesPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *GetFunctionsFunctionRoutineDependencies { return v.RoutineDependencies }).(GetFunctionsFunctionRoutineDependenciesPtrOutput)
+}
+
+// Name of databricks_schema.
+func (o GetFunctionsFunctionOutput) SchemaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
+}
+
+// Function security type. (Enum: `DEFINER`).
+func (o GetFunctionsFunctionOutput) SecurityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.SecurityType }).(pulumi.StringPtrOutput)
+}
+
+// Specific name of the function; Reserved for future use.
+func (o GetFunctionsFunctionOutput) SpecificName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.SpecificName }).(pulumi.StringPtrOutput)
+}
+
+// Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+func (o GetFunctionsFunctionOutput) SqlDataAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.SqlDataAccess }).(pulumi.StringPtrOutput)
+}
+
+// List of schemes whose objects can be referenced without qualification.
+func (o GetFunctionsFunctionOutput) SqlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.SqlPath }).(pulumi.StringPtrOutput)
+}
+
+// Time at which this function was created, in epoch milliseconds.
+func (o GetFunctionsFunctionOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
+}
+
+// Username of user who last modified function.
+func (o GetFunctionsFunctionOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+type GetFunctionsFunctionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionsFunction)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionArrayOutput) ToGetFunctionsFunctionArrayOutput() GetFunctionsFunctionArrayOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionArrayOutput) ToGetFunctionsFunctionArrayOutputWithContext(ctx context.Context) GetFunctionsFunctionArrayOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionArrayOutput) Index(i pulumi.IntInput) GetFunctionsFunctionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionsFunction {
+		return vs[0].([]GetFunctionsFunction)[vs[1].(int)]
+	}).(GetFunctionsFunctionOutput)
+}
+
+type GetFunctionsFunctionInputParams struct {
+	// The array of definitions of the function's parameters:
+	Parameters []GetFunctionsFunctionInputParamsParameter `pulumi:"parameters"`
+}
+
+// GetFunctionsFunctionInputParamsInput is an input type that accepts GetFunctionsFunctionInputParamsArgs and GetFunctionsFunctionInputParamsOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionInputParamsInput` via:
+//
+//	GetFunctionsFunctionInputParamsArgs{...}
+type GetFunctionsFunctionInputParamsInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionInputParamsOutput() GetFunctionsFunctionInputParamsOutput
+	ToGetFunctionsFunctionInputParamsOutputWithContext(context.Context) GetFunctionsFunctionInputParamsOutput
+}
+
+type GetFunctionsFunctionInputParamsArgs struct {
+	// The array of definitions of the function's parameters:
+	Parameters GetFunctionsFunctionInputParamsParameterArrayInput `pulumi:"parameters"`
+}
+
+func (GetFunctionsFunctionInputParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionInputParams)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionInputParamsArgs) ToGetFunctionsFunctionInputParamsOutput() GetFunctionsFunctionInputParamsOutput {
+	return i.ToGetFunctionsFunctionInputParamsOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionInputParamsArgs) ToGetFunctionsFunctionInputParamsOutputWithContext(ctx context.Context) GetFunctionsFunctionInputParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionInputParamsOutput)
+}
+
+func (i GetFunctionsFunctionInputParamsArgs) ToGetFunctionsFunctionInputParamsPtrOutput() GetFunctionsFunctionInputParamsPtrOutput {
+	return i.ToGetFunctionsFunctionInputParamsPtrOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionInputParamsArgs) ToGetFunctionsFunctionInputParamsPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionInputParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionInputParamsOutput).ToGetFunctionsFunctionInputParamsPtrOutputWithContext(ctx)
+}
+
+// GetFunctionsFunctionInputParamsPtrInput is an input type that accepts GetFunctionsFunctionInputParamsArgs, GetFunctionsFunctionInputParamsPtr and GetFunctionsFunctionInputParamsPtrOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionInputParamsPtrInput` via:
+//
+//	        GetFunctionsFunctionInputParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetFunctionsFunctionInputParamsPtrInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionInputParamsPtrOutput() GetFunctionsFunctionInputParamsPtrOutput
+	ToGetFunctionsFunctionInputParamsPtrOutputWithContext(context.Context) GetFunctionsFunctionInputParamsPtrOutput
+}
+
+type getFunctionsFunctionInputParamsPtrType GetFunctionsFunctionInputParamsArgs
+
+func GetFunctionsFunctionInputParamsPtr(v *GetFunctionsFunctionInputParamsArgs) GetFunctionsFunctionInputParamsPtrInput {
+	return (*getFunctionsFunctionInputParamsPtrType)(v)
+}
+
+func (*getFunctionsFunctionInputParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFunctionsFunctionInputParams)(nil)).Elem()
+}
+
+func (i *getFunctionsFunctionInputParamsPtrType) ToGetFunctionsFunctionInputParamsPtrOutput() GetFunctionsFunctionInputParamsPtrOutput {
+	return i.ToGetFunctionsFunctionInputParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *getFunctionsFunctionInputParamsPtrType) ToGetFunctionsFunctionInputParamsPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionInputParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionInputParamsPtrOutput)
+}
+
+type GetFunctionsFunctionInputParamsOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionInputParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionInputParams)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionInputParamsOutput) ToGetFunctionsFunctionInputParamsOutput() GetFunctionsFunctionInputParamsOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionInputParamsOutput) ToGetFunctionsFunctionInputParamsOutputWithContext(ctx context.Context) GetFunctionsFunctionInputParamsOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionInputParamsOutput) ToGetFunctionsFunctionInputParamsPtrOutput() GetFunctionsFunctionInputParamsPtrOutput {
+	return o.ToGetFunctionsFunctionInputParamsPtrOutputWithContext(context.Background())
+}
+
+func (o GetFunctionsFunctionInputParamsOutput) ToGetFunctionsFunctionInputParamsPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionInputParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetFunctionsFunctionInputParams) *GetFunctionsFunctionInputParams {
+		return &v
+	}).(GetFunctionsFunctionInputParamsPtrOutput)
+}
+
+// The array of definitions of the function's parameters:
+func (o GetFunctionsFunctionInputParamsOutput) Parameters() GetFunctionsFunctionInputParamsParameterArrayOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParams) []GetFunctionsFunctionInputParamsParameter {
+		return v.Parameters
+	}).(GetFunctionsFunctionInputParamsParameterArrayOutput)
+}
+
+type GetFunctionsFunctionInputParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionInputParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFunctionsFunctionInputParams)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionInputParamsPtrOutput) ToGetFunctionsFunctionInputParamsPtrOutput() GetFunctionsFunctionInputParamsPtrOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionInputParamsPtrOutput) ToGetFunctionsFunctionInputParamsPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionInputParamsPtrOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionInputParamsPtrOutput) Elem() GetFunctionsFunctionInputParamsOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionInputParams) GetFunctionsFunctionInputParams {
+		if v != nil {
+			return *v
+		}
+		var ret GetFunctionsFunctionInputParams
+		return ret
+	}).(GetFunctionsFunctionInputParamsOutput)
+}
+
+// The array of definitions of the function's parameters:
+func (o GetFunctionsFunctionInputParamsPtrOutput) Parameters() GetFunctionsFunctionInputParamsParameterArrayOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionInputParams) []GetFunctionsFunctionInputParamsParameter {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(GetFunctionsFunctionInputParamsParameterArrayOutput)
+}
+
+type GetFunctionsFunctionInputParamsParameter struct {
+	// User-provided free-form text description.
+	Comment *string `pulumi:"comment"`
+	// Name of parameter.
+	Name string `pulumi:"name"`
+	// Default value of the parameter.
+	ParameterDefault *string `pulumi:"parameterDefault"`
+	// The mode of the function parameter.
+	ParameterMode *string `pulumi:"parameterMode"`
+	// The type of function parameter (`PARAM` or `COLUMN`).
+	ParameterType *string `pulumi:"parameterType"`
+	// Ordinal position of column (starting at position 0).
+	Position int `pulumi:"position"`
+	// Format of IntervalType.
+	TypeIntervalType *string `pulumi:"typeIntervalType"`
+	// Full data type spec, JSON-serialized.
+	TypeJson *string `pulumi:"typeJson"`
+	// Name of type (INT, STRUCT, MAP, etc.).
+	TypeName string `pulumi:"typeName"`
+	// Digits of precision; required on Create for DecimalTypes.
+	TypePrecision *int `pulumi:"typePrecision"`
+	// Digits to right of decimal; Required on Create for DecimalTypes.
+	TypeScale *int `pulumi:"typeScale"`
+	// Full data type spec, SQL/catalogString text.
+	TypeText string `pulumi:"typeText"`
+}
+
+// GetFunctionsFunctionInputParamsParameterInput is an input type that accepts GetFunctionsFunctionInputParamsParameterArgs and GetFunctionsFunctionInputParamsParameterOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionInputParamsParameterInput` via:
+//
+//	GetFunctionsFunctionInputParamsParameterArgs{...}
+type GetFunctionsFunctionInputParamsParameterInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionInputParamsParameterOutput() GetFunctionsFunctionInputParamsParameterOutput
+	ToGetFunctionsFunctionInputParamsParameterOutputWithContext(context.Context) GetFunctionsFunctionInputParamsParameterOutput
+}
+
+type GetFunctionsFunctionInputParamsParameterArgs struct {
+	// User-provided free-form text description.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Name of parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Default value of the parameter.
+	ParameterDefault pulumi.StringPtrInput `pulumi:"parameterDefault"`
+	// The mode of the function parameter.
+	ParameterMode pulumi.StringPtrInput `pulumi:"parameterMode"`
+	// The type of function parameter (`PARAM` or `COLUMN`).
+	ParameterType pulumi.StringPtrInput `pulumi:"parameterType"`
+	// Ordinal position of column (starting at position 0).
+	Position pulumi.IntInput `pulumi:"position"`
+	// Format of IntervalType.
+	TypeIntervalType pulumi.StringPtrInput `pulumi:"typeIntervalType"`
+	// Full data type spec, JSON-serialized.
+	TypeJson pulumi.StringPtrInput `pulumi:"typeJson"`
+	// Name of type (INT, STRUCT, MAP, etc.).
+	TypeName pulumi.StringInput `pulumi:"typeName"`
+	// Digits of precision; required on Create for DecimalTypes.
+	TypePrecision pulumi.IntPtrInput `pulumi:"typePrecision"`
+	// Digits to right of decimal; Required on Create for DecimalTypes.
+	TypeScale pulumi.IntPtrInput `pulumi:"typeScale"`
+	// Full data type spec, SQL/catalogString text.
+	TypeText pulumi.StringInput `pulumi:"typeText"`
+}
+
+func (GetFunctionsFunctionInputParamsParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionInputParamsParameter)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionInputParamsParameterArgs) ToGetFunctionsFunctionInputParamsParameterOutput() GetFunctionsFunctionInputParamsParameterOutput {
+	return i.ToGetFunctionsFunctionInputParamsParameterOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionInputParamsParameterArgs) ToGetFunctionsFunctionInputParamsParameterOutputWithContext(ctx context.Context) GetFunctionsFunctionInputParamsParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionInputParamsParameterOutput)
+}
+
+// GetFunctionsFunctionInputParamsParameterArrayInput is an input type that accepts GetFunctionsFunctionInputParamsParameterArray and GetFunctionsFunctionInputParamsParameterArrayOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionInputParamsParameterArrayInput` via:
+//
+//	GetFunctionsFunctionInputParamsParameterArray{ GetFunctionsFunctionInputParamsParameterArgs{...} }
+type GetFunctionsFunctionInputParamsParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionInputParamsParameterArrayOutput() GetFunctionsFunctionInputParamsParameterArrayOutput
+	ToGetFunctionsFunctionInputParamsParameterArrayOutputWithContext(context.Context) GetFunctionsFunctionInputParamsParameterArrayOutput
+}
+
+type GetFunctionsFunctionInputParamsParameterArray []GetFunctionsFunctionInputParamsParameterInput
+
+func (GetFunctionsFunctionInputParamsParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionsFunctionInputParamsParameter)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionInputParamsParameterArray) ToGetFunctionsFunctionInputParamsParameterArrayOutput() GetFunctionsFunctionInputParamsParameterArrayOutput {
+	return i.ToGetFunctionsFunctionInputParamsParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionInputParamsParameterArray) ToGetFunctionsFunctionInputParamsParameterArrayOutputWithContext(ctx context.Context) GetFunctionsFunctionInputParamsParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionInputParamsParameterArrayOutput)
+}
+
+type GetFunctionsFunctionInputParamsParameterOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionInputParamsParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionInputParamsParameter)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionInputParamsParameterOutput) ToGetFunctionsFunctionInputParamsParameterOutput() GetFunctionsFunctionInputParamsParameterOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionInputParamsParameterOutput) ToGetFunctionsFunctionInputParamsParameterOutputWithContext(ctx context.Context) GetFunctionsFunctionInputParamsParameterOutput {
+	return o
+}
+
+// User-provided free-form text description.
+func (o GetFunctionsFunctionInputParamsParameterOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParamsParameter) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Name of parameter.
+func (o GetFunctionsFunctionInputParamsParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParamsParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Default value of the parameter.
+func (o GetFunctionsFunctionInputParamsParameterOutput) ParameterDefault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParamsParameter) *string { return v.ParameterDefault }).(pulumi.StringPtrOutput)
+}
+
+// The mode of the function parameter.
+func (o GetFunctionsFunctionInputParamsParameterOutput) ParameterMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParamsParameter) *string { return v.ParameterMode }).(pulumi.StringPtrOutput)
+}
+
+// The type of function parameter (`PARAM` or `COLUMN`).
+func (o GetFunctionsFunctionInputParamsParameterOutput) ParameterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParamsParameter) *string { return v.ParameterType }).(pulumi.StringPtrOutput)
+}
+
+// Ordinal position of column (starting at position 0).
+func (o GetFunctionsFunctionInputParamsParameterOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParamsParameter) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// Format of IntervalType.
+func (o GetFunctionsFunctionInputParamsParameterOutput) TypeIntervalType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParamsParameter) *string { return v.TypeIntervalType }).(pulumi.StringPtrOutput)
+}
+
+// Full data type spec, JSON-serialized.
+func (o GetFunctionsFunctionInputParamsParameterOutput) TypeJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParamsParameter) *string { return v.TypeJson }).(pulumi.StringPtrOutput)
+}
+
+// Name of type (INT, STRUCT, MAP, etc.).
+func (o GetFunctionsFunctionInputParamsParameterOutput) TypeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParamsParameter) string { return v.TypeName }).(pulumi.StringOutput)
+}
+
+// Digits of precision; required on Create for DecimalTypes.
+func (o GetFunctionsFunctionInputParamsParameterOutput) TypePrecision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParamsParameter) *int { return v.TypePrecision }).(pulumi.IntPtrOutput)
+}
+
+// Digits to right of decimal; Required on Create for DecimalTypes.
+func (o GetFunctionsFunctionInputParamsParameterOutput) TypeScale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParamsParameter) *int { return v.TypeScale }).(pulumi.IntPtrOutput)
+}
+
+// Full data type spec, SQL/catalogString text.
+func (o GetFunctionsFunctionInputParamsParameterOutput) TypeText() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionInputParamsParameter) string { return v.TypeText }).(pulumi.StringOutput)
+}
+
+type GetFunctionsFunctionInputParamsParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionInputParamsParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionsFunctionInputParamsParameter)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionInputParamsParameterArrayOutput) ToGetFunctionsFunctionInputParamsParameterArrayOutput() GetFunctionsFunctionInputParamsParameterArrayOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionInputParamsParameterArrayOutput) ToGetFunctionsFunctionInputParamsParameterArrayOutputWithContext(ctx context.Context) GetFunctionsFunctionInputParamsParameterArrayOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionInputParamsParameterArrayOutput) Index(i pulumi.IntInput) GetFunctionsFunctionInputParamsParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionsFunctionInputParamsParameter {
+		return vs[0].([]GetFunctionsFunctionInputParamsParameter)[vs[1].(int)]
+	}).(GetFunctionsFunctionInputParamsParameterOutput)
+}
+
+type GetFunctionsFunctionReturnParams struct {
+	// The array of definitions of the function's parameters:
+	Parameters []GetFunctionsFunctionReturnParamsParameter `pulumi:"parameters"`
+}
+
+// GetFunctionsFunctionReturnParamsInput is an input type that accepts GetFunctionsFunctionReturnParamsArgs and GetFunctionsFunctionReturnParamsOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionReturnParamsInput` via:
+//
+//	GetFunctionsFunctionReturnParamsArgs{...}
+type GetFunctionsFunctionReturnParamsInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionReturnParamsOutput() GetFunctionsFunctionReturnParamsOutput
+	ToGetFunctionsFunctionReturnParamsOutputWithContext(context.Context) GetFunctionsFunctionReturnParamsOutput
+}
+
+type GetFunctionsFunctionReturnParamsArgs struct {
+	// The array of definitions of the function's parameters:
+	Parameters GetFunctionsFunctionReturnParamsParameterArrayInput `pulumi:"parameters"`
+}
+
+func (GetFunctionsFunctionReturnParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionReturnParams)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionReturnParamsArgs) ToGetFunctionsFunctionReturnParamsOutput() GetFunctionsFunctionReturnParamsOutput {
+	return i.ToGetFunctionsFunctionReturnParamsOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionReturnParamsArgs) ToGetFunctionsFunctionReturnParamsOutputWithContext(ctx context.Context) GetFunctionsFunctionReturnParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionReturnParamsOutput)
+}
+
+func (i GetFunctionsFunctionReturnParamsArgs) ToGetFunctionsFunctionReturnParamsPtrOutput() GetFunctionsFunctionReturnParamsPtrOutput {
+	return i.ToGetFunctionsFunctionReturnParamsPtrOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionReturnParamsArgs) ToGetFunctionsFunctionReturnParamsPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionReturnParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionReturnParamsOutput).ToGetFunctionsFunctionReturnParamsPtrOutputWithContext(ctx)
+}
+
+// GetFunctionsFunctionReturnParamsPtrInput is an input type that accepts GetFunctionsFunctionReturnParamsArgs, GetFunctionsFunctionReturnParamsPtr and GetFunctionsFunctionReturnParamsPtrOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionReturnParamsPtrInput` via:
+//
+//	        GetFunctionsFunctionReturnParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetFunctionsFunctionReturnParamsPtrInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionReturnParamsPtrOutput() GetFunctionsFunctionReturnParamsPtrOutput
+	ToGetFunctionsFunctionReturnParamsPtrOutputWithContext(context.Context) GetFunctionsFunctionReturnParamsPtrOutput
+}
+
+type getFunctionsFunctionReturnParamsPtrType GetFunctionsFunctionReturnParamsArgs
+
+func GetFunctionsFunctionReturnParamsPtr(v *GetFunctionsFunctionReturnParamsArgs) GetFunctionsFunctionReturnParamsPtrInput {
+	return (*getFunctionsFunctionReturnParamsPtrType)(v)
+}
+
+func (*getFunctionsFunctionReturnParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFunctionsFunctionReturnParams)(nil)).Elem()
+}
+
+func (i *getFunctionsFunctionReturnParamsPtrType) ToGetFunctionsFunctionReturnParamsPtrOutput() GetFunctionsFunctionReturnParamsPtrOutput {
+	return i.ToGetFunctionsFunctionReturnParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *getFunctionsFunctionReturnParamsPtrType) ToGetFunctionsFunctionReturnParamsPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionReturnParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionReturnParamsPtrOutput)
+}
+
+type GetFunctionsFunctionReturnParamsOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionReturnParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionReturnParams)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionReturnParamsOutput) ToGetFunctionsFunctionReturnParamsOutput() GetFunctionsFunctionReturnParamsOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionReturnParamsOutput) ToGetFunctionsFunctionReturnParamsOutputWithContext(ctx context.Context) GetFunctionsFunctionReturnParamsOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionReturnParamsOutput) ToGetFunctionsFunctionReturnParamsPtrOutput() GetFunctionsFunctionReturnParamsPtrOutput {
+	return o.ToGetFunctionsFunctionReturnParamsPtrOutputWithContext(context.Background())
+}
+
+func (o GetFunctionsFunctionReturnParamsOutput) ToGetFunctionsFunctionReturnParamsPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionReturnParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetFunctionsFunctionReturnParams) *GetFunctionsFunctionReturnParams {
+		return &v
+	}).(GetFunctionsFunctionReturnParamsPtrOutput)
+}
+
+// The array of definitions of the function's parameters:
+func (o GetFunctionsFunctionReturnParamsOutput) Parameters() GetFunctionsFunctionReturnParamsParameterArrayOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParams) []GetFunctionsFunctionReturnParamsParameter {
+		return v.Parameters
+	}).(GetFunctionsFunctionReturnParamsParameterArrayOutput)
+}
+
+type GetFunctionsFunctionReturnParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionReturnParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFunctionsFunctionReturnParams)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionReturnParamsPtrOutput) ToGetFunctionsFunctionReturnParamsPtrOutput() GetFunctionsFunctionReturnParamsPtrOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionReturnParamsPtrOutput) ToGetFunctionsFunctionReturnParamsPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionReturnParamsPtrOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionReturnParamsPtrOutput) Elem() GetFunctionsFunctionReturnParamsOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionReturnParams) GetFunctionsFunctionReturnParams {
+		if v != nil {
+			return *v
+		}
+		var ret GetFunctionsFunctionReturnParams
+		return ret
+	}).(GetFunctionsFunctionReturnParamsOutput)
+}
+
+// The array of definitions of the function's parameters:
+func (o GetFunctionsFunctionReturnParamsPtrOutput) Parameters() GetFunctionsFunctionReturnParamsParameterArrayOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionReturnParams) []GetFunctionsFunctionReturnParamsParameter {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(GetFunctionsFunctionReturnParamsParameterArrayOutput)
+}
+
+type GetFunctionsFunctionReturnParamsParameter struct {
+	// User-provided free-form text description.
+	Comment *string `pulumi:"comment"`
+	// Name of parameter.
+	Name string `pulumi:"name"`
+	// Default value of the parameter.
+	ParameterDefault *string `pulumi:"parameterDefault"`
+	// The mode of the function parameter.
+	ParameterMode *string `pulumi:"parameterMode"`
+	// The type of function parameter (`PARAM` or `COLUMN`).
+	ParameterType *string `pulumi:"parameterType"`
+	// Ordinal position of column (starting at position 0).
+	Position int `pulumi:"position"`
+	// Format of IntervalType.
+	TypeIntervalType *string `pulumi:"typeIntervalType"`
+	// Full data type spec, JSON-serialized.
+	TypeJson *string `pulumi:"typeJson"`
+	// Name of type (INT, STRUCT, MAP, etc.).
+	TypeName string `pulumi:"typeName"`
+	// Digits of precision; required on Create for DecimalTypes.
+	TypePrecision *int `pulumi:"typePrecision"`
+	// Digits to right of decimal; Required on Create for DecimalTypes.
+	TypeScale *int `pulumi:"typeScale"`
+	// Full data type spec, SQL/catalogString text.
+	TypeText string `pulumi:"typeText"`
+}
+
+// GetFunctionsFunctionReturnParamsParameterInput is an input type that accepts GetFunctionsFunctionReturnParamsParameterArgs and GetFunctionsFunctionReturnParamsParameterOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionReturnParamsParameterInput` via:
+//
+//	GetFunctionsFunctionReturnParamsParameterArgs{...}
+type GetFunctionsFunctionReturnParamsParameterInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionReturnParamsParameterOutput() GetFunctionsFunctionReturnParamsParameterOutput
+	ToGetFunctionsFunctionReturnParamsParameterOutputWithContext(context.Context) GetFunctionsFunctionReturnParamsParameterOutput
+}
+
+type GetFunctionsFunctionReturnParamsParameterArgs struct {
+	// User-provided free-form text description.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Name of parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Default value of the parameter.
+	ParameterDefault pulumi.StringPtrInput `pulumi:"parameterDefault"`
+	// The mode of the function parameter.
+	ParameterMode pulumi.StringPtrInput `pulumi:"parameterMode"`
+	// The type of function parameter (`PARAM` or `COLUMN`).
+	ParameterType pulumi.StringPtrInput `pulumi:"parameterType"`
+	// Ordinal position of column (starting at position 0).
+	Position pulumi.IntInput `pulumi:"position"`
+	// Format of IntervalType.
+	TypeIntervalType pulumi.StringPtrInput `pulumi:"typeIntervalType"`
+	// Full data type spec, JSON-serialized.
+	TypeJson pulumi.StringPtrInput `pulumi:"typeJson"`
+	// Name of type (INT, STRUCT, MAP, etc.).
+	TypeName pulumi.StringInput `pulumi:"typeName"`
+	// Digits of precision; required on Create for DecimalTypes.
+	TypePrecision pulumi.IntPtrInput `pulumi:"typePrecision"`
+	// Digits to right of decimal; Required on Create for DecimalTypes.
+	TypeScale pulumi.IntPtrInput `pulumi:"typeScale"`
+	// Full data type spec, SQL/catalogString text.
+	TypeText pulumi.StringInput `pulumi:"typeText"`
+}
+
+func (GetFunctionsFunctionReturnParamsParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionReturnParamsParameter)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionReturnParamsParameterArgs) ToGetFunctionsFunctionReturnParamsParameterOutput() GetFunctionsFunctionReturnParamsParameterOutput {
+	return i.ToGetFunctionsFunctionReturnParamsParameterOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionReturnParamsParameterArgs) ToGetFunctionsFunctionReturnParamsParameterOutputWithContext(ctx context.Context) GetFunctionsFunctionReturnParamsParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionReturnParamsParameterOutput)
+}
+
+// GetFunctionsFunctionReturnParamsParameterArrayInput is an input type that accepts GetFunctionsFunctionReturnParamsParameterArray and GetFunctionsFunctionReturnParamsParameterArrayOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionReturnParamsParameterArrayInput` via:
+//
+//	GetFunctionsFunctionReturnParamsParameterArray{ GetFunctionsFunctionReturnParamsParameterArgs{...} }
+type GetFunctionsFunctionReturnParamsParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionReturnParamsParameterArrayOutput() GetFunctionsFunctionReturnParamsParameterArrayOutput
+	ToGetFunctionsFunctionReturnParamsParameterArrayOutputWithContext(context.Context) GetFunctionsFunctionReturnParamsParameterArrayOutput
+}
+
+type GetFunctionsFunctionReturnParamsParameterArray []GetFunctionsFunctionReturnParamsParameterInput
+
+func (GetFunctionsFunctionReturnParamsParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionsFunctionReturnParamsParameter)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionReturnParamsParameterArray) ToGetFunctionsFunctionReturnParamsParameterArrayOutput() GetFunctionsFunctionReturnParamsParameterArrayOutput {
+	return i.ToGetFunctionsFunctionReturnParamsParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionReturnParamsParameterArray) ToGetFunctionsFunctionReturnParamsParameterArrayOutputWithContext(ctx context.Context) GetFunctionsFunctionReturnParamsParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionReturnParamsParameterArrayOutput)
+}
+
+type GetFunctionsFunctionReturnParamsParameterOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionReturnParamsParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionReturnParamsParameter)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionReturnParamsParameterOutput) ToGetFunctionsFunctionReturnParamsParameterOutput() GetFunctionsFunctionReturnParamsParameterOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionReturnParamsParameterOutput) ToGetFunctionsFunctionReturnParamsParameterOutputWithContext(ctx context.Context) GetFunctionsFunctionReturnParamsParameterOutput {
+	return o
+}
+
+// User-provided free-form text description.
+func (o GetFunctionsFunctionReturnParamsParameterOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParamsParameter) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Name of parameter.
+func (o GetFunctionsFunctionReturnParamsParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParamsParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Default value of the parameter.
+func (o GetFunctionsFunctionReturnParamsParameterOutput) ParameterDefault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParamsParameter) *string { return v.ParameterDefault }).(pulumi.StringPtrOutput)
+}
+
+// The mode of the function parameter.
+func (o GetFunctionsFunctionReturnParamsParameterOutput) ParameterMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParamsParameter) *string { return v.ParameterMode }).(pulumi.StringPtrOutput)
+}
+
+// The type of function parameter (`PARAM` or `COLUMN`).
+func (o GetFunctionsFunctionReturnParamsParameterOutput) ParameterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParamsParameter) *string { return v.ParameterType }).(pulumi.StringPtrOutput)
+}
+
+// Ordinal position of column (starting at position 0).
+func (o GetFunctionsFunctionReturnParamsParameterOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParamsParameter) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// Format of IntervalType.
+func (o GetFunctionsFunctionReturnParamsParameterOutput) TypeIntervalType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParamsParameter) *string { return v.TypeIntervalType }).(pulumi.StringPtrOutput)
+}
+
+// Full data type spec, JSON-serialized.
+func (o GetFunctionsFunctionReturnParamsParameterOutput) TypeJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParamsParameter) *string { return v.TypeJson }).(pulumi.StringPtrOutput)
+}
+
+// Name of type (INT, STRUCT, MAP, etc.).
+func (o GetFunctionsFunctionReturnParamsParameterOutput) TypeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParamsParameter) string { return v.TypeName }).(pulumi.StringOutput)
+}
+
+// Digits of precision; required on Create for DecimalTypes.
+func (o GetFunctionsFunctionReturnParamsParameterOutput) TypePrecision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParamsParameter) *int { return v.TypePrecision }).(pulumi.IntPtrOutput)
+}
+
+// Digits to right of decimal; Required on Create for DecimalTypes.
+func (o GetFunctionsFunctionReturnParamsParameterOutput) TypeScale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParamsParameter) *int { return v.TypeScale }).(pulumi.IntPtrOutput)
+}
+
+// Full data type spec, SQL/catalogString text.
+func (o GetFunctionsFunctionReturnParamsParameterOutput) TypeText() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionReturnParamsParameter) string { return v.TypeText }).(pulumi.StringOutput)
+}
+
+type GetFunctionsFunctionReturnParamsParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionReturnParamsParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionsFunctionReturnParamsParameter)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionReturnParamsParameterArrayOutput) ToGetFunctionsFunctionReturnParamsParameterArrayOutput() GetFunctionsFunctionReturnParamsParameterArrayOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionReturnParamsParameterArrayOutput) ToGetFunctionsFunctionReturnParamsParameterArrayOutputWithContext(ctx context.Context) GetFunctionsFunctionReturnParamsParameterArrayOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionReturnParamsParameterArrayOutput) Index(i pulumi.IntInput) GetFunctionsFunctionReturnParamsParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionsFunctionReturnParamsParameter {
+		return vs[0].([]GetFunctionsFunctionReturnParamsParameter)[vs[1].(int)]
+	}).(GetFunctionsFunctionReturnParamsParameterOutput)
+}
+
+type GetFunctionsFunctionRoutineDependencies struct {
+	Dependencies []GetFunctionsFunctionRoutineDependenciesDependency `pulumi:"dependencies"`
+}
+
+// GetFunctionsFunctionRoutineDependenciesInput is an input type that accepts GetFunctionsFunctionRoutineDependenciesArgs and GetFunctionsFunctionRoutineDependenciesOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionRoutineDependenciesInput` via:
+//
+//	GetFunctionsFunctionRoutineDependenciesArgs{...}
+type GetFunctionsFunctionRoutineDependenciesInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionRoutineDependenciesOutput() GetFunctionsFunctionRoutineDependenciesOutput
+	ToGetFunctionsFunctionRoutineDependenciesOutputWithContext(context.Context) GetFunctionsFunctionRoutineDependenciesOutput
+}
+
+type GetFunctionsFunctionRoutineDependenciesArgs struct {
+	Dependencies GetFunctionsFunctionRoutineDependenciesDependencyArrayInput `pulumi:"dependencies"`
+}
+
+func (GetFunctionsFunctionRoutineDependenciesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionRoutineDependencies)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesArgs) ToGetFunctionsFunctionRoutineDependenciesOutput() GetFunctionsFunctionRoutineDependenciesOutput {
+	return i.ToGetFunctionsFunctionRoutineDependenciesOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesArgs) ToGetFunctionsFunctionRoutineDependenciesOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionRoutineDependenciesOutput)
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesArgs) ToGetFunctionsFunctionRoutineDependenciesPtrOutput() GetFunctionsFunctionRoutineDependenciesPtrOutput {
+	return i.ToGetFunctionsFunctionRoutineDependenciesPtrOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesArgs) ToGetFunctionsFunctionRoutineDependenciesPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionRoutineDependenciesOutput).ToGetFunctionsFunctionRoutineDependenciesPtrOutputWithContext(ctx)
+}
+
+// GetFunctionsFunctionRoutineDependenciesPtrInput is an input type that accepts GetFunctionsFunctionRoutineDependenciesArgs, GetFunctionsFunctionRoutineDependenciesPtr and GetFunctionsFunctionRoutineDependenciesPtrOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionRoutineDependenciesPtrInput` via:
+//
+//	        GetFunctionsFunctionRoutineDependenciesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetFunctionsFunctionRoutineDependenciesPtrInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionRoutineDependenciesPtrOutput() GetFunctionsFunctionRoutineDependenciesPtrOutput
+	ToGetFunctionsFunctionRoutineDependenciesPtrOutputWithContext(context.Context) GetFunctionsFunctionRoutineDependenciesPtrOutput
+}
+
+type getFunctionsFunctionRoutineDependenciesPtrType GetFunctionsFunctionRoutineDependenciesArgs
+
+func GetFunctionsFunctionRoutineDependenciesPtr(v *GetFunctionsFunctionRoutineDependenciesArgs) GetFunctionsFunctionRoutineDependenciesPtrInput {
+	return (*getFunctionsFunctionRoutineDependenciesPtrType)(v)
+}
+
+func (*getFunctionsFunctionRoutineDependenciesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFunctionsFunctionRoutineDependencies)(nil)).Elem()
+}
+
+func (i *getFunctionsFunctionRoutineDependenciesPtrType) ToGetFunctionsFunctionRoutineDependenciesPtrOutput() GetFunctionsFunctionRoutineDependenciesPtrOutput {
+	return i.ToGetFunctionsFunctionRoutineDependenciesPtrOutputWithContext(context.Background())
+}
+
+func (i *getFunctionsFunctionRoutineDependenciesPtrType) ToGetFunctionsFunctionRoutineDependenciesPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionRoutineDependenciesPtrOutput)
+}
+
+type GetFunctionsFunctionRoutineDependenciesOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionRoutineDependenciesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionRoutineDependencies)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesOutput) ToGetFunctionsFunctionRoutineDependenciesOutput() GetFunctionsFunctionRoutineDependenciesOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesOutput) ToGetFunctionsFunctionRoutineDependenciesOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesOutput) ToGetFunctionsFunctionRoutineDependenciesPtrOutput() GetFunctionsFunctionRoutineDependenciesPtrOutput {
+	return o.ToGetFunctionsFunctionRoutineDependenciesPtrOutputWithContext(context.Background())
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesOutput) ToGetFunctionsFunctionRoutineDependenciesPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetFunctionsFunctionRoutineDependencies) *GetFunctionsFunctionRoutineDependencies {
+		return &v
+	}).(GetFunctionsFunctionRoutineDependenciesPtrOutput)
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesOutput) Dependencies() GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionRoutineDependencies) []GetFunctionsFunctionRoutineDependenciesDependency {
+		return v.Dependencies
+	}).(GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput)
+}
+
+type GetFunctionsFunctionRoutineDependenciesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionRoutineDependenciesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFunctionsFunctionRoutineDependencies)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesPtrOutput) ToGetFunctionsFunctionRoutineDependenciesPtrOutput() GetFunctionsFunctionRoutineDependenciesPtrOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesPtrOutput) ToGetFunctionsFunctionRoutineDependenciesPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesPtrOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesPtrOutput) Elem() GetFunctionsFunctionRoutineDependenciesOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionRoutineDependencies) GetFunctionsFunctionRoutineDependencies {
+		if v != nil {
+			return *v
+		}
+		var ret GetFunctionsFunctionRoutineDependencies
+		return ret
+	}).(GetFunctionsFunctionRoutineDependenciesOutput)
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesPtrOutput) Dependencies() GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionRoutineDependencies) []GetFunctionsFunctionRoutineDependenciesDependency {
+		if v == nil {
+			return nil
+		}
+		return v.Dependencies
+	}).(GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput)
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependency struct {
+	Function *GetFunctionsFunctionRoutineDependenciesDependencyFunction `pulumi:"function"`
+	Table    *GetFunctionsFunctionRoutineDependenciesDependencyTable    `pulumi:"table"`
+}
+
+// GetFunctionsFunctionRoutineDependenciesDependencyInput is an input type that accepts GetFunctionsFunctionRoutineDependenciesDependencyArgs and GetFunctionsFunctionRoutineDependenciesDependencyOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionRoutineDependenciesDependencyInput` via:
+//
+//	GetFunctionsFunctionRoutineDependenciesDependencyArgs{...}
+type GetFunctionsFunctionRoutineDependenciesDependencyInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionRoutineDependenciesDependencyOutput() GetFunctionsFunctionRoutineDependenciesDependencyOutput
+	ToGetFunctionsFunctionRoutineDependenciesDependencyOutputWithContext(context.Context) GetFunctionsFunctionRoutineDependenciesDependencyOutput
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependencyArgs struct {
+	Function GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrInput `pulumi:"function"`
+	Table    GetFunctionsFunctionRoutineDependenciesDependencyTablePtrInput    `pulumi:"table"`
+}
+
+func (GetFunctionsFunctionRoutineDependenciesDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesDependency)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesDependencyArgs) ToGetFunctionsFunctionRoutineDependenciesDependencyOutput() GetFunctionsFunctionRoutineDependenciesDependencyOutput {
+	return i.ToGetFunctionsFunctionRoutineDependenciesDependencyOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesDependencyArgs) ToGetFunctionsFunctionRoutineDependenciesDependencyOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionRoutineDependenciesDependencyOutput)
+}
+
+// GetFunctionsFunctionRoutineDependenciesDependencyArrayInput is an input type that accepts GetFunctionsFunctionRoutineDependenciesDependencyArray and GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionRoutineDependenciesDependencyArrayInput` via:
+//
+//	GetFunctionsFunctionRoutineDependenciesDependencyArray{ GetFunctionsFunctionRoutineDependenciesDependencyArgs{...} }
+type GetFunctionsFunctionRoutineDependenciesDependencyArrayInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionRoutineDependenciesDependencyArrayOutput() GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput
+	ToGetFunctionsFunctionRoutineDependenciesDependencyArrayOutputWithContext(context.Context) GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependencyArray []GetFunctionsFunctionRoutineDependenciesDependencyInput
+
+func (GetFunctionsFunctionRoutineDependenciesDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionsFunctionRoutineDependenciesDependency)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesDependencyArray) ToGetFunctionsFunctionRoutineDependenciesDependencyArrayOutput() GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput {
+	return i.ToGetFunctionsFunctionRoutineDependenciesDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesDependencyArray) ToGetFunctionsFunctionRoutineDependenciesDependencyArrayOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput)
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependencyOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionRoutineDependenciesDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesDependency)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyOutput() GetFunctionsFunctionRoutineDependenciesDependencyOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyOutput) Function() GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionRoutineDependenciesDependency) *GetFunctionsFunctionRoutineDependenciesDependencyFunction {
+		return v.Function
+	}).(GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput)
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyOutput) Table() GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionRoutineDependenciesDependency) *GetFunctionsFunctionRoutineDependenciesDependencyTable {
+		return v.Table
+	}).(GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput)
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFunctionsFunctionRoutineDependenciesDependency)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyArrayOutput() GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyArrayOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput) Index(i pulumi.IntInput) GetFunctionsFunctionRoutineDependenciesDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionsFunctionRoutineDependenciesDependency {
+		return vs[0].([]GetFunctionsFunctionRoutineDependenciesDependency)[vs[1].(int)]
+	}).(GetFunctionsFunctionRoutineDependenciesDependencyOutput)
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependencyFunction struct {
+	FunctionFullName string `pulumi:"functionFullName"`
+}
+
+// GetFunctionsFunctionRoutineDependenciesDependencyFunctionInput is an input type that accepts GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs and GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionRoutineDependenciesDependencyFunctionInput` via:
+//
+//	GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs{...}
+type GetFunctionsFunctionRoutineDependenciesDependencyFunctionInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput() GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput
+	ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionOutputWithContext(context.Context) GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs struct {
+	FunctionFullName pulumi.StringInput `pulumi:"functionFullName"`
+}
+
+func (GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesDependencyFunction)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs) ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput() GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput {
+	return i.ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs) ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput)
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs) ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput() GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput {
+	return i.ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs) ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput).ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutputWithContext(ctx)
+}
+
+// GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrInput is an input type that accepts GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs, GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtr and GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrInput` via:
+//
+//	        GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput() GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput
+	ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutputWithContext(context.Context) GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput
+}
+
+type getFunctionsFunctionRoutineDependenciesDependencyFunctionPtrType GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs
+
+func GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtr(v *GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs) GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrInput {
+	return (*getFunctionsFunctionRoutineDependenciesDependencyFunctionPtrType)(v)
+}
+
+func (*getFunctionsFunctionRoutineDependenciesDependencyFunctionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFunctionsFunctionRoutineDependenciesDependencyFunction)(nil)).Elem()
+}
+
+func (i *getFunctionsFunctionRoutineDependenciesDependencyFunctionPtrType) ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput() GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput {
+	return i.ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i *getFunctionsFunctionRoutineDependenciesDependencyFunctionPtrType) ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput)
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesDependencyFunction)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput() GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput() GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput {
+	return o.ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutputWithContext(context.Background())
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetFunctionsFunctionRoutineDependenciesDependencyFunction) *GetFunctionsFunctionRoutineDependenciesDependencyFunction {
+		return &v
+	}).(GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput)
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput) FunctionFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionRoutineDependenciesDependencyFunction) string { return v.FunctionFullName }).(pulumi.StringOutput)
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFunctionsFunctionRoutineDependenciesDependencyFunction)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput() GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput) Elem() GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionRoutineDependenciesDependencyFunction) GetFunctionsFunctionRoutineDependenciesDependencyFunction {
+		if v != nil {
+			return *v
+		}
+		var ret GetFunctionsFunctionRoutineDependenciesDependencyFunction
+		return ret
+	}).(GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput)
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput) FunctionFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionRoutineDependenciesDependencyFunction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FunctionFullName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependencyTable struct {
+	TableFullName string `pulumi:"tableFullName"`
+}
+
+// GetFunctionsFunctionRoutineDependenciesDependencyTableInput is an input type that accepts GetFunctionsFunctionRoutineDependenciesDependencyTableArgs and GetFunctionsFunctionRoutineDependenciesDependencyTableOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionRoutineDependenciesDependencyTableInput` via:
+//
+//	GetFunctionsFunctionRoutineDependenciesDependencyTableArgs{...}
+type GetFunctionsFunctionRoutineDependenciesDependencyTableInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionRoutineDependenciesDependencyTableOutput() GetFunctionsFunctionRoutineDependenciesDependencyTableOutput
+	ToGetFunctionsFunctionRoutineDependenciesDependencyTableOutputWithContext(context.Context) GetFunctionsFunctionRoutineDependenciesDependencyTableOutput
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependencyTableArgs struct {
+	TableFullName pulumi.StringInput `pulumi:"tableFullName"`
+}
+
+func (GetFunctionsFunctionRoutineDependenciesDependencyTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesDependencyTable)(nil)).Elem()
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesDependencyTableArgs) ToGetFunctionsFunctionRoutineDependenciesDependencyTableOutput() GetFunctionsFunctionRoutineDependenciesDependencyTableOutput {
+	return i.ToGetFunctionsFunctionRoutineDependenciesDependencyTableOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesDependencyTableArgs) ToGetFunctionsFunctionRoutineDependenciesDependencyTableOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionRoutineDependenciesDependencyTableOutput)
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesDependencyTableArgs) ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput() GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput {
+	return i.ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutputWithContext(context.Background())
+}
+
+func (i GetFunctionsFunctionRoutineDependenciesDependencyTableArgs) ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionRoutineDependenciesDependencyTableOutput).ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutputWithContext(ctx)
+}
+
+// GetFunctionsFunctionRoutineDependenciesDependencyTablePtrInput is an input type that accepts GetFunctionsFunctionRoutineDependenciesDependencyTableArgs, GetFunctionsFunctionRoutineDependenciesDependencyTablePtr and GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput values.
+// You can construct a concrete instance of `GetFunctionsFunctionRoutineDependenciesDependencyTablePtrInput` via:
+//
+//	        GetFunctionsFunctionRoutineDependenciesDependencyTableArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetFunctionsFunctionRoutineDependenciesDependencyTablePtrInput interface {
+	pulumi.Input
+
+	ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput() GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput
+	ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutputWithContext(context.Context) GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput
+}
+
+type getFunctionsFunctionRoutineDependenciesDependencyTablePtrType GetFunctionsFunctionRoutineDependenciesDependencyTableArgs
+
+func GetFunctionsFunctionRoutineDependenciesDependencyTablePtr(v *GetFunctionsFunctionRoutineDependenciesDependencyTableArgs) GetFunctionsFunctionRoutineDependenciesDependencyTablePtrInput {
+	return (*getFunctionsFunctionRoutineDependenciesDependencyTablePtrType)(v)
+}
+
+func (*getFunctionsFunctionRoutineDependenciesDependencyTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFunctionsFunctionRoutineDependenciesDependencyTable)(nil)).Elem()
+}
+
+func (i *getFunctionsFunctionRoutineDependenciesDependencyTablePtrType) ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput() GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput {
+	return i.ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutputWithContext(context.Background())
+}
+
+func (i *getFunctionsFunctionRoutineDependenciesDependencyTablePtrType) ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput)
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependencyTableOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionRoutineDependenciesDependencyTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesDependencyTable)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyTableOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyTableOutput() GetFunctionsFunctionRoutineDependenciesDependencyTableOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyTableOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyTableOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyTableOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyTableOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput() GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput {
+	return o.ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutputWithContext(context.Background())
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyTableOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetFunctionsFunctionRoutineDependenciesDependencyTable) *GetFunctionsFunctionRoutineDependenciesDependencyTable {
+		return &v
+	}).(GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput)
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyTableOutput) TableFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionsFunctionRoutineDependenciesDependencyTable) string { return v.TableFullName }).(pulumi.StringOutput)
+}
+
+type GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFunctionsFunctionRoutineDependenciesDependencyTable)(nil)).Elem()
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput() GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput) ToGetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutputWithContext(ctx context.Context) GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput {
+	return o
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput) Elem() GetFunctionsFunctionRoutineDependenciesDependencyTableOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionRoutineDependenciesDependencyTable) GetFunctionsFunctionRoutineDependenciesDependencyTable {
+		if v != nil {
+			return *v
+		}
+		var ret GetFunctionsFunctionRoutineDependenciesDependencyTable
+		return ret
+	}).(GetFunctionsFunctionRoutineDependenciesDependencyTableOutput)
+}
+
+func (o GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput) TableFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetFunctionsFunctionRoutineDependenciesDependencyTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TableFullName
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetInstancePoolPoolInfo struct {
 	AwsAttributes                      *GetInstancePoolPoolInfoAwsAttributes               `pulumi:"awsAttributes"`
 	AzureAttributes                    *GetInstancePoolPoolInfoAzureAttributes             `pulumi:"azureAttributes"`
@@ -49234,6 +50767,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLocationExternalLocationInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetExternalLocationExternalLocationInfoEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionInput)(nil)).Elem(), GetFunctionsFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionArrayInput)(nil)).Elem(), GetFunctionsFunctionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionInputParamsInput)(nil)).Elem(), GetFunctionsFunctionInputParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionInputParamsPtrInput)(nil)).Elem(), GetFunctionsFunctionInputParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionInputParamsParameterInput)(nil)).Elem(), GetFunctionsFunctionInputParamsParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionInputParamsParameterArrayInput)(nil)).Elem(), GetFunctionsFunctionInputParamsParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionReturnParamsInput)(nil)).Elem(), GetFunctionsFunctionReturnParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionReturnParamsPtrInput)(nil)).Elem(), GetFunctionsFunctionReturnParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionReturnParamsParameterInput)(nil)).Elem(), GetFunctionsFunctionReturnParamsParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionReturnParamsParameterArrayInput)(nil)).Elem(), GetFunctionsFunctionReturnParamsParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesInput)(nil)).Elem(), GetFunctionsFunctionRoutineDependenciesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesPtrInput)(nil)).Elem(), GetFunctionsFunctionRoutineDependenciesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesDependencyInput)(nil)).Elem(), GetFunctionsFunctionRoutineDependenciesDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesDependencyArrayInput)(nil)).Elem(), GetFunctionsFunctionRoutineDependenciesDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesDependencyFunctionInput)(nil)).Elem(), GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrInput)(nil)).Elem(), GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesDependencyTableInput)(nil)).Elem(), GetFunctionsFunctionRoutineDependenciesDependencyTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionRoutineDependenciesDependencyTablePtrInput)(nil)).Elem(), GetFunctionsFunctionRoutineDependenciesDependencyTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoInput)(nil)).Elem(), GetInstancePoolPoolInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoPtrInput)(nil)).Elem(), GetInstancePoolPoolInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoAwsAttributesInput)(nil)).Elem(), GetInstancePoolPoolInfoAwsAttributesArgs{})
@@ -49816,6 +51367,24 @@ func init() {
 	pulumi.RegisterOutputType(GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsOutput{})
 	pulumi.RegisterOutputType(GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsPtrOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionInputParamsOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionInputParamsPtrOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionInputParamsParameterOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionInputParamsParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionReturnParamsOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionReturnParamsPtrOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionReturnParamsParameterOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionReturnParamsParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionRoutineDependenciesOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionRoutineDependenciesPtrOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionRoutineDependenciesDependencyOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionRoutineDependenciesDependencyArrayOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionRoutineDependenciesDependencyFunctionOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionRoutineDependenciesDependencyFunctionPtrOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionRoutineDependenciesDependencyTableOutput{})
+	pulumi.RegisterOutputType(GetFunctionsFunctionRoutineDependenciesDependencyTablePtrOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolPoolInfoOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolPoolInfoPtrOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolPoolInfoAwsAttributesOutput{})

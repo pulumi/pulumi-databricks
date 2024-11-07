@@ -40,6 +40,8 @@ import com.pulumi.databricks.inputs.GetExternalLocationArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationPlainArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationsPlainArgs;
+import com.pulumi.databricks.inputs.GetFunctionsArgs;
+import com.pulumi.databricks.inputs.GetFunctionsPlainArgs;
 import com.pulumi.databricks.inputs.GetGroupArgs;
 import com.pulumi.databricks.inputs.GetGroupPlainArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolArgs;
@@ -130,6 +132,7 @@ import com.pulumi.databricks.outputs.GetDbfsFileResult;
 import com.pulumi.databricks.outputs.GetDirectoryResult;
 import com.pulumi.databricks.outputs.GetExternalLocationResult;
 import com.pulumi.databricks.outputs.GetExternalLocationsResult;
+import com.pulumi.databricks.outputs.GetFunctionsResult;
 import com.pulumi.databricks.outputs.GetGroupResult;
 import com.pulumi.databricks.outputs.GetInstancePoolResult;
 import com.pulumi.databricks.outputs.GetInstanceProfilesResult;
@@ -4971,6 +4974,222 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetExternalLocationsResult> getExternalLocationsPlain(GetExternalLocationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getExternalLocations:getExternalLocations", TypeShape.of(GetExternalLocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+     * 
+     * ## Example Usage
+     * 
+     * List all functions defined in a specific schema (`main.default` in this example):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetFunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getFunctions(GetFunctionsArgs.builder()
+     *             .catalogName("main")
+     *             .schemaName("default")
+     *             .build());
+     * 
+     *         ctx.export("allExternalLocations", all.applyValue(getFunctionsResult -> getFunctionsResult.functions()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to get information about a single schema
+     * 
+     */
+    public static Output<GetFunctionsResult> getFunctions(GetFunctionsArgs args) {
+        return getFunctions(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+     * 
+     * ## Example Usage
+     * 
+     * List all functions defined in a specific schema (`main.default` in this example):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetFunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getFunctions(GetFunctionsArgs.builder()
+     *             .catalogName("main")
+     *             .schemaName("default")
+     *             .build());
+     * 
+     *         ctx.export("allExternalLocations", all.applyValue(getFunctionsResult -> getFunctionsResult.functions()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to get information about a single schema
+     * 
+     */
+    public static CompletableFuture<GetFunctionsResult> getFunctionsPlain(GetFunctionsPlainArgs args) {
+        return getFunctionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+     * 
+     * ## Example Usage
+     * 
+     * List all functions defined in a specific schema (`main.default` in this example):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetFunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getFunctions(GetFunctionsArgs.builder()
+     *             .catalogName("main")
+     *             .schemaName("default")
+     *             .build());
+     * 
+     *         ctx.export("allExternalLocations", all.applyValue(getFunctionsResult -> getFunctionsResult.functions()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to get information about a single schema
+     * 
+     */
+    public static Output<GetFunctionsResult> getFunctions(GetFunctionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getFunctions:getFunctions", TypeShape.of(GetFunctionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+     * 
+     * ## Example Usage
+     * 
+     * List all functions defined in a specific schema (`main.default` in this example):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetFunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getFunctions(GetFunctionsArgs.builder()
+     *             .catalogName("main")
+     *             .schemaName("default")
+     *             .build());
+     * 
+     *         ctx.export("allExternalLocations", all.applyValue(getFunctionsResult -> getFunctionsResult.functions()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to get information about a single schema
+     * 
+     */
+    public static CompletableFuture<GetFunctionsResult> getFunctionsPlain(GetFunctionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getFunctions:getFunctions", TypeShape.of(GetFunctionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -16127,6 +16346,10 @@ public final class DatabricksFunctions {
      * 
      * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
      * 
+     * ## Plugin Framework Migration
+     * 
+     * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`.
+     * 
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -16182,6 +16405,10 @@ public final class DatabricksFunctions {
      * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+     * 
+     * ## Plugin Framework Migration
+     * 
+     * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`.
      * 
      * ## Example Usage
      * 
@@ -16239,6 +16466,10 @@ public final class DatabricksFunctions {
      * 
      * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
      * 
+     * ## Plugin Framework Migration
+     * 
+     * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`.
+     * 
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -16294,6 +16525,10 @@ public final class DatabricksFunctions {
      * &gt; **Note** This data source can only be used with a workspace-level provider!
      * 
      * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+     * 
+     * ## Plugin Framework Migration
+     * 
+     * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`.
      * 
      * ## Example Usage
      * 

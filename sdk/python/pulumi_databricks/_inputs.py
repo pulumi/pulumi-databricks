@@ -1099,6 +1099,24 @@ __all__ = [
     'GetExternalLocationExternalLocationInfoEncryptionDetailsArgsDict',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgsDict',
+    'GetFunctionsFunctionArgs',
+    'GetFunctionsFunctionArgsDict',
+    'GetFunctionsFunctionInputParamsArgs',
+    'GetFunctionsFunctionInputParamsArgsDict',
+    'GetFunctionsFunctionInputParamsParameterArgs',
+    'GetFunctionsFunctionInputParamsParameterArgsDict',
+    'GetFunctionsFunctionReturnParamsArgs',
+    'GetFunctionsFunctionReturnParamsArgsDict',
+    'GetFunctionsFunctionReturnParamsParameterArgs',
+    'GetFunctionsFunctionReturnParamsParameterArgsDict',
+    'GetFunctionsFunctionRoutineDependenciesArgs',
+    'GetFunctionsFunctionRoutineDependenciesArgsDict',
+    'GetFunctionsFunctionRoutineDependenciesDependencyArgs',
+    'GetFunctionsFunctionRoutineDependenciesDependencyArgsDict',
+    'GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs',
+    'GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgsDict',
+    'GetFunctionsFunctionRoutineDependenciesDependencyTableArgs',
+    'GetFunctionsFunctionRoutineDependenciesDependencyTableArgsDict',
     'GetInstancePoolPoolInfoArgs',
     'GetInstancePoolPoolInfoArgsDict',
     'GetInstancePoolPoolInfoAwsAttributesArgs',
@@ -38896,6 +38914,1281 @@ class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetai
     @aws_kms_key_arn.setter
     def aws_kms_key_arn(self, value: Optional[str]):
         pulumi.set(self, "aws_kms_key_arn", value)
+
+
+if not MYPY:
+    class GetFunctionsFunctionArgsDict(TypedDict):
+        browse_only: NotRequired[bool]
+        """
+        Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
+        """
+        catalog_name: NotRequired[str]
+        """
+        Name of databricks_catalog.
+        """
+        comment: NotRequired[str]
+        """
+        User-provided free-form text description.
+        """
+        created_at: NotRequired[int]
+        """
+        Time at which this function was created, in epoch milliseconds.
+        """
+        created_by: NotRequired[str]
+        """
+        Username of function creator.
+        """
+        data_type: NotRequired[str]
+        """
+        Scalar function return data type.
+        """
+        external_language: NotRequired[str]
+        """
+        External function language.
+        """
+        external_name: NotRequired[str]
+        """
+        External function name.
+        """
+        full_data_type: NotRequired[str]
+        """
+        Pretty printed function data type.
+        """
+        full_name: NotRequired[str]
+        """
+        Full name of function, in form of catalog_name.schema_name.function__name
+        """
+        function_id: NotRequired[str]
+        """
+        Id of Function, relative to parent schema.
+        """
+        input_params: NotRequired['GetFunctionsFunctionInputParamsArgsDict']
+        """
+        object describing input parameters. Consists of the single attribute:
+        """
+        is_deterministic: NotRequired[bool]
+        """
+        Boolean flag specifying whether the function is deterministic.
+        """
+        is_null_call: NotRequired[bool]
+        """
+        Boolean flag whether function null call.
+        """
+        metastore_id: NotRequired[str]
+        """
+        Unique identifier of parent metastore.
+        """
+        name: NotRequired[str]
+        """
+        Name of parameter.
+        """
+        owner: NotRequired[str]
+        """
+        Username of current owner of function.
+        """
+        parameter_style: NotRequired[str]
+        """
+        Function parameter style. `S` is the value for SQL.
+        """
+        properties: NotRequired[str]
+        """
+        JSON-serialized key-value pair map, encoded (escaped) as a string.
+        """
+        return_params: NotRequired['GetFunctionsFunctionReturnParamsArgsDict']
+        """
+        Table function return parameters.  See `input_params` for description.
+        """
+        routine_body: NotRequired[str]
+        """
+        Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
+        """
+        routine_definition: NotRequired[str]
+        """
+        Function body.
+        """
+        routine_dependencies: NotRequired['GetFunctionsFunctionRoutineDependenciesArgsDict']
+        """
+        Function dependencies.
+        """
+        schema_name: NotRequired[str]
+        """
+        Name of databricks_schema.
+        """
+        security_type: NotRequired[str]
+        """
+        Function security type. (Enum: `DEFINER`).
+        """
+        specific_name: NotRequired[str]
+        """
+        Specific name of the function; Reserved for future use.
+        """
+        sql_data_access: NotRequired[str]
+        """
+        Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+        """
+        sql_path: NotRequired[str]
+        """
+        List of schemes whose objects can be referenced without qualification.
+        """
+        updated_at: NotRequired[int]
+        """
+        Time at which this function was created, in epoch milliseconds.
+        """
+        updated_by: NotRequired[str]
+        """
+        Username of user who last modified function.
+        """
+elif False:
+    GetFunctionsFunctionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFunctionsFunctionArgs:
+    def __init__(__self__, *,
+                 browse_only: Optional[bool] = None,
+                 catalog_name: Optional[str] = None,
+                 comment: Optional[str] = None,
+                 created_at: Optional[int] = None,
+                 created_by: Optional[str] = None,
+                 data_type: Optional[str] = None,
+                 external_language: Optional[str] = None,
+                 external_name: Optional[str] = None,
+                 full_data_type: Optional[str] = None,
+                 full_name: Optional[str] = None,
+                 function_id: Optional[str] = None,
+                 input_params: Optional['GetFunctionsFunctionInputParamsArgs'] = None,
+                 is_deterministic: Optional[bool] = None,
+                 is_null_call: Optional[bool] = None,
+                 metastore_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 owner: Optional[str] = None,
+                 parameter_style: Optional[str] = None,
+                 properties: Optional[str] = None,
+                 return_params: Optional['GetFunctionsFunctionReturnParamsArgs'] = None,
+                 routine_body: Optional[str] = None,
+                 routine_definition: Optional[str] = None,
+                 routine_dependencies: Optional['GetFunctionsFunctionRoutineDependenciesArgs'] = None,
+                 schema_name: Optional[str] = None,
+                 security_type: Optional[str] = None,
+                 specific_name: Optional[str] = None,
+                 sql_data_access: Optional[str] = None,
+                 sql_path: Optional[str] = None,
+                 updated_at: Optional[int] = None,
+                 updated_by: Optional[str] = None):
+        """
+        :param bool browse_only: Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
+        :param str catalog_name: Name of databricks_catalog.
+        :param str comment: User-provided free-form text description.
+        :param int created_at: Time at which this function was created, in epoch milliseconds.
+        :param str created_by: Username of function creator.
+        :param str data_type: Scalar function return data type.
+        :param str external_language: External function language.
+        :param str external_name: External function name.
+        :param str full_data_type: Pretty printed function data type.
+        :param str full_name: Full name of function, in form of catalog_name.schema_name.function__name
+        :param str function_id: Id of Function, relative to parent schema.
+        :param 'GetFunctionsFunctionInputParamsArgs' input_params: object describing input parameters. Consists of the single attribute:
+        :param bool is_deterministic: Boolean flag specifying whether the function is deterministic.
+        :param bool is_null_call: Boolean flag whether function null call.
+        :param str metastore_id: Unique identifier of parent metastore.
+        :param str name: Name of parameter.
+        :param str owner: Username of current owner of function.
+        :param str parameter_style: Function parameter style. `S` is the value for SQL.
+        :param str properties: JSON-serialized key-value pair map, encoded (escaped) as a string.
+        :param 'GetFunctionsFunctionReturnParamsArgs' return_params: Table function return parameters.  See `input_params` for description.
+        :param str routine_body: Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
+        :param str routine_definition: Function body.
+        :param 'GetFunctionsFunctionRoutineDependenciesArgs' routine_dependencies: Function dependencies.
+        :param str schema_name: Name of databricks_schema.
+        :param str security_type: Function security type. (Enum: `DEFINER`).
+        :param str specific_name: Specific name of the function; Reserved for future use.
+        :param str sql_data_access: Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+        :param str sql_path: List of schemes whose objects can be referenced without qualification.
+        :param int updated_at: Time at which this function was created, in epoch milliseconds.
+        :param str updated_by: Username of user who last modified function.
+        """
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if external_language is not None:
+            pulumi.set(__self__, "external_language", external_language)
+        if external_name is not None:
+            pulumi.set(__self__, "external_name", external_name)
+        if full_data_type is not None:
+            pulumi.set(__self__, "full_data_type", full_data_type)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
+        if function_id is not None:
+            pulumi.set(__self__, "function_id", function_id)
+        if input_params is not None:
+            pulumi.set(__self__, "input_params", input_params)
+        if is_deterministic is not None:
+            pulumi.set(__self__, "is_deterministic", is_deterministic)
+        if is_null_call is not None:
+            pulumi.set(__self__, "is_null_call", is_null_call)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if parameter_style is not None:
+            pulumi.set(__self__, "parameter_style", parameter_style)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if return_params is not None:
+            pulumi.set(__self__, "return_params", return_params)
+        if routine_body is not None:
+            pulumi.set(__self__, "routine_body", routine_body)
+        if routine_definition is not None:
+            pulumi.set(__self__, "routine_definition", routine_definition)
+        if routine_dependencies is not None:
+            pulumi.set(__self__, "routine_dependencies", routine_dependencies)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
+        if security_type is not None:
+            pulumi.set(__self__, "security_type", security_type)
+        if specific_name is not None:
+            pulumi.set(__self__, "specific_name", specific_name)
+        if sql_data_access is not None:
+            pulumi.set(__self__, "sql_data_access", sql_data_access)
+        if sql_path is not None:
+            pulumi.set(__self__, "sql_path", sql_path)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+
+    @property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[bool]:
+        """
+        Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
+        """
+        return pulumi.get(self, "browse_only")
+
+    @browse_only.setter
+    def browse_only(self, value: Optional[bool]):
+        pulumi.set(self, "browse_only", value)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[str]:
+        """
+        Name of databricks_catalog.
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[str]):
+        pulumi.set(self, "catalog_name", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        User-provided free-form text description.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[str]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[int]:
+        """
+        Time at which this function was created, in epoch milliseconds.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[int]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        Username of function creator.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[str]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[str]:
+        """
+        Scalar function return data type.
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[str]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter(name="externalLanguage")
+    def external_language(self) -> Optional[str]:
+        """
+        External function language.
+        """
+        return pulumi.get(self, "external_language")
+
+    @external_language.setter
+    def external_language(self, value: Optional[str]):
+        pulumi.set(self, "external_language", value)
+
+    @property
+    @pulumi.getter(name="externalName")
+    def external_name(self) -> Optional[str]:
+        """
+        External function name.
+        """
+        return pulumi.get(self, "external_name")
+
+    @external_name.setter
+    def external_name(self, value: Optional[str]):
+        pulumi.set(self, "external_name", value)
+
+    @property
+    @pulumi.getter(name="fullDataType")
+    def full_data_type(self) -> Optional[str]:
+        """
+        Pretty printed function data type.
+        """
+        return pulumi.get(self, "full_data_type")
+
+    @full_data_type.setter
+    def full_data_type(self, value: Optional[str]):
+        pulumi.set(self, "full_data_type", value)
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[str]:
+        """
+        Full name of function, in form of catalog_name.schema_name.function__name
+        """
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[str]):
+        pulumi.set(self, "full_name", value)
+
+    @property
+    @pulumi.getter(name="functionId")
+    def function_id(self) -> Optional[str]:
+        """
+        Id of Function, relative to parent schema.
+        """
+        return pulumi.get(self, "function_id")
+
+    @function_id.setter
+    def function_id(self, value: Optional[str]):
+        pulumi.set(self, "function_id", value)
+
+    @property
+    @pulumi.getter(name="inputParams")
+    def input_params(self) -> Optional['GetFunctionsFunctionInputParamsArgs']:
+        """
+        object describing input parameters. Consists of the single attribute:
+        """
+        return pulumi.get(self, "input_params")
+
+    @input_params.setter
+    def input_params(self, value: Optional['GetFunctionsFunctionInputParamsArgs']):
+        pulumi.set(self, "input_params", value)
+
+    @property
+    @pulumi.getter(name="isDeterministic")
+    def is_deterministic(self) -> Optional[bool]:
+        """
+        Boolean flag specifying whether the function is deterministic.
+        """
+        return pulumi.get(self, "is_deterministic")
+
+    @is_deterministic.setter
+    def is_deterministic(self, value: Optional[bool]):
+        pulumi.set(self, "is_deterministic", value)
+
+    @property
+    @pulumi.getter(name="isNullCall")
+    def is_null_call(self) -> Optional[bool]:
+        """
+        Boolean flag whether function null call.
+        """
+        return pulumi.get(self, "is_null_call")
+
+    @is_null_call.setter
+    def is_null_call(self, value: Optional[bool]):
+        pulumi.set(self, "is_null_call", value)
+
+    @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[str]:
+        """
+        Unique identifier of parent metastore.
+        """
+        return pulumi.get(self, "metastore_id")
+
+    @metastore_id.setter
+    def metastore_id(self, value: Optional[str]):
+        pulumi.set(self, "metastore_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[str]:
+        """
+        Username of current owner of function.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[str]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter(name="parameterStyle")
+    def parameter_style(self) -> Optional[str]:
+        """
+        Function parameter style. `S` is the value for SQL.
+        """
+        return pulumi.get(self, "parameter_style")
+
+    @parameter_style.setter
+    def parameter_style(self, value: Optional[str]):
+        pulumi.set(self, "parameter_style", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[str]:
+        """
+        JSON-serialized key-value pair map, encoded (escaped) as a string.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[str]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="returnParams")
+    def return_params(self) -> Optional['GetFunctionsFunctionReturnParamsArgs']:
+        """
+        Table function return parameters.  See `input_params` for description.
+        """
+        return pulumi.get(self, "return_params")
+
+    @return_params.setter
+    def return_params(self, value: Optional['GetFunctionsFunctionReturnParamsArgs']):
+        pulumi.set(self, "return_params", value)
+
+    @property
+    @pulumi.getter(name="routineBody")
+    def routine_body(self) -> Optional[str]:
+        """
+        Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
+        """
+        return pulumi.get(self, "routine_body")
+
+    @routine_body.setter
+    def routine_body(self, value: Optional[str]):
+        pulumi.set(self, "routine_body", value)
+
+    @property
+    @pulumi.getter(name="routineDefinition")
+    def routine_definition(self) -> Optional[str]:
+        """
+        Function body.
+        """
+        return pulumi.get(self, "routine_definition")
+
+    @routine_definition.setter
+    def routine_definition(self, value: Optional[str]):
+        pulumi.set(self, "routine_definition", value)
+
+    @property
+    @pulumi.getter(name="routineDependencies")
+    def routine_dependencies(self) -> Optional['GetFunctionsFunctionRoutineDependenciesArgs']:
+        """
+        Function dependencies.
+        """
+        return pulumi.get(self, "routine_dependencies")
+
+    @routine_dependencies.setter
+    def routine_dependencies(self, value: Optional['GetFunctionsFunctionRoutineDependenciesArgs']):
+        pulumi.set(self, "routine_dependencies", value)
+
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[str]:
+        """
+        Name of databricks_schema.
+        """
+        return pulumi.get(self, "schema_name")
+
+    @schema_name.setter
+    def schema_name(self, value: Optional[str]):
+        pulumi.set(self, "schema_name", value)
+
+    @property
+    @pulumi.getter(name="securityType")
+    def security_type(self) -> Optional[str]:
+        """
+        Function security type. (Enum: `DEFINER`).
+        """
+        return pulumi.get(self, "security_type")
+
+    @security_type.setter
+    def security_type(self, value: Optional[str]):
+        pulumi.set(self, "security_type", value)
+
+    @property
+    @pulumi.getter(name="specificName")
+    def specific_name(self) -> Optional[str]:
+        """
+        Specific name of the function; Reserved for future use.
+        """
+        return pulumi.get(self, "specific_name")
+
+    @specific_name.setter
+    def specific_name(self, value: Optional[str]):
+        pulumi.set(self, "specific_name", value)
+
+    @property
+    @pulumi.getter(name="sqlDataAccess")
+    def sql_data_access(self) -> Optional[str]:
+        """
+        Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+        """
+        return pulumi.get(self, "sql_data_access")
+
+    @sql_data_access.setter
+    def sql_data_access(self, value: Optional[str]):
+        pulumi.set(self, "sql_data_access", value)
+
+    @property
+    @pulumi.getter(name="sqlPath")
+    def sql_path(self) -> Optional[str]:
+        """
+        List of schemes whose objects can be referenced without qualification.
+        """
+        return pulumi.get(self, "sql_path")
+
+    @sql_path.setter
+    def sql_path(self, value: Optional[str]):
+        pulumi.set(self, "sql_path", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[int]:
+        """
+        Time at which this function was created, in epoch milliseconds.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[int]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        Username of user who last modified function.
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[str]):
+        pulumi.set(self, "updated_by", value)
+
+
+if not MYPY:
+    class GetFunctionsFunctionInputParamsArgsDict(TypedDict):
+        parameters: NotRequired[Sequence['GetFunctionsFunctionInputParamsParameterArgsDict']]
+        """
+        The array of definitions of the function's parameters:
+        """
+elif False:
+    GetFunctionsFunctionInputParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFunctionsFunctionInputParamsArgs:
+    def __init__(__self__, *,
+                 parameters: Optional[Sequence['GetFunctionsFunctionInputParamsParameterArgs']] = None):
+        """
+        :param Sequence['GetFunctionsFunctionInputParamsParameterArgs'] parameters: The array of definitions of the function's parameters:
+        """
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['GetFunctionsFunctionInputParamsParameterArgs']]:
+        """
+        The array of definitions of the function's parameters:
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[Sequence['GetFunctionsFunctionInputParamsParameterArgs']]):
+        pulumi.set(self, "parameters", value)
+
+
+if not MYPY:
+    class GetFunctionsFunctionInputParamsParameterArgsDict(TypedDict):
+        name: str
+        """
+        Name of parameter.
+        """
+        position: int
+        """
+        Ordinal position of column (starting at position 0).
+        """
+        type_name: str
+        """
+        Name of type (INT, STRUCT, MAP, etc.).
+        """
+        type_text: str
+        """
+        Full data type spec, SQL/catalogString text.
+        """
+        comment: NotRequired[str]
+        """
+        User-provided free-form text description.
+        """
+        parameter_default: NotRequired[str]
+        """
+        Default value of the parameter.
+        """
+        parameter_mode: NotRequired[str]
+        """
+        The mode of the function parameter.
+        """
+        parameter_type: NotRequired[str]
+        """
+        The type of function parameter (`PARAM` or `COLUMN`).
+        """
+        type_interval_type: NotRequired[str]
+        """
+        Format of IntervalType.
+        """
+        type_json: NotRequired[str]
+        """
+        Full data type spec, JSON-serialized.
+        """
+        type_precision: NotRequired[int]
+        """
+        Digits of precision; required on Create for DecimalTypes.
+        """
+        type_scale: NotRequired[int]
+        """
+        Digits to right of decimal; Required on Create for DecimalTypes.
+        """
+elif False:
+    GetFunctionsFunctionInputParamsParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFunctionsFunctionInputParamsParameterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 position: int,
+                 type_name: str,
+                 type_text: str,
+                 comment: Optional[str] = None,
+                 parameter_default: Optional[str] = None,
+                 parameter_mode: Optional[str] = None,
+                 parameter_type: Optional[str] = None,
+                 type_interval_type: Optional[str] = None,
+                 type_json: Optional[str] = None,
+                 type_precision: Optional[int] = None,
+                 type_scale: Optional[int] = None):
+        """
+        :param str name: Name of parameter.
+        :param int position: Ordinal position of column (starting at position 0).
+        :param str type_name: Name of type (INT, STRUCT, MAP, etc.).
+        :param str type_text: Full data type spec, SQL/catalogString text.
+        :param str comment: User-provided free-form text description.
+        :param str parameter_default: Default value of the parameter.
+        :param str parameter_mode: The mode of the function parameter.
+        :param str parameter_type: The type of function parameter (`PARAM` or `COLUMN`).
+        :param str type_interval_type: Format of IntervalType.
+        :param str type_json: Full data type spec, JSON-serialized.
+        :param int type_precision: Digits of precision; required on Create for DecimalTypes.
+        :param int type_scale: Digits to right of decimal; Required on Create for DecimalTypes.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "position", position)
+        pulumi.set(__self__, "type_name", type_name)
+        pulumi.set(__self__, "type_text", type_text)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if parameter_default is not None:
+            pulumi.set(__self__, "parameter_default", parameter_default)
+        if parameter_mode is not None:
+            pulumi.set(__self__, "parameter_mode", parameter_mode)
+        if parameter_type is not None:
+            pulumi.set(__self__, "parameter_type", parameter_type)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def position(self) -> int:
+        """
+        Ordinal position of column (starting at position 0).
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: int):
+        pulumi.set(self, "position", value)
+
+    @property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> str:
+        """
+        Name of type (INT, STRUCT, MAP, etc.).
+        """
+        return pulumi.get(self, "type_name")
+
+    @type_name.setter
+    def type_name(self, value: str):
+        pulumi.set(self, "type_name", value)
+
+    @property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> str:
+        """
+        Full data type spec, SQL/catalogString text.
+        """
+        return pulumi.get(self, "type_text")
+
+    @type_text.setter
+    def type_text(self, value: str):
+        pulumi.set(self, "type_text", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        User-provided free-form text description.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[str]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="parameterDefault")
+    def parameter_default(self) -> Optional[str]:
+        """
+        Default value of the parameter.
+        """
+        return pulumi.get(self, "parameter_default")
+
+    @parameter_default.setter
+    def parameter_default(self, value: Optional[str]):
+        pulumi.set(self, "parameter_default", value)
+
+    @property
+    @pulumi.getter(name="parameterMode")
+    def parameter_mode(self) -> Optional[str]:
+        """
+        The mode of the function parameter.
+        """
+        return pulumi.get(self, "parameter_mode")
+
+    @parameter_mode.setter
+    def parameter_mode(self, value: Optional[str]):
+        pulumi.set(self, "parameter_mode", value)
+
+    @property
+    @pulumi.getter(name="parameterType")
+    def parameter_type(self) -> Optional[str]:
+        """
+        The type of function parameter (`PARAM` or `COLUMN`).
+        """
+        return pulumi.get(self, "parameter_type")
+
+    @parameter_type.setter
+    def parameter_type(self, value: Optional[str]):
+        pulumi.set(self, "parameter_type", value)
+
+    @property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[str]:
+        """
+        Format of IntervalType.
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @type_interval_type.setter
+    def type_interval_type(self, value: Optional[str]):
+        pulumi.set(self, "type_interval_type", value)
+
+    @property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[str]:
+        """
+        Full data type spec, JSON-serialized.
+        """
+        return pulumi.get(self, "type_json")
+
+    @type_json.setter
+    def type_json(self, value: Optional[str]):
+        pulumi.set(self, "type_json", value)
+
+    @property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[int]:
+        """
+        Digits of precision; required on Create for DecimalTypes.
+        """
+        return pulumi.get(self, "type_precision")
+
+    @type_precision.setter
+    def type_precision(self, value: Optional[int]):
+        pulumi.set(self, "type_precision", value)
+
+    @property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[int]:
+        """
+        Digits to right of decimal; Required on Create for DecimalTypes.
+        """
+        return pulumi.get(self, "type_scale")
+
+    @type_scale.setter
+    def type_scale(self, value: Optional[int]):
+        pulumi.set(self, "type_scale", value)
+
+
+if not MYPY:
+    class GetFunctionsFunctionReturnParamsArgsDict(TypedDict):
+        parameters: NotRequired[Sequence['GetFunctionsFunctionReturnParamsParameterArgsDict']]
+        """
+        The array of definitions of the function's parameters:
+        """
+elif False:
+    GetFunctionsFunctionReturnParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFunctionsFunctionReturnParamsArgs:
+    def __init__(__self__, *,
+                 parameters: Optional[Sequence['GetFunctionsFunctionReturnParamsParameterArgs']] = None):
+        """
+        :param Sequence['GetFunctionsFunctionReturnParamsParameterArgs'] parameters: The array of definitions of the function's parameters:
+        """
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['GetFunctionsFunctionReturnParamsParameterArgs']]:
+        """
+        The array of definitions of the function's parameters:
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[Sequence['GetFunctionsFunctionReturnParamsParameterArgs']]):
+        pulumi.set(self, "parameters", value)
+
+
+if not MYPY:
+    class GetFunctionsFunctionReturnParamsParameterArgsDict(TypedDict):
+        name: str
+        """
+        Name of parameter.
+        """
+        position: int
+        """
+        Ordinal position of column (starting at position 0).
+        """
+        type_name: str
+        """
+        Name of type (INT, STRUCT, MAP, etc.).
+        """
+        type_text: str
+        """
+        Full data type spec, SQL/catalogString text.
+        """
+        comment: NotRequired[str]
+        """
+        User-provided free-form text description.
+        """
+        parameter_default: NotRequired[str]
+        """
+        Default value of the parameter.
+        """
+        parameter_mode: NotRequired[str]
+        """
+        The mode of the function parameter.
+        """
+        parameter_type: NotRequired[str]
+        """
+        The type of function parameter (`PARAM` or `COLUMN`).
+        """
+        type_interval_type: NotRequired[str]
+        """
+        Format of IntervalType.
+        """
+        type_json: NotRequired[str]
+        """
+        Full data type spec, JSON-serialized.
+        """
+        type_precision: NotRequired[int]
+        """
+        Digits of precision; required on Create for DecimalTypes.
+        """
+        type_scale: NotRequired[int]
+        """
+        Digits to right of decimal; Required on Create for DecimalTypes.
+        """
+elif False:
+    GetFunctionsFunctionReturnParamsParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFunctionsFunctionReturnParamsParameterArgs:
+    def __init__(__self__, *,
+                 name: str,
+                 position: int,
+                 type_name: str,
+                 type_text: str,
+                 comment: Optional[str] = None,
+                 parameter_default: Optional[str] = None,
+                 parameter_mode: Optional[str] = None,
+                 parameter_type: Optional[str] = None,
+                 type_interval_type: Optional[str] = None,
+                 type_json: Optional[str] = None,
+                 type_precision: Optional[int] = None,
+                 type_scale: Optional[int] = None):
+        """
+        :param str name: Name of parameter.
+        :param int position: Ordinal position of column (starting at position 0).
+        :param str type_name: Name of type (INT, STRUCT, MAP, etc.).
+        :param str type_text: Full data type spec, SQL/catalogString text.
+        :param str comment: User-provided free-form text description.
+        :param str parameter_default: Default value of the parameter.
+        :param str parameter_mode: The mode of the function parameter.
+        :param str parameter_type: The type of function parameter (`PARAM` or `COLUMN`).
+        :param str type_interval_type: Format of IntervalType.
+        :param str type_json: Full data type spec, JSON-serialized.
+        :param int type_precision: Digits of precision; required on Create for DecimalTypes.
+        :param int type_scale: Digits to right of decimal; Required on Create for DecimalTypes.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "position", position)
+        pulumi.set(__self__, "type_name", type_name)
+        pulumi.set(__self__, "type_text", type_text)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if parameter_default is not None:
+            pulumi.set(__self__, "parameter_default", parameter_default)
+        if parameter_mode is not None:
+            pulumi.set(__self__, "parameter_mode", parameter_mode)
+        if parameter_type is not None:
+            pulumi.set(__self__, "parameter_type", parameter_type)
+        if type_interval_type is not None:
+            pulumi.set(__self__, "type_interval_type", type_interval_type)
+        if type_json is not None:
+            pulumi.set(__self__, "type_json", type_json)
+        if type_precision is not None:
+            pulumi.set(__self__, "type_precision", type_precision)
+        if type_scale is not None:
+            pulumi.set(__self__, "type_scale", type_scale)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def position(self) -> int:
+        """
+        Ordinal position of column (starting at position 0).
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: int):
+        pulumi.set(self, "position", value)
+
+    @property
+    @pulumi.getter(name="typeName")
+    def type_name(self) -> str:
+        """
+        Name of type (INT, STRUCT, MAP, etc.).
+        """
+        return pulumi.get(self, "type_name")
+
+    @type_name.setter
+    def type_name(self, value: str):
+        pulumi.set(self, "type_name", value)
+
+    @property
+    @pulumi.getter(name="typeText")
+    def type_text(self) -> str:
+        """
+        Full data type spec, SQL/catalogString text.
+        """
+        return pulumi.get(self, "type_text")
+
+    @type_text.setter
+    def type_text(self, value: str):
+        pulumi.set(self, "type_text", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        User-provided free-form text description.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[str]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="parameterDefault")
+    def parameter_default(self) -> Optional[str]:
+        """
+        Default value of the parameter.
+        """
+        return pulumi.get(self, "parameter_default")
+
+    @parameter_default.setter
+    def parameter_default(self, value: Optional[str]):
+        pulumi.set(self, "parameter_default", value)
+
+    @property
+    @pulumi.getter(name="parameterMode")
+    def parameter_mode(self) -> Optional[str]:
+        """
+        The mode of the function parameter.
+        """
+        return pulumi.get(self, "parameter_mode")
+
+    @parameter_mode.setter
+    def parameter_mode(self, value: Optional[str]):
+        pulumi.set(self, "parameter_mode", value)
+
+    @property
+    @pulumi.getter(name="parameterType")
+    def parameter_type(self) -> Optional[str]:
+        """
+        The type of function parameter (`PARAM` or `COLUMN`).
+        """
+        return pulumi.get(self, "parameter_type")
+
+    @parameter_type.setter
+    def parameter_type(self, value: Optional[str]):
+        pulumi.set(self, "parameter_type", value)
+
+    @property
+    @pulumi.getter(name="typeIntervalType")
+    def type_interval_type(self) -> Optional[str]:
+        """
+        Format of IntervalType.
+        """
+        return pulumi.get(self, "type_interval_type")
+
+    @type_interval_type.setter
+    def type_interval_type(self, value: Optional[str]):
+        pulumi.set(self, "type_interval_type", value)
+
+    @property
+    @pulumi.getter(name="typeJson")
+    def type_json(self) -> Optional[str]:
+        """
+        Full data type spec, JSON-serialized.
+        """
+        return pulumi.get(self, "type_json")
+
+    @type_json.setter
+    def type_json(self, value: Optional[str]):
+        pulumi.set(self, "type_json", value)
+
+    @property
+    @pulumi.getter(name="typePrecision")
+    def type_precision(self) -> Optional[int]:
+        """
+        Digits of precision; required on Create for DecimalTypes.
+        """
+        return pulumi.get(self, "type_precision")
+
+    @type_precision.setter
+    def type_precision(self, value: Optional[int]):
+        pulumi.set(self, "type_precision", value)
+
+    @property
+    @pulumi.getter(name="typeScale")
+    def type_scale(self) -> Optional[int]:
+        """
+        Digits to right of decimal; Required on Create for DecimalTypes.
+        """
+        return pulumi.get(self, "type_scale")
+
+    @type_scale.setter
+    def type_scale(self, value: Optional[int]):
+        pulumi.set(self, "type_scale", value)
+
+
+if not MYPY:
+    class GetFunctionsFunctionRoutineDependenciesArgsDict(TypedDict):
+        dependencies: NotRequired[Sequence['GetFunctionsFunctionRoutineDependenciesDependencyArgsDict']]
+elif False:
+    GetFunctionsFunctionRoutineDependenciesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFunctionsFunctionRoutineDependenciesArgs:
+    def __init__(__self__, *,
+                 dependencies: Optional[Sequence['GetFunctionsFunctionRoutineDependenciesDependencyArgs']] = None):
+        if dependencies is not None:
+            pulumi.set(__self__, "dependencies", dependencies)
+
+    @property
+    @pulumi.getter
+    def dependencies(self) -> Optional[Sequence['GetFunctionsFunctionRoutineDependenciesDependencyArgs']]:
+        return pulumi.get(self, "dependencies")
+
+    @dependencies.setter
+    def dependencies(self, value: Optional[Sequence['GetFunctionsFunctionRoutineDependenciesDependencyArgs']]):
+        pulumi.set(self, "dependencies", value)
+
+
+if not MYPY:
+    class GetFunctionsFunctionRoutineDependenciesDependencyArgsDict(TypedDict):
+        function: NotRequired['GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgsDict']
+        table: NotRequired['GetFunctionsFunctionRoutineDependenciesDependencyTableArgsDict']
+elif False:
+    GetFunctionsFunctionRoutineDependenciesDependencyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFunctionsFunctionRoutineDependenciesDependencyArgs:
+    def __init__(__self__, *,
+                 function: Optional['GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs'] = None,
+                 table: Optional['GetFunctionsFunctionRoutineDependenciesDependencyTableArgs'] = None):
+        if function is not None:
+            pulumi.set(__self__, "function", function)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def function(self) -> Optional['GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs']:
+        return pulumi.get(self, "function")
+
+    @function.setter
+    def function(self, value: Optional['GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs']):
+        pulumi.set(self, "function", value)
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional['GetFunctionsFunctionRoutineDependenciesDependencyTableArgs']:
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: Optional['GetFunctionsFunctionRoutineDependenciesDependencyTableArgs']):
+        pulumi.set(self, "table", value)
+
+
+if not MYPY:
+    class GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgsDict(TypedDict):
+        function_full_name: str
+elif False:
+    GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs:
+    def __init__(__self__, *,
+                 function_full_name: str):
+        pulumi.set(__self__, "function_full_name", function_full_name)
+
+    @property
+    @pulumi.getter(name="functionFullName")
+    def function_full_name(self) -> str:
+        return pulumi.get(self, "function_full_name")
+
+    @function_full_name.setter
+    def function_full_name(self, value: str):
+        pulumi.set(self, "function_full_name", value)
+
+
+if not MYPY:
+    class GetFunctionsFunctionRoutineDependenciesDependencyTableArgsDict(TypedDict):
+        table_full_name: str
+elif False:
+    GetFunctionsFunctionRoutineDependenciesDependencyTableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFunctionsFunctionRoutineDependenciesDependencyTableArgs:
+    def __init__(__self__, *,
+                 table_full_name: str):
+        pulumi.set(__self__, "table_full_name", table_full_name)
+
+    @property
+    @pulumi.getter(name="tableFullName")
+    def table_full_name(self) -> str:
+        return pulumi.get(self, "table_full_name")
+
+    @table_full_name.setter
+    def table_full_name(self, value: str):
+        pulumi.set(self, "table_full_name", value)
 
 
 if not MYPY:

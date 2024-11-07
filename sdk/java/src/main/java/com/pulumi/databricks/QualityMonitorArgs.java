@@ -110,6 +110,21 @@ public final class QualityMonitorArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+     * 
+     */
+    @Import(name="monitorId")
+    private @Nullable Output<String> monitorId;
+
+    /**
+     * @return ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+     * 
+     */
+    public Optional<Output<String>> monitorId() {
+        return Optional.ofNullable(this.monitorId);
+    }
+
+    /**
      * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
      * 
      */
@@ -253,6 +268,7 @@ public final class QualityMonitorArgs extends com.pulumi.resources.ResourceArgs 
         this.dataClassificationConfig = $.dataClassificationConfig;
         this.inferenceLog = $.inferenceLog;
         this.latestMonitorFailureMsg = $.latestMonitorFailureMsg;
+        this.monitorId = $.monitorId;
         this.notifications = $.notifications;
         this.outputSchemaName = $.outputSchemaName;
         this.schedule = $.schedule;
@@ -406,6 +422,27 @@ public final class QualityMonitorArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder latestMonitorFailureMsg(String latestMonitorFailureMsg) {
             return latestMonitorFailureMsg(Output.of(latestMonitorFailureMsg));
+        }
+
+        /**
+         * @param monitorId ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitorId(@Nullable Output<String> monitorId) {
+            $.monitorId = monitorId;
+            return this;
+        }
+
+        /**
+         * @param monitorId ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitorId(String monitorId) {
+            return monitorId(Output.of(monitorId));
         }
 
         /**

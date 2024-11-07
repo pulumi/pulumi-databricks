@@ -25,6 +25,7 @@ class LibraryArgs:
                  cran: Optional[pulumi.Input['LibraryCranArgs']] = None,
                  egg: Optional[pulumi.Input[str]] = None,
                  jar: Optional[pulumi.Input[str]] = None,
+                 library_id: Optional[pulumi.Input[str]] = None,
                  maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
                  pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,8 @@ class LibraryArgs:
             pulumi.set(__self__, "egg", egg)
         if jar is not None:
             pulumi.set(__self__, "jar", jar)
+        if library_id is not None:
+            pulumi.set(__self__, "library_id", library_id)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
         if pypi is not None:
@@ -85,6 +88,15 @@ class LibraryArgs:
         pulumi.set(self, "jar", value)
 
     @property
+    @pulumi.getter(name="libraryId")
+    def library_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "library_id")
+
+    @library_id.setter
+    def library_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "library_id", value)
+
+    @property
     @pulumi.getter
     def maven(self) -> Optional[pulumi.Input['LibraryMavenArgs']]:
         return pulumi.get(self, "maven")
@@ -128,6 +140,7 @@ class _LibraryState:
                  cran: Optional[pulumi.Input['LibraryCranArgs']] = None,
                  egg: Optional[pulumi.Input[str]] = None,
                  jar: Optional[pulumi.Input[str]] = None,
+                 library_id: Optional[pulumi.Input[str]] = None,
                  maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
                  pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[str]] = None,
@@ -143,6 +156,8 @@ class _LibraryState:
             pulumi.set(__self__, "egg", egg)
         if jar is not None:
             pulumi.set(__self__, "jar", jar)
+        if library_id is not None:
+            pulumi.set(__self__, "library_id", library_id)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
         if pypi is not None:
@@ -187,6 +202,15 @@ class _LibraryState:
     @jar.setter
     def jar(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "jar", value)
+
+    @property
+    @pulumi.getter(name="libraryId")
+    def library_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "library_id")
+
+    @library_id.setter
+    def library_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "library_id", value)
 
     @property
     @pulumi.getter
@@ -234,6 +258,7 @@ class Library(pulumi.CustomResource):
                  cran: Optional[pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
                  egg: Optional[pulumi.Input[str]] = None,
                  jar: Optional[pulumi.Input[str]] = None,
+                 library_id: Optional[pulumi.Input[str]] = None,
                  maven: Optional[pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
                  pypi: Optional[pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
                  requirements: Optional[pulumi.Input[str]] = None,
@@ -243,6 +268,10 @@ class Library(pulumi.CustomResource):
         Installs a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster. Each different type of library has a slightly different syntax. It's possible to set only one type of library within one resource. Otherwise, the plan will fail with an error.
 
         > `Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
+
+        ## Plugin Framework Migration
+
+        The library resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="Library"`.
 
         ## Installing library on all clusters
 
@@ -357,6 +386,10 @@ class Library(pulumi.CustomResource):
         Installs a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster. Each different type of library has a slightly different syntax. It's possible to set only one type of library within one resource. Otherwise, the plan will fail with an error.
 
         > `Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
+
+        ## Plugin Framework Migration
+
+        The library resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="Library"`.
 
         ## Installing library on all clusters
 
@@ -477,6 +510,7 @@ class Library(pulumi.CustomResource):
                  cran: Optional[pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
                  egg: Optional[pulumi.Input[str]] = None,
                  jar: Optional[pulumi.Input[str]] = None,
+                 library_id: Optional[pulumi.Input[str]] = None,
                  maven: Optional[pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
                  pypi: Optional[pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
                  requirements: Optional[pulumi.Input[str]] = None,
@@ -496,6 +530,7 @@ class Library(pulumi.CustomResource):
             __props__.__dict__["cran"] = cran
             __props__.__dict__["egg"] = egg
             __props__.__dict__["jar"] = jar
+            __props__.__dict__["library_id"] = library_id
             __props__.__dict__["maven"] = maven
             __props__.__dict__["pypi"] = pypi
             __props__.__dict__["requirements"] = requirements
@@ -514,6 +549,7 @@ class Library(pulumi.CustomResource):
             cran: Optional[pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
             egg: Optional[pulumi.Input[str]] = None,
             jar: Optional[pulumi.Input[str]] = None,
+            library_id: Optional[pulumi.Input[str]] = None,
             maven: Optional[pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
             pypi: Optional[pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
             requirements: Optional[pulumi.Input[str]] = None,
@@ -534,6 +570,7 @@ class Library(pulumi.CustomResource):
         __props__.__dict__["cran"] = cran
         __props__.__dict__["egg"] = egg
         __props__.__dict__["jar"] = jar
+        __props__.__dict__["library_id"] = library_id
         __props__.__dict__["maven"] = maven
         __props__.__dict__["pypi"] = pypi
         __props__.__dict__["requirements"] = requirements
@@ -559,6 +596,11 @@ class Library(pulumi.CustomResource):
     @pulumi.getter
     def jar(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "jar")
+
+    @property
+    @pulumi.getter(name="libraryId")
+    def library_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "library_id")
 
     @property
     @pulumi.getter

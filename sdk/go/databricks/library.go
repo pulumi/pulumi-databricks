@@ -16,6 +16,10 @@ import (
 //
 // > `Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
 //
+// ## Plugin Framework Migration
+//
+// The library resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="Library"`.
+//
 // ## Installing library on all clusters
 //
 // You can install libraries on all clusters with the help of getClusters data resource:
@@ -209,6 +213,7 @@ type Library struct {
 	Cran         LibraryCranPtrOutput   `pulumi:"cran"`
 	Egg          pulumi.StringPtrOutput `pulumi:"egg"`
 	Jar          pulumi.StringPtrOutput `pulumi:"jar"`
+	LibraryId    pulumi.StringOutput    `pulumi:"libraryId"`
 	Maven        LibraryMavenPtrOutput  `pulumi:"maven"`
 	Pypi         LibraryPypiPtrOutput   `pulumi:"pypi"`
 	Requirements pulumi.StringPtrOutput `pulumi:"requirements"`
@@ -252,6 +257,7 @@ type libraryState struct {
 	Cran         *LibraryCran  `pulumi:"cran"`
 	Egg          *string       `pulumi:"egg"`
 	Jar          *string       `pulumi:"jar"`
+	LibraryId    *string       `pulumi:"libraryId"`
 	Maven        *LibraryMaven `pulumi:"maven"`
 	Pypi         *LibraryPypi  `pulumi:"pypi"`
 	Requirements *string       `pulumi:"requirements"`
@@ -263,6 +269,7 @@ type LibraryState struct {
 	Cran         LibraryCranPtrInput
 	Egg          pulumi.StringPtrInput
 	Jar          pulumi.StringPtrInput
+	LibraryId    pulumi.StringPtrInput
 	Maven        LibraryMavenPtrInput
 	Pypi         LibraryPypiPtrInput
 	Requirements pulumi.StringPtrInput
@@ -278,6 +285,7 @@ type libraryArgs struct {
 	Cran         *LibraryCran  `pulumi:"cran"`
 	Egg          *string       `pulumi:"egg"`
 	Jar          *string       `pulumi:"jar"`
+	LibraryId    *string       `pulumi:"libraryId"`
 	Maven        *LibraryMaven `pulumi:"maven"`
 	Pypi         *LibraryPypi  `pulumi:"pypi"`
 	Requirements *string       `pulumi:"requirements"`
@@ -290,6 +298,7 @@ type LibraryArgs struct {
 	Cran         LibraryCranPtrInput
 	Egg          pulumi.StringPtrInput
 	Jar          pulumi.StringPtrInput
+	LibraryId    pulumi.StringPtrInput
 	Maven        LibraryMavenPtrInput
 	Pypi         LibraryPypiPtrInput
 	Requirements pulumi.StringPtrInput
@@ -397,6 +406,10 @@ func (o LibraryOutput) Egg() pulumi.StringPtrOutput {
 
 func (o LibraryOutput) Jar() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Library) pulumi.StringPtrOutput { return v.Jar }).(pulumi.StringPtrOutput)
+}
+
+func (o LibraryOutput) LibraryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Library) pulumi.StringOutput { return v.LibraryId }).(pulumi.StringOutput)
 }
 
 func (o LibraryOutput) Maven() LibraryMavenPtrOutput {

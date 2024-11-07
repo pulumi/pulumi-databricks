@@ -1441,6 +1441,262 @@ export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncr
     awsKmsKeyArn?: string;
 }
 
+export interface GetFunctionsFunction {
+    /**
+     * Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
+     */
+    browseOnly?: boolean;
+    /**
+     * Name of databricks_catalog.
+     */
+    catalogName?: string;
+    /**
+     * User-provided free-form text description.
+     */
+    comment?: string;
+    /**
+     * Time at which this function was created, in epoch milliseconds.
+     */
+    createdAt?: number;
+    /**
+     * Username of function creator.
+     */
+    createdBy?: string;
+    /**
+     * Scalar function return data type.
+     */
+    dataType?: string;
+    /**
+     * External function language.
+     */
+    externalLanguage?: string;
+    /**
+     * External function name.
+     */
+    externalName?: string;
+    /**
+     * Pretty printed function data type.
+     */
+    fullDataType?: string;
+    /**
+     * Full name of function, in form of catalog_name.schema_name.function__name
+     */
+    fullName?: string;
+    /**
+     * Id of Function, relative to parent schema.
+     */
+    functionId?: string;
+    /**
+     * object describing input parameters. Consists of the single attribute:
+     */
+    inputParams?: outputs.GetFunctionsFunctionInputParams;
+    /**
+     * Boolean flag specifying whether the function is deterministic.
+     */
+    isDeterministic?: boolean;
+    /**
+     * Boolean flag whether function null call.
+     */
+    isNullCall?: boolean;
+    /**
+     * Unique identifier of parent metastore.
+     */
+    metastoreId?: string;
+    /**
+     * Name of parameter.
+     */
+    name?: string;
+    /**
+     * Username of current owner of function.
+     */
+    owner?: string;
+    /**
+     * Function parameter style. `S` is the value for SQL.
+     */
+    parameterStyle?: string;
+    /**
+     * JSON-serialized key-value pair map, encoded (escaped) as a string.
+     */
+    properties?: string;
+    /**
+     * Table function return parameters.  See `inputParams` for description.
+     */
+    returnParams?: outputs.GetFunctionsFunctionReturnParams;
+    /**
+     * Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
+     */
+    routineBody?: string;
+    /**
+     * Function body.
+     */
+    routineDefinition?: string;
+    /**
+     * Function dependencies.
+     */
+    routineDependencies?: outputs.GetFunctionsFunctionRoutineDependencies;
+    /**
+     * Name of databricks_schema.
+     */
+    schemaName?: string;
+    /**
+     * Function security type. (Enum: `DEFINER`).
+     */
+    securityType?: string;
+    /**
+     * Specific name of the function; Reserved for future use.
+     */
+    specificName?: string;
+    /**
+     * Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+     */
+    sqlDataAccess?: string;
+    /**
+     * List of schemes whose objects can be referenced without qualification.
+     */
+    sqlPath?: string;
+    /**
+     * Time at which this function was created, in epoch milliseconds.
+     */
+    updatedAt?: number;
+    /**
+     * Username of user who last modified function.
+     */
+    updatedBy?: string;
+}
+
+export interface GetFunctionsFunctionInputParams {
+    /**
+     * The array of definitions of the function's parameters:
+     */
+    parameters?: outputs.GetFunctionsFunctionInputParamsParameter[];
+}
+
+export interface GetFunctionsFunctionInputParamsParameter {
+    /**
+     * User-provided free-form text description.
+     */
+    comment?: string;
+    /**
+     * Name of parameter.
+     */
+    name: string;
+    /**
+     * Default value of the parameter.
+     */
+    parameterDefault?: string;
+    /**
+     * The mode of the function parameter.
+     */
+    parameterMode?: string;
+    /**
+     * The type of function parameter (`PARAM` or `COLUMN`).
+     */
+    parameterType?: string;
+    /**
+     * Ordinal position of column (starting at position 0).
+     */
+    position: number;
+    /**
+     * Format of IntervalType.
+     */
+    typeIntervalType?: string;
+    /**
+     * Full data type spec, JSON-serialized.
+     */
+    typeJson?: string;
+    /**
+     * Name of type (INT, STRUCT, MAP, etc.).
+     */
+    typeName: string;
+    /**
+     * Digits of precision; required on Create for DecimalTypes.
+     */
+    typePrecision?: number;
+    /**
+     * Digits to right of decimal; Required on Create for DecimalTypes.
+     */
+    typeScale?: number;
+    /**
+     * Full data type spec, SQL/catalogString text.
+     */
+    typeText: string;
+}
+
+export interface GetFunctionsFunctionReturnParams {
+    /**
+     * The array of definitions of the function's parameters:
+     */
+    parameters?: outputs.GetFunctionsFunctionReturnParamsParameter[];
+}
+
+export interface GetFunctionsFunctionReturnParamsParameter {
+    /**
+     * User-provided free-form text description.
+     */
+    comment?: string;
+    /**
+     * Name of parameter.
+     */
+    name: string;
+    /**
+     * Default value of the parameter.
+     */
+    parameterDefault?: string;
+    /**
+     * The mode of the function parameter.
+     */
+    parameterMode?: string;
+    /**
+     * The type of function parameter (`PARAM` or `COLUMN`).
+     */
+    parameterType?: string;
+    /**
+     * Ordinal position of column (starting at position 0).
+     */
+    position: number;
+    /**
+     * Format of IntervalType.
+     */
+    typeIntervalType?: string;
+    /**
+     * Full data type spec, JSON-serialized.
+     */
+    typeJson?: string;
+    /**
+     * Name of type (INT, STRUCT, MAP, etc.).
+     */
+    typeName: string;
+    /**
+     * Digits of precision; required on Create for DecimalTypes.
+     */
+    typePrecision?: number;
+    /**
+     * Digits to right of decimal; Required on Create for DecimalTypes.
+     */
+    typeScale?: number;
+    /**
+     * Full data type spec, SQL/catalogString text.
+     */
+    typeText: string;
+}
+
+export interface GetFunctionsFunctionRoutineDependencies {
+    dependencies?: outputs.GetFunctionsFunctionRoutineDependenciesDependency[];
+}
+
+export interface GetFunctionsFunctionRoutineDependenciesDependency {
+    function?: outputs.GetFunctionsFunctionRoutineDependenciesDependencyFunction;
+    table?: outputs.GetFunctionsFunctionRoutineDependenciesDependencyTable;
+}
+
+export interface GetFunctionsFunctionRoutineDependenciesDependencyFunction {
+    functionFullName: string;
+}
+
+export interface GetFunctionsFunctionRoutineDependenciesDependencyTable {
+    tableFullName: string;
+}
+
 export interface GetInstancePoolPoolInfo {
     awsAttributes?: outputs.GetInstancePoolPoolInfoAwsAttributes;
     azureAttributes?: outputs.GetInstancePoolPoolInfoAzureAttributes;

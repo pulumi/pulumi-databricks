@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
  * 
  * &gt; `databricks.Library` resource would always start the associated cluster if it&#39;s not running, so make sure to have auto-termination configured. It&#39;s not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
  * 
+ * ## Plugin Framework Migration
+ * 
+ * The library resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES=&#34;databricks.Library&#34;`.
+ * 
  * ## Installing library on all clusters
  * 
  * You can install libraries on all clusters with the help of databricks.getClusters data resource:
@@ -288,6 +292,12 @@ public class Library extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> jar() {
         return Codegen.optional(this.jar);
+    }
+    @Export(name="libraryId", refs={String.class}, tree="[0]")
+    private Output<String> libraryId;
+
+    public Output<String> libraryId() {
+        return this.libraryId;
     }
     @Export(name="maven", refs={LibraryMaven.class}, tree="[0]")
     private Output</* @Nullable */ LibraryMaven> maven;

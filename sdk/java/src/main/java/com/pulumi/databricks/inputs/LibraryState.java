@@ -46,6 +46,13 @@ public final class LibraryState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.jar);
     }
 
+    @Import(name="libraryId")
+    private @Nullable Output<String> libraryId;
+
+    public Optional<Output<String>> libraryId() {
+        return Optional.ofNullable(this.libraryId);
+    }
+
     @Import(name="maven")
     private @Nullable Output<LibraryMavenArgs> maven;
 
@@ -81,6 +88,7 @@ public final class LibraryState extends com.pulumi.resources.ResourceArgs {
         this.cran = $.cran;
         this.egg = $.egg;
         this.jar = $.jar;
+        this.libraryId = $.libraryId;
         this.maven = $.maven;
         this.pypi = $.pypi;
         this.requirements = $.requirements;
@@ -139,6 +147,15 @@ public final class LibraryState extends com.pulumi.resources.ResourceArgs {
 
         public Builder jar(String jar) {
             return jar(Output.of(jar));
+        }
+
+        public Builder libraryId(@Nullable Output<String> libraryId) {
+            $.libraryId = libraryId;
+            return this;
+        }
+
+        public Builder libraryId(String libraryId) {
+            return libraryId(Output.of(libraryId));
         }
 
         public Builder maven(@Nullable Output<LibraryMavenArgs> maven) {

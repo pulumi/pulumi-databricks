@@ -11,6 +11,10 @@ import * as utilities from "./utilities";
  *
  * A `databricks.QualityMonitor` is attached to a databricks.SqlTable and can be of type timeseries, snapshot or inference.
  *
+ * ## Plugin Framework Migration
+ *
+ * The quality monitor resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="databricks.QualityMonitor"`.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -153,6 +157,10 @@ export class QualityMonitor extends pulumi.CustomResource {
     public readonly inferenceLog!: pulumi.Output<outputs.QualityMonitorInferenceLog | undefined>;
     public readonly latestMonitorFailureMsg!: pulumi.Output<string | undefined>;
     /**
+     * ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+     */
+    public readonly monitorId!: pulumi.Output<string>;
+    /**
      * The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
      */
     public /*out*/ readonly monitorVersion!: pulumi.Output<string>;
@@ -222,6 +230,7 @@ export class QualityMonitor extends pulumi.CustomResource {
             resourceInputs["driftMetricsTableName"] = state ? state.driftMetricsTableName : undefined;
             resourceInputs["inferenceLog"] = state ? state.inferenceLog : undefined;
             resourceInputs["latestMonitorFailureMsg"] = state ? state.latestMonitorFailureMsg : undefined;
+            resourceInputs["monitorId"] = state ? state.monitorId : undefined;
             resourceInputs["monitorVersion"] = state ? state.monitorVersion : undefined;
             resourceInputs["notifications"] = state ? state.notifications : undefined;
             resourceInputs["outputSchemaName"] = state ? state.outputSchemaName : undefined;
@@ -251,6 +260,7 @@ export class QualityMonitor extends pulumi.CustomResource {
             resourceInputs["dataClassificationConfig"] = args ? args.dataClassificationConfig : undefined;
             resourceInputs["inferenceLog"] = args ? args.inferenceLog : undefined;
             resourceInputs["latestMonitorFailureMsg"] = args ? args.latestMonitorFailureMsg : undefined;
+            resourceInputs["monitorId"] = args ? args.monitorId : undefined;
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["outputSchemaName"] = args ? args.outputSchemaName : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
@@ -305,6 +315,10 @@ export interface QualityMonitorState {
      */
     inferenceLog?: pulumi.Input<inputs.QualityMonitorInferenceLog>;
     latestMonitorFailureMsg?: pulumi.Input<string>;
+    /**
+     * ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+     */
+    monitorId?: pulumi.Input<string>;
     /**
      * The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
      */
@@ -381,6 +395,10 @@ export interface QualityMonitorArgs {
      */
     inferenceLog?: pulumi.Input<inputs.QualityMonitorInferenceLog>;
     latestMonitorFailureMsg?: pulumi.Input<string>;
+    /**
+     * ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+     */
+    monitorId?: pulumi.Input<string>;
     /**
      * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      */

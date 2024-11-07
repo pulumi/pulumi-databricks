@@ -195,6 +195,11 @@ export const getExternalLocations: typeof import("./getExternalLocations").getEx
 export const getExternalLocationsOutput: typeof import("./getExternalLocations").getExternalLocationsOutput = null as any;
 utilities.lazyLoad(exports, ["getExternalLocations","getExternalLocationsOutput"], () => require("./getExternalLocations"));
 
+export { GetFunctionsArgs, GetFunctionsResult, GetFunctionsOutputArgs } from "./getFunctions";
+export const getFunctions: typeof import("./getFunctions").getFunctions = null as any;
+export const getFunctionsOutput: typeof import("./getFunctions").getFunctionsOutput = null as any;
+utilities.lazyLoad(exports, ["getFunctions","getFunctionsOutput"], () => require("./getFunctions"));
+
 export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;

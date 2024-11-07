@@ -53,6 +53,7 @@
         "getDirectory.ts",
         "getExternalLocation.ts",
         "getExternalLocations.ts",
+        "getFunctions.ts",
         "getGroup.ts",
         "getInstancePool.ts",
         "getInstanceProfiles.ts",

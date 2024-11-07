@@ -16,6 +16,10 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
         /// 
+        /// ## Plugin Framework Migration
+        /// 
+        /// The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES="databricks.getVolumes"`.
+        /// 
         /// ## Example Usage
         /// 
         /// Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -56,6 +60,10 @@ namespace Pulumi.Databricks
         /// &gt; **Note** This data source can only be used with a workspace-level provider!
         /// 
         /// Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+        /// 
+        /// ## Plugin Framework Migration
+        /// 
+        /// The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES="databricks.getVolumes"`.
         /// 
         /// ## Example Usage
         /// 

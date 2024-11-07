@@ -2209,6 +2209,518 @@ export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncr
     awsKmsKeyArn?: pulumi.Input<string>;
 }
 
+export interface GetFunctionsFunction {
+    /**
+     * Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
+     */
+    browseOnly?: boolean;
+    /**
+     * Name of databricks_catalog.
+     */
+    catalogName?: string;
+    /**
+     * User-provided free-form text description.
+     */
+    comment?: string;
+    /**
+     * Time at which this function was created, in epoch milliseconds.
+     */
+    createdAt?: number;
+    /**
+     * Username of function creator.
+     */
+    createdBy?: string;
+    /**
+     * Scalar function return data type.
+     */
+    dataType?: string;
+    /**
+     * External function language.
+     */
+    externalLanguage?: string;
+    /**
+     * External function name.
+     */
+    externalName?: string;
+    /**
+     * Pretty printed function data type.
+     */
+    fullDataType?: string;
+    /**
+     * Full name of function, in form of catalog_name.schema_name.function__name
+     */
+    fullName?: string;
+    /**
+     * Id of Function, relative to parent schema.
+     */
+    functionId?: string;
+    /**
+     * object describing input parameters. Consists of the single attribute:
+     */
+    inputParams?: inputs.GetFunctionsFunctionInputParams;
+    /**
+     * Boolean flag specifying whether the function is deterministic.
+     */
+    isDeterministic?: boolean;
+    /**
+     * Boolean flag whether function null call.
+     */
+    isNullCall?: boolean;
+    /**
+     * Unique identifier of parent metastore.
+     */
+    metastoreId?: string;
+    /**
+     * Name of parameter.
+     */
+    name?: string;
+    /**
+     * Username of current owner of function.
+     */
+    owner?: string;
+    /**
+     * Function parameter style. `S` is the value for SQL.
+     */
+    parameterStyle?: string;
+    /**
+     * JSON-serialized key-value pair map, encoded (escaped) as a string.
+     */
+    properties?: string;
+    /**
+     * Table function return parameters.  See `inputParams` for description.
+     */
+    returnParams?: inputs.GetFunctionsFunctionReturnParams;
+    /**
+     * Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
+     */
+    routineBody?: string;
+    /**
+     * Function body.
+     */
+    routineDefinition?: string;
+    /**
+     * Function dependencies.
+     */
+    routineDependencies?: inputs.GetFunctionsFunctionRoutineDependencies;
+    /**
+     * Name of databricks_schema.
+     */
+    schemaName?: string;
+    /**
+     * Function security type. (Enum: `DEFINER`).
+     */
+    securityType?: string;
+    /**
+     * Specific name of the function; Reserved for future use.
+     */
+    specificName?: string;
+    /**
+     * Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+     */
+    sqlDataAccess?: string;
+    /**
+     * List of schemes whose objects can be referenced without qualification.
+     */
+    sqlPath?: string;
+    /**
+     * Time at which this function was created, in epoch milliseconds.
+     */
+    updatedAt?: number;
+    /**
+     * Username of user who last modified function.
+     */
+    updatedBy?: string;
+}
+
+export interface GetFunctionsFunctionArgs {
+    /**
+     * Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
+     */
+    browseOnly?: pulumi.Input<boolean>;
+    /**
+     * Name of databricks_catalog.
+     */
+    catalogName?: pulumi.Input<string>;
+    /**
+     * User-provided free-form text description.
+     */
+    comment?: pulumi.Input<string>;
+    /**
+     * Time at which this function was created, in epoch milliseconds.
+     */
+    createdAt?: pulumi.Input<number>;
+    /**
+     * Username of function creator.
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * Scalar function return data type.
+     */
+    dataType?: pulumi.Input<string>;
+    /**
+     * External function language.
+     */
+    externalLanguage?: pulumi.Input<string>;
+    /**
+     * External function name.
+     */
+    externalName?: pulumi.Input<string>;
+    /**
+     * Pretty printed function data type.
+     */
+    fullDataType?: pulumi.Input<string>;
+    /**
+     * Full name of function, in form of catalog_name.schema_name.function__name
+     */
+    fullName?: pulumi.Input<string>;
+    /**
+     * Id of Function, relative to parent schema.
+     */
+    functionId?: pulumi.Input<string>;
+    /**
+     * object describing input parameters. Consists of the single attribute:
+     */
+    inputParams?: pulumi.Input<inputs.GetFunctionsFunctionInputParamsArgs>;
+    /**
+     * Boolean flag specifying whether the function is deterministic.
+     */
+    isDeterministic?: pulumi.Input<boolean>;
+    /**
+     * Boolean flag whether function null call.
+     */
+    isNullCall?: pulumi.Input<boolean>;
+    /**
+     * Unique identifier of parent metastore.
+     */
+    metastoreId?: pulumi.Input<string>;
+    /**
+     * Name of parameter.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Username of current owner of function.
+     */
+    owner?: pulumi.Input<string>;
+    /**
+     * Function parameter style. `S` is the value for SQL.
+     */
+    parameterStyle?: pulumi.Input<string>;
+    /**
+     * JSON-serialized key-value pair map, encoded (escaped) as a string.
+     */
+    properties?: pulumi.Input<string>;
+    /**
+     * Table function return parameters.  See `inputParams` for description.
+     */
+    returnParams?: pulumi.Input<inputs.GetFunctionsFunctionReturnParamsArgs>;
+    /**
+     * Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
+     */
+    routineBody?: pulumi.Input<string>;
+    /**
+     * Function body.
+     */
+    routineDefinition?: pulumi.Input<string>;
+    /**
+     * Function dependencies.
+     */
+    routineDependencies?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesArgs>;
+    /**
+     * Name of databricks_schema.
+     */
+    schemaName?: pulumi.Input<string>;
+    /**
+     * Function security type. (Enum: `DEFINER`).
+     */
+    securityType?: pulumi.Input<string>;
+    /**
+     * Specific name of the function; Reserved for future use.
+     */
+    specificName?: pulumi.Input<string>;
+    /**
+     * Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+     */
+    sqlDataAccess?: pulumi.Input<string>;
+    /**
+     * List of schemes whose objects can be referenced without qualification.
+     */
+    sqlPath?: pulumi.Input<string>;
+    /**
+     * Time at which this function was created, in epoch milliseconds.
+     */
+    updatedAt?: pulumi.Input<number>;
+    /**
+     * Username of user who last modified function.
+     */
+    updatedBy?: pulumi.Input<string>;
+}
+
+export interface GetFunctionsFunctionInputParams {
+    /**
+     * The array of definitions of the function's parameters:
+     */
+    parameters?: inputs.GetFunctionsFunctionInputParamsParameter[];
+}
+
+export interface GetFunctionsFunctionInputParamsArgs {
+    /**
+     * The array of definitions of the function's parameters:
+     */
+    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionInputParamsParameterArgs>[]>;
+}
+
+export interface GetFunctionsFunctionInputParamsParameter {
+    /**
+     * User-provided free-form text description.
+     */
+    comment?: string;
+    /**
+     * Name of parameter.
+     */
+    name: string;
+    /**
+     * Default value of the parameter.
+     */
+    parameterDefault?: string;
+    /**
+     * The mode of the function parameter.
+     */
+    parameterMode?: string;
+    /**
+     * The type of function parameter (`PARAM` or `COLUMN`).
+     */
+    parameterType?: string;
+    /**
+     * Ordinal position of column (starting at position 0).
+     */
+    position: number;
+    /**
+     * Format of IntervalType.
+     */
+    typeIntervalType?: string;
+    /**
+     * Full data type spec, JSON-serialized.
+     */
+    typeJson?: string;
+    /**
+     * Name of type (INT, STRUCT, MAP, etc.).
+     */
+    typeName: string;
+    /**
+     * Digits of precision; required on Create for DecimalTypes.
+     */
+    typePrecision?: number;
+    /**
+     * Digits to right of decimal; Required on Create for DecimalTypes.
+     */
+    typeScale?: number;
+    /**
+     * Full data type spec, SQL/catalogString text.
+     */
+    typeText: string;
+}
+
+export interface GetFunctionsFunctionInputParamsParameterArgs {
+    /**
+     * User-provided free-form text description.
+     */
+    comment?: pulumi.Input<string>;
+    /**
+     * Name of parameter.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Default value of the parameter.
+     */
+    parameterDefault?: pulumi.Input<string>;
+    /**
+     * The mode of the function parameter.
+     */
+    parameterMode?: pulumi.Input<string>;
+    /**
+     * The type of function parameter (`PARAM` or `COLUMN`).
+     */
+    parameterType?: pulumi.Input<string>;
+    /**
+     * Ordinal position of column (starting at position 0).
+     */
+    position: pulumi.Input<number>;
+    /**
+     * Format of IntervalType.
+     */
+    typeIntervalType?: pulumi.Input<string>;
+    /**
+     * Full data type spec, JSON-serialized.
+     */
+    typeJson?: pulumi.Input<string>;
+    /**
+     * Name of type (INT, STRUCT, MAP, etc.).
+     */
+    typeName: pulumi.Input<string>;
+    /**
+     * Digits of precision; required on Create for DecimalTypes.
+     */
+    typePrecision?: pulumi.Input<number>;
+    /**
+     * Digits to right of decimal; Required on Create for DecimalTypes.
+     */
+    typeScale?: pulumi.Input<number>;
+    /**
+     * Full data type spec, SQL/catalogString text.
+     */
+    typeText: pulumi.Input<string>;
+}
+
+export interface GetFunctionsFunctionReturnParams {
+    /**
+     * The array of definitions of the function's parameters:
+     */
+    parameters?: inputs.GetFunctionsFunctionReturnParamsParameter[];
+}
+
+export interface GetFunctionsFunctionReturnParamsArgs {
+    /**
+     * The array of definitions of the function's parameters:
+     */
+    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionReturnParamsParameterArgs>[]>;
+}
+
+export interface GetFunctionsFunctionReturnParamsParameter {
+    /**
+     * User-provided free-form text description.
+     */
+    comment?: string;
+    /**
+     * Name of parameter.
+     */
+    name: string;
+    /**
+     * Default value of the parameter.
+     */
+    parameterDefault?: string;
+    /**
+     * The mode of the function parameter.
+     */
+    parameterMode?: string;
+    /**
+     * The type of function parameter (`PARAM` or `COLUMN`).
+     */
+    parameterType?: string;
+    /**
+     * Ordinal position of column (starting at position 0).
+     */
+    position: number;
+    /**
+     * Format of IntervalType.
+     */
+    typeIntervalType?: string;
+    /**
+     * Full data type spec, JSON-serialized.
+     */
+    typeJson?: string;
+    /**
+     * Name of type (INT, STRUCT, MAP, etc.).
+     */
+    typeName: string;
+    /**
+     * Digits of precision; required on Create for DecimalTypes.
+     */
+    typePrecision?: number;
+    /**
+     * Digits to right of decimal; Required on Create for DecimalTypes.
+     */
+    typeScale?: number;
+    /**
+     * Full data type spec, SQL/catalogString text.
+     */
+    typeText: string;
+}
+
+export interface GetFunctionsFunctionReturnParamsParameterArgs {
+    /**
+     * User-provided free-form text description.
+     */
+    comment?: pulumi.Input<string>;
+    /**
+     * Name of parameter.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Default value of the parameter.
+     */
+    parameterDefault?: pulumi.Input<string>;
+    /**
+     * The mode of the function parameter.
+     */
+    parameterMode?: pulumi.Input<string>;
+    /**
+     * The type of function parameter (`PARAM` or `COLUMN`).
+     */
+    parameterType?: pulumi.Input<string>;
+    /**
+     * Ordinal position of column (starting at position 0).
+     */
+    position: pulumi.Input<number>;
+    /**
+     * Format of IntervalType.
+     */
+    typeIntervalType?: pulumi.Input<string>;
+    /**
+     * Full data type spec, JSON-serialized.
+     */
+    typeJson?: pulumi.Input<string>;
+    /**
+     * Name of type (INT, STRUCT, MAP, etc.).
+     */
+    typeName: pulumi.Input<string>;
+    /**
+     * Digits of precision; required on Create for DecimalTypes.
+     */
+    typePrecision?: pulumi.Input<number>;
+    /**
+     * Digits to right of decimal; Required on Create for DecimalTypes.
+     */
+    typeScale?: pulumi.Input<number>;
+    /**
+     * Full data type spec, SQL/catalogString text.
+     */
+    typeText: pulumi.Input<string>;
+}
+
+export interface GetFunctionsFunctionRoutineDependencies {
+    dependencies?: inputs.GetFunctionsFunctionRoutineDependenciesDependency[];
+}
+
+export interface GetFunctionsFunctionRoutineDependenciesArgs {
+    dependencies?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyArgs>[]>;
+}
+
+export interface GetFunctionsFunctionRoutineDependenciesDependency {
+    function?: inputs.GetFunctionsFunctionRoutineDependenciesDependencyFunction;
+    table?: inputs.GetFunctionsFunctionRoutineDependenciesDependencyTable;
+}
+
+export interface GetFunctionsFunctionRoutineDependenciesDependencyArgs {
+    function?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs>;
+    table?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyTableArgs>;
+}
+
+export interface GetFunctionsFunctionRoutineDependenciesDependencyFunction {
+    functionFullName: string;
+}
+
+export interface GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs {
+    functionFullName: pulumi.Input<string>;
+}
+
+export interface GetFunctionsFunctionRoutineDependenciesDependencyTable {
+    tableFullName: string;
+}
+
+export interface GetFunctionsFunctionRoutineDependenciesDependencyTableArgs {
+    tableFullName: pulumi.Input<string>;
+}
+
 export interface GetInstancePoolPoolInfo {
     awsAttributes?: inputs.GetInstancePoolPoolInfoAwsAttributes;
     azureAttributes?: inputs.GetInstancePoolPoolInfoAzureAttributes;
