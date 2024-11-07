@@ -7,7 +7,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 replace github.com/databricks/terraform-provider-databricks/shim => ./shim
 
 require (
-	github.com/databricks/databricks-sdk-go v0.49.0
+	github.com/databricks/databricks-sdk-go v0.50.0
 	github.com/databricks/terraform-provider-databricks/shim v0.0.0-00010101000000-000000000000
 	github.com/pulumi/providertest v0.1.3
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.47.0
@@ -48,7 +48,7 @@ require (
 	github.com/cloudflare/circl v1.3.7 // indirect
 	github.com/containerd/console v1.0.4-0.20230313162750-1ae8d489ac81 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
-	github.com/databricks/terraform-provider-databricks v1.56.0 // indirect
+	github.com/databricks/terraform-provider-databricks v1.57.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deckarep/golang-set/v2 v2.5.0 // indirect
 	github.com/djherbis/times v1.5.0 // indirect

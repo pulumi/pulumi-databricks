@@ -122,13 +122,15 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_azure_adls_gen1_mount",
 			"databricks_azure_adls_gen2_mount",
 			"databricks_azure_blob_mount",
-			// Upstream is silently introducing replacement resources postfixed with
+			// Upstream is silently introducing replacement resources and datasources postfixed with
 			// _pluginframework. They plan to move "${RES}_pluginframework" to "${RES}". We only
 			// want the suggested version, so we omit these.
 			"databricks_library_pluginframework",
 			"databricks_quality_monitor_pluginframework",
 			"databricks_cluster_pluginframework",
 			"databricks_volumes_pluginframework",
+			"databricks_share_pluginframework",
+			"databricks_shares_pluginframework",
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"databricks_default_namespace_setting": {
@@ -159,6 +161,30 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_automatic_cluster_update_workspace_setting":     {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"databricks_compliance_security_profile_workspace_setting":  {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"databricks_enhanced_security_monitoring_workspace_setting": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+
+			// Upstream has introduced an ID field for backwards compatiblity with sdkv2 on these PF resources:
+			// - databricks_library
+			// - databricks_quality_monitor
+			// We delegate the ID field to have a more specific name pulumi-side.
+			"databricks_library": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {Name: "libraryId"},
+				},
+				ComputeID: tfbridge.DelegateIDField(
+					"libraryID",
+					"databricks",
+					"https://github.com/pulumi/pulumi-databricks",
+				),
+			},
+			"databricks_quality_monitor": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {Name: "monitorId"},
+				},
+				ComputeID: tfbridge.DelegateIDField(
+					"monitorID",
+					"databricks",
+					"https://github.com/pulumi/pulumi-databricks",
+				)},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"databricks_aws_crossaccount_policy": {
