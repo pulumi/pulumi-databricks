@@ -162,7 +162,7 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_compliance_security_profile_workspace_setting":  {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"databricks_enhanced_security_monitoring_workspace_setting": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 
-			// Upstream has introduced an ID field for backwards compatiblity with sdkv2 on these PF resources:
+			// Upstream has introduced an ID field for backwards compatibility with sdkv2 on these PF resources:
 			// - databricks_library
 			// - databricks_quality_monitor
 			// We delegate the ID field to have a more specific name pulumi-side.
