@@ -21,7 +21,7 @@ import (
 
 	_ "embed" // Allow embedding the schema into the final binary
 
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
 	databricks "github.com/pulumi/pulumi-databricks/provider"
 )
