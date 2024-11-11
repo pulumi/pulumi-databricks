@@ -3454,6 +3454,59 @@
                     }
                 }
             },
+            "databricks_functions": {
+                "current": "databricks:index/getFunctions:getFunctions",
+                "majorVersion": 1,
+                "fields": {
+                    "functions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "input_params": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "parameters": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "return_params": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "parameters": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "routine_dependencies": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "dependencies": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "function": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "table": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_group": {
                 "current": "databricks:index/getGroup:getGroup",
                 "majorVersion": 1,
@@ -5032,7 +5085,7 @@
             "databricks:index/ipAccessList:IpAccessList": 0,
             "databricks:index/job:Job": 0,
             "databricks:index/lakehouseMonitor:LakehouseMonitor": 0,
-            "databricks:index/library:Library": 0,
+            "databricks:index/library:Library": 1,
             "databricks:index/metastore:Metastore": 0,
             "databricks:index/metastoreAssignment:MetastoreAssignment": 0,
             "databricks:index/metastoreDataAccess:MetastoreDataAccess": 0,
@@ -5061,7 +5114,7 @@
             "databricks:index/permissionAssignment:PermissionAssignment": 0,
             "databricks:index/permissions:Permissions": 0,
             "databricks:index/pipeline:Pipeline": 0,
-            "databricks:index/qualityMonitor:QualityMonitor": 0,
+            "databricks:index/qualityMonitor:QualityMonitor": 1,
             "databricks:index/query:Query": 0,
             "databricks:index/recipient:Recipient": 0,
             "databricks:index/registeredModel:RegisteredModel": 0,
@@ -5117,6 +5170,7 @@
             "databricks:index/getDirectory:getDirectory": 0,
             "databricks:index/getExternalLocation:getExternalLocation": 0,
             "databricks:index/getExternalLocations:getExternalLocations": 0,
+            "databricks:index/getFunctions:getFunctions": 1,
             "databricks:index/getGroup:getGroup": 0,
             "databricks:index/getInstancePool:getInstancePool": 0,
             "databricks:index/getInstanceProfiles:getInstanceProfiles": 0,
@@ -5151,7 +5205,7 @@
             "databricks:index/getUser:getUser": 0,
             "databricks:index/getViews:getViews": 0,
             "databricks:index/getVolume:getVolume": 0,
-            "databricks:index/getVolumes:getVolumes": 0,
+            "databricks:index/getVolumes:getVolumes": 1,
             "databricks:index/getZones:getZones": 0
         }
     },

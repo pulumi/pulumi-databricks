@@ -14,6 +14,10 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; `databricks.Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
     /// 
+    /// ## Plugin Framework Migration
+    /// 
+    /// The library resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="databricks.Library"`.
+    /// 
     /// ## Installing library on all clusters
     /// 
     /// You can install libraries on all clusters with the help of databricks.getClusters data resource:
@@ -179,6 +183,9 @@ namespace Pulumi.Databricks
         [Output("jar")]
         public Output<string?> Jar { get; private set; } = null!;
 
+        [Output("libraryId")]
+        public Output<string> LibraryId { get; private set; } = null!;
+
         [Output("maven")]
         public Output<Outputs.LibraryMaven?> Maven { get; private set; } = null!;
 
@@ -249,6 +256,9 @@ namespace Pulumi.Databricks
         [Input("jar")]
         public Input<string>? Jar { get; set; }
 
+        [Input("libraryId")]
+        public Input<string>? LibraryId { get; set; }
+
         [Input("maven")]
         public Input<Inputs.LibraryMavenArgs>? Maven { get; set; }
 
@@ -280,6 +290,9 @@ namespace Pulumi.Databricks
 
         [Input("jar")]
         public Input<string>? Jar { get; set; }
+
+        [Input("libraryId")]
+        public Input<string>? LibraryId { get; set; }
 
         [Input("maven")]
         public Input<Inputs.LibraryMavenGetArgs>? Maven { get; set; }

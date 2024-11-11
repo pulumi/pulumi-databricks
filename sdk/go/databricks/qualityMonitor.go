@@ -16,6 +16,10 @@ import (
 //
 // A `QualityMonitor` is attached to a SqlTable and can be of type timeseries, snapshot or inference.
 //
+// ## Plugin Framework Migration
+//
+// The quality monitor resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="QualityMonitor"`.
+//
 // ## Example Usage
 //
 // ```go
@@ -194,6 +198,8 @@ type QualityMonitor struct {
 	// Configuration for the inference log monitor
 	InferenceLog            QualityMonitorInferenceLogPtrOutput `pulumi:"inferenceLog"`
 	LatestMonitorFailureMsg pulumi.StringPtrOutput              `pulumi:"latestMonitorFailureMsg"`
+	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+	MonitorId pulumi.StringOutput `pulumi:"monitorId"`
 	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
 	MonitorVersion pulumi.StringOutput `pulumi:"monitorVersion"`
 	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
@@ -275,6 +281,8 @@ type qualityMonitorState struct {
 	// Configuration for the inference log monitor
 	InferenceLog            *QualityMonitorInferenceLog `pulumi:"inferenceLog"`
 	LatestMonitorFailureMsg *string                     `pulumi:"latestMonitorFailureMsg"`
+	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+	MonitorId *string `pulumi:"monitorId"`
 	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
 	MonitorVersion *string `pulumi:"monitorVersion"`
 	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
@@ -318,6 +326,8 @@ type QualityMonitorState struct {
 	// Configuration for the inference log monitor
 	InferenceLog            QualityMonitorInferenceLogPtrInput
 	LatestMonitorFailureMsg pulumi.StringPtrInput
+	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+	MonitorId pulumi.StringPtrInput
 	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
 	MonitorVersion pulumi.StringPtrInput
 	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
@@ -361,6 +371,8 @@ type qualityMonitorArgs struct {
 	// Configuration for the inference log monitor
 	InferenceLog            *QualityMonitorInferenceLog `pulumi:"inferenceLog"`
 	LatestMonitorFailureMsg *string                     `pulumi:"latestMonitorFailureMsg"`
+	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+	MonitorId *string `pulumi:"monitorId"`
 	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications *QualityMonitorNotifications `pulumi:"notifications"`
 	// Schema where output metric tables are created
@@ -395,6 +407,8 @@ type QualityMonitorArgs struct {
 	// Configuration for the inference log monitor
 	InferenceLog            QualityMonitorInferenceLogPtrInput
 	LatestMonitorFailureMsg pulumi.StringPtrInput
+	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+	MonitorId pulumi.StringPtrInput
 	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications QualityMonitorNotificationsPtrInput
 	// Schema where output metric tables are created
@@ -542,6 +556,11 @@ func (o QualityMonitorOutput) InferenceLog() QualityMonitorInferenceLogPtrOutput
 
 func (o QualityMonitorOutput) LatestMonitorFailureMsg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringPtrOutput { return v.LatestMonitorFailureMsg }).(pulumi.StringPtrOutput)
+}
+
+// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+func (o QualityMonitorOutput) MonitorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.MonitorId }).(pulumi.StringOutput)
 }
 
 // The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted

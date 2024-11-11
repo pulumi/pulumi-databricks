@@ -11,6 +11,10 @@ import * as utilities from "./utilities";
  *
  * > `databricks.Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.
  *
+ * ## Plugin Framework Migration
+ *
+ * The library resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="databricks.Library"`.
+ *
  * ## Installing library on all clusters
  *
  * You can install libraries on all clusters with the help of databricks.getClusters data resource:
@@ -151,6 +155,7 @@ export class Library extends pulumi.CustomResource {
     public readonly cran!: pulumi.Output<outputs.LibraryCran | undefined>;
     public readonly egg!: pulumi.Output<string | undefined>;
     public readonly jar!: pulumi.Output<string | undefined>;
+    public readonly libraryId!: pulumi.Output<string>;
     public readonly maven!: pulumi.Output<outputs.LibraryMaven | undefined>;
     public readonly pypi!: pulumi.Output<outputs.LibraryPypi | undefined>;
     public readonly requirements!: pulumi.Output<string | undefined>;
@@ -173,6 +178,7 @@ export class Library extends pulumi.CustomResource {
             resourceInputs["cran"] = state ? state.cran : undefined;
             resourceInputs["egg"] = state ? state.egg : undefined;
             resourceInputs["jar"] = state ? state.jar : undefined;
+            resourceInputs["libraryId"] = state ? state.libraryId : undefined;
             resourceInputs["maven"] = state ? state.maven : undefined;
             resourceInputs["pypi"] = state ? state.pypi : undefined;
             resourceInputs["requirements"] = state ? state.requirements : undefined;
@@ -186,6 +192,7 @@ export class Library extends pulumi.CustomResource {
             resourceInputs["cran"] = args ? args.cran : undefined;
             resourceInputs["egg"] = args ? args.egg : undefined;
             resourceInputs["jar"] = args ? args.jar : undefined;
+            resourceInputs["libraryId"] = args ? args.libraryId : undefined;
             resourceInputs["maven"] = args ? args.maven : undefined;
             resourceInputs["pypi"] = args ? args.pypi : undefined;
             resourceInputs["requirements"] = args ? args.requirements : undefined;
@@ -204,6 +211,7 @@ export interface LibraryState {
     cran?: pulumi.Input<inputs.LibraryCran>;
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
+    libraryId?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.LibraryMaven>;
     pypi?: pulumi.Input<inputs.LibraryPypi>;
     requirements?: pulumi.Input<string>;
@@ -218,6 +226,7 @@ export interface LibraryArgs {
     cran?: pulumi.Input<inputs.LibraryCran>;
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
+    libraryId?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.LibraryMaven>;
     pypi?: pulumi.Input<inputs.LibraryPypi>;
     requirements?: pulumi.Input<string>;

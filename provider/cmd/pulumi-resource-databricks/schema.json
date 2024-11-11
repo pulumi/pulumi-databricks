@@ -6140,12 +6140,10 @@
         "databricks:index/LibraryCran:LibraryCran": {
             "properties": {
                 "package": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 },
                 "repo": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -6156,19 +6154,16 @@
         "databricks:index/LibraryMaven:LibraryMaven": {
             "properties": {
                 "coordinates": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 },
                 "exclusions": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "repo": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -6179,12 +6174,10 @@
         "databricks:index/LibraryPypi:LibraryPypi": {
             "properties": {
                 "package": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 },
                 "repo": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -11704,6 +11697,317 @@
                 }
             },
             "type": "object"
+        },
+        "databricks:index/getFunctionsFunction:getFunctionsFunction": {
+            "properties": {
+                "browseOnly": {
+                    "type": "boolean",
+                    "description": "Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.\n"
+                },
+                "catalogName": {
+                    "type": "string",
+                    "description": "Name of databricks_catalog.\n"
+                },
+                "comment": {
+                    "type": "string",
+                    "description": "User-provided free-form text description.\n"
+                },
+                "createdAt": {
+                    "type": "integer",
+                    "description": "Time at which this function was created, in epoch milliseconds.\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Username of function creator.\n"
+                },
+                "dataType": {
+                    "type": "string",
+                    "description": "Scalar function return data type.\n"
+                },
+                "externalLanguage": {
+                    "type": "string",
+                    "description": "External function language.\n"
+                },
+                "externalName": {
+                    "type": "string",
+                    "description": "External function name.\n"
+                },
+                "fullDataType": {
+                    "type": "string",
+                    "description": "Pretty printed function data type.\n"
+                },
+                "fullName": {
+                    "type": "string",
+                    "description": "Full name of function, in form of catalog_name.schema_name.function__name\n"
+                },
+                "functionId": {
+                    "type": "string",
+                    "description": "Id of Function, relative to parent schema.\n"
+                },
+                "inputParams": {
+                    "$ref": "#/types/databricks:index/getFunctionsFunctionInputParams:getFunctionsFunctionInputParams",
+                    "description": "object describing input parameters. Consists of the single attribute:\n"
+                },
+                "isDeterministic": {
+                    "type": "boolean",
+                    "description": "Boolean flag specifying whether the function is deterministic.\n"
+                },
+                "isNullCall": {
+                    "type": "boolean",
+                    "description": "Boolean flag whether function null call.\n"
+                },
+                "metastoreId": {
+                    "type": "string",
+                    "description": "Unique identifier of parent metastore.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of parameter.\n"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "Username of current owner of function.\n"
+                },
+                "parameterStyle": {
+                    "type": "string",
+                    "description": "Function parameter style. `S` is the value for SQL.\n"
+                },
+                "properties": {
+                    "type": "string",
+                    "description": "JSON-serialized key-value pair map, encoded (escaped) as a string.\n"
+                },
+                "returnParams": {
+                    "$ref": "#/types/databricks:index/getFunctionsFunctionReturnParams:getFunctionsFunctionReturnParams",
+                    "description": "Table function return parameters.  See `input_params` for description.\n"
+                },
+                "routineBody": {
+                    "type": "string",
+                    "description": "Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.\n"
+                },
+                "routineDefinition": {
+                    "type": "string",
+                    "description": "Function body.\n"
+                },
+                "routineDependencies": {
+                    "$ref": "#/types/databricks:index/getFunctionsFunctionRoutineDependencies:getFunctionsFunctionRoutineDependencies",
+                    "description": "Function dependencies.\n"
+                },
+                "schemaName": {
+                    "type": "string",
+                    "description": "Name of databricks_schema.\n"
+                },
+                "securityType": {
+                    "type": "string",
+                    "description": "Function security type. (Enum: `DEFINER`).\n"
+                },
+                "specificName": {
+                    "type": "string",
+                    "description": "Specific name of the function; Reserved for future use.\n"
+                },
+                "sqlDataAccess": {
+                    "type": "string",
+                    "description": "Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).\n"
+                },
+                "sqlPath": {
+                    "type": "string",
+                    "description": "List of schemes whose objects can be referenced without qualification.\n"
+                },
+                "updatedAt": {
+                    "type": "integer",
+                    "description": "Time at which this function was created, in epoch milliseconds.\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "Username of user who last modified function.\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getFunctionsFunctionInputParams:getFunctionsFunctionInputParams": {
+            "properties": {
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getFunctionsFunctionInputParamsParameter:getFunctionsFunctionInputParamsParameter"
+                    },
+                    "description": "The array of definitions of the function's parameters:\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getFunctionsFunctionInputParamsParameter:getFunctionsFunctionInputParamsParameter": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "User-provided free-form text description.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of parameter.\n"
+                },
+                "parameterDefault": {
+                    "type": "string",
+                    "description": "Default value of the parameter.\n"
+                },
+                "parameterMode": {
+                    "type": "string",
+                    "description": "The mode of the function parameter.\n"
+                },
+                "parameterType": {
+                    "type": "string",
+                    "description": "The type of function parameter (`PARAM` or `COLUMN`).\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Ordinal position of column (starting at position 0).\n"
+                },
+                "typeIntervalType": {
+                    "type": "string",
+                    "description": "Format of IntervalType.\n"
+                },
+                "typeJson": {
+                    "type": "string",
+                    "description": "Full data type spec, JSON-serialized.\n"
+                },
+                "typeName": {
+                    "type": "string",
+                    "description": "Name of type (INT, STRUCT, MAP, etc.).\n"
+                },
+                "typePrecision": {
+                    "type": "integer",
+                    "description": "Digits of precision; required on Create for DecimalTypes.\n"
+                },
+                "typeScale": {
+                    "type": "integer",
+                    "description": "Digits to right of decimal; Required on Create for DecimalTypes.\n"
+                },
+                "typeText": {
+                    "type": "string",
+                    "description": "Full data type spec, SQL/catalogString text.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "position",
+                "typeName",
+                "typeText"
+            ]
+        },
+        "databricks:index/getFunctionsFunctionReturnParams:getFunctionsFunctionReturnParams": {
+            "properties": {
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getFunctionsFunctionReturnParamsParameter:getFunctionsFunctionReturnParamsParameter"
+                    },
+                    "description": "The array of definitions of the function's parameters:\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getFunctionsFunctionReturnParamsParameter:getFunctionsFunctionReturnParamsParameter": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "User-provided free-form text description.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of parameter.\n"
+                },
+                "parameterDefault": {
+                    "type": "string",
+                    "description": "Default value of the parameter.\n"
+                },
+                "parameterMode": {
+                    "type": "string",
+                    "description": "The mode of the function parameter.\n"
+                },
+                "parameterType": {
+                    "type": "string",
+                    "description": "The type of function parameter (`PARAM` or `COLUMN`).\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Ordinal position of column (starting at position 0).\n"
+                },
+                "typeIntervalType": {
+                    "type": "string",
+                    "description": "Format of IntervalType.\n"
+                },
+                "typeJson": {
+                    "type": "string",
+                    "description": "Full data type spec, JSON-serialized.\n"
+                },
+                "typeName": {
+                    "type": "string",
+                    "description": "Name of type (INT, STRUCT, MAP, etc.).\n"
+                },
+                "typePrecision": {
+                    "type": "integer",
+                    "description": "Digits of precision; required on Create for DecimalTypes.\n"
+                },
+                "typeScale": {
+                    "type": "integer",
+                    "description": "Digits to right of decimal; Required on Create for DecimalTypes.\n"
+                },
+                "typeText": {
+                    "type": "string",
+                    "description": "Full data type spec, SQL/catalogString text.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "position",
+                "typeName",
+                "typeText"
+            ]
+        },
+        "databricks:index/getFunctionsFunctionRoutineDependencies:getFunctionsFunctionRoutineDependencies": {
+            "properties": {
+                "dependencies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/getFunctionsFunctionRoutineDependenciesDependency:getFunctionsFunctionRoutineDependenciesDependency"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getFunctionsFunctionRoutineDependenciesDependency:getFunctionsFunctionRoutineDependenciesDependency": {
+            "properties": {
+                "function": {
+                    "$ref": "#/types/databricks:index/getFunctionsFunctionRoutineDependenciesDependencyFunction:getFunctionsFunctionRoutineDependenciesDependencyFunction"
+                },
+                "table": {
+                    "$ref": "#/types/databricks:index/getFunctionsFunctionRoutineDependenciesDependencyTable:getFunctionsFunctionRoutineDependenciesDependencyTable"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/getFunctionsFunctionRoutineDependenciesDependencyFunction:getFunctionsFunctionRoutineDependenciesDependencyFunction": {
+            "properties": {
+                "functionFullName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "functionFullName"
+            ]
+        },
+        "databricks:index/getFunctionsFunctionRoutineDependenciesDependencyTable:getFunctionsFunctionRoutineDependenciesDependencyTable": {
+            "properties": {
+                "tableFullName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "tableFullName"
+            ]
         },
         "databricks:index/getInstancePoolPoolInfo:getInstancePoolPoolInfo": {
             "properties": {
@@ -21922,7 +22226,7 @@
             }
         },
         "databricks:index/library:Library": {
-            "description": "Installs a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster. Each different type of library has a slightly different syntax. It's possible to set only one type of library within one resource. Otherwise, the plan will fail with an error.\n\n\u003e `databricks.Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.\n\n## Installing library on all clusters\n\nYou can install libraries on all clusters with the help of databricks.getClusters data resource:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nexport = async () =\u003e {\n    const all = await databricks.getClusters({});\n    const cli: databricks.Library[] = [];\n    for (const range of all.ids.map((v, k) =\u003e ({key: k, value: v}))) {\n        cli.push(new databricks.Library(`cli-${range.key}`, {\n            clusterId: range.key,\n            pypi: {\n                \"package\": \"databricks-cli\",\n            },\n        }));\n    }\n}\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_clusters()\ncli = []\nfor range in [{\"key\": k, \"value\": v} for [k, v] in enumerate(all.ids)]:\n    cli.append(databricks.Library(f\"cli-{range['key']}\",\n        cluster_id=range[\"key\"],\n        pypi={\n            \"package\": \"databricks-cli\",\n        }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Threading.Tasks;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(async() =\u003e \n{\n    var all = await Databricks.GetClusters.InvokeAsync();\n\n    var cli = new List\u003cDatabricks.Library\u003e();\n    foreach (var range in )\n    {\n        cli.Add(new Databricks.Library($\"cli-{range.Key}\", new()\n        {\n            ClusterId = range.Key,\n            Pypi = new Databricks.Inputs.LibraryPypiArgs\n            {\n                Package = \"databricks-cli\",\n            },\n        }));\n    }\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := databricks.GetClusters(ctx, \u0026databricks.GetClustersArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvar cli []*databricks.Library\n\t\tfor key0, _ := range all.Ids {\n\t\t\t__res, err := databricks.NewLibrary(ctx, fmt.Sprintf(\"cli-%v\", key0), \u0026databricks.LibraryArgs{\n\t\t\t\tClusterId: pulumi.Float64(key0),\n\t\t\t\tPypi: \u0026databricks.LibraryPypiArgs{\n\t\t\t\t\tPackage: pulumi.String(\"databricks-cli\"),\n\t\t\t\t},\n\t\t\t})\n\t\t\tif err != nil {\n\t\t\t\treturn err\n\t\t\t}\n\t\t\tcli = append(cli, __res)\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetClustersArgs;\nimport com.pulumi.databricks.Library;\nimport com.pulumi.databricks.LibraryArgs;\nimport com.pulumi.databricks.inputs.LibraryPypiArgs;\nimport com.pulumi.codegen.internal.KeyedValue;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getClusters();\n\n        final var cli = all.applyValue(getClustersResult -\u003e {\n            final var resources = new ArrayList\u003cLibrary\u003e();\n            for (var range : KeyedValue.of(getClustersResult.ids()) {\n                var resource = new Library(\"cli-\" + range.key(), LibraryArgs.builder()\n                    .clusterId(range.key())\n                    .pypi(LibraryPypiArgs.builder()\n                        .package_(\"databricks-cli\")\n                        .build())\n                    .build());\n\n                resources.add(resource);\n            }\n\n            return resources;\n        });\n\n    }\n}\n```\n```yaml\nresources:\n  cli:\n    type: databricks:Library\n    properties:\n      clusterId: ${range.key}\n      pypi:\n        package: databricks-cli\n    options: {}\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getClusters\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Java/Scala Maven\n\nInstalling artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst deequ = new databricks.Library(\"deequ\", {\n    clusterId: _this.id,\n    maven: {\n        coordinates: \"com.amazon.deequ:deequ:1.0.4\",\n        exclusions: [\"org.apache.avro:avro\"],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ndeequ = databricks.Library(\"deequ\",\n    cluster_id=this[\"id\"],\n    maven={\n        \"coordinates\": \"com.amazon.deequ:deequ:1.0.4\",\n        \"exclusions\": [\"org.apache.avro:avro\"],\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var deequ = new Databricks.Library(\"deequ\", new()\n    {\n        ClusterId = @this.Id,\n        Maven = new Databricks.Inputs.LibraryMavenArgs\n        {\n            Coordinates = \"com.amazon.deequ:deequ:1.0.4\",\n            Exclusions = new[]\n            {\n                \"org.apache.avro:avro\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewLibrary(ctx, \"deequ\", \u0026databricks.LibraryArgs{\n\t\t\tClusterId: pulumi.Any(this.Id),\n\t\t\tMaven: \u0026databricks.LibraryMavenArgs{\n\t\t\t\tCoordinates: pulumi.String(\"com.amazon.deequ:deequ:1.0.4\"),\n\t\t\t\tExclusions: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"org.apache.avro:avro\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Library;\nimport com.pulumi.databricks.LibraryArgs;\nimport com.pulumi.databricks.inputs.LibraryMavenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var deequ = new Library(\"deequ\", LibraryArgs.builder()\n            .clusterId(this_.id())\n            .maven(LibraryMavenArgs.builder()\n                .coordinates(\"com.amazon.deequ:deequ:1.0.4\")\n                .exclusions(\"org.apache.avro:avro\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  deequ:\n    type: databricks:Library\n    properties:\n      clusterId: ${this.id}\n      maven:\n        coordinates: com.amazon.deequ:deequ:1.0.4\n        exclusions:\n          - org.apache.avro:avro\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Python PyPI\n\nInstalling Python PyPI artifacts. You can optionally also specify the `repo` parameter for a custom PyPI mirror, which should be accessible without any authentication for the network that cluster runs in.\n\n\u003e `repo` host should be accessible from the Internet by Databricks control plane. If connectivity to custom PyPI repositories is required, please modify cluster-node `/etc/pip.conf` through databricks_global_init_script.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst fbprophet = new databricks.Library(\"fbprophet\", {\n    clusterId: _this.id,\n    pypi: {\n        \"package\": \"fbprophet==0.6\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nfbprophet = databricks.Library(\"fbprophet\",\n    cluster_id=this[\"id\"],\n    pypi={\n        \"package\": \"fbprophet==0.6\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fbprophet = new Databricks.Library(\"fbprophet\", new()\n    {\n        ClusterId = @this.Id,\n        Pypi = new Databricks.Inputs.LibraryPypiArgs\n        {\n            Package = \"fbprophet==0.6\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewLibrary(ctx, \"fbprophet\", \u0026databricks.LibraryArgs{\n\t\t\tClusterId: pulumi.Any(this.Id),\n\t\t\tPypi: \u0026databricks.LibraryPypiArgs{\n\t\t\t\tPackage: pulumi.String(\"fbprophet==0.6\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Library;\nimport com.pulumi.databricks.LibraryArgs;\nimport com.pulumi.databricks.inputs.LibraryPypiArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var fbprophet = new Library(\"fbprophet\", LibraryArgs.builder()\n            .clusterId(this_.id())\n            .pypi(LibraryPypiArgs.builder()\n                .package_(\"fbprophet==0.6\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  fbprophet:\n    type: databricks:Library\n    properties:\n      clusterId: ${this.id}\n      pypi:\n        package: fbprophet==0.6\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Python requirements files\n\nInstalling Python libraries listed in the `requirements.txt` file.  Only Workspace paths and Unity Catalog Volumes paths are supported.  Requires a cluster with DBR 15.0+.\n\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst libraries = new databricks.Library(\"libraries\", {\n    clusterId: _this.id,\n    requirements: \"/Workspace/path/to/requirements.txt\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nlibraries = databricks.Library(\"libraries\",\n    cluster_id=this[\"id\"],\n    requirements=\"/Workspace/path/to/requirements.txt\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var libraries = new Databricks.Library(\"libraries\", new()\n    {\n        ClusterId = @this.Id,\n        Requirements = \"/Workspace/path/to/requirements.txt\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewLibrary(ctx, \"libraries\", \u0026databricks.LibraryArgs{\n\t\t\tClusterId:    pulumi.Any(this.Id),\n\t\t\tRequirements: pulumi.String(\"/Workspace/path/to/requirements.txt\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Library;\nimport com.pulumi.databricks.LibraryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var libraries = new Library(\"libraries\", LibraryArgs.builder()\n            .clusterId(this_.id())\n            .requirements(\"/Workspace/path/to/requirements.txt\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  libraries:\n    type: databricks:Library\n    properties:\n      clusterId: ${this.id}\n      requirements: /Workspace/path/to/requirements.txt\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\n## R CRan\n\nInstalling artifacts from CRan. You can also optionally specify a `repo` parameter for a custom cran mirror.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst rkeops = new databricks.Library(\"rkeops\", {\n    clusterId: _this.id,\n    cran: {\n        \"package\": \"rkeops\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nrkeops = databricks.Library(\"rkeops\",\n    cluster_id=this[\"id\"],\n    cran={\n        \"package\": \"rkeops\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rkeops = new Databricks.Library(\"rkeops\", new()\n    {\n        ClusterId = @this.Id,\n        Cran = new Databricks.Inputs.LibraryCranArgs\n        {\n            Package = \"rkeops\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewLibrary(ctx, \"rkeops\", \u0026databricks.LibraryArgs{\n\t\t\tClusterId: pulumi.Any(this.Id),\n\t\t\tCran: \u0026databricks.LibraryCranArgs{\n\t\t\t\tPackage: pulumi.String(\"rkeops\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Library;\nimport com.pulumi.databricks.LibraryArgs;\nimport com.pulumi.databricks.inputs.LibraryCranArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var rkeops = new Library(\"rkeops\", LibraryArgs.builder()\n            .clusterId(this_.id())\n            .cran(LibraryCranArgs.builder()\n                .package_(\"rkeops\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  rkeops:\n    type: databricks:Library\n    properties:\n      clusterId: ${this.id}\n      cran:\n        package: rkeops\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.getClusters data to retrieve a list of databricks.Cluster ids.\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n* databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.\n* databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).\n* databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).\n\n## Import\n\n!\u003e Importing this resource is not currently supported.\n\n",
+            "description": "Installs a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster. Each different type of library has a slightly different syntax. It's possible to set only one type of library within one resource. Otherwise, the plan will fail with an error.\n\n\u003e `databricks.Library` resource would always start the associated cluster if it's not running, so make sure to have auto-termination configured. It's not possible to atomically change the version of the same library without cluster restart. Libraries are fully removed from the cluster only after restart.\n\n## Plugin Framework Migration\n\nThe library resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES=\"databricks.Library\"`.\n\n## Installing library on all clusters\n\nYou can install libraries on all clusters with the help of databricks.getClusters data resource:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nexport = async () =\u003e {\n    const all = await databricks.getClusters({});\n    const cli: databricks.Library[] = [];\n    for (const range of all.ids.map((v, k) =\u003e ({key: k, value: v}))) {\n        cli.push(new databricks.Library(`cli-${range.key}`, {\n            clusterId: range.key,\n            pypi: {\n                \"package\": \"databricks-cli\",\n            },\n        }));\n    }\n}\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_clusters()\ncli = []\nfor range in [{\"key\": k, \"value\": v} for [k, v] in enumerate(all.ids)]:\n    cli.append(databricks.Library(f\"cli-{range['key']}\",\n        cluster_id=range[\"key\"],\n        pypi={\n            \"package\": \"databricks-cli\",\n        }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Threading.Tasks;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(async() =\u003e \n{\n    var all = await Databricks.GetClusters.InvokeAsync();\n\n    var cli = new List\u003cDatabricks.Library\u003e();\n    foreach (var range in )\n    {\n        cli.Add(new Databricks.Library($\"cli-{range.Key}\", new()\n        {\n            ClusterId = range.Key,\n            Pypi = new Databricks.Inputs.LibraryPypiArgs\n            {\n                Package = \"databricks-cli\",\n            },\n        }));\n    }\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := databricks.GetClusters(ctx, \u0026databricks.GetClustersArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvar cli []*databricks.Library\n\t\tfor key0, _ := range all.Ids {\n\t\t\t__res, err := databricks.NewLibrary(ctx, fmt.Sprintf(\"cli-%v\", key0), \u0026databricks.LibraryArgs{\n\t\t\t\tClusterId: pulumi.Float64(key0),\n\t\t\t\tPypi: \u0026databricks.LibraryPypiArgs{\n\t\t\t\t\tPackage: pulumi.String(\"databricks-cli\"),\n\t\t\t\t},\n\t\t\t})\n\t\t\tif err != nil {\n\t\t\t\treturn err\n\t\t\t}\n\t\t\tcli = append(cli, __res)\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetClustersArgs;\nimport com.pulumi.databricks.Library;\nimport com.pulumi.databricks.LibraryArgs;\nimport com.pulumi.databricks.inputs.LibraryPypiArgs;\nimport com.pulumi.codegen.internal.KeyedValue;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getClusters();\n\n        final var cli = all.applyValue(getClustersResult -\u003e {\n            final var resources = new ArrayList\u003cLibrary\u003e();\n            for (var range : KeyedValue.of(getClustersResult.ids()) {\n                var resource = new Library(\"cli-\" + range.key(), LibraryArgs.builder()\n                    .clusterId(range.key())\n                    .pypi(LibraryPypiArgs.builder()\n                        .package_(\"databricks-cli\")\n                        .build())\n                    .build());\n\n                resources.add(resource);\n            }\n\n            return resources;\n        });\n\n    }\n}\n```\n```yaml\nresources:\n  cli:\n    type: databricks:Library\n    properties:\n      clusterId: ${range.key}\n      pypi:\n        package: databricks-cli\n    options: {}\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getClusters\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Java/Scala Maven\n\nInstalling artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst deequ = new databricks.Library(\"deequ\", {\n    clusterId: _this.id,\n    maven: {\n        coordinates: \"com.amazon.deequ:deequ:1.0.4\",\n        exclusions: [\"org.apache.avro:avro\"],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ndeequ = databricks.Library(\"deequ\",\n    cluster_id=this[\"id\"],\n    maven={\n        \"coordinates\": \"com.amazon.deequ:deequ:1.0.4\",\n        \"exclusions\": [\"org.apache.avro:avro\"],\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var deequ = new Databricks.Library(\"deequ\", new()\n    {\n        ClusterId = @this.Id,\n        Maven = new Databricks.Inputs.LibraryMavenArgs\n        {\n            Coordinates = \"com.amazon.deequ:deequ:1.0.4\",\n            Exclusions = new[]\n            {\n                \"org.apache.avro:avro\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewLibrary(ctx, \"deequ\", \u0026databricks.LibraryArgs{\n\t\t\tClusterId: pulumi.Any(this.Id),\n\t\t\tMaven: \u0026databricks.LibraryMavenArgs{\n\t\t\t\tCoordinates: pulumi.String(\"com.amazon.deequ:deequ:1.0.4\"),\n\t\t\t\tExclusions: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"org.apache.avro:avro\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Library;\nimport com.pulumi.databricks.LibraryArgs;\nimport com.pulumi.databricks.inputs.LibraryMavenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var deequ = new Library(\"deequ\", LibraryArgs.builder()\n            .clusterId(this_.id())\n            .maven(LibraryMavenArgs.builder()\n                .coordinates(\"com.amazon.deequ:deequ:1.0.4\")\n                .exclusions(\"org.apache.avro:avro\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  deequ:\n    type: databricks:Library\n    properties:\n      clusterId: ${this.id}\n      maven:\n        coordinates: com.amazon.deequ:deequ:1.0.4\n        exclusions:\n          - org.apache.avro:avro\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Python PyPI\n\nInstalling Python PyPI artifacts. You can optionally also specify the `repo` parameter for a custom PyPI mirror, which should be accessible without any authentication for the network that cluster runs in.\n\n\u003e `repo` host should be accessible from the Internet by Databricks control plane. If connectivity to custom PyPI repositories is required, please modify cluster-node `/etc/pip.conf` through databricks_global_init_script.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst fbprophet = new databricks.Library(\"fbprophet\", {\n    clusterId: _this.id,\n    pypi: {\n        \"package\": \"fbprophet==0.6\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nfbprophet = databricks.Library(\"fbprophet\",\n    cluster_id=this[\"id\"],\n    pypi={\n        \"package\": \"fbprophet==0.6\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fbprophet = new Databricks.Library(\"fbprophet\", new()\n    {\n        ClusterId = @this.Id,\n        Pypi = new Databricks.Inputs.LibraryPypiArgs\n        {\n            Package = \"fbprophet==0.6\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewLibrary(ctx, \"fbprophet\", \u0026databricks.LibraryArgs{\n\t\t\tClusterId: pulumi.Any(this.Id),\n\t\t\tPypi: \u0026databricks.LibraryPypiArgs{\n\t\t\t\tPackage: pulumi.String(\"fbprophet==0.6\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Library;\nimport com.pulumi.databricks.LibraryArgs;\nimport com.pulumi.databricks.inputs.LibraryPypiArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var fbprophet = new Library(\"fbprophet\", LibraryArgs.builder()\n            .clusterId(this_.id())\n            .pypi(LibraryPypiArgs.builder()\n                .package_(\"fbprophet==0.6\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  fbprophet:\n    type: databricks:Library\n    properties:\n      clusterId: ${this.id}\n      pypi:\n        package: fbprophet==0.6\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Python requirements files\n\nInstalling Python libraries listed in the `requirements.txt` file.  Only Workspace paths and Unity Catalog Volumes paths are supported.  Requires a cluster with DBR 15.0+.\n\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst libraries = new databricks.Library(\"libraries\", {\n    clusterId: _this.id,\n    requirements: \"/Workspace/path/to/requirements.txt\",\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nlibraries = databricks.Library(\"libraries\",\n    cluster_id=this[\"id\"],\n    requirements=\"/Workspace/path/to/requirements.txt\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var libraries = new Databricks.Library(\"libraries\", new()\n    {\n        ClusterId = @this.Id,\n        Requirements = \"/Workspace/path/to/requirements.txt\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewLibrary(ctx, \"libraries\", \u0026databricks.LibraryArgs{\n\t\t\tClusterId:    pulumi.Any(this.Id),\n\t\t\tRequirements: pulumi.String(\"/Workspace/path/to/requirements.txt\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Library;\nimport com.pulumi.databricks.LibraryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var libraries = new Library(\"libraries\", LibraryArgs.builder()\n            .clusterId(this_.id())\n            .requirements(\"/Workspace/path/to/requirements.txt\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  libraries:\n    type: databricks:Library\n    properties:\n      clusterId: ${this.id}\n      requirements: /Workspace/path/to/requirements.txt\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\n## R CRan\n\nInstalling artifacts from CRan. You can also optionally specify a `repo` parameter for a custom cran mirror.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst rkeops = new databricks.Library(\"rkeops\", {\n    clusterId: _this.id,\n    cran: {\n        \"package\": \"rkeops\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nrkeops = databricks.Library(\"rkeops\",\n    cluster_id=this[\"id\"],\n    cran={\n        \"package\": \"rkeops\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rkeops = new Databricks.Library(\"rkeops\", new()\n    {\n        ClusterId = @this.Id,\n        Cran = new Databricks.Inputs.LibraryCranArgs\n        {\n            Package = \"rkeops\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewLibrary(ctx, \"rkeops\", \u0026databricks.LibraryArgs{\n\t\t\tClusterId: pulumi.Any(this.Id),\n\t\t\tCran: \u0026databricks.LibraryCranArgs{\n\t\t\t\tPackage: pulumi.String(\"rkeops\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Library;\nimport com.pulumi.databricks.LibraryArgs;\nimport com.pulumi.databricks.inputs.LibraryCranArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var rkeops = new Library(\"rkeops\", LibraryArgs.builder()\n            .clusterId(this_.id())\n            .cran(LibraryCranArgs.builder()\n                .package_(\"rkeops\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  rkeops:\n    type: databricks:Library\n    properties:\n      clusterId: ${this.id}\n      cran:\n        package: rkeops\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* End to end workspace management guide.\n* databricks.getClusters data to retrieve a list of databricks.Cluster ids.\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.\n* databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).\n* databricks.GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.\n* databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.\n* databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.\n* databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).\n* databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).\n\n## Import\n\n!\u003e Importing this resource is not currently supported.\n\n",
             "properties": {
                 "clusterId": {
                     "type": "string"
@@ -21934,6 +22238,9 @@
                     "type": "string"
                 },
                 "jar": {
+                    "type": "string"
+                },
+                "libraryId": {
                     "type": "string"
                 },
                 "maven": {
@@ -21950,40 +22257,36 @@
                 }
             },
             "required": [
-                "clusterId"
+                "clusterId",
+                "libraryId"
             ],
             "inputProperties": {
                 "clusterId": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 },
                 "cran": {
-                    "$ref": "#/types/databricks:index/LibraryCran:LibraryCran",
-                    "willReplaceOnChanges": true
+                    "$ref": "#/types/databricks:index/LibraryCran:LibraryCran"
                 },
                 "egg": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 },
                 "jar": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
+                },
+                "libraryId": {
+                    "type": "string"
                 },
                 "maven": {
-                    "$ref": "#/types/databricks:index/LibraryMaven:LibraryMaven",
-                    "willReplaceOnChanges": true
+                    "$ref": "#/types/databricks:index/LibraryMaven:LibraryMaven"
                 },
                 "pypi": {
-                    "$ref": "#/types/databricks:index/LibraryPypi:LibraryPypi",
-                    "willReplaceOnChanges": true
+                    "$ref": "#/types/databricks:index/LibraryPypi:LibraryPypi"
                 },
                 "requirements": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 },
                 "whl": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 }
             },
             "requiredInputs": [
@@ -21993,36 +22296,31 @@
                 "description": "Input properties used for looking up and filtering Library resources.\n",
                 "properties": {
                     "clusterId": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
+                        "type": "string"
                     },
                     "cran": {
-                        "$ref": "#/types/databricks:index/LibraryCran:LibraryCran",
-                        "willReplaceOnChanges": true
+                        "$ref": "#/types/databricks:index/LibraryCran:LibraryCran"
                     },
                     "egg": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
+                        "type": "string"
                     },
                     "jar": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
+                        "type": "string"
+                    },
+                    "libraryId": {
+                        "type": "string"
                     },
                     "maven": {
-                        "$ref": "#/types/databricks:index/LibraryMaven:LibraryMaven",
-                        "willReplaceOnChanges": true
+                        "$ref": "#/types/databricks:index/LibraryMaven:LibraryMaven"
                     },
                     "pypi": {
-                        "$ref": "#/types/databricks:index/LibraryPypi:LibraryPypi",
-                        "willReplaceOnChanges": true
+                        "$ref": "#/types/databricks:index/LibraryPypi:LibraryPypi"
                     },
                     "requirements": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
+                        "type": "string"
                     },
                     "whl": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -25912,7 +26210,7 @@
             }
         },
         "databricks:index/qualityMonitor:QualityMonitor": {
-            "description": "This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks. \n\nA `databricks.QualityMonitor` is attached to a databricks.SqlTable and can be of type timeseries, snapshot or inference. \n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sandbox = new databricks.Catalog(\"sandbox\", {\n    name: \"sandbox\",\n    comment: \"this catalog is managed by terraform\",\n    properties: {\n        purpose: \"testing\",\n    },\n});\nconst things = new databricks.Schema(\"things\", {\n    catalogName: sandbox.id,\n    name: \"things\",\n    comment: \"this database is managed by terraform\",\n    properties: {\n        kind: \"various\",\n    },\n});\nconst myTestTable = new databricks.SqlTable(\"myTestTable\", {\n    catalogName: \"main\",\n    schemaName: things.name,\n    name: \"bar\",\n    tableType: \"MANAGED\",\n    dataSourceFormat: \"DELTA\",\n    columns: [{\n        name: \"timestamp\",\n        type: \"int\",\n    }],\n});\nconst testTimeseriesMonitor = new databricks.QualityMonitor(\"testTimeseriesMonitor\", {\n    tableName: pulumi.interpolate`${sandbox.name}.${things.name}.${myTestTable.name}`,\n    assetsDir: pulumi.interpolate`/Shared/provider-test/databricks_quality_monitoring/${myTestTable.name}`,\n    outputSchemaName: pulumi.interpolate`${sandbox.name}.${things.name}`,\n    timeSeries: {\n        granularities: [\"1 hour\"],\n        timestampCol: \"timestamp\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsandbox = databricks.Catalog(\"sandbox\",\n    name=\"sandbox\",\n    comment=\"this catalog is managed by terraform\",\n    properties={\n        \"purpose\": \"testing\",\n    })\nthings = databricks.Schema(\"things\",\n    catalog_name=sandbox.id,\n    name=\"things\",\n    comment=\"this database is managed by terraform\",\n    properties={\n        \"kind\": \"various\",\n    })\nmy_test_table = databricks.SqlTable(\"myTestTable\",\n    catalog_name=\"main\",\n    schema_name=things.name,\n    name=\"bar\",\n    table_type=\"MANAGED\",\n    data_source_format=\"DELTA\",\n    columns=[{\n        \"name\": \"timestamp\",\n        \"type\": \"int\",\n    }])\ntest_timeseries_monitor = databricks.QualityMonitor(\"testTimeseriesMonitor\",\n    table_name=pulumi.Output.all(\n        sandboxName=sandbox.name,\n        thingsName=things.name,\n        myTestTableName=my_test_table.name\n).apply(lambda resolved_outputs: f\"{resolved_outputs['sandboxName']}.{resolved_outputs['thingsName']}.{resolved_outputs['myTestTableName']}\")\n,\n    assets_dir=my_test_table.name.apply(lambda name: f\"/Shared/provider-test/databricks_quality_monitoring/{name}\"),\n    output_schema_name=pulumi.Output.all(\n        sandboxName=sandbox.name,\n        thingsName=things.name\n).apply(lambda resolved_outputs: f\"{resolved_outputs['sandboxName']}.{resolved_outputs['thingsName']}\")\n,\n    time_series={\n        \"granularities\": [\"1 hour\"],\n        \"timestamp_col\": \"timestamp\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sandbox = new Databricks.Catalog(\"sandbox\", new()\n    {\n        Name = \"sandbox\",\n        Comment = \"this catalog is managed by terraform\",\n        Properties = \n        {\n            { \"purpose\", \"testing\" },\n        },\n    });\n\n    var things = new Databricks.Schema(\"things\", new()\n    {\n        CatalogName = sandbox.Id,\n        Name = \"things\",\n        Comment = \"this database is managed by terraform\",\n        Properties = \n        {\n            { \"kind\", \"various\" },\n        },\n    });\n\n    var myTestTable = new Databricks.SqlTable(\"myTestTable\", new()\n    {\n        CatalogName = \"main\",\n        SchemaName = things.Name,\n        Name = \"bar\",\n        TableType = \"MANAGED\",\n        DataSourceFormat = \"DELTA\",\n        Columns = new[]\n        {\n            new Databricks.Inputs.SqlTableColumnArgs\n            {\n                Name = \"timestamp\",\n                Type = \"int\",\n            },\n        },\n    });\n\n    var testTimeseriesMonitor = new Databricks.QualityMonitor(\"testTimeseriesMonitor\", new()\n    {\n        TableName = Output.Tuple(sandbox.Name, things.Name, myTestTable.Name).Apply(values =\u003e\n        {\n            var sandboxName = values.Item1;\n            var thingsName = values.Item2;\n            var myTestTableName = values.Item3;\n            return $\"{sandboxName}.{thingsName}.{myTestTableName}\";\n        }),\n        AssetsDir = myTestTable.Name.Apply(name =\u003e $\"/Shared/provider-test/databricks_quality_monitoring/{name}\"),\n        OutputSchemaName = Output.Tuple(sandbox.Name, things.Name).Apply(values =\u003e\n        {\n            var sandboxName = values.Item1;\n            var thingsName = values.Item2;\n            return $\"{sandboxName}.{thingsName}\";\n        }),\n        TimeSeries = new Databricks.Inputs.QualityMonitorTimeSeriesArgs\n        {\n            Granularities = new[]\n            {\n                \"1 hour\",\n            },\n            TimestampCol = \"timestamp\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsandbox, err := databricks.NewCatalog(ctx, \"sandbox\", \u0026databricks.CatalogArgs{\n\t\t\tName:    pulumi.String(\"sandbox\"),\n\t\t\tComment: pulumi.String(\"this catalog is managed by terraform\"),\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"purpose\": pulumi.String(\"testing\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tthings, err := databricks.NewSchema(ctx, \"things\", \u0026databricks.SchemaArgs{\n\t\t\tCatalogName: sandbox.ID(),\n\t\t\tName:        pulumi.String(\"things\"),\n\t\t\tComment:     pulumi.String(\"this database is managed by terraform\"),\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"kind\": pulumi.String(\"various\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyTestTable, err := databricks.NewSqlTable(ctx, \"myTestTable\", \u0026databricks.SqlTableArgs{\n\t\t\tCatalogName:      pulumi.String(\"main\"),\n\t\t\tSchemaName:       things.Name,\n\t\t\tName:             pulumi.String(\"bar\"),\n\t\t\tTableType:        pulumi.String(\"MANAGED\"),\n\t\t\tDataSourceFormat: pulumi.String(\"DELTA\"),\n\t\t\tColumns: databricks.SqlTableColumnArray{\n\t\t\t\t\u0026databricks.SqlTableColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"timestamp\"),\n\t\t\t\t\tType: pulumi.String(\"int\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewQualityMonitor(ctx, \"testTimeseriesMonitor\", \u0026databricks.QualityMonitorArgs{\n\t\t\tTableName: pulumi.All(sandbox.Name, things.Name, myTestTable.Name).ApplyT(func(_args []interface{}) (string, error) {\n\t\t\t\tsandboxName := _args[0].(string)\n\t\t\t\tthingsName := _args[1].(string)\n\t\t\t\tmyTestTableName := _args[2].(string)\n\t\t\t\treturn fmt.Sprintf(\"%v.%v.%v\", sandboxName, thingsName, myTestTableName), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t\tAssetsDir: myTestTable.Name.ApplyT(func(name string) (string, error) {\n\t\t\t\treturn fmt.Sprintf(\"/Shared/provider-test/databricks_quality_monitoring/%v\", name), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t\tOutputSchemaName: pulumi.All(sandbox.Name, things.Name).ApplyT(func(_args []interface{}) (string, error) {\n\t\t\t\tsandboxName := _args[0].(string)\n\t\t\t\tthingsName := _args[1].(string)\n\t\t\t\treturn fmt.Sprintf(\"%v.%v\", sandboxName, thingsName), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t\tTimeSeries: \u0026databricks.QualityMonitorTimeSeriesArgs{\n\t\t\t\tGranularities: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"1 hour\"),\n\t\t\t\t},\n\t\t\t\tTimestampCol: pulumi.String(\"timestamp\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Catalog;\nimport com.pulumi.databricks.CatalogArgs;\nimport com.pulumi.databricks.Schema;\nimport com.pulumi.databricks.SchemaArgs;\nimport com.pulumi.databricks.SqlTable;\nimport com.pulumi.databricks.SqlTableArgs;\nimport com.pulumi.databricks.inputs.SqlTableColumnArgs;\nimport com.pulumi.databricks.QualityMonitor;\nimport com.pulumi.databricks.QualityMonitorArgs;\nimport com.pulumi.databricks.inputs.QualityMonitorTimeSeriesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sandbox = new Catalog(\"sandbox\", CatalogArgs.builder()\n            .name(\"sandbox\")\n            .comment(\"this catalog is managed by terraform\")\n            .properties(Map.of(\"purpose\", \"testing\"))\n            .build());\n\n        var things = new Schema(\"things\", SchemaArgs.builder()\n            .catalogName(sandbox.id())\n            .name(\"things\")\n            .comment(\"this database is managed by terraform\")\n            .properties(Map.of(\"kind\", \"various\"))\n            .build());\n\n        var myTestTable = new SqlTable(\"myTestTable\", SqlTableArgs.builder()\n            .catalogName(\"main\")\n            .schemaName(things.name())\n            .name(\"bar\")\n            .tableType(\"MANAGED\")\n            .dataSourceFormat(\"DELTA\")\n            .columns(SqlTableColumnArgs.builder()\n                .name(\"timestamp\")\n                .type(\"int\")\n                .build())\n            .build());\n\n        var testTimeseriesMonitor = new QualityMonitor(\"testTimeseriesMonitor\", QualityMonitorArgs.builder()\n            .tableName(Output.tuple(sandbox.name(), things.name(), myTestTable.name()).applyValue(values -\u003e {\n                var sandboxName = values.t1;\n                var thingsName = values.t2;\n                var myTestTableName = values.t3;\n                return String.format(\"%s.%s.%s\", sandboxName,thingsName,myTestTableName);\n            }))\n            .assetsDir(myTestTable.name().applyValue(name -\u003e String.format(\"/Shared/provider-test/databricks_quality_monitoring/%s\", name)))\n            .outputSchemaName(Output.tuple(sandbox.name(), things.name()).applyValue(values -\u003e {\n                var sandboxName = values.t1;\n                var thingsName = values.t2;\n                return String.format(\"%s.%s\", sandboxName,thingsName);\n            }))\n            .timeSeries(QualityMonitorTimeSeriesArgs.builder()\n                .granularities(\"1 hour\")\n                .timestampCol(\"timestamp\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sandbox:\n    type: databricks:Catalog\n    properties:\n      name: sandbox\n      comment: this catalog is managed by terraform\n      properties:\n        purpose: testing\n  things:\n    type: databricks:Schema\n    properties:\n      catalogName: ${sandbox.id}\n      name: things\n      comment: this database is managed by terraform\n      properties:\n        kind: various\n  myTestTable:\n    type: databricks:SqlTable\n    properties:\n      catalogName: main\n      schemaName: ${things.name}\n      name: bar\n      tableType: MANAGED\n      dataSourceFormat: DELTA\n      columns:\n        - name: timestamp\n          type: int\n  testTimeseriesMonitor:\n    type: databricks:QualityMonitor\n    properties:\n      tableName: ${sandbox.name}.${things.name}.${myTestTable.name}\n      assetsDir: /Shared/provider-test/databricks_quality_monitoring/${myTestTable.name}\n      outputSchemaName: ${sandbox.name}.${things.name}\n      timeSeries:\n        granularities:\n          - 1 hour\n        timestampCol: timestamp\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Inference Monitor\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst testMonitorInference = new databricks.QualityMonitor(\"testMonitorInference\", {\n    tableName: `${sandbox.name}.${things.name}.${myTestTable.name}`,\n    assetsDir: `/Shared/provider-test/databricks_quality_monitoring/${myTestTable.name}`,\n    outputSchemaName: `${sandbox.name}.${things.name}`,\n    inferenceLog: {\n        granularities: [\"1 hour\"],\n        timestampCol: \"timestamp\",\n        predictionCol: \"prediction\",\n        modelIdCol: \"model_id\",\n        problemType: \"PROBLEM_TYPE_REGRESSION\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ntest_monitor_inference = databricks.QualityMonitor(\"testMonitorInference\",\n    table_name=f\"{sandbox['name']}.{things['name']}.{my_test_table['name']}\",\n    assets_dir=f\"/Shared/provider-test/databricks_quality_monitoring/{my_test_table['name']}\",\n    output_schema_name=f\"{sandbox['name']}.{things['name']}\",\n    inference_log={\n        \"granularities\": [\"1 hour\"],\n        \"timestamp_col\": \"timestamp\",\n        \"prediction_col\": \"prediction\",\n        \"model_id_col\": \"model_id\",\n        \"problem_type\": \"PROBLEM_TYPE_REGRESSION\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testMonitorInference = new Databricks.QualityMonitor(\"testMonitorInference\", new()\n    {\n        TableName = $\"{sandbox.Name}.{things.Name}.{myTestTable.Name}\",\n        AssetsDir = $\"/Shared/provider-test/databricks_quality_monitoring/{myTestTable.Name}\",\n        OutputSchemaName = $\"{sandbox.Name}.{things.Name}\",\n        InferenceLog = new Databricks.Inputs.QualityMonitorInferenceLogArgs\n        {\n            Granularities = new[]\n            {\n                \"1 hour\",\n            },\n            TimestampCol = \"timestamp\",\n            PredictionCol = \"prediction\",\n            ModelIdCol = \"model_id\",\n            ProblemType = \"PROBLEM_TYPE_REGRESSION\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewQualityMonitor(ctx, \"testMonitorInference\", \u0026databricks.QualityMonitorArgs{\n\t\t\tTableName:        pulumi.Sprintf(\"%v.%v.%v\", sandbox.Name, things.Name, myTestTable.Name),\n\t\t\tAssetsDir:        pulumi.Sprintf(\"/Shared/provider-test/databricks_quality_monitoring/%v\", myTestTable.Name),\n\t\t\tOutputSchemaName: pulumi.Sprintf(\"%v.%v\", sandbox.Name, things.Name),\n\t\t\tInferenceLog: \u0026databricks.QualityMonitorInferenceLogArgs{\n\t\t\t\tGranularities: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"1 hour\"),\n\t\t\t\t},\n\t\t\t\tTimestampCol:  pulumi.String(\"timestamp\"),\n\t\t\t\tPredictionCol: pulumi.String(\"prediction\"),\n\t\t\t\tModelIdCol:    pulumi.String(\"model_id\"),\n\t\t\t\tProblemType:   pulumi.String(\"PROBLEM_TYPE_REGRESSION\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.QualityMonitor;\nimport com.pulumi.databricks.QualityMonitorArgs;\nimport com.pulumi.databricks.inputs.QualityMonitorInferenceLogArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testMonitorInference = new QualityMonitor(\"testMonitorInference\", QualityMonitorArgs.builder()\n            .tableName(String.format(\"%s.%s.%s\", sandbox.name(),things.name(),myTestTable.name()))\n            .assetsDir(String.format(\"/Shared/provider-test/databricks_quality_monitoring/%s\", myTestTable.name()))\n            .outputSchemaName(String.format(\"%s.%s\", sandbox.name(),things.name()))\n            .inferenceLog(QualityMonitorInferenceLogArgs.builder()\n                .granularities(\"1 hour\")\n                .timestampCol(\"timestamp\")\n                .predictionCol(\"prediction\")\n                .modelIdCol(\"model_id\")\n                .problemType(\"PROBLEM_TYPE_REGRESSION\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testMonitorInference:\n    type: databricks:QualityMonitor\n    properties:\n      tableName: ${sandbox.name}.${things.name}.${myTestTable.name}\n      assetsDir: /Shared/provider-test/databricks_quality_monitoring/${myTestTable.name}\n      outputSchemaName: ${sandbox.name}.${things.name}\n      inferenceLog:\n        granularities:\n          - 1 hour\n        timestampCol: timestamp\n        predictionCol: prediction\n        modelIdCol: model_id\n        problemType: PROBLEM_TYPE_REGRESSION\n```\n\u003c!--End PulumiCodeChooser --\u003e\n### Snapshot Monitor\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst testMonitorInference = new databricks.QualityMonitor(\"testMonitorInference\", {\n    tableName: `${sandbox.name}.${things.name}.${myTestTable.name}`,\n    assetsDir: `/Shared/provider-test/databricks_quality_monitoring/${myTestTable.name}`,\n    outputSchemaName: `${sandbox.name}.${things.name}`,\n    snapshot: {},\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ntest_monitor_inference = databricks.QualityMonitor(\"testMonitorInference\",\n    table_name=f\"{sandbox['name']}.{things['name']}.{my_test_table['name']}\",\n    assets_dir=f\"/Shared/provider-test/databricks_quality_monitoring/{my_test_table['name']}\",\n    output_schema_name=f\"{sandbox['name']}.{things['name']}\",\n    snapshot={})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testMonitorInference = new Databricks.QualityMonitor(\"testMonitorInference\", new()\n    {\n        TableName = $\"{sandbox.Name}.{things.Name}.{myTestTable.Name}\",\n        AssetsDir = $\"/Shared/provider-test/databricks_quality_monitoring/{myTestTable.Name}\",\n        OutputSchemaName = $\"{sandbox.Name}.{things.Name}\",\n        Snapshot = null,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewQualityMonitor(ctx, \"testMonitorInference\", \u0026databricks.QualityMonitorArgs{\n\t\t\tTableName:        pulumi.Sprintf(\"%v.%v.%v\", sandbox.Name, things.Name, myTestTable.Name),\n\t\t\tAssetsDir:        pulumi.Sprintf(\"/Shared/provider-test/databricks_quality_monitoring/%v\", myTestTable.Name),\n\t\t\tOutputSchemaName: pulumi.Sprintf(\"%v.%v\", sandbox.Name, things.Name),\n\t\t\tSnapshot:         \u0026databricks.QualityMonitorSnapshotArgs{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.QualityMonitor;\nimport com.pulumi.databricks.QualityMonitorArgs;\nimport com.pulumi.databricks.inputs.QualityMonitorSnapshotArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testMonitorInference = new QualityMonitor(\"testMonitorInference\", QualityMonitorArgs.builder()\n            .tableName(String.format(\"%s.%s.%s\", sandbox.name(),things.name(),myTestTable.name()))\n            .assetsDir(String.format(\"/Shared/provider-test/databricks_quality_monitoring/%s\", myTestTable.name()))\n            .outputSchemaName(String.format(\"%s.%s\", sandbox.name(),things.name()))\n            .snapshot()\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testMonitorInference:\n    type: databricks:QualityMonitor\n    properties:\n      tableName: ${sandbox.name}.${things.name}.${myTestTable.name}\n      assetsDir: /Shared/provider-test/databricks_quality_monitoring/${myTestTable.name}\n      outputSchemaName: ${sandbox.name}.${things.name}\n      snapshot: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* databricks.Catalog\n* databricks.Schema\n* databricks.SqlTable\n",
+            "description": "This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks. \n\nA `databricks.QualityMonitor` is attached to a databricks.SqlTable and can be of type timeseries, snapshot or inference. \n\n## Plugin Framework Migration\n\nThe quality monitor resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES=\"databricks.QualityMonitor\"`.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst sandbox = new databricks.Catalog(\"sandbox\", {\n    name: \"sandbox\",\n    comment: \"this catalog is managed by terraform\",\n    properties: {\n        purpose: \"testing\",\n    },\n});\nconst things = new databricks.Schema(\"things\", {\n    catalogName: sandbox.id,\n    name: \"things\",\n    comment: \"this database is managed by terraform\",\n    properties: {\n        kind: \"various\",\n    },\n});\nconst myTestTable = new databricks.SqlTable(\"myTestTable\", {\n    catalogName: \"main\",\n    schemaName: things.name,\n    name: \"bar\",\n    tableType: \"MANAGED\",\n    dataSourceFormat: \"DELTA\",\n    columns: [{\n        name: \"timestamp\",\n        type: \"int\",\n    }],\n});\nconst testTimeseriesMonitor = new databricks.QualityMonitor(\"testTimeseriesMonitor\", {\n    tableName: pulumi.interpolate`${sandbox.name}.${things.name}.${myTestTable.name}`,\n    assetsDir: pulumi.interpolate`/Shared/provider-test/databricks_quality_monitoring/${myTestTable.name}`,\n    outputSchemaName: pulumi.interpolate`${sandbox.name}.${things.name}`,\n    timeSeries: {\n        granularities: [\"1 hour\"],\n        timestampCol: \"timestamp\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nsandbox = databricks.Catalog(\"sandbox\",\n    name=\"sandbox\",\n    comment=\"this catalog is managed by terraform\",\n    properties={\n        \"purpose\": \"testing\",\n    })\nthings = databricks.Schema(\"things\",\n    catalog_name=sandbox.id,\n    name=\"things\",\n    comment=\"this database is managed by terraform\",\n    properties={\n        \"kind\": \"various\",\n    })\nmy_test_table = databricks.SqlTable(\"myTestTable\",\n    catalog_name=\"main\",\n    schema_name=things.name,\n    name=\"bar\",\n    table_type=\"MANAGED\",\n    data_source_format=\"DELTA\",\n    columns=[{\n        \"name\": \"timestamp\",\n        \"type\": \"int\",\n    }])\ntest_timeseries_monitor = databricks.QualityMonitor(\"testTimeseriesMonitor\",\n    table_name=pulumi.Output.all(\n        sandboxName=sandbox.name,\n        thingsName=things.name,\n        myTestTableName=my_test_table.name\n).apply(lambda resolved_outputs: f\"{resolved_outputs['sandboxName']}.{resolved_outputs['thingsName']}.{resolved_outputs['myTestTableName']}\")\n,\n    assets_dir=my_test_table.name.apply(lambda name: f\"/Shared/provider-test/databricks_quality_monitoring/{name}\"),\n    output_schema_name=pulumi.Output.all(\n        sandboxName=sandbox.name,\n        thingsName=things.name\n).apply(lambda resolved_outputs: f\"{resolved_outputs['sandboxName']}.{resolved_outputs['thingsName']}\")\n,\n    time_series={\n        \"granularities\": [\"1 hour\"],\n        \"timestamp_col\": \"timestamp\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var sandbox = new Databricks.Catalog(\"sandbox\", new()\n    {\n        Name = \"sandbox\",\n        Comment = \"this catalog is managed by terraform\",\n        Properties = \n        {\n            { \"purpose\", \"testing\" },\n        },\n    });\n\n    var things = new Databricks.Schema(\"things\", new()\n    {\n        CatalogName = sandbox.Id,\n        Name = \"things\",\n        Comment = \"this database is managed by terraform\",\n        Properties = \n        {\n            { \"kind\", \"various\" },\n        },\n    });\n\n    var myTestTable = new Databricks.SqlTable(\"myTestTable\", new()\n    {\n        CatalogName = \"main\",\n        SchemaName = things.Name,\n        Name = \"bar\",\n        TableType = \"MANAGED\",\n        DataSourceFormat = \"DELTA\",\n        Columns = new[]\n        {\n            new Databricks.Inputs.SqlTableColumnArgs\n            {\n                Name = \"timestamp\",\n                Type = \"int\",\n            },\n        },\n    });\n\n    var testTimeseriesMonitor = new Databricks.QualityMonitor(\"testTimeseriesMonitor\", new()\n    {\n        TableName = Output.Tuple(sandbox.Name, things.Name, myTestTable.Name).Apply(values =\u003e\n        {\n            var sandboxName = values.Item1;\n            var thingsName = values.Item2;\n            var myTestTableName = values.Item3;\n            return $\"{sandboxName}.{thingsName}.{myTestTableName}\";\n        }),\n        AssetsDir = myTestTable.Name.Apply(name =\u003e $\"/Shared/provider-test/databricks_quality_monitoring/{name}\"),\n        OutputSchemaName = Output.Tuple(sandbox.Name, things.Name).Apply(values =\u003e\n        {\n            var sandboxName = values.Item1;\n            var thingsName = values.Item2;\n            return $\"{sandboxName}.{thingsName}\";\n        }),\n        TimeSeries = new Databricks.Inputs.QualityMonitorTimeSeriesArgs\n        {\n            Granularities = new[]\n            {\n                \"1 hour\",\n            },\n            TimestampCol = \"timestamp\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsandbox, err := databricks.NewCatalog(ctx, \"sandbox\", \u0026databricks.CatalogArgs{\n\t\t\tName:    pulumi.String(\"sandbox\"),\n\t\t\tComment: pulumi.String(\"this catalog is managed by terraform\"),\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"purpose\": pulumi.String(\"testing\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tthings, err := databricks.NewSchema(ctx, \"things\", \u0026databricks.SchemaArgs{\n\t\t\tCatalogName: sandbox.ID(),\n\t\t\tName:        pulumi.String(\"things\"),\n\t\t\tComment:     pulumi.String(\"this database is managed by terraform\"),\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"kind\": pulumi.String(\"various\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyTestTable, err := databricks.NewSqlTable(ctx, \"myTestTable\", \u0026databricks.SqlTableArgs{\n\t\t\tCatalogName:      pulumi.String(\"main\"),\n\t\t\tSchemaName:       things.Name,\n\t\t\tName:             pulumi.String(\"bar\"),\n\t\t\tTableType:        pulumi.String(\"MANAGED\"),\n\t\t\tDataSourceFormat: pulumi.String(\"DELTA\"),\n\t\t\tColumns: databricks.SqlTableColumnArray{\n\t\t\t\t\u0026databricks.SqlTableColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"timestamp\"),\n\t\t\t\t\tType: pulumi.String(\"int\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewQualityMonitor(ctx, \"testTimeseriesMonitor\", \u0026databricks.QualityMonitorArgs{\n\t\t\tTableName: pulumi.All(sandbox.Name, things.Name, myTestTable.Name).ApplyT(func(_args []interface{}) (string, error) {\n\t\t\t\tsandboxName := _args[0].(string)\n\t\t\t\tthingsName := _args[1].(string)\n\t\t\t\tmyTestTableName := _args[2].(string)\n\t\t\t\treturn fmt.Sprintf(\"%v.%v.%v\", sandboxName, thingsName, myTestTableName), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t\tAssetsDir: myTestTable.Name.ApplyT(func(name string) (string, error) {\n\t\t\t\treturn fmt.Sprintf(\"/Shared/provider-test/databricks_quality_monitoring/%v\", name), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t\tOutputSchemaName: pulumi.All(sandbox.Name, things.Name).ApplyT(func(_args []interface{}) (string, error) {\n\t\t\t\tsandboxName := _args[0].(string)\n\t\t\t\tthingsName := _args[1].(string)\n\t\t\t\treturn fmt.Sprintf(\"%v.%v\", sandboxName, thingsName), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t\tTimeSeries: \u0026databricks.QualityMonitorTimeSeriesArgs{\n\t\t\t\tGranularities: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"1 hour\"),\n\t\t\t\t},\n\t\t\t\tTimestampCol: pulumi.String(\"timestamp\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.Catalog;\nimport com.pulumi.databricks.CatalogArgs;\nimport com.pulumi.databricks.Schema;\nimport com.pulumi.databricks.SchemaArgs;\nimport com.pulumi.databricks.SqlTable;\nimport com.pulumi.databricks.SqlTableArgs;\nimport com.pulumi.databricks.inputs.SqlTableColumnArgs;\nimport com.pulumi.databricks.QualityMonitor;\nimport com.pulumi.databricks.QualityMonitorArgs;\nimport com.pulumi.databricks.inputs.QualityMonitorTimeSeriesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var sandbox = new Catalog(\"sandbox\", CatalogArgs.builder()\n            .name(\"sandbox\")\n            .comment(\"this catalog is managed by terraform\")\n            .properties(Map.of(\"purpose\", \"testing\"))\n            .build());\n\n        var things = new Schema(\"things\", SchemaArgs.builder()\n            .catalogName(sandbox.id())\n            .name(\"things\")\n            .comment(\"this database is managed by terraform\")\n            .properties(Map.of(\"kind\", \"various\"))\n            .build());\n\n        var myTestTable = new SqlTable(\"myTestTable\", SqlTableArgs.builder()\n            .catalogName(\"main\")\n            .schemaName(things.name())\n            .name(\"bar\")\n            .tableType(\"MANAGED\")\n            .dataSourceFormat(\"DELTA\")\n            .columns(SqlTableColumnArgs.builder()\n                .name(\"timestamp\")\n                .type(\"int\")\n                .build())\n            .build());\n\n        var testTimeseriesMonitor = new QualityMonitor(\"testTimeseriesMonitor\", QualityMonitorArgs.builder()\n            .tableName(Output.tuple(sandbox.name(), things.name(), myTestTable.name()).applyValue(values -\u003e {\n                var sandboxName = values.t1;\n                var thingsName = values.t2;\n                var myTestTableName = values.t3;\n                return String.format(\"%s.%s.%s\", sandboxName,thingsName,myTestTableName);\n            }))\n            .assetsDir(myTestTable.name().applyValue(name -\u003e String.format(\"/Shared/provider-test/databricks_quality_monitoring/%s\", name)))\n            .outputSchemaName(Output.tuple(sandbox.name(), things.name()).applyValue(values -\u003e {\n                var sandboxName = values.t1;\n                var thingsName = values.t2;\n                return String.format(\"%s.%s\", sandboxName,thingsName);\n            }))\n            .timeSeries(QualityMonitorTimeSeriesArgs.builder()\n                .granularities(\"1 hour\")\n                .timestampCol(\"timestamp\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  sandbox:\n    type: databricks:Catalog\n    properties:\n      name: sandbox\n      comment: this catalog is managed by terraform\n      properties:\n        purpose: testing\n  things:\n    type: databricks:Schema\n    properties:\n      catalogName: ${sandbox.id}\n      name: things\n      comment: this database is managed by terraform\n      properties:\n        kind: various\n  myTestTable:\n    type: databricks:SqlTable\n    properties:\n      catalogName: main\n      schemaName: ${things.name}\n      name: bar\n      tableType: MANAGED\n      dataSourceFormat: DELTA\n      columns:\n        - name: timestamp\n          type: int\n  testTimeseriesMonitor:\n    type: databricks:QualityMonitor\n    properties:\n      tableName: ${sandbox.name}.${things.name}.${myTestTable.name}\n      assetsDir: /Shared/provider-test/databricks_quality_monitoring/${myTestTable.name}\n      outputSchemaName: ${sandbox.name}.${things.name}\n      timeSeries:\n        granularities:\n          - 1 hour\n        timestampCol: timestamp\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Inference Monitor\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst testMonitorInference = new databricks.QualityMonitor(\"testMonitorInference\", {\n    tableName: `${sandbox.name}.${things.name}.${myTestTable.name}`,\n    assetsDir: `/Shared/provider-test/databricks_quality_monitoring/${myTestTable.name}`,\n    outputSchemaName: `${sandbox.name}.${things.name}`,\n    inferenceLog: {\n        granularities: [\"1 hour\"],\n        timestampCol: \"timestamp\",\n        predictionCol: \"prediction\",\n        modelIdCol: \"model_id\",\n        problemType: \"PROBLEM_TYPE_REGRESSION\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ntest_monitor_inference = databricks.QualityMonitor(\"testMonitorInference\",\n    table_name=f\"{sandbox['name']}.{things['name']}.{my_test_table['name']}\",\n    assets_dir=f\"/Shared/provider-test/databricks_quality_monitoring/{my_test_table['name']}\",\n    output_schema_name=f\"{sandbox['name']}.{things['name']}\",\n    inference_log={\n        \"granularities\": [\"1 hour\"],\n        \"timestamp_col\": \"timestamp\",\n        \"prediction_col\": \"prediction\",\n        \"model_id_col\": \"model_id\",\n        \"problem_type\": \"PROBLEM_TYPE_REGRESSION\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testMonitorInference = new Databricks.QualityMonitor(\"testMonitorInference\", new()\n    {\n        TableName = $\"{sandbox.Name}.{things.Name}.{myTestTable.Name}\",\n        AssetsDir = $\"/Shared/provider-test/databricks_quality_monitoring/{myTestTable.Name}\",\n        OutputSchemaName = $\"{sandbox.Name}.{things.Name}\",\n        InferenceLog = new Databricks.Inputs.QualityMonitorInferenceLogArgs\n        {\n            Granularities = new[]\n            {\n                \"1 hour\",\n            },\n            TimestampCol = \"timestamp\",\n            PredictionCol = \"prediction\",\n            ModelIdCol = \"model_id\",\n            ProblemType = \"PROBLEM_TYPE_REGRESSION\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewQualityMonitor(ctx, \"testMonitorInference\", \u0026databricks.QualityMonitorArgs{\n\t\t\tTableName:        pulumi.Sprintf(\"%v.%v.%v\", sandbox.Name, things.Name, myTestTable.Name),\n\t\t\tAssetsDir:        pulumi.Sprintf(\"/Shared/provider-test/databricks_quality_monitoring/%v\", myTestTable.Name),\n\t\t\tOutputSchemaName: pulumi.Sprintf(\"%v.%v\", sandbox.Name, things.Name),\n\t\t\tInferenceLog: \u0026databricks.QualityMonitorInferenceLogArgs{\n\t\t\t\tGranularities: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"1 hour\"),\n\t\t\t\t},\n\t\t\t\tTimestampCol:  pulumi.String(\"timestamp\"),\n\t\t\t\tPredictionCol: pulumi.String(\"prediction\"),\n\t\t\t\tModelIdCol:    pulumi.String(\"model_id\"),\n\t\t\t\tProblemType:   pulumi.String(\"PROBLEM_TYPE_REGRESSION\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.QualityMonitor;\nimport com.pulumi.databricks.QualityMonitorArgs;\nimport com.pulumi.databricks.inputs.QualityMonitorInferenceLogArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testMonitorInference = new QualityMonitor(\"testMonitorInference\", QualityMonitorArgs.builder()\n            .tableName(String.format(\"%s.%s.%s\", sandbox.name(),things.name(),myTestTable.name()))\n            .assetsDir(String.format(\"/Shared/provider-test/databricks_quality_monitoring/%s\", myTestTable.name()))\n            .outputSchemaName(String.format(\"%s.%s\", sandbox.name(),things.name()))\n            .inferenceLog(QualityMonitorInferenceLogArgs.builder()\n                .granularities(\"1 hour\")\n                .timestampCol(\"timestamp\")\n                .predictionCol(\"prediction\")\n                .modelIdCol(\"model_id\")\n                .problemType(\"PROBLEM_TYPE_REGRESSION\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testMonitorInference:\n    type: databricks:QualityMonitor\n    properties:\n      tableName: ${sandbox.name}.${things.name}.${myTestTable.name}\n      assetsDir: /Shared/provider-test/databricks_quality_monitoring/${myTestTable.name}\n      outputSchemaName: ${sandbox.name}.${things.name}\n      inferenceLog:\n        granularities:\n          - 1 hour\n        timestampCol: timestamp\n        predictionCol: prediction\n        modelIdCol: model_id\n        problemType: PROBLEM_TYPE_REGRESSION\n```\n\u003c!--End PulumiCodeChooser --\u003e\n### Snapshot Monitor\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst testMonitorInference = new databricks.QualityMonitor(\"testMonitorInference\", {\n    tableName: `${sandbox.name}.${things.name}.${myTestTable.name}`,\n    assetsDir: `/Shared/provider-test/databricks_quality_monitoring/${myTestTable.name}`,\n    outputSchemaName: `${sandbox.name}.${things.name}`,\n    snapshot: {},\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\ntest_monitor_inference = databricks.QualityMonitor(\"testMonitorInference\",\n    table_name=f\"{sandbox['name']}.{things['name']}.{my_test_table['name']}\",\n    assets_dir=f\"/Shared/provider-test/databricks_quality_monitoring/{my_test_table['name']}\",\n    output_schema_name=f\"{sandbox['name']}.{things['name']}\",\n    snapshot={})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testMonitorInference = new Databricks.QualityMonitor(\"testMonitorInference\", new()\n    {\n        TableName = $\"{sandbox.Name}.{things.Name}.{myTestTable.Name}\",\n        AssetsDir = $\"/Shared/provider-test/databricks_quality_monitoring/{myTestTable.Name}\",\n        OutputSchemaName = $\"{sandbox.Name}.{things.Name}\",\n        Snapshot = null,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewQualityMonitor(ctx, \"testMonitorInference\", \u0026databricks.QualityMonitorArgs{\n\t\t\tTableName:        pulumi.Sprintf(\"%v.%v.%v\", sandbox.Name, things.Name, myTestTable.Name),\n\t\t\tAssetsDir:        pulumi.Sprintf(\"/Shared/provider-test/databricks_quality_monitoring/%v\", myTestTable.Name),\n\t\t\tOutputSchemaName: pulumi.Sprintf(\"%v.%v\", sandbox.Name, things.Name),\n\t\t\tSnapshot:         \u0026databricks.QualityMonitorSnapshotArgs{},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.QualityMonitor;\nimport com.pulumi.databricks.QualityMonitorArgs;\nimport com.pulumi.databricks.inputs.QualityMonitorSnapshotArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testMonitorInference = new QualityMonitor(\"testMonitorInference\", QualityMonitorArgs.builder()\n            .tableName(String.format(\"%s.%s.%s\", sandbox.name(),things.name(),myTestTable.name()))\n            .assetsDir(String.format(\"/Shared/provider-test/databricks_quality_monitoring/%s\", myTestTable.name()))\n            .outputSchemaName(String.format(\"%s.%s\", sandbox.name(),things.name()))\n            .snapshot()\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testMonitorInference:\n    type: databricks:QualityMonitor\n    properties:\n      tableName: ${sandbox.name}.${things.name}.${myTestTable.name}\n      assetsDir: /Shared/provider-test/databricks_quality_monitoring/${myTestTable.name}\n      outputSchemaName: ${sandbox.name}.${things.name}\n      snapshot: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are often used in the same context:\n\n* databricks.Catalog\n* databricks.Schema\n* databricks.SqlTable\n",
             "properties": {
                 "assetsDir": {
                     "type": "string",
@@ -25947,6 +26245,10 @@
                 },
                 "latestMonitorFailureMsg": {
                     "type": "string"
+                },
+                "monitorId": {
+                    "type": "string",
+                    "description": "ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`\n"
                 },
                 "monitorVersion": {
                     "type": "string",
@@ -26004,6 +26306,7 @@
                 "assetsDir",
                 "dashboardId",
                 "driftMetricsTableName",
+                "monitorId",
                 "monitorVersion",
                 "outputSchemaName",
                 "profileMetricsTableName",
@@ -26036,6 +26339,10 @@
                 },
                 "latestMonitorFailureMsg": {
                     "type": "string"
+                },
+                "monitorId": {
+                    "type": "string",
+                    "description": "ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`\n"
                 },
                 "notifications": {
                     "$ref": "#/types/databricks:index/QualityMonitorNotifications:QualityMonitorNotifications",
@@ -26118,6 +26425,10 @@
                     },
                     "latestMonitorFailureMsg": {
                         "type": "string"
+                    },
+                    "monitorId": {
+                        "type": "string",
+                        "description": "ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`\n"
                     },
                     "monitorVersion": {
                         "type": "string",
@@ -31414,6 +31725,71 @@
                 "type": "object"
             }
         },
+        "databricks:index/getFunctions:getFunctions": {
+            "description": "\u003e This data source can only be used with a workspace-level provider!\n\nRetrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).\n\n## Example Usage\n\nList all functions defined in a specific schema (`main.default` in this example):\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst all = databricks.getFunctions({\n    catalogName: \"main\",\n    schemaName: \"default\",\n});\nexport const allExternalLocations = all.then(all =\u003e all.functions);\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nall = databricks.get_functions(catalog_name=\"main\",\n    schema_name=\"default\")\npulumi.export(\"allExternalLocations\", all.functions)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Databricks.GetFunctions.Invoke(new()\n    {\n        CatalogName = \"main\",\n        SchemaName = \"default\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allExternalLocations\"] = all.Apply(getFunctionsResult =\u003e getFunctionsResult.Functions),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := databricks.GetFunctions(ctx, \u0026databricks.GetFunctionsArgs{\n\t\t\tCatalogName: \"main\",\n\t\t\tSchemaName:  \"default\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allExternalLocations\", all.Functions)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetFunctionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DatabricksFunctions.getFunctions(GetFunctionsArgs.builder()\n            .catalogName(\"main\")\n            .schemaName(\"default\")\n            .build());\n\n        ctx.export(\"allExternalLocations\", all.applyValue(getFunctionsResult -\u003e getFunctionsResult.functions()));\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      Function: databricks:getFunctions\n      Arguments:\n        catalogName: main\n        schemaName: default\noutputs:\n  allExternalLocations: ${all.functions}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Schema to get information about a single schema\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getFunctions.\n",
+                "properties": {
+                    "catalogName": {
+                        "type": "string",
+                        "description": "Name of databricks_catalog.\n"
+                    },
+                    "functions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/databricks:index/getFunctionsFunction:getFunctionsFunction"
+                        },
+                        "description": "list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):\n"
+                    },
+                    "includeBrowse": {
+                        "type": "boolean",
+                        "description": "flag to specify if include UDFs in the response for which the principal can only access selective metadata for.\n"
+                    },
+                    "schemaName": {
+                        "type": "string",
+                        "description": "Name of databricks_schema.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "catalogName",
+                    "schemaName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFunctions.\n",
+                "properties": {
+                    "catalogName": {
+                        "description": "Name of parent catalog.\n",
+                        "type": "string"
+                    },
+                    "functions": {
+                        "description": "list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):\n",
+                        "items": {
+                            "$ref": "#/types/databricks:index/getFunctionsFunction:getFunctionsFunction"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "includeBrowse": {
+                        "type": "boolean"
+                    },
+                    "schemaName": {
+                        "description": "Name of parent schema relative to its parent catalog.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "catalogName",
+                    "schemaName",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "databricks:index/getGroup:getGroup": {
             "description": "\u003e **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.\n\nRetrieves information about databricks.Group members, entitlements and instance profiles.\n\n## Example Usage\n\nAdding user to administrative group\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst admins = databricks.getGroup({\n    displayName: \"admins\",\n});\nconst me = new databricks.User(\"me\", {userName: \"me@example.com\"});\nconst myMemberA = new databricks.GroupMember(\"my_member_a\", {\n    groupId: admins.then(admins =\u003e admins.id),\n    memberId: me.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nadmins = databricks.get_group(display_name=\"admins\")\nme = databricks.User(\"me\", user_name=\"me@example.com\")\nmy_member_a = databricks.GroupMember(\"my_member_a\",\n    group_id=admins.id,\n    member_id=me.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var admins = Databricks.GetGroup.Invoke(new()\n    {\n        DisplayName = \"admins\",\n    });\n\n    var me = new Databricks.User(\"me\", new()\n    {\n        UserName = \"me@example.com\",\n    });\n\n    var myMemberA = new Databricks.GroupMember(\"my_member_a\", new()\n    {\n        GroupId = admins.Apply(getGroupResult =\u003e getGroupResult.Id),\n        MemberId = me.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tadmins, err := databricks.LookupGroup(ctx, \u0026databricks.LookupGroupArgs{\n\t\t\tDisplayName: \"admins\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tme, err := databricks.NewUser(ctx, \"me\", \u0026databricks.UserArgs{\n\t\t\tUserName: pulumi.String(\"me@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = databricks.NewGroupMember(ctx, \"my_member_a\", \u0026databricks.GroupMemberArgs{\n\t\t\tGroupId:  pulumi.String(admins.Id),\n\t\t\tMemberId: me.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetGroupArgs;\nimport com.pulumi.databricks.User;\nimport com.pulumi.databricks.UserArgs;\nimport com.pulumi.databricks.GroupMember;\nimport com.pulumi.databricks.GroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()\n            .displayName(\"admins\")\n            .build());\n\n        var me = new User(\"me\", UserArgs.builder()\n            .userName(\"me@example.com\")\n            .build());\n\n        var myMemberA = new GroupMember(\"myMemberA\", GroupMemberArgs.builder()\n            .groupId(admins.applyValue(getGroupResult -\u003e getGroupResult.id()))\n            .memberId(me.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  me:\n    type: databricks:User\n    properties:\n      userName: me@example.com\n  myMemberA:\n    type: databricks:GroupMember\n    name: my_member_a\n    properties:\n      groupId: ${admins.id}\n      memberId: ${me.id}\nvariables:\n  admins:\n    fn::invoke:\n      Function: databricks:getGroup\n      Arguments:\n        displayName: admins\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* End to end workspace management guide\n* databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).\n* databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).\n* databricks.GroupMember to attach users and groups as group members.\n* databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.\n* databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.\n",
             "inputs": {
@@ -33658,14 +34034,13 @@
             }
         },
         "databricks:index/getVolumes:getVolumes": {
-            "description": "\u003e **Note** This data source can only be used with a workspace-level provider!\n\nRetrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.\n\n## Example Usage\n\nListing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst this = databricks.getVolumes({\n    catalogName: \"sandbox\",\n    schemaName: \"things\",\n});\nexport const allVolumes = _this;\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.get_volumes(catalog_name=\"sandbox\",\n    schema_name=\"things\")\npulumi.export(\"allVolumes\", this)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Databricks.GetVolumes.Invoke(new()\n    {\n        CatalogName = \"sandbox\",\n        SchemaName = \"things\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allVolumes\"] = @this,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthis, err := databricks.GetVolumes(ctx, \u0026databricks.GetVolumesArgs{\n\t\t\tCatalogName: \"sandbox\",\n\t\t\tSchemaName:  \"things\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allVolumes\", this)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetVolumesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = DatabricksFunctions.getVolumes(GetVolumesArgs.builder()\n            .catalogName(\"sandbox\")\n            .schemaName(\"things\")\n            .build());\n\n        ctx.export(\"allVolumes\", this_);\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      Function: databricks:getVolumes\n      Arguments:\n        catalogName: sandbox\n        schemaName: things\noutputs:\n  allVolumes: ${this}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Volume to manage volumes within Unity Catalog.\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
+            "description": "\u003e **Note** This data source can only be used with a workspace-level provider!\n\nRetrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.\n\n## Plugin Framework Migration\n\nThe volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=\"databricks.getVolumes\"`.\n\n## Example Usage\n\nListing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst this = databricks.getVolumes({\n    catalogName: \"sandbox\",\n    schemaName: \"things\",\n});\nexport const allVolumes = _this;\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.get_volumes(catalog_name=\"sandbox\",\n    schema_name=\"things\")\npulumi.export(\"allVolumes\", this)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Databricks.GetVolumes.Invoke(new()\n    {\n        CatalogName = \"sandbox\",\n        SchemaName = \"things\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allVolumes\"] = @this,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthis, err := databricks.GetVolumes(ctx, \u0026databricks.GetVolumesArgs{\n\t\t\tCatalogName: \"sandbox\",\n\t\t\tSchemaName:  \"things\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allVolumes\", this)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetVolumesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = DatabricksFunctions.getVolumes(GetVolumesArgs.builder()\n            .catalogName(\"sandbox\")\n            .schemaName(\"things\")\n            .build());\n\n        ctx.export(\"allVolumes\", this_);\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      Function: databricks:getVolumes\n      Arguments:\n        catalogName: sandbox\n        schemaName: things\noutputs:\n  allVolumes: ${this}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Volume to manage volumes within Unity Catalog.\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getVolumes.\n",
                 "properties": {
                     "catalogName": {
                         "type": "string",
-                        "description": "Name of databricks_catalog\n",
-                        "willReplaceOnChanges": true
+                        "description": "Name of databricks_catalog\n"
                     },
                     "ids": {
                         "type": "array",
@@ -33676,8 +34051,7 @@
                     },
                     "schemaName": {
                         "type": "string",
-                        "description": "Name of databricks_schema\n",
-                        "willReplaceOnChanges": true
+                        "description": "Name of databricks_schema\n"
                     }
                 },
                 "type": "object",

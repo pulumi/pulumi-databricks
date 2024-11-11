@@ -3,7 +3,7 @@ module github.com/databricks/terraform-provider-databricks/shim
 go 1.23.0
 
 require (
-	github.com/databricks/terraform-provider-databricks v1.56.0
+	github.com/databricks/terraform-provider-databricks v1.57.0
 	github.com/hashicorp/terraform-plugin-framework v1.11.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.34.0
 )
@@ -16,7 +16,7 @@ require (
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/cloudflare/circl v1.3.7 // indirect
-	github.com/databricks/databricks-sdk-go v0.49.0 // indirect
+	github.com/databricks/databricks-sdk-go v0.50.0 // indirect
 	github.com/fatih/color v1.16.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-logr/logr v1.4.1 // indirect

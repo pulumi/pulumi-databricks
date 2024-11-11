@@ -14,6 +14,10 @@ namespace Pulumi.Databricks
     /// 
     /// A `databricks.QualityMonitor` is attached to a databricks.SqlTable and can be of type timeseries, snapshot or inference.
     /// 
+    /// ## Plugin Framework Migration
+    /// 
+    /// The quality monitor resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="databricks.QualityMonitor"`.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -199,6 +203,12 @@ namespace Pulumi.Databricks
         public Output<string?> LatestMonitorFailureMsg { get; private set; } = null!;
 
         /// <summary>
+        /// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+        /// </summary>
+        [Output("monitorId")]
+        public Output<string> MonitorId { get; private set; } = null!;
+
+        /// <summary>
         /// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         /// </summary>
         [Output("monitorVersion")]
@@ -357,6 +367,12 @@ namespace Pulumi.Databricks
         public Input<string>? LatestMonitorFailureMsg { get; set; }
 
         /// <summary>
+        /// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+        /// </summary>
+        [Input("monitorId")]
+        public Input<string>? MonitorId { get; set; }
+
+        /// <summary>
         /// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         /// </summary>
         [Input("notifications")]
@@ -475,6 +491,12 @@ namespace Pulumi.Databricks
 
         [Input("latestMonitorFailureMsg")]
         public Input<string>? LatestMonitorFailureMsg { get; set; }
+
+        /// <summary>
+        /// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+        /// </summary>
+        [Input("monitorId")]
+        public Input<string>? MonitorId { get; set; }
 
         /// <summary>
         /// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted

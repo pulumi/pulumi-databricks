@@ -139,6 +139,21 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+     * 
+     */
+    @Import(name="monitorId")
+    private @Nullable Output<String> monitorId;
+
+    /**
+     * @return ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+     * 
+     */
+    public Optional<Output<String>> monitorId() {
+        return Optional.ofNullable(this.monitorId);
+    }
+
+    /**
      * The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
      * 
      */
@@ -329,6 +344,7 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
         this.driftMetricsTableName = $.driftMetricsTableName;
         this.inferenceLog = $.inferenceLog;
         this.latestMonitorFailureMsg = $.latestMonitorFailureMsg;
+        this.monitorId = $.monitorId;
         this.monitorVersion = $.monitorVersion;
         this.notifications = $.notifications;
         this.outputSchemaName = $.outputSchemaName;
@@ -527,6 +543,27 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
 
         public Builder latestMonitorFailureMsg(String latestMonitorFailureMsg) {
             return latestMonitorFailureMsg(Output.of(latestMonitorFailureMsg));
+        }
+
+        /**
+         * @param monitorId ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitorId(@Nullable Output<String> monitorId) {
+            $.monitorId = monitorId;
+            return this;
+        }
+
+        /**
+         * @param monitorId ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitorId(String monitorId) {
+            return monitorId(Output.of(monitorId));
         }
 
         /**

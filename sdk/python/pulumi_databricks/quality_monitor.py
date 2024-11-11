@@ -29,6 +29,7 @@ class QualityMonitorArgs:
                  data_classification_config: Optional[pulumi.Input['QualityMonitorDataClassificationConfigArgs']] = None,
                  inference_log: Optional[pulumi.Input['QualityMonitorInferenceLogArgs']] = None,
                  latest_monitor_failure_msg: Optional[pulumi.Input[str]] = None,
+                 monitor_id: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input['QualityMonitorNotificationsArgs']] = None,
                  schedule: Optional[pulumi.Input['QualityMonitorScheduleArgs']] = None,
                  skip_builtin_dashboard: Optional[pulumi.Input[bool]] = None,
@@ -46,6 +47,7 @@ class QualityMonitorArgs:
         :param pulumi.Input[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
         :param pulumi.Input['QualityMonitorDataClassificationConfigArgs'] data_classification_config: The data classification config for the monitor
         :param pulumi.Input['QualityMonitorInferenceLogArgs'] inference_log: Configuration for the inference log monitor
+        :param pulumi.Input[str] monitor_id: ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
         :param pulumi.Input['QualityMonitorNotificationsArgs'] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input['QualityMonitorScheduleArgs'] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
@@ -67,6 +69,8 @@ class QualityMonitorArgs:
             pulumi.set(__self__, "inference_log", inference_log)
         if latest_monitor_failure_msg is not None:
             pulumi.set(__self__, "latest_monitor_failure_msg", latest_monitor_failure_msg)
+        if monitor_id is not None:
+            pulumi.set(__self__, "monitor_id", monitor_id)
         if notifications is not None:
             pulumi.set(__self__, "notifications", notifications)
         if schedule is not None:
@@ -177,6 +181,18 @@ class QualityMonitorArgs:
         pulumi.set(self, "latest_monitor_failure_msg", value)
 
     @property
+    @pulumi.getter(name="monitorId")
+    def monitor_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+        """
+        return pulumi.get(self, "monitor_id")
+
+    @monitor_id.setter
+    def monitor_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "monitor_id", value)
+
+    @property
     @pulumi.getter
     def notifications(self) -> Optional[pulumi.Input['QualityMonitorNotificationsArgs']]:
         """
@@ -272,6 +288,7 @@ class _QualityMonitorState:
                  drift_metrics_table_name: Optional[pulumi.Input[str]] = None,
                  inference_log: Optional[pulumi.Input['QualityMonitorInferenceLogArgs']] = None,
                  latest_monitor_failure_msg: Optional[pulumi.Input[str]] = None,
+                 monitor_id: Optional[pulumi.Input[str]] = None,
                  monitor_version: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input['QualityMonitorNotificationsArgs']] = None,
                  output_schema_name: Optional[pulumi.Input[str]] = None,
@@ -294,6 +311,7 @@ class _QualityMonitorState:
         :param pulumi.Input['QualityMonitorDataClassificationConfigArgs'] data_classification_config: The data classification config for the monitor
         :param pulumi.Input[str] drift_metrics_table_name: The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         :param pulumi.Input['QualityMonitorInferenceLogArgs'] inference_log: Configuration for the inference log monitor
+        :param pulumi.Input[str] monitor_id: ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
         :param pulumi.Input[str] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         :param pulumi.Input['QualityMonitorNotificationsArgs'] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
@@ -323,6 +341,8 @@ class _QualityMonitorState:
             pulumi.set(__self__, "inference_log", inference_log)
         if latest_monitor_failure_msg is not None:
             pulumi.set(__self__, "latest_monitor_failure_msg", latest_monitor_failure_msg)
+        if monitor_id is not None:
+            pulumi.set(__self__, "monitor_id", monitor_id)
         if monitor_version is not None:
             pulumi.set(__self__, "monitor_version", monitor_version)
         if notifications is not None:
@@ -441,6 +461,18 @@ class _QualityMonitorState:
     @latest_monitor_failure_msg.setter
     def latest_monitor_failure_msg(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "latest_monitor_failure_msg", value)
+
+    @property
+    @pulumi.getter(name="monitorId")
+    def monitor_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+        """
+        return pulumi.get(self, "monitor_id")
+
+    @monitor_id.setter
+    def monitor_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "monitor_id", value)
 
     @property
     @pulumi.getter(name="monitorVersion")
@@ -598,6 +630,7 @@ class QualityMonitor(pulumi.CustomResource):
                  data_classification_config: Optional[pulumi.Input[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']]] = None,
                  inference_log: Optional[pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
                  latest_monitor_failure_msg: Optional[pulumi.Input[str]] = None,
+                 monitor_id: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
                  output_schema_name: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
@@ -612,6 +645,10 @@ class QualityMonitor(pulumi.CustomResource):
         This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks.
 
         A `QualityMonitor` is attached to a SqlTable and can be of type timeseries, snapshot or inference.
+
+        ## Plugin Framework Migration
+
+        The quality monitor resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="QualityMonitor"`.
 
         ## Example Usage
 
@@ -707,6 +744,7 @@ class QualityMonitor(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
         :param pulumi.Input[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']] data_classification_config: The data classification config for the monitor
         :param pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']] inference_log: Configuration for the inference log monitor
+        :param pulumi.Input[str] monitor_id: ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
         :param pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
@@ -727,6 +765,10 @@ class QualityMonitor(pulumi.CustomResource):
         This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks.
 
         A `QualityMonitor` is attached to a SqlTable and can be of type timeseries, snapshot or inference.
+
+        ## Plugin Framework Migration
+
+        The quality monitor resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="QualityMonitor"`.
 
         ## Example Usage
 
@@ -835,6 +877,7 @@ class QualityMonitor(pulumi.CustomResource):
                  data_classification_config: Optional[pulumi.Input[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']]] = None,
                  inference_log: Optional[pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
                  latest_monitor_failure_msg: Optional[pulumi.Input[str]] = None,
+                 monitor_id: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
                  output_schema_name: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
@@ -861,6 +904,7 @@ class QualityMonitor(pulumi.CustomResource):
             __props__.__dict__["data_classification_config"] = data_classification_config
             __props__.__dict__["inference_log"] = inference_log
             __props__.__dict__["latest_monitor_failure_msg"] = latest_monitor_failure_msg
+            __props__.__dict__["monitor_id"] = monitor_id
             __props__.__dict__["notifications"] = notifications
             if output_schema_name is None and not opts.urn:
                 raise TypeError("Missing required property 'output_schema_name'")
@@ -897,6 +941,7 @@ class QualityMonitor(pulumi.CustomResource):
             drift_metrics_table_name: Optional[pulumi.Input[str]] = None,
             inference_log: Optional[pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
             latest_monitor_failure_msg: Optional[pulumi.Input[str]] = None,
+            monitor_id: Optional[pulumi.Input[str]] = None,
             monitor_version: Optional[pulumi.Input[str]] = None,
             notifications: Optional[pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
             output_schema_name: Optional[pulumi.Input[str]] = None,
@@ -924,6 +969,7 @@ class QualityMonitor(pulumi.CustomResource):
         :param pulumi.Input[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']] data_classification_config: The data classification config for the monitor
         :param pulumi.Input[str] drift_metrics_table_name: The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         :param pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']] inference_log: Configuration for the inference log monitor
+        :param pulumi.Input[str] monitor_id: ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
         :param pulumi.Input[str] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         :param pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
@@ -949,6 +995,7 @@ class QualityMonitor(pulumi.CustomResource):
         __props__.__dict__["drift_metrics_table_name"] = drift_metrics_table_name
         __props__.__dict__["inference_log"] = inference_log
         __props__.__dict__["latest_monitor_failure_msg"] = latest_monitor_failure_msg
+        __props__.__dict__["monitor_id"] = monitor_id
         __props__.__dict__["monitor_version"] = monitor_version
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["output_schema_name"] = output_schema_name
@@ -1024,6 +1071,14 @@ class QualityMonitor(pulumi.CustomResource):
     @pulumi.getter(name="latestMonitorFailureMsg")
     def latest_monitor_failure_msg(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "latest_monitor_failure_msg")
+
+    @property
+    @pulumi.getter(name="monitorId")
+    def monitor_id(self) -> pulumi.Output[str]:
+        """
+        ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+        """
+        return pulumi.get(self, "monitor_id")
 
     @property
     @pulumi.getter(name="monitorVersion")

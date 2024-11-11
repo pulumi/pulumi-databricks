@@ -28,6 +28,10 @@ import javax.annotation.Nullable;
  * 
  * A `databricks.QualityMonitor` is attached to a databricks.SqlTable and can be of type timeseries, snapshot or inference.
  * 
+ * ## Plugin Framework Migration
+ * 
+ * The quality monitor resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES=&#34;databricks.QualityMonitor&#34;`.
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -309,6 +313,20 @@ public class QualityMonitor extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> latestMonitorFailureMsg() {
         return Codegen.optional(this.latestMonitorFailureMsg);
+    }
+    /**
+     * ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+     * 
+     */
+    @Export(name="monitorId", refs={String.class}, tree="[0]")
+    private Output<String> monitorId;
+
+    /**
+     * @return ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
+     * 
+     */
+    public Output<String> monitorId() {
+        return this.monitorId;
     }
     /**
      * The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
