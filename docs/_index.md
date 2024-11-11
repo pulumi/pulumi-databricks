@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The databricks provider is available as a package in all Pulumi languages:
+The Databricks provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/databricks`](https://www.npmjs.com/package/@pulumi/databricks)
 * Python: [`pulumi-databricks`](https://pypi.org/project/pulumi-databricks/)
@@ -1620,89 +1620,25 @@ This section covers configuration parameters not related to authentication. They
 ## Environment variables
 
 The following configuration attributes can be passed via environment variables:
-<table>
-<thead>
-<tr>
-<th style="text-align:right">Argument</th>
-<th>Environment variable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">`authType`</td>
-<td>`DATABRICKS_AUTH_TYPE`</td>
-</tr>
-<tr>
-<td style="text-align:right">`host`</td>
-<td>`DATABRICKS_HOST`</td>
-</tr>
-<tr>
-<td style="text-align:right">`token`</td>
-<td>`DATABRICKS_TOKEN`</td>
-</tr>
-<tr>
-<td style="text-align:right">`accountId`</td>
-<td>`DATABRICKS_ACCOUNT_ID`</td>
-</tr>
-<tr>
-<td style="text-align:right">`configFile`</td>
-<td>`DATABRICKS_CONFIG_FILE`</td>
-</tr>
-<tr>
-<td style="text-align:right">`profile`</td>
-<td>`DATABRICKS_CONFIG_PROFILE`</td>
-</tr>
-<tr>
-<td style="text-align:right">`clientId`</td>
-<td>`DATABRICKS_CLIENT_ID`</td>
-</tr>
-<tr>
-<td style="text-align:right">`clientSecret`</td>
-<td>`DATABRICKS_CLIENT_SECRET`</td>
-</tr>
-<tr>
-<td style="text-align:right">`azureClientSecret`</td>
-<td>`ARM_CLIENT_SECRET`</td>
-</tr>
-<tr>
-<td style="text-align:right">`azureClientId`</td>
-<td>`ARM_CLIENT_ID`</td>
-</tr>
-<tr>
-<td style="text-align:right">`azureTenantId`</td>
-<td>`ARM_TENANT_ID`</td>
-</tr>
-<tr>
-<td style="text-align:right">`azureWorkspaceResourceId`</td>
-<td>`DATABRICKS_AZURE_RESOURCE_ID`</td>
-</tr>
-<tr>
-<td style="text-align:right">`azureUseMsi`</td>
-<td>`ARM_USE_MSI`</td>
-</tr>
-<tr>
-<td style="text-align:right">`azureEnvironment`</td>
-<td>`ARM_ENVIRONMENT`</td>
-</tr>
-<tr>
-<td style="text-align:right">`googleCredentials`</td>
-<td>`GOOGLE_CREDENTIALS`</td>
-</tr>
-<tr>
-<td style="text-align:right">`googleServiceAccount`</td>
-<td>`GOOGLE_SERVICE_ACCOUNT`</td>
-</tr>
-<tr>
-<td style="text-align:right">`debugTruncateBytes`</td>
-<td>`DATABRICKS_DEBUG_TRUNCATE_BYTES`</td>
-</tr>
-<tr>
-<td style="text-align:right">`debugHeaders`</td>
-<td>`DATABRICKS_DEBUG_HEADERS`</td>
-</tr>
-<tr>
-<td style="text-align:right">`rateLimit`</td>
-<td>`DATABRICKS_RATE_LIMIT`</td>
-</tr>
-</tbody>
-</table>
+
+|           Argument            |       Environment variable        |
+|-------------------------------|-----------------------------------|
+| `authType`                   | `DATABRICKS_AUTH_TYPE`            |
+| `host`                        | `DATABRICKS_HOST`                 |
+| `token`                       | `DATABRICKS_TOKEN`                |
+| `accountId`                  | `DATABRICKS_ACCOUNT_ID`           |
+| `configFile`                 | `DATABRICKS_CONFIG_FILE`          |
+| `profile`                     | `DATABRICKS_CONFIG_PROFILE`       |
+| `clientId`                   | `DATABRICKS_CLIENT_ID`            |
+| `clientSecret`               | `DATABRICKS_CLIENT_SECRET`        |
+| `azureClientSecret`         | `ARM_CLIENT_SECRET`               |
+| `azureClientId`             | `ARM_CLIENT_ID`                   |
+| `azureTenantId`             | `ARM_TENANT_ID`                   |
+| `azureWorkspaceResourceId` | `DATABRICKS_AZURE_RESOURCE_ID`    |
+| `azureUseMsi`               | `ARM_USE_MSI`                     |
+| `azureEnvironment`           | `ARM_ENVIRONMENT`                 |
+| `googleCredentials`          | `GOOGLE_CREDENTIALS`              |
+| `googleServiceAccount`      | `GOOGLE_SERVICE_ACCOUNT`          |
+| `debugTruncateBytes`        | `DATABRICKS_DEBUG_TRUNCATE_BYTES` |
+| `debugHeaders`               | `DATABRICKS_DEBUG_HEADERS`        |
+| `rateLimit`                  | `DATABRICKS_RATE_LIMIT`           |
