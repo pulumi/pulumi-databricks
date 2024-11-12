@@ -2473,6 +2473,9 @@
                             }
                         }
                     },
+                    "restart_window": {
+                        "maxItemsOne": true
+                    },
                     "trigger": {
                         "maxItemsOne": true,
                         "elem": {
