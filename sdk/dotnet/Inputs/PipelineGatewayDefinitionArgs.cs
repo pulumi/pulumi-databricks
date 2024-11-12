@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 
+        [Input("connectionName")]
+        public Input<string>? ConnectionName { get; set; }
+
         /// <summary>
         /// Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
         /// </summary>

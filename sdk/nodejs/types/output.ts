@@ -3534,6 +3534,7 @@ export interface GetStorageCredentialStorageCredentialInfo {
      * credential details for GCP:
      */
     databricksGcpServiceAccount?: outputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount;
+    fullName?: string;
     /**
      * Unique ID of storage credential.
      */
@@ -7684,6 +7685,7 @@ export interface PipelineGatewayDefinition {
      * Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
      */
     connectionId?: string;
+    connectionName?: string;
     /**
      * Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
      */
@@ -7812,6 +7814,12 @@ export interface PipelineNotification {
      * non-empty list of emails to notify.
      */
     emailRecipients?: string[];
+}
+
+export interface PipelineRestartWindow {
+    daysOfWeek?: string;
+    startHour: number;
+    timeZoneId?: string;
 }
 
 export interface PipelineTrigger {

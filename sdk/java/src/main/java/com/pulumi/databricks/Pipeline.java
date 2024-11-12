@@ -18,6 +18,7 @@ import com.pulumi.databricks.outputs.PipelineIngestionDefinition;
 import com.pulumi.databricks.outputs.PipelineLatestUpdate;
 import com.pulumi.databricks.outputs.PipelineLibrary;
 import com.pulumi.databricks.outputs.PipelineNotification;
+import com.pulumi.databricks.outputs.PipelineRestartWindow;
 import com.pulumi.databricks.outputs.PipelineTrigger;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -400,6 +401,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> photon() {
         return Codegen.optional(this.photon);
+    }
+    @Export(name="restartWindow", refs={PipelineRestartWindow.class}, tree="[0]")
+    private Output</* @Nullable */ PipelineRestartWindow> restartWindow;
+
+    public Output<Optional<PipelineRestartWindow>> restartWindow() {
+        return Codegen.optional(this.restartWindow);
     }
     @Export(name="runAsUserName", refs={String.class}, tree="[0]")
     private Output<String> runAsUserName;

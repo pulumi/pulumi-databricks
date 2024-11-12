@@ -13,6 +13,136 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClusterClusterInfoInitScript struct {
+	Abfss     *GetClusterClusterInfoInitScriptAbfss     `pulumi:"abfss"`
+	Dbfs      *GetClusterClusterInfoInitScriptDbfs      `pulumi:"dbfs"`
+	File      *GetClusterClusterInfoInitScriptFile      `pulumi:"file"`
+	Gcs       *GetClusterClusterInfoInitScriptGcs       `pulumi:"gcs"`
+	S3        *GetClusterClusterInfoInitScriptS3        `pulumi:"s3"`
+	Volumes   *GetClusterClusterInfoInitScriptVolumes   `pulumi:"volumes"`
+	Workspace *GetClusterClusterInfoInitScriptWorkspace `pulumi:"workspace"`
+}
+
+// GetClusterClusterInfoInitScriptInput is an input type that accepts GetClusterClusterInfoInitScriptArgs and GetClusterClusterInfoInitScriptOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptInput` via:
+//
+//	GetClusterClusterInfoInitScriptArgs{...}
+type GetClusterClusterInfoInitScriptInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptOutput() GetClusterClusterInfoInitScriptOutput
+	ToGetClusterClusterInfoInitScriptOutputWithContext(context.Context) GetClusterClusterInfoInitScriptOutput
+}
+
+type GetClusterClusterInfoInitScriptArgs struct {
+	Abfss     GetClusterClusterInfoInitScriptAbfssPtrInput     `pulumi:"abfss"`
+	Dbfs      GetClusterClusterInfoInitScriptDbfsPtrInput      `pulumi:"dbfs"`
+	File      GetClusterClusterInfoInitScriptFilePtrInput      `pulumi:"file"`
+	Gcs       GetClusterClusterInfoInitScriptGcsPtrInput       `pulumi:"gcs"`
+	S3        GetClusterClusterInfoInitScriptS3PtrInput        `pulumi:"s3"`
+	Volumes   GetClusterClusterInfoInitScriptVolumesPtrInput   `pulumi:"volumes"`
+	Workspace GetClusterClusterInfoInitScriptWorkspacePtrInput `pulumi:"workspace"`
+}
+
+func (GetClusterClusterInfoInitScriptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScript)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptArgs) ToGetClusterClusterInfoInitScriptOutput() GetClusterClusterInfoInitScriptOutput {
+	return i.ToGetClusterClusterInfoInitScriptOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptArgs) ToGetClusterClusterInfoInitScriptOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptOutput)
+}
+
+// GetClusterClusterInfoInitScriptArrayInput is an input type that accepts GetClusterClusterInfoInitScriptArray and GetClusterClusterInfoInitScriptArrayOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoInitScriptArrayInput` via:
+//
+//	GetClusterClusterInfoInitScriptArray{ GetClusterClusterInfoInitScriptArgs{...} }
+type GetClusterClusterInfoInitScriptArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoInitScriptArrayOutput() GetClusterClusterInfoInitScriptArrayOutput
+	ToGetClusterClusterInfoInitScriptArrayOutputWithContext(context.Context) GetClusterClusterInfoInitScriptArrayOutput
+}
+
+type GetClusterClusterInfoInitScriptArray []GetClusterClusterInfoInitScriptInput
+
+func (GetClusterClusterInfoInitScriptArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterClusterInfoInitScript)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoInitScriptArray) ToGetClusterClusterInfoInitScriptArrayOutput() GetClusterClusterInfoInitScriptArrayOutput {
+	return i.ToGetClusterClusterInfoInitScriptArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoInitScriptArray) ToGetClusterClusterInfoInitScriptArrayOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptArrayOutput)
+}
+
+type GetClusterClusterInfoInitScriptOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoInitScript)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptOutput) ToGetClusterClusterInfoInitScriptOutput() GetClusterClusterInfoInitScriptOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptOutput) ToGetClusterClusterInfoInitScriptOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptOutput) Abfss() GetClusterClusterInfoInitScriptAbfssPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptAbfss { return v.Abfss }).(GetClusterClusterInfoInitScriptAbfssPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptOutput) Dbfs() GetClusterClusterInfoInitScriptDbfsPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptDbfs { return v.Dbfs }).(GetClusterClusterInfoInitScriptDbfsPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptOutput) File() GetClusterClusterInfoInitScriptFilePtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptFile { return v.File }).(GetClusterClusterInfoInitScriptFilePtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptOutput) Gcs() GetClusterClusterInfoInitScriptGcsPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptGcs { return v.Gcs }).(GetClusterClusterInfoInitScriptGcsPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptOutput) S3() GetClusterClusterInfoInitScriptS3PtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptS3 { return v.S3 }).(GetClusterClusterInfoInitScriptS3PtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptOutput) Volumes() GetClusterClusterInfoInitScriptVolumesPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptVolumes { return v.Volumes }).(GetClusterClusterInfoInitScriptVolumesPtrOutput)
+}
+
+func (o GetClusterClusterInfoInitScriptOutput) Workspace() GetClusterClusterInfoInitScriptWorkspacePtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptWorkspace { return v.Workspace }).(GetClusterClusterInfoInitScriptWorkspacePtrOutput)
+}
+
+type GetClusterClusterInfoInitScriptArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoInitScriptArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterClusterInfoInitScript)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoInitScriptArrayOutput) ToGetClusterClusterInfoInitScriptArrayOutput() GetClusterClusterInfoInitScriptArrayOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptArrayOutput) ToGetClusterClusterInfoInitScriptArrayOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptArrayOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoInitScriptArrayOutput) Index(i pulumi.IntInput) GetClusterClusterInfoInitScriptOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterClusterInfoInitScript {
+		return vs[0].([]GetClusterClusterInfoInitScript)[vs[1].(int)]
+	}).(GetClusterClusterInfoInitScriptOutput)
+}
+
 type GetClusterClusterInfoInitScriptAbfss struct {
 	Destination string `pulumi:"destination"`
 }
@@ -45926,6 +46056,7 @@ type GetStorageCredentialStorageCredentialInfo struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// credential details for GCP:
 	DatabricksGcpServiceAccount *GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
+	FullName                    *string                                                               `pulumi:"fullName"`
 	// Unique ID of storage credential.
 	Id            *string `pulumi:"id"`
 	IsolationMode *string `pulumi:"isolationMode"`
@@ -45970,6 +46101,7 @@ type GetStorageCredentialStorageCredentialInfoArgs struct {
 	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
 	// credential details for GCP:
 	DatabricksGcpServiceAccount GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrInput `pulumi:"databricksGcpServiceAccount"`
+	FullName                    pulumi.StringPtrInput                                                        `pulumi:"fullName"`
 	// Unique ID of storage credential.
 	Id            pulumi.StringPtrInput `pulumi:"id"`
 	IsolationMode pulumi.StringPtrInput `pulumi:"isolationMode"`
@@ -46111,6 +46243,10 @@ func (o GetStorageCredentialStorageCredentialInfoOutput) DatabricksGcpServiceAcc
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount {
 		return v.DatabricksGcpServiceAccount
 	}).(GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrOutput)
+}
+
+func (o GetStorageCredentialStorageCredentialInfoOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.FullName }).(pulumi.StringPtrOutput)
 }
 
 // Unique ID of storage credential.
@@ -46256,6 +46392,15 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) DatabricksGcpService
 		}
 		return v.DatabricksGcpServiceAccount
 	}).(GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrOutput)
+}
+
+func (o GetStorageCredentialStorageCredentialInfoPtrOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FullName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Unique ID of storage credential.
@@ -50682,6 +50827,8 @@ func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKm
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptInput)(nil)).Elem(), GetClusterClusterInfoInitScriptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptArrayInput)(nil)).Elem(), GetClusterClusterInfoInitScriptArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptAbfssInput)(nil)).Elem(), GetClusterClusterInfoInitScriptAbfssArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptAbfssPtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptAbfssArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptDbfsInput)(nil)).Elem(), GetClusterClusterInfoInitScriptDbfsArgs{})
@@ -51282,6 +51429,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptAbfssOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptAbfssPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptDbfsOutput{})

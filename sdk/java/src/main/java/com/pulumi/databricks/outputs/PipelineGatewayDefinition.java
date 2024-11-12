@@ -16,6 +16,7 @@ public final class PipelineGatewayDefinition {
      * 
      */
     private @Nullable String connectionId;
+    private @Nullable String connectionName;
     /**
      * @return Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
      * 
@@ -39,6 +40,9 @@ public final class PipelineGatewayDefinition {
      */
     public Optional<String> connectionId() {
         return Optional.ofNullable(this.connectionId);
+    }
+    public Optional<String> connectionName() {
+        return Optional.ofNullable(this.connectionName);
     }
     /**
      * @return Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
@@ -72,6 +76,7 @@ public final class PipelineGatewayDefinition {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectionId;
+        private @Nullable String connectionName;
         private @Nullable String gatewayStorageCatalog;
         private @Nullable String gatewayStorageName;
         private @Nullable String gatewayStorageSchema;
@@ -79,6 +84,7 @@ public final class PipelineGatewayDefinition {
         public Builder(PipelineGatewayDefinition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionId = defaults.connectionId;
+    	      this.connectionName = defaults.connectionName;
     	      this.gatewayStorageCatalog = defaults.gatewayStorageCatalog;
     	      this.gatewayStorageName = defaults.gatewayStorageName;
     	      this.gatewayStorageSchema = defaults.gatewayStorageSchema;
@@ -88,6 +94,12 @@ public final class PipelineGatewayDefinition {
         public Builder connectionId(@Nullable String connectionId) {
 
             this.connectionId = connectionId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectionName(@Nullable String connectionName) {
+
+            this.connectionName = connectionName;
             return this;
         }
         @CustomType.Setter
@@ -111,6 +123,7 @@ public final class PipelineGatewayDefinition {
         public PipelineGatewayDefinition build() {
             final var _resultValue = new PipelineGatewayDefinition();
             _resultValue.connectionId = connectionId;
+            _resultValue.connectionName = connectionName;
             _resultValue.gatewayStorageCatalog = gatewayStorageCatalog;
             _resultValue.gatewayStorageName = gatewayStorageName;
             _resultValue.gatewayStorageSchema = gatewayStorageSchema;

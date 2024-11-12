@@ -64483,7 +64483,8 @@ func (o PipelineFiltersPtrOutput) Includes() pulumi.StringArrayOutput {
 
 type PipelineGatewayDefinition struct {
 	// Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
-	ConnectionId *string `pulumi:"connectionId"`
+	ConnectionId   *string `pulumi:"connectionId"`
+	ConnectionName *string `pulumi:"connectionName"`
 	// Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
 	GatewayStorageCatalog *string `pulumi:"gatewayStorageCatalog"`
 	// Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
@@ -64505,7 +64506,8 @@ type PipelineGatewayDefinitionInput interface {
 
 type PipelineGatewayDefinitionArgs struct {
 	// Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
-	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
+	ConnectionId   pulumi.StringPtrInput `pulumi:"connectionId"`
+	ConnectionName pulumi.StringPtrInput `pulumi:"connectionName"`
 	// Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
 	GatewayStorageCatalog pulumi.StringPtrInput `pulumi:"gatewayStorageCatalog"`
 	// Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
@@ -64596,6 +64598,10 @@ func (o PipelineGatewayDefinitionOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineGatewayDefinition) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }
 
+func (o PipelineGatewayDefinitionOutput) ConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineGatewayDefinition) *string { return v.ConnectionName }).(pulumi.StringPtrOutput)
+}
+
 // Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
 func (o PipelineGatewayDefinitionOutput) GatewayStorageCatalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineGatewayDefinition) *string { return v.GatewayStorageCatalog }).(pulumi.StringPtrOutput)
@@ -64642,6 +64648,15 @@ func (o PipelineGatewayDefinitionPtrOutput) ConnectionId() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.ConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineGatewayDefinitionPtrOutput) ConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineGatewayDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -67069,6 +67084,169 @@ func (o PipelineNotificationArrayOutput) Index(i pulumi.IntInput) PipelineNotifi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineNotification {
 		return vs[0].([]PipelineNotification)[vs[1].(int)]
 	}).(PipelineNotificationOutput)
+}
+
+type PipelineRestartWindow struct {
+	DaysOfWeek *string `pulumi:"daysOfWeek"`
+	StartHour  int     `pulumi:"startHour"`
+	TimeZoneId *string `pulumi:"timeZoneId"`
+}
+
+// PipelineRestartWindowInput is an input type that accepts PipelineRestartWindowArgs and PipelineRestartWindowOutput values.
+// You can construct a concrete instance of `PipelineRestartWindowInput` via:
+//
+//	PipelineRestartWindowArgs{...}
+type PipelineRestartWindowInput interface {
+	pulumi.Input
+
+	ToPipelineRestartWindowOutput() PipelineRestartWindowOutput
+	ToPipelineRestartWindowOutputWithContext(context.Context) PipelineRestartWindowOutput
+}
+
+type PipelineRestartWindowArgs struct {
+	DaysOfWeek pulumi.StringPtrInput `pulumi:"daysOfWeek"`
+	StartHour  pulumi.IntInput       `pulumi:"startHour"`
+	TimeZoneId pulumi.StringPtrInput `pulumi:"timeZoneId"`
+}
+
+func (PipelineRestartWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineRestartWindow)(nil)).Elem()
+}
+
+func (i PipelineRestartWindowArgs) ToPipelineRestartWindowOutput() PipelineRestartWindowOutput {
+	return i.ToPipelineRestartWindowOutputWithContext(context.Background())
+}
+
+func (i PipelineRestartWindowArgs) ToPipelineRestartWindowOutputWithContext(ctx context.Context) PipelineRestartWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineRestartWindowOutput)
+}
+
+func (i PipelineRestartWindowArgs) ToPipelineRestartWindowPtrOutput() PipelineRestartWindowPtrOutput {
+	return i.ToPipelineRestartWindowPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineRestartWindowArgs) ToPipelineRestartWindowPtrOutputWithContext(ctx context.Context) PipelineRestartWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineRestartWindowOutput).ToPipelineRestartWindowPtrOutputWithContext(ctx)
+}
+
+// PipelineRestartWindowPtrInput is an input type that accepts PipelineRestartWindowArgs, PipelineRestartWindowPtr and PipelineRestartWindowPtrOutput values.
+// You can construct a concrete instance of `PipelineRestartWindowPtrInput` via:
+//
+//	        PipelineRestartWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineRestartWindowPtrInput interface {
+	pulumi.Input
+
+	ToPipelineRestartWindowPtrOutput() PipelineRestartWindowPtrOutput
+	ToPipelineRestartWindowPtrOutputWithContext(context.Context) PipelineRestartWindowPtrOutput
+}
+
+type pipelineRestartWindowPtrType PipelineRestartWindowArgs
+
+func PipelineRestartWindowPtr(v *PipelineRestartWindowArgs) PipelineRestartWindowPtrInput {
+	return (*pipelineRestartWindowPtrType)(v)
+}
+
+func (*pipelineRestartWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineRestartWindow)(nil)).Elem()
+}
+
+func (i *pipelineRestartWindowPtrType) ToPipelineRestartWindowPtrOutput() PipelineRestartWindowPtrOutput {
+	return i.ToPipelineRestartWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineRestartWindowPtrType) ToPipelineRestartWindowPtrOutputWithContext(ctx context.Context) PipelineRestartWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineRestartWindowPtrOutput)
+}
+
+type PipelineRestartWindowOutput struct{ *pulumi.OutputState }
+
+func (PipelineRestartWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineRestartWindow)(nil)).Elem()
+}
+
+func (o PipelineRestartWindowOutput) ToPipelineRestartWindowOutput() PipelineRestartWindowOutput {
+	return o
+}
+
+func (o PipelineRestartWindowOutput) ToPipelineRestartWindowOutputWithContext(ctx context.Context) PipelineRestartWindowOutput {
+	return o
+}
+
+func (o PipelineRestartWindowOutput) ToPipelineRestartWindowPtrOutput() PipelineRestartWindowPtrOutput {
+	return o.ToPipelineRestartWindowPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineRestartWindowOutput) ToPipelineRestartWindowPtrOutputWithContext(ctx context.Context) PipelineRestartWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineRestartWindow) *PipelineRestartWindow {
+		return &v
+	}).(PipelineRestartWindowPtrOutput)
+}
+
+func (o PipelineRestartWindowOutput) DaysOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineRestartWindow) *string { return v.DaysOfWeek }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineRestartWindowOutput) StartHour() pulumi.IntOutput {
+	return o.ApplyT(func(v PipelineRestartWindow) int { return v.StartHour }).(pulumi.IntOutput)
+}
+
+func (o PipelineRestartWindowOutput) TimeZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineRestartWindow) *string { return v.TimeZoneId }).(pulumi.StringPtrOutput)
+}
+
+type PipelineRestartWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineRestartWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineRestartWindow)(nil)).Elem()
+}
+
+func (o PipelineRestartWindowPtrOutput) ToPipelineRestartWindowPtrOutput() PipelineRestartWindowPtrOutput {
+	return o
+}
+
+func (o PipelineRestartWindowPtrOutput) ToPipelineRestartWindowPtrOutputWithContext(ctx context.Context) PipelineRestartWindowPtrOutput {
+	return o
+}
+
+func (o PipelineRestartWindowPtrOutput) Elem() PipelineRestartWindowOutput {
+	return o.ApplyT(func(v *PipelineRestartWindow) PipelineRestartWindow {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineRestartWindow
+		return ret
+	}).(PipelineRestartWindowOutput)
+}
+
+func (o PipelineRestartWindowPtrOutput) DaysOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineRestartWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DaysOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineRestartWindowPtrOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PipelineRestartWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.StartHour
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o PipelineRestartWindowPtrOutput) TimeZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineRestartWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZoneId
+	}).(pulumi.StringPtrOutput)
 }
 
 type PipelineTrigger struct {
@@ -83079,136 +83257,6 @@ func (o GetClusterClusterInfoGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetClusterClusterInfoInitScript struct {
-	Abfss     *GetClusterClusterInfoInitScriptAbfss     `pulumi:"abfss"`
-	Dbfs      *GetClusterClusterInfoInitScriptDbfs      `pulumi:"dbfs"`
-	File      *GetClusterClusterInfoInitScriptFile      `pulumi:"file"`
-	Gcs       *GetClusterClusterInfoInitScriptGcs       `pulumi:"gcs"`
-	S3        *GetClusterClusterInfoInitScriptS3        `pulumi:"s3"`
-	Volumes   *GetClusterClusterInfoInitScriptVolumes   `pulumi:"volumes"`
-	Workspace *GetClusterClusterInfoInitScriptWorkspace `pulumi:"workspace"`
-}
-
-// GetClusterClusterInfoInitScriptInput is an input type that accepts GetClusterClusterInfoInitScriptArgs and GetClusterClusterInfoInitScriptOutput values.
-// You can construct a concrete instance of `GetClusterClusterInfoInitScriptInput` via:
-//
-//	GetClusterClusterInfoInitScriptArgs{...}
-type GetClusterClusterInfoInitScriptInput interface {
-	pulumi.Input
-
-	ToGetClusterClusterInfoInitScriptOutput() GetClusterClusterInfoInitScriptOutput
-	ToGetClusterClusterInfoInitScriptOutputWithContext(context.Context) GetClusterClusterInfoInitScriptOutput
-}
-
-type GetClusterClusterInfoInitScriptArgs struct {
-	Abfss     GetClusterClusterInfoInitScriptAbfssPtrInput     `pulumi:"abfss"`
-	Dbfs      GetClusterClusterInfoInitScriptDbfsPtrInput      `pulumi:"dbfs"`
-	File      GetClusterClusterInfoInitScriptFilePtrInput      `pulumi:"file"`
-	Gcs       GetClusterClusterInfoInitScriptGcsPtrInput       `pulumi:"gcs"`
-	S3        GetClusterClusterInfoInitScriptS3PtrInput        `pulumi:"s3"`
-	Volumes   GetClusterClusterInfoInitScriptVolumesPtrInput   `pulumi:"volumes"`
-	Workspace GetClusterClusterInfoInitScriptWorkspacePtrInput `pulumi:"workspace"`
-}
-
-func (GetClusterClusterInfoInitScriptArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterClusterInfoInitScript)(nil)).Elem()
-}
-
-func (i GetClusterClusterInfoInitScriptArgs) ToGetClusterClusterInfoInitScriptOutput() GetClusterClusterInfoInitScriptOutput {
-	return i.ToGetClusterClusterInfoInitScriptOutputWithContext(context.Background())
-}
-
-func (i GetClusterClusterInfoInitScriptArgs) ToGetClusterClusterInfoInitScriptOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptOutput)
-}
-
-// GetClusterClusterInfoInitScriptArrayInput is an input type that accepts GetClusterClusterInfoInitScriptArray and GetClusterClusterInfoInitScriptArrayOutput values.
-// You can construct a concrete instance of `GetClusterClusterInfoInitScriptArrayInput` via:
-//
-//	GetClusterClusterInfoInitScriptArray{ GetClusterClusterInfoInitScriptArgs{...} }
-type GetClusterClusterInfoInitScriptArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterClusterInfoInitScriptArrayOutput() GetClusterClusterInfoInitScriptArrayOutput
-	ToGetClusterClusterInfoInitScriptArrayOutputWithContext(context.Context) GetClusterClusterInfoInitScriptArrayOutput
-}
-
-type GetClusterClusterInfoInitScriptArray []GetClusterClusterInfoInitScriptInput
-
-func (GetClusterClusterInfoInitScriptArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterClusterInfoInitScript)(nil)).Elem()
-}
-
-func (i GetClusterClusterInfoInitScriptArray) ToGetClusterClusterInfoInitScriptArrayOutput() GetClusterClusterInfoInitScriptArrayOutput {
-	return i.ToGetClusterClusterInfoInitScriptArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterClusterInfoInitScriptArray) ToGetClusterClusterInfoInitScriptArrayOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoInitScriptArrayOutput)
-}
-
-type GetClusterClusterInfoInitScriptOutput struct{ *pulumi.OutputState }
-
-func (GetClusterClusterInfoInitScriptOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterClusterInfoInitScript)(nil)).Elem()
-}
-
-func (o GetClusterClusterInfoInitScriptOutput) ToGetClusterClusterInfoInitScriptOutput() GetClusterClusterInfoInitScriptOutput {
-	return o
-}
-
-func (o GetClusterClusterInfoInitScriptOutput) ToGetClusterClusterInfoInitScriptOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptOutput {
-	return o
-}
-
-func (o GetClusterClusterInfoInitScriptOutput) Abfss() GetClusterClusterInfoInitScriptAbfssPtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptAbfss { return v.Abfss }).(GetClusterClusterInfoInitScriptAbfssPtrOutput)
-}
-
-func (o GetClusterClusterInfoInitScriptOutput) Dbfs() GetClusterClusterInfoInitScriptDbfsPtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptDbfs { return v.Dbfs }).(GetClusterClusterInfoInitScriptDbfsPtrOutput)
-}
-
-func (o GetClusterClusterInfoInitScriptOutput) File() GetClusterClusterInfoInitScriptFilePtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptFile { return v.File }).(GetClusterClusterInfoInitScriptFilePtrOutput)
-}
-
-func (o GetClusterClusterInfoInitScriptOutput) Gcs() GetClusterClusterInfoInitScriptGcsPtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptGcs { return v.Gcs }).(GetClusterClusterInfoInitScriptGcsPtrOutput)
-}
-
-func (o GetClusterClusterInfoInitScriptOutput) S3() GetClusterClusterInfoInitScriptS3PtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptS3 { return v.S3 }).(GetClusterClusterInfoInitScriptS3PtrOutput)
-}
-
-func (o GetClusterClusterInfoInitScriptOutput) Volumes() GetClusterClusterInfoInitScriptVolumesPtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptVolumes { return v.Volumes }).(GetClusterClusterInfoInitScriptVolumesPtrOutput)
-}
-
-func (o GetClusterClusterInfoInitScriptOutput) Workspace() GetClusterClusterInfoInitScriptWorkspacePtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoInitScript) *GetClusterClusterInfoInitScriptWorkspace { return v.Workspace }).(GetClusterClusterInfoInitScriptWorkspacePtrOutput)
-}
-
-type GetClusterClusterInfoInitScriptArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterClusterInfoInitScriptArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterClusterInfoInitScript)(nil)).Elem()
-}
-
-func (o GetClusterClusterInfoInitScriptArrayOutput) ToGetClusterClusterInfoInitScriptArrayOutput() GetClusterClusterInfoInitScriptArrayOutput {
-	return o
-}
-
-func (o GetClusterClusterInfoInitScriptArrayOutput) ToGetClusterClusterInfoInitScriptArrayOutputWithContext(ctx context.Context) GetClusterClusterInfoInitScriptArrayOutput {
-	return o
-}
-
-func (o GetClusterClusterInfoInitScriptArrayOutput) Index(i pulumi.IntInput) GetClusterClusterInfoInitScriptOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterClusterInfoInitScript {
-		return vs[0].([]GetClusterClusterInfoInitScript)[vs[1].(int)]
-	}).(GetClusterClusterInfoInitScriptOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -84010,6 +84058,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineLibraryNotebookPtrInput)(nil)).Elem(), PipelineLibraryNotebookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineNotificationInput)(nil)).Elem(), PipelineNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineNotificationArrayInput)(nil)).Elem(), PipelineNotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineRestartWindowInput)(nil)).Elem(), PipelineRestartWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineRestartWindowPtrInput)(nil)).Elem(), PipelineRestartWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineTriggerInput)(nil)).Elem(), PipelineTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineTriggerPtrInput)(nil)).Elem(), PipelineTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineTriggerCronInput)(nil)).Elem(), PipelineTriggerCronArgs{})
@@ -84202,8 +84252,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoExecutorNodeAwsAttributesPtrInput)(nil)).Elem(), GetClusterClusterInfoExecutorNodeAwsAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoGcpAttributesInput)(nil)).Elem(), GetClusterClusterInfoGcpAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoGcpAttributesPtrInput)(nil)).Elem(), GetClusterClusterInfoGcpAttributesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptInput)(nil)).Elem(), GetClusterClusterInfoInitScriptArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptArrayInput)(nil)).Elem(), GetClusterClusterInfoInitScriptArray{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AlertConditionOutput{})
@@ -85004,6 +85052,8 @@ func init() {
 	pulumi.RegisterOutputType(PipelineLibraryNotebookPtrOutput{})
 	pulumi.RegisterOutputType(PipelineNotificationOutput{})
 	pulumi.RegisterOutputType(PipelineNotificationArrayOutput{})
+	pulumi.RegisterOutputType(PipelineRestartWindowOutput{})
+	pulumi.RegisterOutputType(PipelineRestartWindowPtrOutput{})
 	pulumi.RegisterOutputType(PipelineTriggerOutput{})
 	pulumi.RegisterOutputType(PipelineTriggerPtrOutput{})
 	pulumi.RegisterOutputType(PipelineTriggerCronOutput{})
@@ -85196,6 +85246,4 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterInfoExecutorNodeAwsAttributesPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoGcpAttributesOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoGcpAttributesPtrOutput{})
-	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptOutput{})
-	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptArrayOutput{})
 }

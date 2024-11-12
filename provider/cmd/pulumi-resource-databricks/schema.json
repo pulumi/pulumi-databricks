@@ -8346,6 +8346,9 @@
                     "description": "Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.\n",
                     "willReplaceOnChanges": true
                 },
+                "connectionName": {
+                    "type": "string"
+                },
                 "gatewayStorageCatalog": {
                     "type": "string",
                     "description": "Required, Immutable. The name of the catalog for the gateway pipeline's storage location.\n",
@@ -8647,6 +8650,23 @@
                 }
             },
             "type": "object"
+        },
+        "databricks:index/PipelineRestartWindow:PipelineRestartWindow": {
+            "properties": {
+                "daysOfWeek": {
+                    "type": "string"
+                },
+                "startHour": {
+                    "type": "integer"
+                },
+                "timeZoneId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "startHour"
+            ]
         },
         "databricks:index/PipelineTrigger:PipelineTrigger": {
             "properties": {
@@ -16915,6 +16935,9 @@
                 "databricksGcpServiceAccount": {
                     "$ref": "#/types/databricks:index/getStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount:getStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount",
                     "description": "credential details for GCP:\n"
+                },
+                "fullName": {
+                    "type": "string"
                 },
                 "id": {
                     "type": "string",
@@ -25892,6 +25915,9 @@
                     "type": "boolean",
                     "description": "A flag indicating whether to use Photon engine. The default value is `false`.\n"
                 },
+                "restartWindow": {
+                    "$ref": "#/types/databricks:index/PipelineRestartWindow:PipelineRestartWindow"
+                },
                 "runAsUserName": {
                     "type": "string"
                 },
@@ -26038,6 +26064,9 @@
                     "type": "boolean",
                     "description": "A flag indicating whether to use Photon engine. The default value is `false`.\n"
                 },
+                "restartWindow": {
+                    "$ref": "#/types/databricks:index/PipelineRestartWindow:PipelineRestartWindow"
+                },
                 "runAsUserName": {
                     "type": "string"
                 },
@@ -26174,6 +26203,9 @@
                     "photon": {
                         "type": "boolean",
                         "description": "A flag indicating whether to use Photon engine. The default value is `false`.\n"
+                    },
+                    "restartWindow": {
+                        "$ref": "#/types/databricks:index/PipelineRestartWindow:PipelineRestartWindow"
                     },
                     "runAsUserName": {
                         "type": "string"

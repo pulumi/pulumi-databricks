@@ -125,6 +125,13 @@ public final class GetStorageCredentialStorageCredentialInfo extends com.pulumi.
         return Optional.ofNullable(this.databricksGcpServiceAccount);
     }
 
+    @Import(name="fullName")
+    private @Nullable String fullName;
+
+    public Optional<String> fullName() {
+        return Optional.ofNullable(this.fullName);
+    }
+
     /**
      * Unique ID of storage credential.
      * 
@@ -255,6 +262,7 @@ public final class GetStorageCredentialStorageCredentialInfo extends com.pulumi.
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
         this.databricksGcpServiceAccount = $.databricksGcpServiceAccount;
+        this.fullName = $.fullName;
         this.id = $.id;
         this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
@@ -357,6 +365,11 @@ public final class GetStorageCredentialStorageCredentialInfo extends com.pulumi.
          */
         public Builder databricksGcpServiceAccount(@Nullable GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount databricksGcpServiceAccount) {
             $.databricksGcpServiceAccount = databricksGcpServiceAccount;
+            return this;
+        }
+
+        public Builder fullName(@Nullable String fullName) {
+            $.fullName = fullName;
             return this;
         }
 

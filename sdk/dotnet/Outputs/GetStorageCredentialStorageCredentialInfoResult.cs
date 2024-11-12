@@ -39,6 +39,7 @@ namespace Pulumi.Databricks.Outputs
         /// credential details for GCP:
         /// </summary>
         public readonly Outputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountResult? DatabricksGcpServiceAccount;
+        public readonly string? FullName;
         /// <summary>
         /// Unique ID of storage credential.
         /// </summary>
@@ -88,6 +89,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountResult? databricksGcpServiceAccount,
 
+            string? fullName,
+
             string? id,
 
             string? isolationMode,
@@ -114,6 +117,7 @@ namespace Pulumi.Databricks.Outputs
             CreatedAt = createdAt;
             CreatedBy = createdBy;
             DatabricksGcpServiceAccount = databricksGcpServiceAccount;
+            FullName = fullName;
             Id = id;
             IsolationMode = isolationMode;
             MetastoreId = metastoreId;
