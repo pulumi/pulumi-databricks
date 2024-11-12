@@ -237,6 +237,9 @@ namespace Pulumi.Databricks
         [Output("photon")]
         public Output<bool?> Photon { get; private set; } = null!;
 
+        [Output("restartWindow")]
+        public Output<Outputs.PipelineRestartWindow?> RestartWindow { get; private set; } = null!;
+
         [Output("runAsUserName")]
         public Output<string> RunAsUserName { get; private set; } = null!;
 
@@ -467,6 +470,9 @@ namespace Pulumi.Databricks
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
 
+        [Input("restartWindow")]
+        public Input<Inputs.PipelineRestartWindowArgs>? RestartWindow { get; set; }
+
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }
 
@@ -658,6 +664,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
+
+        [Input("restartWindow")]
+        public Input<Inputs.PipelineRestartWindowGetArgs>? RestartWindow { get; set; }
 
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }

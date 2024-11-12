@@ -185,6 +185,7 @@ export class Pipeline extends pulumi.CustomResource {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     public readonly photon!: pulumi.Output<boolean | undefined>;
+    public readonly restartWindow!: pulumi.Output<outputs.PipelineRestartWindow | undefined>;
     public readonly runAsUserName!: pulumi.Output<string>;
     /**
      * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
@@ -246,6 +247,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notifications"] = state ? state.notifications : undefined;
             resourceInputs["photon"] = state ? state.photon : undefined;
+            resourceInputs["restartWindow"] = state ? state.restartWindow : undefined;
             resourceInputs["runAsUserName"] = state ? state.runAsUserName : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
             resourceInputs["serverless"] = state ? state.serverless : undefined;
@@ -280,6 +282,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notifications"] = args ? args.notifications : undefined;
             resourceInputs["photon"] = args ? args.photon : undefined;
+            resourceInputs["restartWindow"] = args ? args.restartWindow : undefined;
             resourceInputs["runAsUserName"] = args ? args.runAsUserName : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["serverless"] = args ? args.serverless : undefined;
@@ -367,6 +370,7 @@ export interface PipelineState {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     photon?: pulumi.Input<boolean>;
+    restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
     runAsUserName?: pulumi.Input<string>;
     /**
      * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
@@ -465,6 +469,7 @@ export interface PipelineArgs {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
     photon?: pulumi.Input<boolean>;
+    restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
     runAsUserName?: pulumi.Input<string>;
     /**
      * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.

@@ -54,6 +54,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("databricksGcpServiceAccount")]
         public Inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs? DatabricksGcpServiceAccount { get; set; }
 
+        [Input("fullName")]
+        public string? FullName { get; set; }
+
         /// <summary>
         /// Unique ID of storage credential.
         /// </summary>

@@ -45,6 +45,7 @@ class PipelineArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
+                 restart_window: Optional[pulumi.Input['PipelineRestartWindowArgs']] = None,
                  run_as_user_name: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
@@ -124,6 +125,8 @@ class PipelineArgs:
             pulumi.set(__self__, "notifications", notifications)
         if photon is not None:
             pulumi.set(__self__, "photon", photon)
+        if restart_window is not None:
+            pulumi.set(__self__, "restart_window", restart_window)
         if run_as_user_name is not None:
             pulumi.set(__self__, "run_as_user_name", run_as_user_name)
         if schema is not None:
@@ -401,6 +404,15 @@ class PipelineArgs:
     @photon.setter
     def photon(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "photon", value)
+
+    @property
+    @pulumi.getter(name="restartWindow")
+    def restart_window(self) -> Optional[pulumi.Input['PipelineRestartWindowArgs']]:
+        return pulumi.get(self, "restart_window")
+
+    @restart_window.setter
+    def restart_window(self, value: Optional[pulumi.Input['PipelineRestartWindowArgs']]):
+        pulumi.set(self, "restart_window", value)
 
     @property
     @pulumi.getter(name="runAsUserName")
@@ -517,6 +529,7 @@ class _PipelineState:
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
+                 restart_window: Optional[pulumi.Input['PipelineRestartWindowArgs']] = None,
                  run_as_user_name: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
@@ -596,6 +609,8 @@ class _PipelineState:
             pulumi.set(__self__, "notifications", notifications)
         if photon is not None:
             pulumi.set(__self__, "photon", photon)
+        if restart_window is not None:
+            pulumi.set(__self__, "restart_window", restart_window)
         if run_as_user_name is not None:
             pulumi.set(__self__, "run_as_user_name", run_as_user_name)
         if schema is not None:
@@ -873,6 +888,15 @@ class _PipelineState:
     @photon.setter
     def photon(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "photon", value)
+
+    @property
+    @pulumi.getter(name="restartWindow")
+    def restart_window(self) -> Optional[pulumi.Input['PipelineRestartWindowArgs']]:
+        return pulumi.get(self, "restart_window")
+
+    @restart_window.setter
+    def restart_window(self, value: Optional[pulumi.Input['PipelineRestartWindowArgs']]):
+        pulumi.set(self, "restart_window", value)
 
     @property
     @pulumi.getter(name="runAsUserName")
@@ -991,6 +1015,7 @@ class Pipeline(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
+                 restart_window: Optional[pulumi.Input[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
                  run_as_user_name: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
@@ -1230,6 +1255,7 @@ class Pipeline(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
+                 restart_window: Optional[pulumi.Input[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
                  run_as_user_name: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
@@ -1271,6 +1297,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["notifications"] = notifications
             __props__.__dict__["photon"] = photon
+            __props__.__dict__["restart_window"] = restart_window
             __props__.__dict__["run_as_user_name"] = run_as_user_name
             __props__.__dict__["schema"] = schema
             __props__.__dict__["serverless"] = serverless
@@ -1313,6 +1340,7 @@ class Pipeline(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
             photon: Optional[pulumi.Input[bool]] = None,
+            restart_window: Optional[pulumi.Input[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
             run_as_user_name: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             serverless: Optional[pulumi.Input[bool]] = None,
@@ -1377,6 +1405,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["photon"] = photon
+        __props__.__dict__["restart_window"] = restart_window
         __props__.__dict__["run_as_user_name"] = run_as_user_name
         __props__.__dict__["schema"] = schema
         __props__.__dict__["serverless"] = serverless
@@ -1551,6 +1580,11 @@ class Pipeline(pulumi.CustomResource):
         A flag indicating whether to use Photon engine. The default value is `false`.
         """
         return pulumi.get(self, "photon")
+
+    @property
+    @pulumi.getter(name="restartWindow")
+    def restart_window(self) -> pulumi.Output[Optional['outputs.PipelineRestartWindow']]:
+        return pulumi.get(self, "restart_window")
 
     @property
     @pulumi.getter(name="runAsUserName")

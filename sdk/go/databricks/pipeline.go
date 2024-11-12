@@ -159,8 +159,9 @@ type Pipeline struct {
 	Name          pulumi.StringOutput             `pulumi:"name"`
 	Notifications PipelineNotificationArrayOutput `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon        pulumi.BoolPtrOutput `pulumi:"photon"`
-	RunAsUserName pulumi.StringOutput  `pulumi:"runAsUserName"`
+	Photon        pulumi.BoolPtrOutput           `pulumi:"photon"`
+	RestartWindow PipelineRestartWindowPtrOutput `pulumi:"restartWindow"`
+	RunAsUserName pulumi.StringOutput            `pulumi:"runAsUserName"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrOutput `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
@@ -243,8 +244,9 @@ type pipelineState struct {
 	Name          *string                `pulumi:"name"`
 	Notifications []PipelineNotification `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon        *bool   `pulumi:"photon"`
-	RunAsUserName *string `pulumi:"runAsUserName"`
+	Photon        *bool                  `pulumi:"photon"`
+	RestartWindow *PipelineRestartWindow `pulumi:"restartWindow"`
+	RunAsUserName *string                `pulumi:"runAsUserName"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema *string `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
@@ -299,6 +301,7 @@ type PipelineState struct {
 	Notifications PipelineNotificationArrayInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        pulumi.BoolPtrInput
+	RestartWindow PipelineRestartWindowPtrInput
 	RunAsUserName pulumi.StringPtrInput
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrInput
@@ -357,8 +360,9 @@ type pipelineArgs struct {
 	Name          *string                `pulumi:"name"`
 	Notifications []PipelineNotification `pulumi:"notifications"`
 	// A flag indicating whether to use Photon engine. The default value is `false`.
-	Photon        *bool   `pulumi:"photon"`
-	RunAsUserName *string `pulumi:"runAsUserName"`
+	Photon        *bool                  `pulumi:"photon"`
+	RestartWindow *PipelineRestartWindow `pulumi:"restartWindow"`
+	RunAsUserName *string                `pulumi:"runAsUserName"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema *string `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
@@ -414,6 +418,7 @@ type PipelineArgs struct {
 	Notifications PipelineNotificationArrayInput
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        pulumi.BoolPtrInput
+	RestartWindow PipelineRestartWindowPtrInput
 	RunAsUserName pulumi.StringPtrInput
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrInput
@@ -625,6 +630,10 @@ func (o PipelineOutput) Notifications() PipelineNotificationArrayOutput {
 // A flag indicating whether to use Photon engine. The default value is `false`.
 func (o PipelineOutput) Photon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Photon }).(pulumi.BoolPtrOutput)
+}
+
+func (o PipelineOutput) RestartWindow() PipelineRestartWindowPtrOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineRestartWindowPtrOutput { return v.RestartWindow }).(PipelineRestartWindowPtrOutput)
 }
 
 func (o PipelineOutput) RunAsUserName() pulumi.StringOutput {

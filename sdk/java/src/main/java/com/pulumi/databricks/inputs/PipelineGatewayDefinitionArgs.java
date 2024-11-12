@@ -30,6 +30,13 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.connectionId);
     }
 
+    @Import(name="connectionName")
+    private @Nullable Output<String> connectionName;
+
+    public Optional<Output<String>> connectionName() {
+        return Optional.ofNullable(this.connectionName);
+    }
+
     /**
      * Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
      * 
@@ -79,6 +86,7 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
 
     private PipelineGatewayDefinitionArgs(PipelineGatewayDefinitionArgs $) {
         this.connectionId = $.connectionId;
+        this.connectionName = $.connectionName;
         this.gatewayStorageCatalog = $.gatewayStorageCatalog;
         this.gatewayStorageName = $.gatewayStorageName;
         this.gatewayStorageSchema = $.gatewayStorageSchema;
@@ -121,6 +129,15 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
          */
         public Builder connectionId(String connectionId) {
             return connectionId(Output.of(connectionId));
+        }
+
+        public Builder connectionName(@Nullable Output<String> connectionName) {
+            $.connectionName = connectionName;
+            return this;
+        }
+
+        public Builder connectionName(String connectionName) {
+            return connectionName(Output.of(connectionName));
         }
 
         /**

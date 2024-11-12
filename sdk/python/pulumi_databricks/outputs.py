@@ -419,6 +419,7 @@ __all__ = [
     'PipelineLibraryMaven',
     'PipelineLibraryNotebook',
     'PipelineNotification',
+    'PipelineRestartWindow',
     'PipelineTrigger',
     'PipelineTriggerCron',
     'PipelineTriggerManual',
@@ -21370,6 +21371,8 @@ class PipelineGatewayDefinition(dict):
         suggest = None
         if key == "connectionId":
             suggest = "connection_id"
+        elif key == "connectionName":
+            suggest = "connection_name"
         elif key == "gatewayStorageCatalog":
             suggest = "gateway_storage_catalog"
         elif key == "gatewayStorageName":
@@ -21390,6 +21393,7 @@ class PipelineGatewayDefinition(dict):
 
     def __init__(__self__, *,
                  connection_id: Optional[str] = None,
+                 connection_name: Optional[str] = None,
                  gateway_storage_catalog: Optional[str] = None,
                  gateway_storage_name: Optional[str] = None,
                  gateway_storage_schema: Optional[str] = None):
@@ -21401,6 +21405,8 @@ class PipelineGatewayDefinition(dict):
         """
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
         if gateway_storage_catalog is not None:
             pulumi.set(__self__, "gateway_storage_catalog", gateway_storage_catalog)
         if gateway_storage_name is not None:
@@ -21415,6 +21421,11 @@ class PipelineGatewayDefinition(dict):
         Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
         """
         return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[str]:
+        return pulumi.get(self, "connection_name")
 
     @property
     @pulumi.getter(name="gatewayStorageCatalog")
@@ -22206,6 +22217,55 @@ class PipelineNotification(dict):
         non-empty list of emails to notify.
         """
         return pulumi.get(self, "email_recipients")
+
+
+@pulumi.output_type
+class PipelineRestartWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startHour":
+            suggest = "start_hour"
+        elif key == "daysOfWeek":
+            suggest = "days_of_week"
+        elif key == "timeZoneId":
+            suggest = "time_zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineRestartWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineRestartWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineRestartWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 start_hour: int,
+                 days_of_week: Optional[str] = None,
+                 time_zone_id: Optional[str] = None):
+        pulumi.set(__self__, "start_hour", start_hour)
+        if days_of_week is not None:
+            pulumi.set(__self__, "days_of_week", days_of_week)
+        if time_zone_id is not None:
+            pulumi.set(__self__, "time_zone_id", time_zone_id)
+
+    @property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> int:
+        return pulumi.get(self, "start_hour")
+
+    @property
+    @pulumi.getter(name="daysOfWeek")
+    def days_of_week(self) -> Optional[str]:
+        return pulumi.get(self, "days_of_week")
+
+    @property
+    @pulumi.getter(name="timeZoneId")
+    def time_zone_id(self) -> Optional[str]:
+        return pulumi.get(self, "time_zone_id")
 
 
 @pulumi.output_type
@@ -38396,6 +38456,7 @@ class GetStorageCredentialStorageCredentialInfoResult(dict):
                  created_at: Optional[int] = None,
                  created_by: Optional[str] = None,
                  databricks_gcp_service_account: Optional['outputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountResult'] = None,
+                 full_name: Optional[str] = None,
                  id: Optional[str] = None,
                  isolation_mode: Optional[str] = None,
                  metastore_id: Optional[str] = None,
@@ -38436,6 +38497,8 @@ class GetStorageCredentialStorageCredentialInfoResult(dict):
             pulumi.set(__self__, "created_by", created_by)
         if databricks_gcp_service_account is not None:
             pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if isolation_mode is not None:
@@ -38512,6 +38575,11 @@ class GetStorageCredentialStorageCredentialInfoResult(dict):
         credential details for GCP:
         """
         return pulumi.get(self, "databricks_gcp_service_account")
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[str]:
+        return pulumi.get(self, "full_name")
 
     @property
     @pulumi.getter

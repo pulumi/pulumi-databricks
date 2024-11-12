@@ -6352,6 +6352,7 @@ export interface GetStorageCredentialStorageCredentialInfo {
      * credential details for GCP:
      */
     databricksGcpServiceAccount?: inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount;
+    fullName?: string;
     /**
      * Unique ID of storage credential.
      */
@@ -6411,6 +6412,7 @@ export interface GetStorageCredentialStorageCredentialInfoArgs {
      * credential details for GCP:
      */
     databricksGcpServiceAccount?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs>;
+    fullName?: pulumi.Input<string>;
     /**
      * Unique ID of storage credential.
      */
@@ -10857,6 +10859,7 @@ export interface PipelineGatewayDefinition {
      * Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
      */
     connectionId?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string>;
     /**
      * Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
      */
@@ -10985,6 +10988,12 @@ export interface PipelineNotification {
      * non-empty list of emails to notify.
      */
     emailRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PipelineRestartWindow {
+    daysOfWeek?: pulumi.Input<string>;
+    startHour: pulumi.Input<number>;
+    timeZoneId?: pulumi.Input<string>;
 }
 
 export interface PipelineTrigger {

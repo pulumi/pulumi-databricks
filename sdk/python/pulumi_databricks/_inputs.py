@@ -821,6 +821,8 @@ __all__ = [
     'PipelineLibraryNotebookArgsDict',
     'PipelineNotificationArgs',
     'PipelineNotificationArgsDict',
+    'PipelineRestartWindowArgs',
+    'PipelineRestartWindowArgsDict',
     'PipelineTriggerArgs',
     'PipelineTriggerArgsDict',
     'PipelineTriggerCronArgs',
@@ -27844,6 +27846,7 @@ if not MYPY:
         """
         Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
         """
+        connection_name: NotRequired[pulumi.Input[str]]
         gateway_storage_catalog: NotRequired[pulumi.Input[str]]
         """
         Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
@@ -27863,6 +27866,7 @@ elif False:
 class PipelineGatewayDefinitionArgs:
     def __init__(__self__, *,
                  connection_id: Optional[pulumi.Input[str]] = None,
+                 connection_name: Optional[pulumi.Input[str]] = None,
                  gateway_storage_catalog: Optional[pulumi.Input[str]] = None,
                  gateway_storage_name: Optional[pulumi.Input[str]] = None,
                  gateway_storage_schema: Optional[pulumi.Input[str]] = None):
@@ -27874,6 +27878,8 @@ class PipelineGatewayDefinitionArgs:
         """
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
+        if connection_name is not None:
+            pulumi.set(__self__, "connection_name", connection_name)
         if gateway_storage_catalog is not None:
             pulumi.set(__self__, "gateway_storage_catalog", gateway_storage_catalog)
         if gateway_storage_name is not None:
@@ -27892,6 +27898,15 @@ class PipelineGatewayDefinitionArgs:
     @connection_id.setter
     def connection_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_id", value)
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connection_name")
+
+    @connection_name.setter
+    def connection_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_name", value)
 
     @property
     @pulumi.getter(name="gatewayStorageCatalog")
@@ -28833,6 +28848,54 @@ class PipelineNotificationArgs:
     @email_recipients.setter
     def email_recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_recipients", value)
+
+
+if not MYPY:
+    class PipelineRestartWindowArgsDict(TypedDict):
+        start_hour: pulumi.Input[int]
+        days_of_week: NotRequired[pulumi.Input[str]]
+        time_zone_id: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineRestartWindowArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineRestartWindowArgs:
+    def __init__(__self__, *,
+                 start_hour: pulumi.Input[int],
+                 days_of_week: Optional[pulumi.Input[str]] = None,
+                 time_zone_id: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "start_hour", start_hour)
+        if days_of_week is not None:
+            pulumi.set(__self__, "days_of_week", days_of_week)
+        if time_zone_id is not None:
+            pulumi.set(__self__, "time_zone_id", time_zone_id)
+
+    @property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "start_hour")
+
+    @start_hour.setter
+    def start_hour(self, value: pulumi.Input[int]):
+        pulumi.set(self, "start_hour", value)
+
+    @property
+    @pulumi.getter(name="daysOfWeek")
+    def days_of_week(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "days_of_week")
+
+    @days_of_week.setter
+    def days_of_week(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "days_of_week", value)
+
+    @property
+    @pulumi.getter(name="timeZoneId")
+    def time_zone_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "time_zone_id")
+
+    @time_zone_id.setter
+    def time_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone_id", value)
 
 
 if not MYPY:
@@ -54592,6 +54655,7 @@ if not MYPY:
         """
         credential details for GCP:
         """
+        full_name: NotRequired[str]
         id: NotRequired[str]
         """
         Unique ID of storage credential.
@@ -54636,6 +54700,7 @@ class GetStorageCredentialStorageCredentialInfoArgs:
                  created_at: Optional[int] = None,
                  created_by: Optional[str] = None,
                  databricks_gcp_service_account: Optional['GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs'] = None,
+                 full_name: Optional[str] = None,
                  id: Optional[str] = None,
                  isolation_mode: Optional[str] = None,
                  metastore_id: Optional[str] = None,
@@ -54676,6 +54741,8 @@ class GetStorageCredentialStorageCredentialInfoArgs:
             pulumi.set(__self__, "created_by", created_by)
         if databricks_gcp_service_account is not None:
             pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if isolation_mode is not None:
@@ -54784,6 +54851,15 @@ class GetStorageCredentialStorageCredentialInfoArgs:
     @databricks_gcp_service_account.setter
     def databricks_gcp_service_account(self, value: Optional['GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs']):
         pulumi.set(self, "databricks_gcp_service_account", value)
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[str]:
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[str]):
+        pulumi.set(self, "full_name", value)
 
     @property
     @pulumi.getter

@@ -50,6 +50,7 @@ public final class GetStorageCredentialStorageCredentialInfo {
      * 
      */
     private @Nullable GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount databricksGcpServiceAccount;
+    private @Nullable String fullName;
     /**
      * @return Unique ID of storage credential.
      * 
@@ -137,6 +138,9 @@ public final class GetStorageCredentialStorageCredentialInfo {
     public Optional<GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount> databricksGcpServiceAccount() {
         return Optional.ofNullable(this.databricksGcpServiceAccount);
     }
+    public Optional<String> fullName() {
+        return Optional.ofNullable(this.fullName);
+    }
     /**
      * @return Unique ID of storage credential.
      * 
@@ -210,6 +214,7 @@ public final class GetStorageCredentialStorageCredentialInfo {
         private @Nullable Integer createdAt;
         private @Nullable String createdBy;
         private @Nullable GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount databricksGcpServiceAccount;
+        private @Nullable String fullName;
         private @Nullable String id;
         private @Nullable String isolationMode;
         private @Nullable String metastoreId;
@@ -230,6 +235,7 @@ public final class GetStorageCredentialStorageCredentialInfo {
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
     	      this.databricksGcpServiceAccount = defaults.databricksGcpServiceAccount;
+    	      this.fullName = defaults.fullName;
     	      this.id = defaults.id;
     	      this.isolationMode = defaults.isolationMode;
     	      this.metastoreId = defaults.metastoreId;
@@ -287,6 +293,12 @@ public final class GetStorageCredentialStorageCredentialInfo {
         public Builder databricksGcpServiceAccount(@Nullable GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount databricksGcpServiceAccount) {
 
             this.databricksGcpServiceAccount = databricksGcpServiceAccount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fullName(@Nullable String fullName) {
+
+            this.fullName = fullName;
             return this;
         }
         @CustomType.Setter
@@ -353,6 +365,7 @@ public final class GetStorageCredentialStorageCredentialInfo {
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
             _resultValue.databricksGcpServiceAccount = databricksGcpServiceAccount;
+            _resultValue.fullName = fullName;
             _resultValue.id = id;
             _resultValue.isolationMode = isolationMode;
             _resultValue.metastoreId = metastoreId;
