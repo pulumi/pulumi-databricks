@@ -184,7 +184,8 @@ func Provider() tfbridge.ProviderInfo {
 					"monitorID",
 					"databricks",
 					"https://github.com/pulumi/pulumi-databricks",
-				)},
+				),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"databricks_aws_crossaccount_policy": {
