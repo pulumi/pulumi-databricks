@@ -24,6 +24,7 @@ plugins:
   - name: std
     version: "1.6.2"
 pulumiConvert: 1
+registryDocs: true
 license:
   ignore:
     - github.com/databricks/terraform-provider-databricks/shim

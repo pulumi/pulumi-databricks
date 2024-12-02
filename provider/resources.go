@@ -18,7 +18,9 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"os"
 	"path"
+	"regexp"
 	"strings"
 
 	_ "embed" // embed package is not used directly
@@ -29,6 +31,7 @@ import (
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
 
@@ -249,8 +252,16 @@ func Provider() tfbridge.ProviderInfo {
 }
 
 func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	edits := []tfbridge.DocsEdit{
+		cleanUpDocument,
+	}
+	edits = append(edits,
+		defaults...,
+	)
+
 	return append(
-		defaults,
+		edits,
+		skipSectionHeadersEdit,
 		rewriteTerraformToPulumi,
 		rewritePermissions,
 	)
@@ -277,5 +288,55 @@ var rewritePermissions = tfbridge.DocsEdit{
 			"```\nterraform import databricks_permissions <object type>/<object id>\n```")
 		returnContent = append(returnContent, importContent...)
 		return returnContent, nil
+	},
+}
+
+var skipSectionHeadersEdit = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+			headerSkipRegexps := []*regexp.Regexp{
+				//regexp.MustCompile("Authentication"),
+				regexp.MustCompile("Troubleshooting"),
+				regexp.MustCompile("Empty provider block"),
+				regexp.MustCompile("Switching from "),
+			}
+			for _, header := range headerSkipRegexps {
+				if header.Match([]byte(headerText)) {
+					return true
+				}
+			}
+			return false
+		})
+	},
+}
+
+var cleanUpDocument = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		replacesDir := "docs/index-md-replaces/"
+		changes := []string{
+			"description",    // Removes description text with broken links and image
+			"note",           // Removes reference to TF guides
+			"secret-warning", // Removes warning about secrets
+		}
+		for _, file := range changes {
+			input, err := os.ReadFile(replacesDir + file + "-input.md")
+			if err != nil {
+				return nil, err
+			}
+			if bytes.Contains(content, input) {
+				content = bytes.ReplaceAll(
+					content,
+					input,
+					nil)
+			} else {
+				// Hard error to ensure we keep this content up to date
+				return nil, fmt.Errorf("could not find text in upstream index.md, "+
+					"please verify file content at %s\n*****\n%s\n*****\n", replacesDir+file+"-input.md", string(input))
+			}
+		}
+
+		return content, nil
 	},
 }
