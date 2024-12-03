@@ -296,7 +296,7 @@ var skipSectionHeadersEdit = tfbridge.DocsEdit{
 	Edit: func(_ string, content []byte) ([]byte, error) {
 		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
 			headerSkipRegexps := []*regexp.Regexp{
-				//regexp.MustCompile("Authentication"),
+				// regexp.MustCompile("Authentication"),
 				regexp.MustCompile("Troubleshooting"),
 				regexp.MustCompile("Empty provider block"),
 				regexp.MustCompile("Switching from "),
