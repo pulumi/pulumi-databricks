@@ -140,7 +140,7 @@ def get_tables(catalog_name: Optional[str] = None,
 def get_tables_output(catalog_name: Optional[pulumi.Input[str]] = None,
                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       schema_name: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTablesResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTablesResult]:
     """
     > **Note** This data source can only be used with a workspace-level provider!
 
@@ -187,7 +187,7 @@ def get_tables_output(catalog_name: Optional[pulumi.Input[str]] = None,
     __args__['catalogName'] = catalog_name
     __args__['ids'] = ids
     __args__['schemaName'] = schema_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getTables:getTables', __args__, opts=opts, typ=GetTablesResult)
     return __ret__.apply(lambda __response__: GetTablesResult(
         catalog_name=pulumi.get(__response__, 'catalog_name'),

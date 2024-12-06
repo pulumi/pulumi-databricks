@@ -96,7 +96,7 @@ export interface GetSchemasResult {
  * * databricks.Schema to manage schemas within Unity Catalog.
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
-export function getSchemasOutput(args: GetSchemasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchemasResult> {
+export function getSchemasOutput(args: GetSchemasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSchemasResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getSchemas:getSchemas", {
         "catalogName": args.catalogName,

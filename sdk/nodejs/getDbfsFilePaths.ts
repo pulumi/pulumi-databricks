@@ -99,7 +99,7 @@ export interface GetDbfsFilePathsResult {
  * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
  * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
  */
-export function getDbfsFilePathsOutput(args: GetDbfsFilePathsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbfsFilePathsResult> {
+export function getDbfsFilePathsOutput(args: GetDbfsFilePathsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbfsFilePathsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDbfsFilePaths:getDbfsFilePaths", {
         "path": args.path,

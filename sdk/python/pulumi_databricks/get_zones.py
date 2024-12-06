@@ -110,7 +110,7 @@ def get_zones(default_zone: Optional[str] = None,
 def get_zones_output(default_zone: Optional[pulumi.Input[Optional[str]]] = None,
                      id: Optional[pulumi.Input[Optional[str]]] = None,
                      zones: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -134,7 +134,7 @@ def get_zones_output(default_zone: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['defaultZone'] = default_zone
     __args__['id'] = id
     __args__['zones'] = zones
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
     return __ret__.apply(lambda __response__: GetZonesResult(
         default_zone=pulumi.get(__response__, 'default_zone'),

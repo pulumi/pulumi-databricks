@@ -170,7 +170,7 @@ export interface GetServicePrincipalResult {
  * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
  * - databricksService principal to manage service principals
  */
-export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalResult> {
+export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicePrincipalResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getServicePrincipal:getServicePrincipal", {

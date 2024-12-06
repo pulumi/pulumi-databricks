@@ -77,7 +77,7 @@ export interface GetNotebookPathsResult {
  * });
  * ```
  */
-export function getNotebookPathsOutput(args: GetNotebookPathsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotebookPathsResult> {
+export function getNotebookPathsOutput(args: GetNotebookPathsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotebookPathsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getNotebookPaths:getNotebookPaths", {
         "path": args.path,

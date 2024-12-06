@@ -224,7 +224,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
                                  id: Optional[pulumi.Input[Optional[str]]] = None,
                                  repos: Optional[pulumi.Input[Optional[str]]] = None,
                                  sp_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -278,7 +278,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
     __args__['id'] = id
     __args__['repos'] = repos
     __args__['spId'] = sp_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts, typ=GetServicePrincipalResult)
     return __ret__.apply(lambda __response__: GetServicePrincipalResult(
         acl_principal_id=pulumi.get(__response__, 'acl_principal_id'),

@@ -95,7 +95,7 @@ export interface GetMwsCredentialsResult {
  * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
  * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
  */
-export function getMwsCredentialsOutput(args?: GetMwsCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMwsCredentialsResult> {
+export function getMwsCredentialsOutput(args?: GetMwsCredentialsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMwsCredentialsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMwsCredentials:getMwsCredentials", {

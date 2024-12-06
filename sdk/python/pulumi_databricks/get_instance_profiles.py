@@ -92,7 +92,7 @@ def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanc
         id=pulumi.get(__ret__, 'id'),
         instance_profiles=pulumi.get(__ret__, 'instance_profiles'))
 def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']]]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceProfilesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceProfilesResult]:
     """
     Lists all available databricks_instance_profiles.
 
@@ -113,7 +113,7 @@ def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Option
     """
     __args__ = dict()
     __args__['instanceProfiles'] = instance_profiles
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getInstanceProfiles:getInstanceProfiles', __args__, opts=opts, typ=GetInstanceProfilesResult)
     return __ret__.apply(lambda __response__: GetInstanceProfilesResult(
         id=pulumi.get(__response__, 'id'),

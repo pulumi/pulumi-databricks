@@ -181,7 +181,7 @@ def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Op
                                         region: Optional[pulumi.Input[Optional[str]]] = None,
                                         security_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsCrossAccountPolicyResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsCrossAccountPolicyResult]:
     """
     > **Note** This data source can only be used with an account-level provider!
 
@@ -223,7 +223,7 @@ def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Op
     __args__['region'] = region
     __args__['securityGroupId'] = security_group_id
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy', __args__, opts=opts, typ=GetAwsCrossAccountPolicyResult)
     return __ret__.apply(lambda __response__: GetAwsCrossAccountPolicyResult(
         aws_account_id=pulumi.get(__response__, 'aws_account_id'),

@@ -129,7 +129,7 @@ export interface GetClusterPolicyResult {
  * const myCluster = new databricks.Cluster("my_cluster", {policyId: personal.then(personal => personal.id)});
  * ```
  */
-export function getClusterPolicyOutput(args?: GetClusterPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterPolicyResult> {
+export function getClusterPolicyOutput(args?: GetClusterPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getClusterPolicy:getClusterPolicy", {

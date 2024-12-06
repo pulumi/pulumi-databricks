@@ -110,7 +110,7 @@ export interface GetVolumesResult {
  * * databricks.Schema to manage schemas within Unity Catalog.
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
-export function getVolumesOutput(args: GetVolumesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumesResult> {
+export function getVolumesOutput(args: GetVolumesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVolumesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getVolumes:getVolumes", {
         "catalogName": args.catalogName,
