@@ -121,7 +121,7 @@ export interface GetAwsUnityCatalogPolicyResult {
  * });
  * ```
  */
-export function getAwsUnityCatalogPolicyOutput(args: GetAwsUnityCatalogPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsUnityCatalogPolicyResult> {
+export function getAwsUnityCatalogPolicyOutput(args: GetAwsUnityCatalogPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsUnityCatalogPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", {
         "awsAccountId": args.awsAccountId,

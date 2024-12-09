@@ -89,7 +89,7 @@ export interface GetMetastoresResult {
  * * databricks.Metastore to manage Metastores within Unity Catalog.
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
-export function getMetastoresOutput(args?: GetMetastoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoresResult> {
+export function getMetastoresOutput(args?: GetMetastoresOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetastoresResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMetastores:getMetastores", {

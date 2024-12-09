@@ -122,7 +122,7 @@ export interface GetNotificationDestinationsResult {
  * });
  * ```
  */
-export function getNotificationDestinationsOutput(args?: GetNotificationDestinationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationDestinationsResult> {
+export function getNotificationDestinationsOutput(args?: GetNotificationDestinationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotificationDestinationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getNotificationDestinations:getNotificationDestinations", {

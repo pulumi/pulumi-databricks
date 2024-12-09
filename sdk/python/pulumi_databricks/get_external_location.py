@@ -119,7 +119,7 @@ def get_external_location(external_location_info: Optional[Union['GetExternalLoc
 def get_external_location_output(external_location_info: Optional[pulumi.Input[Optional[Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict']]]] = None,
                                  id: Optional[pulumi.Input[Optional[str]]] = None,
                                  name: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalLocationResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLocationResult]:
     """
     > **Note** This data source can only be used with a workspace-level provider!
 
@@ -153,7 +153,7 @@ def get_external_location_output(external_location_info: Optional[pulumi.Input[O
     __args__['externalLocationInfo'] = external_location_info
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getExternalLocation:getExternalLocation', __args__, opts=opts, typ=GetExternalLocationResult)
     return __ret__.apply(lambda __response__: GetExternalLocationResult(
         external_location_info=pulumi.get(__response__, 'external_location_info'),

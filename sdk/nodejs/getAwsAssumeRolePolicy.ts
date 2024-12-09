@@ -140,7 +140,7 @@ export interface GetAwsAssumeRolePolicyResult {
  * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
  * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
  */
-export function getAwsAssumeRolePolicyOutput(args: GetAwsAssumeRolePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsAssumeRolePolicyResult> {
+export function getAwsAssumeRolePolicyOutput(args: GetAwsAssumeRolePolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsAssumeRolePolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", {
         "databricksAccountId": args.databricksAccountId,

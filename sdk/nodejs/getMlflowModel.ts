@@ -185,7 +185,7 @@ export interface GetMlflowModelResult {
  * });
  * ```
  */
-export function getMlflowModelOutput(args: GetMlflowModelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMlflowModelResult> {
+export function getMlflowModelOutput(args: GetMlflowModelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMlflowModelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMlflowModel:getMlflowModel", {
         "description": args.description,

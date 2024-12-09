@@ -143,7 +143,7 @@ export interface GetPipelinesResult {
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
  */
-export function getPipelinesOutput(args?: GetPipelinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPipelinesResult> {
+export function getPipelinesOutput(args?: GetPipelinesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelinesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getPipelines:getPipelines", {

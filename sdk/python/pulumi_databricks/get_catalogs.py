@@ -101,7 +101,7 @@ def get_catalogs(ids: Optional[Sequence[str]] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'))
 def get_catalogs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogsResult]:
     """
     > **Note** This data source can only be used with a workspace-level provider!
 
@@ -133,7 +133,7 @@ def get_catalogs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     """
     __args__ = dict()
     __args__['ids'] = ids
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCatalogs:getCatalogs', __args__, opts=opts, typ=GetCatalogsResult)
     return __ret__.apply(lambda __response__: GetCatalogsResult(
         id=pulumi.get(__response__, 'id'),

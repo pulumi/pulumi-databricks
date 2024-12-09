@@ -136,7 +136,7 @@ def get_dbfs_file(limit_file_size: Optional[bool] = None,
         path=pulumi.get(__ret__, 'path'))
 def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[bool]] = None,
                          path: Optional[pulumi.Input[str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbfsFileResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbfsFileResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -168,7 +168,7 @@ def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[bool]] = None,
     __args__ = dict()
     __args__['limitFileSize'] = limit_file_size
     __args__['path'] = path
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDbfsFile:getDbfsFile', __args__, opts=opts, typ=GetDbfsFileResult)
     return __ret__.apply(lambda __response__: GetDbfsFileResult(
         content=pulumi.get(__response__, 'content'),
