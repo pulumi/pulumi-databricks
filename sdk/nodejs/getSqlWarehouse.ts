@@ -287,7 +287,7 @@ export interface GetSqlWarehouseResult {
  * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
  * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
  */
-export function getSqlWarehouseOutput(args?: GetSqlWarehouseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlWarehouseResult> {
+export function getSqlWarehouseOutput(args?: GetSqlWarehouseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSqlWarehouseResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getSqlWarehouse:getSqlWarehouse", {

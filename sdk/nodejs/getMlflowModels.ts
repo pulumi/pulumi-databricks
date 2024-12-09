@@ -65,7 +65,7 @@ export interface GetMlflowModelsResult {
  * export const model = _this;
  * ```
  */
-export function getMlflowModelsOutput(args?: GetMlflowModelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMlflowModelsResult> {
+export function getMlflowModelsOutput(args?: GetMlflowModelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMlflowModelsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMlflowModels:getMlflowModels", {

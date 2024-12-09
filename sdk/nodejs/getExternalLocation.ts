@@ -99,7 +99,7 @@ export interface GetExternalLocationResult {
  * * databricks.getExternalLocations to get names of all external locations
  * * databricks.ExternalLocation to manage external locations within Unity Catalog.
  */
-export function getExternalLocationOutput(args: GetExternalLocationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalLocationResult> {
+export function getExternalLocationOutput(args: GetExternalLocationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExternalLocationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getExternalLocation:getExternalLocation", {
         "externalLocationInfo": args.externalLocationInfo,

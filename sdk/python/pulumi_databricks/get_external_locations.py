@@ -99,7 +99,7 @@ def get_external_locations(names: Optional[Sequence[str]] = None,
         id=pulumi.get(__ret__, 'id'),
         names=pulumi.get(__ret__, 'names'))
 def get_external_locations_output(names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalLocationsResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLocationsResult]:
     """
     > **Note** This data source can only be used with a workspace-level provider!
 
@@ -129,7 +129,7 @@ def get_external_locations_output(names: Optional[pulumi.Input[Optional[Sequence
     """
     __args__ = dict()
     __args__['names'] = names
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getExternalLocations:getExternalLocations', __args__, opts=opts, typ=GetExternalLocationsResult)
     return __ret__.apply(lambda __response__: GetExternalLocationsResult(
         id=pulumi.get(__response__, 'id'),

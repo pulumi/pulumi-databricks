@@ -105,7 +105,7 @@ export interface GetRegisteredModelResult {
  * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
  * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
  */
-export function getRegisteredModelOutput(args: GetRegisteredModelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegisteredModelResult> {
+export function getRegisteredModelOutput(args: GetRegisteredModelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegisteredModelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getRegisteredModel:getRegisteredModel", {
         "fullName": args.fullName,

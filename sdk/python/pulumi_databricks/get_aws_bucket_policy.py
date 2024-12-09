@@ -147,7 +147,7 @@ def get_aws_bucket_policy_output(bucket: Optional[pulumi.Input[str]] = None,
                                  databricks_account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  databricks_e2_account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  full_access_role: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsBucketPolicyResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsBucketPolicyResult]:
     """
     This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
 
@@ -179,7 +179,7 @@ def get_aws_bucket_policy_output(bucket: Optional[pulumi.Input[str]] = None,
     __args__['databricksAccountId'] = databricks_account_id
     __args__['databricksE2AccountId'] = databricks_e2_account_id
     __args__['fullAccessRole'] = full_access_role
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsBucketPolicy:getAwsBucketPolicy', __args__, opts=opts, typ=GetAwsBucketPolicyResult)
     return __ret__.apply(lambda __response__: GetAwsBucketPolicyResult(
         bucket=pulumi.get(__response__, 'bucket'),
