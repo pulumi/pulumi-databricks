@@ -99,7 +99,7 @@ def get_storage_credentials(names: Optional[Sequence[str]] = None,
         id=pulumi.get(__ret__, 'id'),
         names=pulumi.get(__ret__, 'names'))
 def get_storage_credentials_output(names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageCredentialsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageCredentialsResult]:
     """
     > **Note** This data source can only be used with a workspace-level provider!
 
@@ -129,7 +129,7 @@ def get_storage_credentials_output(names: Optional[pulumi.Input[Optional[Sequenc
     """
     __args__ = dict()
     __args__['names'] = names
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getStorageCredentials:getStorageCredentials', __args__, opts=opts, typ=GetStorageCredentialsResult)
     return __ret__.apply(lambda __response__: GetStorageCredentialsResult(
         id=pulumi.get(__response__, 'id'),

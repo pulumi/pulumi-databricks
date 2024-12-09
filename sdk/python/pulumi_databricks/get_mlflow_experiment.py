@@ -188,7 +188,7 @@ def get_mlflow_experiment_output(artifact_location: Optional[pulumi.Input[Option
                                  lifecycle_stage: Optional[pulumi.Input[Optional[str]]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
                                  tags: Optional[pulumi.Input[Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']]]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMlflowExperimentResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowExperimentResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -213,7 +213,7 @@ def get_mlflow_experiment_output(artifact_location: Optional[pulumi.Input[Option
     __args__['lifecycleStage'] = lifecycle_stage
     __args__['name'] = name
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMlflowExperiment:getMlflowExperiment', __args__, opts=opts, typ=GetMlflowExperimentResult)
     return __ret__.apply(lambda __response__: GetMlflowExperimentResult(
         artifact_location=pulumi.get(__response__, 'artifact_location'),

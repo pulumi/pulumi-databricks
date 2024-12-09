@@ -80,7 +80,7 @@ export interface GetInstancePoolResult {
  * const myCluster = new databricks.Cluster("my_cluster", {instancePoolId: pool.then(pool => pool.id)});
  * ```
  */
-export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolResult> {
+export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getInstancePool:getInstancePool", {
         "name": args.name,

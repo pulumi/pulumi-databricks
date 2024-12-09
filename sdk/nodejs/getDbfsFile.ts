@@ -97,7 +97,7 @@ export interface GetDbfsFileResult {
  * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
  * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
  */
-export function getDbfsFileOutput(args: GetDbfsFileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbfsFileResult> {
+export function getDbfsFileOutput(args: GetDbfsFileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbfsFileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDbfsFile:getDbfsFile", {
         "limitFileSize": args.limitFileSize,

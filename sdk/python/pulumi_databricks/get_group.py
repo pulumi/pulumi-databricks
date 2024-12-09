@@ -310,7 +310,7 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[str]]] = N
                      service_principals: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      users: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      workspace_access: Optional[pulumi.Input[Optional[bool]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -370,7 +370,7 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[str]]] = N
     __args__['servicePrincipals'] = service_principals
     __args__['users'] = users
     __args__['workspaceAccess'] = workspace_access
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult)
     return __ret__.apply(lambda __response__: GetGroupResult(
         acl_principal_id=pulumi.get(__response__, 'acl_principal_id'),

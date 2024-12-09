@@ -98,7 +98,7 @@ def get_shares(shares: Optional[Sequence[str]] = None,
         id=pulumi.get(__ret__, 'id'),
         shares=pulumi.get(__ret__, 'shares'))
 def get_shares_output(shares: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSharesResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSharesResult]:
     """
     Retrieves a list of Share name, that were created by Pulumi or manually.
 
@@ -127,7 +127,7 @@ def get_shares_output(shares: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     """
     __args__ = dict()
     __args__['shares'] = shares
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getShares:getShares', __args__, opts=opts, typ=GetSharesResult)
     return __ret__.apply(lambda __response__: GetSharesResult(
         id=pulumi.get(__response__, 'id'),

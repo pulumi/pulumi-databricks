@@ -155,7 +155,7 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
                                         bucket_name: Optional[pulumi.Input[str]] = None,
                                         kms_name: Optional[pulumi.Input[Optional[str]]] = None,
                                         role_name: Optional[pulumi.Input[str]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsUnityCatalogPolicyResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsUnityCatalogPolicyResult]:
     """
     > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
 
@@ -195,7 +195,7 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
     __args__['bucketName'] = bucket_name
     __args__['kmsName'] = kms_name
     __args__['roleName'] = role_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy', __args__, opts=opts, typ=GetAwsUnityCatalogPolicyResult)
     return __ret__.apply(lambda __response__: GetAwsUnityCatalogPolicyResult(
         aws_account_id=pulumi.get(__response__, 'aws_account_id'),

@@ -115,7 +115,7 @@ def get_notebook_paths(path: Optional[str] = None,
         recursive=pulumi.get(__ret__, 'recursive'))
 def get_notebook_paths_output(path: Optional[pulumi.Input[str]] = None,
                               recursive: Optional[pulumi.Input[bool]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotebookPathsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotebookPathsResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -138,7 +138,7 @@ def get_notebook_paths_output(path: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['path'] = path
     __args__['recursive'] = recursive
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getNotebookPaths:getNotebookPaths', __args__, opts=opts, typ=GetNotebookPathsResult)
     return __ret__.apply(lambda __response__: GetNotebookPathsResult(
         id=pulumi.get(__response__, 'id'),

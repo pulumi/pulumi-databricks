@@ -109,7 +109,7 @@ def get_current_metastore(id: Optional[str] = None,
         metastore_info=pulumi.get(__ret__, 'metastore_info'))
 def get_current_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                  metastore_info: Optional[pulumi.Input[Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict']]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentMetastoreResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentMetastoreResult]:
     """
     Retrieves information about metastore attached to a given workspace.
 
@@ -145,7 +145,7 @@ def get_current_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = Non
     __args__ = dict()
     __args__['id'] = id
     __args__['metastoreInfo'] = metastore_info
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCurrentMetastore:getCurrentMetastore', __args__, opts=opts, typ=GetCurrentMetastoreResult)
     return __ret__.apply(lambda __response__: GetCurrentMetastoreResult(
         id=pulumi.get(__response__, 'id'),

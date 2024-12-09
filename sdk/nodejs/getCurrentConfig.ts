@@ -143,7 +143,7 @@ export interface GetCurrentConfigResult {
  * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
  * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
  */
-export function getCurrentConfigOutput(args?: GetCurrentConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentConfigResult> {
+export function getCurrentConfigOutput(args?: GetCurrentConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCurrentConfigResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getCurrentConfig:getCurrentConfig", {

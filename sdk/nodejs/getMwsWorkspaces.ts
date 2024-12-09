@@ -87,7 +87,7 @@ export interface GetMwsWorkspacesResult {
  * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
  * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
  */
-export function getMwsWorkspacesOutput(args?: GetMwsWorkspacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMwsWorkspacesResult> {
+export function getMwsWorkspacesOutput(args?: GetMwsWorkspacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMwsWorkspacesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMwsWorkspaces:getMwsWorkspaces", {

@@ -51,7 +51,7 @@ export interface GetServicePrincipalsResult {
  *
  * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
  */
-export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalsResult> {
+export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicePrincipalsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getServicePrincipals:getServicePrincipals", {
