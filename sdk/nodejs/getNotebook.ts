@@ -106,7 +106,7 @@ export interface GetNotebookResult {
  * });
  * ```
  */
-export function getNotebookOutput(args: GetNotebookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotebookResult> {
+export function getNotebookOutput(args: GetNotebookOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotebookResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getNotebook:getNotebook", {
         "format": args.format,

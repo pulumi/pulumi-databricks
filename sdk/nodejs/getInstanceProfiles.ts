@@ -67,7 +67,7 @@ export interface GetInstanceProfilesResult {
  * export const allInstanceProfiles = all.then(all => all.instanceProfiles);
  * ```
  */
-export function getInstanceProfilesOutput(args?: GetInstanceProfilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceProfilesResult> {
+export function getInstanceProfilesOutput(args?: GetInstanceProfilesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceProfilesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getInstanceProfiles:getInstanceProfiles", {

@@ -102,7 +102,7 @@ def get_metastores(ids: Optional[Mapping[str, str]] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'))
 def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetastoresResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoresResult]:
     """
     > **Note** This data source can only be used with an account-level provider!
 
@@ -135,7 +135,7 @@ def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]
     """
     __args__ = dict()
     __args__['ids'] = ids
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMetastores:getMetastores', __args__, opts=opts, typ=GetMetastoresResult)
     return __ret__.apply(lambda __response__: GetMetastoresResult(
         id=pulumi.get(__response__, 'id'),

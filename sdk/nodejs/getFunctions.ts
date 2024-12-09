@@ -112,7 +112,7 @@ export interface GetFunctionsResult {
  *
  * * databricks.Schema to get information about a single schema
  */
-export function getFunctionsOutput(args: GetFunctionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionsResult> {
+export function getFunctionsOutput(args: GetFunctionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFunctionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getFunctions:getFunctions", {
         "catalogName": args.catalogName,

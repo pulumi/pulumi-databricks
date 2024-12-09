@@ -128,7 +128,7 @@ def get_table(id: Optional[str] = None,
 def get_table_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                      name: Optional[pulumi.Input[str]] = None,
                      table_info: Optional[pulumi.Input[Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTableResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTableResult]:
     """
     > **Note** This data source can only be used with a workspace-level provider!
 
@@ -171,7 +171,7 @@ def get_table_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['id'] = id
     __args__['name'] = name
     __args__['tableInfo'] = table_info
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getTable:getTable', __args__, opts=opts, typ=GetTableResult)
     return __ret__.apply(lambda __response__: GetTableResult(
         id=pulumi.get(__response__, 'id'),

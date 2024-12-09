@@ -154,7 +154,7 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
 def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                       external_id: Optional[pulumi.Input[str]] = None,
                                       for_log_delivery: Optional[pulumi.Input[Optional[bool]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsAssumeRolePolicyResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsAssumeRolePolicyResult]:
     """
     This data source constructs necessary AWS STS assume role policy for you.
 
@@ -205,7 +205,7 @@ def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Inp
     __args__['databricksAccountId'] = databricks_account_id
     __args__['externalId'] = external_id
     __args__['forLogDelivery'] = for_log_delivery
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy', __args__, opts=opts, typ=GetAwsAssumeRolePolicyResult)
     return __ret__.apply(lambda __response__: GetAwsAssumeRolePolicyResult(
         databricks_account_id=pulumi.get(__response__, 'databricks_account_id'),

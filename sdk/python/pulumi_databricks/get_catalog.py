@@ -129,7 +129,7 @@ def get_catalog(catalog_info: Optional[Union['GetCatalogCatalogInfoArgs', 'GetCa
 def get_catalog_output(catalog_info: Optional[pulumi.Input[Optional[Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict']]]] = None,
                        id: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogResult]:
     """
     > **Note** This data source can only be used with a workspace-level provider!
 
@@ -170,7 +170,7 @@ def get_catalog_output(catalog_info: Optional[pulumi.Input[Optional[Union['GetCa
     __args__['catalogInfo'] = catalog_info
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCatalog:getCatalog', __args__, opts=opts, typ=GetCatalogResult)
     return __ret__.apply(lambda __response__: GetCatalogResult(
         catalog_info=pulumi.get(__response__, 'catalog_info'),

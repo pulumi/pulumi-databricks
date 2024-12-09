@@ -100,7 +100,7 @@ export interface GetAwsBucketPolicyResult {
  *
  * Bucket policy with full access:
  */
-export function getAwsBucketPolicyOutput(args: GetAwsBucketPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsBucketPolicyResult> {
+export function getAwsBucketPolicyOutput(args: GetAwsBucketPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsBucketPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", {
         "bucket": args.bucket,

@@ -119,7 +119,7 @@ export interface GetClusterResult {
  * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
  * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
  */
-export function getClusterOutput(args?: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+export function getClusterOutput(args?: GetClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getCluster:getCluster", {

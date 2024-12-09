@@ -176,7 +176,7 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[str]]] 
                               cloud_type: Optional[pulumi.Input[Optional[str]]] = None,
                               host: Optional[pulumi.Input[Optional[str]]] = None,
                               is_account: Optional[pulumi.Input[Optional[bool]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentConfigResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentConfigResult]:
     """
     Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
 
@@ -238,7 +238,7 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[str]]] 
     __args__['cloudType'] = cloud_type
     __args__['host'] = host
     __args__['isAccount'] = is_account
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCurrentConfig:getCurrentConfig', __args__, opts=opts, typ=GetCurrentConfigResult)
     return __ret__.apply(lambda __response__: GetCurrentConfigResult(
         account_id=pulumi.get(__response__, 'account_id'),

@@ -101,7 +101,7 @@ def get_mws_workspaces(ids: Optional[Mapping[str, str]] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'))
 def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMwsWorkspacesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsWorkspacesResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -133,7 +133,7 @@ def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, s
     """
     __args__ = dict()
     __args__['ids'] = ids
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMwsWorkspaces:getMwsWorkspaces', __args__, opts=opts, typ=GetMwsWorkspacesResult)
     return __ret__.apply(lambda __response__: GetMwsWorkspacesResult(
         id=pulumi.get(__response__, 'id'),

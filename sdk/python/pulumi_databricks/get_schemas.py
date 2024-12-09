@@ -115,7 +115,7 @@ def get_schemas(catalog_name: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'))
 def get_schemas_output(catalog_name: Optional[pulumi.Input[str]] = None,
                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSchemasResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchemasResult]:
     """
     > **Note** This data source can only be used with a workspace-level provider!
 
@@ -149,7 +149,7 @@ def get_schemas_output(catalog_name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['catalogName'] = catalog_name
     __args__['ids'] = ids
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getSchemas:getSchemas', __args__, opts=opts, typ=GetSchemasResult)
     return __ret__.apply(lambda __response__: GetSchemasResult(
         catalog_name=pulumi.get(__response__, 'catalog_name'),

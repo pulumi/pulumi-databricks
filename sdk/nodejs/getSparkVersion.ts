@@ -191,7 +191,7 @@ export interface GetSparkVersionResult {
  * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  */
-export function getSparkVersionOutput(args?: GetSparkVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSparkVersionResult> {
+export function getSparkVersionOutput(args?: GetSparkVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSparkVersionResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getSparkVersion:getSparkVersion", {

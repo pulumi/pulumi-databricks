@@ -117,7 +117,7 @@ export interface GetAwsCrossAccountPolicyResult {
  * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
  * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
  */
-export function getAwsCrossAccountPolicyOutput(args?: GetAwsCrossAccountPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsCrossAccountPolicyResult> {
+export function getAwsCrossAccountPolicyOutput(args?: GetAwsCrossAccountPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsCrossAccountPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", {

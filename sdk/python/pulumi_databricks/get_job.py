@@ -148,7 +148,7 @@ def get_job_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                    job_name: Optional[pulumi.Input[Optional[str]]] = None,
                    job_settings: Optional[pulumi.Input[Optional[Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict']]]] = None,
                    name: Optional[pulumi.Input[Optional[str]]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -184,7 +184,7 @@ def get_job_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['jobName'] = job_name
     __args__['jobSettings'] = job_settings
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getJob:getJob', __args__, opts=opts, typ=GetJobResult)
     return __ret__.apply(lambda __response__: GetJobResult(
         id=pulumi.get(__response__, 'id'),
