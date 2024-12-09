@@ -118,7 +118,7 @@ export interface GetCatalogResult {
  * * databricks.Grant to manage grants within Unity Catalog.
  * * databricks.getCatalogs to list all catalogs within Unity Catalog metastore.
  */
-export function getCatalogOutput(args: GetCatalogOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogResult> {
+export function getCatalogOutput(args: GetCatalogOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCatalogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getCatalog:getCatalog", {
         "catalogInfo": args.catalogInfo,

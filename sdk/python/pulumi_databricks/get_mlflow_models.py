@@ -90,7 +90,7 @@ def get_mlflow_models(names: Optional[Sequence[str]] = None,
         id=pulumi.get(__ret__, 'id'),
         names=pulumi.get(__ret__, 'names'))
 def get_mlflow_models_output(names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMlflowModelsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowModelsResult]:
     """
     > **Note** This data source could be only used with workspace-level provider!
 
@@ -111,7 +111,7 @@ def get_mlflow_models_output(names: Optional[pulumi.Input[Optional[Sequence[str]
     """
     __args__ = dict()
     __args__['names'] = names
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMlflowModels:getMlflowModels', __args__, opts=opts, typ=GetMlflowModelsResult)
     return __ret__.apply(lambda __response__: GetMlflowModelsResult(
         id=pulumi.get(__response__, 'id'),

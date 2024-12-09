@@ -126,7 +126,7 @@ def get_dbfs_file_paths(path: Optional[str] = None,
         recursive=pulumi.get(__ret__, 'recursive'))
 def get_dbfs_file_paths_output(path: Optional[pulumi.Input[str]] = None,
                                recursive: Optional[pulumi.Input[bool]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbfsFilePathsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbfsFilePathsResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -160,7 +160,7 @@ def get_dbfs_file_paths_output(path: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['path'] = path
     __args__['recursive'] = recursive
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDbfsFilePaths:getDbfsFilePaths', __args__, opts=opts, typ=GetDbfsFilePathsResult)
     return __ret__.apply(lambda __response__: GetDbfsFilePathsResult(
         id=pulumi.get(__response__, 'id'),

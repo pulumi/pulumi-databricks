@@ -136,7 +136,7 @@ def get_pipelines(ids: Optional[Sequence[str]] = None,
         pipeline_name=pulumi.get(__ret__, 'pipeline_name'))
 def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          pipeline_name: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPipelinesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelinesResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
 
@@ -191,7 +191,7 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     __args__ = dict()
     __args__['ids'] = ids
     __args__['pipelineName'] = pipeline_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPipelines:getPipelines', __args__, opts=opts, typ=GetPipelinesResult)
     return __ret__.apply(lambda __response__: GetPipelinesResult(
         id=pulumi.get(__response__, 'id'),

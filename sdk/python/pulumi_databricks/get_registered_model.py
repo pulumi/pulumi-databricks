@@ -144,7 +144,7 @@ def get_registered_model_output(full_name: Optional[pulumi.Input[str]] = None,
                                 include_aliases: Optional[pulumi.Input[Optional[bool]]] = None,
                                 include_browse: Optional[pulumi.Input[Optional[bool]]] = None,
                                 model_infos: Optional[pulumi.Input[Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']]]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegisteredModelResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegisteredModelResult]:
     """
     > This resource can only be used with a workspace-level provider!
 
@@ -178,7 +178,7 @@ def get_registered_model_output(full_name: Optional[pulumi.Input[str]] = None,
     __args__['includeAliases'] = include_aliases
     __args__['includeBrowse'] = include_browse
     __args__['modelInfos'] = model_infos
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getRegisteredModel:getRegisteredModel', __args__, opts=opts, typ=GetRegisteredModelResult)
     return __ret__.apply(lambda __response__: GetRegisteredModelResult(
         full_name=pulumi.get(__response__, 'full_name'),

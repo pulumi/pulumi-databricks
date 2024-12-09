@@ -149,7 +149,7 @@ def get_functions_output(catalog_name: Optional[pulumi.Input[str]] = None,
                          functions: Optional[pulumi.Input[Optional[Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict']]]]] = None,
                          include_browse: Optional[pulumi.Input[Optional[bool]]] = None,
                          schema_name: Optional[pulumi.Input[str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFunctionsResult]:
     """
     > This data source can only be used with a workspace-level provider!
 
@@ -185,7 +185,7 @@ def get_functions_output(catalog_name: Optional[pulumi.Input[str]] = None,
     __args__['functions'] = functions
     __args__['includeBrowse'] = include_browse
     __args__['schemaName'] = schema_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFunctions:getFunctions', __args__, opts=opts, typ=GetFunctionsResult)
     return __ret__.apply(lambda __response__: GetFunctionsResult(
         catalog_name=pulumi.get(__response__, 'catalog_name'),

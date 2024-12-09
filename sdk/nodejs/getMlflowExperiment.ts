@@ -106,7 +106,7 @@ export interface GetMlflowExperimentResult {
  *
  * Retrieves the settings of databricks.MlflowExperiment by id or name.
  */
-export function getMlflowExperimentOutput(args?: GetMlflowExperimentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMlflowExperimentResult> {
+export function getMlflowExperimentOutput(args?: GetMlflowExperimentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMlflowExperimentResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMlflowExperiment:getMlflowExperiment", {

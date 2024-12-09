@@ -162,7 +162,7 @@ def get_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                          metastore_info: Optional[pulumi.Input[Optional[Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict']]]] = None,
                          name: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetastoreResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoreResult]:
     """
     > **Note** This data source can only be used with an account-level provider!
 
@@ -212,7 +212,7 @@ def get_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['metastoreInfo'] = metastore_info
     __args__['name'] = name
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMetastore:getMetastore', __args__, opts=opts, typ=GetMetastoreResult)
     return __ret__.apply(lambda __response__: GetMetastoreResult(
         id=pulumi.get(__response__, 'id'),

@@ -118,7 +118,7 @@ export interface GetTableResult {
  * * databricks.Grant to manage grants within Unity Catalog.
  * * databricks.getTables to list all tables within a schema in Unity Catalog.
  */
-export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableResult> {
+export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getTable:getTable", {
         "id": args.id,

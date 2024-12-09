@@ -244,7 +244,7 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[bool]]] = None
                              photon: Optional[pulumi.Input[Optional[bool]]] = None,
                              scala: Optional[pulumi.Input[Optional[str]]] = None,
                              spark_version: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSparkVersionResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSparkVersionResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -310,7 +310,7 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[bool]]] = None
     __args__['photon'] = photon
     __args__['scala'] = scala
     __args__['sparkVersion'] = spark_version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getSparkVersion:getSparkVersion', __args__, opts=opts, typ=GetSparkVersionResult)
     return __ret__.apply(lambda __response__: GetSparkVersionResult(
         beta=pulumi.get(__response__, 'beta'),

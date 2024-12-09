@@ -127,7 +127,7 @@ export interface GetJobsResult {
  *
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
  */
-export function getJobsOutput(args?: GetJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobsResult> {
+export function getJobsOutput(args?: GetJobsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetJobsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getJobs:getJobs", {

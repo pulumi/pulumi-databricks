@@ -118,7 +118,7 @@ export interface GetAwsUnityCatalogAssumeRolePolicyResult {
  * });
  * ```
  */
-export function getAwsUnityCatalogAssumeRolePolicyOutput(args: GetAwsUnityCatalogAssumeRolePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsUnityCatalogAssumeRolePolicyResult> {
+export function getAwsUnityCatalogAssumeRolePolicyOutput(args: GetAwsUnityCatalogAssumeRolePolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsUnityCatalogAssumeRolePolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy", {
         "awsAccountId": args.awsAccountId,

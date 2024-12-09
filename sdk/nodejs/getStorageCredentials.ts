@@ -83,7 +83,7 @@ export interface GetStorageCredentialsResult {
  * * databricks.StorageCredential to get information about a single credential
  * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
  */
-export function getStorageCredentialsOutput(args?: GetStorageCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageCredentialsResult> {
+export function getStorageCredentialsOutput(args?: GetStorageCredentialsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageCredentialsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getStorageCredentials:getStorageCredentials", {

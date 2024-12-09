@@ -291,7 +291,7 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          photon_driver_capable: Optional[pulumi.Input[Optional[bool]]] = None,
                          photon_worker_capable: Optional[pulumi.Input[Optional[bool]]] = None,
                          support_port_forwarding: Optional[pulumi.Input[Optional[bool]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeTypeResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeTypeResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -370,7 +370,7 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['photonDriverCapable'] = photon_driver_capable
     __args__['photonWorkerCapable'] = photon_worker_capable
     __args__['supportPortForwarding'] = support_port_forwarding
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getNodeType:getNodeType', __args__, opts=opts, typ=GetNodeTypeResult)
     return __ret__.apply(lambda __response__: GetNodeTypeResult(
         category=pulumi.get(__response__, 'category'),

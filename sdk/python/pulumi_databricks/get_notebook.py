@@ -178,7 +178,7 @@ def get_notebook_output(format: Optional[pulumi.Input[str]] = None,
                         object_id: Optional[pulumi.Input[Optional[int]]] = None,
                         object_type: Optional[pulumi.Input[Optional[str]]] = None,
                         path: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotebookResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotebookResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -207,7 +207,7 @@ def get_notebook_output(format: Optional[pulumi.Input[str]] = None,
     __args__['objectId'] = object_id
     __args__['objectType'] = object_type
     __args__['path'] = path
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getNotebook:getNotebook', __args__, opts=opts, typ=GetNotebookResult)
     return __ret__.apply(lambda __response__: GetNotebookResult(
         content=pulumi.get(__response__, 'content'),

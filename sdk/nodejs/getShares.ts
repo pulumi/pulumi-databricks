@@ -81,7 +81,7 @@ export interface GetSharesResult {
  * * databricks.Recipient to create Delta Sharing recipients.
  * * databricks.Grants to manage Delta Sharing permissions.
  */
-export function getSharesOutput(args?: GetSharesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharesResult> {
+export function getSharesOutput(args?: GetSharesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSharesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getShares:getShares", {

@@ -138,7 +138,7 @@ def get_views(catalog_name: Optional[str] = None,
 def get_views_output(catalog_name: Optional[pulumi.Input[str]] = None,
                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      schema_name: Optional[pulumi.Input[str]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetViewsResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetViewsResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -183,7 +183,7 @@ def get_views_output(catalog_name: Optional[pulumi.Input[str]] = None,
     __args__['catalogName'] = catalog_name
     __args__['ids'] = ids
     __args__['schemaName'] = schema_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getViews:getViews', __args__, opts=opts, typ=GetViewsResult)
     return __ret__.apply(lambda __response__: GetViewsResult(
         catalog_name=pulumi.get(__response__, 'catalog_name'),

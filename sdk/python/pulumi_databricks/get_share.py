@@ -151,7 +151,7 @@ def get_share_output(created_at: Optional[pulumi.Input[Optional[int]]] = None,
                      created_by: Optional[pulumi.Input[Optional[str]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
                      objects: Optional[pulumi.Input[Optional[Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetShareResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetShareResult]:
     """
     Retrieves details about a Share that were created by Pulumi or manually.
 
@@ -186,7 +186,7 @@ def get_share_output(created_at: Optional[pulumi.Input[Optional[int]]] = None,
     __args__['createdBy'] = created_by
     __args__['name'] = name
     __args__['objects'] = objects
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getShare:getShare', __args__, opts=opts, typ=GetShareResult)
     return __ret__.apply(lambda __response__: GetShareResult(
         created_at=pulumi.get(__response__, 'created_at'),
