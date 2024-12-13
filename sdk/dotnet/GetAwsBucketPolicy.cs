@@ -88,6 +88,45 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetAwsBucketPolicyResult> Invoke(GetAwsBucketPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsBucketPolicyResult>("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", args ?? new GetAwsBucketPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var thisBucketV2 = new Aws.S3.BucketV2("this", new()
+        ///     {
+        ///         Bucket = "&lt;unique_bucket_name&gt;",
+        ///         ForceDestroy = true,
+        ///     });
+        /// 
+        ///     var @this = Databricks.GetAwsBucketPolicy.Invoke(new()
+        ///     {
+        ///         Bucket = thisBucketV2.Bucket,
+        ///     });
+        /// 
+        ///     var thisBucketPolicy = new Aws.S3.BucketPolicy("this", new()
+        ///     {
+        ///         Bucket = thisBucketV2.Id,
+        ///         Policy = @this.Apply(@this =&gt; @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json)),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Bucket policy with full access:
+        /// </summary>
+        public static Output<GetAwsBucketPolicyResult> Invoke(GetAwsBucketPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsBucketPolicyResult>("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", args ?? new GetAwsBucketPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

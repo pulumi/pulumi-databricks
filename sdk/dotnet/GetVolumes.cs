@@ -100,6 +100,51 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetVolumesResult> Invoke(GetVolumesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumesResult>("databricks:index/getVolumes:getVolumes", args ?? new GetVolumesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with a workspace-level provider!
+        /// 
+        /// Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
+        /// 
+        /// ## Plugin Framework Migration
+        /// 
+        /// The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES="databricks.getVolumes"`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetVolumes.Invoke(new()
+        ///     {
+        ///         CatalogName = "sandbox",
+        ///         SchemaName = "things",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allVolumes"] = @this,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.Volume to manage volumes within Unity Catalog.
+        /// * databricks.Schema to manage schemas within Unity Catalog.
+        /// * databricks.Catalog to manage catalogs within Unity Catalog.
+        /// </summary>
+        public static Output<GetVolumesResult> Invoke(GetVolumesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVolumesResult>("databricks:index/getVolumes:getVolumes", args ?? new GetVolumesInvokeArgs(), options.WithDefaults());
     }
 
 

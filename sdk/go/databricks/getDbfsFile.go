@@ -81,21 +81,11 @@ type LookupDbfsFileResult struct {
 }
 
 func LookupDbfsFileOutput(ctx *pulumi.Context, args LookupDbfsFileOutputArgs, opts ...pulumi.InvokeOption) LookupDbfsFileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDbfsFileResultOutput, error) {
 			args := v.(LookupDbfsFileArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDbfsFileResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getDbfsFile:getDbfsFile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDbfsFileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDbfsFileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDbfsFileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getDbfsFile:getDbfsFile", args, LookupDbfsFileResultOutput{}, options).(LookupDbfsFileResultOutput), nil
 		}).(LookupDbfsFileResultOutput)
 }
 

@@ -75,21 +75,11 @@ type LookupMwsWorkspacesResult struct {
 }
 
 func LookupMwsWorkspacesOutput(ctx *pulumi.Context, args LookupMwsWorkspacesOutputArgs, opts ...pulumi.InvokeOption) LookupMwsWorkspacesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMwsWorkspacesResultOutput, error) {
 			args := v.(LookupMwsWorkspacesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupMwsWorkspacesResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMwsWorkspacesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMwsWorkspacesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMwsWorkspacesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args, LookupMwsWorkspacesResultOutput{}, options).(LookupMwsWorkspacesResultOutput), nil
 		}).(LookupMwsWorkspacesResultOutput)
 }
 

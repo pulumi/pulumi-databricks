@@ -70,21 +70,11 @@ type GetNotebookPathsResult struct {
 }
 
 func GetNotebookPathsOutput(ctx *pulumi.Context, args GetNotebookPathsOutputArgs, opts ...pulumi.InvokeOption) GetNotebookPathsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNotebookPathsResultOutput, error) {
 			args := v.(GetNotebookPathsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNotebookPathsResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getNotebookPaths:getNotebookPaths", args, &rv, "", opts...)
-			if err != nil {
-				return GetNotebookPathsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNotebookPathsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNotebookPathsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getNotebookPaths:getNotebookPaths", args, GetNotebookPathsResultOutput{}, options).(GetNotebookPathsResultOutput), nil
 		}).(GetNotebookPathsResultOutput)
 }
 

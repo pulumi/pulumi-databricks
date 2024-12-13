@@ -105,21 +105,11 @@ type GetNotificationDestinationsResult struct {
 }
 
 func GetNotificationDestinationsOutput(ctx *pulumi.Context, args GetNotificationDestinationsOutputArgs, opts ...pulumi.InvokeOption) GetNotificationDestinationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNotificationDestinationsResultOutput, error) {
 			args := v.(GetNotificationDestinationsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNotificationDestinationsResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getNotificationDestinations:getNotificationDestinations", args, &rv, "", opts...)
-			if err != nil {
-				return GetNotificationDestinationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNotificationDestinationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNotificationDestinationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getNotificationDestinations:getNotificationDestinations", args, GetNotificationDestinationsResultOutput{}, options).(GetNotificationDestinationsResultOutput), nil
 		}).(GetNotificationDestinationsResultOutput)
 }
 

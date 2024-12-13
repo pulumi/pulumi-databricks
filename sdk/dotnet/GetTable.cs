@@ -118,6 +118,60 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetTableResult> Invoke(GetTableInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTableResult>("databricks:index/getTable:getTable", args ?? new GetTableInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with a workspace-level provider!
+        /// 
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Read  on a specific table `main.certified.fct_transactions`:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var fctTransactions = Databricks.GetTable.Invoke(new()
+        ///     {
+        ///         Name = "main.certified.fct_transactions",
+        ///     });
+        /// 
+        ///     var things = new Databricks.Grants("things", new()
+        ///     {
+        ///         Table = fctTransactions.Apply(getTableResult =&gt; getTableResult.Name),
+        ///         GrantDetails = new[]
+        ///         {
+        ///             new Databricks.Inputs.GrantsGrantArgs
+        ///             {
+        ///                 Principal = "sensitive",
+        ///                 Privileges = new[]
+        ///                 {
+        ///                     "SELECT",
+        ///                     "MODIFY",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.Grant to manage grants within Unity Catalog.
+        /// * databricks.getTables to list all tables within a schema in Unity Catalog.
+        /// </summary>
+        public static Output<GetTableResult> Invoke(GetTableInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTableResult>("databricks:index/getTable:getTable", args ?? new GetTableInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -110,21 +110,11 @@ type LookupMetastoreResult struct {
 }
 
 func LookupMetastoreOutput(ctx *pulumi.Context, args LookupMetastoreOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMetastoreResultOutput, error) {
 			args := v.(LookupMetastoreArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupMetastoreResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getMetastore:getMetastore", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMetastoreResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMetastoreResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMetastoreResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getMetastore:getMetastore", args, LookupMetastoreResultOutput{}, options).(LookupMetastoreResultOutput), nil
 		}).(LookupMetastoreResultOutput)
 }
 

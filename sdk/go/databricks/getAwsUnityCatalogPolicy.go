@@ -106,21 +106,11 @@ type GetAwsUnityCatalogPolicyResult struct {
 }
 
 func GetAwsUnityCatalogPolicyOutput(ctx *pulumi.Context, args GetAwsUnityCatalogPolicyOutputArgs, opts ...pulumi.InvokeOption) GetAwsUnityCatalogPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAwsUnityCatalogPolicyResultOutput, error) {
 			args := v.(GetAwsUnityCatalogPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAwsUnityCatalogPolicyResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return GetAwsUnityCatalogPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAwsUnityCatalogPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAwsUnityCatalogPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args, GetAwsUnityCatalogPolicyResultOutput{}, options).(GetAwsUnityCatalogPolicyResultOutput), nil
 		}).(GetAwsUnityCatalogPolicyResultOutput)
 }
 

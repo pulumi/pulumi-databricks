@@ -88,6 +88,45 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetStorageCredentialResult> Invoke(GetStorageCredentialInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStorageCredentialResult>("databricks:index/getStorageCredential:getStorageCredential", args ?? new GetStorageCredentialInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with a workspace-level provider!
+        /// 
+        /// Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting details of an existing storage credential in the metastore
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetStorageCredential.Invoke(new()
+        ///     {
+        ///         Name = "this",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["createdBy"] = @this.Apply(@this =&gt; @this.Apply(getStorageCredentialResult =&gt; getStorageCredentialResult.StorageCredentialInfo?.CreatedBy)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getStorageCredentials to get names of all credentials
+        /// * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+        /// </summary>
+        public static Output<GetStorageCredentialResult> Invoke(GetStorageCredentialInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetStorageCredentialResult>("databricks:index/getStorageCredential:getStorageCredential", args ?? new GetStorageCredentialInvokeArgs(), options.WithDefaults());
     }
 
 

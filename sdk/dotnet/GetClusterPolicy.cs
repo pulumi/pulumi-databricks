@@ -76,6 +76,39 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetClusterPolicyResult> Invoke(GetClusterPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterPolicyResult>("databricks:index/getClusterPolicy:getClusterPolicy", args ?? new GetClusterPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about databricks_cluster_policy.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a cluster policy by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var personal = Databricks.GetClusterPolicy.Invoke(new()
+        ///     {
+        ///         Name = "Personal Compute",
+        ///     });
+        /// 
+        ///     var myCluster = new Databricks.Cluster("my_cluster", new()
+        ///     {
+        ///         PolicyId = personal.Apply(getClusterPolicyResult =&gt; getClusterPolicyResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClusterPolicyResult> Invoke(GetClusterPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterPolicyResult>("databricks:index/getClusterPolicy:getClusterPolicy", args ?? new GetClusterPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

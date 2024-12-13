@@ -116,6 +116,59 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetAwsUnityCatalogPolicyResult> Invoke(GetAwsUnityCatalogPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsUnityCatalogPolicyResult>("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args ?? new GetAwsUnityCatalogPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
+        /// 
+        /// This data source constructs the necessary AWS Unity Catalog policy for you.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetAwsUnityCatalogPolicy.Invoke(new()
+        ///     {
+        ///         AwsAccountId = awsAccountId,
+        ///         BucketName = "databricks-bucket",
+        ///         RoleName = $"{prefix}-uc-access",
+        ///         KmsName = "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
+        ///     });
+        /// 
+        ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
+        ///     {
+        ///         AwsAccountId = awsAccountId,
+        ///         RoleName = $"{prefix}-uc-access",
+        ///         ExternalId = "12345",
+        ///     });
+        /// 
+        ///     var unityMetastore = new Aws.Iam.Policy("unity_metastore", new()
+        ///     {
+        ///         Name = $"{prefix}-unity-catalog-metastore-access-iam-policy",
+        ///         PolicyDocument = @this.Apply(@this =&gt; @this.Apply(getAwsUnityCatalogPolicyResult =&gt; getAwsUnityCatalogPolicyResult.Json)),
+        ///     });
+        /// 
+        ///     var metastoreDataAccess = new Aws.Iam.Role("metastore_data_access", new()
+        ///     {
+        ///         Name = $"{prefix}-uc-access",
+        ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
+        ///         ManagedPolicyArns = new[]
+        ///         {
+        ///             unityMetastore.Arn,
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAwsUnityCatalogPolicyResult> Invoke(GetAwsUnityCatalogPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsUnityCatalogPolicyResult>("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args ?? new GetAwsUnityCatalogPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

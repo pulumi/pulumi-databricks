@@ -122,6 +122,62 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetNotificationDestinationsResult> Invoke(GetNotificationDestinationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNotificationDestinationsResult>("databricks:index/getNotificationDestinations:getNotificationDestinations", args ?? new GetNotificationDestinationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks. 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var email = new Databricks.NotificationDestination("email", new()
+        ///     {
+        ///         DisplayName = "Email Destination",
+        ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
+        ///         {
+        ///             Email = new Databricks.Inputs.NotificationDestinationConfigEmailArgs
+        ///             {
+        ///                 Addresses = new[]
+        ///                 {
+        ///                     "abc@gmail.com",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var slack = new Databricks.NotificationDestination("slack", new()
+        ///     {
+        ///         DisplayName = "Slack Destination",
+        ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
+        ///         {
+        ///             Slack = new Databricks.Inputs.NotificationDestinationConfigSlackArgs
+        ///             {
+        ///                 Url = "https://hooks.slack.com/services/...",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // Lists all notification desitnations
+        ///     var @this = Databricks.GetNotificationDestinations.Invoke();
+        /// 
+        ///     // List destinations of specific type and name
+        ///     var filteredNotification = Databricks.GetNotificationDestinations.Invoke(new()
+        ///     {
+        ///         DisplayNameContains = "Destination",
+        ///         Type = "EMAIL",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNotificationDestinationsResult> Invoke(GetNotificationDestinationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNotificationDestinationsResult>("databricks:index/getNotificationDestinations:getNotificationDestinations", args ?? new GetNotificationDestinationsInvokeArgs(), options.WithDefaults());
     }
 
 
