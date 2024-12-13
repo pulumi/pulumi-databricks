@@ -116,6 +116,59 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetCatalogResult> Invoke(GetCatalogInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCatalogResult>("databricks:index/getCatalog:getCatalog", args ?? new GetCatalogInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with a workspace-level provider!
+        /// 
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Read  on a specific catalog `test`:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Databricks.GetCatalog.Invoke(new()
+        ///     {
+        ///         Name = "test",
+        ///     });
+        /// 
+        ///     var things = new Databricks.Grants("things", new()
+        ///     {
+        ///         Catalog = test.Apply(getCatalogResult =&gt; getCatalogResult.Name),
+        ///         GrantDetails = new[]
+        ///         {
+        ///             new Databricks.Inputs.GrantsGrantArgs
+        ///             {
+        ///                 Principal = "sensitive",
+        ///                 Privileges = new[]
+        ///                 {
+        ///                     "USE_CATALOG",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.Grant to manage grants within Unity Catalog.
+        /// * databricks.getCatalogs to list all catalogs within Unity Catalog metastore.
+        /// </summary>
+        public static Output<GetCatalogResult> Invoke(GetCatalogInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCatalogResult>("databricks:index/getCatalog:getCatalog", args ?? new GetCatalogInvokeArgs(), options.WithDefaults());
     }
 
 

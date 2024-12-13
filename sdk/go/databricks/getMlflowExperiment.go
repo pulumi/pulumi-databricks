@@ -65,21 +65,11 @@ type LookupMlflowExperimentResult struct {
 }
 
 func LookupMlflowExperimentOutput(ctx *pulumi.Context, args LookupMlflowExperimentOutputArgs, opts ...pulumi.InvokeOption) LookupMlflowExperimentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMlflowExperimentResultOutput, error) {
 			args := v.(LookupMlflowExperimentArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupMlflowExperimentResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getMlflowExperiment:getMlflowExperiment", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMlflowExperimentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMlflowExperimentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMlflowExperimentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getMlflowExperiment:getMlflowExperiment", args, LookupMlflowExperimentResultOutput{}, options).(LookupMlflowExperimentResultOutput), nil
 		}).(LookupMlflowExperimentResultOutput)
 }
 

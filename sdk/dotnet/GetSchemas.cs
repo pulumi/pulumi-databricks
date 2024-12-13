@@ -92,6 +92,47 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetSchemasResult> Invoke(GetSchemasInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSchemasResult>("databricks:index/getSchemas:getSchemas", args ?? new GetSchemasInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with a workspace-level provider!
+        /// 
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Listing all schemas in a _sandbox_ databricks_catalog:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sandbox = Databricks.GetSchemas.Invoke(new()
+        ///     {
+        ///         CatalogName = "sandbox",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allSandboxSchemas"] = sandbox,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.Schema to manage schemas within Unity Catalog.
+        /// * databricks.Catalog to manage catalogs within Unity Catalog.
+        /// </summary>
+        public static Output<GetSchemasResult> Invoke(GetSchemasInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSchemasResult>("databricks:index/getSchemas:getSchemas", args ?? new GetSchemasInvokeArgs(), options.WithDefaults());
     }
 
 

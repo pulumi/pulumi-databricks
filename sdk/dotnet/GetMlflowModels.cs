@@ -64,6 +64,33 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetMlflowModelsResult> Invoke(GetMlflowModelsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMlflowModelsResult>("databricks:index/getMlflowModels:getMlflowModels", args ?? new GetMlflowModelsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** This data source could be only used with workspace-level provider!
+        /// 
+        /// Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetMlflowModels.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["model"] = @this,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMlflowModelsResult> Invoke(GetMlflowModelsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMlflowModelsResult>("databricks:index/getMlflowModels:getMlflowModels", args ?? new GetMlflowModelsInvokeArgs(), options.WithDefaults());
     }
 
 

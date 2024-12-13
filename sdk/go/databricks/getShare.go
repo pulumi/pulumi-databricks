@@ -86,21 +86,11 @@ type LookupShareResult struct {
 }
 
 func LookupShareOutput(ctx *pulumi.Context, args LookupShareOutputArgs, opts ...pulumi.InvokeOption) LookupShareResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupShareResultOutput, error) {
 			args := v.(LookupShareArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupShareResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getShare:getShare", args, &rv, "", opts...)
-			if err != nil {
-				return LookupShareResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupShareResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupShareResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getShare:getShare", args, LookupShareResultOutput{}, options).(LookupShareResultOutput), nil
 		}).(LookupShareResultOutput)
 }
 

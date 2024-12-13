@@ -26,6 +26,14 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetServicePrincipalsResult> Invoke(GetServicePrincipalsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalsResult>("databricks:index/getServicePrincipals:getServicePrincipals", args ?? new GetServicePrincipalsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+        /// </summary>
+        public static Output<GetServicePrincipalsResult> Invoke(GetServicePrincipalsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalsResult>("databricks:index/getServicePrincipals:getServicePrincipals", args ?? new GetServicePrincipalsInvokeArgs(), options.WithDefaults());
     }
 
 

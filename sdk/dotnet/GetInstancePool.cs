@@ -76,6 +76,39 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetInstancePoolResult> Invoke(GetInstancePoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancePoolResult>("databricks:index/getInstancePool:getInstancePool", args ?? new GetInstancePoolInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about databricks_instance_pool.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to an instance pool by name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var pool = Databricks.GetInstancePool.Invoke(new()
+        ///     {
+        ///         Name = "All spot",
+        ///     });
+        /// 
+        ///     var myCluster = new Databricks.Cluster("my_cluster", new()
+        ///     {
+        ///         InstancePoolId = pool.Apply(getInstancePoolResult =&gt; getInstancePoolResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstancePoolResult> Invoke(GetInstancePoolInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstancePoolResult>("databricks:index/getInstancePool:getInstancePool", args ?? new GetInstancePoolInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -62,6 +62,32 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetDirectoryResult> Invoke(GetDirectoryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDirectoryResult>("databricks:index/getDirectory:getDirectory", args ?? new GetDirectoryInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// This data source allows to get information about a directory in a Databricks Workspace.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var prod = Databricks.GetDirectory.Invoke(new()
+        ///     {
+        ///         Path = "/Production",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDirectoryResult> Invoke(GetDirectoryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDirectoryResult>("databricks:index/getDirectory:getDirectory", args ?? new GetDirectoryInvokeArgs(), options.WithDefaults());
     }
 
 

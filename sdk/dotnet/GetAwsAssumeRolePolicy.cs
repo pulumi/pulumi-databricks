@@ -144,6 +144,73 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetAwsAssumeRolePolicyResult> Invoke(GetAwsAssumeRolePolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsAssumeRolePolicyResult>("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", args ?? new GetAwsAssumeRolePolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source constructs necessary AWS STS assume role policy for you.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// End-to-end example of provisioning Cross-account IAM role with databricks.MwsCredentials and aws_iam_role:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+        ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+        ///     var @this = Databricks.GetAwsCrossAccountPolicy.Invoke();
+        /// 
+        ///     var crossAccountPolicy = new Aws.Iam.Policy("cross_account_policy", new()
+        ///     {
+        ///         Name = $"{prefix}-crossaccount-iam-policy",
+        ///         PolicyDocument = @this.Apply(@this =&gt; @this.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json)),
+        ///     });
+        /// 
+        ///     var thisGetAwsAssumeRolePolicy = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
+        ///     {
+        ///         ExternalId = databricksAccountId,
+        ///     });
+        /// 
+        ///     var crossAccount = new Aws.Iam.Role("cross_account", new()
+        ///     {
+        ///         Name = $"{prefix}-crossaccount-iam-role",
+        ///         AssumeRolePolicy = thisGetAwsAssumeRolePolicy.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
+        ///         Description = "Grants Databricks full access to VPC resources",
+        ///     });
+        /// 
+        ///     var crossAccountRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("cross_account", new()
+        ///     {
+        ///         PolicyArn = crossAccountPolicy.Arn,
+        ///         Role = crossAccount.Name,
+        ///     });
+        /// 
+        ///     // required only in case of multi-workspace setup
+        ///     var thisMwsCredentials = new Databricks.MwsCredentials("this", new()
+        ///     {
+        ///         AccountId = databricksAccountId,
+        ///         CredentialsName = $"{prefix}-creds",
+        ///         RoleArn = crossAccount.Arn,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
+        /// * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+        /// * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+        /// </summary>
+        public static Output<GetAwsAssumeRolePolicyResult> Invoke(GetAwsAssumeRolePolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsAssumeRolePolicyResult>("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", args ?? new GetAwsAssumeRolePolicyInvokeArgs(), options.WithDefaults());
     }
 
 

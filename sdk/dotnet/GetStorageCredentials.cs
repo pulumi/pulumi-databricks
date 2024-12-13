@@ -82,6 +82,42 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetStorageCredentialsResult> Invoke(GetStorageCredentialsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStorageCredentialsResult>("databricks:index/getStorageCredentials:getStorageCredentials", args ?? new GetStorageCredentialsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with a workspace-level provider!
+        /// 
+        /// Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// List all storage credentials in the metastore
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetStorageCredentials.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allStorageCredentials"] = all.Apply(getStorageCredentialsResult =&gt; getStorageCredentialsResult.Names),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.StorageCredential to get information about a single credential
+        /// * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+        /// </summary>
+        public static Output<GetStorageCredentialsResult> Invoke(GetStorageCredentialsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetStorageCredentialsResult>("databricks:index/getStorageCredentials:getStorageCredentials", args ?? new GetStorageCredentialsInvokeArgs(), options.WithDefaults());
     }
 
 

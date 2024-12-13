@@ -88,6 +88,45 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetMetastoresResult> Invoke(GetMetastoresInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetastoresResult>("databricks:index/getMetastores:getMetastores", args ?? new GetMetastoresInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// &gt; **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users &amp; service principals with account admin status
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Mapping of name to id of all metastores:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetMetastores.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allMetastores"] = all.Apply(getMetastoresResult =&gt; getMetastoresResult.Ids),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.Metastore to get information about a single metastore.
+        /// * databricks.Metastore to manage Metastores within Unity Catalog.
+        /// * databricks.Catalog to manage catalogs within Unity Catalog.
+        /// </summary>
+        public static Output<GetMetastoresResult> Invoke(GetMetastoresInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMetastoresResult>("databricks:index/getMetastores:getMetastores", args ?? new GetMetastoresInvokeArgs(), options.WithDefaults());
     }
 
 

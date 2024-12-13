@@ -78,6 +78,40 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetAwsCrossAccountPolicyResult> Invoke(GetAwsCrossAccountPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsCrossAccountPolicyResult>("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", args ?? new GetAwsCrossAccountPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetAwsCrossAccountPolicy.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide
+        /// * databricks.getAwsAssumeRolePolicy data to construct the necessary AWS STS assume role policy.
+        /// * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+        /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+        /// </summary>
+        public static Output<GetAwsCrossAccountPolicyResult> Invoke(GetAwsCrossAccountPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsCrossAccountPolicyResult>("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", args ?? new GetAwsCrossAccountPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

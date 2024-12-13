@@ -116,6 +116,59 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetSqlWarehousesResult> Invoke(GetSqlWarehousesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSqlWarehousesResult>("databricks:index/getSqlWarehouses:getSqlWarehouses", args ?? new GetSqlWarehousesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Retrieve IDs for all SQL warehouses:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetSqlWarehouses.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Retrieve IDs for all clusters having "Shared" in the warehouse name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var allShared = Databricks.GetSqlWarehouses.Invoke(new()
+        ///     {
+        ///         WarehouseNameContains = "shared",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are often used in the same context:
+        /// 
+        /// * End to end workspace management guide.
+        /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+        /// * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+        /// * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+        /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+        /// </summary>
+        public static Output<GetSqlWarehousesResult> Invoke(GetSqlWarehousesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSqlWarehousesResult>("databricks:index/getSqlWarehouses:getSqlWarehouses", args ?? new GetSqlWarehousesInvokeArgs(), options.WithDefaults());
     }
 
 

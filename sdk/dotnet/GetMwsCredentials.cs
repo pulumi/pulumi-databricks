@@ -94,6 +94,48 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetMwsCredentialsResult> Invoke(GetMwsCredentialsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMwsCredentialsResult>("databricks:index/getMwsCredentials:getMwsCredentials", args ?? new GetMwsCredentialsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Lists all databricks.MwsCredentials in Databricks Account.
+        /// 
+        /// &gt; **Note** `account_id` provider configuration property is required for this resource to work.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Listing all credentials in Databricks Account
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetMwsCredentials.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allMwsCredentials"] = all.Apply(getMwsCredentialsResult =&gt; getMwsCredentialsResult.Ids),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * Provisioning Databricks on AWS guide.
+        /// * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+        /// * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+        /// * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
+        /// * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+        /// * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+        /// </summary>
+        public static Output<GetMwsCredentialsResult> Invoke(GetMwsCredentialsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMwsCredentialsResult>("databricks:index/getMwsCredentials:getMwsCredentials", args ?? new GetMwsCredentialsInvokeArgs(), options.WithDefaults());
     }
 
 

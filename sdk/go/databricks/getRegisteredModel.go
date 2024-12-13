@@ -83,21 +83,11 @@ type LookupRegisteredModelResult struct {
 }
 
 func LookupRegisteredModelOutput(ctx *pulumi.Context, args LookupRegisteredModelOutputArgs, opts ...pulumi.InvokeOption) LookupRegisteredModelResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegisteredModelResultOutput, error) {
 			args := v.(LookupRegisteredModelArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegisteredModelResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getRegisteredModel:getRegisteredModel", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegisteredModelResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegisteredModelResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegisteredModelResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getRegisteredModel:getRegisteredModel", args, LookupRegisteredModelResultOutput{}, options).(LookupRegisteredModelResultOutput), nil
 		}).(LookupRegisteredModelResultOutput)
 }
 

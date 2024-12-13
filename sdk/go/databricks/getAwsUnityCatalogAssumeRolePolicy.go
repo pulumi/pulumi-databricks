@@ -105,21 +105,11 @@ type GetAwsUnityCatalogAssumeRolePolicyResult struct {
 }
 
 func GetAwsUnityCatalogAssumeRolePolicyOutput(ctx *pulumi.Context, args GetAwsUnityCatalogAssumeRolePolicyOutputArgs, opts ...pulumi.InvokeOption) GetAwsUnityCatalogAssumeRolePolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAwsUnityCatalogAssumeRolePolicyResultOutput, error) {
 			args := v.(GetAwsUnityCatalogAssumeRolePolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAwsUnityCatalogAssumeRolePolicyResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy", args, &rv, "", opts...)
-			if err != nil {
-				return GetAwsUnityCatalogAssumeRolePolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAwsUnityCatalogAssumeRolePolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAwsUnityCatalogAssumeRolePolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy", args, GetAwsUnityCatalogAssumeRolePolicyResultOutput{}, options).(GetAwsUnityCatalogAssumeRolePolicyResultOutput), nil
 		}).(GetAwsUnityCatalogAssumeRolePolicyResultOutput)
 }
 
