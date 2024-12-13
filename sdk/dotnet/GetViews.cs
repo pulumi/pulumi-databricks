@@ -124,6 +124,63 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetViewsResult> Invoke(GetViewsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetViewsResult>("databricks:index/getViews:getViews", args ?? new GetViewsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables for retrieving a list of tables.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var things = await Databricks.GetViews.InvokeAsync(new()
+        ///     {
+        ///         CatalogName = "sandbox",
+        ///         SchemaName = "things",
+        ///     });
+        /// 
+        ///     var thingsGrants = new List&lt;Databricks.Grants&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         thingsGrants.Add(new Databricks.Grants($"things-{range.Key}", new()
+        ///         {
+        ///             Table = range.Value,
+        ///             GrantDetails = new[]
+        ///             {
+        ///                 new Databricks.Inputs.GrantsGrantArgs
+        ///                 {
+        ///                     Principal = "sensitive",
+        ///                     Privileges = new[]
+        ///                     {
+        ///                         "SELECT",
+        ///                         "MODIFY",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.Schema to manage schemas within Unity Catalog.
+        /// * databricks.Catalog to manage catalogs within Unity Catalog.
+        /// </summary>
+        public static Output<GetViewsResult> Invoke(GetViewsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetViewsResult>("databricks:index/getViews:getViews", args ?? new GetViewsInvokeArgs(), options.WithDefaults());
     }
 
 

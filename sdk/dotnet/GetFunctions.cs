@@ -88,6 +88,45 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetFunctionsResult> Invoke(GetFunctionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFunctionsResult>("databricks:index/getFunctions:getFunctions", args ?? new GetFunctionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
+        /// Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// List all functions defined in a specific schema (`main.default` in this example):
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetFunctions.Invoke(new()
+        ///     {
+        ///         CatalogName = "main",
+        ///         SchemaName = "default",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allExternalLocations"] = all.Apply(getFunctionsResult =&gt; getFunctionsResult.Functions),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.Schema to get information about a single schema
+        /// </summary>
+        public static Output<GetFunctionsResult> Invoke(GetFunctionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFunctionsResult>("databricks:index/getFunctions:getFunctions", args ?? new GetFunctionsInvokeArgs(), options.WithDefaults());
     }
 
 

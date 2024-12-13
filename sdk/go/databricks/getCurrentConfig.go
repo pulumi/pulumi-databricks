@@ -43,21 +43,11 @@ type GetCurrentConfigResult struct {
 }
 
 func GetCurrentConfigOutput(ctx *pulumi.Context, args GetCurrentConfigOutputArgs, opts ...pulumi.InvokeOption) GetCurrentConfigResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCurrentConfigResultOutput, error) {
 			args := v.(GetCurrentConfigArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetCurrentConfigResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getCurrentConfig:getCurrentConfig", args, &rv, "", opts...)
-			if err != nil {
-				return GetCurrentConfigResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCurrentConfigResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCurrentConfigResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getCurrentConfig:getCurrentConfig", args, GetCurrentConfigResultOutput{}, options).(GetCurrentConfigResultOutput), nil
 		}).(GetCurrentConfigResultOutput)
 }
 

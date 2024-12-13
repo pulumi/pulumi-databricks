@@ -80,21 +80,11 @@ type LookupStorageCredentialResult struct {
 }
 
 func LookupStorageCredentialOutput(ctx *pulumi.Context, args LookupStorageCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupStorageCredentialResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupStorageCredentialResultOutput, error) {
 			args := v.(LookupStorageCredentialArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupStorageCredentialResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getStorageCredential:getStorageCredential", args, &rv, "", opts...)
-			if err != nil {
-				return LookupStorageCredentialResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupStorageCredentialResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupStorageCredentialResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getStorageCredential:getStorageCredential", args, LookupStorageCredentialResultOutput{}, options).(LookupStorageCredentialResultOutput), nil
 		}).(LookupStorageCredentialResultOutput)
 }
 

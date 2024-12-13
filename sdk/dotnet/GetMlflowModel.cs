@@ -178,6 +178,90 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetMlflowModelResult> Invoke(GetMlflowModelInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMlflowModelResult>("databricks:index/getMlflowModel:getMlflowModel", args ?? new GetMlflowModelInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves the settings of databricks.MlflowModel by name.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var thisMlflowModel = new Databricks.MlflowModel("this", new()
+        ///     {
+        ///         Name = "My MLflow Model",
+        ///         Description = "My MLflow model description",
+        ///         Tags = new[]
+        ///         {
+        ///             new Databricks.Inputs.MlflowModelTagArgs
+        ///             {
+        ///                 Key = "key1",
+        ///                 Value = "value1",
+        ///             },
+        ///             new Databricks.Inputs.MlflowModelTagArgs
+        ///             {
+        ///                 Key = "key2",
+        ///                 Value = "value2",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var @this = Databricks.GetMlflowModel.Invoke(new()
+        ///     {
+        ///         Name = "My MLflow Model",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["model"] = @this,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetMlflowModel.Invoke(new()
+        ///     {
+        ///         Name = "My MLflow Model with multiple versions",
+        ///     });
+        /// 
+        ///     var thisModelServing = new Databricks.ModelServing("this", new()
+        ///     {
+        ///         Name = "model-serving-endpoint",
+        ///         Config = new Databricks.Inputs.ModelServingConfigArgs
+        ///         {
+        ///             ServedModels = new[]
+        ///             {
+        ///                 new Databricks.Inputs.ModelServingConfigServedModelArgs
+        ///                 {
+        ///                     Name = "model_serving_prod",
+        ///                     ModelName = @this.Apply(@this =&gt; @this.Apply(getMlflowModelResult =&gt; getMlflowModelResult.Name)),
+        ///                     ModelVersion = @this.Apply(@this =&gt; @this.Apply(getMlflowModelResult =&gt; getMlflowModelResult.LatestVersions[0]?.Version)),
+        ///                     WorkloadSize = "Small",
+        ///                     ScaleToZeroEnabled = true,
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMlflowModelResult> Invoke(GetMlflowModelInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMlflowModelResult>("databricks:index/getMlflowModel:getMlflowModel", args ?? new GetMlflowModelInvokeArgs(), options.WithDefaults());
     }
 
 

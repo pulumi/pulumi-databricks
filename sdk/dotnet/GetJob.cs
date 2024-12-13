@@ -88,6 +88,45 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetJobResult> Invoke(GetJobInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetJobResult>("databricks:index/getJob:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting the existing cluster id of specific databricks.Job by name or by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetJob.Invoke(new()
+        ///     {
+        ///         JobName = "My job",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["jobNumWorkers"] = @this.Apply(@this =&gt; @this.Apply(getJobResult =&gt; getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getJobs data to get all jobs and their names from a workspace.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// </summary>
+        public static Output<GetJobResult> Invoke(GetJobInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetJobResult>("databricks:index/getJob:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
     }
 
 

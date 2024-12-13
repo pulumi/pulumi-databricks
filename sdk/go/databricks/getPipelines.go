@@ -133,21 +133,11 @@ type GetPipelinesResult struct {
 }
 
 func GetPipelinesOutput(ctx *pulumi.Context, args GetPipelinesOutputArgs, opts ...pulumi.InvokeOption) GetPipelinesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPipelinesResultOutput, error) {
 			args := v.(GetPipelinesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPipelinesResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getPipelines:getPipelines", args, &rv, "", opts...)
-			if err != nil {
-				return GetPipelinesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPipelinesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPipelinesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getPipelines:getPipelines", args, GetPipelinesResultOutput{}, options).(GetPipelinesResultOutput), nil
 		}).(GetPipelinesResultOutput)
 }
 

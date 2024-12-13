@@ -82,6 +82,42 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetDbfsFileResult> Invoke(GetDbfsFileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbfsFileResult>("databricks:index/getDbfsFile:getDbfsFile", args ?? new GetDbfsFileInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var report = Databricks.GetDbfsFile.Invoke(new()
+        ///     {
+        ///         Path = "dbfs:/reports/some.csv",
+        ///         LimitFileSize = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * End to end workspace management guide.
+        /// * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+        /// * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+        /// * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
+        /// </summary>
+        public static Output<GetDbfsFileResult> Invoke(GetDbfsFileInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDbfsFileResult>("databricks:index/getDbfsFile:getDbfsFile", args ?? new GetDbfsFileInvokeArgs(), options.WithDefaults());
     }
 
 

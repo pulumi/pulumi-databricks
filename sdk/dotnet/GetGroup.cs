@@ -110,6 +110,56 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("databricks:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about databricks.Group members, entitlements and instance profiles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Adding user to administrative group
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var admins = Databricks.GetGroup.Invoke(new()
+        ///     {
+        ///         DisplayName = "admins",
+        ///     });
+        /// 
+        ///     var me = new Databricks.User("me", new()
+        ///     {
+        ///         UserName = "me@example.com",
+        ///     });
+        /// 
+        ///     var myMemberA = new Databricks.GroupMember("my_member_a", new()
+        ///     {
+        ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         MemberId = me.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * End to end workspace management guide
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+        /// * databricks.GroupMember to attach users and groups as group members.
+        /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+        /// * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
+        /// </summary>
+        public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("databricks:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
     }
 
 

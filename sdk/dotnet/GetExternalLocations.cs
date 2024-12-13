@@ -82,6 +82,42 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetExternalLocationsResult> Invoke(GetExternalLocationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalLocationsResult>("databricks:index/getExternalLocations:getExternalLocations", args ?? new GetExternalLocationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with a workspace-level provider!
+        /// 
+        /// Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// List all external locations in the metastore
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetExternalLocations.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allExternalLocations"] = all.Apply(getExternalLocationsResult =&gt; getExternalLocationsResult.Names),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.ExternalLocation to get information about a single external location
+        /// * databricks.ExternalLocation to manage external locations within Unity Catalog.
+        /// </summary>
+        public static Output<GetExternalLocationsResult> Invoke(GetExternalLocationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetExternalLocationsResult>("databricks:index/getExternalLocations:getExternalLocations", args ?? new GetExternalLocationsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -64,21 +64,11 @@ type GetMlflowModelsResult struct {
 }
 
 func GetMlflowModelsOutput(ctx *pulumi.Context, args GetMlflowModelsOutputArgs, opts ...pulumi.InvokeOption) GetMlflowModelsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMlflowModelsResultOutput, error) {
 			args := v.(GetMlflowModelsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetMlflowModelsResult
-			secret, err := ctx.InvokePackageRaw("databricks:index/getMlflowModels:getMlflowModels", args, &rv, "", opts...)
-			if err != nil {
-				return GetMlflowModelsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetMlflowModelsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetMlflowModelsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getMlflowModels:getMlflowModels", args, GetMlflowModelsResultOutput{}, options).(GetMlflowModelsResultOutput), nil
 		}).(GetMlflowModelsResultOutput)
 }
 

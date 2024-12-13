@@ -78,6 +78,40 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetRegisteredModelResult> Invoke(GetRegisteredModelInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegisteredModelResult>("databricks:index/getRegisteredModel:getRegisteredModel", args ?? new GetRegisteredModelInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; This resource can only be used with a workspace-level provider!
+        /// 
+        /// This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetRegisteredModel.Invoke(new()
+        ///     {
+        ///         FullName = "main.default.my_model",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are often used in the same context:
+        /// 
+        /// * databricks.RegisteredModel resource to manage models within Unity Catalog.
+        /// * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+        /// * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+        /// </summary>
+        public static Output<GetRegisteredModelResult> Invoke(GetRegisteredModelInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegisteredModelResult>("databricks:index/getRegisteredModel:getRegisteredModel", args ?? new GetRegisteredModelInvokeArgs(), options.WithDefaults());
     }
 
 

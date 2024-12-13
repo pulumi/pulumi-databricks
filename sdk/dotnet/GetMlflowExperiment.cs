@@ -26,6 +26,14 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Output<GetMlflowExperimentResult> Invoke(GetMlflowExperimentInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMlflowExperimentResult>("databricks:index/getMlflowExperiment:getMlflowExperiment", args ?? new GetMlflowExperimentInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves the settings of databricks.MlflowExperiment by id or name.
+        /// </summary>
+        public static Output<GetMlflowExperimentResult> Invoke(GetMlflowExperimentInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMlflowExperimentResult>("databricks:index/getMlflowExperiment:getMlflowExperiment", args ?? new GetMlflowExperimentInvokeArgs(), options.WithDefaults());
     }
 
 
