@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetTableTableInfoTableConstraintNamedTableConstraintResult
     {
-        /// <summary>
-        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

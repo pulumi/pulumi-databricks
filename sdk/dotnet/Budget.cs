@@ -9,125 +9,21 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// &gt; Initialize provider with `alias = "account"`, and `host` pointing to the account URL, like, `host = "https://accounts.cloud.databricks.com"`. Use `provider = databricks.account` for all account-level resources.
-    /// 
-    /// &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-    /// 
-    /// This resource allows you to manage [Databricks Budgets](https://docs.databricks.com/en/admin/account-settings/budgets.html).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @this = new Databricks.Budget("this", new()
-    ///     {
-    ///         DisplayName = "databricks-workspace-budget",
-    ///         AlertConfigurations = new[]
-    ///         {
-    ///             new Databricks.Inputs.BudgetAlertConfigurationArgs
-    ///             {
-    ///                 TimePeriod = "MONTH",
-    ///                 TriggerType = "CUMULATIVE_SPENDING_EXCEEDED",
-    ///                 QuantityType = "LIST_PRICE_DOLLARS_USD",
-    ///                 QuantityThreshold = "840",
-    ///                 ActionConfigurations = new[]
-    ///                 {
-    ///                     new Databricks.Inputs.BudgetAlertConfigurationActionConfigurationArgs
-    ///                     {
-    ///                         ActionType = "EMAIL_NOTIFICATION",
-    ///                         Target = "abc@gmail.com",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///         Filter = new Databricks.Inputs.BudgetFilterArgs
-    ///         {
-    ///             WorkspaceId = new Databricks.Inputs.BudgetFilterWorkspaceIdArgs
-    ///             {
-    ///                 Operator = "IN",
-    ///                 Values = new[]
-    ///                 {
-    ///                     1234567890098765,
-    ///                 },
-    ///             },
-    ///             Tags = new[]
-    ///             {
-    ///                 new Databricks.Inputs.BudgetFilterTagArgs
-    ///                 {
-    ///                     Key = "Team",
-    ///                     Value = new Databricks.Inputs.BudgetFilterTagValueArgs
-    ///                     {
-    ///                         Operator = "IN",
-    ///                         Values = new[]
-    ///                         {
-    ///                             "Data Science",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new Databricks.Inputs.BudgetFilterTagArgs
-    ///                 {
-    ///                     Key = "Environment",
-    ///                     Value = new Databricks.Inputs.BudgetFilterTagValueArgs
-    ///                     {
-    ///                         Operator = "IN",
-    ///                         Values = new[]
-    ///                         {
-    ///                             "Development",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are used in the context:
-    /// 
-    /// * databricks.MwsWorkspaces to set up Databricks workspaces.
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by Databricks account ID and Budget.
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/budget:Budget this '&lt;account_id&gt;|&lt;budget_configuration_id&gt;'
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/budget:Budget")]
     public partial class Budget : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the Databricks Account.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         [Output("alertConfigurations")]
         public Output<ImmutableArray<Outputs.BudgetAlertConfiguration>> AlertConfigurations { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the budget configuration.
-        /// </summary>
         [Output("budgetConfigurationId")]
         public Output<string> BudgetConfigurationId { get; private set; } = null!;
 
         [Output("createTime")]
         public Output<int> CreateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the budget in Databricks Account.
-        /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
@@ -183,9 +79,6 @@ namespace Pulumi.Databricks
 
     public sealed class BudgetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the Databricks Account.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -197,18 +90,12 @@ namespace Pulumi.Databricks
             set => _alertConfigurations = value;
         }
 
-        /// <summary>
-        /// The ID of the budget configuration.
-        /// </summary>
         [Input("budgetConfigurationId")]
         public Input<string>? BudgetConfigurationId { get; set; }
 
         [Input("createTime")]
         public Input<int>? CreateTime { get; set; }
 
-        /// <summary>
-        /// Name of the budget in Databricks Account.
-        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
@@ -226,9 +113,6 @@ namespace Pulumi.Databricks
 
     public sealed class BudgetState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the Databricks Account.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -240,18 +124,12 @@ namespace Pulumi.Databricks
             set => _alertConfigurations = value;
         }
 
-        /// <summary>
-        /// The ID of the budget configuration.
-        /// </summary>
         [Input("budgetConfigurationId")]
         public Input<string>? BudgetConfigurationId { get; set; }
 
         [Input("createTime")]
         public Input<int>? CreateTime { get; set; }
 
-        /// <summary>
-        /// Name of the budget in Databricks Account.
-        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 

@@ -4,49 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const me = databricks.getCurrentUser({});
- * const _this = new databricks.MlflowExperiment("this", {
- *     name: me.then(me => `${me.home}/Sample`),
- *     artifactLocation: "dbfs:/tmp/my-experiment",
- *     description: "My MLflow experiment description",
- * });
- * ```
- *
- * ## Access Control
- *
- * * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
- *
- * ## Related Resources
- *
- * The following resources are often used in the same context:
- *
- * * databricks.RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
- * * End to end workspace management guide.
- * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
- * * databricks.MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
- * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
- * * databricks.Notebook data to export a notebook from Databricks Workspace.
- * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
- *
- * ## Import
- *
- * The experiment resource can be imported using the id of the experiment
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>
- * ```
- */
 export class MlflowExperiment extends pulumi.CustomResource {
     /**
      * Get an existing MlflowExperiment resource's state with the given name, ID, and optional extra
@@ -75,21 +32,12 @@ export class MlflowExperiment extends pulumi.CustomResource {
         return obj['__pulumiType'] === MlflowExperiment.__pulumiType;
     }
 
-    /**
-     * Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
-     */
     public readonly artifactLocation!: pulumi.Output<string | undefined>;
     public readonly creationTime!: pulumi.Output<number>;
-    /**
-     * The description of the MLflow experiment.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly experimentId!: pulumi.Output<string>;
     public readonly lastUpdateTime!: pulumi.Output<number>;
     public readonly lifecycleStage!: pulumi.Output<string>;
-    /**
-     * Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
-     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -131,21 +79,12 @@ export class MlflowExperiment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MlflowExperiment resources.
  */
 export interface MlflowExperimentState {
-    /**
-     * Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
-     */
     artifactLocation?: pulumi.Input<string>;
     creationTime?: pulumi.Input<number>;
-    /**
-     * The description of the MLflow experiment.
-     */
     description?: pulumi.Input<string>;
     experimentId?: pulumi.Input<string>;
     lastUpdateTime?: pulumi.Input<number>;
     lifecycleStage?: pulumi.Input<string>;
-    /**
-     * Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
-     */
     name?: pulumi.Input<string>;
 }
 
@@ -153,20 +92,11 @@ export interface MlflowExperimentState {
  * The set of arguments for constructing a MlflowExperiment resource.
  */
 export interface MlflowExperimentArgs {
-    /**
-     * Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
-     */
     artifactLocation?: pulumi.Input<string>;
     creationTime?: pulumi.Input<number>;
-    /**
-     * The description of the MLflow experiment.
-     */
     description?: pulumi.Input<string>;
     experimentId?: pulumi.Input<string>;
     lastUpdateTime?: pulumi.Input<number>;
     lifecycleStage?: pulumi.Input<string>;
-    /**
-     * Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
-     */
     name?: pulumi.Input<string>;
 }

@@ -11,105 +11,12 @@ namespace Pulumi.Databricks
 {
     public static class GetRegisteredModel
     {
-        /// <summary>
-        /// &gt; This resource can only be used with a workspace-level provider!
-        /// 
-        /// This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetRegisteredModel.Invoke(new()
-        ///     {
-        ///         FullName = "main.default.my_model",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are often used in the same context:
-        /// 
-        /// * databricks.RegisteredModel resource to manage models within Unity Catalog.
-        /// * databricks.ModelServing to serve this model on a Databricks serving endpoint.
-        /// * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
-        /// </summary>
         public static Task<GetRegisteredModelResult> InvokeAsync(GetRegisteredModelArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegisteredModelResult>("databricks:index/getRegisteredModel:getRegisteredModel", args ?? new GetRegisteredModelArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// &gt; This resource can only be used with a workspace-level provider!
-        /// 
-        /// This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetRegisteredModel.Invoke(new()
-        ///     {
-        ///         FullName = "main.default.my_model",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are often used in the same context:
-        /// 
-        /// * databricks.RegisteredModel resource to manage models within Unity Catalog.
-        /// * databricks.ModelServing to serve this model on a Databricks serving endpoint.
-        /// * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
-        /// </summary>
         public static Output<GetRegisteredModelResult> Invoke(GetRegisteredModelInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegisteredModelResult>("databricks:index/getRegisteredModel:getRegisteredModel", args ?? new GetRegisteredModelInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// &gt; This resource can only be used with a workspace-level provider!
-        /// 
-        /// This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetRegisteredModel.Invoke(new()
-        ///     {
-        ///         FullName = "main.default.my_model",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are often used in the same context:
-        /// 
-        /// * databricks.RegisteredModel resource to manage models within Unity Catalog.
-        /// * databricks.ModelServing to serve this model on a Databricks serving endpoint.
-        /// * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
-        /// </summary>
         public static Output<GetRegisteredModelResult> Invoke(GetRegisteredModelInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegisteredModelResult>("databricks:index/getRegisteredModel:getRegisteredModel", args ?? new GetRegisteredModelInvokeArgs(), options.WithDefaults());
     }
@@ -117,30 +24,17 @@ namespace Pulumi.Databricks
 
     public sealed class GetRegisteredModelArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-        /// </summary>
         [Input("fullName", required: true)]
         public string FullName { get; set; } = null!;
 
-        /// <summary>
-        /// flag to specify if list of aliases should be included into output.
-        /// </summary>
         [Input("includeAliases")]
         public bool? IncludeAliases { get; set; }
 
-        /// <summary>
-        /// flag to specify if include registered models in the response for which the principal can only access selective metadata for.
-        /// </summary>
         [Input("includeBrowse")]
         public bool? IncludeBrowse { get; set; }
 
         [Input("modelInfos")]
         private List<Inputs.GetRegisteredModelModelInfoArgs>? _modelInfos;
-
-        /// <summary>
-        /// block with information about the model in Unity Catalog:
-        /// </summary>
         public List<Inputs.GetRegisteredModelModelInfoArgs> ModelInfos
         {
             get => _modelInfos ?? (_modelInfos = new List<Inputs.GetRegisteredModelModelInfoArgs>());
@@ -155,30 +49,17 @@ namespace Pulumi.Databricks
 
     public sealed class GetRegisteredModelInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-        /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
 
-        /// <summary>
-        /// flag to specify if list of aliases should be included into output.
-        /// </summary>
         [Input("includeAliases")]
         public Input<bool>? IncludeAliases { get; set; }
 
-        /// <summary>
-        /// flag to specify if include registered models in the response for which the principal can only access selective metadata for.
-        /// </summary>
         [Input("includeBrowse")]
         public Input<bool>? IncludeBrowse { get; set; }
 
         [Input("modelInfos")]
         private InputList<Inputs.GetRegisteredModelModelInfoInputArgs>? _modelInfos;
-
-        /// <summary>
-        /// block with information about the model in Unity Catalog:
-        /// </summary>
         public InputList<Inputs.GetRegisteredModelModelInfoInputArgs> ModelInfos
         {
             get => _modelInfos ?? (_modelInfos = new InputList<Inputs.GetRegisteredModelModelInfoInputArgs>());
@@ -195,9 +76,6 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetRegisteredModelResult
     {
-        /// <summary>
-        /// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-        /// </summary>
         public readonly string FullName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -205,9 +83,6 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly bool? IncludeAliases;
         public readonly bool? IncludeBrowse;
-        /// <summary>
-        /// block with information about the model in Unity Catalog:
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegisteredModelModelInfoResult> ModelInfos;
 
         [OutputConstructor]

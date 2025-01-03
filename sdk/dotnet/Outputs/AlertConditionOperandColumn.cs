@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AlertConditionOperandColumn
     {
-        /// <summary>
-        /// Name of the column.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

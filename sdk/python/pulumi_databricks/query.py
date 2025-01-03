@@ -35,18 +35,6 @@ class QueryArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Query resource.
-        :param pulumi.Input[str] display_name: Name of the query.
-        :param pulumi.Input[str] query_text: Text of SQL query.
-        :param pulumi.Input[str] warehouse_id: ID of a SQL warehouse which will be used to execute this query.
-        :param pulumi.Input[bool] apply_auto_limit: Whether to apply a 1000 row limit to the query result.
-        :param pulumi.Input[str] catalog: Name of the catalog where this query will be executed.
-        :param pulumi.Input[str] description: General description that conveys additional information about this query such as usage notes.
-        :param pulumi.Input[str] owner_user_name: Query owner's username.
-        :param pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]] parameters: Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-        :param pulumi.Input[str] parent_path: The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-        :param pulumi.Input[str] run_as_mode: Sets the "Run as" role for the object.
-        :param pulumi.Input[str] schema: Name of the schema where this query will be executed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags that will be added to the query.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "query_text", query_text)
@@ -73,9 +61,6 @@ class QueryArgs:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
-        """
-        Name of the query.
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -85,9 +70,6 @@ class QueryArgs:
     @property
     @pulumi.getter(name="queryText")
     def query_text(self) -> pulumi.Input[str]:
-        """
-        Text of SQL query.
-        """
         return pulumi.get(self, "query_text")
 
     @query_text.setter
@@ -97,9 +79,6 @@ class QueryArgs:
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> pulumi.Input[str]:
-        """
-        ID of a SQL warehouse which will be used to execute this query.
-        """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
@@ -109,9 +88,6 @@ class QueryArgs:
     @property
     @pulumi.getter(name="applyAutoLimit")
     def apply_auto_limit(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to apply a 1000 row limit to the query result.
-        """
         return pulumi.get(self, "apply_auto_limit")
 
     @apply_auto_limit.setter
@@ -121,9 +97,6 @@ class QueryArgs:
     @property
     @pulumi.getter
     def catalog(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the catalog where this query will be executed.
-        """
         return pulumi.get(self, "catalog")
 
     @catalog.setter
@@ -133,9 +106,6 @@ class QueryArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        General description that conveys additional information about this query such as usage notes.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -145,9 +115,6 @@ class QueryArgs:
     @property
     @pulumi.getter(name="ownerUserName")
     def owner_user_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Query owner's username.
-        """
         return pulumi.get(self, "owner_user_name")
 
     @owner_user_name.setter
@@ -157,9 +124,6 @@ class QueryArgs:
     @property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]]:
-        """
-        Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-        """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
@@ -169,9 +133,6 @@ class QueryArgs:
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-        """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
@@ -181,9 +142,6 @@ class QueryArgs:
     @property
     @pulumi.getter(name="runAsMode")
     def run_as_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Sets the "Run as" role for the object.
-        """
         return pulumi.get(self, "run_as_mode")
 
     @run_as_mode.setter
@@ -193,9 +151,6 @@ class QueryArgs:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the schema where this query will be executed.
-        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -205,9 +160,6 @@ class QueryArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Tags that will be added to the query.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -236,22 +188,6 @@ class _QueryState:
                  warehouse_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Query resources.
-        :param pulumi.Input[bool] apply_auto_limit: Whether to apply a 1000 row limit to the query result.
-        :param pulumi.Input[str] catalog: Name of the catalog where this query will be executed.
-        :param pulumi.Input[str] create_time: The timestamp string indicating when the query was created.
-        :param pulumi.Input[str] description: General description that conveys additional information about this query such as usage notes.
-        :param pulumi.Input[str] display_name: Name of the query.
-        :param pulumi.Input[str] last_modifier_user_name: Username of the user who last saved changes to this query.
-        :param pulumi.Input[str] lifecycle_state: The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-        :param pulumi.Input[str] owner_user_name: Query owner's username.
-        :param pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]] parameters: Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-        :param pulumi.Input[str] parent_path: The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-        :param pulumi.Input[str] query_text: Text of SQL query.
-        :param pulumi.Input[str] run_as_mode: Sets the "Run as" role for the object.
-        :param pulumi.Input[str] schema: Name of the schema where this query will be executed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags that will be added to the query.
-        :param pulumi.Input[str] update_time: The timestamp string indicating when the query was updated.
-        :param pulumi.Input[str] warehouse_id: ID of a SQL warehouse which will be used to execute this query.
         """
         if apply_auto_limit is not None:
             pulumi.set(__self__, "apply_auto_limit", apply_auto_limit)
@@ -289,9 +225,6 @@ class _QueryState:
     @property
     @pulumi.getter(name="applyAutoLimit")
     def apply_auto_limit(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to apply a 1000 row limit to the query result.
-        """
         return pulumi.get(self, "apply_auto_limit")
 
     @apply_auto_limit.setter
@@ -301,9 +234,6 @@ class _QueryState:
     @property
     @pulumi.getter
     def catalog(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the catalog where this query will be executed.
-        """
         return pulumi.get(self, "catalog")
 
     @catalog.setter
@@ -313,9 +243,6 @@ class _QueryState:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The timestamp string indicating when the query was created.
-        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -325,9 +252,6 @@ class _QueryState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        General description that conveys additional information about this query such as usage notes.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -337,9 +261,6 @@ class _QueryState:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the query.
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -349,9 +270,6 @@ class _QueryState:
     @property
     @pulumi.getter(name="lastModifierUserName")
     def last_modifier_user_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username of the user who last saved changes to this query.
-        """
         return pulumi.get(self, "last_modifier_user_name")
 
     @last_modifier_user_name.setter
@@ -361,9 +279,6 @@ class _QueryState:
     @property
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> Optional[pulumi.Input[str]]:
-        """
-        The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-        """
         return pulumi.get(self, "lifecycle_state")
 
     @lifecycle_state.setter
@@ -373,9 +288,6 @@ class _QueryState:
     @property
     @pulumi.getter(name="ownerUserName")
     def owner_user_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Query owner's username.
-        """
         return pulumi.get(self, "owner_user_name")
 
     @owner_user_name.setter
@@ -385,9 +297,6 @@ class _QueryState:
     @property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]]:
-        """
-        Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-        """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
@@ -397,9 +306,6 @@ class _QueryState:
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-        """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
@@ -409,9 +315,6 @@ class _QueryState:
     @property
     @pulumi.getter(name="queryText")
     def query_text(self) -> Optional[pulumi.Input[str]]:
-        """
-        Text of SQL query.
-        """
         return pulumi.get(self, "query_text")
 
     @query_text.setter
@@ -421,9 +324,6 @@ class _QueryState:
     @property
     @pulumi.getter(name="runAsMode")
     def run_as_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Sets the "Run as" role for the object.
-        """
         return pulumi.get(self, "run_as_mode")
 
     @run_as_mode.setter
@@ -433,9 +333,6 @@ class _QueryState:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the schema where this query will be executed.
-        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -445,9 +342,6 @@ class _QueryState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Tags that will be added to the query.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -457,9 +351,6 @@ class _QueryState:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The timestamp string indicating when the query was updated.
-        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -469,9 +360,6 @@ class _QueryState:
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of a SQL warehouse which will be used to execute this query.
-        """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
@@ -498,30 +386,9 @@ class Query(pulumi.CustomResource):
                  warehouse_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Import
-
-        This resource can be imported using query ID:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/query:Query this <query-id>
-        ```
-
+        Create a Query resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] apply_auto_limit: Whether to apply a 1000 row limit to the query result.
-        :param pulumi.Input[str] catalog: Name of the catalog where this query will be executed.
-        :param pulumi.Input[str] description: General description that conveys additional information about this query such as usage notes.
-        :param pulumi.Input[str] display_name: Name of the query.
-        :param pulumi.Input[str] owner_user_name: Query owner's username.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]] parameters: Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-        :param pulumi.Input[str] parent_path: The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-        :param pulumi.Input[str] query_text: Text of SQL query.
-        :param pulumi.Input[str] run_as_mode: Sets the "Run as" role for the object.
-        :param pulumi.Input[str] schema: Name of the schema where this query will be executed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags that will be added to the query.
-        :param pulumi.Input[str] warehouse_id: ID of a SQL warehouse which will be used to execute this query.
         """
         ...
     @overload
@@ -530,16 +397,7 @@ class Query(pulumi.CustomResource):
                  args: QueryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
-
-        This resource can be imported using query ID:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/query:Query this <query-id>
-        ```
-
+        Create a Query resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param QueryArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -631,22 +489,6 @@ class Query(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] apply_auto_limit: Whether to apply a 1000 row limit to the query result.
-        :param pulumi.Input[str] catalog: Name of the catalog where this query will be executed.
-        :param pulumi.Input[str] create_time: The timestamp string indicating when the query was created.
-        :param pulumi.Input[str] description: General description that conveys additional information about this query such as usage notes.
-        :param pulumi.Input[str] display_name: Name of the query.
-        :param pulumi.Input[str] last_modifier_user_name: Username of the user who last saved changes to this query.
-        :param pulumi.Input[str] lifecycle_state: The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-        :param pulumi.Input[str] owner_user_name: Query owner's username.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]] parameters: Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-        :param pulumi.Input[str] parent_path: The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-        :param pulumi.Input[str] query_text: Text of SQL query.
-        :param pulumi.Input[str] run_as_mode: Sets the "Run as" role for the object.
-        :param pulumi.Input[str] schema: Name of the schema where this query will be executed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags that will be added to the query.
-        :param pulumi.Input[str] update_time: The timestamp string indicating when the query was updated.
-        :param pulumi.Input[str] warehouse_id: ID of a SQL warehouse which will be used to execute this query.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -673,128 +515,80 @@ class Query(pulumi.CustomResource):
     @property
     @pulumi.getter(name="applyAutoLimit")
     def apply_auto_limit(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether to apply a 1000 row limit to the query result.
-        """
         return pulumi.get(self, "apply_auto_limit")
 
     @property
     @pulumi.getter
     def catalog(self) -> pulumi.Output[Optional[str]]:
-        """
-        Name of the catalog where this query will be executed.
-        """
         return pulumi.get(self, "catalog")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
-        """
-        The timestamp string indicating when the query was created.
-        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        General description that conveys additional information about this query such as usage notes.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
-        """
-        Name of the query.
-        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="lastModifierUserName")
     def last_modifier_user_name(self) -> pulumi.Output[str]:
-        """
-        Username of the user who last saved changes to this query.
-        """
         return pulumi.get(self, "last_modifier_user_name")
 
     @property
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> pulumi.Output[str]:
-        """
-        The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-        """
         return pulumi.get(self, "lifecycle_state")
 
     @property
     @pulumi.getter(name="ownerUserName")
     def owner_user_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Query owner's username.
-        """
         return pulumi.get(self, "owner_user_name")
 
     @property
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Sequence['outputs.QueryParameter']]]:
-        """
-        Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-        """
         return pulumi.get(self, "parameters")
 
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> pulumi.Output[Optional[str]]:
-        """
-        The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-        """
         return pulumi.get(self, "parent_path")
 
     @property
     @pulumi.getter(name="queryText")
     def query_text(self) -> pulumi.Output[str]:
-        """
-        Text of SQL query.
-        """
         return pulumi.get(self, "query_text")
 
     @property
     @pulumi.getter(name="runAsMode")
     def run_as_mode(self) -> pulumi.Output[Optional[str]]:
-        """
-        Sets the "Run as" role for the object.
-        """
         return pulumi.get(self, "run_as_mode")
 
     @property
     @pulumi.getter
     def schema(self) -> pulumi.Output[Optional[str]]:
-        """
-        Name of the schema where this query will be executed.
-        """
         return pulumi.get(self, "schema")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        Tags that will be added to the query.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
-        """
-        The timestamp string indicating when the query was updated.
-        """
         return pulumi.get(self, "update_time")
 
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> pulumi.Output[str]:
-        """
-        ID of a SQL warehouse which will be used to execute this query.
-        """
         return pulumi.get(self, "warehouse_id")
 

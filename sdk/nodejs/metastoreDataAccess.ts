@@ -6,48 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > This resource can be used with an account or workspace-level provider.
- *
- * Optionally, each databricks.Metastore can have a default databricks.StorageCredential defined as `databricks.MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
- *
- * ## Example Usage
- *
- * For AWS
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const _this = new databricks.Metastore("this", {
- *     name: "primary",
- *     storageRoot: `s3://${metastore.id}/metastore`,
- *     owner: "uc admins",
- *     region: "us-east-1",
- *     forceDestroy: true,
- * });
- * const thisMetastoreDataAccess = new databricks.MetastoreDataAccess("this", {
- *     metastoreId: _this.id,
- *     name: metastoreDataAccess.name,
- *     awsIamRole: {
- *         roleArn: metastoreDataAccess.arn,
- *     },
- *     isDefault: true,
- * });
- * ```
- *
- * For Azure using managed identity as credential (recommended)
- *
- * ## Import
- *
- * This resource can be imported by combination of metastore id and the data access name.
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'
- * ```
- */
 export class MetastoreDataAccess extends pulumi.CustomResource {
     /**
      * Get an existing MetastoreDataAccess resource's state with the given name, ID, and optional extra
@@ -85,9 +43,6 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
     public readonly gcpServiceAccountKey!: pulumi.Output<outputs.MetastoreDataAccessGcpServiceAccountKey | undefined>;
-    /**
-     * whether to set this credential as the default for the metastore. In practice, this should always be true.
-     */
     public readonly isDefault!: pulumi.Output<boolean | undefined>;
     public readonly isolationMode!: pulumi.Output<string>;
     public readonly metastoreId!: pulumi.Output<string>;
@@ -162,9 +117,6 @@ export interface MetastoreDataAccessState {
     forceDestroy?: pulumi.Input<boolean>;
     forceUpdate?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.MetastoreDataAccessGcpServiceAccountKey>;
-    /**
-     * whether to set this credential as the default for the metastore. In practice, this should always be true.
-     */
     isDefault?: pulumi.Input<boolean>;
     isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
@@ -187,9 +139,6 @@ export interface MetastoreDataAccessArgs {
     forceDestroy?: pulumi.Input<boolean>;
     forceUpdate?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.MetastoreDataAccessGcpServiceAccountKey>;
-    /**
-     * whether to set this credential as the default for the metastore. In practice, this should always be true.
-     */
     isDefault?: pulumi.Input<boolean>;
     isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;

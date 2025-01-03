@@ -13,17 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AlertConditionThresholdValue
     {
-        /// <summary>
-        /// boolean value (`true` or `false`) to compare against boolean results.
-        /// </summary>
         public readonly bool? BoolValue;
-        /// <summary>
-        /// double value to compare against integer and double results.
-        /// </summary>
         public readonly double? DoubleValue;
-        /// <summary>
-        /// string value to compare against string results.
-        /// </summary>
         public readonly string? StringValue;
 
         [OutputConstructor]

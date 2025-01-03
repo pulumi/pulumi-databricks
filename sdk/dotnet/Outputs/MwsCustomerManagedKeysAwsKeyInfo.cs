@@ -13,17 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsCustomerManagedKeysAwsKeyInfo
     {
-        /// <summary>
-        /// The AWS KMS key alias.
-        /// </summary>
         public readonly string? KeyAlias;
-        /// <summary>
-        /// The AWS KMS key's Amazon Resource Name (ARN).
-        /// </summary>
         public readonly string KeyArn;
-        /// <summary>
-        /// (Computed) The AWS region in which KMS key is deployed to. This is not required.
-        /// </summary>
         public readonly string? KeyRegion;
 
         [OutputConstructor]

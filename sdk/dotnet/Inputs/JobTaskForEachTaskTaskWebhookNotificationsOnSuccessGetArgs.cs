@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskWebhookNotificationsOnSuccessGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// ID of the job
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 

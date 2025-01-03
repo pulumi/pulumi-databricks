@@ -38,16 +38,6 @@ class StorageCredentialArgs:
                  skip_validation: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a StorageCredential resource.
-        :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
-        :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
-        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-               
-               `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
-        :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
-        :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
-        :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the storage credential.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -137,9 +127,6 @@ class StorageCredentialArgs:
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Delete storage credential regardless of its dependencies.
-        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -149,9 +136,6 @@ class StorageCredentialArgs:
     @property
     @pulumi.getter(name="forceUpdate")
     def force_update(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Update storage credential regardless of its dependents.
-        """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
@@ -170,11 +154,6 @@ class StorageCredentialArgs:
     @property
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
-        """
         return pulumi.get(self, "isolation_mode")
 
     @isolation_mode.setter
@@ -184,9 +163,6 @@ class StorageCredentialArgs:
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
-        """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
@@ -196,9 +172,6 @@ class StorageCredentialArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -208,9 +181,6 @@ class StorageCredentialArgs:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username/groupname/sp application_id of the storage credential owner.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -220,9 +190,6 @@ class StorageCredentialArgs:
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the storage credential is only usable for read operations.
-        """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
@@ -232,9 +199,6 @@ class StorageCredentialArgs:
     @property
     @pulumi.getter(name="skipValidation")
     def skip_validation(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Suppress validation errors if any & force save the storage credential.
-        """
         return pulumi.get(self, "skip_validation")
 
     @skip_validation.setter
@@ -263,17 +227,6 @@ class _StorageCredentialState:
                  storage_credential_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering StorageCredential resources.
-        :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
-        :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
-        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-               
-               `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
-        :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
-        :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
-        :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the storage credential.
-        :param pulumi.Input[str] storage_credential_id: Unique ID of storage credential.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -365,9 +318,6 @@ class _StorageCredentialState:
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Delete storage credential regardless of its dependencies.
-        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -377,9 +327,6 @@ class _StorageCredentialState:
     @property
     @pulumi.getter(name="forceUpdate")
     def force_update(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Update storage credential regardless of its dependents.
-        """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
@@ -398,11 +345,6 @@ class _StorageCredentialState:
     @property
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
-        """
         return pulumi.get(self, "isolation_mode")
 
     @isolation_mode.setter
@@ -412,9 +354,6 @@ class _StorageCredentialState:
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
-        """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
@@ -424,9 +363,6 @@ class _StorageCredentialState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -436,9 +372,6 @@ class _StorageCredentialState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username/groupname/sp application_id of the storage credential owner.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -448,9 +381,6 @@ class _StorageCredentialState:
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the storage credential is only usable for read operations.
-        """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
@@ -460,9 +390,6 @@ class _StorageCredentialState:
     @property
     @pulumi.getter(name="skipValidation")
     def skip_validation(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Suppress validation errors if any & force save the storage credential.
-        """
         return pulumi.get(self, "skip_validation")
 
     @skip_validation.setter
@@ -472,9 +399,6 @@ class _StorageCredentialState:
     @property
     @pulumi.getter(name="storageCredentialId")
     def storage_credential_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique ID of storage credential.
-        """
         return pulumi.get(self, "storage_credential_id")
 
     @storage_credential_id.setter
@@ -504,94 +428,9 @@ class StorageCredential(pulumi.CustomResource):
                  skip_validation: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        > This resource can be used with an account or workspace-level provider.
-
-        To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
-
-        - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
-        - ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
-
-        ## Example Usage
-
-        For AWS
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        external = databricks.StorageCredential("external",
-            name=external_data_access["name"],
-            aws_iam_role={
-                "role_arn": external_data_access["arn"],
-            },
-            comment="Managed by TF")
-        external_creds = databricks.Grants("external_creds",
-            storage_credential=external.id,
-            grants=[{
-                "principal": "Data Engineers",
-                "privileges": ["CREATE_EXTERNAL_TABLE"],
-            }])
-        ```
-
-        For Azure
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        external_mi = databricks.StorageCredential("external_mi",
-            name="mi_credential",
-            azure_managed_identity={
-                "access_connector_id": example["id"],
-            },
-            comment="Managed identity credential managed by TF")
-        external_creds = databricks.Grants("external_creds",
-            storage_credential=external["id"],
-            grants=[{
-                "principal": "Data Engineers",
-                "privileges": ["CREATE_EXTERNAL_TABLE"],
-            }])
-        ```
-
-        For GCP
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        external = databricks.StorageCredential("external",
-            name="the-creds",
-            databricks_gcp_service_account={})
-        external_creds = databricks.Grants("external_creds",
-            storage_credential=external.id,
-            grants=[{
-                "principal": "Data Engineers",
-                "privileges": ["CREATE_EXTERNAL_TABLE"],
-            }])
-        ```
-
-        ## Import
-
-        This resource can be imported by name:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/storageCredential:StorageCredential this <name>
-        ```
-
+        Create a StorageCredential resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
-        :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
-        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-               
-               `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
-        :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
-        :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
-        :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the storage credential.
         """
         ...
     @overload
@@ -600,82 +439,7 @@ class StorageCredential(pulumi.CustomResource):
                  args: Optional[StorageCredentialArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource can be used with an account or workspace-level provider.
-
-        To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
-
-        - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
-        - ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
-
-        ## Example Usage
-
-        For AWS
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        external = databricks.StorageCredential("external",
-            name=external_data_access["name"],
-            aws_iam_role={
-                "role_arn": external_data_access["arn"],
-            },
-            comment="Managed by TF")
-        external_creds = databricks.Grants("external_creds",
-            storage_credential=external.id,
-            grants=[{
-                "principal": "Data Engineers",
-                "privileges": ["CREATE_EXTERNAL_TABLE"],
-            }])
-        ```
-
-        For Azure
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        external_mi = databricks.StorageCredential("external_mi",
-            name="mi_credential",
-            azure_managed_identity={
-                "access_connector_id": example["id"],
-            },
-            comment="Managed identity credential managed by TF")
-        external_creds = databricks.Grants("external_creds",
-            storage_credential=external["id"],
-            grants=[{
-                "principal": "Data Engineers",
-                "privileges": ["CREATE_EXTERNAL_TABLE"],
-            }])
-        ```
-
-        For GCP
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        external = databricks.StorageCredential("external",
-            name="the-creds",
-            databricks_gcp_service_account={})
-        external_creds = databricks.Grants("external_creds",
-            storage_credential=external.id,
-            grants=[{
-                "principal": "Data Engineers",
-                "privileges": ["CREATE_EXTERNAL_TABLE"],
-            }])
-        ```
-
-        ## Import
-
-        This resource can be imported by name:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/storageCredential:StorageCredential this <name>
-        ```
-
+        Create a StorageCredential resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param StorageCredentialArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -764,17 +528,6 @@ class StorageCredential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
-        :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
-        :param pulumi.Input[str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-               
-               `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
-        :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
-        :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
-        :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the storage credential.
-        :param pulumi.Input[str] storage_credential_id: Unique ID of storage credential.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -831,17 +584,11 @@ class StorageCredential(pulumi.CustomResource):
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Delete storage credential regardless of its dependencies.
-        """
         return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter(name="forceUpdate")
     def force_update(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Update storage credential regardless of its dependents.
-        """
         return pulumi.get(self, "force_update")
 
     @property
@@ -852,58 +599,35 @@ class StorageCredential(pulumi.CustomResource):
     @property
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> pulumi.Output[str]:
-        """
-        Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
-        """
         return pulumi.get(self, "isolation_mode")
 
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[str]:
-        """
-        Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
-        """
         return pulumi.get(self, "metastore_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
-        """
-        Username/groupname/sp application_id of the storage credential owner.
-        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates whether the storage credential is only usable for read operations.
-        """
         return pulumi.get(self, "read_only")
 
     @property
     @pulumi.getter(name="skipValidation")
     def skip_validation(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Suppress validation errors if any & force save the storage credential.
-        """
         return pulumi.get(self, "skip_validation")
 
     @property
     @pulumi.getter(name="storageCredentialId")
     def storage_credential_id(self) -> pulumi.Output[str]:
-        """
-        Unique ID of storage credential.
-        """
         return pulumi.get(self, "storage_credential_id")
 

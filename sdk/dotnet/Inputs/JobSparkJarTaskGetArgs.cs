@@ -15,18 +15,11 @@ namespace Pulumi.Databricks.Inputs
         [Input("jarUri")]
         public Input<string>? JarUri { get; set; }
 
-        /// <summary>
-        /// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
-        /// </summary>
         [Input("mainClassName")]
         public Input<string>? MainClassName { get; set; }
 
         [Input("parameters")]
         private InputList<string>? _parameters;
-
-        /// <summary>
-        /// (List) Parameters passed to the main method.
-        /// </summary>
         public InputList<string> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<string>());

@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsWorkspacesCloudResourceContainerGcp
     {
-        /// <summary>
-        /// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-        /// </summary>
         public readonly string ProjectId;
 
         [OutputConstructor]

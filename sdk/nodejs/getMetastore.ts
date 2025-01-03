@@ -6,46 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > **Note** This data source can only be used with an account-level provider!
- *
- * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
- *
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _authentication is not configured for provider_ errors.
- *
- * ## Example Usage
- *
- * MetastoreInfo response for a given metastore id
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
- *
- * const metastore = new aws.s3.BucketV2("metastore", {
- *     bucket: `${prefix}-metastore`,
- *     forceDestroy: true,
- * });
- * const thisMetastore = new databricks.Metastore("this", {
- *     name: "primary",
- *     storageRoot: pulumi.interpolate`s3://${metastore.id}/metastore`,
- *     owner: unityAdminGroup,
- *     forceDestroy: true,
- * });
- * const this = databricks.getMetastoreOutput({
- *     metastoreId: thisMetastore.id,
- * });
- * export const someMetastore = _this.apply(_this => _this.metastoreInfo);
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.getMetastores to get mapping of name to id of all metastores.
- * * databricks.Metastore to manage Metastores within Unity Catalog.
- * * databricks.Catalog to manage catalogs within Unity Catalog.
- */
 export function getMetastore(args?: GetMetastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoreResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -62,25 +22,10 @@ export function getMetastore(args?: GetMetastoreArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getMetastore.
  */
 export interface GetMetastoreArgs {
-    /**
-     * ID of the metastore
-     */
     id?: string;
-    /**
-     * ID of the metastore
-     */
     metastoreId?: string;
-    /**
-     * MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-     */
     metastoreInfo?: inputs.GetMetastoreMetastoreInfo;
-    /**
-     * Name of the metastore
-     */
     name?: string;
-    /**
-     * Region of the metastore
-     */
     region?: string;
 }
 
@@ -88,61 +33,12 @@ export interface GetMetastoreArgs {
  * A collection of values returned by getMetastore.
  */
 export interface GetMetastoreResult {
-    /**
-     * ID of the metastore
-     */
     readonly id: string;
     readonly metastoreId: string;
-    /**
-     * MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-     */
     readonly metastoreInfo: outputs.GetMetastoreMetastoreInfo;
-    /**
-     * Name of metastore.
-     */
     readonly name: string;
     readonly region: string;
 }
-/**
- * > **Note** This data source can only be used with an account-level provider!
- *
- * Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
- *
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _authentication is not configured for provider_ errors.
- *
- * ## Example Usage
- *
- * MetastoreInfo response for a given metastore id
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
- *
- * const metastore = new aws.s3.BucketV2("metastore", {
- *     bucket: `${prefix}-metastore`,
- *     forceDestroy: true,
- * });
- * const thisMetastore = new databricks.Metastore("this", {
- *     name: "primary",
- *     storageRoot: pulumi.interpolate`s3://${metastore.id}/metastore`,
- *     owner: unityAdminGroup,
- *     forceDestroy: true,
- * });
- * const this = databricks.getMetastoreOutput({
- *     metastoreId: thisMetastore.id,
- * });
- * export const someMetastore = _this.apply(_this => _this.metastoreInfo);
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.getMetastores to get mapping of name to id of all metastores.
- * * databricks.Metastore to manage Metastores within Unity Catalog.
- * * databricks.Catalog to manage catalogs within Unity Catalog.
- */
 export function getMetastoreOutput(args?: GetMetastoreOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetastoreResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -159,24 +55,9 @@ export function getMetastoreOutput(args?: GetMetastoreOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getMetastore.
  */
 export interface GetMetastoreOutputArgs {
-    /**
-     * ID of the metastore
-     */
     id?: pulumi.Input<string>;
-    /**
-     * ID of the metastore
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-     */
     metastoreInfo?: pulumi.Input<inputs.GetMetastoreMetastoreInfoArgs>;
-    /**
-     * Name of the metastore
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Region of the metastore
-     */
     region?: pulumi.Input<string>;
 }

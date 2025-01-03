@@ -13,21 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingAiGatewayGuardrailsInput
     {
-        /// <summary>
-        /// List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-        /// </summary>
         public readonly ImmutableArray<string> InvalidKeywords;
-        /// <summary>
-        /// Block with configuration for guardrail PII filter:
-        /// </summary>
         public readonly Outputs.ModelServingAiGatewayGuardrailsInputPii? Pii;
-        /// <summary>
-        /// the boolean flag that indicates whether the safety filter is enabled.
-        /// </summary>
         public readonly bool? Safety;
-        /// <summary>
-        /// The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-        /// </summary>
         public readonly ImmutableArray<string> ValidTopics;
 
         [OutputConstructor]

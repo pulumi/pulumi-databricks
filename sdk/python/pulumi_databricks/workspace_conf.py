@@ -22,7 +22,6 @@ class WorkspaceConfArgs:
                  custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a WorkspaceConf resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """
         if custom_config is not None:
             pulumi.set(__self__, "custom_config", custom_config)
@@ -30,9 +29,6 @@ class WorkspaceConfArgs:
     @property
     @pulumi.getter(name="customConfig")
     def custom_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-        """
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
@@ -46,7 +42,6 @@ class _WorkspaceConfState:
                  custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering WorkspaceConf resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """
         if custom_config is not None:
             pulumi.set(__self__, "custom_config", custom_config)
@@ -54,9 +49,6 @@ class _WorkspaceConfState:
     @property
     @pulumi.getter(name="customConfig")
     def custom_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-        """
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
@@ -72,38 +64,9 @@ class WorkspaceConf(pulumi.CustomResource):
                  custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        > This resource has an evolving API, which may change in future versions of the provider.
-
-        Manages workspace configuration for expert usage. Currently, more than one instance of resource can exist in Pulumi state, though there's no deterministic behavior, when they manage the same property. We strongly recommend to use a single `WorkspaceConf` per workspace.
-
-        > Deleting `WorkspaceConf` resources may fail depending on the configuration properties set, including but not limited to `enableIpAccessLists`, `enableGp3`, and `maxTokenLifetimeDays`. The provider will print a warning if this occurs. You can verify the workspace configuration by reviewing [the workspace settings in the UI](https://docs.databricks.com/en/admin/workspace-settings/index.html).
-
-        ## Example Usage
-
-        Allows specification of custom configuration properties for expert usage:
-
-        - `enableIpAccessLists` - enables the use of IpAccessList resources
-        - `maxTokenLifetimeDays` - (string) Maximum token lifetime of new tokens in days, as an integer. If zero, new tokens are permitted to have no lifetime limit. Negative numbers are unsupported. **WARNING:** This limit only applies to new tokens, so there may be tokens with lifetimes longer than this value, including unlimited lifetime. Such tokens may have been created before the current maximum token lifetime was set.
-        - `enableTokensConfig` - (boolean) Enable or disable personal access tokens for this workspace.
-        - `enableDeprecatedClusterNamedInitScripts` - (boolean) Enable or disable [legacy cluster-named init scripts](https://docs.databricks.com/clusters/init-scripts.html#disable-legacy-cluster-named-init-scripts-for-a-workspace) for this workspace.
-        - `enableDeprecatedGlobalInitScripts` - (boolean) Enable or disable [legacy global init scripts](https://docs.databricks.com/clusters/init-scripts.html#migrate-legacy-scripts) for this workspace.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.WorkspaceConf("this", custom_config={
-            "enableIpAccessLists": "true",
-        })
-        ```
-
-        ## Import
-
-        !> Importing this resource is not currently supported.
-
+        Create a WorkspaceConf resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """
         ...
     @overload
@@ -112,35 +75,7 @@ class WorkspaceConf(pulumi.CustomResource):
                  args: Optional[WorkspaceConfArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource has an evolving API, which may change in future versions of the provider.
-
-        Manages workspace configuration for expert usage. Currently, more than one instance of resource can exist in Pulumi state, though there's no deterministic behavior, when they manage the same property. We strongly recommend to use a single `WorkspaceConf` per workspace.
-
-        > Deleting `WorkspaceConf` resources may fail depending on the configuration properties set, including but not limited to `enableIpAccessLists`, `enableGp3`, and `maxTokenLifetimeDays`. The provider will print a warning if this occurs. You can verify the workspace configuration by reviewing [the workspace settings in the UI](https://docs.databricks.com/en/admin/workspace-settings/index.html).
-
-        ## Example Usage
-
-        Allows specification of custom configuration properties for expert usage:
-
-        - `enableIpAccessLists` - enables the use of IpAccessList resources
-        - `maxTokenLifetimeDays` - (string) Maximum token lifetime of new tokens in days, as an integer. If zero, new tokens are permitted to have no lifetime limit. Negative numbers are unsupported. **WARNING:** This limit only applies to new tokens, so there may be tokens with lifetimes longer than this value, including unlimited lifetime. Such tokens may have been created before the current maximum token lifetime was set.
-        - `enableTokensConfig` - (boolean) Enable or disable personal access tokens for this workspace.
-        - `enableDeprecatedClusterNamedInitScripts` - (boolean) Enable or disable [legacy cluster-named init scripts](https://docs.databricks.com/clusters/init-scripts.html#disable-legacy-cluster-named-init-scripts-for-a-workspace) for this workspace.
-        - `enableDeprecatedGlobalInitScripts` - (boolean) Enable or disable [legacy global init scripts](https://docs.databricks.com/clusters/init-scripts.html#migrate-legacy-scripts) for this workspace.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.WorkspaceConf("this", custom_config={
-            "enableIpAccessLists": "true",
-        })
-        ```
-
-        ## Import
-
-        !> Importing this resource is not currently supported.
-
+        Create a WorkspaceConf resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param WorkspaceConfArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -185,7 +120,6 @@ class WorkspaceConf(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_config: Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -197,8 +131,5 @@ class WorkspaceConf(pulumi.CustomResource):
     @property
     @pulumi.getter(name="customConfig")
     def custom_config(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-        """
         return pulumi.get(self, "custom_config")
 

@@ -26,7 +26,6 @@ class DefaultNamespaceSettingArgs:
                  setting_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DefaultNamespaceSetting resource.
-        :param pulumi.Input['DefaultNamespaceSettingNamespaceArgs'] namespace: The configuration details.
         """
         pulumi.set(__self__, "namespace", namespace)
         if etag is not None:
@@ -37,9 +36,6 @@ class DefaultNamespaceSettingArgs:
     @property
     @pulumi.getter
     def namespace(self) -> pulumi.Input['DefaultNamespaceSettingNamespaceArgs']:
-        """
-        The configuration details.
-        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -73,7 +69,6 @@ class _DefaultNamespaceSettingState:
                  setting_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DefaultNamespaceSetting resources.
-        :param pulumi.Input['DefaultNamespaceSettingNamespaceArgs'] namespace: The configuration details.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -94,9 +89,6 @@ class _DefaultNamespaceSettingState:
     @property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input['DefaultNamespaceSettingNamespaceArgs']]:
-        """
-        The configuration details.
-        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -123,39 +115,9 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
                  setting_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > This resource can only be used with a workspace-level provider!
-
-        The `DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
-        Setting the default catalog for the workspace determines the catalog that is used when queries do not reference
-        a fully qualified 3 level name. For example, if the default catalog is set to 'retail_prod' then a query
-        'SELECT * FROM myTable' would reference the object 'retail_prod.default.myTable'
-        (the schema 'default' is always assumed).
-        This setting requires a restart of clusters and SQL warehouses to take effect. Additionally, the default namespace only applies when using Unity Catalog-enabled compute.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.DefaultNamespaceSetting("this", namespace={
-            "value": "namespace_value",
-        })
-        ```
-
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global
-        ```
-
+        Create a DefaultNamespaceSetting resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']] namespace: The configuration details.
         """
         ...
     @overload
@@ -164,36 +126,7 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
                  args: DefaultNamespaceSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource can only be used with a workspace-level provider!
-
-        The `DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
-        Setting the default catalog for the workspace determines the catalog that is used when queries do not reference
-        a fully qualified 3 level name. For example, if the default catalog is set to 'retail_prod' then a query
-        'SELECT * FROM myTable' would reference the object 'retail_prod.default.myTable'
-        (the schema 'default' is always assumed).
-        This setting requires a restart of clusters and SQL warehouses to take effect. Additionally, the default namespace only applies when using Unity Catalog-enabled compute.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.DefaultNamespaceSetting("this", namespace={
-            "value": "namespace_value",
-        })
-        ```
-
-        ## Import
-
-        This resource can be imported by predefined name `global`:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global
-        ```
-
+        Create a DefaultNamespaceSetting resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DefaultNamespaceSettingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -246,7 +179,6 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DefaultNamespaceSettingNamespaceArgs', 'DefaultNamespaceSettingNamespaceArgsDict']] namespace: The configuration details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -265,9 +197,6 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
     @property
     @pulumi.getter
     def namespace(self) -> pulumi.Output['outputs.DefaultNamespaceSettingNamespace']:
-        """
-        The configuration details.
-        """
         return pulumi.get(self, "namespace")
 
     @property

@@ -12,15 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobEnvironmentArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
-        /// </summary>
         [Input("environmentKey", required: true)]
         public Input<string> EnvironmentKey { get; set; } = null!;
 
-        /// <summary>
-        /// block describing the Environment. Consists of following attributes:
-        /// </summary>
         [Input("spec")]
         public Input<Inputs.JobEnvironmentSpecArgs>? Spec { get; set; }
 

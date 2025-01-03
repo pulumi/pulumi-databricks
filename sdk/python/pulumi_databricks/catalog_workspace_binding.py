@@ -26,10 +26,6 @@ class CatalogWorkspaceBindingArgs:
                  workspace_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CatalogWorkspaceBinding resource.
-        :param pulumi.Input[str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
-        :param pulumi.Input[str] securable_name: Name of securable. Change forces creation of a new resource.
-        :param pulumi.Input[str] securable_type: Type of securable. Default to `catalog`. Change forces creation of a new resource.
-        :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
         if binding_type is not None:
             pulumi.set(__self__, "binding_type", binding_type)
@@ -48,9 +44,6 @@ class CatalogWorkspaceBindingArgs:
     @property
     @pulumi.getter(name="bindingType")
     def binding_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
-        """
         return pulumi.get(self, "binding_type")
 
     @binding_type.setter
@@ -70,9 +63,6 @@ class CatalogWorkspaceBindingArgs:
     @property
     @pulumi.getter(name="securableName")
     def securable_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of securable. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "securable_name")
 
     @securable_name.setter
@@ -82,9 +72,6 @@ class CatalogWorkspaceBindingArgs:
     @property
     @pulumi.getter(name="securableType")
     def securable_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Type of securable. Default to `catalog`. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "securable_type")
 
     @securable_type.setter
@@ -94,9 +81,6 @@ class CatalogWorkspaceBindingArgs:
     @property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the workspace. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
@@ -114,10 +98,6 @@ class _CatalogWorkspaceBindingState:
                  workspace_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CatalogWorkspaceBinding resources.
-        :param pulumi.Input[str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
-        :param pulumi.Input[str] securable_name: Name of securable. Change forces creation of a new resource.
-        :param pulumi.Input[str] securable_type: Type of securable. Default to `catalog`. Change forces creation of a new resource.
-        :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
         if binding_type is not None:
             pulumi.set(__self__, "binding_type", binding_type)
@@ -136,9 +116,6 @@ class _CatalogWorkspaceBindingState:
     @property
     @pulumi.getter(name="bindingType")
     def binding_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
-        """
         return pulumi.get(self, "binding_type")
 
     @binding_type.setter
@@ -158,9 +135,6 @@ class _CatalogWorkspaceBindingState:
     @property
     @pulumi.getter(name="securableName")
     def securable_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of securable. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "securable_name")
 
     @securable_name.setter
@@ -170,9 +144,6 @@ class _CatalogWorkspaceBindingState:
     @property
     @pulumi.getter(name="securableType")
     def securable_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Type of securable. Default to `catalog`. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "securable_type")
 
     @securable_type.setter
@@ -182,9 +153,6 @@ class _CatalogWorkspaceBindingState:
     @property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the workspace. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
@@ -204,44 +172,9 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
                  workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > This resource has been deprecated and will be removed soon. Please use the WorkspaceBinding resource instead.
-
-        If you use workspaces to isolate user data access, you may want to limit catalog access to specific workspaces in your account, also known as workspace-catalog binding
-
-        By default, Databricks assigns the catalog to all workspaces attached to the current metastore. By using `CatalogWorkspaceBinding`, the catalog will be unassigned from all workspaces and only assigned explicitly using this resource.
-
-        > To use this resource the catalog must have its isolation mode set to `ISOLATED` in the `Catalog` resource. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration).
-
-        > If the catalog's isolation mode was set to `ISOLATED` using Pulumi then the catalog will have been automatically bound to the workspace it was created from.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        sandbox = databricks.Catalog("sandbox",
-            name="sandbox",
-            isolation_mode="ISOLATED")
-        sandbox_catalog_workspace_binding = databricks.CatalogWorkspaceBinding("sandbox",
-            securable_name=sandbox.name,
-            workspace_id=other["workspaceId"])
-        ```
-
-        ## Import
-
-        This resource can be imported by using combination of workspace ID, securable type and name:
-
-        ```sh
-        $ pulumi import databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding this "<workspace_id>|<securable_type>|<securable_name>"
-        ```
-
+        Create a CatalogWorkspaceBinding resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
-        :param pulumi.Input[str] securable_name: Name of securable. Change forces creation of a new resource.
-        :param pulumi.Input[str] securable_type: Type of securable. Default to `catalog`. Change forces creation of a new resource.
-        :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
         ...
     @overload
@@ -250,38 +183,7 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
                  args: Optional[CatalogWorkspaceBindingArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource has been deprecated and will be removed soon. Please use the WorkspaceBinding resource instead.
-
-        If you use workspaces to isolate user data access, you may want to limit catalog access to specific workspaces in your account, also known as workspace-catalog binding
-
-        By default, Databricks assigns the catalog to all workspaces attached to the current metastore. By using `CatalogWorkspaceBinding`, the catalog will be unassigned from all workspaces and only assigned explicitly using this resource.
-
-        > To use this resource the catalog must have its isolation mode set to `ISOLATED` in the `Catalog` resource. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration).
-
-        > If the catalog's isolation mode was set to `ISOLATED` using Pulumi then the catalog will have been automatically bound to the workspace it was created from.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        sandbox = databricks.Catalog("sandbox",
-            name="sandbox",
-            isolation_mode="ISOLATED")
-        sandbox_catalog_workspace_binding = databricks.CatalogWorkspaceBinding("sandbox",
-            securable_name=sandbox.name,
-            workspace_id=other["workspaceId"])
-        ```
-
-        ## Import
-
-        This resource can be imported by using combination of workspace ID, securable type and name:
-
-        ```sh
-        $ pulumi import databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding this "<workspace_id>|<securable_type>|<securable_name>"
-        ```
-
+        Create a CatalogWorkspaceBinding resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param CatalogWorkspaceBindingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -338,10 +240,6 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
-        :param pulumi.Input[str] securable_name: Name of securable. Change forces creation of a new resource.
-        :param pulumi.Input[str] securable_type: Type of securable. Default to `catalog`. Change forces creation of a new resource.
-        :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -357,9 +255,6 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="bindingType")
     def binding_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
-        """
         return pulumi.get(self, "binding_type")
 
     @property
@@ -371,24 +266,15 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
     @property
     @pulumi.getter(name="securableName")
     def securable_name(self) -> pulumi.Output[str]:
-        """
-        Name of securable. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "securable_name")
 
     @property
     @pulumi.getter(name="securableType")
     def securable_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        Type of securable. Default to `catalog`. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "securable_type")
 
     @property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        ID of the workspace. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "workspace_id")
 

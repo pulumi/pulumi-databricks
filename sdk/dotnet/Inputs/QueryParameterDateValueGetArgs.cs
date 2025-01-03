@@ -12,21 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class QueryParameterDateValueGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Manually specified date-time value
-        /// </summary>
         [Input("dateValue")]
         public Input<string>? DateValue { get; set; }
 
-        /// <summary>
-        /// Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
-        /// </summary>
         [Input("dynamicDateValue")]
         public Input<string>? DynamicDateValue { get; set; }
 
-        /// <summary>
-        /// Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
-        /// </summary>
         [Input("precision")]
         public Input<string>? Precision { get; set; }
 

@@ -12,24 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class QueryParameterEnumValueArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// List of valid query parameter values, newline delimited.
-        /// </summary>
         [Input("enumOptions")]
         public Input<string>? EnumOptions { get; set; }
 
-        /// <summary>
-        /// If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
-        /// </summary>
         [Input("multiValuesOptions")]
         public Input<Inputs.QueryParameterEnumValueMultiValuesOptionsArgs>? MultiValuesOptions { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;
-
-        /// <summary>
-        /// List of selected query parameter values.
-        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

@@ -4,34 +4,10 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
- *
- * const thisBucketV2 = new aws.s3.BucketV2("this", {
- *     bucket: "<unique_bucket_name>",
- *     forceDestroy: true,
- * });
- * const this = databricks.getAwsBucketPolicyOutput({
- *     bucket: thisBucketV2.bucket,
- * });
- * const thisBucketPolicy = new aws.s3.BucketPolicy("this", {
- *     bucket: thisBucketV2.id,
- *     policy: _this.apply(_this => _this.json),
- * });
- * ```
- *
- * Bucket policy with full access:
- */
 export function getAwsBucketPolicy(args: GetAwsBucketPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsBucketPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", {
+        "awsPartition": args.awsPartition,
         "bucket": args.bucket,
         "databricksAccountId": args.databricksAccountId,
         "databricksE2AccountId": args.databricksE2AccountId,
@@ -43,18 +19,13 @@ export function getAwsBucketPolicy(args: GetAwsBucketPolicyArgs, opts?: pulumi.I
  * A collection of arguments for invoking getAwsBucketPolicy.
  */
 export interface GetAwsBucketPolicyArgs {
-    /**
-     * AWS S3 Bucket name for which to generate the policy document.
-     */
+    awsPartition?: string;
     bucket: string;
+    /**
+     * @deprecated databricks_account_id will be will be removed in the next major release.
+     */
     databricksAccountId?: string;
-    /**
-     * Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
-     */
     databricksE2AccountId?: string;
-    /**
-     * Data access role that can have full access for this bucket
-     */
     fullAccessRole?: string;
 }
 
@@ -62,7 +33,11 @@ export interface GetAwsBucketPolicyArgs {
  * A collection of values returned by getAwsBucketPolicy.
  */
 export interface GetAwsBucketPolicyResult {
+    readonly awsPartition?: string;
     readonly bucket: string;
+    /**
+     * @deprecated databricks_account_id will be will be removed in the next major release.
+     */
     readonly databricksAccountId?: string;
     readonly databricksE2AccountId?: string;
     readonly fullAccessRole?: string;
@@ -70,39 +45,12 @@ export interface GetAwsBucketPolicyResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * (Read-only) AWS IAM Policy JSON document to grant Databricks full access to bucket.
-     */
     readonly json: string;
 }
-/**
- * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
- *
- * const thisBucketV2 = new aws.s3.BucketV2("this", {
- *     bucket: "<unique_bucket_name>",
- *     forceDestroy: true,
- * });
- * const this = databricks.getAwsBucketPolicyOutput({
- *     bucket: thisBucketV2.bucket,
- * });
- * const thisBucketPolicy = new aws.s3.BucketPolicy("this", {
- *     bucket: thisBucketV2.id,
- *     policy: _this.apply(_this => _this.json),
- * });
- * ```
- *
- * Bucket policy with full access:
- */
 export function getAwsBucketPolicyOutput(args: GetAwsBucketPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsBucketPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", {
+        "awsPartition": args.awsPartition,
         "bucket": args.bucket,
         "databricksAccountId": args.databricksAccountId,
         "databricksE2AccountId": args.databricksE2AccountId,
@@ -114,17 +62,12 @@ export function getAwsBucketPolicyOutput(args: GetAwsBucketPolicyOutputArgs, opt
  * A collection of arguments for invoking getAwsBucketPolicy.
  */
 export interface GetAwsBucketPolicyOutputArgs {
-    /**
-     * AWS S3 Bucket name for which to generate the policy document.
-     */
+    awsPartition?: pulumi.Input<string>;
     bucket: pulumi.Input<string>;
+    /**
+     * @deprecated databricks_account_id will be will be removed in the next major release.
+     */
     databricksAccountId?: pulumi.Input<string>;
-    /**
-     * Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
-     */
     databricksE2AccountId?: pulumi.Input<string>;
-    /**
-     * Data access role that can have full access for this bucket
-     */
     fullAccessRole?: pulumi.Input<string>;
 }

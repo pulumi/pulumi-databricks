@@ -13,17 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskForEachTask
     {
-        /// <summary>
-        /// Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
-        /// </summary>
         public readonly int? Concurrency;
-        /// <summary>
-        /// (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
-        /// </summary>
         public readonly string Inputs;
-        /// <summary>
-        /// Task to run against the `inputs` list.
-        /// </summary>
         public readonly Outputs.JobTaskForEachTaskTask Task;
 
         [OutputConstructor]

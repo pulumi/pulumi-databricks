@@ -9,70 +9,36 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with databricks.Notebook and databricks.getNotebookPaths data sources.
-    /// 
-    /// ## Import
-    /// 
-    /// The resource notebook can be imported using notebook path
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/notebook:Notebook")]
     public partial class Notebook : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
-        /// </summary>
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
 
         [Output("format")]
         public Output<string?> Format { get; private set; } = null!;
 
-        /// <summary>
-        /// One of `SCALA`, `PYTHON`, `SQL`, `R`.
-        /// </summary>
         [Output("language")]
         public Output<string?> Language { get; private set; } = null!;
 
         [Output("md5")]
         public Output<string?> Md5 { get; private set; } = null!;
 
-        /// <summary>
-        /// Unique identifier for a NOTEBOOK
-        /// </summary>
         [Output("objectId")]
         public Output<int> ObjectId { get; private set; } = null!;
 
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
 
-        /// <summary>
-        /// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
-        /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
-        /// <summary>
-        /// Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
-        /// </summary>
         [Output("source")]
         public Output<string?> Source { get; private set; } = null!;
 
-        /// <summary>
-        /// Routable URL of the notebook
-        /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
-        /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-        /// </summary>
         [Output("workspacePath")]
         public Output<string> WorkspacePath { get; private set; } = null!;
 
@@ -122,42 +88,27 @@ namespace Pulumi.Databricks
 
     public sealed class NotebookArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
-        /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
         [Input("format")]
         public Input<string>? Format { get; set; }
 
-        /// <summary>
-        /// One of `SCALA`, `PYTHON`, `SQL`, `R`.
-        /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
 
         [Input("md5")]
         public Input<string>? Md5 { get; set; }
 
-        /// <summary>
-        /// Unique identifier for a NOTEBOOK
-        /// </summary>
         [Input("objectId")]
         public Input<int>? ObjectId { get; set; }
 
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
 
-        /// <summary>
-        /// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
-        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
-        /// <summary>
-        /// Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
-        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
@@ -169,54 +120,33 @@ namespace Pulumi.Databricks
 
     public sealed class NotebookState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
-        /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
         [Input("format")]
         public Input<string>? Format { get; set; }
 
-        /// <summary>
-        /// One of `SCALA`, `PYTHON`, `SQL`, `R`.
-        /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
 
         [Input("md5")]
         public Input<string>? Md5 { get; set; }
 
-        /// <summary>
-        /// Unique identifier for a NOTEBOOK
-        /// </summary>
         [Input("objectId")]
         public Input<int>? ObjectId { get; set; }
 
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
 
-        /// <summary>
-        /// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
-        /// <summary>
-        /// Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
-        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
-        /// <summary>
-        /// Routable URL of the notebook
-        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
-        /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-        /// </summary>
         [Input("workspacePath")]
         public Input<string>? WorkspacePath { get; set; }
 

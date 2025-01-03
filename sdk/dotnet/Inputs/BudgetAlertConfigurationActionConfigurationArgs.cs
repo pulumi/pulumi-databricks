@@ -15,15 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("actionConfigurationId")]
         public Input<string>? ActionConfigurationId { get; set; }
 
-        /// <summary>
-        /// The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
-        /// </summary>
         [Input("actionType")]
         public Input<string>? ActionType { get; set; }
 
-        /// <summary>
-        /// The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
-        /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 

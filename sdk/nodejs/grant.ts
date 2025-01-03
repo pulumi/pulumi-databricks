@@ -4,412 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > This article refers to the privileges and inheritance model in Privilege Model version 1.0. If you created your metastore during the public preview (before August 25, 2022), you can upgrade to Privilege Model version 1.0 following [Upgrade to privilege inheritance](https://docs.databricks.com/data-governance/unity-catalog/hive-metastore.html)
- *
- * > Most of Unity Catalog APIs are only accessible via **workspace-level APIs**. This design may change in the future. Account-level principal grants can be assigned with any valid workspace as the Unity Catalog is decoupled from specific workspaces. More information in [the official documentation](https://docs.databricks.com/data-governance/unity-catalog/index.html).
- *
- * In Unity Catalog all users initially have no access to data. Only Metastore Admins can create objects and can grant/revoke access on individual objects to users and groups. Every securable object in Unity Catalog has an owner. The owner can be any account-level user or group, called principals in general. The principal that creates an object becomes its owner. Owners receive `ALL_PRIVILEGES` on the securable object (e.g., `SELECT` and `MODIFY` on a table), as well as the permission to grant privileges to other principals.
- *
- * Securable objects are hierarchical and privileges are inherited downward. The highest level object that privileges are inherited from is the catalog. This means that granting a privilege on a catalog or schema automatically grants the privilege to all current and future objects within the catalog or schema. Privileges that are granted on a metastore are not inherited.
- *
- * Every `databricks.Grant` resource must have exactly one securable identifier and the following arguments:
- *
- * - `principal` - User name, group name or service principal application ID.
- * - `privileges` - One or more privileges that are specific to a securable type.
- *
- * For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
- *
- * Pulumi will handle any configuration drift for the specified principal on every `pulumi up` run, even when grants are changed outside of Pulumi state.
- *
- * See databricks.Grants for the list of privilege types that apply to each securable object.
- *
- * ## Metastore grants
- *
- * See databricks.Grants Metastore grants for the list of privileges that apply to Metastores.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sandboxDataEngineers = new databricks.Grant("sandbox_data_engineers", {
- *     metastore: "metastore_id",
- *     principal: "Data Engineers",
- *     privileges: [
- *         "CREATE_CATALOG",
- *         "CREATE_EXTERNAL_LOCATION",
- *     ],
- * });
- * const sandboxDataSharer = new databricks.Grant("sandbox_data_sharer", {
- *     metastore: "metastore_id",
- *     principal: "Data Sharer",
- *     privileges: [
- *         "CREATE_RECIPIENT",
- *         "CREATE_SHARE",
- *     ],
- * });
- * ```
- *
- * ## Catalog grants
- *
- * See databricks.Grants Catalog grants for the list of privileges that apply to Catalogs.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sandbox = new databricks.Catalog("sandbox", {
- *     name: "sandbox",
- *     comment: "this catalog is managed by terraform",
- *     properties: {
- *         purpose: "testing",
- *     },
- * });
- * const sandboxDataScientists = new databricks.Grant("sandbox_data_scientists", {
- *     catalog: sandbox.name,
- *     principal: "Data Scientists",
- *     privileges: [
- *         "USE_CATALOG",
- *         "USE_SCHEMA",
- *         "CREATE_TABLE",
- *         "SELECT",
- *     ],
- * });
- * const sandboxDataEngineers = new databricks.Grant("sandbox_data_engineers", {
- *     catalog: sandbox.name,
- *     principal: "Data Engineers",
- *     privileges: [
- *         "USE_CATALOG",
- *         "USE_SCHEMA",
- *         "CREATE_SCHEMA",
- *         "CREATE_TABLE",
- *         "MODIFY",
- *     ],
- * });
- * const sandboxDataAnalyst = new databricks.Grant("sandbox_data_analyst", {
- *     catalog: sandbox.name,
- *     principal: "Data Analyst",
- *     privileges: [
- *         "USE_CATALOG",
- *         "USE_SCHEMA",
- *         "SELECT",
- *     ],
- * });
- * ```
- *
- * ## Schema grants
- *
- * See databricks.Grants Schema grants for the list of privileges that apply to Schemas.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const things = new databricks.Schema("things", {
- *     catalogName: sandbox.id,
- *     name: "things",
- *     comment: "this schema is managed by terraform",
- *     properties: {
- *         kind: "various",
- *     },
- * });
- * const thingsGrant = new databricks.Grant("things", {
- *     schema: things.id,
- *     principal: "Data Engineers",
- *     privileges: [
- *         "USE_SCHEMA",
- *         "MODIFY",
- *     ],
- * });
- * ```
- *
- * ## Table grants
- *
- * See databricks.Grants Table grants for the list of privileges that apply to Tables.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const customersDataEngineers = new databricks.Grant("customers_data_engineers", {
- *     table: "main.reporting.customers",
- *     principal: "Data Engineers",
- *     privileges: [
- *         "MODIFY",
- *         "SELECT",
- *     ],
- * });
- * const customersDataAnalysts = new databricks.Grant("customers_data_analysts", {
- *     table: "main.reporting.customers",
- *     principal: "Data Analysts",
- *     privileges: ["SELECT"],
- * });
- * ```
- *
- * You can also apply grants dynamically with databricks.getTables data resource:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * export = async () => {
- *     const things = await databricks.getTables({
- *         catalogName: "sandbox",
- *         schemaName: "things",
- *     });
- *     const thingsGrant: databricks.Grant[] = [];
- *     for (const range of things.ids.map((v, k) => ({key: k, value: v}))) {
- *         thingsGrant.push(new databricks.Grant(`things-${range.key}`, {
- *             table: range.value,
- *             principal: "sensitive",
- *             privileges: [
- *                 "SELECT",
- *                 "MODIFY",
- *             ],
- *         }));
- *     }
- * }
- * ```
- *
- * ## View grants
- *
- * See databricks.Grants View grants for the list of privileges that apply to Views.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const customer360 = new databricks.Grant("customer360", {
- *     table: "main.reporting.customer360",
- *     principal: "Data Analysts",
- *     privileges: ["SELECT"],
- * });
- * ```
- *
- * You can also apply grants dynamically with databricks.getViews data resource:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * export = async () => {
- *     const customers = await databricks.getViews({
- *         catalogName: "main",
- *         schemaName: "customers",
- *     });
- *     const customersGrant: databricks.Grant[] = [];
- *     for (const range of customers.ids.map((v, k) => ({key: k, value: v}))) {
- *         customersGrant.push(new databricks.Grant(`customers-${range.key}`, {
- *             table: range.value,
- *             principal: "sensitive",
- *             privileges: [
- *                 "SELECT",
- *                 "MODIFY",
- *             ],
- *         }));
- *     }
- * }
- * ```
- *
- * ## Volume grants
- *
- * See databricks.Grants Volume grants for the list of privileges that apply to Volumes.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const _this = new databricks.Volume("this", {
- *     name: "quickstart_volume",
- *     catalogName: sandbox.name,
- *     schemaName: things.name,
- *     volumeType: "EXTERNAL",
- *     storageLocation: some.url,
- *     comment: "this volume is managed by terraform",
- * });
- * const volume = new databricks.Grant("volume", {
- *     volume: _this.id,
- *     principal: "Data Engineers",
- *     privileges: ["WRITE_VOLUME"],
- * });
- * ```
- *
- * ## Registered model grants
- *
- * See databricks.Grants Registered model grants for the list of privileges that apply to Registered models.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const customersDataEngineers = new databricks.Grant("customers_data_engineers", {
- *     model: "main.reporting.customer_model",
- *     principal: "Data Engineers",
- *     privileges: [
- *         "APPLY_TAG",
- *         "EXECUTE",
- *     ],
- * });
- * const customersDataAnalysts = new databricks.Grant("customers_data_analysts", {
- *     model: "main.reporting.customer_model",
- *     principal: "Data Analysts",
- *     privileges: ["EXECUTE"],
- * });
- * ```
- *
- * ## Function grants
- *
- * See databricks.Grants Function grants for the list of privileges that apply to Registered models.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const udfDataEngineers = new databricks.Grant("udf_data_engineers", {
- *     "function": "main.reporting.udf",
- *     principal: "Data Engineers",
- *     privileges: ["EXECUTE"],
- * });
- * const udfDataAnalysts = new databricks.Grant("udf_data_analysts", {
- *     "function": "main.reporting.udf",
- *     principal: "Data Analysts",
- *     privileges: ["EXECUTE"],
- * });
- * ```
- *
- * ## Storage credential grants
- *
- * See databricks.Grants Storage credential grants for the list of privileges that apply to Storage credentials.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const external = new databricks.StorageCredential("external", {
- *     name: externalDataAccess.name,
- *     awsIamRole: {
- *         roleArn: externalDataAccess.arn,
- *     },
- *     comment: "Managed by TF",
- * });
- * const externalCreds = new databricks.Grant("external_creds", {
- *     storageCredential: external.id,
- *     principal: "Data Engineers",
- *     privileges: ["CREATE_EXTERNAL_TABLE"],
- * });
- * ```
- *
- * ## External location grants
- *
- * See databricks.Grants External location grants for the list of privileges that apply to External locations.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const some = new databricks.ExternalLocation("some", {
- *     name: "external",
- *     url: `s3://${externalAwsS3Bucket.id}/some`,
- *     credentialName: external.id,
- *     comment: "Managed by TF",
- * });
- * const someDataEngineers = new databricks.Grant("some_data_engineers", {
- *     externalLocation: some.id,
- *     principal: "Data Engineers",
- *     privileges: [
- *         "CREATE_EXTERNAL_TABLE",
- *         "READ_FILES",
- *     ],
- * });
- * const someServicePrincipal = new databricks.Grant("some_service_principal", {
- *     externalLocation: some.id,
- *     principal: mySp.applicationId,
- *     privileges: [
- *         "USE_SCHEMA",
- *         "MODIFY",
- *     ],
- * });
- * const someGroup = new databricks.Grant("some_group", {
- *     externalLocation: some.id,
- *     principal: myGroup.displayName,
- *     privileges: [
- *         "USE_SCHEMA",
- *         "MODIFY",
- *     ],
- * });
- * const someUser = new databricks.Grant("some_user", {
- *     externalLocation: some.id,
- *     principal: myUser.userName,
- *     privileges: [
- *         "USE_SCHEMA",
- *         "MODIFY",
- *     ],
- * });
- * ```
- *
- * ## Connection grants
- *
- * See databricks.Grants Connection grants for the list of privileges that apply to Connections.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const mysql = new databricks.Connection("mysql", {
- *     name: "mysql_connection",
- *     connectionType: "MYSQL",
- *     comment: "this is a connection to mysql db",
- *     options: {
- *         host: "test.mysql.database.azure.com",
- *         port: "3306",
- *         user: "user",
- *         password: "password",
- *     },
- *     properties: {
- *         purpose: "testing",
- *     },
- * });
- * const some = new databricks.Grant("some", {
- *     foreignConnection: mysql.name,
- *     principal: "Data Engineers",
- *     privileges: [
- *         "CREATE_FOREIGN_CATALOG",
- *         "USE_CONNECTION",
- *     ],
- * });
- * ```
- *
- * ## Delta Sharing share grants
- *
- * See databricks.Grants Delta Sharing share grants for the list of privileges that apply to Delta Sharing shares.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const some = new databricks.Share("some", {name: "my_share"});
- * const someRecipient = new databricks.Recipient("some", {name: "my_recipient"});
- * const someGrant = new databricks.Grant("some", {
- *     share: some.name,
- *     principal: someRecipient.name,
- *     privileges: ["SELECT"],
- * });
- * ```
- *
- * ## Other access control
- *
- * You can control Databricks General Permissions through databricks.Permissions resource.
- *
- * ## Import
- *
- * The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...), it's name and `principal`:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/grant:Grant this catalog/abc/user_name
- * ```
- */
 export class Grant extends pulumi.CustomResource {
     /**
      * Get an existing Grant resource's state with the given name, ID, and optional extra
@@ -439,6 +33,7 @@ export class Grant extends pulumi.CustomResource {
     }
 
     public readonly catalog!: pulumi.Output<string | undefined>;
+    public readonly credential!: pulumi.Output<string | undefined>;
     public readonly externalLocation!: pulumi.Output<string | undefined>;
     public readonly foreignConnection!: pulumi.Output<string | undefined>;
     public readonly function!: pulumi.Output<string | undefined>;
@@ -468,6 +63,7 @@ export class Grant extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GrantState | undefined;
             resourceInputs["catalog"] = state ? state.catalog : undefined;
+            resourceInputs["credential"] = state ? state.credential : undefined;
             resourceInputs["externalLocation"] = state ? state.externalLocation : undefined;
             resourceInputs["foreignConnection"] = state ? state.foreignConnection : undefined;
             resourceInputs["function"] = state ? state.function : undefined;
@@ -491,6 +87,7 @@ export class Grant extends pulumi.CustomResource {
                 throw new Error("Missing required property 'privileges'");
             }
             resourceInputs["catalog"] = args ? args.catalog : undefined;
+            resourceInputs["credential"] = args ? args.credential : undefined;
             resourceInputs["externalLocation"] = args ? args.externalLocation : undefined;
             resourceInputs["foreignConnection"] = args ? args.foreignConnection : undefined;
             resourceInputs["function"] = args ? args.function : undefined;
@@ -516,6 +113,7 @@ export class Grant extends pulumi.CustomResource {
  */
 export interface GrantState {
     catalog?: pulumi.Input<string>;
+    credential?: pulumi.Input<string>;
     externalLocation?: pulumi.Input<string>;
     foreignConnection?: pulumi.Input<string>;
     function?: pulumi.Input<string>;
@@ -537,6 +135,7 @@ export interface GrantState {
  */
 export interface GrantArgs {
     catalog?: pulumi.Input<string>;
+    credential?: pulumi.Input<string>;
     externalLocation?: pulumi.Input<string>;
     foreignConnection?: pulumi.Input<string>;
     function?: pulumi.Input<string>;

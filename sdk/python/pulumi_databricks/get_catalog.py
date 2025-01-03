@@ -42,25 +42,16 @@ class GetCatalogResult:
     @property
     @pulumi.getter(name="catalogInfo")
     def catalog_info(self) -> 'outputs.GetCatalogCatalogInfoResult':
-        """
-        the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
-        """
         return pulumi.get(self, "catalog_info")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        same as the `name`
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the catalog
-        """
         return pulumi.get(self, "name")
 
 
@@ -80,40 +71,7 @@ def get_catalog(catalog_info: Optional[Union['GetCatalogCatalogInfoArgs', 'GetCa
                 name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogResult:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use get_catalogs to retrieve IDs of multiple catalogs from Unity Catalog
-
-    ## Example Usage
-
-    Read  on a specific catalog `test`:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    test = databricks.get_catalog(name="test")
-    things = databricks.Grants("things",
-        catalog=test.name,
-        grants=[{
-            "principal": "sensitive",
-            "privileges": ["USE_CATALOG"],
-        }])
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Grant to manage grants within Unity Catalog.
-    * get_catalogs to list all catalogs within Unity Catalog metastore.
-
-
-    :param Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict'] catalog_info: the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
-    :param str id: same as the `name`
-    :param str name: name of the catalog
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['catalogInfo'] = catalog_info
@@ -131,40 +89,7 @@ def get_catalog_output(catalog_info: Optional[pulumi.Input[Optional[Union['GetCa
                        name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogResult]:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use get_catalogs to retrieve IDs of multiple catalogs from Unity Catalog
-
-    ## Example Usage
-
-    Read  on a specific catalog `test`:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    test = databricks.get_catalog(name="test")
-    things = databricks.Grants("things",
-        catalog=test.name,
-        grants=[{
-            "principal": "sensitive",
-            "privileges": ["USE_CATALOG"],
-        }])
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Grant to manage grants within Unity Catalog.
-    * get_catalogs to list all catalogs within Unity Catalog metastore.
-
-
-    :param Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict'] catalog_info: the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
-    :param str id: same as the `name`
-    :param str name: name of the catalog
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['catalogInfo'] = catalog_info

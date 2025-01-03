@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AlertConditionOperandGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Block describing the column from the query result to use for comparison in alert evaluation:
-        /// </summary>
         [Input("column", required: true)]
         public Input<Inputs.AlertConditionOperandColumnGetArgs> Column { get; set; } = null!;
 

@@ -4,47 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > This resource can only be used with a workspace-level provider!
- *
- * This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const _this = new databricks.RegisteredModel("this", {
- *     name: "my_model",
- *     catalogName: "main",
- *     schemaName: "default",
- * });
- * ```
- *
- * ## Access Control
- *
- * * databricks.Grants can be used to grant principals `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges.
- *
- * ## Related Resources
- *
- * The following resources are often used in the same context:
- *
- * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
- * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
- * * databricks.Schema to manage schemas within Unity Catalog.
- * * databricks.Catalog to manage catalogs within Unity Catalog.
- *
- * ## Import
- *
- * The registered model resource can be imported using the full (3-level) name of the model.
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>
- * ```
- */
 export class RegisteredModel extends pulumi.CustomResource {
     /**
      * Get an existing RegisteredModel resource's state with the given name, ID, and optional extra
@@ -73,29 +32,11 @@ export class RegisteredModel extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegisteredModel.__pulumiType;
     }
 
-    /**
-     * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
-     */
     public readonly catalogName!: pulumi.Output<string>;
-    /**
-     * The comment attached to the registered model.
-     */
     public readonly comment!: pulumi.Output<string | undefined>;
-    /**
-     * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Name of the registered model owner.
-     */
     public readonly owner!: pulumi.Output<string>;
-    /**
-     * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-     */
     public readonly schemaName!: pulumi.Output<string>;
-    /**
-     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
-     */
     public readonly storageLocation!: pulumi.Output<string>;
 
     /**
@@ -141,29 +82,11 @@ export class RegisteredModel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegisteredModel resources.
  */
 export interface RegisteredModelState {
-    /**
-     * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
-     */
     catalogName?: pulumi.Input<string>;
-    /**
-     * The comment attached to the registered model.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Name of the registered model owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-     */
     schemaName?: pulumi.Input<string>;
-    /**
-     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
-     */
     storageLocation?: pulumi.Input<string>;
 }
 
@@ -171,28 +94,10 @@ export interface RegisteredModelState {
  * The set of arguments for constructing a RegisteredModel resource.
  */
 export interface RegisteredModelArgs {
-    /**
-     * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
-     */
     catalogName: pulumi.Input<string>;
-    /**
-     * The comment attached to the registered model.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Name of the registered model owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-     */
     schemaName: pulumi.Input<string>;
-    /**
-     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
-     */
     storageLocation?: pulumi.Input<string>;
 }

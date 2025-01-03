@@ -14,9 +14,6 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobNewClusterDockerImage
     {
         public readonly Outputs.JobNewClusterDockerImageBasicAuth? BasicAuth;
-        /// <summary>
-        /// URL of the job on the given workspace
-        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

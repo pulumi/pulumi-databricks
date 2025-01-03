@@ -12,18 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetStorageCredentialStorageCredentialInfoAzureServicePrincipalInputArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The application ID of the application registration within the referenced AAD tenant
-        /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
 
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 
-        /// <summary>
-        /// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-        /// </summary>
         [Input("directoryId", required: true)]
         public Input<string> DirectoryId { get; set; } = null!;
 

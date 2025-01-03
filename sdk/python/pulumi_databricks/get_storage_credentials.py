@@ -45,9 +45,6 @@ class GetStorageCredentialsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
-        """
-        List of names of StorageCredential in the metastore
-        """
         return pulumi.get(self, "names")
 
 
@@ -64,31 +61,7 @@ class AwaitableGetStorageCredentialsResult(GetStorageCredentialsResult):
 def get_storage_credentials(names: Optional[Sequence[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageCredentialsResult:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
-    Retrieves a list of StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
-
-    ## Example Usage
-
-    List all storage credentials in the metastore
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    all = databricks.get_storage_credentials()
-    pulumi.export("allStorageCredentials", all.names)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * StorageCredential to get information about a single credential
-    * StorageCredential to manage Storage Credentials within Unity Catalog.
-
-
-    :param Sequence[str] names: List of names of StorageCredential in the metastore
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['names'] = names
@@ -101,31 +74,7 @@ def get_storage_credentials(names: Optional[Sequence[str]] = None,
 def get_storage_credentials_output(names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageCredentialsResult]:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
-    Retrieves a list of StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
-
-    ## Example Usage
-
-    List all storage credentials in the metastore
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    all = databricks.get_storage_credentials()
-    pulumi.export("allStorageCredentials", all.names)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * StorageCredential to get information about a single credential
-    * StorageCredential to manage Storage Credentials within Unity Catalog.
-
-
-    :param Sequence[str] names: List of names of StorageCredential in the metastore
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['names'] = names

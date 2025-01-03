@@ -15,9 +15,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("servedModelName", required: true)]
         public Input<string> ServedModelName { get; set; } = null!;
 
-        /// <summary>
-        /// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-        /// </summary>
         [Input("trafficPercentage", required: true)]
         public Input<int> TrafficPercentage { get; set; } = null!;
 

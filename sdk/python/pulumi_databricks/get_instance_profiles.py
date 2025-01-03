@@ -47,9 +47,6 @@ class GetInstanceProfilesResult:
     @property
     @pulumi.getter(name="instanceProfiles")
     def instance_profiles(self) -> Sequence['outputs.GetInstanceProfilesInstanceProfileResult']:
-        """
-        Set of objects for a databricks_instance_profile. This contains the following attributes:
-        """
         return pulumi.get(self, "instance_profiles")
 
 
@@ -66,22 +63,7 @@ class AwaitableGetInstanceProfilesResult(GetInstanceProfilesResult):
 def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceProfilesResult:
     """
-    Lists all available databricks_instance_profiles.
-
-    ## Example Usage
-
-    Get all instance profiles:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    all = databricks.get_instance_profiles()
-    pulumi.export("allInstanceProfiles", all.instance_profiles)
-    ```
-
-
-    :param Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceProfiles'] = instance_profiles
@@ -94,22 +76,7 @@ def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanc
 def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceProfilesResult]:
     """
-    Lists all available databricks_instance_profiles.
-
-    ## Example Usage
-
-    Get all instance profiles:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    all = databricks.get_instance_profiles()
-    pulumi.export("allInstanceProfiles", all.instance_profiles)
-    ```
-
-
-    :param Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceProfiles'] = instance_profiles

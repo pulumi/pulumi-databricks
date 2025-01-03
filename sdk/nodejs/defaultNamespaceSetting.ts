@@ -6,37 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > This resource can only be used with a workspace-level provider!
- *
- * The `databricks.DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
- * Setting the default catalog for the workspace determines the catalog that is used when queries do not reference
- * a fully qualified 3 level name. For example, if the default catalog is set to 'retail_prod' then a query
- * 'SELECT * FROM myTable' would reference the object 'retail_prod.default.myTable'
- * (the schema 'default' is always assumed).
- * This setting requires a restart of clusters and SQL warehouses to take effect. Additionally, the default namespace only applies when using Unity Catalog-enabled compute.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const _this = new databricks.DefaultNamespaceSetting("this", {namespace: {
- *     value: "namespace_value",
- * }});
- * ```
- *
- * ## Import
- *
- * This resource can be imported by predefined name `global`:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global
- * ```
- */
 export class DefaultNamespaceSetting extends pulumi.CustomResource {
     /**
      * Get an existing DefaultNamespaceSetting resource's state with the given name, ID, and optional extra
@@ -66,9 +35,6 @@ export class DefaultNamespaceSetting extends pulumi.CustomResource {
     }
 
     public readonly etag!: pulumi.Output<string>;
-    /**
-     * The configuration details.
-     */
     public readonly namespace!: pulumi.Output<outputs.DefaultNamespaceSettingNamespace>;
     public readonly settingName!: pulumi.Output<string>;
 
@@ -107,9 +73,6 @@ export class DefaultNamespaceSetting extends pulumi.CustomResource {
  */
 export interface DefaultNamespaceSettingState {
     etag?: pulumi.Input<string>;
-    /**
-     * The configuration details.
-     */
     namespace?: pulumi.Input<inputs.DefaultNamespaceSettingNamespace>;
     settingName?: pulumi.Input<string>;
 }
@@ -119,9 +82,6 @@ export interface DefaultNamespaceSettingState {
  */
 export interface DefaultNamespaceSettingArgs {
     etag?: pulumi.Input<string>;
-    /**
-     * The configuration details.
-     */
     namespace: pulumi.Input<inputs.DefaultNamespaceSettingNamespace>;
     settingName?: pulumi.Input<string>;
 }

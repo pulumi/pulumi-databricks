@@ -12,45 +12,26 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskSqlTaskArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// block consisting of following fields:
-        /// </summary>
         [Input("alert")]
         public Input<Inputs.JobTaskForEachTaskTaskSqlTaskAlertArgs>? Alert { get; set; }
 
-        /// <summary>
-        /// block consisting of following fields:
-        /// </summary>
         [Input("dashboard")]
         public Input<Inputs.JobTaskForEachTaskTaskSqlTaskDashboardArgs>? Dashboard { get; set; }
 
-        /// <summary>
-        /// block consisting of single string fields:
-        /// </summary>
         [Input("file")]
         public Input<Inputs.JobTaskForEachTaskTaskSqlTaskFileArgs>? File { get; set; }
 
         [Input("parameters")]
         private InputMap<string>? _parameters;
-
-        /// <summary>
-        /// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-        /// </summary>
         public InputMap<string> Parameters
         {
             get => _parameters ?? (_parameters = new InputMap<string>());
             set => _parameters = value;
         }
 
-        /// <summary>
-        /// block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
-        /// </summary>
         [Input("query")]
         public Input<Inputs.JobTaskForEachTaskTaskSqlTaskQueryArgs>? Query { get; set; }
 
-        /// <summary>
-        /// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
-        /// </summary>
         [Input("warehouseId", required: true)]
         public Input<string> WarehouseId { get; set; } = null!;
 

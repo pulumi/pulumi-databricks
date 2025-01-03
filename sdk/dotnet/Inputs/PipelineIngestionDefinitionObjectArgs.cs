@@ -15,9 +15,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("report")]
         public Input<Inputs.PipelineIngestionDefinitionObjectReportArgs>? Report { get; set; }
 
-        /// <summary>
-        /// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
-        /// </summary>
         [Input("schema")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaArgs>? Schema { get; set; }
 

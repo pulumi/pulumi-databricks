@@ -20,22 +20,10 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.SqlQueryParameterDatetimesec? Datetimesec;
         public readonly Outputs.SqlQueryParameterDatetimesecRange? DatetimesecRange;
         public readonly Outputs.SqlQueryParameterEnum? Enum;
-        /// <summary>
-        /// The literal parameter marker that appears between double curly braces in the query text.
-        /// Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
-        /// 
-        /// For `text`, `number`, `date`, `datetime`, `datetimesec` block
-        /// </summary>
         public readonly string Name;
         public readonly Outputs.SqlQueryParameterNumber? Number;
-        /// <summary>
-        /// The text of the query to be run.
-        /// </summary>
         public readonly Outputs.SqlQueryParameterQuery? Query;
         public readonly Outputs.SqlQueryParameterText? Text;
-        /// <summary>
-        /// The text displayed in a parameter picking widget.
-        /// </summary>
         public readonly string? Title;
 
         [OutputConstructor]

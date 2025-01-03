@@ -75,9 +75,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("minRetryIntervalMillis")]
         public int? MinRetryIntervalMillis { get; set; }
 
-        /// <summary>
-        /// the job name of databricks.Job if the resource was matched by id.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 

@@ -23,8 +23,6 @@ class SystemSchemaArgs:
                  state: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SystemSchema resource.
-        :param pulumi.Input[str] schema: name of the system schema.
-        :param pulumi.Input[str] state: The current state of enablement for the system schema.
         """
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
@@ -34,9 +32,6 @@ class SystemSchemaArgs:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
-        """
-        name of the system schema.
-        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -46,9 +41,6 @@ class SystemSchemaArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
-        """
-        The current state of enablement for the system schema.
-        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -65,9 +57,6 @@ class _SystemSchemaState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SystemSchema resources.
-        :param pulumi.Input[str] full_name: the full name of the system schema, in form of `system.<schema>`.
-        :param pulumi.Input[str] schema: name of the system schema.
-        :param pulumi.Input[str] state: The current state of enablement for the system schema.
         """
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
@@ -81,9 +70,6 @@ class _SystemSchemaState:
     @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        the full name of the system schema, in form of `system.<schema>`.
-        """
         return pulumi.get(self, "full_name")
 
     @full_name.setter
@@ -102,9 +88,6 @@ class _SystemSchemaState:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
-        """
-        name of the system schema.
-        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -114,9 +97,6 @@ class _SystemSchemaState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
-        """
-        The current state of enablement for the system schema.
-        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -133,37 +113,9 @@ class SystemSchema(pulumi.CustomResource):
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-
-        > This resource can only be used with a workspace-level provider!
-
-        Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
-
-        ## Example Usage
-
-        Enable the system schema `access`
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.SystemSchema("this", schema="access")
-        ```
-
-        ## Import
-
-        This resource can be imported by the metastore id and schema name
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/systemSchema:SystemSchema this '<metastore_id>|<schema_name>'
-        ```
-
+        Create a SystemSchema resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] schema: name of the system schema.
-        :param pulumi.Input[str] state: The current state of enablement for the system schema.
         """
         ...
     @overload
@@ -172,33 +124,7 @@ class SystemSchema(pulumi.CustomResource):
                  args: Optional[SystemSchemaArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-
-        > This resource can only be used with a workspace-level provider!
-
-        Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
-
-        ## Example Usage
-
-        Enable the system schema `access`
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.SystemSchema("this", schema="access")
-        ```
-
-        ## Import
-
-        This resource can be imported by the metastore id and schema name
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/systemSchema:SystemSchema this '<metastore_id>|<schema_name>'
-        ```
-
+        Create a SystemSchema resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SystemSchemaArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -250,9 +176,6 @@ class SystemSchema(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] full_name: the full name of the system schema, in form of `system.<schema>`.
-        :param pulumi.Input[str] schema: name of the system schema.
-        :param pulumi.Input[str] state: The current state of enablement for the system schema.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -267,9 +190,6 @@ class SystemSchema(pulumi.CustomResource):
     @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Output[str]:
-        """
-        the full name of the system schema, in form of `system.<schema>`.
-        """
         return pulumi.get(self, "full_name")
 
     @property
@@ -280,16 +200,10 @@ class SystemSchema(pulumi.CustomResource):
     @property
     @pulumi.getter
     def schema(self) -> pulumi.Output[Optional[str]]:
-        """
-        name of the system schema.
-        """
         return pulumi.get(self, "schema")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
-        """
-        The current state of enablement for the system schema.
-        """
         return pulumi.get(self, "state")
 

@@ -4924,7 +4924,7 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
-                                                        "input": {
+                                                        "input_properties": {
                                                             "maxItemsOne": false,
                                                             "elem": {
                                                                 "fields": {

@@ -15,9 +15,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("destinationId")]
         public Input<string>? DestinationId { get; set; }
 
-        /// <summary>
-        /// The email of an active workspace user. Non-admin users can only set this field to their own email.
-        /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
 

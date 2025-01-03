@@ -211,16 +211,7 @@ class SqlVisualization(pulumi.CustomResource):
                  visualization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Import
-
-        You can import a `databricks_sql_visualization` resource with ID like the following:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlVisualization:SqlVisualization this <query-id>/<visualization-id>
-        ```
-
+        Create a SqlVisualization resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -231,16 +222,7 @@ class SqlVisualization(pulumi.CustomResource):
                  args: SqlVisualizationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
-
-        You can import a `databricks_sql_visualization` resource with ID like the following:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlVisualization:SqlVisualization this <query-id>/<visualization-id>
-        ```
-
+        Create a SqlVisualization resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SqlVisualizationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

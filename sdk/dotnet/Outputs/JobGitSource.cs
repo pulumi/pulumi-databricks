@@ -13,27 +13,12 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobGitSource
     {
-        /// <summary>
-        /// name of the Git branch to use. Conflicts with `tag` and `commit`.
-        /// </summary>
         public readonly string? Branch;
-        /// <summary>
-        /// hash of Git commit to use. Conflicts with `branch` and `tag`.
-        /// </summary>
         public readonly string? Commit;
         public readonly Outputs.JobGitSourceGitSnapshot? GitSnapshot;
         public readonly Outputs.JobGitSourceJobSource? JobSource;
-        /// <summary>
-        /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
-        /// </summary>
         public readonly string? Provider;
-        /// <summary>
-        /// name of the Git branch to use. Conflicts with `branch` and `commit`.
-        /// </summary>
         public readonly string? Tag;
-        /// <summary>
-        /// URL of the Git repository to use.
-        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

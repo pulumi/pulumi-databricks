@@ -42,25 +42,16 @@ class GetVolumeResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        the name of the volume
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="volumeInfo")
     def volume_info(self) -> 'outputs.GetVolumeVolumeInfoResult':
-        """
-        `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-        """
         return pulumi.get(self, "volume_info")
 
 
@@ -80,43 +71,7 @@ def get_volume(id: Optional[str] = None,
                volume_info: Optional[Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict']] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
-    Retrieves details about Volume that was created by Pulumi or manually.
-    A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using get_volumes data source.
-
-    ## Example Usage
-
-    * Retrieve details of all volumes in in a _things_ Schema of a  _sandbox_ databricks_catalog:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    all = databricks.get_volumes(catalog_name="sandbox",
-        schema_name="things")
-    this = {__key: databricks.get_volume(name=__value) for __key, __value in all.ids}
-    ```
-
-    * Search for a specific volume by its fully qualified name
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    this = databricks.get_volume(name="catalog.schema.volume")
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Volume to manage volumes within Unity Catalog.
-    * Schema to manage schemas within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
-
-
-    :param str id: ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
-    :param str name: a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-    :param Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict'] volume_info: `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -134,43 +89,7 @@ def get_volume_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                       volume_info: Optional[pulumi.Input[Optional[Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict']]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeResult]:
     """
-    Retrieves details about Volume that was created by Pulumi or manually.
-    A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using get_volumes data source.
-
-    ## Example Usage
-
-    * Retrieve details of all volumes in in a _things_ Schema of a  _sandbox_ databricks_catalog:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    all = databricks.get_volumes(catalog_name="sandbox",
-        schema_name="things")
-    this = {__key: databricks.get_volume(name=__value) for __key, __value in all.ids}
-    ```
-
-    * Search for a specific volume by its fully qualified name
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    this = databricks.get_volume(name="catalog.schema.volume")
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Volume to manage volumes within Unity Catalog.
-    * Schema to manage schemas within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
-
-
-    :param str id: ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
-    :param str name: a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-    :param Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict'] volume_info: `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

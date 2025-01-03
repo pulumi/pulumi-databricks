@@ -12,69 +12,36 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// AI21Labs Config
-        /// </summary>
         [Input("ai21labsConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelAi21labsConfigArgs>? Ai21labsConfig { get; set; }
 
-        /// <summary>
-        /// Amazon Bedrock Config
-        /// </summary>
         [Input("amazonBedrockConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs>? AmazonBedrockConfig { get; set; }
 
-        /// <summary>
-        /// Anthropic Config
-        /// </summary>
         [Input("anthropicConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelAnthropicConfigArgs>? AnthropicConfig { get; set; }
 
-        /// <summary>
-        /// Cohere Config
-        /// </summary>
         [Input("cohereConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelCohereConfigArgs>? CohereConfig { get; set; }
 
-        /// <summary>
-        /// Databricks Model Serving Config
-        /// </summary>
         [Input("databricksModelServingConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs>? DatabricksModelServingConfig { get; set; }
 
-        /// <summary>
-        /// Google Cloud Vertex AI Config.
-        /// </summary>
         [Input("googleCloudVertexAiConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs>? GoogleCloudVertexAiConfig { get; set; }
 
-        /// <summary>
-        /// The name of the external model.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// OpenAI Config
-        /// </summary>
         [Input("openaiConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelOpenaiConfigArgs>? OpenaiConfig { get; set; }
 
-        /// <summary>
-        /// PaLM Config
-        /// </summary>
         [Input("palmConfig")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelPalmConfigArgs>? PalmConfig { get; set; }
 
-        /// <summary>
-        /// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
-        /// </summary>
         [Input("provider", required: true)]
         public Input<string> Provider { get; set; } = null!;
 
-        /// <summary>
-        /// The task type of the external model.
-        /// </summary>
         [Input("task", required: true)]
         public Input<string> Task { get; set; } = null!;
 

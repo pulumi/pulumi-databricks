@@ -13,13 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class QueryParameterDateRangeValueDateRangeValue
     {
-        /// <summary>
-        /// end of the date range.
-        /// </summary>
         public readonly string End;
-        /// <summary>
-        /// begin of the date range.
-        /// </summary>
         public readonly string Start;
 
         [OutputConstructor]

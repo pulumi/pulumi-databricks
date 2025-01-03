@@ -9,324 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// &gt; This resource can be used with an account or workspace-level provider.
-    /// 
-    /// This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
-    /// 
-    /// &gt; Currently, we only support managing access rules on service principal, group and account resources through `databricks.AccessControlRuleSet`.
-    /// 
-    /// !&gt; `databricks.AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
-    /// 
-    /// ## Service principal rule set usage
-    /// 
-    /// Through a Databricks workspace:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var accountId = "00000000-0000-0000-0000-000000000000";
-    /// 
-    ///     // account level group
-    ///     var ds = Databricks.GetGroup.Invoke(new()
-    ///     {
-    ///         DisplayName = "Data Science",
-    ///     });
-    /// 
-    ///     var automationSp = new Databricks.ServicePrincipal("automation_sp", new()
-    ///     {
-    ///         DisplayName = "SP_FOR_AUTOMATION",
-    ///     });
-    /// 
-    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automation_sp_rule_set", new()
-    ///     {
-    ///         Name = automationSp.ApplicationId.Apply(applicationId =&gt; $"accounts/{accountId}/servicePrincipals/{applicationId}/ruleSets/default"),
-    ///         GrantRules = new[]
-    ///         {
-    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
-    ///             {
-    ///                 Principals = new[]
-    ///                 {
-    ///                     ds.Apply(getGroupResult =&gt; getGroupResult.AclPrincipalId),
-    ///                 },
-    ///                 Role = "roles/servicePrincipal.user",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Through AWS Databricks account:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var accountId = "00000000-0000-0000-0000-000000000000";
-    /// 
-    ///     // account level group creation
-    ///     var ds = new Databricks.Group("ds", new()
-    ///     {
-    ///         DisplayName = "Data Science",
-    ///     });
-    /// 
-    ///     var automationSp = new Databricks.ServicePrincipal("automation_sp", new()
-    ///     {
-    ///         DisplayName = "SP_FOR_AUTOMATION",
-    ///     });
-    /// 
-    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automation_sp_rule_set", new()
-    ///     {
-    ///         Name = automationSp.ApplicationId.Apply(applicationId =&gt; $"accounts/{accountId}/servicePrincipals/{applicationId}/ruleSets/default"),
-    ///         GrantRules = new[]
-    ///         {
-    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
-    ///             {
-    ///                 Principals = new[]
-    ///                 {
-    ///                     ds.AclPrincipalId,
-    ///                 },
-    ///                 Role = "roles/servicePrincipal.user",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Through Azure Databricks account:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var accountId = "00000000-0000-0000-0000-000000000000";
-    /// 
-    ///     // account level group creation
-    ///     var ds = new Databricks.Group("ds", new()
-    ///     {
-    ///         DisplayName = "Data Science",
-    ///     });
-    /// 
-    ///     var automationSp = new Databricks.ServicePrincipal("automation_sp", new()
-    ///     {
-    ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
-    ///         DisplayName = "SP_FOR_AUTOMATION",
-    ///     });
-    /// 
-    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automation_sp_rule_set", new()
-    ///     {
-    ///         Name = automationSp.ApplicationId.Apply(applicationId =&gt; $"accounts/{accountId}/servicePrincipals/{applicationId}/ruleSets/default"),
-    ///         GrantRules = new[]
-    ///         {
-    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
-    ///             {
-    ///                 Principals = new[]
-    ///                 {
-    ///                     ds.AclPrincipalId,
-    ///                 },
-    ///                 Role = "roles/servicePrincipal.user",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Through GCP Databricks account:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var accountId = "00000000-0000-0000-0000-000000000000";
-    /// 
-    ///     // account level group creation
-    ///     var ds = new Databricks.Group("ds", new()
-    ///     {
-    ///         DisplayName = "Data Science",
-    ///     });
-    /// 
-    ///     var automationSp = new Databricks.ServicePrincipal("automation_sp", new()
-    ///     {
-    ///         DisplayName = "SP_FOR_AUTOMATION",
-    ///     });
-    /// 
-    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automation_sp_rule_set", new()
-    ///     {
-    ///         Name = automationSp.ApplicationId.Apply(applicationId =&gt; $"accounts/{accountId}/servicePrincipals/{applicationId}/ruleSets/default"),
-    ///         GrantRules = new[]
-    ///         {
-    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
-    ///             {
-    ///                 Principals = new[]
-    ///                 {
-    ///                     ds.AclPrincipalId,
-    ///                 },
-    ///                 Role = "roles/servicePrincipal.user",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Group rule set usage
-    /// 
-    /// Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var accountId = "00000000-0000-0000-0000-000000000000";
-    /// 
-    ///     // account level group
-    ///     var ds = Databricks.GetGroup.Invoke(new()
-    ///     {
-    ///         DisplayName = "Data Science",
-    ///     });
-    /// 
-    ///     var john = Databricks.GetUser.Invoke(new()
-    ///     {
-    ///         UserName = "john.doe@example.com",
-    ///     });
-    /// 
-    ///     var dsGroupRuleSet = new Databricks.AccessControlRuleSet("ds_group_rule_set", new()
-    ///     {
-    ///         Name = $"accounts/{accountId}/groups/{dsDatabricksGroup.Id}/ruleSets/default",
-    ///         GrantRules = new[]
-    ///         {
-    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
-    ///             {
-    ///                 Principals = new[]
-    ///                 {
-    ///                     john.Apply(getUserResult =&gt; getUserResult.AclPrincipalId),
-    ///                 },
-    ///                 Role = "roles/group.manager",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Account rule set usage
-    /// 
-    /// Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var accountId = "00000000-0000-0000-0000-000000000000";
-    /// 
-    ///     // account level group
-    ///     var ds = Databricks.GetGroup.Invoke(new()
-    ///     {
-    ///         DisplayName = "Data Science",
-    ///     });
-    /// 
-    ///     // account level group
-    ///     var marketplaceAdmins = Databricks.GetGroup.Invoke(new()
-    ///     {
-    ///         DisplayName = "Marketplace Admins",
-    ///     });
-    /// 
-    ///     var john = Databricks.GetUser.Invoke(new()
-    ///     {
-    ///         UserName = "john.doe@example.com",
-    ///     });
-    /// 
-    ///     var accountRuleSet = new Databricks.AccessControlRuleSet("account_rule_set", new()
-    ///     {
-    ///         Name = $"accounts/{accountId}/ruleSets/default",
-    ///         GrantRules = new[]
-    ///         {
-    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
-    ///             {
-    ///                 Principals = new[]
-    ///                 {
-    ///                     john.Apply(getUserResult =&gt; getUserResult.AclPrincipalId),
-    ///                 },
-    ///                 Role = "roles/group.manager",
-    ///             },
-    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
-    ///             {
-    ///                 Principals = new[]
-    ///                 {
-    ///                     ds.Apply(getGroupResult =&gt; getGroupResult.AclPrincipalId),
-    ///                 },
-    ///                 Role = "roles/servicePrincipal.manager",
-    ///             },
-    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
-    ///             {
-    ///                 Principals = new[]
-    ///                 {
-    ///                     marketplaceAdmins.Apply(getGroupResult =&gt; getGroupResult.AclPrincipalId),
-    ///                 },
-    ///                 Role = "roles/marketplace.admin",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are often used in the same context:
-    /// 
-    /// * databricks.Group
-    /// * databricks.User
-    /// * databricks.ServicePrincipal
-    /// </summary>
     [DatabricksResourceType("databricks:index/accessControlRuleSet:AccessControlRuleSet")]
     public partial class AccessControlRuleSet : global::Pulumi.CustomResource
     {
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
-        /// <summary>
-        /// The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
-        /// 
-        /// !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
-        /// </summary>
         [Output("grantRules")]
         public Output<ImmutableArray<Outputs.AccessControlRuleSetGrantRule>> GrantRules { get; private set; } = null!;
 
-        /// <summary>
-        /// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-        /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-        /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-        /// * `accounts/{account_id}/ruleSets/default`
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -378,24 +69,12 @@ namespace Pulumi.Databricks
     {
         [Input("grantRules")]
         private InputList<Inputs.AccessControlRuleSetGrantRuleArgs>? _grantRules;
-
-        /// <summary>
-        /// The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
-        /// 
-        /// !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
-        /// </summary>
         public InputList<Inputs.AccessControlRuleSetGrantRuleArgs> GrantRules
         {
             get => _grantRules ?? (_grantRules = new InputList<Inputs.AccessControlRuleSetGrantRuleArgs>());
             set => _grantRules = value;
         }
 
-        /// <summary>
-        /// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-        /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-        /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-        /// * `accounts/{account_id}/ruleSets/default`
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -412,24 +91,12 @@ namespace Pulumi.Databricks
 
         [Input("grantRules")]
         private InputList<Inputs.AccessControlRuleSetGrantRuleGetArgs>? _grantRules;
-
-        /// <summary>
-        /// The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
-        /// 
-        /// !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
-        /// </summary>
         public InputList<Inputs.AccessControlRuleSetGrantRuleGetArgs> GrantRules
         {
             get => _grantRules ?? (_grantRules = new InputList<Inputs.AccessControlRuleSetGrantRuleGetArgs>());
             set => _grantRules = value;
         }
 
-        /// <summary>
-        /// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-        /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-        /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-        /// * `accounts/{account_id}/ruleSets/default`
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

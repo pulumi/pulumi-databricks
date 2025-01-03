@@ -6,86 +6,117 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface AccessControlRuleSetGrantRule {
-    /**
-     * a list of principals who are granted a role. The following format is supported:
-     * * `users/{username}` (also exposed as `aclPrincipalId` attribute of `databricks.User` resource).
-     * * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `databricks.Group` resource).
-     * * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
-     */
     principals?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
-     * * `roles/servicePrincipal.manager` - Manager of a service principal.
-     * * `roles/servicePrincipal.user` - User of a service principal.
-     * * `roles/group.manager` - Manager of a group.
-     * * `roles/marketplace.admin` - Admin of marketplace.
-     */
     role: pulumi.Input<string>;
 }
 
 export interface AlertCondition {
-    /**
-     * Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
-     */
     emptyResultState?: pulumi.Input<string>;
-    /**
-     * Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
-     */
     op: pulumi.Input<string>;
-    /**
-     * Name of the column from the query result to use for comparison in alert evaluation:
-     */
     operand: pulumi.Input<inputs.AlertConditionOperand>;
-    /**
-     * Threshold value used for comparison in alert evaluation:
-     */
     threshold?: pulumi.Input<inputs.AlertConditionThreshold>;
 }
 
 export interface AlertConditionOperand {
-    /**
-     * Block describing the column from the query result to use for comparison in alert evaluation:
-     */
     column: pulumi.Input<inputs.AlertConditionOperandColumn>;
 }
 
 export interface AlertConditionOperandColumn {
-    /**
-     * Name of the column.
-     */
     name: pulumi.Input<string>;
 }
 
 export interface AlertConditionThreshold {
-    /**
-     * actual value used in comparison (one of the attributes is required):
-     */
     value: pulumi.Input<inputs.AlertConditionThresholdValue>;
 }
 
 export interface AlertConditionThresholdValue {
-    /**
-     * boolean value (`true` or `false`) to compare against boolean results.
-     */
     boolValue?: pulumi.Input<boolean>;
-    /**
-     * double value to compare against integer and double results.
-     */
     doubleValue?: pulumi.Input<number>;
-    /**
-     * string value to compare against string results.
-     */
     stringValue?: pulumi.Input<string>;
 }
 
+export interface AppActiveDeployment {
+    createTime?: pulumi.Input<string>;
+    creator?: pulumi.Input<string>;
+    deploymentArtifacts?: pulumi.Input<inputs.AppActiveDeploymentDeploymentArtifacts>;
+    deploymentId?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
+    sourceCodePath?: pulumi.Input<string>;
+    status?: pulumi.Input<inputs.AppActiveDeploymentStatus>;
+    updateTime?: pulumi.Input<string>;
+}
+
+export interface AppActiveDeploymentDeploymentArtifacts {
+    sourceCodePath?: pulumi.Input<string>;
+}
+
+export interface AppActiveDeploymentStatus {
+    message?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
+}
+
+export interface AppAppStatus {
+    message?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
+}
+
+export interface AppComputeStatus {
+    message?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
+}
+
+export interface AppPendingDeployment {
+    createTime?: pulumi.Input<string>;
+    creator?: pulumi.Input<string>;
+    deploymentArtifacts?: pulumi.Input<inputs.AppPendingDeploymentDeploymentArtifacts>;
+    deploymentId?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
+    sourceCodePath?: pulumi.Input<string>;
+    status?: pulumi.Input<inputs.AppPendingDeploymentStatus>;
+    updateTime?: pulumi.Input<string>;
+}
+
+export interface AppPendingDeploymentDeploymentArtifacts {
+    sourceCodePath?: pulumi.Input<string>;
+}
+
+export interface AppPendingDeploymentStatus {
+    message?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
+}
+
+export interface AppResource {
+    description?: pulumi.Input<string>;
+    job?: pulumi.Input<inputs.AppResourceJob>;
+    name: pulumi.Input<string>;
+    secret?: pulumi.Input<inputs.AppResourceSecret>;
+    servingEndpoint?: pulumi.Input<inputs.AppResourceServingEndpoint>;
+    sqlWarehouse?: pulumi.Input<inputs.AppResourceSqlWarehouse>;
+}
+
+export interface AppResourceJob {
+    id: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppResourceSecret {
+    key: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+    scope: pulumi.Input<string>;
+}
+
+export interface AppResourceServingEndpoint {
+    name: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppResourceSqlWarehouse {
+    id: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
 export interface ArtifactAllowlistArtifactMatcher {
-    /**
-     * The artifact path or maven coordinate.
-     */
     artifact: pulumi.Input<string>;
-    /**
-     * The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
-     */
     matchType: pulumi.Input<string>;
 }
 
@@ -119,182 +150,62 @@ export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWor
 }
 
 export interface BudgetAlertConfiguration {
-    /**
-     * List of action configurations to take when the budget alert is triggered. Consists of the following fields:
-     */
     actionConfigurations?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfigurationActionConfiguration>[]>;
     alertConfigurationId?: pulumi.Input<string>;
-    /**
-     * The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
-     */
     quantityThreshold?: pulumi.Input<string>;
-    /**
-     * The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
-     */
     quantityType?: pulumi.Input<string>;
-    /**
-     * The time window of usage data for the budget. (Enum: `MONTH`)
-     */
     timePeriod?: pulumi.Input<string>;
-    /**
-     * The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
-     */
     triggerType?: pulumi.Input<string>;
 }
 
 export interface BudgetAlertConfigurationActionConfiguration {
     actionConfigurationId?: pulumi.Input<string>;
-    /**
-     * The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
-     */
     actionType?: pulumi.Input<string>;
-    /**
-     * The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
-     */
     target?: pulumi.Input<string>;
 }
 
 export interface BudgetFilter {
-    /**
-     * List of tags to filter by. Consists of the following fields:
-     */
     tags?: pulumi.Input<pulumi.Input<inputs.BudgetFilterTag>[]>;
-    /**
-     * Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
-     */
     workspaceId?: pulumi.Input<inputs.BudgetFilterWorkspaceId>;
 }
 
 export interface BudgetFilterTag {
-    /**
-     * The key of the tag.
-     */
     key?: pulumi.Input<string>;
-    /**
-     * Consists of the following fields:
-     */
     value?: pulumi.Input<inputs.BudgetFilterTagValue>;
 }
 
 export interface BudgetFilterTagValue {
-    /**
-     * The operator to use for the filter. (Enum: `IN`)
-     */
     operator?: pulumi.Input<string>;
-    /**
-     * The values to filter by.
-     */
     values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface BudgetFilterWorkspaceId {
-    /**
-     * The operator to use for the filter. (Enum: `IN`)
-     */
     operator?: pulumi.Input<string>;
-    /**
-     * The values to filter by.
-     */
     values?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
 export interface ClusterAutoscale {
-    /**
-     * The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
-     *
-     * When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `numWorkers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `numWorkers` is `0`, provider checks for presence of the required Spark configurations:
-     *
-     * * `spark.master` must have prefix `local`, like `local[*]`
-     * * `spark.databricks.cluster.profile` must have value `singleNode`
-     *
-     * and also `customTag` entry:
-     *
-     * * `"ResourceClass" = "SingleNode"`
-     *
-     * The following example demonstrates how to create an single node cluster:
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const smallest = databricks.getNodeType({
-     *     localDisk: true,
-     * });
-     * const latestLts = databricks.getSparkVersion({
-     *     longTermSupport: true,
-     * });
-     * const singleNode = new databricks.Cluster("single_node", {
-     *     clusterName: "Single Node",
-     *     sparkVersion: latestLts.then(latestLts => latestLts.id),
-     *     nodeTypeId: smallest.then(smallest => smallest.id),
-     *     autoterminationMinutes: 20,
-     *     sparkConf: {
-     *         "spark.databricks.cluster.profile": "singleNode",
-     *         "spark.master": "local[*]",
-     *     },
-     *     customTags: {
-     *         ResourceClass: "SingleNode",
-     *     },
-     * });
-     * ```
-     */
     maxWorkers?: pulumi.Input<number>;
-    /**
-     * The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
-     */
     minWorkers?: pulumi.Input<number>;
 }
 
 export interface ClusterAwsAttributes {
-    /**
-     * Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT`, `SPOT_WITH_FALLBACK` and `ON_DEMAND`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster. Backend default value is `SPOT_WITH_FALLBACK` and could change in the future
-     */
     availability?: pulumi.Input<string>;
-    /**
-     * The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
-     */
     ebsVolumeCount?: pulumi.Input<number>;
     ebsVolumeIops?: pulumi.Input<number>;
-    /**
-     * The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
-     */
     ebsVolumeSize?: pulumi.Input<number>;
     ebsVolumeThroughput?: pulumi.Input<number>;
-    /**
-     * The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
-     */
     ebsVolumeType?: pulumi.Input<string>;
-    /**
-     * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
-     */
     firstOnDemand?: pulumi.Input<number>;
-    /**
-     * Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
-     */
     instanceProfileArn?: pulumi.Input<string>;
-    /**
-     * The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the cluster needs a new `i3.xlarge` spot instance, then the max price is half of the price of on-demand `i3.xlarge` instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand `i3.xlarge` instances. If not specified, the default value is `100`. When spot instances are requested for this cluster, only spot instances whose max price percentage matches this field will be considered. For safety, we enforce this field to be no more than `10000`.
-     */
     spotBidPricePercent?: pulumi.Input<number>;
-    /**
-     * Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-west-2a`. The provided availability zone must be in the same region as the Databricks deployment. For example, `us-west-2a` is not a valid zone ID if the Databricks deployment resides in the `us-east-1` region. Enable automatic availability zone selection ("Auto-AZ"), by setting the value `auto`. Databricks selects the AZ based on available IPs in the workspace subnets and retries in other availability zones if AWS returns insufficient capacity errors.
-     */
     zoneId?: pulumi.Input<string>;
 }
 
 export interface ClusterAzureAttributes {
-    /**
-     * Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster.
-     */
     availability?: pulumi.Input<string>;
-    /**
-     * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
-     */
     firstOnDemand?: pulumi.Input<number>;
     logAnalyticsInfo?: pulumi.Input<inputs.ClusterAzureAttributesLogAnalyticsInfo>;
-    /**
-     * The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
-     */
     spotBidMaxPrice?: pulumi.Input<number>;
 }
 
@@ -309,115 +220,32 @@ export interface ClusterClusterLogConf {
 }
 
 export interface ClusterClusterLogConfDbfs {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterClusterLogConfS3 {
-    /**
-     * Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-     */
     cannedAcl?: pulumi.Input<string>;
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: pulumi.Input<string>;
-    /**
-     * Enable server-side encryption, false by default.
-     */
     enableEncryption?: pulumi.Input<boolean>;
-    /**
-     * The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-     */
     encryptionType?: pulumi.Input<string>;
-    /**
-     * S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-     */
     endpoint?: pulumi.Input<string>;
-    /**
-     * KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-     */
     kmsKey?: pulumi.Input<string>;
-    /**
-     * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-     */
     region?: pulumi.Input<string>;
 }
 
 export interface ClusterClusterMountInfo {
-    /**
-     * path inside the Spark container.
-     *
-     * For example, you can mount Azure Data Lake Storage container using the following code:
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const storageAccount = "ewfw3ggwegwg";
-     * const storageContainer = "test";
-     * const withNfs = new databricks.Cluster("with_nfs", {clusterMountInfos: [{
-     *     networkFilesystemInfo: {
-     *         serverAddress: `${storageAccount}.blob.core.windows.net`,
-     *         mountOptions: "sec=sys,vers=3,nolock,proto=tcp",
-     *     },
-     *     remoteMountDirPath: `${storageAccount}/${storageContainer}`,
-     *     localMountDirPath: "/mnt/nfs-test",
-     * }]});
-     * ```
-     */
     localMountDirPath: pulumi.Input<string>;
-    /**
-     * block specifying connection. It consists of:
-     */
     networkFilesystemInfo: pulumi.Input<inputs.ClusterClusterMountInfoNetworkFilesystemInfo>;
-    /**
-     * string specifying path to mount on the remote service.
-     */
     remoteMountDirPath?: pulumi.Input<string>;
 }
 
 export interface ClusterClusterMountInfoNetworkFilesystemInfo {
-    /**
-     * string that will be passed as options passed to the `mount` command.
-     */
     mountOptions?: pulumi.Input<string>;
-    /**
-     * host name.
-     */
     serverAddress: pulumi.Input<string>;
 }
 
 export interface ClusterDockerImage {
-    /**
-     * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
-     *
-     * Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     * import * as docker from "@pulumi/docker";
-     *
-     * const _this = new docker.index.RegistryImage("this", {
-     *     build: [{}],
-     *     name: `${thisAzurermContainerRegistry.loginServer}/sample:latest`,
-     * });
-     * const thisCluster = new databricks.Cluster("this", {dockerImage: {
-     *     url: _this.name,
-     *     basicAuth: {
-     *         username: thisAzurermContainerRegistry.adminUsername,
-     *         password: thisAzurermContainerRegistry.adminPassword,
-     *     },
-     * }});
-     * ```
-     */
     basicAuth?: pulumi.Input<inputs.ClusterDockerImageBasicAuth>;
-    /**
-     * URL for the Docker image
-     */
     url: pulumi.Input<string>;
 }
 
@@ -427,32 +255,11 @@ export interface ClusterDockerImageBasicAuth {
 }
 
 export interface ClusterGcpAttributes {
-    /**
-     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     */
     availability?: pulumi.Input<string>;
-    /**
-     * Boot disk size in GB
-     */
     bootDiskSize?: pulumi.Input<number>;
-    /**
-     * Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
-     */
     googleServiceAccount?: pulumi.Input<string>;
-    /**
-     * Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
-     */
     localSsdCount?: pulumi.Input<number>;
-    /**
-     * if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
-     */
     usePreemptibleExecutors?: pulumi.Input<boolean>;
-    /**
-     * Identifier for the availability zone in which the cluster resides. This can be one of the following:
-     * * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
-     * * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
-     * * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
-     */
     zoneId?: pulumi.Input<string>;
 }
 
@@ -470,75 +277,36 @@ export interface ClusterInitScript {
 }
 
 export interface ClusterInitScriptAbfss {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptDbfs {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptFile {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptGcs {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptS3 {
-    /**
-     * Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-     */
     cannedAcl?: pulumi.Input<string>;
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: pulumi.Input<string>;
-    /**
-     * Enable server-side encryption, false by default.
-     */
     enableEncryption?: pulumi.Input<boolean>;
-    /**
-     * The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-     */
     encryptionType?: pulumi.Input<string>;
-    /**
-     * S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-     */
     endpoint?: pulumi.Input<string>;
-    /**
-     * KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-     */
     kmsKey?: pulumi.Input<string>;
-    /**
-     * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-     */
     region?: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptVolumes {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptWorkspace {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: pulumi.Input<string>;
 }
 
@@ -599,25 +367,7 @@ export interface ClusterWorkloadType {
 }
 
 export interface ClusterWorkloadTypeClients {
-    /**
-     * boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const withNfs = new databricks.Cluster("with_nfs", {workloadType: {
-     *     clients: {
-     *         jobs: false,
-     *         notebooks: true,
-     *     },
-     * }});
-     * ```
-     */
     jobs?: pulumi.Input<boolean>;
-    /**
-     * boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
-     */
     notebooks?: pulumi.Input<boolean>;
 }
 
@@ -626,21 +376,36 @@ export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProf
     isEnabled: pulumi.Input<boolean>;
 }
 
+export interface CredentialAwsIamRole {
+    externalId?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string>;
+    unityCatalogIamArn?: pulumi.Input<string>;
+}
+
+export interface CredentialAzureManagedIdentity {
+    accessConnectorId: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string>;
+    managedIdentityId?: pulumi.Input<string>;
+}
+
+export interface CredentialAzureServicePrincipal {
+    applicationId: pulumi.Input<string>;
+    clientSecret: pulumi.Input<string>;
+    directoryId: pulumi.Input<string>;
+}
+
+export interface CredentialDatabricksGcpServiceAccount {
+    credentialId?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
+    privateKeyId?: pulumi.Input<string>;
+}
+
 export interface CustomAppIntegrationTokenAccessPolicy {
-    /**
-     * access token time to live (TTL) in minutes.
-     */
     accessTokenTtlInMinutes?: pulumi.Input<number>;
-    /**
-     * refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
-     */
     refreshTokenTtlInMinutes?: pulumi.Input<number>;
 }
 
 export interface DefaultNamespaceSettingNamespace {
-    /**
-     * The value for the setting.
-     */
     value?: pulumi.Input<string>;
 }
 
@@ -659,187 +424,55 @@ export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
 
 export interface GetCatalogCatalogInfo {
     browseOnly?: boolean;
-    /**
-     * Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
-     */
     catalogType?: string;
-    /**
-     * Free-form text description
-     */
     comment?: string;
-    /**
-     * The name of the connection to an external data source.
-     */
     connectionName?: string;
-    /**
-     * Time at which this catalog was created, in epoch milliseconds.
-     */
     createdAt?: number;
-    /**
-     * Username of catalog creator.
-     */
     createdBy?: string;
-    /**
-     * object describing applied predictive optimization flag.
-     */
     effectivePredictiveOptimizationFlag?: inputs.GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag;
-    /**
-     * Whether predictive optimization should be enabled for this object and objects under it.
-     */
     enablePredictiveOptimization?: string;
-    /**
-     * The full name of the catalog. Corresponds with the name field.
-     */
     fullName?: string;
-    /**
-     * Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
-     */
     isolationMode?: string;
-    /**
-     * Unique identifier of parent metastore.
-     */
     metastoreId?: string;
-    /**
-     * name of the catalog
-     */
     name?: string;
-    /**
-     * A map of key-value properties attached to the securable.
-     */
     options?: {[key: string]: string};
-    /**
-     * Current owner of the catalog
-     */
     owner?: string;
-    /**
-     * A map of key-value properties attached to the securable.
-     */
     properties?: {[key: string]: string};
-    /**
-     * The name of delta sharing provider.
-     */
     providerName?: string;
     provisioningInfo?: inputs.GetCatalogCatalogInfoProvisioningInfo;
-    /**
-     * Kind of catalog securable.
-     */
     securableKind?: string;
-    /**
-     * Securable type.
-     */
     securableType?: string;
-    /**
-     * The name of the share under the share provider.
-     */
     shareName?: string;
-    /**
-     * Storage Location URL (full path) for managed tables within catalog.
-     */
     storageLocation?: string;
-    /**
-     * Storage root URL for managed tables within catalog.
-     */
     storageRoot?: string;
-    /**
-     * Time at which this catalog was last modified, in epoch milliseconds.
-     */
     updatedAt?: number;
-    /**
-     * Username of user who last modified catalog.
-     */
     updatedBy?: string;
 }
 
 export interface GetCatalogCatalogInfoArgs {
     browseOnly?: pulumi.Input<boolean>;
-    /**
-     * Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
-     */
     catalogType?: pulumi.Input<string>;
-    /**
-     * Free-form text description
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * The name of the connection to an external data source.
-     */
     connectionName?: pulumi.Input<string>;
-    /**
-     * Time at which this catalog was created, in epoch milliseconds.
-     */
     createdAt?: pulumi.Input<number>;
-    /**
-     * Username of catalog creator.
-     */
     createdBy?: pulumi.Input<string>;
-    /**
-     * object describing applied predictive optimization flag.
-     */
     effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs>;
-    /**
-     * Whether predictive optimization should be enabled for this object and objects under it.
-     */
     enablePredictiveOptimization?: pulumi.Input<string>;
-    /**
-     * The full name of the catalog. Corresponds with the name field.
-     */
     fullName?: pulumi.Input<string>;
-    /**
-     * Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
-     */
     isolationMode?: pulumi.Input<string>;
-    /**
-     * Unique identifier of parent metastore.
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * name of the catalog
-     */
     name?: pulumi.Input<string>;
-    /**
-     * A map of key-value properties attached to the securable.
-     */
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Current owner of the catalog
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * A map of key-value properties attached to the securable.
-     */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The name of delta sharing provider.
-     */
     providerName?: pulumi.Input<string>;
     provisioningInfo?: pulumi.Input<inputs.GetCatalogCatalogInfoProvisioningInfoArgs>;
-    /**
-     * Kind of catalog securable.
-     */
     securableKind?: pulumi.Input<string>;
-    /**
-     * Securable type.
-     */
     securableType?: pulumi.Input<string>;
-    /**
-     * The name of the share under the share provider.
-     */
     shareName?: pulumi.Input<string>;
-    /**
-     * Storage Location URL (full path) for managed tables within catalog.
-     */
     storageLocation?: pulumi.Input<string>;
-    /**
-     * Storage root URL for managed tables within catalog.
-     */
     storageRoot?: pulumi.Input<string>;
-    /**
-     * Time at which this catalog was last modified, in epoch milliseconds.
-     */
     updatedAt?: pulumi.Input<number>;
-    /**
-     * Username of user who last modified catalog.
-     */
     updatedBy?: pulumi.Input<string>;
 }
 
@@ -865,205 +498,103 @@ export interface GetCatalogCatalogInfoProvisioningInfoArgs {
 
 export interface GetClusterClusterInfo {
     autoscale?: inputs.GetClusterClusterInfoAutoscale;
-    /**
-     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
-     */
     autoterminationMinutes?: number;
     awsAttributes?: inputs.GetClusterClusterInfoAwsAttributes;
     azureAttributes?: inputs.GetClusterClusterInfoAzureAttributes;
     clusterCores?: number;
-    /**
-     * The id of the cluster
-     */
     clusterId?: string;
     clusterLogConf?: inputs.GetClusterClusterInfoClusterLogConf;
     clusterLogStatus?: inputs.GetClusterClusterInfoClusterLogStatus;
     clusterMemoryMb?: number;
-    /**
-     * The exact name of the cluster to search
-     */
     clusterName?: string;
     clusterSource?: string;
     creatorUserName?: string;
-    /**
-     * Additional tags for cluster resources.
-     */
     customTags?: {[key: string]: string};
-    /**
-     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
-     */
     dataSecurityMode?: string;
     defaultTags?: {[key: string]: string};
     dockerImage?: inputs.GetClusterClusterInfoDockerImage;
     driver?: inputs.GetClusterClusterInfoDriver;
-    /**
-     * similar to `instancePoolId`, but for driver node.
-     */
     driverInstancePoolId?: string;
-    /**
-     * The node type of the Spark driver.
-     */
     driverNodeTypeId?: string;
-    /**
-     * Use autoscaling local storage.
-     */
     enableElasticDisk?: boolean;
-    /**
-     * Enable local disk encryption.
-     */
     enableLocalDiskEncryption?: boolean;
     executors?: inputs.GetClusterClusterInfoExecutor[];
     gcpAttributes?: inputs.GetClusterClusterInfoGcpAttributes;
     initScripts?: inputs.GetClusterClusterInfoInitScript[];
-    /**
-     * The pool of idle instances the cluster is attached to.
-     */
     instancePoolId?: string;
+    isSingleNode?: boolean;
     jdbcPort?: number;
+    kind?: string;
     lastRestartedTime?: number;
     lastStateLossTime?: number;
-    /**
-     * Any supported databricks.getNodeType id.
-     */
     nodeTypeId?: string;
     numWorkers?: number;
-    /**
-     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
-     */
     policyId?: string;
-    /**
-     * The type of runtime of the cluster
-     */
     runtimeEngine?: string;
-    /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-     */
     singleUserName?: string;
-    /**
-     * Map with key-value pairs to fine-tune Spark clusters.
-     */
     sparkConf?: {[key: string]: string};
     sparkContextId?: number;
-    /**
-     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-     */
     sparkEnvVars?: {[key: string]: string};
-    /**
-     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-     */
     sparkVersion?: string;
     spec?: inputs.GetClusterClusterInfoSpec;
-    /**
-     * SSH public key contents that will be added to each Spark node in this cluster.
-     */
     sshPublicKeys?: string[];
     startTime?: number;
     state?: string;
     stateMessage?: string;
     terminatedTime?: number;
     terminationReason?: inputs.GetClusterClusterInfoTerminationReason;
+    useMlRuntime?: boolean;
     workloadType?: inputs.GetClusterClusterInfoWorkloadType;
 }
 
 export interface GetClusterClusterInfoArgs {
     autoscale?: pulumi.Input<inputs.GetClusterClusterInfoAutoscaleArgs>;
-    /**
-     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
-     */
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAwsAttributesArgs>;
     azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAzureAttributesArgs>;
     clusterCores?: pulumi.Input<number>;
-    /**
-     * The id of the cluster
-     */
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfArgs>;
     clusterLogStatus?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogStatusArgs>;
     clusterMemoryMb?: pulumi.Input<number>;
-    /**
-     * The exact name of the cluster to search
-     */
     clusterName?: pulumi.Input<string>;
     clusterSource?: pulumi.Input<string>;
     creatorUserName?: pulumi.Input<string>;
-    /**
-     * Additional tags for cluster resources.
-     */
     customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
-     */
     dataSecurityMode?: pulumi.Input<string>;
     defaultTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageArgs>;
     driver?: pulumi.Input<inputs.GetClusterClusterInfoDriverArgs>;
-    /**
-     * similar to `instancePoolId`, but for driver node.
-     */
     driverInstancePoolId?: pulumi.Input<string>;
-    /**
-     * The node type of the Spark driver.
-     */
     driverNodeTypeId?: pulumi.Input<string>;
-    /**
-     * Use autoscaling local storage.
-     */
     enableElasticDisk?: pulumi.Input<boolean>;
-    /**
-     * Enable local disk encryption.
-     */
     enableLocalDiskEncryption?: pulumi.Input<boolean>;
     executors?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoExecutorArgs>[]>;
     gcpAttributes?: pulumi.Input<inputs.GetClusterClusterInfoGcpAttributesArgs>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoInitScriptArgs>[]>;
-    /**
-     * The pool of idle instances the cluster is attached to.
-     */
     instancePoolId?: pulumi.Input<string>;
+    isSingleNode?: pulumi.Input<boolean>;
     jdbcPort?: pulumi.Input<number>;
+    kind?: pulumi.Input<string>;
     lastRestartedTime?: pulumi.Input<number>;
     lastStateLossTime?: pulumi.Input<number>;
-    /**
-     * Any supported databricks.getNodeType id.
-     */
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
-    /**
-     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
-     */
     policyId?: pulumi.Input<string>;
-    /**
-     * The type of runtime of the cluster
-     */
     runtimeEngine?: pulumi.Input<string>;
-    /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-     */
     singleUserName?: pulumi.Input<string>;
-    /**
-     * Map with key-value pairs to fine-tune Spark clusters.
-     */
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkContextId?: pulumi.Input<number>;
-    /**
-     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-     */
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-     */
     sparkVersion?: pulumi.Input<string>;
     spec?: pulumi.Input<inputs.GetClusterClusterInfoSpecArgs>;
-    /**
-     * SSH public key contents that will be added to each Spark node in this cluster.
-     */
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     startTime?: pulumi.Input<number>;
     state?: pulumi.Input<string>;
     stateMessage?: pulumi.Input<string>;
     terminatedTime?: pulumi.Input<number>;
     terminationReason?: pulumi.Input<inputs.GetClusterClusterInfoTerminationReasonArgs>;
+    useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.GetClusterClusterInfoWorkloadTypeArgs>;
 }
 
@@ -1362,85 +893,34 @@ export interface GetClusterClusterInfoSpec {
     autoscale?: inputs.GetClusterClusterInfoSpecAutoscale;
     awsAttributes?: inputs.GetClusterClusterInfoSpecAwsAttributes;
     azureAttributes?: inputs.GetClusterClusterInfoSpecAzureAttributes;
-    /**
-     * The id of the cluster
-     */
     clusterId?: string;
     clusterLogConf?: inputs.GetClusterClusterInfoSpecClusterLogConf;
     clusterMountInfos?: inputs.GetClusterClusterInfoSpecClusterMountInfo[];
-    /**
-     * The exact name of the cluster to search
-     */
     clusterName?: string;
-    /**
-     * Additional tags for cluster resources.
-     */
     customTags?: {[key: string]: string};
-    /**
-     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
-     */
     dataSecurityMode?: string;
     dockerImage?: inputs.GetClusterClusterInfoSpecDockerImage;
-    /**
-     * similar to `instancePoolId`, but for driver node.
-     */
     driverInstancePoolId?: string;
-    /**
-     * The node type of the Spark driver.
-     */
     driverNodeTypeId?: string;
-    /**
-     * Use autoscaling local storage.
-     */
     enableElasticDisk?: boolean;
-    /**
-     * Enable local disk encryption.
-     */
     enableLocalDiskEncryption?: boolean;
     gcpAttributes?: inputs.GetClusterClusterInfoSpecGcpAttributes;
-    /**
-     * An optional token to guarantee the idempotency of cluster creation requests.
-     */
     idempotencyToken?: string;
     initScripts?: inputs.GetClusterClusterInfoSpecInitScript[];
-    /**
-     * The pool of idle instances the cluster is attached to.
-     */
     instancePoolId?: string;
+    isSingleNode?: boolean;
+    kind?: string;
     libraries?: inputs.GetClusterClusterInfoSpecLibrary[];
-    /**
-     * Any supported databricks.getNodeType id.
-     */
     nodeTypeId?: string;
     numWorkers?: number;
-    /**
-     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
-     */
     policyId?: string;
-    /**
-     * The type of runtime of the cluster
-     */
     runtimeEngine?: string;
-    /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-     */
     singleUserName?: string;
-    /**
-     * Map with key-value pairs to fine-tune Spark clusters.
-     */
     sparkConf?: {[key: string]: string};
-    /**
-     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-     */
     sparkEnvVars?: {[key: string]: string};
-    /**
-     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-     */
     sparkVersion: string;
-    /**
-     * SSH public key contents that will be added to each Spark node in this cluster.
-     */
     sshPublicKeys?: string[];
+    useMlRuntime?: boolean;
     workloadType?: inputs.GetClusterClusterInfoSpecWorkloadType;
 }
 
@@ -1449,85 +929,34 @@ export interface GetClusterClusterInfoSpecArgs {
     autoscale?: pulumi.Input<inputs.GetClusterClusterInfoSpecAutoscaleArgs>;
     awsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecAwsAttributesArgs>;
     azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecAzureAttributesArgs>;
-    /**
-     * The id of the cluster
-     */
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfArgs>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecClusterMountInfoArgs>[]>;
-    /**
-     * The exact name of the cluster to search
-     */
     clusterName?: pulumi.Input<string>;
-    /**
-     * Additional tags for cluster resources.
-     */
     customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
-     */
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoSpecDockerImageArgs>;
-    /**
-     * similar to `instancePoolId`, but for driver node.
-     */
     driverInstancePoolId?: pulumi.Input<string>;
-    /**
-     * The node type of the Spark driver.
-     */
     driverNodeTypeId?: pulumi.Input<string>;
-    /**
-     * Use autoscaling local storage.
-     */
     enableElasticDisk?: pulumi.Input<boolean>;
-    /**
-     * Enable local disk encryption.
-     */
     enableLocalDiskEncryption?: pulumi.Input<boolean>;
     gcpAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecGcpAttributesArgs>;
-    /**
-     * An optional token to guarantee the idempotency of cluster creation requests.
-     */
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptArgs>[]>;
-    /**
-     * The pool of idle instances the cluster is attached to.
-     */
     instancePoolId?: pulumi.Input<string>;
+    isSingleNode?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     libraries?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryArgs>[]>;
-    /**
-     * Any supported databricks.getNodeType id.
-     */
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
-    /**
-     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
-     */
     policyId?: pulumi.Input<string>;
-    /**
-     * The type of runtime of the cluster
-     */
     runtimeEngine?: pulumi.Input<string>;
-    /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-     */
     singleUserName?: pulumi.Input<string>;
-    /**
-     * Map with key-value pairs to fine-tune Spark clusters.
-     */
     sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
-     */
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-     */
     sparkVersion: pulumi.Input<string>;
-    /**
-     * SSH public key contents that will be added to each Spark node in this cluster.
-     */
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.GetClusterClusterInfoSpecWorkloadTypeArgs>;
 }
 
@@ -1884,310 +1313,100 @@ export interface GetClusterClusterInfoWorkloadTypeClientsArgs {
 }
 
 export interface GetClustersFilterBy {
-    /**
-     * List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
-     */
     clusterSources?: string[];
-    /**
-     * List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
-     */
     clusterStates?: string[];
-    /**
-     * Whether to filter by pinned clusters.
-     */
     isPinned?: boolean;
-    /**
-     * Filter by databricks.ClusterPolicy id.
-     */
     policyId?: string;
 }
 
 export interface GetClustersFilterByArgs {
-    /**
-     * List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
-     */
     clusterSources?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
-     */
     clusterStates?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether to filter by pinned clusters.
-     */
     isPinned?: pulumi.Input<boolean>;
-    /**
-     * Filter by databricks.ClusterPolicy id.
-     */
     policyId?: pulumi.Input<string>;
 }
 
 export interface GetCurrentMetastoreMetastoreInfo {
     cloud?: string;
-    /**
-     * Timestamp (in milliseconds) when the current metastore was created.
-     */
     createdAt?: number;
-    /**
-     * the ID of the identity that created the current metastore.
-     */
     createdBy?: string;
-    /**
-     * the ID of the default data access configuration.
-     */
     defaultDataAccessConfigId?: string;
-    /**
-     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-     */
     deltaSharingOrganizationName?: string;
-    /**
-     * the expiration duration in seconds on recipient data access tokens.
-     */
     deltaSharingRecipientTokenLifetimeInSeconds?: number;
-    /**
-     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     */
     deltaSharingScope?: string;
     externalAccessEnabled?: boolean;
-    /**
-     * Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
-     */
     globalMetastoreId?: string;
-    /**
-     * Metastore ID.
-     */
     metastoreId?: string;
-    /**
-     * Name of metastore.
-     */
     name?: string;
-    /**
-     * Username/group name/sp applicationId of the metastore owner.
-     */
     owner?: string;
-    /**
-     * the version of the privilege model used by the metastore.
-     */
     privilegeModelVersion?: string;
-    /**
-     * (Mandatory for account-level) The region of the metastore.
-     */
     region?: string;
-    /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored.
-     */
     storageRoot?: string;
-    /**
-     * ID of a storage credential used for the `storageRoot`.
-     */
     storageRootCredentialId?: string;
-    /**
-     * Name of a storage credential used for the `storageRoot`.
-     */
     storageRootCredentialName?: string;
-    /**
-     * Timestamp (in milliseconds) when the current metastore was updated.
-     */
     updatedAt?: number;
-    /**
-     * the ID of the identity that updated the current metastore.
-     */
     updatedBy?: string;
 }
 
 export interface GetCurrentMetastoreMetastoreInfoArgs {
     cloud?: pulumi.Input<string>;
-    /**
-     * Timestamp (in milliseconds) when the current metastore was created.
-     */
     createdAt?: pulumi.Input<number>;
-    /**
-     * the ID of the identity that created the current metastore.
-     */
     createdBy?: pulumi.Input<string>;
-    /**
-     * the ID of the default data access configuration.
-     */
     defaultDataAccessConfigId?: pulumi.Input<string>;
-    /**
-     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-     */
     deltaSharingOrganizationName?: pulumi.Input<string>;
-    /**
-     * the expiration duration in seconds on recipient data access tokens.
-     */
     deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
-    /**
-     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     */
     deltaSharingScope?: pulumi.Input<string>;
     externalAccessEnabled?: pulumi.Input<boolean>;
-    /**
-     * Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
-     */
     globalMetastoreId?: pulumi.Input<string>;
-    /**
-     * Metastore ID.
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * Name of metastore.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/group name/sp applicationId of the metastore owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * the version of the privilege model used by the metastore.
-     */
     privilegeModelVersion?: pulumi.Input<string>;
-    /**
-     * (Mandatory for account-level) The region of the metastore.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored.
-     */
     storageRoot?: pulumi.Input<string>;
-    /**
-     * ID of a storage credential used for the `storageRoot`.
-     */
     storageRootCredentialId?: pulumi.Input<string>;
-    /**
-     * Name of a storage credential used for the `storageRoot`.
-     */
     storageRootCredentialName?: pulumi.Input<string>;
-    /**
-     * Timestamp (in milliseconds) when the current metastore was updated.
-     */
     updatedAt?: pulumi.Input<number>;
-    /**
-     * the ID of the identity that updated the current metastore.
-     */
     updatedBy?: pulumi.Input<string>;
 }
 
 export interface GetExternalLocationExternalLocationInfo {
-    /**
-     * The ARN of the s3 access point to use with the external location (AWS).
-     */
     accessPoint?: string;
     browseOnly?: boolean;
-    /**
-     * User-supplied comment.
-     */
     comment?: string;
-    /**
-     * Time at which this catalog was created, in epoch milliseconds.
-     */
     createdAt?: number;
-    /**
-     * Username of catalog creator.
-     */
     createdBy?: string;
-    /**
-     * Unique ID of storage credential.
-     */
     credentialId?: string;
-    /**
-     * Name of the databricks.StorageCredential to use with this external location.
-     */
     credentialName?: string;
-    /**
-     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-     */
     encryptionDetails?: inputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
     fallback?: boolean;
     isolationMode?: string;
-    /**
-     * Unique identifier of the parent Metastore.
-     */
     metastoreId?: string;
-    /**
-     * The name of the external location
-     */
     name?: string;
-    /**
-     * Username/groupname/sp applicationId of the external location owner.
-     */
     owner?: string;
-    /**
-     * Indicates whether the external location is read-only.
-     */
     readOnly?: boolean;
-    /**
-     * Time at which this catalog was last modified, in epoch milliseconds.
-     */
     updatedAt?: number;
-    /**
-     * Username of user who last modified catalog.
-     */
     updatedBy?: string;
-    /**
-     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
-     */
     url?: string;
 }
 
 export interface GetExternalLocationExternalLocationInfoArgs {
-    /**
-     * The ARN of the s3 access point to use with the external location (AWS).
-     */
     accessPoint?: pulumi.Input<string>;
     browseOnly?: pulumi.Input<boolean>;
-    /**
-     * User-supplied comment.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * Time at which this catalog was created, in epoch milliseconds.
-     */
     createdAt?: pulumi.Input<number>;
-    /**
-     * Username of catalog creator.
-     */
     createdBy?: pulumi.Input<string>;
-    /**
-     * Unique ID of storage credential.
-     */
     credentialId?: pulumi.Input<string>;
-    /**
-     * Name of the databricks.StorageCredential to use with this external location.
-     */
     credentialName?: pulumi.Input<string>;
-    /**
-     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-     */
     encryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsArgs>;
     fallback?: pulumi.Input<boolean>;
     isolationMode?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the parent Metastore.
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * The name of the external location
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the external location owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Indicates whether the external location is read-only.
-     */
     readOnly?: pulumi.Input<boolean>;
-    /**
-     * Time at which this catalog was last modified, in epoch milliseconds.
-     */
     updatedAt?: pulumi.Input<number>;
-    /**
-     * Username of user who last modified catalog.
-     */
     updatedBy?: pulumi.Input<string>;
-    /**
-     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
-     */
     url?: pulumi.Input<string>;
 }
 
@@ -2210,514 +1429,178 @@ export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncr
 }
 
 export interface GetFunctionsFunction {
-    /**
-     * Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
-     */
     browseOnly?: boolean;
-    /**
-     * Name of databricks_catalog.
-     */
     catalogName?: string;
-    /**
-     * User-provided free-form text description.
-     */
     comment?: string;
-    /**
-     * Time at which this function was created, in epoch milliseconds.
-     */
     createdAt?: number;
-    /**
-     * Username of function creator.
-     */
     createdBy?: string;
-    /**
-     * Scalar function return data type.
-     */
     dataType?: string;
-    /**
-     * External function language.
-     */
     externalLanguage?: string;
-    /**
-     * External function name.
-     */
     externalName?: string;
-    /**
-     * Pretty printed function data type.
-     */
     fullDataType?: string;
-    /**
-     * Full name of function, in form of catalog_name.schema_name.function__name
-     */
     fullName?: string;
-    /**
-     * Id of Function, relative to parent schema.
-     */
     functionId?: string;
-    /**
-     * object describing input parameters. Consists of the single attribute:
-     */
-    inputParams?: inputs.GetFunctionsFunctionInputParams;
-    /**
-     * Boolean flag specifying whether the function is deterministic.
-     */
+    inputParams?: inputs.GetFunctionsFunctionInputParam[];
     isDeterministic?: boolean;
-    /**
-     * Boolean flag whether function null call.
-     */
     isNullCall?: boolean;
-    /**
-     * Unique identifier of parent metastore.
-     */
     metastoreId?: string;
-    /**
-     * Name of parameter.
-     */
     name?: string;
-    /**
-     * Username of current owner of function.
-     */
     owner?: string;
-    /**
-     * Function parameter style. `S` is the value for SQL.
-     */
     parameterStyle?: string;
-    /**
-     * JSON-serialized key-value pair map, encoded (escaped) as a string.
-     */
     properties?: string;
-    /**
-     * Table function return parameters.  See `inputParams` for description.
-     */
-    returnParams?: inputs.GetFunctionsFunctionReturnParams;
-    /**
-     * Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
-     */
+    returnParams?: inputs.GetFunctionsFunctionReturnParam[];
     routineBody?: string;
-    /**
-     * Function body.
-     */
     routineDefinition?: string;
-    /**
-     * Function dependencies.
-     */
-    routineDependencies?: inputs.GetFunctionsFunctionRoutineDependencies;
-    /**
-     * Name of databricks_schema.
-     */
+    routineDependencies?: inputs.GetFunctionsFunctionRoutineDependency[];
     schemaName?: string;
-    /**
-     * Function security type. (Enum: `DEFINER`).
-     */
     securityType?: string;
-    /**
-     * Specific name of the function; Reserved for future use.
-     */
     specificName?: string;
-    /**
-     * Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
-     */
     sqlDataAccess?: string;
-    /**
-     * List of schemes whose objects can be referenced without qualification.
-     */
     sqlPath?: string;
-    /**
-     * Time at which this function was created, in epoch milliseconds.
-     */
     updatedAt?: number;
-    /**
-     * Username of user who last modified function.
-     */
     updatedBy?: string;
 }
 
 export interface GetFunctionsFunctionArgs {
-    /**
-     * Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
-     */
     browseOnly?: pulumi.Input<boolean>;
-    /**
-     * Name of databricks_catalog.
-     */
     catalogName?: pulumi.Input<string>;
-    /**
-     * User-provided free-form text description.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * Time at which this function was created, in epoch milliseconds.
-     */
     createdAt?: pulumi.Input<number>;
-    /**
-     * Username of function creator.
-     */
     createdBy?: pulumi.Input<string>;
-    /**
-     * Scalar function return data type.
-     */
     dataType?: pulumi.Input<string>;
-    /**
-     * External function language.
-     */
     externalLanguage?: pulumi.Input<string>;
-    /**
-     * External function name.
-     */
     externalName?: pulumi.Input<string>;
-    /**
-     * Pretty printed function data type.
-     */
     fullDataType?: pulumi.Input<string>;
-    /**
-     * Full name of function, in form of catalog_name.schema_name.function__name
-     */
     fullName?: pulumi.Input<string>;
-    /**
-     * Id of Function, relative to parent schema.
-     */
     functionId?: pulumi.Input<string>;
-    /**
-     * object describing input parameters. Consists of the single attribute:
-     */
-    inputParams?: pulumi.Input<inputs.GetFunctionsFunctionInputParamsArgs>;
-    /**
-     * Boolean flag specifying whether the function is deterministic.
-     */
+    inputParams?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionInputParamArgs>[]>;
     isDeterministic?: pulumi.Input<boolean>;
-    /**
-     * Boolean flag whether function null call.
-     */
     isNullCall?: pulumi.Input<boolean>;
-    /**
-     * Unique identifier of parent metastore.
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * Name of parameter.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username of current owner of function.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Function parameter style. `S` is the value for SQL.
-     */
     parameterStyle?: pulumi.Input<string>;
-    /**
-     * JSON-serialized key-value pair map, encoded (escaped) as a string.
-     */
     properties?: pulumi.Input<string>;
-    /**
-     * Table function return parameters.  See `inputParams` for description.
-     */
-    returnParams?: pulumi.Input<inputs.GetFunctionsFunctionReturnParamsArgs>;
-    /**
-     * Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
-     */
+    returnParams?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionReturnParamArgs>[]>;
     routineBody?: pulumi.Input<string>;
-    /**
-     * Function body.
-     */
     routineDefinition?: pulumi.Input<string>;
-    /**
-     * Function dependencies.
-     */
-    routineDependencies?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesArgs>;
-    /**
-     * Name of databricks_schema.
-     */
+    routineDependencies?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependencyArgs>[]>;
     schemaName?: pulumi.Input<string>;
-    /**
-     * Function security type. (Enum: `DEFINER`).
-     */
     securityType?: pulumi.Input<string>;
-    /**
-     * Specific name of the function; Reserved for future use.
-     */
     specificName?: pulumi.Input<string>;
-    /**
-     * Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
-     */
     sqlDataAccess?: pulumi.Input<string>;
-    /**
-     * List of schemes whose objects can be referenced without qualification.
-     */
     sqlPath?: pulumi.Input<string>;
-    /**
-     * Time at which this function was created, in epoch milliseconds.
-     */
     updatedAt?: pulumi.Input<number>;
-    /**
-     * Username of user who last modified function.
-     */
     updatedBy?: pulumi.Input<string>;
 }
 
-export interface GetFunctionsFunctionInputParams {
-    /**
-     * The array of definitions of the function's parameters:
-     */
-    parameters?: inputs.GetFunctionsFunctionInputParamsParameter[];
+export interface GetFunctionsFunctionInputParam {
+    parameters?: inputs.GetFunctionsFunctionInputParamParameter[];
 }
 
-export interface GetFunctionsFunctionInputParamsArgs {
-    /**
-     * The array of definitions of the function's parameters:
-     */
-    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionInputParamsParameterArgs>[]>;
+export interface GetFunctionsFunctionInputParamArgs {
+    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionInputParamParameterArgs>[]>;
 }
 
-export interface GetFunctionsFunctionInputParamsParameter {
-    /**
-     * User-provided free-form text description.
-     */
+export interface GetFunctionsFunctionInputParamParameter {
     comment?: string;
-    /**
-     * Name of parameter.
-     */
     name: string;
-    /**
-     * Default value of the parameter.
-     */
     parameterDefault?: string;
-    /**
-     * The mode of the function parameter.
-     */
     parameterMode?: string;
-    /**
-     * The type of function parameter (`PARAM` or `COLUMN`).
-     */
     parameterType?: string;
-    /**
-     * Ordinal position of column (starting at position 0).
-     */
     position: number;
-    /**
-     * Format of IntervalType.
-     */
     typeIntervalType?: string;
-    /**
-     * Full data type spec, JSON-serialized.
-     */
     typeJson?: string;
-    /**
-     * Name of type (INT, STRUCT, MAP, etc.).
-     */
     typeName: string;
-    /**
-     * Digits of precision; required on Create for DecimalTypes.
-     */
     typePrecision?: number;
-    /**
-     * Digits to right of decimal; Required on Create for DecimalTypes.
-     */
     typeScale?: number;
-    /**
-     * Full data type spec, SQL/catalogString text.
-     */
     typeText: string;
 }
 
-export interface GetFunctionsFunctionInputParamsParameterArgs {
-    /**
-     * User-provided free-form text description.
-     */
+export interface GetFunctionsFunctionInputParamParameterArgs {
     comment?: pulumi.Input<string>;
-    /**
-     * Name of parameter.
-     */
     name: pulumi.Input<string>;
-    /**
-     * Default value of the parameter.
-     */
     parameterDefault?: pulumi.Input<string>;
-    /**
-     * The mode of the function parameter.
-     */
     parameterMode?: pulumi.Input<string>;
-    /**
-     * The type of function parameter (`PARAM` or `COLUMN`).
-     */
     parameterType?: pulumi.Input<string>;
-    /**
-     * Ordinal position of column (starting at position 0).
-     */
     position: pulumi.Input<number>;
-    /**
-     * Format of IntervalType.
-     */
     typeIntervalType?: pulumi.Input<string>;
-    /**
-     * Full data type spec, JSON-serialized.
-     */
     typeJson?: pulumi.Input<string>;
-    /**
-     * Name of type (INT, STRUCT, MAP, etc.).
-     */
     typeName: pulumi.Input<string>;
-    /**
-     * Digits of precision; required on Create for DecimalTypes.
-     */
     typePrecision?: pulumi.Input<number>;
-    /**
-     * Digits to right of decimal; Required on Create for DecimalTypes.
-     */
     typeScale?: pulumi.Input<number>;
-    /**
-     * Full data type spec, SQL/catalogString text.
-     */
     typeText: pulumi.Input<string>;
 }
 
-export interface GetFunctionsFunctionReturnParams {
-    /**
-     * The array of definitions of the function's parameters:
-     */
-    parameters?: inputs.GetFunctionsFunctionReturnParamsParameter[];
+export interface GetFunctionsFunctionReturnParam {
+    parameters?: inputs.GetFunctionsFunctionReturnParamParameter[];
 }
 
-export interface GetFunctionsFunctionReturnParamsArgs {
-    /**
-     * The array of definitions of the function's parameters:
-     */
-    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionReturnParamsParameterArgs>[]>;
+export interface GetFunctionsFunctionReturnParamArgs {
+    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionReturnParamParameterArgs>[]>;
 }
 
-export interface GetFunctionsFunctionReturnParamsParameter {
-    /**
-     * User-provided free-form text description.
-     */
+export interface GetFunctionsFunctionReturnParamParameter {
     comment?: string;
-    /**
-     * Name of parameter.
-     */
     name: string;
-    /**
-     * Default value of the parameter.
-     */
     parameterDefault?: string;
-    /**
-     * The mode of the function parameter.
-     */
     parameterMode?: string;
-    /**
-     * The type of function parameter (`PARAM` or `COLUMN`).
-     */
     parameterType?: string;
-    /**
-     * Ordinal position of column (starting at position 0).
-     */
     position: number;
-    /**
-     * Format of IntervalType.
-     */
     typeIntervalType?: string;
-    /**
-     * Full data type spec, JSON-serialized.
-     */
     typeJson?: string;
-    /**
-     * Name of type (INT, STRUCT, MAP, etc.).
-     */
     typeName: string;
-    /**
-     * Digits of precision; required on Create for DecimalTypes.
-     */
     typePrecision?: number;
-    /**
-     * Digits to right of decimal; Required on Create for DecimalTypes.
-     */
     typeScale?: number;
-    /**
-     * Full data type spec, SQL/catalogString text.
-     */
     typeText: string;
 }
 
-export interface GetFunctionsFunctionReturnParamsParameterArgs {
-    /**
-     * User-provided free-form text description.
-     */
+export interface GetFunctionsFunctionReturnParamParameterArgs {
     comment?: pulumi.Input<string>;
-    /**
-     * Name of parameter.
-     */
     name: pulumi.Input<string>;
-    /**
-     * Default value of the parameter.
-     */
     parameterDefault?: pulumi.Input<string>;
-    /**
-     * The mode of the function parameter.
-     */
     parameterMode?: pulumi.Input<string>;
-    /**
-     * The type of function parameter (`PARAM` or `COLUMN`).
-     */
     parameterType?: pulumi.Input<string>;
-    /**
-     * Ordinal position of column (starting at position 0).
-     */
     position: pulumi.Input<number>;
-    /**
-     * Format of IntervalType.
-     */
     typeIntervalType?: pulumi.Input<string>;
-    /**
-     * Full data type spec, JSON-serialized.
-     */
     typeJson?: pulumi.Input<string>;
-    /**
-     * Name of type (INT, STRUCT, MAP, etc.).
-     */
     typeName: pulumi.Input<string>;
-    /**
-     * Digits of precision; required on Create for DecimalTypes.
-     */
     typePrecision?: pulumi.Input<number>;
-    /**
-     * Digits to right of decimal; Required on Create for DecimalTypes.
-     */
     typeScale?: pulumi.Input<number>;
-    /**
-     * Full data type spec, SQL/catalogString text.
-     */
     typeText: pulumi.Input<string>;
 }
 
-export interface GetFunctionsFunctionRoutineDependencies {
-    dependencies?: inputs.GetFunctionsFunctionRoutineDependenciesDependency[];
+export interface GetFunctionsFunctionRoutineDependency {
+    dependencies?: inputs.GetFunctionsFunctionRoutineDependencyDependency[];
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesArgs {
-    dependencies?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyArgs>[]>;
+export interface GetFunctionsFunctionRoutineDependencyArgs {
+    dependencies?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependencyDependencyArgs>[]>;
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependency {
-    function?: inputs.GetFunctionsFunctionRoutineDependenciesDependencyFunction;
-    table?: inputs.GetFunctionsFunctionRoutineDependenciesDependencyTable;
+export interface GetFunctionsFunctionRoutineDependencyDependency {
+    functions?: inputs.GetFunctionsFunctionRoutineDependencyDependencyFunction[];
+    tables?: inputs.GetFunctionsFunctionRoutineDependencyDependencyTable[];
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependencyArgs {
-    function?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs>;
-    table?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyTableArgs>;
+export interface GetFunctionsFunctionRoutineDependencyDependencyArgs {
+    functions?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionArgs>[]>;
+    tables?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependencyDependencyTableArgs>[]>;
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependencyFunction {
+export interface GetFunctionsFunctionRoutineDependencyDependencyFunction {
     functionFullName: string;
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs {
+export interface GetFunctionsFunctionRoutineDependencyDependencyFunctionArgs {
     functionFullName: pulumi.Input<string>;
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependencyTable {
+export interface GetFunctionsFunctionRoutineDependencyDependencyTable {
     tableFullName: string;
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependencyTableArgs {
+export interface GetFunctionsFunctionRoutineDependencyDependencyTableArgs {
     tableFullName: pulumi.Input<string>;
 }
 
@@ -2896,40 +1779,16 @@ export interface GetInstancePoolPoolInfoStatsArgs {
 }
 
 export interface GetInstanceProfilesInstanceProfile {
-    /**
-     * ARN of the instance profile.
-     */
     arn?: string;
-    /**
-     * Whether the instance profile is a meta instance profile or not.
-     */
     isMeta?: boolean;
-    /**
-     * Name of the instance profile.
-     */
     name?: string;
-    /**
-     * ARN of the role attached to the instance profile.
-     */
     roleArn?: string;
 }
 
 export interface GetInstanceProfilesInstanceProfileArgs {
-    /**
-     * ARN of the instance profile.
-     */
     arn?: pulumi.Input<string>;
-    /**
-     * Whether the instance profile is a meta instance profile or not.
-     */
     isMeta?: pulumi.Input<boolean>;
-    /**
-     * Name of the instance profile.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * ARN of the role attached to the instance profile.
-     */
     roleArn?: pulumi.Input<string>;
 }
 
@@ -2966,9 +1825,6 @@ export interface GetJobJobSettingsSettings {
     maxConcurrentRuns?: number;
     maxRetries?: number;
     minRetryIntervalMillis?: number;
-    /**
-     * the job name of databricks.Job if the resource was matched by id.
-     */
     name?: string;
     newCluster?: inputs.GetJobJobSettingsSettingsNewCluster;
     notebookTask?: inputs.GetJobJobSettingsSettingsNotebookTask;
@@ -3008,9 +1864,6 @@ export interface GetJobJobSettingsSettingsArgs {
     maxConcurrentRuns?: pulumi.Input<number>;
     maxRetries?: pulumi.Input<number>;
     minRetryIntervalMillis?: pulumi.Input<number>;
-    /**
-     * the job name of databricks.Job if the resource was matched by id.
-     */
     name?: pulumi.Input<string>;
     newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterArgs>;
     notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsNotebookTaskArgs>;
@@ -3875,17 +2728,11 @@ export interface GetJobJobSettingsSettingsNotificationSettingsArgs {
 
 export interface GetJobJobSettingsSettingsParameter {
     default: string;
-    /**
-     * the job name of databricks.Job if the resource was matched by id.
-     */
     name: string;
 }
 
 export interface GetJobJobSettingsSettingsParameterArgs {
     default: pulumi.Input<string>;
-    /**
-     * the job name of databricks.Job if the resource was matched by id.
-     */
     name: pulumi.Input<string>;
 }
 
@@ -4816,72 +3663,42 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotification
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
@@ -5462,72 +4279,42 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotificationsArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
@@ -5598,72 +4385,42 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsArgs {
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStart {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs {
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     */
     id: pulumi.Input<string>;
 }
 
@@ -5672,40 +4429,16 @@ export interface GetMetastoreMetastoreInfo {
     createdAt?: number;
     createdBy?: string;
     defaultDataAccessConfigId?: string;
-    /**
-     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-     */
     deltaSharingOrganizationName?: string;
-    /**
-     * Used to set expiration duration in seconds on recipient data access tokens.
-     */
     deltaSharingRecipientTokenLifetimeInSeconds?: number;
-    /**
-     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     */
     deltaSharingScope?: string;
     externalAccessEnabled?: boolean;
     globalMetastoreId?: string;
-    /**
-     * ID of the metastore
-     */
     metastoreId?: string;
-    /**
-     * Name of the metastore
-     */
     name?: string;
-    /**
-     * Username/groupname/sp applicationId of the metastore owner.
-     */
     owner?: string;
     privilegeModelVersion?: string;
-    /**
-     * Region of the metastore
-     */
     region?: string;
-    /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored.
-     */
     storageRoot?: string;
     storageRootCredentialId?: string;
     storageRootCredentialName?: string;
@@ -5718,40 +4451,16 @@ export interface GetMetastoreMetastoreInfoArgs {
     createdAt?: pulumi.Input<number>;
     createdBy?: pulumi.Input<string>;
     defaultDataAccessConfigId?: pulumi.Input<string>;
-    /**
-     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-     */
     deltaSharingOrganizationName?: pulumi.Input<string>;
-    /**
-     * Used to set expiration duration in seconds on recipient data access tokens.
-     */
     deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
-    /**
-     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     */
     deltaSharingScope?: pulumi.Input<string>;
     externalAccessEnabled?: pulumi.Input<boolean>;
     globalMetastoreId?: pulumi.Input<string>;
-    /**
-     * ID of the metastore
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * Name of the metastore
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the metastore owner.
-     */
     owner?: pulumi.Input<string>;
     privilegeModelVersion?: pulumi.Input<string>;
-    /**
-     * Region of the metastore
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored.
-     */
     storageRoot?: pulumi.Input<string>;
     storageRootCredentialId?: pulumi.Input<string>;
     storageRootCredentialName?: pulumi.Input<string>;
@@ -5772,27 +4481,15 @@ export interface GetMlflowExperimentTagArgs {
 export interface GetMlflowModelLatestVersion {
     creationTimestamp?: number;
     currentStage?: string;
-    /**
-     * User-specified description for the object.
-     */
     description?: string;
     lastUpdatedTimestamp?: number;
-    /**
-     * Name of the registered model.
-     */
     name?: string;
     runId?: string;
     runLink?: string;
     source?: string;
     status?: string;
     statusMessage?: string;
-    /**
-     * Array of tags associated with the model.
-     */
     tags?: inputs.GetMlflowModelLatestVersionTag[];
-    /**
-     * The username of the user that created the object.
-     */
     userId?: string;
     version?: string;
 }
@@ -5800,27 +4497,15 @@ export interface GetMlflowModelLatestVersion {
 export interface GetMlflowModelLatestVersionArgs {
     creationTimestamp?: pulumi.Input<number>;
     currentStage?: pulumi.Input<string>;
-    /**
-     * User-specified description for the object.
-     */
     description?: pulumi.Input<string>;
     lastUpdatedTimestamp?: pulumi.Input<number>;
-    /**
-     * Name of the registered model.
-     */
     name?: pulumi.Input<string>;
     runId?: pulumi.Input<string>;
     runLink?: pulumi.Input<string>;
     source?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
     statusMessage?: pulumi.Input<string>;
-    /**
-     * Array of tags associated with the model.
-     */
     tags?: pulumi.Input<pulumi.Input<inputs.GetMlflowModelLatestVersionTagArgs>[]>;
-    /**
-     * The username of the user that created the object.
-     */
     userId?: pulumi.Input<string>;
     version?: pulumi.Input<string>;
 }
@@ -5845,317 +4530,251 @@ export interface GetMlflowModelTagArgs {
     value?: pulumi.Input<string>;
 }
 
-export interface GetNotificationDestinationsNotificationDestination {
-    /**
-     * The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
-     */
-    destinationType?: string;
-    /**
-     * The display name of the Notification Destination.
-     */
-    displayName?: string;
-    /**
-     * The unique ID of the Notification Destination.
-     */
-    id?: string;
+export interface GetMwsNetworkConnectivityConfigEgressConfig {
+    defaultRules?: inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRules;
+    targetRules?: inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRules;
 }
 
-export interface GetNotificationDestinationsNotificationDestinationArgs {
-    /**
-     * The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
-     */
-    destinationType?: pulumi.Input<string>;
-    /**
-     * The display name of the Notification Destination.
-     */
-    displayName?: pulumi.Input<string>;
-    /**
-     * The unique ID of the Notification Destination.
-     */
-    id?: pulumi.Input<string>;
+export interface GetMwsNetworkConnectivityConfigEgressConfigArgs {
+    defaultRules?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs>;
+    targetRules?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs>;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRules {
+    awsStableIpRule?: inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule;
+    azureServiceEndpointRule?: inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs {
+    awsStableIpRule?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs>;
+    azureServiceEndpointRule?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs>;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+    cidrBlocks?: string[];
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs {
+    cidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+    subnets?: string[];
+    targetRegion?: string;
+    targetServices?: string[];
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs {
+    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    targetRegion?: pulumi.Input<string>;
+    targetServices?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRules {
+    azurePrivateEndpointRules?: inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule[];
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs {
+    azurePrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>[]>;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
+    connectionState?: string;
+    creationTime?: number;
+    deactivated?: boolean;
+    deactivatedAt?: number;
+    endpointName?: string;
+    groupId?: string;
+    networkConnectivityConfigId?: string;
+    resourceId?: string;
+    ruleId?: string;
+    updatedTime?: number;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs {
+    connectionState?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<number>;
+    deactivated?: pulumi.Input<boolean>;
+    deactivatedAt?: pulumi.Input<number>;
+    endpointName?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
+    networkConnectivityConfigId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string>;
+    updatedTime?: pulumi.Input<number>;
 }
 
 export interface GetRegisteredModelModelInfo {
-    /**
-     * the list of aliases associated with this model. Each item is object consisting of following attributes:
-     */
     aliases?: inputs.GetRegisteredModelModelInfoAlias[];
     browseOnly?: boolean;
-    /**
-     * The name of the catalog where the schema and the registered model reside.
-     */
     catalogName?: string;
-    /**
-     * The comment attached to the registered model.
-     */
     comment?: string;
-    /**
-     * the Unix timestamp at the model's creation
-     */
     createdAt?: number;
-    /**
-     * the identifier of the user who created the model
-     */
     createdBy?: string;
-    /**
-     * The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-     */
     fullName?: string;
-    /**
-     * the unique identifier of the metastore
-     */
     metastoreId?: string;
-    /**
-     * The name of the registered model.
-     */
     name?: string;
-    /**
-     * Name of the registered model owner.
-     */
     owner?: string;
-    /**
-     * The name of the schema where the registered model resides.
-     */
     schemaName?: string;
-    /**
-     * The storage location under which model version data files are stored.
-     */
     storageLocation?: string;
-    /**
-     * the timestamp of the last time changes were made to the model
-     */
     updatedAt?: number;
-    /**
-     * the identifier of the user who updated the model last time
-     */
     updatedBy?: string;
 }
 
 export interface GetRegisteredModelModelInfoArgs {
-    /**
-     * the list of aliases associated with this model. Each item is object consisting of following attributes:
-     */
     aliases?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelModelInfoAliasArgs>[]>;
     browseOnly?: pulumi.Input<boolean>;
-    /**
-     * The name of the catalog where the schema and the registered model reside.
-     */
     catalogName?: pulumi.Input<string>;
-    /**
-     * The comment attached to the registered model.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * the Unix timestamp at the model's creation
-     */
     createdAt?: pulumi.Input<number>;
-    /**
-     * the identifier of the user who created the model
-     */
     createdBy?: pulumi.Input<string>;
-    /**
-     * The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-     */
     fullName?: pulumi.Input<string>;
-    /**
-     * the unique identifier of the metastore
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * The name of the registered model.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Name of the registered model owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * The name of the schema where the registered model resides.
-     */
     schemaName?: pulumi.Input<string>;
-    /**
-     * The storage location under which model version data files are stored.
-     */
     storageLocation?: pulumi.Input<string>;
-    /**
-     * the timestamp of the last time changes were made to the model
-     */
     updatedAt?: pulumi.Input<number>;
-    /**
-     * the identifier of the user who updated the model last time
-     */
     updatedBy?: pulumi.Input<string>;
 }
 
 export interface GetRegisteredModelModelInfoAlias {
-    /**
-     * string with the name of alias
-     */
     aliasName?: string;
-    /**
-     * associated model version
-     */
     versionNum?: number;
 }
 
 export interface GetRegisteredModelModelInfoAliasArgs {
-    /**
-     * string with the name of alias
-     */
     aliasName?: pulumi.Input<string>;
-    /**
-     * associated model version
-     */
     versionNum?: pulumi.Input<number>;
 }
 
-export interface GetSchemaSchemaInfo {
-    /**
-     * indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
-     */
+export interface GetRegisteredModelVersionsModelVersion {
+    aliases?: inputs.GetRegisteredModelVersionsModelVersionAlias[];
     browseOnly?: boolean;
-    /**
-     * the name of the catalog where the schema is.
-     */
     catalogName?: string;
-    /**
-     * the type of the parent catalog.
-     */
-    catalogType?: string;
-    /**
-     * the comment attached to the volume
-     */
     comment?: string;
-    /**
-     * time at which this schema was created, in epoch milliseconds.
-     */
     createdAt?: number;
-    /**
-     * username of schema creator.
-     */
     createdBy?: string;
-    /**
-     * information about actual state of predictive optimization.
-     */
-    effectivePredictiveOptimizationFlag?: inputs.GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag;
-    /**
-     * whether predictive optimization should be enabled for this object and objects under it.
-     */
-    enablePredictiveOptimization?: string;
-    /**
-     * the two-level (fully qualified) name of the schema
-     */
-    fullName?: string;
-    /**
-     * the unique identifier of the metastore
-     */
+    id?: string;
     metastoreId?: string;
-    /**
-     * a fully qualified name of databricks_schema: *`catalog`.`schema`*
-     */
-    name?: string;
-    /**
-     * the identifier of the user who owns the schema
-     */
-    owner?: string;
-    /**
-     * map of properties set on the schema
-     */
-    properties?: {[key: string]: string};
-    /**
-     * the unique identifier of the volume
-     */
-    schemaId?: string;
-    /**
-     * the storage location on the cloud.
-     */
+    modelName?: string;
+    modelVersionDependencies?: inputs.GetRegisteredModelVersionsModelVersionModelVersionDependency[];
+    runId?: string;
+    runWorkspaceId?: number;
+    schemaName?: string;
+    source?: string;
+    status?: string;
     storageLocation?: string;
-    /**
-     * storage root URL for managed tables within schema.
-     */
-    storageRoot?: string;
-    /**
-     * the timestamp of the last time changes were made to the schema
-     */
     updatedAt?: number;
-    /**
-     * the identifier of the user who updated the schema last time
-     */
+    updatedBy?: string;
+    version?: number;
+}
+
+export interface GetRegisteredModelVersionsModelVersionArgs {
+    aliases?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionAliasArgs>[]>;
+    browseOnly?: pulumi.Input<boolean>;
+    catalogName?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<number>;
+    createdBy?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string>;
+    modelVersionDependencies?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs>[]>;
+    runId?: pulumi.Input<string>;
+    runWorkspaceId?: pulumi.Input<number>;
+    schemaName?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<number>;
+    updatedBy?: pulumi.Input<string>;
+    version?: pulumi.Input<number>;
+}
+
+export interface GetRegisteredModelVersionsModelVersionAlias {
+    aliasName?: string;
+    versionNum?: number;
+}
+
+export interface GetRegisteredModelVersionsModelVersionAliasArgs {
+    aliasName?: pulumi.Input<string>;
+    versionNum?: pulumi.Input<number>;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependency {
+    dependencies?: inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency[];
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs {
+    dependencies?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs>[]>;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency {
+    functions?: inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction[];
+    tables?: inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable[];
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs {
+    functions?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs>[]>;
+    tables?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs>[]>;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction {
+    functionFullName: string;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs {
+    functionFullName: pulumi.Input<string>;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable {
+    tableFullName: string;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs {
+    tableFullName: pulumi.Input<string>;
+}
+
+export interface GetSchemaSchemaInfo {
+    browseOnly?: boolean;
+    catalogName?: string;
+    catalogType?: string;
+    comment?: string;
+    createdAt?: number;
+    createdBy?: string;
+    effectivePredictiveOptimizationFlag?: inputs.GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag;
+    enablePredictiveOptimization?: string;
+    fullName?: string;
+    metastoreId?: string;
+    name?: string;
+    owner?: string;
+    properties?: {[key: string]: string};
+    schemaId?: string;
+    storageLocation?: string;
+    storageRoot?: string;
+    updatedAt?: number;
     updatedBy?: string;
 }
 
 export interface GetSchemaSchemaInfoArgs {
-    /**
-     * indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
-     */
     browseOnly?: pulumi.Input<boolean>;
-    /**
-     * the name of the catalog where the schema is.
-     */
     catalogName?: pulumi.Input<string>;
-    /**
-     * the type of the parent catalog.
-     */
     catalogType?: pulumi.Input<string>;
-    /**
-     * the comment attached to the volume
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * time at which this schema was created, in epoch milliseconds.
-     */
     createdAt?: pulumi.Input<number>;
-    /**
-     * username of schema creator.
-     */
     createdBy?: pulumi.Input<string>;
-    /**
-     * information about actual state of predictive optimization.
-     */
     effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs>;
-    /**
-     * whether predictive optimization should be enabled for this object and objects under it.
-     */
     enablePredictiveOptimization?: pulumi.Input<string>;
-    /**
-     * the two-level (fully qualified) name of the schema
-     */
     fullName?: pulumi.Input<string>;
-    /**
-     * the unique identifier of the metastore
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * a fully qualified name of databricks_schema: *`catalog`.`schema`*
-     */
     name?: pulumi.Input<string>;
-    /**
-     * the identifier of the user who owns the schema
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * map of properties set on the schema
-     */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * the unique identifier of the volume
-     */
     schemaId?: pulumi.Input<string>;
-    /**
-     * the storage location on the cloud.
-     */
     storageLocation?: pulumi.Input<string>;
-    /**
-     * storage root URL for managed tables within schema.
-     */
     storageRoot?: pulumi.Input<string>;
-    /**
-     * the timestamp of the last time changes were made to the schema
-     */
     updatedAt?: pulumi.Input<number>;
-    /**
-     * the identifier of the user who updated the schema last time
-     */
     updatedBy?: pulumi.Input<string>;
 }
 
@@ -6171,23 +4790,356 @@ export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs {
     value: pulumi.Input<string>;
 }
 
+export interface GetServingEndpointsEndpoint {
+    aiGateways?: inputs.GetServingEndpointsEndpointAiGateway[];
+    configs?: inputs.GetServingEndpointsEndpointConfig[];
+    creationTimestamp?: number;
+    creator?: string;
+    id?: string;
+    lastUpdatedTimestamp?: number;
+    name?: string;
+    states?: inputs.GetServingEndpointsEndpointState[];
+    tags?: inputs.GetServingEndpointsEndpointTag[];
+    task?: string;
+}
+
+export interface GetServingEndpointsEndpointArgs {
+    aiGateways?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayArgs>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigArgs>[]>;
+    creationTimestamp?: pulumi.Input<number>;
+    creator?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    lastUpdatedTimestamp?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    states?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointStateArgs>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointTagArgs>[]>;
+    task?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointAiGateway {
+    guardrails?: inputs.GetServingEndpointsEndpointAiGatewayGuardrail[];
+    inferenceTableConfigs?: inputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfig[];
+    rateLimits?: inputs.GetServingEndpointsEndpointAiGatewayRateLimit[];
+    usageTrackingConfigs?: inputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfig[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayArgs {
+    guardrails?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailArgs>[]>;
+    inferenceTableConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgs>[]>;
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayRateLimitArgs>[]>;
+    usageTrackingConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArgs>[]>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrail {
+    inputs?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailInput[];
+    outputs?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutput[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailArgs {
+    inputs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputArgs>[]>;
+    outputs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputArgs>[]>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInput {
+    invalidKeywords?: string[];
+    piis?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPii[];
+    safety?: boolean;
+    validTopics?: string[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputArgs {
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
+    piis?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgs>[]>;
+    safety?: pulumi.Input<boolean>;
+    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPii {
+    behavior: string;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgs {
+    behavior: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailOutput {
+    invalidKeywords?: string[];
+    piis?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputPii[];
+    safety?: boolean;
+    validTopics?: string[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputArgs {
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
+    piis?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs>[]>;
+    safety?: pulumi.Input<boolean>;
+    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputPii {
+    behavior: string;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs {
+    behavior: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayInferenceTableConfig {
+    catalogName?: string;
+    enabled?: boolean;
+    schemaName?: string;
+    tableNamePrefix?: string;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgs {
+    catalogName?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    schemaName?: pulumi.Input<string>;
+    tableNamePrefix?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayRateLimit {
+    calls: number;
+    key?: string;
+    renewalPeriod: string;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayRateLimitArgs {
+    calls: pulumi.Input<number>;
+    key?: pulumi.Input<string>;
+    renewalPeriod: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayUsageTrackingConfig {
+    enabled?: boolean;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArgs {
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface GetServingEndpointsEndpointConfig {
+    servedEntities?: inputs.GetServingEndpointsEndpointConfigServedEntity[];
+    servedModels?: inputs.GetServingEndpointsEndpointConfigServedModel[];
+}
+
+export interface GetServingEndpointsEndpointConfigArgs {
+    servedEntities?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityArgs>[]>;
+    servedModels?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedModelArgs>[]>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntity {
+    entityName?: string;
+    entityVersion?: string;
+    externalModels?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModel[];
+    foundationModels?: inputs.GetServingEndpointsEndpointConfigServedEntityFoundationModel[];
+    name?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityArgs {
+    entityName?: pulumi.Input<string>;
+    entityVersion?: pulumi.Input<string>;
+    externalModels?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelArgs>[]>;
+    foundationModels?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityFoundationModelArgs>[]>;
+    name?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModel {
+    ai21labsConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig[];
+    amazonBedrockConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig[];
+    anthropicConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig[];
+    cohereConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig[];
+    databricksModelServingConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig[];
+    googleCloudVertexAiConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig[];
+    name: string;
+    openaiConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig[];
+    palmConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig[];
+    provider: string;
+    task: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelArgs {
+    ai21labsConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigArgs>[]>;
+    amazonBedrockConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs>[]>;
+    anthropicConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs>[]>;
+    cohereConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs>[]>;
+    databricksModelServingConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs>[]>;
+    googleCloudVertexAiConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs>[]>;
+    name: pulumi.Input<string>;
+    openaiConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArgs>[]>;
+    palmConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArgs>[]>;
+    provider: pulumi.Input<string>;
+    task: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig {
+    ai21labsApiKey?: string;
+    ai21labsApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigArgs {
+    ai21labsApiKey?: pulumi.Input<string>;
+    ai21labsApiKeyPlaintext?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig {
+    awsAccessKeyId?: string;
+    awsAccessKeyIdPlaintext?: string;
+    awsRegion: string;
+    awsSecretAccessKey?: string;
+    awsSecretAccessKeyPlaintext?: string;
+    bedrockProvider: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs {
+    awsAccessKeyId?: pulumi.Input<string>;
+    awsAccessKeyIdPlaintext?: pulumi.Input<string>;
+    awsRegion: pulumi.Input<string>;
+    awsSecretAccessKey?: pulumi.Input<string>;
+    awsSecretAccessKeyPlaintext?: pulumi.Input<string>;
+    bedrockProvider: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig {
+    anthropicApiKey?: string;
+    anthropicApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs {
+    anthropicApiKey?: pulumi.Input<string>;
+    anthropicApiKeyPlaintext?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig {
+    cohereApiBase?: string;
+    cohereApiKey?: string;
+    cohereApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs {
+    cohereApiBase?: pulumi.Input<string>;
+    cohereApiKey?: pulumi.Input<string>;
+    cohereApiKeyPlaintext?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig {
+    databricksApiToken?: string;
+    databricksApiTokenPlaintext?: string;
+    databricksWorkspaceUrl: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs {
+    databricksApiToken?: pulumi.Input<string>;
+    databricksApiTokenPlaintext?: pulumi.Input<string>;
+    databricksWorkspaceUrl: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
+    privateKey?: string;
+    privateKeyPlaintext?: string;
+    projectId?: string;
+    region?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs {
+    privateKey?: pulumi.Input<string>;
+    privateKeyPlaintext?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig {
+    microsoftEntraClientId?: string;
+    microsoftEntraClientSecret?: string;
+    microsoftEntraClientSecretPlaintext?: string;
+    microsoftEntraTenantId?: string;
+    openaiApiBase?: string;
+    openaiApiKey?: string;
+    openaiApiKeyPlaintext?: string;
+    openaiApiType?: string;
+    openaiApiVersion?: string;
+    openaiDeploymentName?: string;
+    openaiOrganization?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArgs {
+    microsoftEntraClientId?: pulumi.Input<string>;
+    microsoftEntraClientSecret?: pulumi.Input<string>;
+    microsoftEntraClientSecretPlaintext?: pulumi.Input<string>;
+    microsoftEntraTenantId?: pulumi.Input<string>;
+    openaiApiBase?: pulumi.Input<string>;
+    openaiApiKey?: pulumi.Input<string>;
+    openaiApiKeyPlaintext?: pulumi.Input<string>;
+    openaiApiType?: pulumi.Input<string>;
+    openaiApiVersion?: pulumi.Input<string>;
+    openaiDeploymentName?: pulumi.Input<string>;
+    openaiOrganization?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig {
+    palmApiKey?: string;
+    palmApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArgs {
+    palmApiKey?: pulumi.Input<string>;
+    palmApiKeyPlaintext?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityFoundationModel {
+    description?: string;
+    displayName?: string;
+    docs?: string;
+    name?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityFoundationModelArgs {
+    description?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    docs?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedModel {
+    modelName?: string;
+    modelVersion?: string;
+    name?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedModelArgs {
+    modelName?: pulumi.Input<string>;
+    modelVersion?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointState {
+    configUpdate?: string;
+    ready?: string;
+}
+
+export interface GetServingEndpointsEndpointStateArgs {
+    configUpdate?: pulumi.Input<string>;
+    ready?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointTag {
+    key: string;
+    value?: string;
+}
+
+export interface GetServingEndpointsEndpointTagArgs {
+    key: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
 export interface GetShareObject {
     addedAt?: number;
     addedBy?: string;
     cdfEnabled?: boolean;
-    /**
-     * Description about the object.
-     */
     comment?: string;
     content?: string;
-    /**
-     * Type of the object.
-     */
     dataObjectType: string;
     historyDataSharingStatus?: string;
-    /**
-     * The name of the share
-     */
     name: string;
     partitions?: inputs.GetShareObjectPartition[];
     sharedAs?: string;
@@ -6200,19 +5152,10 @@ export interface GetShareObjectArgs {
     addedAt?: pulumi.Input<number>;
     addedBy?: pulumi.Input<string>;
     cdfEnabled?: pulumi.Input<boolean>;
-    /**
-     * Description about the object.
-     */
     comment?: pulumi.Input<string>;
     content?: pulumi.Input<string>;
-    /**
-     * Type of the object.
-     */
     dataObjectType: pulumi.Input<string>;
     historyDataSharingStatus?: pulumi.Input<string>;
-    /**
-     * The name of the share
-     */
     name: pulumi.Input<string>;
     partitions?: pulumi.Input<pulumi.Input<inputs.GetShareObjectPartitionArgs>[]>;
     sharedAs?: pulumi.Input<string>;
@@ -6230,9 +5173,6 @@ export interface GetShareObjectPartitionArgs {
 }
 
 export interface GetShareObjectPartitionValue {
-    /**
-     * The name of the share
-     */
     name: string;
     op: string;
     recipientPropertyKey?: string;
@@ -6240,9 +5180,6 @@ export interface GetShareObjectPartitionValue {
 }
 
 export interface GetShareObjectPartitionValueArgs {
-    /**
-     * The name of the share
-     */
     name: pulumi.Input<string>;
     op: pulumi.Input<string>;
     recipientPropertyKey?: pulumi.Input<string>;
@@ -6251,17 +5188,11 @@ export interface GetShareObjectPartitionValueArgs {
 
 export interface GetSqlWarehouseChannel {
     dbsqlVersion?: string;
-    /**
-     * Name of the SQL warehouse to search (case-sensitive).
-     */
     name?: string;
 }
 
 export interface GetSqlWarehouseChannelArgs {
     dbsqlVersion?: pulumi.Input<string>;
-    /**
-     * Name of the SQL warehouse to search (case-sensitive).
-     */
     name?: pulumi.Input<string>;
 }
 
@@ -6326,200 +5257,80 @@ export interface GetSqlWarehouseTagsCustomTagArgs {
 }
 
 export interface GetStorageCredentialStorageCredentialInfo {
-    /**
-     * credential details for AWS:
-     */
     awsIamRole?: inputs.GetStorageCredentialStorageCredentialInfoAwsIamRole;
-    /**
-     * managed identity credential details for Azure
-     */
     azureManagedIdentity?: inputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentity;
-    /**
-     * service principal credential details for Azure:
-     */
     azureServicePrincipal?: inputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipal;
     cloudflareApiToken?: inputs.GetStorageCredentialStorageCredentialInfoCloudflareApiToken;
     comment?: string;
-    /**
-     * Time at which this catalog was created, in epoch milliseconds.
-     */
     createdAt?: number;
-    /**
-     * Username of catalog creator.
-     */
     createdBy?: string;
-    /**
-     * credential details for GCP:
-     */
     databricksGcpServiceAccount?: inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount;
     fullName?: string;
-    /**
-     * Unique ID of storage credential.
-     */
     id?: string;
     isolationMode?: string;
-    /**
-     * Unique identifier of the parent Metastore.
-     */
     metastoreId?: string;
-    /**
-     * The name of the storage credential
-     */
     name?: string;
-    /**
-     * Username/groupname/sp applicationId of the storage credential owner.
-     */
     owner?: string;
-    /**
-     * Indicates whether the storage credential is only usable for read operations.
-     */
     readOnly?: boolean;
-    /**
-     * Time at which this catalog was last modified, in epoch milliseconds.
-     */
     updatedAt?: number;
-    /**
-     * Username of user who last modified catalog.
-     */
     updatedBy?: string;
     usedForManagedStorage?: boolean;
 }
 
 export interface GetStorageCredentialStorageCredentialInfoArgs {
-    /**
-     * credential details for AWS:
-     */
     awsIamRole?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs>;
-    /**
-     * managed identity credential details for Azure
-     */
     azureManagedIdentity?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs>;
-    /**
-     * service principal credential details for Azure:
-     */
     azureServicePrincipal?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs>;
     cloudflareApiToken?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs>;
     comment?: pulumi.Input<string>;
-    /**
-     * Time at which this catalog was created, in epoch milliseconds.
-     */
     createdAt?: pulumi.Input<number>;
-    /**
-     * Username of catalog creator.
-     */
     createdBy?: pulumi.Input<string>;
-    /**
-     * credential details for GCP:
-     */
     databricksGcpServiceAccount?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs>;
     fullName?: pulumi.Input<string>;
-    /**
-     * Unique ID of storage credential.
-     */
     id?: pulumi.Input<string>;
     isolationMode?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the parent Metastore.
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * The name of the storage credential
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the storage credential owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Indicates whether the storage credential is only usable for read operations.
-     */
     readOnly?: pulumi.Input<boolean>;
-    /**
-     * Time at which this catalog was last modified, in epoch milliseconds.
-     */
     updatedAt?: pulumi.Input<number>;
-    /**
-     * Username of user who last modified catalog.
-     */
     updatedBy?: pulumi.Input<string>;
     usedForManagedStorage?: pulumi.Input<boolean>;
 }
 
 export interface GetStorageCredentialStorageCredentialInfoAwsIamRole {
-    /**
-     * (output only) - The external ID used in role assumption to prevent confused deputy problem.
-     */
     externalId?: string;
-    /**
-     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-     */
     roleArn: string;
-    /**
-     * (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
-     */
     unityCatalogIamArn?: string;
 }
 
 export interface GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs {
-    /**
-     * (output only) - The external ID used in role assumption to prevent confused deputy problem.
-     */
     externalId?: pulumi.Input<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-     */
     roleArn: pulumi.Input<string>;
-    /**
-     * (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
-     */
     unityCatalogIamArn?: pulumi.Input<string>;
 }
 
 export interface GetStorageCredentialStorageCredentialInfoAzureManagedIdentity {
-    /**
-     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-     */
     accessConnectorId: string;
     credentialId?: string;
-    /**
-     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-     */
     managedIdentityId?: string;
 }
 
 export interface GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs {
-    /**
-     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-     */
     accessConnectorId: pulumi.Input<string>;
     credentialId?: pulumi.Input<string>;
-    /**
-     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-     */
     managedIdentityId?: pulumi.Input<string>;
 }
 
 export interface GetStorageCredentialStorageCredentialInfoAzureServicePrincipal {
-    /**
-     * The application ID of the application registration within the referenced AAD tenant
-     */
     applicationId: string;
     clientSecret: string;
-    /**
-     * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-     */
     directoryId: string;
 }
 
 export interface GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs {
-    /**
-     * The application ID of the application registration within the referenced AAD tenant
-     */
     applicationId: pulumi.Input<string>;
     clientSecret: pulumi.Input<string>;
-    /**
-     * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-     */
     directoryId: pulumi.Input<string>;
 }
 
@@ -6537,41 +5348,23 @@ export interface GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs
 
 export interface GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount {
     credentialId?: string;
-    /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
-     */
     email?: string;
 }
 
 export interface GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs {
     credentialId?: pulumi.Input<string>;
-    /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
-     */
     email?: pulumi.Input<string>;
 }
 
 export interface GetTableTableInfo {
     accessPoint?: string;
     browseOnly?: boolean;
-    /**
-     * Name of parent catalog.
-     */
     catalogName?: string;
-    /**
-     * Array of ColumnInfo objects of the table's columns
-     */
     columns?: inputs.GetTableTableInfoColumn[];
-    /**
-     * Free-form text description
-     */
     comment?: string;
     createdAt?: number;
     createdBy?: string;
     dataAccessConfigurationId?: string;
-    /**
-     * Table format, e.g. DELTA, CSV, JSON
-     */
     dataSourceFormat?: string;
     deletedAt?: number;
     deltaRuntimePropertiesKvpairs?: inputs.GetTableTableInfoDeltaRuntimePropertiesKvpairs;
@@ -6580,63 +5373,33 @@ export interface GetTableTableInfo {
     encryptionDetails?: inputs.GetTableTableInfoEncryptionDetails;
     fullName?: string;
     metastoreId?: string;
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     */
     name?: string;
-    /**
-     * Current owner of the table
-     */
     owner?: string;
     pipelineId?: string;
     properties?: {[key: string]: string};
     rowFilter?: inputs.GetTableTableInfoRowFilter;
-    /**
-     * Name of parent schema relative to its parent catalog.
-     */
     schemaName?: string;
     sqlPath?: string;
     storageCredentialName?: string;
     storageLocation?: string;
     tableConstraints?: inputs.GetTableTableInfoTableConstraint[];
     tableId?: string;
-    /**
-     * Table type, e.g. MANAGED, EXTERNAL, VIEW
-     */
     tableType?: string;
     updatedAt?: number;
     updatedBy?: string;
-    /**
-     * View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
-     */
     viewDefinition?: string;
-    /**
-     * View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
-     */
     viewDependencies?: inputs.GetTableTableInfoViewDependencies;
 }
 
 export interface GetTableTableInfoArgs {
     accessPoint?: pulumi.Input<string>;
     browseOnly?: pulumi.Input<boolean>;
-    /**
-     * Name of parent catalog.
-     */
     catalogName?: pulumi.Input<string>;
-    /**
-     * Array of ColumnInfo objects of the table's columns
-     */
     columns?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoColumnArgs>[]>;
-    /**
-     * Free-form text description
-     */
     comment?: pulumi.Input<string>;
     createdAt?: pulumi.Input<number>;
     createdBy?: pulumi.Input<string>;
     dataAccessConfigurationId?: pulumi.Input<string>;
-    /**
-     * Table format, e.g. DELTA, CSV, JSON
-     */
     dataSourceFormat?: pulumi.Input<string>;
     deletedAt?: pulumi.Input<number>;
     deltaRuntimePropertiesKvpairs?: pulumi.Input<inputs.GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs>;
@@ -6645,51 +5408,27 @@ export interface GetTableTableInfoArgs {
     encryptionDetails?: pulumi.Input<inputs.GetTableTableInfoEncryptionDetailsArgs>;
     fullName?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Current owner of the table
-     */
     owner?: pulumi.Input<string>;
     pipelineId?: pulumi.Input<string>;
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     rowFilter?: pulumi.Input<inputs.GetTableTableInfoRowFilterArgs>;
-    /**
-     * Name of parent schema relative to its parent catalog.
-     */
     schemaName?: pulumi.Input<string>;
     sqlPath?: pulumi.Input<string>;
     storageCredentialName?: pulumi.Input<string>;
     storageLocation?: pulumi.Input<string>;
     tableConstraints?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoTableConstraintArgs>[]>;
     tableId?: pulumi.Input<string>;
-    /**
-     * Table type, e.g. MANAGED, EXTERNAL, VIEW
-     */
     tableType?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<number>;
     updatedBy?: pulumi.Input<string>;
-    /**
-     * View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
-     */
     viewDefinition?: pulumi.Input<string>;
-    /**
-     * View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
-     */
     viewDependencies?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesArgs>;
 }
 
 export interface GetTableTableInfoColumn {
-    /**
-     * Free-form text description
-     */
     comment?: string;
     mask?: inputs.GetTableTableInfoColumnMask;
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     */
     name?: string;
     nullable?: boolean;
     partitionIndex?: number;
@@ -6703,14 +5442,8 @@ export interface GetTableTableInfoColumn {
 }
 
 export interface GetTableTableInfoColumnArgs {
-    /**
-     * Free-form text description
-     */
     comment?: pulumi.Input<string>;
     mask?: pulumi.Input<inputs.GetTableTableInfoColumnMaskArgs>;
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     */
     name?: pulumi.Input<string>;
     nullable?: pulumi.Input<boolean>;
     partitionIndex?: pulumi.Input<number>;
@@ -6795,9 +5528,6 @@ export interface GetTableTableInfoTableConstraintArgs {
 
 export interface GetTableTableInfoTableConstraintForeignKeyConstraint {
     childColumns: string[];
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     */
     name: string;
     parentColumns: string[];
     parentTable: string;
@@ -6805,41 +5535,26 @@ export interface GetTableTableInfoTableConstraintForeignKeyConstraint {
 
 export interface GetTableTableInfoTableConstraintForeignKeyConstraintArgs {
     childColumns: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     */
     name: pulumi.Input<string>;
     parentColumns: pulumi.Input<pulumi.Input<string>[]>;
     parentTable: pulumi.Input<string>;
 }
 
 export interface GetTableTableInfoTableConstraintNamedTableConstraint {
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     */
     name: string;
 }
 
 export interface GetTableTableInfoTableConstraintNamedTableConstraintArgs {
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     */
     name: pulumi.Input<string>;
 }
 
 export interface GetTableTableInfoTableConstraintPrimaryKeyConstraint {
     childColumns: string[];
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     */
     name: string;
 }
 
 export interface GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs {
     childColumns: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     */
     name: pulumi.Input<string>;
 }
 
@@ -6878,144 +5593,42 @@ export interface GetTableTableInfoViewDependenciesDependencyTableArgs {
 }
 
 export interface GetVolumeVolumeInfo {
-    /**
-     * the AWS access point to use when accessing s3 bucket for this volume's external location
-     */
     accessPoint?: string;
-    /**
-     * indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
-     */
     browseOnly?: boolean;
-    /**
-     * the name of the catalog where the schema and the volume are
-     */
     catalogName?: string;
-    /**
-     * the comment attached to the volume
-     */
     comment?: string;
-    /**
-     * the Unix timestamp at the volume's creation
-     */
     createdAt?: number;
-    /**
-     * the identifier of the user who created the volume
-     */
     createdBy?: string;
-    /**
-     * encryption options that apply to clients connecting to cloud storage
-     */
     encryptionDetails?: inputs.GetVolumeVolumeInfoEncryptionDetails;
-    /**
-     * the three-level (fully qualified) name of the volume
-     */
     fullName?: string;
-    /**
-     * the unique identifier of the metastore
-     */
     metastoreId?: string;
-    /**
-     * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-     */
     name?: string;
-    /**
-     * the identifier of the user who owns the volume
-     */
     owner?: string;
-    /**
-     * the name of the schema where the volume is
-     */
     schemaName?: string;
-    /**
-     * the storage location on the cloud
-     */
     storageLocation?: string;
-    /**
-     * the timestamp of the last time changes were made to the volume
-     */
     updatedAt?: number;
-    /**
-     * the identifier of the user who updated the volume last time
-     */
     updatedBy?: string;
-    /**
-     * the unique identifier of the volume
-     */
     volumeId?: string;
-    /**
-     * whether the volume is `MANAGED` or `EXTERNAL`
-     */
     volumeType?: string;
 }
 
 export interface GetVolumeVolumeInfoArgs {
-    /**
-     * the AWS access point to use when accessing s3 bucket for this volume's external location
-     */
     accessPoint?: pulumi.Input<string>;
-    /**
-     * indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
-     */
     browseOnly?: pulumi.Input<boolean>;
-    /**
-     * the name of the catalog where the schema and the volume are
-     */
     catalogName?: pulumi.Input<string>;
-    /**
-     * the comment attached to the volume
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * the Unix timestamp at the volume's creation
-     */
     createdAt?: pulumi.Input<number>;
-    /**
-     * the identifier of the user who created the volume
-     */
     createdBy?: pulumi.Input<string>;
-    /**
-     * encryption options that apply to clients connecting to cloud storage
-     */
     encryptionDetails?: pulumi.Input<inputs.GetVolumeVolumeInfoEncryptionDetailsArgs>;
-    /**
-     * the three-level (fully qualified) name of the volume
-     */
     fullName?: pulumi.Input<string>;
-    /**
-     * the unique identifier of the metastore
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-     */
     name?: pulumi.Input<string>;
-    /**
-     * the identifier of the user who owns the volume
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * the name of the schema where the volume is
-     */
     schemaName?: pulumi.Input<string>;
-    /**
-     * the storage location on the cloud
-     */
     storageLocation?: pulumi.Input<string>;
-    /**
-     * the timestamp of the last time changes were made to the volume
-     */
     updatedAt?: pulumi.Input<number>;
-    /**
-     * the identifier of the user who updated the volume last time
-     */
     updatedBy?: pulumi.Input<string>;
-    /**
-     * the unique identifier of the volume
-     */
     volumeId?: pulumi.Input<string>;
-    /**
-     * whether the volume is `MANAGED` or `EXTERNAL`
-     */
     volumeType?: pulumi.Input<string>;
 }
 
@@ -7043,39 +5656,18 @@ export interface GrantsGrant {
 }
 
 export interface InstancePoolAwsAttributes {
-    /**
-     * (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
-     */
     availability?: pulumi.Input<string>;
-    /**
-     * (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
-     */
     spotBidPricePercent?: pulumi.Input<number>;
-    /**
-     * (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
-     */
     zoneId?: pulumi.Input<string>;
 }
 
 export interface InstancePoolAzureAttributes {
-    /**
-     * Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
-     */
     availability?: pulumi.Input<string>;
-    /**
-     * The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
-     */
     spotBidMaxPrice?: pulumi.Input<number>;
 }
 
 export interface InstancePoolDiskSpec {
-    /**
-     * (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
-     */
     diskCount?: pulumi.Input<number>;
-    /**
-     * (Integer) The size of each disk (in GiB) to attach.
-     */
     diskSize?: pulumi.Input<number>;
     diskType?: pulumi.Input<inputs.InstancePoolDiskSpecDiskType>;
 }
@@ -7086,17 +5678,8 @@ export interface InstancePoolDiskSpecDiskType {
 }
 
 export interface InstancePoolGcpAttributes {
-    /**
-     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     */
     gcpAvailability?: pulumi.Input<string>;
-    /**
-     * Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
-     */
     localSsdCount?: pulumi.Input<number>;
-    /**
-     * Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
-     */
     zoneId?: pulumi.Input<string>;
 }
 
@@ -7122,33 +5705,7 @@ export interface InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride {
 }
 
 export interface InstancePoolPreloadedDockerImage {
-    /**
-     * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
-     *
-     * Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     * import * as docker from "@pulumi/docker";
-     *
-     * const _this = new docker.index.RegistryImage("this", {
-     *     build: [{}],
-     *     name: `${thisAzurermContainerRegistry.loginServer}/sample:latest`,
-     * });
-     * const thisInstancePool = new databricks.InstancePool("this", {preloadedDockerImages: [{
-     *     url: _this.name,
-     *     basicAuth: {
-     *         username: thisAzurermContainerRegistry.adminUsername,
-     *         password: thisAzurermContainerRegistry.adminPassword,
-     *     },
-     * }]});
-     * ```
-     */
     basicAuth?: pulumi.Input<inputs.InstancePoolPreloadedDockerImageBasicAuth>;
-    /**
-     * URL for the Docker image
-     */
     url: pulumi.Input<string>;
 }
 
@@ -7158,44 +5715,16 @@ export interface InstancePoolPreloadedDockerImageBasicAuth {
 }
 
 export interface JobContinuous {
-    /**
-     * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-     */
     pauseStatus?: pulumi.Input<string>;
 }
 
 export interface JobDbtTask {
-    /**
-     * The name of the catalog to use inside Unity Catalog.
-     */
     catalog?: pulumi.Input<string>;
-    /**
-     * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
-     */
     commands: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
-     */
     profilesDirectory?: pulumi.Input<string>;
-    /**
-     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
-     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
-     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
-     */
     projectDirectory?: pulumi.Input<string>;
-    /**
-     * The name of the schema dbt should run in. Defaults to `default`.
-     */
     schema?: pulumi.Input<string>;
-    /**
-     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
-     */
     source?: pulumi.Input<string>;
-    /**
-     * The ID of the SQL warehouse that dbt should execute against.
-     *
-     * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
-     */
     warehouseId?: pulumi.Input<string>;
 }
 
@@ -7205,75 +5734,31 @@ export interface JobDeployment {
 }
 
 export interface JobEmailNotifications {
-    /**
-     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-     */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
-    /**
-     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     *
-     * The following parameter is only available for the job level configuration.
-     */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (List) list of emails to notify when the run fails.
-     */
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (List) list of emails to notify when the run starts.
-     */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (List) list of emails to notify when the run completes successfully.
-     */
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobEnvironment {
-    /**
-     * an unique identifier of the Environment.  It will be referenced from `environmentKey` attribute of corresponding task.
-     */
     environmentKey: pulumi.Input<string>;
-    /**
-     * block describing the Environment. Consists of following attributes:
-     */
     spec?: pulumi.Input<inputs.JobEnvironmentSpec>;
 }
 
 export interface JobEnvironmentSpec {
-    /**
-     * client version used by the environment.
-     */
     client: pulumi.Input<string>;
-    /**
-     * List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
-     */
     dependencies?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobGitSource {
-    /**
-     * name of the Git branch to use. Conflicts with `tag` and `commit`.
-     */
     branch?: pulumi.Input<string>;
-    /**
-     * hash of Git commit to use. Conflicts with `branch` and `tag`.
-     */
     commit?: pulumi.Input<string>;
     gitSnapshot?: pulumi.Input<inputs.JobGitSourceGitSnapshot>;
     jobSource?: pulumi.Input<inputs.JobGitSourceJobSource>;
-    /**
-     * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
-     */
     provider?: pulumi.Input<string>;
-    /**
-     * name of the Git branch to use. Conflicts with `branch` and `commit`.
-     */
     tag?: pulumi.Input<string>;
-    /**
-     * URL of the Git repository to use.
-     */
     url: pulumi.Input<string>;
 }
 
@@ -7288,35 +5773,17 @@ export interface JobGitSourceJobSource {
 }
 
 export interface JobHealth {
-    /**
-     * list of rules that are represented as objects with the following attributes:
-     */
     rules: pulumi.Input<pulumi.Input<inputs.JobHealthRule>[]>;
 }
 
 export interface JobHealthRule {
-    /**
-     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-     */
     metric: pulumi.Input<string>;
-    /**
-     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-     */
     op: pulumi.Input<string>;
-    /**
-     * integer value used to compare to the given metric.
-     */
     value: pulumi.Input<number>;
 }
 
 export interface JobJobCluster {
-    /**
-     * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-     */
     jobClusterKey: pulumi.Input<string>;
-    /**
-     * Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
-     */
     newCluster: pulumi.Input<inputs.JobJobClusterNewCluster>;
 }
 
@@ -7340,9 +5807,8 @@ export interface JobJobClusterNewCluster {
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
-    /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-     */
+    isSingleNode?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     libraries?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterLibrary>[]>;
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
@@ -7353,9 +5819,7 @@ export interface JobJobClusterNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * isn't supported
-     */
+    useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.JobJobClusterNewClusterWorkloadType>;
 }
 
@@ -7421,9 +5885,6 @@ export interface JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo {
 
 export interface JobJobClusterNewClusterDockerImage {
     basicAuth?: pulumi.Input<inputs.JobJobClusterNewClusterDockerImageBasicAuth>;
-    /**
-     * URL of the job on the given workspace
-     */
     url: pulumi.Input<string>;
 }
 
@@ -7447,9 +5908,6 @@ export interface JobJobClusterNewClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptDbfs>;
-    /**
-     * block consisting of single string fields:
-     */
     file?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptS3>;
@@ -7572,9 +6030,8 @@ export interface JobNewCluster {
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
-    /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-     */
+    isSingleNode?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     libraries?: pulumi.Input<pulumi.Input<inputs.JobNewClusterLibrary>[]>;
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
@@ -7585,9 +6042,7 @@ export interface JobNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * isn't supported
-     */
+    useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.JobNewClusterWorkloadType>;
 }
 
@@ -7653,9 +6108,6 @@ export interface JobNewClusterClusterMountInfoNetworkFilesystemInfo {
 
 export interface JobNewClusterDockerImage {
     basicAuth?: pulumi.Input<inputs.JobNewClusterDockerImageBasicAuth>;
-    /**
-     * URL of the job on the given workspace
-     */
     url: pulumi.Input<string>;
 }
 
@@ -7679,9 +6131,6 @@ export interface JobNewClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: pulumi.Input<inputs.JobNewClusterInitScriptDbfs>;
-    /**
-     * block consisting of single string fields:
-     */
     file?: pulumi.Input<inputs.JobNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobNewClusterInitScriptS3>;
@@ -7759,564 +6208,222 @@ export interface JobNewClusterWorkloadTypeClients {
 }
 
 export interface JobNotebookTask {
-    /**
-     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-     */
     baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
-     */
     notebookPath: pulumi.Input<string>;
-    /**
-     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
-     */
     source?: pulumi.Input<string>;
-    /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
-     */
     warehouseId?: pulumi.Input<string>;
 }
 
 export interface JobNotificationSettings {
-    /**
-     * (Bool) don't send alert for cancelled runs.
-     *
-     * The following parameter is only available on task level.
-     */
     noAlertForCanceledRuns?: pulumi.Input<boolean>;
-    /**
-     * (Bool) don't send alert for skipped runs.
-     */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
 }
 
 export interface JobParameter {
-    /**
-     * Default value of the parameter.
-     *
-     * *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
-     */
     default: pulumi.Input<string>;
-    /**
-     * The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
-     */
     name: pulumi.Input<string>;
 }
 
 export interface JobPipelineTask {
-    /**
-     * (Bool) Specifies if there should be full refresh of the pipeline.
-     *
-     * > The following configuration blocks are only supported inside a `task` block
-     */
     fullRefresh?: pulumi.Input<boolean>;
-    /**
-     * The pipeline's unique ID.
-     */
     pipelineId: pulumi.Input<string>;
 }
 
 export interface JobPythonWheelTask {
-    /**
-     * Python function as entry point for the task
-     */
     entryPoint?: pulumi.Input<string>;
-    /**
-     * Named parameters for the task
-     */
     namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Name of Python package
-     */
     packageName?: pulumi.Input<string>;
-    /**
-     * Parameters for the task
-     */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobQueue {
-    /**
-     * If true, enable queueing for the job.
-     */
     enabled: pulumi.Input<boolean>;
 }
 
 export interface JobRunAs {
-    /**
-     * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
-     *
-     * Example:
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const _this = new databricks.Job("this", {runAs: {
-     *     servicePrincipalName: "8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
-     * }});
-     * ```
-     */
     servicePrincipalName?: pulumi.Input<string>;
-    /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
-     */
     userName?: pulumi.Input<string>;
 }
 
 export interface JobRunJobTask {
-    /**
-     * (String) ID of the job
-     */
     jobId: pulumi.Input<number>;
-    /**
-     * (Map) Job parameters for the task
-     */
     jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface JobSchedule {
-    /**
-     * Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-     */
     pauseStatus?: pulumi.Input<string>;
-    /**
-     * A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
-     */
     quartzCronExpression: pulumi.Input<string>;
-    /**
-     * A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
-     */
     timezoneId: pulumi.Input<string>;
 }
 
 export interface JobSparkJarTask {
     jarUri?: pulumi.Input<string>;
-    /**
-     * The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
-     */
     mainClassName?: pulumi.Input<string>;
-    /**
-     * (List) Parameters passed to the main method.
-     */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobSparkPythonTask {
-    /**
-     * (List) Command line parameters passed to the Python file.
-     */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
-     */
     pythonFile: pulumi.Input<string>;
-    /**
-     * Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
-     */
     source?: pulumi.Input<string>;
 }
 
 export interface JobSparkSubmitTask {
-    /**
-     * (List) Command-line parameters passed to spark submit.
-     */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTask {
+    cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskCleanRoomsNotebookTask>;
     conditionTask?: pulumi.Input<inputs.JobTaskConditionTask>;
     dbtTask?: pulumi.Input<inputs.JobTaskDbtTask>;
-    /**
-     * block specifying dependency(-ies) for a given task.
-     */
     dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskDependsOn>[]>;
-    /**
-     * description for this task.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * A flag to disable auto optimization in serverless tasks.
-     */
     disableAutoOptimization?: pulumi.Input<boolean>;
-    /**
-     * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
-     */
     emailNotifications?: pulumi.Input<inputs.JobTaskEmailNotifications>;
-    /**
-     * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
-     */
     environmentKey?: pulumi.Input<string>;
-    /**
-     * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
-     */
     existingClusterId?: pulumi.Input<string>;
     forEachTask?: pulumi.Input<inputs.JobTaskForEachTask>;
-    /**
-     * block described below that specifies health conditions for a given task.
-     */
     health?: pulumi.Input<inputs.JobTaskHealth>;
-    /**
-     * Identifier of the Job cluster specified in the `jobCluster` block.
-     */
     jobClusterKey?: pulumi.Input<string>;
-    /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
-     */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskLibrary>[]>;
-    /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-     */
     maxRetries?: pulumi.Input<number>;
-    /**
-     * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-     */
     minRetryIntervalMillis?: pulumi.Input<number>;
-    /**
-     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
-     */
     newCluster?: pulumi.Input<inputs.JobTaskNewCluster>;
     notebookTask?: pulumi.Input<inputs.JobTaskNotebookTask>;
-    /**
-     * An optional block controlling the notification settings on the job level documented below.
-     */
     notificationSettings?: pulumi.Input<inputs.JobTaskNotificationSettings>;
     pipelineTask?: pulumi.Input<inputs.JobTaskPipelineTask>;
     pythonWheelTask?: pulumi.Input<inputs.JobTaskPythonWheelTask>;
-    /**
-     * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-     */
     retryOnTimeout?: pulumi.Input<boolean>;
-    /**
-     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
-     */
     runIf?: pulumi.Input<string>;
     runJobTask?: pulumi.Input<inputs.JobTaskRunJobTask>;
     sparkJarTask?: pulumi.Input<inputs.JobTaskSparkJarTask>;
     sparkPythonTask?: pulumi.Input<inputs.JobTaskSparkPythonTask>;
     sparkSubmitTask?: pulumi.Input<inputs.JobTaskSparkSubmitTask>;
     sqlTask?: pulumi.Input<inputs.JobTaskSqlTask>;
-    /**
-     * string specifying an unique key for a given task.
-     * * `*_task` - (Required) one of the specific task blocks described below:
-     */
     taskKey: pulumi.Input<string>;
-    /**
-     * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-     */
     timeoutSeconds?: pulumi.Input<number>;
-    /**
-     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-     *
-     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
-     */
     webhookNotifications?: pulumi.Input<inputs.JobTaskWebhookNotifications>;
 }
 
+export interface JobTaskCleanRoomsNotebookTask {
+    cleanRoomName: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    notebookBaseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    notebookName: pulumi.Input<string>;
+}
+
 export interface JobTaskConditionTask {
-    /**
-     * The left operand of the condition task. It could be a string value, job state, or a parameter reference.
-     */
     left: pulumi.Input<string>;
-    /**
-     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-     *
-     * This task does not require a cluster to execute and does not support retries or notifications.
-     */
     op: pulumi.Input<string>;
-    /**
-     * The right operand of the condition task. It could be a string value, job state, or parameter reference.
-     */
     right: pulumi.Input<string>;
 }
 
 export interface JobTaskDbtTask {
-    /**
-     * The name of the catalog to use inside Unity Catalog.
-     */
     catalog?: pulumi.Input<string>;
-    /**
-     * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
-     */
     commands: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
-     */
     profilesDirectory?: pulumi.Input<string>;
-    /**
-     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
-     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
-     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
-     */
     projectDirectory?: pulumi.Input<string>;
-    /**
-     * The name of the schema dbt should run in. Defaults to `default`.
-     */
     schema?: pulumi.Input<string>;
-    /**
-     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
-     */
     source?: pulumi.Input<string>;
-    /**
-     * The ID of the SQL warehouse that dbt should execute against.
-     *
-     * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
-     */
     warehouseId?: pulumi.Input<string>;
 }
 
 export interface JobTaskDependsOn {
-    /**
-     * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
-     *
-     * > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to taskKey in order to get consistent Pulumi diffs.
-     */
     outcome?: pulumi.Input<string>;
-    /**
-     * The name of the task this task depends on.
-     */
     taskKey: pulumi.Input<string>;
 }
 
 export interface JobTaskEmailNotifications {
-    /**
-     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-     */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
-    /**
-     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     *
-     * The following parameter is only available for the job level configuration.
-     */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (List) list of emails to notify when the run fails.
-     */
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (List) list of emails to notify when the run starts.
-     */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (List) list of emails to notify when the run completes successfully.
-     */
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskForEachTask {
-    /**
-     * Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
-     */
     concurrency?: pulumi.Input<number>;
-    /**
-     * (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
-     */
     inputs: pulumi.Input<string>;
-    /**
-     * Task to run against the `inputs` list.
-     */
     task: pulumi.Input<inputs.JobTaskForEachTaskTask>;
 }
 
 export interface JobTaskForEachTaskTask {
+    cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask>;
     conditionTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskConditionTask>;
     dbtTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtTask>;
-    /**
-     * block specifying dependency(-ies) for a given task.
-     */
     dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskDependsOn>[]>;
-    /**
-     * description for this task.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * A flag to disable auto optimization in serverless tasks.
-     */
     disableAutoOptimization?: pulumi.Input<boolean>;
-    /**
-     * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
-     */
     emailNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskEmailNotifications>;
-    /**
-     * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
-     */
     environmentKey?: pulumi.Input<string>;
-    /**
-     * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
-     */
     existingClusterId?: pulumi.Input<string>;
-    /**
-     * block described below that specifies health conditions for a given task.
-     */
     health?: pulumi.Input<inputs.JobTaskForEachTaskTaskHealth>;
-    /**
-     * Identifier of the Job cluster specified in the `jobCluster` block.
-     */
     jobClusterKey?: pulumi.Input<string>;
-    /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
-     */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskLibrary>[]>;
-    /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-     */
     maxRetries?: pulumi.Input<number>;
-    /**
-     * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-     */
     minRetryIntervalMillis?: pulumi.Input<number>;
-    /**
-     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
-     */
     newCluster?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewCluster>;
     notebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskNotebookTask>;
-    /**
-     * An optional block controlling the notification settings on the job level documented below.
-     */
     notificationSettings?: pulumi.Input<inputs.JobTaskForEachTaskTaskNotificationSettings>;
     pipelineTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPipelineTask>;
     pythonWheelTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPythonWheelTask>;
-    /**
-     * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-     */
     retryOnTimeout?: pulumi.Input<boolean>;
-    /**
-     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
-     */
     runIf?: pulumi.Input<string>;
     runJobTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskRunJobTask>;
     sparkJarTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSparkJarTask>;
     sparkPythonTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSparkPythonTask>;
     sparkSubmitTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSparkSubmitTask>;
     sqlTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTask>;
-    /**
-     * string specifying an unique key for a given task.
-     * * `*_task` - (Required) one of the specific task blocks described below:
-     */
     taskKey: pulumi.Input<string>;
-    /**
-     * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-     */
     timeoutSeconds?: pulumi.Input<number>;
-    /**
-     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-     *
-     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
-     */
     webhookNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotifications>;
 }
 
+export interface JobTaskForEachTaskTaskCleanRoomsNotebookTask {
+    cleanRoomName: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    notebookBaseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    notebookName: pulumi.Input<string>;
+}
+
 export interface JobTaskForEachTaskTaskConditionTask {
-    /**
-     * The left operand of the condition task. It could be a string value, job state, or a parameter reference.
-     */
     left: pulumi.Input<string>;
-    /**
-     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-     *
-     * This task does not require a cluster to execute and does not support retries or notifications.
-     */
     op: pulumi.Input<string>;
-    /**
-     * The right operand of the condition task. It could be a string value, job state, or parameter reference.
-     */
     right: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskDbtTask {
-    /**
-     * The name of the catalog to use inside Unity Catalog.
-     */
     catalog?: pulumi.Input<string>;
-    /**
-     * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
-     */
     commands: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
-     */
     profilesDirectory?: pulumi.Input<string>;
-    /**
-     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
-     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
-     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
-     */
     projectDirectory?: pulumi.Input<string>;
-    /**
-     * The name of the schema dbt should run in. Defaults to `default`.
-     */
     schema?: pulumi.Input<string>;
-    /**
-     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
-     */
     source?: pulumi.Input<string>;
-    /**
-     * The ID of the SQL warehouse that dbt should execute against.
-     *
-     * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
-     */
     warehouseId?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskDependsOn {
-    /**
-     * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
-     *
-     * > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to taskKey in order to get consistent Pulumi diffs.
-     */
     outcome?: pulumi.Input<string>;
-    /**
-     * The name of the task this task depends on.
-     */
     taskKey: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskEmailNotifications {
-    /**
-     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-     */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
-    /**
-     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     *
-     * The following parameter is only available for the job level configuration.
-     */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (List) list of emails to notify when the run fails.
-     */
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (List) list of emails to notify when the run starts.
-     */
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (List) list of emails to notify when the run completes successfully.
-     */
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskForEachTaskTaskHealth {
-    /**
-     * list of rules that are represented as objects with the following attributes:
-     */
     rules: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskHealthRule>[]>;
 }
 
 export interface JobTaskForEachTaskTaskHealthRule {
-    /**
-     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-     */
     metric: pulumi.Input<string>;
-    /**
-     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-     */
     op: pulumi.Input<string>;
-    /**
-     * integer value used to compare to the given metric.
-     */
     value: pulumi.Input<number>;
 }
 
@@ -8366,9 +6473,8 @@ export interface JobTaskForEachTaskTaskNewCluster {
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
-    /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-     */
+    isSingleNode?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibrary>[]>;
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
@@ -8379,9 +6485,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * isn't supported
-     */
+    useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterWorkloadType>;
 }
 
@@ -8447,9 +6551,6 @@ export interface JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesyst
 
 export interface JobTaskForEachTaskTaskNewClusterDockerImage {
     basicAuth?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth>;
-    /**
-     * URL of the job on the given workspace
-     */
     url: pulumi.Input<string>;
 }
 
@@ -8473,9 +6574,6 @@ export interface JobTaskForEachTaskTaskNewClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfs>;
-    /**
-     * block consisting of single string fields:
-     */
     file?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptS3>;
@@ -8553,83 +6651,34 @@ export interface JobTaskForEachTaskTaskNewClusterWorkloadTypeClients {
 }
 
 export interface JobTaskForEachTaskTaskNotebookTask {
-    /**
-     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-     */
     baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
-     */
     notebookPath: pulumi.Input<string>;
-    /**
-     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
-     */
     source?: pulumi.Input<string>;
-    /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
-     */
     warehouseId?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskNotificationSettings {
-    /**
-     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-     */
     alertOnLastAttempt?: pulumi.Input<boolean>;
-    /**
-     * (Bool) don't send alert for cancelled runs.
-     *
-     * The following parameter is only available on task level.
-     */
     noAlertForCanceledRuns?: pulumi.Input<boolean>;
-    /**
-     * (Bool) don't send alert for skipped runs.
-     */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
 }
 
 export interface JobTaskForEachTaskTaskPipelineTask {
-    /**
-     * (Bool) Specifies if there should be full refresh of the pipeline.
-     *
-     * > The following configuration blocks are only supported inside a `task` block
-     */
     fullRefresh?: pulumi.Input<boolean>;
-    /**
-     * The pipeline's unique ID.
-     */
     pipelineId: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskPythonWheelTask {
-    /**
-     * Python function as entry point for the task
-     */
     entryPoint?: pulumi.Input<string>;
-    /**
-     * Named parameters for the task
-     */
     namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Name of Python package
-     */
     packageName?: pulumi.Input<string>;
-    /**
-     * Parameters for the task
-     */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskForEachTaskTaskRunJobTask {
     dbtCommands?: pulumi.Input<pulumi.Input<string>[]>;
     jarParams?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (String) ID of the job
-     */
     jobId: pulumi.Input<number>;
-    /**
-     * (Map) Job parameters for the task
-     */
     jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     notebookParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     pipelineParams?: pulumi.Input<inputs.JobTaskForEachTaskTaskRunJobTaskPipelineParams>;
@@ -8640,179 +6689,59 @@ export interface JobTaskForEachTaskTaskRunJobTask {
 }
 
 export interface JobTaskForEachTaskTaskRunJobTaskPipelineParams {
-    /**
-     * (Bool) Specifies if there should be full refresh of the pipeline.
-     *
-     * > The following configuration blocks are only supported inside a `task` block
-     */
     fullRefresh?: pulumi.Input<boolean>;
 }
 
 export interface JobTaskForEachTaskTaskSparkJarTask {
     jarUri?: pulumi.Input<string>;
-    /**
-     * The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
-     */
     mainClassName?: pulumi.Input<string>;
-    /**
-     * (List) Parameters passed to the main method.
-     */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskForEachTaskTaskSparkPythonTask {
-    /**
-     * (List) Command line parameters passed to the Python file.
-     */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
-     */
     pythonFile: pulumi.Input<string>;
-    /**
-     * Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
-     */
     source?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskSparkSubmitTask {
-    /**
-     * (List) Command-line parameters passed to spark submit.
-     */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTask {
-    /**
-     * block consisting of following fields:
-     */
     alert?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskAlert>;
-    /**
-     * block consisting of following fields:
-     */
     dashboard?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskDashboard>;
-    /**
-     * block consisting of single string fields:
-     */
     file?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskFile>;
-    /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-     */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
-     */
     query?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskQuery>;
-    /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
-     */
     warehouseId: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskAlert {
-    /**
-     * (String) identifier of the Databricks Alert (databricks_alert).
-     */
     alertId: pulumi.Input<string>;
-    /**
-     * flag that specifies if subscriptions are paused or not.
-     */
     pauseSubscriptions?: pulumi.Input<boolean>;
-    /**
-     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
-     */
     subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskAlertSubscription>[]>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskAlertSubscription {
     destinationId?: pulumi.Input<string>;
-    /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
-     */
     userName?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskDashboard {
-    /**
-     * string specifying a custom subject of email sent.
-     */
     customSubject?: pulumi.Input<string>;
-    /**
-     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
-     */
     dashboardId: pulumi.Input<string>;
-    /**
-     * flag that specifies if subscriptions are paused or not.
-     */
     pauseSubscriptions?: pulumi.Input<boolean>;
-    /**
-     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
-     */
     subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskDashboardSubscription>[]>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskDashboardSubscription {
     destinationId?: pulumi.Input<string>;
-    /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
-     */
     userName?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskFile {
-    /**
-     * If `source` is `GIT`: Relative path to the file in the repository specified in the `gitSource` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
-     *
-     * Example
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const sqlAggregationJob = new databricks.Job("sql_aggregation_job", {
-     *     name: "Example SQL Job",
-     *     tasks: [
-     *         {
-     *             taskKey: "run_agg_query",
-     *             sqlTask: {
-     *                 warehouseId: sqlJobWarehouse.id,
-     *                 query: {
-     *                     queryId: aggQuery.id,
-     *                 },
-     *             },
-     *         },
-     *         {
-     *             taskKey: "run_dashboard",
-     *             sqlTask: {
-     *                 warehouseId: sqlJobWarehouse.id,
-     *                 dashboard: {
-     *                     dashboardId: dash.id,
-     *                     subscriptions: [{
-     *                         userName: "user@domain.com",
-     *                     }],
-     *                 },
-     *             },
-     *         },
-     *         {
-     *             taskKey: "run_alert",
-     *             sqlTask: {
-     *                 warehouseId: sqlJobWarehouse.id,
-     *                 alert: {
-     *                     alertId: alert.id,
-     *                     subscriptions: [{
-     *                         userName: "user@domain.com",
-     *                     }],
-     *                 },
-     *             },
-     *         },
-     *     ],
-     * });
-     * ```
-     */
     path: pulumi.Input<string>;
-    /**
-     * The source of the project. Possible values are `WORKSPACE` and `GIT`.
-     */
     source?: pulumi.Input<string>;
 }
 
@@ -8821,83 +6750,40 @@ export interface JobTaskForEachTaskTaskSqlTaskQuery {
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotifications {
-    /**
-     * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     *
-     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-     *
-     * Example
-     */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded>[]>;
-    /**
-     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
-     */
     onFailures?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailure>[]>;
-    /**
-     * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-     */
     onStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStart>[]>;
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded>[]>;
-    /**
-     * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
-     */
     onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccess>[]>;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnFailure {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnStart {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobTaskHealth {
-    /**
-     * list of rules that are represented as objects with the following attributes:
-     */
     rules: pulumi.Input<pulumi.Input<inputs.JobTaskHealthRule>[]>;
 }
 
 export interface JobTaskHealthRule {
-    /**
-     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-     */
     metric: pulumi.Input<string>;
-    /**
-     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-     */
     op: pulumi.Input<string>;
-    /**
-     * integer value used to compare to the given metric.
-     */
     value: pulumi.Input<number>;
 }
 
@@ -8947,9 +6833,8 @@ export interface JobTaskNewCluster {
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
-    /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-     */
+    isSingleNode?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterLibrary>[]>;
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
@@ -8960,9 +6845,7 @@ export interface JobTaskNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * isn't supported
-     */
+    useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.JobTaskNewClusterWorkloadType>;
 }
 
@@ -9028,9 +6911,6 @@ export interface JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
 
 export interface JobTaskNewClusterDockerImage {
     basicAuth?: pulumi.Input<inputs.JobTaskNewClusterDockerImageBasicAuth>;
-    /**
-     * URL of the job on the given workspace
-     */
     url: pulumi.Input<string>;
 }
 
@@ -9054,9 +6934,6 @@ export interface JobTaskNewClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptDbfs>;
-    /**
-     * block consisting of single string fields:
-     */
     file?: pulumi.Input<inputs.JobTaskNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobTaskNewClusterInitScriptS3>;
@@ -9134,83 +7011,34 @@ export interface JobTaskNewClusterWorkloadTypeClients {
 }
 
 export interface JobTaskNotebookTask {
-    /**
-     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
-     */
     baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
-     */
     notebookPath: pulumi.Input<string>;
-    /**
-     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
-     */
     source?: pulumi.Input<string>;
-    /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
-     */
     warehouseId?: pulumi.Input<string>;
 }
 
 export interface JobTaskNotificationSettings {
-    /**
-     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-     */
     alertOnLastAttempt?: pulumi.Input<boolean>;
-    /**
-     * (Bool) don't send alert for cancelled runs.
-     *
-     * The following parameter is only available on task level.
-     */
     noAlertForCanceledRuns?: pulumi.Input<boolean>;
-    /**
-     * (Bool) don't send alert for skipped runs.
-     */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
 }
 
 export interface JobTaskPipelineTask {
-    /**
-     * (Bool) Specifies if there should be full refresh of the pipeline.
-     *
-     * > The following configuration blocks are only supported inside a `task` block
-     */
     fullRefresh?: pulumi.Input<boolean>;
-    /**
-     * The pipeline's unique ID.
-     */
     pipelineId: pulumi.Input<string>;
 }
 
 export interface JobTaskPythonWheelTask {
-    /**
-     * Python function as entry point for the task
-     */
     entryPoint?: pulumi.Input<string>;
-    /**
-     * Named parameters for the task
-     */
     namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Name of Python package
-     */
     packageName?: pulumi.Input<string>;
-    /**
-     * Parameters for the task
-     */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskRunJobTask {
     dbtCommands?: pulumi.Input<pulumi.Input<string>[]>;
     jarParams?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (String) ID of the job
-     */
     jobId: pulumi.Input<number>;
-    /**
-     * (Map) Job parameters for the task
-     */
     jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     notebookParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     pipelineParams?: pulumi.Input<inputs.JobTaskRunJobTaskPipelineParams>;
@@ -9221,179 +7049,59 @@ export interface JobTaskRunJobTask {
 }
 
 export interface JobTaskRunJobTaskPipelineParams {
-    /**
-     * (Bool) Specifies if there should be full refresh of the pipeline.
-     *
-     * > The following configuration blocks are only supported inside a `task` block
-     */
     fullRefresh?: pulumi.Input<boolean>;
 }
 
 export interface JobTaskSparkJarTask {
     jarUri?: pulumi.Input<string>;
-    /**
-     * The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
-     */
     mainClassName?: pulumi.Input<string>;
-    /**
-     * (List) Parameters passed to the main method.
-     */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskSparkPythonTask {
-    /**
-     * (List) Command line parameters passed to the Python file.
-     */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
-     */
     pythonFile: pulumi.Input<string>;
-    /**
-     * Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
-     */
     source?: pulumi.Input<string>;
 }
 
 export interface JobTaskSparkSubmitTask {
-    /**
-     * (List) Command-line parameters passed to spark submit.
-     */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobTaskSqlTask {
-    /**
-     * block consisting of following fields:
-     */
     alert?: pulumi.Input<inputs.JobTaskSqlTaskAlert>;
-    /**
-     * block consisting of following fields:
-     */
     dashboard?: pulumi.Input<inputs.JobTaskSqlTaskDashboard>;
-    /**
-     * block consisting of single string fields:
-     */
     file?: pulumi.Input<inputs.JobTaskSqlTaskFile>;
-    /**
-     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
-     */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
-     */
     query?: pulumi.Input<inputs.JobTaskSqlTaskQuery>;
-    /**
-     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
-     */
     warehouseId: pulumi.Input<string>;
 }
 
 export interface JobTaskSqlTaskAlert {
-    /**
-     * (String) identifier of the Databricks Alert (databricks_alert).
-     */
     alertId: pulumi.Input<string>;
-    /**
-     * flag that specifies if subscriptions are paused or not.
-     */
     pauseSubscriptions?: pulumi.Input<boolean>;
-    /**
-     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
-     */
     subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskSqlTaskAlertSubscription>[]>;
 }
 
 export interface JobTaskSqlTaskAlertSubscription {
     destinationId?: pulumi.Input<string>;
-    /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
-     */
     userName?: pulumi.Input<string>;
 }
 
 export interface JobTaskSqlTaskDashboard {
-    /**
-     * string specifying a custom subject of email sent.
-     */
     customSubject?: pulumi.Input<string>;
-    /**
-     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
-     */
     dashboardId: pulumi.Input<string>;
-    /**
-     * flag that specifies if subscriptions are paused or not.
-     */
     pauseSubscriptions?: pulumi.Input<boolean>;
-    /**
-     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
-     */
     subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskSqlTaskDashboardSubscription>[]>;
 }
 
 export interface JobTaskSqlTaskDashboardSubscription {
     destinationId?: pulumi.Input<string>;
-    /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
-     */
     userName?: pulumi.Input<string>;
 }
 
 export interface JobTaskSqlTaskFile {
-    /**
-     * If `source` is `GIT`: Relative path to the file in the repository specified in the `gitSource` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
-     *
-     * Example
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const sqlAggregationJob = new databricks.Job("sql_aggregation_job", {
-     *     name: "Example SQL Job",
-     *     tasks: [
-     *         {
-     *             taskKey: "run_agg_query",
-     *             sqlTask: {
-     *                 warehouseId: sqlJobWarehouse.id,
-     *                 query: {
-     *                     queryId: aggQuery.id,
-     *                 },
-     *             },
-     *         },
-     *         {
-     *             taskKey: "run_dashboard",
-     *             sqlTask: {
-     *                 warehouseId: sqlJobWarehouse.id,
-     *                 dashboard: {
-     *                     dashboardId: dash.id,
-     *                     subscriptions: [{
-     *                         userName: "user@domain.com",
-     *                     }],
-     *                 },
-     *             },
-     *         },
-     *         {
-     *             taskKey: "run_alert",
-     *             sqlTask: {
-     *                 warehouseId: sqlJobWarehouse.id,
-     *                 alert: {
-     *                     alertId: alert.id,
-     *                     subscriptions: [{
-     *                         userName: "user@domain.com",
-     *                     }],
-     *                 },
-     *             },
-     *         },
-     *     ],
-     * });
-     * ```
-     */
     path: pulumi.Input<string>;
-    /**
-     * The source of the project. Possible values are `WORKSPACE` and `GIT`.
-     */
     source?: pulumi.Input<string>;
 }
 
@@ -9402,212 +7110,99 @@ export interface JobTaskSqlTaskQuery {
 }
 
 export interface JobTaskWebhookNotifications {
-    /**
-     * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     *
-     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-     *
-     * Example
-     */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded>[]>;
-    /**
-     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
-     */
     onFailures?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnFailure>[]>;
-    /**
-     * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-     */
     onStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnStart>[]>;
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnStreamingBacklogExceeded>[]>;
-    /**
-     * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
-     */
     onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnSuccess>[]>;
 }
 
 export interface JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobTaskWebhookNotificationsOnFailure {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobTaskWebhookNotificationsOnStart {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobTaskWebhookNotificationsOnStreamingBacklogExceeded {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobTaskWebhookNotificationsOnSuccess {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobTrigger {
-    /**
-     * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
-     */
     fileArrival?: pulumi.Input<inputs.JobTriggerFileArrival>;
-    /**
-     * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
-     */
     pauseStatus?: pulumi.Input<string>;
-    /**
-     * configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
-     */
     periodic?: pulumi.Input<inputs.JobTriggerPeriodic>;
     table?: pulumi.Input<inputs.JobTriggerTable>;
     tableUpdate?: pulumi.Input<inputs.JobTriggerTableUpdate>;
 }
 
 export interface JobTriggerFileArrival {
-    /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     */
     minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
-    /**
-     * URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
-     */
     url: pulumi.Input<string>;
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     */
     waitAfterLastChangeSeconds?: pulumi.Input<number>;
 }
 
 export interface JobTriggerPeriodic {
-    /**
-     * Specifies the interval at which the job should run. This value is required.
-     */
     interval: pulumi.Input<number>;
-    /**
-     * Options are {"DAYS", "HOURS", "WEEKS"}.
-     */
     unit: pulumi.Input<string>;
 }
 
 export interface JobTriggerTable {
     condition?: pulumi.Input<string>;
-    /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     */
     minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
     tableNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     */
     waitAfterLastChangeSeconds?: pulumi.Input<number>;
 }
 
 export interface JobTriggerTableUpdate {
     condition?: pulumi.Input<string>;
-    /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     */
     minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
     tableNames: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     */
     waitAfterLastChangeSeconds?: pulumi.Input<number>;
 }
 
 export interface JobWebhookNotifications {
-    /**
-     * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     *
-     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
-     *
-     * Example
-     */
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnDurationWarningThresholdExceeded>[]>;
-    /**
-     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
-     */
     onFailures?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnFailure>[]>;
-    /**
-     * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-     */
     onStarts?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnStart>[]>;
     onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnStreamingBacklogExceeded>[]>;
-    /**
-     * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
-     */
     onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnSuccess>[]>;
 }
 
 export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnFailure {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnStart {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnStreamingBacklogExceeded {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnSuccess {
-    /**
-     * ID of the job
-     */
     id: pulumi.Input<string>;
 }
 
 export interface LakehouseMonitorCustomMetric {
-    /**
-     * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
-     */
     definition: pulumi.Input<string>;
-    /**
-     * Columns on the monitored table to apply the custom metrics to.
-     */
     inputColumns: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of the custom metric.
-     */
     name: pulumi.Input<string>;
-    /**
-     * The output type of the custom metric.
-     */
     outputDataType: pulumi.Input<string>;
-    /**
-     * The type of the custom metric.
-     */
     type: pulumi.Input<string>;
 }
 
@@ -9616,44 +7211,17 @@ export interface LakehouseMonitorDataClassificationConfig {
 }
 
 export interface LakehouseMonitorInferenceLog {
-    /**
-     * List of granularities to use when aggregating data into time windows based on their timestamp.
-     */
     granularities: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Column of the model label
-     */
     labelCol?: pulumi.Input<string>;
-    /**
-     * Column of the model id or version
-     */
     modelIdCol: pulumi.Input<string>;
-    /**
-     * Column of the model prediction
-     */
     predictionCol: pulumi.Input<string>;
-    /**
-     * Column of the model prediction probabilities
-     */
     predictionProbaCol?: pulumi.Input<string>;
-    /**
-     * Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
-     */
     problemType: pulumi.Input<string>;
-    /**
-     * Column of the timestamp of predictions
-     */
     timestampCol: pulumi.Input<string>;
 }
 
 export interface LakehouseMonitorNotifications {
-    /**
-     * who to send notifications to on monitor failure.
-     */
     onFailure?: pulumi.Input<inputs.LakehouseMonitorNotificationsOnFailure>;
-    /**
-     * Who to send notifications to when new data classification tags are detected.
-     */
     onNewClassificationTagDetected?: pulumi.Input<inputs.LakehouseMonitorNotificationsOnNewClassificationTagDetected>;
 }
 
@@ -9666,17 +7234,8 @@ export interface LakehouseMonitorNotificationsOnNewClassificationTagDetected {
 }
 
 export interface LakehouseMonitorSchedule {
-    /**
-     * optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
-     */
     pauseStatus?: pulumi.Input<string>;
-    /**
-     * string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
-     */
     quartzCronExpression: pulumi.Input<string>;
-    /**
-     * string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
-     */
     timezoneId: pulumi.Input<string>;
 }
 
@@ -9684,13 +7243,7 @@ export interface LakehouseMonitorSnapshot {
 }
 
 export interface LakehouseMonitorTimeSeries {
-    /**
-     * List of granularities to use when aggregating data into time windows based on their timestamp.
-     */
     granularities: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Column of the timestamp of predictions
-     */
     timestampCol: pulumi.Input<string>;
 }
 
@@ -9751,152 +7304,62 @@ export interface MlflowModelTag {
 }
 
 export interface MlflowWebhookHttpUrlSpec {
-    /**
-     * Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `<auth type> <credentials>`, e.g. `Bearer <access_token>`. If set to an empty string, no authorization header will be included in the request.
-     */
     authorization?: pulumi.Input<string>;
-    /**
-     * Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
-     */
     enableSslVerification?: pulumi.Input<boolean>;
-    /**
-     * Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
-     */
     secret?: pulumi.Input<string>;
-    /**
-     * External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
-     */
     url: pulumi.Input<string>;
 }
 
 export interface MlflowWebhookJobSpec {
-    /**
-     * The personal access token used to authorize webhook's job runs.
-     */
     accessToken: pulumi.Input<string>;
-    /**
-     * ID of the Databricks job that the webhook runs.
-     */
     jobId: pulumi.Input<string>;
-    /**
-     * URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
-     */
     workspaceUrl?: pulumi.Input<string>;
 }
 
 export interface ModelServingAiGateway {
-    /**
-     * Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
-     */
     guardrails?: pulumi.Input<inputs.ModelServingAiGatewayGuardrails>;
-    /**
-     * Block describing the configuration of usage tracking. Consists of the following attributes:
-     */
     inferenceTableConfig?: pulumi.Input<inputs.ModelServingAiGatewayInferenceTableConfig>;
-    /**
-     * Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
-     */
     rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingAiGatewayRateLimit>[]>;
-    /**
-     * Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
-     */
     usageTrackingConfig?: pulumi.Input<inputs.ModelServingAiGatewayUsageTrackingConfig>;
 }
 
 export interface ModelServingAiGatewayGuardrails {
-    /**
-     * A block with configuration for input guardrail filters:
-     */
     input?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsInput>;
-    /**
-     * A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-     */
     output?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsOutput>;
 }
 
 export interface ModelServingAiGatewayGuardrailsInput {
-    /**
-     * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-     */
     invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Block with configuration for guardrail PII filter:
-     */
     pii?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsInputPii>;
-    /**
-     * the boolean flag that indicates whether the safety filter is enabled.
-     */
     safety?: pulumi.Input<boolean>;
-    /**
-     * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-     */
     validTopics?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ModelServingAiGatewayGuardrailsInputPii {
-    /**
-     * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-     */
     behavior: pulumi.Input<string>;
 }
 
 export interface ModelServingAiGatewayGuardrailsOutput {
-    /**
-     * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-     */
     invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Block with configuration for guardrail PII filter:
-     */
     pii?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsOutputPii>;
-    /**
-     * the boolean flag that indicates whether the safety filter is enabled.
-     */
     safety?: pulumi.Input<boolean>;
-    /**
-     * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-     */
     validTopics?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ModelServingAiGatewayGuardrailsOutputPii {
-    /**
-     * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-     */
     behavior: pulumi.Input<string>;
 }
 
 export interface ModelServingAiGatewayInferenceTableConfig {
-    /**
-     * The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-     */
     catalogName?: pulumi.Input<string>;
-    /**
-     * boolean flag specifying if usage tracking is enabled.
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
-     */
     schemaName?: pulumi.Input<string>;
-    /**
-     * The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
-     */
     tableNamePrefix?: pulumi.Input<string>;
 }
 
 export interface ModelServingAiGatewayRateLimit {
-    /**
-     * Used to specify how many calls are allowed for a key within the renewal_period.
-     */
     calls: pulumi.Input<number>;
-    /**
-     * Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
-     */
     key?: pulumi.Input<string>;
-    /**
-     * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-     */
     renewalPeriod: pulumi.Input<string>;
 }
 
@@ -9905,373 +7368,137 @@ export interface ModelServingAiGatewayUsageTrackingConfig {
 }
 
 export interface ModelServingConfig {
-    /**
-     * Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
-     */
     autoCaptureConfig?: pulumi.Input<inputs.ModelServingConfigAutoCaptureConfig>;
-    /**
-     * A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
-     */
     servedEntities?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigServedEntity>[]>;
     /**
-     * Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
-     *
      * @deprecated Please use 'config.served_entities' instead of 'config.served_models'.
      */
     servedModels?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigServedModel>[]>;
-    /**
-     * A single block represents the traffic split configuration amongst the served models.
-     */
     trafficConfig?: pulumi.Input<inputs.ModelServingConfigTrafficConfig>;
 }
 
 export interface ModelServingConfigAutoCaptureConfig {
-    /**
-     * The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-     */
     catalogName?: pulumi.Input<string>;
-    /**
-     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
-     */
     schemaName?: pulumi.Input<string>;
-    /**
-     * The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
-     */
     tableNamePrefix?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntity {
-    /**
-     * The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
-     */
     entityName?: pulumi.Input<string>;
-    /**
-     * The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
-     */
     entityVersion?: pulumi.Input<string>;
-    /**
-     * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
-     */
     environmentVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
-     */
     externalModel?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModel>;
-    /**
-     * ARN of the instance profile that the served entity uses to access AWS resources.
-     */
     instanceProfileArn?: pulumi.Input<string>;
-    /**
-     * The maximum tokens per second that the endpoint can scale up to.
-     */
     maxProvisionedThroughput?: pulumi.Input<number>;
-    /**
-     * The minimum tokens per second that the endpoint can scale down to.
-     */
     minProvisionedThroughput?: pulumi.Input<number>;
-    /**
-     * The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Whether the compute resources for the served entity should scale down to zero.
-     */
     scaleToZeroEnabled?: pulumi.Input<boolean>;
-    /**
-     * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
-     */
     workloadSize?: pulumi.Input<string>;
-    /**
-     * The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
-     */
     workloadType?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModel {
-    /**
-     * AI21Labs Config
-     */
     ai21labsConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAi21labsConfig>;
-    /**
-     * Amazon Bedrock Config
-     */
     amazonBedrockConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfig>;
-    /**
-     * Anthropic Config
-     */
     anthropicConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAnthropicConfig>;
-    /**
-     * Cohere Config
-     */
     cohereConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCohereConfig>;
-    /**
-     * Databricks Model Serving Config
-     */
     databricksModelServingConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig>;
-    /**
-     * Google Cloud Vertex AI Config.
-     */
     googleCloudVertexAiConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig>;
-    /**
-     * The name of the external model.
-     */
     name: pulumi.Input<string>;
-    /**
-     * OpenAI Config
-     */
     openaiConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelOpenaiConfig>;
-    /**
-     * PaLM Config
-     */
     palmConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelPalmConfig>;
-    /**
-     * The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
-     */
     provider: pulumi.Input<string>;
-    /**
-     * The task type of the external model.
-     */
     task: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAi21labsConfig {
-    /**
-     * The Databricks secret key reference for an AI21Labs API key.
-     */
     ai21labsApiKey?: pulumi.Input<string>;
-    /**
-     * An AI21 Labs API key provided as a plaintext string.
-     */
     ai21labsApiKeyPlaintext?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
-    /**
-     * The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-     */
     awsAccessKeyId?: pulumi.Input<string>;
-    /**
-     * An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
-     */
     awsAccessKeyIdPlaintext?: pulumi.Input<string>;
-    /**
-     * The AWS region to use. Bedrock has to be enabled there.
-     */
     awsRegion: pulumi.Input<string>;
-    /**
-     * The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-     */
     awsSecretAccessKey?: pulumi.Input<string>;
-    /**
-     * An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
-     */
     awsSecretAccessKeyPlaintext?: pulumi.Input<string>;
-    /**
-     * The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-     */
     bedrockProvider: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
-    /**
-     * The Databricks secret key reference for an Anthropic API key.
-     */
     anthropicApiKey?: pulumi.Input<string>;
-    /**
-     * The Anthropic API key provided as a plaintext string.
-     */
     anthropicApiKeyPlaintext?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelCohereConfig {
     cohereApiBase?: pulumi.Input<string>;
-    /**
-     * The Databricks secret key reference for a Cohere API key.
-     */
     cohereApiKey?: pulumi.Input<string>;
-    /**
-     * The Cohere API key provided as a plaintext string.
-     */
     cohereApiKeyPlaintext?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
-    /**
-     * The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-     */
     databricksApiToken?: pulumi.Input<string>;
-    /**
-     * The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
-     */
     databricksApiTokenPlaintext?: pulumi.Input<string>;
-    /**
-     * The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
-     */
     databricksWorkspaceUrl: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
-    /**
-     * The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-     */
     privateKey?: pulumi.Input<string>;
-    /**
-     * The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
-     */
     privateKeyPlaintext?: pulumi.Input<string>;
-    /**
-     * This is the Google Cloud project id that the service account is associated with.
-     */
     projectId?: pulumi.Input<string>;
-    /**
-     * This is the region for the Google Cloud Vertex AI Service.
-     */
     region?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
-    /**
-     * This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
-     */
     microsoftEntraClientId?: pulumi.Input<string>;
-    /**
-     * The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
-     */
     microsoftEntraClientSecret?: pulumi.Input<string>;
-    /**
-     * The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
-     */
     microsoftEntraClientSecretPlaintext?: pulumi.Input<string>;
-    /**
-     * This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
-     */
     microsoftEntraTenantId?: pulumi.Input<string>;
-    /**
-     * This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
-     */
     openaiApiBase?: pulumi.Input<string>;
-    /**
-     * The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-     */
     openaiApiKey?: pulumi.Input<string>;
-    /**
-     * The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
-     */
     openaiApiKeyPlaintext?: pulumi.Input<string>;
-    /**
-     * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
-     */
     openaiApiType?: pulumi.Input<string>;
-    /**
-     * This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
-     */
     openaiApiVersion?: pulumi.Input<string>;
-    /**
-     * This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-     */
     openaiDeploymentName?: pulumi.Input<string>;
-    /**
-     * This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-     */
     openaiOrganization?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelPalmConfig {
-    /**
-     * The Databricks secret key reference for a PaLM API key.
-     */
     palmApiKey?: pulumi.Input<string>;
-    /**
-     * The PaLM API key provided as a plaintext string.
-     */
     palmApiKeyPlaintext?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedModel {
-    /**
-     * a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
-     */
     environmentVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * ARN of the instance profile that the served model will use to access AWS resources.
-     */
     instanceProfileArn?: pulumi.Input<string>;
-    /**
-     * The maximum tokens per second that the endpoint can scale up to.
-     */
     maxProvisionedThroughput?: pulumi.Input<number>;
-    /**
-     * The minimum tokens per second that the endpoint can scale down to.
-     */
     minProvisionedThroughput?: pulumi.Input<number>;
-    /**
-     * The name of the model in Databricks Model Registry to be served.
-     */
     modelName: pulumi.Input<string>;
-    /**
-     * The version of the model in Databricks Model Registry to be served.
-     */
     modelVersion: pulumi.Input<string>;
-    /**
-     * The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
-     */
     scaleToZeroEnabled?: pulumi.Input<boolean>;
-    /**
-     * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-     */
     workloadSize?: pulumi.Input<string>;
-    /**
-     * The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
-     */
     workloadType?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigTrafficConfig {
-    /**
-     * Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
-     */
     routes?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigTrafficConfigRoute>[]>;
 }
 
 export interface ModelServingConfigTrafficConfigRoute {
     servedModelName: pulumi.Input<string>;
-    /**
-     * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-     */
     trafficPercentage: pulumi.Input<number>;
 }
 
 export interface ModelServingRateLimit {
-    /**
-     * Used to specify how many calls are allowed for a key within the renewal_period.
-     */
     calls: pulumi.Input<number>;
-    /**
-     * Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
-     */
     key?: pulumi.Input<string>;
-    /**
-     * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-     */
     renewalPeriod: pulumi.Input<string>;
 }
 
 export interface ModelServingTag {
-    /**
-     * The key field for a tag.
-     */
     key: pulumi.Input<string>;
-    /**
-     * The value field for a tag.
-     */
     value?: pulumi.Input<string>;
 }
 
@@ -10316,75 +7543,36 @@ export interface MountWasb {
 }
 
 export interface MwsCustomerManagedKeysAwsKeyInfo {
-    /**
-     * The AWS KMS key alias.
-     */
     keyAlias?: pulumi.Input<string>;
-    /**
-     * The AWS KMS key's Amazon Resource Name (ARN).
-     */
     keyArn: pulumi.Input<string>;
-    /**
-     * (Computed) The AWS region in which KMS key is deployed to. This is not required.
-     */
     keyRegion?: pulumi.Input<string>;
 }
 
 export interface MwsCustomerManagedKeysGcpKeyInfo {
-    /**
-     * The GCP KMS key's resource name.
-     */
     kmsKeyId: pulumi.Input<string>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfig {
-    /**
-     * block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
-     */
     defaultRules?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRules>;
-    /**
-     * block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
-     */
     targetRules?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRules>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigDefaultRules {
-    /**
-     * (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
-     */
     awsStableIpRule?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule>;
-    /**
-     * (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
-     */
     azureServiceEndpointRule?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
-    /**
-     * list of IP CIDR blocks.
-     */
     cidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
-    /**
-     * list of subnets from which Databricks network traffic originates when accessing your Azure resources.
-     */
     subnets?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * the Azure region in which this service endpoint rule applies.
-     */
     targetRegion?: pulumi.Input<string>;
-    /**
-     * the Azure services to which this service endpoint rule applies to.
-     */
     targetServices?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRules {
-    /**
-     * (Azure only) - list containing information about configure Azure Private Endpoints.
-     */
     azurePrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule>[]>;
 }
 
@@ -10395,9 +7583,6 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivate
     deactivatedAt?: pulumi.Input<number>;
     endpointName?: pulumi.Input<string>;
     groupId?: pulumi.Input<string>;
-    /**
-     * Canonical unique identifier of Network Connectivity Config in Databricks Account
-     */
     networkConnectivityConfigId?: pulumi.Input<string>;
     resourceId?: pulumi.Input<string>;
     ruleId?: pulumi.Input<string>;
@@ -10410,29 +7595,11 @@ export interface MwsNetworksErrorMessage {
 }
 
 export interface MwsNetworksGcpNetworkInfo {
-    /**
-     * The Google Cloud project ID of the VPC network.
-     */
     networkProjectId: pulumi.Input<string>;
-    /**
-     * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-     */
     podIpRangeName: pulumi.Input<string>;
-    /**
-     * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-     */
     serviceIpRangeName: pulumi.Input<string>;
-    /**
-     * The ID of the subnet associated with this network.
-     */
     subnetId: pulumi.Input<string>;
-    /**
-     * The Google Cloud region of the workspace data plane. For example, `us-east4`.
-     */
     subnetRegion: pulumi.Input<string>;
-    /**
-     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-     */
     vpcId: pulumi.Input<string>;
 }
 
@@ -10442,39 +7609,18 @@ export interface MwsNetworksVpcEndpoints {
 }
 
 export interface MwsVpcEndpointGcpVpcEndpointInfo {
-    /**
-     * Region of the PSC endpoint.
-     */
     endpointRegion: pulumi.Input<string>;
-    /**
-     * The Google Cloud project ID of the VPC network where the PSC connection resides.
-     */
     projectId: pulumi.Input<string>;
-    /**
-     * The unique ID of this PSC connection.
-     */
     pscConnectionId?: pulumi.Input<string>;
-    /**
-     * The name of the PSC endpoint in the Google Cloud project.
-     */
     pscEndpointName: pulumi.Input<string>;
-    /**
-     * The service attachment this PSC connection connects to.
-     */
     serviceAttachmentId?: pulumi.Input<string>;
 }
 
 export interface MwsWorkspacesCloudResourceContainer {
-    /**
-     * A block that consists of the following field:
-     */
     gcp: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainerGcp>;
 }
 
 export interface MwsWorkspacesCloudResourceContainerGcp {
-    /**
-     * The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-     */
     projectId: pulumi.Input<string>;
 }
 
@@ -10491,131 +7637,60 @@ export interface MwsWorkspacesGcpManagedNetworkConfig {
 }
 
 export interface MwsWorkspacesGkeConfig {
-    /**
-     * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
-     */
     connectivityType: pulumi.Input<string>;
-    /**
-     * The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
-     */
     masterIpRange: pulumi.Input<string>;
 }
 
 export interface MwsWorkspacesToken {
-    /**
-     * Comment, that will appear in "User Settings / Access Tokens" page on Workspace UI. By default it's "Pulumi PAT".
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * Token expiry lifetime. By default its 2592000 (30 days).
-     */
     lifetimeSeconds?: pulumi.Input<number>;
     tokenId?: pulumi.Input<string>;
     tokenValue?: pulumi.Input<string>;
 }
 
 export interface NotificationDestinationConfig {
-    /**
-     * The email configuration of the Notification Destination. It must contain the following:
-     */
     email?: pulumi.Input<inputs.NotificationDestinationConfigEmail>;
-    /**
-     * The Generic Webhook configuration of the Notification Destination. It must contain the following:
-     */
     genericWebhook?: pulumi.Input<inputs.NotificationDestinationConfigGenericWebhook>;
-    /**
-     * The Microsoft Teams configuration of the Notification Destination. It must contain the following:
-     */
     microsoftTeams?: pulumi.Input<inputs.NotificationDestinationConfigMicrosoftTeams>;
-    /**
-     * The PagerDuty configuration of the Notification Destination. It must contain the following:
-     */
     pagerduty?: pulumi.Input<inputs.NotificationDestinationConfigPagerduty>;
-    /**
-     * The Slack configuration of the Notification Destination. It must contain the following:
-     */
     slack?: pulumi.Input<inputs.NotificationDestinationConfigSlack>;
 }
 
 export interface NotificationDestinationConfigEmail {
-    /**
-     * The list of email addresses to send notifications to.
-     */
     addresses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface NotificationDestinationConfigGenericWebhook {
-    /**
-     * The password for basic authentication.
-     *
-     * > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
-     */
     password?: pulumi.Input<string>;
     passwordSet?: pulumi.Input<boolean>;
-    /**
-     * The Generic Webhook URL.
-     */
     url?: pulumi.Input<string>;
     urlSet?: pulumi.Input<boolean>;
-    /**
-     * The username for basic authentication.
-     */
     username?: pulumi.Input<string>;
     usernameSet?: pulumi.Input<boolean>;
 }
 
 export interface NotificationDestinationConfigMicrosoftTeams {
-    /**
-     * The Microsoft Teams webhook URL.
-     */
     url?: pulumi.Input<string>;
     urlSet?: pulumi.Input<boolean>;
 }
 
 export interface NotificationDestinationConfigPagerduty {
-    /**
-     * The PagerDuty integration key.
-     */
     integrationKey?: pulumi.Input<string>;
     integrationKeySet?: pulumi.Input<boolean>;
 }
 
 export interface NotificationDestinationConfigSlack {
-    /**
-     * The Slack webhook URL.
-     */
     url?: pulumi.Input<string>;
     urlSet?: pulumi.Input<boolean>;
 }
 
 export interface OnlineTableSpec {
-    /**
-     * Whether to create a full-copy pipeline -- a pipeline that stops after creates a full copy of the source table upon initialization and does not process any change data feeds (CDFs) afterwards. The pipeline can still be manually triggered afterwards, but it always perform a full copy of the source table and there are no incremental updates. This mode is useful for syncing views or tables without CDFs to online tables. Note that the full-copy pipeline only supports "triggered" scheduling policy.
-     */
     performFullCopy?: pulumi.Input<boolean>;
-    /**
-     * ID of the associated Delta Live Table pipeline.
-     */
     pipelineId?: pulumi.Input<string>;
-    /**
-     * list of the columns comprising the primary key.
-     */
     primaryKeyColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `runTriggered`.
-     */
     runContinuously?: pulumi.Input<inputs.OnlineTableSpecRunContinuously>;
-    /**
-     * empty block that specifies that pipeline stops after generating the initial data and can be triggered later (manually, through a cron job or through data triggers).
-     */
     runTriggered?: pulumi.Input<inputs.OnlineTableSpecRunTriggered>;
-    /**
-     * full name of the source table.
-     */
     sourceTableFullName?: pulumi.Input<string>;
-    /**
-     * Time series key to deduplicate (tie-break) rows with the same primary key.
-     */
     timeseriesKey?: pulumi.Input<string>;
 }
 
@@ -10627,14 +7702,8 @@ export interface OnlineTableSpecRunTriggered {
 
 export interface OnlineTableStatus {
     continuousUpdateStatus?: pulumi.Input<inputs.OnlineTableStatusContinuousUpdateStatus>;
-    /**
-     * The state of the online table.
-     */
     detailedState?: pulumi.Input<string>;
     failedStatus?: pulumi.Input<inputs.OnlineTableStatusFailedStatus>;
-    /**
-     * A text description of the current state of the online table.
-     */
     message?: pulumi.Input<string>;
     provisioningStatus?: pulumi.Input<inputs.OnlineTableStatusProvisioningStatus>;
     triggeredUpdateStatus?: pulumi.Input<inputs.OnlineTableStatusTriggeredUpdateStatus>;
@@ -10686,23 +7755,9 @@ export interface OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgress {
 }
 
 export interface PermissionsAccessControl {
-    /**
-     * name of the group. We recommend setting permissions on groups.
-     */
     groupName?: pulumi.Input<string>;
-    /**
-     * permission level according to specific resource. See examples above for the reference.
-     *
-     * Exactly one of the below arguments is required:
-     */
     permissionLevel?: pulumi.Input<string>;
-    /**
-     * Application ID of the service_principal.
-     */
     servicePrincipalName?: pulumi.Input<string>;
-    /**
-     * name of the user.
-     */
     userName?: pulumi.Input<string>;
 }
 
@@ -10833,44 +7888,20 @@ export interface PipelineClusterInitScriptWorkspace {
 }
 
 export interface PipelineDeployment {
-    /**
-     * The deployment method that manages the pipeline.
-     */
     kind?: pulumi.Input<string>;
-    /**
-     * The path to the file containing metadata about the deployment.
-     */
     metadataFilePath?: pulumi.Input<string>;
 }
 
 export interface PipelineFilters {
-    /**
-     * Paths to exclude.
-     */
     excludes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Paths to include.
-     */
     includes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface PipelineGatewayDefinition {
-    /**
-     * Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
-     */
     connectionId?: pulumi.Input<string>;
     connectionName?: pulumi.Input<string>;
-    /**
-     * Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
-     */
     gatewayStorageCatalog?: pulumi.Input<string>;
-    /**
-     * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
-     */
     gatewayStorageName?: pulumi.Input<string>;
-    /**
-     * Required, Immutable. The name of the schema for the gateway pipelines's storage location.
-     */
     gatewayStorageSchema?: pulumi.Input<string>;
 }
 
@@ -10883,9 +7914,6 @@ export interface PipelineIngestionDefinition {
 
 export interface PipelineIngestionDefinitionObject {
     report?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReport>;
-    /**
-     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
-     */
     schema?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchema>;
     table?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTable>;
 }
@@ -10976,22 +8004,12 @@ export interface PipelineLibraryNotebook {
 }
 
 export interface PipelineNotification {
-    /**
-     * non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
-     * * `on-update-success` - a pipeline update completes successfully.
-     * * `on-update-failure` - a pipeline update fails with a retryable error.
-     * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
-     * * `on-flow-failure` - a single data flow fails.
-     */
     alerts?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * non-empty list of emails to notify.
-     */
     emailRecipients?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface PipelineRestartWindow {
-    daysOfWeek?: pulumi.Input<string>;
+    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
     startHour: pulumi.Input<number>;
     timeZoneId?: pulumi.Input<string>;
 }
@@ -11010,25 +8028,10 @@ export interface PipelineTriggerManual {
 }
 
 export interface QualityMonitorCustomMetric {
-    /**
-     * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
-     */
     definition: pulumi.Input<string>;
-    /**
-     * Columns on the monitored table to apply the custom metrics to.
-     */
     inputColumns: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of the custom metric.
-     */
     name: pulumi.Input<string>;
-    /**
-     * The output type of the custom metric.
-     */
     outputDataType: pulumi.Input<string>;
-    /**
-     * The type of the custom metric.
-     */
     type: pulumi.Input<string>;
 }
 
@@ -11037,44 +8040,17 @@ export interface QualityMonitorDataClassificationConfig {
 }
 
 export interface QualityMonitorInferenceLog {
-    /**
-     * List of granularities to use when aggregating data into time windows based on their timestamp.
-     */
     granularities: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Column of the model label
-     */
     labelCol?: pulumi.Input<string>;
-    /**
-     * Column of the model id or version
-     */
     modelIdCol: pulumi.Input<string>;
-    /**
-     * Column of the model prediction
-     */
     predictionCol: pulumi.Input<string>;
-    /**
-     * Column of the model prediction probabilities
-     */
     predictionProbaCol?: pulumi.Input<string>;
-    /**
-     * Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
-     */
     problemType: pulumi.Input<string>;
-    /**
-     * Column of the timestamp of predictions
-     */
     timestampCol: pulumi.Input<string>;
 }
 
 export interface QualityMonitorNotifications {
-    /**
-     * who to send notifications to on monitor failure.
-     */
     onFailure?: pulumi.Input<inputs.QualityMonitorNotificationsOnFailure>;
-    /**
-     * Who to send notifications to when new data classification tags are detected.
-     */
     onNewClassificationTagDetected?: pulumi.Input<inputs.QualityMonitorNotificationsOnNewClassificationTagDetected>;
 }
 
@@ -11088,13 +8064,7 @@ export interface QualityMonitorNotificationsOnNewClassificationTagDetected {
 
 export interface QualityMonitorSchedule {
     pauseStatus?: pulumi.Input<string>;
-    /**
-     * string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
-     */
     quartzCronExpression: pulumi.Input<string>;
-    /**
-     * string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
-     */
     timezoneId: pulumi.Input<string>;
 }
 
@@ -11102,228 +8072,94 @@ export interface QualityMonitorSnapshot {
 }
 
 export interface QualityMonitorTimeSeries {
-    /**
-     * List of granularities to use when aggregating data into time windows based on their timestamp.
-     */
     granularities: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Column of the timestamp of predictions
-     */
     timestampCol: pulumi.Input<string>;
 }
 
 export interface QueryParameter {
-    /**
-     * Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamicDateRangeValue` or `dateRangeValue`):
-     */
     dateRangeValue?: pulumi.Input<inputs.QueryParameterDateRangeValue>;
-    /**
-     * Date query parameter value. Consists of following attributes (Can only specify one of `dynamicDateValue` or `dateValue`):
-     */
     dateValue?: pulumi.Input<inputs.QueryParameterDateValue>;
-    /**
-     * Dropdown parameter value. Consists of following attributes:
-     */
     enumValue?: pulumi.Input<inputs.QueryParameterEnumValue>;
-    /**
-     * Literal parameter marker that appears between double curly braces in the query text.
-     */
     name: pulumi.Input<string>;
-    /**
-     * Numeric parameter value. Consists of following attributes:
-     */
     numericValue?: pulumi.Input<inputs.QueryParameterNumericValue>;
-    /**
-     * Query-based dropdown parameter value. Consists of following attributes:
-     */
     queryBackedValue?: pulumi.Input<inputs.QueryParameterQueryBackedValue>;
-    /**
-     * Text parameter value. Consists of following attributes:
-     */
     textValue?: pulumi.Input<inputs.QueryParameterTextValue>;
-    /**
-     * Text displayed in the user-facing parameter widget in the UI.
-     */
     title?: pulumi.Input<string>;
 }
 
 export interface QueryParameterDateRangeValue {
-    /**
-     * Manually specified date-time range value.  Consists of the following attributes:
-     */
     dateRangeValue?: pulumi.Input<inputs.QueryParameterDateRangeValueDateRangeValue>;
-    /**
-     * Dynamic date-time range value based on current date-time.  Possible values are `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_YEAR`, `LAST_WEEK`, `LAST_MONTH`, `LAST_YEAR`, `LAST_HOUR`, `LAST_8_HOURS`, `LAST_24_HOURS`, `LAST_7_DAYS`, `LAST_14_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`, `LAST_12_MONTHS`.
-     */
     dynamicDateRangeValue?: pulumi.Input<string>;
-    /**
-     * Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
-     */
     precision?: pulumi.Input<string>;
-    /**
-     * Specify what day that starts the week.
-     */
     startDayOfWeek?: pulumi.Input<number>;
 }
 
 export interface QueryParameterDateRangeValueDateRangeValue {
-    /**
-     * end of the date range.
-     */
     end: pulumi.Input<string>;
-    /**
-     * begin of the date range.
-     */
     start: pulumi.Input<string>;
 }
 
 export interface QueryParameterDateValue {
-    /**
-     * Manually specified date-time value
-     */
     dateValue?: pulumi.Input<string>;
-    /**
-     * Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
-     */
     dynamicDateValue?: pulumi.Input<string>;
-    /**
-     * Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
-     */
     precision?: pulumi.Input<string>;
 }
 
 export interface QueryParameterEnumValue {
-    /**
-     * List of valid query parameter values, newline delimited.
-     */
     enumOptions?: pulumi.Input<string>;
-    /**
-     * If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
-     */
     multiValuesOptions?: pulumi.Input<inputs.QueryParameterEnumValueMultiValuesOptions>;
-    /**
-     * List of selected query parameter values.
-     */
     values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface QueryParameterEnumValueMultiValuesOptions {
-    /**
-     * Character that prefixes each selected parameter value.
-     */
     prefix?: pulumi.Input<string>;
-    /**
-     * Character that separates each selected parameter value. Defaults to a comma.
-     */
     separator?: pulumi.Input<string>;
-    /**
-     * Character that suffixes each selected parameter value.
-     */
     suffix?: pulumi.Input<string>;
 }
 
 export interface QueryParameterNumericValue {
-    /**
-     * actual numeric value.
-     */
     value: pulumi.Input<number>;
 }
 
 export interface QueryParameterQueryBackedValue {
-    /**
-     * If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
-     */
     multiValuesOptions?: pulumi.Input<inputs.QueryParameterQueryBackedValueMultiValuesOptions>;
-    /**
-     * ID of the query that provides the parameter values.
-     */
     queryId: pulumi.Input<string>;
-    /**
-     * List of selected query parameter values.
-     */
     values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface QueryParameterQueryBackedValueMultiValuesOptions {
-    /**
-     * Character that prefixes each selected parameter value.
-     */
     prefix?: pulumi.Input<string>;
-    /**
-     * Character that separates each selected parameter value. Defaults to a comma.
-     */
     separator?: pulumi.Input<string>;
-    /**
-     * Character that suffixes each selected parameter value.
-     */
     suffix?: pulumi.Input<string>;
 }
 
 export interface QueryParameterTextValue {
-    /**
-     * actual text value.
-     */
     value: pulumi.Input<string>;
 }
 
 export interface RecipientIpAccessList {
-    /**
-     * Allowed IP Addresses in CIDR notation. Limit of 100.
-     */
     allowedIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface RecipientPropertiesKvpairs {
-    /**
-     * a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
-     */
     properties: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface RecipientToken {
-    /**
-     * Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
-     */
     activationUrl?: pulumi.Input<string>;
-    /**
-     * Time at which this recipient was created, in epoch milliseconds.
-     */
     createdAt?: pulumi.Input<number>;
-    /**
-     * Username of recipient creator.
-     */
     createdBy?: pulumi.Input<string>;
-    /**
-     * Expiration timestamp of the token in epoch milliseconds.
-     */
     expirationTime?: pulumi.Input<number>;
-    /**
-     * Unique ID of the recipient token.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Time at which this recipient was updated, in epoch milliseconds.
-     */
     updatedAt?: pulumi.Input<number>;
-    /**
-     * Username of recipient Token updater.
-     */
     updatedBy?: pulumi.Input<string>;
 }
 
 export interface RepoSparseCheckout {
-    /**
-     * array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
-     *
-     * Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the Git folder.
-     */
     patterns: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
-    /**
-     * The restrict workspace admins status for the workspace.
-     */
     status: pulumi.Input<string>;
 }
 
@@ -11335,107 +8171,42 @@ export interface SecretScopeKeyvaultMetadata {
 export interface ShareObject {
     addedAt?: pulumi.Input<number>;
     addedBy?: pulumi.Input<string>;
-    /**
-     * Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `historyDataSharingStatus` can not be set.
-     */
     cdfEnabled?: pulumi.Input<boolean>;
-    /**
-     * Description about the object.
-     */
     comment?: pulumi.Input<string>;
     content?: pulumi.Input<string>;
-    /**
-     * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
-     */
     dataObjectType: pulumi.Input<string>;
-    /**
-     * Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
-     *
-     * To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
-     */
     historyDataSharingStatus?: pulumi.Input<string>;
-    /**
-     * Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
-     */
     name: pulumi.Input<string>;
     partitions?: pulumi.Input<pulumi.Input<inputs.ShareObjectPartition>[]>;
-    /**
-     * A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
-     */
     sharedAs?: pulumi.Input<string>;
-    /**
-     * The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
-     */
     startVersion?: pulumi.Input<number>;
-    /**
-     * Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
-     */
     status?: pulumi.Input<string>;
     stringSharedAs?: pulumi.Input<string>;
 }
 
 export interface ShareObjectPartition {
-    /**
-     * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
-     */
     values?: pulumi.Input<pulumi.Input<inputs.ShareObjectPartitionValue>[]>;
 }
 
 export interface ShareObjectPartitionValue {
-    /**
-     * The name of the partition column.
-     */
     name: pulumi.Input<string>;
-    /**
-     * The operator to apply for the value, one of: `EQUAL`, `LIKE`
-     */
     op: pulumi.Input<string>;
-    /**
-     * The key of a Delta Sharing recipient's property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
-     */
     recipientPropertyKey?: pulumi.Input<string>;
-    /**
-     * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
-     */
     value?: pulumi.Input<string>;
 }
 
 export interface SqlAlertOptions {
-    /**
-     * Name of column in the query result to compare in alert evaluation.
-     */
     column: pulumi.Input<string>;
-    /**
-     * Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
-     */
     customBody?: pulumi.Input<string>;
-    /**
-     * Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
-     */
     customSubject?: pulumi.Input<string>;
-    /**
-     * State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
-     */
     emptyResultState?: pulumi.Input<string>;
-    /**
-     * Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
-     */
     muted?: pulumi.Input<boolean>;
-    /**
-     * Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
-     */
     op: pulumi.Input<string>;
-    /**
-     * Value used to compare in alert evaluation.
-     */
     value: pulumi.Input<string>;
 }
 
 export interface SqlEndpointChannel {
     dbsqlVersion?: pulumi.Input<string>;
-    /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
-     */
     name?: pulumi.Input<string>;
 }
 
@@ -11470,9 +8241,6 @@ export interface SqlEndpointTagsCustomTag {
 }
 
 export interface SqlPermissionsPrivilegeAssignment {
-    /**
-     * `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
-     */
     principal: pulumi.Input<string>;
     privileges: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -11485,37 +8253,19 @@ export interface SqlQueryParameter {
     datetimesec?: pulumi.Input<inputs.SqlQueryParameterDatetimesec>;
     datetimesecRange?: pulumi.Input<inputs.SqlQueryParameterDatetimesecRange>;
     enum?: pulumi.Input<inputs.SqlQueryParameterEnum>;
-    /**
-     * The literal parameter marker that appears between double curly braces in the query text.
-     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
-     *
-     * For `text`, `number`, `date`, `datetime`, `datetimesec` block
-     */
     name: pulumi.Input<string>;
     number?: pulumi.Input<inputs.SqlQueryParameterNumber>;
-    /**
-     * The text of the query to be run.
-     */
     query?: pulumi.Input<inputs.SqlQueryParameterQuery>;
     text?: pulumi.Input<inputs.SqlQueryParameterText>;
-    /**
-     * The text displayed in a parameter picking widget.
-     */
     title?: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDate {
-    /**
-     * The default value for this parameter.
-     */
     value: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDateRange {
     range?: pulumi.Input<inputs.SqlQueryParameterDateRangeRange>;
-    /**
-     * The default value for this parameter.
-     */
     value?: pulumi.Input<string>;
 }
 
@@ -11525,17 +8275,11 @@ export interface SqlQueryParameterDateRangeRange {
 }
 
 export interface SqlQueryParameterDatetime {
-    /**
-     * The default value for this parameter.
-     */
     value: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDatetimeRange {
     range?: pulumi.Input<inputs.SqlQueryParameterDatetimeRangeRange>;
-    /**
-     * The default value for this parameter.
-     */
     value?: pulumi.Input<string>;
 }
 
@@ -11545,17 +8289,11 @@ export interface SqlQueryParameterDatetimeRangeRange {
 }
 
 export interface SqlQueryParameterDatetimesec {
-    /**
-     * The default value for this parameter.
-     */
     value: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDatetimesecRange {
     range?: pulumi.Input<inputs.SqlQueryParameterDatetimesecRangeRange>;
-    /**
-     * The default value for this parameter.
-     */
     value?: pulumi.Input<string>;
 }
 
@@ -11567,9 +8305,6 @@ export interface SqlQueryParameterDatetimesecRangeRange {
 export interface SqlQueryParameterEnum {
     multiple?: pulumi.Input<inputs.SqlQueryParameterEnumMultiple>;
     options: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The default value for this parameter.
-     */
     value?: pulumi.Input<string>;
     values?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -11581,18 +8316,12 @@ export interface SqlQueryParameterEnumMultiple {
 }
 
 export interface SqlQueryParameterNumber {
-    /**
-     * The default value for this parameter.
-     */
     value: pulumi.Input<number>;
 }
 
 export interface SqlQueryParameterQuery {
     multiple?: pulumi.Input<inputs.SqlQueryParameterQueryMultiple>;
     queryId: pulumi.Input<string>;
-    /**
-     * The default value for this parameter.
-     */
     value?: pulumi.Input<string>;
     values?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -11604,9 +8333,6 @@ export interface SqlQueryParameterQueryMultiple {
 }
 
 export interface SqlQueryParameterText {
-    /**
-     * The default value for this parameter.
-     */
     value: pulumi.Input<string>;
 }
 
@@ -11635,25 +8361,10 @@ export interface SqlQueryScheduleWeekly {
 }
 
 export interface SqlTableColumn {
-    /**
-     * User-supplied free-form text.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
-     */
     identity?: pulumi.Input<string>;
-    /**
-     * User-visible name of column
-     */
     name: pulumi.Input<string>;
-    /**
-     * Whether field is nullable (Default: `true`)
-     */
     nullable?: pulumi.Input<boolean>;
-    /**
-     * Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
-     */
     type?: pulumi.Input<string>;
     typeJson?: pulumi.Input<string>;
 }
@@ -11677,77 +8388,34 @@ export interface SqlWidgetPosition {
 
 export interface StorageCredentialAwsIamRole {
     externalId?: pulumi.Input<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-     *
-     * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
-     */
     roleArn: pulumi.Input<string>;
     unityCatalogIamArn?: pulumi.Input<string>;
 }
 
 export interface StorageCredentialAzureManagedIdentity {
-    /**
-     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-     */
     accessConnectorId: pulumi.Input<string>;
     credentialId?: pulumi.Input<string>;
-    /**
-     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-     *
-     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
-     */
     managedIdentityId?: pulumi.Input<string>;
 }
 
 export interface StorageCredentialAzureServicePrincipal {
-    /**
-     * The application ID of the application registration within the referenced AAD tenant
-     */
     applicationId: pulumi.Input<string>;
-    /**
-     * The client secret generated for the above app ID in AAD. **This field is redacted on output**
-     */
     clientSecret: pulumi.Input<string>;
-    /**
-     * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-     */
     directoryId: pulumi.Input<string>;
 }
 
 export interface StorageCredentialCloudflareApiToken {
-    /**
-     * R2 API token access key ID
-     */
     accessKeyId: pulumi.Input<string>;
-    /**
-     * R2 account ID
-     */
     accountId: pulumi.Input<string>;
-    /**
-     * R2 API token secret access key
-     *
-     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
-     */
     secretAccessKey: pulumi.Input<string>;
 }
 
 export interface StorageCredentialDatabricksGcpServiceAccount {
     credentialId?: pulumi.Input<string>;
-    /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
-     *
-     * `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-     */
     email?: pulumi.Input<string>;
 }
 
 export interface StorageCredentialGcpServiceAccountKey {
-    /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
-     *
-     * `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-     */
     email: pulumi.Input<string>;
     privateKey: pulumi.Input<string>;
     privateKeyId: pulumi.Input<string>;
@@ -11768,98 +8436,48 @@ export interface TableColumn {
 }
 
 export interface VectorSearchEndpointEndpointStatus {
-    /**
-     * Additional status message.
-     */
     message?: pulumi.Input<string>;
-    /**
-     * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
-     */
     state?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpec {
-    /**
-     * array of objects representing columns that contain the embedding source.  Each entry consists of:
-     */
     embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn>[]>;
     embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn>[]>;
     embeddingWritebackTable?: pulumi.Input<string>;
-    /**
-     * ID of the associated Delta Live Table pipeline.
-     */
     pipelineId?: pulumi.Input<string>;
-    /**
-     * Pipeline execution mode. Possible values are:
-     * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
-     * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
-     */
     pipelineType?: pulumi.Input<string>;
-    /**
-     * The name of the source table.
-     */
     sourceTable?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
     embeddingModelEndpointName?: pulumi.Input<string>;
-    /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-     */
     name?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
     embeddingDimension?: pulumi.Input<number>;
-    /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-     */
     name?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpec {
-    /**
-     * array of objects representing columns that contain the embedding source.  Each entry consists of:
-     */
     embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn>[]>;
     embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn>[]>;
-    /**
-     * The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
-     */
     schemaJson?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
     embeddingModelEndpointName?: pulumi.Input<string>;
-    /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-     */
     name?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
     embeddingDimension?: pulumi.Input<number>;
-    /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-     */
     name?: pulumi.Input<string>;
 }
 
 export interface VectorSearchIndexStatus {
-    /**
-     * Index API Url to be used to perform operations on the index
-     */
     indexUrl?: pulumi.Input<string>;
-    /**
-     * Number of rows indexed
-     */
     indexedRowCount?: pulumi.Input<number>;
-    /**
-     * Message associated with the index status
-     */
     message?: pulumi.Input<string>;
-    /**
-     * Whether the index is ready for search
-     */
     ready?: pulumi.Input<boolean>;
 }

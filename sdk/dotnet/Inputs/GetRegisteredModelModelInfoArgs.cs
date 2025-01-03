@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("aliases")]
         private InputList<Inputs.GetRegisteredModelModelInfoAliasInputArgs>? _aliases;
-
-        /// <summary>
-        /// the list of aliases associated with this model. Each item is object consisting of following attributes:
-        /// </summary>
         public InputList<Inputs.GetRegisteredModelModelInfoAliasInputArgs> Aliases
         {
             get => _aliases ?? (_aliases = new InputList<Inputs.GetRegisteredModelModelInfoAliasInputArgs>());
@@ -27,75 +23,39 @@ namespace Pulumi.Databricks.Inputs
         [Input("browseOnly")]
         public Input<bool>? BrowseOnly { get; set; }
 
-        /// <summary>
-        /// The name of the catalog where the schema and the registered model reside.
-        /// </summary>
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
 
-        /// <summary>
-        /// The comment attached to the registered model.
-        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
-        /// <summary>
-        /// the Unix timestamp at the model's creation
-        /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
-        /// <summary>
-        /// the identifier of the user who created the model
-        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
-        /// <summary>
-        /// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-        /// </summary>
         [Input("fullName")]
         public Input<string>? FullName { get; set; }
 
-        /// <summary>
-        /// the unique identifier of the metastore
-        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
-        /// <summary>
-        /// The name of the registered model.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Name of the registered model owner.
-        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
-        /// <summary>
-        /// The name of the schema where the registered model resides.
-        /// </summary>
         [Input("schemaName")]
         public Input<string>? SchemaName { get; set; }
 
-        /// <summary>
-        /// The storage location under which model version data files are stored.
-        /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }
 
-        /// <summary>
-        /// the timestamp of the last time changes were made to the model
-        /// </summary>
         [Input("updatedAt")]
         public Input<int>? UpdatedAt { get; set; }
 
-        /// <summary>
-        /// the identifier of the user who updated the model last time
-        /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }
 

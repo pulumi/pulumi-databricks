@@ -15,18 +15,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("continuousUpdateStatus")]
         public Input<Inputs.OnlineTableStatusContinuousUpdateStatusArgs>? ContinuousUpdateStatus { get; set; }
 
-        /// <summary>
-        /// The state of the online table.
-        /// </summary>
         [Input("detailedState")]
         public Input<string>? DetailedState { get; set; }
 
         [Input("failedStatus")]
         public Input<Inputs.OnlineTableStatusFailedStatusArgs>? FailedStatus { get; set; }
 
-        /// <summary>
-        /// A text description of the current state of the online table.
-        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 

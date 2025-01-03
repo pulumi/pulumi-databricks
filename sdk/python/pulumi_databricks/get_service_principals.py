@@ -40,9 +40,6 @@ class GetServicePrincipalsResult:
     @property
     @pulumi.getter(name="applicationIds")
     def application_ids(self) -> Sequence[str]:
-        """
-        List of `application_ids` of service principals Individual service principal can be retrieved using ServicePrincipal data source
-        """
         return pulumi.get(self, "application_ids")
 
     @property
@@ -74,13 +71,7 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
                            display_name_contains: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalsResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
-
-
-    :param Sequence[str] application_ids: List of `application_ids` of service principals Individual service principal can be retrieved using ServicePrincipal data source
-    :param str display_name_contains: Only return ServicePrincipal display name that match the given name string
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['applicationIds'] = application_ids
@@ -96,13 +87,7 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
                                   display_name_contains: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalsResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
-
-
-    :param Sequence[str] application_ids: List of `application_ids` of service principals Individual service principal can be retrieved using ServicePrincipal data source
-    :param str display_name_contains: Only return ServicePrincipal display name that match the given name string
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['applicationIds'] = application_ids

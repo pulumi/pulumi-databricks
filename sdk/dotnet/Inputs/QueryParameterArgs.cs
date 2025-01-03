@@ -12,51 +12,27 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class QueryParameterArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
-        /// </summary>
         [Input("dateRangeValue")]
         public Input<Inputs.QueryParameterDateRangeValueArgs>? DateRangeValue { get; set; }
 
-        /// <summary>
-        /// Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
-        /// </summary>
         [Input("dateValue")]
         public Input<Inputs.QueryParameterDateValueArgs>? DateValue { get; set; }
 
-        /// <summary>
-        /// Dropdown parameter value. Consists of following attributes:
-        /// </summary>
         [Input("enumValue")]
         public Input<Inputs.QueryParameterEnumValueArgs>? EnumValue { get; set; }
 
-        /// <summary>
-        /// Literal parameter marker that appears between double curly braces in the query text.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// Numeric parameter value. Consists of following attributes:
-        /// </summary>
         [Input("numericValue")]
         public Input<Inputs.QueryParameterNumericValueArgs>? NumericValue { get; set; }
 
-        /// <summary>
-        /// Query-based dropdown parameter value. Consists of following attributes:
-        /// </summary>
         [Input("queryBackedValue")]
         public Input<Inputs.QueryParameterQueryBackedValueArgs>? QueryBackedValue { get; set; }
 
-        /// <summary>
-        /// Text parameter value. Consists of following attributes:
-        /// </summary>
         [Input("textValue")]
         public Input<Inputs.QueryParameterTextValueArgs>? TextValue { get; set; }
 
-        /// <summary>
-        /// Text displayed in the user-facing parameter widget in the UI.
-        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 

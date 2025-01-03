@@ -13,13 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ArtifactAllowlistArtifactMatcher
     {
-        /// <summary>
-        /// The artifact path or maven coordinate.
-        /// </summary>
         public readonly string Artifact;
-        /// <summary>
-        /// The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
-        /// </summary>
         public readonly string MatchType;
 
         [OutputConstructor]

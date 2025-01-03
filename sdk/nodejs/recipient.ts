@@ -6,43 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > This resource can only be used with a workspace-level provider!
- *
- * In Delta Sharing, a recipient is an entity that receives shares from a provider. In Unity Catalog, a share is a securable object that represents an organization and associates it with a credential or secure sharing identifier that allows that organization to access one or more shares.
- *
- * As a data provider (sharer), you can define multiple recipients for any given Unity Catalog metastore, but if you want to share data from multiple metastores with a particular user or group of users, you must define the recipient separately for each metastore. A recipient can have access to multiple shares.
- *
- * A `databricks.Recipient` is contained within databricks.Metastore and can have permissions to `SELECT` from a list of shares.
- *
- * ## Example Usage
- *
- * ### Databricks Sharing with non databricks recipient
- *
- * Setting `authenticationType` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
- * authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- * import * as random from "@pulumi/random";
- *
- * const db2opensharecode = new random.index.Password("db2opensharecode", {
- *     length: 16,
- *     special: true,
- * });
- * const current = databricks.getCurrentUser({});
- * const db2open = new databricks.Recipient("db2open", {
- *     name: current.then(current => `${current.alphanumeric}-recipient`),
- *     comment: "Made by Pulumi",
- *     authenticationType: "TOKEN",
- *     sharingCode: db2opensharecode.result,
- *     ipAccessList: {
- *         allowedIpAddresses: [],
- *     },
- * });
- * ```
- */
 export class Recipient extends pulumi.CustomResource {
     /**
      * Get an existing Recipient resource's state with the given name, ID, and optional extra
@@ -72,73 +35,22 @@ export class Recipient extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly activated!: pulumi.Output<boolean>;
-    /**
-     * Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
-     */
     public /*out*/ readonly activationUrl!: pulumi.Output<string>;
-    /**
-     * The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
-     */
     public readonly authenticationType!: pulumi.Output<string>;
-    /**
-     * Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
-     */
     public /*out*/ readonly cloud!: pulumi.Output<string>;
-    /**
-     * Description about the recipient.
-     */
     public readonly comment!: pulumi.Output<string | undefined>;
-    /**
-     * Time at which this recipient was created, in epoch milliseconds.
-     */
     public /*out*/ readonly createdAt!: pulumi.Output<number>;
-    /**
-     * Username of recipient creator.
-     */
     public /*out*/ readonly createdBy!: pulumi.Output<string>;
-    /**
-     * Required when `authenticationType` is `DATABRICKS`.
-     */
     public readonly dataRecipientGlobalMetastoreId!: pulumi.Output<string | undefined>;
-    /**
-     * Recipient IP access list.
-     */
     public readonly ipAccessList!: pulumi.Output<outputs.RecipientIpAccessList | undefined>;
-    /**
-     * Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
-     */
     public /*out*/ readonly metastoreId!: pulumi.Output<string>;
-    /**
-     * Name of recipient. Change forces creation of a new resource.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Username/groupname/sp applicationId of the recipient owner.
-     */
     public readonly owner!: pulumi.Output<string | undefined>;
-    /**
-     * Recipient properties - object consisting of following fields:
-     */
     public readonly propertiesKvpairs!: pulumi.Output<outputs.RecipientPropertiesKvpairs | undefined>;
-    /**
-     * Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
-     */
     public /*out*/ readonly region!: pulumi.Output<string>;
-    /**
-     * The one-time sharing code provided by the data recipient.
-     */
     public readonly sharingCode!: pulumi.Output<string | undefined>;
-    /**
-     * List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
-     */
     public readonly tokens!: pulumi.Output<outputs.RecipientToken[]>;
-    /**
-     * Time at which this recipient was updated, in epoch milliseconds.
-     */
     public /*out*/ readonly updatedAt!: pulumi.Output<number>;
-    /**
-     * Username of recipient Token updater.
-     */
     public /*out*/ readonly updatedBy!: pulumi.Output<string>;
 
     /**
@@ -208,73 +120,22 @@ export class Recipient extends pulumi.CustomResource {
  */
 export interface RecipientState {
     activated?: pulumi.Input<boolean>;
-    /**
-     * Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
-     */
     activationUrl?: pulumi.Input<string>;
-    /**
-     * The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
-     */
     authenticationType?: pulumi.Input<string>;
-    /**
-     * Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
-     */
     cloud?: pulumi.Input<string>;
-    /**
-     * Description about the recipient.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * Time at which this recipient was created, in epoch milliseconds.
-     */
     createdAt?: pulumi.Input<number>;
-    /**
-     * Username of recipient creator.
-     */
     createdBy?: pulumi.Input<string>;
-    /**
-     * Required when `authenticationType` is `DATABRICKS`.
-     */
     dataRecipientGlobalMetastoreId?: pulumi.Input<string>;
-    /**
-     * Recipient IP access list.
-     */
     ipAccessList?: pulumi.Input<inputs.RecipientIpAccessList>;
-    /**
-     * Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * Name of recipient. Change forces creation of a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the recipient owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Recipient properties - object consisting of following fields:
-     */
     propertiesKvpairs?: pulumi.Input<inputs.RecipientPropertiesKvpairs>;
-    /**
-     * Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The one-time sharing code provided by the data recipient.
-     */
     sharingCode?: pulumi.Input<string>;
-    /**
-     * List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
-     */
     tokens?: pulumi.Input<pulumi.Input<inputs.RecipientToken>[]>;
-    /**
-     * Time at which this recipient was updated, in epoch milliseconds.
-     */
     updatedAt?: pulumi.Input<number>;
-    /**
-     * Username of recipient Token updater.
-     */
     updatedBy?: pulumi.Input<string>;
 }
 
@@ -282,40 +143,13 @@ export interface RecipientState {
  * The set of arguments for constructing a Recipient resource.
  */
 export interface RecipientArgs {
-    /**
-     * The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
-     */
     authenticationType: pulumi.Input<string>;
-    /**
-     * Description about the recipient.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * Required when `authenticationType` is `DATABRICKS`.
-     */
     dataRecipientGlobalMetastoreId?: pulumi.Input<string>;
-    /**
-     * Recipient IP access list.
-     */
     ipAccessList?: pulumi.Input<inputs.RecipientIpAccessList>;
-    /**
-     * Name of recipient. Change forces creation of a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the recipient owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Recipient properties - object consisting of following fields:
-     */
     propertiesKvpairs?: pulumi.Input<inputs.RecipientPropertiesKvpairs>;
-    /**
-     * The one-time sharing code provided by the data recipient.
-     */
     sharingCode?: pulumi.Input<string>;
-    /**
-     * List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
-     */
     tokens?: pulumi.Input<pulumi.Input<inputs.RecipientToken>[]>;
 }

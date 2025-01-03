@@ -4,89 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
- *
- * > This resource can only be used with a workspace-level provider!
- *
- * Volumes are Unity Catalog objects representing a logical volume of storage in a cloud object storage location. Volumes provide capabilities for accessing, storing, governing, and organizing files. While tables provide governance over tabular datasets, volumes add governance over non-tabular datasets. You can use volumes to store and access files in any format, including structured, semi-structured, and unstructured data.
- *
- * A volume resides in the third layer of Unity Catalog’s three-level namespace. Volumes are siblings to tables, views, and other objects organized under a schema in Unity Catalog.
- *
- * A volume can be **managed** or **external**.
- *
- * A **managed volume** is a Unity Catalog-governed storage volume created within the default storage location of the containing schema. Managed volumes allow the creation of governed storage for working with files without the overhead of external locations and storage credentials. You do not need to specify a location when creating a managed volume, and all file access for data in managed volumes is through paths managed by Unity Catalog.
- *
- * An **external volume** is a Unity Catalog-governed storage volume registered against a directory within an external location.
- *
- * A volume can be referenced using its identifier: ```<catalogName>.<schemaName>.<volumeName>```, where:
- *
- * * ```<catalogName>```: The name of the catalog containing the Volume.
- * * ```<schemaName>```: The name of the schema containing the Volume.
- * * ```<volumeName>```: The name of the Volume. It identifies the volume object.
- *
- * The path to access files in volumes uses the following format:
- *
- * ```/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>```
- *
- * Databricks also supports an optional ```dbfs:/``` scheme, so the following path also works:
- *
- * ```dbfs:/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>```
- *
- * This resource manages Volumes in Unity Catalog.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sandbox = new databricks.Catalog("sandbox", {
- *     name: "sandbox",
- *     comment: "this catalog is managed by terraform",
- *     properties: {
- *         purpose: "testing",
- *     },
- * });
- * const things = new databricks.Schema("things", {
- *     catalogName: sandbox.name,
- *     name: "things",
- *     comment: "this schema is managed by terraform",
- *     properties: {
- *         kind: "various",
- *     },
- * });
- * const external = new databricks.StorageCredential("external", {
- *     name: "creds",
- *     awsIamRole: {
- *         roleArn: externalDataAccess.arn,
- *     },
- * });
- * const some = new databricks.ExternalLocation("some", {
- *     name: "external_location",
- *     url: `s3://${externalAwsS3Bucket.id}/some`,
- *     credentialName: external.name,
- * });
- * const _this = new databricks.Volume("this", {
- *     name: "quickstart_volume",
- *     catalogName: sandbox.name,
- *     schemaName: things.name,
- *     volumeType: "EXTERNAL",
- *     storageLocation: some.url,
- *     comment: "this volume is managed by terraform",
- * });
- * ```
- *
- * ## Import
- *
- * This resource can be imported by `full_name` which is the 3-level Volume identifier: `<catalog>.<schema>.<name>`
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
- * ```
- */
 export class Volume extends pulumi.CustomResource {
     /**
      * Get an existing Volume resource's state with the given name, ID, and optional extra
@@ -115,37 +32,13 @@ export class Volume extends pulumi.CustomResource {
         return obj['__pulumiType'] === Volume.__pulumiType;
     }
 
-    /**
-     * Name of parent Catalog. Change forces creation of a new resource.
-     */
     public readonly catalogName!: pulumi.Output<string>;
-    /**
-     * Free-form text.
-     */
     public readonly comment!: pulumi.Output<string | undefined>;
-    /**
-     * Name of the Volume
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Name of the volume owner.
-     */
     public readonly owner!: pulumi.Output<string>;
-    /**
-     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-     */
     public readonly schemaName!: pulumi.Output<string>;
-    /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
-     */
     public readonly storageLocation!: pulumi.Output<string | undefined>;
-    /**
-     * base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
-     */
     public /*out*/ readonly volumePath!: pulumi.Output<string>;
-    /**
-     * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
-     */
     public readonly volumeType!: pulumi.Output<string>;
 
     /**
@@ -198,37 +91,13 @@ export class Volume extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Volume resources.
  */
 export interface VolumeState {
-    /**
-     * Name of parent Catalog. Change forces creation of a new resource.
-     */
     catalogName?: pulumi.Input<string>;
-    /**
-     * Free-form text.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * Name of the Volume
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Name of the volume owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-     */
     schemaName?: pulumi.Input<string>;
-    /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
-     */
     storageLocation?: pulumi.Input<string>;
-    /**
-     * base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
-     */
     volumePath?: pulumi.Input<string>;
-    /**
-     * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
-     */
     volumeType?: pulumi.Input<string>;
 }
 
@@ -236,32 +105,11 @@ export interface VolumeState {
  * The set of arguments for constructing a Volume resource.
  */
 export interface VolumeArgs {
-    /**
-     * Name of parent Catalog. Change forces creation of a new resource.
-     */
     catalogName: pulumi.Input<string>;
-    /**
-     * Free-form text.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * Name of the Volume
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Name of the volume owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-     */
     schemaName: pulumi.Input<string>;
-    /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
-     */
     storageLocation?: pulumi.Input<string>;
-    /**
-     * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
-     */
     volumeType: pulumi.Input<string>;
 }

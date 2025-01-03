@@ -12,27 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetInstanceProfilesInstanceProfileInputArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// ARN of the instance profile.
-        /// </summary>
         [Input("arn", required: true)]
         public Input<string> Arn { get; set; } = null!;
 
-        /// <summary>
-        /// Whether the instance profile is a meta instance profile or not.
-        /// </summary>
         [Input("isMeta", required: true)]
         public Input<bool> IsMeta { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the instance profile.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// ARN of the role attached to the instance profile.
-        /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 

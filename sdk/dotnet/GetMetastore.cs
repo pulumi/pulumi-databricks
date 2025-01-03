@@ -11,174 +11,12 @@ namespace Pulumi.Databricks
 {
     public static class GetMetastore
     {
-        /// <summary>
-        /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
-        /// Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
-        /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// MetastoreInfo response for a given metastore id
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var metastore = new Aws.S3.BucketV2("metastore", new()
-        ///     {
-        ///         Bucket = $"{prefix}-metastore",
-        ///         ForceDestroy = true,
-        ///     });
-        /// 
-        ///     var thisMetastore = new Databricks.Metastore("this", new()
-        ///     {
-        ///         Name = "primary",
-        ///         StorageRoot = metastore.Id.Apply(id =&gt; $"s3://{id}/metastore"),
-        ///         Owner = unityAdminGroup,
-        ///         ForceDestroy = true,
-        ///     });
-        /// 
-        ///     var @this = Databricks.GetMetastore.Invoke(new()
-        ///     {
-        ///         MetastoreId = thisMetastore.Id,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["someMetastore"] = @this.Apply(@this =&gt; @this.Apply(getMetastoreResult =&gt; getMetastoreResult.MetastoreInfo)),
-        ///     };
-        /// });
-        /// ```
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.getMetastores to get mapping of name to id of all metastores.
-        /// * databricks.Metastore to manage Metastores within Unity Catalog.
-        /// * databricks.Catalog to manage catalogs within Unity Catalog.
-        /// </summary>
         public static Task<GetMetastoreResult> InvokeAsync(GetMetastoreArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetastoreResult>("databricks:index/getMetastore:getMetastore", args ?? new GetMetastoreArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
-        /// Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
-        /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// MetastoreInfo response for a given metastore id
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var metastore = new Aws.S3.BucketV2("metastore", new()
-        ///     {
-        ///         Bucket = $"{prefix}-metastore",
-        ///         ForceDestroy = true,
-        ///     });
-        /// 
-        ///     var thisMetastore = new Databricks.Metastore("this", new()
-        ///     {
-        ///         Name = "primary",
-        ///         StorageRoot = metastore.Id.Apply(id =&gt; $"s3://{id}/metastore"),
-        ///         Owner = unityAdminGroup,
-        ///         ForceDestroy = true,
-        ///     });
-        /// 
-        ///     var @this = Databricks.GetMetastore.Invoke(new()
-        ///     {
-        ///         MetastoreId = thisMetastore.Id,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["someMetastore"] = @this.Apply(@this =&gt; @this.Apply(getMetastoreResult =&gt; getMetastoreResult.MetastoreInfo)),
-        ///     };
-        /// });
-        /// ```
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.getMetastores to get mapping of name to id of all metastores.
-        /// * databricks.Metastore to manage Metastores within Unity Catalog.
-        /// * databricks.Catalog to manage catalogs within Unity Catalog.
-        /// </summary>
         public static Output<GetMetastoreResult> Invoke(GetMetastoreInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetastoreResult>("databricks:index/getMetastore:getMetastore", args ?? new GetMetastoreInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// &gt; **Note** This data source can only be used with an account-level provider!
-        /// 
-        /// Retrieves information about metastore for a given id of databricks.Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
-        /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// MetastoreInfo response for a given metastore id
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var metastore = new Aws.S3.BucketV2("metastore", new()
-        ///     {
-        ///         Bucket = $"{prefix}-metastore",
-        ///         ForceDestroy = true,
-        ///     });
-        /// 
-        ///     var thisMetastore = new Databricks.Metastore("this", new()
-        ///     {
-        ///         Name = "primary",
-        ///         StorageRoot = metastore.Id.Apply(id =&gt; $"s3://{id}/metastore"),
-        ///         Owner = unityAdminGroup,
-        ///         ForceDestroy = true,
-        ///     });
-        /// 
-        ///     var @this = Databricks.GetMetastore.Invoke(new()
-        ///     {
-        ///         MetastoreId = thisMetastore.Id,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["someMetastore"] = @this.Apply(@this =&gt; @this.Apply(getMetastoreResult =&gt; getMetastoreResult.MetastoreInfo)),
-        ///     };
-        /// });
-        /// ```
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.getMetastores to get mapping of name to id of all metastores.
-        /// * databricks.Metastore to manage Metastores within Unity Catalog.
-        /// * databricks.Catalog to manage catalogs within Unity Catalog.
-        /// </summary>
         public static Output<GetMetastoreResult> Invoke(GetMetastoreInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetastoreResult>("databricks:index/getMetastore:getMetastore", args ?? new GetMetastoreInvokeArgs(), options.WithDefaults());
     }
@@ -186,33 +24,18 @@ namespace Pulumi.Databricks
 
     public sealed class GetMetastoreArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the metastore
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// ID of the metastore
-        /// </summary>
         [Input("metastoreId")]
         public string? MetastoreId { get; set; }
 
-        /// <summary>
-        /// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-        /// </summary>
         [Input("metastoreInfo")]
         public Inputs.GetMetastoreMetastoreInfoArgs? MetastoreInfo { get; set; }
 
-        /// <summary>
-        /// Name of the metastore
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
-        /// <summary>
-        /// Region of the metastore
-        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
@@ -224,33 +47,18 @@ namespace Pulumi.Databricks
 
     public sealed class GetMetastoreInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// ID of the metastore
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// ID of the metastore
-        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
-        /// <summary>
-        /// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-        /// </summary>
         [Input("metastoreInfo")]
         public Input<Inputs.GetMetastoreMetastoreInfoInputArgs>? MetastoreInfo { get; set; }
 
-        /// <summary>
-        /// Name of the metastore
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Region of the metastore
-        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -264,18 +72,9 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetMetastoreResult
     {
-        /// <summary>
-        /// ID of the metastore
-        /// </summary>
         public readonly string Id;
         public readonly string MetastoreId;
-        /// <summary>
-        /// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-        /// </summary>
         public readonly Outputs.GetMetastoreMetastoreInfoResult MetastoreInfo;
-        /// <summary>
-        /// Name of metastore.
-        /// </summary>
         public readonly string Name;
         public readonly string Region;
 

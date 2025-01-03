@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("clusterSources")]
         private InputList<string>? _clusterSources;
-
-        /// <summary>
-        /// List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
-        /// </summary>
         public InputList<string> ClusterSources
         {
             get => _clusterSources ?? (_clusterSources = new InputList<string>());
@@ -26,25 +22,15 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("clusterStates")]
         private InputList<string>? _clusterStates;
-
-        /// <summary>
-        /// List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
-        /// </summary>
         public InputList<string> ClusterStates
         {
             get => _clusterStates ?? (_clusterStates = new InputList<string>());
             set => _clusterStates = value;
         }
 
-        /// <summary>
-        /// Whether to filter by pinned clusters.
-        /// </summary>
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }
 
-        /// <summary>
-        /// Filter by databricks.ClusterPolicy id.
-        /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 

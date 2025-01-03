@@ -45,9 +45,6 @@ class GetMetastoresResult:
     @property
     @pulumi.getter
     def ids(self) -> Mapping[str, str]:
-        """
-        Mapping of name to id of databricks_metastore
-        """
         return pulumi.get(self, "ids")
 
 
@@ -64,34 +61,7 @@ class AwaitableGetMetastoresResult(GetMetastoresResult):
 def get_metastores(ids: Optional[Mapping[str, str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetastoresResult:
     """
-    > **Note** This data source can only be used with an account-level provider!
-
-    Retrieves a mapping of name to id of Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
-
-    > **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users & service principals with account admin status
-
-    ## Example Usage
-
-    Mapping of name to id of all metastores:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    all = databricks.get_metastores()
-    pulumi.export("allMetastores", all.ids)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Metastore to get information about a single metastore.
-    * Metastore to manage Metastores within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
-
-
-    :param Mapping[str, str] ids: Mapping of name to id of databricks_metastore
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -104,34 +74,7 @@ def get_metastores(ids: Optional[Mapping[str, str]] = None,
 def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoresResult]:
     """
-    > **Note** This data source can only be used with an account-level provider!
-
-    Retrieves a mapping of name to id of Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
-
-    > **Note** `account_id` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users & service principals with account admin status
-
-    ## Example Usage
-
-    Mapping of name to id of all metastores:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    all = databricks.get_metastores()
-    pulumi.export("allMetastores", all.ids)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Metastore to get information about a single metastore.
-    * Metastore to manage Metastores within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
-
-
-    :param Mapping[str, str] ids: Mapping of name to id of databricks_metastore
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['ids'] = ids

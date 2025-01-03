@@ -30,9 +30,6 @@ class BudgetArgs:
                  update_time: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Budget resource.
-        :param pulumi.Input[str] account_id: The ID of the Databricks Account.
-        :param pulumi.Input[str] budget_configuration_id: The ID of the budget configuration.
-        :param pulumi.Input[str] display_name: Name of the budget in Databricks Account.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -52,9 +49,6 @@ class BudgetArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the Databricks Account.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -73,9 +67,6 @@ class BudgetArgs:
     @property
     @pulumi.getter(name="budgetConfigurationId")
     def budget_configuration_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the budget configuration.
-        """
         return pulumi.get(self, "budget_configuration_id")
 
     @budget_configuration_id.setter
@@ -94,9 +85,6 @@ class BudgetArgs:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the budget in Databricks Account.
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -134,9 +122,6 @@ class _BudgetState:
                  update_time: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Budget resources.
-        :param pulumi.Input[str] account_id: The ID of the Databricks Account.
-        :param pulumi.Input[str] budget_configuration_id: The ID of the budget configuration.
-        :param pulumi.Input[str] display_name: Name of the budget in Databricks Account.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -156,9 +141,6 @@ class _BudgetState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the Databricks Account.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -177,9 +159,6 @@ class _BudgetState:
     @property
     @pulumi.getter(name="budgetConfigurationId")
     def budget_configuration_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the budget configuration.
-        """
         return pulumi.get(self, "budget_configuration_id")
 
     @budget_configuration_id.setter
@@ -198,9 +177,6 @@ class _BudgetState:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the budget in Databricks Account.
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -240,73 +216,9 @@ class Budget(pulumi.CustomResource):
                  update_time: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        > Initialize provider with `alias = "account"`, and `host` pointing to the account URL, like, `host = "https://accounts.cloud.databricks.com"`. Use `provider = databricks.account` for all account-level resources.
-
-        > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-
-        This resource allows you to manage [Databricks Budgets](https://docs.databricks.com/en/admin/account-settings/budgets.html).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.Budget("this",
-            display_name="databricks-workspace-budget",
-            alert_configurations=[{
-                "time_period": "MONTH",
-                "trigger_type": "CUMULATIVE_SPENDING_EXCEEDED",
-                "quantity_type": "LIST_PRICE_DOLLARS_USD",
-                "quantity_threshold": "840",
-                "action_configurations": [{
-                    "action_type": "EMAIL_NOTIFICATION",
-                    "target": "abc@gmail.com",
-                }],
-            }],
-            filter={
-                "workspace_id": {
-                    "operator": "IN",
-                    "values": [1234567890098765],
-                },
-                "tags": [
-                    {
-                        "key": "Team",
-                        "value": {
-                            "operator": "IN",
-                            "values": ["Data Science"],
-                        },
-                    },
-                    {
-                        "key": "Environment",
-                        "value": {
-                            "operator": "IN",
-                            "values": ["Development"],
-                        },
-                    },
-                ],
-            })
-        ```
-
-        ## Related Resources
-
-        The following resources are used in the context:
-
-        * MwsWorkspaces to set up Databricks workspaces.
-
-        ## Import
-
-        This resource can be imported by Databricks account ID and Budget.
-
-        ```sh
-        $ pulumi import databricks:index/budget:Budget this '<account_id>|<budget_configuration_id>'
-        ```
-
+        Create a Budget resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the Databricks Account.
-        :param pulumi.Input[str] budget_configuration_id: The ID of the budget configuration.
-        :param pulumi.Input[str] display_name: Name of the budget in Databricks Account.
         """
         ...
     @overload
@@ -315,68 +227,7 @@ class Budget(pulumi.CustomResource):
                  args: Optional[BudgetArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > Initialize provider with `alias = "account"`, and `host` pointing to the account URL, like, `host = "https://accounts.cloud.databricks.com"`. Use `provider = databricks.account` for all account-level resources.
-
-        > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-
-        This resource allows you to manage [Databricks Budgets](https://docs.databricks.com/en/admin/account-settings/budgets.html).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.Budget("this",
-            display_name="databricks-workspace-budget",
-            alert_configurations=[{
-                "time_period": "MONTH",
-                "trigger_type": "CUMULATIVE_SPENDING_EXCEEDED",
-                "quantity_type": "LIST_PRICE_DOLLARS_USD",
-                "quantity_threshold": "840",
-                "action_configurations": [{
-                    "action_type": "EMAIL_NOTIFICATION",
-                    "target": "abc@gmail.com",
-                }],
-            }],
-            filter={
-                "workspace_id": {
-                    "operator": "IN",
-                    "values": [1234567890098765],
-                },
-                "tags": [
-                    {
-                        "key": "Team",
-                        "value": {
-                            "operator": "IN",
-                            "values": ["Data Science"],
-                        },
-                    },
-                    {
-                        "key": "Environment",
-                        "value": {
-                            "operator": "IN",
-                            "values": ["Development"],
-                        },
-                    },
-                ],
-            })
-        ```
-
-        ## Related Resources
-
-        The following resources are used in the context:
-
-        * MwsWorkspaces to set up Databricks workspaces.
-
-        ## Import
-
-        This resource can be imported by Databricks account ID and Budget.
-
-        ```sh
-        $ pulumi import databricks:index/budget:Budget this '<account_id>|<budget_configuration_id>'
-        ```
-
+        Create a Budget resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BudgetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -439,9 +290,6 @@ class Budget(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the Databricks Account.
-        :param pulumi.Input[str] budget_configuration_id: The ID of the budget configuration.
-        :param pulumi.Input[str] display_name: Name of the budget in Databricks Account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -459,9 +307,6 @@ class Budget(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the Databricks Account.
-        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -472,9 +317,6 @@ class Budget(pulumi.CustomResource):
     @property
     @pulumi.getter(name="budgetConfigurationId")
     def budget_configuration_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the budget configuration.
-        """
         return pulumi.get(self, "budget_configuration_id")
 
     @property
@@ -485,9 +327,6 @@ class Budget(pulumi.CustomResource):
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Name of the budget in Databricks Account.
-        """
         return pulumi.get(self, "display_name")
 
     @property

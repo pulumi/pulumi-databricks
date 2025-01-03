@@ -12,15 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class BudgetFilterTagGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The key of the tag.
-        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
-        /// <summary>
-        /// Consists of the following fields:
-        /// </summary>
         [Input("value")]
         public Input<Inputs.BudgetFilterTagValueGetArgs>? Value { get; set; }
 

@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsWebhookNotificationsOnStartResult
     {
-        /// <summary>
-        /// the id of databricks.Job if the resource was matched by name.
-        /// </summary>
         public readonly string Id;
 
         [OutputConstructor]

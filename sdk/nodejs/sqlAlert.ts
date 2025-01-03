@@ -6,61 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
- *
- * > To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your databricks.Group or databricks_user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sharedDir = new databricks.Directory("shared_dir", {path: "/Shared/Queries"});
- * const _this = new databricks.SqlQuery("this", {
- *     dataSourceId: example.dataSourceId,
- *     name: "My Query Name",
- *     query: "SELECT 1 AS p1, 2 as p2",
- *     parent: pulumi.interpolate`folders/${sharedDir.objectId}`,
- * });
- * const alert = new databricks.SqlAlert("alert", {
- *     queryId: _this.id,
- *     name: "My Alert",
- *     parent: pulumi.interpolate`folders/${sharedDir.objectId}`,
- *     rearm: 1,
- *     options: {
- *         column: "p1",
- *         op: "==",
- *         value: "2",
- *         muted: false,
- *     },
- * });
- * ```
- *
- * ## Access Control
- *
- * databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
- *
- * ## Related Resources
- *
- * The following resources are often used in the same context:
- *
- * * End to end workspace management guide.
- * * databricks.SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
- * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
- * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
- *
- * ## Import
- *
- * This resource can be imported using alert ID:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/sqlAlert:SqlAlert this <alert-id>
- * ```
- */
 export class SqlAlert extends pulumi.CustomResource {
     /**
      * Get an existing SqlAlert resource's state with the given name, ID, and optional extra
@@ -90,25 +35,10 @@ export class SqlAlert extends pulumi.CustomResource {
     }
 
     public readonly createdAt!: pulumi.Output<string>;
-    /**
-     * Name of the alert.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Alert configuration options.
-     */
     public readonly options!: pulumi.Output<outputs.SqlAlertOptions>;
-    /**
-     * The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-     */
     public readonly parent!: pulumi.Output<string | undefined>;
-    /**
-     * ID of the query evaluated by the alert.
-     */
     public readonly queryId!: pulumi.Output<string>;
-    /**
-     * Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-     */
     public readonly rearm!: pulumi.Output<number | undefined>;
     public readonly updatedAt!: pulumi.Output<string>;
 
@@ -158,25 +88,10 @@ export class SqlAlert extends pulumi.CustomResource {
  */
 export interface SqlAlertState {
     createdAt?: pulumi.Input<string>;
-    /**
-     * Name of the alert.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Alert configuration options.
-     */
     options?: pulumi.Input<inputs.SqlAlertOptions>;
-    /**
-     * The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-     */
     parent?: pulumi.Input<string>;
-    /**
-     * ID of the query evaluated by the alert.
-     */
     queryId?: pulumi.Input<string>;
-    /**
-     * Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-     */
     rearm?: pulumi.Input<number>;
     updatedAt?: pulumi.Input<string>;
 }
@@ -186,25 +101,10 @@ export interface SqlAlertState {
  */
 export interface SqlAlertArgs {
     createdAt?: pulumi.Input<string>;
-    /**
-     * Name of the alert.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Alert configuration options.
-     */
     options: pulumi.Input<inputs.SqlAlertOptions>;
-    /**
-     * The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-     */
     parent?: pulumi.Input<string>;
-    /**
-     * ID of the query evaluated by the alert.
-     */
     queryId: pulumi.Input<string>;
-    /**
-     * Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-     */
     rearm?: pulumi.Input<number>;
     updatedAt?: pulumi.Input<string>;
 }

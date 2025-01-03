@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AlertConditionThresholdArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// actual value used in comparison (one of the attributes is required):
-        /// </summary>
         [Input("value", required: true)]
         public Input<Inputs.AlertConditionThresholdValueArgs> Value { get; set; } = null!;
 

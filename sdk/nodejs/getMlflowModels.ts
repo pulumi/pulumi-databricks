@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > **Note** This data source could be only used with workspace-level provider!
- *
- * Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const this = databricks.getMlflowModels({});
- * export const model = _this;
- * ```
- */
 export function getMlflowModels(args?: GetMlflowModelsArgs, opts?: pulumi.InvokeOptions): Promise<GetMlflowModelsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,9 +16,6 @@ export function getMlflowModels(args?: GetMlflowModelsArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getMlflowModels.
  */
 export interface GetMlflowModelsArgs {
-    /**
-     * List of names of databricks_mlflow_model
-     */
     names?: string[];
 }
 
@@ -45,26 +27,8 @@ export interface GetMlflowModelsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * List of names of databricks_mlflow_model
-     */
     readonly names: string[];
 }
-/**
- * > **Note** This data source could be only used with workspace-level provider!
- *
- * Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const this = databricks.getMlflowModels({});
- * export const model = _this;
- * ```
- */
 export function getMlflowModelsOutput(args?: GetMlflowModelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMlflowModelsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -77,8 +41,5 @@ export function getMlflowModelsOutput(args?: GetMlflowModelsOutputArgs, opts?: p
  * A collection of arguments for invoking getMlflowModels.
  */
 export interface GetMlflowModelsOutputArgs {
-    /**
-     * List of names of databricks_mlflow_model
-     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }

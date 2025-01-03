@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// the id of databricks.Job if the resource was matched by name.
-        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 

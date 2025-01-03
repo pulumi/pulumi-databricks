@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class NotificationDestinationConfigMicrosoftTeams
     {
-        /// <summary>
-        /// The Microsoft Teams webhook URL.
-        /// </summary>
         public readonly string? Url;
         public readonly bool? UrlSet;
 

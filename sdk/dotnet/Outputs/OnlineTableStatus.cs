@@ -14,14 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class OnlineTableStatus
     {
         public readonly Outputs.OnlineTableStatusContinuousUpdateStatus? ContinuousUpdateStatus;
-        /// <summary>
-        /// The state of the online table.
-        /// </summary>
         public readonly string? DetailedState;
         public readonly Outputs.OnlineTableStatusFailedStatus? FailedStatus;
-        /// <summary>
-        /// A text description of the current state of the online table.
-        /// </summary>
         public readonly string? Message;
         public readonly Outputs.OnlineTableStatusProvisioningStatus? ProvisioningStatus;
         public readonly Outputs.OnlineTableStatusTriggeredUpdateStatus? TriggeredUpdateStatus;

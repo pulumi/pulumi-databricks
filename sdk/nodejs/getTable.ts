@@ -6,43 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
- * Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
- *
- * ## Example Usage
- *
- * Read  on a specific table `main.certified.fct_transactions`:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const fctTransactions = databricks.getTable({
- *     name: "main.certified.fct_transactions",
- * });
- * const things = new databricks.Grants("things", {
- *     table: fctTransactions.then(fctTransactions => fctTransactions.name),
- *     grants: [{
- *         principal: "sensitive",
- *         privileges: [
- *             "SELECT",
- *             "MODIFY",
- *         ],
- *     }],
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.Grant to manage grants within Unity Catalog.
- * * databricks.getTables to list all tables within a schema in Unity Catalog.
- */
 export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promise<GetTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getTable:getTable", {
@@ -57,13 +20,7 @@ export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promi
  */
 export interface GetTableArgs {
     id?: string;
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     */
     name: string;
-    /**
-     * TableInfo object for a Unity Catalog table. This contains the following attributes:
-     */
     tableInfo?: inputs.GetTableTableInfo;
 }
 
@@ -72,52 +29,9 @@ export interface GetTableArgs {
  */
 export interface GetTableResult {
     readonly id: string;
-    /**
-     * Name of table, relative to parent schema.
-     */
     readonly name: string;
-    /**
-     * TableInfo object for a Unity Catalog table. This contains the following attributes:
-     */
     readonly tableInfo: outputs.GetTableTableInfo;
 }
-/**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
- * Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog
- *
- * ## Example Usage
- *
- * Read  on a specific table `main.certified.fct_transactions`:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const fctTransactions = databricks.getTable({
- *     name: "main.certified.fct_transactions",
- * });
- * const things = new databricks.Grants("things", {
- *     table: fctTransactions.then(fctTransactions => fctTransactions.name),
- *     grants: [{
- *         principal: "sensitive",
- *         privileges: [
- *             "SELECT",
- *             "MODIFY",
- *         ],
- *     }],
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.Grant to manage grants within Unity Catalog.
- * * databricks.getTables to list all tables within a schema in Unity Catalog.
- */
 export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getTable:getTable", {
@@ -132,12 +46,6 @@ export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOut
  */
 export interface GetTableOutputArgs {
     id?: pulumi.Input<string>;
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     */
     name: pulumi.Input<string>;
-    /**
-     * TableInfo object for a Unity Catalog table. This contains the following attributes:
-     */
     tableInfo?: pulumi.Input<inputs.GetTableTableInfoArgs>;
 }

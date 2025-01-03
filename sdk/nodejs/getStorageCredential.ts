@@ -6,32 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
- *
- * ## Example Usage
- *
- * Getting details of an existing storage credential in the metastore
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const this = databricks.getStorageCredential({
- *     name: "this",
- * });
- * export const createdBy = _this.then(_this => _this.storageCredentialInfo?.createdBy);
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.getStorageCredentials to get names of all credentials
- * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
- */
 export function getStorageCredential(args: GetStorageCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getStorageCredential:getStorageCredential", {
@@ -45,17 +19,8 @@ export function getStorageCredential(args: GetStorageCredentialArgs, opts?: pulu
  * A collection of arguments for invoking getStorageCredential.
  */
 export interface GetStorageCredentialArgs {
-    /**
-     * Unique ID of storage credential.
-     */
     id?: string;
-    /**
-     * The name of the storage credential
-     */
     name: string;
-    /**
-     * array of objects with information about storage credential.
-     */
     storageCredentialInfo?: inputs.GetStorageCredentialStorageCredentialInfo;
 }
 
@@ -63,42 +28,10 @@ export interface GetStorageCredentialArgs {
  * A collection of values returned by getStorageCredential.
  */
 export interface GetStorageCredentialResult {
-    /**
-     * Unique ID of storage credential.
-     */
     readonly id: string;
     readonly name: string;
-    /**
-     * array of objects with information about storage credential.
-     */
     readonly storageCredentialInfo: outputs.GetStorageCredentialStorageCredentialInfo;
 }
-/**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * Retrieves details about a databricks.StorageCredential that were created by Pulumi or manually.
- *
- * ## Example Usage
- *
- * Getting details of an existing storage credential in the metastore
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const this = databricks.getStorageCredential({
- *     name: "this",
- * });
- * export const createdBy = _this.then(_this => _this.storageCredentialInfo?.createdBy);
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.getStorageCredentials to get names of all credentials
- * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
- */
 export function getStorageCredentialOutput(args: GetStorageCredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getStorageCredential:getStorageCredential", {
@@ -112,16 +45,7 @@ export function getStorageCredentialOutput(args: GetStorageCredentialOutputArgs,
  * A collection of arguments for invoking getStorageCredential.
  */
 export interface GetStorageCredentialOutputArgs {
-    /**
-     * Unique ID of storage credential.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The name of the storage credential
-     */
     name: pulumi.Input<string>;
-    /**
-     * array of objects with information about storage credential.
-     */
     storageCredentialInfo?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoArgs>;
 }

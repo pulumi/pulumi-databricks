@@ -55,41 +55,26 @@ class GetClusterPolicyResult:
     @property
     @pulumi.getter
     def definition(self) -> str:
-        """
-        Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-        """
         return pulumi.get(self, "definition")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        Additional human-readable description of the cluster policy.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The id of the cluster policy.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> bool:
-        """
-        If true, policy is a default policy created and managed by Databricks.
-        """
         return pulumi.get(self, "is_default")
 
     @property
     @pulumi.getter(name="maxClustersPerUser")
     def max_clusters_per_user(self) -> int:
-        """
-        Max number of clusters per user that can be active using this policy.
-        """
         return pulumi.get(self, "max_clusters_per_user")
 
     @property
@@ -100,17 +85,11 @@ class GetClusterPolicyResult:
     @property
     @pulumi.getter(name="policyFamilyDefinitionOverrides")
     def policy_family_definition_overrides(self) -> str:
-        """
-        Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
-        """
         return pulumi.get(self, "policy_family_definition_overrides")
 
     @property
     @pulumi.getter(name="policyFamilyId")
     def policy_family_id(self) -> str:
-        """
-        ID of the policy family.
-        """
         return pulumi.get(self, "policy_family_id")
 
 
@@ -140,31 +119,7 @@ def get_cluster_policy(definition: Optional[str] = None,
                        policy_family_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterPolicyResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves information about databricks_cluster_policy.
-
-    ## Example Usage
-
-    Referring to a cluster policy by name:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    personal = databricks.get_cluster_policy(name="Personal Compute")
-    my_cluster = databricks.Cluster("my_cluster", policy_id=personal.id)
-    ```
-
-
-    :param str definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-    :param str description: Additional human-readable description of the cluster policy.
-    :param str id: The id of the cluster policy.
-    :param bool is_default: If true, policy is a default policy created and managed by Databricks.
-    :param int max_clusters_per_user: Max number of clusters per user that can be active using this policy.
-    :param str name: Name of the cluster policy. The cluster policy must exist before this resource can be planned.
-    :param str policy_family_definition_overrides: Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
-    :param str policy_family_id: ID of the policy family.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['definition'] = definition
@@ -197,31 +152,7 @@ def get_cluster_policy_output(definition: Optional[pulumi.Input[Optional[str]]] 
                               policy_family_id: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterPolicyResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves information about databricks_cluster_policy.
-
-    ## Example Usage
-
-    Referring to a cluster policy by name:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    personal = databricks.get_cluster_policy(name="Personal Compute")
-    my_cluster = databricks.Cluster("my_cluster", policy_id=personal.id)
-    ```
-
-
-    :param str definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-    :param str description: Additional human-readable description of the cluster policy.
-    :param str id: The id of the cluster policy.
-    :param bool is_default: If true, policy is a default policy created and managed by Databricks.
-    :param int max_clusters_per_user: Max number of clusters per user that can be active using this policy.
-    :param str name: Name of the cluster policy. The cluster policy must exist before this resource can be planned.
-    :param str policy_family_definition_overrides: Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
-    :param str policy_family_id: ID of the policy family.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['definition'] = definition

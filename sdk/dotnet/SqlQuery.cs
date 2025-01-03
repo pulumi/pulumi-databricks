@@ -9,191 +9,30 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
-    /// 
-    /// &gt; documentation for this resource is a work in progress.
-    /// 
-    /// A query may have one or more visualizations.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sharedDir = new Databricks.Directory("shared_dir", new()
-    ///     {
-    ///         Path = "/Shared/Queries",
-    ///     });
-    /// 
-    ///     var q1 = new Databricks.SqlQuery("q1", new()
-    ///     {
-    ///         DataSourceId = example.DataSourceId,
-    ///         Name = "My Query Name",
-    ///         Query = @"                        SELECT {{ p1 }} AS p1
-    ///                         WHERE 1=1
-    ///                         AND p2 in ({{ p2 }})
-    ///                         AND event_date &gt; date '{{ p3 }}'
-    /// ",
-    ///         Parent = sharedDir.ObjectId.Apply(objectId =&gt; $"folders/{objectId}"),
-    ///         RunAsRole = "viewer",
-    ///         Parameters = new[]
-    ///         {
-    ///             new Databricks.Inputs.SqlQueryParameterArgs
-    ///             {
-    ///                 Name = "p1",
-    ///                 Title = "Title for p1",
-    ///                 Text = new Databricks.Inputs.SqlQueryParameterTextArgs
-    ///                 {
-    ///                     Value = "default",
-    ///                 },
-    ///             },
-    ///             new Databricks.Inputs.SqlQueryParameterArgs
-    ///             {
-    ///                 Name = "p2",
-    ///                 Title = "Title for p2",
-    ///                 Enum = new Databricks.Inputs.SqlQueryParameterEnumArgs
-    ///                 {
-    ///                     Options = new[]
-    ///                     {
-    ///                         "default",
-    ///                         "foo",
-    ///                         "bar",
-    ///                     },
-    ///                     Value = "default",
-    ///                     Multiple = new Databricks.Inputs.SqlQueryParameterEnumMultipleArgs
-    ///                     {
-    ///                         Prefix = "\"",
-    ///                         Suffix = "\"",
-    ///                         Separator = ",",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             new Databricks.Inputs.SqlQueryParameterArgs
-    ///             {
-    ///                 Name = "p3",
-    ///                 Title = "Title for p3",
-    ///                 Date = new Databricks.Inputs.SqlQueryParameterDateArgs
-    ///                 {
-    ///                     Value = "2022-01-01",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Tags = new[]
-    ///         {
-    ///             "t1",
-    ///             "t2",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Example permission to share query with all users:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var q1 = new Databricks.Permissions("q1", new()
-    ///     {
-    ///         SqlQueryId = q1DatabricksSqlQuery.Id,
-    ///         AccessControls = new[]
-    ///         {
-    ///             new Databricks.Inputs.PermissionsAccessControlArgs
-    ///             {
-    ///                 GroupName = users.DisplayName,
-    ///                 PermissionLevel = "CAN_RUN",
-    ///             },
-    ///             new Databricks.Inputs.PermissionsAccessControlArgs
-    ///             {
-    ///                 GroupName = team.DisplayName,
-    ///                 PermissionLevel = "CAN_EDIT",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Troubleshooting
-    /// 
-    /// In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `data_source_id`
-    /// 
-    /// Operations on `databricks.SqlQuery` schedules are ⛔️ deprecated. You can create, update or delete a schedule for SQLA and other Databricks resources using the databricks.Job resource.
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are often used in the same context:
-    /// 
-    /// * End to end workspace management guide.
-    /// * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-    /// * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-    /// * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
-    /// * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
-    /// * databricks.Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
-    /// 
-    /// ## Import
-    /// 
-    /// You can import a `databricks_sql_query` resource with ID like the following:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/sqlQuery:SqlQuery this &lt;query-id&gt;
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/sqlQuery:SqlQuery")]
     public partial class SqlQuery : global::Pulumi.CustomResource
     {
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
-        /// <summary>
-        /// Data source ID of a SQL warehouse
-        /// </summary>
         [Output("dataSourceId")]
         public Output<string> DataSourceId { get; private set; } = null!;
 
-        /// <summary>
-        /// General description that conveys additional information about this query such as usage notes.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The title of this query that appears in list views, widget headings, and on the query page.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.SqlQueryParameter>> Parameters { get; private set; } = null!;
 
-        /// <summary>
-        /// The identifier of the workspace folder containing the object.
-        /// </summary>
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
 
-        /// <summary>
-        /// The text of the query to be run.
-        /// </summary>
         [Output("query")]
         public Output<string> Query { get; private set; } = null!;
 
-        /// <summary>
-        /// Run as role. Possible values are `viewer`, `owner`.
-        /// </summary>
         [Output("runAsRole")]
         public Output<string?> RunAsRole { get; private set; } = null!;
 
@@ -255,21 +94,12 @@ namespace Pulumi.Databricks
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
-        /// <summary>
-        /// Data source ID of a SQL warehouse
-        /// </summary>
         [Input("dataSourceId", required: true)]
         public Input<string> DataSourceId { get; set; } = null!;
 
-        /// <summary>
-        /// General description that conveys additional information about this query such as usage notes.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The title of this query that appears in list views, widget headings, and on the query page.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -281,21 +111,12 @@ namespace Pulumi.Databricks
             set => _parameters = value;
         }
 
-        /// <summary>
-        /// The identifier of the workspace folder containing the object.
-        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
-        /// <summary>
-        /// The text of the query to be run.
-        /// </summary>
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
 
-        /// <summary>
-        /// Run as role. Possible values are `viewer`, `owner`.
-        /// </summary>
         [Input("runAsRole")]
         public Input<string>? RunAsRole { get; set; }
 
@@ -324,21 +145,12 @@ namespace Pulumi.Databricks
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
-        /// <summary>
-        /// Data source ID of a SQL warehouse
-        /// </summary>
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }
 
-        /// <summary>
-        /// General description that conveys additional information about this query such as usage notes.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The title of this query that appears in list views, widget headings, and on the query page.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -350,21 +162,12 @@ namespace Pulumi.Databricks
             set => _parameters = value;
         }
 
-        /// <summary>
-        /// The identifier of the workspace folder containing the object.
-        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
-        /// <summary>
-        /// The text of the query to be run.
-        /// </summary>
         [Input("query")]
         public Input<string>? Query { get; set; }
 
-        /// <summary>
-        /// Run as role. Possible values are `viewer`, `owner`.
-        /// </summary>
         [Input("runAsRole")]
         public Input<string>? RunAsRole { get; set; }
 

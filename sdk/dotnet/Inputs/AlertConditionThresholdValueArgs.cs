@@ -12,21 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AlertConditionThresholdValueArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// boolean value (`true` or `false`) to compare against boolean results.
-        /// </summary>
         [Input("boolValue")]
         public Input<bool>? BoolValue { get; set; }
 
-        /// <summary>
-        /// double value to compare against integer and double results.
-        /// </summary>
         [Input("doubleValue")]
         public Input<double>? DoubleValue { get; set; }
 
-        /// <summary>
-        /// string value to compare against string results.
-        /// </summary>
         [Input("stringValue")]
         public Input<string>? StringValue { get; set; }
 

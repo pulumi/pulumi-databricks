@@ -13,37 +13,12 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskDbtTask
     {
-        /// <summary>
-        /// The name of the catalog to use inside Unity Catalog.
-        /// </summary>
         public readonly string? Catalog;
-        /// <summary>
-        /// (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
-        /// </summary>
         public readonly ImmutableArray<string> Commands;
-        /// <summary>
-        /// The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
-        /// </summary>
         public readonly string? ProfilesDirectory;
-        /// <summary>
-        /// The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
-        /// * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
-        /// * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
-        /// </summary>
         public readonly string? ProjectDirectory;
-        /// <summary>
-        /// The name of the schema dbt should run in. Defaults to `default`.
-        /// </summary>
         public readonly string? Schema;
-        /// <summary>
-        /// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
-        /// </summary>
         public readonly string? Source;
-        /// <summary>
-        /// The ID of the SQL warehouse that dbt should execute against.
-        /// 
-        /// You also need to include a `git_source` block to configure the repository that contains the dbt project.
-        /// </summary>
         public readonly string? WarehouseId;
 
         [OutputConstructor]

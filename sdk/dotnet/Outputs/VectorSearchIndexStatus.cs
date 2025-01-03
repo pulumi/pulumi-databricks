@@ -13,21 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class VectorSearchIndexStatus
     {
-        /// <summary>
-        /// Index API Url to be used to perform operations on the index
-        /// </summary>
         public readonly string? IndexUrl;
-        /// <summary>
-        /// Number of rows indexed
-        /// </summary>
         public readonly int? IndexedRowCount;
-        /// <summary>
-        /// Message associated with the index status
-        /// </summary>
         public readonly string? Message;
-        /// <summary>
-        /// Whether the index is ready for search
-        /// </summary>
         public readonly bool? Ready;
 
         [OutputConstructor]

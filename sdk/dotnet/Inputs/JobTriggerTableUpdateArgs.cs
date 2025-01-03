@@ -15,9 +15,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("condition")]
         public Input<string>? Condition { get; set; }
 
-        /// <summary>
-        /// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-        /// </summary>
         [Input("minTimeBetweenTriggersSeconds")]
         public Input<int>? MinTimeBetweenTriggersSeconds { get; set; }
 
@@ -29,9 +26,6 @@ namespace Pulumi.Databricks.Inputs
             set => _tableNames = value;
         }
 
-        /// <summary>
-        /// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-        /// </summary>
         [Input("waitAfterLastChangeSeconds")]
         public Input<int>? WaitAfterLastChangeSeconds { get; set; }
 

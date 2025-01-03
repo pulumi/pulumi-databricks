@@ -12,33 +12,20 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingAiGatewayGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
-        /// </summary>
         [Input("guardrails")]
         public Input<Inputs.ModelServingAiGatewayGuardrailsGetArgs>? Guardrails { get; set; }
 
-        /// <summary>
-        /// Block describing the configuration of usage tracking. Consists of the following attributes:
-        /// </summary>
         [Input("inferenceTableConfig")]
         public Input<Inputs.ModelServingAiGatewayInferenceTableConfigGetArgs>? InferenceTableConfig { get; set; }
 
         [Input("rateLimits")]
         private InputList<Inputs.ModelServingAiGatewayRateLimitGetArgs>? _rateLimits;
-
-        /// <summary>
-        /// Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
-        /// </summary>
         public InputList<Inputs.ModelServingAiGatewayRateLimitGetArgs> RateLimits
         {
             get => _rateLimits ?? (_rateLimits = new InputList<Inputs.ModelServingAiGatewayRateLimitGetArgs>());
             set => _rateLimits = value;
         }
 
-        /// <summary>
-        /// Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
-        /// </summary>
         [Input("usageTrackingConfig")]
         public Input<Inputs.ModelServingAiGatewayUsageTrackingConfigGetArgs>? UsageTrackingConfig { get; set; }
 

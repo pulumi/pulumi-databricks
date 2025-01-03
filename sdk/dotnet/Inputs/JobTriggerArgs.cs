@@ -12,21 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTriggerArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
-        /// </summary>
         [Input("fileArrival")]
         public Input<Inputs.JobTriggerFileArrivalArgs>? FileArrival { get; set; }
 
-        /// <summary>
-        /// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-        /// </summary>
         [Input("pauseStatus")]
         public Input<string>? PauseStatus { get; set; }
 
-        /// <summary>
-        /// configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
-        /// </summary>
         [Input("periodic")]
         public Input<Inputs.JobTriggerPeriodicArgs>? Periodic { get; set; }
 

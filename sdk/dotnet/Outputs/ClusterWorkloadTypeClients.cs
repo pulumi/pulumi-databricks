@@ -13,36 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ClusterWorkloadTypeClients
     {
-        /// <summary>
-        /// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var withNfs = new Databricks.Cluster("with_nfs", new()
-        ///     {
-        ///         WorkloadType = new Databricks.Inputs.ClusterWorkloadTypeArgs
-        ///         {
-        ///             Clients = new Databricks.Inputs.ClusterWorkloadTypeClientsArgs
-        ///             {
-        ///                 Jobs = false,
-        ///                 Notebooks = true,
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public readonly bool? Jobs;
-        /// <summary>
-        /// boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
-        /// </summary>
         public readonly bool? Notebooks;
 
         [OutputConstructor]

@@ -13,13 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class BudgetFilter
     {
-        /// <summary>
-        /// List of tags to filter by. Consists of the following fields:
-        /// </summary>
         public readonly ImmutableArray<Outputs.BudgetFilterTag> Tags;
-        /// <summary>
-        /// Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
-        /// </summary>
         public readonly Outputs.BudgetFilterWorkspaceId? WorkspaceId;
 
         [OutputConstructor]

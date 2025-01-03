@@ -30,11 +30,6 @@ class SqlAlertArgs:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SqlAlert resource.
-        :param pulumi.Input['SqlAlertOptionsArgs'] options: Alert configuration options.
-        :param pulumi.Input[str] query_id: ID of the query evaluated by the alert.
-        :param pulumi.Input[str] name: Name of the alert.
-        :param pulumi.Input[str] parent: The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-        :param pulumi.Input[int] rearm: Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
         """
         pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "query_id", query_id)
@@ -52,9 +47,6 @@ class SqlAlertArgs:
     @property
     @pulumi.getter
     def options(self) -> pulumi.Input['SqlAlertOptionsArgs']:
-        """
-        Alert configuration options.
-        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -64,9 +56,6 @@ class SqlAlertArgs:
     @property
     @pulumi.getter(name="queryId")
     def query_id(self) -> pulumi.Input[str]:
-        """
-        ID of the query evaluated by the alert.
-        """
         return pulumi.get(self, "query_id")
 
     @query_id.setter
@@ -85,9 +74,6 @@ class SqlAlertArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the alert.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -97,9 +83,6 @@ class SqlAlertArgs:
     @property
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
-        """
-        The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-        """
         return pulumi.get(self, "parent")
 
     @parent.setter
@@ -109,9 +92,6 @@ class SqlAlertArgs:
     @property
     @pulumi.getter
     def rearm(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-        """
         return pulumi.get(self, "rearm")
 
     @rearm.setter
@@ -140,11 +120,6 @@ class _SqlAlertState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SqlAlert resources.
-        :param pulumi.Input[str] name: Name of the alert.
-        :param pulumi.Input['SqlAlertOptionsArgs'] options: Alert configuration options.
-        :param pulumi.Input[str] parent: The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-        :param pulumi.Input[str] query_id: ID of the query evaluated by the alert.
-        :param pulumi.Input[int] rearm: Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -173,9 +148,6 @@ class _SqlAlertState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the alert.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -185,9 +157,6 @@ class _SqlAlertState:
     @property
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input['SqlAlertOptionsArgs']]:
-        """
-        Alert configuration options.
-        """
         return pulumi.get(self, "options")
 
     @options.setter
@@ -197,9 +166,6 @@ class _SqlAlertState:
     @property
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
-        """
-        The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-        """
         return pulumi.get(self, "parent")
 
     @parent.setter
@@ -209,9 +175,6 @@ class _SqlAlertState:
     @property
     @pulumi.getter(name="queryId")
     def query_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the query evaluated by the alert.
-        """
         return pulumi.get(self, "query_id")
 
     @query_id.setter
@@ -221,9 +184,6 @@ class _SqlAlertState:
     @property
     @pulumi.getter
     def rearm(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-        """
         return pulumi.get(self, "rearm")
 
     @rearm.setter
@@ -254,65 +214,9 @@ class SqlAlert(pulumi.CustomResource):
                  updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
-
-        > To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        shared_dir = databricks.Directory("shared_dir", path="/Shared/Queries")
-        this = databricks.SqlQuery("this",
-            data_source_id=example["dataSourceId"],
-            name="My Query Name",
-            query="SELECT 1 AS p1, 2 as p2",
-            parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"))
-        alert = databricks.SqlAlert("alert",
-            query_id=this.id,
-            name="My Alert",
-            parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
-            rearm=1,
-            options={
-                "column": "p1",
-                "op": "==",
-                "value": "2",
-                "muted": False,
-            })
-        ```
-
-        ## Access Control
-
-        Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
-        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-        * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-
-        ## Import
-
-        This resource can be imported using alert ID:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlAlert:SqlAlert this <alert-id>
-        ```
-
+        Create a SqlAlert resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Name of the alert.
-        :param pulumi.Input[Union['SqlAlertOptionsArgs', 'SqlAlertOptionsArgsDict']] options: Alert configuration options.
-        :param pulumi.Input[str] parent: The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-        :param pulumi.Input[str] query_id: ID of the query evaluated by the alert.
-        :param pulumi.Input[int] rearm: Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
         """
         ...
     @overload
@@ -321,58 +225,7 @@ class SqlAlert(pulumi.CustomResource):
                  args: SqlAlertArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
-
-        > To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        shared_dir = databricks.Directory("shared_dir", path="/Shared/Queries")
-        this = databricks.SqlQuery("this",
-            data_source_id=example["dataSourceId"],
-            name="My Query Name",
-            query="SELECT 1 AS p1, 2 as p2",
-            parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"))
-        alert = databricks.SqlAlert("alert",
-            query_id=this.id,
-            name="My Alert",
-            parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
-            rearm=1,
-            options={
-                "column": "p1",
-                "op": "==",
-                "value": "2",
-                "muted": False,
-            })
-        ```
-
-        ## Access Control
-
-        Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
-        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-        * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-
-        ## Import
-
-        This resource can be imported using alert ID:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlAlert:SqlAlert this <alert-id>
-        ```
-
+        Create a SqlAlert resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SqlAlertArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -439,11 +292,6 @@ class SqlAlert(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Name of the alert.
-        :param pulumi.Input[Union['SqlAlertOptionsArgs', 'SqlAlertOptionsArgsDict']] options: Alert configuration options.
-        :param pulumi.Input[str] parent: The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-        :param pulumi.Input[str] query_id: ID of the query evaluated by the alert.
-        :param pulumi.Input[int] rearm: Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -466,41 +314,26 @@ class SqlAlert(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the alert.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def options(self) -> pulumi.Output['outputs.SqlAlertOptions']:
-        """
-        Alert configuration options.
-        """
         return pulumi.get(self, "options")
 
     @property
     @pulumi.getter
     def parent(self) -> pulumi.Output[Optional[str]]:
-        """
-        The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
-        """
         return pulumi.get(self, "parent")
 
     @property
     @pulumi.getter(name="queryId")
     def query_id(self) -> pulumi.Output[str]:
-        """
-        ID of the query evaluated by the alert.
-        """
         return pulumi.get(self, "query_id")
 
     @property
     @pulumi.getter
     def rearm(self) -> pulumi.Output[Optional[int]]:
-        """
-        Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-        """
         return pulumi.get(self, "rearm")
 
     @property

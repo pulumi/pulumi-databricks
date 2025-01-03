@@ -42,9 +42,6 @@ class GetStorageCredentialResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        Unique ID of storage credential.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -55,9 +52,6 @@ class GetStorageCredentialResult:
     @property
     @pulumi.getter(name="storageCredentialInfo")
     def storage_credential_info(self) -> 'outputs.GetStorageCredentialStorageCredentialInfoResult':
-        """
-        array of objects with information about storage credential.
-        """
         return pulumi.get(self, "storage_credential_info")
 
 
@@ -77,33 +71,7 @@ def get_storage_credential(id: Optional[str] = None,
                            storage_credential_info: Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageCredentialResult:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
-    Retrieves details about a StorageCredential that were created by Pulumi or manually.
-
-    ## Example Usage
-
-    Getting details of an existing storage credential in the metastore
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    this = databricks.get_storage_credential(name="this")
-    pulumi.export("createdBy", this.storage_credential_info.created_by)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * get_storage_credentials to get names of all credentials
-    * StorageCredential to manage Storage Credentials within Unity Catalog.
-
-
-    :param str id: Unique ID of storage credential.
-    :param str name: The name of the storage credential
-    :param Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict'] storage_credential_info: array of objects with information about storage credential.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -121,33 +89,7 @@ def get_storage_credential_output(id: Optional[pulumi.Input[Optional[str]]] = No
                                   storage_credential_info: Optional[pulumi.Input[Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageCredentialResult]:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
-    Retrieves details about a StorageCredential that were created by Pulumi or manually.
-
-    ## Example Usage
-
-    Getting details of an existing storage credential in the metastore
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    this = databricks.get_storage_credential(name="this")
-    pulumi.export("createdBy", this.storage_credential_info.created_by)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * get_storage_credentials to get names of all credentials
-    * StorageCredential to manage Storage Credentials within Unity Catalog.
-
-
-    :param str id: Unique ID of storage credential.
-    :param str name: The name of the storage credential
-    :param Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict'] storage_credential_info: array of objects with information about storage credential.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

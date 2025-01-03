@@ -18,27 +18,17 @@ namespace Pulumi.Databricks.Inputs
         [Input("browseOnly")]
         public Input<bool>? BrowseOnly { get; set; }
 
-        /// <summary>
-        /// Name of parent catalog.
-        /// </summary>
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
 
         [Input("columns")]
         private InputList<Inputs.GetTableTableInfoColumnInputArgs>? _columns;
-
-        /// <summary>
-        /// Array of ColumnInfo objects of the table's columns
-        /// </summary>
         public InputList<Inputs.GetTableTableInfoColumnInputArgs> Columns
         {
             get => _columns ?? (_columns = new InputList<Inputs.GetTableTableInfoColumnInputArgs>());
             set => _columns = value;
         }
 
-        /// <summary>
-        /// Free-form text description
-        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
@@ -51,9 +41,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("dataAccessConfigurationId")]
         public Input<string>? DataAccessConfigurationId { get; set; }
 
-        /// <summary>
-        /// Table format, e.g. DELTA, CSV, JSON
-        /// </summary>
         [Input("dataSourceFormat")]
         public Input<string>? DataSourceFormat { get; set; }
 
@@ -78,15 +65,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
-        /// <summary>
-        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Current owner of the table
-        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
@@ -104,9 +85,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("rowFilter")]
         public Input<Inputs.GetTableTableInfoRowFilterInputArgs>? RowFilter { get; set; }
 
-        /// <summary>
-        /// Name of parent schema relative to its parent catalog.
-        /// </summary>
         [Input("schemaName")]
         public Input<string>? SchemaName { get; set; }
 
@@ -130,9 +108,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("tableId")]
         public Input<string>? TableId { get; set; }
 
-        /// <summary>
-        /// Table type, e.g. MANAGED, EXTERNAL, VIEW
-        /// </summary>
         [Input("tableType")]
         public Input<string>? TableType { get; set; }
 
@@ -142,15 +117,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }
 
-        /// <summary>
-        /// View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
-        /// </summary>
         [Input("viewDefinition")]
         public Input<string>? ViewDefinition { get; set; }
 
-        /// <summary>
-        /// View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
-        /// </summary>
         [Input("viewDependencies")]
         public Input<Inputs.GetTableTableInfoViewDependenciesInputArgs>? ViewDependencies { get; set; }
 

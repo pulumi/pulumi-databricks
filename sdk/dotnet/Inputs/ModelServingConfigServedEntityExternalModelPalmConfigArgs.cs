@@ -12,15 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelPalmConfigArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Databricks secret key reference for a PaLM API key.
-        /// </summary>
         [Input("palmApiKey")]
         public Input<string>? PalmApiKey { get; set; }
 
-        /// <summary>
-        /// The PaLM API key provided as a plaintext string.
-        /// </summary>
         [Input("palmApiKeyPlaintext")]
         public Input<string>? PalmApiKeyPlaintext { get; set; }
 

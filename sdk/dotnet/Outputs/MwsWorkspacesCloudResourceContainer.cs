@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsWorkspacesCloudResourceContainer
     {
-        /// <summary>
-        /// A block that consists of the following field:
-        /// </summary>
         public readonly Outputs.MwsWorkspacesCloudResourceContainerGcp Gcp;
 
         [OutputConstructor]

@@ -13,32 +13,11 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ClusterGcpAttributes
     {
-        /// <summary>
-        /// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-        /// </summary>
         public readonly string? Availability;
-        /// <summary>
-        /// Boot disk size in GB
-        /// </summary>
         public readonly int? BootDiskSize;
-        /// <summary>
-        /// Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
-        /// </summary>
         public readonly string? GoogleServiceAccount;
-        /// <summary>
-        /// Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
-        /// </summary>
         public readonly int? LocalSsdCount;
-        /// <summary>
-        /// if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
-        /// </summary>
         public readonly bool? UsePreemptibleExecutors;
-        /// <summary>
-        /// Identifier for the availability zone in which the cluster resides. This can be one of the following:
-        /// * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
-        /// * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
-        /// * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
-        /// </summary>
         public readonly string? ZoneId;
 
         [OutputConstructor]

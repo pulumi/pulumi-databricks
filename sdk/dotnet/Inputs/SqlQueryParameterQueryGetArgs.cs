@@ -18,9 +18,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("queryId", required: true)]
         public Input<string> QueryId { get; set; } = null!;
 
-        /// <summary>
-        /// The default value for this parameter.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

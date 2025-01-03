@@ -12,24 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class QueryParameterQueryBackedValueArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
-        /// </summary>
         [Input("multiValuesOptions")]
         public Input<Inputs.QueryParameterQueryBackedValueMultiValuesOptionsArgs>? MultiValuesOptions { get; set; }
 
-        /// <summary>
-        /// ID of the query that provides the parameter values.
-        /// </summary>
         [Input("queryId", required: true)]
         public Input<string> QueryId { get; set; } = null!;
 
         [Input("values")]
         private InputList<string>? _values;
-
-        /// <summary>
-        /// List of selected query parameter values.
-        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

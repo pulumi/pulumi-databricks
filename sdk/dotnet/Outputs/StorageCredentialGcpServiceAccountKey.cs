@@ -13,11 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class StorageCredentialGcpServiceAccountKey
     {
-        /// <summary>
-        /// The email of the GCP service account created, to be granted access to relevant buckets.
-        /// 
-        /// `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-        /// </summary>
         public readonly string Email;
         public readonly string PrivateKey;
         public readonly string PrivateKeyId;

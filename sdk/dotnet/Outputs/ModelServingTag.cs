@@ -13,13 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingTag
     {
-        /// <summary>
-        /// The key field for a tag.
-        /// </summary>
         public readonly string Key;
-        /// <summary>
-        /// The value field for a tag.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

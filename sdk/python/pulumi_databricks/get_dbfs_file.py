@@ -46,17 +46,11 @@ class GetDbfsFileResult:
     @property
     @pulumi.getter
     def content(self) -> str:
-        """
-        base64-encoded file contents
-        """
         return pulumi.get(self, "content")
 
     @property
     @pulumi.getter(name="fileSize")
     def file_size(self) -> int:
-        """
-        size of the file in bytes
-        """
         return pulumi.get(self, "file_size")
 
     @property
@@ -95,32 +89,7 @@ def get_dbfs_file(limit_file_size: Optional[bool] = None,
                   path: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbfsFileResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    report = databricks.get_dbfs_file(path="dbfs:/reports/some.csv",
-        limit_file_size=True)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * End to end workspace management guide.
-    * get_dbfs_file_paths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-    * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-    * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
-
-
-    :param bool limit_file_size: Do not load content for files larger than 4MB.
-    :param str path: Path on DBFS for the file from which to get content.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['limitFileSize'] = limit_file_size
@@ -138,32 +107,7 @@ def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[bool]] = None,
                          path: Optional[pulumi.Input[str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbfsFileResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    report = databricks.get_dbfs_file(path="dbfs:/reports/some.csv",
-        limit_file_size=True)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * End to end workspace management guide.
-    * get_dbfs_file_paths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-    * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-    * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
-
-
-    :param bool limit_file_size: Do not load content for files larger than 4MB.
-    :param str path: Path on DBFS for the file from which to get content.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['limitFileSize'] = limit_file_size

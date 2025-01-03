@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
- *
- * ## Example Usage
- *
- * List all storage credentials in the metastore
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const all = databricks.getStorageCredentials({});
- * export const allStorageCredentials = all.then(all => all.names);
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.StorageCredential to get information about a single credential
- * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
- */
 export function getStorageCredentials(args?: GetStorageCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageCredentialsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,9 +16,6 @@ export function getStorageCredentials(args?: GetStorageCredentialsArgs, opts?: p
  * A collection of arguments for invoking getStorageCredentials.
  */
 export interface GetStorageCredentialsArgs {
-    /**
-     * List of names of databricks.StorageCredential in the metastore
-     */
     names?: string[];
 }
 
@@ -54,35 +27,8 @@ export interface GetStorageCredentialsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * List of names of databricks.StorageCredential in the metastore
-     */
     readonly names: string[];
 }
-/**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
- *
- * ## Example Usage
- *
- * List all storage credentials in the metastore
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const all = databricks.getStorageCredentials({});
- * export const allStorageCredentials = all.then(all => all.names);
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.StorageCredential to get information about a single credential
- * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
- */
 export function getStorageCredentialsOutput(args?: GetStorageCredentialsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageCredentialsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -95,8 +41,5 @@ export function getStorageCredentialsOutput(args?: GetStorageCredentialsOutputAr
  * A collection of arguments for invoking getStorageCredentials.
  */
 export interface GetStorageCredentialsOutputArgs {
-    /**
-     * List of names of databricks.StorageCredential in the metastore
-     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }

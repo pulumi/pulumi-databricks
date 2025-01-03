@@ -12,15 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Databricks secret key reference for an AI21Labs API key.
-        /// </summary>
         [Input("ai21labsApiKey")]
         public Input<string>? Ai21labsApiKey { get; set; }
 
-        /// <summary>
-        /// An AI21 Labs API key provided as a plaintext string.
-        /// </summary>
         [Input("ai21labsApiKeyPlaintext")]
         public Input<string>? Ai21labsApiKeyPlaintext { get; set; }
 

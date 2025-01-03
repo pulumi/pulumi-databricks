@@ -13,21 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetInstanceProfilesInstanceProfileResult
     {
-        /// <summary>
-        /// ARN of the instance profile.
-        /// </summary>
         public readonly string Arn;
-        /// <summary>
-        /// Whether the instance profile is a meta instance profile or not.
-        /// </summary>
         public readonly bool IsMeta;
-        /// <summary>
-        /// Name of the instance profile.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// ARN of the role attached to the instance profile.
-        /// </summary>
         public readonly string RoleArn;
 
         [OutputConstructor]

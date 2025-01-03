@@ -6,209 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ### Creating a Databricks on AWS workspace
- *
- * !Simplest multiworkspace
- *
- * To get workspace running, you have to configure a couple of things:
- *
- * * databricks.MwsCredentials - You can share a credentials (cross-account IAM role) configuration ID with multiple workspaces. It is not required to create a new one for each workspace.
- * * databricks.MwsStorageConfigurations - You can share a root S3 bucket with multiple workspaces in a single account. You do not have to create new ones for each workspace. If you share a root S3 bucket for multiple workspaces in an account, data on the root S3 bucket is partitioned into separate directories by workspace.
- * * databricks.MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) with multiple workspaces in a single account. You do not have to create a new VPC for each workspace. However, you cannot reuse subnets or security groups with other resources, including other workspaces or non-Databricks resources. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks databricks.MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
- * * databricks.MwsCustomerManagedKeys - You can share a customer-managed key across workspaces.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const config = new pulumi.Config();
- * // Account ID that can be found in the dropdown under the email address in the upper-right corner of https://accounts.cloud.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
- * // register cross-account ARN
- * const _this = new databricks.MwsCredentials("this", {
- *     accountId: databricksAccountId,
- *     credentialsName: `${prefix}-creds`,
- *     roleArn: crossaccountArn,
- * });
- * // register root bucket
- * const thisMwsStorageConfigurations = new databricks.MwsStorageConfigurations("this", {
- *     accountId: databricksAccountId,
- *     storageConfigurationName: `${prefix}-storage`,
- *     bucketName: rootBucket,
- * });
- * // register VPC
- * const thisMwsNetworks = new databricks.MwsNetworks("this", {
- *     accountId: databricksAccountId,
- *     networkName: `${prefix}-network`,
- *     vpcId: vpcId,
- *     subnetIds: subnetsPrivate,
- *     securityGroupIds: [securityGroup],
- * });
- * // create workspace in given VPC with DBFS on root bucket
- * const thisMwsWorkspaces = new databricks.MwsWorkspaces("this", {
- *     accountId: databricksAccountId,
- *     workspaceName: prefix,
- *     awsRegion: region,
- *     credentialsId: _this.credentialsId,
- *     storageConfigurationId: thisMwsStorageConfigurations.storageConfigurationId,
- *     networkId: thisMwsNetworks.networkId,
- *     token: {},
- * });
- * export const databricksToken = thisMwsWorkspaces.token.apply(token => token?.tokenValue);
- * ```
- *
- * ### Creating a Databricks on AWS workspace with Databricks-Managed VPC
- *
- * ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
- *
- * By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with databricks.MwsNetworks so that you can configure it according to your organization’s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
- * import * as random from "@pulumi/random";
- *
- * const config = new pulumi.Config();
- * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
- * const naming = new random.index.String("naming", {
- *     special: false,
- *     upper: false,
- *     length: 6,
- * });
- * const prefix = `dltp${naming.result}`;
- * const this = databricks.getAwsAssumeRolePolicy({
- *     externalId: databricksAccountId,
- * });
- * const crossAccountRole = new aws.iam.Role("cross_account_role", {
- *     name: `${prefix}-crossaccount`,
- *     assumeRolePolicy: _this.then(_this => _this.json),
- *     tags: tags,
- * });
- * const thisGetAwsCrossAccountPolicy = databricks.getAwsCrossAccountPolicy({});
- * const thisRolePolicy = new aws.iam.RolePolicy("this", {
- *     name: `${prefix}-policy`,
- *     role: crossAccountRole.id,
- *     policy: thisGetAwsCrossAccountPolicy.then(thisGetAwsCrossAccountPolicy => thisGetAwsCrossAccountPolicy.json),
- * });
- * const thisMwsCredentials = new databricks.MwsCredentials("this", {
- *     accountId: databricksAccountId,
- *     credentialsName: `${prefix}-creds`,
- *     roleArn: crossAccountRole.arn,
- * });
- * const rootStorageBucket = new aws.s3.BucketV2("root_storage_bucket", {
- *     bucket: `${prefix}-rootbucket`,
- *     acl: "private",
- *     forceDestroy: true,
- *     tags: tags,
- * });
- * const rootVersioning = new aws.s3.BucketVersioningV2("root_versioning", {
- *     bucket: rootStorageBucket.id,
- *     versioningConfiguration: {
- *         status: "Disabled",
- *     },
- * });
- * const rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new aws.s3.BucketServerSideEncryptionConfigurationV2("root_storage_bucket", {
- *     bucket: rootStorageBucket.bucket,
- *     rules: [{
- *         applyServerSideEncryptionByDefault: {
- *             sseAlgorithm: "AES256",
- *         },
- *     }],
- * });
- * const rootStorageBucketBucketPublicAccessBlock = new aws.s3.BucketPublicAccessBlock("root_storage_bucket", {
- *     bucket: rootStorageBucket.id,
- *     blockPublicAcls: true,
- *     blockPublicPolicy: true,
- *     ignorePublicAcls: true,
- *     restrictPublicBuckets: true,
- * }, {
- *     dependsOn: [rootStorageBucket],
- * });
- * const thisGetAwsBucketPolicy = databricks.getAwsBucketPolicyOutput({
- *     bucket: rootStorageBucket.bucket,
- * });
- * const rootBucketPolicy = new aws.s3.BucketPolicy("root_bucket_policy", {
- *     bucket: rootStorageBucket.id,
- *     policy: thisGetAwsBucketPolicy.apply(thisGetAwsBucketPolicy => thisGetAwsBucketPolicy.json),
- * }, {
- *     dependsOn: [rootStorageBucketBucketPublicAccessBlock],
- * });
- * const thisMwsStorageConfigurations = new databricks.MwsStorageConfigurations("this", {
- *     accountId: databricksAccountId,
- *     storageConfigurationName: `${prefix}-storage`,
- *     bucketName: rootStorageBucket.bucket,
- * });
- * const thisMwsWorkspaces = new databricks.MwsWorkspaces("this", {
- *     accountId: databricksAccountId,
- *     workspaceName: prefix,
- *     awsRegion: "us-east-1",
- *     credentialsId: thisMwsCredentials.credentialsId,
- *     storageConfigurationId: thisMwsStorageConfigurations.storageConfigurationId,
- *     token: {},
- *     customTags: {
- *         SoldToCode: "1234",
- *     },
- * });
- * export const databricksToken = thisMwsWorkspaces.token.apply(token => token?.tokenValue);
- * ```
- *
- * In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
- *
- * ### Creating a Databricks on GCP workspace
- *
- * To get workspace running, you have to configure a network object:
- *
- * * databricks.MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/customer-managed-vpc.html) with multiple workspaces in a single account. You do not have to create a new VPC for each workspace. However, you cannot reuse subnets with other resources, including other workspaces or non-Databricks resources. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks databricks.MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const config = new pulumi.Config();
- * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
- * const databricksAccountId = config.requireObject("databricksAccountId");
- * const databricksGoogleServiceAccount = config.requireObject("databricksGoogleServiceAccount");
- * const googleProject = config.requireObject("googleProject");
- * // register VPC
- * const _this = new databricks.MwsNetworks("this", {
- *     accountId: databricksAccountId,
- *     networkName: `${prefix}-network`,
- *     gcpNetworkInfo: {
- *         networkProjectId: googleProject,
- *         vpcId: vpcId,
- *         subnetId: subnetId,
- *         subnetRegion: subnetRegion,
- *         podIpRangeName: "pods",
- *         serviceIpRangeName: "svc",
- *     },
- * });
- * // create workspace in given VPC
- * const thisMwsWorkspaces = new databricks.MwsWorkspaces("this", {
- *     accountId: databricksAccountId,
- *     workspaceName: prefix,
- *     location: subnetRegion,
- *     cloudResourceContainer: {
- *         gcp: {
- *             projectId: googleProject,
- *         },
- *     },
- *     networkId: _this.networkId,
- *     gkeConfig: {
- *         connectivityType: "PRIVATE_NODE_PUBLIC_MASTER",
- *         masterIpRange: "10.3.0.0/28",
- *     },
- *     token: {},
- * });
- * export const databricksToken = thisMwsWorkspaces.token.apply(token => token?.tokenValue);
- * ```
- *
- * In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
- */
 export class MwsWorkspaces extends pulumi.CustomResource {
     /**
      * Get an existing MwsWorkspaces resource's state with the given name, ID, and optional extra
@@ -237,95 +34,35 @@ export class MwsWorkspaces extends pulumi.CustomResource {
         return obj['__pulumiType'] === MwsWorkspaces.__pulumiType;
     }
 
-    /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-     */
     public readonly accountId!: pulumi.Output<string>;
-    /**
-     * region of VPC.
-     */
     public readonly awsRegion!: pulumi.Output<string | undefined>;
     public readonly cloud!: pulumi.Output<string>;
-    /**
-     * A block that specifies GCP workspace configurations, consisting of following blocks:
-     */
     public readonly cloudResourceContainer!: pulumi.Output<outputs.MwsWorkspacesCloudResourceContainer | undefined>;
-    /**
-     * (Integer) time when workspace was created
-     */
     public readonly creationTime!: pulumi.Output<number>;
     public readonly credentialsId!: pulumi.Output<string | undefined>;
-    /**
-     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
-     */
     public readonly customTags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * @deprecated Use managedServicesCustomerManagedKeyId instead
      */
     public readonly customerManagedKeyId!: pulumi.Output<string | undefined>;
-    /**
-     * part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-     */
     public readonly deploymentName!: pulumi.Output<string | undefined>;
     public readonly externalCustomerInfo!: pulumi.Output<outputs.MwsWorkspacesExternalCustomerInfo | undefined>;
     public readonly gcpManagedNetworkConfig!: pulumi.Output<outputs.MwsWorkspacesGcpManagedNetworkConfig | undefined>;
-    /**
-     * (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
-     */
     public /*out*/ readonly gcpWorkspaceSa!: pulumi.Output<string>;
-    /**
-     * A block that specifies GKE configuration for the Databricks workspace:
-     */
     public readonly gkeConfig!: pulumi.Output<outputs.MwsWorkspacesGkeConfig | undefined>;
     public readonly isNoPublicIpEnabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * region of the subnet.
-     */
     public readonly location!: pulumi.Output<string | undefined>;
-    /**
-     * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-     */
     public readonly managedServicesCustomerManagedKeyId!: pulumi.Output<string | undefined>;
-    /**
-     * `networkId` from networks.
-     */
     public readonly networkId!: pulumi.Output<string | undefined>;
-    /**
-     * The pricing tier of the workspace.
-     */
     public readonly pricingTier!: pulumi.Output<string>;
-    /**
-     * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
-     */
     public readonly privateAccessSettingsId!: pulumi.Output<string | undefined>;
-    /**
-     * `storageConfigurationId` from storage configuration.
-     */
     public readonly storageConfigurationId!: pulumi.Output<string | undefined>;
-    /**
-     * `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
-     */
     public readonly storageCustomerManagedKeyId!: pulumi.Output<string | undefined>;
     public readonly token!: pulumi.Output<outputs.MwsWorkspacesToken | undefined>;
-    /**
-     * (String) workspace id
-     */
     public readonly workspaceId!: pulumi.Output<string>;
-    /**
-     * name of the workspace, will appear on UI.
-     */
     public readonly workspaceName!: pulumi.Output<string>;
-    /**
-     * (String) workspace status
-     */
     public readonly workspaceStatus!: pulumi.Output<string>;
-    /**
-     * (String) updates on workspace status
-     */
     public readonly workspaceStatusMessage!: pulumi.Output<string>;
-    /**
-     * (String) URL of the workspace
-     */
     public readonly workspaceUrl!: pulumi.Output<string>;
 
     /**
@@ -415,95 +152,35 @@ export class MwsWorkspaces extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MwsWorkspaces resources.
  */
 export interface MwsWorkspacesState {
-    /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-     */
     accountId?: pulumi.Input<string>;
-    /**
-     * region of VPC.
-     */
     awsRegion?: pulumi.Input<string>;
     cloud?: pulumi.Input<string>;
-    /**
-     * A block that specifies GCP workspace configurations, consisting of following blocks:
-     */
     cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer>;
-    /**
-     * (Integer) time when workspace was created
-     */
     creationTime?: pulumi.Input<number>;
     credentialsId?: pulumi.Input<string>;
-    /**
-     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
-     */
     customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * @deprecated Use managedServicesCustomerManagedKeyId instead
      */
     customerManagedKeyId?: pulumi.Input<string>;
-    /**
-     * part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-     */
     deploymentName?: pulumi.Input<string>;
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
     gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
-    /**
-     * (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
-     */
     gcpWorkspaceSa?: pulumi.Input<string>;
-    /**
-     * A block that specifies GKE configuration for the Databricks workspace:
-     */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
-    /**
-     * region of the subnet.
-     */
     location?: pulumi.Input<string>;
-    /**
-     * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-     */
     managedServicesCustomerManagedKeyId?: pulumi.Input<string>;
-    /**
-     * `networkId` from networks.
-     */
     networkId?: pulumi.Input<string>;
-    /**
-     * The pricing tier of the workspace.
-     */
     pricingTier?: pulumi.Input<string>;
-    /**
-     * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
-     */
     privateAccessSettingsId?: pulumi.Input<string>;
-    /**
-     * `storageConfigurationId` from storage configuration.
-     */
     storageConfigurationId?: pulumi.Input<string>;
-    /**
-     * `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
-     */
     storageCustomerManagedKeyId?: pulumi.Input<string>;
     token?: pulumi.Input<inputs.MwsWorkspacesToken>;
-    /**
-     * (String) workspace id
-     */
     workspaceId?: pulumi.Input<string>;
-    /**
-     * name of the workspace, will appear on UI.
-     */
     workspaceName?: pulumi.Input<string>;
-    /**
-     * (String) workspace status
-     */
     workspaceStatus?: pulumi.Input<string>;
-    /**
-     * (String) updates on workspace status
-     */
     workspaceStatusMessage?: pulumi.Input<string>;
-    /**
-     * (String) URL of the workspace
-     */
     workspaceUrl?: pulumi.Input<string>;
 }
 
@@ -511,90 +188,33 @@ export interface MwsWorkspacesState {
  * The set of arguments for constructing a MwsWorkspaces resource.
  */
 export interface MwsWorkspacesArgs {
-    /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-     */
     accountId: pulumi.Input<string>;
-    /**
-     * region of VPC.
-     */
     awsRegion?: pulumi.Input<string>;
     cloud?: pulumi.Input<string>;
-    /**
-     * A block that specifies GCP workspace configurations, consisting of following blocks:
-     */
     cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer>;
-    /**
-     * (Integer) time when workspace was created
-     */
     creationTime?: pulumi.Input<number>;
     credentialsId?: pulumi.Input<string>;
-    /**
-     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
-     */
     customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * @deprecated Use managedServicesCustomerManagedKeyId instead
      */
     customerManagedKeyId?: pulumi.Input<string>;
-    /**
-     * part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-     */
     deploymentName?: pulumi.Input<string>;
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
     gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
-    /**
-     * A block that specifies GKE configuration for the Databricks workspace:
-     */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
-    /**
-     * region of the subnet.
-     */
     location?: pulumi.Input<string>;
-    /**
-     * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-     */
     managedServicesCustomerManagedKeyId?: pulumi.Input<string>;
-    /**
-     * `networkId` from networks.
-     */
     networkId?: pulumi.Input<string>;
-    /**
-     * The pricing tier of the workspace.
-     */
     pricingTier?: pulumi.Input<string>;
-    /**
-     * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
-     */
     privateAccessSettingsId?: pulumi.Input<string>;
-    /**
-     * `storageConfigurationId` from storage configuration.
-     */
     storageConfigurationId?: pulumi.Input<string>;
-    /**
-     * `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
-     */
     storageCustomerManagedKeyId?: pulumi.Input<string>;
     token?: pulumi.Input<inputs.MwsWorkspacesToken>;
-    /**
-     * (String) workspace id
-     */
     workspaceId?: pulumi.Input<string>;
-    /**
-     * name of the workspace, will appear on UI.
-     */
     workspaceName: pulumi.Input<string>;
-    /**
-     * (String) workspace status
-     */
     workspaceStatus?: pulumi.Input<string>;
-    /**
-     * (String) updates on workspace status
-     */
     workspaceStatusMessage?: pulumi.Input<string>;
-    /**
-     * (String) URL of the workspace
-     */
     workspaceUrl?: pulumi.Input<string>;
 }

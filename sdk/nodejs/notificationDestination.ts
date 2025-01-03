@@ -6,89 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * This resource allows you to manage [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification destinations are used to send notifications for query alerts and jobs to destinations outside of Databricks. Only workspace admins can create, update, and delete notification destinations.
- *
- * ## Example Usage
- *
- * `Email` notification destination:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const ndresource = new databricks.NotificationDestination("ndresource", {
- *     displayName: "Notification Destination",
- *     config: {
- *         email: {
- *             addresses: ["abc@gmail.com"],
- *         },
- *     },
- * });
- * ```
- * `Slack` notification destination:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const ndresource = new databricks.NotificationDestination("ndresource", {
- *     displayName: "Notification Destination",
- *     config: {
- *         slack: {
- *             url: "https://hooks.slack.com/services/...",
- *         },
- *     },
- * });
- * ```
- * `PagerDuty` notification destination:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const ndresource = new databricks.NotificationDestination("ndresource", {
- *     displayName: "Notification Destination",
- *     config: {
- *         pagerduty: {
- *             integrationKey: "xxxxxx",
- *         },
- *     },
- * });
- * ```
- * `Microsoft Teams` notification destination:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const ndresource = new databricks.NotificationDestination("ndresource", {
- *     displayName: "Notification Destination",
- *     config: {
- *         microsoftTeams: {
- *             url: "https://outlook.office.com/webhook/...",
- *         },
- *     },
- * });
- * ```
- * `Generic Webhook` notification destination:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const ndresource = new databricks.NotificationDestination("ndresource", {
- *     displayName: "Notification Destination",
- *     config: {
- *         genericWebhook: {
- *             url: "https://example.com/webhook",
- *             username: "username",
- *             password: "password",
- *         },
- *     },
- * });
- * ```
- */
 export class NotificationDestination extends pulumi.CustomResource {
     /**
      * Get an existing NotificationDestination resource's state with the given name, ID, and optional extra
@@ -117,17 +34,8 @@ export class NotificationDestination extends pulumi.CustomResource {
         return obj['__pulumiType'] === NotificationDestination.__pulumiType;
     }
 
-    /**
-     * The configuration of the Notification Destination. It must contain exactly one of the following blocks:
-     */
     public readonly config!: pulumi.Output<outputs.NotificationDestinationConfig | undefined>;
-    /**
-     * the type of Notification Destination.
-     */
     public readonly destinationType!: pulumi.Output<string>;
-    /**
-     * The display name of the Notification Destination.
-     */
     public readonly displayName!: pulumi.Output<string>;
 
     /**
@@ -164,17 +72,8 @@ export class NotificationDestination extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NotificationDestination resources.
  */
 export interface NotificationDestinationState {
-    /**
-     * The configuration of the Notification Destination. It must contain exactly one of the following blocks:
-     */
     config?: pulumi.Input<inputs.NotificationDestinationConfig>;
-    /**
-     * the type of Notification Destination.
-     */
     destinationType?: pulumi.Input<string>;
-    /**
-     * The display name of the Notification Destination.
-     */
     displayName?: pulumi.Input<string>;
 }
 
@@ -182,16 +81,7 @@ export interface NotificationDestinationState {
  * The set of arguments for constructing a NotificationDestination resource.
  */
 export interface NotificationDestinationArgs {
-    /**
-     * The configuration of the Notification Destination. It must contain exactly one of the following blocks:
-     */
     config?: pulumi.Input<inputs.NotificationDestinationConfig>;
-    /**
-     * the type of Notification Destination.
-     */
     destinationType?: pulumi.Input<string>;
-    /**
-     * The display name of the Notification Destination.
-     */
     displayName: pulumi.Input<string>;
 }

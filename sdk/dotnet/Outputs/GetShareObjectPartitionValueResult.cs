@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetShareObjectPartitionValueResult
     {
-        /// <summary>
-        /// The name of the share
-        /// </summary>
         public readonly string Name;
         public readonly string Op;
         public readonly string? RecipientPropertyKey;

@@ -32,9 +32,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? IdempotencyToken;
         public readonly ImmutableArray<Outputs.JobTaskForEachTaskTaskNewClusterInitScript> InitScripts;
         public readonly string? InstancePoolId;
-        /// <summary>
-        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-        /// </summary>
+        public readonly bool? IsSingleNode;
+        public readonly string? Kind;
         public readonly ImmutableArray<Outputs.JobTaskForEachTaskTaskNewClusterLibrary> Libraries;
         public readonly string? NodeTypeId;
         public readonly int? NumWorkers;
@@ -45,9 +44,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableDictionary<string, string>? SparkEnvVars;
         public readonly string SparkVersion;
         public readonly ImmutableArray<string> SshPublicKeys;
-        /// <summary>
-        /// isn't supported
-        /// </summary>
+        public readonly bool? UseMlRuntime;
         public readonly Outputs.JobTaskForEachTaskTaskNewClusterWorkloadType? WorkloadType;
 
         [OutputConstructor]
@@ -90,6 +87,10 @@ namespace Pulumi.Databricks.Outputs
 
             string? instancePoolId,
 
+            bool? isSingleNode,
+
+            string? kind,
+
             ImmutableArray<Outputs.JobTaskForEachTaskTaskNewClusterLibrary> libraries,
 
             string? nodeTypeId,
@@ -109,6 +110,8 @@ namespace Pulumi.Databricks.Outputs
             string sparkVersion,
 
             ImmutableArray<string> sshPublicKeys,
+
+            bool? useMlRuntime,
 
             Outputs.JobTaskForEachTaskTaskNewClusterWorkloadType? workloadType)
         {
@@ -131,6 +134,8 @@ namespace Pulumi.Databricks.Outputs
             IdempotencyToken = idempotencyToken;
             InitScripts = initScripts;
             InstancePoolId = instancePoolId;
+            IsSingleNode = isSingleNode;
+            Kind = kind;
             Libraries = libraries;
             NodeTypeId = nodeTypeId;
             NumWorkers = numWorkers;
@@ -141,6 +146,7 @@ namespace Pulumi.Databricks.Outputs
             SparkEnvVars = sparkEnvVars;
             SparkVersion = sparkVersion;
             SshPublicKeys = sshPublicKeys;
+            UseMlRuntime = useMlRuntime;
             WorkloadType = workloadType;
         }
     }

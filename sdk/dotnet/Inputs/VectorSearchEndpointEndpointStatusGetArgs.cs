@@ -12,15 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class VectorSearchEndpointEndpointStatusGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Additional status message.
-        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
-        /// <summary>
-        /// Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
-        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 

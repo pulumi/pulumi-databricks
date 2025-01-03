@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobWebhookNotificationsOnFailure
     {
-        /// <summary>
-        /// ID of the job
-        /// </summary>
         public readonly string Id;
 
         [OutputConstructor]

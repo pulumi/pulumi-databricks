@@ -39,17 +39,11 @@ class GetCurrentMetastoreResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="metastoreInfo")
     def metastore_info(self) -> 'outputs.GetCurrentMetastoreMetastoreInfoResult':
-        """
-        summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-        """
         return pulumi.get(self, "metastore_info")
 
 
@@ -67,36 +61,7 @@ def get_current_metastore(id: Optional[str] = None,
                           metastore_info: Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentMetastoreResult:
     """
-    Retrieves information about metastore attached to a given workspace.
-
-    > **Note** This is the workspace-level data source.
-
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
-
-    ## Example Usage
-
-    MetastoreSummary response for a metastore attached to the current workspace.
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    this = databricks.get_current_metastore()
-    pulumi.export("someMetastore", this.metastore_info)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Metastore to get information for a metastore with a given ID.
-    * get_metastores to get a mapping of name to id of all metastores.
-    * Metastore to manage Metastores within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
-
-
-    :param str id: metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-    :param Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -111,36 +76,7 @@ def get_current_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = Non
                                  metastore_info: Optional[pulumi.Input[Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentMetastoreResult]:
     """
-    Retrieves information about metastore attached to a given workspace.
-
-    > **Note** This is the workspace-level data source.
-
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
-
-    ## Example Usage
-
-    MetastoreSummary response for a metastore attached to the current workspace.
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    this = databricks.get_current_metastore()
-    pulumi.export("someMetastore", this.metastore_info)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Metastore to get information for a metastore with a given ID.
-    * get_metastores to get a mapping of name to id of all metastores.
-    * Metastore to manage Metastores within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
-
-
-    :param str id: metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-    :param Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

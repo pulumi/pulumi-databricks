@@ -6,46 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Retrieves details about databricks.Volume that was created by Pulumi or manually.
- * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
- *
- * ## Example Usage
- *
- * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const all = databricks.getVolumes({
- *     catalogName: "sandbox",
- *     schemaName: "things",
- * });
- * const this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getVolume({
- *     name: __value,
- * }) })));
- * ```
- *
- * * Search for a specific volume by its fully qualified name
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const this = databricks.getVolume({
- *     name: "catalog.schema.volume",
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.Volume to manage volumes within Unity Catalog.
- * * databricks.Schema to manage schemas within Unity Catalog.
- * * databricks.Catalog to manage catalogs within Unity Catalog.
- */
 export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getVolume:getVolume", {
@@ -59,17 +19,8 @@ export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getVolume.
  */
 export interface GetVolumeArgs {
-    /**
-     * ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
-     */
     id?: string;
-    /**
-     * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-     */
     name: string;
-    /**
-     * `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-     */
     volumeInfo?: inputs.GetVolumeVolumeInfo;
 }
 
@@ -77,59 +28,10 @@ export interface GetVolumeArgs {
  * A collection of values returned by getVolume.
  */
 export interface GetVolumeResult {
-    /**
-     * ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
-     */
     readonly id: string;
-    /**
-     * the name of the volume
-     */
     readonly name: string;
-    /**
-     * `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-     */
     readonly volumeInfo: outputs.GetVolumeVolumeInfo;
 }
-/**
- * Retrieves details about databricks.Volume that was created by Pulumi or manually.
- * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
- *
- * ## Example Usage
- *
- * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const all = databricks.getVolumes({
- *     catalogName: "sandbox",
- *     schemaName: "things",
- * });
- * const this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getVolume({
- *     name: __value,
- * }) })));
- * ```
- *
- * * Search for a specific volume by its fully qualified name
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const this = databricks.getVolume({
- *     name: "catalog.schema.volume",
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.Volume to manage volumes within Unity Catalog.
- * * databricks.Schema to manage schemas within Unity Catalog.
- * * databricks.Catalog to manage catalogs within Unity Catalog.
- */
 export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVolumeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getVolume:getVolume", {
@@ -143,16 +45,7 @@ export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getVolume.
  */
 export interface GetVolumeOutputArgs {
-    /**
-     * ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-     */
     name: pulumi.Input<string>;
-    /**
-     * `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-     */
     volumeInfo?: pulumi.Input<inputs.GetVolumeVolumeInfoArgs>;
 }

@@ -33,30 +33,18 @@ namespace Pulumi.Databricks.Inputs
         [Input("enum")]
         public Input<Inputs.SqlQueryParameterEnumGetArgs>? Enum { get; set; }
 
-        /// <summary>
-        /// The literal parameter marker that appears between double curly braces in the query text.
-        /// Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
-        /// 
-        /// For `text`, `number`, `date`, `datetime`, `datetimesec` block
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("number")]
         public Input<Inputs.SqlQueryParameterNumberGetArgs>? Number { get; set; }
 
-        /// <summary>
-        /// The text of the query to be run.
-        /// </summary>
         [Input("query")]
         public Input<Inputs.SqlQueryParameterQueryGetArgs>? Query { get; set; }
 
         [Input("text")]
         public Input<Inputs.SqlQueryParameterTextGetArgs>? Text { get; set; }
 
-        /// <summary>
-        /// The text displayed in a parameter picking widget.
-        /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }
 

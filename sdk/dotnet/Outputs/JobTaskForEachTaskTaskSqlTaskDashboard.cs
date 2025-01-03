@@ -13,21 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskForEachTaskTaskSqlTaskDashboard
     {
-        /// <summary>
-        /// string specifying a custom subject of email sent.
-        /// </summary>
         public readonly string? CustomSubject;
-        /// <summary>
-        /// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
-        /// </summary>
         public readonly string DashboardId;
-        /// <summary>
-        /// flag that specifies if subscriptions are paused or not.
-        /// </summary>
         public readonly bool? PauseSubscriptions;
-        /// <summary>
-        /// a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
-        /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskForEachTaskTaskSqlTaskDashboardSubscription> Subscriptions;
 
         [OutputConstructor]

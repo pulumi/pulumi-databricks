@@ -14,9 +14,6 @@ namespace Pulumi.Databricks.Outputs
     public sealed class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn
     {
         public readonly string? EmbeddingModelEndpointName;
-        /// <summary>
-        /// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

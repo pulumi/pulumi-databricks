@@ -4,41 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > This resource can only be used with a workspace-level provider!
- *
- * If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
- *
- * By default, Databricks assigns the securable to all workspaces attached to the current metastore. By using `databricks.WorkspaceBinding`, the securable will be unassigned from all workspaces and only assigned explicitly using this resource.
- *
- * > To use this resource the securable must have its isolation mode set to `ISOLATED` (for databricks_catalog) or `ISOLATION_MODE_ISOLATED` (for  (for databricks.ExternalLocation or databricks_storage_credential) for the `isolationMode` attribute. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration), [this guide](https://docs.databricks.com/en/connect/unity-catalog/external-locations.html#workspace-binding) or [this guide](https://docs.databricks.com/en/connect/unity-catalog/storage-credentials.html#optional-assign-a-storage-credential-to-specific-workspaces).
- *
- * > If the securable's isolation mode was set to `ISOLATED` using Pulumi then the securable will have been automatically bound to the workspace it was created from.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sandbox = new databricks.Catalog("sandbox", {
- *     name: "sandbox",
- *     isolationMode: "ISOLATED",
- * });
- * const sandboxWorkspaceBinding = new databricks.WorkspaceBinding("sandbox", {
- *     securableName: sandbox.name,
- *     workspaceId: other.workspaceId,
- * });
- * ```
- *
- * ## Import
- *
- * This resource can be imported by using combination of workspace ID, securable type and name:
- *
- * ```sh
- * $ pulumi import databricks:index/workspaceBinding:WorkspaceBinding this "<workspace_id>|<securable_type>|<securable_name>"
- * ```
- */
 export class WorkspaceBinding extends pulumi.CustomResource {
     /**
      * Get an existing WorkspaceBinding resource's state with the given name, ID, and optional extra
@@ -67,25 +32,13 @@ export class WorkspaceBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkspaceBinding.__pulumiType;
     }
 
-    /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
-     */
     public readonly bindingType!: pulumi.Output<string | undefined>;
     /**
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
     public readonly catalogName!: pulumi.Output<string | undefined>;
-    /**
-     * Name of securable. Change forces creation of a new resource.
-     */
     public readonly securableName!: pulumi.Output<string>;
-    /**
-     * Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
-     */
     public readonly securableType!: pulumi.Output<string | undefined>;
-    /**
-     * ID of the workspace. Change forces creation of a new resource.
-     */
     public readonly workspaceId!: pulumi.Output<string | undefined>;
 
     /**
@@ -123,25 +76,13 @@ export class WorkspaceBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkspaceBinding resources.
  */
 export interface WorkspaceBindingState {
-    /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
-     */
     bindingType?: pulumi.Input<string>;
     /**
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
     catalogName?: pulumi.Input<string>;
-    /**
-     * Name of securable. Change forces creation of a new resource.
-     */
     securableName?: pulumi.Input<string>;
-    /**
-     * Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
-     */
     securableType?: pulumi.Input<string>;
-    /**
-     * ID of the workspace. Change forces creation of a new resource.
-     */
     workspaceId?: pulumi.Input<string>;
 }
 
@@ -149,24 +90,12 @@ export interface WorkspaceBindingState {
  * The set of arguments for constructing a WorkspaceBinding resource.
  */
 export interface WorkspaceBindingArgs {
-    /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
-     */
     bindingType?: pulumi.Input<string>;
     /**
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
     catalogName?: pulumi.Input<string>;
-    /**
-     * Name of securable. Change forces creation of a new resource.
-     */
     securableName?: pulumi.Input<string>;
-    /**
-     * Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
-     */
     securableType?: pulumi.Input<string>;
-    /**
-     * ID of the workspace. Change forces creation of a new resource.
-     */
     workspaceId?: pulumi.Input<string>;
 }

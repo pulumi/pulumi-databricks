@@ -9,94 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Attach an instance profile to a group
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var instanceProfile = new Databricks.InstanceProfile("instance_profile", new()
-    ///     {
-    ///         InstanceProfileArn = "my_instance_profile_arn",
-    ///     });
-    /// 
-    ///     var myGroup = new Databricks.Group("my_group", new()
-    ///     {
-    ///         DisplayName = "my_group_name",
-    ///     });
-    /// 
-    ///     var myGroupInstanceProfile = new Databricks.GroupRole("my_group_instance_profile", new()
-    ///     {
-    ///         GroupId = myGroup.Id,
-    ///         Role = instanceProfile.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Attach account admin role to an account-level group
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myGroup = new Databricks.Group("my_group", new()
-    ///     {
-    ///         DisplayName = "my_group_name",
-    ///     });
-    /// 
-    ///     var myGroupAccountAdmin = new Databricks.GroupRole("my_group_account_admin", new()
-    ///     {
-    ///         GroupId = myGroup.Id,
-    ///         Role = "account_admin",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are often used in the same context:
-    /// 
-    /// * End to end workspace management guide.
-    /// * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-    /// * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
-    /// * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-    /// * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-    /// * databricks.GroupMember to attach users and groups as group members.
-    /// * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-    /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
-    /// * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
-    /// 
-    /// ## Import
-    /// 
-    /// !&gt; Importing this resource is not currently supported.
-    /// </summary>
     [DatabricksResourceType("databricks:index/groupRole:GroupRole")]
     public partial class GroupRole : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// This is the id of the group resource.
-        /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
-        /// <summary>
-        /// Either a role name or the ARN/ID of the instance profile resource.
-        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
@@ -146,15 +64,9 @@ namespace Pulumi.Databricks
 
     public sealed class GroupRoleArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// This is the id of the group resource.
-        /// </summary>
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
 
-        /// <summary>
-        /// Either a role name or the ARN/ID of the instance profile resource.
-        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
@@ -166,15 +78,9 @@ namespace Pulumi.Databricks
 
     public sealed class GroupRoleState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// This is the id of the group resource.
-        /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
-        /// <summary>
-        /// Either a role name or the ARN/ID of the instance profile resource.
-        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 

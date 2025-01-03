@@ -12,36 +12,22 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskPythonWheelTaskGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Python function as entry point for the task
-        /// </summary>
         [Input("entryPoint")]
         public Input<string>? EntryPoint { get; set; }
 
         [Input("namedParameters")]
         private InputMap<string>? _namedParameters;
-
-        /// <summary>
-        /// Named parameters for the task
-        /// </summary>
         public InputMap<string> NamedParameters
         {
             get => _namedParameters ?? (_namedParameters = new InputMap<string>());
             set => _namedParameters = value;
         }
 
-        /// <summary>
-        /// Name of Python package
-        /// </summary>
         [Input("packageName")]
         public Input<string>? PackageName { get; set; }
 
         [Input("parameters")]
         private InputList<string>? _parameters;
-
-        /// <summary>
-        /// Parameters for the task
-        /// </summary>
         public InputList<string> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<string>());

@@ -32,15 +32,6 @@ class AlertArgs:
                  seconds_to_retrigger: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Alert resource.
-        :param pulumi.Input['AlertConditionArgs'] condition: Trigger conditions of the alert. Block consists of the following attributes:
-        :param pulumi.Input[str] display_name: Name of the alert.
-        :param pulumi.Input[str] query_id: ID of the query evaluated by the alert.
-        :param pulumi.Input[str] custom_body: Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        :param pulumi.Input[str] custom_subject: Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        :param pulumi.Input[bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal.
-        :param pulumi.Input[str] owner_user_name: Alert owner's username.
-        :param pulumi.Input[str] parent_path: The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-        :param pulumi.Input[int] seconds_to_retrigger: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "display_name", display_name)
@@ -61,9 +52,6 @@ class AlertArgs:
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input['AlertConditionArgs']:
-        """
-        Trigger conditions of the alert. Block consists of the following attributes:
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -73,9 +61,6 @@ class AlertArgs:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
-        """
-        Name of the alert.
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -85,9 +70,6 @@ class AlertArgs:
     @property
     @pulumi.getter(name="queryId")
     def query_id(self) -> pulumi.Input[str]:
-        """
-        ID of the query evaluated by the alert.
-        """
         return pulumi.get(self, "query_id")
 
     @query_id.setter
@@ -97,9 +79,6 @@ class AlertArgs:
     @property
     @pulumi.getter(name="customBody")
     def custom_body(self) -> Optional[pulumi.Input[str]]:
-        """
-        Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        """
         return pulumi.get(self, "custom_body")
 
     @custom_body.setter
@@ -109,9 +88,6 @@ class AlertArgs:
     @property
     @pulumi.getter(name="customSubject")
     def custom_subject(self) -> Optional[pulumi.Input[str]]:
-        """
-        Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        """
         return pulumi.get(self, "custom_subject")
 
     @custom_subject.setter
@@ -121,9 +97,6 @@ class AlertArgs:
     @property
     @pulumi.getter(name="notifyOnOk")
     def notify_on_ok(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to notify alert subscribers when alert returns back to normal.
-        """
         return pulumi.get(self, "notify_on_ok")
 
     @notify_on_ok.setter
@@ -133,9 +106,6 @@ class AlertArgs:
     @property
     @pulumi.getter(name="ownerUserName")
     def owner_user_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Alert owner's username.
-        """
         return pulumi.get(self, "owner_user_name")
 
     @owner_user_name.setter
@@ -145,9 +115,6 @@ class AlertArgs:
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-        """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
@@ -157,9 +124,6 @@ class AlertArgs:
     @property
     @pulumi.getter(name="secondsToRetrigger")
     def seconds_to_retrigger(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
-        """
         return pulumi.get(self, "seconds_to_retrigger")
 
     @seconds_to_retrigger.setter
@@ -186,20 +150,6 @@ class _AlertState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Alert resources.
-        :param pulumi.Input['AlertConditionArgs'] condition: Trigger conditions of the alert. Block consists of the following attributes:
-        :param pulumi.Input[str] create_time: The timestamp string indicating when the alert was created.
-        :param pulumi.Input[str] custom_body: Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        :param pulumi.Input[str] custom_subject: Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        :param pulumi.Input[str] display_name: Name of the alert.
-        :param pulumi.Input[str] lifecycle_state: The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-        :param pulumi.Input[bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal.
-        :param pulumi.Input[str] owner_user_name: Alert owner's username.
-        :param pulumi.Input[str] parent_path: The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-        :param pulumi.Input[str] query_id: ID of the query evaluated by the alert.
-        :param pulumi.Input[int] seconds_to_retrigger: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
-        :param pulumi.Input[str] state: Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
-        :param pulumi.Input[str] trigger_time: The timestamp string when the alert was last triggered if the alert has been triggered before.
-        :param pulumi.Input[str] update_time: The timestamp string indicating when the alert was updated.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -233,9 +183,6 @@ class _AlertState:
     @property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['AlertConditionArgs']]:
-        """
-        Trigger conditions of the alert. Block consists of the following attributes:
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -245,9 +192,6 @@ class _AlertState:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The timestamp string indicating when the alert was created.
-        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -257,9 +201,6 @@ class _AlertState:
     @property
     @pulumi.getter(name="customBody")
     def custom_body(self) -> Optional[pulumi.Input[str]]:
-        """
-        Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        """
         return pulumi.get(self, "custom_body")
 
     @custom_body.setter
@@ -269,9 +210,6 @@ class _AlertState:
     @property
     @pulumi.getter(name="customSubject")
     def custom_subject(self) -> Optional[pulumi.Input[str]]:
-        """
-        Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        """
         return pulumi.get(self, "custom_subject")
 
     @custom_subject.setter
@@ -281,9 +219,6 @@ class _AlertState:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the alert.
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -293,9 +228,6 @@ class _AlertState:
     @property
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> Optional[pulumi.Input[str]]:
-        """
-        The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-        """
         return pulumi.get(self, "lifecycle_state")
 
     @lifecycle_state.setter
@@ -305,9 +237,6 @@ class _AlertState:
     @property
     @pulumi.getter(name="notifyOnOk")
     def notify_on_ok(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to notify alert subscribers when alert returns back to normal.
-        """
         return pulumi.get(self, "notify_on_ok")
 
     @notify_on_ok.setter
@@ -317,9 +246,6 @@ class _AlertState:
     @property
     @pulumi.getter(name="ownerUserName")
     def owner_user_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Alert owner's username.
-        """
         return pulumi.get(self, "owner_user_name")
 
     @owner_user_name.setter
@@ -329,9 +255,6 @@ class _AlertState:
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-        """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
@@ -341,9 +264,6 @@ class _AlertState:
     @property
     @pulumi.getter(name="queryId")
     def query_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the query evaluated by the alert.
-        """
         return pulumi.get(self, "query_id")
 
     @query_id.setter
@@ -353,9 +273,6 @@ class _AlertState:
     @property
     @pulumi.getter(name="secondsToRetrigger")
     def seconds_to_retrigger(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
-        """
         return pulumi.get(self, "seconds_to_retrigger")
 
     @seconds_to_retrigger.setter
@@ -365,9 +282,6 @@ class _AlertState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
-        """
-        Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
-        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -377,9 +291,6 @@ class _AlertState:
     @property
     @pulumi.getter(name="triggerTime")
     def trigger_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The timestamp string when the alert was last triggered if the alert has been triggered before.
-        """
         return pulumi.get(self, "trigger_time")
 
     @trigger_time.setter
@@ -389,9 +300,6 @@ class _AlertState:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The timestamp string indicating when the alert was updated.
-        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -415,27 +323,9 @@ class Alert(pulumi.CustomResource):
                  seconds_to_retrigger: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        ## Import
-
-        This resource can be imported using alert ID:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/alert:Alert this <alert-id>
-        ```
-
+        Create a Alert resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AlertConditionArgs', 'AlertConditionArgsDict']] condition: Trigger conditions of the alert. Block consists of the following attributes:
-        :param pulumi.Input[str] custom_body: Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        :param pulumi.Input[str] custom_subject: Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        :param pulumi.Input[str] display_name: Name of the alert.
-        :param pulumi.Input[bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal.
-        :param pulumi.Input[str] owner_user_name: Alert owner's username.
-        :param pulumi.Input[str] parent_path: The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-        :param pulumi.Input[str] query_id: ID of the query evaluated by the alert.
-        :param pulumi.Input[int] seconds_to_retrigger: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
         """
         ...
     @overload
@@ -444,16 +334,7 @@ class Alert(pulumi.CustomResource):
                  args: AlertArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
-
-        This resource can be imported using alert ID:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/alert:Alert this <alert-id>
-        ```
-
+        Create a Alert resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AlertArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -538,20 +419,6 @@ class Alert(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AlertConditionArgs', 'AlertConditionArgsDict']] condition: Trigger conditions of the alert. Block consists of the following attributes:
-        :param pulumi.Input[str] create_time: The timestamp string indicating when the alert was created.
-        :param pulumi.Input[str] custom_body: Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        :param pulumi.Input[str] custom_subject: Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        :param pulumi.Input[str] display_name: Name of the alert.
-        :param pulumi.Input[str] lifecycle_state: The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-        :param pulumi.Input[bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal.
-        :param pulumi.Input[str] owner_user_name: Alert owner's username.
-        :param pulumi.Input[str] parent_path: The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-        :param pulumi.Input[str] query_id: ID of the query evaluated by the alert.
-        :param pulumi.Input[int] seconds_to_retrigger: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
-        :param pulumi.Input[str] state: Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
-        :param pulumi.Input[str] trigger_time: The timestamp string when the alert was last triggered if the alert has been triggered before.
-        :param pulumi.Input[str] update_time: The timestamp string indicating when the alert was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -576,112 +443,70 @@ class Alert(pulumi.CustomResource):
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Output['outputs.AlertCondition']:
-        """
-        Trigger conditions of the alert. Block consists of the following attributes:
-        """
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
-        """
-        The timestamp string indicating when the alert was created.
-        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="customBody")
     def custom_body(self) -> pulumi.Output[Optional[str]]:
-        """
-        Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        """
         return pulumi.get(self, "custom_body")
 
     @property
     @pulumi.getter(name="customSubject")
     def custom_subject(self) -> pulumi.Output[Optional[str]]:
-        """
-        Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-        """
         return pulumi.get(self, "custom_subject")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
-        """
-        Name of the alert.
-        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> pulumi.Output[str]:
-        """
-        The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-        """
         return pulumi.get(self, "lifecycle_state")
 
     @property
     @pulumi.getter(name="notifyOnOk")
     def notify_on_ok(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether to notify alert subscribers when alert returns back to normal.
-        """
         return pulumi.get(self, "notify_on_ok")
 
     @property
     @pulumi.getter(name="ownerUserName")
     def owner_user_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        Alert owner's username.
-        """
         return pulumi.get(self, "owner_user_name")
 
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> pulumi.Output[Optional[str]]:
-        """
-        The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-        """
         return pulumi.get(self, "parent_path")
 
     @property
     @pulumi.getter(name="queryId")
     def query_id(self) -> pulumi.Output[str]:
-        """
-        ID of the query evaluated by the alert.
-        """
         return pulumi.get(self, "query_id")
 
     @property
     @pulumi.getter(name="secondsToRetrigger")
     def seconds_to_retrigger(self) -> pulumi.Output[Optional[int]]:
-        """
-        Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
-        """
         return pulumi.get(self, "seconds_to_retrigger")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
-        """
-        Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="triggerTime")
     def trigger_time(self) -> pulumi.Output[str]:
-        """
-        The timestamp string when the alert was last triggered if the alert has been triggered before.
-        """
         return pulumi.get(self, "trigger_time")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
-        """
-        The timestamp string indicating when the alert was updated.
-        """
         return pulumi.get(self, "update_time")
 

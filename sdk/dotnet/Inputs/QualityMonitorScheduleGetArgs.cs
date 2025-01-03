@@ -15,15 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("pauseStatus")]
         public Input<string>? PauseStatus { get; set; }
 
-        /// <summary>
-        /// string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
-        /// </summary>
         [Input("quartzCronExpression", required: true)]
         public Input<string> QuartzCronExpression { get; set; } = null!;
 
-        /// <summary>
-        /// string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
-        /// </summary>
         [Input("timezoneId", required: true)]
         public Input<string> TimezoneId { get; set; } = null!;
 

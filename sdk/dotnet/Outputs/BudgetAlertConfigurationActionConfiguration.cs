@@ -14,13 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class BudgetAlertConfigurationActionConfiguration
     {
         public readonly string? ActionConfigurationId;
-        /// <summary>
-        /// The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
-        /// </summary>
         public readonly string? ActionType;
-        /// <summary>
-        /// The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
-        /// </summary>
         public readonly string? Target;
 
         [OutputConstructor]

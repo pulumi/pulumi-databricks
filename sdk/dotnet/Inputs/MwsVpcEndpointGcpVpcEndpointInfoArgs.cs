@@ -12,33 +12,18 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class MwsVpcEndpointGcpVpcEndpointInfoArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Region of the PSC endpoint.
-        /// </summary>
         [Input("endpointRegion", required: true)]
         public Input<string> EndpointRegion { get; set; } = null!;
 
-        /// <summary>
-        /// The Google Cloud project ID of the VPC network where the PSC connection resides.
-        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
-        /// <summary>
-        /// The unique ID of this PSC connection.
-        /// </summary>
         [Input("pscConnectionId")]
         public Input<string>? PscConnectionId { get; set; }
 
-        /// <summary>
-        /// The name of the PSC endpoint in the Google Cloud project.
-        /// </summary>
         [Input("pscEndpointName", required: true)]
         public Input<string> PscEndpointName { get; set; } = null!;
 
-        /// <summary>
-        /// The service attachment this PSC connection connects to.
-        /// </summary>
         [Input("serviceAttachmentId")]
         public Input<string>? ServiceAttachmentId { get; set; }
 

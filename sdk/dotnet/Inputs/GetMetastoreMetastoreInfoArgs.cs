@@ -24,21 +24,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("defaultDataAccessConfigId")]
         public Input<string>? DefaultDataAccessConfigId { get; set; }
 
-        /// <summary>
-        /// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-        /// </summary>
         [Input("deltaSharingOrganizationName")]
         public Input<string>? DeltaSharingOrganizationName { get; set; }
 
-        /// <summary>
-        /// Used to set expiration duration in seconds on recipient data access tokens.
-        /// </summary>
         [Input("deltaSharingRecipientTokenLifetimeInSeconds")]
         public Input<int>? DeltaSharingRecipientTokenLifetimeInSeconds { get; set; }
 
-        /// <summary>
-        /// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-        /// </summary>
         [Input("deltaSharingScope")]
         public Input<string>? DeltaSharingScope { get; set; }
 
@@ -48,36 +39,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("globalMetastoreId")]
         public Input<string>? GlobalMetastoreId { get; set; }
 
-        /// <summary>
-        /// ID of the metastore
-        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
-        /// <summary>
-        /// Name of the metastore
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Username/groupname/sp application_id of the metastore owner.
-        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
         [Input("privilegeModelVersion")]
         public Input<string>? PrivilegeModelVersion { get; set; }
 
-        /// <summary>
-        /// Region of the metastore
-        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored.
-        /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
 

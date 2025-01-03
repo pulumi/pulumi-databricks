@@ -13,13 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsWorkspacesToken
     {
-        /// <summary>
-        /// Comment, that will appear in "User Settings / Access Tokens" page on Workspace UI. By default it's "Pulumi PAT".
-        /// </summary>
         public readonly string? Comment;
-        /// <summary>
-        /// Token expiry lifetime. By default its 2592000 (30 days).
-        /// </summary>
         public readonly int? LifetimeSeconds;
         public readonly string? TokenId;
         public readonly string? TokenValue;

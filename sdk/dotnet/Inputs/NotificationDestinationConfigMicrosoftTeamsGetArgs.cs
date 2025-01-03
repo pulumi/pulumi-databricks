@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("url")]
         private Input<string>? _url;
-
-        /// <summary>
-        /// The Microsoft Teams webhook URL.
-        /// </summary>
         public Input<string>? Url
         {
             get => _url;

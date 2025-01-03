@@ -4,39 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * This resource allows you to attach a role or databricks.InstanceProfile (AWS) to a databricks_service_principal.
- *
- * ## Example Usage
- *
- * Granting a service principal access to an instance profile
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const instanceProfile = new databricks.InstanceProfile("instance_profile", {instanceProfileArn: "my_instance_profile_arn"});
- * const _this = new databricks.ServicePrincipal("this", {displayName: "My Service Principal"});
- * const myServicePrincipalInstanceProfile = new databricks.ServicePrincipalRole("my_service_principal_instance_profile", {
- *     servicePrincipalId: _this.id,
- *     role: instanceProfile.id,
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are often used in the same context:
- *
- * * End to end workspace management guide.
- * * databricks.UserRole to attach role or databricks.InstanceProfile (AWS) to databricks_user.
- * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
- * * databricks.GroupMember to attach users and groups as group members.
- * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
- *
- * ## Import
- *
- * !> Importing this resource is not currently supported.
- */
 export class ServicePrincipalRole extends pulumi.CustomResource {
     /**
      * Get an existing ServicePrincipalRole resource's state with the given name, ID, and optional extra
@@ -65,13 +32,7 @@ export class ServicePrincipalRole extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServicePrincipalRole.__pulumiType;
     }
 
-    /**
-     * This is the id of the role or instance profile resource.
-     */
     public readonly role!: pulumi.Output<string>;
-    /**
-     * This is the id of the service principal resource.
-     */
     public readonly servicePrincipalId!: pulumi.Output<string>;
 
     /**
@@ -109,13 +70,7 @@ export class ServicePrincipalRole extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServicePrincipalRole resources.
  */
 export interface ServicePrincipalRoleState {
-    /**
-     * This is the id of the role or instance profile resource.
-     */
     role?: pulumi.Input<string>;
-    /**
-     * This is the id of the service principal resource.
-     */
     servicePrincipalId?: pulumi.Input<string>;
 }
 
@@ -123,12 +78,6 @@ export interface ServicePrincipalRoleState {
  * The set of arguments for constructing a ServicePrincipalRole resource.
  */
 export interface ServicePrincipalRoleArgs {
-    /**
-     * This is the id of the role or instance profile resource.
-     */
     role: pulumi.Input<string>;
-    /**
-     * This is the id of the service principal resource.
-     */
     servicePrincipalId: pulumi.Input<string>;
 }

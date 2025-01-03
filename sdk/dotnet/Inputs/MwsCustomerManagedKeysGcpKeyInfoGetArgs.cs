@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class MwsCustomerManagedKeysGcpKeyInfoGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The GCP KMS key's resource name.
-        /// </summary>
         [Input("kmsKeyId", required: true)]
         public Input<string> KmsKeyId { get; set; } = null!;
 

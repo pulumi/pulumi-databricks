@@ -11,84 +11,12 @@ namespace Pulumi.Databricks
 {
     public static class GetMlflowModels
     {
-        /// <summary>
-        /// &gt; **Note** This data source could be only used with workspace-level provider!
-        /// 
-        /// Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetMlflowModels.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["model"] = @this,
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetMlflowModelsResult> InvokeAsync(GetMlflowModelsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMlflowModelsResult>("databricks:index/getMlflowModels:getMlflowModels", args ?? new GetMlflowModelsArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// &gt; **Note** This data source could be only used with workspace-level provider!
-        /// 
-        /// Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetMlflowModels.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["model"] = @this,
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetMlflowModelsResult> Invoke(GetMlflowModelsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMlflowModelsResult>("databricks:index/getMlflowModels:getMlflowModels", args ?? new GetMlflowModelsInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// &gt; **Note** This data source could be only used with workspace-level provider!
-        /// 
-        /// Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetMlflowModels.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["model"] = @this,
-        ///     };
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetMlflowModelsResult> Invoke(GetMlflowModelsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMlflowModelsResult>("databricks:index/getMlflowModels:getMlflowModels", args ?? new GetMlflowModelsInvokeArgs(), options.WithDefaults());
     }
@@ -98,10 +26,6 @@ namespace Pulumi.Databricks
     {
         [Input("names")]
         private List<string>? _names;
-
-        /// <summary>
-        /// List of names of databricks_mlflow_model
-        /// </summary>
         public List<string> Names
         {
             get => _names ?? (_names = new List<string>());
@@ -118,10 +42,6 @@ namespace Pulumi.Databricks
     {
         [Input("names")]
         private InputList<string>? _names;
-
-        /// <summary>
-        /// List of names of databricks_mlflow_model
-        /// </summary>
         public InputList<string> Names
         {
             get => _names ?? (_names = new InputList<string>());
@@ -142,9 +62,6 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// List of names of databricks_mlflow_model
-        /// </summary>
         public readonly ImmutableArray<string> Names;
 
         [OutputConstructor]

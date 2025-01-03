@@ -12,26 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class StorageCredentialCloudflareApiTokenGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// R2 API token access key ID
-        /// </summary>
         [Input("accessKeyId", required: true)]
         public Input<string> AccessKeyId { get; set; } = null!;
 
-        /// <summary>
-        /// R2 account ID
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         [Input("secretAccessKey", required: true)]
         private Input<string>? _secretAccessKey;
-
-        /// <summary>
-        /// R2 API token secret access key
-        /// 
-        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
-        /// </summary>
         public Input<string>? SecretAccessKey
         {
             get => _secretAccessKey;

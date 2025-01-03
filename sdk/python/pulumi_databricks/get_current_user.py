@@ -114,9 +114,7 @@ class AwaitableGetCurrentUserResult(GetCurrentUserResult):
 
 def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentUserResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves information about User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -133,9 +131,7 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         workspace_url=pulumi.get(__ret__, 'workspace_url'))
 def get_current_user_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentUserResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves information about User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

@@ -4,43 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > **Deprecated** Please migrate to databricks_group_role.
- *
- * This resource allows you to attach databricks.InstanceProfile (AWS) to databricks_group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const instanceProfile = new databricks.InstanceProfile("instance_profile", {instanceProfileArn: "my_instance_profile_arn"});
- * const myGroup = new databricks.Group("my_group", {displayName: "my_group_name"});
- * const myGroupInstanceProfile = new databricks.GroupInstanceProfile("my_group_instance_profile", {
- *     groupId: myGroup.id,
- *     instanceProfileId: instanceProfile.id,
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are often used in the same context:
- *
- * * End to end workspace management guide.
- * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
- * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
- * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
- * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
- * * databricks.GroupMember to attach users and groups as group members.
- * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
- * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
- * * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
- *
- * ## Import
- *
- * !> Importing this resource is not currently supported.
- */
 export class GroupInstanceProfile extends pulumi.CustomResource {
     /**
      * Get an existing GroupInstanceProfile resource's state with the given name, ID, and optional extra
@@ -69,13 +32,7 @@ export class GroupInstanceProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === GroupInstanceProfile.__pulumiType;
     }
 
-    /**
-     * This is the id of the group resource.
-     */
     public readonly groupId!: pulumi.Output<string>;
-    /**
-     * This is the id of the instance profile resource.
-     */
     public readonly instanceProfileId!: pulumi.Output<string>;
 
     /**
@@ -113,13 +70,7 @@ export class GroupInstanceProfile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GroupInstanceProfile resources.
  */
 export interface GroupInstanceProfileState {
-    /**
-     * This is the id of the group resource.
-     */
     groupId?: pulumi.Input<string>;
-    /**
-     * This is the id of the instance profile resource.
-     */
     instanceProfileId?: pulumi.Input<string>;
 }
 
@@ -127,12 +78,6 @@ export interface GroupInstanceProfileState {
  * The set of arguments for constructing a GroupInstanceProfile resource.
  */
 export interface GroupInstanceProfileArgs {
-    /**
-     * This is the id of the group resource.
-     */
     groupId: pulumi.Input<string>;
-    /**
-     * This is the id of the instance profile resource.
-     */
     instanceProfileId: pulumi.Input<string>;
 }

@@ -4,19 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
- *
- * ## Import
- *
- * The workspace file resource can be imported using workspace file path
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file
- * ```
- */
 export class WorkspaceFile extends pulumi.CustomResource {
     /**
      * Get an existing WorkspaceFile resource's state with the given name, ID, and optional extra
@@ -45,30 +32,12 @@ export class WorkspaceFile extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkspaceFile.__pulumiType;
     }
 
-    /**
-     * The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
-     */
     public readonly contentBase64!: pulumi.Output<string | undefined>;
     public readonly md5!: pulumi.Output<string | undefined>;
-    /**
-     * Unique identifier for a workspace file
-     */
     public readonly objectId!: pulumi.Output<number>;
-    /**
-     * The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
-     */
     public readonly path!: pulumi.Output<string>;
-    /**
-     * Path to file on local filesystem. Conflicts with `contentBase64`.
-     */
     public readonly source!: pulumi.Output<string | undefined>;
-    /**
-     * Routable URL of the workspace file
-     */
     public /*out*/ readonly url!: pulumi.Output<string>;
-    /**
-     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-     */
     public /*out*/ readonly workspacePath!: pulumi.Output<string>;
 
     /**
@@ -113,30 +82,12 @@ export class WorkspaceFile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkspaceFile resources.
  */
 export interface WorkspaceFileState {
-    /**
-     * The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
-     */
     contentBase64?: pulumi.Input<string>;
     md5?: pulumi.Input<string>;
-    /**
-     * Unique identifier for a workspace file
-     */
     objectId?: pulumi.Input<number>;
-    /**
-     * The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
-     */
     path?: pulumi.Input<string>;
-    /**
-     * Path to file on local filesystem. Conflicts with `contentBase64`.
-     */
     source?: pulumi.Input<string>;
-    /**
-     * Routable URL of the workspace file
-     */
     url?: pulumi.Input<string>;
-    /**
-     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-     */
     workspacePath?: pulumi.Input<string>;
 }
 
@@ -144,21 +95,9 @@ export interface WorkspaceFileState {
  * The set of arguments for constructing a WorkspaceFile resource.
  */
 export interface WorkspaceFileArgs {
-    /**
-     * The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
-     */
     contentBase64?: pulumi.Input<string>;
     md5?: pulumi.Input<string>;
-    /**
-     * Unique identifier for a workspace file
-     */
     objectId?: pulumi.Input<number>;
-    /**
-     * The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
-     */
     path: pulumi.Input<string>;
-    /**
-     * Path to file on local filesystem. Conflicts with `contentBase64`.
-     */
     source?: pulumi.Input<string>;
 }

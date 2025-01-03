@@ -12,18 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetTableTableInfoColumnArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Free-form text description
-        /// </summary>
         [Input("comment")]
         public string? Comment { get; set; }
 
         [Input("mask")]
         public Inputs.GetTableTableInfoColumnMaskArgs? Mask { get; set; }
 
-        /// <summary>
-        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 

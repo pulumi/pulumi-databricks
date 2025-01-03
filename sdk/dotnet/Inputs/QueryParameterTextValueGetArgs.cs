@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class QueryParameterTextValueGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// actual text value.
-        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

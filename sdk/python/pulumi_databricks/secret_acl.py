@@ -24,9 +24,6 @@ class SecretAclArgs:
                  scope: pulumi.Input[str]):
         """
         The set of arguments for constructing a SecretAcl resource.
-        :param pulumi.Input[str] permission: `READ`, `WRITE` or `MANAGE`.
-        :param pulumi.Input[str] principal: principal's identifier. It can be:
-        :param pulumi.Input[str] scope: name of the scope
         """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "principal", principal)
@@ -35,9 +32,6 @@ class SecretAclArgs:
     @property
     @pulumi.getter
     def permission(self) -> pulumi.Input[str]:
-        """
-        `READ`, `WRITE` or `MANAGE`.
-        """
         return pulumi.get(self, "permission")
 
     @permission.setter
@@ -47,9 +41,6 @@ class SecretAclArgs:
     @property
     @pulumi.getter
     def principal(self) -> pulumi.Input[str]:
-        """
-        principal's identifier. It can be:
-        """
         return pulumi.get(self, "principal")
 
     @principal.setter
@@ -59,9 +50,6 @@ class SecretAclArgs:
     @property
     @pulumi.getter
     def scope(self) -> pulumi.Input[str]:
-        """
-        name of the scope
-        """
         return pulumi.get(self, "scope")
 
     @scope.setter
@@ -77,9 +65,6 @@ class _SecretAclState:
                  scope: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecretAcl resources.
-        :param pulumi.Input[str] permission: `READ`, `WRITE` or `MANAGE`.
-        :param pulumi.Input[str] principal: principal's identifier. It can be:
-        :param pulumi.Input[str] scope: name of the scope
         """
         if permission is not None:
             pulumi.set(__self__, "permission", permission)
@@ -91,9 +76,6 @@ class _SecretAclState:
     @property
     @pulumi.getter
     def permission(self) -> Optional[pulumi.Input[str]]:
-        """
-        `READ`, `WRITE` or `MANAGE`.
-        """
         return pulumi.get(self, "permission")
 
     @permission.setter
@@ -103,9 +85,6 @@ class _SecretAclState:
     @property
     @pulumi.getter
     def principal(self) -> Optional[pulumi.Input[str]]:
-        """
-        principal's identifier. It can be:
-        """
         return pulumi.get(self, "principal")
 
     @principal.setter
@@ -115,9 +94,6 @@ class _SecretAclState:
     @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
-        """
-        name of the scope
-        """
         return pulumi.get(self, "scope")
 
     @scope.setter
@@ -135,54 +111,9 @@ class SecretAcl(pulumi.CustomResource):
                  scope: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create or overwrite the ACL associated with the given principal (user or group) on the specified databricks_secret_scope. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
-
-        ## Example Usage
-
-        This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        ds = databricks.Group("ds", display_name="data-scientists")
-        app = databricks.SecretScope("app", name="app-secret-scope")
-        my_secret_acl = databricks.SecretAcl("my_secret_acl",
-            principal=ds.display_name,
-            permission="READ",
-            scope=app.name)
-        publishing_api = databricks.Secret("publishing_api",
-            key="publishing_api",
-            string_value=example["value"],
-            scope=app.name)
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-        * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-        * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-        * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-
-        ## Import
-
-        The resource secret acl can be imported using `scopeName|||principalName` combination.
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`
-        ```
-
+        Create a SecretAcl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] permission: `READ`, `WRITE` or `MANAGE`.
-        :param pulumi.Input[str] principal: principal's identifier. It can be:
-        :param pulumi.Input[str] scope: name of the scope
         """
         ...
     @overload
@@ -191,49 +122,7 @@ class SecretAcl(pulumi.CustomResource):
                  args: SecretAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create or overwrite the ACL associated with the given principal (user or group) on the specified databricks_secret_scope. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
-
-        ## Example Usage
-
-        This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        ds = databricks.Group("ds", display_name="data-scientists")
-        app = databricks.SecretScope("app", name="app-secret-scope")
-        my_secret_acl = databricks.SecretAcl("my_secret_acl",
-            principal=ds.display_name,
-            permission="READ",
-            scope=app.name)
-        publishing_api = databricks.Secret("publishing_api",
-            key="publishing_api",
-            string_value=example["value"],
-            scope=app.name)
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-        * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-        * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-        * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-
-        ## Import
-
-        The resource secret acl can be imported using `scopeName|||principalName` combination.
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`
-        ```
-
+        Create a SecretAcl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SecretAclArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -290,9 +179,6 @@ class SecretAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] permission: `READ`, `WRITE` or `MANAGE`.
-        :param pulumi.Input[str] principal: principal's identifier. It can be:
-        :param pulumi.Input[str] scope: name of the scope
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -306,24 +192,15 @@ class SecretAcl(pulumi.CustomResource):
     @property
     @pulumi.getter
     def permission(self) -> pulumi.Output[str]:
-        """
-        `READ`, `WRITE` or `MANAGE`.
-        """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter
     def principal(self) -> pulumi.Output[str]:
-        """
-        principal's identifier. It can be:
-        """
         return pulumi.get(self, "principal")
 
     @property
     @pulumi.getter
     def scope(self) -> pulumi.Output[str]:
-        """
-        name of the scope
-        """
         return pulumi.get(self, "scope")
 

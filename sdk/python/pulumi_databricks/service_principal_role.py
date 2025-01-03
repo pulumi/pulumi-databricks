@@ -23,8 +23,6 @@ class ServicePrincipalRoleArgs:
                  service_principal_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a ServicePrincipalRole resource.
-        :param pulumi.Input[str] role: This is the id of the role or instance profile resource.
-        :param pulumi.Input[str] service_principal_id: This is the id of the service principal resource.
         """
         pulumi.set(__self__, "role", role)
         pulumi.set(__self__, "service_principal_id", service_principal_id)
@@ -32,9 +30,6 @@ class ServicePrincipalRoleArgs:
     @property
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
-        """
-        This is the id of the role or instance profile resource.
-        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -44,9 +39,6 @@ class ServicePrincipalRoleArgs:
     @property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Input[str]:
-        """
-        This is the id of the service principal resource.
-        """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
@@ -61,8 +53,6 @@ class _ServicePrincipalRoleState:
                  service_principal_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalRole resources.
-        :param pulumi.Input[str] role: This is the id of the role or instance profile resource.
-        :param pulumi.Input[str] service_principal_id: This is the id of the service principal resource.
         """
         if role is not None:
             pulumi.set(__self__, "role", role)
@@ -72,9 +62,6 @@ class _ServicePrincipalRoleState:
     @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
-        """
-        This is the id of the role or instance profile resource.
-        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -84,9 +71,6 @@ class _ServicePrincipalRoleState:
     @property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        This is the id of the service principal resource.
-        """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
@@ -103,41 +87,9 @@ class ServicePrincipalRole(pulumi.CustomResource):
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to attach a role or InstanceProfile (AWS) to a databricks_service_principal.
-
-        ## Example Usage
-
-        Granting a service principal access to an instance profile
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
-        this = databricks.ServicePrincipal("this", display_name="My Service Principal")
-        my_service_principal_instance_profile = databricks.ServicePrincipalRole("my_service_principal_instance_profile",
-            service_principal_id=this.id,
-            role=instance_profile.id)
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * UserRole to attach role or InstanceProfile (AWS) to databricks_user.
-        * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-        * GroupMember to attach users and groups as group members.
-        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-
-        ## Import
-
-        !> Importing this resource is not currently supported.
-
+        Create a ServicePrincipalRole resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] role: This is the id of the role or instance profile resource.
-        :param pulumi.Input[str] service_principal_id: This is the id of the service principal resource.
         """
         ...
     @overload
@@ -146,37 +98,7 @@ class ServicePrincipalRole(pulumi.CustomResource):
                  args: ServicePrincipalRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to attach a role or InstanceProfile (AWS) to a databricks_service_principal.
-
-        ## Example Usage
-
-        Granting a service principal access to an instance profile
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
-        this = databricks.ServicePrincipal("this", display_name="My Service Principal")
-        my_service_principal_instance_profile = databricks.ServicePrincipalRole("my_service_principal_instance_profile",
-            service_principal_id=this.id,
-            role=instance_profile.id)
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * UserRole to attach role or InstanceProfile (AWS) to databricks_user.
-        * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-        * GroupMember to attach users and groups as group members.
-        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-
-        ## Import
-
-        !> Importing this resource is not currently supported.
-
+        Create a ServicePrincipalRole resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ServicePrincipalRoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -228,8 +150,6 @@ class ServicePrincipalRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] role: This is the id of the role or instance profile resource.
-        :param pulumi.Input[str] service_principal_id: This is the id of the service principal resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -242,16 +162,10 @@ class ServicePrincipalRole(pulumi.CustomResource):
     @property
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
-        """
-        This is the id of the role or instance profile resource.
-        """
         return pulumi.get(self, "role")
 
     @property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Output[str]:
-        """
-        This is the id of the service principal resource.
-        """
         return pulumi.get(self, "service_principal_id")
 

@@ -12,24 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskSqlTaskAlertArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (String) identifier of the Databricks Alert (databricks_alert).
-        /// </summary>
         [Input("alertId", required: true)]
         public Input<string> AlertId { get; set; } = null!;
 
-        /// <summary>
-        /// flag that specifies if subscriptions are paused or not.
-        /// </summary>
         [Input("pauseSubscriptions")]
         public Input<bool>? PauseSubscriptions { get; set; }
 
         [Input("subscriptions")]
         private InputList<Inputs.JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>? _subscriptions;
-
-        /// <summary>
-        /// a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
-        /// </summary>
         public InputList<Inputs.JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs> Subscriptions
         {
             get => _subscriptions ?? (_subscriptions = new InputList<Inputs.JobTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>());

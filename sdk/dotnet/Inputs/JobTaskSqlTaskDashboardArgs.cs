@@ -12,30 +12,17 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskSqlTaskDashboardArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// string specifying a custom subject of email sent.
-        /// </summary>
         [Input("customSubject")]
         public Input<string>? CustomSubject { get; set; }
 
-        /// <summary>
-        /// (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
-        /// </summary>
         [Input("dashboardId", required: true)]
         public Input<string> DashboardId { get; set; } = null!;
 
-        /// <summary>
-        /// flag that specifies if subscriptions are paused or not.
-        /// </summary>
         [Input("pauseSubscriptions")]
         public Input<bool>? PauseSubscriptions { get; set; }
 
         [Input("subscriptions")]
         private InputList<Inputs.JobTaskSqlTaskDashboardSubscriptionArgs>? _subscriptions;
-
-        /// <summary>
-        /// a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
-        /// </summary>
         public InputList<Inputs.JobTaskSqlTaskDashboardSubscriptionArgs> Subscriptions
         {
             get => _subscriptions ?? (_subscriptions = new InputList<Inputs.JobTaskSqlTaskDashboardSubscriptionArgs>());

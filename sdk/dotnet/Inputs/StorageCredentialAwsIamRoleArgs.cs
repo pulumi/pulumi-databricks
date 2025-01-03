@@ -15,11 +15,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
-        /// <summary>
-        /// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-        /// 
-        /// `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
-        /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 

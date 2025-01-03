@@ -18,27 +18,17 @@ namespace Pulumi.Databricks.Inputs
         [Input("browseOnly")]
         public bool? BrowseOnly { get; set; }
 
-        /// <summary>
-        /// Name of parent catalog.
-        /// </summary>
         [Input("catalogName")]
         public string? CatalogName { get; set; }
 
         [Input("columns")]
         private List<Inputs.GetTableTableInfoColumnArgs>? _columns;
-
-        /// <summary>
-        /// Array of ColumnInfo objects of the table's columns
-        /// </summary>
         public List<Inputs.GetTableTableInfoColumnArgs> Columns
         {
             get => _columns ?? (_columns = new List<Inputs.GetTableTableInfoColumnArgs>());
             set => _columns = value;
         }
 
-        /// <summary>
-        /// Free-form text description
-        /// </summary>
         [Input("comment")]
         public string? Comment { get; set; }
 
@@ -51,9 +41,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("dataAccessConfigurationId")]
         public string? DataAccessConfigurationId { get; set; }
 
-        /// <summary>
-        /// Table format, e.g. DELTA, CSV, JSON
-        /// </summary>
         [Input("dataSourceFormat")]
         public string? DataSourceFormat { get; set; }
 
@@ -78,15 +65,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("metastoreId")]
         public string? MetastoreId { get; set; }
 
-        /// <summary>
-        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
-        /// <summary>
-        /// Current owner of the table
-        /// </summary>
         [Input("owner")]
         public string? Owner { get; set; }
 
@@ -104,9 +85,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("rowFilter")]
         public Inputs.GetTableTableInfoRowFilterArgs? RowFilter { get; set; }
 
-        /// <summary>
-        /// Name of parent schema relative to its parent catalog.
-        /// </summary>
         [Input("schemaName")]
         public string? SchemaName { get; set; }
 
@@ -130,9 +108,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("tableId")]
         public string? TableId { get; set; }
 
-        /// <summary>
-        /// Table type, e.g. MANAGED, EXTERNAL, VIEW
-        /// </summary>
         [Input("tableType")]
         public string? TableType { get; set; }
 
@@ -142,15 +117,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("updatedBy")]
         public string? UpdatedBy { get; set; }
 
-        /// <summary>
-        /// View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
-        /// </summary>
         [Input("viewDefinition")]
         public string? ViewDefinition { get; set; }
 
-        /// <summary>
-        /// View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
-        /// </summary>
         [Input("viewDependencies")]
         public Inputs.GetTableTableInfoViewDependenciesArgs? ViewDependencies { get; set; }
 

@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("cidrBlocks")]
         private InputList<string>? _cidrBlocks;
-
-        /// <summary>
-        /// list of IP CIDR blocks.
-        /// </summary>
         public InputList<string> CidrBlocks
         {
             get => _cidrBlocks ?? (_cidrBlocks = new InputList<string>());

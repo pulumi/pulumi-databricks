@@ -6,17 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Import
- *
- * This resource can be imported using query ID:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/query:Query this <query-id>
- * ```
- */
 export class Query extends pulumi.CustomResource {
     /**
      * Get an existing Query resource's state with the given name, ID, and optional extra
@@ -45,69 +34,21 @@ export class Query extends pulumi.CustomResource {
         return obj['__pulumiType'] === Query.__pulumiType;
     }
 
-    /**
-     * Whether to apply a 1000 row limit to the query result.
-     */
     public readonly applyAutoLimit!: pulumi.Output<boolean | undefined>;
-    /**
-     * Name of the catalog where this query will be executed.
-     */
     public readonly catalog!: pulumi.Output<string | undefined>;
-    /**
-     * The timestamp string indicating when the query was created.
-     */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
-    /**
-     * General description that conveys additional information about this query such as usage notes.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Name of the query.
-     */
     public readonly displayName!: pulumi.Output<string>;
-    /**
-     * Username of the user who last saved changes to this query.
-     */
     public /*out*/ readonly lastModifierUserName!: pulumi.Output<string>;
-    /**
-     * The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-     */
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
-    /**
-     * Query owner's username.
-     */
     public readonly ownerUserName!: pulumi.Output<string | undefined>;
-    /**
-     * Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-     */
     public readonly parameters!: pulumi.Output<outputs.QueryParameter[] | undefined>;
-    /**
-     * The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-     */
     public readonly parentPath!: pulumi.Output<string | undefined>;
-    /**
-     * Text of SQL query.
-     */
     public readonly queryText!: pulumi.Output<string>;
-    /**
-     * Sets the "Run as" role for the object.
-     */
     public readonly runAsMode!: pulumi.Output<string | undefined>;
-    /**
-     * Name of the schema where this query will be executed.
-     */
     public readonly schema!: pulumi.Output<string | undefined>;
-    /**
-     * Tags that will be added to the query.
-     */
     public readonly tags!: pulumi.Output<string[] | undefined>;
-    /**
-     * The timestamp string indicating when the query was updated.
-     */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * ID of a SQL warehouse which will be used to execute this query.
-     */
     public readonly warehouseId!: pulumi.Output<string>;
 
     /**
@@ -176,69 +117,21 @@ export class Query extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Query resources.
  */
 export interface QueryState {
-    /**
-     * Whether to apply a 1000 row limit to the query result.
-     */
     applyAutoLimit?: pulumi.Input<boolean>;
-    /**
-     * Name of the catalog where this query will be executed.
-     */
     catalog?: pulumi.Input<string>;
-    /**
-     * The timestamp string indicating when the query was created.
-     */
     createTime?: pulumi.Input<string>;
-    /**
-     * General description that conveys additional information about this query such as usage notes.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Name of the query.
-     */
     displayName?: pulumi.Input<string>;
-    /**
-     * Username of the user who last saved changes to this query.
-     */
     lastModifierUserName?: pulumi.Input<string>;
-    /**
-     * The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-     */
     lifecycleState?: pulumi.Input<string>;
-    /**
-     * Query owner's username.
-     */
     ownerUserName?: pulumi.Input<string>;
-    /**
-     * Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-     */
     parameters?: pulumi.Input<pulumi.Input<inputs.QueryParameter>[]>;
-    /**
-     * The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-     */
     parentPath?: pulumi.Input<string>;
-    /**
-     * Text of SQL query.
-     */
     queryText?: pulumi.Input<string>;
-    /**
-     * Sets the "Run as" role for the object.
-     */
     runAsMode?: pulumi.Input<string>;
-    /**
-     * Name of the schema where this query will be executed.
-     */
     schema?: pulumi.Input<string>;
-    /**
-     * Tags that will be added to the query.
-     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The timestamp string indicating when the query was updated.
-     */
     updateTime?: pulumi.Input<string>;
-    /**
-     * ID of a SQL warehouse which will be used to execute this query.
-     */
     warehouseId?: pulumi.Input<string>;
 }
 
@@ -246,52 +139,16 @@ export interface QueryState {
  * The set of arguments for constructing a Query resource.
  */
 export interface QueryArgs {
-    /**
-     * Whether to apply a 1000 row limit to the query result.
-     */
     applyAutoLimit?: pulumi.Input<boolean>;
-    /**
-     * Name of the catalog where this query will be executed.
-     */
     catalog?: pulumi.Input<string>;
-    /**
-     * General description that conveys additional information about this query such as usage notes.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Name of the query.
-     */
     displayName: pulumi.Input<string>;
-    /**
-     * Query owner's username.
-     */
     ownerUserName?: pulumi.Input<string>;
-    /**
-     * Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-     */
     parameters?: pulumi.Input<pulumi.Input<inputs.QueryParameter>[]>;
-    /**
-     * The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-     */
     parentPath?: pulumi.Input<string>;
-    /**
-     * Text of SQL query.
-     */
     queryText: pulumi.Input<string>;
-    /**
-     * Sets the "Run as" role for the object.
-     */
     runAsMode?: pulumi.Input<string>;
-    /**
-     * Name of the schema where this query will be executed.
-     */
     schema?: pulumi.Input<string>;
-    /**
-     * Tags that will be added to the query.
-     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * ID of a SQL warehouse which will be used to execute this query.
-     */
     warehouseId: pulumi.Input<string>;
 }

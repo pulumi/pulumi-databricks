@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule
     {
-        /// <summary>
-        /// list of IP CIDR blocks.
-        /// </summary>
         public readonly ImmutableArray<string> CidrBlocks;
 
         [OutputConstructor]

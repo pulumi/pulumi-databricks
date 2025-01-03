@@ -25,10 +25,6 @@ class IpAccessListArgs:
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a IpAccessList resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: A string list of IP addresses and CIDR ranges.
-        :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
-        :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK".
-        :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
         """
         pulumi.set(__self__, "ip_addresses", ip_addresses)
         pulumi.set(__self__, "label", label)
@@ -39,9 +35,6 @@ class IpAccessListArgs:
     @property
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        A string list of IP addresses and CIDR ranges.
-        """
         return pulumi.get(self, "ip_addresses")
 
     @ip_addresses.setter
@@ -51,9 +44,6 @@ class IpAccessListArgs:
     @property
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
-        """
-        This is the display name for the given IP ACL List.
-        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -63,9 +53,6 @@ class IpAccessListArgs:
     @property
     @pulumi.getter(name="listType")
     def list_type(self) -> pulumi.Input[str]:
-        """
-        Can only be "ALLOW" or "BLOCK".
-        """
         return pulumi.get(self, "list_type")
 
     @list_type.setter
@@ -75,9 +62,6 @@ class IpAccessListArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -94,10 +78,6 @@ class _IpAccessListState:
                  list_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IpAccessList resources.
-        :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: A string list of IP addresses and CIDR ranges.
-        :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
-        :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK".
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -111,9 +91,6 @@ class _IpAccessListState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -123,9 +100,6 @@ class _IpAccessListState:
     @property
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A string list of IP addresses and CIDR ranges.
-        """
         return pulumi.get(self, "ip_addresses")
 
     @ip_addresses.setter
@@ -135,9 +109,6 @@ class _IpAccessListState:
     @property
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
-        """
-        This is the display name for the given IP ACL List.
-        """
         return pulumi.get(self, "label")
 
     @label.setter
@@ -147,9 +118,6 @@ class _IpAccessListState:
     @property
     @pulumi.getter(name="listType")
     def list_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Can only be "ALLOW" or "BLOCK".
-        """
         return pulumi.get(self, "list_type")
 
     @list_type.setter
@@ -168,57 +136,9 @@ class IpAccessList(pulumi.CustomResource):
                  list_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Security-conscious enterprises that use cloud SaaS applications need to restrict access to their own employees. Authentication helps to prove user identity, but that does not enforce network location of the users. Accessing a cloud service from an unsecured network can pose security risks to an enterprise, especially when the user may have authorized access to sensitive or personal data. Enterprise network perimeters apply security policies and limit access to external services (for example, firewalls, proxies, DLP, and logging), so access beyond these controls are assumed to be untrusted. Please see [IP Access List](https://docs.databricks.com/security/network/ip-access-list.html) for full feature documentation.
-
-        > The total number of IP addresses and CIDR scopes provided across all ACL Lists in a workspace can not exceed 1000.  Refer to the docs above for specifics.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.WorkspaceConf("this", custom_config={
-            "enableIpAccessLists": "true",
-        })
-        allowed_list = databricks.IpAccessList("allowed-list",
-            label="allow_in",
-            list_type="ALLOW",
-            ip_addresses=[
-                "1.1.1.1",
-                "1.2.3.0/24",
-                "1.2.5.0/24",
-            ],
-            opts = pulumi.ResourceOptions(depends_on=[this]))
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
-        * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
-        * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
-        * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
-
-        ## Import
-
-        The databricks_ip_access_list can be imported using id:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
-        ```
-
+        Create a IpAccessList resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: A string list of IP addresses and CIDR ranges.
-        :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
-        :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK".
         """
         ...
     @overload
@@ -227,51 +147,7 @@ class IpAccessList(pulumi.CustomResource):
                  args: IpAccessListArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Security-conscious enterprises that use cloud SaaS applications need to restrict access to their own employees. Authentication helps to prove user identity, but that does not enforce network location of the users. Accessing a cloud service from an unsecured network can pose security risks to an enterprise, especially when the user may have authorized access to sensitive or personal data. Enterprise network perimeters apply security policies and limit access to external services (for example, firewalls, proxies, DLP, and logging), so access beyond these controls are assumed to be untrusted. Please see [IP Access List](https://docs.databricks.com/security/network/ip-access-list.html) for full feature documentation.
-
-        > The total number of IP addresses and CIDR scopes provided across all ACL Lists in a workspace can not exceed 1000.  Refer to the docs above for specifics.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.WorkspaceConf("this", custom_config={
-            "enableIpAccessLists": "true",
-        })
-        allowed_list = databricks.IpAccessList("allowed-list",
-            label="allow_in",
-            list_type="ALLOW",
-            ip_addresses=[
-                "1.1.1.1",
-                "1.2.3.0/24",
-                "1.2.5.0/24",
-            ],
-            opts = pulumi.ResourceOptions(depends_on=[this]))
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
-        * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
-        * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
-        * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
-
-        ## Import
-
-        The databricks_ip_access_list can be imported using id:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
-        ```
-
+        Create a IpAccessList resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IpAccessListArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -331,10 +207,6 @@ class IpAccessList(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: A string list of IP addresses and CIDR ranges.
-        :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
-        :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -349,32 +221,20 @@ class IpAccessList(pulumi.CustomResource):
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A string list of IP addresses and CIDR ranges.
-        """
         return pulumi.get(self, "ip_addresses")
 
     @property
     @pulumi.getter
     def label(self) -> pulumi.Output[str]:
-        """
-        This is the display name for the given IP ACL List.
-        """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter(name="listType")
     def list_type(self) -> pulumi.Output[str]:
-        """
-        Can only be "ALLOW" or "BLOCK".
-        """
         return pulumi.get(self, "list_type")
 

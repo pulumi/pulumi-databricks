@@ -12,36 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobRunAsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
-        /// 
-        /// Example:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = new Databricks.Job("this", new()
-        ///     {
-        ///         RunAs = new Databricks.Inputs.JobRunAsArgs
-        ///         {
-        ///             ServicePrincipalName = "8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         [Input("servicePrincipalName")]
         public Input<string>? ServicePrincipalName { get; set; }
 
-        /// <summary>
-        /// The email of an active workspace user. Non-admin users can only set this field to their own email.
-        /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
 

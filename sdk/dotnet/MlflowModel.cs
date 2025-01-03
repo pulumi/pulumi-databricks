@@ -9,91 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
-    /// 
-    /// &gt; This documentation covers the Workspace Model Registry. Databricks recommends using Models in Unity Catalog. Models in Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new Databricks.MlflowModel("test", new()
-    ///     {
-    ///         Name = "My MLflow Model",
-    ///         Description = "My MLflow model description",
-    ///         Tags = new[]
-    ///         {
-    ///             new Databricks.Inputs.MlflowModelTagArgs
-    ///             {
-    ///                 Key = "key1",
-    ///                 Value = "value1",
-    ///             },
-    ///             new Databricks.Inputs.MlflowModelTagArgs
-    ///             {
-    ///                 Key = "key2",
-    ///                 Value = "value2",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Access Control
-    /// 
-    /// * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, *Manage Staging Versions*, *Manage Production Versions*, and *Manage* individual models.
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are often used in the same context:
-    /// 
-    /// * databricks.RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
-    /// * End to end workspace management guide.
-    /// * databricks.ModelServing to serve this model on a Databricks serving endpoint.
-    /// * databricks.Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
-    /// * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
-    /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-    /// * databricks.Notebook data to export a notebook from Databricks Workspace.
-    /// * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-    /// 
-    /// ## Import
-    /// 
-    /// The model resource can be imported using the name
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/mlflowModel:MlflowModel this &lt;name&gt;
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/mlflowModel:MlflowModel")]
     public partial class MlflowModel : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The description of the MLflow model.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of MLflow model. Change of name triggers new resource.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("registeredModelId")]
         public Output<string> RegisteredModelId { get; private set; } = null!;
 
-        /// <summary>
-        /// Tags for the MLflow model.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.MlflowModelTag>> Tags { get; private set; } = null!;
 
@@ -143,24 +70,14 @@ namespace Pulumi.Databricks
 
     public sealed class MlflowModelArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the MLflow model.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Name of MLflow model. Change of name triggers new resource.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.MlflowModelTagArgs>? _tags;
-
-        /// <summary>
-        /// Tags for the MLflow model.
-        /// </summary>
         public InputList<Inputs.MlflowModelTagArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.MlflowModelTagArgs>());
@@ -175,15 +92,9 @@ namespace Pulumi.Databricks
 
     public sealed class MlflowModelState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The description of the MLflow model.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Name of MLflow model. Change of name triggers new resource.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -192,10 +103,6 @@ namespace Pulumi.Databricks
 
         [Input("tags")]
         private InputList<Inputs.MlflowModelTagGetArgs>? _tags;
-
-        /// <summary>
-        /// Tags for the MLflow model.
-        /// </summary>
         public InputList<Inputs.MlflowModelTagGetArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.MlflowModelTagGetArgs>());

@@ -13,19 +13,19 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineRestartWindow
     {
-        public readonly string? DaysOfWeek;
+        public readonly ImmutableArray<string> DaysOfWeeks;
         public readonly int StartHour;
         public readonly string? TimeZoneId;
 
         [OutputConstructor]
         private PipelineRestartWindow(
-            string? daysOfWeek,
+            ImmutableArray<string> daysOfWeeks,
 
             int startHour,
 
             string? timeZoneId)
         {
-            DaysOfWeek = daysOfWeek;
+            DaysOfWeeks = daysOfWeeks;
             StartHour = startHour;
             TimeZoneId = timeZoneId;
         }

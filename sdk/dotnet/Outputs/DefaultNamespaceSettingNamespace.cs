@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class DefaultNamespaceSettingNamespace
     {
-        /// <summary>
-        /// The value for the setting.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

@@ -4,40 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > **Deprecated** Please rewrite with databricks_user_role. This resource will be removed in v0.5.x
- *
- * This resource allows you to attach databricks.InstanceProfile (AWS) to databricks_user.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const instanceProfile = new databricks.InstanceProfile("instance_profile", {instanceProfileArn: "my_instance_profile_arn"});
- * const myUser = new databricks.User("my_user", {userName: "me@example.com"});
- * const myUserInstanceProfile = new databricks.UserInstanceProfile("my_user_instance_profile", {
- *     userId: myUser.id,
- *     instanceProfileId: instanceProfile.id,
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are often used in the same context:
- *
- * * End to end workspace management guide.
- * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
- * * databricks.GroupMember to attach users and groups as group members.
- * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
- * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
- * * databricks.User data to retrieve information about databricks_user.
- *
- * ## Import
- *
- * !> Importing this resource is not currently supported.
- */
 export class UserInstanceProfile extends pulumi.CustomResource {
     /**
      * Get an existing UserInstanceProfile resource's state with the given name, ID, and optional extra
@@ -66,13 +32,7 @@ export class UserInstanceProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === UserInstanceProfile.__pulumiType;
     }
 
-    /**
-     * This is the id of the instance profile resource.
-     */
     public readonly instanceProfileId!: pulumi.Output<string>;
-    /**
-     * This is the id of the user resource.
-     */
     public readonly userId!: pulumi.Output<string>;
 
     /**
@@ -110,13 +70,7 @@ export class UserInstanceProfile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UserInstanceProfile resources.
  */
 export interface UserInstanceProfileState {
-    /**
-     * This is the id of the instance profile resource.
-     */
     instanceProfileId?: pulumi.Input<string>;
-    /**
-     * This is the id of the user resource.
-     */
     userId?: pulumi.Input<string>;
 }
 
@@ -124,12 +78,6 @@ export interface UserInstanceProfileState {
  * The set of arguments for constructing a UserInstanceProfile resource.
  */
 export interface UserInstanceProfileArgs {
-    /**
-     * This is the id of the instance profile resource.
-     */
     instanceProfileId: pulumi.Input<string>;
-    /**
-     * This is the id of the user resource.
-     */
     userId: pulumi.Input<string>;
 }

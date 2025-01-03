@@ -30,12 +30,6 @@ class RepoArgs:
                  tag: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Repo resource.
-        :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
-        :param pulumi.Input[str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
-        :param pulumi.Input[str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
-        :param pulumi.Input[str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-        :param pulumi.Input[str] path: path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
-        :param pulumi.Input[str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
         """
         pulumi.set(__self__, "url", url)
         if branch is not None:
@@ -54,9 +48,6 @@ class RepoArgs:
     @property
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
-        """
-        The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
-        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -66,9 +57,6 @@ class RepoArgs:
     @property
     @pulumi.getter
     def branch(self) -> Optional[pulumi.Input[str]]:
-        """
-        name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
-        """
         return pulumi.get(self, "branch")
 
     @branch.setter
@@ -78,9 +66,6 @@ class RepoArgs:
     @property
     @pulumi.getter(name="commitHash")
     def commit_hash(self) -> Optional[pulumi.Input[str]]:
-        """
-        Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
-        """
         return pulumi.get(self, "commit_hash")
 
     @commit_hash.setter
@@ -90,9 +75,6 @@ class RepoArgs:
     @property
     @pulumi.getter(name="gitProvider")
     def git_provider(self) -> Optional[pulumi.Input[str]]:
-        """
-        case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-        """
         return pulumi.get(self, "git_provider")
 
     @git_provider.setter
@@ -102,9 +84,6 @@ class RepoArgs:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
-        """
-        path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
-        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -123,9 +102,6 @@ class RepoArgs:
     @property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[str]]:
-        """
-        name of the tag for initial checkout.  Conflicts with `branch`.
-        """
         return pulumi.get(self, "tag")
 
     @tag.setter
@@ -146,13 +122,6 @@ class _RepoState:
                  workspace_path: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Repo resources.
-        :param pulumi.Input[str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
-        :param pulumi.Input[str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
-        :param pulumi.Input[str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-        :param pulumi.Input[str] path: path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
-        :param pulumi.Input[str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
-        :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
-        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
@@ -174,9 +143,6 @@ class _RepoState:
     @property
     @pulumi.getter
     def branch(self) -> Optional[pulumi.Input[str]]:
-        """
-        name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
-        """
         return pulumi.get(self, "branch")
 
     @branch.setter
@@ -186,9 +152,6 @@ class _RepoState:
     @property
     @pulumi.getter(name="commitHash")
     def commit_hash(self) -> Optional[pulumi.Input[str]]:
-        """
-        Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
-        """
         return pulumi.get(self, "commit_hash")
 
     @commit_hash.setter
@@ -198,9 +161,6 @@ class _RepoState:
     @property
     @pulumi.getter(name="gitProvider")
     def git_provider(self) -> Optional[pulumi.Input[str]]:
-        """
-        case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-        """
         return pulumi.get(self, "git_provider")
 
     @git_provider.setter
@@ -210,9 +170,6 @@ class _RepoState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
-        """
-        path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
-        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -231,9 +188,6 @@ class _RepoState:
     @property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[str]]:
-        """
-        name of the tag for initial checkout.  Conflicts with `branch`.
-        """
         return pulumi.get(self, "tag")
 
     @tag.setter
@@ -243,9 +197,6 @@ class _RepoState:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
-        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -255,9 +206,6 @@ class _RepoState:
     @property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-        """
         return pulumi.get(self, "workspace_path")
 
     @workspace_path.setter
@@ -279,56 +227,9 @@ class Repo(pulumi.CustomResource):
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to manage [Databricks Git folders](https://docs.databricks.com/en/repos/index.html) (formerly known as Databricks Repos).
-
-        > To create a Git folder from a private repository you need to configure Git token as described in the [documentation](https://docs.databricks.com/en/repos/index.html#configure-your-git-integration-with-databricks).  To set this token you can use GitCredential resource.
-
-        ## Example Usage
-
-        You can declare Pulumi-managed Git folder by specifying `url` attribute of Git repository. In addition to that you may need to specify `git_provider` attribute if Git provider doesn't belong to cloud Git providers (Github, GitLab, ...).  If `path` attribute isn't provided, then Git folder will be created in the default location:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        nutter_in_home = databricks.Repo("nutter_in_home", url="https://github.com/user/demo.git")
-        ```
-
-        ## Access Control
-
-        * Permissions can control which groups or individual users can access repos.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * GitCredential to manage Git credentials.
-        * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
-        * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-        * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-        * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-        * WorkspaceConf to manage workspace configuration for expert usage.
-
-        ## Import
-
-        The resource can be imported using the Git folder ID (obtained via UI or using API)
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/repo:Repo this repo_id
-        ```
-
+        Create a Repo resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
-        :param pulumi.Input[str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
-        :param pulumi.Input[str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-        :param pulumi.Input[str] path: path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
-        :param pulumi.Input[str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
-        :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
         """
         ...
     @overload
@@ -337,48 +238,7 @@ class Repo(pulumi.CustomResource):
                  args: RepoArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to manage [Databricks Git folders](https://docs.databricks.com/en/repos/index.html) (formerly known as Databricks Repos).
-
-        > To create a Git folder from a private repository you need to configure Git token as described in the [documentation](https://docs.databricks.com/en/repos/index.html#configure-your-git-integration-with-databricks).  To set this token you can use GitCredential resource.
-
-        ## Example Usage
-
-        You can declare Pulumi-managed Git folder by specifying `url` attribute of Git repository. In addition to that you may need to specify `git_provider` attribute if Git provider doesn't belong to cloud Git providers (Github, GitLab, ...).  If `path` attribute isn't provided, then Git folder will be created in the default location:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        nutter_in_home = databricks.Repo("nutter_in_home", url="https://github.com/user/demo.git")
-        ```
-
-        ## Access Control
-
-        * Permissions can control which groups or individual users can access repos.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * GitCredential to manage Git credentials.
-        * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
-        * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-        * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-        * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-        * WorkspaceConf to manage workspace configuration for expert usage.
-
-        ## Import
-
-        The resource can be imported using the Git folder ID (obtained via UI or using API)
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/repo:Repo this repo_id
-        ```
-
+        Create a Repo resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RepoArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -445,13 +305,6 @@ class Repo(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
-        :param pulumi.Input[str] commit_hash: Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
-        :param pulumi.Input[str] git_provider: case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-        :param pulumi.Input[str] path: path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
-        :param pulumi.Input[str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
-        :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
-        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -470,33 +323,21 @@ class Repo(pulumi.CustomResource):
     @property
     @pulumi.getter
     def branch(self) -> pulumi.Output[str]:
-        """
-        name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
-        """
         return pulumi.get(self, "branch")
 
     @property
     @pulumi.getter(name="commitHash")
     def commit_hash(self) -> pulumi.Output[str]:
-        """
-        Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
-        """
         return pulumi.get(self, "commit_hash")
 
     @property
     @pulumi.getter(name="gitProvider")
     def git_provider(self) -> pulumi.Output[str]:
-        """
-        case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-        """
         return pulumi.get(self, "git_provider")
 
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output[str]:
-        """
-        path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
-        """
         return pulumi.get(self, "path")
 
     @property
@@ -507,24 +348,15 @@ class Repo(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tag(self) -> pulumi.Output[Optional[str]]:
-        """
-        name of the tag for initial checkout.  Conflicts with `branch`.
-        """
         return pulumi.get(self, "tag")
 
     @property
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
-        """
-        The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
-        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> pulumi.Output[str]:
-        """
-        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-        """
         return pulumi.get(self, "workspace_path")
 

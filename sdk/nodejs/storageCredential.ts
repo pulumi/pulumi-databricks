@@ -6,89 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > This resource can be used with an account or workspace-level provider.
- *
- * To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
- *
- * - `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
- * - databricks.ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
- *
- * ## Example Usage
- *
- * For AWS
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const external = new databricks.StorageCredential("external", {
- *     name: externalDataAccess.name,
- *     awsIamRole: {
- *         roleArn: externalDataAccess.arn,
- *     },
- *     comment: "Managed by TF",
- * });
- * const externalCreds = new databricks.Grants("external_creds", {
- *     storageCredential: external.id,
- *     grants: [{
- *         principal: "Data Engineers",
- *         privileges: ["CREATE_EXTERNAL_TABLE"],
- *     }],
- * });
- * ```
- *
- * For Azure
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const externalMi = new databricks.StorageCredential("external_mi", {
- *     name: "mi_credential",
- *     azureManagedIdentity: {
- *         accessConnectorId: example.id,
- *     },
- *     comment: "Managed identity credential managed by TF",
- * });
- * const externalCreds = new databricks.Grants("external_creds", {
- *     storageCredential: external.id,
- *     grants: [{
- *         principal: "Data Engineers",
- *         privileges: ["CREATE_EXTERNAL_TABLE"],
- *     }],
- * });
- * ```
- *
- * For GCP
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const external = new databricks.StorageCredential("external", {
- *     name: "the-creds",
- *     databricksGcpServiceAccount: {},
- * });
- * const externalCreds = new databricks.Grants("external_creds", {
- *     storageCredential: external.id,
- *     grants: [{
- *         principal: "Data Engineers",
- *         privileges: ["CREATE_EXTERNAL_TABLE"],
- *     }],
- * });
- * ```
- *
- * ## Import
- *
- * This resource can be imported by name:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/storageCredential:StorageCredential this <name>
- * ```
- */
 export class StorageCredential extends pulumi.CustomResource {
     /**
      * Get an existing StorageCredential resource's state with the given name, ID, and optional extra
@@ -123,44 +40,15 @@ export class StorageCredential extends pulumi.CustomResource {
     public readonly cloudflareApiToken!: pulumi.Output<outputs.StorageCredentialCloudflareApiToken | undefined>;
     public readonly comment!: pulumi.Output<string | undefined>;
     public readonly databricksGcpServiceAccount!: pulumi.Output<outputs.StorageCredentialDatabricksGcpServiceAccount>;
-    /**
-     * Delete storage credential regardless of its dependencies.
-     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
-    /**
-     * Update storage credential regardless of its dependents.
-     */
     public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
     public readonly gcpServiceAccountKey!: pulumi.Output<outputs.StorageCredentialGcpServiceAccountKey | undefined>;
-    /**
-     * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
-     */
     public readonly isolationMode!: pulumi.Output<string>;
-    /**
-     * Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
-     */
     public readonly metastoreId!: pulumi.Output<string>;
-    /**
-     * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Username/groupname/sp applicationId of the storage credential owner.
-     */
     public readonly owner!: pulumi.Output<string>;
-    /**
-     * Indicates whether the storage credential is only usable for read operations.
-     */
     public readonly readOnly!: pulumi.Output<boolean | undefined>;
-    /**
-     * Suppress validation errors if any & force save the storage credential.
-     */
     public readonly skipValidation!: pulumi.Output<boolean | undefined>;
-    /**
-     * Unique ID of storage credential.
-     */
     public /*out*/ readonly storageCredentialId!: pulumi.Output<string>;
 
     /**
@@ -226,44 +114,15 @@ export interface StorageCredentialState {
     cloudflareApiToken?: pulumi.Input<inputs.StorageCredentialCloudflareApiToken>;
     comment?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.StorageCredentialDatabricksGcpServiceAccount>;
-    /**
-     * Delete storage credential regardless of its dependencies.
-     */
     forceDestroy?: pulumi.Input<boolean>;
-    /**
-     * Update storage credential regardless of its dependents.
-     */
     forceUpdate?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
-    /**
-     * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
-     */
     isolationMode?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the storage credential owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Indicates whether the storage credential is only usable for read operations.
-     */
     readOnly?: pulumi.Input<boolean>;
-    /**
-     * Suppress validation errors if any & force save the storage credential.
-     */
     skipValidation?: pulumi.Input<boolean>;
-    /**
-     * Unique ID of storage credential.
-     */
     storageCredentialId?: pulumi.Input<string>;
 }
 
@@ -277,39 +136,13 @@ export interface StorageCredentialArgs {
     cloudflareApiToken?: pulumi.Input<inputs.StorageCredentialCloudflareApiToken>;
     comment?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.StorageCredentialDatabricksGcpServiceAccount>;
-    /**
-     * Delete storage credential regardless of its dependencies.
-     */
     forceDestroy?: pulumi.Input<boolean>;
-    /**
-     * Update storage credential regardless of its dependents.
-     */
     forceUpdate?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
-    /**
-     * Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
-     */
     isolationMode?: pulumi.Input<string>;
-    /**
-     * Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the storage credential owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Indicates whether the storage credential is only usable for read operations.
-     */
     readOnly?: pulumi.Input<boolean>;
-    /**
-     * Suppress validation errors if any & force save the storage credential.
-     */
     skipValidation?: pulumi.Input<boolean>;
 }

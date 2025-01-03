@@ -14,19 +14,12 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("granularities", required: true)]
         private InputList<string>? _granularities;
-
-        /// <summary>
-        /// List of granularities to use when aggregating data into time windows based on their timestamp.
-        /// </summary>
         public InputList<string> Granularities
         {
             get => _granularities ?? (_granularities = new InputList<string>());
             set => _granularities = value;
         }
 
-        /// <summary>
-        /// Column of the timestamp of predictions
-        /// </summary>
         [Input("timestampCol", required: true)]
         public Input<string> TimestampCol { get; set; } = null!;
 

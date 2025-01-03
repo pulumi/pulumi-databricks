@@ -4,47 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * With this resource you can insert a secret under the provided scope with the given name. If a secret already exists with the same name, this command overwrites the existing secret’s value. The server encrypts the secret using the secret scope’s encryption settings before storing it. You must have WRITE or MANAGE permission on the secret scope. The secret key must consist of alphanumeric characters, dashes, underscores, and periods, and cannot exceed 128 characters. The maximum allowed secret value size is 128 KB. The maximum number of secrets in a given scope is 1000. You can read a secret value only from within a command on a cluster (for example, through a notebook); there is no API to read a secret value outside of a cluster. The permission applied is based on who is invoking the command and you must have at least READ permission. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const app = new databricks.SecretScope("app", {name: "application-secret-scope"});
- * const publishingApi = new databricks.Secret("publishing_api", {
- *     key: "publishing_api",
- *     stringValue: example.value,
- *     scope: app.id,
- * });
- * const _this = new databricks.Cluster("this", {sparkConf: {
- *     "fs.azure.account.oauth2.client.secret": publishingApi.configReference,
- * }});
- * ```
- *
- * ## Related Resources
- *
- * The following resources are often used in the same context:
- *
- * * End to end workspace management guide.
- * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
- * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
- * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
- * * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
- * * databricks.SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
- *
- * ## Import
- *
- * The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`
- * ```
- */
 export class Secret extends pulumi.CustomResource {
     /**
      * Get an existing Secret resource's state with the given name, ID, and optional extra
@@ -73,25 +32,10 @@ export class Secret extends pulumi.CustomResource {
         return obj['__pulumiType'] === Secret.__pulumiType;
     }
 
-    /**
-     * (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
-     */
     public /*out*/ readonly configReference!: pulumi.Output<string>;
-    /**
-     * (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-     */
     public readonly key!: pulumi.Output<string>;
-    /**
-     * (Integer) time secret was updated
-     */
     public /*out*/ readonly lastUpdatedTimestamp!: pulumi.Output<number>;
-    /**
-     * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-     */
     public readonly scope!: pulumi.Output<string>;
-    /**
-     * (String) super secret sensitive value.
-     */
     public readonly stringValue!: pulumi.Output<string>;
 
     /**
@@ -140,25 +84,10 @@ export class Secret extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Secret resources.
  */
 export interface SecretState {
-    /**
-     * (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
-     */
     configReference?: pulumi.Input<string>;
-    /**
-     * (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-     */
     key?: pulumi.Input<string>;
-    /**
-     * (Integer) time secret was updated
-     */
     lastUpdatedTimestamp?: pulumi.Input<number>;
-    /**
-     * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-     */
     scope?: pulumi.Input<string>;
-    /**
-     * (String) super secret sensitive value.
-     */
     stringValue?: pulumi.Input<string>;
 }
 
@@ -166,16 +95,7 @@ export interface SecretState {
  * The set of arguments for constructing a Secret resource.
  */
 export interface SecretArgs {
-    /**
-     * (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-     */
     key: pulumi.Input<string>;
-    /**
-     * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-     */
     scope: pulumi.Input<string>;
-    /**
-     * (String) super secret sensitive value.
-     */
     stringValue: pulumi.Input<string>;
 }

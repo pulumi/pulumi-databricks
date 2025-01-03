@@ -6,46 +6,11 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const email = new databricks.NotificationDestination("email", {
- *     displayName: "Email Destination",
- *     config: {
- *         email: {
- *             addresses: ["abc@gmail.com"],
- *         },
- *     },
- * });
- * const slack = new databricks.NotificationDestination("slack", {
- *     displayName: "Slack Destination",
- *     config: {
- *         slack: {
- *             url: "https://hooks.slack.com/services/...",
- *         },
- *     },
- * });
- * // Lists all notification desitnations
- * const this = databricks.getNotificationDestinations({});
- * // List destinations of specific type and name
- * const filteredNotification = databricks.getNotificationDestinations({
- *     displayNameContains: "Destination",
- *     type: "EMAIL",
- * });
- * ```
- */
 export function getNotificationDestinations(args?: GetNotificationDestinationsArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationDestinationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNotificationDestinations:getNotificationDestinations", {
         "displayNameContains": args.displayNameContains,
-        "notificationDestinations": args.notificationDestinations,
         "type": args.type,
     }, opts);
 }
@@ -54,22 +19,7 @@ export function getNotificationDestinations(args?: GetNotificationDestinationsAr
  * A collection of arguments for invoking getNotificationDestinations.
  */
 export interface GetNotificationDestinationsArgs {
-    /**
-     * A **case-insensitive** substring to filter Notification Destinations by their display name.
-     */
     displayNameContains?: string;
-    /**
-     * A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-     */
-    notificationDestinations?: inputs.GetNotificationDestinationsNotificationDestination[];
-    /**
-     * The type of the Notification Destination to filter by. Valid values are: 
-     * * `EMAIL` - Filters Notification Destinations of type Email.
-     * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
-     * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
-     * * `SLACK` - Filters Notification Destinations of type Slack.
-     * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
-     */
     type?: string;
 }
 
@@ -82,52 +32,14 @@ export interface GetNotificationDestinationsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-     */
-    readonly notificationDestinations?: outputs.GetNotificationDestinationsNotificationDestination[];
+    readonly notificationDestinations: outputs.GetNotificationDestinationsNotificationDestination[];
     readonly type?: string;
 }
-/**
- * This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const email = new databricks.NotificationDestination("email", {
- *     displayName: "Email Destination",
- *     config: {
- *         email: {
- *             addresses: ["abc@gmail.com"],
- *         },
- *     },
- * });
- * const slack = new databricks.NotificationDestination("slack", {
- *     displayName: "Slack Destination",
- *     config: {
- *         slack: {
- *             url: "https://hooks.slack.com/services/...",
- *         },
- *     },
- * });
- * // Lists all notification desitnations
- * const this = databricks.getNotificationDestinations({});
- * // List destinations of specific type and name
- * const filteredNotification = databricks.getNotificationDestinations({
- *     displayNameContains: "Destination",
- *     type: "EMAIL",
- * });
- * ```
- */
 export function getNotificationDestinationsOutput(args?: GetNotificationDestinationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotificationDestinationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getNotificationDestinations:getNotificationDestinations", {
         "displayNameContains": args.displayNameContains,
-        "notificationDestinations": args.notificationDestinations,
         "type": args.type,
     }, opts);
 }
@@ -136,21 +48,6 @@ export function getNotificationDestinationsOutput(args?: GetNotificationDestinat
  * A collection of arguments for invoking getNotificationDestinations.
  */
 export interface GetNotificationDestinationsOutputArgs {
-    /**
-     * A **case-insensitive** substring to filter Notification Destinations by their display name.
-     */
     displayNameContains?: pulumi.Input<string>;
-    /**
-     * A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-     */
-    notificationDestinations?: pulumi.Input<pulumi.Input<inputs.GetNotificationDestinationsNotificationDestinationArgs>[]>;
-    /**
-     * The type of the Notification Destination to filter by. Valid values are: 
-     * * `EMAIL` - Filters Notification Destinations of type Email.
-     * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
-     * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
-     * * `SLACK` - Filters Notification Destinations of type Slack.
-     * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
-     */
     type?: pulumi.Input<string>;
 }

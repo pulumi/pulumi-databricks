@@ -15,15 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("cohereApiBase")]
         public Input<string>? CohereApiBase { get; set; }
 
-        /// <summary>
-        /// The Databricks secret key reference for a Cohere API key.
-        /// </summary>
         [Input("cohereApiKey")]
         public Input<string>? CohereApiKey { get; set; }
 
-        /// <summary>
-        /// The Cohere API key provided as a plaintext string.
-        /// </summary>
         [Input("cohereApiKeyPlaintext")]
         public Input<string>? CohereApiKeyPlaintext { get; set; }
 

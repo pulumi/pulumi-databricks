@@ -9,90 +9,24 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// &gt; This resource can only be used with a workspace-level provider!
-    /// 
-    /// This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @this = new Databricks.RegisteredModel("this", new()
-    ///     {
-    ///         Name = "my_model",
-    ///         CatalogName = "main",
-    ///         SchemaName = "default",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Access Control
-    /// 
-    /// * databricks.Grants can be used to grant principals `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges.
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are often used in the same context:
-    /// 
-    /// * databricks.ModelServing to serve this model on a Databricks serving endpoint.
-    /// * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
-    /// * databricks.Schema to manage schemas within Unity Catalog.
-    /// * databricks.Catalog to manage catalogs within Unity Catalog.
-    /// 
-    /// ## Import
-    /// 
-    /// The registered model resource can be imported using the full (3-level) name of the model.
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/registeredModel:RegisteredModel this &lt;catalog_name.schema_name.model_name&gt;
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/registeredModel:RegisteredModel")]
     public partial class RegisteredModel : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
-        /// </summary>
         [Output("catalogName")]
         public Output<string> CatalogName { get; private set; } = null!;
 
-        /// <summary>
-        /// The comment attached to the registered model.
-        /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the registered model owner.
-        /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-        /// </summary>
         [Output("schemaName")]
         public Output<string> SchemaName { get; private set; } = null!;
 
-        /// <summary>
-        /// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
-        /// </summary>
         [Output("storageLocation")]
         public Output<string> StorageLocation { get; private set; } = null!;
 
@@ -142,39 +76,21 @@ namespace Pulumi.Databricks
 
     public sealed class RegisteredModelArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
-        /// </summary>
         [Input("catalogName", required: true)]
         public Input<string> CatalogName { get; set; } = null!;
 
-        /// <summary>
-        /// The comment attached to the registered model.
-        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
-        /// <summary>
-        /// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Name of the registered model owner.
-        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
-        /// <summary>
-        /// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-        /// </summary>
         [Input("schemaName", required: true)]
         public Input<string> SchemaName { get; set; } = null!;
 
-        /// <summary>
-        /// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
-        /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }
 
@@ -186,39 +102,21 @@ namespace Pulumi.Databricks
 
     public sealed class RegisteredModelState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
-        /// </summary>
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
 
-        /// <summary>
-        /// The comment attached to the registered model.
-        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
-        /// <summary>
-        /// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Name of the registered model owner.
-        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
-        /// <summary>
-        /// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-        /// </summary>
         [Input("schemaName")]
         public Input<string>? SchemaName { get; set; }
 
-        /// <summary>
-        /// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
-        /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }
 

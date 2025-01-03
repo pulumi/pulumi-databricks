@@ -38,14 +38,6 @@ class MetastoreArgs:
                  updated_by: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Metastore resource.
-        :param pulumi.Input[str] delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-        :param pulumi.Input[int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
-        :param pulumi.Input[str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-        :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
-        :param pulumi.Input[str] name: Name of metastore.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
-        :param pulumi.Input[str] region: The region of the metastore
-        :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         """
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
@@ -121,9 +113,6 @@ class MetastoreArgs:
     @property
     @pulumi.getter(name="deltaSharingOrganizationName")
     def delta_sharing_organization_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-        """
         return pulumi.get(self, "delta_sharing_organization_name")
 
     @delta_sharing_organization_name.setter
@@ -133,9 +122,6 @@ class MetastoreArgs:
     @property
     @pulumi.getter(name="deltaSharingRecipientTokenLifetimeInSeconds")
     def delta_sharing_recipient_token_lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
-        """
         return pulumi.get(self, "delta_sharing_recipient_token_lifetime_in_seconds")
 
     @delta_sharing_recipient_token_lifetime_in_seconds.setter
@@ -145,9 +131,6 @@ class MetastoreArgs:
     @property
     @pulumi.getter(name="deltaSharingScope")
     def delta_sharing_scope(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-        """
         return pulumi.get(self, "delta_sharing_scope")
 
     @delta_sharing_scope.setter
@@ -157,9 +140,6 @@ class MetastoreArgs:
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Destroy metastore regardless of its contents.
-        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -187,9 +167,6 @@ class MetastoreArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of metastore.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -199,9 +176,6 @@ class MetastoreArgs:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username/groupname/sp application_id of the metastore owner.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -211,9 +185,6 @@ class MetastoreArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region of the metastore
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -223,9 +194,6 @@ class MetastoreArgs:
     @property
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[str]]:
-        """
-        Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
-        """
         return pulumi.get(self, "storage_root")
 
     @storage_root.setter
@@ -282,14 +250,6 @@ class _MetastoreState:
                  updated_by: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Metastore resources.
-        :param pulumi.Input[str] delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-        :param pulumi.Input[int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
-        :param pulumi.Input[str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-        :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
-        :param pulumi.Input[str] name: Name of metastore.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
-        :param pulumi.Input[str] region: The region of the metastore
-        :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         """
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
@@ -365,9 +325,6 @@ class _MetastoreState:
     @property
     @pulumi.getter(name="deltaSharingOrganizationName")
     def delta_sharing_organization_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-        """
         return pulumi.get(self, "delta_sharing_organization_name")
 
     @delta_sharing_organization_name.setter
@@ -377,9 +334,6 @@ class _MetastoreState:
     @property
     @pulumi.getter(name="deltaSharingRecipientTokenLifetimeInSeconds")
     def delta_sharing_recipient_token_lifetime_in_seconds(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
-        """
         return pulumi.get(self, "delta_sharing_recipient_token_lifetime_in_seconds")
 
     @delta_sharing_recipient_token_lifetime_in_seconds.setter
@@ -389,9 +343,6 @@ class _MetastoreState:
     @property
     @pulumi.getter(name="deltaSharingScope")
     def delta_sharing_scope(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-        """
         return pulumi.get(self, "delta_sharing_scope")
 
     @delta_sharing_scope.setter
@@ -401,9 +352,6 @@ class _MetastoreState:
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Destroy metastore regardless of its contents.
-        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -431,9 +379,6 @@ class _MetastoreState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of metastore.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -443,9 +388,6 @@ class _MetastoreState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username/groupname/sp application_id of the metastore owner.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -455,9 +397,6 @@ class _MetastoreState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region of the metastore
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -467,9 +406,6 @@ class _MetastoreState:
     @property
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[str]]:
-        """
-        Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
-        """
         return pulumi.get(self, "storage_root")
 
     @storage_root.setter
@@ -528,55 +464,9 @@ class Metastore(pulumi.CustomResource):
                  updated_by: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > This resource can be used with an account or workspace-level provider.
-
-        A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
-
-        Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
-
-        A Unity Catalog metastore can be created without a root location & credential to maintain strict separation of storage across catalogs or environments.
-
-        ## Example Usage
-
-        For AWS
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.Metastore("this",
-            name="primary",
-            storage_root=f"s3://{metastore['id']}/metastore",
-            owner="uc admins",
-            region="us-east-1",
-            force_destroy=True)
-        this_metastore_assignment = databricks.MetastoreAssignment("this",
-            metastore_id=this.id,
-            workspace_id=workspace_id)
-        ```
-
-        For Azure
-
-        ## Import
-
-        This resource can be imported by ID:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/metastore:Metastore this <id>
-        ```
-
+        Create a Metastore resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-        :param pulumi.Input[int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
-        :param pulumi.Input[str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-        :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
-        :param pulumi.Input[str] name: Name of metastore.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
-        :param pulumi.Input[str] region: The region of the metastore
-        :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         """
         ...
     @overload
@@ -585,45 +475,7 @@ class Metastore(pulumi.CustomResource):
                  args: Optional[MetastoreArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource can be used with an account or workspace-level provider.
-
-        A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
-
-        Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
-
-        A Unity Catalog metastore can be created without a root location & credential to maintain strict separation of storage across catalogs or environments.
-
-        ## Example Usage
-
-        For AWS
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.Metastore("this",
-            name="primary",
-            storage_root=f"s3://{metastore['id']}/metastore",
-            owner="uc admins",
-            region="us-east-1",
-            force_destroy=True)
-        this_metastore_assignment = databricks.MetastoreAssignment("this",
-            metastore_id=this.id,
-            workspace_id=workspace_id)
-        ```
-
-        For Azure
-
-        ## Import
-
-        This resource can be imported by ID:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/metastore:Metastore this <id>
-        ```
-
+        Create a Metastore resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MetastoreArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -716,14 +568,6 @@ class Metastore(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-        :param pulumi.Input[int] delta_sharing_recipient_token_lifetime_in_seconds: Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
-        :param pulumi.Input[str] delta_sharing_scope: Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-        :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
-        :param pulumi.Input[str] name: Name of metastore.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
-        :param pulumi.Input[str] region: The region of the metastore
-        :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -771,33 +615,21 @@ class Metastore(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deltaSharingOrganizationName")
     def delta_sharing_organization_name(self) -> pulumi.Output[Optional[str]]:
-        """
-        The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-        """
         return pulumi.get(self, "delta_sharing_organization_name")
 
     @property
     @pulumi.getter(name="deltaSharingRecipientTokenLifetimeInSeconds")
     def delta_sharing_recipient_token_lifetime_in_seconds(self) -> pulumi.Output[Optional[int]]:
-        """
-        Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
-        """
         return pulumi.get(self, "delta_sharing_recipient_token_lifetime_in_seconds")
 
     @property
     @pulumi.getter(name="deltaSharingScope")
     def delta_sharing_scope(self) -> pulumi.Output[Optional[str]]:
-        """
-        Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-        """
         return pulumi.get(self, "delta_sharing_scope")
 
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Destroy metastore regardless of its contents.
-        """
         return pulumi.get(self, "force_destroy")
 
     @property
@@ -813,33 +645,21 @@ class Metastore(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of metastore.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
-        """
-        Username/groupname/sp application_id of the metastore owner.
-        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region of the metastore
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> pulumi.Output[Optional[str]]:
-        """
-        Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
-        """
         return pulumi.get(self, "storage_root")
 
     @property

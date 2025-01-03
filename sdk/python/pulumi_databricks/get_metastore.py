@@ -48,9 +48,6 @@ class GetMetastoreResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        ID of the metastore
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -61,17 +58,11 @@ class GetMetastoreResult:
     @property
     @pulumi.getter(name="metastoreInfo")
     def metastore_info(self) -> 'outputs.GetMetastoreMetastoreInfoResult':
-        """
-        MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-        """
         return pulumi.get(self, "metastore_info")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of metastore.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -100,47 +91,7 @@ def get_metastore(id: Optional[str] = None,
                   region: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetastoreResult:
     """
-    > **Note** This data source can only be used with an account-level provider!
-
-    Retrieves information about metastore for a given id of Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
-
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
-
-    ## Example Usage
-
-    MetastoreInfo response for a given metastore id
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-    import pulumi_databricks as databricks
-
-    metastore = aws.s3.BucketV2("metastore",
-        bucket=f"{prefix}-metastore",
-        force_destroy=True)
-    this_metastore = databricks.Metastore("this",
-        name="primary",
-        storage_root=metastore.id.apply(lambda id: f"s3://{id}/metastore"),
-        owner=unity_admin_group,
-        force_destroy=True)
-    this = databricks.get_metastore_output(metastore_id=this_metastore.id)
-    pulumi.export("someMetastore", this.metastore_info)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * get_metastores to get mapping of name to id of all metastores.
-    * Metastore to manage Metastores within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
-
-
-    :param str id: ID of the metastore
-    :param str metastore_id: ID of the metastore
-    :param Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict'] metastore_info: MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-    :param str name: Name of the metastore
-    :param str region: Region of the metastore
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -164,47 +115,7 @@ def get_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoreResult]:
     """
-    > **Note** This data source can only be used with an account-level provider!
-
-    Retrieves information about metastore for a given id of Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
-
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
-
-    ## Example Usage
-
-    MetastoreInfo response for a given metastore id
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-    import pulumi_databricks as databricks
-
-    metastore = aws.s3.BucketV2("metastore",
-        bucket=f"{prefix}-metastore",
-        force_destroy=True)
-    this_metastore = databricks.Metastore("this",
-        name="primary",
-        storage_root=metastore.id.apply(lambda id: f"s3://{id}/metastore"),
-        owner=unity_admin_group,
-        force_destroy=True)
-    this = databricks.get_metastore_output(metastore_id=this_metastore.id)
-    pulumi.export("someMetastore", this.metastore_info)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * get_metastores to get mapping of name to id of all metastores.
-    * Metastore to manage Metastores within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
-
-
-    :param str id: ID of the metastore
-    :param str metastore_id: ID of the metastore
-    :param Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict'] metastore_info: MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-    :param str name: Name of the metastore
-    :param str region: Region of the metastore
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

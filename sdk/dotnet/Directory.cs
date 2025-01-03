@@ -9,79 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// This resource allows you to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// You can declare a Pulumi-managed directory by specifying the `path` attribute of the corresponding directory.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myCustomDirectory = new Databricks.Directory("my_custom_directory", new()
-    ///     {
-    ///         Path = "/my_custom_directory",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Access Control
-    /// 
-    /// - databricks.Permissions can control which groups or individual users can access folders.
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are often used in the same context:
-    /// 
-    /// - End to end workspace management guide.
-    /// - databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-    /// - databricks.Notebook data to export a notebook from Databricks Workspace.
-    /// - databricks.getNotebookPaths data to list notebooks in Databricks Workspace.
-    /// - databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-    /// - databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources.
-    /// - databricks.WorkspaceConf to manage workspace configuration for expert usage.
-    /// 
-    /// ## Import
-    /// 
-    /// The resource directory can be imported using directory path:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/directory:Directory this /path/to/directory
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/directory:Directory")]
     public partial class Directory : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
-        /// </summary>
         [Output("deleteRecursive")]
         public Output<bool?> DeleteRecursive { get; private set; } = null!;
 
-        /// <summary>
-        /// Unique identifier for a DIRECTORY
-        /// </summary>
         [Output("objectId")]
         public Output<int> ObjectId { get; private set; } = null!;
 
-        /// <summary>
-        /// The absolute path of the directory, beginning with "/", e.g. "/Demo".
-        /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
-        /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-        /// </summary>
         [Output("workspacePath")]
         public Output<string> WorkspacePath { get; private set; } = null!;
 
@@ -131,21 +70,12 @@ namespace Pulumi.Databricks
 
     public sealed class DirectoryArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
-        /// </summary>
         [Input("deleteRecursive")]
         public Input<bool>? DeleteRecursive { get; set; }
 
-        /// <summary>
-        /// Unique identifier for a DIRECTORY
-        /// </summary>
         [Input("objectId")]
         public Input<int>? ObjectId { get; set; }
 
-        /// <summary>
-        /// The absolute path of the directory, beginning with "/", e.g. "/Demo".
-        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
@@ -157,27 +87,15 @@ namespace Pulumi.Databricks
 
     public sealed class DirectoryState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
-        /// </summary>
         [Input("deleteRecursive")]
         public Input<bool>? DeleteRecursive { get; set; }
 
-        /// <summary>
-        /// Unique identifier for a DIRECTORY
-        /// </summary>
         [Input("objectId")]
         public Input<int>? ObjectId { get; set; }
 
-        /// <summary>
-        /// The absolute path of the directory, beginning with "/", e.g. "/Demo".
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
-        /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-        /// </summary>
         [Input("workspacePath")]
         public Input<string>? WorkspacePath { get; set; }
 

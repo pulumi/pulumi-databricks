@@ -25,10 +25,6 @@ class MetastoreProviderArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MetastoreProvider resource.
-        :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN`.
-        :param pulumi.Input[str] recipient_profile_str: This is the json file that is created from a recipient url.
-        :param pulumi.Input[str] comment: Description about the provider.
-        :param pulumi.Input[str] name: Name of provider. Change forces creation of a new resource.
         """
         pulumi.set(__self__, "authentication_type", authentication_type)
         pulumi.set(__self__, "recipient_profile_str", recipient_profile_str)
@@ -40,9 +36,6 @@ class MetastoreProviderArgs:
     @property
     @pulumi.getter(name="authenticationType")
     def authentication_type(self) -> pulumi.Input[str]:
-        """
-        The delta sharing authentication type. Valid values are `TOKEN`.
-        """
         return pulumi.get(self, "authentication_type")
 
     @authentication_type.setter
@@ -52,9 +45,6 @@ class MetastoreProviderArgs:
     @property
     @pulumi.getter(name="recipientProfileStr")
     def recipient_profile_str(self) -> pulumi.Input[str]:
-        """
-        This is the json file that is created from a recipient url.
-        """
         return pulumi.get(self, "recipient_profile_str")
 
     @recipient_profile_str.setter
@@ -64,9 +54,6 @@ class MetastoreProviderArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description about the provider.
-        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -76,9 +63,6 @@ class MetastoreProviderArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of provider. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -95,10 +79,6 @@ class _MetastoreProviderState:
                  recipient_profile_str: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MetastoreProvider resources.
-        :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN`.
-        :param pulumi.Input[str] comment: Description about the provider.
-        :param pulumi.Input[str] name: Name of provider. Change forces creation of a new resource.
-        :param pulumi.Input[str] recipient_profile_str: This is the json file that is created from a recipient url.
         """
         if authentication_type is not None:
             pulumi.set(__self__, "authentication_type", authentication_type)
@@ -112,9 +92,6 @@ class _MetastoreProviderState:
     @property
     @pulumi.getter(name="authenticationType")
     def authentication_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The delta sharing authentication type. Valid values are `TOKEN`.
-        """
         return pulumi.get(self, "authentication_type")
 
     @authentication_type.setter
@@ -124,9 +101,6 @@ class _MetastoreProviderState:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description about the provider.
-        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -136,9 +110,6 @@ class _MetastoreProviderState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of provider. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -148,9 +119,6 @@ class _MetastoreProviderState:
     @property
     @pulumi.getter(name="recipientProfileStr")
     def recipient_profile_str(self) -> Optional[pulumi.Input[str]]:
-        """
-        This is the json file that is created from a recipient url.
-        """
         return pulumi.get(self, "recipient_profile_str")
 
     @recipient_profile_str.setter
@@ -169,47 +137,9 @@ class MetastoreProvider(pulumi.CustomResource):
                  recipient_profile_str: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > This resource can only be used with a workspace-level provider!
-
-        In Delta Sharing, a provider is an entity that shares data with a recipient. Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
-
-        A `MetastoreProvider` is contained within Metastore and can contain a list of shares that have been shared with you.
-
-        > Databricks to Databricks sharing automatically creates the provider.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_databricks as databricks
-
-        dbprovider = databricks.MetastoreProvider("dbprovider",
-            name="terraform-test-provider",
-            comment="made by terraform 2",
-            authentication_type="TOKEN",
-            recipient_profile_str=json.dumps({
-                "shareCredentialsVersion": 1,
-                "bearerToken": "token",
-                "endpoint": "endpoint",
-                "expirationTime": "expiration-time",
-            }))
-        ```
-
-        ## Related Resources
-
-        The following resources are used in the same context:
-
-        * get_tables data to list tables within Unity Catalog.
-        * get_schemas data to list schemas within Unity Catalog.
-        * get_catalogs data to list catalogs within Unity Catalog.
-
+        Create a MetastoreProvider resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN`.
-        :param pulumi.Input[str] comment: Description about the provider.
-        :param pulumi.Input[str] name: Name of provider. Change forces creation of a new resource.
-        :param pulumi.Input[str] recipient_profile_str: This is the json file that is created from a recipient url.
         """
         ...
     @overload
@@ -218,41 +148,7 @@ class MetastoreProvider(pulumi.CustomResource):
                  args: MetastoreProviderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource can only be used with a workspace-level provider!
-
-        In Delta Sharing, a provider is an entity that shares data with a recipient. Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
-
-        A `MetastoreProvider` is contained within Metastore and can contain a list of shares that have been shared with you.
-
-        > Databricks to Databricks sharing automatically creates the provider.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_databricks as databricks
-
-        dbprovider = databricks.MetastoreProvider("dbprovider",
-            name="terraform-test-provider",
-            comment="made by terraform 2",
-            authentication_type="TOKEN",
-            recipient_profile_str=json.dumps({
-                "shareCredentialsVersion": 1,
-                "bearerToken": "token",
-                "endpoint": "endpoint",
-                "expirationTime": "expiration-time",
-            }))
-        ```
-
-        ## Related Resources
-
-        The following resources are used in the same context:
-
-        * get_tables data to list tables within Unity Catalog.
-        * get_schemas data to list schemas within Unity Catalog.
-        * get_catalogs data to list catalogs within Unity Catalog.
-
+        Create a MetastoreProvider resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MetastoreProviderArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -312,10 +208,6 @@ class MetastoreProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN`.
-        :param pulumi.Input[str] comment: Description about the provider.
-        :param pulumi.Input[str] name: Name of provider. Change forces creation of a new resource.
-        :param pulumi.Input[str] recipient_profile_str: This is the json file that is created from a recipient url.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -330,32 +222,20 @@ class MetastoreProvider(pulumi.CustomResource):
     @property
     @pulumi.getter(name="authenticationType")
     def authentication_type(self) -> pulumi.Output[str]:
-        """
-        The delta sharing authentication type. Valid values are `TOKEN`.
-        """
         return pulumi.get(self, "authentication_type")
 
     @property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
-        """
-        Description about the provider.
-        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of provider. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="recipientProfileStr")
     def recipient_profile_str(self) -> pulumi.Output[str]:
-        """
-        This is the json file that is created from a recipient url.
-        """
         return pulumi.get(self, "recipient_profile_str")
 

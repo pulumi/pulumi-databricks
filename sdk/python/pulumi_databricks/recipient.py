@@ -32,15 +32,6 @@ class RecipientArgs:
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None):
         """
         The set of arguments for constructing a Recipient resource.
-        :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
-        :param pulumi.Input[str] comment: Description about the recipient.
-        :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
-        :param pulumi.Input['RecipientIpAccessListArgs'] ip_access_list: Recipient IP access list.
-        :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the recipient owner.
-        :param pulumi.Input['RecipientPropertiesKvpairsArgs'] properties_kvpairs: Recipient properties - object consisting of following fields:
-        :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
-        :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
         pulumi.set(__self__, "authentication_type", authentication_type)
         if comment is not None:
@@ -63,9 +54,6 @@ class RecipientArgs:
     @property
     @pulumi.getter(name="authenticationType")
     def authentication_type(self) -> pulumi.Input[str]:
-        """
-        The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
-        """
         return pulumi.get(self, "authentication_type")
 
     @authentication_type.setter
@@ -75,9 +63,6 @@ class RecipientArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description about the recipient.
-        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -87,9 +72,6 @@ class RecipientArgs:
     @property
     @pulumi.getter(name="dataRecipientGlobalMetastoreId")
     def data_recipient_global_metastore_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required when `authentication_type` is `DATABRICKS`.
-        """
         return pulumi.get(self, "data_recipient_global_metastore_id")
 
     @data_recipient_global_metastore_id.setter
@@ -99,9 +81,6 @@ class RecipientArgs:
     @property
     @pulumi.getter(name="ipAccessList")
     def ip_access_list(self) -> Optional[pulumi.Input['RecipientIpAccessListArgs']]:
-        """
-        Recipient IP access list.
-        """
         return pulumi.get(self, "ip_access_list")
 
     @ip_access_list.setter
@@ -111,9 +90,6 @@ class RecipientArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of recipient. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -123,9 +99,6 @@ class RecipientArgs:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username/groupname/sp application_id of the recipient owner.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -135,9 +108,6 @@ class RecipientArgs:
     @property
     @pulumi.getter(name="propertiesKvpairs")
     def properties_kvpairs(self) -> Optional[pulumi.Input['RecipientPropertiesKvpairsArgs']]:
-        """
-        Recipient properties - object consisting of following fields:
-        """
         return pulumi.get(self, "properties_kvpairs")
 
     @properties_kvpairs.setter
@@ -147,9 +117,6 @@ class RecipientArgs:
     @property
     @pulumi.getter(name="sharingCode")
     def sharing_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        The one-time sharing code provided by the data recipient.
-        """
         return pulumi.get(self, "sharing_code")
 
     @sharing_code.setter
@@ -159,9 +126,6 @@ class RecipientArgs:
     @property
     @pulumi.getter
     def tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]]:
-        """
-        List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
-        """
         return pulumi.get(self, "tokens")
 
     @tokens.setter
@@ -192,23 +156,6 @@ class _RecipientState:
                  updated_by: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Recipient resources.
-        :param pulumi.Input[str] activation_url: Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
-        :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
-        :param pulumi.Input[str] cloud: Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
-        :param pulumi.Input[str] comment: Description about the recipient.
-        :param pulumi.Input[int] created_at: Time at which this recipient was created, in epoch milliseconds.
-        :param pulumi.Input[str] created_by: Username of recipient creator.
-        :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
-        :param pulumi.Input['RecipientIpAccessListArgs'] ip_access_list: Recipient IP access list.
-        :param pulumi.Input[str] metastore_id: Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
-        :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the recipient owner.
-        :param pulumi.Input['RecipientPropertiesKvpairsArgs'] properties_kvpairs: Recipient properties - object consisting of following fields:
-        :param pulumi.Input[str] region: Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
-        :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
-        :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
-        :param pulumi.Input[int] updated_at: Time at which this recipient was updated, in epoch milliseconds.
-        :param pulumi.Input[str] updated_by: Username of recipient Token updater.
         """
         if activated is not None:
             pulumi.set(__self__, "activated", activated)
@@ -259,9 +206,6 @@ class _RecipientState:
     @property
     @pulumi.getter(name="activationUrl")
     def activation_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
-        """
         return pulumi.get(self, "activation_url")
 
     @activation_url.setter
@@ -271,9 +215,6 @@ class _RecipientState:
     @property
     @pulumi.getter(name="authenticationType")
     def authentication_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
-        """
         return pulumi.get(self, "authentication_type")
 
     @authentication_type.setter
@@ -283,9 +224,6 @@ class _RecipientState:
     @property
     @pulumi.getter
     def cloud(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
-        """
         return pulumi.get(self, "cloud")
 
     @cloud.setter
@@ -295,9 +233,6 @@ class _RecipientState:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description about the recipient.
-        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -307,9 +242,6 @@ class _RecipientState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[int]]:
-        """
-        Time at which this recipient was created, in epoch milliseconds.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -319,9 +251,6 @@ class _RecipientState:
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username of recipient creator.
-        """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
@@ -331,9 +260,6 @@ class _RecipientState:
     @property
     @pulumi.getter(name="dataRecipientGlobalMetastoreId")
     def data_recipient_global_metastore_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required when `authentication_type` is `DATABRICKS`.
-        """
         return pulumi.get(self, "data_recipient_global_metastore_id")
 
     @data_recipient_global_metastore_id.setter
@@ -343,9 +269,6 @@ class _RecipientState:
     @property
     @pulumi.getter(name="ipAccessList")
     def ip_access_list(self) -> Optional[pulumi.Input['RecipientIpAccessListArgs']]:
-        """
-        Recipient IP access list.
-        """
         return pulumi.get(self, "ip_access_list")
 
     @ip_access_list.setter
@@ -355,9 +278,6 @@ class _RecipientState:
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
-        """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
@@ -367,9 +287,6 @@ class _RecipientState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of recipient. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -379,9 +296,6 @@ class _RecipientState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username/groupname/sp application_id of the recipient owner.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -391,9 +305,6 @@ class _RecipientState:
     @property
     @pulumi.getter(name="propertiesKvpairs")
     def properties_kvpairs(self) -> Optional[pulumi.Input['RecipientPropertiesKvpairsArgs']]:
-        """
-        Recipient properties - object consisting of following fields:
-        """
         return pulumi.get(self, "properties_kvpairs")
 
     @properties_kvpairs.setter
@@ -403,9 +314,6 @@ class _RecipientState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -415,9 +323,6 @@ class _RecipientState:
     @property
     @pulumi.getter(name="sharingCode")
     def sharing_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        The one-time sharing code provided by the data recipient.
-        """
         return pulumi.get(self, "sharing_code")
 
     @sharing_code.setter
@@ -427,9 +332,6 @@ class _RecipientState:
     @property
     @pulumi.getter
     def tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]]:
-        """
-        List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
-        """
         return pulumi.get(self, "tokens")
 
     @tokens.setter
@@ -439,9 +341,6 @@ class _RecipientState:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[int]]:
-        """
-        Time at which this recipient was updated, in epoch milliseconds.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -451,9 +350,6 @@ class _RecipientState:
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[pulumi.Input[str]]:
-        """
-        Username of recipient Token updater.
-        """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
@@ -477,51 +373,9 @@ class Recipient(pulumi.CustomResource):
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
                  __props__=None):
         """
-        > This resource can only be used with a workspace-level provider!
-
-        In Delta Sharing, a recipient is an entity that receives shares from a provider. In Unity Catalog, a share is a securable object that represents an organization and associates it with a credential or secure sharing identifier that allows that organization to access one or more shares.
-
-        As a data provider (sharer), you can define multiple recipients for any given Unity Catalog metastore, but if you want to share data from multiple metastores with a particular user or group of users, you must define the recipient separately for each metastore. A recipient can have access to multiple shares.
-
-        A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.
-
-        ## Example Usage
-
-        ### Databricks Sharing with non databricks recipient
-
-        Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
-        authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_random as random
-
-        db2opensharecode = random.index.Password("db2opensharecode",
-            length=16,
-            special=True)
-        current = databricks.get_current_user()
-        db2open = databricks.Recipient("db2open",
-            name=f"{current.alphanumeric}-recipient",
-            comment="Made by Pulumi",
-            authentication_type="TOKEN",
-            sharing_code=db2opensharecode["result"],
-            ip_access_list={
-                "allowed_ip_addresses": [],
-            })
-        ```
-
+        Create a Recipient resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
-        :param pulumi.Input[str] comment: Description about the recipient.
-        :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
-        :param pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']] ip_access_list: Recipient IP access list.
-        :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the recipient owner.
-        :param pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']] properties_kvpairs: Recipient properties - object consisting of following fields:
-        :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
         ...
     @overload
@@ -530,40 +384,7 @@ class Recipient(pulumi.CustomResource):
                  args: RecipientArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource can only be used with a workspace-level provider!
-
-        In Delta Sharing, a recipient is an entity that receives shares from a provider. In Unity Catalog, a share is a securable object that represents an organization and associates it with a credential or secure sharing identifier that allows that organization to access one or more shares.
-
-        As a data provider (sharer), you can define multiple recipients for any given Unity Catalog metastore, but if you want to share data from multiple metastores with a particular user or group of users, you must define the recipient separately for each metastore. A recipient can have access to multiple shares.
-
-        A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.
-
-        ## Example Usage
-
-        ### Databricks Sharing with non databricks recipient
-
-        Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
-        authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_random as random
-
-        db2opensharecode = random.index.Password("db2opensharecode",
-            length=16,
-            special=True)
-        current = databricks.get_current_user()
-        db2open = databricks.Recipient("db2open",
-            name=f"{current.alphanumeric}-recipient",
-            comment="Made by Pulumi",
-            authentication_type="TOKEN",
-            sharing_code=db2opensharecode["result"],
-            ip_access_list={
-                "allowed_ip_addresses": [],
-            })
-        ```
-
+        Create a Recipient resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RecipientArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -654,23 +475,6 @@ class Recipient(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] activation_url: Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
-        :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
-        :param pulumi.Input[str] cloud: Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
-        :param pulumi.Input[str] comment: Description about the recipient.
-        :param pulumi.Input[int] created_at: Time at which this recipient was created, in epoch milliseconds.
-        :param pulumi.Input[str] created_by: Username of recipient creator.
-        :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
-        :param pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']] ip_access_list: Recipient IP access list.
-        :param pulumi.Input[str] metastore_id: Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
-        :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the recipient owner.
-        :param pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']] properties_kvpairs: Recipient properties - object consisting of following fields:
-        :param pulumi.Input[str] region: Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
-        :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
-        :param pulumi.Input[int] updated_at: Time at which this recipient was updated, in epoch milliseconds.
-        :param pulumi.Input[str] updated_by: Username of recipient Token updater.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -704,136 +508,85 @@ class Recipient(pulumi.CustomResource):
     @property
     @pulumi.getter(name="activationUrl")
     def activation_url(self) -> pulumi.Output[str]:
-        """
-        Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
-        """
         return pulumi.get(self, "activation_url")
 
     @property
     @pulumi.getter(name="authenticationType")
     def authentication_type(self) -> pulumi.Output[str]:
-        """
-        The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
-        """
         return pulumi.get(self, "authentication_type")
 
     @property
     @pulumi.getter
     def cloud(self) -> pulumi.Output[str]:
-        """
-        Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
-        """
         return pulumi.get(self, "cloud")
 
     @property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
-        """
-        Description about the recipient.
-        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[int]:
-        """
-        Time at which this recipient was created, in epoch milliseconds.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[str]:
-        """
-        Username of recipient creator.
-        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="dataRecipientGlobalMetastoreId")
     def data_recipient_global_metastore_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Required when `authentication_type` is `DATABRICKS`.
-        """
         return pulumi.get(self, "data_recipient_global_metastore_id")
 
     @property
     @pulumi.getter(name="ipAccessList")
     def ip_access_list(self) -> pulumi.Output[Optional['outputs.RecipientIpAccessList']]:
-        """
-        Recipient IP access list.
-        """
         return pulumi.get(self, "ip_access_list")
 
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[str]:
-        """
-        Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
-        """
         return pulumi.get(self, "metastore_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of recipient. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[Optional[str]]:
-        """
-        Username/groupname/sp application_id of the recipient owner.
-        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="propertiesKvpairs")
     def properties_kvpairs(self) -> pulumi.Output[Optional['outputs.RecipientPropertiesKvpairs']]:
-        """
-        Recipient properties - object consisting of following fields:
-        """
         return pulumi.get(self, "properties_kvpairs")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="sharingCode")
     def sharing_code(self) -> pulumi.Output[Optional[str]]:
-        """
-        The one-time sharing code provided by the data recipient.
-        """
         return pulumi.get(self, "sharing_code")
 
     @property
     @pulumi.getter
     def tokens(self) -> pulumi.Output[Sequence['outputs.RecipientToken']]:
-        """
-        List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
-        """
         return pulumi.get(self, "tokens")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[int]:
-        """
-        Time at which this recipient was updated, in epoch milliseconds.
-        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> pulumi.Output[str]:
-        """
-        Username of recipient Token updater.
-        """
         return pulumi.get(self, "updated_by")
 

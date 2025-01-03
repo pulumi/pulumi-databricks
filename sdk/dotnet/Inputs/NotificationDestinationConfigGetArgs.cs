@@ -12,33 +12,18 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class NotificationDestinationConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The email configuration of the Notification Destination. It must contain the following:
-        /// </summary>
         [Input("email")]
         public Input<Inputs.NotificationDestinationConfigEmailGetArgs>? Email { get; set; }
 
-        /// <summary>
-        /// The Generic Webhook configuration of the Notification Destination. It must contain the following:
-        /// </summary>
         [Input("genericWebhook")]
         public Input<Inputs.NotificationDestinationConfigGenericWebhookGetArgs>? GenericWebhook { get; set; }
 
-        /// <summary>
-        /// The Microsoft Teams configuration of the Notification Destination. It must contain the following:
-        /// </summary>
         [Input("microsoftTeams")]
         public Input<Inputs.NotificationDestinationConfigMicrosoftTeamsGetArgs>? MicrosoftTeams { get; set; }
 
-        /// <summary>
-        /// The PagerDuty configuration of the Notification Destination. It must contain the following:
-        /// </summary>
         [Input("pagerduty")]
         public Input<Inputs.NotificationDestinationConfigPagerdutyGetArgs>? Pagerduty { get; set; }
 
-        /// <summary>
-        /// The Slack configuration of the Notification Destination. It must contain the following:
-        /// </summary>
         [Input("slack")]
         public Input<Inputs.NotificationDestinationConfigSlackGetArgs>? Slack { get; set; }
 

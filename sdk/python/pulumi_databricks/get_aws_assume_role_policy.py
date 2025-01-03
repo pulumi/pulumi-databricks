@@ -26,7 +26,10 @@ class GetAwsAssumeRolePolicyResult:
     """
     A collection of values returned by getAwsAssumeRolePolicy.
     """
-    def __init__(__self__, databricks_account_id=None, external_id=None, for_log_delivery=None, id=None, json=None):
+    def __init__(__self__, aws_partition=None, databricks_account_id=None, external_id=None, for_log_delivery=None, id=None, json=None):
+        if aws_partition and not isinstance(aws_partition, str):
+            raise TypeError("Expected argument 'aws_partition' to be a str")
+        pulumi.set(__self__, "aws_partition", aws_partition)
         if databricks_account_id and not isinstance(databricks_account_id, str):
             raise TypeError("Expected argument 'databricks_account_id' to be a str")
         pulumi.set(__self__, "databricks_account_id", databricks_account_id)
@@ -44,7 +47,13 @@ class GetAwsAssumeRolePolicyResult:
         pulumi.set(__self__, "json", json)
 
     @property
+    @pulumi.getter(name="awsPartition")
+    def aws_partition(self) -> Optional[str]:
+        return pulumi.get(self, "aws_partition")
+
+    @property
     @pulumi.getter(name="databricksAccountId")
+    @_utilities.deprecated("""databricks_account_id will be will be removed in the next major release.""")
     def databricks_account_id(self) -> Optional[str]:
         return pulumi.get(self, "databricks_account_id")
 
@@ -69,9 +78,6 @@ class GetAwsAssumeRolePolicyResult:
     @property
     @pulumi.getter
     def json(self) -> str:
-        """
-        AWS IAM Policy JSON document
-        """
         return pulumi.get(self, "json")
 
 
@@ -81,6 +87,7 @@ class AwaitableGetAwsAssumeRolePolicyResult(GetAwsAssumeRolePolicyResult):
         if False:
             yield self
         return GetAwsAssumeRolePolicyResult(
+            aws_partition=self.aws_partition,
             databricks_account_id=self.databricks_account_id,
             external_id=self.external_id,
             for_log_delivery=self.for_log_delivery,
@@ -88,57 +95,16 @@ class AwaitableGetAwsAssumeRolePolicyResult(GetAwsAssumeRolePolicyResult):
             json=self.json)
 
 
-def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
+def get_aws_assume_role_policy(aws_partition: Optional[str] = None,
+                               databricks_account_id: Optional[str] = None,
                                external_id: Optional[str] = None,
                                for_log_delivery: Optional[bool] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsAssumeRolePolicyResult:
     """
-    This data source constructs necessary AWS STS assume role policy for you.
-
-    ## Example Usage
-
-    End-to-end example of provisioning Cross-account IAM role with MwsCredentials and aws_iam_role:
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-    import pulumi_databricks as databricks
-
-    config = pulumi.Config()
-    # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
-    databricks_account_id = config.require_object("databricksAccountId")
-    this = databricks.get_aws_cross_account_policy()
-    cross_account_policy = aws.iam.Policy("cross_account_policy",
-        name=f"{prefix}-crossaccount-iam-policy",
-        policy=this.json)
-    this_get_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-    cross_account = aws.iam.Role("cross_account",
-        name=f"{prefix}-crossaccount-iam-role",
-        assume_role_policy=this_get_aws_assume_role_policy.json,
-        description="Grants Databricks full access to VPC resources")
-    cross_account_role_policy_attachment = aws.iam.RolePolicyAttachment("cross_account",
-        policy_arn=cross_account_policy.arn,
-        role=cross_account.name)
-    # required only in case of multi-workspace setup
-    this_mws_credentials = databricks.MwsCredentials("this",
-        account_id=databricks_account_id,
-        credentials_name=f"{prefix}-creds",
-        role_arn=cross_account.arn)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide
-    * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
-
-
-    :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-    :param bool for_log_delivery: Either or not this assume role policy should be created for usage log delivery. Defaults to false.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
+    __args__['awsPartition'] = aws_partition
     __args__['databricksAccountId'] = databricks_account_id
     __args__['externalId'] = external_id
     __args__['forLogDelivery'] = for_log_delivery
@@ -146,68 +112,29 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy', __args__, opts=opts, typ=GetAwsAssumeRolePolicyResult).value
 
     return AwaitableGetAwsAssumeRolePolicyResult(
+        aws_partition=pulumi.get(__ret__, 'aws_partition'),
         databricks_account_id=pulumi.get(__ret__, 'databricks_account_id'),
         external_id=pulumi.get(__ret__, 'external_id'),
         for_log_delivery=pulumi.get(__ret__, 'for_log_delivery'),
         id=pulumi.get(__ret__, 'id'),
         json=pulumi.get(__ret__, 'json'))
-def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Input[Optional[str]]] = None,
+def get_aws_assume_role_policy_output(aws_partition: Optional[pulumi.Input[Optional[str]]] = None,
+                                      databricks_account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                       external_id: Optional[pulumi.Input[str]] = None,
                                       for_log_delivery: Optional[pulumi.Input[Optional[bool]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsAssumeRolePolicyResult]:
     """
-    This data source constructs necessary AWS STS assume role policy for you.
-
-    ## Example Usage
-
-    End-to-end example of provisioning Cross-account IAM role with MwsCredentials and aws_iam_role:
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-    import pulumi_databricks as databricks
-
-    config = pulumi.Config()
-    # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
-    databricks_account_id = config.require_object("databricksAccountId")
-    this = databricks.get_aws_cross_account_policy()
-    cross_account_policy = aws.iam.Policy("cross_account_policy",
-        name=f"{prefix}-crossaccount-iam-policy",
-        policy=this.json)
-    this_get_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-    cross_account = aws.iam.Role("cross_account",
-        name=f"{prefix}-crossaccount-iam-role",
-        assume_role_policy=this_get_aws_assume_role_policy.json,
-        description="Grants Databricks full access to VPC resources")
-    cross_account_role_policy_attachment = aws.iam.RolePolicyAttachment("cross_account",
-        policy_arn=cross_account_policy.arn,
-        role=cross_account.name)
-    # required only in case of multi-workspace setup
-    this_mws_credentials = databricks.MwsCredentials("this",
-        account_id=databricks_account_id,
-        credentials_name=f"{prefix}-creds",
-        role_arn=cross_account.arn)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide
-    * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
-
-
-    :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-    :param bool for_log_delivery: Either or not this assume role policy should be created for usage log delivery. Defaults to false.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
+    __args__['awsPartition'] = aws_partition
     __args__['databricksAccountId'] = databricks_account_id
     __args__['externalId'] = external_id
     __args__['forLogDelivery'] = for_log_delivery
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy', __args__, opts=opts, typ=GetAwsAssumeRolePolicyResult)
     return __ret__.apply(lambda __response__: GetAwsAssumeRolePolicyResult(
+        aws_partition=pulumi.get(__response__, 'aws_partition'),
         databricks_account_id=pulumi.get(__response__, 'databricks_account_id'),
         external_id=pulumi.get(__response__, 'external_id'),
         for_log_delivery=pulumi.get(__response__, 'for_log_delivery'),

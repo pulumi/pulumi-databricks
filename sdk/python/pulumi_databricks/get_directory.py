@@ -48,9 +48,6 @@ class GetDirectoryResult:
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> int:
-        """
-        directory object ID
-        """
         return pulumi.get(self, "object_id")
 
     @property
@@ -61,9 +58,6 @@ class GetDirectoryResult:
     @property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> str:
-        """
-        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-        """
         return pulumi.get(self, "workspace_path")
 
 
@@ -85,23 +79,7 @@ def get_directory(id: Optional[str] = None,
                   workspace_path: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    This data source allows to get information about a directory in a Databricks Workspace.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    prod = databricks.get_directory(path="/Production")
-    ```
-
-
-    :param int object_id: directory object ID
-    :param str path: Path to a directory in the workspace
-    :param str workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -122,23 +100,7 @@ def get_directory_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                          workspace_path: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirectoryResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    This data source allows to get information about a directory in a Databricks Workspace.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    prod = databricks.get_directory(path="/Production")
-    ```
-
-
-    :param int object_id: directory object ID
-    :param str path: Path to a directory in the workspace
-    :param str workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

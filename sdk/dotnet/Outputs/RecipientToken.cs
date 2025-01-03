@@ -13,33 +13,12 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class RecipientToken
     {
-        /// <summary>
-        /// Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
-        /// </summary>
         public readonly string? ActivationUrl;
-        /// <summary>
-        /// Time at which this recipient was created, in epoch milliseconds.
-        /// </summary>
         public readonly int? CreatedAt;
-        /// <summary>
-        /// Username of recipient creator.
-        /// </summary>
         public readonly string? CreatedBy;
-        /// <summary>
-        /// Expiration timestamp of the token in epoch milliseconds.
-        /// </summary>
         public readonly int? ExpirationTime;
-        /// <summary>
-        /// Unique ID of the recipient token.
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// Time at which this recipient was updated, in epoch milliseconds.
-        /// </summary>
         public readonly int? UpdatedAt;
-        /// <summary>
-        /// Username of recipient Token updater.
-        /// </summary>
         public readonly string? UpdatedBy;
 
         [OutputConstructor]

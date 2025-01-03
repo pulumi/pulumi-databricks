@@ -11,123 +11,12 @@ namespace Pulumi.Databricks
 {
     public static class GetCurrentMetastore
     {
-        /// <summary>
-        /// Retrieves information about metastore attached to a given workspace.
-        /// 
-        /// &gt; **Note** This is the workspace-level data source.
-        /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// MetastoreSummary response for a metastore attached to the current workspace.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetCurrentMetastore.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["someMetastore"] = @this.Apply(@this =&gt; @this.Apply(getCurrentMetastoreResult =&gt; getCurrentMetastoreResult.MetastoreInfo)),
-        ///     };
-        /// });
-        /// ```
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.Metastore to get information for a metastore with a given ID.
-        /// * databricks.getMetastores to get a mapping of name to id of all metastores.
-        /// * databricks.Metastore to manage Metastores within Unity Catalog.
-        /// * databricks.Catalog to manage catalogs within Unity Catalog.
-        /// </summary>
         public static Task<GetCurrentMetastoreResult> InvokeAsync(GetCurrentMetastoreArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCurrentMetastoreResult>("databricks:index/getCurrentMetastore:getCurrentMetastore", args ?? new GetCurrentMetastoreArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Retrieves information about metastore attached to a given workspace.
-        /// 
-        /// &gt; **Note** This is the workspace-level data source.
-        /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// MetastoreSummary response for a metastore attached to the current workspace.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetCurrentMetastore.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["someMetastore"] = @this.Apply(@this =&gt; @this.Apply(getCurrentMetastoreResult =&gt; getCurrentMetastoreResult.MetastoreInfo)),
-        ///     };
-        /// });
-        /// ```
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.Metastore to get information for a metastore with a given ID.
-        /// * databricks.getMetastores to get a mapping of name to id of all metastores.
-        /// * databricks.Metastore to manage Metastores within Unity Catalog.
-        /// * databricks.Catalog to manage catalogs within Unity Catalog.
-        /// </summary>
         public static Output<GetCurrentMetastoreResult> Invoke(GetCurrentMetastoreInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCurrentMetastoreResult>("databricks:index/getCurrentMetastore:getCurrentMetastore", args ?? new GetCurrentMetastoreInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Retrieves information about metastore attached to a given workspace.
-        /// 
-        /// &gt; **Note** This is the workspace-level data source.
-        /// 
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// MetastoreSummary response for a metastore attached to the current workspace.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetCurrentMetastore.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["someMetastore"] = @this.Apply(@this =&gt; @this.Apply(getCurrentMetastoreResult =&gt; getCurrentMetastoreResult.MetastoreInfo)),
-        ///     };
-        /// });
-        /// ```
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.Metastore to get information for a metastore with a given ID.
-        /// * databricks.getMetastores to get a mapping of name to id of all metastores.
-        /// * databricks.Metastore to manage Metastores within Unity Catalog.
-        /// * databricks.Catalog to manage catalogs within Unity Catalog.
-        /// </summary>
         public static Output<GetCurrentMetastoreResult> Invoke(GetCurrentMetastoreInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCurrentMetastoreResult>("databricks:index/getCurrentMetastore:getCurrentMetastore", args ?? new GetCurrentMetastoreInvokeArgs(), options.WithDefaults());
     }
@@ -135,15 +24,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetCurrentMetastoreArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
-        /// <summary>
-        /// summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-        /// </summary>
         [Input("metastoreInfo")]
         public Inputs.GetCurrentMetastoreMetastoreInfoArgs? MetastoreInfo { get; set; }
 
@@ -155,15 +38,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetCurrentMetastoreInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-        /// </summary>
         [Input("metastoreInfo")]
         public Input<Inputs.GetCurrentMetastoreMetastoreInfoInputArgs>? MetastoreInfo { get; set; }
 
@@ -177,13 +54,7 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetCurrentMetastoreResult
     {
-        /// <summary>
-        /// metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-        /// </summary>
         public readonly Outputs.GetCurrentMetastoreMetastoreInfoResult MetastoreInfo;
 
         [OutputConstructor]

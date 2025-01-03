@@ -47,17 +47,11 @@ class GetTableResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of table, relative to parent schema.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="tableInfo")
     def table_info(self) -> 'outputs.GetTableTableInfoResult':
-        """
-        TableInfo object for a Unity Catalog table. This contains the following attributes:
-        """
         return pulumi.get(self, "table_info")
 
 
@@ -77,42 +71,7 @@ def get_table(id: Optional[str] = None,
               table_info: Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTableResult:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use get_tables to retrieve multiple tables in Unity Catalog
-
-    ## Example Usage
-
-    Read  on a specific table `main.certified.fct_transactions`:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    fct_transactions = databricks.get_table(name="main.certified.fct_transactions")
-    things = databricks.Grants("things",
-        table=fct_transactions.name,
-        grants=[{
-            "principal": "sensitive",
-            "privileges": [
-                "SELECT",
-                "MODIFY",
-            ],
-        }])
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Grant to manage grants within Unity Catalog.
-    * get_tables to list all tables within a schema in Unity Catalog.
-
-
-    :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
-    :param Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict'] table_info: TableInfo object for a Unity Catalog table. This contains the following attributes:
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -130,42 +89,7 @@ def get_table_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                      table_info: Optional[pulumi.Input[Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTableResult]:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use get_tables to retrieve multiple tables in Unity Catalog
-
-    ## Example Usage
-
-    Read  on a specific table `main.certified.fct_transactions`:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    fct_transactions = databricks.get_table(name="main.certified.fct_transactions")
-    things = databricks.Grants("things",
-        table=fct_transactions.name,
-        grants=[{
-            "principal": "sensitive",
-            "privileges": [
-                "SELECT",
-                "MODIFY",
-            ],
-        }])
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Grant to manage grants within Unity Catalog.
-    * get_tables to list all tables within a schema in Unity Catalog.
-
-
-    :param str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
-    :param Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict'] table_info: TableInfo object for a Unity Catalog table. This contains the following attributes:
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

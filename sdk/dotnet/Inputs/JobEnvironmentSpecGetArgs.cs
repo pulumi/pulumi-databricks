@@ -12,18 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobEnvironmentSpecGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// client version used by the environment.
-        /// </summary>
         [Input("client", required: true)]
         public Input<string> Client { get; set; } = null!;
 
         [Input("dependencies")]
         private InputList<string>? _dependencies;
-
-        /// <summary>
-        /// List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
-        /// </summary>
         public InputList<string> Dependencies
         {
             get => _dependencies ?? (_dependencies = new InputList<string>());

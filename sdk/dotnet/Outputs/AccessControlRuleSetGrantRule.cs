@@ -13,20 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccessControlRuleSetGrantRule
     {
-        /// <summary>
-        /// a list of principals who are granted a role. The following format is supported:
-        /// * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-        /// * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-        /// * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
-        /// </summary>
         public readonly ImmutableArray<string> Principals;
-        /// <summary>
-        /// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
-        /// * `roles/servicePrincipal.manager` - Manager of a service principal.
-        /// * `roles/servicePrincipal.user` - User of a service principal.
-        /// * `roles/group.manager` - Manager of a group.
-        /// * `roles/marketplace.admin` - Admin of marketplace.
-        /// </summary>
         public readonly string Role;
 
         [OutputConstructor]

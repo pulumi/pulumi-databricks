@@ -28,10 +28,6 @@ class ArtifactAllowlistArgs:
                  metastore_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ArtifactAllowlist resource.
-        :param pulumi.Input[str] artifact_type: The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-        :param pulumi.Input[int] created_at: Time at which this artifact allowlist was set.
-        :param pulumi.Input[str] created_by: Identity that set the artifact allowlist.
-        :param pulumi.Input[str] metastore_id: ID of the parent metastore.
         """
         pulumi.set(__self__, "artifact_matchers", artifact_matchers)
         pulumi.set(__self__, "artifact_type", artifact_type)
@@ -54,9 +50,6 @@ class ArtifactAllowlistArgs:
     @property
     @pulumi.getter(name="artifactType")
     def artifact_type(self) -> pulumi.Input[str]:
-        """
-        The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "artifact_type")
 
     @artifact_type.setter
@@ -66,9 +59,6 @@ class ArtifactAllowlistArgs:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[int]]:
-        """
-        Time at which this artifact allowlist was set.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -78,9 +68,6 @@ class ArtifactAllowlistArgs:
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identity that set the artifact allowlist.
-        """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
@@ -90,9 +77,6 @@ class ArtifactAllowlistArgs:
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the parent metastore.
-        """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
@@ -110,10 +94,6 @@ class _ArtifactAllowlistState:
                  metastore_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ArtifactAllowlist resources.
-        :param pulumi.Input[str] artifact_type: The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-        :param pulumi.Input[int] created_at: Time at which this artifact allowlist was set.
-        :param pulumi.Input[str] created_by: Identity that set the artifact allowlist.
-        :param pulumi.Input[str] metastore_id: ID of the parent metastore.
         """
         if artifact_matchers is not None:
             pulumi.set(__self__, "artifact_matchers", artifact_matchers)
@@ -138,9 +118,6 @@ class _ArtifactAllowlistState:
     @property
     @pulumi.getter(name="artifactType")
     def artifact_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "artifact_type")
 
     @artifact_type.setter
@@ -150,9 +127,6 @@ class _ArtifactAllowlistState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[int]]:
-        """
-        Time at which this artifact allowlist was set.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -162,9 +136,6 @@ class _ArtifactAllowlistState:
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identity that set the artifact allowlist.
-        """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
@@ -174,9 +145,6 @@ class _ArtifactAllowlistState:
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the parent metastore.
-        """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
@@ -196,49 +164,9 @@ class ArtifactAllowlist(pulumi.CustomResource):
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
-
-        > This resource can only be used with a workspace-level provider!
-
-        In Databricks Runtime 13.3 and above, you can add libraries and init scripts to the allowlist in UC so that users can leverage these artifacts on compute configured with shared access mode.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        init_scripts = databricks.ArtifactAllowlist("init_scripts",
-            artifact_type="INIT_SCRIPT",
-            artifact_matchers=[{
-                "artifact": "/Volumes/inits",
-                "match_type": "PREFIX_MATCH",
-            }])
-        ```
-
-        ## Related Resources
-
-        The following resources are used in the same context:
-
-        * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-        * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-
-        ## Import
-
-        This resource can be imported by name:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '<metastore_id>|<artifact_type>'
-        ```
-
+        Create a ArtifactAllowlist resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] artifact_type: The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-        :param pulumi.Input[int] created_at: Time at which this artifact allowlist was set.
-        :param pulumi.Input[str] created_by: Identity that set the artifact allowlist.
-        :param pulumi.Input[str] metastore_id: ID of the parent metastore.
         """
         ...
     @overload
@@ -247,43 +175,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
                  args: ArtifactAllowlistArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
-
-        > This resource can only be used with a workspace-level provider!
-
-        In Databricks Runtime 13.3 and above, you can add libraries and init scripts to the allowlist in UC so that users can leverage these artifacts on compute configured with shared access mode.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        init_scripts = databricks.ArtifactAllowlist("init_scripts",
-            artifact_type="INIT_SCRIPT",
-            artifact_matchers=[{
-                "artifact": "/Volumes/inits",
-                "match_type": "PREFIX_MATCH",
-            }])
-        ```
-
-        ## Related Resources
-
-        The following resources are used in the same context:
-
-        * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-        * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-
-        ## Import
-
-        This resource can be imported by name:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '<metastore_id>|<artifact_type>'
-        ```
-
+        Create a ArtifactAllowlist resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ArtifactAllowlistArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -344,10 +236,6 @@ class ArtifactAllowlist(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] artifact_type: The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-        :param pulumi.Input[int] created_at: Time at which this artifact allowlist was set.
-        :param pulumi.Input[str] created_by: Identity that set the artifact allowlist.
-        :param pulumi.Input[str] metastore_id: ID of the parent metastore.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -368,32 +256,20 @@ class ArtifactAllowlist(pulumi.CustomResource):
     @property
     @pulumi.getter(name="artifactType")
     def artifact_type(self) -> pulumi.Output[str]:
-        """
-        The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-        """
         return pulumi.get(self, "artifact_type")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[int]:
-        """
-        Time at which this artifact allowlist was set.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[str]:
-        """
-        Identity that set the artifact allowlist.
-        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[str]:
-        """
-        ID of the parent metastore.
-        """
         return pulumi.get(self, "metastore_id")
 

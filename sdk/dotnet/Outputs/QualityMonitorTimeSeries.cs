@@ -13,13 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class QualityMonitorTimeSeries
     {
-        /// <summary>
-        /// List of granularities to use when aggregating data into time windows based on their timestamp.
-        /// </summary>
         public readonly ImmutableArray<string> Granularities;
-        /// <summary>
-        /// Column of the timestamp of predictions
-        /// </summary>
         public readonly string TimestampCol;
 
         [OutputConstructor]

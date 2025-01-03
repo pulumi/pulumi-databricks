@@ -9,58 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// &gt; This resource can be used with an account or workspace-level provider.
-    /// 
-    /// Optionally, each databricks.Metastore can have a default databricks.StorageCredential defined as `databricks.MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// For AWS
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @this = new Databricks.Metastore("this", new()
-    ///     {
-    ///         Name = "primary",
-    ///         StorageRoot = $"s3://{metastore.Id}/metastore",
-    ///         Owner = "uc admins",
-    ///         Region = "us-east-1",
-    ///         ForceDestroy = true,
-    ///     });
-    /// 
-    ///     var thisMetastoreDataAccess = new Databricks.MetastoreDataAccess("this", new()
-    ///     {
-    ///         MetastoreId = @this.Id,
-    ///         Name = metastoreDataAccess.Name,
-    ///         AwsIamRole = new Databricks.Inputs.MetastoreDataAccessAwsIamRoleArgs
-    ///         {
-    ///             RoleArn = metastoreDataAccess.Arn,
-    ///         },
-    ///         IsDefault = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// For Azure using managed identity as credential (recommended)
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by combination of metastore id and the data access name.
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '&lt;metastore_id&gt;|&lt;name&gt;'
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/metastoreDataAccess:MetastoreDataAccess")]
     public partial class MetastoreDataAccess : global::Pulumi.CustomResource
     {
@@ -91,9 +39,6 @@ namespace Pulumi.Databricks
         [Output("gcpServiceAccountKey")]
         public Output<Outputs.MetastoreDataAccessGcpServiceAccountKey?> GcpServiceAccountKey { get; private set; } = null!;
 
-        /// <summary>
-        /// whether to set this credential as the default for the metastore. In practice, this should always be true.
-        /// </summary>
         [Output("isDefault")]
         public Output<bool?> IsDefault { get; private set; } = null!;
 
@@ -188,9 +133,6 @@ namespace Pulumi.Databricks
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.MetastoreDataAccessGcpServiceAccountKeyArgs>? GcpServiceAccountKey { get; set; }
 
-        /// <summary>
-        /// whether to set this credential as the default for the metastore. In practice, this should always be true.
-        /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
@@ -247,9 +189,6 @@ namespace Pulumi.Databricks
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.MetastoreDataAccessGcpServiceAccountKeyGetArgs>? GcpServiceAccountKey { get; set; }
 
-        /// <summary>
-        /// whether to set this credential as the default for the metastore. In practice, this should always be true.
-        /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 

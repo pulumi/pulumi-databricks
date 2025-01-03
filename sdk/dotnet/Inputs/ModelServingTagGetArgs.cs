@@ -12,15 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingTagGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The key field for a tag.
-        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
-        /// <summary>
-        /// The value field for a tag.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

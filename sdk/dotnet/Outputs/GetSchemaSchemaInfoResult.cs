@@ -13,77 +13,23 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetSchemaSchemaInfoResult
     {
-        /// <summary>
-        /// indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
-        /// </summary>
         public readonly bool? BrowseOnly;
-        /// <summary>
-        /// the name of the catalog where the schema is.
-        /// </summary>
         public readonly string? CatalogName;
-        /// <summary>
-        /// the type of the parent catalog.
-        /// </summary>
         public readonly string? CatalogType;
-        /// <summary>
-        /// the comment attached to the volume
-        /// </summary>
         public readonly string? Comment;
-        /// <summary>
-        /// time at which this schema was created, in epoch milliseconds.
-        /// </summary>
         public readonly int? CreatedAt;
-        /// <summary>
-        /// username of schema creator.
-        /// </summary>
         public readonly string? CreatedBy;
-        /// <summary>
-        /// information about actual state of predictive optimization.
-        /// </summary>
         public readonly Outputs.GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagResult? EffectivePredictiveOptimizationFlag;
-        /// <summary>
-        /// whether predictive optimization should be enabled for this object and objects under it.
-        /// </summary>
         public readonly string? EnablePredictiveOptimization;
-        /// <summary>
-        /// the two-level (fully qualified) name of the schema
-        /// </summary>
         public readonly string? FullName;
-        /// <summary>
-        /// the unique identifier of the metastore
-        /// </summary>
         public readonly string? MetastoreId;
-        /// <summary>
-        /// a fully qualified name of databricks_schema: *`catalog`.`schema`*
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// the identifier of the user who owns the schema
-        /// </summary>
         public readonly string? Owner;
-        /// <summary>
-        /// map of properties set on the schema
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
-        /// <summary>
-        /// the unique identifier of the volume
-        /// </summary>
         public readonly string? SchemaId;
-        /// <summary>
-        /// the storage location on the cloud.
-        /// </summary>
         public readonly string? StorageLocation;
-        /// <summary>
-        /// storage root URL for managed tables within schema.
-        /// </summary>
         public readonly string? StorageRoot;
-        /// <summary>
-        /// the timestamp of the last time changes were made to the schema
-        /// </summary>
         public readonly int? UpdatedAt;
-        /// <summary>
-        /// the identifier of the user who updated the schema last time
-        /// </summary>
         public readonly string? UpdatedBy;
 
         [OutputConstructor]

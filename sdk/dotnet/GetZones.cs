@@ -11,72 +11,12 @@ namespace Pulumi.Databricks
 {
     public static class GetZones
     {
-        /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
-        /// This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var zones = Databricks.GetZones.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("databricks:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
-        /// This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var zones = Databricks.GetZones.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("databricks:index/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
-        /// This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var zones = Databricks.GetZones.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("databricks:index/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
     }
@@ -84,24 +24,14 @@ namespace Pulumi.Databricks
 
     public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
-        /// </summary>
         [Input("defaultZone")]
         public string? DefaultZone { get; set; }
 
-        /// <summary>
-        /// The id for the zone object.
-        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         [Input("zones")]
         private List<string>? _zones;
-
-        /// <summary>
-        /// This is a list of all the zones available for your subnets in your Databricks workspace.
-        /// </summary>
         public List<string> Zones
         {
             get => _zones ?? (_zones = new List<string>());
@@ -116,24 +46,14 @@ namespace Pulumi.Databricks
 
     public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
-        /// </summary>
         [Input("defaultZone")]
         public Input<string>? DefaultZone { get; set; }
 
-        /// <summary>
-        /// The id for the zone object.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         [Input("zones")]
         private InputList<string>? _zones;
-
-        /// <summary>
-        /// This is a list of all the zones available for your subnets in your Databricks workspace.
-        /// </summary>
         public InputList<string> Zones
         {
             get => _zones ?? (_zones = new InputList<string>());
@@ -150,17 +70,8 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetZonesResult
     {
-        /// <summary>
-        /// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
-        /// </summary>
         public readonly string DefaultZone;
-        /// <summary>
-        /// The id for the zone object.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// This is a list of all the zones available for your subnets in your Databricks workspace.
-        /// </summary>
         public readonly ImmutableArray<string> Zones;
 
         [OutputConstructor]

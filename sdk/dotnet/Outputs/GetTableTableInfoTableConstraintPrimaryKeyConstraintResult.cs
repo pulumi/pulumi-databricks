@@ -14,9 +14,6 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetTableTableInfoTableConstraintPrimaryKeyConstraintResult
     {
         public readonly ImmutableArray<string> ChildColumns;
-        /// <summary>
-        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

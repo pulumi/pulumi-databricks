@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("parameters")]
         private InputList<string>? _parameters;
-
-        /// <summary>
-        /// (List) Command-line parameters passed to spark submit.
-        /// </summary>
         public InputList<string> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<string>());

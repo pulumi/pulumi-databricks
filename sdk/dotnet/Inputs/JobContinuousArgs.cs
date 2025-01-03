@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobContinuousArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-        /// </summary>
         [Input("pauseStatus")]
         public Input<string>? PauseStatus { get; set; }
 

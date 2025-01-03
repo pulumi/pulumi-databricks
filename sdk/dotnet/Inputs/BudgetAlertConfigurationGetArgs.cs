@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("actionConfigurations")]
         private InputList<Inputs.BudgetAlertConfigurationActionConfigurationGetArgs>? _actionConfigurations;
-
-        /// <summary>
-        /// List of action configurations to take when the budget alert is triggered. Consists of the following fields:
-        /// </summary>
         public InputList<Inputs.BudgetAlertConfigurationActionConfigurationGetArgs> ActionConfigurations
         {
             get => _actionConfigurations ?? (_actionConfigurations = new InputList<Inputs.BudgetAlertConfigurationActionConfigurationGetArgs>());
@@ -27,27 +23,15 @@ namespace Pulumi.Databricks.Inputs
         [Input("alertConfigurationId")]
         public Input<string>? AlertConfigurationId { get; set; }
 
-        /// <summary>
-        /// The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
-        /// </summary>
         [Input("quantityThreshold")]
         public Input<string>? QuantityThreshold { get; set; }
 
-        /// <summary>
-        /// The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
-        /// </summary>
         [Input("quantityType")]
         public Input<string>? QuantityType { get; set; }
 
-        /// <summary>
-        /// The time window of usage data for the budget. (Enum: `MONTH`)
-        /// </summary>
         [Input("timePeriod")]
         public Input<string>? TimePeriod { get; set; }
 
-        /// <summary>
-        /// The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
-        /// </summary>
         [Input("triggerType")]
         public Input<string>? TriggerType { get; set; }
 

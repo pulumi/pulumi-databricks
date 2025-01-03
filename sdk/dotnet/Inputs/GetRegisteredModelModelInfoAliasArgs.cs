@@ -12,15 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetRegisteredModelModelInfoAliasInputArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// string with the name of alias
-        /// </summary>
         [Input("aliasName")]
         public Input<string>? AliasName { get; set; }
 
-        /// <summary>
-        /// associated model version
-        /// </summary>
         [Input("versionNum")]
         public Input<int>? VersionNum { get; set; }
 

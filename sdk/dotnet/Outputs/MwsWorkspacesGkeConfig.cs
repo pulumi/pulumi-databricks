@@ -13,13 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsWorkspacesGkeConfig
     {
-        /// <summary>
-        /// Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
-        /// </summary>
         public readonly string ConnectivityType;
-        /// <summary>
-        /// The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
-        /// </summary>
         public readonly string MasterIpRange;
 
         [OutputConstructor]

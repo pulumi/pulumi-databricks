@@ -12,18 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
-        /// </summary>
         [Input("autoCaptureConfig")]
         public Input<Inputs.ModelServingConfigAutoCaptureConfigArgs>? AutoCaptureConfig { get; set; }
 
         [Input("servedEntities")]
         private InputList<Inputs.ModelServingConfigServedEntityArgs>? _servedEntities;
-
-        /// <summary>
-        /// A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
-        /// </summary>
         public InputList<Inputs.ModelServingConfigServedEntityArgs> ServedEntities
         {
             get => _servedEntities ?? (_servedEntities = new InputList<Inputs.ModelServingConfigServedEntityArgs>());
@@ -32,10 +25,6 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("servedModels")]
         private InputList<Inputs.ModelServingConfigServedModelArgs>? _servedModels;
-
-        /// <summary>
-        /// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
-        /// </summary>
         [Obsolete(@"Please use 'config.served_entities' instead of 'config.served_models'.")]
         public InputList<Inputs.ModelServingConfigServedModelArgs> ServedModels
         {
@@ -43,9 +32,6 @@ namespace Pulumi.Databricks.Inputs
             set => _servedModels = value;
         }
 
-        /// <summary>
-        /// A single block represents the traffic split configuration amongst the served models.
-        /// </summary>
         [Input("trafficConfig")]
         public Input<Inputs.ModelServingConfigTrafficConfigArgs>? TrafficConfig { get; set; }
 

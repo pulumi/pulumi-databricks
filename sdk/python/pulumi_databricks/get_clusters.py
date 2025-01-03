@@ -60,9 +60,6 @@ class GetClustersResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
-        """
-        list of Cluster ids
-        """
         return pulumi.get(self, "ids")
 
 
@@ -84,46 +81,7 @@ def get_clusters(cluster_name_contains: Optional[str] = None,
                  ids: Optional[Sequence[str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves a list of Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
-
-    ## Example Usage
-
-    Retrieve cluster IDs for all clusters:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    all = databricks.get_clusters()
-    ```
-
-    Retrieve cluster IDs for all clusters having "Shared" in the cluster name:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    all_shared = databricks.get_clusters(cluster_name_contains="shared")
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * End to end workspace management guide.
-    * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-    * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
-    * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-    * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-    * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
-
-
-    :param str cluster_name_contains: Only return Cluster ids that match the given name string.
-    :param Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict'] filter_by: Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
-    :param Sequence[str] ids: list of Cluster ids
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterNameContains'] = cluster_name_contains
@@ -144,46 +102,7 @@ def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[st
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClustersResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves a list of Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
-
-    ## Example Usage
-
-    Retrieve cluster IDs for all clusters:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    all = databricks.get_clusters()
-    ```
-
-    Retrieve cluster IDs for all clusters having "Shared" in the cluster name:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    all_shared = databricks.get_clusters(cluster_name_contains="shared")
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * End to end workspace management guide.
-    * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-    * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
-    * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-    * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-    * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
-
-
-    :param str cluster_name_contains: Only return Cluster ids that match the given name string.
-    :param Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict'] filter_by: Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
-    :param Sequence[str] ids: list of Cluster ids
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterNameContains'] = cluster_name_contains

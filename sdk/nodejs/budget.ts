@@ -6,70 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > Initialize provider with `alias = "account"`, and `host` pointing to the account URL, like, `host = "https://accounts.cloud.databricks.com"`. Use `provider = databricks.account` for all account-level resources.
- *
- * > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
- *
- * This resource allows you to manage [Databricks Budgets](https://docs.databricks.com/en/admin/account-settings/budgets.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const _this = new databricks.Budget("this", {
- *     displayName: "databricks-workspace-budget",
- *     alertConfigurations: [{
- *         timePeriod: "MONTH",
- *         triggerType: "CUMULATIVE_SPENDING_EXCEEDED",
- *         quantityType: "LIST_PRICE_DOLLARS_USD",
- *         quantityThreshold: "840",
- *         actionConfigurations: [{
- *             actionType: "EMAIL_NOTIFICATION",
- *             target: "abc@gmail.com",
- *         }],
- *     }],
- *     filter: {
- *         workspaceId: {
- *             operator: "IN",
- *             values: [1234567890098765],
- *         },
- *         tags: [
- *             {
- *                 key: "Team",
- *                 value: {
- *                     operator: "IN",
- *                     values: ["Data Science"],
- *                 },
- *             },
- *             {
- *                 key: "Environment",
- *                 value: {
- *                     operator: "IN",
- *                     values: ["Development"],
- *                 },
- *             },
- *         ],
- *     },
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the context:
- *
- * * databricks.MwsWorkspaces to set up Databricks workspaces.
- *
- * ## Import
- *
- * This resource can be imported by Databricks account ID and Budget.
- *
- * ```sh
- * $ pulumi import databricks:index/budget:Budget this '<account_id>|<budget_configuration_id>'
- * ```
- */
 export class Budget extends pulumi.CustomResource {
     /**
      * Get an existing Budget resource's state with the given name, ID, and optional extra
@@ -98,19 +34,10 @@ export class Budget extends pulumi.CustomResource {
         return obj['__pulumiType'] === Budget.__pulumiType;
     }
 
-    /**
-     * The ID of the Databricks Account.
-     */
     public readonly accountId!: pulumi.Output<string>;
     public readonly alertConfigurations!: pulumi.Output<outputs.BudgetAlertConfiguration[] | undefined>;
-    /**
-     * The ID of the budget configuration.
-     */
     public readonly budgetConfigurationId!: pulumi.Output<string>;
     public readonly createTime!: pulumi.Output<number>;
-    /**
-     * Name of the budget in Databricks Account.
-     */
     public readonly displayName!: pulumi.Output<string | undefined>;
     public readonly filter!: pulumi.Output<outputs.BudgetFilter | undefined>;
     public readonly updateTime!: pulumi.Output<number>;
@@ -154,19 +81,10 @@ export class Budget extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Budget resources.
  */
 export interface BudgetState {
-    /**
-     * The ID of the Databricks Account.
-     */
     accountId?: pulumi.Input<string>;
     alertConfigurations?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfiguration>[]>;
-    /**
-     * The ID of the budget configuration.
-     */
     budgetConfigurationId?: pulumi.Input<string>;
     createTime?: pulumi.Input<number>;
-    /**
-     * Name of the budget in Databricks Account.
-     */
     displayName?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.BudgetFilter>;
     updateTime?: pulumi.Input<number>;
@@ -176,19 +94,10 @@ export interface BudgetState {
  * The set of arguments for constructing a Budget resource.
  */
 export interface BudgetArgs {
-    /**
-     * The ID of the Databricks Account.
-     */
     accountId?: pulumi.Input<string>;
     alertConfigurations?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfiguration>[]>;
-    /**
-     * The ID of the budget configuration.
-     */
     budgetConfigurationId?: pulumi.Input<string>;
     createTime?: pulumi.Input<number>;
-    /**
-     * Name of the budget in Databricks Account.
-     */
     displayName?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.BudgetFilter>;
     updateTime?: pulumi.Input<number>;

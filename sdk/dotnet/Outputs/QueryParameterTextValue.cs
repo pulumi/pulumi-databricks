@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class QueryParameterTextValue
     {
-        /// <summary>
-        /// actual text value.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

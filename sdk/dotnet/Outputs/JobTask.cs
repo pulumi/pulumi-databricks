@@ -13,95 +13,41 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTask
     {
+        public readonly Outputs.JobTaskCleanRoomsNotebookTask? CleanRoomsNotebookTask;
         public readonly Outputs.JobTaskConditionTask? ConditionTask;
         public readonly Outputs.JobTaskDbtTask? DbtTask;
-        /// <summary>
-        /// block specifying dependency(-ies) for a given task.
-        /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskDependsOn> DependsOns;
-        /// <summary>
-        /// description for this task.
-        /// </summary>
         public readonly string? Description;
-        /// <summary>
-        /// A flag to disable auto optimization in serverless tasks.
-        /// </summary>
         public readonly bool? DisableAutoOptimization;
-        /// <summary>
-        /// An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
-        /// </summary>
         public readonly Outputs.JobTaskEmailNotifications? EmailNotifications;
-        /// <summary>
-        /// identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
-        /// </summary>
         public readonly string? EnvironmentKey;
-        /// <summary>
-        /// Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
-        /// </summary>
         public readonly string? ExistingClusterId;
         public readonly Outputs.JobTaskForEachTask? ForEachTask;
-        /// <summary>
-        /// block described below that specifies health conditions for a given task.
-        /// </summary>
         public readonly Outputs.JobTaskHealth? Health;
-        /// <summary>
-        /// Identifier of the Job cluster specified in the `job_cluster` block.
-        /// </summary>
         public readonly string? JobClusterKey;
-        /// <summary>
-        /// (Set) An optional list of libraries to be installed on the cluster that will execute the job.
-        /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskLibrary> Libraries;
-        /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-        /// </summary>
         public readonly int? MaxRetries;
-        /// <summary>
-        /// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-        /// </summary>
         public readonly int? MinRetryIntervalMillis;
-        /// <summary>
-        /// Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren't supported!*
-        /// </summary>
         public readonly Outputs.JobTaskNewCluster? NewCluster;
         public readonly Outputs.JobTaskNotebookTask? NotebookTask;
-        /// <summary>
-        /// An optional block controlling the notification settings on the job level documented below.
-        /// </summary>
         public readonly Outputs.JobTaskNotificationSettings? NotificationSettings;
         public readonly Outputs.JobTaskPipelineTask? PipelineTask;
         public readonly Outputs.JobTaskPythonWheelTask? PythonWheelTask;
-        /// <summary>
-        /// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-        /// </summary>
         public readonly bool? RetryOnTimeout;
-        /// <summary>
-        /// An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
-        /// </summary>
         public readonly string? RunIf;
         public readonly Outputs.JobTaskRunJobTask? RunJobTask;
         public readonly Outputs.JobTaskSparkJarTask? SparkJarTask;
         public readonly Outputs.JobTaskSparkPythonTask? SparkPythonTask;
         public readonly Outputs.JobTaskSparkSubmitTask? SparkSubmitTask;
         public readonly Outputs.JobTaskSqlTask? SqlTask;
-        /// <summary>
-        /// string specifying an unique key for a given task.
-        /// * `*_task` - (Required) one of the specific task blocks described below:
-        /// </summary>
         public readonly string TaskKey;
-        /// <summary>
-        /// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-        /// </summary>
         public readonly int? TimeoutSeconds;
-        /// <summary>
-        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-        /// 
-        /// &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
-        /// </summary>
         public readonly Outputs.JobTaskWebhookNotifications? WebhookNotifications;
 
         [OutputConstructor]
         private JobTask(
+            Outputs.JobTaskCleanRoomsNotebookTask? cleanRoomsNotebookTask,
+
             Outputs.JobTaskConditionTask? conditionTask,
 
             Outputs.JobTaskDbtTask? dbtTask,
@@ -160,6 +106,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskWebhookNotifications? webhookNotifications)
         {
+            CleanRoomsNotebookTask = cleanRoomsNotebookTask;
             ConditionTask = conditionTask;
             DbtTask = dbtTask;
             DependsOns = dependsOns;

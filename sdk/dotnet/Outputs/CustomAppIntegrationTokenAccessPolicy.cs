@@ -13,13 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class CustomAppIntegrationTokenAccessPolicy
     {
-        /// <summary>
-        /// access token time to live (TTL) in minutes.
-        /// </summary>
         public readonly int? AccessTokenTtlInMinutes;
-        /// <summary>
-        /// refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
-        /// </summary>
         public readonly int? RefreshTokenTtlInMinutes;
 
         [OutputConstructor]

@@ -35,16 +35,6 @@ class MwsNetworksArgs:
                  workspace_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MwsNetworks resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[str] network_name: name under which this network is registered
-        :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
-        :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
-        :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        :param pulumi.Input[str] vpc_id: aws_vpc id
-        :param pulumi.Input[str] vpc_status: (String) VPC attachment status
-        :param pulumi.Input[str] workspace_id: (Integer) id of associated workspace
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "network_name", network_name)
@@ -72,9 +62,6 @@ class MwsNetworksArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
-        """
-        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -84,9 +71,6 @@ class MwsNetworksArgs:
     @property
     @pulumi.getter(name="networkName")
     def network_name(self) -> pulumi.Input[str]:
-        """
-        name under which this network is registered
-        """
         return pulumi.get(self, "network_name")
 
     @network_name.setter
@@ -114,9 +98,6 @@ class MwsNetworksArgs:
     @property
     @pulumi.getter(name="gcpNetworkInfo")
     def gcp_network_info(self) -> Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']]:
-        """
-        a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
-        """
         return pulumi.get(self, "gcp_network_info")
 
     @gcp_network_info.setter
@@ -126,9 +107,6 @@ class MwsNetworksArgs:
     @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (String) id of network to be used for MwsWorkspaces resource.
-        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -138,9 +116,6 @@ class MwsNetworksArgs:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        ids of aws_security_group
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -150,9 +125,6 @@ class MwsNetworksArgs:
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        ids of aws_subnet
-        """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
@@ -162,9 +134,6 @@ class MwsNetworksArgs:
     @property
     @pulumi.getter(name="vpcEndpoints")
     def vpc_endpoints(self) -> Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']]:
-        """
-        mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        """
         return pulumi.get(self, "vpc_endpoints")
 
     @vpc_endpoints.setter
@@ -174,9 +143,6 @@ class MwsNetworksArgs:
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        aws_vpc id
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -186,9 +152,6 @@ class MwsNetworksArgs:
     @property
     @pulumi.getter(name="vpcStatus")
     def vpc_status(self) -> Optional[pulumi.Input[str]]:
-        """
-        (String) VPC attachment status
-        """
         return pulumi.get(self, "vpc_status")
 
     @vpc_status.setter
@@ -198,9 +161,6 @@ class MwsNetworksArgs:
     @property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Integer) id of associated workspace
-        """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
@@ -225,16 +185,6 @@ class _MwsNetworksState:
                  workspace_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MwsNetworks resources.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
-        :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
-        :param pulumi.Input[str] network_name: name under which this network is registered
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
-        :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        :param pulumi.Input[str] vpc_id: aws_vpc id
-        :param pulumi.Input[str] vpc_status: (String) VPC attachment status
-        :param pulumi.Input[str] workspace_id: (Integer) id of associated workspace
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -264,9 +214,6 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -294,9 +241,6 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="gcpNetworkInfo")
     def gcp_network_info(self) -> Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']]:
-        """
-        a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
-        """
         return pulumi.get(self, "gcp_network_info")
 
     @gcp_network_info.setter
@@ -306,9 +250,6 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (String) id of network to be used for MwsWorkspaces resource.
-        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -318,9 +259,6 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="networkName")
     def network_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        name under which this network is registered
-        """
         return pulumi.get(self, "network_name")
 
     @network_name.setter
@@ -330,9 +268,6 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        ids of aws_security_group
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -342,9 +277,6 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        ids of aws_subnet
-        """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
@@ -354,9 +286,6 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="vpcEndpoints")
     def vpc_endpoints(self) -> Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']]:
-        """
-        mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        """
         return pulumi.get(self, "vpc_endpoints")
 
     @vpc_endpoints.setter
@@ -366,9 +295,6 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        aws_vpc id
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -378,9 +304,6 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="vpcStatus")
     def vpc_status(self) -> Optional[pulumi.Input[str]]:
-        """
-        (String) VPC attachment status
-        """
         return pulumi.get(self, "vpc_status")
 
     @vpc_status.setter
@@ -390,9 +313,6 @@ class _MwsNetworksState:
     @property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Integer) id of associated workspace
-        """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
@@ -419,121 +339,9 @@ class MwsNetworks(pulumi.CustomResource):
                  workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Creating a Databricks on GCP workspace
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_google as google
-
-        config = pulumi.Config()
-        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
-        databricks_account_id = config.require_object("databricksAccountId")
-        dbx_private_vpc = google.index.ComputeNetwork("dbx_private_vpc",
-            project=google_project,
-            name=ftf-network-{suffix.result},
-            auto_create_subnetworks=False)
-        network_with_private_secondary_ip_ranges = google.index.ComputeSubnetwork("network-with-private-secondary-ip-ranges",
-            name=ftest-dbx-{suffix.result},
-            ip_cidr_range=10.0.0.0/16,
-            region=us-central1,
-            network=dbx_private_vpc.id,
-            secondary_ip_range=[
-                {
-                    rangeName: pods,
-                    ipCidrRange: 10.1.0.0/16,
-                },
-                {
-                    rangeName: svc,
-                    ipCidrRange: 10.2.0.0/20,
-                },
-            ],
-            private_ip_google_access=True)
-        router = google.index.ComputeRouter("router",
-            name=fmy-router-{suffix.result},
-            region=network_with_private_secondary_ip_ranges.region,
-            network=dbx_private_vpc.id)
-        nat = google.index.ComputeRouterNat("nat",
-            name=fmy-router-nat-{suffix.result},
-            router=router.name,
-            region=router.region,
-            nat_ip_allocate_option=AUTO_ONLY,
-            source_subnetwork_ip_ranges_to_nat=ALL_SUBNETWORKS_ALL_IP_RANGES)
-        this = databricks.MwsNetworks("this",
-            account_id=databricks_account_id,
-            network_name=f"test-demo-{suffix['result']}",
-            gcp_network_info={
-                "network_project_id": google_project,
-                "vpc_id": dbx_private_vpc["name"],
-                "subnet_id": network_with_private_secondary_ip_ranges["name"],
-                "subnet_region": network_with_private_secondary_ip_ranges["region"],
-                "pod_ip_range_name": "pods",
-                "service_ip_range_name": "svc",
-            })
-        ```
-
-        In order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the MwsNetworks resource. For example:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.MwsNetworks("this",
-            account_id=databricks_account_id,
-            network_name=f"test-demo-{suffix['result']}",
-            gcp_network_info={
-                "network_project_id": google_project,
-                "vpc_id": dbx_private_vpc["name"],
-                "subnet_id": network_with_private_secondary_ip_ranges["name"],
-                "subnet_region": network_with_private_secondary_ip_ranges["region"],
-                "pod_ip_range_name": "pods",
-                "service_ip_range_name": "svc",
-            },
-            vpc_endpoints={
-                "dataplane_relays": [relay["vpcEndpointId"]],
-                "rest_apis": [workspace["vpcEndpointId"]],
-            })
-        ```
-
-        ## Modifying networks on running workspaces (AWS only)
-
-        Due to specifics of platform APIs, changing any attribute of network configuration would cause `MwsNetworks` to be re-created - deleted & added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:
-
-        1. Create a new `MwsNetworks` resource.
-        2. Update the `MwsWorkspaces` to point to the new `network_id`.
-        3. Delete the old `MwsNetworks` resource.
-
-        ## Related Resources
-
-        The following resources are used in the same context:
-
-        * Provisioning Databricks on AWS guide.
-        * Provisioning Databricks on AWS with Private Link guide.
-        * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
-        * Provisioning Databricks on GCP guide.
-        * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
-        * MwsVpcEndpoint to register aws_vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
-        * MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
-        * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
-
-        ## Import
-
-        !> Importing this resource is not currently supported.
-
+        Create a MwsNetworks resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
-        :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
-        :param pulumi.Input[str] network_name: name under which this network is registered
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
-        :param pulumi.Input[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        :param pulumi.Input[str] vpc_id: aws_vpc id
-        :param pulumi.Input[str] vpc_status: (String) VPC attachment status
-        :param pulumi.Input[str] workspace_id: (Integer) id of associated workspace
         """
         ...
     @overload
@@ -542,109 +350,7 @@ class MwsNetworks(pulumi.CustomResource):
                  args: MwsNetworksArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Creating a Databricks on GCP workspace
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_google as google
-
-        config = pulumi.Config()
-        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
-        databricks_account_id = config.require_object("databricksAccountId")
-        dbx_private_vpc = google.index.ComputeNetwork("dbx_private_vpc",
-            project=google_project,
-            name=ftf-network-{suffix.result},
-            auto_create_subnetworks=False)
-        network_with_private_secondary_ip_ranges = google.index.ComputeSubnetwork("network-with-private-secondary-ip-ranges",
-            name=ftest-dbx-{suffix.result},
-            ip_cidr_range=10.0.0.0/16,
-            region=us-central1,
-            network=dbx_private_vpc.id,
-            secondary_ip_range=[
-                {
-                    rangeName: pods,
-                    ipCidrRange: 10.1.0.0/16,
-                },
-                {
-                    rangeName: svc,
-                    ipCidrRange: 10.2.0.0/20,
-                },
-            ],
-            private_ip_google_access=True)
-        router = google.index.ComputeRouter("router",
-            name=fmy-router-{suffix.result},
-            region=network_with_private_secondary_ip_ranges.region,
-            network=dbx_private_vpc.id)
-        nat = google.index.ComputeRouterNat("nat",
-            name=fmy-router-nat-{suffix.result},
-            router=router.name,
-            region=router.region,
-            nat_ip_allocate_option=AUTO_ONLY,
-            source_subnetwork_ip_ranges_to_nat=ALL_SUBNETWORKS_ALL_IP_RANGES)
-        this = databricks.MwsNetworks("this",
-            account_id=databricks_account_id,
-            network_name=f"test-demo-{suffix['result']}",
-            gcp_network_info={
-                "network_project_id": google_project,
-                "vpc_id": dbx_private_vpc["name"],
-                "subnet_id": network_with_private_secondary_ip_ranges["name"],
-                "subnet_region": network_with_private_secondary_ip_ranges["region"],
-                "pod_ip_range_name": "pods",
-                "service_ip_range_name": "svc",
-            })
-        ```
-
-        In order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the MwsNetworks resource. For example:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.MwsNetworks("this",
-            account_id=databricks_account_id,
-            network_name=f"test-demo-{suffix['result']}",
-            gcp_network_info={
-                "network_project_id": google_project,
-                "vpc_id": dbx_private_vpc["name"],
-                "subnet_id": network_with_private_secondary_ip_ranges["name"],
-                "subnet_region": network_with_private_secondary_ip_ranges["region"],
-                "pod_ip_range_name": "pods",
-                "service_ip_range_name": "svc",
-            },
-            vpc_endpoints={
-                "dataplane_relays": [relay["vpcEndpointId"]],
-                "rest_apis": [workspace["vpcEndpointId"]],
-            })
-        ```
-
-        ## Modifying networks on running workspaces (AWS only)
-
-        Due to specifics of platform APIs, changing any attribute of network configuration would cause `MwsNetworks` to be re-created - deleted & added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:
-
-        1. Create a new `MwsNetworks` resource.
-        2. Update the `MwsWorkspaces` to point to the new `network_id`.
-        3. Delete the old `MwsNetworks` resource.
-
-        ## Related Resources
-
-        The following resources are used in the same context:
-
-        * Provisioning Databricks on AWS guide.
-        * Provisioning Databricks on AWS with Private Link guide.
-        * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
-        * Provisioning Databricks on GCP guide.
-        * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
-        * MwsVpcEndpoint to register aws_vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
-        * MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
-        * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
-
-        ## Import
-
-        !> Importing this resource is not currently supported.
-
+        Create a MwsNetworks resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MwsNetworksArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -728,16 +434,6 @@ class MwsNetworks(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
-        :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
-        :param pulumi.Input[str] network_name: name under which this network is registered
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
-        :param pulumi.Input[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        :param pulumi.Input[str] vpc_id: aws_vpc id
-        :param pulumi.Input[str] vpc_status: (String) VPC attachment status
-        :param pulumi.Input[str] workspace_id: (Integer) id of associated workspace
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -760,9 +456,6 @@ class MwsNetworks(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -778,72 +471,45 @@ class MwsNetworks(pulumi.CustomResource):
     @property
     @pulumi.getter(name="gcpNetworkInfo")
     def gcp_network_info(self) -> pulumi.Output[Optional['outputs.MwsNetworksGcpNetworkInfo']]:
-        """
-        a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
-        """
         return pulumi.get(self, "gcp_network_info")
 
     @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[str]:
-        """
-        (String) id of network to be used for MwsWorkspaces resource.
-        """
         return pulumi.get(self, "network_id")
 
     @property
     @pulumi.getter(name="networkName")
     def network_name(self) -> pulumi.Output[str]:
-        """
-        name under which this network is registered
-        """
         return pulumi.get(self, "network_name")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        ids of aws_security_group
-        """
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        ids of aws_subnet
-        """
         return pulumi.get(self, "subnet_ids")
 
     @property
     @pulumi.getter(name="vpcEndpoints")
     def vpc_endpoints(self) -> pulumi.Output['outputs.MwsNetworksVpcEndpoints']:
-        """
-        mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        """
         return pulumi.get(self, "vpc_endpoints")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        aws_vpc id
-        """
         return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vpcStatus")
     def vpc_status(self) -> pulumi.Output[str]:
-        """
-        (String) VPC attachment status
-        """
         return pulumi.get(self, "vpc_status")
 
     @property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> pulumi.Output[str]:
-        """
-        (Integer) id of associated workspace
-        """
         return pulumi.get(self, "workspace_id")
 

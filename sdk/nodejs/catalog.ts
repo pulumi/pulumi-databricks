@@ -4,46 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > This resource can only be used with a workspace-level provider!
- *
- * Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
- *
- * A `databricks.Catalog` is contained within databricks.Metastore and can contain databricks_schema. By default, Databricks creates `default` schema for every new catalog, but Pulumi plugin is removing this auto-created schema, so that resource destruction could be done in a clean way.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sandbox = new databricks.Catalog("sandbox", {
- *     name: "sandbox",
- *     comment: "this catalog is managed by terraform",
- *     properties: {
- *         purpose: "testing",
- *     },
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.getTables data to list tables within Unity Catalog.
- * * databricks.getSchemas data to list schemas within Unity Catalog.
- * * databricks.getCatalogs data to list catalogs within Unity Catalog.
- *
- * ## Import
- *
- * This resource can be imported by name:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/catalog:Catalog this <name>
- * ```
- */
 export class Catalog extends pulumi.CustomResource {
     /**
      * Get an existing Catalog resource's state with the given name, ID, and optional extra
@@ -72,57 +32,18 @@ export class Catalog extends pulumi.CustomResource {
         return obj['__pulumiType'] === Catalog.__pulumiType;
     }
 
-    /**
-     * User-supplied free-form text.
-     */
     public readonly comment!: pulumi.Output<string | undefined>;
-    /**
-     * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
-     */
     public readonly connectionName!: pulumi.Output<string | undefined>;
-    /**
-     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
-     */
     public readonly enablePredictiveOptimization!: pulumi.Output<string>;
-    /**
-     * Delete catalog regardless of its contents.
-     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
-    /**
-     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-     */
     public readonly isolationMode!: pulumi.Output<string>;
-    /**
-     * ID of the parent metastore.
-     */
     public readonly metastoreId!: pulumi.Output<string>;
-    /**
-     * Name of Catalog relative to parent metastore.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-     */
     public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Username/groupname/sp applicationId of the catalog owner.
-     */
     public readonly owner!: pulumi.Output<string>;
-    /**
-     * Extensible Catalog properties.
-     */
     public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
-     */
     public readonly providerName!: pulumi.Output<string | undefined>;
-    /**
-     * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-     */
     public readonly shareName!: pulumi.Output<string | undefined>;
-    /**
-     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
-     */
     public readonly storageRoot!: pulumi.Output<string | undefined>;
 
     /**
@@ -176,57 +97,18 @@ export class Catalog extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Catalog resources.
  */
 export interface CatalogState {
-    /**
-     * User-supplied free-form text.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
-     */
     connectionName?: pulumi.Input<string>;
-    /**
-     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
-     */
     enablePredictiveOptimization?: pulumi.Input<string>;
-    /**
-     * Delete catalog regardless of its contents.
-     */
     forceDestroy?: pulumi.Input<boolean>;
-    /**
-     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-     */
     isolationMode?: pulumi.Input<string>;
-    /**
-     * ID of the parent metastore.
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * Name of Catalog relative to parent metastore.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-     */
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Username/groupname/sp applicationId of the catalog owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Extensible Catalog properties.
-     */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
-     */
     providerName?: pulumi.Input<string>;
-    /**
-     * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-     */
     shareName?: pulumi.Input<string>;
-    /**
-     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
-     */
     storageRoot?: pulumi.Input<string>;
 }
 
@@ -234,56 +116,17 @@ export interface CatalogState {
  * The set of arguments for constructing a Catalog resource.
  */
 export interface CatalogArgs {
-    /**
-     * User-supplied free-form text.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
-     */
     connectionName?: pulumi.Input<string>;
-    /**
-     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
-     */
     enablePredictiveOptimization?: pulumi.Input<string>;
-    /**
-     * Delete catalog regardless of its contents.
-     */
     forceDestroy?: pulumi.Input<boolean>;
-    /**
-     * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-     */
     isolationMode?: pulumi.Input<string>;
-    /**
-     * ID of the parent metastore.
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * Name of Catalog relative to parent metastore.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-     */
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Username/groupname/sp applicationId of the catalog owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Extensible Catalog properties.
-     */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
-     */
     providerName?: pulumi.Input<string>;
-    /**
-     * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-     */
     shareName?: pulumi.Input<string>;
-    /**
-     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
-     */
     storageRoot?: pulumi.Input<string>;
 }

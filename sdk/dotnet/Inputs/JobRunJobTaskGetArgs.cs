@@ -12,18 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobRunJobTaskGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (String) ID of the job
-        /// </summary>
         [Input("jobId", required: true)]
         public Input<int> JobId { get; set; } = null!;
 
         [Input("jobParameters")]
         private InputMap<string>? _jobParameters;
-
-        /// <summary>
-        /// (Map) Job parameters for the task
-        /// </summary>
         public InputMap<string> JobParameters
         {
             get => _jobParameters ?? (_jobParameters = new InputMap<string>());

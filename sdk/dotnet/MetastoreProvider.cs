@@ -9,75 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// &gt; This resource can only be used with a workspace-level provider!
-    /// 
-    /// In Delta Sharing, a provider is an entity that shares data with a recipient. Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
-    /// 
-    /// A `databricks.MetastoreProvider` is contained within databricks.Metastore and can contain a list of shares that have been shared with you.
-    /// 
-    /// &gt; Databricks to Databricks sharing automatically creates the provider.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dbprovider = new Databricks.MetastoreProvider("dbprovider", new()
-    ///     {
-    ///         Name = "terraform-test-provider",
-    ///         Comment = "made by terraform 2",
-    ///         AuthenticationType = "TOKEN",
-    ///         RecipientProfileStr = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["shareCredentialsVersion"] = 1,
-    ///             ["bearerToken"] = "token",
-    ///             ["endpoint"] = "endpoint",
-    ///             ["expirationTime"] = "expiration-time",
-    ///         }),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are used in the same context:
-    /// 
-    /// * databricks.getTables data to list tables within Unity Catalog.
-    /// * databricks.getSchemas data to list schemas within Unity Catalog.
-    /// * databricks.getCatalogs data to list catalogs within Unity Catalog.
-    /// </summary>
     [DatabricksResourceType("databricks:index/metastoreProvider:MetastoreProvider")]
     public partial class MetastoreProvider : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The delta sharing authentication type. Valid values are `TOKEN`.
-        /// </summary>
         [Output("authenticationType")]
         public Output<string> AuthenticationType { get; private set; } = null!;
 
-        /// <summary>
-        /// Description about the provider.
-        /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of provider. Change forces creation of a new resource.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// This is the json file that is created from a recipient url.
-        /// </summary>
         [Output("recipientProfileStr")]
         public Output<string> RecipientProfileStr { get; private set; } = null!;
 
@@ -131,30 +74,17 @@ namespace Pulumi.Databricks
 
     public sealed class MetastoreProviderArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The delta sharing authentication type. Valid values are `TOKEN`.
-        /// </summary>
         [Input("authenticationType", required: true)]
         public Input<string> AuthenticationType { get; set; } = null!;
 
-        /// <summary>
-        /// Description about the provider.
-        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
-        /// <summary>
-        /// Name of provider. Change forces creation of a new resource.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("recipientProfileStr", required: true)]
         private Input<string>? _recipientProfileStr;
-
-        /// <summary>
-        /// This is the json file that is created from a recipient url.
-        /// </summary>
         public Input<string>? RecipientProfileStr
         {
             get => _recipientProfileStr;
@@ -173,30 +103,17 @@ namespace Pulumi.Databricks
 
     public sealed class MetastoreProviderState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The delta sharing authentication type. Valid values are `TOKEN`.
-        /// </summary>
         [Input("authenticationType")]
         public Input<string>? AuthenticationType { get; set; }
 
-        /// <summary>
-        /// Description about the provider.
-        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
-        /// <summary>
-        /// Name of provider. Change forces creation of a new resource.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("recipientProfileStr")]
         private Input<string>? _recipientProfileStr;
-
-        /// <summary>
-        /// This is the json file that is created from a recipient url.
-        /// </summary>
         public Input<string>? RecipientProfileStr
         {
             get => _recipientProfileStr;

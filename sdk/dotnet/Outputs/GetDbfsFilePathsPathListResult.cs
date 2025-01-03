@@ -14,9 +14,6 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDbfsFilePathsPathListResult
     {
         public readonly int? FileSize;
-        /// <summary>
-        /// Path on DBFS for the file to perform listing
-        /// </summary>
         public readonly string? Path;
 
         [OutputConstructor]

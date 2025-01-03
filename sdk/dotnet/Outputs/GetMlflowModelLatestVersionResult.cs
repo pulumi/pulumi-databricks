@@ -15,27 +15,15 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly int? CreationTimestamp;
         public readonly string? CurrentStage;
-        /// <summary>
-        /// User-specified description for the object.
-        /// </summary>
         public readonly string? Description;
         public readonly int? LastUpdatedTimestamp;
-        /// <summary>
-        /// Name of the registered model.
-        /// </summary>
         public readonly string? Name;
         public readonly string? RunId;
         public readonly string? RunLink;
         public readonly string? Source;
         public readonly string? Status;
         public readonly string? StatusMessage;
-        /// <summary>
-        /// Array of tags associated with the model.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetMlflowModelLatestVersionTagResult> Tags;
-        /// <summary>
-        /// The username of the user that created the object.
-        /// </summary>
         public readonly string? UserId;
         public readonly string? Version;
 

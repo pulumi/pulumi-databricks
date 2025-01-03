@@ -4,34 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
- *
- * > This resource can only be used with a workspace-level provider!
- *
- * Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
- *
- * ## Example Usage
- *
- * Enable the system schema `access`
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const _this = new databricks.SystemSchema("this", {schema: "access"});
- * ```
- *
- * ## Import
- *
- * This resource can be imported by the metastore id and schema name
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/systemSchema:SystemSchema this '<metastore_id>|<schema_name>'
- * ```
- */
 export class SystemSchema extends pulumi.CustomResource {
     /**
      * Get an existing SystemSchema resource's state with the given name, ID, and optional extra
@@ -60,18 +32,9 @@ export class SystemSchema extends pulumi.CustomResource {
         return obj['__pulumiType'] === SystemSchema.__pulumiType;
     }
 
-    /**
-     * the full name of the system schema, in form of `system.<schema>`.
-     */
     public /*out*/ readonly fullName!: pulumi.Output<string>;
     public /*out*/ readonly metastoreId!: pulumi.Output<string>;
-    /**
-     * name of the system schema.
-     */
     public readonly schema!: pulumi.Output<string | undefined>;
-    /**
-     * The current state of enablement for the system schema.
-     */
     public readonly state!: pulumi.Output<string>;
 
     /**
@@ -107,18 +70,9 @@ export class SystemSchema extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SystemSchema resources.
  */
 export interface SystemSchemaState {
-    /**
-     * the full name of the system schema, in form of `system.<schema>`.
-     */
     fullName?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
-    /**
-     * name of the system schema.
-     */
     schema?: pulumi.Input<string>;
-    /**
-     * The current state of enablement for the system schema.
-     */
     state?: pulumi.Input<string>;
 }
 
@@ -126,12 +80,6 @@ export interface SystemSchemaState {
  * The set of arguments for constructing a SystemSchema resource.
  */
 export interface SystemSchemaArgs {
-    /**
-     * name of the system schema.
-     */
     schema?: pulumi.Input<string>;
-    /**
-     * The current state of enablement for the system schema.
-     */
     state?: pulumi.Input<string>;
 }

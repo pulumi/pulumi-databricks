@@ -9,83 +9,21 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// &gt; It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
-    /// 
-    /// &gt; This resource can only be used with a workspace-level provider!
-    /// 
-    /// In Databricks Runtime 13.3 and above, you can add libraries and init scripts to the allowlist in UC so that users can leverage these artifacts on compute configured with shared access mode.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var initScripts = new Databricks.ArtifactAllowlist("init_scripts", new()
-    ///     {
-    ///         ArtifactType = "INIT_SCRIPT",
-    ///         ArtifactMatchers = new[]
-    ///         {
-    ///             new Databricks.Inputs.ArtifactAllowlistArtifactMatcherArgs
-    ///             {
-    ///                 Artifact = "/Volumes/inits",
-    ///                 MatchType = "PREFIX_MATCH",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are used in the same context:
-    /// 
-    /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-    /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by name:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '&lt;metastore_id&gt;|&lt;artifact_type&gt;'
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/artifactAllowlist:ArtifactAllowlist")]
     public partial class ArtifactAllowlist : global::Pulumi.CustomResource
     {
         [Output("artifactMatchers")]
         public Output<ImmutableArray<Outputs.ArtifactAllowlistArtifactMatcher>> ArtifactMatchers { get; private set; } = null!;
 
-        /// <summary>
-        /// The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-        /// </summary>
         [Output("artifactType")]
         public Output<string> ArtifactType { get; private set; } = null!;
 
-        /// <summary>
-        /// Time at which this artifact allowlist was set.
-        /// </summary>
         [Output("createdAt")]
         public Output<int> CreatedAt { get; private set; } = null!;
 
-        /// <summary>
-        /// Identity that set the artifact allowlist.
-        /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the parent metastore.
-        /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
@@ -143,27 +81,15 @@ namespace Pulumi.Databricks
             set => _artifactMatchers = value;
         }
 
-        /// <summary>
-        /// The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-        /// </summary>
         [Input("artifactType", required: true)]
         public Input<string> ArtifactType { get; set; } = null!;
 
-        /// <summary>
-        /// Time at which this artifact allowlist was set.
-        /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
-        /// <summary>
-        /// Identity that set the artifact allowlist.
-        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
-        /// <summary>
-        /// ID of the parent metastore.
-        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
@@ -183,27 +109,15 @@ namespace Pulumi.Databricks
             set => _artifactMatchers = value;
         }
 
-        /// <summary>
-        /// The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-        /// </summary>
         [Input("artifactType")]
         public Input<string>? ArtifactType { get; set; }
 
-        /// <summary>
-        /// Time at which this artifact allowlist was set.
-        /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
-        /// <summary>
-        /// Identity that set the artifact allowlist.
-        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
-        /// <summary>
-        /// ID of the parent metastore.
-        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 

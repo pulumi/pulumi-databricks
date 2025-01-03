@@ -13,26 +13,11 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class BudgetAlertConfiguration
     {
-        /// <summary>
-        /// List of action configurations to take when the budget alert is triggered. Consists of the following fields:
-        /// </summary>
         public readonly ImmutableArray<Outputs.BudgetAlertConfigurationActionConfiguration> ActionConfigurations;
         public readonly string? AlertConfigurationId;
-        /// <summary>
-        /// The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
-        /// </summary>
         public readonly string? QuantityThreshold;
-        /// <summary>
-        /// The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
-        /// </summary>
         public readonly string? QuantityType;
-        /// <summary>
-        /// The time window of usage data for the budget. (Enum: `MONTH`)
-        /// </summary>
         public readonly string? TimePeriod;
-        /// <summary>
-        /// The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
-        /// </summary>
         public readonly string? TriggerType;
 
         [OutputConstructor]

@@ -12,15 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class LakehouseMonitorNotificationsGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// who to send notifications to on monitor failure.
-        /// </summary>
         [Input("onFailure")]
         public Input<Inputs.LakehouseMonitorNotificationsOnFailureGetArgs>? OnFailure { get; set; }
 
-        /// <summary>
-        /// Who to send notifications to when new data classification tags are detected.
-        /// </summary>
         [Input("onNewClassificationTagDetected")]
         public Input<Inputs.LakehouseMonitorNotificationsOnNewClassificationTagDetectedGetArgs>? OnNewClassificationTagDetected { get; set; }
 

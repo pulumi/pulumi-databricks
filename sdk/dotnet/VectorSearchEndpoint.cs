@@ -9,94 +9,33 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// &gt; This resource can only be used on a Unity Catalog-enabled workspace!
-    /// 
-    /// This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @this = new Databricks.VectorSearchEndpoint("this", new()
-    ///     {
-    ///         Name = "vector-search-test",
-    ///         EndpointType = "STANDARD",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/vectorSearchEndpoint:VectorSearchEndpoint this &lt;endpoint-name&gt;
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/vectorSearchEndpoint:VectorSearchEndpoint")]
     public partial class VectorSearchEndpoint : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Timestamp of endpoint creation (milliseconds).
-        /// </summary>
         [Output("creationTimestamp")]
         public Output<int> CreationTimestamp { get; private set; } = null!;
 
-        /// <summary>
-        /// Creator of the endpoint.
-        /// </summary>
         [Output("creator")]
         public Output<string> Creator { get; private set; } = null!;
 
-        /// <summary>
-        /// Unique internal identifier of the endpoint (UUID).
-        /// </summary>
         [Output("endpointId")]
         public Output<string> EndpointId { get; private set; } = null!;
 
-        /// <summary>
-        /// Object describing the current status of the endpoint consisting of the following fields:
-        /// </summary>
         [Output("endpointStatuses")]
         public Output<ImmutableArray<Outputs.VectorSearchEndpointEndpointStatus>> EndpointStatuses { get; private set; } = null!;
 
-        /// <summary>
-        /// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-        /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
 
-        /// <summary>
-        /// Timestamp of the last update to the endpoint (milliseconds).
-        /// </summary>
         [Output("lastUpdatedTimestamp")]
         public Output<int> LastUpdatedTimestamp { get; private set; } = null!;
 
-        /// <summary>
-        /// User who last updated the endpoint.
-        /// </summary>
         [Output("lastUpdatedUser")]
         public Output<string> LastUpdatedUser { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the Mosaic AI Vector Search Endpoint to create.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Number of indexes on the endpoint.
-        /// </summary>
         [Output("numIndexes")]
         public Output<int> NumIndexes { get; private set; } = null!;
 
@@ -146,15 +85,9 @@ namespace Pulumi.Databricks
 
     public sealed class VectorSearchEndpointArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-        /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the Mosaic AI Vector Search Endpoint to create.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -166,63 +99,35 @@ namespace Pulumi.Databricks
 
     public sealed class VectorSearchEndpointState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Timestamp of endpoint creation (milliseconds).
-        /// </summary>
         [Input("creationTimestamp")]
         public Input<int>? CreationTimestamp { get; set; }
 
-        /// <summary>
-        /// Creator of the endpoint.
-        /// </summary>
         [Input("creator")]
         public Input<string>? Creator { get; set; }
 
-        /// <summary>
-        /// Unique internal identifier of the endpoint (UUID).
-        /// </summary>
         [Input("endpointId")]
         public Input<string>? EndpointId { get; set; }
 
         [Input("endpointStatuses")]
         private InputList<Inputs.VectorSearchEndpointEndpointStatusGetArgs>? _endpointStatuses;
-
-        /// <summary>
-        /// Object describing the current status of the endpoint consisting of the following fields:
-        /// </summary>
         public InputList<Inputs.VectorSearchEndpointEndpointStatusGetArgs> EndpointStatuses
         {
             get => _endpointStatuses ?? (_endpointStatuses = new InputList<Inputs.VectorSearchEndpointEndpointStatusGetArgs>());
             set => _endpointStatuses = value;
         }
 
-        /// <summary>
-        /// Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-        /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
 
-        /// <summary>
-        /// Timestamp of the last update to the endpoint (milliseconds).
-        /// </summary>
         [Input("lastUpdatedTimestamp")]
         public Input<int>? LastUpdatedTimestamp { get; set; }
 
-        /// <summary>
-        /// User who last updated the endpoint.
-        /// </summary>
         [Input("lastUpdatedUser")]
         public Input<string>? LastUpdatedUser { get; set; }
 
-        /// <summary>
-        /// Name of the Mosaic AI Vector Search Endpoint to create.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Number of indexes on the endpoint.
-        /// </summary>
         [Input("numIndexes")]
         public Input<int>? NumIndexes { get; set; }
 

@@ -13,15 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobParameter
     {
-        /// <summary>
-        /// Default value of the parameter.
-        /// 
-        /// *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
-        /// </summary>
         public readonly string Default;
-        /// <summary>
-        /// The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

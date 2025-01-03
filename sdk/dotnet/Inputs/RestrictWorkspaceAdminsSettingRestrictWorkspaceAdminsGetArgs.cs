@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The restrict workspace admins status for the workspace.
-        /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 

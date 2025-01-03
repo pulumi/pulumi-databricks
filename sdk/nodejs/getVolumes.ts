@@ -4,38 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
- *
- * ## Plugin Framework Migration
- *
- * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES="databricks.getVolumes"`.
- *
- * ## Example Usage
- *
- * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const this = databricks.getVolumes({
- *     catalogName: "sandbox",
- *     schemaName: "things",
- * });
- * export const allVolumes = _this;
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.Volume to manage volumes within Unity Catalog.
- * * databricks.Schema to manage schemas within Unity Catalog.
- * * databricks.Catalog to manage catalogs within Unity Catalog.
- */
 export function getVolumes(args: GetVolumesArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getVolumes:getVolumes", {
@@ -49,17 +17,8 @@ export function getVolumes(args: GetVolumesArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getVolumes.
  */
 export interface GetVolumesArgs {
-    /**
-     * Name of databricks_catalog
-     */
     catalogName: string;
-    /**
-     * a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
-     */
     ids?: string[];
-    /**
-     * Name of databricks_schema
-     */
     schemaName: string;
 }
 
@@ -72,44 +31,9 @@ export interface GetVolumesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
-     */
     readonly ids: string[];
     readonly schemaName: string;
 }
-/**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * Retrieves a list of databricks.Volume ids (full names), that were created by Pulumi or manually.
- *
- * ## Plugin Framework Migration
- *
- * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES="databricks.getVolumes"`.
- *
- * ## Example Usage
- *
- * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const this = databricks.getVolumes({
- *     catalogName: "sandbox",
- *     schemaName: "things",
- * });
- * export const allVolumes = _this;
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.Volume to manage volumes within Unity Catalog.
- * * databricks.Schema to manage schemas within Unity Catalog.
- * * databricks.Catalog to manage catalogs within Unity Catalog.
- */
 export function getVolumesOutput(args: GetVolumesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVolumesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getVolumes:getVolumes", {
@@ -123,16 +47,7 @@ export function getVolumesOutput(args: GetVolumesOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getVolumes.
  */
 export interface GetVolumesOutputArgs {
-    /**
-     * Name of databricks_catalog
-     */
     catalogName: pulumi.Input<string>;
-    /**
-     * a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
-     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Name of databricks_schema
-     */
     schemaName: pulumi.Input<string>;
 }

@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class NotificationDestinationConfigPagerduty
     {
-        /// <summary>
-        /// The PagerDuty integration key.
-        /// </summary>
         public readonly string? IntegrationKey;
         public readonly bool? IntegrationKeySet;
 

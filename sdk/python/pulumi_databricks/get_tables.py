@@ -56,9 +56,6 @@ class GetTablesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
-        """
-        set of Table full names: *`catalog`.`schema`.`table`*
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -84,46 +81,7 @@ def get_tables(catalog_name: Optional[str] = None,
                schema_name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTablesResult:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use get_views for retrieving a list of views.
-
-    ## Example Usage
-
-    Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ Schema from _sandbox_ databricks_catalog:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    things = databricks.get_tables(catalog_name="sandbox",
-        schema_name="things")
-    things_grants = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
-        things_grants.append(databricks.Grants(f"things-{range['key']}",
-            table=range["value"],
-            grants=[{
-                "principal": "sensitive",
-                "privileges": [
-                    "SELECT",
-                    "MODIFY",
-                ],
-            }]))
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Schema to manage schemas within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
-
-
-    :param str catalog_name: Name of databricks_catalog
-    :param Sequence[str] ids: set of Table full names: *`catalog`.`schema`.`table`*
-    :param str schema_name: Name of databricks_schema
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['catalogName'] = catalog_name
@@ -142,46 +100,7 @@ def get_tables_output(catalog_name: Optional[pulumi.Input[str]] = None,
                       schema_name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTablesResult]:
     """
-    > **Note** This data source can only be used with a workspace-level provider!
-
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use get_views for retrieving a list of views.
-
-    ## Example Usage
-
-    Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ Schema from _sandbox_ databricks_catalog:
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    things = databricks.get_tables(catalog_name="sandbox",
-        schema_name="things")
-    things_grants = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
-        things_grants.append(databricks.Grants(f"things-{range['key']}",
-            table=range["value"],
-            grants=[{
-                "principal": "sensitive",
-                "privileges": [
-                    "SELECT",
-                    "MODIFY",
-                ],
-            }]))
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Schema to manage schemas within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
-
-
-    :param str catalog_name: Name of databricks_catalog
-    :param Sequence[str] ids: set of Table full names: *`catalog`.`schema`.`table`*
-    :param str schema_name: Name of databricks_schema
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['catalogName'] = catalog_name

@@ -9,238 +9,51 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to databricks.Group in Databricks account or workspace.
-    /// 
-    /// There are different types of service principals:
-    /// 
-    /// * Databricks-managed - exists only inside the Databricks platform (all clouds) and couldn't be used for accessing non-Databricks services.
-    /// * Azure-managed - existing Azure service principal (enterprise application) is registered inside Databricks.  It could be used to work with other Azure services.
-    /// 
-    /// &gt; To assign account level service principals to workspace use databricks_mws_permission_assignment.
-    /// 
-    /// &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level service principals. Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level service principals.
-    /// 
-    /// To create service principals in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using the supported authentication method for account operations.
-    /// 
-    /// The default behavior when deleting a `databricks.ServicePrincipal` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the service principal will be deleted from the workspace. When the provider is configured at the account-level, the service principal will be deactivated but not deleted. When the provider is configured at the account level, to delete the service principal from the account when the resource is deleted, set `disable_as_user_deletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the service principal when the resource is deleted, set `disable_as_user_deletion = true`.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Creating regular Databricks-managed service principal:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sp = new Databricks.ServicePrincipal("sp", new()
-    ///     {
-    ///         DisplayName = "Admin SP",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Creating service principal with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var admins = Databricks.GetGroup.Invoke(new()
-    ///     {
-    ///         DisplayName = "admins",
-    ///     });
-    /// 
-    ///     var sp = new Databricks.ServicePrincipal("sp", new()
-    ///     {
-    ///         DisplayName = "Admin SP",
-    ///     });
-    /// 
-    ///     var i_am_admin = new Databricks.GroupMember("i-am-admin", new()
-    ///     {
-    ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
-    ///         MemberId = sp.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Creating Azure-managed service principal with cluster create permissions:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sp = new Databricks.ServicePrincipal("sp", new()
-    ///     {
-    ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
-    ///         DisplayName = "Example service principal",
-    ///         AllowClusterCreate = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Creating Databricks-managed service principal in AWS Databricks account:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sp = new Databricks.ServicePrincipal("sp", new()
-    ///     {
-    ///         DisplayName = "Automation-only SP",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Creating Azure-managed service principal in Azure Databricks account:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sp = new Databricks.ServicePrincipal("sp", new()
-    ///     {
-    ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are often used in the same context:
-    /// 
-    /// - End to end workspace management guide.
-    /// - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-    /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-    /// - databricks.GroupMember to attach users and groups as group members.
-    /// - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-    /// - databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and more to manage secrets for the service principal (only for AWS deployments)
-    /// 
-    /// ## Import
-    /// 
-    /// The resource scim service principal can be imported using its id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me &lt;service-principal-id&gt;
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/servicePrincipal:ServicePrincipal")]
     public partial class ServicePrincipal : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
-        /// </summary>
         [Output("aclPrincipalId")]
         public Output<string> AclPrincipalId { get; private set; } = null!;
 
-        /// <summary>
-        /// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
-        /// </summary>
         [Output("active")]
         public Output<bool?> Active { get; private set; } = null!;
 
-        /// <summary>
-        /// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
-        /// </summary>
         [Output("allowClusterCreate")]
         public Output<bool?> AllowClusterCreate { get; private set; } = null!;
 
-        /// <summary>
-        /// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
-        /// </summary>
         [Output("allowInstancePoolCreate")]
         public Output<bool?> AllowInstancePoolCreate { get; private set; } = null!;
 
-        /// <summary>
-        /// This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
-        /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
-        /// <summary>
-        /// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
-        /// </summary>
         [Output("databricksSqlAccess")]
         public Output<bool?> DatabricksSqlAccess { get; private set; } = null!;
 
-        /// <summary>
-        /// Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
-        /// </summary>
         [Output("disableAsUserDeletion")]
         public Output<bool?> DisableAsUserDeletion { get; private set; } = null!;
 
-        /// <summary>
-        /// This is an alias for the service principal and can be the full name of the service principal.
-        /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the service principal in an external identity provider.
-        /// </summary>
         [Output("externalId")]
         public Output<string?> ExternalId { get; private set; } = null!;
 
-        /// <summary>
-        /// Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
-        /// <summary>
-        /// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        /// </summary>
         [Output("forceDeleteHomeDir")]
         public Output<bool?> ForceDeleteHomeDir { get; private set; } = null!;
 
-        /// <summary>
-        /// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        /// </summary>
         [Output("forceDeleteRepos")]
         public Output<bool?> ForceDeleteRepos { get; private set; } = null!;
 
-        /// <summary>
-        /// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
-        /// </summary>
         [Output("home")]
         public Output<string> Home { get; private set; } = null!;
 
-        /// <summary>
-        /// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
-        /// </summary>
         [Output("repos")]
         public Output<string> Repos { get; private set; } = null!;
 
-        /// <summary>
-        /// This is a field to allow the group to have access to Databricks Workspace.
-        /// </summary>
         [Output("workspaceAccess")]
         public Output<bool?> WorkspaceAccess { get; private set; } = null!;
 
@@ -290,93 +103,48 @@ namespace Pulumi.Databricks
 
     public sealed class ServicePrincipalArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
-        /// </summary>
         [Input("aclPrincipalId")]
         public Input<string>? AclPrincipalId { get; set; }
 
-        /// <summary>
-        /// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
-        /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
-        /// <summary>
-        /// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
-        /// </summary>
         [Input("allowClusterCreate")]
         public Input<bool>? AllowClusterCreate { get; set; }
 
-        /// <summary>
-        /// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
-        /// </summary>
         [Input("allowInstancePoolCreate")]
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
-        /// <summary>
-        /// This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
-        /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
-        /// <summary>
-        /// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
-        /// </summary>
         [Input("databricksSqlAccess")]
         public Input<bool>? DatabricksSqlAccess { get; set; }
 
-        /// <summary>
-        /// Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
-        /// </summary>
         [Input("disableAsUserDeletion")]
         public Input<bool>? DisableAsUserDeletion { get; set; }
 
-        /// <summary>
-        /// This is an alias for the service principal and can be the full name of the service principal.
-        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// ID of the service principal in an external identity provider.
-        /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
-        /// <summary>
-        /// Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
-        /// <summary>
-        /// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        /// </summary>
         [Input("forceDeleteHomeDir")]
         public Input<bool>? ForceDeleteHomeDir { get; set; }
 
-        /// <summary>
-        /// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        /// </summary>
         [Input("forceDeleteRepos")]
         public Input<bool>? ForceDeleteRepos { get; set; }
 
-        /// <summary>
-        /// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
-        /// </summary>
         [Input("home")]
         public Input<string>? Home { get; set; }
 
-        /// <summary>
-        /// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
-        /// </summary>
         [Input("repos")]
         public Input<string>? Repos { get; set; }
 
-        /// <summary>
-        /// This is a field to allow the group to have access to Databricks Workspace.
-        /// </summary>
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
 
@@ -388,93 +156,48 @@ namespace Pulumi.Databricks
 
     public sealed class ServicePrincipalState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
-        /// </summary>
         [Input("aclPrincipalId")]
         public Input<string>? AclPrincipalId { get; set; }
 
-        /// <summary>
-        /// Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
-        /// </summary>
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
-        /// <summary>
-        /// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
-        /// </summary>
         [Input("allowClusterCreate")]
         public Input<bool>? AllowClusterCreate { get; set; }
 
-        /// <summary>
-        /// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
-        /// </summary>
         [Input("allowInstancePoolCreate")]
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
-        /// <summary>
-        /// This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
-        /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
-        /// <summary>
-        /// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
-        /// </summary>
         [Input("databricksSqlAccess")]
         public Input<bool>? DatabricksSqlAccess { get; set; }
 
-        /// <summary>
-        /// Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
-        /// </summary>
         [Input("disableAsUserDeletion")]
         public Input<bool>? DisableAsUserDeletion { get; set; }
 
-        /// <summary>
-        /// This is an alias for the service principal and can be the full name of the service principal.
-        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// ID of the service principal in an external identity provider.
-        /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
-        /// <summary>
-        /// Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
-        /// <summary>
-        /// This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        /// </summary>
         [Input("forceDeleteHomeDir")]
         public Input<bool>? ForceDeleteHomeDir { get; set; }
 
-        /// <summary>
-        /// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        /// </summary>
         [Input("forceDeleteRepos")]
         public Input<bool>? ForceDeleteRepos { get; set; }
 
-        /// <summary>
-        /// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
-        /// </summary>
         [Input("home")]
         public Input<string>? Home { get; set; }
 
-        /// <summary>
-        /// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
-        /// </summary>
         [Input("repos")]
         public Input<string>? Repos { get; set; }
 
-        /// <summary>
-        /// This is a field to allow the group to have access to Databricks Workspace.
-        /// </summary>
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
 

@@ -14,9 +14,6 @@ namespace Pulumi.Databricks.Outputs
     public sealed class ModelServingConfigTrafficConfigRoute
     {
         public readonly string ServedModelName;
-        /// <summary>
-        /// The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-        /// </summary>
         public readonly int TrafficPercentage;
 
         [OutputConstructor]

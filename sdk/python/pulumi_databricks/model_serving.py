@@ -29,12 +29,6 @@ class ModelServingArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None):
         """
         The set of arguments for constructing a ModelServing resource.
-        :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration.
-        :param pulumi.Input['ModelServingAiGatewayArgs'] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-        :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-        :param pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
-        :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
-        :param pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         pulumi.set(__self__, "config", config)
         if ai_gateway is not None:
@@ -51,9 +45,6 @@ class ModelServingArgs:
     @property
     @pulumi.getter
     def config(self) -> pulumi.Input['ModelServingConfigArgs']:
-        """
-        The model serving endpoint configuration.
-        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -63,9 +54,6 @@ class ModelServingArgs:
     @property
     @pulumi.getter(name="aiGateway")
     def ai_gateway(self) -> Optional[pulumi.Input['ModelServingAiGatewayArgs']]:
-        """
-        A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-        """
         return pulumi.get(self, "ai_gateway")
 
     @ai_gateway.setter
@@ -75,9 +63,6 @@ class ModelServingArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -87,9 +72,6 @@ class ModelServingArgs:
     @property
     @pulumi.getter(name="rateLimits")
     def rate_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]]:
-        """
-        A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
-        """
         return pulumi.get(self, "rate_limits")
 
     @rate_limits.setter
@@ -99,9 +81,6 @@ class ModelServingArgs:
     @property
     @pulumi.getter(name="routeOptimized")
     def route_optimized(self) -> Optional[pulumi.Input[bool]]:
-        """
-        A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
-        """
         return pulumi.get(self, "route_optimized")
 
     @route_optimized.setter
@@ -111,9 +90,6 @@ class ModelServingArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]]:
-        """
-        Tags to be attached to the serving endpoint and automatically propagated to billing logs.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -133,13 +109,6 @@ class _ModelServingState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering ModelServing resources.
-        :param pulumi.Input['ModelServingAiGatewayArgs'] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-        :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration.
-        :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-        :param pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
-        :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
-        :param pulumi.Input[str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
-        :param pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         if ai_gateway is not None:
             pulumi.set(__self__, "ai_gateway", ai_gateway)
@@ -159,9 +128,6 @@ class _ModelServingState:
     @property
     @pulumi.getter(name="aiGateway")
     def ai_gateway(self) -> Optional[pulumi.Input['ModelServingAiGatewayArgs']]:
-        """
-        A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-        """
         return pulumi.get(self, "ai_gateway")
 
     @ai_gateway.setter
@@ -171,9 +137,6 @@ class _ModelServingState:
     @property
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['ModelServingConfigArgs']]:
-        """
-        The model serving endpoint configuration.
-        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -183,9 +146,6 @@ class _ModelServingState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -195,9 +155,6 @@ class _ModelServingState:
     @property
     @pulumi.getter(name="rateLimits")
     def rate_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]]:
-        """
-        A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
-        """
         return pulumi.get(self, "rate_limits")
 
     @rate_limits.setter
@@ -207,9 +164,6 @@ class _ModelServingState:
     @property
     @pulumi.getter(name="routeOptimized")
     def route_optimized(self) -> Optional[pulumi.Input[bool]]:
-        """
-        A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
-        """
         return pulumi.get(self, "route_optimized")
 
     @route_optimized.setter
@@ -219,9 +173,6 @@ class _ModelServingState:
     @property
     @pulumi.getter(name="servingEndpointId")
     def serving_endpoint_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
-        """
         return pulumi.get(self, "serving_endpoint_id")
 
     @serving_endpoint_id.setter
@@ -231,9 +182,6 @@ class _ModelServingState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]]:
-        """
-        Tags to be attached to the serving endpoint and automatically propagated to billing logs.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -254,84 +202,9 @@ class ModelServing(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
                  __props__=None):
         """
-        This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
-
-        > If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.ModelServing("this",
-            name="ads-serving-endpoint",
-            config={
-                "served_entities": [
-                    {
-                        "name": "prod_model",
-                        "entity_name": "ads-model",
-                        "entity_version": "2",
-                        "workload_size": "Small",
-                        "scale_to_zero_enabled": True,
-                    },
-                    {
-                        "name": "candidate_model",
-                        "entity_name": "ads-model",
-                        "entity_version": "4",
-                        "workload_size": "Small",
-                        "scale_to_zero_enabled": False,
-                    },
-                ],
-                "traffic_config": {
-                    "routes": [
-                        {
-                            "served_model_name": "prod_model",
-                            "traffic_percentage": 90,
-                        },
-                        {
-                            "served_model_name": "candidate_model",
-                            "traffic_percentage": 10,
-                        },
-                    ],
-                },
-            })
-        ```
-
-        ## Access Control
-
-        * Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
-        * End to end workspace management guide.
-        * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
-        * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-        * Notebook data to export a notebook from Databricks Workspace.
-        * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-
-        ## Import
-
-        The model serving resource can be imported using the name of the endpoint.
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>
-        ```
-
+        Create a ModelServing resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-        :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']] config: The model serving endpoint configuration.
-        :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
-        :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         ...
     @overload
@@ -340,76 +213,7 @@ class ModelServing(pulumi.CustomResource):
                  args: ModelServingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
-
-        > If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.ModelServing("this",
-            name="ads-serving-endpoint",
-            config={
-                "served_entities": [
-                    {
-                        "name": "prod_model",
-                        "entity_name": "ads-model",
-                        "entity_version": "2",
-                        "workload_size": "Small",
-                        "scale_to_zero_enabled": True,
-                    },
-                    {
-                        "name": "candidate_model",
-                        "entity_name": "ads-model",
-                        "entity_version": "4",
-                        "workload_size": "Small",
-                        "scale_to_zero_enabled": False,
-                    },
-                ],
-                "traffic_config": {
-                    "routes": [
-                        {
-                            "served_model_name": "prod_model",
-                            "traffic_percentage": 90,
-                        },
-                        {
-                            "served_model_name": "candidate_model",
-                            "traffic_percentage": 10,
-                        },
-                    ],
-                },
-            })
-        ```
-
-        ## Access Control
-
-        * Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
-        * End to end workspace management guide.
-        * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
-        * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-        * Notebook data to export a notebook from Databricks Workspace.
-        * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-
-        ## Import
-
-        The model serving resource can be imported using the name of the endpoint.
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>
-        ```
-
+        Create a ModelServing resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ModelServingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -473,13 +277,6 @@ class ModelServing(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-        :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']] config: The model serving endpoint configuration.
-        :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
-        :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
-        :param pulumi.Input[str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -497,56 +294,35 @@ class ModelServing(pulumi.CustomResource):
     @property
     @pulumi.getter(name="aiGateway")
     def ai_gateway(self) -> pulumi.Output[Optional['outputs.ModelServingAiGateway']]:
-        """
-        A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-        """
         return pulumi.get(self, "ai_gateway")
 
     @property
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.ModelServingConfig']:
-        """
-        The model serving endpoint configuration.
-        """
         return pulumi.get(self, "config")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="rateLimits")
     def rate_limits(self) -> pulumi.Output[Optional[Sequence['outputs.ModelServingRateLimit']]]:
-        """
-        A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
-        """
         return pulumi.get(self, "rate_limits")
 
     @property
     @pulumi.getter(name="routeOptimized")
     def route_optimized(self) -> pulumi.Output[Optional[bool]]:
-        """
-        A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
-        """
         return pulumi.get(self, "route_optimized")
 
     @property
     @pulumi.getter(name="servingEndpointId")
     def serving_endpoint_id(self) -> pulumi.Output[str]:
-        """
-        Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
-        """
         return pulumi.get(self, "serving_endpoint_id")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ModelServingTag']]]:
-        """
-        Tags to be attached to the serving endpoint and automatically propagated to billing logs.
-        """
         return pulumi.get(self, "tags")
 

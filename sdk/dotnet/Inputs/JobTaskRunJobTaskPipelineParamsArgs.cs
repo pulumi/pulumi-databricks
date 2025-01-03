@@ -12,11 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskRunJobTaskPipelineParamsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (Bool) Specifies if there should be full refresh of the pipeline.
-        /// 
-        /// &gt; The following configuration blocks are only supported inside a `task` block
-        /// </summary>
         [Input("fullRefresh")]
         public Input<bool>? FullRefresh { get; set; }
 

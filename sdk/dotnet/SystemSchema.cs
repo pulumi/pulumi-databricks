@@ -9,64 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-    /// 
-    /// &gt; This resource can only be used with a workspace-level provider!
-    /// 
-    /// Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Enable the system schema `access`
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @this = new Databricks.SystemSchema("this", new()
-    ///     {
-    ///         Schema = "access",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by the metastore id and schema name
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/systemSchema:SystemSchema this '&lt;metastore_id&gt;|&lt;schema_name&gt;'
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/systemSchema:SystemSchema")]
     public partial class SystemSchema : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// the full name of the system schema, in form of `system.&lt;schema&gt;`.
-        /// </summary>
         [Output("fullName")]
         public Output<string> FullName { get; private set; } = null!;
 
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
-        /// <summary>
-        /// name of the system schema.
-        /// </summary>
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
 
-        /// <summary>
-        /// The current state of enablement for the system schema.
-        /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
@@ -116,15 +70,9 @@ namespace Pulumi.Databricks
 
     public sealed class SystemSchemaArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// name of the system schema.
-        /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
-        /// <summary>
-        /// The current state of enablement for the system schema.
-        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
@@ -136,24 +84,15 @@ namespace Pulumi.Databricks
 
     public sealed class SystemSchemaState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// the full name of the system schema, in form of `system.&lt;schema&gt;`.
-        /// </summary>
         [Input("fullName")]
         public Input<string>? FullName { get; set; }
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
-        /// <summary>
-        /// name of the system schema.
-        /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
-        /// <summary>
-        /// The current state of enablement for the system schema.
-        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 

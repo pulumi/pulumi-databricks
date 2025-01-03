@@ -17337,10 +17337,10 @@
         },
         "databricks:index/getServingEndpointsEndpointAiGatewayGuardrail:getServingEndpointsEndpointAiGatewayGuardrail": {
             "properties": {
-                "inputs": {
+                "inputProperties": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/databricks:index/getServingEndpointsEndpointAiGatewayGuardrailInput:getServingEndpointsEndpointAiGatewayGuardrailInput"
+                        "$ref": "#/types/databricks:index/getServingEndpointsEndpointAiGatewayGuardrailInputProperty:getServingEndpointsEndpointAiGatewayGuardrailInputProperty"
                     }
                 },
                 "outputs": {
@@ -17352,7 +17352,7 @@
             },
             "type": "object"
         },
-        "databricks:index/getServingEndpointsEndpointAiGatewayGuardrailInput:getServingEndpointsEndpointAiGatewayGuardrailInput": {
+        "databricks:index/getServingEndpointsEndpointAiGatewayGuardrailInputProperty:getServingEndpointsEndpointAiGatewayGuardrailInputProperty": {
             "properties": {
                 "invalidKeywords": {
                     "type": "array",
@@ -17363,7 +17363,7 @@
                 "piis": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/databricks:index/getServingEndpointsEndpointAiGatewayGuardrailInputPii:getServingEndpointsEndpointAiGatewayGuardrailInputPii"
+                        "$ref": "#/types/databricks:index/getServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii:getServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii"
                     }
                 },
                 "safety": {
@@ -17378,7 +17378,7 @@
             },
             "type": "object"
         },
-        "databricks:index/getServingEndpointsEndpointAiGatewayGuardrailInputPii:getServingEndpointsEndpointAiGatewayGuardrailInputPii": {
+        "databricks:index/getServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii:getServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii": {
             "properties": {
                 "behavior": {
                     "type": "string"

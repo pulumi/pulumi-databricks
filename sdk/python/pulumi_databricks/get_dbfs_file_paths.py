@@ -57,9 +57,6 @@ class GetDbfsFilePathsResult:
     @property
     @pulumi.getter(name="pathLists")
     def path_lists(self) -> Sequence['outputs.GetDbfsFilePathsPathListResult']:
-        """
-        returns list of objects with `path` and `file_size` attributes in each
-        """
         return pulumi.get(self, "path_lists")
 
     @property
@@ -84,34 +81,7 @@ def get_dbfs_file_paths(path: Optional[str] = None,
                         recursive: Optional[bool] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbfsFilePathsResult:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    partitions = databricks.get_dbfs_file_paths(path="dbfs:/user/hive/default.db/table",
-        recursive=False)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * End to end workspace management guide.
-    * DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-    * get_dbfs_file_paths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-    * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-    * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-    * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
-
-
-    :param str path: Path on DBFS for the file to perform listing
-    :param bool recursive: Either or not recursively list all files
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['path'] = path
@@ -128,34 +98,7 @@ def get_dbfs_file_paths_output(path: Optional[pulumi.Input[str]] = None,
                                recursive: Optional[pulumi.Input[bool]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbfsFilePathsResult]:
     """
-    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-
-    This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    partitions = databricks.get_dbfs_file_paths(path="dbfs:/user/hive/default.db/table",
-        recursive=False)
-    ```
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * End to end workspace management guide.
-    * DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-    * get_dbfs_file_paths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-    * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-    * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-    * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
-
-
-    :param str path: Path on DBFS for the file to perform listing
-    :param bool recursive: Either or not recursively list all files
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['path'] = path

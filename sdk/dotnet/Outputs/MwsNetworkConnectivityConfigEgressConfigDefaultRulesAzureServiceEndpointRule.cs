@@ -13,17 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule
     {
-        /// <summary>
-        /// list of subnets from which Databricks network traffic originates when accessing your Azure resources.
-        /// </summary>
         public readonly ImmutableArray<string> Subnets;
-        /// <summary>
-        /// the Azure region in which this service endpoint rule applies.
-        /// </summary>
         public readonly string? TargetRegion;
-        /// <summary>
-        /// the Azure services to which this service endpoint rule applies to.
-        /// </summary>
         public readonly ImmutableArray<string> TargetServices;
 
         [OutputConstructor]

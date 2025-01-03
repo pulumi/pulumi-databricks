@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("integrationKey")]
         private Input<string>? _integrationKey;
-
-        /// <summary>
-        /// The PagerDuty integration key.
-        /// </summary>
         public Input<string>? IntegrationKey
         {
             get => _integrationKey;

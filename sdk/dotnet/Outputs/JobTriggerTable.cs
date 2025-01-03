@@ -14,14 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTriggerTable
     {
         public readonly string? Condition;
-        /// <summary>
-        /// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-        /// </summary>
         public readonly int? MinTimeBetweenTriggersSeconds;
         public readonly ImmutableArray<string> TableNames;
-        /// <summary>
-        /// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-        /// </summary>
         public readonly int? WaitAfterLastChangeSeconds;
 
         [OutputConstructor]

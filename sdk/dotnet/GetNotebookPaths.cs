@@ -11,84 +11,12 @@ namespace Pulumi.Databricks
 {
     public static class GetNotebookPaths
     {
-        /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
-        /// This data source allows to list notebooks in the Databricks Workspace.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var prod = Databricks.GetNotebookPaths.Invoke(new()
-        ///     {
-        ///         Path = "/Production",
-        ///         Recursive = true,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetNotebookPathsResult> InvokeAsync(GetNotebookPathsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotebookPathsResult>("databricks:index/getNotebookPaths:getNotebookPaths", args ?? new GetNotebookPathsArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
-        /// This data source allows to list notebooks in the Databricks Workspace.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var prod = Databricks.GetNotebookPaths.Invoke(new()
-        ///     {
-        ///         Path = "/Production",
-        ///         Recursive = true,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetNotebookPathsResult> Invoke(GetNotebookPathsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNotebookPathsResult>("databricks:index/getNotebookPaths:getNotebookPaths", args ?? new GetNotebookPathsInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-        /// 
-        /// This data source allows to list notebooks in the Databricks Workspace.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var prod = Databricks.GetNotebookPaths.Invoke(new()
-        ///     {
-        ///         Path = "/Production",
-        ///         Recursive = true,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetNotebookPathsResult> Invoke(GetNotebookPathsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNotebookPathsResult>("databricks:index/getNotebookPaths:getNotebookPaths", args ?? new GetNotebookPathsInvokeArgs(), options.WithDefaults());
     }
@@ -96,15 +24,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetNotebookPathsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Path to workspace directory
-        /// </summary>
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
 
-        /// <summary>
-        /// Either or recursively walk given path
-        /// </summary>
         [Input("recursive", required: true)]
         public bool Recursive { get; set; }
 
@@ -116,15 +38,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetNotebookPathsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Path to workspace directory
-        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
-        /// <summary>
-        /// Either or recursively walk given path
-        /// </summary>
         [Input("recursive", required: true)]
         public Input<bool> Recursive { get; set; } = null!;
 
@@ -142,9 +58,6 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// list of objects with `path` and `language` attributes
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetNotebookPathsNotebookPathListResult> NotebookPathLists;
         public readonly string Path;
         public readonly bool Recursive;

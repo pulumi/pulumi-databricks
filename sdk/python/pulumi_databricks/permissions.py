@@ -22,6 +22,7 @@ __all__ = ['PermissionsArgs', 'Permissions']
 class PermissionsArgs:
     def __init__(__self__, *,
                  access_controls: pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]],
+                 app_name: Optional[pulumi.Input[str]] = None,
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -43,13 +44,15 @@ class PermissionsArgs:
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_query_id: Optional[pulumi.Input[str]] = None,
+                 vector_search_endpoint_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_path: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Permissions resource.
-        :param pulumi.Input[str] object_type: type of permissions.
         """
         pulumi.set(__self__, "access_controls", access_controls)
+        if app_name is not None:
+            pulumi.set(__self__, "app_name", app_name)
         if authorization is not None:
             pulumi.set(__self__, "authorization", authorization)
         if cluster_id is not None:
@@ -92,6 +95,8 @@ class PermissionsArgs:
             pulumi.set(__self__, "sql_endpoint_id", sql_endpoint_id)
         if sql_query_id is not None:
             pulumi.set(__self__, "sql_query_id", sql_query_id)
+        if vector_search_endpoint_id is not None:
+            pulumi.set(__self__, "vector_search_endpoint_id", vector_search_endpoint_id)
         if workspace_file_id is not None:
             pulumi.set(__self__, "workspace_file_id", workspace_file_id)
         if workspace_file_path is not None:
@@ -105,6 +110,15 @@ class PermissionsArgs:
     @access_controls.setter
     def access_controls(self, value: pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]):
         pulumi.set(self, "access_controls", value)
+
+    @property
+    @pulumi.getter(name="appName")
+    def app_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "app_name")
+
+    @app_name.setter
+    def app_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_name", value)
 
     @property
     @pulumi.getter
@@ -208,9 +222,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="objectType")
     def object_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        type of permissions.
-        """
         return pulumi.get(self, "object_type")
 
     @object_type.setter
@@ -297,6 +308,15 @@ class PermissionsArgs:
     @sql_query_id.setter
     def sql_query_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sql_query_id", value)
+
+    @property
+    @pulumi.getter(name="vectorSearchEndpointId")
+    def vector_search_endpoint_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vector_search_endpoint_id")
+
+    @vector_search_endpoint_id.setter
+    def vector_search_endpoint_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vector_search_endpoint_id", value)
 
     @property
     @pulumi.getter(name="workspaceFileId")
@@ -321,6 +341,7 @@ class PermissionsArgs:
 class _PermissionsState:
     def __init__(__self__, *,
                  access_controls: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]] = None,
+                 app_name: Optional[pulumi.Input[str]] = None,
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -342,14 +363,16 @@ class _PermissionsState:
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_query_id: Optional[pulumi.Input[str]] = None,
+                 vector_search_endpoint_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_path: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Permissions resources.
-        :param pulumi.Input[str] object_type: type of permissions.
         """
         if access_controls is not None:
             pulumi.set(__self__, "access_controls", access_controls)
+        if app_name is not None:
+            pulumi.set(__self__, "app_name", app_name)
         if authorization is not None:
             pulumi.set(__self__, "authorization", authorization)
         if cluster_id is not None:
@@ -392,6 +415,8 @@ class _PermissionsState:
             pulumi.set(__self__, "sql_endpoint_id", sql_endpoint_id)
         if sql_query_id is not None:
             pulumi.set(__self__, "sql_query_id", sql_query_id)
+        if vector_search_endpoint_id is not None:
+            pulumi.set(__self__, "vector_search_endpoint_id", vector_search_endpoint_id)
         if workspace_file_id is not None:
             pulumi.set(__self__, "workspace_file_id", workspace_file_id)
         if workspace_file_path is not None:
@@ -405,6 +430,15 @@ class _PermissionsState:
     @access_controls.setter
     def access_controls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]]):
         pulumi.set(self, "access_controls", value)
+
+    @property
+    @pulumi.getter(name="appName")
+    def app_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "app_name")
+
+    @app_name.setter
+    def app_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_name", value)
 
     @property
     @pulumi.getter
@@ -508,9 +542,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="objectType")
     def object_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        type of permissions.
-        """
         return pulumi.get(self, "object_type")
 
     @object_type.setter
@@ -597,6 +628,15 @@ class _PermissionsState:
     @sql_query_id.setter
     def sql_query_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sql_query_id", value)
+
+    @property
+    @pulumi.getter(name="vectorSearchEndpointId")
+    def vector_search_endpoint_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vector_search_endpoint_id")
+
+    @vector_search_endpoint_id.setter
+    def vector_search_endpoint_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vector_search_endpoint_id", value)
 
     @property
     @pulumi.getter(name="workspaceFileId")
@@ -623,6 +663,7 @@ class Permissions(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
+                 app_name: Optional[pulumi.Input[str]] = None,
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -644,739 +685,14 @@ class Permissions(pulumi.CustomResource):
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_query_id: Optional[pulumi.Input[str]] = None,
+                 vector_search_endpoint_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_path: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspaces. It ensures that only _admins_, _authenticated principal_ and those declared within `access_control` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
-
-        > This resource is _authoritative_ for permissions on objects. Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset.
-
-        > It is not possible to lower permissions for `admins`, so Databricks Pulumi Provider removes those `access_control` blocks automatically.
-
-        > If multiple permission levels are specified for an identity (e.g. `CAN_RESTART` and `CAN_MANAGE` for a cluster), only the highest level permission is returned and will cause permanent drift.
-
-        > To manage access control on service principals, use databricks_access_control_rule_set.
-
-        ## Cluster usage
-
-        It's possible to separate [cluster access control](https://docs.databricks.com/security/access-control/cluster-acl.html) to three different permission levels: `CAN_ATTACH_TO`, `CAN_RESTART` and `CAN_MANAGE`:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        ds = databricks.Group("ds", display_name="Data Science")
-        latest = databricks.get_spark_version()
-        smallest = databricks.get_node_type(local_disk=True)
-        shared_autoscaling = databricks.Cluster("shared_autoscaling",
-            cluster_name="Shared Autoscaling",
-            spark_version=latest.id,
-            node_type_id=smallest.id,
-            autotermination_minutes=60,
-            autoscale={
-                "min_workers": 1,
-                "max_workers": 10,
-            })
-        cluster_usage = databricks.Permissions("cluster_usage",
-            cluster_id=shared_autoscaling.id,
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_ATTACH_TO",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_RESTART",
-                },
-                {
-                    "group_name": ds.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## Cluster Policy usage
-
-        Cluster policies allow creation of clusters, that match [given policy](https://docs.databricks.com/administration-guide/clusters/policies.html). It's possible to assign `CAN_USE` permission to users and groups:
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_databricks as databricks
-
-        ds = databricks.Group("ds", display_name="Data Science")
-        eng = databricks.Group("eng", display_name="Engineering")
-        something_simple = databricks.ClusterPolicy("something_simple",
-            name="Some simple policy",
-            definition=json.dumps({
-                "spark_conf.spark.hadoop.javax.jdo.option.ConnectionURL": {
-                    "type": "forbidden",
-                },
-                "spark_conf.spark.secondkey": {
-                    "type": "forbidden",
-                },
-            }))
-        policy_usage = databricks.Permissions("policy_usage",
-            cluster_policy_id=something_simple.id,
-            access_controls=[
-                {
-                    "group_name": ds.display_name,
-                    "permission_level": "CAN_USE",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_USE",
-                },
-            ])
-        ```
-
-        ## Instance Pool usage
-
-        Instance Pools access control [allows to](https://docs.databricks.com/security/access-control/pool-acl.html) assign `CAN_ATTACH_TO` and `CAN_MANAGE` permissions to users, service principals, and groups. It's also possible to grant creation of Instance Pools to individual groups and users, service principals.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        smallest = databricks.get_node_type(local_disk=True)
-        this = databricks.InstancePool("this",
-            instance_pool_name="Reserved Instances",
-            idle_instance_autotermination_minutes=60,
-            node_type_id=smallest.id,
-            min_idle_instances=0,
-            max_capacity=10)
-        pool_usage = databricks.Permissions("pool_usage",
-            instance_pool_id=this.id,
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_ATTACH_TO",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## Job usage
-
-        There are four assignable [permission levels](https://docs.databricks.com/security/access-control/jobs-acl.html#job-permissions) for databricks_job: `CAN_VIEW`, `CAN_MANAGE_RUN`, `IS_OWNER`, and `CAN_MANAGE`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
-
-        - The creator of a job has `IS_OWNER` permission. Destroying `Permissions` resource for a job would revert ownership to the creator.
-        - A job must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the job. Nothing would change, per se, if the job was created through Pulumi.
-        - A job cannot have a group as an owner.
-        - Jobs triggered through _Run Now_ assume the permissions of the job owner and not the user, and service principal who issued Run Now.
-        - Read [main documentation](https://docs.databricks.com/security/access-control/jobs-acl.html) for additional detail.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        aws_principal = databricks.ServicePrincipal("aws_principal", display_name="main")
-        latest = databricks.get_spark_version()
-        smallest = databricks.get_node_type(local_disk=True)
-        this = databricks.Job("this",
-            name="Featurization",
-            max_concurrent_runs=1,
-            tasks=[{
-                "task_key": "task1",
-                "new_cluster": {
-                    "num_workers": 300,
-                    "spark_version": latest.id,
-                    "node_type_id": smallest.id,
-                },
-                "notebook_task": {
-                    "notebook_path": "/Production/MakeFeatures",
-                },
-            }])
-        job_usage = databricks.Permissions("job_usage",
-            job_id=this.id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_VIEW",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_MANAGE_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-                {
-                    "service_principal_name": aws_principal.application_id,
-                    "permission_level": "IS_OWNER",
-                },
-            ])
-        ```
-
-        ## Delta Live Tables usage
-
-        There are four assignable [permission levels](https://docs.databricks.com/security/access-control/dlt-acl.html#delta-live-tables-permissions) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
-
-        - The creator of a DLT Pipeline has `IS_OWNER` permission. Destroying `Permissions` resource for a pipeline would revert ownership to the creator.
-        - A DLT pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
-        - A DLT pipeline cannot have a group as an owner.
-        - DLT Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
-        - Read [main documentation](https://docs.databricks.com/security/access-control/dlt-acl.html) for additional detail.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_std as std
-
-        me = databricks.get_current_user()
-        eng = databricks.Group("eng", display_name="Engineering")
-        dlt_demo = databricks.Notebook("dlt_demo",
-            content_base64=std.base64encode(input=\"\"\"import dlt
-        json_path = "/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json"
-        @dlt.table(
-           comment="The raw wikipedia clickstream dataset, ingested from /databricks-datasets."
-        )
-        def clickstream_raw():
-            return (spark.read.format("json").load(json_path))
-        \"\"\").result,
-            language="PYTHON",
-            path=f"{me.home}/DLT_Demo")
-        this = databricks.Pipeline("this",
-            name=f"DLT Demo Pipeline ({me.alphanumeric})",
-            storage="/test/tf-pipeline",
-            configuration={
-                "key1": "value1",
-                "key2": "value2",
-            },
-            libraries=[{
-                "notebook": {
-                    "path": dlt_demo.id,
-                },
-            }],
-            continuous=False,
-            filters={
-                "includes": ["com.databricks.include"],
-                "excludes": ["com.databricks.exclude"],
-            })
-        dlt_usage = databricks.Permissions("dlt_usage",
-            pipeline_id=this.id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_VIEW",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## Notebook usage
-
-        Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#notebook-permissions) for Notebook are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
-
-        A notebook could be specified by using either `notebook_path` or `notebook_id` attribute.  The value for the `notebook_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `Notebook` resource as shown below.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_std as std
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        this = databricks.Notebook("this",
-            content_base64=std.base64encode(input="# Welcome to your Python notebook").result,
-            path="/Production/ETL/Features",
-            language="PYTHON")
-        notebook_usage_by_path = databricks.Permissions("notebook_usage_by_path",
-            notebook_path=this.path,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        notebook_usage_by_id = databricks.Permissions("notebook_usage_by_id",
-            notebook_id=this.object_id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        ```
-
-        > when importing a permissions resource, only the `notebook_id` is filled!
-
-        ## Workspace file usage
-
-        Valid permission levels for WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
-
-        A workspace file could be specified by using either `workspace_file_path` or `workspace_file_id` attribute.  The value for the `workspace_file_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `WorkspaceFile` resource as shown below.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_std as std
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        this = databricks.WorkspaceFile("this",
-            content_base64=std.base64encode(input="print('Hello World')").result,
-            path="/Production/ETL/Features.py")
-        workspace_file_usage_by_path = databricks.Permissions("workspace_file_usage_by_path",
-            workspace_file_path=this.path,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        workspace_file_usage_by_id = databricks.Permissions("workspace_file_usage_by_id",
-            workspace_file_id=this.object_id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        ```
-
-        > when importing a permissions resource, only the `workspace_file_id` is filled!
-
-        ## Folder usage
-
-        Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#folder-permissions) for folders of Directory are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`. Notebooks and experiments in a folder inherit all permissions settings of that folder. For example, a user (or service principal) that has `CAN_RUN` permission on a folder has `CAN_RUN` permission on the notebooks in that folder.
-
-        - All users can list items in the folder without any permissions.
-        - All users (or service principals) have `CAN_MANAGE` permission for items in the Workspace > Shared Icon Shared folder. You can grant `CAN_MANAGE` permission to notebooks and folders by moving them to the Shared Icon Shared folder.
-        - All users (or service principals) have `CAN_MANAGE` permission for objects the user creates.
-        - User home directory - The user (or service principal) has `CAN_MANAGE` permission. All other users (or service principals) can list their directories.
-
-        A folder could be specified by using either `directory_path` or `directory_id` attribute.  The value for the `directory_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `Directory` resource as shown below.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        this = databricks.Directory("this", path="/Production/ETL")
-        folder_usage_by_path = databricks.Permissions("folder_usage_by_path",
-            directory_path=this.path,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        folder_usage_by_id = databricks.Permissions("folder_usage_by_id",
-            directory_id=this.object_id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        ```
-
-        > when importing a permissions resource, only the `directory_id` is filled!
-
-        ## Repos usage
-
-        Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html) for Repo are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        this = databricks.Repo("this", url="https://github.com/user/demo.git")
-        repo_usage = databricks.Permissions("repo_usage",
-            repo_id=this.id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        ```
-
-        ## MLflow Experiment usage
-
-        Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#mlflow-experiment-permissions-1) for MlflowExperiment are: `CAN_READ`, `CAN_EDIT`, and `CAN_MANAGE`.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.get_current_user()
-        this = databricks.MlflowExperiment("this",
-            name=f"{me.home}/Sample",
-            artifact_location="dbfs:/tmp/my-experiment",
-            description="My MLflow experiment description")
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        experiment_usage = databricks.Permissions("experiment_usage",
-            experiment_id=this.id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        ```
-
-        ## MLflow Model usage
-
-        Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#mlflow-model-permissions-1) for MlflowModel are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE_STAGING_VERSIONS`, `CAN_MANAGE_PRODUCTION_VERSIONS`, and `CAN_MANAGE`. You can also manage permissions for all MLflow models by `registered_model_id = "root"`.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.MlflowModel("this", name="SomePredictions")
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        model_usage = databricks.Permissions("model_usage",
-            registered_model_id=this.registered_model_id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_MANAGE_PRODUCTION_VERSIONS",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE_STAGING_VERSIONS",
-                },
-            ])
-        ```
-
-        ## Model serving usage
-
-        Valid permission levels for ModelServing are: `CAN_VIEW`, `CAN_QUERY`, and `CAN_MANAGE`.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.ModelServing("this",
-            name="tf-test",
-            config={
-                "served_models": [{
-                    "name": "prod_model",
-                    "model_name": "test",
-                    "model_version": "1",
-                    "workload_size": "Small",
-                    "scale_to_zero_enabled": True,
-                }],
-            })
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        ml_serving_usage = databricks.Permissions("ml_serving_usage",
-            serving_endpoint_id=this.serving_endpoint_id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_VIEW",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_QUERY",
-                },
-            ])
-        ```
-
-        ## Passwords usage
-
-        By default on AWS deployments, all admin users can sign in to Databricks using either SSO or their username and password, and all API users can authenticate to the Databricks REST APIs using their username and password. As an admin, you [can limit](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#optional-configure-password-access-control) admin users’ and API users’ ability to authenticate with their username and password by configuring `CAN_USE` permissions using password access control.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        guests = databricks.Group("guests", display_name="Guest Users")
-        password_usage = databricks.Permissions("password_usage",
-            authorization="passwords",
-            access_controls=[{
-                "group_name": guests.display_name,
-                "permission_level": "CAN_USE",
-            }])
-        ```
-
-        ## Token usage
-
-        It is required to have at least 1 personal access token in the workspace before you can manage tokens permissions.
-
-        !> **Warning** There can be only one `authorization = "tokens"` permissions resource per workspace, otherwise there'll be a permanent configuration drift. After applying changes, users who previously had either `CAN_USE` or `CAN_MANAGE` permission but no longer have either permission have their access to token-based authentication revoked. Their active tokens are immediately deleted (revoked).
-
-        Only [possible permission](https://docs.databricks.com/administration-guide/access-control/tokens.html) to assign to non-admin group is `CAN_USE`, where _admins_ `CAN_MANAGE` all tokens:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        token_usage = databricks.Permissions("token_usage",
-            authorization="tokens",
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_USE",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_USE",
-                },
-            ])
-        ```
-
-        ## SQL warehouse usage
-
-        [SQL warehouses](https://docs.databricks.com/sql/user/security/access-control/sql-endpoint-acl.html) have four possible permissions: `CAN_USE`, `CAN_MONITOR`, `CAN_MANAGE` and `IS_OWNER`:
-
-        - The creator of a warehouse has `IS_OWNER` permission. Destroying `Permissions` resource for a warehouse would revert ownership to the creator.
-        - A warehouse must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the warehouse. Nothing would change, per se, if the warehouse was created through Pulumi.
-        - A warehouse cannot have a group as an owner.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.get_current_user()
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        this = databricks.SqlEndpoint("this",
-            name=f"Endpoint of {me.alphanumeric}",
-            cluster_size="Small",
-            max_num_clusters=1,
-            tags={
-                "custom_tags": [{
-                    "key": "City",
-                    "value": "Amsterdam",
-                }],
-            })
-        endpoint_usage = databricks.Permissions("endpoint_usage",
-            sql_endpoint_id=this.id,
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_USE",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## Dashboard usage
-
-        [Dashboards](https://docs.databricks.com/en/dashboards/tutorials/manage-permissions.html) have four possible permissions: `CAN_READ`, `CAN_RUN`, `CAN_EDIT` and `CAN_MANAGE`:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        dashboard = databricks.Dashboard("dashboard", display_name="TF New Dashboard")
-        dashboard_usage = databricks.Permissions("dashboard_usage",
-            dashboard_id=dashboard.id,
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## Legacy SQL Dashboard usage
-
-        [Legacy SQL dashboards](https://docs.databricks.com/sql/user/security/access-control/dashboard-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        sql_dashboard_usage = databricks.Permissions("sql_dashboard_usage",
-            sql_dashboard_id="3244325",
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## SQL Query usage
-
-        [SQL queries](https://docs.databricks.com/sql/user/security/access-control/query-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
-
-        > If you do not define an `access_control` block granting `CAN_MANAGE` explictly for the user calling this provider, Databricks Pulumi Provider will add `CAN_MANAGE` permission for the caller. This is a failsafe to prevent situations where the caller is locked out from making changes to the targeted `SqlQuery` resource when backend API do not apply permission inheritance correctly.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        query_usage = databricks.Permissions("query_usage",
-            sql_query_id="3244325",
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## SQL Alert usage
-
-        [SQL alerts](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        alert_usage = databricks.Permissions("alert_usage",
-            sql_alert_id="3244325",
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## Instance Profiles
-
-        Instance Profiles are not managed by General Permissions API and therefore GroupInstanceProfile and UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
-
-        ## Secrets
-
-        One can control access to Secret through `initial_manage_principal` argument on SecretScope or databricks_secret_acl, so that users (or service principals) can `READ`, `WRITE` or `MANAGE` entries within secret scope.
-
-        ## Tables, Views and Databases
-
-        General Permissions API does not apply to access control for tables and they have to be managed separately using the SqlPermissions resource, though you're encouraged to use Unity Catalog or migrate to it.
-
-        ## Data Access with Unity Catalog
-
-        Initially in Unity Catalog all users have no access to data, which has to be later assigned through Grants resource.
-
-        ## Import
-
-        The resource permissions can be imported using the object id
-
-        ```sh
-        $ pulumi import databricks:index/permissions:Permissions databricks_permissions <object type>/<object id>
-        ```
-
+        Create a Permissions resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] object_type: type of permissions.
         """
         ...
     @overload
@@ -1385,732 +701,7 @@ class Permissions(pulumi.CustomResource):
                  args: PermissionsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspaces. It ensures that only _admins_, _authenticated principal_ and those declared within `access_control` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
-
-        > This resource is _authoritative_ for permissions on objects. Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset.
-
-        > It is not possible to lower permissions for `admins`, so Databricks Pulumi Provider removes those `access_control` blocks automatically.
-
-        > If multiple permission levels are specified for an identity (e.g. `CAN_RESTART` and `CAN_MANAGE` for a cluster), only the highest level permission is returned and will cause permanent drift.
-
-        > To manage access control on service principals, use databricks_access_control_rule_set.
-
-        ## Cluster usage
-
-        It's possible to separate [cluster access control](https://docs.databricks.com/security/access-control/cluster-acl.html) to three different permission levels: `CAN_ATTACH_TO`, `CAN_RESTART` and `CAN_MANAGE`:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        ds = databricks.Group("ds", display_name="Data Science")
-        latest = databricks.get_spark_version()
-        smallest = databricks.get_node_type(local_disk=True)
-        shared_autoscaling = databricks.Cluster("shared_autoscaling",
-            cluster_name="Shared Autoscaling",
-            spark_version=latest.id,
-            node_type_id=smallest.id,
-            autotermination_minutes=60,
-            autoscale={
-                "min_workers": 1,
-                "max_workers": 10,
-            })
-        cluster_usage = databricks.Permissions("cluster_usage",
-            cluster_id=shared_autoscaling.id,
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_ATTACH_TO",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_RESTART",
-                },
-                {
-                    "group_name": ds.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## Cluster Policy usage
-
-        Cluster policies allow creation of clusters, that match [given policy](https://docs.databricks.com/administration-guide/clusters/policies.html). It's possible to assign `CAN_USE` permission to users and groups:
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_databricks as databricks
-
-        ds = databricks.Group("ds", display_name="Data Science")
-        eng = databricks.Group("eng", display_name="Engineering")
-        something_simple = databricks.ClusterPolicy("something_simple",
-            name="Some simple policy",
-            definition=json.dumps({
-                "spark_conf.spark.hadoop.javax.jdo.option.ConnectionURL": {
-                    "type": "forbidden",
-                },
-                "spark_conf.spark.secondkey": {
-                    "type": "forbidden",
-                },
-            }))
-        policy_usage = databricks.Permissions("policy_usage",
-            cluster_policy_id=something_simple.id,
-            access_controls=[
-                {
-                    "group_name": ds.display_name,
-                    "permission_level": "CAN_USE",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_USE",
-                },
-            ])
-        ```
-
-        ## Instance Pool usage
-
-        Instance Pools access control [allows to](https://docs.databricks.com/security/access-control/pool-acl.html) assign `CAN_ATTACH_TO` and `CAN_MANAGE` permissions to users, service principals, and groups. It's also possible to grant creation of Instance Pools to individual groups and users, service principals.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        smallest = databricks.get_node_type(local_disk=True)
-        this = databricks.InstancePool("this",
-            instance_pool_name="Reserved Instances",
-            idle_instance_autotermination_minutes=60,
-            node_type_id=smallest.id,
-            min_idle_instances=0,
-            max_capacity=10)
-        pool_usage = databricks.Permissions("pool_usage",
-            instance_pool_id=this.id,
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_ATTACH_TO",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## Job usage
-
-        There are four assignable [permission levels](https://docs.databricks.com/security/access-control/jobs-acl.html#job-permissions) for databricks_job: `CAN_VIEW`, `CAN_MANAGE_RUN`, `IS_OWNER`, and `CAN_MANAGE`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
-
-        - The creator of a job has `IS_OWNER` permission. Destroying `Permissions` resource for a job would revert ownership to the creator.
-        - A job must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the job. Nothing would change, per se, if the job was created through Pulumi.
-        - A job cannot have a group as an owner.
-        - Jobs triggered through _Run Now_ assume the permissions of the job owner and not the user, and service principal who issued Run Now.
-        - Read [main documentation](https://docs.databricks.com/security/access-control/jobs-acl.html) for additional detail.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        aws_principal = databricks.ServicePrincipal("aws_principal", display_name="main")
-        latest = databricks.get_spark_version()
-        smallest = databricks.get_node_type(local_disk=True)
-        this = databricks.Job("this",
-            name="Featurization",
-            max_concurrent_runs=1,
-            tasks=[{
-                "task_key": "task1",
-                "new_cluster": {
-                    "num_workers": 300,
-                    "spark_version": latest.id,
-                    "node_type_id": smallest.id,
-                },
-                "notebook_task": {
-                    "notebook_path": "/Production/MakeFeatures",
-                },
-            }])
-        job_usage = databricks.Permissions("job_usage",
-            job_id=this.id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_VIEW",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_MANAGE_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-                {
-                    "service_principal_name": aws_principal.application_id,
-                    "permission_level": "IS_OWNER",
-                },
-            ])
-        ```
-
-        ## Delta Live Tables usage
-
-        There are four assignable [permission levels](https://docs.databricks.com/security/access-control/dlt-acl.html#delta-live-tables-permissions) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
-
-        - The creator of a DLT Pipeline has `IS_OWNER` permission. Destroying `Permissions` resource for a pipeline would revert ownership to the creator.
-        - A DLT pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
-        - A DLT pipeline cannot have a group as an owner.
-        - DLT Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
-        - Read [main documentation](https://docs.databricks.com/security/access-control/dlt-acl.html) for additional detail.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_std as std
-
-        me = databricks.get_current_user()
-        eng = databricks.Group("eng", display_name="Engineering")
-        dlt_demo = databricks.Notebook("dlt_demo",
-            content_base64=std.base64encode(input=\"\"\"import dlt
-        json_path = "/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json"
-        @dlt.table(
-           comment="The raw wikipedia clickstream dataset, ingested from /databricks-datasets."
-        )
-        def clickstream_raw():
-            return (spark.read.format("json").load(json_path))
-        \"\"\").result,
-            language="PYTHON",
-            path=f"{me.home}/DLT_Demo")
-        this = databricks.Pipeline("this",
-            name=f"DLT Demo Pipeline ({me.alphanumeric})",
-            storage="/test/tf-pipeline",
-            configuration={
-                "key1": "value1",
-                "key2": "value2",
-            },
-            libraries=[{
-                "notebook": {
-                    "path": dlt_demo.id,
-                },
-            }],
-            continuous=False,
-            filters={
-                "includes": ["com.databricks.include"],
-                "excludes": ["com.databricks.exclude"],
-            })
-        dlt_usage = databricks.Permissions("dlt_usage",
-            pipeline_id=this.id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_VIEW",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## Notebook usage
-
-        Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#notebook-permissions) for Notebook are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
-
-        A notebook could be specified by using either `notebook_path` or `notebook_id` attribute.  The value for the `notebook_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `Notebook` resource as shown below.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_std as std
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        this = databricks.Notebook("this",
-            content_base64=std.base64encode(input="# Welcome to your Python notebook").result,
-            path="/Production/ETL/Features",
-            language="PYTHON")
-        notebook_usage_by_path = databricks.Permissions("notebook_usage_by_path",
-            notebook_path=this.path,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        notebook_usage_by_id = databricks.Permissions("notebook_usage_by_id",
-            notebook_id=this.object_id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        ```
-
-        > when importing a permissions resource, only the `notebook_id` is filled!
-
-        ## Workspace file usage
-
-        Valid permission levels for WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
-
-        A workspace file could be specified by using either `workspace_file_path` or `workspace_file_id` attribute.  The value for the `workspace_file_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `WorkspaceFile` resource as shown below.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_std as std
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        this = databricks.WorkspaceFile("this",
-            content_base64=std.base64encode(input="print('Hello World')").result,
-            path="/Production/ETL/Features.py")
-        workspace_file_usage_by_path = databricks.Permissions("workspace_file_usage_by_path",
-            workspace_file_path=this.path,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        workspace_file_usage_by_id = databricks.Permissions("workspace_file_usage_by_id",
-            workspace_file_id=this.object_id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        ```
-
-        > when importing a permissions resource, only the `workspace_file_id` is filled!
-
-        ## Folder usage
-
-        Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#folder-permissions) for folders of Directory are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`. Notebooks and experiments in a folder inherit all permissions settings of that folder. For example, a user (or service principal) that has `CAN_RUN` permission on a folder has `CAN_RUN` permission on the notebooks in that folder.
-
-        - All users can list items in the folder without any permissions.
-        - All users (or service principals) have `CAN_MANAGE` permission for items in the Workspace > Shared Icon Shared folder. You can grant `CAN_MANAGE` permission to notebooks and folders by moving them to the Shared Icon Shared folder.
-        - All users (or service principals) have `CAN_MANAGE` permission for objects the user creates.
-        - User home directory - The user (or service principal) has `CAN_MANAGE` permission. All other users (or service principals) can list their directories.
-
-        A folder could be specified by using either `directory_path` or `directory_id` attribute.  The value for the `directory_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `Directory` resource as shown below.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        this = databricks.Directory("this", path="/Production/ETL")
-        folder_usage_by_path = databricks.Permissions("folder_usage_by_path",
-            directory_path=this.path,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        folder_usage_by_id = databricks.Permissions("folder_usage_by_id",
-            directory_id=this.object_id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        ```
-
-        > when importing a permissions resource, only the `directory_id` is filled!
-
-        ## Repos usage
-
-        Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html) for Repo are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        this = databricks.Repo("this", url="https://github.com/user/demo.git")
-        repo_usage = databricks.Permissions("repo_usage",
-            repo_id=this.id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        ```
-
-        ## MLflow Experiment usage
-
-        Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#mlflow-experiment-permissions-1) for MlflowExperiment are: `CAN_READ`, `CAN_EDIT`, and `CAN_MANAGE`.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.get_current_user()
-        this = databricks.MlflowExperiment("this",
-            name=f"{me.home}/Sample",
-            artifact_location="dbfs:/tmp/my-experiment",
-            description="My MLflow experiment description")
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        experiment_usage = databricks.Permissions("experiment_usage",
-            experiment_id=this.id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_EDIT",
-                },
-            ])
-        ```
-
-        ## MLflow Model usage
-
-        Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#mlflow-model-permissions-1) for MlflowModel are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE_STAGING_VERSIONS`, `CAN_MANAGE_PRODUCTION_VERSIONS`, and `CAN_MANAGE`. You can also manage permissions for all MLflow models by `registered_model_id = "root"`.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.MlflowModel("this", name="SomePredictions")
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        model_usage = databricks.Permissions("model_usage",
-            registered_model_id=this.registered_model_id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_READ",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_MANAGE_PRODUCTION_VERSIONS",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE_STAGING_VERSIONS",
-                },
-            ])
-        ```
-
-        ## Model serving usage
-
-        Valid permission levels for ModelServing are: `CAN_VIEW`, `CAN_QUERY`, and `CAN_MANAGE`.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.ModelServing("this",
-            name="tf-test",
-            config={
-                "served_models": [{
-                    "name": "prod_model",
-                    "model_name": "test",
-                    "model_version": "1",
-                    "workload_size": "Small",
-                    "scale_to_zero_enabled": True,
-                }],
-            })
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        ml_serving_usage = databricks.Permissions("ml_serving_usage",
-            serving_endpoint_id=this.serving_endpoint_id,
-            access_controls=[
-                {
-                    "group_name": "users",
-                    "permission_level": "CAN_VIEW",
-                },
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_QUERY",
-                },
-            ])
-        ```
-
-        ## Passwords usage
-
-        By default on AWS deployments, all admin users can sign in to Databricks using either SSO or their username and password, and all API users can authenticate to the Databricks REST APIs using their username and password. As an admin, you [can limit](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#optional-configure-password-access-control) admin users’ and API users’ ability to authenticate with their username and password by configuring `CAN_USE` permissions using password access control.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        guests = databricks.Group("guests", display_name="Guest Users")
-        password_usage = databricks.Permissions("password_usage",
-            authorization="passwords",
-            access_controls=[{
-                "group_name": guests.display_name,
-                "permission_level": "CAN_USE",
-            }])
-        ```
-
-        ## Token usage
-
-        It is required to have at least 1 personal access token in the workspace before you can manage tokens permissions.
-
-        !> **Warning** There can be only one `authorization = "tokens"` permissions resource per workspace, otherwise there'll be a permanent configuration drift. After applying changes, users who previously had either `CAN_USE` or `CAN_MANAGE` permission but no longer have either permission have their access to token-based authentication revoked. Their active tokens are immediately deleted (revoked).
-
-        Only [possible permission](https://docs.databricks.com/administration-guide/access-control/tokens.html) to assign to non-admin group is `CAN_USE`, where _admins_ `CAN_MANAGE` all tokens:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        token_usage = databricks.Permissions("token_usage",
-            authorization="tokens",
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_USE",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_USE",
-                },
-            ])
-        ```
-
-        ## SQL warehouse usage
-
-        [SQL warehouses](https://docs.databricks.com/sql/user/security/access-control/sql-endpoint-acl.html) have four possible permissions: `CAN_USE`, `CAN_MONITOR`, `CAN_MANAGE` and `IS_OWNER`:
-
-        - The creator of a warehouse has `IS_OWNER` permission. Destroying `Permissions` resource for a warehouse would revert ownership to the creator.
-        - A warehouse must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the warehouse. Nothing would change, per se, if the warehouse was created through Pulumi.
-        - A warehouse cannot have a group as an owner.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.get_current_user()
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        this = databricks.SqlEndpoint("this",
-            name=f"Endpoint of {me.alphanumeric}",
-            cluster_size="Small",
-            max_num_clusters=1,
-            tags={
-                "custom_tags": [{
-                    "key": "City",
-                    "value": "Amsterdam",
-                }],
-            })
-        endpoint_usage = databricks.Permissions("endpoint_usage",
-            sql_endpoint_id=this.id,
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_USE",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## Dashboard usage
-
-        [Dashboards](https://docs.databricks.com/en/dashboards/tutorials/manage-permissions.html) have four possible permissions: `CAN_READ`, `CAN_RUN`, `CAN_EDIT` and `CAN_MANAGE`:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        dashboard = databricks.Dashboard("dashboard", display_name="TF New Dashboard")
-        dashboard_usage = databricks.Permissions("dashboard_usage",
-            dashboard_id=dashboard.id,
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## Legacy SQL Dashboard usage
-
-        [Legacy SQL dashboards](https://docs.databricks.com/sql/user/security/access-control/dashboard-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        sql_dashboard_usage = databricks.Permissions("sql_dashboard_usage",
-            sql_dashboard_id="3244325",
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## SQL Query usage
-
-        [SQL queries](https://docs.databricks.com/sql/user/security/access-control/query-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
-
-        > If you do not define an `access_control` block granting `CAN_MANAGE` explictly for the user calling this provider, Databricks Pulumi Provider will add `CAN_MANAGE` permission for the caller. This is a failsafe to prevent situations where the caller is locked out from making changes to the targeted `SqlQuery` resource when backend API do not apply permission inheritance correctly.
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        query_usage = databricks.Permissions("query_usage",
-            sql_query_id="3244325",
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## SQL Alert usage
-
-        [SQL alerts](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        auto = databricks.Group("auto", display_name="Automation")
-        eng = databricks.Group("eng", display_name="Engineering")
-        alert_usage = databricks.Permissions("alert_usage",
-            sql_alert_id="3244325",
-            access_controls=[
-                {
-                    "group_name": auto.display_name,
-                    "permission_level": "CAN_RUN",
-                },
-                {
-                    "group_name": eng.display_name,
-                    "permission_level": "CAN_MANAGE",
-                },
-            ])
-        ```
-
-        ## Instance Profiles
-
-        Instance Profiles are not managed by General Permissions API and therefore GroupInstanceProfile and UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
-
-        ## Secrets
-
-        One can control access to Secret through `initial_manage_principal` argument on SecretScope or databricks_secret_acl, so that users (or service principals) can `READ`, `WRITE` or `MANAGE` entries within secret scope.
-
-        ## Tables, Views and Databases
-
-        General Permissions API does not apply to access control for tables and they have to be managed separately using the SqlPermissions resource, though you're encouraged to use Unity Catalog or migrate to it.
-
-        ## Data Access with Unity Catalog
-
-        Initially in Unity Catalog all users have no access to data, which has to be later assigned through Grants resource.
-
-        ## Import
-
-        The resource permissions can be imported using the object id
-
-        ```sh
-        $ pulumi import databricks:index/permissions:Permissions databricks_permissions <object type>/<object id>
-        ```
-
+        Create a Permissions resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PermissionsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2127,6 +718,7 @@ class Permissions(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
+                 app_name: Optional[pulumi.Input[str]] = None,
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -2148,6 +740,7 @@ class Permissions(pulumi.CustomResource):
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_query_id: Optional[pulumi.Input[str]] = None,
+                 vector_search_endpoint_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_path: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -2162,6 +755,7 @@ class Permissions(pulumi.CustomResource):
             if access_controls is None and not opts.urn:
                 raise TypeError("Missing required property 'access_controls'")
             __props__.__dict__["access_controls"] = access_controls
+            __props__.__dict__["app_name"] = app_name
             __props__.__dict__["authorization"] = authorization
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["cluster_policy_id"] = cluster_policy_id
@@ -2183,6 +777,7 @@ class Permissions(pulumi.CustomResource):
             __props__.__dict__["sql_dashboard_id"] = sql_dashboard_id
             __props__.__dict__["sql_endpoint_id"] = sql_endpoint_id
             __props__.__dict__["sql_query_id"] = sql_query_id
+            __props__.__dict__["vector_search_endpoint_id"] = vector_search_endpoint_id
             __props__.__dict__["workspace_file_id"] = workspace_file_id
             __props__.__dict__["workspace_file_path"] = workspace_file_path
         super(Permissions, __self__).__init__(
@@ -2196,6 +791,7 @@ class Permissions(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
+            app_name: Optional[pulumi.Input[str]] = None,
             authorization: Optional[pulumi.Input[str]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -2217,6 +813,7 @@ class Permissions(pulumi.CustomResource):
             sql_dashboard_id: Optional[pulumi.Input[str]] = None,
             sql_endpoint_id: Optional[pulumi.Input[str]] = None,
             sql_query_id: Optional[pulumi.Input[str]] = None,
+            vector_search_endpoint_id: Optional[pulumi.Input[str]] = None,
             workspace_file_id: Optional[pulumi.Input[str]] = None,
             workspace_file_path: Optional[pulumi.Input[str]] = None) -> 'Permissions':
         """
@@ -2226,13 +823,13 @@ class Permissions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] object_type: type of permissions.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _PermissionsState.__new__(_PermissionsState)
 
         __props__.__dict__["access_controls"] = access_controls
+        __props__.__dict__["app_name"] = app_name
         __props__.__dict__["authorization"] = authorization
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cluster_policy_id"] = cluster_policy_id
@@ -2254,6 +851,7 @@ class Permissions(pulumi.CustomResource):
         __props__.__dict__["sql_dashboard_id"] = sql_dashboard_id
         __props__.__dict__["sql_endpoint_id"] = sql_endpoint_id
         __props__.__dict__["sql_query_id"] = sql_query_id
+        __props__.__dict__["vector_search_endpoint_id"] = vector_search_endpoint_id
         __props__.__dict__["workspace_file_id"] = workspace_file_id
         __props__.__dict__["workspace_file_path"] = workspace_file_path
         return Permissions(resource_name, opts=opts, __props__=__props__)
@@ -2262,6 +860,11 @@ class Permissions(pulumi.CustomResource):
     @pulumi.getter(name="accessControls")
     def access_controls(self) -> pulumi.Output[Sequence['outputs.PermissionsAccessControl']]:
         return pulumi.get(self, "access_controls")
+
+    @property
+    @pulumi.getter(name="appName")
+    def app_name(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "app_name")
 
     @property
     @pulumi.getter
@@ -2321,9 +924,6 @@ class Permissions(pulumi.CustomResource):
     @property
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Output[str]:
-        """
-        type of permissions.
-        """
         return pulumi.get(self, "object_type")
 
     @property
@@ -2370,6 +970,11 @@ class Permissions(pulumi.CustomResource):
     @pulumi.getter(name="sqlQueryId")
     def sql_query_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "sql_query_id")
+
+    @property
+    @pulumi.getter(name="vectorSearchEndpointId")
+    def vector_search_endpoint_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "vector_search_endpoint_id")
 
     @property
     @pulumi.getter(name="workspaceFileId")

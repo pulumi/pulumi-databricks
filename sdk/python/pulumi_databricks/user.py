@@ -36,20 +36,6 @@ class UserArgs:
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a User resource.
-        :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
-        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
-        :param pulumi.Input[bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
-        :param pulumi.Input[bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        :param pulumi.Input[bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        :param pulumi.Input[bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
-        :param pulumi.Input[str] display_name: This is an alias for the username that can be the full name of the user.
-        :param pulumi.Input[str] external_id: ID of the user in an external identity provider.
-        :param pulumi.Input[bool] force: Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
-        :param pulumi.Input[bool] force_delete_repos: This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-        :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         """
         pulumi.set(__self__, "user_name", user_name)
         if acl_principal_id is not None:
@@ -84,9 +70,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Input[str]:
-        """
-        This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
-        """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
@@ -96,9 +79,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="aclPrincipalId")
     def acl_principal_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
-        """
         return pulumi.get(self, "acl_principal_id")
 
     @acl_principal_id.setter
@@ -108,9 +88,6 @@ class UserArgs:
     @property
     @pulumi.getter
     def active(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
-        """
         return pulumi.get(self, "active")
 
     @active.setter
@@ -120,9 +97,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="allowClusterCreate")
     def allow_cluster_create(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        """
         return pulumi.get(self, "allow_cluster_create")
 
     @allow_cluster_create.setter
@@ -132,9 +106,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="allowInstancePoolCreate")
     def allow_instance_pool_create(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        """
         return pulumi.get(self, "allow_instance_pool_create")
 
     @allow_instance_pool_create.setter
@@ -144,9 +115,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        """
         return pulumi.get(self, "databricks_sql_access")
 
     @databricks_sql_access.setter
@@ -156,9 +124,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="disableAsUserDeletion")
     def disable_as_user_deletion(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
-        """
         return pulumi.get(self, "disable_as_user_deletion")
 
     @disable_as_user_deletion.setter
@@ -168,9 +133,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        This is an alias for the username that can be the full name of the user.
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -180,9 +142,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the user in an external identity provider.
-        """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
@@ -192,9 +151,6 @@ class UserArgs:
     @property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -204,9 +160,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="forceDeleteHomeDir")
     def force_delete_home_dir(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
-        """
         return pulumi.get(self, "force_delete_home_dir")
 
     @force_delete_home_dir.setter
@@ -216,9 +169,6 @@ class UserArgs:
     @property
     @pulumi.getter(name="forceDeleteRepos")
     def force_delete_repos(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        """
         return pulumi.get(self, "force_delete_repos")
 
     @force_delete_repos.setter
@@ -228,9 +178,6 @@ class UserArgs:
     @property
     @pulumi.getter
     def home(self) -> Optional[pulumi.Input[str]]:
-        """
-        Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-        """
         return pulumi.get(self, "home")
 
     @home.setter
@@ -240,9 +187,6 @@ class UserArgs:
     @property
     @pulumi.getter
     def repos(self) -> Optional[pulumi.Input[str]]:
-        """
-        Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-        """
         return pulumi.get(self, "repos")
 
     @repos.setter
@@ -279,20 +223,6 @@ class _UserState:
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering User resources.
-        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
-        :param pulumi.Input[bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
-        :param pulumi.Input[bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        :param pulumi.Input[bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        :param pulumi.Input[bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
-        :param pulumi.Input[str] display_name: This is an alias for the username that can be the full name of the user.
-        :param pulumi.Input[str] external_id: ID of the user in an external identity provider.
-        :param pulumi.Input[bool] force: Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
-        :param pulumi.Input[bool] force_delete_repos: This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-        :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-        :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         """
         if acl_principal_id is not None:
             pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -328,9 +258,6 @@ class _UserState:
     @property
     @pulumi.getter(name="aclPrincipalId")
     def acl_principal_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
-        """
         return pulumi.get(self, "acl_principal_id")
 
     @acl_principal_id.setter
@@ -340,9 +267,6 @@ class _UserState:
     @property
     @pulumi.getter
     def active(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
-        """
         return pulumi.get(self, "active")
 
     @active.setter
@@ -352,9 +276,6 @@ class _UserState:
     @property
     @pulumi.getter(name="allowClusterCreate")
     def allow_cluster_create(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        """
         return pulumi.get(self, "allow_cluster_create")
 
     @allow_cluster_create.setter
@@ -364,9 +285,6 @@ class _UserState:
     @property
     @pulumi.getter(name="allowInstancePoolCreate")
     def allow_instance_pool_create(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        """
         return pulumi.get(self, "allow_instance_pool_create")
 
     @allow_instance_pool_create.setter
@@ -376,9 +294,6 @@ class _UserState:
     @property
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        """
         return pulumi.get(self, "databricks_sql_access")
 
     @databricks_sql_access.setter
@@ -388,9 +303,6 @@ class _UserState:
     @property
     @pulumi.getter(name="disableAsUserDeletion")
     def disable_as_user_deletion(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
-        """
         return pulumi.get(self, "disable_as_user_deletion")
 
     @disable_as_user_deletion.setter
@@ -400,9 +312,6 @@ class _UserState:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        This is an alias for the username that can be the full name of the user.
-        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -412,9 +321,6 @@ class _UserState:
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the user in an external identity provider.
-        """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
@@ -424,9 +330,6 @@ class _UserState:
     @property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -436,9 +339,6 @@ class _UserState:
     @property
     @pulumi.getter(name="forceDeleteHomeDir")
     def force_delete_home_dir(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
-        """
         return pulumi.get(self, "force_delete_home_dir")
 
     @force_delete_home_dir.setter
@@ -448,9 +348,6 @@ class _UserState:
     @property
     @pulumi.getter(name="forceDeleteRepos")
     def force_delete_repos(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        """
         return pulumi.get(self, "force_delete_repos")
 
     @force_delete_repos.setter
@@ -460,9 +357,6 @@ class _UserState:
     @property
     @pulumi.getter
     def home(self) -> Optional[pulumi.Input[str]]:
-        """
-        Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-        """
         return pulumi.get(self, "home")
 
     @home.setter
@@ -472,9 +366,6 @@ class _UserState:
     @property
     @pulumi.getter
     def repos(self) -> Optional[pulumi.Input[str]]:
-        """
-        Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-        """
         return pulumi.get(self, "repos")
 
     @repos.setter
@@ -484,9 +375,6 @@ class _UserState:
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
-        """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
@@ -525,112 +413,9 @@ class User(pulumi.CustomResource):
                  workspace_access: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        This resource allows you to manage [users in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/users.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users to databricks_group. Upon user creation the user will receive a welcome email. You can also get information about caller identity using get_current_user data source.
-
-        > To assign account level users to workspace use databricks_mws_permission_assignment.
-
-        > Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level users.  Use Entitlements resource to assign entitlements inside a workspace to account-level users.
-
-        To create users in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
-
-        The default behavior when deleting a `User` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the user will be deleted from the workspace. When the provider is configured at the account-level, the user will be deactivated but not deleted. When the provider is configured at the account level, to delete the user from the account when the resource is deleted, set `disable_as_user_deletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the user when the resource is deleted, set `disable_as_user_deletion = true`.
-
-        ## Example Usage
-
-        Creating regular user:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.User("me", user_name="me@example.com")
-        ```
-
-        Creating user with administrative permissions - referencing special `admins` Group in GroupMember resource:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        admins = databricks.get_group(display_name="admins")
-        me = databricks.User("me", user_name="me@example.com")
-        i_am_admin = databricks.GroupMember("i-am-admin",
-            group_id=admins.id,
-            member_id=me.id)
-        ```
-
-        Creating user with cluster create permissions:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.User("me",
-            user_name="me@example.com",
-            display_name="Example user",
-            allow_cluster_create=True)
-        ```
-
-        Creating user in AWS Databricks account:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        account_user = databricks.User("account_user",
-            user_name="me@example.com",
-            display_name="Example user")
-        ```
-
-        Creating user in Azure Databricks account:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        account_user = databricks.User("account_user",
-            user_name="me@example.com",
-            display_name="Example user")
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-        * Group data to retrieve information about Group members, entitlements and instance profiles.
-        * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-        * GroupMember to attach users and groups as group members.
-        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-        * User data to retrieve information about databricks_user.
-
-        ## Import
-
-        The resource scim user can be imported using id:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/user:User me <user-id>
-        ```
-
+        Create a User resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
-        :param pulumi.Input[bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
-        :param pulumi.Input[bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        :param pulumi.Input[bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        :param pulumi.Input[bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
-        :param pulumi.Input[str] display_name: This is an alias for the username that can be the full name of the user.
-        :param pulumi.Input[str] external_id: ID of the user in an external identity provider.
-        :param pulumi.Input[bool] force: Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
-        :param pulumi.Input[bool] force_delete_repos: This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-        :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-        :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         """
         ...
     @overload
@@ -639,96 +424,7 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to manage [users in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/users.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users to databricks_group. Upon user creation the user will receive a welcome email. You can also get information about caller identity using get_current_user data source.
-
-        > To assign account level users to workspace use databricks_mws_permission_assignment.
-
-        > Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level users.  Use Entitlements resource to assign entitlements inside a workspace to account-level users.
-
-        To create users in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
-
-        The default behavior when deleting a `User` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the user will be deleted from the workspace. When the provider is configured at the account-level, the user will be deactivated but not deleted. When the provider is configured at the account level, to delete the user from the account when the resource is deleted, set `disable_as_user_deletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the user when the resource is deleted, set `disable_as_user_deletion = true`.
-
-        ## Example Usage
-
-        Creating regular user:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.User("me", user_name="me@example.com")
-        ```
-
-        Creating user with administrative permissions - referencing special `admins` Group in GroupMember resource:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        admins = databricks.get_group(display_name="admins")
-        me = databricks.User("me", user_name="me@example.com")
-        i_am_admin = databricks.GroupMember("i-am-admin",
-            group_id=admins.id,
-            member_id=me.id)
-        ```
-
-        Creating user with cluster create permissions:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.User("me",
-            user_name="me@example.com",
-            display_name="Example user",
-            allow_cluster_create=True)
-        ```
-
-        Creating user in AWS Databricks account:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        account_user = databricks.User("account_user",
-            user_name="me@example.com",
-            display_name="Example user")
-        ```
-
-        Creating user in Azure Databricks account:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        account_user = databricks.User("account_user",
-            user_name="me@example.com",
-            display_name="Example user")
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-        * Group data to retrieve information about Group members, entitlements and instance profiles.
-        * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-        * GroupMember to attach users and groups as group members.
-        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-        * User data to retrieve information about databricks_user.
-
-        ## Import
-
-        The resource scim user can be imported using id:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/user:User me <user-id>
-        ```
-
+        Create a User resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -817,20 +513,6 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
-        :param pulumi.Input[bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
-        :param pulumi.Input[bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        :param pulumi.Input[bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        :param pulumi.Input[bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
-        :param pulumi.Input[str] display_name: This is an alias for the username that can be the full name of the user.
-        :param pulumi.Input[str] external_id: ID of the user in an external identity provider.
-        :param pulumi.Input[bool] force: Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        :param pulumi.Input[bool] force_delete_home_dir: This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
-        :param pulumi.Input[bool] force_delete_repos: This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-        :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-        :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -856,113 +538,71 @@ class User(pulumi.CustomResource):
     @property
     @pulumi.getter(name="aclPrincipalId")
     def acl_principal_id(self) -> pulumi.Output[str]:
-        """
-        identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
-        """
         return pulumi.get(self, "acl_principal_id")
 
     @property
     @pulumi.getter
     def active(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
-        """
         return pulumi.get(self, "active")
 
     @property
     @pulumi.getter(name="allowClusterCreate")
     def allow_cluster_create(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        """
         return pulumi.get(self, "allow_cluster_create")
 
     @property
     @pulumi.getter(name="allowInstancePoolCreate")
     def allow_instance_pool_create(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        """
         return pulumi.get(self, "allow_instance_pool_create")
 
     @property
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> pulumi.Output[Optional[bool]]:
-        """
-        This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        """
         return pulumi.get(self, "databricks_sql_access")
 
     @property
     @pulumi.getter(name="disableAsUserDeletion")
     def disable_as_user_deletion(self) -> pulumi.Output[bool]:
-        """
-        Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
-        """
         return pulumi.get(self, "disable_as_user_deletion")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
-        """
-        This is an alias for the username that can be the full name of the user.
-        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        ID of the user in an external identity provider.
-        """
         return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        """
         return pulumi.get(self, "force")
 
     @property
     @pulumi.getter(name="forceDeleteHomeDir")
     def force_delete_home_dir(self) -> pulumi.Output[Optional[bool]]:
-        """
-        This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
-        """
         return pulumi.get(self, "force_delete_home_dir")
 
     @property
     @pulumi.getter(name="forceDeleteRepos")
     def force_delete_repos(self) -> pulumi.Output[Optional[bool]]:
-        """
-        This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
-        """
         return pulumi.get(self, "force_delete_repos")
 
     @property
     @pulumi.getter
     def home(self) -> pulumi.Output[str]:
-        """
-        Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-        """
         return pulumi.get(self, "home")
 
     @property
     @pulumi.getter
     def repos(self) -> pulumi.Output[str]:
-        """
-        Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-        """
         return pulumi.get(self, "repos")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[str]:
-        """
-        This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
-        """
         return pulumi.get(self, "user_name")
 
     @property

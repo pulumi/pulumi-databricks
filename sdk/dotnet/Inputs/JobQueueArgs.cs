@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobQueueArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// If true, enable queueing for the job.
-        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 

@@ -18,18 +18,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("currentStage")]
         public Input<string>? CurrentStage { get; set; }
 
-        /// <summary>
-        /// User-specified description for the object.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("lastUpdatedTimestamp")]
         public Input<int>? LastUpdatedTimestamp { get; set; }
 
-        /// <summary>
-        /// Name of the registered model.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -50,19 +44,12 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("tags")]
         private InputList<Inputs.GetMlflowModelLatestVersionTagInputArgs>? _tags;
-
-        /// <summary>
-        /// Array of tags associated with the model.
-        /// </summary>
         public InputList<Inputs.GetMlflowModelLatestVersionTagInputArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.GetMlflowModelLatestVersionTagInputArgs>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The username of the user that created the object.
-        /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
 

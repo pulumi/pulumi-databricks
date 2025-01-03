@@ -15,9 +15,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("dbsqlVersion")]
         public Input<string>? DbsqlVersion { get; set; }
 
-        /// <summary>
-        /// Name of the SQL warehouse to search (case-sensitive).
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

@@ -26,9 +26,6 @@ class MlflowModelArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None):
         """
         The set of arguments for constructing a MlflowModel resource.
-        :param pulumi.Input[str] description: The description of the MLflow model.
-        :param pulumi.Input[str] name: Name of MLflow model. Change of name triggers new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]] tags: Tags for the MLflow model.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -40,9 +37,6 @@ class MlflowModelArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the MLflow model.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -52,9 +46,6 @@ class MlflowModelArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of MLflow model. Change of name triggers new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -64,9 +55,6 @@ class MlflowModelArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]]:
-        """
-        Tags for the MLflow model.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -83,9 +71,6 @@ class _MlflowModelState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering MlflowModel resources.
-        :param pulumi.Input[str] description: The description of the MLflow model.
-        :param pulumi.Input[str] name: Name of MLflow model. Change of name triggers new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]] tags: Tags for the MLflow model.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -99,9 +84,6 @@ class _MlflowModelState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the MLflow model.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -111,9 +93,6 @@ class _MlflowModelState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of MLflow model. Change of name triggers new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -132,9 +111,6 @@ class _MlflowModelState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]]:
-        """
-        Tags for the MLflow model.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -152,63 +128,9 @@ class MlflowModel(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]]] = None,
                  __props__=None):
         """
-        This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
-
-        > This documentation covers the Workspace Model Registry. Databricks recommends using Models in Unity Catalog. Models in Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        test = databricks.MlflowModel("test",
-            name="My MLflow Model",
-            description="My MLflow model description",
-            tags=[
-                {
-                    "key": "key1",
-                    "value": "value1",
-                },
-                {
-                    "key": "key2",
-                    "value": "value2",
-                },
-            ])
-        ```
-
-        ## Access Control
-
-        * Permissions can control which groups or individual users can *Read*, *Edit*, *Manage Staging Versions*, *Manage Production Versions*, and *Manage* individual models.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
-        * End to end workspace management guide.
-        * ModelServing to serve this model on a Databricks serving endpoint.
-        * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
-        * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-        * Notebook data to export a notebook from Databricks Workspace.
-        * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-
-        ## Import
-
-        The model resource can be imported using the name
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
-        ```
-
+        Create a MlflowModel resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the MLflow model.
-        :param pulumi.Input[str] name: Name of MLflow model. Change of name triggers new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]] tags: Tags for the MLflow model.
         """
         ...
     @overload
@@ -217,58 +139,7 @@ class MlflowModel(pulumi.CustomResource):
                  args: Optional[MlflowModelArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
-
-        > This documentation covers the Workspace Model Registry. Databricks recommends using Models in Unity Catalog. Models in Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        test = databricks.MlflowModel("test",
-            name="My MLflow Model",
-            description="My MLflow model description",
-            tags=[
-                {
-                    "key": "key1",
-                    "value": "value1",
-                },
-                {
-                    "key": "key2",
-                    "value": "value2",
-                },
-            ])
-        ```
-
-        ## Access Control
-
-        * Permissions can control which groups or individual users can *Read*, *Edit*, *Manage Staging Versions*, *Manage Production Versions*, and *Manage* individual models.
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
-        * End to end workspace management guide.
-        * ModelServing to serve this model on a Databricks serving endpoint.
-        * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
-        * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-        * Notebook data to export a notebook from Databricks Workspace.
-        * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-
-        ## Import
-
-        The model resource can be imported using the name
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
-        ```
-
+        Create a MlflowModel resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MlflowModelArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -321,9 +192,6 @@ class MlflowModel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the MLflow model.
-        :param pulumi.Input[str] name: Name of MLflow model. Change of name triggers new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]] tags: Tags for the MLflow model.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -338,17 +206,11 @@ class MlflowModel(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description of the MLflow model.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of MLflow model. Change of name triggers new resource.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -359,8 +221,5 @@ class MlflowModel(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.MlflowModelTag']]]:
-        """
-        Tags for the MLflow model.
-        """
         return pulumi.get(self, "tags")
 

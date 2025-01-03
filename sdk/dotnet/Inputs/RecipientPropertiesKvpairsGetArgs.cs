@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("properties", required: true)]
         private InputMap<string>? _properties;
-
-        /// <summary>
-        /// a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
-        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());

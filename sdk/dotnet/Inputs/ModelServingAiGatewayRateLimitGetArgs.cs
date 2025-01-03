@@ -12,21 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingAiGatewayRateLimitGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Used to specify how many calls are allowed for a key within the renewal_period.
-        /// </summary>
         [Input("calls", required: true)]
         public Input<int> Calls { get; set; } = null!;
 
-        /// <summary>
-        /// Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
-        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
-        /// <summary>
-        /// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
-        /// </summary>
         [Input("renewalPeriod", required: true)]
         public Input<string> RenewalPeriod { get; set; } = null!;
 

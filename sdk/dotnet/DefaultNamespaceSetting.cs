@@ -9,56 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// &gt; This resource can only be used with a workspace-level provider!
-    /// 
-    /// The `databricks.DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
-    /// Setting the default catalog for the workspace determines the catalog that is used when queries do not reference
-    /// a fully qualified 3 level name. For example, if the default catalog is set to 'retail_prod' then a query
-    /// 'SELECT * FROM myTable' would reference the object 'retail_prod.default.myTable'
-    /// (the schema 'default' is always assumed).
-    /// This setting requires a restart of clusters and SQL warehouses to take effect. Additionally, the default namespace only applies when using Unity Catalog-enabled compute.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @this = new Databricks.DefaultNamespaceSetting("this", new()
-    ///     {
-    ///         Namespace = new Databricks.Inputs.DefaultNamespaceSettingNamespaceArgs
-    ///         {
-    ///             Value = "namespace_value",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by predefined name `global`:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting")]
     public partial class DefaultNamespaceSetting : global::Pulumi.CustomResource
     {
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
-        /// <summary>
-        /// The configuration details.
-        /// </summary>
         [Output("namespace")]
         public Output<Outputs.DefaultNamespaceSettingNamespace> Namespace { get; private set; } = null!;
 
@@ -114,9 +70,6 @@ namespace Pulumi.Databricks
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        /// <summary>
-        /// The configuration details.
-        /// </summary>
         [Input("namespace", required: true)]
         public Input<Inputs.DefaultNamespaceSettingNamespaceArgs> Namespace { get; set; } = null!;
 
@@ -134,9 +87,6 @@ namespace Pulumi.Databricks
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        /// <summary>
-        /// The configuration details.
-        /// </summary>
         [Input("namespace")]
         public Input<Inputs.DefaultNamespaceSettingNamespaceGetArgs>? Namespace { get; set; }
 

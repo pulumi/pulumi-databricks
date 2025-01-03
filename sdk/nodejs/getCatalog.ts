@@ -6,40 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
- * Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
- *
- * ## Example Usage
- *
- * Read  on a specific catalog `test`:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const test = databricks.getCatalog({
- *     name: "test",
- * });
- * const things = new databricks.Grants("things", {
- *     catalog: test.then(test => test.name),
- *     grants: [{
- *         principal: "sensitive",
- *         privileges: ["USE_CATALOG"],
- *     }],
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.Grant to manage grants within Unity Catalog.
- * * databricks.getCatalogs to list all catalogs within Unity Catalog metastore.
- */
 export function getCatalog(args: GetCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCatalog:getCatalog", {
@@ -53,17 +19,8 @@ export function getCatalog(args: GetCatalogArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getCatalog.
  */
 export interface GetCatalogArgs {
-    /**
-     * the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
-     */
     catalogInfo?: inputs.GetCatalogCatalogInfo;
-    /**
-     * same as the `name`
-     */
     id?: string;
-    /**
-     * name of the catalog
-     */
     name: string;
 }
 
@@ -71,53 +28,10 @@ export interface GetCatalogArgs {
  * A collection of values returned by getCatalog.
  */
 export interface GetCatalogResult {
-    /**
-     * the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
-     */
     readonly catalogInfo: outputs.GetCatalogCatalogInfo;
-    /**
-     * same as the `name`
-     */
     readonly id: string;
-    /**
-     * Name of the catalog
-     */
     readonly name: string;
 }
-/**
- * > **Note** This data source can only be used with a workspace-level provider!
- *
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
- * Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
- *
- * ## Example Usage
- *
- * Read  on a specific catalog `test`:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const test = databricks.getCatalog({
- *     name: "test",
- * });
- * const things = new databricks.Grants("things", {
- *     catalog: test.then(test => test.name),
- *     grants: [{
- *         principal: "sensitive",
- *         privileges: ["USE_CATALOG"],
- *     }],
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.Grant to manage grants within Unity Catalog.
- * * databricks.getCatalogs to list all catalogs within Unity Catalog metastore.
- */
 export function getCatalogOutput(args: GetCatalogOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCatalogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getCatalog:getCatalog", {
@@ -131,16 +45,7 @@ export function getCatalogOutput(args: GetCatalogOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getCatalog.
  */
 export interface GetCatalogOutputArgs {
-    /**
-     * the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
-     */
     catalogInfo?: pulumi.Input<inputs.GetCatalogCatalogInfoArgs>;
-    /**
-     * same as the `name`
-     */
     id?: pulumi.Input<string>;
-    /**
-     * name of the catalog
-     */
     name: pulumi.Input<string>;
 }

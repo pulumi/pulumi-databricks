@@ -13,33 +13,12 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class LakehouseMonitorInferenceLog
     {
-        /// <summary>
-        /// List of granularities to use when aggregating data into time windows based on their timestamp.
-        /// </summary>
         public readonly ImmutableArray<string> Granularities;
-        /// <summary>
-        /// Column of the model label
-        /// </summary>
         public readonly string? LabelCol;
-        /// <summary>
-        /// Column of the model id or version
-        /// </summary>
         public readonly string ModelIdCol;
-        /// <summary>
-        /// Column of the model prediction
-        /// </summary>
         public readonly string PredictionCol;
-        /// <summary>
-        /// Column of the model prediction probabilities
-        /// </summary>
         public readonly string? PredictionProbaCol;
-        /// <summary>
-        /// Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
-        /// </summary>
         public readonly string ProblemType;
-        /// <summary>
-        /// Column of the timestamp of predictions
-        /// </summary>
         public readonly string TimestampCol;
 
         [OutputConstructor]

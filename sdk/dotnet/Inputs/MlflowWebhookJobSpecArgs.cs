@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("accessToken", required: true)]
         private Input<string>? _accessToken;
-
-        /// <summary>
-        /// The personal access token used to authorize webhook's job runs.
-        /// </summary>
         public Input<string>? AccessToken
         {
             get => _accessToken;
@@ -28,15 +24,9 @@ namespace Pulumi.Databricks.Inputs
             }
         }
 
-        /// <summary>
-        /// ID of the Databricks job that the webhook runs.
-        /// </summary>
         [Input("jobId", required: true)]
         public Input<string> JobId { get; set; } = null!;
 
-        /// <summary>
-        /// URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
-        /// </summary>
         [Input("workspaceUrl")]
         public Input<string>? WorkspaceUrl { get; set; }
 

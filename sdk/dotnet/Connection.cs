@@ -9,143 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// &gt; This resource can only be used with a workspace-level provider!
-    /// 
-    /// Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
-    /// 
-    /// - A connection, a securable object in Unity Catalog that specifies a path and credentials for accessing an external database system.
-    /// - A foreign catalog
-    /// 
-    /// This resource manages connections in Unity Catalog
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Create a connection to a MySQL database
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mysql = new Databricks.Connection("mysql", new()
-    ///     {
-    ///         Name = "mysql_connection",
-    ///         ConnectionType = "MYSQL",
-    ///         Comment = "this is a connection to mysql db",
-    ///         Options = 
-    ///         {
-    ///             { "host", "test.mysql.database.azure.com" },
-    ///             { "port", "3306" },
-    ///             { "user", "user" },
-    ///             { "password", "password" },
-    ///         },
-    ///         Properties = 
-    ///         {
-    ///             { "purpose", "testing" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Create a connection to a BigQuery database
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var bigquery = new Databricks.Connection("bigquery", new()
-    ///     {
-    ///         Name = "bq_connection",
-    ///         ConnectionType = "BIGQUERY",
-    ///         Comment = "this is a connection to BQ",
-    ///         Options = 
-    ///         {
-    ///             { "GoogleServiceAccountKeyJson", JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["type"] = "service_account",
-    ///                 ["project_id"] = "PROJECT_ID",
-    ///                 ["private_key_id"] = "KEY_ID",
-    ///                 ["private_key"] = @"-----BEGIN PRIVATE KEY-----
-    /// PRIVATE_KEY
-    /// -----END PRIVATE KEY-----
-    /// ",
-    ///                 ["client_email"] = "SERVICE_ACCOUNT_EMAIL",
-    ///                 ["client_id"] = "CLIENT_ID",
-    ///                 ["auth_uri"] = "https://accounts.google.com/o/oauth2/auth",
-    ///                 ["token_uri"] = "https://accounts.google.com/o/oauth2/token",
-    ///                 ["auth_provider_x509_cert_url"] = "https://www.googleapis.com/oauth2/v1/certs",
-    ///                 ["client_x509_cert_url"] = "https://www.googleapis.com/robot/v1/metadata/x509/SERVICE_ACCOUNT_EMAIL",
-    ///                 ["universe_domain"] = "googleapis.com",
-    ///             }) },
-    ///         },
-    ///         Properties = 
-    ///         {
-    ///             { "purpose", "testing" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// This resource can be imported by `id`:
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/connection:Connection this '&lt;metastore_id&gt;|&lt;name&gt;'
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/connection:Connection")]
     public partial class Connection : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Free-form text.
-        /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
-        /// <summary>
-        /// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-        /// </summary>
         [Output("connectionType")]
         public Output<string> ConnectionType { get; private set; } = null!;
 
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the Connection.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-        /// </summary>
         [Output("options")]
         public Output<ImmutableDictionary<string, string>> Options { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the connection owner.
-        /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
-        /// <summary>
-        /// Free-form connection properties.
-        /// </summary>
         [Output("properties")]
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
@@ -202,33 +86,20 @@ namespace Pulumi.Databricks
 
     public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Free-form text.
-        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
-        /// <summary>
-        /// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-        /// </summary>
         [Input("connectionType", required: true)]
         public Input<string> ConnectionType { get; set; } = null!;
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
-        /// <summary>
-        /// Name of the Connection.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("options", required: true)]
         private InputMap<string>? _options;
-
-        /// <summary>
-        /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-        /// </summary>
         public InputMap<string> Options
         {
             get => _options ?? (_options = new InputMap<string>());
@@ -239,18 +110,11 @@ namespace Pulumi.Databricks
             }
         }
 
-        /// <summary>
-        /// Name of the connection owner.
-        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
         [Input("properties")]
         private InputMap<string>? _properties;
-
-        /// <summary>
-        /// Free-form connection properties.
-        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
@@ -268,33 +132,20 @@ namespace Pulumi.Databricks
 
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Free-form text.
-        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
-        /// <summary>
-        /// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-        /// </summary>
         [Input("connectionType")]
         public Input<string>? ConnectionType { get; set; }
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
-        /// <summary>
-        /// Name of the Connection.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("options")]
         private InputMap<string>? _options;
-
-        /// <summary>
-        /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-        /// </summary>
         public InputMap<string> Options
         {
             get => _options ?? (_options = new InputMap<string>());
@@ -305,18 +156,11 @@ namespace Pulumi.Databricks
             }
         }
 
-        /// <summary>
-        /// Name of the connection owner.
-        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
         [Input("properties")]
         private InputMap<string>? _properties;
-
-        /// <summary>
-        /// Free-form connection properties.
-        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());

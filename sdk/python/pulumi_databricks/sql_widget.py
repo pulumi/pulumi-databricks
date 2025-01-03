@@ -240,60 +240,7 @@ class SqlWidget(pulumi.CustomResource):
                  widget_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > Please switch to Dashboard to author new AI/BI dashboards using the latest tooling
-
-        To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
-
-        > documentation for this resource is a work in progress.
-
-        A widget is always tied to a Legacy dashboard. Every dashboard may have one or more widgets.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        d1w1 = databricks.SqlWidget("d1w1",
-            dashboard_id=d1["id"],
-            text="Hello! I'm a **text widget**!",
-            position={
-                "size_x": 3,
-                "size_y": 4,
-                "pos_x": 0,
-                "pos_y": 0,
-            })
-        d1w2 = databricks.SqlWidget("d1w2",
-            dashboard_id=d1["id"],
-            visualization_id=q1v1["id"],
-            position={
-                "size_x": 3,
-                "size_y": 4,
-                "pos_x": 3,
-                "pos_y": 0,
-            })
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-        * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
-        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
-
-        ## Import
-
-        You can import a `databricks_sql_widget` resource with ID like the following:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>
-        ```
-
+        Create a SqlWidget resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -304,60 +251,7 @@ class SqlWidget(pulumi.CustomResource):
                  args: SqlWidgetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > Please switch to Dashboard to author new AI/BI dashboards using the latest tooling
-
-        To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
-
-        > documentation for this resource is a work in progress.
-
-        A widget is always tied to a Legacy dashboard. Every dashboard may have one or more widgets.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        d1w1 = databricks.SqlWidget("d1w1",
-            dashboard_id=d1["id"],
-            text="Hello! I'm a **text widget**!",
-            position={
-                "size_x": 3,
-                "size_y": 4,
-                "pos_x": 0,
-                "pos_y": 0,
-            })
-        d1w2 = databricks.SqlWidget("d1w2",
-            dashboard_id=d1["id"],
-            visualization_id=q1v1["id"],
-            position={
-                "size_x": 3,
-                "size_y": 4,
-                "pos_x": 3,
-                "pos_y": 0,
-            })
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-        * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
-        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
-
-        ## Import
-
-        You can import a `databricks_sql_widget` resource with ID like the following:
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>
-        ```
-
+        Create a SqlWidget resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SqlWidgetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -11,162 +11,12 @@ namespace Pulumi.Databricks
 {
     public static class GetAwsUnityCatalogPolicy
     {
-        /// <summary>
-        /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-        /// 
-        /// This data source constructs the necessary AWS Unity Catalog policy for you.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetAwsUnityCatalogPolicy.Invoke(new()
-        ///     {
-        ///         AwsAccountId = awsAccountId,
-        ///         BucketName = "databricks-bucket",
-        ///         RoleName = $"{prefix}-uc-access",
-        ///         KmsName = "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
-        ///     });
-        /// 
-        ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
-        ///     {
-        ///         AwsAccountId = awsAccountId,
-        ///         RoleName = $"{prefix}-uc-access",
-        ///         ExternalId = "12345",
-        ///     });
-        /// 
-        ///     var unityMetastore = new Aws.Iam.Policy("unity_metastore", new()
-        ///     {
-        ///         Name = $"{prefix}-unity-catalog-metastore-access-iam-policy",
-        ///         PolicyDocument = @this.Apply(@this =&gt; @this.Apply(getAwsUnityCatalogPolicyResult =&gt; getAwsUnityCatalogPolicyResult.Json)),
-        ///     });
-        /// 
-        ///     var metastoreDataAccess = new Aws.Iam.Role("metastore_data_access", new()
-        ///     {
-        ///         Name = $"{prefix}-uc-access",
-        ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
-        ///         ManagedPolicyArns = new[]
-        ///         {
-        ///             unityMetastore.Arn,
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetAwsUnityCatalogPolicyResult> InvokeAsync(GetAwsUnityCatalogPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsUnityCatalogPolicyResult>("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args ?? new GetAwsUnityCatalogPolicyArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-        /// 
-        /// This data source constructs the necessary AWS Unity Catalog policy for you.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetAwsUnityCatalogPolicy.Invoke(new()
-        ///     {
-        ///         AwsAccountId = awsAccountId,
-        ///         BucketName = "databricks-bucket",
-        ///         RoleName = $"{prefix}-uc-access",
-        ///         KmsName = "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
-        ///     });
-        /// 
-        ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
-        ///     {
-        ///         AwsAccountId = awsAccountId,
-        ///         RoleName = $"{prefix}-uc-access",
-        ///         ExternalId = "12345",
-        ///     });
-        /// 
-        ///     var unityMetastore = new Aws.Iam.Policy("unity_metastore", new()
-        ///     {
-        ///         Name = $"{prefix}-unity-catalog-metastore-access-iam-policy",
-        ///         PolicyDocument = @this.Apply(@this =&gt; @this.Apply(getAwsUnityCatalogPolicyResult =&gt; getAwsUnityCatalogPolicyResult.Json)),
-        ///     });
-        /// 
-        ///     var metastoreDataAccess = new Aws.Iam.Role("metastore_data_access", new()
-        ///     {
-        ///         Name = $"{prefix}-uc-access",
-        ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
-        ///         ManagedPolicyArns = new[]
-        ///         {
-        ///             unityMetastore.Arn,
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetAwsUnityCatalogPolicyResult> Invoke(GetAwsUnityCatalogPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsUnityCatalogPolicyResult>("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args ?? new GetAwsUnityCatalogPolicyInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-        /// 
-        /// This data source constructs the necessary AWS Unity Catalog policy for you.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aws = Pulumi.Aws;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetAwsUnityCatalogPolicy.Invoke(new()
-        ///     {
-        ///         AwsAccountId = awsAccountId,
-        ///         BucketName = "databricks-bucket",
-        ///         RoleName = $"{prefix}-uc-access",
-        ///         KmsName = "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
-        ///     });
-        /// 
-        ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
-        ///     {
-        ///         AwsAccountId = awsAccountId,
-        ///         RoleName = $"{prefix}-uc-access",
-        ///         ExternalId = "12345",
-        ///     });
-        /// 
-        ///     var unityMetastore = new Aws.Iam.Policy("unity_metastore", new()
-        ///     {
-        ///         Name = $"{prefix}-unity-catalog-metastore-access-iam-policy",
-        ///         PolicyDocument = @this.Apply(@this =&gt; @this.Apply(getAwsUnityCatalogPolicyResult =&gt; getAwsUnityCatalogPolicyResult.Json)),
-        ///     });
-        /// 
-        ///     var metastoreDataAccess = new Aws.Iam.Role("metastore_data_access", new()
-        ///     {
-        ///         Name = $"{prefix}-uc-access",
-        ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
-        ///         ManagedPolicyArns = new[]
-        ///         {
-        ///             unityMetastore.Arn,
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetAwsUnityCatalogPolicyResult> Invoke(GetAwsUnityCatalogPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsUnityCatalogPolicyResult>("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args ?? new GetAwsUnityCatalogPolicyInvokeArgs(), options.WithDefaults());
     }
@@ -174,27 +24,18 @@ namespace Pulumi.Databricks
 
     public sealed class GetAwsUnityCatalogPolicyArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The Account ID of the current AWS account (not your Databricks account).
-        /// </summary>
         [Input("awsAccountId", required: true)]
         public string AwsAccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
-        /// </summary>
+        [Input("awsPartition")]
+        public string? AwsPartition { get; set; }
+
         [Input("bucketName", required: true)]
         public string BucketName { get; set; } = null!;
 
-        /// <summary>
-        /// If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
-        /// </summary>
         [Input("kmsName")]
         public string? KmsName { get; set; }
 
-        /// <summary>
-        /// The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
-        /// </summary>
         [Input("roleName", required: true)]
         public string RoleName { get; set; } = null!;
 
@@ -206,27 +47,18 @@ namespace Pulumi.Databricks
 
     public sealed class GetAwsUnityCatalogPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The Account ID of the current AWS account (not your Databricks account).
-        /// </summary>
         [Input("awsAccountId", required: true)]
         public Input<string> AwsAccountId { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
-        /// </summary>
+        [Input("awsPartition")]
+        public Input<string>? AwsPartition { get; set; }
+
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
-        /// <summary>
-        /// If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
-        /// </summary>
         [Input("kmsName")]
         public Input<string>? KmsName { get; set; }
 
-        /// <summary>
-        /// The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
-        /// </summary>
         [Input("roleName", required: true)]
         public Input<string> RoleName { get; set; } = null!;
 
@@ -241,14 +73,12 @@ namespace Pulumi.Databricks
     public sealed class GetAwsUnityCatalogPolicyResult
     {
         public readonly string AwsAccountId;
+        public readonly string? AwsPartition;
         public readonly string BucketName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// AWS IAM Policy JSON document
-        /// </summary>
         public readonly string Json;
         public readonly string? KmsName;
         public readonly string RoleName;
@@ -256,6 +86,8 @@ namespace Pulumi.Databricks
         [OutputConstructor]
         private GetAwsUnityCatalogPolicyResult(
             string awsAccountId,
+
+            string? awsPartition,
 
             string bucketName,
 
@@ -268,6 +100,7 @@ namespace Pulumi.Databricks
             string roleName)
         {
             AwsAccountId = awsAccountId;
+            AwsPartition = awsPartition;
             BucketName = bucketName;
             Id = id;
             Json = json;

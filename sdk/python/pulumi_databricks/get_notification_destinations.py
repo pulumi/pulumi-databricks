@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetNotificationDestinationsResult',
@@ -57,10 +56,7 @@ class GetNotificationDestinationsResult:
 
     @property
     @pulumi.getter(name="notificationDestinations")
-    def notification_destinations(self) -> Optional[Sequence['outputs.GetNotificationDestinationsNotificationDestinationResult']]:
-        """
-        A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-        """
+    def notification_destinations(self) -> Sequence['outputs.GetNotificationDestinationsNotificationDestinationResult']:
         return pulumi.get(self, "notification_destinations")
 
     @property
@@ -82,52 +78,13 @@ class AwaitableGetNotificationDestinationsResult(GetNotificationDestinationsResu
 
 
 def get_notification_destinations(display_name_contains: Optional[str] = None,
-                                  notification_destinations: Optional[Sequence[Union['GetNotificationDestinationsNotificationDestinationArgs', 'GetNotificationDestinationsNotificationDestinationArgsDict']]] = None,
                                   type: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotificationDestinationsResult:
     """
-    This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    email = databricks.NotificationDestination("email",
-        display_name="Email Destination",
-        config={
-            "email": {
-                "addresses": ["abc@gmail.com"],
-            },
-        })
-    slack = databricks.NotificationDestination("slack",
-        display_name="Slack Destination",
-        config={
-            "slack": {
-                "url": "https://hooks.slack.com/services/...",
-            },
-        })
-    # Lists all notification desitnations
-    this = databricks.get_notification_destinations()
-    # List destinations of specific type and name
-    filtered_notification = databricks.get_notification_destinations(display_name_contains="Destination",
-        type="EMAIL")
-    ```
-
-
-    :param str display_name_contains: A **case-insensitive** substring to filter Notification Destinations by their display name.
-    :param Sequence[Union['GetNotificationDestinationsNotificationDestinationArgs', 'GetNotificationDestinationsNotificationDestinationArgsDict']] notification_destinations: A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-    :param str type: The type of the Notification Destination to filter by. Valid values are: 
-           * `EMAIL` - Filters Notification Destinations of type Email.
-           * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
-           * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
-           * `SLACK` - Filters Notification Destinations of type Slack.
-           * `WEBHOOK` - Filters Notification Destinations of type Webhook.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['displayNameContains'] = display_name_contains
-    __args__['notificationDestinations'] = notification_destinations
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getNotificationDestinations:getNotificationDestinations', __args__, opts=opts, typ=GetNotificationDestinationsResult).value
@@ -138,52 +95,13 @@ def get_notification_destinations(display_name_contains: Optional[str] = None,
         notification_destinations=pulumi.get(__ret__, 'notification_destinations'),
         type=pulumi.get(__ret__, 'type'))
 def get_notification_destinations_output(display_name_contains: Optional[pulumi.Input[Optional[str]]] = None,
-                                         notification_destinations: Optional[pulumi.Input[Optional[Sequence[Union['GetNotificationDestinationsNotificationDestinationArgs', 'GetNotificationDestinationsNotificationDestinationArgsDict']]]]] = None,
                                          type: Optional[pulumi.Input[Optional[str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationDestinationsResult]:
     """
-    This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_databricks as databricks
-
-    email = databricks.NotificationDestination("email",
-        display_name="Email Destination",
-        config={
-            "email": {
-                "addresses": ["abc@gmail.com"],
-            },
-        })
-    slack = databricks.NotificationDestination("slack",
-        display_name="Slack Destination",
-        config={
-            "slack": {
-                "url": "https://hooks.slack.com/services/...",
-            },
-        })
-    # Lists all notification desitnations
-    this = databricks.get_notification_destinations()
-    # List destinations of specific type and name
-    filtered_notification = databricks.get_notification_destinations(display_name_contains="Destination",
-        type="EMAIL")
-    ```
-
-
-    :param str display_name_contains: A **case-insensitive** substring to filter Notification Destinations by their display name.
-    :param Sequence[Union['GetNotificationDestinationsNotificationDestinationArgs', 'GetNotificationDestinationsNotificationDestinationArgsDict']] notification_destinations: A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-    :param str type: The type of the Notification Destination to filter by. Valid values are: 
-           * `EMAIL` - Filters Notification Destinations of type Email.
-           * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
-           * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
-           * `SLACK` - Filters Notification Destinations of type Slack.
-           * `WEBHOOK` - Filters Notification Destinations of type Webhook.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['displayNameContains'] = display_name_contains
-    __args__['notificationDestinations'] = notification_destinations
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getNotificationDestinations:getNotificationDestinations', __args__, opts=opts, typ=GetNotificationDestinationsResult)

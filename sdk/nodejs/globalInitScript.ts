@@ -4,19 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * This resource allows you to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.
- *
- * ## Import
- *
- * The resource global init script can be imported using script ID:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
- * ```
- */
 export class GlobalInitScript extends pulumi.CustomResource {
     /**
      * Get an existing GlobalInitScript resource's state with the given name, ID, and optional extra
@@ -45,26 +32,11 @@ export class GlobalInitScript extends pulumi.CustomResource {
         return obj['__pulumiType'] === GlobalInitScript.__pulumiType;
     }
 
-    /**
-     * The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
-     */
     public readonly contentBase64!: pulumi.Output<string | undefined>;
-    /**
-     * specifies if the script is enabled for execution, or not
-     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly md5!: pulumi.Output<string | undefined>;
-    /**
-     * the name of the script.  It should be unique
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
-     */
     public readonly position!: pulumi.Output<number>;
-    /**
-     * Path to script's source code on local filesystem. Conflicts with `contentBase64`
-     */
     public readonly source!: pulumi.Output<string | undefined>;
 
     /**
@@ -104,26 +76,11 @@ export class GlobalInitScript extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GlobalInitScript resources.
  */
 export interface GlobalInitScriptState {
-    /**
-     * The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
-     */
     contentBase64?: pulumi.Input<string>;
-    /**
-     * specifies if the script is enabled for execution, or not
-     */
     enabled?: pulumi.Input<boolean>;
     md5?: pulumi.Input<string>;
-    /**
-     * the name of the script.  It should be unique
-     */
     name?: pulumi.Input<string>;
-    /**
-     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
-     */
     position?: pulumi.Input<number>;
-    /**
-     * Path to script's source code on local filesystem. Conflicts with `contentBase64`
-     */
     source?: pulumi.Input<string>;
 }
 
@@ -131,25 +88,10 @@ export interface GlobalInitScriptState {
  * The set of arguments for constructing a GlobalInitScript resource.
  */
 export interface GlobalInitScriptArgs {
-    /**
-     * The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
-     */
     contentBase64?: pulumi.Input<string>;
-    /**
-     * specifies if the script is enabled for execution, or not
-     */
     enabled?: pulumi.Input<boolean>;
     md5?: pulumi.Input<string>;
-    /**
-     * the name of the script.  It should be unique
-     */
     name?: pulumi.Input<string>;
-    /**
-     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
-     */
     position?: pulumi.Input<number>;
-    /**
-     * Path to script's source code on local filesystem. Conflicts with `contentBase64`
-     */
     source?: pulumi.Input<string>;
 }

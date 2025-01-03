@@ -13,29 +13,11 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsNetworksGcpNetworkInfo
     {
-        /// <summary>
-        /// The Google Cloud project ID of the VPC network.
-        /// </summary>
         public readonly string NetworkProjectId;
-        /// <summary>
-        /// The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-        /// </summary>
         public readonly string PodIpRangeName;
-        /// <summary>
-        /// The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-        /// </summary>
         public readonly string ServiceIpRangeName;
-        /// <summary>
-        /// The ID of the subnet associated with this network.
-        /// </summary>
         public readonly string SubnetId;
-        /// <summary>
-        /// The Google Cloud region of the workspace data plane. For example, `us-east4`.
-        /// </summary>
         public readonly string SubnetRegion;
-        /// <summary>
-        /// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-        /// </summary>
         public readonly string VpcId;
 
         [OutputConstructor]

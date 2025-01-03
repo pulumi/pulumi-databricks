@@ -84,12 +84,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }
 
+        [Input("isSingleNode")]
+        public Input<bool>? IsSingleNode { get; set; }
+
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
+
         [Input("libraries")]
         private InputList<Inputs.JobNewClusterLibraryArgs>? _libraries;
-
-        /// <summary>
-        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-        /// </summary>
         public InputList<Inputs.JobNewClusterLibraryArgs> Libraries
         {
             get => _libraries ?? (_libraries = new InputList<Inputs.JobNewClusterLibraryArgs>());
@@ -138,9 +140,9 @@ namespace Pulumi.Databricks.Inputs
             set => _sshPublicKeys = value;
         }
 
-        /// <summary>
-        /// isn't supported
-        /// </summary>
+        [Input("useMlRuntime")]
+        public Input<bool>? UseMlRuntime { get; set; }
+
         [Input("workloadType")]
         public Input<Inputs.JobNewClusterWorkloadTypeArgs>? WorkloadType { get; set; }
 

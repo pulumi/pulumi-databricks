@@ -4,51 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
- * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
- *
- * > **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `minGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn't match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const withGpu = databricks.getNodeType({
- *     localDisk: true,
- *     minCores: 16,
- *     gbPerCore: 1,
- *     minGpus: 1,
- * });
- * const gpuMl = databricks.getSparkVersion({
- *     gpu: true,
- *     ml: true,
- * });
- * const research = new databricks.Cluster("research", {
- *     clusterName: "Research Cluster",
- *     sparkVersion: gpuMl.then(gpuMl => gpuMl.id),
- *     nodeTypeId: withGpu.then(withGpu => withGpu.id),
- *     autoterminationMinutes: 20,
- *     autoscale: {
- *         minWorkers: 1,
- *         maxWorkers: 50,
- *     },
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * End to end workspace management guide.
- * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
- * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
- * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
- * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
- */
 export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypeResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -74,68 +29,19 @@ export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getNodeType.
  */
 export interface GetNodeTypeArgs {
-    /**
-     * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
-     * * `General Purpose` (all clouds)
-     * * `General Purpose (HDD)` (Azure)
-     * * `Compute Optimized` (all clouds)
-     * * `Memory Optimized` (all clouds)
-     * * `Memory Optimized (Remote HDD)` (Azure)
-     * * `Storage Optimized` (AWS, Azure)
-     * * `GPU Accelerated` (AWS, Azure)
-     */
     category?: string;
-    /**
-     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
-     */
     fleet?: boolean;
-    /**
-     * Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
-     */
     gbPerCore?: number;
-    /**
-     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
-     */
     graviton?: boolean;
-    /**
-     * node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
-     */
     id?: string;
-    /**
-     * . Pick only nodes that have IO Cache. Defaults to _false_.
-     */
     isIoCacheEnabled?: boolean;
-    /**
-     * Pick only nodes with local storage. Defaults to _false_.
-     */
     localDisk?: boolean;
-    /**
-     * Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
-     */
     localDiskMinSize?: number;
-    /**
-     * Minimum number of CPU cores available on instance. Defaults to _0_.
-     */
     minCores?: number;
-    /**
-     * Minimum number of GPU's attached to instance. Defaults to _0_.
-     */
     minGpus?: number;
-    /**
-     * Minimum amount of memory per node in gigabytes. Defaults to _0_.
-     */
     minMemoryGb?: number;
-    /**
-     * Pick only nodes that can run Photon driver. Defaults to _false_.
-     */
     photonDriverCapable?: boolean;
-    /**
-     * Pick only nodes that can run Photon workers. Defaults to _false_.
-     */
     photonWorkerCapable?: boolean;
-    /**
-     * Pick only nodes that support port forwarding. Defaults to _false_.
-     */
     supportPortForwarding?: boolean;
 }
 
@@ -147,9 +53,6 @@ export interface GetNodeTypeResult {
     readonly fleet?: boolean;
     readonly gbPerCore?: number;
     readonly graviton?: boolean;
-    /**
-     * node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
-     */
     readonly id: string;
     readonly isIoCacheEnabled?: boolean;
     readonly localDisk?: boolean;
@@ -161,51 +64,6 @@ export interface GetNodeTypeResult {
     readonly photonWorkerCapable?: boolean;
     readonly supportPortForwarding?: boolean;
 }
-/**
- * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
- *
- * Gets the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
- *
- * > **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `minGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn't match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const withGpu = databricks.getNodeType({
- *     localDisk: true,
- *     minCores: 16,
- *     gbPerCore: 1,
- *     minGpus: 1,
- * });
- * const gpuMl = databricks.getSparkVersion({
- *     gpu: true,
- *     ml: true,
- * });
- * const research = new databricks.Cluster("research", {
- *     clusterName: "Research Cluster",
- *     sparkVersion: gpuMl.then(gpuMl => gpuMl.id),
- *     nodeTypeId: withGpu.then(withGpu => withGpu.id),
- *     autoterminationMinutes: 20,
- *     autoscale: {
- *         minWorkers: 1,
- *         maxWorkers: 50,
- *     },
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * End to end workspace management guide.
- * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
- * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
- * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
- * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
- */
 export function getNodeTypeOutput(args?: GetNodeTypeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodeTypeResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -231,67 +89,18 @@ export function getNodeTypeOutput(args?: GetNodeTypeOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getNodeType.
  */
 export interface GetNodeTypeOutputArgs {
-    /**
-     * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
-     * * `General Purpose` (all clouds)
-     * * `General Purpose (HDD)` (Azure)
-     * * `Compute Optimized` (all clouds)
-     * * `Memory Optimized` (all clouds)
-     * * `Memory Optimized (Remote HDD)` (Azure)
-     * * `Storage Optimized` (AWS, Azure)
-     * * `GPU Accelerated` (AWS, Azure)
-     */
     category?: pulumi.Input<string>;
-    /**
-     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
-     */
     fleet?: pulumi.Input<boolean>;
-    /**
-     * Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
-     */
     gbPerCore?: pulumi.Input<number>;
-    /**
-     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
-     */
     graviton?: pulumi.Input<boolean>;
-    /**
-     * node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * . Pick only nodes that have IO Cache. Defaults to _false_.
-     */
     isIoCacheEnabled?: pulumi.Input<boolean>;
-    /**
-     * Pick only nodes with local storage. Defaults to _false_.
-     */
     localDisk?: pulumi.Input<boolean>;
-    /**
-     * Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
-     */
     localDiskMinSize?: pulumi.Input<number>;
-    /**
-     * Minimum number of CPU cores available on instance. Defaults to _0_.
-     */
     minCores?: pulumi.Input<number>;
-    /**
-     * Minimum number of GPU's attached to instance. Defaults to _0_.
-     */
     minGpus?: pulumi.Input<number>;
-    /**
-     * Minimum amount of memory per node in gigabytes. Defaults to _0_.
-     */
     minMemoryGb?: pulumi.Input<number>;
-    /**
-     * Pick only nodes that can run Photon driver. Defaults to _false_.
-     */
     photonDriverCapable?: pulumi.Input<boolean>;
-    /**
-     * Pick only nodes that can run Photon workers. Defaults to _false_.
-     */
     photonWorkerCapable?: pulumi.Input<boolean>;
-    /**
-     * Pick only nodes that support port forwarding. Defaults to _false_.
-     */
     supportPortForwarding?: pulumi.Input<boolean>;
 }

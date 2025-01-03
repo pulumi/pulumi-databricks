@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetTableTableInfoTableConstraintNamedTableConstraintArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 

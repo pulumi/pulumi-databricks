@@ -175,7 +175,6 @@ class _MountState:
                  wasb: Optional[pulumi.Input['MountWasbArgs']] = None):
         """
         Input properties used for looking up and filtering Mount resources.
-        :param pulumi.Input[str] source: (String) HDFS-compatible url
         """
         if abfs is not None:
             pulumi.set(__self__, "abfs", abfs)
@@ -286,9 +285,6 @@ class _MountState:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
-        """
-        (String) HDFS-compatible url
-        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -332,10 +328,7 @@ class Mount(pulumi.CustomResource):
                  wasb: Optional[pulumi.Input[Union['MountWasbArgs', 'MountWasbArgsDict']]] = None,
                  __props__=None):
         """
-        ## Import
-
-        !> Importing this resource is not currently supported.
-
+        Create a Mount resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -346,10 +339,7 @@ class Mount(pulumi.CustomResource):
                  args: Optional[MountArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
-
-        !> Importing this resource is not currently supported.
-
+        Create a Mount resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MountArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -426,7 +416,6 @@ class Mount(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] source: (String) HDFS-compatible url
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -494,9 +483,6 @@ class Mount(pulumi.CustomResource):
     @property
     @pulumi.getter
     def source(self) -> pulumi.Output[str]:
-        """
-        (String) HDFS-compatible url
-        """
         return pulumi.get(self, "source")
 
     @property

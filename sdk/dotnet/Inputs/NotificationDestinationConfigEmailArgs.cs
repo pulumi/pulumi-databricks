@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("addresses")]
         private InputList<string>? _addresses;
-
-        /// <summary>
-        /// The list of email addresses to send notifications to.
-        /// </summary>
         public InputList<string> Addresses
         {
             get => _addresses ?? (_addresses = new InputList<string>());

@@ -14,13 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobSparkJarTask
     {
         public readonly string? JarUri;
-        /// <summary>
-        /// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
-        /// </summary>
         public readonly string? MainClassName;
-        /// <summary>
-        /// (List) Parameters passed to the main method.
-        /// </summary>
         public readonly ImmutableArray<string> Parameters;
 
         [OutputConstructor]

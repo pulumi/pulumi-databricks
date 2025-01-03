@@ -13,13 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsNetworkConnectivityConfigEgressConfigDefaultRules
     {
-        /// <summary>
-        /// (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
-        /// </summary>
         public readonly Outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule? AwsStableIpRule;
-        /// <summary>
-        /// (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
-        /// </summary>
         public readonly Outputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule? AzureServiceEndpointRule;
 
         [OutputConstructor]

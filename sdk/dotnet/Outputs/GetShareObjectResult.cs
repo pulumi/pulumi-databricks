@@ -16,19 +16,10 @@ namespace Pulumi.Databricks.Outputs
         public readonly int AddedAt;
         public readonly string AddedBy;
         public readonly bool? CdfEnabled;
-        /// <summary>
-        /// Description about the object.
-        /// </summary>
         public readonly string? Comment;
         public readonly string? Content;
-        /// <summary>
-        /// Type of the object.
-        /// </summary>
         public readonly string DataObjectType;
         public readonly string? HistoryDataSharingStatus;
-        /// <summary>
-        /// The name of the share
-        /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetShareObjectPartitionResult> Partitions;
         public readonly string? SharedAs;

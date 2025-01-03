@@ -19,9 +19,6 @@ namespace Pulumi.Databricks.Outputs
         public readonly int? DeactivatedAt;
         public readonly string? EndpointName;
         public readonly string? GroupId;
-        /// <summary>
-        /// Canonical unique identifier of Network Connectivity Config in Databricks Account
-        /// </summary>
         public readonly string? NetworkConnectivityConfigId;
         public readonly string? ResourceId;
         public readonly string? RuleId;

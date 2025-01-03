@@ -21,27 +21,18 @@ namespace Pulumi.Databricks.Inputs
         [Input("cdfEnabled")]
         public Input<bool>? CdfEnabled { get; set; }
 
-        /// <summary>
-        /// Description about the object.
-        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         [Input("content")]
         public Input<string>? Content { get; set; }
 
-        /// <summary>
-        /// Type of the object.
-        /// </summary>
         [Input("dataObjectType", required: true)]
         public Input<string> DataObjectType { get; set; } = null!;
 
         [Input("historyDataSharingStatus")]
         public Input<string>? HistoryDataSharingStatus { get; set; }
 
-        /// <summary>
-        /// The name of the share
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

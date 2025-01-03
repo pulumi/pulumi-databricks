@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AlertConditionThreshold
     {
-        /// <summary>
-        /// actual value used in comparison (one of the attributes is required):
-        /// </summary>
         public readonly Outputs.AlertConditionThresholdValue Value;
 
         [OutputConstructor]

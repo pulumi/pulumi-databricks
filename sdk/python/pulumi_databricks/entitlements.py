@@ -28,15 +28,6 @@ class EntitlementsArgs:
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Entitlements resource.
-        :param pulumi.Input[bool] allow_cluster_create: Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        :param pulumi.Input[bool] allow_instance_pool_create: Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        :param pulumi.Input[str] group_id: Canonical unique identifier for the group.
-        :param pulumi.Input[str] service_principal_id: Canonical unique identifier for the service principal.
-               
-               The following entitlements are available.
-        :param pulumi.Input[str] user_id: Canonical unique identifier for the user.
-        :param pulumi.Input[bool] workspace_access: This is a field to allow the principal to have access to Databricks Workspace.
         """
         if allow_cluster_create is not None:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
@@ -56,9 +47,6 @@ class EntitlementsArgs:
     @property
     @pulumi.getter(name="allowClusterCreate")
     def allow_cluster_create(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        """
         return pulumi.get(self, "allow_cluster_create")
 
     @allow_cluster_create.setter
@@ -68,9 +56,6 @@ class EntitlementsArgs:
     @property
     @pulumi.getter(name="allowInstancePoolCreate")
     def allow_instance_pool_create(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        """
         return pulumi.get(self, "allow_instance_pool_create")
 
     @allow_instance_pool_create.setter
@@ -80,9 +65,6 @@ class EntitlementsArgs:
     @property
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        """
         return pulumi.get(self, "databricks_sql_access")
 
     @databricks_sql_access.setter
@@ -92,9 +74,6 @@ class EntitlementsArgs:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Canonical unique identifier for the group.
-        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -104,11 +83,6 @@ class EntitlementsArgs:
     @property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Canonical unique identifier for the service principal.
-
-        The following entitlements are available.
-        """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
@@ -118,9 +92,6 @@ class EntitlementsArgs:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Canonical unique identifier for the user.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -130,9 +101,6 @@ class EntitlementsArgs:
     @property
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This is a field to allow the principal to have access to Databricks Workspace.
-        """
         return pulumi.get(self, "workspace_access")
 
     @workspace_access.setter
@@ -152,15 +120,6 @@ class _EntitlementsState:
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Entitlements resources.
-        :param pulumi.Input[bool] allow_cluster_create: Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        :param pulumi.Input[bool] allow_instance_pool_create: Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        :param pulumi.Input[str] group_id: Canonical unique identifier for the group.
-        :param pulumi.Input[str] service_principal_id: Canonical unique identifier for the service principal.
-               
-               The following entitlements are available.
-        :param pulumi.Input[str] user_id: Canonical unique identifier for the user.
-        :param pulumi.Input[bool] workspace_access: This is a field to allow the principal to have access to Databricks Workspace.
         """
         if allow_cluster_create is not None:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
@@ -180,9 +139,6 @@ class _EntitlementsState:
     @property
     @pulumi.getter(name="allowClusterCreate")
     def allow_cluster_create(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        """
         return pulumi.get(self, "allow_cluster_create")
 
     @allow_cluster_create.setter
@@ -192,9 +148,6 @@ class _EntitlementsState:
     @property
     @pulumi.getter(name="allowInstancePoolCreate")
     def allow_instance_pool_create(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        """
         return pulumi.get(self, "allow_instance_pool_create")
 
     @allow_instance_pool_create.setter
@@ -204,9 +157,6 @@ class _EntitlementsState:
     @property
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        """
         return pulumi.get(self, "databricks_sql_access")
 
     @databricks_sql_access.setter
@@ -216,9 +166,6 @@ class _EntitlementsState:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Canonical unique identifier for the group.
-        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -228,11 +175,6 @@ class _EntitlementsState:
     @property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Canonical unique identifier for the service principal.
-
-        The following entitlements are available.
-        """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
@@ -242,9 +184,6 @@ class _EntitlementsState:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Canonical unique identifier for the user.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -254,9 +193,6 @@ class _EntitlementsState:
     @property
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This is a field to allow the principal to have access to Databricks Workspace.
-        """
         return pulumi.get(self, "workspace_access")
 
     @workspace_access.setter
@@ -278,90 +214,9 @@ class Entitlements(pulumi.CustomResource):
                  workspace_access: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        This resource allows you to set entitlements to existing databricks_users, Group or databricks_service_principal.
-
-        > You must define entitlements of a principal using either `Entitlements` or directly within one of databricks_users, Group or databricks_service_principal. Having entitlements defined in both resources will result in non-deterministic behaviour.
-
-        ## Example Usage
-
-        Setting entitlements for a regular user:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.get_user(user_name="me@example.com")
-        me_entitlements = databricks.Entitlements("me",
-            user_id=me.id,
-            allow_cluster_create=True,
-            allow_instance_pool_create=True)
-        ```
-
-        Setting entitlements for a service principal:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
-        this_entitlements = databricks.Entitlements("this",
-            service_principal_id=this.sp_id,
-            allow_cluster_create=True,
-            allow_instance_pool_create=True)
-        ```
-
-        Setting entitlements to all users in a workspace - referencing special `users` Group
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        users = databricks.get_group(display_name="users")
-        workspace_users = databricks.Entitlements("workspace-users",
-            group_id=users.id,
-            allow_cluster_create=True,
-            allow_instance_pool_create=True)
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-        * Group data to retrieve information about Group members, entitlements and instance profiles.
-        * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-        * GroupMember to attach users and groups as group members.
-        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-        * User data to retrieve information about databricks_user.
-
-        ## Import
-
-        The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
-
-        * `user/user_id` - user `user_id`.
-
-        * `group/group_id` - group `group_id`.
-
-        * `spn/spn_id` - service principal `spn_id`.
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/entitlements:Entitlements me user/<user-id>
-        ```
-
+        Create a Entitlements resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_cluster_create: Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        :param pulumi.Input[bool] allow_instance_pool_create: Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        :param pulumi.Input[str] group_id: Canonical unique identifier for the group.
-        :param pulumi.Input[str] service_principal_id: Canonical unique identifier for the service principal.
-               
-               The following entitlements are available.
-        :param pulumi.Input[str] user_id: Canonical unique identifier for the user.
-        :param pulumi.Input[bool] workspace_access: This is a field to allow the principal to have access to Databricks Workspace.
         """
         ...
     @overload
@@ -370,79 +225,7 @@ class Entitlements(pulumi.CustomResource):
                  args: Optional[EntitlementsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to set entitlements to existing databricks_users, Group or databricks_service_principal.
-
-        > You must define entitlements of a principal using either `Entitlements` or directly within one of databricks_users, Group or databricks_service_principal. Having entitlements defined in both resources will result in non-deterministic behaviour.
-
-        ## Example Usage
-
-        Setting entitlements for a regular user:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        me = databricks.get_user(user_name="me@example.com")
-        me_entitlements = databricks.Entitlements("me",
-            user_id=me.id,
-            allow_cluster_create=True,
-            allow_instance_pool_create=True)
-        ```
-
-        Setting entitlements for a service principal:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        this = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
-        this_entitlements = databricks.Entitlements("this",
-            service_principal_id=this.sp_id,
-            allow_cluster_create=True,
-            allow_instance_pool_create=True)
-        ```
-
-        Setting entitlements to all users in a workspace - referencing special `users` Group
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        users = databricks.get_group(display_name="users")
-        workspace_users = databricks.Entitlements("workspace-users",
-            group_id=users.id,
-            allow_cluster_create=True,
-            allow_instance_pool_create=True)
-        ```
-
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * End to end workspace management guide.
-        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-        * Group data to retrieve information about Group members, entitlements and instance profiles.
-        * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-        * GroupMember to attach users and groups as group members.
-        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-        * User data to retrieve information about databricks_user.
-
-        ## Import
-
-        The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
-
-        * `user/user_id` - user `user_id`.
-
-        * `group/group_id` - group `group_id`.
-
-        * `spn/spn_id` - service principal `spn_id`.
-
-        bash
-
-        ```sh
-        $ pulumi import databricks:index/entitlements:Entitlements me user/<user-id>
-        ```
-
+        Create a Entitlements resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param EntitlementsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -505,15 +288,6 @@ class Entitlements(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_cluster_create: Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        :param pulumi.Input[bool] allow_instance_pool_create: Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        :param pulumi.Input[str] group_id: Canonical unique identifier for the group.
-        :param pulumi.Input[str] service_principal_id: Canonical unique identifier for the service principal.
-               
-               The following entitlements are available.
-        :param pulumi.Input[str] user_id: Canonical unique identifier for the user.
-        :param pulumi.Input[bool] workspace_access: This is a field to allow the principal to have access to Databricks Workspace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -531,58 +305,35 @@ class Entitlements(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowClusterCreate")
     def allow_cluster_create(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
-        """
         return pulumi.get(self, "allow_cluster_create")
 
     @property
     @pulumi.getter(name="allowInstancePoolCreate")
     def allow_instance_pool_create(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        """
         return pulumi.get(self, "allow_instance_pool_create")
 
     @property
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> pulumi.Output[Optional[bool]]:
-        """
-        This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
-        """
         return pulumi.get(self, "databricks_sql_access")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Canonical unique identifier for the group.
-        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Canonical unique identifier for the service principal.
-
-        The following entitlements are available.
-        """
         return pulumi.get(self, "service_principal_id")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Canonical unique identifier for the user.
-        """
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> pulumi.Output[Optional[bool]]:
-        """
-        This is a field to allow the principal to have access to Databricks Workspace.
-        """
         return pulumi.get(self, "workspace_access")
 

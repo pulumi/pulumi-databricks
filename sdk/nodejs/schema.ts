@@ -4,54 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * > This resource can only be used with a workspace-level provider!
- *
- * Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
- *
- * A `databricks.Schema` is contained within databricks.Catalog and can contain tables & views.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sandbox = new databricks.Catalog("sandbox", {
- *     name: "sandbox",
- *     comment: "this catalog is managed by terraform",
- *     properties: {
- *         purpose: "testing",
- *     },
- * });
- * const things = new databricks.Schema("things", {
- *     catalogName: sandbox.id,
- *     name: "things",
- *     comment: "this database is managed by terraform",
- *     properties: {
- *         kind: "various",
- *     },
- * });
- * ```
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * databricks.getTables data to list tables within Unity Catalog.
- * * databricks.getSchemas data to list schemas within Unity Catalog.
- * * databricks.getCatalogs data to list catalogs within Unity Catalog.
- *
- * ## Import
- *
- * This resource can be imported by its full name:
- *
- * bash
- *
- * ```sh
- * $ pulumi import databricks:index/schema:Schema this <catalog_name>.<name>
- * ```
- */
 export class Schema extends pulumi.CustomResource {
     /**
      * Get an existing Schema resource's state with the given name, ID, and optional extra
@@ -80,38 +32,14 @@ export class Schema extends pulumi.CustomResource {
         return obj['__pulumiType'] === Schema.__pulumiType;
     }
 
-    /**
-     * Name of parent catalog. Change forces creation of a new resource.
-     */
     public readonly catalogName!: pulumi.Output<string>;
-    /**
-     * User-supplied free-form text.
-     */
     public readonly comment!: pulumi.Output<string | undefined>;
-    /**
-     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
-     */
     public readonly enablePredictiveOptimization!: pulumi.Output<string>;
-    /**
-     * Delete schema regardless of its contents.
-     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     public readonly metastoreId!: pulumi.Output<string>;
-    /**
-     * Name of Schema relative to parent catalog. Change forces creation of a new resource.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Username/groupname/sp applicationId of the schema owner.
-     */
     public readonly owner!: pulumi.Output<string>;
-    /**
-     * Extensible Schema properties.
-     */
     public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
-     */
     public readonly storageRoot!: pulumi.Output<string | undefined>;
 
     /**
@@ -160,38 +88,14 @@ export class Schema extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Schema resources.
  */
 export interface SchemaState {
-    /**
-     * Name of parent catalog. Change forces creation of a new resource.
-     */
     catalogName?: pulumi.Input<string>;
-    /**
-     * User-supplied free-form text.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
-     */
     enablePredictiveOptimization?: pulumi.Input<string>;
-    /**
-     * Delete schema regardless of its contents.
-     */
     forceDestroy?: pulumi.Input<boolean>;
     metastoreId?: pulumi.Input<string>;
-    /**
-     * Name of Schema relative to parent catalog. Change forces creation of a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the schema owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Extensible Schema properties.
-     */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
-     */
     storageRoot?: pulumi.Input<string>;
 }
 
@@ -199,37 +103,13 @@ export interface SchemaState {
  * The set of arguments for constructing a Schema resource.
  */
 export interface SchemaArgs {
-    /**
-     * Name of parent catalog. Change forces creation of a new resource.
-     */
     catalogName: pulumi.Input<string>;
-    /**
-     * User-supplied free-form text.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
-     */
     enablePredictiveOptimization?: pulumi.Input<string>;
-    /**
-     * Delete schema regardless of its contents.
-     */
     forceDestroy?: pulumi.Input<boolean>;
     metastoreId?: pulumi.Input<string>;
-    /**
-     * Name of Schema relative to parent catalog. Change forces creation of a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the schema owner.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Extensible Schema properties.
-     */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
-     */
     storageRoot?: pulumi.Input<string>;
 }

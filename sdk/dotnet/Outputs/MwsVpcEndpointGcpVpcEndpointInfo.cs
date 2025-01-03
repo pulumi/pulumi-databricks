@@ -13,25 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MwsVpcEndpointGcpVpcEndpointInfo
     {
-        /// <summary>
-        /// Region of the PSC endpoint.
-        /// </summary>
         public readonly string EndpointRegion;
-        /// <summary>
-        /// The Google Cloud project ID of the VPC network where the PSC connection resides.
-        /// </summary>
         public readonly string ProjectId;
-        /// <summary>
-        /// The unique ID of this PSC connection.
-        /// </summary>
         public readonly string? PscConnectionId;
-        /// <summary>
-        /// The name of the PSC endpoint in the Google Cloud project.
-        /// </summary>
         public readonly string PscEndpointName;
-        /// <summary>
-        /// The service attachment this PSC connection connects to.
-        /// </summary>
         public readonly string? ServiceAttachmentId;
 
         [OutputConstructor]

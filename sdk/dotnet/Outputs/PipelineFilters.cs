@@ -13,13 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineFilters
     {
-        /// <summary>
-        /// Paths to exclude.
-        /// </summary>
         public readonly ImmutableArray<string> Excludes;
-        /// <summary>
-        /// Paths to include.
-        /// </summary>
         public readonly ImmutableArray<string> Includes;
 
         [OutputConstructor]

@@ -11,108 +11,12 @@ namespace Pulumi.Databricks
 {
     public static class GetShares
     {
-        /// <summary>
-        /// Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// Getting all existing shares in the metastore
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetShares.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["shareName"] = @this.Apply(@this =&gt; @this.Apply(getSharesResult =&gt; getSharesResult.Shares)),
-        ///     };
-        /// });
-        /// ```
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.Share to create Delta Sharing shares.
-        /// * databricks.Recipient to create Delta Sharing recipients.
-        /// * databricks.Grants to manage Delta Sharing permissions.
-        /// </summary>
         public static Task<GetSharesResult> InvokeAsync(GetSharesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSharesResult>("databricks:index/getShares:getShares", args ?? new GetSharesArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// Getting all existing shares in the metastore
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetShares.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["shareName"] = @this.Apply(@this =&gt; @this.Apply(getSharesResult =&gt; getSharesResult.Shares)),
-        ///     };
-        /// });
-        /// ```
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.Share to create Delta Sharing shares.
-        /// * databricks.Recipient to create Delta Sharing recipients.
-        /// * databricks.Grants to manage Delta Sharing permissions.
-        /// </summary>
         public static Output<GetSharesResult> Invoke(GetSharesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSharesResult>("databricks:index/getShares:getShares", args ?? new GetSharesInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// Getting all existing shares in the metastore
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = Databricks.GetShares.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["shareName"] = @this.Apply(@this =&gt; @this.Apply(getSharesResult =&gt; getSharesResult.Shares)),
-        ///     };
-        /// });
-        /// ```
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.Share to create Delta Sharing shares.
-        /// * databricks.Recipient to create Delta Sharing recipients.
-        /// * databricks.Grants to manage Delta Sharing permissions.
-        /// </summary>
         public static Output<GetSharesResult> Invoke(GetSharesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSharesResult>("databricks:index/getShares:getShares", args ?? new GetSharesInvokeArgs(), options.WithDefaults());
     }
@@ -122,10 +26,6 @@ namespace Pulumi.Databricks
     {
         [Input("shares")]
         private List<string>? _shares;
-
-        /// <summary>
-        /// list of databricks.Share names.
-        /// </summary>
         public List<string> Shares
         {
             get => _shares ?? (_shares = new List<string>());
@@ -142,10 +42,6 @@ namespace Pulumi.Databricks
     {
         [Input("shares")]
         private InputList<string>? _shares;
-
-        /// <summary>
-        /// list of databricks.Share names.
-        /// </summary>
         public InputList<string> Shares
         {
             get => _shares ?? (_shares = new InputList<string>());
@@ -166,9 +62,6 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// list of databricks.Share names.
-        /// </summary>
         public readonly ImmutableArray<string> Shares;
 
         [OutputConstructor]

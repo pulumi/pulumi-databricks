@@ -9,138 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
-    /// <summary>
-    /// The `databricks.Job` resource allows you to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// &gt; In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `task_key` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `task_key` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
-    /// 
-    /// It is possible to create [a Databricks job](https://docs.databricks.com/data-engineering/jobs/jobs-user-guide.html) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `task_key`, and additional arguments described below.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @this = new Databricks.Job("this", new()
-    ///     {
-    ///         Name = "Job with multiple tasks",
-    ///         Description = "This job executes multiple tasks on a shared job cluster, which will be provisioned as part of execution, and terminated once all tasks are finished.",
-    ///         JobClusters = new[]
-    ///         {
-    ///             new Databricks.Inputs.JobJobClusterArgs
-    ///             {
-    ///                 JobClusterKey = "j",
-    ///                 NewCluster = new Databricks.Inputs.JobJobClusterNewClusterArgs
-    ///                 {
-    ///                     NumWorkers = 2,
-    ///                     SparkVersion = latest.Id,
-    ///                     NodeTypeId = smallest.Id,
-    ///                 },
-    ///             },
-    ///         },
-    ///         Tasks = new[]
-    ///         {
-    ///             new Databricks.Inputs.JobTaskArgs
-    ///             {
-    ///                 TaskKey = "a",
-    ///                 NewCluster = new Databricks.Inputs.JobTaskNewClusterArgs
-    ///                 {
-    ///                     NumWorkers = 1,
-    ///                     SparkVersion = latest.Id,
-    ///                     NodeTypeId = smallest.Id,
-    ///                 },
-    ///                 NotebookTask = new Databricks.Inputs.JobTaskNotebookTaskArgs
-    ///                 {
-    ///                     NotebookPath = thisDatabricksNotebook.Path,
-    ///                 },
-    ///             },
-    ///             new Databricks.Inputs.JobTaskArgs
-    ///             {
-    ///                 TaskKey = "b",
-    ///                 DependsOns = new[]
-    ///                 {
-    ///                     new Databricks.Inputs.JobTaskDependsOnArgs
-    ///                     {
-    ///                         TaskKey = "a",
-    ///                     },
-    ///                 },
-    ///                 ExistingClusterId = shared.Id,
-    ///                 SparkJarTask = new Databricks.Inputs.JobTaskSparkJarTaskArgs
-    ///                 {
-    ///                     MainClassName = "com.acme.data.Main",
-    ///                 },
-    ///             },
-    ///             new Databricks.Inputs.JobTaskArgs
-    ///             {
-    ///                 TaskKey = "c",
-    ///                 JobClusterKey = "j",
-    ///                 NotebookTask = new Databricks.Inputs.JobTaskNotebookTaskArgs
-    ///                 {
-    ///                     NotebookPath = thisDatabricksNotebook.Path,
-    ///                 },
-    ///             },
-    ///             new Databricks.Inputs.JobTaskArgs
-    ///             {
-    ///                 TaskKey = "d",
-    ///                 PipelineTask = new Databricks.Inputs.JobTaskPipelineTaskArgs
-    ///                 {
-    ///                     PipelineId = thisDatabricksPipeline.Id,
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Access Control
-    /// 
-    /// By default, all users can create and modify jobs unless an administrator [enables jobs access control](https://docs.databricks.com/administration-guide/access-control/jobs-acl.html). With jobs access control, individual permissions determine a user’s abilities.
-    /// 
-    /// * databricks.Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
-    /// * databricks.ClusterPolicy can control which kinds of clusters users can create for jobs.
-    /// 
-    /// ## Import
-    /// 
-    /// The resource job can be imported using the id of the job
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import databricks:index/job:Job this &lt;job-id&gt;
-    /// ```
-    /// </summary>
     [DatabricksResourceType("databricks:index/job:Job")]
     public partial class Job : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
-        /// </summary>
         [Output("alwaysRunning")]
         public Output<bool?> AlwaysRunning { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
-        /// </summary>
         [Output("budgetPolicyId")]
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block to configure pause status. See continuous Configuration Block.
-        /// </summary>
         [Output("continuous")]
         public Output<Outputs.JobContinuous?> Continuous { get; private set; } = null!;
 
-        /// <summary>
-        /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
-        /// 
-        /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-        /// </summary>
         [Output("controlRunState")]
         public Output<bool?> ControlRunState { get; private set; } = null!;
 
@@ -150,18 +30,12 @@ namespace Pulumi.Databricks
         [Output("deployment")]
         public Output<Outputs.JobDeployment?> Deployment { get; private set; } = null!;
 
-        /// <summary>
-        /// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         [Output("editMode")]
         public Output<string?> EditMode { get; private set; } = null!;
 
-        /// <summary>
-        /// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-        /// </summary>
         [Output("emailNotifications")]
         public Output<Outputs.JobEmailNotifications?> EmailNotifications { get; private set; } = null!;
 
@@ -174,48 +48,27 @@ namespace Pulumi.Databricks
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifices the a Git repository for task source code. See git_source Configuration Block below.
-        /// </summary>
         [Output("gitSource")]
         public Output<Outputs.JobGitSource?> GitSource { get; private set; } = null!;
 
-        /// <summary>
-        /// An optional block that specifies the health conditions for the job documented below.
-        /// </summary>
         [Output("health")]
         public Output<Outputs.JobHealth?> Health { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-        /// </summary>
         [Output("jobClusters")]
         public Output<ImmutableArray<Outputs.JobJobCluster>> JobClusters { get; private set; } = null!;
 
-        /// <summary>
-        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-        /// </summary>
         [Output("libraries")]
         public Output<ImmutableArray<Outputs.JobLibrary>> Libraries { get; private set; } = null!;
 
-        /// <summary>
-        /// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-        /// </summary>
         [Output("maxConcurrentRuns")]
         public Output<int?> MaxConcurrentRuns { get; private set; } = null!;
 
         [Output("maxRetries")]
         public Output<int?> MaxRetries { get; private set; } = null!;
 
-        /// <summary>
-        /// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-        /// </summary>
         [Output("minRetryIntervalMillis")]
         public Output<int?> MinRetryIntervalMillis { get; private set; } = null!;
 
-        /// <summary>
-        /// An optional name for the job. The default value is Untitled.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -225,15 +78,9 @@ namespace Pulumi.Databricks
         [Output("notebookTask")]
         public Output<Outputs.JobNotebookTask?> NotebookTask { get; private set; } = null!;
 
-        /// <summary>
-        /// An optional block controlling the notification settings on the job level documented below.
-        /// </summary>
         [Output("notificationSettings")]
         public Output<Outputs.JobNotificationSettings?> NotificationSettings { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifices job parameter for the job. See parameter Configuration Block
-        /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.JobParameter>> Parameters { get; private set; } = null!;
 
@@ -243,27 +90,18 @@ namespace Pulumi.Databricks
         [Output("pythonWheelTask")]
         public Output<Outputs.JobPythonWheelTask?> PythonWheelTask { get; private set; } = null!;
 
-        /// <summary>
-        /// The queue status for the job. See queue Configuration Block below.
-        /// </summary>
         [Output("queue")]
         public Output<Outputs.JobQueue?> Queue { get; private set; } = null!;
 
         [Output("retryOnTimeout")]
         public Output<bool?> RetryOnTimeout { get; private set; } = null!;
 
-        /// <summary>
-        /// The user or the service prinicipal the job runs as. See run_as Configuration Block below.
-        /// </summary>
         [Output("runAs")]
         public Output<Outputs.JobRunAs> RunAs { get; private set; } = null!;
 
         [Output("runJobTask")]
         public Output<Outputs.JobRunJobTask?> RunJobTask { get; private set; } = null!;
 
-        /// <summary>
-        /// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
-        /// </summary>
         [Output("schedule")]
         public Output<Outputs.JobSchedule?> Schedule { get; private set; } = null!;
 
@@ -276,39 +114,21 @@ namespace Pulumi.Databricks
         [Output("sparkSubmitTask")]
         public Output<Outputs.JobSparkSubmitTask?> SparkSubmitTask { get; private set; } = null!;
 
-        /// <summary>
-        /// An optional map of the tags associated with the job. See tags Configuration Map
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of task specification that the job will execute. See task Configuration Block below.
-        /// </summary>
         [Output("tasks")]
         public Output<ImmutableArray<Outputs.JobTask>> Tasks { get; private set; } = null!;
 
-        /// <summary>
-        /// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-        /// </summary>
         [Output("timeoutSeconds")]
         public Output<int?> TimeoutSeconds { get; private set; } = null!;
 
-        /// <summary>
-        /// The conditions that triggers the job to start. See trigger Configuration Block below.
-        /// </summary>
         [Output("trigger")]
         public Output<Outputs.JobTrigger?> Trigger { get; private set; } = null!;
 
-        /// <summary>
-        /// URL of the job on the given workspace
-        /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
-        /// <summary>
-        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-        /// </summary>
         [Output("webhookNotifications")]
         public Output<Outputs.JobWebhookNotifications?> WebhookNotifications { get; private set; } = null!;
 
@@ -358,29 +178,15 @@ namespace Pulumi.Databricks
 
     public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
-        /// </summary>
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
 
-        /// <summary>
-        /// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
-        /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 
-        /// <summary>
-        /// Configuration block to configure pause status. See continuous Configuration Block.
-        /// </summary>
         [Input("continuous")]
         public Input<Inputs.JobContinuousArgs>? Continuous { get; set; }
 
-        /// <summary>
-        /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
-        /// 
-        /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-        /// </summary>
         [Input("controlRunState")]
         public Input<bool>? ControlRunState { get; set; }
 
@@ -390,18 +196,12 @@ namespace Pulumi.Databricks
         [Input("deployment")]
         public Input<Inputs.JobDeploymentArgs>? Deployment { get; set; }
 
-        /// <summary>
-        /// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("editMode")]
         public Input<string>? EditMode { get; set; }
 
-        /// <summary>
-        /// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-        /// </summary>
         [Input("emailNotifications")]
         public Input<Inputs.JobEmailNotificationsArgs>? EmailNotifications { get; set; }
 
@@ -419,24 +219,14 @@ namespace Pulumi.Databricks
         [Input("format")]
         public Input<string>? Format { get; set; }
 
-        /// <summary>
-        /// Specifices the a Git repository for task source code. See git_source Configuration Block below.
-        /// </summary>
         [Input("gitSource")]
         public Input<Inputs.JobGitSourceArgs>? GitSource { get; set; }
 
-        /// <summary>
-        /// An optional block that specifies the health conditions for the job documented below.
-        /// </summary>
         [Input("health")]
         public Input<Inputs.JobHealthArgs>? Health { get; set; }
 
         [Input("jobClusters")]
         private InputList<Inputs.JobJobClusterArgs>? _jobClusters;
-
-        /// <summary>
-        /// A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-        /// </summary>
         public InputList<Inputs.JobJobClusterArgs> JobClusters
         {
             get => _jobClusters ?? (_jobClusters = new InputList<Inputs.JobJobClusterArgs>());
@@ -445,34 +235,21 @@ namespace Pulumi.Databricks
 
         [Input("libraries")]
         private InputList<Inputs.JobLibraryArgs>? _libraries;
-
-        /// <summary>
-        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-        /// </summary>
         public InputList<Inputs.JobLibraryArgs> Libraries
         {
             get => _libraries ?? (_libraries = new InputList<Inputs.JobLibraryArgs>());
             set => _libraries = value;
         }
 
-        /// <summary>
-        /// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-        /// </summary>
         [Input("maxConcurrentRuns")]
         public Input<int>? MaxConcurrentRuns { get; set; }
 
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
 
-        /// <summary>
-        /// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-        /// </summary>
         [Input("minRetryIntervalMillis")]
         public Input<int>? MinRetryIntervalMillis { get; set; }
 
-        /// <summary>
-        /// An optional name for the job. The default value is Untitled.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -482,18 +259,11 @@ namespace Pulumi.Databricks
         [Input("notebookTask")]
         public Input<Inputs.JobNotebookTaskArgs>? NotebookTask { get; set; }
 
-        /// <summary>
-        /// An optional block controlling the notification settings on the job level documented below.
-        /// </summary>
         [Input("notificationSettings")]
         public Input<Inputs.JobNotificationSettingsArgs>? NotificationSettings { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.JobParameterArgs>? _parameters;
-
-        /// <summary>
-        /// Specifices job parameter for the job. See parameter Configuration Block
-        /// </summary>
         public InputList<Inputs.JobParameterArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.JobParameterArgs>());
@@ -506,27 +276,18 @@ namespace Pulumi.Databricks
         [Input("pythonWheelTask")]
         public Input<Inputs.JobPythonWheelTaskArgs>? PythonWheelTask { get; set; }
 
-        /// <summary>
-        /// The queue status for the job. See queue Configuration Block below.
-        /// </summary>
         [Input("queue")]
         public Input<Inputs.JobQueueArgs>? Queue { get; set; }
 
         [Input("retryOnTimeout")]
         public Input<bool>? RetryOnTimeout { get; set; }
 
-        /// <summary>
-        /// The user or the service prinicipal the job runs as. See run_as Configuration Block below.
-        /// </summary>
         [Input("runAs")]
         public Input<Inputs.JobRunAsArgs>? RunAs { get; set; }
 
         [Input("runJobTask")]
         public Input<Inputs.JobRunJobTaskArgs>? RunJobTask { get; set; }
 
-        /// <summary>
-        /// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
-        /// </summary>
         [Input("schedule")]
         public Input<Inputs.JobScheduleArgs>? Schedule { get; set; }
 
@@ -541,10 +302,6 @@ namespace Pulumi.Databricks
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// An optional map of the tags associated with the job. See tags Configuration Map
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -553,31 +310,18 @@ namespace Pulumi.Databricks
 
         [Input("tasks")]
         private InputList<Inputs.JobTaskArgs>? _tasks;
-
-        /// <summary>
-        /// A list of task specification that the job will execute. See task Configuration Block below.
-        /// </summary>
         public InputList<Inputs.JobTaskArgs> Tasks
         {
             get => _tasks ?? (_tasks = new InputList<Inputs.JobTaskArgs>());
             set => _tasks = value;
         }
 
-        /// <summary>
-        /// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-        /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
-        /// <summary>
-        /// The conditions that triggers the job to start. See trigger Configuration Block below.
-        /// </summary>
         [Input("trigger")]
         public Input<Inputs.JobTriggerArgs>? Trigger { get; set; }
 
-        /// <summary>
-        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-        /// </summary>
         [Input("webhookNotifications")]
         public Input<Inputs.JobWebhookNotificationsArgs>? WebhookNotifications { get; set; }
 
@@ -589,29 +333,15 @@ namespace Pulumi.Databricks
 
     public sealed class JobState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
-        /// </summary>
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
 
-        /// <summary>
-        /// The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
-        /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 
-        /// <summary>
-        /// Configuration block to configure pause status. See continuous Configuration Block.
-        /// </summary>
         [Input("continuous")]
         public Input<Inputs.JobContinuousGetArgs>? Continuous { get; set; }
 
-        /// <summary>
-        /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
-        /// 
-        /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-        /// </summary>
         [Input("controlRunState")]
         public Input<bool>? ControlRunState { get; set; }
 
@@ -621,18 +351,12 @@ namespace Pulumi.Databricks
         [Input("deployment")]
         public Input<Inputs.JobDeploymentGetArgs>? Deployment { get; set; }
 
-        /// <summary>
-        /// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("editMode")]
         public Input<string>? EditMode { get; set; }
 
-        /// <summary>
-        /// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-        /// </summary>
         [Input("emailNotifications")]
         public Input<Inputs.JobEmailNotificationsGetArgs>? EmailNotifications { get; set; }
 
@@ -650,24 +374,14 @@ namespace Pulumi.Databricks
         [Input("format")]
         public Input<string>? Format { get; set; }
 
-        /// <summary>
-        /// Specifices the a Git repository for task source code. See git_source Configuration Block below.
-        /// </summary>
         [Input("gitSource")]
         public Input<Inputs.JobGitSourceGetArgs>? GitSource { get; set; }
 
-        /// <summary>
-        /// An optional block that specifies the health conditions for the job documented below.
-        /// </summary>
         [Input("health")]
         public Input<Inputs.JobHealthGetArgs>? Health { get; set; }
 
         [Input("jobClusters")]
         private InputList<Inputs.JobJobClusterGetArgs>? _jobClusters;
-
-        /// <summary>
-        /// A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-        /// </summary>
         public InputList<Inputs.JobJobClusterGetArgs> JobClusters
         {
             get => _jobClusters ?? (_jobClusters = new InputList<Inputs.JobJobClusterGetArgs>());
@@ -676,34 +390,21 @@ namespace Pulumi.Databricks
 
         [Input("libraries")]
         private InputList<Inputs.JobLibraryGetArgs>? _libraries;
-
-        /// <summary>
-        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-        /// </summary>
         public InputList<Inputs.JobLibraryGetArgs> Libraries
         {
             get => _libraries ?? (_libraries = new InputList<Inputs.JobLibraryGetArgs>());
             set => _libraries = value;
         }
 
-        /// <summary>
-        /// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-        /// </summary>
         [Input("maxConcurrentRuns")]
         public Input<int>? MaxConcurrentRuns { get; set; }
 
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
 
-        /// <summary>
-        /// (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-        /// </summary>
         [Input("minRetryIntervalMillis")]
         public Input<int>? MinRetryIntervalMillis { get; set; }
 
-        /// <summary>
-        /// An optional name for the job. The default value is Untitled.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -713,18 +414,11 @@ namespace Pulumi.Databricks
         [Input("notebookTask")]
         public Input<Inputs.JobNotebookTaskGetArgs>? NotebookTask { get; set; }
 
-        /// <summary>
-        /// An optional block controlling the notification settings on the job level documented below.
-        /// </summary>
         [Input("notificationSettings")]
         public Input<Inputs.JobNotificationSettingsGetArgs>? NotificationSettings { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.JobParameterGetArgs>? _parameters;
-
-        /// <summary>
-        /// Specifices job parameter for the job. See parameter Configuration Block
-        /// </summary>
         public InputList<Inputs.JobParameterGetArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.JobParameterGetArgs>());
@@ -737,27 +431,18 @@ namespace Pulumi.Databricks
         [Input("pythonWheelTask")]
         public Input<Inputs.JobPythonWheelTaskGetArgs>? PythonWheelTask { get; set; }
 
-        /// <summary>
-        /// The queue status for the job. See queue Configuration Block below.
-        /// </summary>
         [Input("queue")]
         public Input<Inputs.JobQueueGetArgs>? Queue { get; set; }
 
         [Input("retryOnTimeout")]
         public Input<bool>? RetryOnTimeout { get; set; }
 
-        /// <summary>
-        /// The user or the service prinicipal the job runs as. See run_as Configuration Block below.
-        /// </summary>
         [Input("runAs")]
         public Input<Inputs.JobRunAsGetArgs>? RunAs { get; set; }
 
         [Input("runJobTask")]
         public Input<Inputs.JobRunJobTaskGetArgs>? RunJobTask { get; set; }
 
-        /// <summary>
-        /// An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
-        /// </summary>
         [Input("schedule")]
         public Input<Inputs.JobScheduleGetArgs>? Schedule { get; set; }
 
@@ -772,10 +457,6 @@ namespace Pulumi.Databricks
 
         [Input("tags")]
         private InputMap<string>? _tags;
-
-        /// <summary>
-        /// An optional map of the tags associated with the job. See tags Configuration Map
-        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -784,37 +465,21 @@ namespace Pulumi.Databricks
 
         [Input("tasks")]
         private InputList<Inputs.JobTaskGetArgs>? _tasks;
-
-        /// <summary>
-        /// A list of task specification that the job will execute. See task Configuration Block below.
-        /// </summary>
         public InputList<Inputs.JobTaskGetArgs> Tasks
         {
             get => _tasks ?? (_tasks = new InputList<Inputs.JobTaskGetArgs>());
             set => _tasks = value;
         }
 
-        /// <summary>
-        /// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-        /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
-        /// <summary>
-        /// The conditions that triggers the job to start. See trigger Configuration Block below.
-        /// </summary>
         [Input("trigger")]
         public Input<Inputs.JobTriggerGetArgs>? Trigger { get; set; }
 
-        /// <summary>
-        /// URL of the job on the given workspace
-        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
-        /// <summary>
-        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-        /// </summary>
         [Input("webhookNotifications")]
         public Input<Inputs.JobWebhookNotificationsGetArgs>? WebhookNotifications { get; set; }
 
