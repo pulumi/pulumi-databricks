@@ -189,6 +189,13 @@ func Provider() tfbridge.ProviderInfo {
 					"https://github.com/pulumi/pulumi-databricks",
 				),
 			},
+			"databricks_app": {
+				ComputeID: tfbridge.DelegateIDField(
+					"name",
+					"databricks",
+					"https://github.com/pulumi/pulumi-databricks",
+				),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"databricks_aws_crossaccount_policy": {
@@ -223,7 +230,6 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 		},
-		UpstreamRepoPath: "./upstream",
 	}
 
 	prov.MustComputeTokens(tokens.SingleModule("databricks_",
