@@ -34,3 +34,6 @@ sdk/python/venv
 
 # Ignore local build tracking directory
 .make
+
+go.work
+go.work.sum

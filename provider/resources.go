@@ -223,6 +223,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 		},
+		UpstreamRepoPath: "./upstream",
 	}
 
 	prov.MustComputeTokens(tokens.SingleModule("databricks_",

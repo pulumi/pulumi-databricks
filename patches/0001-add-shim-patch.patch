@@ -1,0 +1,24 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Venelin <venelin@pulumi.com>
+Date: Fri, 3 Jan 2025 14:54:19 +0200
+Subject: [PATCH] add shim patch
+
+
+diff --git a/shim/shim.go b/shim/shim.go
+new file mode 100644
+index 00000000..1c7b23da
+--- /dev/null
++++ b/shim/shim.go
+@@ -0,0 +1,12 @@
++package shim
++
++import (
++	"github.com/databricks/terraform-provider-databricks/internal/providers/pluginfw"
++	"github.com/databricks/terraform-provider-databricks/internal/providers/sdkv2"
++	"github.com/hashicorp/terraform-plugin-framework/provider"
++	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
++)
++
++func PF() provider.Provider { return pluginfw.GetDatabricksProviderPluginFramework() }
++
++func SDKv2() *schema.Provider { return sdkv2.DatabricksProvider() }
