@@ -16,77 +16,37 @@ public final class GetMetastoreArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetMetastoreArgs Empty = new GetMetastoreArgs();
 
-    /**
-     * ID of the metastore
-     * 
-     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
-    /**
-     * @return ID of the metastore
-     * 
-     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * ID of the metastore
-     * 
-     */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
-    /**
-     * @return ID of the metastore
-     * 
-     */
     public Optional<Output<String>> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
 
-    /**
-     * MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-     * 
-     */
     @Import(name="metastoreInfo")
     private @Nullable Output<GetMetastoreMetastoreInfoArgs> metastoreInfo;
 
-    /**
-     * @return MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-     * 
-     */
     public Optional<Output<GetMetastoreMetastoreInfoArgs>> metastoreInfo() {
         return Optional.ofNullable(this.metastoreInfo);
     }
 
-    /**
-     * Name of the metastore
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the metastore
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Region of the metastore
-     * 
-     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
-    /**
-     * @return Region of the metastore
-     * 
-     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -119,107 +79,47 @@ public final class GetMetastoreArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetMetastoreArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param id ID of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param id ID of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
-        /**
-         * @param metastoreId ID of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
-        /**
-         * @param metastoreId ID of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreId(String metastoreId) {
             return metastoreId(Output.of(metastoreId));
         }
 
-        /**
-         * @param metastoreInfo MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreInfo(@Nullable Output<GetMetastoreMetastoreInfoArgs> metastoreInfo) {
             $.metastoreInfo = metastoreInfo;
             return this;
         }
 
-        /**
-         * @param metastoreInfo MetastoreInfo object for a databricks_metastore. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreInfo(GetMetastoreMetastoreInfoArgs metastoreInfo) {
             return metastoreInfo(Output.of(metastoreInfo));
         }
 
-        /**
-         * @param name Name of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param region Region of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param region Region of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

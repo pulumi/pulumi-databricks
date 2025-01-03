@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsNetworkConnectivityConfigEgressConfig {
-    /**
-     * @return block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
-     * 
-     */
     private @Nullable MwsNetworkConnectivityConfigEgressConfigDefaultRules defaultRules;
-    /**
-     * @return block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
-     * 
-     */
     private @Nullable MwsNetworkConnectivityConfigEgressConfigTargetRules targetRules;
 
     private MwsNetworkConnectivityConfigEgressConfig() {}
-    /**
-     * @return block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
-     * 
-     */
     public Optional<MwsNetworkConnectivityConfigEgressConfigDefaultRules> defaultRules() {
         return Optional.ofNullable(this.defaultRules);
     }
-    /**
-     * @return block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
-     * 
-     */
     public Optional<MwsNetworkConnectivityConfigEgressConfigTargetRules> targetRules() {
         return Optional.ofNullable(this.targetRules);
     }

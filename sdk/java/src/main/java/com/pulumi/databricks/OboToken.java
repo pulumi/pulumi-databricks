@@ -16,201 +16,29 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * This resource creates [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a databricks.ServicePrincipal in Databricks workspaces on AWS. It is very useful, when you want to provision resources within a workspace through narrowly-scoped service principal, that has no access to other workspaces within the same Databricks Account.
- * 
- * ## Example Usage
- * 
- * Creating a token for a narrowly-scoped service principal, that would be the only one (besides admins) allowed to use PAT token in this given workspace, keeping your automated deployment highly secure.
- * 
- * &gt; A given declaration of `databricks_permissions.token_usage` would OVERWRITE permissions to use PAT tokens from any existing groups with token usage permissions such as the `users` group. To avoid this, be sure to include any desired groups in additional `access_control` blocks in the Pulumi configuration file.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.ServicePrincipal;
- * import com.pulumi.databricks.ServicePrincipalArgs;
- * import com.pulumi.databricks.Permissions;
- * import com.pulumi.databricks.PermissionsArgs;
- * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
- * import com.pulumi.databricks.OboToken;
- * import com.pulumi.databricks.OboTokenArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var this_ = new ServicePrincipal("this", ServicePrincipalArgs.builder()
- *             .displayName("Automation-only SP")
- *             .build());
- * 
- *         var tokenUsage = new Permissions("tokenUsage", PermissionsArgs.builder()
- *             .authorization("tokens")
- *             .accessControls(PermissionsAccessControlArgs.builder()
- *                 .servicePrincipalName(this_.applicationId())
- *                 .permissionLevel("CAN_USE")
- *                 .build())
- *             .build());
- * 
- *         var thisOboToken = new OboToken("thisOboToken", OboTokenArgs.builder()
- *             .applicationId(this_.applicationId())
- *             .comment(this_.displayName().applyValue(displayName -> String.format("PAT on behalf of %s", displayName)))
- *             .lifetimeSeconds(3600)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(tokenUsage)
- *                 .build());
- * 
- *         ctx.export("obo", thisOboToken.tokenValue());
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * Creating a token for a service principal with admin privileges
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.ServicePrincipal;
- * import com.pulumi.databricks.ServicePrincipalArgs;
- * import com.pulumi.databricks.DatabricksFunctions;
- * import com.pulumi.databricks.inputs.GetGroupArgs;
- * import com.pulumi.databricks.GroupMember;
- * import com.pulumi.databricks.GroupMemberArgs;
- * import com.pulumi.databricks.OboToken;
- * import com.pulumi.databricks.OboTokenArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var this_ = new ServicePrincipal("this", ServicePrincipalArgs.builder()
- *             .displayName("Pulumi")
- *             .build());
- * 
- *         final var admins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
- *             .displayName("admins")
- *             .build());
- * 
- *         var thisGroupMember = new GroupMember("thisGroupMember", GroupMemberArgs.builder()
- *             .groupId(admins.applyValue(getGroupResult -> getGroupResult.id()))
- *             .memberId(this_.id())
- *             .build());
- * 
- *         var thisOboToken = new OboToken("thisOboToken", OboTokenArgs.builder()
- *             .applicationId(this_.applicationId())
- *             .comment(this_.displayName().applyValue(displayName -> String.format("PAT on behalf of %s", displayName)))
- *             .lifetimeSeconds(3600)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(thisGroupMember)
- *                 .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Related Resources
- * 
- * The following resources are often used in the same context:
- * 
- * * End to end workspace management guide.
- * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
- * * databricks.GroupMember to attach users and groups as group members.
- * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
- * * databricks.ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to databricks.Group within workspace.
- * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
- * 
- * ## Import
- * 
- * !&gt; Importing this resource is not currently supported.
- * 
- */
 @ResourceType(type="databricks:index/oboToken:OboToken")
 public class OboToken extends com.pulumi.resources.CustomResource {
-    /**
-     * Application ID of databricks.ServicePrincipal to create a PAT token for.
-     * 
-     */
     @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
-    /**
-     * @return Application ID of databricks.ServicePrincipal to create a PAT token for.
-     * 
-     */
     public Output<String> applicationId() {
         return this.applicationId;
     }
-    /**
-     * Comment that describes the purpose of the token.
-     * 
-     */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
-    /**
-     * @return Comment that describes the purpose of the token.
-     * 
-     */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
-    /**
-     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
-     * 
-     */
     @Export(name="lifetimeSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> lifetimeSeconds;
 
-    /**
-     * @return The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
-     * 
-     */
     public Output<Optional<Integer>> lifetimeSeconds() {
         return Codegen.optional(this.lifetimeSeconds);
     }
-    /**
-     * **Sensitive** value of the newly-created token.
-     * 
-     */
     @Export(name="tokenValue", refs={String.class}, tree="[0]")
     private Output<String> tokenValue;
 
-    /**
-     * @return **Sensitive** value of the newly-created token.
-     * 
-     */
     public Output<String> tokenValue() {
         return this.tokenValue;
     }

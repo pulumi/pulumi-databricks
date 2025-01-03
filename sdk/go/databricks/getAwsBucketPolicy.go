@@ -11,50 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
-//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/s3"
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisBucketV2, err := s3.NewBucketV2(ctx, "this", &s3.BucketV2Args{
-//				Bucket:       pulumi.String("<unique_bucket_name>"),
-//				ForceDestroy: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			this := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
-//				Bucket: thisBucketV2.Bucket,
-//			}, nil)
-//			_, err = s3.NewBucketPolicy(ctx, "this", &s3.BucketPolicyArgs{
-//				Bucket: thisBucketV2.ID(),
-//				Policy: pulumi.String(this.ApplyT(func(this databricks.GetAwsBucketPolicyResult) (*string, error) {
-//					return &this.Json, nil
-//				}).(pulumi.StringPtrOutput)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Bucket policy with full access:
 func GetAwsBucketPolicy(ctx *pulumi.Context, args *GetAwsBucketPolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsBucketPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAwsBucketPolicyResult
@@ -67,24 +23,24 @@ func GetAwsBucketPolicy(ctx *pulumi.Context, args *GetAwsBucketPolicyArgs, opts 
 
 // A collection of arguments for invoking getAwsBucketPolicy.
 type GetAwsBucketPolicyArgs struct {
-	// AWS S3 Bucket name for which to generate the policy document.
-	Bucket              string  `pulumi:"bucket"`
-	DatabricksAccountId *string `pulumi:"databricksAccountId"`
-	// Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+	AwsPartition *string `pulumi:"awsPartition"`
+	Bucket       string  `pulumi:"bucket"`
+	// Deprecated: databricks_account_id will be will be removed in the next major release.
+	DatabricksAccountId   *string `pulumi:"databricksAccountId"`
 	DatabricksE2AccountId *string `pulumi:"databricksE2AccountId"`
-	// Data access role that can have full access for this bucket
-	FullAccessRole *string `pulumi:"fullAccessRole"`
+	FullAccessRole        *string `pulumi:"fullAccessRole"`
 }
 
 // A collection of values returned by getAwsBucketPolicy.
 type GetAwsBucketPolicyResult struct {
-	Bucket                string  `pulumi:"bucket"`
+	AwsPartition *string `pulumi:"awsPartition"`
+	Bucket       string  `pulumi:"bucket"`
+	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId   *string `pulumi:"databricksAccountId"`
 	DatabricksE2AccountId *string `pulumi:"databricksE2AccountId"`
 	FullAccessRole        *string `pulumi:"fullAccessRole"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// (Read-only) AWS IAM Policy JSON document to grant Databricks full access to bucket.
+	Id   string `pulumi:"id"`
 	Json string `pulumi:"json"`
 }
 
@@ -99,13 +55,12 @@ func GetAwsBucketPolicyOutput(ctx *pulumi.Context, args GetAwsBucketPolicyOutput
 
 // A collection of arguments for invoking getAwsBucketPolicy.
 type GetAwsBucketPolicyOutputArgs struct {
-	// AWS S3 Bucket name for which to generate the policy document.
-	Bucket              pulumi.StringInput    `pulumi:"bucket"`
-	DatabricksAccountId pulumi.StringPtrInput `pulumi:"databricksAccountId"`
-	// Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
+	Bucket       pulumi.StringInput    `pulumi:"bucket"`
+	// Deprecated: databricks_account_id will be will be removed in the next major release.
+	DatabricksAccountId   pulumi.StringPtrInput `pulumi:"databricksAccountId"`
 	DatabricksE2AccountId pulumi.StringPtrInput `pulumi:"databricksE2AccountId"`
-	// Data access role that can have full access for this bucket
-	FullAccessRole pulumi.StringPtrInput `pulumi:"fullAccessRole"`
+	FullAccessRole        pulumi.StringPtrInput `pulumi:"fullAccessRole"`
 }
 
 func (GetAwsBucketPolicyOutputArgs) ElementType() reflect.Type {
@@ -127,10 +82,15 @@ func (o GetAwsBucketPolicyResultOutput) ToGetAwsBucketPolicyResultOutputWithCont
 	return o
 }
 
+func (o GetAwsBucketPolicyResultOutput) AwsPartition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsBucketPolicyResult) *string { return v.AwsPartition }).(pulumi.StringPtrOutput)
+}
+
 func (o GetAwsBucketPolicyResultOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsBucketPolicyResult) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
+// Deprecated: databricks_account_id will be will be removed in the next major release.
 func (o GetAwsBucketPolicyResultOutput) DatabricksAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAwsBucketPolicyResult) *string { return v.DatabricksAccountId }).(pulumi.StringPtrOutput)
 }
@@ -148,7 +108,6 @@ func (o GetAwsBucketPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsBucketPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (Read-only) AWS IAM Policy JSON document to grant Databricks full access to bucket.
 func (o GetAwsBucketPolicyResultOutput) Json() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsBucketPolicyResult) string { return v.Json }).(pulumi.StringOutput)
 }

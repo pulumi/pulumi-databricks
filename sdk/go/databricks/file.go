@@ -12,146 +12,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows uploading and downloading files in databricks_volume.
-//
-// Notes:
-//
-// * Currently the limit is 5GiB in octet-stream.
-// * Currently, only UC volumes are supported. The list of destinations may change.
-//
-// ## Example Usage
-//
-// In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `source` attribute containing the full path to the file on the local filesystem.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
-//				MetastoreId: pulumi.Any(thisDatabricksMetastore.Id),
-//				Name:        pulumi.String("sandbox"),
-//				Comment:     pulumi.String("this catalog is managed by terraform"),
-//				Properties: pulumi.StringMap{
-//					"purpose": pulumi.String("testing"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
-//				CatalogName: sandbox.Name,
-//				Name:        pulumi.String("things"),
-//				Comment:     pulumi.String("this schema is managed by terraform"),
-//				Properties: pulumi.StringMap{
-//					"kind": pulumi.String("various"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			this, err := databricks.NewVolume(ctx, "this", &databricks.VolumeArgs{
-//				Name:        pulumi.String("quickstart_volume"),
-//				CatalogName: sandbox.Name,
-//				SchemaName:  things.Name,
-//				VolumeType:  pulumi.String("MANAGED"),
-//				Comment:     pulumi.String("this volume is managed by terraform"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewFile(ctx, "this", &databricks.FileArgs{
-//				Source: pulumi.String("/full/path/on/local/system"),
-//				Path: this.VolumePath.ApplyT(func(volumePath string) (string, error) {
-//					return fmt.Sprintf("%v/fileName", volumePath), nil
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// You can also inline sources through `contentBase64`  attribute.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "#!/bin/bash\necho \"Hello World\"\n",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewFile(ctx, "init_script", &databricks.FileArgs{
-//				ContentBase64: pulumi.String(invokeBase64encode.Result),
-//				Path:          pulumi.Sprintf("%v/fileName", this.VolumePath),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * WorkspaceFile
-// * End to end workspace management guide.
-// * Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
-//
-// ## Import
-//
-// The resource `databricks_file` can be imported using the path of the file:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/file:File this <path>
-// ```
 type File struct {
 	pulumi.CustomResourceState
 
-	// Contents in base 64 format. Conflicts with `source`.
-	ContentBase64 pulumi.StringPtrOutput `pulumi:"contentBase64"`
-	// The file size of the file that is being tracked by this resource in bytes.
-	FileSize pulumi.IntOutput       `pulumi:"fileSize"`
-	Md5      pulumi.StringPtrOutput `pulumi:"md5"`
-	// The last time stamp when the file was modified
-	ModificationTime pulumi.StringOutput `pulumi:"modificationTime"`
-	// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-	Path               pulumi.StringOutput  `pulumi:"path"`
-	RemoteFileModified pulumi.BoolPtrOutput `pulumi:"remoteFileModified"`
-	// The full absolute path to the file. Conflicts with `contentBase64`.
-	Source pulumi.StringPtrOutput `pulumi:"source"`
+	ContentBase64      pulumi.StringPtrOutput `pulumi:"contentBase64"`
+	FileSize           pulumi.IntOutput       `pulumi:"fileSize"`
+	Md5                pulumi.StringPtrOutput `pulumi:"md5"`
+	ModificationTime   pulumi.StringOutput    `pulumi:"modificationTime"`
+	Path               pulumi.StringOutput    `pulumi:"path"`
+	RemoteFileModified pulumi.BoolPtrOutput   `pulumi:"remoteFileModified"`
+	Source             pulumi.StringPtrOutput `pulumi:"source"`
 }
 
 // NewFile registers a new resource with the given unique name, arguments, and options.
@@ -187,33 +57,23 @@ func GetFile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering File resources.
 type fileState struct {
-	// Contents in base 64 format. Conflicts with `source`.
-	ContentBase64 *string `pulumi:"contentBase64"`
-	// The file size of the file that is being tracked by this resource in bytes.
-	FileSize *int    `pulumi:"fileSize"`
-	Md5      *string `pulumi:"md5"`
-	// The last time stamp when the file was modified
-	ModificationTime *string `pulumi:"modificationTime"`
-	// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+	ContentBase64      *string `pulumi:"contentBase64"`
+	FileSize           *int    `pulumi:"fileSize"`
+	Md5                *string `pulumi:"md5"`
+	ModificationTime   *string `pulumi:"modificationTime"`
 	Path               *string `pulumi:"path"`
 	RemoteFileModified *bool   `pulumi:"remoteFileModified"`
-	// The full absolute path to the file. Conflicts with `contentBase64`.
-	Source *string `pulumi:"source"`
+	Source             *string `pulumi:"source"`
 }
 
 type FileState struct {
-	// Contents in base 64 format. Conflicts with `source`.
-	ContentBase64 pulumi.StringPtrInput
-	// The file size of the file that is being tracked by this resource in bytes.
-	FileSize pulumi.IntPtrInput
-	Md5      pulumi.StringPtrInput
-	// The last time stamp when the file was modified
-	ModificationTime pulumi.StringPtrInput
-	// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+	ContentBase64      pulumi.StringPtrInput
+	FileSize           pulumi.IntPtrInput
+	Md5                pulumi.StringPtrInput
+	ModificationTime   pulumi.StringPtrInput
 	Path               pulumi.StringPtrInput
 	RemoteFileModified pulumi.BoolPtrInput
-	// The full absolute path to the file. Conflicts with `contentBase64`.
-	Source pulumi.StringPtrInput
+	Source             pulumi.StringPtrInput
 }
 
 func (FileState) ElementType() reflect.Type {
@@ -221,26 +81,20 @@ func (FileState) ElementType() reflect.Type {
 }
 
 type fileArgs struct {
-	// Contents in base 64 format. Conflicts with `source`.
-	ContentBase64 *string `pulumi:"contentBase64"`
-	Md5           *string `pulumi:"md5"`
-	// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-	Path               string `pulumi:"path"`
-	RemoteFileModified *bool  `pulumi:"remoteFileModified"`
-	// The full absolute path to the file. Conflicts with `contentBase64`.
-	Source *string `pulumi:"source"`
+	ContentBase64      *string `pulumi:"contentBase64"`
+	Md5                *string `pulumi:"md5"`
+	Path               string  `pulumi:"path"`
+	RemoteFileModified *bool   `pulumi:"remoteFileModified"`
+	Source             *string `pulumi:"source"`
 }
 
 // The set of arguments for constructing a File resource.
 type FileArgs struct {
-	// Contents in base 64 format. Conflicts with `source`.
-	ContentBase64 pulumi.StringPtrInput
-	Md5           pulumi.StringPtrInput
-	// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+	ContentBase64      pulumi.StringPtrInput
+	Md5                pulumi.StringPtrInput
 	Path               pulumi.StringInput
 	RemoteFileModified pulumi.BoolPtrInput
-	// The full absolute path to the file. Conflicts with `contentBase64`.
-	Source pulumi.StringPtrInput
+	Source             pulumi.StringPtrInput
 }
 
 func (FileArgs) ElementType() reflect.Type {
@@ -330,12 +184,10 @@ func (o FileOutput) ToFileOutputWithContext(ctx context.Context) FileOutput {
 	return o
 }
 
-// Contents in base 64 format. Conflicts with `source`.
 func (o FileOutput) ContentBase64() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.ContentBase64 }).(pulumi.StringPtrOutput)
 }
 
-// The file size of the file that is being tracked by this resource in bytes.
 func (o FileOutput) FileSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *File) pulumi.IntOutput { return v.FileSize }).(pulumi.IntOutput)
 }
@@ -344,12 +196,10 @@ func (o FileOutput) Md5() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.Md5 }).(pulumi.StringPtrOutput)
 }
 
-// The last time stamp when the file was modified
 func (o FileOutput) ModificationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.ModificationTime }).(pulumi.StringOutput)
 }
 
-// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
 func (o FileOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
@@ -358,7 +208,6 @@ func (o FileOutput) RemoteFileModified() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.BoolPtrOutput { return v.RemoteFileModified }).(pulumi.BoolPtrOutput)
 }
 
-// The full absolute path to the file. Conflicts with `contentBase64`.
 func (o FileOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *File) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
 }

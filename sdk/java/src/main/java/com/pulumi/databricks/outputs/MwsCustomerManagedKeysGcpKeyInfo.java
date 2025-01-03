@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class MwsCustomerManagedKeysGcpKeyInfo {
-    /**
-     * @return The GCP KMS key&#39;s resource name.
-     * 
-     */
     private String kmsKeyId;
 
     private MwsCustomerManagedKeysGcpKeyInfo() {}
-    /**
-     * @return The GCP KMS key&#39;s resource name.
-     * 
-     */
     public String kmsKeyId() {
         return this.kmsKeyId;
     }

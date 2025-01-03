@@ -17,62 +17,30 @@ public final class GetClustersFilterByArgs extends com.pulumi.resources.Resource
 
     public static final GetClustersFilterByArgs Empty = new GetClustersFilterByArgs();
 
-    /**
-     * List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
-     * 
-     */
     @Import(name="clusterSources")
     private @Nullable Output<List<String>> clusterSources;
 
-    /**
-     * @return List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
-     * 
-     */
     public Optional<Output<List<String>>> clusterSources() {
         return Optional.ofNullable(this.clusterSources);
     }
 
-    /**
-     * List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
-     * 
-     */
     @Import(name="clusterStates")
     private @Nullable Output<List<String>> clusterStates;
 
-    /**
-     * @return List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
-     * 
-     */
     public Optional<Output<List<String>>> clusterStates() {
         return Optional.ofNullable(this.clusterStates);
     }
 
-    /**
-     * Whether to filter by pinned clusters.
-     * 
-     */
     @Import(name="isPinned")
     private @Nullable Output<Boolean> isPinned;
 
-    /**
-     * @return Whether to filter by pinned clusters.
-     * 
-     */
     public Optional<Output<Boolean>> isPinned() {
         return Optional.ofNullable(this.isPinned);
     }
 
-    /**
-     * Filter by databricks.ClusterPolicy id.
-     * 
-     */
     @Import(name="policyId")
     private @Nullable Output<String> policyId;
 
-    /**
-     * @return Filter by databricks.ClusterPolicy id.
-     * 
-     */
     public Optional<Output<String>> policyId() {
         return Optional.ofNullable(this.policyId);
     }
@@ -104,106 +72,46 @@ public final class GetClustersFilterByArgs extends com.pulumi.resources.Resource
             $ = new GetClustersFilterByArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param clusterSources List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterSources(@Nullable Output<List<String>> clusterSources) {
             $.clusterSources = clusterSources;
             return this;
         }
 
-        /**
-         * @param clusterSources List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterSources(List<String> clusterSources) {
             return clusterSources(Output.of(clusterSources));
         }
 
-        /**
-         * @param clusterSources List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterSources(String... clusterSources) {
             return clusterSources(List.of(clusterSources));
         }
 
-        /**
-         * @param clusterStates List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterStates(@Nullable Output<List<String>> clusterStates) {
             $.clusterStates = clusterStates;
             return this;
         }
 
-        /**
-         * @param clusterStates List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterStates(List<String> clusterStates) {
             return clusterStates(Output.of(clusterStates));
         }
 
-        /**
-         * @param clusterStates List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterStates(String... clusterStates) {
             return clusterStates(List.of(clusterStates));
         }
 
-        /**
-         * @param isPinned Whether to filter by pinned clusters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isPinned(@Nullable Output<Boolean> isPinned) {
             $.isPinned = isPinned;
             return this;
         }
 
-        /**
-         * @param isPinned Whether to filter by pinned clusters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isPinned(Boolean isPinned) {
             return isPinned(Output.of(isPinned));
         }
 
-        /**
-         * @param policyId Filter by databricks.ClusterPolicy id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyId(@Nullable Output<String> policyId) {
             $.policyId = policyId;
             return this;
         }
 
-        /**
-         * @param policyId Filter by databricks.ClusterPolicy id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyId(String policyId) {
             return policyId(Output.of(policyId));
         }

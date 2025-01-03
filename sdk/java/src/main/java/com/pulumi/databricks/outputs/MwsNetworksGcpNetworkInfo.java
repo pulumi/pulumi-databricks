@@ -10,77 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class MwsNetworksGcpNetworkInfo {
-    /**
-     * @return The Google Cloud project ID of the VPC network.
-     * 
-     */
     private String networkProjectId;
-    /**
-     * @return The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-     * 
-     */
     private String podIpRangeName;
-    /**
-     * @return The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-     * 
-     */
     private String serviceIpRangeName;
-    /**
-     * @return The ID of the subnet associated with this network.
-     * 
-     */
     private String subnetId;
-    /**
-     * @return The Google Cloud region of the workspace data plane. For example, `us-east4`.
-     * 
-     */
     private String subnetRegion;
-    /**
-     * @return The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-     * 
-     */
     private String vpcId;
 
     private MwsNetworksGcpNetworkInfo() {}
-    /**
-     * @return The Google Cloud project ID of the VPC network.
-     * 
-     */
     public String networkProjectId() {
         return this.networkProjectId;
     }
-    /**
-     * @return The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-     * 
-     */
     public String podIpRangeName() {
         return this.podIpRangeName;
     }
-    /**
-     * @return The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-     * 
-     */
     public String serviceIpRangeName() {
         return this.serviceIpRangeName;
     }
-    /**
-     * @return The ID of the subnet associated with this network.
-     * 
-     */
     public String subnetId() {
         return this.subnetId;
     }
-    /**
-     * @return The Google Cloud region of the workspace data plane. For example, `us-east4`.
-     * 
-     */
     public String subnetRegion() {
         return this.subnetRegion;
     }
-    /**
-     * @return The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-     * 
-     */
     public String vpcId() {
         return this.vpcId;
     }

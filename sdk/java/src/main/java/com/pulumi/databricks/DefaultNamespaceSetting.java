@@ -14,65 +14,6 @@ import com.pulumi.databricks.outputs.DefaultNamespaceSettingNamespace;
 import java.lang.String;
 import javax.annotation.Nullable;
 
-/**
- * &gt; This resource can only be used with a workspace-level provider!
- * 
- * The `databricks.DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
- * Setting the default catalog for the workspace determines the catalog that is used when queries do not reference
- * a fully qualified 3 level name. For example, if the default catalog is set to &#39;retail_prod&#39; then a query
- * &#39;SELECT * FROM myTable&#39; would reference the object &#39;retail_prod.default.myTable&#39;
- * (the schema &#39;default&#39; is always assumed).
- * This setting requires a restart of clusters and SQL warehouses to take effect. Additionally, the default namespace only applies when using Unity Catalog-enabled compute.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.DefaultNamespaceSetting;
- * import com.pulumi.databricks.DefaultNamespaceSettingArgs;
- * import com.pulumi.databricks.inputs.DefaultNamespaceSettingNamespaceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var this_ = new DefaultNamespaceSetting("this", DefaultNamespaceSettingArgs.builder()
- *             .namespace(DefaultNamespaceSettingNamespaceArgs.builder()
- *                 .value("namespace_value")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Import
- * 
- * This resource can be imported by predefined name `global`:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global
- * ```
- * 
- */
 @ResourceType(type="databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting")
 public class DefaultNamespaceSetting extends com.pulumi.resources.CustomResource {
     @Export(name="etag", refs={String.class}, tree="[0]")
@@ -81,17 +22,9 @@ public class DefaultNamespaceSetting extends com.pulumi.resources.CustomResource
     public Output<String> etag() {
         return this.etag;
     }
-    /**
-     * The configuration details.
-     * 
-     */
     @Export(name="namespace", refs={DefaultNamespaceSettingNamespace.class}, tree="[0]")
     private Output<DefaultNamespaceSettingNamespace> namespace;
 
-    /**
-     * @return The configuration details.
-     * 
-     */
     public Output<DefaultNamespaceSettingNamespace> namespace() {
         return this.namespace;
     }

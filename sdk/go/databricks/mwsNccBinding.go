@@ -12,67 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
-//
-// > This feature is available for AWS & Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
-//
-// Allows you to attach a Network Connectivity Config object to a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/serverless-firewall).
-//
-// The NCC and workspace must be in the same region.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			region := cfg.RequireObject("region")
-//			prefix := cfg.RequireObject("prefix")
-//			ncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, "ncc", &databricks.MwsNetworkConnectivityConfigArgs{
-//				Name:   pulumi.Sprintf("ncc-for-%v", prefix),
-//				Region: pulumi.Any(region),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewMwsNccBinding(ctx, "ncc_binding", &databricks.MwsNccBindingArgs{
-//				NetworkConnectivityConfigId: ncc.NetworkConnectivityConfigId,
-//				WorkspaceId:                 pulumi.Any(databricksWorkspaceId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the context:
-//
-// * MwsWorkspaces to set up Databricks workspaces.
-// * MwsNetworkConnectivityConfig to create Network Connectivity Config objects.
 type MwsNccBinding struct {
 	pulumi.CustomResourceState
 
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account.
 	NetworkConnectivityConfigId pulumi.StringOutput `pulumi:"networkConnectivityConfigId"`
-	// Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
-	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
+	WorkspaceId                 pulumi.StringOutput `pulumi:"workspaceId"`
 }
 
 // NewMwsNccBinding registers a new resource with the given unique name, arguments, and options.
@@ -111,17 +55,13 @@ func GetMwsNccBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsNccBinding resources.
 type mwsNccBindingState struct {
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account.
 	NetworkConnectivityConfigId *string `pulumi:"networkConnectivityConfigId"`
-	// Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
-	WorkspaceId *string `pulumi:"workspaceId"`
+	WorkspaceId                 *string `pulumi:"workspaceId"`
 }
 
 type MwsNccBindingState struct {
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account.
 	NetworkConnectivityConfigId pulumi.StringPtrInput
-	// Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
-	WorkspaceId pulumi.StringPtrInput
+	WorkspaceId                 pulumi.StringPtrInput
 }
 
 func (MwsNccBindingState) ElementType() reflect.Type {
@@ -129,18 +69,14 @@ func (MwsNccBindingState) ElementType() reflect.Type {
 }
 
 type mwsNccBindingArgs struct {
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account.
 	NetworkConnectivityConfigId string `pulumi:"networkConnectivityConfigId"`
-	// Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
-	WorkspaceId string `pulumi:"workspaceId"`
+	WorkspaceId                 string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a MwsNccBinding resource.
 type MwsNccBindingArgs struct {
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account.
 	NetworkConnectivityConfigId pulumi.StringInput
-	// Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
-	WorkspaceId pulumi.StringInput
+	WorkspaceId                 pulumi.StringInput
 }
 
 func (MwsNccBindingArgs) ElementType() reflect.Type {
@@ -230,12 +166,10 @@ func (o MwsNccBindingOutput) ToMwsNccBindingOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Canonical unique identifier of Network Connectivity Config in Databricks Account.
 func (o MwsNccBindingOutput) NetworkConnectivityConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNccBinding) pulumi.StringOutput { return v.NetworkConnectivityConfigId }).(pulumi.StringOutput)
 }
 
-// Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
 func (o MwsNccBindingOutput) WorkspaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNccBinding) pulumi.StringOutput { return v.WorkspaceId }).(pulumi.StringOutput)
 }

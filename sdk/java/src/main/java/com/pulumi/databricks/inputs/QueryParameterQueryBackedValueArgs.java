@@ -18,47 +18,23 @@ public final class QueryParameterQueryBackedValueArgs extends com.pulumi.resourc
 
     public static final QueryParameterQueryBackedValueArgs Empty = new QueryParameterQueryBackedValueArgs();
 
-    /**
-     * If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
-     * 
-     */
     @Import(name="multiValuesOptions")
     private @Nullable Output<QueryParameterQueryBackedValueMultiValuesOptionsArgs> multiValuesOptions;
 
-    /**
-     * @return If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
-     * 
-     */
     public Optional<Output<QueryParameterQueryBackedValueMultiValuesOptionsArgs>> multiValuesOptions() {
         return Optional.ofNullable(this.multiValuesOptions);
     }
 
-    /**
-     * ID of the query that provides the parameter values.
-     * 
-     */
     @Import(name="queryId", required=true)
     private Output<String> queryId;
 
-    /**
-     * @return ID of the query that provides the parameter values.
-     * 
-     */
     public Output<String> queryId() {
         return this.queryId;
     }
 
-    /**
-     * List of selected query parameter values.
-     * 
-     */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
-    /**
-     * @return List of selected query parameter values.
-     * 
-     */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -89,75 +65,33 @@ public final class QueryParameterQueryBackedValueArgs extends com.pulumi.resourc
             $ = new QueryParameterQueryBackedValueArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param multiValuesOptions If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder multiValuesOptions(@Nullable Output<QueryParameterQueryBackedValueMultiValuesOptionsArgs> multiValuesOptions) {
             $.multiValuesOptions = multiValuesOptions;
             return this;
         }
 
-        /**
-         * @param multiValuesOptions If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder multiValuesOptions(QueryParameterQueryBackedValueMultiValuesOptionsArgs multiValuesOptions) {
             return multiValuesOptions(Output.of(multiValuesOptions));
         }
 
-        /**
-         * @param queryId ID of the query that provides the parameter values.
-         * 
-         * @return builder
-         * 
-         */
         public Builder queryId(Output<String> queryId) {
             $.queryId = queryId;
             return this;
         }
 
-        /**
-         * @param queryId ID of the query that provides the parameter values.
-         * 
-         * @return builder
-         * 
-         */
         public Builder queryId(String queryId) {
             return queryId(Output.of(queryId));
         }
 
-        /**
-         * @param values List of selected query parameter values.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values List of selected query parameter values.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
-        /**
-         * @param values List of selected query parameter values.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

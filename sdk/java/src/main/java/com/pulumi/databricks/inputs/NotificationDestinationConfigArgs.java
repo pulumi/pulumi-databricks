@@ -19,77 +19,37 @@ public final class NotificationDestinationConfigArgs extends com.pulumi.resource
 
     public static final NotificationDestinationConfigArgs Empty = new NotificationDestinationConfigArgs();
 
-    /**
-     * The email configuration of the Notification Destination. It must contain the following:
-     * 
-     */
     @Import(name="email")
     private @Nullable Output<NotificationDestinationConfigEmailArgs> email;
 
-    /**
-     * @return The email configuration of the Notification Destination. It must contain the following:
-     * 
-     */
     public Optional<Output<NotificationDestinationConfigEmailArgs>> email() {
         return Optional.ofNullable(this.email);
     }
 
-    /**
-     * The Generic Webhook configuration of the Notification Destination. It must contain the following:
-     * 
-     */
     @Import(name="genericWebhook")
     private @Nullable Output<NotificationDestinationConfigGenericWebhookArgs> genericWebhook;
 
-    /**
-     * @return The Generic Webhook configuration of the Notification Destination. It must contain the following:
-     * 
-     */
     public Optional<Output<NotificationDestinationConfigGenericWebhookArgs>> genericWebhook() {
         return Optional.ofNullable(this.genericWebhook);
     }
 
-    /**
-     * The Microsoft Teams configuration of the Notification Destination. It must contain the following:
-     * 
-     */
     @Import(name="microsoftTeams")
     private @Nullable Output<NotificationDestinationConfigMicrosoftTeamsArgs> microsoftTeams;
 
-    /**
-     * @return The Microsoft Teams configuration of the Notification Destination. It must contain the following:
-     * 
-     */
     public Optional<Output<NotificationDestinationConfigMicrosoftTeamsArgs>> microsoftTeams() {
         return Optional.ofNullable(this.microsoftTeams);
     }
 
-    /**
-     * The PagerDuty configuration of the Notification Destination. It must contain the following:
-     * 
-     */
     @Import(name="pagerduty")
     private @Nullable Output<NotificationDestinationConfigPagerdutyArgs> pagerduty;
 
-    /**
-     * @return The PagerDuty configuration of the Notification Destination. It must contain the following:
-     * 
-     */
     public Optional<Output<NotificationDestinationConfigPagerdutyArgs>> pagerduty() {
         return Optional.ofNullable(this.pagerduty);
     }
 
-    /**
-     * The Slack configuration of the Notification Destination. It must contain the following:
-     * 
-     */
     @Import(name="slack")
     private @Nullable Output<NotificationDestinationConfigSlackArgs> slack;
 
-    /**
-     * @return The Slack configuration of the Notification Destination. It must contain the following:
-     * 
-     */
     public Optional<Output<NotificationDestinationConfigSlackArgs>> slack() {
         return Optional.ofNullable(this.slack);
     }
@@ -122,107 +82,47 @@ public final class NotificationDestinationConfigArgs extends com.pulumi.resource
             $ = new NotificationDestinationConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param email The email configuration of the Notification Destination. It must contain the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder email(@Nullable Output<NotificationDestinationConfigEmailArgs> email) {
             $.email = email;
             return this;
         }
 
-        /**
-         * @param email The email configuration of the Notification Destination. It must contain the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder email(NotificationDestinationConfigEmailArgs email) {
             return email(Output.of(email));
         }
 
-        /**
-         * @param genericWebhook The Generic Webhook configuration of the Notification Destination. It must contain the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder genericWebhook(@Nullable Output<NotificationDestinationConfigGenericWebhookArgs> genericWebhook) {
             $.genericWebhook = genericWebhook;
             return this;
         }
 
-        /**
-         * @param genericWebhook The Generic Webhook configuration of the Notification Destination. It must contain the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder genericWebhook(NotificationDestinationConfigGenericWebhookArgs genericWebhook) {
             return genericWebhook(Output.of(genericWebhook));
         }
 
-        /**
-         * @param microsoftTeams The Microsoft Teams configuration of the Notification Destination. It must contain the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder microsoftTeams(@Nullable Output<NotificationDestinationConfigMicrosoftTeamsArgs> microsoftTeams) {
             $.microsoftTeams = microsoftTeams;
             return this;
         }
 
-        /**
-         * @param microsoftTeams The Microsoft Teams configuration of the Notification Destination. It must contain the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder microsoftTeams(NotificationDestinationConfigMicrosoftTeamsArgs microsoftTeams) {
             return microsoftTeams(Output.of(microsoftTeams));
         }
 
-        /**
-         * @param pagerduty The PagerDuty configuration of the Notification Destination. It must contain the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder pagerduty(@Nullable Output<NotificationDestinationConfigPagerdutyArgs> pagerduty) {
             $.pagerduty = pagerduty;
             return this;
         }
 
-        /**
-         * @param pagerduty The PagerDuty configuration of the Notification Destination. It must contain the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder pagerduty(NotificationDestinationConfigPagerdutyArgs pagerduty) {
             return pagerduty(Output.of(pagerduty));
         }
 
-        /**
-         * @param slack The Slack configuration of the Notification Destination. It must contain the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder slack(@Nullable Output<NotificationDestinationConfigSlackArgs> slack) {
             $.slack = slack;
             return this;
         }
 
-        /**
-         * @param slack The Slack configuration of the Notification Destination. It must contain the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder slack(NotificationDestinationConfigSlackArgs slack) {
             return slack(Output.of(slack));
         }

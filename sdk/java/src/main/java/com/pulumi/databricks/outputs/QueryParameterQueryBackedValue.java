@@ -14,41 +14,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class QueryParameterQueryBackedValue {
-    /**
-     * @return If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
-     * 
-     */
     private @Nullable QueryParameterQueryBackedValueMultiValuesOptions multiValuesOptions;
-    /**
-     * @return ID of the query that provides the parameter values.
-     * 
-     */
     private String queryId;
-    /**
-     * @return List of selected query parameter values.
-     * 
-     */
     private @Nullable List<String> values;
 
     private QueryParameterQueryBackedValue() {}
-    /**
-     * @return If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
-     * 
-     */
     public Optional<QueryParameterQueryBackedValueMultiValuesOptions> multiValuesOptions() {
         return Optional.ofNullable(this.multiValuesOptions);
     }
-    /**
-     * @return ID of the query that provides the parameter values.
-     * 
-     */
     public String queryId() {
         return this.queryId;
     }
-    /**
-     * @return List of selected query parameter values.
-     * 
-     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

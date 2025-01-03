@@ -11,45 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This data source can only be used with a workspace-level provider!
-//
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// Retrieves a list of Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
-//
-// ## Example Usage
-//
-// Listing all catalogs:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := databricks.GetCatalogs(ctx, &databricks.GetCatalogsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("allCatalogs", all)
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * Schema to manage schemas within Unity Catalog.
-// * Catalog to manage catalogs within Unity Catalog.
 func GetCatalogs(ctx *pulumi.Context, args *GetCatalogsArgs, opts ...pulumi.InvokeOption) (*GetCatalogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCatalogsResult
@@ -62,15 +23,13 @@ func GetCatalogs(ctx *pulumi.Context, args *GetCatalogsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getCatalogs.
 type GetCatalogsArgs struct {
-	// set of Catalog names
 	Ids []string `pulumi:"ids"`
 }
 
 // A collection of values returned by getCatalogs.
 type GetCatalogsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// set of Catalog names
+	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 }
 
@@ -85,7 +44,6 @@ func GetCatalogsOutput(ctx *pulumi.Context, args GetCatalogsOutputArgs, opts ...
 
 // A collection of arguments for invoking getCatalogs.
 type GetCatalogsOutputArgs struct {
-	// set of Catalog names
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 }
 
@@ -113,7 +71,6 @@ func (o GetCatalogsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCatalogsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// set of Catalog names
 func (o GetCatalogsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCatalogsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

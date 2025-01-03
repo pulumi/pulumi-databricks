@@ -14,32 +14,16 @@ public final class ServicePrincipalRoleArgs extends com.pulumi.resources.Resourc
 
     public static final ServicePrincipalRoleArgs Empty = new ServicePrincipalRoleArgs();
 
-    /**
-     * This is the id of the role or instance profile resource.
-     * 
-     */
     @Import(name="role", required=true)
     private Output<String> role;
 
-    /**
-     * @return This is the id of the role or instance profile resource.
-     * 
-     */
     public Output<String> role() {
         return this.role;
     }
 
-    /**
-     * This is the id of the service principal resource.
-     * 
-     */
     @Import(name="servicePrincipalId", required=true)
     private Output<String> servicePrincipalId;
 
-    /**
-     * @return This is the id of the service principal resource.
-     * 
-     */
     public Output<String> servicePrincipalId() {
         return this.servicePrincipalId;
     }
@@ -69,44 +53,20 @@ public final class ServicePrincipalRoleArgs extends com.pulumi.resources.Resourc
             $ = new ServicePrincipalRoleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param role This is the id of the role or instance profile resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder role(Output<String> role) {
             $.role = role;
             return this;
         }
 
-        /**
-         * @param role This is the id of the role or instance profile resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder role(String role) {
             return role(Output.of(role));
         }
 
-        /**
-         * @param servicePrincipalId This is the id of the service principal resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder servicePrincipalId(Output<String> servicePrincipalId) {
             $.servicePrincipalId = servicePrincipalId;
             return this;
         }
 
-        /**
-         * @param servicePrincipalId This is the id of the service principal resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder servicePrincipalId(String servicePrincipalId) {
             return servicePrincipalId(Output.of(servicePrincipalId));
         }

@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class QueryParameterTextValue {
-    /**
-     * @return actual text value.
-     * 
-     */
     private String value;
 
     private QueryParameterTextValue() {}
-    /**
-     * @return actual text value.
-     * 
-     */
     public String value() {
         return this.value;
     }

@@ -14,16 +14,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTableTableInfoColumn {
-    /**
-     * @return Free-form text description
-     * 
-     */
     private @Nullable String comment;
     private @Nullable GetTableTableInfoColumnMask mask;
-    /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     * 
-     */
     private @Nullable String name;
     private @Nullable Boolean nullable;
     private @Nullable Integer partitionIndex;
@@ -36,20 +28,12 @@ public final class GetTableTableInfoColumn {
     private @Nullable String typeText;
 
     private GetTableTableInfoColumn() {}
-    /**
-     * @return Free-form text description
-     * 
-     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
     public Optional<GetTableTableInfoColumnMask> mask() {
         return Optional.ofNullable(this.mask);
     }
-    /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

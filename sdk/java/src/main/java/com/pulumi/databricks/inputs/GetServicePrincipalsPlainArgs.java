@@ -15,32 +15,16 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
 
     public static final GetServicePrincipalsPlainArgs Empty = new GetServicePrincipalsPlainArgs();
 
-    /**
-     * List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
-     * 
-     */
     @Import(name="applicationIds")
     private @Nullable List<String> applicationIds;
 
-    /**
-     * @return List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
-     * 
-     */
     public Optional<List<String>> applicationIds() {
         return Optional.ofNullable(this.applicationIds);
     }
 
-    /**
-     * Only return databricks.ServicePrincipal display name that match the given name string
-     * 
-     */
     @Import(name="displayNameContains")
     private @Nullable String displayNameContains;
 
-    /**
-     * @return Only return databricks.ServicePrincipal display name that match the given name string
-     * 
-     */
     public Optional<String> displayNameContains() {
         return Optional.ofNullable(this.displayNameContains);
     }
@@ -70,33 +54,15 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
             $ = new GetServicePrincipalsPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param applicationIds List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
-         * 
-         * @return builder
-         * 
-         */
         public Builder applicationIds(@Nullable List<String> applicationIds) {
             $.applicationIds = applicationIds;
             return this;
         }
 
-        /**
-         * @param applicationIds List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
-         * 
-         * @return builder
-         * 
-         */
         public Builder applicationIds(String... applicationIds) {
             return applicationIds(List.of(applicationIds));
         }
 
-        /**
-         * @param displayNameContains Only return databricks.ServicePrincipal display name that match the given name string
-         * 
-         * @return builder
-         * 
-         */
         public Builder displayNameContains(@Nullable String displayNameContains) {
             $.displayNameContains = displayNameContains;
             return this;

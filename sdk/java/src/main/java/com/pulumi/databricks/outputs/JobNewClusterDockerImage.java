@@ -14,20 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobNewClusterDockerImage {
     private @Nullable JobNewClusterDockerImageBasicAuth basicAuth;
-    /**
-     * @return URL of the job on the given workspace
-     * 
-     */
     private String url;
 
     private JobNewClusterDockerImage() {}
     public Optional<JobNewClusterDockerImageBasicAuth> basicAuth() {
         return Optional.ofNullable(this.basicAuth);
     }
-    /**
-     * @return URL of the job on the given workspace
-     * 
-     */
     public String url() {
         return this.url;
     }

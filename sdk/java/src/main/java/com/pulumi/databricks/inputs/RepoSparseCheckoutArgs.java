@@ -15,21 +15,9 @@ public final class RepoSparseCheckoutArgs extends com.pulumi.resources.ResourceA
 
     public static final RepoSparseCheckoutArgs Empty = new RepoSparseCheckoutArgs();
 
-    /**
-     * array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
-     * 
-     * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
-     * 
-     */
     @Import(name="patterns", required=true)
     private Output<List<String>> patterns;
 
-    /**
-     * @return array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
-     * 
-     * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
-     * 
-     */
     public Output<List<String>> patterns() {
         return this.patterns;
     }
@@ -58,39 +46,15 @@ public final class RepoSparseCheckoutArgs extends com.pulumi.resources.ResourceA
             $ = new RepoSparseCheckoutArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param patterns array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
-         * 
-         * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
-         * 
-         * @return builder
-         * 
-         */
         public Builder patterns(Output<List<String>> patterns) {
             $.patterns = patterns;
             return this;
         }
 
-        /**
-         * @param patterns array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
-         * 
-         * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
-         * 
-         * @return builder
-         * 
-         */
         public Builder patterns(List<String> patterns) {
             return patterns(Output.of(patterns));
         }
 
-        /**
-         * @param patterns array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
-         * 
-         * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
-         * 
-         * @return builder
-         * 
-         */
         public Builder patterns(String... patterns) {
             return patterns(List.of(patterns));
         }

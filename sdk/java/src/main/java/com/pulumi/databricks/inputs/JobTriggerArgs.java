@@ -19,47 +19,23 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTriggerArgs Empty = new JobTriggerArgs();
 
-    /**
-     * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
-     * 
-     */
     @Import(name="fileArrival")
     private @Nullable Output<JobTriggerFileArrivalArgs> fileArrival;
 
-    /**
-     * @return configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
-     * 
-     */
     public Optional<Output<JobTriggerFileArrivalArgs>> fileArrival() {
         return Optional.ofNullable(this.fileArrival);
     }
 
-    /**
-     * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-     * 
-     */
     @Import(name="pauseStatus")
     private @Nullable Output<String> pauseStatus;
 
-    /**
-     * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-     * 
-     */
     public Optional<Output<String>> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
 
-    /**
-     * configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
-     * 
-     */
     @Import(name="periodic")
     private @Nullable Output<JobTriggerPeriodicArgs> periodic;
 
-    /**
-     * @return configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
-     * 
-     */
     public Optional<Output<JobTriggerPeriodicArgs>> periodic() {
         return Optional.ofNullable(this.periodic);
     }
@@ -106,65 +82,29 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobTriggerArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param fileArrival configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder fileArrival(@Nullable Output<JobTriggerFileArrivalArgs> fileArrival) {
             $.fileArrival = fileArrival;
             return this;
         }
 
-        /**
-         * @param fileArrival configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder fileArrival(JobTriggerFileArrivalArgs fileArrival) {
             return fileArrival(Output.of(fileArrival));
         }
 
-        /**
-         * @param pauseStatus Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pauseStatus(@Nullable Output<String> pauseStatus) {
             $.pauseStatus = pauseStatus;
             return this;
         }
 
-        /**
-         * @param pauseStatus Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pauseStatus(String pauseStatus) {
             return pauseStatus(Output.of(pauseStatus));
         }
 
-        /**
-         * @param periodic configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder periodic(@Nullable Output<JobTriggerPeriodicArgs> periodic) {
             $.periodic = periodic;
             return this;
         }
 
-        /**
-         * @param periodic configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder periodic(JobTriggerPeriodicArgs periodic) {
             return periodic(Output.of(periodic));
         }

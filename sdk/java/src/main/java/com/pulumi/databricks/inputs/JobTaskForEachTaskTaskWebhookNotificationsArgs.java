@@ -20,55 +20,23 @@ public final class JobTaskForEachTaskTaskWebhookNotificationsArgs extends com.pu
 
     public static final JobTaskForEachTaskTaskWebhookNotificationsArgs Empty = new JobTaskForEachTaskTaskWebhookNotificationsArgs();
 
-    /**
-     * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     * 
-     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-     * 
-     * Example
-     * 
-     */
     @Import(name="onDurationWarningThresholdExceededs")
     private @Nullable Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>> onDurationWarningThresholdExceededs;
 
-    /**
-     * @return (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     * 
-     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-     * 
-     * Example
-     * 
-     */
     public Optional<Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>>> onDurationWarningThresholdExceededs() {
         return Optional.ofNullable(this.onDurationWarningThresholdExceededs);
     }
 
-    /**
-     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
-     * 
-     */
     @Import(name="onFailures")
     private @Nullable Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs>> onFailures;
 
-    /**
-     * @return (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
-     * 
-     */
     public Optional<Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs>>> onFailures() {
         return Optional.ofNullable(this.onFailures);
     }
 
-    /**
-     * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-     * 
-     */
     @Import(name="onStarts")
     private @Nullable Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs>> onStarts;
 
-    /**
-     * @return (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-     * 
-     */
     public Optional<Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs>>> onStarts() {
         return Optional.ofNullable(this.onStarts);
     }
@@ -80,17 +48,9 @@ public final class JobTaskForEachTaskTaskWebhookNotificationsArgs extends com.pu
         return Optional.ofNullable(this.onStreamingBacklogExceededs);
     }
 
-    /**
-     * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
-     * 
-     */
     @Import(name="onSuccesses")
     private @Nullable Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs>> onSuccesses;
 
-    /**
-     * @return (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
-     * 
-     */
     public Optional<Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs>>> onSuccesses() {
         return Optional.ofNullable(this.onSuccesses);
     }
@@ -123,107 +83,41 @@ public final class JobTaskForEachTaskTaskWebhookNotificationsArgs extends com.pu
             $ = new JobTaskForEachTaskTaskWebhookNotificationsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param onDurationWarningThresholdExceededs (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-         * 
-         * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-         * 
-         * Example
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDurationWarningThresholdExceededs(@Nullable Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>> onDurationWarningThresholdExceededs) {
             $.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             return this;
         }
 
-        /**
-         * @param onDurationWarningThresholdExceededs (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-         * 
-         * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-         * 
-         * Example
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDurationWarningThresholdExceededs(List<JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs> onDurationWarningThresholdExceededs) {
             return onDurationWarningThresholdExceededs(Output.of(onDurationWarningThresholdExceededs));
         }
 
-        /**
-         * @param onDurationWarningThresholdExceededs (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-         * 
-         * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
-         * 
-         * Example
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDurationWarningThresholdExceededs(JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs... onDurationWarningThresholdExceededs) {
             return onDurationWarningThresholdExceededs(List.of(onDurationWarningThresholdExceededs));
         }
 
-        /**
-         * @param onFailures (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onFailures(@Nullable Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs>> onFailures) {
             $.onFailures = onFailures;
             return this;
         }
 
-        /**
-         * @param onFailures (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onFailures(List<JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs> onFailures) {
             return onFailures(Output.of(onFailures));
         }
 
-        /**
-         * @param onFailures (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onFailures(JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs... onFailures) {
             return onFailures(List.of(onFailures));
         }
 
-        /**
-         * @param onStarts (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onStarts(@Nullable Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs>> onStarts) {
             $.onStarts = onStarts;
             return this;
         }
 
-        /**
-         * @param onStarts (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onStarts(List<JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs> onStarts) {
             return onStarts(Output.of(onStarts));
         }
 
-        /**
-         * @param onStarts (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onStarts(JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs... onStarts) {
             return onStarts(List.of(onStarts));
         }
@@ -241,33 +135,15 @@ public final class JobTaskForEachTaskTaskWebhookNotificationsArgs extends com.pu
             return onStreamingBacklogExceededs(List.of(onStreamingBacklogExceededs));
         }
 
-        /**
-         * @param onSuccesses (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onSuccesses(@Nullable Output<List<JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs>> onSuccesses) {
             $.onSuccesses = onSuccesses;
             return this;
         }
 
-        /**
-         * @param onSuccesses (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onSuccesses(List<JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs> onSuccesses) {
             return onSuccesses(Output.of(onSuccesses));
         }
 
-        /**
-         * @param onSuccesses (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onSuccesses(JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs... onSuccesses) {
             return onSuccesses(List.of(onSuccesses));
         }

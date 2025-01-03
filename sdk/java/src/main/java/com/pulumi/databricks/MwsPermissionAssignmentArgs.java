@@ -15,51 +15,23 @@ public final class MwsPermissionAssignmentArgs extends com.pulumi.resources.Reso
 
     public static final MwsPermissionAssignmentArgs Empty = new MwsPermissionAssignmentArgs();
 
-    /**
-     * The list of workspace permissions to assign to the principal:
-     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
-     * 
-     */
     @Import(name="permissions", required=true)
     private Output<List<String>> permissions;
 
-    /**
-     * @return The list of workspace permissions to assign to the principal:
-     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
-     * 
-     */
     public Output<List<String>> permissions() {
         return this.permissions;
     }
 
-    /**
-     * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
-     * 
-     */
     @Import(name="principalId", required=true)
     private Output<String> principalId;
 
-    /**
-     * @return Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
-     * 
-     */
     public Output<String> principalId() {
         return this.principalId;
     }
 
-    /**
-     * Databricks workspace ID.
-     * 
-     */
     @Import(name="workspaceId", required=true)
     private Output<String> workspaceId;
 
-    /**
-     * @return Databricks workspace ID.
-     * 
-     */
     public Output<String> workspaceId() {
         return this.workspaceId;
     }
@@ -90,81 +62,33 @@ public final class MwsPermissionAssignmentArgs extends com.pulumi.resources.Reso
             $ = new MwsPermissionAssignmentArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param permissions The list of workspace permissions to assign to the principal:
-         * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-         * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
-         * 
-         * @return builder
-         * 
-         */
         public Builder permissions(Output<List<String>> permissions) {
             $.permissions = permissions;
             return this;
         }
 
-        /**
-         * @param permissions The list of workspace permissions to assign to the principal:
-         * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-         * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
-         * 
-         * @return builder
-         * 
-         */
         public Builder permissions(List<String> permissions) {
             return permissions(Output.of(permissions));
         }
 
-        /**
-         * @param permissions The list of workspace permissions to assign to the principal:
-         * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-         * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
-         * 
-         * @return builder
-         * 
-         */
         public Builder permissions(String... permissions) {
             return permissions(List.of(permissions));
         }
 
-        /**
-         * @param principalId Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder principalId(Output<String> principalId) {
             $.principalId = principalId;
             return this;
         }
 
-        /**
-         * @param principalId Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder principalId(String principalId) {
             return principalId(Output.of(principalId));
         }
 
-        /**
-         * @param workspaceId Databricks workspace ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder workspaceId(Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
 
-        /**
-         * @param workspaceId Databricks workspace ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }

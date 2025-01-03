@@ -11,45 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupDbfsFile(ctx, &databricks.LookupDbfsFileArgs{
-//				Path:          "dbfs:/reports/some.csv",
-//				LimitFileSize: true,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * End to end workspace management guide.
-// * getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-// * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
-// * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
 func LookupDbfsFile(ctx *pulumi.Context, args *LookupDbfsFileArgs, opts ...pulumi.InvokeOption) (*LookupDbfsFileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDbfsFileResult
@@ -62,18 +23,14 @@ func LookupDbfsFile(ctx *pulumi.Context, args *LookupDbfsFileArgs, opts ...pulum
 
 // A collection of arguments for invoking getDbfsFile.
 type LookupDbfsFileArgs struct {
-	// Do not load content for files larger than 4MB.
-	LimitFileSize bool `pulumi:"limitFileSize"`
-	// Path on DBFS for the file from which to get content.
-	Path string `pulumi:"path"`
+	LimitFileSize bool   `pulumi:"limitFileSize"`
+	Path          string `pulumi:"path"`
 }
 
 // A collection of values returned by getDbfsFile.
 type LookupDbfsFileResult struct {
-	// base64-encoded file contents
-	Content string `pulumi:"content"`
-	// size of the file in bytes
-	FileSize int `pulumi:"fileSize"`
+	Content  string `pulumi:"content"`
+	FileSize int    `pulumi:"fileSize"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string `pulumi:"id"`
 	LimitFileSize bool   `pulumi:"limitFileSize"`
@@ -91,10 +48,8 @@ func LookupDbfsFileOutput(ctx *pulumi.Context, args LookupDbfsFileOutputArgs, op
 
 // A collection of arguments for invoking getDbfsFile.
 type LookupDbfsFileOutputArgs struct {
-	// Do not load content for files larger than 4MB.
-	LimitFileSize pulumi.BoolInput `pulumi:"limitFileSize"`
-	// Path on DBFS for the file from which to get content.
-	Path pulumi.StringInput `pulumi:"path"`
+	LimitFileSize pulumi.BoolInput   `pulumi:"limitFileSize"`
+	Path          pulumi.StringInput `pulumi:"path"`
 }
 
 func (LookupDbfsFileOutputArgs) ElementType() reflect.Type {
@@ -116,12 +71,10 @@ func (o LookupDbfsFileResultOutput) ToLookupDbfsFileResultOutputWithContext(ctx 
 	return o
 }
 
-// base64-encoded file contents
 func (o LookupDbfsFileResultOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbfsFileResult) string { return v.Content }).(pulumi.StringOutput)
 }
 
-// size of the file in bytes
 func (o LookupDbfsFileResultOutput) FileSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDbfsFileResult) int { return v.FileSize }).(pulumi.IntOutput)
 }

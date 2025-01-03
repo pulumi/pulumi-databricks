@@ -12,46 +12,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
-//
-// This resource can be imported using alert ID:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/alert:Alert this <alert-id>
-// ```
 type Alert struct {
 	pulumi.CustomResourceState
 
-	// Trigger conditions of the alert. Block consists of the following attributes:
-	Condition AlertConditionOutput `pulumi:"condition"`
-	// The timestamp string indicating when the alert was created.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-	CustomBody pulumi.StringPtrOutput `pulumi:"customBody"`
-	// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-	CustomSubject pulumi.StringPtrOutput `pulumi:"customSubject"`
-	// Name of the alert.
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
-	// Whether to notify alert subscribers when alert returns back to normal.
-	NotifyOnOk pulumi.BoolPtrOutput `pulumi:"notifyOnOk"`
-	// Alert owner's username.
-	OwnerUserName pulumi.StringPtrOutput `pulumi:"ownerUserName"`
-	// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
-	// ID of the query evaluated by the alert.
-	QueryId pulumi.StringOutput `pulumi:"queryId"`
-	// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
-	SecondsToRetrigger pulumi.IntPtrOutput `pulumi:"secondsToRetrigger"`
-	// Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
-	State pulumi.StringOutput `pulumi:"state"`
-	// The timestamp string when the alert was last triggered if the alert has been triggered before.
-	TriggerTime pulumi.StringOutput `pulumi:"triggerTime"`
-	// The timestamp string indicating when the alert was updated.
-	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	Condition          AlertConditionOutput   `pulumi:"condition"`
+	CreateTime         pulumi.StringOutput    `pulumi:"createTime"`
+	CustomBody         pulumi.StringPtrOutput `pulumi:"customBody"`
+	CustomSubject      pulumi.StringPtrOutput `pulumi:"customSubject"`
+	DisplayName        pulumi.StringOutput    `pulumi:"displayName"`
+	LifecycleState     pulumi.StringOutput    `pulumi:"lifecycleState"`
+	NotifyOnOk         pulumi.BoolPtrOutput   `pulumi:"notifyOnOk"`
+	OwnerUserName      pulumi.StringPtrOutput `pulumi:"ownerUserName"`
+	ParentPath         pulumi.StringPtrOutput `pulumi:"parentPath"`
+	QueryId            pulumi.StringOutput    `pulumi:"queryId"`
+	SecondsToRetrigger pulumi.IntPtrOutput    `pulumi:"secondsToRetrigger"`
+	State              pulumi.StringOutput    `pulumi:"state"`
+	TriggerTime        pulumi.StringOutput    `pulumi:"triggerTime"`
+	UpdateTime         pulumi.StringOutput    `pulumi:"updateTime"`
 }
 
 // NewAlert registers a new resource with the given unique name, arguments, and options.
@@ -93,65 +70,37 @@ func GetAlert(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Alert resources.
 type alertState struct {
-	// Trigger conditions of the alert. Block consists of the following attributes:
-	Condition *AlertCondition `pulumi:"condition"`
-	// The timestamp string indicating when the alert was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-	CustomBody *string `pulumi:"customBody"`
-	// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-	CustomSubject *string `pulumi:"customSubject"`
-	// Name of the alert.
-	DisplayName *string `pulumi:"displayName"`
-	// The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-	LifecycleState *string `pulumi:"lifecycleState"`
-	// Whether to notify alert subscribers when alert returns back to normal.
-	NotifyOnOk *bool `pulumi:"notifyOnOk"`
-	// Alert owner's username.
-	OwnerUserName *string `pulumi:"ownerUserName"`
-	// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-	ParentPath *string `pulumi:"parentPath"`
-	// ID of the query evaluated by the alert.
-	QueryId *string `pulumi:"queryId"`
-	// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
-	SecondsToRetrigger *int `pulumi:"secondsToRetrigger"`
-	// Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
-	State *string `pulumi:"state"`
-	// The timestamp string when the alert was last triggered if the alert has been triggered before.
-	TriggerTime *string `pulumi:"triggerTime"`
-	// The timestamp string indicating when the alert was updated.
-	UpdateTime *string `pulumi:"updateTime"`
+	Condition          *AlertCondition `pulumi:"condition"`
+	CreateTime         *string         `pulumi:"createTime"`
+	CustomBody         *string         `pulumi:"customBody"`
+	CustomSubject      *string         `pulumi:"customSubject"`
+	DisplayName        *string         `pulumi:"displayName"`
+	LifecycleState     *string         `pulumi:"lifecycleState"`
+	NotifyOnOk         *bool           `pulumi:"notifyOnOk"`
+	OwnerUserName      *string         `pulumi:"ownerUserName"`
+	ParentPath         *string         `pulumi:"parentPath"`
+	QueryId            *string         `pulumi:"queryId"`
+	SecondsToRetrigger *int            `pulumi:"secondsToRetrigger"`
+	State              *string         `pulumi:"state"`
+	TriggerTime        *string         `pulumi:"triggerTime"`
+	UpdateTime         *string         `pulumi:"updateTime"`
 }
 
 type AlertState struct {
-	// Trigger conditions of the alert. Block consists of the following attributes:
-	Condition AlertConditionPtrInput
-	// The timestamp string indicating when the alert was created.
-	CreateTime pulumi.StringPtrInput
-	// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-	CustomBody pulumi.StringPtrInput
-	// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-	CustomSubject pulumi.StringPtrInput
-	// Name of the alert.
-	DisplayName pulumi.StringPtrInput
-	// The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-	LifecycleState pulumi.StringPtrInput
-	// Whether to notify alert subscribers when alert returns back to normal.
-	NotifyOnOk pulumi.BoolPtrInput
-	// Alert owner's username.
-	OwnerUserName pulumi.StringPtrInput
-	// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-	ParentPath pulumi.StringPtrInput
-	// ID of the query evaluated by the alert.
-	QueryId pulumi.StringPtrInput
-	// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
+	Condition          AlertConditionPtrInput
+	CreateTime         pulumi.StringPtrInput
+	CustomBody         pulumi.StringPtrInput
+	CustomSubject      pulumi.StringPtrInput
+	DisplayName        pulumi.StringPtrInput
+	LifecycleState     pulumi.StringPtrInput
+	NotifyOnOk         pulumi.BoolPtrInput
+	OwnerUserName      pulumi.StringPtrInput
+	ParentPath         pulumi.StringPtrInput
+	QueryId            pulumi.StringPtrInput
 	SecondsToRetrigger pulumi.IntPtrInput
-	// Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
-	State pulumi.StringPtrInput
-	// The timestamp string when the alert was last triggered if the alert has been triggered before.
-	TriggerTime pulumi.StringPtrInput
-	// The timestamp string indicating when the alert was updated.
-	UpdateTime pulumi.StringPtrInput
+	State              pulumi.StringPtrInput
+	TriggerTime        pulumi.StringPtrInput
+	UpdateTime         pulumi.StringPtrInput
 }
 
 func (AlertState) ElementType() reflect.Type {
@@ -159,45 +108,27 @@ func (AlertState) ElementType() reflect.Type {
 }
 
 type alertArgs struct {
-	// Trigger conditions of the alert. Block consists of the following attributes:
-	Condition AlertCondition `pulumi:"condition"`
-	// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-	CustomBody *string `pulumi:"customBody"`
-	// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-	CustomSubject *string `pulumi:"customSubject"`
-	// Name of the alert.
-	DisplayName string `pulumi:"displayName"`
-	// Whether to notify alert subscribers when alert returns back to normal.
-	NotifyOnOk *bool `pulumi:"notifyOnOk"`
-	// Alert owner's username.
-	OwnerUserName *string `pulumi:"ownerUserName"`
-	// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-	ParentPath *string `pulumi:"parentPath"`
-	// ID of the query evaluated by the alert.
-	QueryId string `pulumi:"queryId"`
-	// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
-	SecondsToRetrigger *int `pulumi:"secondsToRetrigger"`
+	Condition          AlertCondition `pulumi:"condition"`
+	CustomBody         *string        `pulumi:"customBody"`
+	CustomSubject      *string        `pulumi:"customSubject"`
+	DisplayName        string         `pulumi:"displayName"`
+	NotifyOnOk         *bool          `pulumi:"notifyOnOk"`
+	OwnerUserName      *string        `pulumi:"ownerUserName"`
+	ParentPath         *string        `pulumi:"parentPath"`
+	QueryId            string         `pulumi:"queryId"`
+	SecondsToRetrigger *int           `pulumi:"secondsToRetrigger"`
 }
 
 // The set of arguments for constructing a Alert resource.
 type AlertArgs struct {
-	// Trigger conditions of the alert. Block consists of the following attributes:
-	Condition AlertConditionInput
-	// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-	CustomBody pulumi.StringPtrInput
-	// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
-	CustomSubject pulumi.StringPtrInput
-	// Name of the alert.
-	DisplayName pulumi.StringInput
-	// Whether to notify alert subscribers when alert returns back to normal.
-	NotifyOnOk pulumi.BoolPtrInput
-	// Alert owner's username.
-	OwnerUserName pulumi.StringPtrInput
-	// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
-	ParentPath pulumi.StringPtrInput
-	// ID of the query evaluated by the alert.
-	QueryId pulumi.StringInput
-	// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
+	Condition          AlertConditionInput
+	CustomBody         pulumi.StringPtrInput
+	CustomSubject      pulumi.StringPtrInput
+	DisplayName        pulumi.StringInput
+	NotifyOnOk         pulumi.BoolPtrInput
+	OwnerUserName      pulumi.StringPtrInput
+	ParentPath         pulumi.StringPtrInput
+	QueryId            pulumi.StringInput
 	SecondsToRetrigger pulumi.IntPtrInput
 }
 
@@ -288,72 +219,58 @@ func (o AlertOutput) ToAlertOutputWithContext(ctx context.Context) AlertOutput {
 	return o
 }
 
-// Trigger conditions of the alert. Block consists of the following attributes:
 func (o AlertOutput) Condition() AlertConditionOutput {
 	return o.ApplyT(func(v *Alert) AlertConditionOutput { return v.Condition }).(AlertConditionOutput)
 }
 
-// The timestamp string indicating when the alert was created.
 func (o AlertOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
 func (o AlertOutput) CustomBody() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.CustomBody }).(pulumi.StringPtrOutput)
 }
 
-// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
 func (o AlertOutput) CustomSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.CustomSubject }).(pulumi.StringPtrOutput)
 }
 
-// Name of the alert.
 func (o AlertOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
 func (o AlertOutput) LifecycleState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.LifecycleState }).(pulumi.StringOutput)
 }
 
-// Whether to notify alert subscribers when alert returns back to normal.
 func (o AlertOutput) NotifyOnOk() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.BoolPtrOutput { return v.NotifyOnOk }).(pulumi.BoolPtrOutput)
 }
 
-// Alert owner's username.
 func (o AlertOutput) OwnerUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.OwnerUserName }).(pulumi.StringPtrOutput)
 }
 
-// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
 func (o AlertOutput) ParentPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.ParentPath }).(pulumi.StringPtrOutput)
 }
 
-// ID of the query evaluated by the alert.
 func (o AlertOutput) QueryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.QueryId }).(pulumi.StringOutput)
 }
 
-// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
 func (o AlertOutput) SecondsToRetrigger() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.IntPtrOutput { return v.SecondsToRetrigger }).(pulumi.IntPtrOutput)
 }
 
-// Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
 func (o AlertOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The timestamp string when the alert was last triggered if the alert has been triggered before.
 func (o AlertOutput) TriggerTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.TriggerTime }).(pulumi.StringOutput)
 }
 
-// The timestamp string indicating when the alert was updated.
 func (o AlertOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

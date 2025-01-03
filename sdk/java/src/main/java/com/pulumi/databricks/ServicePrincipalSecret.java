@@ -14,86 +14,17 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
-/**
- * &gt; This resource can only be used with an account-level provider.
- * 
- * With this resource you can create a secret for a given [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html).
- * 
- * This secret can be used to configure the Databricks Pulumi Provider to authenticate with the service principal. See Authenticating with service principal.
- * 
- * Additionally, the secret can be used to request OAuth tokens for the service principal, which can be used to authenticate to Databricks REST APIs. See [Authentication using OAuth tokens for service principals](https://docs.databricks.com/dev-tools/authentication-oauth.html).
- * 
- * ## Example Usage
- * 
- * Create service principal secret
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.ServicePrincipalSecret;
- * import com.pulumi.databricks.ServicePrincipalSecretArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var terraformSp = new ServicePrincipalSecret("terraformSp", ServicePrincipalSecretArgs.builder()
- *             .servicePrincipalId(this_.id())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Related Resources
- * 
- * The following resources are often used in the same context:
- * 
- * * databricks.ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) in Databricks
- * 
- */
 @ResourceType(type="databricks:index/servicePrincipalSecret:ServicePrincipalSecret")
 public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource {
-    /**
-     * Generated secret for the service principal
-     * 
-     */
     @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
-    /**
-     * @return Generated secret for the service principal
-     * 
-     */
     public Output<String> secret() {
         return this.secret;
     }
-    /**
-     * ID of the databricks.ServicePrincipal (not application ID).
-     * 
-     */
     @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
-    /**
-     * @return ID of the databricks.ServicePrincipal (not application ID).
-     * 
-     */
     public Output<String> servicePrincipalId() {
         return this.servicePrincipalId;
     }

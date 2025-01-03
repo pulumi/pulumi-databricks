@@ -20,137 +20,49 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModel {
-    /**
-     * @return AI21Labs Config
-     * 
-     */
     private @Nullable ModelServingConfigServedEntityExternalModelAi21labsConfig ai21labsConfig;
-    /**
-     * @return Amazon Bedrock Config
-     * 
-     */
     private @Nullable ModelServingConfigServedEntityExternalModelAmazonBedrockConfig amazonBedrockConfig;
-    /**
-     * @return Anthropic Config
-     * 
-     */
     private @Nullable ModelServingConfigServedEntityExternalModelAnthropicConfig anthropicConfig;
-    /**
-     * @return Cohere Config
-     * 
-     */
     private @Nullable ModelServingConfigServedEntityExternalModelCohereConfig cohereConfig;
-    /**
-     * @return Databricks Model Serving Config
-     * 
-     */
     private @Nullable ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig databricksModelServingConfig;
-    /**
-     * @return Google Cloud Vertex AI Config.
-     * 
-     */
     private @Nullable ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig googleCloudVertexAiConfig;
-    /**
-     * @return The name of the external model.
-     * 
-     */
     private String name;
-    /**
-     * @return OpenAI Config
-     * 
-     */
     private @Nullable ModelServingConfigServedEntityExternalModelOpenaiConfig openaiConfig;
-    /**
-     * @return PaLM Config
-     * 
-     */
     private @Nullable ModelServingConfigServedEntityExternalModelPalmConfig palmConfig;
-    /**
-     * @return The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
-     * 
-     */
     private String provider;
-    /**
-     * @return The task type of the external model.
-     * 
-     */
     private String task;
 
     private ModelServingConfigServedEntityExternalModel() {}
-    /**
-     * @return AI21Labs Config
-     * 
-     */
     public Optional<ModelServingConfigServedEntityExternalModelAi21labsConfig> ai21labsConfig() {
         return Optional.ofNullable(this.ai21labsConfig);
     }
-    /**
-     * @return Amazon Bedrock Config
-     * 
-     */
     public Optional<ModelServingConfigServedEntityExternalModelAmazonBedrockConfig> amazonBedrockConfig() {
         return Optional.ofNullable(this.amazonBedrockConfig);
     }
-    /**
-     * @return Anthropic Config
-     * 
-     */
     public Optional<ModelServingConfigServedEntityExternalModelAnthropicConfig> anthropicConfig() {
         return Optional.ofNullable(this.anthropicConfig);
     }
-    /**
-     * @return Cohere Config
-     * 
-     */
     public Optional<ModelServingConfigServedEntityExternalModelCohereConfig> cohereConfig() {
         return Optional.ofNullable(this.cohereConfig);
     }
-    /**
-     * @return Databricks Model Serving Config
-     * 
-     */
     public Optional<ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig> databricksModelServingConfig() {
         return Optional.ofNullable(this.databricksModelServingConfig);
     }
-    /**
-     * @return Google Cloud Vertex AI Config.
-     * 
-     */
     public Optional<ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig> googleCloudVertexAiConfig() {
         return Optional.ofNullable(this.googleCloudVertexAiConfig);
     }
-    /**
-     * @return The name of the external model.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return OpenAI Config
-     * 
-     */
     public Optional<ModelServingConfigServedEntityExternalModelOpenaiConfig> openaiConfig() {
         return Optional.ofNullable(this.openaiConfig);
     }
-    /**
-     * @return PaLM Config
-     * 
-     */
     public Optional<ModelServingConfigServedEntityExternalModelPalmConfig> palmConfig() {
         return Optional.ofNullable(this.palmConfig);
     }
-    /**
-     * @return The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
-     * 
-     */
     public String provider() {
         return this.provider;
     }
-    /**
-     * @return The task type of the external model.
-     * 
-     */
     public String task() {
         return this.task;
     }

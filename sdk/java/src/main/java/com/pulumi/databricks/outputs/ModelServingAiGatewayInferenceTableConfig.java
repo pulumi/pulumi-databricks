@@ -12,53 +12,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingAiGatewayInferenceTableConfig {
-    /**
-     * @return The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-     * 
-     */
     private @Nullable String catalogName;
-    /**
-     * @return boolean flag specifying if usage tracking is enabled.
-     * 
-     */
     private @Nullable Boolean enabled;
-    /**
-     * @return The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
-     * 
-     */
     private @Nullable String schemaName;
-    /**
-     * @return The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
-     * 
-     */
     private @Nullable String tableNamePrefix;
 
     private ModelServingAiGatewayInferenceTableConfig() {}
-    /**
-     * @return The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
-     * 
-     */
     public Optional<String> catalogName() {
         return Optional.ofNullable(this.catalogName);
     }
-    /**
-     * @return boolean flag specifying if usage tracking is enabled.
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    /**
-     * @return The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
-     * 
-     */
     public Optional<String> schemaName() {
         return Optional.ofNullable(this.schemaName);
     }
-    /**
-     * @return The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
-     * 
-     */
     public Optional<String> tableNamePrefix() {
         return Optional.ofNullable(this.tableNamePrefix);
     }

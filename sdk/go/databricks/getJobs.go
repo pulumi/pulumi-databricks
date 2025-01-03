@@ -11,86 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// Retrieves a list of Job ids, that were created by Pulumi or manually, so that special handling could be applied.
-//
-// > **Note** Data resource will error in case of jobs with duplicate names.
-//
-// ## Example Usage
-//
-// Granting view Permissions to all Job within the workspace:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.GetJobs(ctx, &databricks.GetJobsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var everyoneCanViewAllJobs []*databricks.Permissions
-//			for key0, val0 := range this.Ids {
-//				__res, err := databricks.NewPermissions(ctx, fmt.Sprintf("everyone_can_view_all_jobs-%v", key0), &databricks.PermissionsArgs{
-//					JobId: pulumi.String(val0),
-//					AccessControls: databricks.PermissionsAccessControlArray{
-//						&databricks.PermissionsAccessControlArgs{
-//							GroupName:       pulumi.String("users"),
-//							PermissionLevel: pulumi.String("CAN_VIEW"),
-//						},
-//					},
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				everyoneCanViewAllJobs = append(everyoneCanViewAllJobs, __res)
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Getting ID of specific Job by name:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.GetJobs(ctx, &databricks.GetJobsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("x", pulumi.Sprintf("ID of `x` job is %v", this.Ids.X))
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 func GetJobs(ctx *pulumi.Context, args *GetJobsArgs, opts ...pulumi.InvokeOption) (*GetJobsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetJobsResult
@@ -103,16 +23,16 @@ func GetJobs(ctx *pulumi.Context, args *GetJobsArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getJobs.
 type GetJobsArgs struct {
-	// map of Job names to ids
-	Ids map[string]string `pulumi:"ids"`
+	Ids             map[string]string `pulumi:"ids"`
+	JobNameContains *string           `pulumi:"jobNameContains"`
 }
 
 // A collection of values returned by getJobs.
 type GetJobsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// map of Job names to ids
-	Ids map[string]string `pulumi:"ids"`
+	Id              string            `pulumi:"id"`
+	Ids             map[string]string `pulumi:"ids"`
+	JobNameContains *string           `pulumi:"jobNameContains"`
 }
 
 func GetJobsOutput(ctx *pulumi.Context, args GetJobsOutputArgs, opts ...pulumi.InvokeOption) GetJobsResultOutput {
@@ -126,8 +46,8 @@ func GetJobsOutput(ctx *pulumi.Context, args GetJobsOutputArgs, opts ...pulumi.I
 
 // A collection of arguments for invoking getJobs.
 type GetJobsOutputArgs struct {
-	// map of Job names to ids
-	Ids pulumi.StringMapInput `pulumi:"ids"`
+	Ids             pulumi.StringMapInput `pulumi:"ids"`
+	JobNameContains pulumi.StringPtrInput `pulumi:"jobNameContains"`
 }
 
 func (GetJobsOutputArgs) ElementType() reflect.Type {
@@ -154,9 +74,12 @@ func (o GetJobsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// map of Job names to ids
 func (o GetJobsResultOutput) Ids() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetJobsResult) map[string]string { return v.Ids }).(pulumi.StringMapOutput)
+}
+
+func (o GetJobsResultOutput) JobNameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobsResult) *string { return v.JobNameContains }).(pulumi.StringPtrOutput)
 }
 
 func init() {

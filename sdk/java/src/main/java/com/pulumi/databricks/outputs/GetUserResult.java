@@ -13,97 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUserResult {
-    /**
-     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo{@literal @}example.com`.
-     * 
-     */
     private String aclPrincipalId;
-    /**
-     * @return Whether the user is active.
-     * 
-     */
     private Boolean active;
-    /**
-     * @return Alphanumeric representation of user local name. e.g. `mr_foo`.
-     * 
-     */
     private String alphanumeric;
     private String applicationId;
-    /**
-     * @return Display name of the user, e.g. `Mr Foo`.
-     * 
-     */
     private String displayName;
-    /**
-     * @return ID of the user in an external identity provider.
-     * 
-     */
     private String externalId;
-    /**
-     * @return Home folder of the user, e.g. `/Users/mr.foo{@literal @}example.com`.
-     * 
-     */
     private String home;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
-     * 
-     */
     private String repos;
     private @Nullable String userId;
-    /**
-     * @return Name of the user, e.g. `mr.foo{@literal @}example.com`.
-     * 
-     */
     private @Nullable String userName;
 
     private GetUserResult() {}
-    /**
-     * @return identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo{@literal @}example.com`.
-     * 
-     */
     public String aclPrincipalId() {
         return this.aclPrincipalId;
     }
-    /**
-     * @return Whether the user is active.
-     * 
-     */
     public Boolean active() {
         return this.active;
     }
-    /**
-     * @return Alphanumeric representation of user local name. e.g. `mr_foo`.
-     * 
-     */
     public String alphanumeric() {
         return this.alphanumeric;
     }
     public String applicationId() {
         return this.applicationId;
     }
-    /**
-     * @return Display name of the user, e.g. `Mr Foo`.
-     * 
-     */
     public String displayName() {
         return this.displayName;
     }
-    /**
-     * @return ID of the user in an external identity provider.
-     * 
-     */
     public String externalId() {
         return this.externalId;
     }
-    /**
-     * @return Home folder of the user, e.g. `/Users/mr.foo{@literal @}example.com`.
-     * 
-     */
     public String home() {
         return this.home;
     }
@@ -114,20 +58,12 @@ public final class GetUserResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
-     * 
-     */
     public String repos() {
         return this.repos;
     }
     public Optional<String> userId() {
         return Optional.ofNullable(this.userId);
     }
-    /**
-     * @return Name of the user, e.g. `mr.foo{@literal @}example.com`.
-     * 
-     */
     public Optional<String> userName() {
         return Optional.ofNullable(this.userName);
     }

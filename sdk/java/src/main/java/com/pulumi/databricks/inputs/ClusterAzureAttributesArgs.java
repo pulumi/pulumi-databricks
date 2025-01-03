@@ -18,32 +18,16 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
 
     public static final ClusterAzureAttributesArgs Empty = new ClusterAzureAttributesArgs();
 
-    /**
-     * Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster.
-     * 
-     */
     @Import(name="availability")
     private @Nullable Output<String> availability;
 
-    /**
-     * @return Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster.
-     * 
-     */
     public Optional<Output<String>> availability() {
         return Optional.ofNullable(this.availability);
     }
 
-    /**
-     * The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
-     * 
-     */
     @Import(name="firstOnDemand")
     private @Nullable Output<Integer> firstOnDemand;
 
-    /**
-     * @return The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
-     * 
-     */
     public Optional<Output<Integer>> firstOnDemand() {
         return Optional.ofNullable(this.firstOnDemand);
     }
@@ -55,17 +39,9 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.logAnalyticsInfo);
     }
 
-    /**
-     * The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
-     * 
-     */
     @Import(name="spotBidMaxPrice")
     private @Nullable Output<Double> spotBidMaxPrice;
 
-    /**
-     * @return The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
-     * 
-     */
     public Optional<Output<Double>> spotBidMaxPrice() {
         return Optional.ofNullable(this.spotBidMaxPrice);
     }
@@ -97,44 +73,20 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
             $ = new ClusterAzureAttributesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param availability Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder availability(@Nullable Output<String> availability) {
             $.availability = availability;
             return this;
         }
 
-        /**
-         * @param availability Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder availability(String availability) {
             return availability(Output.of(availability));
         }
 
-        /**
-         * @param firstOnDemand The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder firstOnDemand(@Nullable Output<Integer> firstOnDemand) {
             $.firstOnDemand = firstOnDemand;
             return this;
         }
 
-        /**
-         * @param firstOnDemand The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder firstOnDemand(Integer firstOnDemand) {
             return firstOnDemand(Output.of(firstOnDemand));
         }
@@ -148,23 +100,11 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
             return logAnalyticsInfo(Output.of(logAnalyticsInfo));
         }
 
-        /**
-         * @param spotBidMaxPrice The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotBidMaxPrice(@Nullable Output<Double> spotBidMaxPrice) {
             $.spotBidMaxPrice = spotBidMaxPrice;
             return this;
         }
 
-        /**
-         * @param spotBidMaxPrice The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotBidMaxPrice(Double spotBidMaxPrice) {
             return spotBidMaxPrice(Output.of(spotBidMaxPrice));
         }

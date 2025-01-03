@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskSparkSubmitTask {
-    /**
-     * @return (List) Command-line parameters passed to spark submit.
-     * 
-     */
     private @Nullable List<String> parameters;
 
     private JobTaskSparkSubmitTask() {}
-    /**
-     * @return (List) Command-line parameters passed to spark submit.
-     * 
-     */
     public List<String> parameters() {
         return this.parameters == null ? List.of() : this.parameters;
     }

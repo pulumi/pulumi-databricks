@@ -11,29 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetJobResult {
-    /**
-     * @return the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     private String id;
     private String jobId;
     private String jobName;
-    /**
-     * @return the same fields as in databricks_job.
-     * 
-     */
     private GetJobJobSettings jobSettings;
-    /**
-     * @return the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     private String name;
 
     private GetJobResult() {}
-    /**
-     * @return the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -43,17 +27,9 @@ public final class GetJobResult {
     public String jobName() {
         return this.jobName;
     }
-    /**
-     * @return the same fields as in databricks_job.
-     * 
-     */
     public GetJobJobSettings jobSettings() {
         return this.jobSettings;
     }
-    /**
-     * @return the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     public String name() {
         return this.name;
     }

@@ -10,33 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class JobParameter {
-    /**
-     * @return Default value of the parameter.
-     * 
-     * *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
-     * 
-     */
     private String default_;
-    /**
-     * @return The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
-     * 
-     */
     private String name;
 
     private JobParameter() {}
-    /**
-     * @return Default value of the parameter.
-     * 
-     * *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
-     * 
-     */
     public String default_() {
         return this.default_;
     }
-    /**
-     * @return The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
-     * 
-     */
     public String name() {
         return this.name;
     }

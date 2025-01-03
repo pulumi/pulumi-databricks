@@ -15,32 +15,16 @@ public final class JobTriggerPeriodicArgs extends com.pulumi.resources.ResourceA
 
     public static final JobTriggerPeriodicArgs Empty = new JobTriggerPeriodicArgs();
 
-    /**
-     * Specifies the interval at which the job should run. This value is required.
-     * 
-     */
     @Import(name="interval", required=true)
     private Output<Integer> interval;
 
-    /**
-     * @return Specifies the interval at which the job should run. This value is required.
-     * 
-     */
     public Output<Integer> interval() {
         return this.interval;
     }
 
-    /**
-     * Options are {&#34;DAYS&#34;, &#34;HOURS&#34;, &#34;WEEKS&#34;}.
-     * 
-     */
     @Import(name="unit", required=true)
     private Output<String> unit;
 
-    /**
-     * @return Options are {&#34;DAYS&#34;, &#34;HOURS&#34;, &#34;WEEKS&#34;}.
-     * 
-     */
     public Output<String> unit() {
         return this.unit;
     }
@@ -70,44 +54,20 @@ public final class JobTriggerPeriodicArgs extends com.pulumi.resources.ResourceA
             $ = new JobTriggerPeriodicArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param interval Specifies the interval at which the job should run. This value is required.
-         * 
-         * @return builder
-         * 
-         */
         public Builder interval(Output<Integer> interval) {
             $.interval = interval;
             return this;
         }
 
-        /**
-         * @param interval Specifies the interval at which the job should run. This value is required.
-         * 
-         * @return builder
-         * 
-         */
         public Builder interval(Integer interval) {
             return interval(Output.of(interval));
         }
 
-        /**
-         * @param unit Options are {&#34;DAYS&#34;, &#34;HOURS&#34;, &#34;WEEKS&#34;}.
-         * 
-         * @return builder
-         * 
-         */
         public Builder unit(Output<String> unit) {
             $.unit = unit;
             return this;
         }
 
-        /**
-         * @param unit Options are {&#34;DAYS&#34;, &#34;HOURS&#34;, &#34;WEEKS&#34;}.
-         * 
-         * @return builder
-         * 
-         */
         public Builder unit(String unit) {
             return unit(Output.of(unit));
         }

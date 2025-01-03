@@ -11,66 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This data source can only be used with a workspace-level provider!
-//
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// Retrieves a list of managed or external table full names in Unity Catalog, that were created by Pulumi or manually. Use getViews for retrieving a list of views.
-//
-// ## Example Usage
-//
-// Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ Schema from _sandbox_ databricks_catalog:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			things, err := databricks.GetTables(ctx, &databricks.GetTablesArgs{
-//				CatalogName: "sandbox",
-//				SchemaName:  "things",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var thingsGrants []*databricks.Grants
-//			for key0, val0 := range things.Ids {
-//				__res, err := databricks.NewGrants(ctx, fmt.Sprintf("things-%v", key0), &databricks.GrantsArgs{
-//					Table: pulumi.String(val0),
-//					Grants: databricks.GrantsGrantArray{
-//						&databricks.GrantsGrantArgs{
-//							Principal: pulumi.String("sensitive"),
-//							Privileges: pulumi.StringArray{
-//								pulumi.String("SELECT"),
-//								pulumi.String("MODIFY"),
-//							},
-//						},
-//					},
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				thingsGrants = append(thingsGrants, __res)
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * Schema to manage schemas within Unity Catalog.
-// * Catalog to manage catalogs within Unity Catalog.
 func GetTables(ctx *pulumi.Context, args *GetTablesArgs, opts ...pulumi.InvokeOption) (*GetTablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTablesResult
@@ -83,20 +23,16 @@ func GetTables(ctx *pulumi.Context, args *GetTablesArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getTables.
 type GetTablesArgs struct {
-	// Name of databricks_catalog
-	CatalogName string `pulumi:"catalogName"`
-	// set of Table full names: *`catalog`.`schema`.`table`*
-	Ids []string `pulumi:"ids"`
-	// Name of databricks_schema
-	SchemaName string `pulumi:"schemaName"`
+	CatalogName string   `pulumi:"catalogName"`
+	Ids         []string `pulumi:"ids"`
+	SchemaName  string   `pulumi:"schemaName"`
 }
 
 // A collection of values returned by getTables.
 type GetTablesResult struct {
 	CatalogName string `pulumi:"catalogName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// set of Table full names: *`catalog`.`schema`.`table`*
+	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	SchemaName string   `pulumi:"schemaName"`
 }
@@ -112,12 +48,9 @@ func GetTablesOutput(ctx *pulumi.Context, args GetTablesOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getTables.
 type GetTablesOutputArgs struct {
-	// Name of databricks_catalog
-	CatalogName pulumi.StringInput `pulumi:"catalogName"`
-	// set of Table full names: *`catalog`.`schema`.`table`*
-	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// Name of databricks_schema
-	SchemaName pulumi.StringInput `pulumi:"schemaName"`
+	CatalogName pulumi.StringInput      `pulumi:"catalogName"`
+	Ids         pulumi.StringArrayInput `pulumi:"ids"`
+	SchemaName  pulumi.StringInput      `pulumi:"schemaName"`
 }
 
 func (GetTablesOutputArgs) ElementType() reflect.Type {
@@ -148,7 +81,6 @@ func (o GetTablesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// set of Table full names: *`catalog`.`schema`.`table`*
 func (o GetTablesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTablesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

@@ -13,20 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
     private @Nullable Integer embeddingDimension;
-    /**
-     * @return Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-     * 
-     */
     private @Nullable String name;
 
     private VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn() {}
     public Optional<Integer> embeddingDimension() {
         return Optional.ofNullable(this.embeddingDimension);
     }
-    /**
-     * @return Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationConfigEmail {
-    /**
-     * @return The list of email addresses to send notifications to.
-     * 
-     */
     private @Nullable List<String> addresses;
 
     private NotificationDestinationConfigEmail() {}
-    /**
-     * @return The list of email addresses to send notifications to.
-     * 
-     */
     public List<String> addresses() {
         return this.addresses == null ? List.of() : this.addresses;
     }

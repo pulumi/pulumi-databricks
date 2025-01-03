@@ -16,17 +16,9 @@ public final class DbfsFileArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DbfsFileArgs Empty = new DbfsFileArgs();
 
-    /**
-     * Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
-     * 
-     */
     @Import(name="contentBase64")
     private @Nullable Output<String> contentBase64;
 
-    /**
-     * @return Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
-     * 
-     */
     public Optional<Output<String>> contentBase64() {
         return Optional.ofNullable(this.contentBase64);
     }
@@ -38,32 +30,16 @@ public final class DbfsFileArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.md5);
     }
 
-    /**
-     * The path of the file in which you wish to save.
-     * 
-     */
     @Import(name="path", required=true)
     private Output<String> path;
 
-    /**
-     * @return The path of the file in which you wish to save.
-     * 
-     */
     public Output<String> path() {
         return this.path;
     }
 
-    /**
-     * The full absolute path to the file. Conflicts with `content_base64`.
-     * 
-     */
     @Import(name="source")
     private @Nullable Output<String> source;
 
-    /**
-     * @return The full absolute path to the file. Conflicts with `content_base64`.
-     * 
-     */
     public Optional<Output<String>> source() {
         return Optional.ofNullable(this.source);
     }
@@ -95,23 +71,11 @@ public final class DbfsFileArgs extends com.pulumi.resources.ResourceArgs {
             $ = new DbfsFileArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param contentBase64 Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
-         * 
-         * @return builder
-         * 
-         */
         public Builder contentBase64(@Nullable Output<String> contentBase64) {
             $.contentBase64 = contentBase64;
             return this;
         }
 
-        /**
-         * @param contentBase64 Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
-         * 
-         * @return builder
-         * 
-         */
         public Builder contentBase64(String contentBase64) {
             return contentBase64(Output.of(contentBase64));
         }
@@ -125,44 +89,20 @@ public final class DbfsFileArgs extends com.pulumi.resources.ResourceArgs {
             return md5(Output.of(md5));
         }
 
-        /**
-         * @param path The path of the file in which you wish to save.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
-        /**
-         * @param path The path of the file in which you wish to save.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
-        /**
-         * @param source The full absolute path to the file. Conflicts with `content_base64`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder source(@Nullable Output<String> source) {
             $.source = source;
             return this;
         }
 
-        /**
-         * @param source The full absolute path to the file. Conflicts with `content_base64`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder source(String source) {
             return source(Output.of(source));
         }

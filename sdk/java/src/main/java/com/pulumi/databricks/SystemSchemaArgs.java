@@ -15,32 +15,16 @@ public final class SystemSchemaArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SystemSchemaArgs Empty = new SystemSchemaArgs();
 
-    /**
-     * name of the system schema.
-     * 
-     */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
-    /**
-     * @return name of the system schema.
-     * 
-     */
     public Optional<Output<String>> schema() {
         return Optional.ofNullable(this.schema);
     }
 
-    /**
-     * The current state of enablement for the system schema.
-     * 
-     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
-    /**
-     * @return The current state of enablement for the system schema.
-     * 
-     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
@@ -70,44 +54,20 @@ public final class SystemSchemaArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SystemSchemaArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param schema name of the system schema.
-         * 
-         * @return builder
-         * 
-         */
         public Builder schema(@Nullable Output<String> schema) {
             $.schema = schema;
             return this;
         }
 
-        /**
-         * @param schema name of the system schema.
-         * 
-         * @return builder
-         * 
-         */
         public Builder schema(String schema) {
             return schema(Output.of(schema));
         }
 
-        /**
-         * @param state The current state of enablement for the system schema.
-         * 
-         * @return builder
-         * 
-         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
-        /**
-         * @param state The current state of enablement for the system schema.
-         * 
-         * @return builder
-         * 
-         */
         public Builder state(String state) {
             return state(Output.of(state));
         }

@@ -17,32 +17,16 @@ public final class GlobalInitScriptArgs extends com.pulumi.resources.ResourceArg
 
     public static final GlobalInitScriptArgs Empty = new GlobalInitScriptArgs();
 
-    /**
-     * The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
-     * 
-     */
     @Import(name="contentBase64")
     private @Nullable Output<String> contentBase64;
 
-    /**
-     * @return The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
-     * 
-     */
     public Optional<Output<String>> contentBase64() {
         return Optional.ofNullable(this.contentBase64);
     }
 
-    /**
-     * specifies if the script is enabled for execution, or not
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @return specifies if the script is enabled for execution, or not
-     * 
-     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -54,47 +38,23 @@ public final class GlobalInitScriptArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.md5);
     }
 
-    /**
-     * the name of the script.  It should be unique
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return the name of the script.  It should be unique
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
-     * 
-     */
     @Import(name="position")
     private @Nullable Output<Integer> position;
 
-    /**
-     * @return the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
-     * 
-     */
     public Optional<Output<Integer>> position() {
         return Optional.ofNullable(this.position);
     }
 
-    /**
-     * Path to script&#39;s source code on local filesystem. Conflicts with `content_base64`
-     * 
-     */
     @Import(name="source")
     private @Nullable Output<String> source;
 
-    /**
-     * @return Path to script&#39;s source code on local filesystem. Conflicts with `content_base64`
-     * 
-     */
     public Optional<Output<String>> source() {
         return Optional.ofNullable(this.source);
     }
@@ -128,44 +88,20 @@ public final class GlobalInitScriptArgs extends com.pulumi.resources.ResourceArg
             $ = new GlobalInitScriptArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param contentBase64 The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
-         * 
-         * @return builder
-         * 
-         */
         public Builder contentBase64(@Nullable Output<String> contentBase64) {
             $.contentBase64 = contentBase64;
             return this;
         }
 
-        /**
-         * @param contentBase64 The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
-         * 
-         * @return builder
-         * 
-         */
         public Builder contentBase64(String contentBase64) {
             return contentBase64(Output.of(contentBase64));
         }
 
-        /**
-         * @param enabled specifies if the script is enabled for execution, or not
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled specifies if the script is enabled for execution, or not
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
@@ -179,65 +115,29 @@ public final class GlobalInitScriptArgs extends com.pulumi.resources.ResourceArg
             return md5(Output.of(md5));
         }
 
-        /**
-         * @param name the name of the script.  It should be unique
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name the name of the script.  It should be unique
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param position the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
-         * 
-         * @return builder
-         * 
-         */
         public Builder position(@Nullable Output<Integer> position) {
             $.position = position;
             return this;
         }
 
-        /**
-         * @param position the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
-         * 
-         * @return builder
-         * 
-         */
         public Builder position(Integer position) {
             return position(Output.of(position));
         }
 
-        /**
-         * @param source Path to script&#39;s source code on local filesystem. Conflicts with `content_base64`
-         * 
-         * @return builder
-         * 
-         */
         public Builder source(@Nullable Output<String> source) {
             $.source = source;
             return this;
         }
 
-        /**
-         * @param source Path to script&#39;s source code on local filesystem. Conflicts with `content_base64`
-         * 
-         * @return builder
-         * 
-         */
         public Builder source(String source) {
             return source(Output.of(source));
         }

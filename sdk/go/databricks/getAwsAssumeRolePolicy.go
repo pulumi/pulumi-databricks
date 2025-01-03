@@ -11,85 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source constructs necessary AWS STS assume role policy for you.
-//
-// ## Example Usage
-//
-// End-to-end example of provisioning Cross-account IAM role with MwsCredentials and aws_iam_role:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
-//			databricksAccountId := cfg.RequireObject("databricksAccountId")
-//			this, err := databricks.GetAwsCrossAccountPolicy(ctx, &databricks.GetAwsCrossAccountPolicyArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			crossAccountPolicy, err := iam.NewPolicy(ctx, "cross_account_policy", &iam.PolicyArgs{
-//				Name:   pulumi.Sprintf("%v-crossaccount-iam-policy", prefix),
-//				Policy: pulumi.String(this.Json),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			thisGetAwsAssumeRolePolicy, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
-//				ExternalId: databricksAccountId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			crossAccount, err := iam.NewRole(ctx, "cross_account", &iam.RoleArgs{
-//				Name:             pulumi.Sprintf("%v-crossaccount-iam-role", prefix),
-//				AssumeRolePolicy: pulumi.String(thisGetAwsAssumeRolePolicy.Json),
-//				Description:      pulumi.String("Grants Databricks full access to VPC resources"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewRolePolicyAttachment(ctx, "cross_account", &iam.RolePolicyAttachmentArgs{
-//				PolicyArn: crossAccountPolicy.Arn,
-//				Role:      crossAccount.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// required only in case of multi-workspace setup
-//			_, err = databricks.NewMwsCredentials(ctx, "this", &databricks.MwsCredentialsArgs{
-//				AccountId:       pulumi.Any(databricksAccountId),
-//				CredentialsName: pulumi.Sprintf("%v-creds", prefix),
-//				RoleArn:         crossAccount.Arn,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide
-// * getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-// * getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
 func GetAwsAssumeRolePolicy(ctx *pulumi.Context, args *GetAwsAssumeRolePolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsAssumeRolePolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAwsAssumeRolePolicyResult
@@ -102,21 +23,22 @@ func GetAwsAssumeRolePolicy(ctx *pulumi.Context, args *GetAwsAssumeRolePolicyArg
 
 // A collection of arguments for invoking getAwsAssumeRolePolicy.
 type GetAwsAssumeRolePolicyArgs struct {
+	AwsPartition *string `pulumi:"awsPartition"`
+	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId *string `pulumi:"databricksAccountId"`
-	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-	ExternalId string `pulumi:"externalId"`
-	// Either or not this assume role policy should be created for usage log delivery. Defaults to false.
-	ForLogDelivery *bool `pulumi:"forLogDelivery"`
+	ExternalId          string  `pulumi:"externalId"`
+	ForLogDelivery      *bool   `pulumi:"forLogDelivery"`
 }
 
 // A collection of values returned by getAwsAssumeRolePolicy.
 type GetAwsAssumeRolePolicyResult struct {
+	AwsPartition *string `pulumi:"awsPartition"`
+	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId *string `pulumi:"databricksAccountId"`
 	ExternalId          string  `pulumi:"externalId"`
 	ForLogDelivery      *bool   `pulumi:"forLogDelivery"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// AWS IAM Policy JSON document
+	Id   string `pulumi:"id"`
 	Json string `pulumi:"json"`
 }
 
@@ -131,11 +53,11 @@ func GetAwsAssumeRolePolicyOutput(ctx *pulumi.Context, args GetAwsAssumeRolePoli
 
 // A collection of arguments for invoking getAwsAssumeRolePolicy.
 type GetAwsAssumeRolePolicyOutputArgs struct {
+	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
+	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId pulumi.StringPtrInput `pulumi:"databricksAccountId"`
-	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-	ExternalId pulumi.StringInput `pulumi:"externalId"`
-	// Either or not this assume role policy should be created for usage log delivery. Defaults to false.
-	ForLogDelivery pulumi.BoolPtrInput `pulumi:"forLogDelivery"`
+	ExternalId          pulumi.StringInput    `pulumi:"externalId"`
+	ForLogDelivery      pulumi.BoolPtrInput   `pulumi:"forLogDelivery"`
 }
 
 func (GetAwsAssumeRolePolicyOutputArgs) ElementType() reflect.Type {
@@ -157,6 +79,11 @@ func (o GetAwsAssumeRolePolicyResultOutput) ToGetAwsAssumeRolePolicyResultOutput
 	return o
 }
 
+func (o GetAwsAssumeRolePolicyResultOutput) AwsPartition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsAssumeRolePolicyResult) *string { return v.AwsPartition }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: databricks_account_id will be will be removed in the next major release.
 func (o GetAwsAssumeRolePolicyResultOutput) DatabricksAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAwsAssumeRolePolicyResult) *string { return v.DatabricksAccountId }).(pulumi.StringPtrOutput)
 }
@@ -174,7 +101,6 @@ func (o GetAwsAssumeRolePolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsAssumeRolePolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// AWS IAM Policy JSON document
 func (o GetAwsAssumeRolePolicyResultOutput) Json() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsAssumeRolePolicyResult) string { return v.Json }).(pulumi.StringOutput)
 }

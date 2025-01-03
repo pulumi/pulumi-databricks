@@ -22,122 +22,58 @@ public final class QueryParameterArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final QueryParameterArgs Empty = new QueryParameterArgs();
 
-    /**
-     * Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
-     * 
-     */
     @Import(name="dateRangeValue")
     private @Nullable Output<QueryParameterDateRangeValueArgs> dateRangeValue;
 
-    /**
-     * @return Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
-     * 
-     */
     public Optional<Output<QueryParameterDateRangeValueArgs>> dateRangeValue() {
         return Optional.ofNullable(this.dateRangeValue);
     }
 
-    /**
-     * Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
-     * 
-     */
     @Import(name="dateValue")
     private @Nullable Output<QueryParameterDateValueArgs> dateValue;
 
-    /**
-     * @return Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
-     * 
-     */
     public Optional<Output<QueryParameterDateValueArgs>> dateValue() {
         return Optional.ofNullable(this.dateValue);
     }
 
-    /**
-     * Dropdown parameter value. Consists of following attributes:
-     * 
-     */
     @Import(name="enumValue")
     private @Nullable Output<QueryParameterEnumValueArgs> enumValue;
 
-    /**
-     * @return Dropdown parameter value. Consists of following attributes:
-     * 
-     */
     public Optional<Output<QueryParameterEnumValueArgs>> enumValue() {
         return Optional.ofNullable(this.enumValue);
     }
 
-    /**
-     * Literal parameter marker that appears between double curly braces in the query text.
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return Literal parameter marker that appears between double curly braces in the query text.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * Numeric parameter value. Consists of following attributes:
-     * 
-     */
     @Import(name="numericValue")
     private @Nullable Output<QueryParameterNumericValueArgs> numericValue;
 
-    /**
-     * @return Numeric parameter value. Consists of following attributes:
-     * 
-     */
     public Optional<Output<QueryParameterNumericValueArgs>> numericValue() {
         return Optional.ofNullable(this.numericValue);
     }
 
-    /**
-     * Query-based dropdown parameter value. Consists of following attributes:
-     * 
-     */
     @Import(name="queryBackedValue")
     private @Nullable Output<QueryParameterQueryBackedValueArgs> queryBackedValue;
 
-    /**
-     * @return Query-based dropdown parameter value. Consists of following attributes:
-     * 
-     */
     public Optional<Output<QueryParameterQueryBackedValueArgs>> queryBackedValue() {
         return Optional.ofNullable(this.queryBackedValue);
     }
 
-    /**
-     * Text parameter value. Consists of following attributes:
-     * 
-     */
     @Import(name="textValue")
     private @Nullable Output<QueryParameterTextValueArgs> textValue;
 
-    /**
-     * @return Text parameter value. Consists of following attributes:
-     * 
-     */
     public Optional<Output<QueryParameterTextValueArgs>> textValue() {
         return Optional.ofNullable(this.textValue);
     }
 
-    /**
-     * Text displayed in the user-facing parameter widget in the UI.
-     * 
-     */
     @Import(name="title")
     private @Nullable Output<String> title;
 
-    /**
-     * @return Text displayed in the user-facing parameter widget in the UI.
-     * 
-     */
     public Optional<Output<String>> title() {
         return Optional.ofNullable(this.title);
     }
@@ -173,170 +109,74 @@ public final class QueryParameterArgs extends com.pulumi.resources.ResourceArgs 
             $ = new QueryParameterArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param dateRangeValue Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
-         * 
-         * @return builder
-         * 
-         */
         public Builder dateRangeValue(@Nullable Output<QueryParameterDateRangeValueArgs> dateRangeValue) {
             $.dateRangeValue = dateRangeValue;
             return this;
         }
 
-        /**
-         * @param dateRangeValue Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
-         * 
-         * @return builder
-         * 
-         */
         public Builder dateRangeValue(QueryParameterDateRangeValueArgs dateRangeValue) {
             return dateRangeValue(Output.of(dateRangeValue));
         }
 
-        /**
-         * @param dateValue Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
-         * 
-         * @return builder
-         * 
-         */
         public Builder dateValue(@Nullable Output<QueryParameterDateValueArgs> dateValue) {
             $.dateValue = dateValue;
             return this;
         }
 
-        /**
-         * @param dateValue Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
-         * 
-         * @return builder
-         * 
-         */
         public Builder dateValue(QueryParameterDateValueArgs dateValue) {
             return dateValue(Output.of(dateValue));
         }
 
-        /**
-         * @param enumValue Dropdown parameter value. Consists of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder enumValue(@Nullable Output<QueryParameterEnumValueArgs> enumValue) {
             $.enumValue = enumValue;
             return this;
         }
 
-        /**
-         * @param enumValue Dropdown parameter value. Consists of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder enumValue(QueryParameterEnumValueArgs enumValue) {
             return enumValue(Output.of(enumValue));
         }
 
-        /**
-         * @param name Literal parameter marker that appears between double curly braces in the query text.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Literal parameter marker that appears between double curly braces in the query text.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param numericValue Numeric parameter value. Consists of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder numericValue(@Nullable Output<QueryParameterNumericValueArgs> numericValue) {
             $.numericValue = numericValue;
             return this;
         }
 
-        /**
-         * @param numericValue Numeric parameter value. Consists of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder numericValue(QueryParameterNumericValueArgs numericValue) {
             return numericValue(Output.of(numericValue));
         }
 
-        /**
-         * @param queryBackedValue Query-based dropdown parameter value. Consists of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder queryBackedValue(@Nullable Output<QueryParameterQueryBackedValueArgs> queryBackedValue) {
             $.queryBackedValue = queryBackedValue;
             return this;
         }
 
-        /**
-         * @param queryBackedValue Query-based dropdown parameter value. Consists of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder queryBackedValue(QueryParameterQueryBackedValueArgs queryBackedValue) {
             return queryBackedValue(Output.of(queryBackedValue));
         }
 
-        /**
-         * @param textValue Text parameter value. Consists of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder textValue(@Nullable Output<QueryParameterTextValueArgs> textValue) {
             $.textValue = textValue;
             return this;
         }
 
-        /**
-         * @param textValue Text parameter value. Consists of following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder textValue(QueryParameterTextValueArgs textValue) {
             return textValue(Output.of(textValue));
         }
 
-        /**
-         * @param title Text displayed in the user-facing parameter widget in the UI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder title(@Nullable Output<String> title) {
             $.title = title;
             return this;
         }
 
-        /**
-         * @param title Text displayed in the user-facing parameter widget in the UI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder title(String title) {
             return title(Output.of(title));
         }

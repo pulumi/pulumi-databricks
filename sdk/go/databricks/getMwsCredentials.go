@@ -11,49 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// Lists all MwsCredentials in Databricks Account.
-//
-// > **Note** `accountId` provider configuration property is required for this resource to work.
-//
-// ## Example Usage
-//
-// # Listing all credentials in Databricks Account
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := databricks.LookupMwsCredentials(ctx, &databricks.LookupMwsCredentialsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("allMwsCredentials", all.Ids)
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * Provisioning Databricks on AWS guide.
-// * MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
-// * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
-// * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
-// * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-// * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
 func LookupMwsCredentials(ctx *pulumi.Context, args *LookupMwsCredentialsArgs, opts ...pulumi.InvokeOption) (*LookupMwsCredentialsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMwsCredentialsResult
@@ -66,15 +23,13 @@ func LookupMwsCredentials(ctx *pulumi.Context, args *LookupMwsCredentialsArgs, o
 
 // A collection of arguments for invoking getMwsCredentials.
 type LookupMwsCredentialsArgs struct {
-	// name-to-id map for all of the credentials in the account
 	Ids map[string]string `pulumi:"ids"`
 }
 
 // A collection of values returned by getMwsCredentials.
 type LookupMwsCredentialsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// name-to-id map for all of the credentials in the account
+	Id  string            `pulumi:"id"`
 	Ids map[string]string `pulumi:"ids"`
 }
 
@@ -89,7 +44,6 @@ func LookupMwsCredentialsOutput(ctx *pulumi.Context, args LookupMwsCredentialsOu
 
 // A collection of arguments for invoking getMwsCredentials.
 type LookupMwsCredentialsOutputArgs struct {
-	// name-to-id map for all of the credentials in the account
 	Ids pulumi.StringMapInput `pulumi:"ids"`
 }
 
@@ -117,7 +71,6 @@ func (o LookupMwsCredentialsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMwsCredentialsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// name-to-id map for all of the credentials in the account
 func (o LookupMwsCredentialsResultOutput) Ids() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMwsCredentialsResult) map[string]string { return v.Ids }).(pulumi.StringMapOutput)
 }

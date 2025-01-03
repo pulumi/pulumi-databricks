@@ -12,153 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// These resources are invoked in the workspace context.
-//
-// ## Example Usage
-//
-// In workspace context, adding account-level user to a workspace:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Use the account provider
-//			me, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
-//				UserName: pulumi.StringRef("me@example.com"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissionAssignment(ctx, "add_user", &databricks.PermissionAssignmentArgs{
-//				PrincipalId: pulumi.String(me.Id),
-//				Permissions: pulumi.StringArray{
-//					pulumi.String("USER"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// In workspace context, adding account-level service principal to a workspace:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Use the account provider
-//			sp, err := databricks.LookupServicePrincipal(ctx, &databricks.LookupServicePrincipalArgs{
-//				DisplayName: pulumi.StringRef("Automation-only SP"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissionAssignment(ctx, "add_admin_spn", &databricks.PermissionAssignmentArgs{
-//				PrincipalId: pulumi.String(sp.Id),
-//				Permissions: pulumi.StringArray{
-//					pulumi.String("ADMIN"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// In workspace context, adding account-level group to a workspace:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Use the account provider
-//			accountLevel, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
-//				DisplayName: "example-group",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// Use the workspace provider
-//			_, err = databricks.NewPermissionAssignment(ctx, "this", &databricks.PermissionAssignmentArgs{
-//				PrincipalId: pulumi.String(accountLevel.Id),
-//				Permissions: pulumi.StringArray{
-//					pulumi.String("USER"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			workspaceLevel, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
-//				DisplayName: "example-group",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("databricksGroupId", workspaceLevel.Id)
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-// * Group data to retrieve information about Group members, entitlements and instance profiles.
-// * GroupMember to attach users and groups as group members.
-// * MwsPermissionAssignment to manage permission assignment from an account context
-//
-// ## Import
-//
-// The resource `databricks_permission_assignment` can be imported using the principal id
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this principal_id
-// ```
 type PermissionAssignment struct {
 	pulumi.CustomResourceState
 
-	// The list of workspace permissions to assign to the principal:
-	// * `"USER"` - Can access the workspace with basic privileges.
-	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
-	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
-	PrincipalId pulumi.StringOutput `pulumi:"principalId"`
+	PrincipalId pulumi.StringOutput      `pulumi:"principalId"`
 }
 
 // NewPermissionAssignment registers a new resource with the given unique name, arguments, and options.
@@ -197,20 +55,12 @@ func GetPermissionAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PermissionAssignment resources.
 type permissionAssignmentState struct {
-	// The list of workspace permissions to assign to the principal:
-	// * `"USER"` - Can access the workspace with basic privileges.
-	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions []string `pulumi:"permissions"`
-	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
-	PrincipalId *string `pulumi:"principalId"`
+	PrincipalId *string  `pulumi:"principalId"`
 }
 
 type PermissionAssignmentState struct {
-	// The list of workspace permissions to assign to the principal:
-	// * `"USER"` - Can access the workspace with basic privileges.
-	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions pulumi.StringArrayInput
-	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
 	PrincipalId pulumi.StringPtrInput
 }
 
@@ -219,21 +69,13 @@ func (PermissionAssignmentState) ElementType() reflect.Type {
 }
 
 type permissionAssignmentArgs struct {
-	// The list of workspace permissions to assign to the principal:
-	// * `"USER"` - Can access the workspace with basic privileges.
-	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions []string `pulumi:"permissions"`
-	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
-	PrincipalId string `pulumi:"principalId"`
+	PrincipalId string   `pulumi:"principalId"`
 }
 
 // The set of arguments for constructing a PermissionAssignment resource.
 type PermissionAssignmentArgs struct {
-	// The list of workspace permissions to assign to the principal:
-	// * `"USER"` - Can access the workspace with basic privileges.
-	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions pulumi.StringArrayInput
-	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
 	PrincipalId pulumi.StringInput
 }
 
@@ -324,14 +166,10 @@ func (o PermissionAssignmentOutput) ToPermissionAssignmentOutputWithContext(ctx 
 	return o
 }
 
-// The list of workspace permissions to assign to the principal:
-// * `"USER"` - Can access the workspace with basic privileges.
-// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 func (o PermissionAssignmentOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PermissionAssignment) pulumi.StringArrayOutput { return v.Permissions }).(pulumi.StringArrayOutput)
 }
 
-// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
 func (o PermissionAssignmentOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PermissionAssignment) pulumi.StringOutput { return v.PrincipalId }).(pulumi.StringOutput)
 }

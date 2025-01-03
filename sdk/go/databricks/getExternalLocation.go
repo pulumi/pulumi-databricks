@@ -11,45 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This data source can only be used with a workspace-level provider!
-//
-// Retrieves details about a ExternalLocation that were created by Pulumi or manually.
-//
-// ## Example Usage
-//
-// # Getting details of an existing external location in the metastore
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.LookupExternalLocation(ctx, &databricks.LookupExternalLocationArgs{
-//				Name: "this",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("createdBy", this.ExternalLocationInfo.CreatedBy)
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * getExternalLocations to get names of all external locations
-// * ExternalLocation to manage external locations within Unity Catalog.
 func LookupExternalLocation(ctx *pulumi.Context, args *LookupExternalLocationArgs, opts ...pulumi.InvokeOption) (*LookupExternalLocationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupExternalLocationResult
@@ -62,21 +23,16 @@ func LookupExternalLocation(ctx *pulumi.Context, args *LookupExternalLocationArg
 
 // A collection of arguments for invoking getExternalLocation.
 type LookupExternalLocationArgs struct {
-	// array of objects with information about external location:
 	ExternalLocationInfo *GetExternalLocationExternalLocationInfo `pulumi:"externalLocationInfo"`
-	// external location ID - same as name.
-	Id *string `pulumi:"id"`
-	// The name of the external location
-	Name string `pulumi:"name"`
+	Id                   *string                                  `pulumi:"id"`
+	Name                 string                                   `pulumi:"name"`
 }
 
 // A collection of values returned by getExternalLocation.
 type LookupExternalLocationResult struct {
-	// array of objects with information about external location:
 	ExternalLocationInfo GetExternalLocationExternalLocationInfo `pulumi:"externalLocationInfo"`
-	// external location ID - same as name.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id                   string                                  `pulumi:"id"`
+	Name                 string                                  `pulumi:"name"`
 }
 
 func LookupExternalLocationOutput(ctx *pulumi.Context, args LookupExternalLocationOutputArgs, opts ...pulumi.InvokeOption) LookupExternalLocationResultOutput {
@@ -90,12 +46,9 @@ func LookupExternalLocationOutput(ctx *pulumi.Context, args LookupExternalLocati
 
 // A collection of arguments for invoking getExternalLocation.
 type LookupExternalLocationOutputArgs struct {
-	// array of objects with information about external location:
 	ExternalLocationInfo GetExternalLocationExternalLocationInfoPtrInput `pulumi:"externalLocationInfo"`
-	// external location ID - same as name.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the external location
-	Name pulumi.StringInput `pulumi:"name"`
+	Id                   pulumi.StringPtrInput                           `pulumi:"id"`
+	Name                 pulumi.StringInput                              `pulumi:"name"`
 }
 
 func (LookupExternalLocationOutputArgs) ElementType() reflect.Type {
@@ -117,14 +70,12 @@ func (o LookupExternalLocationResultOutput) ToLookupExternalLocationResultOutput
 	return o
 }
 
-// array of objects with information about external location:
 func (o LookupExternalLocationResultOutput) ExternalLocationInfo() GetExternalLocationExternalLocationInfoOutput {
 	return o.ApplyT(func(v LookupExternalLocationResult) GetExternalLocationExternalLocationInfo {
 		return v.ExternalLocationInfo
 	}).(GetExternalLocationExternalLocationInfoOutput)
 }
 
-// external location ID - same as name.
 func (o LookupExternalLocationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalLocationResult) string { return v.Id }).(pulumi.StringOutput)
 }

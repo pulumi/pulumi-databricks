@@ -11,60 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This data source can only be used with a workspace-level provider!
-//
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
-//
-// ## Example Usage
-//
-// Read  on a specific catalog `test`:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := databricks.LookupCatalog(ctx, &databricks.LookupCatalogArgs{
-//				Name: "test",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewGrants(ctx, "things", &databricks.GrantsArgs{
-//				Catalog: pulumi.String(test.Name),
-//				Grants: databricks.GrantsGrantArray{
-//					&databricks.GrantsGrantArgs{
-//						Principal: pulumi.String("sensitive"),
-//						Privileges: pulumi.StringArray{
-//							pulumi.String("USE_CATALOG"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * Grant to manage grants within Unity Catalog.
-// * getCatalogs to list all catalogs within Unity Catalog metastore.
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCatalogResult
@@ -77,22 +23,16 @@ func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getCatalog.
 type LookupCatalogArgs struct {
-	// the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
 	CatalogInfo *GetCatalogCatalogInfo `pulumi:"catalogInfo"`
-	// same as the `name`
-	Id *string `pulumi:"id"`
-	// name of the catalog
-	Name string `pulumi:"name"`
+	Id          *string                `pulumi:"id"`
+	Name        string                 `pulumi:"name"`
 }
 
 // A collection of values returned by getCatalog.
 type LookupCatalogResult struct {
-	// the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
 	CatalogInfo GetCatalogCatalogInfo `pulumi:"catalogInfo"`
-	// same as the `name`
-	Id string `pulumi:"id"`
-	// Name of the catalog
-	Name string `pulumi:"name"`
+	Id          string                `pulumi:"id"`
+	Name        string                `pulumi:"name"`
 }
 
 func LookupCatalogOutput(ctx *pulumi.Context, args LookupCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupCatalogResultOutput {
@@ -106,12 +46,9 @@ func LookupCatalogOutput(ctx *pulumi.Context, args LookupCatalogOutputArgs, opts
 
 // A collection of arguments for invoking getCatalog.
 type LookupCatalogOutputArgs struct {
-	// the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
 	CatalogInfo GetCatalogCatalogInfoPtrInput `pulumi:"catalogInfo"`
-	// same as the `name`
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// name of the catalog
-	Name pulumi.StringInput `pulumi:"name"`
+	Id          pulumi.StringPtrInput         `pulumi:"id"`
+	Name        pulumi.StringInput            `pulumi:"name"`
 }
 
 func (LookupCatalogOutputArgs) ElementType() reflect.Type {
@@ -133,17 +70,14 @@ func (o LookupCatalogResultOutput) ToLookupCatalogResultOutputWithContext(ctx co
 	return o
 }
 
-// the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
 func (o LookupCatalogResultOutput) CatalogInfo() GetCatalogCatalogInfoOutput {
 	return o.ApplyT(func(v LookupCatalogResult) GetCatalogCatalogInfo { return v.CatalogInfo }).(GetCatalogCatalogInfoOutput)
 }
 
-// same as the `name`
 func (o LookupCatalogResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of the catalog
 func (o LookupCatalogResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.Name }).(pulumi.StringOutput)
 }

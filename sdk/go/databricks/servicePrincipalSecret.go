@@ -12,53 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > This resource can only be used with an account-level provider.
-//
-// With this resource you can create a secret for a given [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html).
-//
-// This secret can be used to configure the Databricks Pulumi Provider to authenticate with the service principal. See Authenticating with service principal.
-//
-// Additionally, the secret can be used to request OAuth tokens for the service principal, which can be used to authenticate to Databricks REST APIs. See [Authentication using OAuth tokens for service principals](https://docs.databricks.com/dev-tools/authentication-oauth.html).
-//
-// ## Example Usage
-//
-// # Create service principal secret
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewServicePrincipalSecret(ctx, "terraform_sp", &databricks.ServicePrincipalSecretArgs{
-//				ServicePrincipalId: pulumi.Any(this.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) in Databricks
 type ServicePrincipalSecret struct {
 	pulumi.CustomResourceState
 
-	// Generated secret for the service principal
-	Secret pulumi.StringOutput `pulumi:"secret"`
-	// ID of the ServicePrincipal (not application ID).
+	Secret             pulumi.StringOutput `pulumi:"secret"`
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 	Status             pulumi.StringOutput `pulumi:"status"`
 }
@@ -103,17 +60,13 @@ func GetServicePrincipalSecret(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipalSecret resources.
 type servicePrincipalSecretState struct {
-	// Generated secret for the service principal
-	Secret *string `pulumi:"secret"`
-	// ID of the ServicePrincipal (not application ID).
+	Secret             *string `pulumi:"secret"`
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	Status             *string `pulumi:"status"`
 }
 
 type ServicePrincipalSecretState struct {
-	// Generated secret for the service principal
-	Secret pulumi.StringPtrInput
-	// ID of the ServicePrincipal (not application ID).
+	Secret             pulumi.StringPtrInput
 	ServicePrincipalId pulumi.StringPtrInput
 	Status             pulumi.StringPtrInput
 }
@@ -123,18 +76,14 @@ func (ServicePrincipalSecretState) ElementType() reflect.Type {
 }
 
 type servicePrincipalSecretArgs struct {
-	// Generated secret for the service principal
-	Secret *string `pulumi:"secret"`
-	// ID of the ServicePrincipal (not application ID).
+	Secret             *string `pulumi:"secret"`
 	ServicePrincipalId string  `pulumi:"servicePrincipalId"`
 	Status             *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a ServicePrincipalSecret resource.
 type ServicePrincipalSecretArgs struct {
-	// Generated secret for the service principal
-	Secret pulumi.StringPtrInput
-	// ID of the ServicePrincipal (not application ID).
+	Secret             pulumi.StringPtrInput
 	ServicePrincipalId pulumi.StringInput
 	Status             pulumi.StringPtrInput
 }
@@ -226,12 +175,10 @@ func (o ServicePrincipalSecretOutput) ToServicePrincipalSecretOutputWithContext(
 	return o
 }
 
-// Generated secret for the service principal
 func (o ServicePrincipalSecretOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }
 
-// ID of the ServicePrincipal (not application ID).
 func (o ServicePrincipalSecretOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalSecret) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }

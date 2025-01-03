@@ -11,20 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetJobJobSettingsSettingsParameter {
     private String default_;
-    /**
-     * @return the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     private String name;
 
     private GetJobJobSettingsSettingsParameter() {}
     public String default_() {
         return this.default_;
     }
-    /**
-     * @return the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     public String name() {
         return this.name;
     }

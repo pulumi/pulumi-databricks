@@ -12,37 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StorageCredentialAzureManagedIdentity {
-    /**
-     * @return The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-     * 
-     */
     private String accessConnectorId;
     private @Nullable String credentialId;
-    /**
-     * @return The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-     * 
-     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
-     * 
-     */
     private @Nullable String managedIdentityId;
 
     private StorageCredentialAzureManagedIdentity() {}
-    /**
-     * @return The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-     * 
-     */
     public String accessConnectorId() {
         return this.accessConnectorId;
     }
     public Optional<String> credentialId() {
         return Optional.ofNullable(this.credentialId);
     }
-    /**
-     * @return The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-     * 
-     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
-     * 
-     */
     public Optional<String> managedIdentityId() {
         return Optional.ofNullable(this.managedIdentityId);
     }

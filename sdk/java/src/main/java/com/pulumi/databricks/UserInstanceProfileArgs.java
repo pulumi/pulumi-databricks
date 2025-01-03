@@ -14,32 +14,16 @@ public final class UserInstanceProfileArgs extends com.pulumi.resources.Resource
 
     public static final UserInstanceProfileArgs Empty = new UserInstanceProfileArgs();
 
-    /**
-     * This is the id of the instance profile resource.
-     * 
-     */
     @Import(name="instanceProfileId", required=true)
     private Output<String> instanceProfileId;
 
-    /**
-     * @return This is the id of the instance profile resource.
-     * 
-     */
     public Output<String> instanceProfileId() {
         return this.instanceProfileId;
     }
 
-    /**
-     * This is the id of the user resource.
-     * 
-     */
     @Import(name="userId", required=true)
     private Output<String> userId;
 
-    /**
-     * @return This is the id of the user resource.
-     * 
-     */
     public Output<String> userId() {
         return this.userId;
     }
@@ -69,44 +53,20 @@ public final class UserInstanceProfileArgs extends com.pulumi.resources.Resource
             $ = new UserInstanceProfileArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param instanceProfileId This is the id of the instance profile resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceProfileId(Output<String> instanceProfileId) {
             $.instanceProfileId = instanceProfileId;
             return this;
         }
 
-        /**
-         * @param instanceProfileId This is the id of the instance profile resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceProfileId(String instanceProfileId) {
             return instanceProfileId(Output.of(instanceProfileId));
         }
 
-        /**
-         * @param userId This is the id of the user resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userId(Output<String> userId) {
             $.userId = userId;
             return this;
         }
 
-        /**
-         * @param userId This is the id of the user resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userId(String userId) {
             return userId(Output.of(userId));
         }

@@ -16,32 +16,16 @@ public final class InstancePoolAzureAttributesArgs extends com.pulumi.resources.
 
     public static final InstancePoolAzureAttributesArgs Empty = new InstancePoolAzureAttributesArgs();
 
-    /**
-     * Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
-     * 
-     */
     @Import(name="availability")
     private @Nullable Output<String> availability;
 
-    /**
-     * @return Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
-     * 
-     */
     public Optional<Output<String>> availability() {
         return Optional.ofNullable(this.availability);
     }
 
-    /**
-     * The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
-     * 
-     */
     @Import(name="spotBidMaxPrice")
     private @Nullable Output<Double> spotBidMaxPrice;
 
-    /**
-     * @return The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
-     * 
-     */
     public Optional<Output<Double>> spotBidMaxPrice() {
         return Optional.ofNullable(this.spotBidMaxPrice);
     }
@@ -71,44 +55,20 @@ public final class InstancePoolAzureAttributesArgs extends com.pulumi.resources.
             $ = new InstancePoolAzureAttributesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param availability Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder availability(@Nullable Output<String> availability) {
             $.availability = availability;
             return this;
         }
 
-        /**
-         * @param availability Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder availability(String availability) {
             return availability(Output.of(availability));
         }
 
-        /**
-         * @param spotBidMaxPrice The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotBidMaxPrice(@Nullable Output<Double> spotBidMaxPrice) {
             $.spotBidMaxPrice = spotBidMaxPrice;
             return this;
         }
 
-        /**
-         * @param spotBidMaxPrice The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotBidMaxPrice(Double spotBidMaxPrice) {
             return spotBidMaxPrice(Output.of(spotBidMaxPrice));
         }

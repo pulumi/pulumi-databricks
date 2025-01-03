@@ -39,17 +39,9 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.autoscale);
     }
 
-    /**
-     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
-     * 
-     */
     @Import(name="autoterminationMinutes")
     private @Nullable Integer autoterminationMinutes;
 
-    /**
-     * @return Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
-     * 
-     */
     public Optional<Integer> autoterminationMinutes() {
         return Optional.ofNullable(this.autoterminationMinutes);
     }
@@ -75,17 +67,9 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.clusterCores);
     }
 
-    /**
-     * The id of the cluster
-     * 
-     */
     @Import(name="clusterId")
     private @Nullable String clusterId;
 
-    /**
-     * @return The id of the cluster
-     * 
-     */
     public Optional<String> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
@@ -111,17 +95,9 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.clusterMemoryMb);
     }
 
-    /**
-     * The exact name of the cluster to search
-     * 
-     */
     @Import(name="clusterName")
     private @Nullable String clusterName;
 
-    /**
-     * @return The exact name of the cluster to search
-     * 
-     */
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
     }
@@ -140,32 +116,16 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.creatorUserName);
     }
 
-    /**
-     * Additional tags for cluster resources.
-     * 
-     */
     @Import(name="customTags")
     private @Nullable Map<String,String> customTags;
 
-    /**
-     * @return Additional tags for cluster resources.
-     * 
-     */
     public Optional<Map<String,String>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
 
-    /**
-     * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
-     * 
-     */
     @Import(name="dataSecurityMode")
     private @Nullable String dataSecurityMode;
 
-    /**
-     * @return Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
-     * 
-     */
     public Optional<String> dataSecurityMode() {
         return Optional.ofNullable(this.dataSecurityMode);
     }
@@ -191,62 +151,30 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.driver);
     }
 
-    /**
-     * similar to `instance_pool_id`, but for driver node.
-     * 
-     */
     @Import(name="driverInstancePoolId")
     private @Nullable String driverInstancePoolId;
 
-    /**
-     * @return similar to `instance_pool_id`, but for driver node.
-     * 
-     */
     public Optional<String> driverInstancePoolId() {
         return Optional.ofNullable(this.driverInstancePoolId);
     }
 
-    /**
-     * The node type of the Spark driver.
-     * 
-     */
     @Import(name="driverNodeTypeId")
     private @Nullable String driverNodeTypeId;
 
-    /**
-     * @return The node type of the Spark driver.
-     * 
-     */
     public Optional<String> driverNodeTypeId() {
         return Optional.ofNullable(this.driverNodeTypeId);
     }
 
-    /**
-     * Use autoscaling local storage.
-     * 
-     */
     @Import(name="enableElasticDisk")
     private @Nullable Boolean enableElasticDisk;
 
-    /**
-     * @return Use autoscaling local storage.
-     * 
-     */
     public Optional<Boolean> enableElasticDisk() {
         return Optional.ofNullable(this.enableElasticDisk);
     }
 
-    /**
-     * Enable local disk encryption.
-     * 
-     */
     @Import(name="enableLocalDiskEncryption")
     private @Nullable Boolean enableLocalDiskEncryption;
 
-    /**
-     * @return Enable local disk encryption.
-     * 
-     */
     public Optional<Boolean> enableLocalDiskEncryption() {
         return Optional.ofNullable(this.enableLocalDiskEncryption);
     }
@@ -272,19 +200,18 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.initScripts);
     }
 
-    /**
-     * The pool of idle instances the cluster is attached to.
-     * 
-     */
     @Import(name="instancePoolId")
     private @Nullable String instancePoolId;
 
-    /**
-     * @return The pool of idle instances the cluster is attached to.
-     * 
-     */
     public Optional<String> instancePoolId() {
         return Optional.ofNullable(this.instancePoolId);
+    }
+
+    @Import(name="isSingleNode")
+    private @Nullable Boolean isSingleNode;
+
+    public Optional<Boolean> isSingleNode() {
+        return Optional.ofNullable(this.isSingleNode);
     }
 
     @Import(name="jdbcPort")
@@ -292,6 +219,13 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
 
     public Optional<Integer> jdbcPort() {
         return Optional.ofNullable(this.jdbcPort);
+    }
+
+    @Import(name="kind")
+    private @Nullable String kind;
+
+    public Optional<String> kind() {
+        return Optional.ofNullable(this.kind);
     }
 
     @Import(name="lastRestartedTime")
@@ -308,17 +242,9 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.lastStateLossTime);
     }
 
-    /**
-     * Any supported databricks.getNodeType id.
-     * 
-     */
     @Import(name="nodeTypeId")
     private @Nullable String nodeTypeId;
 
-    /**
-     * @return Any supported databricks.getNodeType id.
-     * 
-     */
     public Optional<String> nodeTypeId() {
         return Optional.ofNullable(this.nodeTypeId);
     }
@@ -330,62 +256,30 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.numWorkers);
     }
 
-    /**
-     * Identifier of Cluster Policy to validate cluster and preset certain defaults.
-     * 
-     */
     @Import(name="policyId")
     private @Nullable String policyId;
 
-    /**
-     * @return Identifier of Cluster Policy to validate cluster and preset certain defaults.
-     * 
-     */
     public Optional<String> policyId() {
         return Optional.ofNullable(this.policyId);
     }
 
-    /**
-     * The type of runtime of the cluster
-     * 
-     */
     @Import(name="runtimeEngine")
     private @Nullable String runtimeEngine;
 
-    /**
-     * @return The type of runtime of the cluster
-     * 
-     */
     public Optional<String> runtimeEngine() {
         return Optional.ofNullable(this.runtimeEngine);
     }
 
-    /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-     * 
-     */
     @Import(name="singleUserName")
     private @Nullable String singleUserName;
 
-    /**
-     * @return The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-     * 
-     */
     public Optional<String> singleUserName() {
         return Optional.ofNullable(this.singleUserName);
     }
 
-    /**
-     * Map with key-value pairs to fine-tune Spark clusters.
-     * 
-     */
     @Import(name="sparkConf")
     private @Nullable Map<String,String> sparkConf;
 
-    /**
-     * @return Map with key-value pairs to fine-tune Spark clusters.
-     * 
-     */
     public Optional<Map<String,String>> sparkConf() {
         return Optional.ofNullable(this.sparkConf);
     }
@@ -397,32 +291,16 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.sparkContextId);
     }
 
-    /**
-     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
-     * 
-     */
     @Import(name="sparkEnvVars")
     private @Nullable Map<String,String> sparkEnvVars;
 
-    /**
-     * @return Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
-     * 
-     */
     public Optional<Map<String,String>> sparkEnvVars() {
         return Optional.ofNullable(this.sparkEnvVars);
     }
 
-    /**
-     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-     * 
-     */
     @Import(name="sparkVersion")
     private @Nullable String sparkVersion;
 
-    /**
-     * @return [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-     * 
-     */
     public Optional<String> sparkVersion() {
         return Optional.ofNullable(this.sparkVersion);
     }
@@ -434,17 +312,9 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.spec);
     }
 
-    /**
-     * SSH public key contents that will be added to each Spark node in this cluster.
-     * 
-     */
     @Import(name="sshPublicKeys")
     private @Nullable List<String> sshPublicKeys;
 
-    /**
-     * @return SSH public key contents that will be added to each Spark node in this cluster.
-     * 
-     */
     public Optional<List<String>> sshPublicKeys() {
         return Optional.ofNullable(this.sshPublicKeys);
     }
@@ -484,6 +354,13 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.terminationReason);
     }
 
+    @Import(name="useMlRuntime")
+    private @Nullable Boolean useMlRuntime;
+
+    public Optional<Boolean> useMlRuntime() {
+        return Optional.ofNullable(this.useMlRuntime);
+    }
+
     @Import(name="workloadType")
     private @Nullable GetClusterClusterInfoWorkloadType workloadType;
 
@@ -519,7 +396,9 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         this.gcpAttributes = $.gcpAttributes;
         this.initScripts = $.initScripts;
         this.instancePoolId = $.instancePoolId;
+        this.isSingleNode = $.isSingleNode;
         this.jdbcPort = $.jdbcPort;
+        this.kind = $.kind;
         this.lastRestartedTime = $.lastRestartedTime;
         this.lastStateLossTime = $.lastStateLossTime;
         this.nodeTypeId = $.nodeTypeId;
@@ -538,6 +417,7 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         this.stateMessage = $.stateMessage;
         this.terminatedTime = $.terminatedTime;
         this.terminationReason = $.terminationReason;
+        this.useMlRuntime = $.useMlRuntime;
         this.workloadType = $.workloadType;
     }
 
@@ -564,12 +444,6 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-        /**
-         * @param autoterminationMinutes Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoterminationMinutes(@Nullable Integer autoterminationMinutes) {
             $.autoterminationMinutes = autoterminationMinutes;
             return this;
@@ -590,12 +464,6 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-        /**
-         * @param clusterId The id of the cluster
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterId(@Nullable String clusterId) {
             $.clusterId = clusterId;
             return this;
@@ -616,12 +484,6 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-        /**
-         * @param clusterName The exact name of the cluster to search
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterName(@Nullable String clusterName) {
             $.clusterName = clusterName;
             return this;
@@ -637,23 +499,11 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-        /**
-         * @param customTags Additional tags for cluster resources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customTags(@Nullable Map<String,String> customTags) {
             $.customTags = customTags;
             return this;
         }
 
-        /**
-         * @param dataSecurityMode Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataSecurityMode(@Nullable String dataSecurityMode) {
             $.dataSecurityMode = dataSecurityMode;
             return this;
@@ -674,45 +524,21 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-        /**
-         * @param driverInstancePoolId similar to `instance_pool_id`, but for driver node.
-         * 
-         * @return builder
-         * 
-         */
         public Builder driverInstancePoolId(@Nullable String driverInstancePoolId) {
             $.driverInstancePoolId = driverInstancePoolId;
             return this;
         }
 
-        /**
-         * @param driverNodeTypeId The node type of the Spark driver.
-         * 
-         * @return builder
-         * 
-         */
         public Builder driverNodeTypeId(@Nullable String driverNodeTypeId) {
             $.driverNodeTypeId = driverNodeTypeId;
             return this;
         }
 
-        /**
-         * @param enableElasticDisk Use autoscaling local storage.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enableElasticDisk(@Nullable Boolean enableElasticDisk) {
             $.enableElasticDisk = enableElasticDisk;
             return this;
         }
 
-        /**
-         * @param enableLocalDiskEncryption Enable local disk encryption.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enableLocalDiskEncryption(@Nullable Boolean enableLocalDiskEncryption) {
             $.enableLocalDiskEncryption = enableLocalDiskEncryption;
             return this;
@@ -741,19 +567,23 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return initScripts(List.of(initScripts));
         }
 
-        /**
-         * @param instancePoolId The pool of idle instances the cluster is attached to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instancePoolId(@Nullable String instancePoolId) {
             $.instancePoolId = instancePoolId;
             return this;
         }
 
+        public Builder isSingleNode(@Nullable Boolean isSingleNode) {
+            $.isSingleNode = isSingleNode;
+            return this;
+        }
+
         public Builder jdbcPort(@Nullable Integer jdbcPort) {
             $.jdbcPort = jdbcPort;
+            return this;
+        }
+
+        public Builder kind(@Nullable String kind) {
+            $.kind = kind;
             return this;
         }
 
@@ -767,12 +597,6 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-        /**
-         * @param nodeTypeId Any supported databricks.getNodeType id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeTypeId(@Nullable String nodeTypeId) {
             $.nodeTypeId = nodeTypeId;
             return this;
@@ -783,45 +607,21 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-        /**
-         * @param policyId Identifier of Cluster Policy to validate cluster and preset certain defaults.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyId(@Nullable String policyId) {
             $.policyId = policyId;
             return this;
         }
 
-        /**
-         * @param runtimeEngine The type of runtime of the cluster
-         * 
-         * @return builder
-         * 
-         */
         public Builder runtimeEngine(@Nullable String runtimeEngine) {
             $.runtimeEngine = runtimeEngine;
             return this;
         }
 
-        /**
-         * @param singleUserName The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-         * 
-         * @return builder
-         * 
-         */
         public Builder singleUserName(@Nullable String singleUserName) {
             $.singleUserName = singleUserName;
             return this;
         }
 
-        /**
-         * @param sparkConf Map with key-value pairs to fine-tune Spark clusters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sparkConf(@Nullable Map<String,String> sparkConf) {
             $.sparkConf = sparkConf;
             return this;
@@ -832,23 +632,11 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-        /**
-         * @param sparkEnvVars Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sparkEnvVars(@Nullable Map<String,String> sparkEnvVars) {
             $.sparkEnvVars = sparkEnvVars;
             return this;
         }
 
-        /**
-         * @param sparkVersion [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sparkVersion(@Nullable String sparkVersion) {
             $.sparkVersion = sparkVersion;
             return this;
@@ -859,23 +647,11 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-        /**
-         * @param sshPublicKeys SSH public key contents that will be added to each Spark node in this cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sshPublicKeys(@Nullable List<String> sshPublicKeys) {
             $.sshPublicKeys = sshPublicKeys;
             return this;
         }
 
-        /**
-         * @param sshPublicKeys SSH public key contents that will be added to each Spark node in this cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
         }
@@ -902,6 +678,11 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
 
         public Builder terminationReason(@Nullable GetClusterClusterInfoTerminationReason terminationReason) {
             $.terminationReason = terminationReason;
+            return this;
+        }
+
+        public Builder useMlRuntime(@Nullable Boolean useMlRuntime) {
+            $.useMlRuntime = useMlRuntime;
             return this;
         }
 

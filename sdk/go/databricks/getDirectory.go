@@ -11,35 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// This data source allows to get information about a directory in a Databricks Workspace.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupDirectory(ctx, &databricks.LookupDirectoryArgs{
-//				Path: "/Production",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupDirectory(ctx *pulumi.Context, args *LookupDirectoryArgs, opts ...pulumi.InvokeOption) (*LookupDirectoryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDirectoryResult
@@ -52,22 +23,17 @@ func LookupDirectory(ctx *pulumi.Context, args *LookupDirectoryArgs, opts ...pul
 
 // A collection of arguments for invoking getDirectory.
 type LookupDirectoryArgs struct {
-	Id *string `pulumi:"id"`
-	// directory object ID
-	ObjectId *int `pulumi:"objectId"`
-	// Path to a directory in the workspace
-	Path string `pulumi:"path"`
-	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	Id            *string `pulumi:"id"`
+	ObjectId      *int    `pulumi:"objectId"`
+	Path          string  `pulumi:"path"`
 	WorkspacePath *string `pulumi:"workspacePath"`
 }
 
 // A collection of values returned by getDirectory.
 type LookupDirectoryResult struct {
-	Id string `pulumi:"id"`
-	// directory object ID
-	ObjectId int    `pulumi:"objectId"`
-	Path     string `pulumi:"path"`
-	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	Id            string `pulumi:"id"`
+	ObjectId      int    `pulumi:"objectId"`
+	Path          string `pulumi:"path"`
 	WorkspacePath string `pulumi:"workspacePath"`
 }
 
@@ -82,12 +48,9 @@ func LookupDirectoryOutput(ctx *pulumi.Context, args LookupDirectoryOutputArgs, 
 
 // A collection of arguments for invoking getDirectory.
 type LookupDirectoryOutputArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// directory object ID
-	ObjectId pulumi.IntPtrInput `pulumi:"objectId"`
-	// Path to a directory in the workspace
-	Path pulumi.StringInput `pulumi:"path"`
-	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	Id            pulumi.StringPtrInput `pulumi:"id"`
+	ObjectId      pulumi.IntPtrInput    `pulumi:"objectId"`
+	Path          pulumi.StringInput    `pulumi:"path"`
 	WorkspacePath pulumi.StringPtrInput `pulumi:"workspacePath"`
 }
 
@@ -114,7 +77,6 @@ func (o LookupDirectoryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDirectoryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// directory object ID
 func (o LookupDirectoryResultOutput) ObjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDirectoryResult) int { return v.ObjectId }).(pulumi.IntOutput)
 }
@@ -123,7 +85,6 @@ func (o LookupDirectoryResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDirectoryResult) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 func (o LookupDirectoryResultOutput) WorkspacePath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDirectoryResult) string { return v.WorkspacePath }).(pulumi.StringOutput)
 }

@@ -11,53 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
-    /**
-     * @return The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-     * 
-     */
     private @Nullable String privateKey;
-    /**
-     * @return The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
-     * 
-     */
     private @Nullable String privateKeyPlaintext;
-    /**
-     * @return This is the Google Cloud project id that the service account is associated with.
-     * 
-     */
     private @Nullable String projectId;
-    /**
-     * @return This is the region for the Google Cloud Vertex AI Service.
-     * 
-     */
     private @Nullable String region;
 
     private ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig() {}
-    /**
-     * @return The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-     * 
-     */
     public Optional<String> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
-    /**
-     * @return The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
-     * 
-     */
     public Optional<String> privateKeyPlaintext() {
         return Optional.ofNullable(this.privateKeyPlaintext);
     }
-    /**
-     * @return This is the Google Cloud project id that the service account is associated with.
-     * 
-     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
-    /**
-     * @return This is the region for the Google Cloud Vertex AI Service.
-     * 
-     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }

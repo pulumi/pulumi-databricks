@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskConditionTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDbtTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDependsOn;
@@ -32,208 +33,85 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTask {
+    private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
     private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
     private @Nullable JobTaskForEachTaskTaskDbtTask dbtTask;
-    /**
-     * @return block specifying dependency(-ies) for a given task.
-     * 
-     */
     private @Nullable List<JobTaskForEachTaskTaskDependsOn> dependsOns;
-    /**
-     * @return description for this task.
-     * 
-     */
     private @Nullable String description;
-    /**
-     * @return A flag to disable auto optimization in serverless tasks.
-     * 
-     */
     private @Nullable Boolean disableAutoOptimization;
-    /**
-     * @return An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
-     * 
-     */
     private @Nullable JobTaskForEachTaskTaskEmailNotifications emailNotifications;
-    /**
-     * @return identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
-     * 
-     */
     private @Nullable String environmentKey;
-    /**
-     * @return Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
-     * 
-     */
     private @Nullable String existingClusterId;
-    /**
-     * @return block described below that specifies health conditions for a given task.
-     * 
-     */
     private @Nullable JobTaskForEachTaskTaskHealth health;
-    /**
-     * @return Identifier of the Job cluster specified in the `job_cluster` block.
-     * 
-     */
     private @Nullable String jobClusterKey;
-    /**
-     * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job.
-     * 
-     */
     private @Nullable List<JobTaskForEachTaskTaskLibrary> libraries;
-    /**
-     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-     * 
-     */
     private @Nullable Integer maxRetries;
-    /**
-     * @return (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-     * 
-     */
     private @Nullable Integer minRetryIntervalMillis;
-    /**
-     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
-     * 
-     */
     private @Nullable JobTaskForEachTaskTaskNewCluster newCluster;
     private @Nullable JobTaskForEachTaskTaskNotebookTask notebookTask;
-    /**
-     * @return An optional block controlling the notification settings on the job level documented below.
-     * 
-     */
     private @Nullable JobTaskForEachTaskTaskNotificationSettings notificationSettings;
     private @Nullable JobTaskForEachTaskTaskPipelineTask pipelineTask;
     private @Nullable JobTaskForEachTaskTaskPythonWheelTask pythonWheelTask;
-    /**
-     * @return (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-     * 
-     */
     private @Nullable Boolean retryOnTimeout;
-    /**
-     * @return An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
-     * 
-     */
     private @Nullable String runIf;
     private @Nullable JobTaskForEachTaskTaskRunJobTask runJobTask;
     private @Nullable JobTaskForEachTaskTaskSparkJarTask sparkJarTask;
     private @Nullable JobTaskForEachTaskTaskSparkPythonTask sparkPythonTask;
     private @Nullable JobTaskForEachTaskTaskSparkSubmitTask sparkSubmitTask;
     private @Nullable JobTaskForEachTaskTaskSqlTask sqlTask;
-    /**
-     * @return string specifying an unique key for a given task.
-     * * `*_task` - (Required) one of the specific task blocks described below:
-     * 
-     */
     private String taskKey;
-    /**
-     * @return (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-     * 
-     */
     private @Nullable Integer timeoutSeconds;
-    /**
-     * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-     * 
-     * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
-     * 
-     */
     private @Nullable JobTaskForEachTaskTaskWebhookNotifications webhookNotifications;
 
     private JobTaskForEachTaskTask() {}
+    public Optional<JobTaskForEachTaskTaskCleanRoomsNotebookTask> cleanRoomsNotebookTask() {
+        return Optional.ofNullable(this.cleanRoomsNotebookTask);
+    }
     public Optional<JobTaskForEachTaskTaskConditionTask> conditionTask() {
         return Optional.ofNullable(this.conditionTask);
     }
     public Optional<JobTaskForEachTaskTaskDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
     }
-    /**
-     * @return block specifying dependency(-ies) for a given task.
-     * 
-     */
     public List<JobTaskForEachTaskTaskDependsOn> dependsOns() {
         return this.dependsOns == null ? List.of() : this.dependsOns;
     }
-    /**
-     * @return description for this task.
-     * 
-     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
-    /**
-     * @return A flag to disable auto optimization in serverless tasks.
-     * 
-     */
     public Optional<Boolean> disableAutoOptimization() {
         return Optional.ofNullable(this.disableAutoOptimization);
     }
-    /**
-     * @return An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
-     * 
-     */
     public Optional<JobTaskForEachTaskTaskEmailNotifications> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
     }
-    /**
-     * @return identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
-     * 
-     */
     public Optional<String> environmentKey() {
         return Optional.ofNullable(this.environmentKey);
     }
-    /**
-     * @return Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
-     * 
-     */
     public Optional<String> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
     }
-    /**
-     * @return block described below that specifies health conditions for a given task.
-     * 
-     */
     public Optional<JobTaskForEachTaskTaskHealth> health() {
         return Optional.ofNullable(this.health);
     }
-    /**
-     * @return Identifier of the Job cluster specified in the `job_cluster` block.
-     * 
-     */
     public Optional<String> jobClusterKey() {
         return Optional.ofNullable(this.jobClusterKey);
     }
-    /**
-     * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job.
-     * 
-     */
     public List<JobTaskForEachTaskTaskLibrary> libraries() {
         return this.libraries == null ? List.of() : this.libraries;
     }
-    /**
-     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-     * 
-     */
     public Optional<Integer> maxRetries() {
         return Optional.ofNullable(this.maxRetries);
     }
-    /**
-     * @return (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-     * 
-     */
     public Optional<Integer> minRetryIntervalMillis() {
         return Optional.ofNullable(this.minRetryIntervalMillis);
     }
-    /**
-     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
-     * 
-     */
     public Optional<JobTaskForEachTaskTaskNewCluster> newCluster() {
         return Optional.ofNullable(this.newCluster);
     }
     public Optional<JobTaskForEachTaskTaskNotebookTask> notebookTask() {
         return Optional.ofNullable(this.notebookTask);
     }
-    /**
-     * @return An optional block controlling the notification settings on the job level documented below.
-     * 
-     */
     public Optional<JobTaskForEachTaskTaskNotificationSettings> notificationSettings() {
         return Optional.ofNullable(this.notificationSettings);
     }
@@ -243,17 +121,9 @@ public final class JobTaskForEachTaskTask {
     public Optional<JobTaskForEachTaskTaskPythonWheelTask> pythonWheelTask() {
         return Optional.ofNullable(this.pythonWheelTask);
     }
-    /**
-     * @return (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-     * 
-     */
     public Optional<Boolean> retryOnTimeout() {
         return Optional.ofNullable(this.retryOnTimeout);
     }
-    /**
-     * @return An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
-     * 
-     */
     public Optional<String> runIf() {
         return Optional.ofNullable(this.runIf);
     }
@@ -272,27 +142,12 @@ public final class JobTaskForEachTaskTask {
     public Optional<JobTaskForEachTaskTaskSqlTask> sqlTask() {
         return Optional.ofNullable(this.sqlTask);
     }
-    /**
-     * @return string specifying an unique key for a given task.
-     * * `*_task` - (Required) one of the specific task blocks described below:
-     * 
-     */
     public String taskKey() {
         return this.taskKey;
     }
-    /**
-     * @return (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-     * 
-     */
     public Optional<Integer> timeoutSeconds() {
         return Optional.ofNullable(this.timeoutSeconds);
     }
-    /**
-     * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-     * 
-     * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
-     * 
-     */
     public Optional<JobTaskForEachTaskTaskWebhookNotifications> webhookNotifications() {
         return Optional.ofNullable(this.webhookNotifications);
     }
@@ -306,6 +161,7 @@ public final class JobTaskForEachTaskTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
         private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
         private @Nullable JobTaskForEachTaskTaskDbtTask dbtTask;
         private @Nullable List<JobTaskForEachTaskTaskDependsOn> dependsOns;
@@ -337,6 +193,7 @@ public final class JobTaskForEachTaskTask {
         public Builder() {}
         public Builder(JobTaskForEachTaskTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cleanRoomsNotebookTask = defaults.cleanRoomsNotebookTask;
     	      this.conditionTask = defaults.conditionTask;
     	      this.dbtTask = defaults.dbtTask;
     	      this.dependsOns = defaults.dependsOns;
@@ -367,6 +224,12 @@ public final class JobTaskForEachTaskTask {
     	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
+        @CustomType.Setter
+        public Builder cleanRoomsNotebookTask(@Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask) {
+
+            this.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
+            return this;
+        }
         @CustomType.Setter
         public Builder conditionTask(@Nullable JobTaskForEachTaskTaskConditionTask conditionTask) {
 
@@ -545,6 +408,7 @@ public final class JobTaskForEachTaskTask {
         }
         public JobTaskForEachTaskTask build() {
             final var _resultValue = new JobTaskForEachTaskTask();
+            _resultValue.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
             _resultValue.conditionTask = conditionTask;
             _resultValue.dbtTask = dbtTask;
             _resultValue.dependsOns = dependsOns;

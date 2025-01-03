@@ -12,72 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Deprecated** Please migrate to databricks_group_role.
-//
-// This resource allows you to attach InstanceProfile (AWS) to databricks_group.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instance_profile", &databricks.InstanceProfileArgs{
-//				InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myGroup, err := databricks.NewGroup(ctx, "my_group", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("my_group_name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewGroupInstanceProfile(ctx, "my_group_instance_profile", &databricks.GroupInstanceProfileArgs{
-//				GroupId:           myGroup.ID(),
-//				InstanceProfileId: instanceProfile.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * End to end workspace management guide.
-// * getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-// * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
-// * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-// * Group data to retrieve information about Group members, entitlements and instance profiles.
-// * GroupMember to attach users and groups as group members.
-// * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-// * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-// * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
-//
-// ## Import
-//
-// !> Importing this resource is not currently supported.
 type GroupInstanceProfile struct {
 	pulumi.CustomResourceState
 
-	// This is the id of the group resource.
-	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// This is the id of the instance profile resource.
+	GroupId           pulumi.StringOutput `pulumi:"groupId"`
 	InstanceProfileId pulumi.StringOutput `pulumi:"instanceProfileId"`
 }
 
@@ -117,16 +55,12 @@ func GetGroupInstanceProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupInstanceProfile resources.
 type groupInstanceProfileState struct {
-	// This is the id of the group resource.
-	GroupId *string `pulumi:"groupId"`
-	// This is the id of the instance profile resource.
+	GroupId           *string `pulumi:"groupId"`
 	InstanceProfileId *string `pulumi:"instanceProfileId"`
 }
 
 type GroupInstanceProfileState struct {
-	// This is the id of the group resource.
-	GroupId pulumi.StringPtrInput
-	// This is the id of the instance profile resource.
+	GroupId           pulumi.StringPtrInput
 	InstanceProfileId pulumi.StringPtrInput
 }
 
@@ -135,17 +69,13 @@ func (GroupInstanceProfileState) ElementType() reflect.Type {
 }
 
 type groupInstanceProfileArgs struct {
-	// This is the id of the group resource.
-	GroupId string `pulumi:"groupId"`
-	// This is the id of the instance profile resource.
+	GroupId           string `pulumi:"groupId"`
 	InstanceProfileId string `pulumi:"instanceProfileId"`
 }
 
 // The set of arguments for constructing a GroupInstanceProfile resource.
 type GroupInstanceProfileArgs struct {
-	// This is the id of the group resource.
-	GroupId pulumi.StringInput
-	// This is the id of the instance profile resource.
+	GroupId           pulumi.StringInput
 	InstanceProfileId pulumi.StringInput
 }
 
@@ -236,12 +166,10 @@ func (o GroupInstanceProfileOutput) ToGroupInstanceProfileOutputWithContext(ctx 
 	return o
 }
 
-// This is the id of the group resource.
 func (o GroupInstanceProfileOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupInstanceProfile) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// This is the id of the instance profile resource.
 func (o GroupInstanceProfileOutput) InstanceProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupInstanceProfile) pulumi.StringOutput { return v.InstanceProfileId }).(pulumi.StringOutput)
 }

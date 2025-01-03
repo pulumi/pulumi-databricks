@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class AlertConditionOperand {
-    /**
-     * @return Block describing the column from the query result to use for comparison in alert evaluation:
-     * 
-     */
     private AlertConditionOperandColumn column;
 
     private AlertConditionOperand() {}
-    /**
-     * @return Block describing the column from the query result to use for comparison in alert evaluation:
-     * 
-     */
     public AlertConditionOperandColumn column() {
         return this.column;
     }

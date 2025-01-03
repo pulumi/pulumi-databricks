@@ -13,29 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BudgetFilterWorkspaceId {
-    /**
-     * @return The operator to use for the filter. (Enum: `IN`)
-     * 
-     */
     private @Nullable String operator;
-    /**
-     * @return The values to filter by.
-     * 
-     */
     private @Nullable List<Integer> values;
 
     private BudgetFilterWorkspaceId() {}
-    /**
-     * @return The operator to use for the filter. (Enum: `IN`)
-     * 
-     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
-    /**
-     * @return The values to filter by.
-     * 
-     */
     public List<Integer> values() {
         return this.values == null ? List.of() : this.values;
     }

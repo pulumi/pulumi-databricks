@@ -15,10 +15,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegisteredModelResult {
-    /**
-     * @return The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-     * 
-     */
     private String fullName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -27,17 +23,9 @@ public final class GetRegisteredModelResult {
     private String id;
     private @Nullable Boolean includeAliases;
     private @Nullable Boolean includeBrowse;
-    /**
-     * @return block with information about the model in Unity Catalog:
-     * 
-     */
-    private @Nullable List<GetRegisteredModelModelInfo> modelInfos;
+    private List<GetRegisteredModelModelInfo> modelInfos;
 
     private GetRegisteredModelResult() {}
-    /**
-     * @return The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-     * 
-     */
     public String fullName() {
         return this.fullName;
     }
@@ -54,12 +42,8 @@ public final class GetRegisteredModelResult {
     public Optional<Boolean> includeBrowse() {
         return Optional.ofNullable(this.includeBrowse);
     }
-    /**
-     * @return block with information about the model in Unity Catalog:
-     * 
-     */
     public List<GetRegisteredModelModelInfo> modelInfos() {
-        return this.modelInfos == null ? List.of() : this.modelInfos;
+        return this.modelInfos;
     }
 
     public static Builder builder() {
@@ -75,7 +59,7 @@ public final class GetRegisteredModelResult {
         private String id;
         private @Nullable Boolean includeAliases;
         private @Nullable Boolean includeBrowse;
-        private @Nullable List<GetRegisteredModelModelInfo> modelInfos;
+        private List<GetRegisteredModelModelInfo> modelInfos;
         public Builder() {}
         public Builder(GetRegisteredModelResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -115,8 +99,10 @@ public final class GetRegisteredModelResult {
             return this;
         }
         @CustomType.Setter
-        public Builder modelInfos(@Nullable List<GetRegisteredModelModelInfo> modelInfos) {
-
+        public Builder modelInfos(List<GetRegisteredModelModelInfo> modelInfos) {
+            if (modelInfos == null) {
+              throw new MissingRequiredPropertyException("GetRegisteredModelResult", "modelInfos");
+            }
             this.modelInfos = modelInfos;
             return this;
         }

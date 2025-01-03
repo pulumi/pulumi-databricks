@@ -15,62 +15,30 @@ public final class MetastoreProviderState extends com.pulumi.resources.ResourceA
 
     public static final MetastoreProviderState Empty = new MetastoreProviderState();
 
-    /**
-     * The delta sharing authentication type. Valid values are `TOKEN`.
-     * 
-     */
     @Import(name="authenticationType")
     private @Nullable Output<String> authenticationType;
 
-    /**
-     * @return The delta sharing authentication type. Valid values are `TOKEN`.
-     * 
-     */
     public Optional<Output<String>> authenticationType() {
         return Optional.ofNullable(this.authenticationType);
     }
 
-    /**
-     * Description about the provider.
-     * 
-     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
-    /**
-     * @return Description about the provider.
-     * 
-     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
-    /**
-     * Name of provider. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of provider. Change forces creation of a new resource.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * This is the json file that is created from a recipient url.
-     * 
-     */
     @Import(name="recipientProfileStr")
     private @Nullable Output<String> recipientProfileStr;
 
-    /**
-     * @return This is the json file that is created from a recipient url.
-     * 
-     */
     public Optional<Output<String>> recipientProfileStr() {
         return Optional.ofNullable(this.recipientProfileStr);
     }
@@ -102,86 +70,38 @@ public final class MetastoreProviderState extends com.pulumi.resources.ResourceA
             $ = new MetastoreProviderState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param authenticationType The delta sharing authentication type. Valid values are `TOKEN`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder authenticationType(@Nullable Output<String> authenticationType) {
             $.authenticationType = authenticationType;
             return this;
         }
 
-        /**
-         * @param authenticationType The delta sharing authentication type. Valid values are `TOKEN`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder authenticationType(String authenticationType) {
             return authenticationType(Output.of(authenticationType));
         }
 
-        /**
-         * @param comment Description about the provider.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
-        /**
-         * @param comment Description about the provider.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
-        /**
-         * @param name Name of provider. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of provider. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param recipientProfileStr This is the json file that is created from a recipient url.
-         * 
-         * @return builder
-         * 
-         */
         public Builder recipientProfileStr(@Nullable Output<String> recipientProfileStr) {
             $.recipientProfileStr = recipientProfileStr;
             return this;
         }
 
-        /**
-         * @param recipientProfileStr This is the json file that is created from a recipient url.
-         * 
-         * @return builder
-         * 
-         */
         public Builder recipientProfileStr(String recipientProfileStr) {
             return recipientProfileStr(Output.of(recipientProfileStr));
         }

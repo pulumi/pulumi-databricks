@@ -16,10 +16,6 @@ public final class GetSharesResult {
      * 
      */
     private String id;
-    /**
-     * @return list of databricks.Share names.
-     * 
-     */
     private List<String> shares;
 
     private GetSharesResult() {}
@@ -30,10 +26,6 @@ public final class GetSharesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return list of databricks.Share names.
-     * 
-     */
     public List<String> shares() {
         return this.shares;
     }

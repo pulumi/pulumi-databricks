@@ -12,77 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
-    /**
-     * @return The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-     * 
-     */
     private @Nullable String awsAccessKeyId;
-    /**
-     * @return An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
-     * 
-     */
     private @Nullable String awsAccessKeyIdPlaintext;
-    /**
-     * @return The AWS region to use. Bedrock has to be enabled there.
-     * 
-     */
     private String awsRegion;
-    /**
-     * @return The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-     * 
-     */
     private @Nullable String awsSecretAccessKey;
-    /**
-     * @return An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
-     * 
-     */
     private @Nullable String awsSecretAccessKeyPlaintext;
-    /**
-     * @return The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-     * 
-     */
     private String bedrockProvider;
 
     private ModelServingConfigServedEntityExternalModelAmazonBedrockConfig() {}
-    /**
-     * @return The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-     * 
-     */
     public Optional<String> awsAccessKeyId() {
         return Optional.ofNullable(this.awsAccessKeyId);
     }
-    /**
-     * @return An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
-     * 
-     */
     public Optional<String> awsAccessKeyIdPlaintext() {
         return Optional.ofNullable(this.awsAccessKeyIdPlaintext);
     }
-    /**
-     * @return The AWS region to use. Bedrock has to be enabled there.
-     * 
-     */
     public String awsRegion() {
         return this.awsRegion;
     }
-    /**
-     * @return The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-     * 
-     */
     public Optional<String> awsSecretAccessKey() {
         return Optional.ofNullable(this.awsSecretAccessKey);
     }
-    /**
-     * @return An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
-     * 
-     */
     public Optional<String> awsSecretAccessKeyPlaintext() {
         return Optional.ofNullable(this.awsSecretAccessKeyPlaintext);
     }
-    /**
-     * @return The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-     * 
-     */
     public String bedrockProvider() {
         return this.bedrockProvider;
     }

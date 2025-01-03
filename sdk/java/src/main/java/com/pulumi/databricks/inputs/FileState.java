@@ -17,32 +17,16 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
 
     public static final FileState Empty = new FileState();
 
-    /**
-     * Contents in base 64 format. Conflicts with `source`.
-     * 
-     */
     @Import(name="contentBase64")
     private @Nullable Output<String> contentBase64;
 
-    /**
-     * @return Contents in base 64 format. Conflicts with `source`.
-     * 
-     */
     public Optional<Output<String>> contentBase64() {
         return Optional.ofNullable(this.contentBase64);
     }
 
-    /**
-     * The file size of the file that is being tracked by this resource in bytes.
-     * 
-     */
     @Import(name="fileSize")
     private @Nullable Output<Integer> fileSize;
 
-    /**
-     * @return The file size of the file that is being tracked by this resource in bytes.
-     * 
-     */
     public Optional<Output<Integer>> fileSize() {
         return Optional.ofNullable(this.fileSize);
     }
@@ -54,32 +38,16 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.md5);
     }
 
-    /**
-     * The last time stamp when the file was modified
-     * 
-     */
     @Import(name="modificationTime")
     private @Nullable Output<String> modificationTime;
 
-    /**
-     * @return The last time stamp when the file was modified
-     * 
-     */
     public Optional<Output<String>> modificationTime() {
         return Optional.ofNullable(this.modificationTime);
     }
 
-    /**
-     * The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-     * 
-     */
     @Import(name="path")
     private @Nullable Output<String> path;
 
-    /**
-     * @return The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-     * 
-     */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
     }
@@ -91,17 +59,9 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.remoteFileModified);
     }
 
-    /**
-     * The full absolute path to the file. Conflicts with `content_base64`.
-     * 
-     */
     @Import(name="source")
     private @Nullable Output<String> source;
 
-    /**
-     * @return The full absolute path to the file. Conflicts with `content_base64`.
-     * 
-     */
     public Optional<Output<String>> source() {
         return Optional.ofNullable(this.source);
     }
@@ -136,44 +96,20 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
             $ = new FileState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param contentBase64 Contents in base 64 format. Conflicts with `source`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder contentBase64(@Nullable Output<String> contentBase64) {
             $.contentBase64 = contentBase64;
             return this;
         }
 
-        /**
-         * @param contentBase64 Contents in base 64 format. Conflicts with `source`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder contentBase64(String contentBase64) {
             return contentBase64(Output.of(contentBase64));
         }
 
-        /**
-         * @param fileSize The file size of the file that is being tracked by this resource in bytes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fileSize(@Nullable Output<Integer> fileSize) {
             $.fileSize = fileSize;
             return this;
         }
 
-        /**
-         * @param fileSize The file size of the file that is being tracked by this resource in bytes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fileSize(Integer fileSize) {
             return fileSize(Output.of(fileSize));
         }
@@ -187,44 +123,20 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
             return md5(Output.of(md5));
         }
 
-        /**
-         * @param modificationTime The last time stamp when the file was modified
-         * 
-         * @return builder
-         * 
-         */
         public Builder modificationTime(@Nullable Output<String> modificationTime) {
             $.modificationTime = modificationTime;
             return this;
         }
 
-        /**
-         * @param modificationTime The last time stamp when the file was modified
-         * 
-         * @return builder
-         * 
-         */
         public Builder modificationTime(String modificationTime) {
             return modificationTime(Output.of(modificationTime));
         }
 
-        /**
-         * @param path The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
 
-        /**
-         * @param path The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
@@ -238,23 +150,11 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
             return remoteFileModified(Output.of(remoteFileModified));
         }
 
-        /**
-         * @param source The full absolute path to the file. Conflicts with `content_base64`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder source(@Nullable Output<String> source) {
             $.source = source;
             return this;
         }
 
-        /**
-         * @param source The full absolute path to the file. Conflicts with `content_base64`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder source(String source) {
             return source(Output.of(source));
         }

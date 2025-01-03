@@ -12,83 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/s3"
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
-//			databricksAccountId := cfg.RequireObject("databricksAccountId")
-//			rootStorageBucket, err := s3.NewBucketV2(ctx, "root_storage_bucket", &s3.BucketV2Args{
-//				Bucket: pulumi.Sprintf("%v-rootbucket", prefix),
-//				Acl:    pulumi.String("private"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = s3.NewBucketVersioningV2(ctx, "root_versioning", &s3.BucketVersioningV2Args{
-//				Bucket: rootStorageBucket.ID(),
-//				VersioningConfiguration: &s3.BucketVersioningV2VersioningConfigurationArgs{
-//					Status: pulumi.String("Disabled"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewMwsStorageConfigurations(ctx, "this", &databricks.MwsStorageConfigurationsArgs{
-//				AccountId:                pulumi.Any(databricksAccountId),
-//				StorageConfigurationName: pulumi.Sprintf("%v-storage", prefix),
-//				BucketName:               rootStorageBucket.Bucket,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * Provisioning Databricks on AWS guide.
-// * Provisioning Databricks on AWS with Private Link guide.
-// * MwsCredentials to configure the cross-account role for creation of new workspaces within AWS.
-// * MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
-// * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
-// * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
-// * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
-//
-// ## Import
-//
-// !> Importing this resource is not currently supported.
 type MwsStorageConfigurations struct {
 	pulumi.CustomResourceState
 
-	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// name of AWS S3 bucket
-	BucketName   pulumi.StringOutput `pulumi:"bucketName"`
-	CreationTime pulumi.IntOutput    `pulumi:"creationTime"`
-	// (String) id of storage config to be used for `databricksMwsWorkspace` resource.
-	StorageConfigurationId pulumi.StringOutput `pulumi:"storageConfigurationId"`
-	// name under which this storage configuration is stored
+	AccountId                pulumi.StringOutput `pulumi:"accountId"`
+	BucketName               pulumi.StringOutput `pulumi:"bucketName"`
+	CreationTime             pulumi.IntOutput    `pulumi:"creationTime"`
+	StorageConfigurationId   pulumi.StringOutput `pulumi:"storageConfigurationId"`
 	StorageConfigurationName pulumi.StringOutput `pulumi:"storageConfigurationName"`
 }
 
@@ -138,26 +68,18 @@ func GetMwsStorageConfigurations(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsStorageConfigurations resources.
 type mwsStorageConfigurationsState struct {
-	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-	AccountId *string `pulumi:"accountId"`
-	// name of AWS S3 bucket
-	BucketName   *string `pulumi:"bucketName"`
-	CreationTime *int    `pulumi:"creationTime"`
-	// (String) id of storage config to be used for `databricksMwsWorkspace` resource.
-	StorageConfigurationId *string `pulumi:"storageConfigurationId"`
-	// name under which this storage configuration is stored
+	AccountId                *string `pulumi:"accountId"`
+	BucketName               *string `pulumi:"bucketName"`
+	CreationTime             *int    `pulumi:"creationTime"`
+	StorageConfigurationId   *string `pulumi:"storageConfigurationId"`
 	StorageConfigurationName *string `pulumi:"storageConfigurationName"`
 }
 
 type MwsStorageConfigurationsState struct {
-	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-	AccountId pulumi.StringPtrInput
-	// name of AWS S3 bucket
-	BucketName   pulumi.StringPtrInput
-	CreationTime pulumi.IntPtrInput
-	// (String) id of storage config to be used for `databricksMwsWorkspace` resource.
-	StorageConfigurationId pulumi.StringPtrInput
-	// name under which this storage configuration is stored
+	AccountId                pulumi.StringPtrInput
+	BucketName               pulumi.StringPtrInput
+	CreationTime             pulumi.IntPtrInput
+	StorageConfigurationId   pulumi.StringPtrInput
 	StorageConfigurationName pulumi.StringPtrInput
 }
 
@@ -166,21 +88,15 @@ func (MwsStorageConfigurationsState) ElementType() reflect.Type {
 }
 
 type mwsStorageConfigurationsArgs struct {
-	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-	AccountId string `pulumi:"accountId"`
-	// name of AWS S3 bucket
-	BucketName string `pulumi:"bucketName"`
-	// name under which this storage configuration is stored
+	AccountId                string `pulumi:"accountId"`
+	BucketName               string `pulumi:"bucketName"`
 	StorageConfigurationName string `pulumi:"storageConfigurationName"`
 }
 
 // The set of arguments for constructing a MwsStorageConfigurations resource.
 type MwsStorageConfigurationsArgs struct {
-	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-	AccountId pulumi.StringInput
-	// name of AWS S3 bucket
-	BucketName pulumi.StringInput
-	// name under which this storage configuration is stored
+	AccountId                pulumi.StringInput
+	BucketName               pulumi.StringInput
 	StorageConfigurationName pulumi.StringInput
 }
 
@@ -271,12 +187,10 @@ func (o MwsStorageConfigurationsOutput) ToMwsStorageConfigurationsOutputWithCont
 	return o
 }
 
-// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 func (o MwsStorageConfigurationsOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsStorageConfigurations) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// name of AWS S3 bucket
 func (o MwsStorageConfigurationsOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsStorageConfigurations) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
 }
@@ -285,12 +199,10 @@ func (o MwsStorageConfigurationsOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *MwsStorageConfigurations) pulumi.IntOutput { return v.CreationTime }).(pulumi.IntOutput)
 }
 
-// (String) id of storage config to be used for `databricksMwsWorkspace` resource.
 func (o MwsStorageConfigurationsOutput) StorageConfigurationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsStorageConfigurations) pulumi.StringOutput { return v.StorageConfigurationId }).(pulumi.StringOutput)
 }
 
-// name under which this storage configuration is stored
 func (o MwsStorageConfigurationsOutput) StorageConfigurationName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsStorageConfigurations) pulumi.StringOutput { return v.StorageConfigurationName }).(pulumi.StringOutput)
 }

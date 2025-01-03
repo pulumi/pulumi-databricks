@@ -45,47 +45,23 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.defaultDataAccessConfigId);
     }
 
-    /**
-     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-     * 
-     */
     @Import(name="deltaSharingOrganizationName")
     private @Nullable Output<String> deltaSharingOrganizationName;
 
-    /**
-     * @return The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-     * 
-     */
     public Optional<Output<String>> deltaSharingOrganizationName() {
         return Optional.ofNullable(this.deltaSharingOrganizationName);
     }
 
-    /**
-     * Used to set expiration duration in seconds on recipient data access tokens.
-     * 
-     */
     @Import(name="deltaSharingRecipientTokenLifetimeInSeconds")
     private @Nullable Output<Integer> deltaSharingRecipientTokenLifetimeInSeconds;
 
-    /**
-     * @return Used to set expiration duration in seconds on recipient data access tokens.
-     * 
-     */
     public Optional<Output<Integer>> deltaSharingRecipientTokenLifetimeInSeconds() {
         return Optional.ofNullable(this.deltaSharingRecipientTokenLifetimeInSeconds);
     }
 
-    /**
-     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     * 
-     */
     @Import(name="deltaSharingScope")
     private @Nullable Output<String> deltaSharingScope;
 
-    /**
-     * @return Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     * 
-     */
     public Optional<Output<String>> deltaSharingScope() {
         return Optional.ofNullable(this.deltaSharingScope);
     }
@@ -104,47 +80,23 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.globalMetastoreId);
     }
 
-    /**
-     * ID of the metastore
-     * 
-     */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
-    /**
-     * @return ID of the metastore
-     * 
-     */
     public Optional<Output<String>> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
 
-    /**
-     * Name of the metastore
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the metastore
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Username/groupname/sp application_id of the metastore owner.
-     * 
-     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
-    /**
-     * @return Username/groupname/sp application_id of the metastore owner.
-     * 
-     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
@@ -156,32 +108,16 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.privilegeModelVersion);
     }
 
-    /**
-     * Region of the metastore
-     * 
-     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
-    /**
-     * @return Region of the metastore
-     * 
-     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
-    /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored.
-     * 
-     */
     @Import(name="storageRoot")
     private @Nullable Output<String> storageRoot;
 
-    /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored.
-     * 
-     */
     public Optional<Output<String>> storageRoot() {
         return Optional.ofNullable(this.storageRoot);
     }
@@ -292,65 +228,29 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
             return defaultDataAccessConfigId(Output.of(defaultDataAccessConfigId));
         }
 
-        /**
-         * @param deltaSharingOrganizationName The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingOrganizationName(@Nullable Output<String> deltaSharingOrganizationName) {
             $.deltaSharingOrganizationName = deltaSharingOrganizationName;
             return this;
         }
 
-        /**
-         * @param deltaSharingOrganizationName The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingOrganizationName(String deltaSharingOrganizationName) {
             return deltaSharingOrganizationName(Output.of(deltaSharingOrganizationName));
         }
 
-        /**
-         * @param deltaSharingRecipientTokenLifetimeInSeconds Used to set expiration duration in seconds on recipient data access tokens.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingRecipientTokenLifetimeInSeconds(@Nullable Output<Integer> deltaSharingRecipientTokenLifetimeInSeconds) {
             $.deltaSharingRecipientTokenLifetimeInSeconds = deltaSharingRecipientTokenLifetimeInSeconds;
             return this;
         }
 
-        /**
-         * @param deltaSharingRecipientTokenLifetimeInSeconds Used to set expiration duration in seconds on recipient data access tokens.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingRecipientTokenLifetimeInSeconds(Integer deltaSharingRecipientTokenLifetimeInSeconds) {
             return deltaSharingRecipientTokenLifetimeInSeconds(Output.of(deltaSharingRecipientTokenLifetimeInSeconds));
         }
 
-        /**
-         * @param deltaSharingScope Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingScope(@Nullable Output<String> deltaSharingScope) {
             $.deltaSharingScope = deltaSharingScope;
             return this;
         }
 
-        /**
-         * @param deltaSharingScope Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingScope(String deltaSharingScope) {
             return deltaSharingScope(Output.of(deltaSharingScope));
         }
@@ -373,65 +273,29 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
             return globalMetastoreId(Output.of(globalMetastoreId));
         }
 
-        /**
-         * @param metastoreId ID of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
-        /**
-         * @param metastoreId ID of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreId(String metastoreId) {
             return metastoreId(Output.of(metastoreId));
         }
 
-        /**
-         * @param name Name of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param owner Username/groupname/sp application_id of the metastore owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
-        /**
-         * @param owner Username/groupname/sp application_id of the metastore owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
@@ -445,44 +309,20 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
             return privilegeModelVersion(Output.of(privilegeModelVersion));
         }
 
-        /**
-         * @param region Region of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param region Region of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
-        /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageRoot(@Nullable Output<String> storageRoot) {
             $.storageRoot = storageRoot;
             return this;
         }
 
-        /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageRoot(String storageRoot) {
             return storageRoot(Output.of(storageRoot));
         }

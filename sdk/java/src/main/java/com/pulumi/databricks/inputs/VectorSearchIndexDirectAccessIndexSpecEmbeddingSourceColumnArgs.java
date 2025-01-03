@@ -22,17 +22,9 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnAr
         return Optional.ofNullable(this.embeddingModelEndpointName);
     }
 
-    /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -71,23 +63,11 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnAr
             return embeddingModelEndpointName(Output.of(embeddingModelEndpointName));
         }
 
-        /**
-         * @param name Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

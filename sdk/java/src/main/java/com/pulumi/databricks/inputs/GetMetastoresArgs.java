@@ -16,17 +16,9 @@ public final class GetMetastoresArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetMetastoresArgs Empty = new GetMetastoresArgs();
 
-    /**
-     * Mapping of name to id of databricks_metastore
-     * 
-     */
     @Import(name="ids")
     private @Nullable Output<Map<String,String>> ids;
 
-    /**
-     * @return Mapping of name to id of databricks_metastore
-     * 
-     */
     public Optional<Output<Map<String,String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
@@ -55,23 +47,11 @@ public final class GetMetastoresArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetMetastoresArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ids Mapping of name to id of databricks_metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(@Nullable Output<Map<String,String>> ids) {
             $.ids = ids;
             return this;
         }
 
-        /**
-         * @param ids Mapping of name to id of databricks_metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(Map<String,String> ids) {
             return ids(Output.of(ids));
         }

@@ -24,32 +24,16 @@ public final class GetTableArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * TableInfo object for a Unity Catalog table. This contains the following attributes:
-     * 
-     */
     @Import(name="tableInfo")
     private @Nullable Output<GetTableTableInfoArgs> tableInfo;
 
-    /**
-     * @return TableInfo object for a Unity Catalog table. This contains the following attributes:
-     * 
-     */
     public Optional<Output<GetTableTableInfoArgs>> tableInfo() {
         return Optional.ofNullable(this.tableInfo);
     }
@@ -89,44 +73,20 @@ public final class GetTableArgs extends com.pulumi.resources.InvokeArgs {
             return id(Output.of(id));
         }
 
-        /**
-         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param tableInfo TableInfo object for a Unity Catalog table. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableInfo(@Nullable Output<GetTableTableInfoArgs> tableInfo) {
             $.tableInfo = tableInfo;
             return this;
         }
 
-        /**
-         * @param tableInfo TableInfo object for a Unity Catalog table. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableInfo(GetTableTableInfoArgs tableInfo) {
             return tableInfo(Output.of(tableInfo));
         }

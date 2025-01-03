@@ -11,17 +11,9 @@ import java.util.Objects;
 
 @CustomType
 public final class RecipientPropertiesKvpairs {
-    /**
-     * @return a map of string key-value pairs with recipient&#39;s properties.  Properties with name starting with `databricks.` are reserved.
-     * 
-     */
     private Map<String,String> properties;
 
     private RecipientPropertiesKvpairs() {}
-    /**
-     * @return a map of string key-value pairs with recipient&#39;s properties.  Properties with name starting with `databricks.` are reserved.
-     * 
-     */
     public Map<String,String> properties() {
         return this.properties;
     }

@@ -11,9 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
-//
-// !> Importing this resource is not currently supported.
 type Mount struct {
 	pulumi.CustomResourceState
 
@@ -26,10 +23,9 @@ type Mount struct {
 	Name           pulumi.StringOutput    `pulumi:"name"`
 	ResourceId     pulumi.StringPtrOutput `pulumi:"resourceId"`
 	S3             MountS3PtrOutput       `pulumi:"s3"`
-	// (String) HDFS-compatible url
-	Source pulumi.StringOutput    `pulumi:"source"`
-	Uri    pulumi.StringPtrOutput `pulumi:"uri"`
-	Wasb   MountWasbPtrOutput     `pulumi:"wasb"`
+	Source         pulumi.StringOutput    `pulumi:"source"`
+	Uri            pulumi.StringPtrOutput `pulumi:"uri"`
+	Wasb           MountWasbPtrOutput     `pulumi:"wasb"`
 }
 
 // NewMount registers a new resource with the given unique name, arguments, and options.
@@ -71,10 +67,9 @@ type mountState struct {
 	Name           *string           `pulumi:"name"`
 	ResourceId     *string           `pulumi:"resourceId"`
 	S3             *MountS3          `pulumi:"s3"`
-	// (String) HDFS-compatible url
-	Source *string    `pulumi:"source"`
-	Uri    *string    `pulumi:"uri"`
-	Wasb   *MountWasb `pulumi:"wasb"`
+	Source         *string           `pulumi:"source"`
+	Uri            *string           `pulumi:"uri"`
+	Wasb           *MountWasb        `pulumi:"wasb"`
 }
 
 type MountState struct {
@@ -87,10 +82,9 @@ type MountState struct {
 	Name           pulumi.StringPtrInput
 	ResourceId     pulumi.StringPtrInput
 	S3             MountS3PtrInput
-	// (String) HDFS-compatible url
-	Source pulumi.StringPtrInput
-	Uri    pulumi.StringPtrInput
-	Wasb   MountWasbPtrInput
+	Source         pulumi.StringPtrInput
+	Uri            pulumi.StringPtrInput
+	Wasb           MountWasbPtrInput
 }
 
 func (MountState) ElementType() reflect.Type {
@@ -249,7 +243,6 @@ func (o MountOutput) S3() MountS3PtrOutput {
 	return o.ApplyT(func(v *Mount) MountS3PtrOutput { return v.S3 }).(MountS3PtrOutput)
 }
 
-// (String) HDFS-compatible url
 func (o MountOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mount) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
 }

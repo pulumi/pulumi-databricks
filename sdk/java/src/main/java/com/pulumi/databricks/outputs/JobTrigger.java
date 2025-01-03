@@ -15,43 +15,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTrigger {
-    /**
-     * @return configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
-     * 
-     */
     private @Nullable JobTriggerFileArrival fileArrival;
-    /**
-     * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-     * 
-     */
     private @Nullable String pauseStatus;
-    /**
-     * @return configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
-     * 
-     */
     private @Nullable JobTriggerPeriodic periodic;
     private @Nullable JobTriggerTable table;
     private @Nullable JobTriggerTableUpdate tableUpdate;
 
     private JobTrigger() {}
-    /**
-     * @return configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
-     * 
-     */
     public Optional<JobTriggerFileArrival> fileArrival() {
         return Optional.ofNullable(this.fileArrival);
     }
-    /**
-     * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-     * 
-     */
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
-    /**
-     * @return configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
-     * 
-     */
     public Optional<JobTriggerPeriodic> periodic() {
         return Optional.ofNullable(this.periodic);
     }

@@ -45,62 +45,30 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.defaultDataAccessConfigId);
     }
 
-    /**
-     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-     * 
-     */
     @Import(name="deltaSharingOrganizationName")
     private @Nullable Output<String> deltaSharingOrganizationName;
 
-    /**
-     * @return The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-     * 
-     */
     public Optional<Output<String>> deltaSharingOrganizationName() {
         return Optional.ofNullable(this.deltaSharingOrganizationName);
     }
 
-    /**
-     * Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
-     * 
-     */
     @Import(name="deltaSharingRecipientTokenLifetimeInSeconds")
     private @Nullable Output<Integer> deltaSharingRecipientTokenLifetimeInSeconds;
 
-    /**
-     * @return Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
-     * 
-     */
     public Optional<Output<Integer>> deltaSharingRecipientTokenLifetimeInSeconds() {
         return Optional.ofNullable(this.deltaSharingRecipientTokenLifetimeInSeconds);
     }
 
-    /**
-     * Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     * 
-     */
     @Import(name="deltaSharingScope")
     private @Nullable Output<String> deltaSharingScope;
 
-    /**
-     * @return Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     * 
-     */
     public Optional<Output<String>> deltaSharingScope() {
         return Optional.ofNullable(this.deltaSharingScope);
     }
 
-    /**
-     * Destroy metastore regardless of its contents.
-     * 
-     */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
-    /**
-     * @return Destroy metastore regardless of its contents.
-     * 
-     */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
     }
@@ -119,62 +87,30 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.metastoreId);
     }
 
-    /**
-     * Name of metastore.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of metastore.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Username/groupname/sp application_id of the metastore owner.
-     * 
-     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
-    /**
-     * @return Username/groupname/sp application_id of the metastore owner.
-     * 
-     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
 
-    /**
-     * The region of the metastore
-     * 
-     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
-    /**
-     * @return The region of the metastore
-     * 
-     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
-    /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
-     * 
-     */
     @Import(name="storageRoot")
     private @Nullable Output<String> storageRoot;
 
-    /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
-     * 
-     */
     public Optional<Output<String>> storageRoot() {
         return Optional.ofNullable(this.storageRoot);
     }
@@ -276,86 +212,38 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
             return defaultDataAccessConfigId(Output.of(defaultDataAccessConfigId));
         }
 
-        /**
-         * @param deltaSharingOrganizationName The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingOrganizationName(@Nullable Output<String> deltaSharingOrganizationName) {
             $.deltaSharingOrganizationName = deltaSharingOrganizationName;
             return this;
         }
 
-        /**
-         * @param deltaSharingOrganizationName The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingOrganizationName(String deltaSharingOrganizationName) {
             return deltaSharingOrganizationName(Output.of(deltaSharingOrganizationName));
         }
 
-        /**
-         * @param deltaSharingRecipientTokenLifetimeInSeconds Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingRecipientTokenLifetimeInSeconds(@Nullable Output<Integer> deltaSharingRecipientTokenLifetimeInSeconds) {
             $.deltaSharingRecipientTokenLifetimeInSeconds = deltaSharingRecipientTokenLifetimeInSeconds;
             return this;
         }
 
-        /**
-         * @param deltaSharingRecipientTokenLifetimeInSeconds Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingRecipientTokenLifetimeInSeconds(Integer deltaSharingRecipientTokenLifetimeInSeconds) {
             return deltaSharingRecipientTokenLifetimeInSeconds(Output.of(deltaSharingRecipientTokenLifetimeInSeconds));
         }
 
-        /**
-         * @param deltaSharingScope Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingScope(@Nullable Output<String> deltaSharingScope) {
             $.deltaSharingScope = deltaSharingScope;
             return this;
         }
 
-        /**
-         * @param deltaSharingScope Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingScope(String deltaSharingScope) {
             return deltaSharingScope(Output.of(deltaSharingScope));
         }
 
-        /**
-         * @param forceDestroy Destroy metastore regardless of its contents.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
             $.forceDestroy = forceDestroy;
             return this;
         }
 
-        /**
-         * @param forceDestroy Destroy metastore regardless of its contents.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
         }
@@ -378,86 +266,38 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
             return metastoreId(Output.of(metastoreId));
         }
 
-        /**
-         * @param name Name of metastore.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of metastore.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param owner Username/groupname/sp application_id of the metastore owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
-        /**
-         * @param owner Username/groupname/sp application_id of the metastore owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
 
-        /**
-         * @param region The region of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param region The region of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
-        /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageRoot(@Nullable Output<String> storageRoot) {
             $.storageRoot = storageRoot;
             return this;
         }
 
-        /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageRoot(String storageRoot) {
             return storageRoot(Output.of(storageRoot));
         }

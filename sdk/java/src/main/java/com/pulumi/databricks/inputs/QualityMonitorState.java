@@ -24,109 +24,51 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
 
     public static final QualityMonitorState Empty = new QualityMonitorState();
 
-    /**
-     * The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
-     * 
-     */
     @Import(name="assetsDir")
     private @Nullable Output<String> assetsDir;
 
-    /**
-     * @return The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
-     * 
-     */
     public Optional<Output<String>> assetsDir() {
         return Optional.ofNullable(this.assetsDir);
     }
 
-    /**
-     * Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
-     * table.
-     * 
-     */
     @Import(name="baselineTableName")
     private @Nullable Output<String> baselineTableName;
 
-    /**
-     * @return Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
-     * table.
-     * 
-     */
     public Optional<Output<String>> baselineTableName() {
         return Optional.ofNullable(this.baselineTableName);
     }
 
-    /**
-     * Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
-     * 
-     */
     @Import(name="customMetrics")
     private @Nullable Output<List<QualityMonitorCustomMetricArgs>> customMetrics;
 
-    /**
-     * @return Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
-     * 
-     */
     public Optional<Output<List<QualityMonitorCustomMetricArgs>>> customMetrics() {
         return Optional.ofNullable(this.customMetrics);
     }
 
-    /**
-     * The ID of the generated dashboard.
-     * 
-     */
     @Import(name="dashboardId")
     private @Nullable Output<String> dashboardId;
 
-    /**
-     * @return The ID of the generated dashboard.
-     * 
-     */
     public Optional<Output<String>> dashboardId() {
         return Optional.ofNullable(this.dashboardId);
     }
 
-    /**
-     * The data classification config for the monitor
-     * 
-     */
     @Import(name="dataClassificationConfig")
     private @Nullable Output<QualityMonitorDataClassificationConfigArgs> dataClassificationConfig;
 
-    /**
-     * @return The data classification config for the monitor
-     * 
-     */
     public Optional<Output<QualityMonitorDataClassificationConfigArgs>> dataClassificationConfig() {
         return Optional.ofNullable(this.dataClassificationConfig);
     }
 
-    /**
-     * The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-     * 
-     */
     @Import(name="driftMetricsTableName")
     private @Nullable Output<String> driftMetricsTableName;
 
-    /**
-     * @return The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-     * 
-     */
     public Optional<Output<String>> driftMetricsTableName() {
         return Optional.ofNullable(this.driftMetricsTableName);
     }
 
-    /**
-     * Configuration for the inference log monitor
-     * 
-     */
     @Import(name="inferenceLog")
     private @Nullable Output<QualityMonitorInferenceLogArgs> inferenceLog;
 
-    /**
-     * @return Configuration for the inference log monitor
-     * 
-     */
     public Optional<Output<QualityMonitorInferenceLogArgs>> inferenceLog() {
         return Optional.ofNullable(this.inferenceLog);
     }
@@ -138,197 +80,93 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.latestMonitorFailureMsg);
     }
 
-    /**
-     * ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
-     * 
-     */
     @Import(name="monitorId")
     private @Nullable Output<String> monitorId;
 
-    /**
-     * @return ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
-     * 
-     */
     public Optional<Output<String>> monitorId() {
         return Optional.ofNullable(this.monitorId);
     }
 
-    /**
-     * The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-     * 
-     */
     @Import(name="monitorVersion")
     private @Nullable Output<String> monitorVersion;
 
-    /**
-     * @return The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-     * 
-     */
     public Optional<Output<String>> monitorVersion() {
         return Optional.ofNullable(this.monitorVersion);
     }
 
-    /**
-     * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
-     * 
-     */
     @Import(name="notifications")
     private @Nullable Output<QualityMonitorNotificationsArgs> notifications;
 
-    /**
-     * @return The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
-     * 
-     */
     public Optional<Output<QualityMonitorNotificationsArgs>> notifications() {
         return Optional.ofNullable(this.notifications);
     }
 
-    /**
-     * Schema where output metric tables are created
-     * 
-     */
     @Import(name="outputSchemaName")
     private @Nullable Output<String> outputSchemaName;
 
-    /**
-     * @return Schema where output metric tables are created
-     * 
-     */
     public Optional<Output<String>> outputSchemaName() {
         return Optional.ofNullable(this.outputSchemaName);
     }
 
-    /**
-     * The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-     * 
-     */
     @Import(name="profileMetricsTableName")
     private @Nullable Output<String> profileMetricsTableName;
 
-    /**
-     * @return The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-     * 
-     */
     public Optional<Output<String>> profileMetricsTableName() {
         return Optional.ofNullable(this.profileMetricsTableName);
     }
 
-    /**
-     * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-     * 
-     */
     @Import(name="schedule")
     private @Nullable Output<QualityMonitorScheduleArgs> schedule;
 
-    /**
-     * @return The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-     * 
-     */
     public Optional<Output<QualityMonitorScheduleArgs>> schedule() {
         return Optional.ofNullable(this.schedule);
     }
 
-    /**
-     * Whether to skip creating a default dashboard summarizing data quality metrics.
-     * 
-     */
     @Import(name="skipBuiltinDashboard")
     private @Nullable Output<Boolean> skipBuiltinDashboard;
 
-    /**
-     * @return Whether to skip creating a default dashboard summarizing data quality metrics.
-     * 
-     */
     public Optional<Output<Boolean>> skipBuiltinDashboard() {
         return Optional.ofNullable(this.skipBuiltinDashboard);
     }
 
-    /**
-     * List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-     * 
-     */
     @Import(name="slicingExprs")
     private @Nullable Output<List<String>> slicingExprs;
 
-    /**
-     * @return List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-     * 
-     */
     public Optional<Output<List<String>>> slicingExprs() {
         return Optional.ofNullable(this.slicingExprs);
     }
 
-    /**
-     * Configuration for monitoring snapshot tables.
-     * 
-     */
     @Import(name="snapshot")
     private @Nullable Output<QualityMonitorSnapshotArgs> snapshot;
 
-    /**
-     * @return Configuration for monitoring snapshot tables.
-     * 
-     */
     public Optional<Output<QualityMonitorSnapshotArgs>> snapshot() {
         return Optional.ofNullable(this.snapshot);
     }
 
-    /**
-     * Status of the Monitor
-     * 
-     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
-    /**
-     * @return Status of the Monitor
-     * 
-     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-     * 
-     */
     @Import(name="tableName")
     private @Nullable Output<String> tableName;
 
-    /**
-     * @return The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-     * 
-     */
     public Optional<Output<String>> tableName() {
         return Optional.ofNullable(this.tableName);
     }
 
-    /**
-     * Configuration for monitoring timeseries tables.
-     * 
-     */
     @Import(name="timeSeries")
     private @Nullable Output<QualityMonitorTimeSeriesArgs> timeSeries;
 
-    /**
-     * @return Configuration for monitoring timeseries tables.
-     * 
-     */
     public Optional<Output<QualityMonitorTimeSeriesArgs>> timeSeries() {
         return Optional.ofNullable(this.timeSeries);
     }
 
-    /**
-     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
-     * 
-     */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
-    /**
-     * @return Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
-     * 
-     */
     public Optional<Output<String>> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }
@@ -377,161 +215,69 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
             $ = new QualityMonitorState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param assetsDir The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
-         * 
-         * @return builder
-         * 
-         */
         public Builder assetsDir(@Nullable Output<String> assetsDir) {
             $.assetsDir = assetsDir;
             return this;
         }
 
-        /**
-         * @param assetsDir The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
-         * 
-         * @return builder
-         * 
-         */
         public Builder assetsDir(String assetsDir) {
             return assetsDir(Output.of(assetsDir));
         }
 
-        /**
-         * @param baselineTableName Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
-         * table.
-         * 
-         * @return builder
-         * 
-         */
         public Builder baselineTableName(@Nullable Output<String> baselineTableName) {
             $.baselineTableName = baselineTableName;
             return this;
         }
 
-        /**
-         * @param baselineTableName Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
-         * table.
-         * 
-         * @return builder
-         * 
-         */
         public Builder baselineTableName(String baselineTableName) {
             return baselineTableName(Output.of(baselineTableName));
         }
 
-        /**
-         * @param customMetrics Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
-         * 
-         * @return builder
-         * 
-         */
         public Builder customMetrics(@Nullable Output<List<QualityMonitorCustomMetricArgs>> customMetrics) {
             $.customMetrics = customMetrics;
             return this;
         }
 
-        /**
-         * @param customMetrics Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
-         * 
-         * @return builder
-         * 
-         */
         public Builder customMetrics(List<QualityMonitorCustomMetricArgs> customMetrics) {
             return customMetrics(Output.of(customMetrics));
         }
 
-        /**
-         * @param customMetrics Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
-         * 
-         * @return builder
-         * 
-         */
         public Builder customMetrics(QualityMonitorCustomMetricArgs... customMetrics) {
             return customMetrics(List.of(customMetrics));
         }
 
-        /**
-         * @param dashboardId The ID of the generated dashboard.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dashboardId(@Nullable Output<String> dashboardId) {
             $.dashboardId = dashboardId;
             return this;
         }
 
-        /**
-         * @param dashboardId The ID of the generated dashboard.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dashboardId(String dashboardId) {
             return dashboardId(Output.of(dashboardId));
         }
 
-        /**
-         * @param dataClassificationConfig The data classification config for the monitor
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataClassificationConfig(@Nullable Output<QualityMonitorDataClassificationConfigArgs> dataClassificationConfig) {
             $.dataClassificationConfig = dataClassificationConfig;
             return this;
         }
 
-        /**
-         * @param dataClassificationConfig The data classification config for the monitor
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataClassificationConfig(QualityMonitorDataClassificationConfigArgs dataClassificationConfig) {
             return dataClassificationConfig(Output.of(dataClassificationConfig));
         }
 
-        /**
-         * @param driftMetricsTableName The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-         * 
-         * @return builder
-         * 
-         */
         public Builder driftMetricsTableName(@Nullable Output<String> driftMetricsTableName) {
             $.driftMetricsTableName = driftMetricsTableName;
             return this;
         }
 
-        /**
-         * @param driftMetricsTableName The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-         * 
-         * @return builder
-         * 
-         */
         public Builder driftMetricsTableName(String driftMetricsTableName) {
             return driftMetricsTableName(Output.of(driftMetricsTableName));
         }
 
-        /**
-         * @param inferenceLog Configuration for the inference log monitor
-         * 
-         * @return builder
-         * 
-         */
         public Builder inferenceLog(@Nullable Output<QualityMonitorInferenceLogArgs> inferenceLog) {
             $.inferenceLog = inferenceLog;
             return this;
         }
 
-        /**
-         * @param inferenceLog Configuration for the inference log monitor
-         * 
-         * @return builder
-         * 
-         */
         public Builder inferenceLog(QualityMonitorInferenceLogArgs inferenceLog) {
             return inferenceLog(Output.of(inferenceLog));
         }
@@ -545,285 +291,123 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
             return latestMonitorFailureMsg(Output.of(latestMonitorFailureMsg));
         }
 
-        /**
-         * @param monitorId ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
-         * 
-         * @return builder
-         * 
-         */
         public Builder monitorId(@Nullable Output<String> monitorId) {
             $.monitorId = monitorId;
             return this;
         }
 
-        /**
-         * @param monitorId ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
-         * 
-         * @return builder
-         * 
-         */
         public Builder monitorId(String monitorId) {
             return monitorId(Output.of(monitorId));
         }
 
-        /**
-         * @param monitorVersion The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-         * 
-         * @return builder
-         * 
-         */
         public Builder monitorVersion(@Nullable Output<String> monitorVersion) {
             $.monitorVersion = monitorVersion;
             return this;
         }
 
-        /**
-         * @param monitorVersion The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-         * 
-         * @return builder
-         * 
-         */
         public Builder monitorVersion(String monitorVersion) {
             return monitorVersion(Output.of(monitorVersion));
         }
 
-        /**
-         * @param notifications The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
-         * 
-         * @return builder
-         * 
-         */
         public Builder notifications(@Nullable Output<QualityMonitorNotificationsArgs> notifications) {
             $.notifications = notifications;
             return this;
         }
 
-        /**
-         * @param notifications The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
-         * 
-         * @return builder
-         * 
-         */
         public Builder notifications(QualityMonitorNotificationsArgs notifications) {
             return notifications(Output.of(notifications));
         }
 
-        /**
-         * @param outputSchemaName Schema where output metric tables are created
-         * 
-         * @return builder
-         * 
-         */
         public Builder outputSchemaName(@Nullable Output<String> outputSchemaName) {
             $.outputSchemaName = outputSchemaName;
             return this;
         }
 
-        /**
-         * @param outputSchemaName Schema where output metric tables are created
-         * 
-         * @return builder
-         * 
-         */
         public Builder outputSchemaName(String outputSchemaName) {
             return outputSchemaName(Output.of(outputSchemaName));
         }
 
-        /**
-         * @param profileMetricsTableName The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-         * 
-         * @return builder
-         * 
-         */
         public Builder profileMetricsTableName(@Nullable Output<String> profileMetricsTableName) {
             $.profileMetricsTableName = profileMetricsTableName;
             return this;
         }
 
-        /**
-         * @param profileMetricsTableName The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-         * 
-         * @return builder
-         * 
-         */
         public Builder profileMetricsTableName(String profileMetricsTableName) {
             return profileMetricsTableName(Output.of(profileMetricsTableName));
         }
 
-        /**
-         * @param schedule The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-         * 
-         * @return builder
-         * 
-         */
         public Builder schedule(@Nullable Output<QualityMonitorScheduleArgs> schedule) {
             $.schedule = schedule;
             return this;
         }
 
-        /**
-         * @param schedule The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-         * 
-         * @return builder
-         * 
-         */
         public Builder schedule(QualityMonitorScheduleArgs schedule) {
             return schedule(Output.of(schedule));
         }
 
-        /**
-         * @param skipBuiltinDashboard Whether to skip creating a default dashboard summarizing data quality metrics.
-         * 
-         * @return builder
-         * 
-         */
         public Builder skipBuiltinDashboard(@Nullable Output<Boolean> skipBuiltinDashboard) {
             $.skipBuiltinDashboard = skipBuiltinDashboard;
             return this;
         }
 
-        /**
-         * @param skipBuiltinDashboard Whether to skip creating a default dashboard summarizing data quality metrics.
-         * 
-         * @return builder
-         * 
-         */
         public Builder skipBuiltinDashboard(Boolean skipBuiltinDashboard) {
             return skipBuiltinDashboard(Output.of(skipBuiltinDashboard));
         }
 
-        /**
-         * @param slicingExprs List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-         * 
-         * @return builder
-         * 
-         */
         public Builder slicingExprs(@Nullable Output<List<String>> slicingExprs) {
             $.slicingExprs = slicingExprs;
             return this;
         }
 
-        /**
-         * @param slicingExprs List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-         * 
-         * @return builder
-         * 
-         */
         public Builder slicingExprs(List<String> slicingExprs) {
             return slicingExprs(Output.of(slicingExprs));
         }
 
-        /**
-         * @param slicingExprs List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-         * 
-         * @return builder
-         * 
-         */
         public Builder slicingExprs(String... slicingExprs) {
             return slicingExprs(List.of(slicingExprs));
         }
 
-        /**
-         * @param snapshot Configuration for monitoring snapshot tables.
-         * 
-         * @return builder
-         * 
-         */
         public Builder snapshot(@Nullable Output<QualityMonitorSnapshotArgs> snapshot) {
             $.snapshot = snapshot;
             return this;
         }
 
-        /**
-         * @param snapshot Configuration for monitoring snapshot tables.
-         * 
-         * @return builder
-         * 
-         */
         public Builder snapshot(QualityMonitorSnapshotArgs snapshot) {
             return snapshot(Output.of(snapshot));
         }
 
-        /**
-         * @param status Status of the Monitor
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
-        /**
-         * @param status Status of the Monitor
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(String status) {
             return status(Output.of(status));
         }
 
-        /**
-         * @param tableName The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableName(@Nullable Output<String> tableName) {
             $.tableName = tableName;
             return this;
         }
 
-        /**
-         * @param tableName The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableName(String tableName) {
             return tableName(Output.of(tableName));
         }
 
-        /**
-         * @param timeSeries Configuration for monitoring timeseries tables.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeSeries(@Nullable Output<QualityMonitorTimeSeriesArgs> timeSeries) {
             $.timeSeries = timeSeries;
             return this;
         }
 
-        /**
-         * @param timeSeries Configuration for monitoring timeseries tables.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeSeries(QualityMonitorTimeSeriesArgs timeSeries) {
             return timeSeries(Output.of(timeSeries));
         }
 
-        /**
-         * @param warehouseId Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder warehouseId(@Nullable Output<String> warehouseId) {
             $.warehouseId = warehouseId;
             return this;
         }
 
-        /**
-         * @param warehouseId Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
         }

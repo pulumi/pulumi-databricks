@@ -11,9 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// Retrieves the settings of MlflowExperiment by id or name.
 func LookupMlflowExperiment(ctx *pulumi.Context, args *LookupMlflowExperimentArgs, opts ...pulumi.InvokeOption) (*LookupMlflowExperimentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMlflowExperimentResult
@@ -26,42 +23,26 @@ func LookupMlflowExperiment(ctx *pulumi.Context, args *LookupMlflowExperimentArg
 
 // A collection of arguments for invoking getMlflowExperiment.
 type LookupMlflowExperimentArgs struct {
-	// Location where artifacts for the experiment are stored.
-	ArtifactLocation *string `pulumi:"artifactLocation"`
-	// Creation time in unix time stamp.
-	CreationTime *int `pulumi:"creationTime"`
-	// Unique identifier for the experiment.
-	ExperimentId *string `pulumi:"experimentId"`
-	// Unique identifier for the experiment. (same as `experimentId`)
-	Id *string `pulumi:"id"`
-	// Last update time in unix time stamp.
-	LastUpdateTime *int `pulumi:"lastUpdateTime"`
-	// Current life cycle stage of the experiment: `active` or `deleted`.
-	LifecycleStage *string `pulumi:"lifecycleStage"`
-	// Path to experiment.
-	Name *string `pulumi:"name"`
-	// Additional metadata key-value pairs.
-	Tags []GetMlflowExperimentTag `pulumi:"tags"`
+	ArtifactLocation *string                  `pulumi:"artifactLocation"`
+	CreationTime     *int                     `pulumi:"creationTime"`
+	ExperimentId     *string                  `pulumi:"experimentId"`
+	Id               *string                  `pulumi:"id"`
+	LastUpdateTime   *int                     `pulumi:"lastUpdateTime"`
+	LifecycleStage   *string                  `pulumi:"lifecycleStage"`
+	Name             *string                  `pulumi:"name"`
+	Tags             []GetMlflowExperimentTag `pulumi:"tags"`
 }
 
 // A collection of values returned by getMlflowExperiment.
 type LookupMlflowExperimentResult struct {
-	// Location where artifacts for the experiment are stored.
-	ArtifactLocation string `pulumi:"artifactLocation"`
-	// Creation time in unix time stamp.
-	CreationTime int `pulumi:"creationTime"`
-	// Unique identifier for the experiment. (same as `id`)
-	ExperimentId string `pulumi:"experimentId"`
-	// Unique identifier for the experiment. (same as `experimentId`)
-	Id string `pulumi:"id"`
-	// Last update time in unix time stamp.
-	LastUpdateTime int `pulumi:"lastUpdateTime"`
-	// Current life cycle stage of the experiment: `active` or `deleted`.
-	LifecycleStage string `pulumi:"lifecycleStage"`
-	// Path to experiment.
-	Name string `pulumi:"name"`
-	// Additional metadata key-value pairs.
-	Tags []GetMlflowExperimentTag `pulumi:"tags"`
+	ArtifactLocation string                   `pulumi:"artifactLocation"`
+	CreationTime     int                      `pulumi:"creationTime"`
+	ExperimentId     string                   `pulumi:"experimentId"`
+	Id               string                   `pulumi:"id"`
+	LastUpdateTime   int                      `pulumi:"lastUpdateTime"`
+	LifecycleStage   string                   `pulumi:"lifecycleStage"`
+	Name             string                   `pulumi:"name"`
+	Tags             []GetMlflowExperimentTag `pulumi:"tags"`
 }
 
 func LookupMlflowExperimentOutput(ctx *pulumi.Context, args LookupMlflowExperimentOutputArgs, opts ...pulumi.InvokeOption) LookupMlflowExperimentResultOutput {
@@ -75,22 +56,14 @@ func LookupMlflowExperimentOutput(ctx *pulumi.Context, args LookupMlflowExperime
 
 // A collection of arguments for invoking getMlflowExperiment.
 type LookupMlflowExperimentOutputArgs struct {
-	// Location where artifacts for the experiment are stored.
-	ArtifactLocation pulumi.StringPtrInput `pulumi:"artifactLocation"`
-	// Creation time in unix time stamp.
-	CreationTime pulumi.IntPtrInput `pulumi:"creationTime"`
-	// Unique identifier for the experiment.
-	ExperimentId pulumi.StringPtrInput `pulumi:"experimentId"`
-	// Unique identifier for the experiment. (same as `experimentId`)
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Last update time in unix time stamp.
-	LastUpdateTime pulumi.IntPtrInput `pulumi:"lastUpdateTime"`
-	// Current life cycle stage of the experiment: `active` or `deleted`.
-	LifecycleStage pulumi.StringPtrInput `pulumi:"lifecycleStage"`
-	// Path to experiment.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Additional metadata key-value pairs.
-	Tags GetMlflowExperimentTagArrayInput `pulumi:"tags"`
+	ArtifactLocation pulumi.StringPtrInput            `pulumi:"artifactLocation"`
+	CreationTime     pulumi.IntPtrInput               `pulumi:"creationTime"`
+	ExperimentId     pulumi.StringPtrInput            `pulumi:"experimentId"`
+	Id               pulumi.StringPtrInput            `pulumi:"id"`
+	LastUpdateTime   pulumi.IntPtrInput               `pulumi:"lastUpdateTime"`
+	LifecycleStage   pulumi.StringPtrInput            `pulumi:"lifecycleStage"`
+	Name             pulumi.StringPtrInput            `pulumi:"name"`
+	Tags             GetMlflowExperimentTagArrayInput `pulumi:"tags"`
 }
 
 func (LookupMlflowExperimentOutputArgs) ElementType() reflect.Type {
@@ -112,42 +85,34 @@ func (o LookupMlflowExperimentResultOutput) ToLookupMlflowExperimentResultOutput
 	return o
 }
 
-// Location where artifacts for the experiment are stored.
 func (o LookupMlflowExperimentResultOutput) ArtifactLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMlflowExperimentResult) string { return v.ArtifactLocation }).(pulumi.StringOutput)
 }
 
-// Creation time in unix time stamp.
 func (o LookupMlflowExperimentResultOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupMlflowExperimentResult) int { return v.CreationTime }).(pulumi.IntOutput)
 }
 
-// Unique identifier for the experiment. (same as `id`)
 func (o LookupMlflowExperimentResultOutput) ExperimentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMlflowExperimentResult) string { return v.ExperimentId }).(pulumi.StringOutput)
 }
 
-// Unique identifier for the experiment. (same as `experimentId`)
 func (o LookupMlflowExperimentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMlflowExperimentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Last update time in unix time stamp.
 func (o LookupMlflowExperimentResultOutput) LastUpdateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupMlflowExperimentResult) int { return v.LastUpdateTime }).(pulumi.IntOutput)
 }
 
-// Current life cycle stage of the experiment: `active` or `deleted`.
 func (o LookupMlflowExperimentResultOutput) LifecycleStage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMlflowExperimentResult) string { return v.LifecycleStage }).(pulumi.StringOutput)
 }
 
-// Path to experiment.
 func (o LookupMlflowExperimentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMlflowExperimentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Additional metadata key-value pairs.
 func (o LookupMlflowExperimentResultOutput) Tags() GetMlflowExperimentTagArrayOutput {
 	return o.ApplyT(func(v LookupMlflowExperimentResult) []GetMlflowExperimentTag { return v.Tags }).(GetMlflowExperimentTagArrayOutput)
 }

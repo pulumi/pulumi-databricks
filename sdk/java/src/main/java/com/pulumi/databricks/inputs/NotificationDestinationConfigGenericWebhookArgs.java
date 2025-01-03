@@ -16,21 +16,9 @@ public final class NotificationDestinationConfigGenericWebhookArgs extends com.p
 
     public static final NotificationDestinationConfigGenericWebhookArgs Empty = new NotificationDestinationConfigGenericWebhookArgs();
 
-    /**
-     * The password for basic authentication.
-     * 
-     * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
-     * 
-     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
-    /**
-     * @return The password for basic authentication.
-     * 
-     * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
-     * 
-     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
@@ -42,17 +30,9 @@ public final class NotificationDestinationConfigGenericWebhookArgs extends com.p
         return Optional.ofNullable(this.passwordSet);
     }
 
-    /**
-     * The Generic Webhook URL.
-     * 
-     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
-    /**
-     * @return The Generic Webhook URL.
-     * 
-     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -64,17 +44,9 @@ public final class NotificationDestinationConfigGenericWebhookArgs extends com.p
         return Optional.ofNullable(this.urlSet);
     }
 
-    /**
-     * The username for basic authentication.
-     * 
-     */
     @Import(name="username")
     private @Nullable Output<String> username;
 
-    /**
-     * @return The username for basic authentication.
-     * 
-     */
     public Optional<Output<String>> username() {
         return Optional.ofNullable(this.username);
     }
@@ -115,27 +87,11 @@ public final class NotificationDestinationConfigGenericWebhookArgs extends com.p
             $ = new NotificationDestinationConfigGenericWebhookArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param password The password for basic authentication.
-         * 
-         * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
-         * 
-         * @return builder
-         * 
-         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
-        /**
-         * @param password The password for basic authentication.
-         * 
-         * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
-         * 
-         * @return builder
-         * 
-         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
@@ -149,23 +105,11 @@ public final class NotificationDestinationConfigGenericWebhookArgs extends com.p
             return passwordSet(Output.of(passwordSet));
         }
 
-        /**
-         * @param url The Generic Webhook URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
-        /**
-         * @param url The Generic Webhook URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(String url) {
             return url(Output.of(url));
         }
@@ -179,23 +123,11 @@ public final class NotificationDestinationConfigGenericWebhookArgs extends com.p
             return urlSet(Output.of(urlSet));
         }
 
-        /**
-         * @param username The username for basic authentication.
-         * 
-         * @return builder
-         * 
-         */
         public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
 
-        /**
-         * @param username The username for basic authentication.
-         * 
-         * @return builder
-         * 
-         */
         public Builder username(String username) {
             return username(Output.of(username));
         }

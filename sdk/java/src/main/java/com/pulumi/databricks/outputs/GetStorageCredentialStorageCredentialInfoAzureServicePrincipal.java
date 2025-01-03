@@ -10,33 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetStorageCredentialStorageCredentialInfoAzureServicePrincipal {
-    /**
-     * @return The application ID of the application registration within the referenced AAD tenant
-     * 
-     */
     private String applicationId;
     private String clientSecret;
-    /**
-     * @return The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-     * 
-     */
     private String directoryId;
 
     private GetStorageCredentialStorageCredentialInfoAzureServicePrincipal() {}
-    /**
-     * @return The application ID of the application registration within the referenced AAD tenant
-     * 
-     */
     public String applicationId() {
         return this.applicationId;
     }
     public String clientSecret() {
         return this.clientSecret;
     }
-    /**
-     * @return The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-     * 
-     */
     public String directoryId() {
         return this.directoryId;
     }

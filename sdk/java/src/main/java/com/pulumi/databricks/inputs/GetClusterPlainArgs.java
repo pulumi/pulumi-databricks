@@ -15,62 +15,30 @@ public final class GetClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetClusterPlainArgs Empty = new GetClusterPlainArgs();
 
-    /**
-     * The id of the cluster
-     * 
-     */
     @Import(name="clusterId")
     private @Nullable String clusterId;
 
-    /**
-     * @return The id of the cluster
-     * 
-     */
     public Optional<String> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
 
-    /**
-     * block, consisting of following fields:
-     * 
-     */
     @Import(name="clusterInfo")
     private @Nullable GetClusterClusterInfo clusterInfo;
 
-    /**
-     * @return block, consisting of following fields:
-     * 
-     */
     public Optional<GetClusterClusterInfo> clusterInfo() {
         return Optional.ofNullable(this.clusterInfo);
     }
 
-    /**
-     * The exact name of the cluster to search
-     * 
-     */
     @Import(name="clusterName")
     private @Nullable String clusterName;
 
-    /**
-     * @return The exact name of the cluster to search
-     * 
-     */
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
     }
 
-    /**
-     * cluster ID
-     * 
-     */
     @Import(name="id")
     private @Nullable String id;
 
-    /**
-     * @return cluster ID
-     * 
-     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
@@ -102,45 +70,21 @@ public final class GetClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetClusterPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param clusterId The id of the cluster
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterId(@Nullable String clusterId) {
             $.clusterId = clusterId;
             return this;
         }
 
-        /**
-         * @param clusterInfo block, consisting of following fields:
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterInfo(@Nullable GetClusterClusterInfo clusterInfo) {
             $.clusterInfo = clusterInfo;
             return this;
         }
 
-        /**
-         * @param clusterName The exact name of the cluster to search
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterName(@Nullable String clusterName) {
             $.clusterName = clusterName;
             return this;
         }
 
-        /**
-         * @param id cluster ID
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable String id) {
             $.id = id;
             return this;

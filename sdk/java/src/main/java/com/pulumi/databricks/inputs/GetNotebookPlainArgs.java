@@ -16,77 +16,37 @@ public final class GetNotebookPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetNotebookPlainArgs Empty = new GetNotebookPlainArgs();
 
-    /**
-     * Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
-     * 
-     */
     @Import(name="format", required=true)
     private String format;
 
-    /**
-     * @return Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
-     * 
-     */
     public String format() {
         return this.format;
     }
 
-    /**
-     * notebook language
-     * 
-     */
     @Import(name="language")
     private @Nullable String language;
 
-    /**
-     * @return notebook language
-     * 
-     */
     public Optional<String> language() {
         return Optional.ofNullable(this.language);
     }
 
-    /**
-     * notebook object ID
-     * 
-     */
     @Import(name="objectId")
     private @Nullable Integer objectId;
 
-    /**
-     * @return notebook object ID
-     * 
-     */
     public Optional<Integer> objectId() {
         return Optional.ofNullable(this.objectId);
     }
 
-    /**
-     * notebook object type
-     * 
-     */
     @Import(name="objectType")
     private @Nullable String objectType;
 
-    /**
-     * @return notebook object type
-     * 
-     */
     public Optional<String> objectType() {
         return Optional.ofNullable(this.objectType);
     }
 
-    /**
-     * Notebook path on the workspace
-     * 
-     */
     @Import(name="path", required=true)
     private String path;
 
-    /**
-     * @return Notebook path on the workspace
-     * 
-     */
     public String path() {
         return this.path;
     }
@@ -119,56 +79,26 @@ public final class GetNotebookPlainArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetNotebookPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param format Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder format(String format) {
             $.format = format;
             return this;
         }
 
-        /**
-         * @param language notebook language
-         * 
-         * @return builder
-         * 
-         */
         public Builder language(@Nullable String language) {
             $.language = language;
             return this;
         }
 
-        /**
-         * @param objectId notebook object ID
-         * 
-         * @return builder
-         * 
-         */
         public Builder objectId(@Nullable Integer objectId) {
             $.objectId = objectId;
             return this;
         }
 
-        /**
-         * @param objectType notebook object type
-         * 
-         * @return builder
-         * 
-         */
         public Builder objectType(@Nullable String objectType) {
             $.objectType = objectType;
             return this;
         }
 
-        /**
-         * @param path Notebook path on the workspace
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(String path) {
             $.path = path;
             return this;

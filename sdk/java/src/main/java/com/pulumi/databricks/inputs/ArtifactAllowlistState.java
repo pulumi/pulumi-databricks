@@ -25,62 +25,30 @@ public final class ArtifactAllowlistState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.artifactMatchers);
     }
 
-    /**
-     * The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="artifactType")
     private @Nullable Output<String> artifactType;
 
-    /**
-     * @return The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-     * 
-     */
     public Optional<Output<String>> artifactType() {
         return Optional.ofNullable(this.artifactType);
     }
 
-    /**
-     * Time at which this artifact allowlist was set.
-     * 
-     */
     @Import(name="createdAt")
     private @Nullable Output<Integer> createdAt;
 
-    /**
-     * @return Time at which this artifact allowlist was set.
-     * 
-     */
     public Optional<Output<Integer>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
-    /**
-     * Identity that set the artifact allowlist.
-     * 
-     */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
-    /**
-     * @return Identity that set the artifact allowlist.
-     * 
-     */
     public Optional<Output<String>> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
-    /**
-     * ID of the parent metastore.
-     * 
-     */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
-    /**
-     * @return ID of the parent metastore.
-     * 
-     */
     public Optional<Output<String>> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
@@ -126,86 +94,38 @@ public final class ArtifactAllowlistState extends com.pulumi.resources.ResourceA
             return artifactMatchers(List.of(artifactMatchers));
         }
 
-        /**
-         * @param artifactType The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder artifactType(@Nullable Output<String> artifactType) {
             $.artifactType = artifactType;
             return this;
         }
 
-        /**
-         * @param artifactType The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder artifactType(String artifactType) {
             return artifactType(Output.of(artifactType));
         }
 
-        /**
-         * @param createdAt Time at which this artifact allowlist was set.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdAt(@Nullable Output<Integer> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
-        /**
-         * @param createdAt Time at which this artifact allowlist was set.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdAt(Integer createdAt) {
             return createdAt(Output.of(createdAt));
         }
 
-        /**
-         * @param createdBy Identity that set the artifact allowlist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdBy(@Nullable Output<String> createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
-        /**
-         * @param createdBy Identity that set the artifact allowlist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdBy(String createdBy) {
             return createdBy(Output.of(createdBy));
         }
 
-        /**
-         * @param metastoreId ID of the parent metastore.
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
-        /**
-         * @param metastoreId ID of the parent metastore.
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreId(String metastoreId) {
             return metastoreId(Output.of(metastoreId));
         }

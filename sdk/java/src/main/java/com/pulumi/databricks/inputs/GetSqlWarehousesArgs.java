@@ -16,32 +16,16 @@ public final class GetSqlWarehousesArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetSqlWarehousesArgs Empty = new GetSqlWarehousesArgs();
 
-    /**
-     * list of databricks.SqlEndpoint ids
-     * 
-     */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
-    /**
-     * @return list of databricks.SqlEndpoint ids
-     * 
-     */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
-    /**
-     * Only return databricks.SqlEndpoint ids that match the given name string.
-     * 
-     */
     @Import(name="warehouseNameContains")
     private @Nullable Output<String> warehouseNameContains;
 
-    /**
-     * @return Only return databricks.SqlEndpoint ids that match the given name string.
-     * 
-     */
     public Optional<Output<String>> warehouseNameContains() {
         return Optional.ofNullable(this.warehouseNameContains);
     }
@@ -71,54 +55,24 @@ public final class GetSqlWarehousesArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetSqlWarehousesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ids list of databricks.SqlEndpoint ids
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(@Nullable Output<List<String>> ids) {
             $.ids = ids;
             return this;
         }
 
-        /**
-         * @param ids list of databricks.SqlEndpoint ids
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(List<String> ids) {
             return ids(Output.of(ids));
         }
 
-        /**
-         * @param ids list of databricks.SqlEndpoint ids
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
-        /**
-         * @param warehouseNameContains Only return databricks.SqlEndpoint ids that match the given name string.
-         * 
-         * @return builder
-         * 
-         */
         public Builder warehouseNameContains(@Nullable Output<String> warehouseNameContains) {
             $.warehouseNameContains = warehouseNameContains;
             return this;
         }
 
-        /**
-         * @param warehouseNameContains Only return databricks.SqlEndpoint ids that match the given name string.
-         * 
-         * @return builder
-         * 
-         */
         public Builder warehouseNameContains(String warehouseNameContains) {
             return warehouseNameContains(Output.of(warehouseNameContains));
         }

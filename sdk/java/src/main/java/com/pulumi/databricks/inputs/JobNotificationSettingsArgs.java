@@ -15,36 +15,16 @@ public final class JobNotificationSettingsArgs extends com.pulumi.resources.Reso
 
     public static final JobNotificationSettingsArgs Empty = new JobNotificationSettingsArgs();
 
-    /**
-     * (Bool) don&#39;t send alert for cancelled runs.
-     * 
-     * The following parameter is only available on task level.
-     * 
-     */
     @Import(name="noAlertForCanceledRuns")
     private @Nullable Output<Boolean> noAlertForCanceledRuns;
 
-    /**
-     * @return (Bool) don&#39;t send alert for cancelled runs.
-     * 
-     * The following parameter is only available on task level.
-     * 
-     */
     public Optional<Output<Boolean>> noAlertForCanceledRuns() {
         return Optional.ofNullable(this.noAlertForCanceledRuns);
     }
 
-    /**
-     * (Bool) don&#39;t send alert for skipped runs.
-     * 
-     */
     @Import(name="noAlertForSkippedRuns")
     private @Nullable Output<Boolean> noAlertForSkippedRuns;
 
-    /**
-     * @return (Bool) don&#39;t send alert for skipped runs.
-     * 
-     */
     public Optional<Output<Boolean>> noAlertForSkippedRuns() {
         return Optional.ofNullable(this.noAlertForSkippedRuns);
     }
@@ -74,48 +54,20 @@ public final class JobNotificationSettingsArgs extends com.pulumi.resources.Reso
             $ = new JobNotificationSettingsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param noAlertForCanceledRuns (Bool) don&#39;t send alert for cancelled runs.
-         * 
-         * The following parameter is only available on task level.
-         * 
-         * @return builder
-         * 
-         */
         public Builder noAlertForCanceledRuns(@Nullable Output<Boolean> noAlertForCanceledRuns) {
             $.noAlertForCanceledRuns = noAlertForCanceledRuns;
             return this;
         }
 
-        /**
-         * @param noAlertForCanceledRuns (Bool) don&#39;t send alert for cancelled runs.
-         * 
-         * The following parameter is only available on task level.
-         * 
-         * @return builder
-         * 
-         */
         public Builder noAlertForCanceledRuns(Boolean noAlertForCanceledRuns) {
             return noAlertForCanceledRuns(Output.of(noAlertForCanceledRuns));
         }
 
-        /**
-         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder noAlertForSkippedRuns(@Nullable Output<Boolean> noAlertForSkippedRuns) {
             $.noAlertForSkippedRuns = noAlertForSkippedRuns;
             return this;
         }
 
-        /**
-         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder noAlertForSkippedRuns(Boolean noAlertForSkippedRuns) {
             return noAlertForSkippedRuns(Output.of(noAlertForSkippedRuns));
         }

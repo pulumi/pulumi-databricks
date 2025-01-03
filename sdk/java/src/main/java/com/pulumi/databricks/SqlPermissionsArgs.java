@@ -18,47 +18,23 @@ public final class SqlPermissionsArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final SqlPermissionsArgs Empty = new SqlPermissionsArgs();
 
-    /**
-     * If this access control for using anonymous function. Defaults to `false`.
-     * 
-     */
     @Import(name="anonymousFunction")
     private @Nullable Output<Boolean> anonymousFunction;
 
-    /**
-     * @return If this access control for using anonymous function. Defaults to `false`.
-     * 
-     */
     public Optional<Output<Boolean>> anonymousFunction() {
         return Optional.ofNullable(this.anonymousFunction);
     }
 
-    /**
-     * If this access control for reading/writing any file. Defaults to `false`.
-     * 
-     */
     @Import(name="anyFile")
     private @Nullable Output<Boolean> anyFile;
 
-    /**
-     * @return If this access control for reading/writing any file. Defaults to `false`.
-     * 
-     */
     public Optional<Output<Boolean>> anyFile() {
         return Optional.ofNullable(this.anyFile);
     }
 
-    /**
-     * If this access control for the entire catalog. Defaults to `false`.
-     * 
-     */
     @Import(name="catalog")
     private @Nullable Output<Boolean> catalog;
 
-    /**
-     * @return If this access control for the entire catalog. Defaults to `false`.
-     * 
-     */
     public Optional<Output<Boolean>> catalog() {
         return Optional.ofNullable(this.catalog);
     }
@@ -70,17 +46,9 @@ public final class SqlPermissionsArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.clusterId);
     }
 
-    /**
-     * Name of the database. Has default value of `default`.
-     * 
-     */
     @Import(name="database")
     private @Nullable Output<String> database;
 
-    /**
-     * @return Name of the database. Has default value of `default`.
-     * 
-     */
     public Optional<Output<String>> database() {
         return Optional.ofNullable(this.database);
     }
@@ -92,32 +60,16 @@ public final class SqlPermissionsArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.privilegeAssignments);
     }
 
-    /**
-     * Name of the table. Can be combined with `database`.
-     * 
-     */
     @Import(name="table")
     private @Nullable Output<String> table;
 
-    /**
-     * @return Name of the table. Can be combined with `database`.
-     * 
-     */
     public Optional<Output<String>> table() {
         return Optional.ofNullable(this.table);
     }
 
-    /**
-     * Name of the view. Can be combined with `database`.
-     * 
-     */
     @Import(name="view")
     private @Nullable Output<String> view;
 
-    /**
-     * @return Name of the view. Can be combined with `database`.
-     * 
-     */
     public Optional<Output<String>> view() {
         return Optional.ofNullable(this.view);
     }
@@ -153,65 +105,29 @@ public final class SqlPermissionsArgs extends com.pulumi.resources.ResourceArgs 
             $ = new SqlPermissionsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param anonymousFunction If this access control for using anonymous function. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder anonymousFunction(@Nullable Output<Boolean> anonymousFunction) {
             $.anonymousFunction = anonymousFunction;
             return this;
         }
 
-        /**
-         * @param anonymousFunction If this access control for using anonymous function. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder anonymousFunction(Boolean anonymousFunction) {
             return anonymousFunction(Output.of(anonymousFunction));
         }
 
-        /**
-         * @param anyFile If this access control for reading/writing any file. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder anyFile(@Nullable Output<Boolean> anyFile) {
             $.anyFile = anyFile;
             return this;
         }
 
-        /**
-         * @param anyFile If this access control for reading/writing any file. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder anyFile(Boolean anyFile) {
             return anyFile(Output.of(anyFile));
         }
 
-        /**
-         * @param catalog If this access control for the entire catalog. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalog(@Nullable Output<Boolean> catalog) {
             $.catalog = catalog;
             return this;
         }
 
-        /**
-         * @param catalog If this access control for the entire catalog. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalog(Boolean catalog) {
             return catalog(Output.of(catalog));
         }
@@ -225,23 +141,11 @@ public final class SqlPermissionsArgs extends com.pulumi.resources.ResourceArgs 
             return clusterId(Output.of(clusterId));
         }
 
-        /**
-         * @param database Name of the database. Has default value of `default`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder database(@Nullable Output<String> database) {
             $.database = database;
             return this;
         }
 
-        /**
-         * @param database Name of the database. Has default value of `default`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder database(String database) {
             return database(Output.of(database));
         }
@@ -259,44 +163,20 @@ public final class SqlPermissionsArgs extends com.pulumi.resources.ResourceArgs 
             return privilegeAssignments(List.of(privilegeAssignments));
         }
 
-        /**
-         * @param table Name of the table. Can be combined with `database`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder table(@Nullable Output<String> table) {
             $.table = table;
             return this;
         }
 
-        /**
-         * @param table Name of the table. Can be combined with `database`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder table(String table) {
             return table(Output.of(table));
         }
 
-        /**
-         * @param view Name of the view. Can be combined with `database`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder view(@Nullable Output<String> view) {
             $.view = view;
             return this;
         }
 
-        /**
-         * @param view Name of the view. Can be combined with `database`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder view(String view) {
             return view(Output.of(view));
         }

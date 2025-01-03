@@ -11,59 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-//
-// > This resource can only be used with a workspace-level provider!
-//
-// Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
-//
-// ## Example Usage
-//
-// Enable the system schema `access`
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewSystemSchema(ctx, "this", &databricks.SystemSchemaArgs{
-//				Schema: pulumi.String("access"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// # This resource can be imported by the metastore id and schema name
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/systemSchema:SystemSchema this '<metastore_id>|<schema_name>'
-// ```
 type SystemSchema struct {
 	pulumi.CustomResourceState
 
-	// the full name of the system schema, in form of `system.<schema>`.
-	FullName    pulumi.StringOutput `pulumi:"fullName"`
-	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
-	// name of the system schema.
-	Schema pulumi.StringPtrOutput `pulumi:"schema"`
-	// The current state of enablement for the system schema.
-	State pulumi.StringOutput `pulumi:"state"`
+	FullName    pulumi.StringOutput    `pulumi:"fullName"`
+	MetastoreId pulumi.StringOutput    `pulumi:"metastoreId"`
+	Schema      pulumi.StringPtrOutput `pulumi:"schema"`
+	State       pulumi.StringOutput    `pulumi:"state"`
 }
 
 // NewSystemSchema registers a new resource with the given unique name, arguments, and options.
@@ -96,23 +50,17 @@ func GetSystemSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SystemSchema resources.
 type systemSchemaState struct {
-	// the full name of the system schema, in form of `system.<schema>`.
 	FullName    *string `pulumi:"fullName"`
 	MetastoreId *string `pulumi:"metastoreId"`
-	// name of the system schema.
-	Schema *string `pulumi:"schema"`
-	// The current state of enablement for the system schema.
-	State *string `pulumi:"state"`
+	Schema      *string `pulumi:"schema"`
+	State       *string `pulumi:"state"`
 }
 
 type SystemSchemaState struct {
-	// the full name of the system schema, in form of `system.<schema>`.
 	FullName    pulumi.StringPtrInput
 	MetastoreId pulumi.StringPtrInput
-	// name of the system schema.
-	Schema pulumi.StringPtrInput
-	// The current state of enablement for the system schema.
-	State pulumi.StringPtrInput
+	Schema      pulumi.StringPtrInput
+	State       pulumi.StringPtrInput
 }
 
 func (SystemSchemaState) ElementType() reflect.Type {
@@ -120,18 +68,14 @@ func (SystemSchemaState) ElementType() reflect.Type {
 }
 
 type systemSchemaArgs struct {
-	// name of the system schema.
 	Schema *string `pulumi:"schema"`
-	// The current state of enablement for the system schema.
-	State *string `pulumi:"state"`
+	State  *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a SystemSchema resource.
 type SystemSchemaArgs struct {
-	// name of the system schema.
 	Schema pulumi.StringPtrInput
-	// The current state of enablement for the system schema.
-	State pulumi.StringPtrInput
+	State  pulumi.StringPtrInput
 }
 
 func (SystemSchemaArgs) ElementType() reflect.Type {
@@ -221,7 +165,6 @@ func (o SystemSchemaOutput) ToSystemSchemaOutputWithContext(ctx context.Context)
 	return o
 }
 
-// the full name of the system schema, in form of `system.<schema>`.
 func (o SystemSchemaOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SystemSchema) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
 }
@@ -230,12 +173,10 @@ func (o SystemSchemaOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SystemSchema) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// name of the system schema.
 func (o SystemSchemaOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SystemSchema) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)
 }
 
-// The current state of enablement for the system schema.
 func (o SystemSchemaOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *SystemSchema) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

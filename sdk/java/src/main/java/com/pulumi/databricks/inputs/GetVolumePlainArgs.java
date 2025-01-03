@@ -16,47 +16,23 @@ public final class GetVolumePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetVolumePlainArgs Empty = new GetVolumePlainArgs();
 
-    /**
-     * ID of this Unity Catalog Volume in form of `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`.
-     * 
-     */
     @Import(name="id")
     private @Nullable String id;
 
-    /**
-     * @return ID of this Unity Catalog Volume in form of `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`.
-     * 
-     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-     * 
-     */
     @Import(name="name", required=true)
     private String name;
 
-    /**
-     * @return a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-     * 
-     */
     public String name() {
         return this.name;
     }
 
-    /**
-     * `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-     * 
-     */
     @Import(name="volumeInfo")
     private @Nullable GetVolumeVolumeInfo volumeInfo;
 
-    /**
-     * @return `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-     * 
-     */
     public Optional<GetVolumeVolumeInfo> volumeInfo() {
         return Optional.ofNullable(this.volumeInfo);
     }
@@ -87,34 +63,16 @@ public final class GetVolumePlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetVolumePlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param id ID of this Unity Catalog Volume in form of `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable String id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param name a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param volumeInfo `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeInfo(@Nullable GetVolumeVolumeInfo volumeInfo) {
             $.volumeInfo = volumeInfo;
             return this;

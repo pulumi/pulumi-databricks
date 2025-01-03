@@ -12,15 +12,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDbfsFileResult {
-    /**
-     * @return base64-encoded file contents
-     * 
-     */
     private String content;
-    /**
-     * @return size of the file in bytes
-     * 
-     */
     private Integer fileSize;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -31,17 +23,9 @@ public final class GetDbfsFileResult {
     private String path;
 
     private GetDbfsFileResult() {}
-    /**
-     * @return base64-encoded file contents
-     * 
-     */
     public String content() {
         return this.content;
     }
-    /**
-     * @return size of the file in bytes
-     * 
-     */
     public Integer fileSize() {
         return this.fileSize;
     }

@@ -12,38 +12,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with Notebook and getNotebookPaths data sources.
-//
-// ## Import
-//
-// # The resource notebook can be imported using notebook path
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
-// ```
 type Notebook struct {
 	pulumi.CustomResourceState
 
-	// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrOutput `pulumi:"contentBase64"`
 	Format        pulumi.StringPtrOutput `pulumi:"format"`
-	// One of `SCALA`, `PYTHON`, `SQL`, `R`.
-	Language pulumi.StringPtrOutput `pulumi:"language"`
-	Md5      pulumi.StringPtrOutput `pulumi:"md5"`
-	// Unique identifier for a NOTEBOOK
-	ObjectId pulumi.IntOutput `pulumi:"objectId"`
+	Language      pulumi.StringPtrOutput `pulumi:"language"`
+	Md5           pulumi.StringPtrOutput `pulumi:"md5"`
+	ObjectId      pulumi.IntOutput       `pulumi:"objectId"`
 	// Deprecated: Always is a notebook
-	ObjectType pulumi.StringOutput `pulumi:"objectType"`
-	// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
-	Path pulumi.StringOutput `pulumi:"path"`
-	// Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
-	Source pulumi.StringPtrOutput `pulumi:"source"`
-	// Routable URL of the notebook
-	Url pulumi.StringOutput `pulumi:"url"`
-	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-	WorkspacePath pulumi.StringOutput `pulumi:"workspacePath"`
+	ObjectType    pulumi.StringOutput    `pulumi:"objectType"`
+	Path          pulumi.StringOutput    `pulumi:"path"`
+	Source        pulumi.StringPtrOutput `pulumi:"source"`
+	Url           pulumi.StringOutput    `pulumi:"url"`
+	WorkspacePath pulumi.StringOutput    `pulumi:"workspacePath"`
 }
 
 // NewNotebook registers a new resource with the given unique name, arguments, and options.
@@ -79,44 +61,30 @@ func GetNotebook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Notebook resources.
 type notebookState struct {
-	// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 	ContentBase64 *string `pulumi:"contentBase64"`
 	Format        *string `pulumi:"format"`
-	// One of `SCALA`, `PYTHON`, `SQL`, `R`.
-	Language *string `pulumi:"language"`
-	Md5      *string `pulumi:"md5"`
-	// Unique identifier for a NOTEBOOK
-	ObjectId *int `pulumi:"objectId"`
+	Language      *string `pulumi:"language"`
+	Md5           *string `pulumi:"md5"`
+	ObjectId      *int    `pulumi:"objectId"`
 	// Deprecated: Always is a notebook
-	ObjectType *string `pulumi:"objectType"`
-	// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
-	Path *string `pulumi:"path"`
-	// Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
-	Source *string `pulumi:"source"`
-	// Routable URL of the notebook
-	Url *string `pulumi:"url"`
-	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	ObjectType    *string `pulumi:"objectType"`
+	Path          *string `pulumi:"path"`
+	Source        *string `pulumi:"source"`
+	Url           *string `pulumi:"url"`
 	WorkspacePath *string `pulumi:"workspacePath"`
 }
 
 type NotebookState struct {
-	// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrInput
 	Format        pulumi.StringPtrInput
-	// One of `SCALA`, `PYTHON`, `SQL`, `R`.
-	Language pulumi.StringPtrInput
-	Md5      pulumi.StringPtrInput
-	// Unique identifier for a NOTEBOOK
-	ObjectId pulumi.IntPtrInput
+	Language      pulumi.StringPtrInput
+	Md5           pulumi.StringPtrInput
+	ObjectId      pulumi.IntPtrInput
 	// Deprecated: Always is a notebook
-	ObjectType pulumi.StringPtrInput
-	// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
-	Path pulumi.StringPtrInput
-	// Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
-	Source pulumi.StringPtrInput
-	// Routable URL of the notebook
-	Url pulumi.StringPtrInput
-	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	ObjectType    pulumi.StringPtrInput
+	Path          pulumi.StringPtrInput
+	Source        pulumi.StringPtrInput
+	Url           pulumi.StringPtrInput
 	WorkspacePath pulumi.StringPtrInput
 }
 
@@ -125,38 +93,28 @@ func (NotebookState) ElementType() reflect.Type {
 }
 
 type notebookArgs struct {
-	// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 	ContentBase64 *string `pulumi:"contentBase64"`
 	Format        *string `pulumi:"format"`
-	// One of `SCALA`, `PYTHON`, `SQL`, `R`.
-	Language *string `pulumi:"language"`
-	Md5      *string `pulumi:"md5"`
-	// Unique identifier for a NOTEBOOK
-	ObjectId *int `pulumi:"objectId"`
+	Language      *string `pulumi:"language"`
+	Md5           *string `pulumi:"md5"`
+	ObjectId      *int    `pulumi:"objectId"`
 	// Deprecated: Always is a notebook
 	ObjectType *string `pulumi:"objectType"`
-	// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
-	Path string `pulumi:"path"`
-	// Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
-	Source *string `pulumi:"source"`
+	Path       string  `pulumi:"path"`
+	Source     *string `pulumi:"source"`
 }
 
 // The set of arguments for constructing a Notebook resource.
 type NotebookArgs struct {
-	// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrInput
 	Format        pulumi.StringPtrInput
-	// One of `SCALA`, `PYTHON`, `SQL`, `R`.
-	Language pulumi.StringPtrInput
-	Md5      pulumi.StringPtrInput
-	// Unique identifier for a NOTEBOOK
-	ObjectId pulumi.IntPtrInput
+	Language      pulumi.StringPtrInput
+	Md5           pulumi.StringPtrInput
+	ObjectId      pulumi.IntPtrInput
 	// Deprecated: Always is a notebook
 	ObjectType pulumi.StringPtrInput
-	// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
-	Path pulumi.StringInput
-	// Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
-	Source pulumi.StringPtrInput
+	Path       pulumi.StringInput
+	Source     pulumi.StringPtrInput
 }
 
 func (NotebookArgs) ElementType() reflect.Type {
@@ -246,7 +204,6 @@ func (o NotebookOutput) ToNotebookOutputWithContext(ctx context.Context) Noteboo
 	return o
 }
 
-// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 func (o NotebookOutput) ContentBase64() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.StringPtrOutput { return v.ContentBase64 }).(pulumi.StringPtrOutput)
 }
@@ -255,7 +212,6 @@ func (o NotebookOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.StringPtrOutput { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-// One of `SCALA`, `PYTHON`, `SQL`, `R`.
 func (o NotebookOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.StringPtrOutput { return v.Language }).(pulumi.StringPtrOutput)
 }
@@ -264,7 +220,6 @@ func (o NotebookOutput) Md5() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.StringPtrOutput { return v.Md5 }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier for a NOTEBOOK
 func (o NotebookOutput) ObjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.IntOutput { return v.ObjectId }).(pulumi.IntOutput)
 }
@@ -274,22 +229,18 @@ func (o NotebookOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
 }
 
-// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
 func (o NotebookOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
-// Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
 func (o NotebookOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Routable URL of the notebook
 func (o NotebookOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 func (o NotebookOutput) WorkspacePath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.StringOutput { return v.WorkspacePath }).(pulumi.StringOutput)
 }

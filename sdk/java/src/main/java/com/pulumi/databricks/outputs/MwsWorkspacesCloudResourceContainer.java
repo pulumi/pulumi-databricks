@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class MwsWorkspacesCloudResourceContainer {
-    /**
-     * @return A block that consists of the following field:
-     * 
-     */
     private MwsWorkspacesCloudResourceContainerGcp gcp;
 
     private MwsWorkspacesCloudResourceContainer() {}
-    /**
-     * @return A block that consists of the following field:
-     * 
-     */
     public MwsWorkspacesCloudResourceContainerGcp gcp() {
         return this.gcp;
     }

@@ -14,17 +14,9 @@ public final class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs ext
 
     public static final RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs Empty = new RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs();
 
-    /**
-     * The restrict workspace admins status for the workspace.
-     * 
-     */
     @Import(name="status", required=true)
     private Output<String> status;
 
-    /**
-     * @return The restrict workspace admins status for the workspace.
-     * 
-     */
     public Output<String> status() {
         return this.status;
     }
@@ -53,23 +45,11 @@ public final class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs ext
             $ = new RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param status The restrict workspace admins status for the workspace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(Output<String> status) {
             $.status = status;
             return this;
         }
 
-        /**
-         * @param status The restrict workspace admins status for the workspace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

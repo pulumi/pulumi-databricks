@@ -11,30 +11,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetExternalLocationResult {
-    /**
-     * @return array of objects with information about external location:
-     * 
-     */
     private GetExternalLocationExternalLocationInfo externalLocationInfo;
-    /**
-     * @return external location ID - same as name.
-     * 
-     */
     private String id;
     private String name;
 
     private GetExternalLocationResult() {}
-    /**
-     * @return array of objects with information about external location:
-     * 
-     */
     public GetExternalLocationExternalLocationInfo externalLocationInfo() {
         return this.externalLocationInfo;
     }
-    /**
-     * @return external location ID - same as name.
-     * 
-     */
     public String id() {
         return this.id;
     }

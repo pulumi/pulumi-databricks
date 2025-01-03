@@ -16,32 +16,16 @@ public final class ModelServingAiGatewayGuardrailsArgs extends com.pulumi.resour
 
     public static final ModelServingAiGatewayGuardrailsArgs Empty = new ModelServingAiGatewayGuardrailsArgs();
 
-    /**
-     * A block with configuration for input guardrail filters:
-     * 
-     */
     @Import(name="input")
     private @Nullable Output<ModelServingAiGatewayGuardrailsInputArgs> input;
 
-    /**
-     * @return A block with configuration for input guardrail filters:
-     * 
-     */
     public Optional<Output<ModelServingAiGatewayGuardrailsInputArgs>> input() {
         return Optional.ofNullable(this.input);
     }
 
-    /**
-     * A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-     * 
-     */
     @Import(name="output")
     private @Nullable Output<ModelServingAiGatewayGuardrailsOutputArgs> output;
 
-    /**
-     * @return A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-     * 
-     */
     public Optional<Output<ModelServingAiGatewayGuardrailsOutputArgs>> output() {
         return Optional.ofNullable(this.output);
     }
@@ -71,44 +55,20 @@ public final class ModelServingAiGatewayGuardrailsArgs extends com.pulumi.resour
             $ = new ModelServingAiGatewayGuardrailsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param input A block with configuration for input guardrail filters:
-         * 
-         * @return builder
-         * 
-         */
         public Builder input(@Nullable Output<ModelServingAiGatewayGuardrailsInputArgs> input) {
             $.input = input;
             return this;
         }
 
-        /**
-         * @param input A block with configuration for input guardrail filters:
-         * 
-         * @return builder
-         * 
-         */
         public Builder input(ModelServingAiGatewayGuardrailsInputArgs input) {
             return input(Output.of(input));
         }
 
-        /**
-         * @param output A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-         * 
-         * @return builder
-         * 
-         */
         public Builder output(@Nullable Output<ModelServingAiGatewayGuardrailsOutputArgs> output) {
             $.output = output;
             return this;
         }
 
-        /**
-         * @param output A block with configuration for output guardrail filters.  Has the same structure as `input` block.
-         * 
-         * @return builder
-         * 
-         */
         public Builder output(ModelServingAiGatewayGuardrailsOutputArgs output) {
             return output(Output.of(output));
         }

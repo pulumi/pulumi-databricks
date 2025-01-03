@@ -11,34 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Lists all available databricks_instance_profiles.
-//
-// ## Example Usage
-//
-// Get all instance profiles:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := databricks.GetInstanceProfiles(ctx, &databricks.GetInstanceProfilesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("allInstanceProfiles", all.InstanceProfiles)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInstanceProfiles(ctx *pulumi.Context, args *GetInstanceProfilesArgs, opts ...pulumi.InvokeOption) (*GetInstanceProfilesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceProfilesResult
@@ -51,15 +23,13 @@ func GetInstanceProfiles(ctx *pulumi.Context, args *GetInstanceProfilesArgs, opt
 
 // A collection of arguments for invoking getInstanceProfiles.
 type GetInstanceProfilesArgs struct {
-	// Set of objects for a databricks_instance_profile. This contains the following attributes:
 	InstanceProfiles []GetInstanceProfilesInstanceProfile `pulumi:"instanceProfiles"`
 }
 
 // A collection of values returned by getInstanceProfiles.
 type GetInstanceProfilesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Set of objects for a databricks_instance_profile. This contains the following attributes:
+	Id               string                               `pulumi:"id"`
 	InstanceProfiles []GetInstanceProfilesInstanceProfile `pulumi:"instanceProfiles"`
 }
 
@@ -74,7 +44,6 @@ func GetInstanceProfilesOutput(ctx *pulumi.Context, args GetInstanceProfilesOutp
 
 // A collection of arguments for invoking getInstanceProfiles.
 type GetInstanceProfilesOutputArgs struct {
-	// Set of objects for a databricks_instance_profile. This contains the following attributes:
 	InstanceProfiles GetInstanceProfilesInstanceProfileArrayInput `pulumi:"instanceProfiles"`
 }
 
@@ -102,7 +71,6 @@ func (o GetInstanceProfilesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceProfilesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Set of objects for a databricks_instance_profile. This contains the following attributes:
 func (o GetInstanceProfilesResultOutput) InstanceProfiles() GetInstanceProfilesInstanceProfileArrayOutput {
 	return o.ApplyT(func(v GetInstanceProfilesResult) []GetInstanceProfilesInstanceProfile { return v.InstanceProfiles }).(GetInstanceProfilesInstanceProfileArrayOutput)
 }

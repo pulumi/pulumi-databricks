@@ -23,363 +23,17 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * ## Example Usage
- * 
- * ### Creating a Databricks on AWS workspace
- * 
- * !Simplest multiworkspace
- * 
- * To get workspace running, you have to configure a couple of things:
- * 
- * * databricks.MwsCredentials - You can share a credentials (cross-account IAM role) configuration ID with multiple workspaces. It is not required to create a new one for each workspace.
- * * databricks.MwsStorageConfigurations - You can share a root S3 bucket with multiple workspaces in a single account. You do not have to create new ones for each workspace. If you share a root S3 bucket for multiple workspaces in an account, data on the root S3 bucket is partitioned into separate directories by workspace.
- * * databricks.MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) with multiple workspaces in a single account. You do not have to create a new VPC for each workspace. However, you cannot reuse subnets or security groups with other resources, including other workspaces or non-Databricks resources. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks databricks.MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
- * * databricks.MwsCustomerManagedKeys - You can share a customer-managed key across workspaces.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.MwsCredentials;
- * import com.pulumi.databricks.MwsCredentialsArgs;
- * import com.pulumi.databricks.MwsStorageConfigurations;
- * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
- * import com.pulumi.databricks.MwsNetworks;
- * import com.pulumi.databricks.MwsNetworksArgs;
- * import com.pulumi.databricks.MwsWorkspaces;
- * import com.pulumi.databricks.MwsWorkspacesArgs;
- * import com.pulumi.databricks.inputs.MwsWorkspacesTokenArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var databricksAccountId = config.get("databricksAccountId");
- *         // register cross-account ARN
- *         var this_ = new MwsCredentials("this", MwsCredentialsArgs.builder()
- *             .accountId(databricksAccountId)
- *             .credentialsName(String.format("%s-creds", prefix))
- *             .roleArn(crossaccountArn)
- *             .build());
- * 
- *         // register root bucket
- *         var thisMwsStorageConfigurations = new MwsStorageConfigurations("thisMwsStorageConfigurations", MwsStorageConfigurationsArgs.builder()
- *             .accountId(databricksAccountId)
- *             .storageConfigurationName(String.format("%s-storage", prefix))
- *             .bucketName(rootBucket)
- *             .build());
- * 
- *         // register VPC
- *         var thisMwsNetworks = new MwsNetworks("thisMwsNetworks", MwsNetworksArgs.builder()
- *             .accountId(databricksAccountId)
- *             .networkName(String.format("%s-network", prefix))
- *             .vpcId(vpcId)
- *             .subnetIds(subnetsPrivate)
- *             .securityGroupIds(securityGroup)
- *             .build());
- * 
- *         // create workspace in given VPC with DBFS on root bucket
- *         var thisMwsWorkspaces = new MwsWorkspaces("thisMwsWorkspaces", MwsWorkspacesArgs.builder()
- *             .accountId(databricksAccountId)
- *             .workspaceName(prefix)
- *             .awsRegion(region)
- *             .credentialsId(this_.credentialsId())
- *             .storageConfigurationId(thisMwsStorageConfigurations.storageConfigurationId())
- *             .networkId(thisMwsNetworks.networkId())
- *             .token()
- *             .build());
- * 
- *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(token -> token.tokenValue()));
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Creating a Databricks on AWS workspace with Databricks-Managed VPC
- * 
- * ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
- * 
- * By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with databricks.MwsNetworks so that you can configure it according to your organization’s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.random.string;
- * import com.pulumi.random.StringArgs;
- * import com.pulumi.databricks.DatabricksFunctions;
- * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
- * import com.pulumi.aws.iam.Role;
- * import com.pulumi.aws.iam.RoleArgs;
- * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
- * import com.pulumi.aws.iam.RolePolicy;
- * import com.pulumi.aws.iam.RolePolicyArgs;
- * import com.pulumi.databricks.MwsCredentials;
- * import com.pulumi.databricks.MwsCredentialsArgs;
- * import com.pulumi.aws.s3.BucketV2;
- * import com.pulumi.aws.s3.BucketV2Args;
- * import com.pulumi.aws.s3.BucketVersioningV2;
- * import com.pulumi.aws.s3.BucketVersioningV2Args;
- * import com.pulumi.aws.s3.inputs.BucketVersioningV2VersioningConfigurationArgs;
- * import com.pulumi.aws.s3.BucketServerSideEncryptionConfigurationV2;
- * import com.pulumi.aws.s3.BucketServerSideEncryptionConfigurationV2Args;
- * import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationV2RuleArgs;
- * import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs;
- * import com.pulumi.aws.s3.BucketPublicAccessBlock;
- * import com.pulumi.aws.s3.BucketPublicAccessBlockArgs;
- * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
- * import com.pulumi.aws.s3.BucketPolicy;
- * import com.pulumi.aws.s3.BucketPolicyArgs;
- * import com.pulumi.databricks.MwsStorageConfigurations;
- * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
- * import com.pulumi.databricks.MwsWorkspaces;
- * import com.pulumi.databricks.MwsWorkspacesArgs;
- * import com.pulumi.databricks.inputs.MwsWorkspacesTokenArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var databricksAccountId = config.get("databricksAccountId");
- *         var naming = new String("naming", StringArgs.builder()
- *             .special(false)
- *             .upper(false)
- *             .length(6)
- *             .build());
- * 
- *         final var prefix = String.format("dltp%s", naming.result());
- * 
- *         final var this = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
- *             .externalId(databricksAccountId)
- *             .build());
- * 
- *         var crossAccountRole = new Role("crossAccountRole", RoleArgs.builder()
- *             .name(String.format("%s-crossaccount", prefix))
- *             .assumeRolePolicy(this_.json())
- *             .tags(tags)
- *             .build());
- * 
- *         final var thisGetAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
- * 
- *         var thisRolePolicy = new RolePolicy("thisRolePolicy", RolePolicyArgs.builder()
- *             .name(String.format("%s-policy", prefix))
- *             .role(crossAccountRole.id())
- *             .policy(thisGetAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -> getAwsCrossAccountPolicyResult.json()))
- *             .build());
- * 
- *         var thisMwsCredentials = new MwsCredentials("thisMwsCredentials", MwsCredentialsArgs.builder()
- *             .accountId(databricksAccountId)
- *             .credentialsName(String.format("%s-creds", prefix))
- *             .roleArn(crossAccountRole.arn())
- *             .build());
- * 
- *         var rootStorageBucket = new BucketV2("rootStorageBucket", BucketV2Args.builder()
- *             .bucket(String.format("%s-rootbucket", prefix))
- *             .acl("private")
- *             .forceDestroy(true)
- *             .tags(tags)
- *             .build());
- * 
- *         var rootVersioning = new BucketVersioningV2("rootVersioning", BucketVersioningV2Args.builder()
- *             .bucket(rootStorageBucket.id())
- *             .versioningConfiguration(BucketVersioningV2VersioningConfigurationArgs.builder()
- *                 .status("Disabled")
- *                 .build())
- *             .build());
- * 
- *         var rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new BucketServerSideEncryptionConfigurationV2("rootStorageBucketBucketServerSideEncryptionConfigurationV2", BucketServerSideEncryptionConfigurationV2Args.builder()
- *             .bucket(rootStorageBucket.bucket())
- *             .rules(BucketServerSideEncryptionConfigurationV2RuleArgs.builder()
- *                 .applyServerSideEncryptionByDefault(BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs.builder()
- *                     .sseAlgorithm("AES256")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var rootStorageBucketBucketPublicAccessBlock = new BucketPublicAccessBlock("rootStorageBucketBucketPublicAccessBlock", BucketPublicAccessBlockArgs.builder()
- *             .bucket(rootStorageBucket.id())
- *             .blockPublicAcls(true)
- *             .blockPublicPolicy(true)
- *             .ignorePublicAcls(true)
- *             .restrictPublicBuckets(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(rootStorageBucket)
- *                 .build());
- * 
- *         final var thisGetAwsBucketPolicy = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
- *             .bucket(rootStorageBucket.bucket())
- *             .build());
- * 
- *         var rootBucketPolicy = new BucketPolicy("rootBucketPolicy", BucketPolicyArgs.builder()
- *             .bucket(rootStorageBucket.id())
- *             .policy(thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -> getAwsBucketPolicyResult).applyValue(thisGetAwsBucketPolicy -> thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -> getAwsBucketPolicyResult.json())))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(rootStorageBucketBucketPublicAccessBlock)
- *                 .build());
- * 
- *         var thisMwsStorageConfigurations = new MwsStorageConfigurations("thisMwsStorageConfigurations", MwsStorageConfigurationsArgs.builder()
- *             .accountId(databricksAccountId)
- *             .storageConfigurationName(String.format("%s-storage", prefix))
- *             .bucketName(rootStorageBucket.bucket())
- *             .build());
- * 
- *         var thisMwsWorkspaces = new MwsWorkspaces("thisMwsWorkspaces", MwsWorkspacesArgs.builder()
- *             .accountId(databricksAccountId)
- *             .workspaceName(prefix)
- *             .awsRegion("us-east-1")
- *             .credentialsId(thisMwsCredentials.credentialsId())
- *             .storageConfigurationId(thisMwsStorageConfigurations.storageConfigurationId())
- *             .token()
- *             .customTags(Map.of("SoldToCode", "1234"))
- *             .build());
- * 
- *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(token -> token.tokenValue()));
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
- * 
- * ### Creating a Databricks on GCP workspace
- * 
- * To get workspace running, you have to configure a network object:
- * 
- * * databricks.MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/customer-managed-vpc.html) with multiple workspaces in a single account. You do not have to create a new VPC for each workspace. However, you cannot reuse subnets with other resources, including other workspaces or non-Databricks resources. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks databricks.MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.MwsNetworks;
- * import com.pulumi.databricks.MwsNetworksArgs;
- * import com.pulumi.databricks.inputs.MwsNetworksGcpNetworkInfoArgs;
- * import com.pulumi.databricks.MwsWorkspaces;
- * import com.pulumi.databricks.MwsWorkspacesArgs;
- * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerArgs;
- * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerGcpArgs;
- * import com.pulumi.databricks.inputs.MwsWorkspacesGkeConfigArgs;
- * import com.pulumi.databricks.inputs.MwsWorkspacesTokenArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var databricksAccountId = config.get("databricksAccountId");
- *         final var databricksGoogleServiceAccount = config.get("databricksGoogleServiceAccount");
- *         final var googleProject = config.get("googleProject");
- *         // register VPC
- *         var this_ = new MwsNetworks("this", MwsNetworksArgs.builder()
- *             .accountId(databricksAccountId)
- *             .networkName(String.format("%s-network", prefix))
- *             .gcpNetworkInfo(MwsNetworksGcpNetworkInfoArgs.builder()
- *                 .networkProjectId(googleProject)
- *                 .vpcId(vpcId)
- *                 .subnetId(subnetId)
- *                 .subnetRegion(subnetRegion)
- *                 .podIpRangeName("pods")
- *                 .serviceIpRangeName("svc")
- *                 .build())
- *             .build());
- * 
- *         // create workspace in given VPC
- *         var thisMwsWorkspaces = new MwsWorkspaces("thisMwsWorkspaces", MwsWorkspacesArgs.builder()
- *             .accountId(databricksAccountId)
- *             .workspaceName(prefix)
- *             .location(subnetRegion)
- *             .cloudResourceContainer(MwsWorkspacesCloudResourceContainerArgs.builder()
- *                 .gcp(MwsWorkspacesCloudResourceContainerGcpArgs.builder()
- *                     .projectId(googleProject)
- *                     .build())
- *                 .build())
- *             .networkId(this_.networkId())
- *             .gkeConfig(MwsWorkspacesGkeConfigArgs.builder()
- *                 .connectivityType("PRIVATE_NODE_PUBLIC_MASTER")
- *                 .masterIpRange("10.3.0.0/28")
- *                 .build())
- *             .token()
- *             .build());
- * 
- *         ctx.export("databricksToken", thisMwsWorkspaces.token().applyValue(token -> token.tokenValue()));
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
- * 
- */
 @ResourceType(type="databricks:index/mwsWorkspaces:MwsWorkspaces")
 public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
-    /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * region of VPC.
-     * 
-     */
     @Export(name="awsRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> awsRegion;
 
-    /**
-     * @return region of VPC.
-     * 
-     */
     public Output<Optional<String>> awsRegion() {
         return Codegen.optional(this.awsRegion);
     }
@@ -389,31 +43,15 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<String> cloud() {
         return this.cloud;
     }
-    /**
-     * A block that specifies GCP workspace configurations, consisting of following blocks:
-     * 
-     */
     @Export(name="cloudResourceContainer", refs={MwsWorkspacesCloudResourceContainer.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesCloudResourceContainer> cloudResourceContainer;
 
-    /**
-     * @return A block that specifies GCP workspace configurations, consisting of following blocks:
-     * 
-     */
     public Output<Optional<MwsWorkspacesCloudResourceContainer>> cloudResourceContainer() {
         return Codegen.optional(this.cloudResourceContainer);
     }
-    /**
-     * (Integer) time when workspace was created
-     * 
-     */
     @Export(name="creationTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> creationTime;
 
-    /**
-     * @return (Integer) time when workspace was created
-     * 
-     */
     public Output<Integer> creationTime() {
         return this.creationTime;
     }
@@ -423,17 +61,9 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> credentialsId() {
         return Codegen.optional(this.credentialsId);
     }
-    /**
-     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
-     * 
-     */
     @Export(name="customTags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customTags;
 
-    /**
-     * @return The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
-     * 
-     */
     public Output<Optional<Map<String,String>>> customTags() {
         return Codegen.optional(this.customTags);
     }
@@ -449,17 +79,9 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> customerManagedKeyId() {
         return Codegen.optional(this.customerManagedKeyId);
     }
-    /**
-     * part of URL as in `https://&lt;prefix&gt;-&lt;deployment-name&gt;.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-     * 
-     */
     @Export(name="deploymentName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentName;
 
-    /**
-     * @return part of URL as in `https://&lt;prefix&gt;-&lt;deployment-name&gt;.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-     * 
-     */
     public Output<Optional<String>> deploymentName() {
         return Codegen.optional(this.deploymentName);
     }
@@ -475,31 +97,15 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<MwsWorkspacesGcpManagedNetworkConfig>> gcpManagedNetworkConfig() {
         return Codegen.optional(this.gcpManagedNetworkConfig);
     }
-    /**
-     * (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;{@literal @}prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
-     * 
-     */
     @Export(name="gcpWorkspaceSa", refs={String.class}, tree="[0]")
     private Output<String> gcpWorkspaceSa;
 
-    /**
-     * @return (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;{@literal @}prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
-     * 
-     */
     public Output<String> gcpWorkspaceSa() {
         return this.gcpWorkspaceSa;
     }
-    /**
-     * A block that specifies GKE configuration for the Databricks workspace:
-     * 
-     */
     @Export(name="gkeConfig", refs={MwsWorkspacesGkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
 
-    /**
-     * @return A block that specifies GKE configuration for the Databricks workspace:
-     * 
-     */
     public Output<Optional<MwsWorkspacesGkeConfig>> gkeConfig() {
         return Codegen.optional(this.gkeConfig);
     }
@@ -509,101 +115,45 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> isNoPublicIpEnabled() {
         return Codegen.optional(this.isNoPublicIpEnabled);
     }
-    /**
-     * region of the subnet.
-     * 
-     */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
-    /**
-     * @return region of the subnet.
-     * 
-     */
     public Output<Optional<String>> location() {
         return Codegen.optional(this.location);
     }
-    /**
-     * `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
-     * 
-     */
     @Export(name="managedServicesCustomerManagedKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> managedServicesCustomerManagedKeyId;
 
-    /**
-     * @return `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
-     * 
-     */
     public Output<Optional<String>> managedServicesCustomerManagedKeyId() {
         return Codegen.optional(this.managedServicesCustomerManagedKeyId);
     }
-    /**
-     * `network_id` from networks.
-     * 
-     */
     @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkId;
 
-    /**
-     * @return `network_id` from networks.
-     * 
-     */
     public Output<Optional<String>> networkId() {
         return Codegen.optional(this.networkId);
     }
-    /**
-     * The pricing tier of the workspace.
-     * 
-     */
     @Export(name="pricingTier", refs={String.class}, tree="[0]")
     private Output<String> pricingTier;
 
-    /**
-     * @return The pricing tier of the workspace.
-     * 
-     */
     public Output<String> pricingTier() {
         return this.pricingTier;
     }
-    /**
-     * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
-     * 
-     */
     @Export(name="privateAccessSettingsId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateAccessSettingsId;
 
-    /**
-     * @return Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
-     * 
-     */
     public Output<Optional<String>> privateAccessSettingsId() {
         return Codegen.optional(this.privateAccessSettingsId);
     }
-    /**
-     * `storage_configuration_id` from storage configuration.
-     * 
-     */
     @Export(name="storageConfigurationId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageConfigurationId;
 
-    /**
-     * @return `storage_configuration_id` from storage configuration.
-     * 
-     */
     public Output<Optional<String>> storageConfigurationId() {
         return Codegen.optional(this.storageConfigurationId);
     }
-    /**
-     * `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
-     * 
-     */
     @Export(name="storageCustomerManagedKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageCustomerManagedKeyId;
 
-    /**
-     * @return `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
-     * 
-     */
     public Output<Optional<String>> storageCustomerManagedKeyId() {
         return Codegen.optional(this.storageCustomerManagedKeyId);
     }
@@ -613,73 +163,33 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<MwsWorkspacesToken>> token() {
         return Codegen.optional(this.token);
     }
-    /**
-     * (String) workspace id
-     * 
-     */
     @Export(name="workspaceId", refs={String.class}, tree="[0]")
     private Output<String> workspaceId;
 
-    /**
-     * @return (String) workspace id
-     * 
-     */
     public Output<String> workspaceId() {
         return this.workspaceId;
     }
-    /**
-     * name of the workspace, will appear on UI.
-     * 
-     */
     @Export(name="workspaceName", refs={String.class}, tree="[0]")
     private Output<String> workspaceName;
 
-    /**
-     * @return name of the workspace, will appear on UI.
-     * 
-     */
     public Output<String> workspaceName() {
         return this.workspaceName;
     }
-    /**
-     * (String) workspace status
-     * 
-     */
     @Export(name="workspaceStatus", refs={String.class}, tree="[0]")
     private Output<String> workspaceStatus;
 
-    /**
-     * @return (String) workspace status
-     * 
-     */
     public Output<String> workspaceStatus() {
         return this.workspaceStatus;
     }
-    /**
-     * (String) updates on workspace status
-     * 
-     */
     @Export(name="workspaceStatusMessage", refs={String.class}, tree="[0]")
     private Output<String> workspaceStatusMessage;
 
-    /**
-     * @return (String) updates on workspace status
-     * 
-     */
     public Output<String> workspaceStatusMessage() {
         return this.workspaceStatusMessage;
     }
-    /**
-     * (String) URL of the workspace
-     * 
-     */
     @Export(name="workspaceUrl", refs={String.class}, tree="[0]")
     private Output<String> workspaceUrl;
 
-    /**
-     * @return (String) URL of the workspace
-     * 
-     */
     public Output<String> workspaceUrl() {
         return this.workspaceUrl;
     }

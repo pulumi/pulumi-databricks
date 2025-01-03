@@ -13,16 +13,16 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetServingEndpointsEndpointAiGatewayGuardrailResult
     {
-        public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputResult> Inputs;
+        public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyResult> InputProperties;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputResult> Outputs;
 
         [OutputConstructor]
         private GetServingEndpointsEndpointAiGatewayGuardrailResult(
-            ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputResult> inputs,
+            ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyResult> inputProperties,
 
             ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputResult> outputs)
         {
-            Inputs = inputs;
+            InputProperties = inputProperties;
             Outputs = outputs;
         }
     }

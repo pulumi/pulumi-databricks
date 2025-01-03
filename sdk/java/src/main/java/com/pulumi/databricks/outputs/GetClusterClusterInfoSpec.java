@@ -30,103 +30,34 @@ public final class GetClusterClusterInfoSpec {
     private @Nullable GetClusterClusterInfoSpecAutoscale autoscale;
     private @Nullable GetClusterClusterInfoSpecAwsAttributes awsAttributes;
     private @Nullable GetClusterClusterInfoSpecAzureAttributes azureAttributes;
-    /**
-     * @return The id of the cluster
-     * 
-     */
     private String clusterId;
     private @Nullable GetClusterClusterInfoSpecClusterLogConf clusterLogConf;
     private @Nullable List<GetClusterClusterInfoSpecClusterMountInfo> clusterMountInfos;
-    /**
-     * @return The exact name of the cluster to search
-     * 
-     */
     private @Nullable String clusterName;
-    /**
-     * @return Additional tags for cluster resources.
-     * 
-     */
     private @Nullable Map<String,String> customTags;
-    /**
-     * @return Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
-     * 
-     */
     private @Nullable String dataSecurityMode;
     private @Nullable GetClusterClusterInfoSpecDockerImage dockerImage;
-    /**
-     * @return similar to `instance_pool_id`, but for driver node.
-     * 
-     */
     private String driverInstancePoolId;
-    /**
-     * @return The node type of the Spark driver.
-     * 
-     */
     private String driverNodeTypeId;
-    /**
-     * @return Use autoscaling local storage.
-     * 
-     */
     private Boolean enableElasticDisk;
-    /**
-     * @return Enable local disk encryption.
-     * 
-     */
     private Boolean enableLocalDiskEncryption;
     private @Nullable GetClusterClusterInfoSpecGcpAttributes gcpAttributes;
-    /**
-     * @return An optional token to guarantee the idempotency of cluster creation requests.
-     * 
-     */
     private @Nullable String idempotencyToken;
     private @Nullable List<GetClusterClusterInfoSpecInitScript> initScripts;
-    /**
-     * @return The pool of idle instances the cluster is attached to.
-     * 
-     */
     private @Nullable String instancePoolId;
+    private @Nullable Boolean isSingleNode;
+    private @Nullable String kind;
     private @Nullable List<GetClusterClusterInfoSpecLibrary> libraries;
-    /**
-     * @return Any supported databricks.getNodeType id.
-     * 
-     */
     private String nodeTypeId;
     private @Nullable Integer numWorkers;
-    /**
-     * @return Identifier of Cluster Policy to validate cluster and preset certain defaults.
-     * 
-     */
     private @Nullable String policyId;
-    /**
-     * @return The type of runtime of the cluster
-     * 
-     */
     private @Nullable String runtimeEngine;
-    /**
-     * @return The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-     * 
-     */
     private @Nullable String singleUserName;
-    /**
-     * @return Map with key-value pairs to fine-tune Spark clusters.
-     * 
-     */
     private @Nullable Map<String,String> sparkConf;
-    /**
-     * @return Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
-     * 
-     */
     private @Nullable Map<String,String> sparkEnvVars;
-    /**
-     * @return [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-     * 
-     */
     private String sparkVersion;
-    /**
-     * @return SSH public key contents that will be added to each Spark node in this cluster.
-     * 
-     */
     private @Nullable List<String> sshPublicKeys;
+    private @Nullable Boolean useMlRuntime;
     private @Nullable GetClusterClusterInfoSpecWorkloadType workloadType;
 
     private GetClusterClusterInfoSpec() {}
@@ -142,10 +73,6 @@ public final class GetClusterClusterInfoSpec {
     public Optional<GetClusterClusterInfoSpecAzureAttributes> azureAttributes() {
         return Optional.ofNullable(this.azureAttributes);
     }
-    /**
-     * @return The id of the cluster
-     * 
-     */
     public String clusterId() {
         return this.clusterId;
     }
@@ -155,139 +82,80 @@ public final class GetClusterClusterInfoSpec {
     public List<GetClusterClusterInfoSpecClusterMountInfo> clusterMountInfos() {
         return this.clusterMountInfos == null ? List.of() : this.clusterMountInfos;
     }
-    /**
-     * @return The exact name of the cluster to search
-     * 
-     */
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
     }
-    /**
-     * @return Additional tags for cluster resources.
-     * 
-     */
     public Map<String,String> customTags() {
         return this.customTags == null ? Map.of() : this.customTags;
     }
-    /**
-     * @return Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
-     * 
-     */
     public Optional<String> dataSecurityMode() {
         return Optional.ofNullable(this.dataSecurityMode);
     }
     public Optional<GetClusterClusterInfoSpecDockerImage> dockerImage() {
         return Optional.ofNullable(this.dockerImage);
     }
-    /**
-     * @return similar to `instance_pool_id`, but for driver node.
-     * 
-     */
     public String driverInstancePoolId() {
         return this.driverInstancePoolId;
     }
-    /**
-     * @return The node type of the Spark driver.
-     * 
-     */
     public String driverNodeTypeId() {
         return this.driverNodeTypeId;
     }
-    /**
-     * @return Use autoscaling local storage.
-     * 
-     */
     public Boolean enableElasticDisk() {
         return this.enableElasticDisk;
     }
-    /**
-     * @return Enable local disk encryption.
-     * 
-     */
     public Boolean enableLocalDiskEncryption() {
         return this.enableLocalDiskEncryption;
     }
     public Optional<GetClusterClusterInfoSpecGcpAttributes> gcpAttributes() {
         return Optional.ofNullable(this.gcpAttributes);
     }
-    /**
-     * @return An optional token to guarantee the idempotency of cluster creation requests.
-     * 
-     */
     public Optional<String> idempotencyToken() {
         return Optional.ofNullable(this.idempotencyToken);
     }
     public List<GetClusterClusterInfoSpecInitScript> initScripts() {
         return this.initScripts == null ? List.of() : this.initScripts;
     }
-    /**
-     * @return The pool of idle instances the cluster is attached to.
-     * 
-     */
     public Optional<String> instancePoolId() {
         return Optional.ofNullable(this.instancePoolId);
+    }
+    public Optional<Boolean> isSingleNode() {
+        return Optional.ofNullable(this.isSingleNode);
+    }
+    public Optional<String> kind() {
+        return Optional.ofNullable(this.kind);
     }
     public List<GetClusterClusterInfoSpecLibrary> libraries() {
         return this.libraries == null ? List.of() : this.libraries;
     }
-    /**
-     * @return Any supported databricks.getNodeType id.
-     * 
-     */
     public String nodeTypeId() {
         return this.nodeTypeId;
     }
     public Optional<Integer> numWorkers() {
         return Optional.ofNullable(this.numWorkers);
     }
-    /**
-     * @return Identifier of Cluster Policy to validate cluster and preset certain defaults.
-     * 
-     */
     public Optional<String> policyId() {
         return Optional.ofNullable(this.policyId);
     }
-    /**
-     * @return The type of runtime of the cluster
-     * 
-     */
     public Optional<String> runtimeEngine() {
         return Optional.ofNullable(this.runtimeEngine);
     }
-    /**
-     * @return The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
-     * 
-     */
     public Optional<String> singleUserName() {
         return Optional.ofNullable(this.singleUserName);
     }
-    /**
-     * @return Map with key-value pairs to fine-tune Spark clusters.
-     * 
-     */
     public Map<String,String> sparkConf() {
         return this.sparkConf == null ? Map.of() : this.sparkConf;
     }
-    /**
-     * @return Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
-     * 
-     */
     public Map<String,String> sparkEnvVars() {
         return this.sparkEnvVars == null ? Map.of() : this.sparkEnvVars;
     }
-    /**
-     * @return [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-     * 
-     */
     public String sparkVersion() {
         return this.sparkVersion;
     }
-    /**
-     * @return SSH public key contents that will be added to each Spark node in this cluster.
-     * 
-     */
     public List<String> sshPublicKeys() {
         return this.sshPublicKeys == null ? List.of() : this.sshPublicKeys;
+    }
+    public Optional<Boolean> useMlRuntime() {
+        return Optional.ofNullable(this.useMlRuntime);
     }
     public Optional<GetClusterClusterInfoSpecWorkloadType> workloadType() {
         return Optional.ofNullable(this.workloadType);
@@ -321,6 +189,8 @@ public final class GetClusterClusterInfoSpec {
         private @Nullable String idempotencyToken;
         private @Nullable List<GetClusterClusterInfoSpecInitScript> initScripts;
         private @Nullable String instancePoolId;
+        private @Nullable Boolean isSingleNode;
+        private @Nullable String kind;
         private @Nullable List<GetClusterClusterInfoSpecLibrary> libraries;
         private String nodeTypeId;
         private @Nullable Integer numWorkers;
@@ -331,6 +201,7 @@ public final class GetClusterClusterInfoSpec {
         private @Nullable Map<String,String> sparkEnvVars;
         private String sparkVersion;
         private @Nullable List<String> sshPublicKeys;
+        private @Nullable Boolean useMlRuntime;
         private @Nullable GetClusterClusterInfoSpecWorkloadType workloadType;
         public Builder() {}
         public Builder(GetClusterClusterInfoSpec defaults) {
@@ -354,6 +225,8 @@ public final class GetClusterClusterInfoSpec {
     	      this.idempotencyToken = defaults.idempotencyToken;
     	      this.initScripts = defaults.initScripts;
     	      this.instancePoolId = defaults.instancePoolId;
+    	      this.isSingleNode = defaults.isSingleNode;
+    	      this.kind = defaults.kind;
     	      this.libraries = defaults.libraries;
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.numWorkers = defaults.numWorkers;
@@ -364,6 +237,7 @@ public final class GetClusterClusterInfoSpec {
     	      this.sparkEnvVars = defaults.sparkEnvVars;
     	      this.sparkVersion = defaults.sparkVersion;
     	      this.sshPublicKeys = defaults.sshPublicKeys;
+    	      this.useMlRuntime = defaults.useMlRuntime;
     	      this.workloadType = defaults.workloadType;
         }
 
@@ -498,6 +372,18 @@ public final class GetClusterClusterInfoSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder isSingleNode(@Nullable Boolean isSingleNode) {
+
+            this.isSingleNode = isSingleNode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kind(@Nullable String kind) {
+
+            this.kind = kind;
+            return this;
+        }
+        @CustomType.Setter
         public Builder libraries(@Nullable List<GetClusterClusterInfoSpecLibrary> libraries) {
 
             this.libraries = libraries;
@@ -568,6 +454,12 @@ public final class GetClusterClusterInfoSpec {
             return sshPublicKeys(List.of(sshPublicKeys));
         }
         @CustomType.Setter
+        public Builder useMlRuntime(@Nullable Boolean useMlRuntime) {
+
+            this.useMlRuntime = useMlRuntime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workloadType(@Nullable GetClusterClusterInfoSpecWorkloadType workloadType) {
 
             this.workloadType = workloadType;
@@ -594,6 +486,8 @@ public final class GetClusterClusterInfoSpec {
             _resultValue.idempotencyToken = idempotencyToken;
             _resultValue.initScripts = initScripts;
             _resultValue.instancePoolId = instancePoolId;
+            _resultValue.isSingleNode = isSingleNode;
+            _resultValue.kind = kind;
             _resultValue.libraries = libraries;
             _resultValue.nodeTypeId = nodeTypeId;
             _resultValue.numWorkers = numWorkers;
@@ -604,6 +498,7 @@ public final class GetClusterClusterInfoSpec {
             _resultValue.sparkEnvVars = sparkEnvVars;
             _resultValue.sparkVersion = sparkVersion;
             _resultValue.sshPublicKeys = sshPublicKeys;
+            _resultValue.useMlRuntime = useMlRuntime;
             _resultValue.workloadType = workloadType;
             return _resultValue;
         }

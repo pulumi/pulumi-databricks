@@ -15,32 +15,16 @@ public final class GroupMemberState extends com.pulumi.resources.ResourceArgs {
 
     public static final GroupMemberState Empty = new GroupMemberState();
 
-    /**
-     * This is the id of the group resource.
-     * 
-     */
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
-    /**
-     * @return This is the id of the group resource.
-     * 
-     */
     public Optional<Output<String>> groupId() {
         return Optional.ofNullable(this.groupId);
     }
 
-    /**
-     * This is the id of the group, service principal, or user.
-     * 
-     */
     @Import(name="memberId")
     private @Nullable Output<String> memberId;
 
-    /**
-     * @return This is the id of the group, service principal, or user.
-     * 
-     */
     public Optional<Output<String>> memberId() {
         return Optional.ofNullable(this.memberId);
     }
@@ -70,44 +54,20 @@ public final class GroupMemberState extends com.pulumi.resources.ResourceArgs {
             $ = new GroupMemberState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param groupId This is the id of the group resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder groupId(@Nullable Output<String> groupId) {
             $.groupId = groupId;
             return this;
         }
 
-        /**
-         * @param groupId This is the id of the group resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
         }
 
-        /**
-         * @param memberId This is the id of the group, service principal, or user.
-         * 
-         * @return builder
-         * 
-         */
         public Builder memberId(@Nullable Output<String> memberId) {
             $.memberId = memberId;
             return this;
         }
 
-        /**
-         * @param memberId This is the id of the group, service principal, or user.
-         * 
-         * @return builder
-         * 
-         */
         public Builder memberId(String memberId) {
             return memberId(Output.of(memberId));
         }

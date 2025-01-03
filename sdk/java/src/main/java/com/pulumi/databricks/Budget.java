@@ -18,110 +18,11 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * &gt; Initialize provider with `alias = &#34;account&#34;`, and `host` pointing to the account URL, like, `host = &#34;https://accounts.cloud.databricks.com&#34;`. Use `provider = databricks.account` for all account-level resources.
- * 
- * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
- * 
- * This resource allows you to manage [Databricks Budgets](https://docs.databricks.com/en/admin/account-settings/budgets.html).
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Budget;
- * import com.pulumi.databricks.BudgetArgs;
- * import com.pulumi.databricks.inputs.BudgetAlertConfigurationArgs;
- * import com.pulumi.databricks.inputs.BudgetFilterArgs;
- * import com.pulumi.databricks.inputs.BudgetFilterWorkspaceIdArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var this_ = new Budget("this", BudgetArgs.builder()
- *             .displayName("databricks-workspace-budget")
- *             .alertConfigurations(BudgetAlertConfigurationArgs.builder()
- *                 .timePeriod("MONTH")
- *                 .triggerType("CUMULATIVE_SPENDING_EXCEEDED")
- *                 .quantityType("LIST_PRICE_DOLLARS_USD")
- *                 .quantityThreshold("840")
- *                 .actionConfigurations(BudgetAlertConfigurationActionConfigurationArgs.builder()
- *                     .actionType("EMAIL_NOTIFICATION")
- *                     .target("abc}{@literal @}{@code gmail.com")
- *                     .build())
- *                 .build())
- *             .filter(BudgetFilterArgs.builder()
- *                 .workspaceId(BudgetFilterWorkspaceIdArgs.builder()
- *                     .operator("IN")
- *                     .values(1234567890098765)
- *                     .build())
- *                 .tags(                
- *                     BudgetFilterTagArgs.builder()
- *                         .key("Team")
- *                         .value(BudgetFilterTagValueArgs.builder()
- *                             .operator("IN")
- *                             .values("Data Science")
- *                             .build())
- *                         .build(),
- *                     BudgetFilterTagArgs.builder()
- *                         .key("Environment")
- *                         .value(BudgetFilterTagValueArgs.builder()
- *                             .operator("IN")
- *                             .values("Development")
- *                             .build())
- *                         .build())
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Related Resources
- * 
- * The following resources are used in the context:
- * 
- * * databricks.MwsWorkspaces to set up Databricks workspaces.
- * 
- * ## Import
- * 
- * This resource can be imported by Databricks account ID and Budget.
- * 
- * ```sh
- * $ pulumi import databricks:index/budget:Budget this &#39;&lt;account_id&gt;|&lt;budget_configuration_id&gt;&#39;
- * ```
- * 
- */
 @ResourceType(type="databricks:index/budget:Budget")
 public class Budget extends com.pulumi.resources.CustomResource {
-    /**
-     * The ID of the Databricks Account.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The ID of the Databricks Account.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
@@ -131,17 +32,9 @@ public class Budget extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<BudgetAlertConfiguration>>> alertConfigurations() {
         return Codegen.optional(this.alertConfigurations);
     }
-    /**
-     * The ID of the budget configuration.
-     * 
-     */
     @Export(name="budgetConfigurationId", refs={String.class}, tree="[0]")
     private Output<String> budgetConfigurationId;
 
-    /**
-     * @return The ID of the budget configuration.
-     * 
-     */
     public Output<String> budgetConfigurationId() {
         return this.budgetConfigurationId;
     }
@@ -151,17 +44,9 @@ public class Budget extends com.pulumi.resources.CustomResource {
     public Output<Integer> createTime() {
         return this.createTime;
     }
-    /**
-     * Name of the budget in Databricks Account.
-     * 
-     */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
-    /**
-     * @return Name of the budget in Databricks Account.
-     * 
-     */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }

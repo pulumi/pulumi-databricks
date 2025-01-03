@@ -11,114 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource configures the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace. *Please note that changing parameters of this resource will restart all running databricks_sql_endpoint.*  To use this resource you need to be an administrator.
-//
-// ## Example Usage
-//
-// ### AWS example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewSqlGlobalConfig(ctx, "this", &databricks.SqlGlobalConfigArgs{
-//				SecurityPolicy:     pulumi.String("DATA_ACCESS_CONTROL"),
-//				InstanceProfileArn: pulumi.String("arn:...."),
-//				DataAccessConfig: pulumi.StringMap{
-//					"spark.sql.session.timeZone": pulumi.String("UTC"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Azure example
-//
-// For Azure you should use the `dataAccessConfig` to provide the service principal configuration. You can use the Databricks SQL Admin Console UI to help you generate the right configuration values.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewSqlGlobalConfig(ctx, "this", &databricks.SqlGlobalConfigArgs{
-//				SecurityPolicy: pulumi.String("DATA_ACCESS_CONTROL"),
-//				DataAccessConfig: pulumi.StringMap{
-//					"spark.hadoop.fs.azure.account.auth.type":              pulumi.String("OAuth"),
-//					"spark.hadoop.fs.azure.account.oauth.provider.type":    pulumi.String("org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
-//					"spark.hadoop.fs.azure.account.oauth2.client.id":       pulumi.Any(applicationId),
-//					"spark.hadoop.fs.azure.account.oauth2.client.secret":   pulumi.Sprintf("{{secrets/%v/%v}}", secretScope, secretKey),
-//					"spark.hadoop.fs.azure.account.oauth2.client.endpoint": pulumi.Sprintf("https://login.microsoftonline.com/%v/oauth2/token", tenantId),
-//				},
-//				SqlConfigParams: pulumi.StringMap{
-//					"ANSI_MODE": pulumi.String("true"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * End to end workspace management guide.
-// * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-// * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-// * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-// * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
-//
-// ## Import
-//
-// You can import a `databricks_sql_global_config` resource with command like the following (you need to use `global` as ID):
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/sqlGlobalConfig:SqlGlobalConfig this global
-// ```
 type SqlGlobalConfig struct {
 	pulumi.CustomResourceState
 
-	// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 	DataAccessConfig pulumi.StringMapOutput `pulumi:"dataAccessConfig"`
 	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
-	EnableServerlessCompute pulumi.BoolOutput `pulumi:"enableServerlessCompute"`
-	// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
-	GoogleServiceAccount pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
-	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
-	InstanceProfileArn pulumi.StringPtrOutput `pulumi:"instanceProfileArn"`
-	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
-	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
-	// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
-	SqlConfigParams pulumi.StringMapOutput `pulumi:"sqlConfigParams"`
+	EnableServerlessCompute pulumi.BoolOutput      `pulumi:"enableServerlessCompute"`
+	GoogleServiceAccount    pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
+	InstanceProfileArn      pulumi.StringPtrOutput `pulumi:"instanceProfileArn"`
+	SecurityPolicy          pulumi.StringPtrOutput `pulumi:"securityPolicy"`
+	SqlConfigParams         pulumi.StringMapOutput `pulumi:"sqlConfigParams"`
 }
 
 // NewSqlGlobalConfig registers a new resource with the given unique name, arguments, and options.
@@ -151,33 +53,23 @@ func GetSqlGlobalConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlGlobalConfig resources.
 type sqlGlobalConfigState struct {
-	// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 	DataAccessConfig map[string]string `pulumi:"dataAccessConfig"`
 	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
-	EnableServerlessCompute *bool `pulumi:"enableServerlessCompute"`
-	// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
-	GoogleServiceAccount *string `pulumi:"googleServiceAccount"`
-	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
-	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
-	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
-	SecurityPolicy *string `pulumi:"securityPolicy"`
-	// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
-	SqlConfigParams map[string]string `pulumi:"sqlConfigParams"`
+	EnableServerlessCompute *bool             `pulumi:"enableServerlessCompute"`
+	GoogleServiceAccount    *string           `pulumi:"googleServiceAccount"`
+	InstanceProfileArn      *string           `pulumi:"instanceProfileArn"`
+	SecurityPolicy          *string           `pulumi:"securityPolicy"`
+	SqlConfigParams         map[string]string `pulumi:"sqlConfigParams"`
 }
 
 type SqlGlobalConfigState struct {
-	// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 	DataAccessConfig pulumi.StringMapInput
 	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 	EnableServerlessCompute pulumi.BoolPtrInput
-	// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
-	GoogleServiceAccount pulumi.StringPtrInput
-	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
-	InstanceProfileArn pulumi.StringPtrInput
-	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
-	SecurityPolicy pulumi.StringPtrInput
-	// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
-	SqlConfigParams pulumi.StringMapInput
+	GoogleServiceAccount    pulumi.StringPtrInput
+	InstanceProfileArn      pulumi.StringPtrInput
+	SecurityPolicy          pulumi.StringPtrInput
+	SqlConfigParams         pulumi.StringMapInput
 }
 
 func (SqlGlobalConfigState) ElementType() reflect.Type {
@@ -185,34 +77,24 @@ func (SqlGlobalConfigState) ElementType() reflect.Type {
 }
 
 type sqlGlobalConfigArgs struct {
-	// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 	DataAccessConfig map[string]string `pulumi:"dataAccessConfig"`
 	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
-	EnableServerlessCompute *bool `pulumi:"enableServerlessCompute"`
-	// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
-	GoogleServiceAccount *string `pulumi:"googleServiceAccount"`
-	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
-	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
-	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
-	SecurityPolicy *string `pulumi:"securityPolicy"`
-	// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
-	SqlConfigParams map[string]string `pulumi:"sqlConfigParams"`
+	EnableServerlessCompute *bool             `pulumi:"enableServerlessCompute"`
+	GoogleServiceAccount    *string           `pulumi:"googleServiceAccount"`
+	InstanceProfileArn      *string           `pulumi:"instanceProfileArn"`
+	SecurityPolicy          *string           `pulumi:"securityPolicy"`
+	SqlConfigParams         map[string]string `pulumi:"sqlConfigParams"`
 }
 
 // The set of arguments for constructing a SqlGlobalConfig resource.
 type SqlGlobalConfigArgs struct {
-	// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 	DataAccessConfig pulumi.StringMapInput
 	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
 	EnableServerlessCompute pulumi.BoolPtrInput
-	// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
-	GoogleServiceAccount pulumi.StringPtrInput
-	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
-	InstanceProfileArn pulumi.StringPtrInput
-	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
-	SecurityPolicy pulumi.StringPtrInput
-	// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
-	SqlConfigParams pulumi.StringMapInput
+	GoogleServiceAccount    pulumi.StringPtrInput
+	InstanceProfileArn      pulumi.StringPtrInput
+	SecurityPolicy          pulumi.StringPtrInput
+	SqlConfigParams         pulumi.StringMapInput
 }
 
 func (SqlGlobalConfigArgs) ElementType() reflect.Type {
@@ -302,7 +184,6 @@ func (o SqlGlobalConfigOutput) ToSqlGlobalConfigOutputWithContext(ctx context.Co
 	return o
 }
 
-// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 func (o SqlGlobalConfigOutput) DataAccessConfig() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.StringMapOutput { return v.DataAccessConfig }).(pulumi.StringMapOutput)
 }
@@ -312,22 +193,18 @@ func (o SqlGlobalConfigOutput) EnableServerlessCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.BoolOutput { return v.EnableServerlessCompute }).(pulumi.BoolOutput)
 }
 
-// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
 func (o SqlGlobalConfigOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.StringPtrOutput { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 func (o SqlGlobalConfigOutput) InstanceProfileArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.StringPtrOutput { return v.InstanceProfileArn }).(pulumi.StringPtrOutput)
 }
 
-// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
 func (o SqlGlobalConfigOutput) SecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.StringPtrOutput { return v.SecurityPolicy }).(pulumi.StringPtrOutput)
 }
 
-// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
 func (o SqlGlobalConfigOutput) SqlConfigParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.StringMapOutput { return v.SqlConfigParams }).(pulumi.StringMapOutput)
 }

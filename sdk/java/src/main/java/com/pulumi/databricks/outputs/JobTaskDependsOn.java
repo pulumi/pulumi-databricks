@@ -12,33 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskDependsOn {
-    /**
-     * @return Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `&#34;true&#34;` or `&#34;false&#34;`.
-     * 
-     * &gt; Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
-     * 
-     */
     private @Nullable String outcome;
-    /**
-     * @return The name of the task this task depends on.
-     * 
-     */
     private String taskKey;
 
     private JobTaskDependsOn() {}
-    /**
-     * @return Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `&#34;true&#34;` or `&#34;false&#34;`.
-     * 
-     * &gt; Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to task_key in order to get consistent Pulumi diffs.
-     * 
-     */
     public Optional<String> outcome() {
         return Optional.ofNullable(this.outcome);
     }
-    /**
-     * @return The name of the task this task depends on.
-     * 
-     */
     public String taskKey() {
         return this.taskKey;
     }

@@ -16,107 +16,51 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final VolumeArgs Empty = new VolumeArgs();
 
-    /**
-     * Name of parent Catalog. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="catalogName", required=true)
     private Output<String> catalogName;
 
-    /**
-     * @return Name of parent Catalog. Change forces creation of a new resource.
-     * 
-     */
     public Output<String> catalogName() {
         return this.catalogName;
     }
 
-    /**
-     * Free-form text.
-     * 
-     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
-    /**
-     * @return Free-form text.
-     * 
-     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
-    /**
-     * Name of the Volume
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the Volume
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Name of the volume owner.
-     * 
-     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
-    /**
-     * @return Name of the volume owner.
-     * 
-     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
 
-    /**
-     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="schemaName", required=true)
     private Output<String> schemaName;
 
-    /**
-     * @return Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-     * 
-     */
     public Output<String> schemaName() {
         return this.schemaName;
     }
 
-    /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="storageLocation")
     private @Nullable Output<String> storageLocation;
 
-    /**
-     * @return Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
-     * 
-     */
     public Optional<Output<String>> storageLocation() {
         return Optional.ofNullable(this.storageLocation);
     }
 
-    /**
-     * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="volumeType", required=true)
     private Output<String> volumeType;
 
-    /**
-     * @return Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
-     * 
-     */
     public Output<String> volumeType() {
         return this.volumeType;
     }
@@ -151,149 +95,65 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
             $ = new VolumeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param catalogName Name of parent Catalog. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalogName(Output<String> catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
-        /**
-         * @param catalogName Name of parent Catalog. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalogName(String catalogName) {
             return catalogName(Output.of(catalogName));
         }
 
-        /**
-         * @param comment Free-form text.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
-        /**
-         * @param comment Free-form text.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
-        /**
-         * @param name Name of the Volume
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the Volume
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param owner Name of the volume owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
-        /**
-         * @param owner Name of the volume owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
 
-        /**
-         * @param schemaName Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder schemaName(Output<String> schemaName) {
             $.schemaName = schemaName;
             return this;
         }
 
-        /**
-         * @param schemaName Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder schemaName(String schemaName) {
             return schemaName(Output.of(schemaName));
         }
 
-        /**
-         * @param storageLocation Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageLocation(@Nullable Output<String> storageLocation) {
             $.storageLocation = storageLocation;
             return this;
         }
 
-        /**
-         * @param storageLocation Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageLocation(String storageLocation) {
             return storageLocation(Output.of(storageLocation));
         }
 
-        /**
-         * @param volumeType Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeType(Output<String> volumeType) {
             $.volumeType = volumeType;
             return this;
         }
 
-        /**
-         * @param volumeType Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeType(String volumeType) {
             return volumeType(Output.of(volumeType));
         }

@@ -84,17 +84,9 @@ public final class MountState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.s3);
     }
 
-    /**
-     * (String) HDFS-compatible url
-     * 
-     */
     @Import(name="source")
     private @Nullable Output<String> source;
 
-    /**
-     * @return (String) HDFS-compatible url
-     * 
-     */
     public Optional<Output<String>> source() {
         return Optional.ofNullable(this.source);
     }
@@ -229,23 +221,11 @@ public final class MountState extends com.pulumi.resources.ResourceArgs {
             return s3(Output.of(s3));
         }
 
-        /**
-         * @param source (String) HDFS-compatible url
-         * 
-         * @return builder
-         * 
-         */
         public Builder source(@Nullable Output<String> source) {
             $.source = source;
             return this;
         }
 
-        /**
-         * @param source (String) HDFS-compatible url
-         * 
-         * @return builder
-         * 
-         */
         public Builder source(String source) {
             return source(Output.of(source));
         }

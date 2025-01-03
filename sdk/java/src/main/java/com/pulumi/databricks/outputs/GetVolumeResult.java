@@ -11,41 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetVolumeResult {
-    /**
-     * @return ID of this Unity Catalog Volume in form of `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`.
-     * 
-     */
     private String id;
-    /**
-     * @return the name of the volume
-     * 
-     */
     private String name;
-    /**
-     * @return `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-     * 
-     */
     private GetVolumeVolumeInfo volumeInfo;
 
     private GetVolumeResult() {}
-    /**
-     * @return ID of this Unity Catalog Volume in form of `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`.
-     * 
-     */
     public String id() {
         return this.id;
     }
-    /**
-     * @return the name of the volume
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-     * 
-     */
     public GetVolumeVolumeInfo volumeInfo() {
         return this.volumeInfo;
     }

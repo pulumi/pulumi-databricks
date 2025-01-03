@@ -20,17 +20,9 @@ public final class GetJobJobSettingsSettingsParameter extends com.pulumi.resourc
         return this.default_;
     }
 
-    /**
-     * the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     @Import(name="name", required=true)
     private String name;
 
-    /**
-     * @return the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     public String name() {
         return this.name;
     }
@@ -65,12 +57,6 @@ public final class GetJobJobSettingsSettingsParameter extends com.pulumi.resourc
             return this;
         }
 
-        /**
-         * @param name the job name of databricks.Job if the resource was matched by id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             $.name = name;
             return this;

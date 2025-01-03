@@ -22,17 +22,9 @@ public final class ModelServingConfigTrafficConfigRouteArgs extends com.pulumi.r
         return this.servedModelName;
     }
 
-    /**
-     * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-     * 
-     */
     @Import(name="trafficPercentage", required=true)
     private Output<Integer> trafficPercentage;
 
-    /**
-     * @return The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-     * 
-     */
     public Output<Integer> trafficPercentage() {
         return this.trafficPercentage;
     }
@@ -71,23 +63,11 @@ public final class ModelServingConfigTrafficConfigRouteArgs extends com.pulumi.r
             return servedModelName(Output.of(servedModelName));
         }
 
-        /**
-         * @param trafficPercentage The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-         * 
-         * @return builder
-         * 
-         */
         public Builder trafficPercentage(Output<Integer> trafficPercentage) {
             $.trafficPercentage = trafficPercentage;
             return this;
         }
 
-        /**
-         * @param trafficPercentage The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-         * 
-         * @return builder
-         * 
-         */
         public Builder trafficPercentage(Integer trafficPercentage) {
             return trafficPercentage(Output.of(trafficPercentage));
         }

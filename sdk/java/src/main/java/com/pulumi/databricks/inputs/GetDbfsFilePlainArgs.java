@@ -14,32 +14,16 @@ public final class GetDbfsFilePlainArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetDbfsFilePlainArgs Empty = new GetDbfsFilePlainArgs();
 
-    /**
-     * Do not load content for files larger than 4MB.
-     * 
-     */
     @Import(name="limitFileSize", required=true)
     private Boolean limitFileSize;
 
-    /**
-     * @return Do not load content for files larger than 4MB.
-     * 
-     */
     public Boolean limitFileSize() {
         return this.limitFileSize;
     }
 
-    /**
-     * Path on DBFS for the file from which to get content.
-     * 
-     */
     @Import(name="path", required=true)
     private String path;
 
-    /**
-     * @return Path on DBFS for the file from which to get content.
-     * 
-     */
     public String path() {
         return this.path;
     }
@@ -69,23 +53,11 @@ public final class GetDbfsFilePlainArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetDbfsFilePlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param limitFileSize Do not load content for files larger than 4MB.
-         * 
-         * @return builder
-         * 
-         */
         public Builder limitFileSize(Boolean limitFileSize) {
             $.limitFileSize = limitFileSize;
             return this;
         }
 
-        /**
-         * @param path Path on DBFS for the file from which to get content.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(String path) {
             $.path = path;
             return this;

@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobsResult {
@@ -16,11 +18,8 @@ public final class GetJobsResult {
      * 
      */
     private String id;
-    /**
-     * @return map of databricks.Job names to ids
-     * 
-     */
     private Map<String,String> ids;
+    private @Nullable String jobNameContains;
 
     private GetJobsResult() {}
     /**
@@ -30,12 +29,11 @@ public final class GetJobsResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return map of databricks.Job names to ids
-     * 
-     */
     public Map<String,String> ids() {
         return this.ids;
+    }
+    public Optional<String> jobNameContains() {
+        return Optional.ofNullable(this.jobNameContains);
     }
 
     public static Builder builder() {
@@ -49,11 +47,13 @@ public final class GetJobsResult {
     public static final class Builder {
         private String id;
         private Map<String,String> ids;
+        private @Nullable String jobNameContains;
         public Builder() {}
         public Builder(GetJobsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.jobNameContains = defaults.jobNameContains;
         }
 
         @CustomType.Setter
@@ -72,10 +72,17 @@ public final class GetJobsResult {
             this.ids = ids;
             return this;
         }
+        @CustomType.Setter
+        public Builder jobNameContains(@Nullable String jobNameContains) {
+
+            this.jobNameContains = jobNameContains;
+            return this;
+        }
         public GetJobsResult build() {
             final var _resultValue = new GetJobsResult();
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.jobNameContains = jobNameContains;
             return _resultValue;
         }
     }

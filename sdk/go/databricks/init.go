@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessControlRuleSet{}
 	case "databricks:index/alert:Alert":
 		r = &Alert{}
+	case "databricks:index/app:App":
+		r = &App{}
 	case "databricks:index/artifactAllowlist:ArtifactAllowlist":
 		r = &ArtifactAllowlist{}
 	case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
@@ -43,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ComplianceSecurityProfileWorkspaceSetting{}
 	case "databricks:index/connection:Connection":
 		r = &Connection{}
+	case "databricks:index/credential:Credential":
+		r = &Credential{}
 	case "databricks:index/customAppIntegration:CustomAppIntegration":
 		r = &CustomAppIntegration{}
 	case "databricks:index/dashboard:Dashboard":
@@ -260,6 +264,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/app",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/artifactAllowlist",
 		&module{version},
 	)
@@ -301,6 +310,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/connection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/credential",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -12,63 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
-//
-// ## Example Usage
-//
-// You can declare Pulumi-managed Git credential using following code:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewGitCredential(ctx, "ado", &databricks.GitCredentialArgs{
-//				GitUsername:         pulumi.String("myuser"),
-//				GitProvider:         pulumi.String("azureDevOpsServices"),
-//				PersonalAccessToken: pulumi.String("sometoken"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * Repo to manage Databricks Repos.
-//
-// ## Import
-//
-// The resource cluster can be imported using ID of Git credential that could be obtained via REST API:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/gitCredential:GitCredential this <git-credential-id>
-// ```
 type GitCredential struct {
 	pulumi.CustomResourceState
 
-	// specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
-	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-	GitProvider pulumi.StringOutput `pulumi:"gitProvider"`
-	// user name at Git provider.
-	GitUsername pulumi.StringPtrOutput `pulumi:"gitUsername"`
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+	Force               pulumi.BoolPtrOutput   `pulumi:"force"`
+	GitProvider         pulumi.StringOutput    `pulumi:"gitProvider"`
+	GitUsername         pulumi.StringPtrOutput `pulumi:"gitUsername"`
 	PersonalAccessToken pulumi.StringPtrOutput `pulumi:"personalAccessToken"`
 }
 
@@ -105,24 +54,16 @@ func GetGitCredential(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GitCredential resources.
 type gitCredentialState struct {
-	// specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
-	Force *bool `pulumi:"force"`
-	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-	GitProvider *string `pulumi:"gitProvider"`
-	// user name at Git provider.
-	GitUsername *string `pulumi:"gitUsername"`
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+	Force               *bool   `pulumi:"force"`
+	GitProvider         *string `pulumi:"gitProvider"`
+	GitUsername         *string `pulumi:"gitUsername"`
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
 }
 
 type GitCredentialState struct {
-	// specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
-	Force pulumi.BoolPtrInput
-	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-	GitProvider pulumi.StringPtrInput
-	// user name at Git provider.
-	GitUsername pulumi.StringPtrInput
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+	Force               pulumi.BoolPtrInput
+	GitProvider         pulumi.StringPtrInput
+	GitUsername         pulumi.StringPtrInput
 	PersonalAccessToken pulumi.StringPtrInput
 }
 
@@ -131,25 +72,17 @@ func (GitCredentialState) ElementType() reflect.Type {
 }
 
 type gitCredentialArgs struct {
-	// specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
-	Force *bool `pulumi:"force"`
-	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-	GitProvider string `pulumi:"gitProvider"`
-	// user name at Git provider.
-	GitUsername *string `pulumi:"gitUsername"`
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+	Force               *bool   `pulumi:"force"`
+	GitProvider         string  `pulumi:"gitProvider"`
+	GitUsername         *string `pulumi:"gitUsername"`
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
 }
 
 // The set of arguments for constructing a GitCredential resource.
 type GitCredentialArgs struct {
-	// specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
-	Force pulumi.BoolPtrInput
-	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-	GitProvider pulumi.StringInput
-	// user name at Git provider.
-	GitUsername pulumi.StringPtrInput
-	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+	Force               pulumi.BoolPtrInput
+	GitProvider         pulumi.StringInput
+	GitUsername         pulumi.StringPtrInput
 	PersonalAccessToken pulumi.StringPtrInput
 }
 
@@ -240,22 +173,18 @@ func (o GitCredentialOutput) ToGitCredentialOutputWithContext(ctx context.Contex
 	return o
 }
 
-// specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
 func (o GitCredentialOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 func (o GitCredentialOutput) GitProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringOutput { return v.GitProvider }).(pulumi.StringOutput)
 }
 
-// user name at Git provider.
 func (o GitCredentialOutput) GitUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.GitUsername }).(pulumi.StringPtrOutput)
 }
 
-// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 func (o GitCredentialOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.PersonalAccessToken }).(pulumi.StringPtrOutput)
 }

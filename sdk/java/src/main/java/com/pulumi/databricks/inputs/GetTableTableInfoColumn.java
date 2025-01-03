@@ -17,17 +17,9 @@ public final class GetTableTableInfoColumn extends com.pulumi.resources.InvokeAr
 
     public static final GetTableTableInfoColumn Empty = new GetTableTableInfoColumn();
 
-    /**
-     * Free-form text description
-     * 
-     */
     @Import(name="comment")
     private @Nullable String comment;
 
-    /**
-     * @return Free-form text description
-     * 
-     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
@@ -39,17 +31,9 @@ public final class GetTableTableInfoColumn extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.mask);
     }
 
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     * 
-     */
     @Import(name="name")
     private @Nullable String name;
 
-    /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -152,12 +136,6 @@ public final class GetTableTableInfoColumn extends com.pulumi.resources.InvokeAr
             $ = new GetTableTableInfoColumn(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param comment Free-form text description
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(@Nullable String comment) {
             $.comment = comment;
             return this;
@@ -168,12 +146,6 @@ public final class GetTableTableInfoColumn extends com.pulumi.resources.InvokeAr
             return this;
         }
 
-        /**
-         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;

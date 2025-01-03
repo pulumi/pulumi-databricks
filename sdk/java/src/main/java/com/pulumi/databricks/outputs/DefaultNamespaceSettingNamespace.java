@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DefaultNamespaceSettingNamespace {
-    /**
-     * @return The value for the setting.
-     * 
-     */
     private @Nullable String value;
 
     private DefaultNamespaceSettingNamespace() {}
-    /**
-     * @return The value for the setting.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

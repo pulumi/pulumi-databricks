@@ -14,17 +14,9 @@ public final class GetStorageCredentialStorageCredentialInfoAzureServicePrincipa
 
     public static final GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs Empty = new GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs();
 
-    /**
-     * The application ID of the application registration within the referenced AAD tenant
-     * 
-     */
     @Import(name="applicationId", required=true)
     private Output<String> applicationId;
 
-    /**
-     * @return The application ID of the application registration within the referenced AAD tenant
-     * 
-     */
     public Output<String> applicationId() {
         return this.applicationId;
     }
@@ -36,17 +28,9 @@ public final class GetStorageCredentialStorageCredentialInfoAzureServicePrincipa
         return this.clientSecret;
     }
 
-    /**
-     * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-     * 
-     */
     @Import(name="directoryId", required=true)
     private Output<String> directoryId;
 
-    /**
-     * @return The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-     * 
-     */
     public Output<String> directoryId() {
         return this.directoryId;
     }
@@ -77,23 +61,11 @@ public final class GetStorageCredentialStorageCredentialInfoAzureServicePrincipa
             $ = new GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param applicationId The application ID of the application registration within the referenced AAD tenant
-         * 
-         * @return builder
-         * 
-         */
         public Builder applicationId(Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
 
-        /**
-         * @param applicationId The application ID of the application registration within the referenced AAD tenant
-         * 
-         * @return builder
-         * 
-         */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
         }
@@ -107,23 +79,11 @@ public final class GetStorageCredentialStorageCredentialInfoAzureServicePrincipa
             return clientSecret(Output.of(clientSecret));
         }
 
-        /**
-         * @param directoryId The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-         * 
-         * @return builder
-         * 
-         */
         public Builder directoryId(Output<String> directoryId) {
             $.directoryId = directoryId;
             return this;
         }
 
-        /**
-         * @param directoryId The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-         * 
-         * @return builder
-         * 
-         */
         public Builder directoryId(String directoryId) {
             return directoryId(Output.of(directoryId));
         }

@@ -24,42 +24,16 @@ public final class AccessControlRuleSetState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.etag);
     }
 
-    /**
-     * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
-     * 
-     * !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
-     * 
-     */
     @Import(name="grantRules")
     private @Nullable Output<List<AccessControlRuleSetGrantRuleArgs>> grantRules;
 
-    /**
-     * @return The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
-     * 
-     * !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
-     * 
-     */
     public Optional<Output<List<AccessControlRuleSetGrantRuleArgs>>> grantRules() {
         return Optional.ofNullable(this.grantRules);
     }
 
-    /**
-     * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-     * * `accounts/{account_id}/ruleSets/default`
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-     * * `accounts/{account_id}/ruleSets/default`
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -99,66 +73,24 @@ public final class AccessControlRuleSetState extends com.pulumi.resources.Resour
             return etag(Output.of(etag));
         }
 
-        /**
-         * @param grantRules The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
-         * 
-         * !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
-         * 
-         * @return builder
-         * 
-         */
         public Builder grantRules(@Nullable Output<List<AccessControlRuleSetGrantRuleArgs>> grantRules) {
             $.grantRules = grantRules;
             return this;
         }
 
-        /**
-         * @param grantRules The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
-         * 
-         * !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
-         * 
-         * @return builder
-         * 
-         */
         public Builder grantRules(List<AccessControlRuleSetGrantRuleArgs> grantRules) {
             return grantRules(Output.of(grantRules));
         }
 
-        /**
-         * @param grantRules The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
-         * 
-         * !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
-         * 
-         * @return builder
-         * 
-         */
         public Builder grantRules(AccessControlRuleSetGrantRuleArgs... grantRules) {
             return grantRules(List.of(grantRules));
         }
 
-        /**
-         * @param name Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-         * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-         * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-         * * `accounts/{account_id}/ruleSets/default`
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-         * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-         * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-         * * `accounts/{account_id}/ruleSets/default`
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

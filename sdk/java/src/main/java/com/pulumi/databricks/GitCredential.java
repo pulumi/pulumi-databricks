@@ -15,120 +15,29 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
- * 
- * ## Example Usage
- * 
- * You can declare Pulumi-managed Git credential using following code:
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.GitCredential;
- * import com.pulumi.databricks.GitCredentialArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var ado = new GitCredential("ado", GitCredentialArgs.builder()
- *             .gitUsername("myuser")
- *             .gitProvider("azureDevOpsServices")
- *             .personalAccessToken("sometoken")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Related Resources
- * 
- * The following resources are often used in the same context:
- * 
- * * databricks.Repo to manage Databricks Repos.
- * 
- * ## Import
- * 
- * The resource cluster can be imported using ID of Git credential that could be obtained via REST API:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/gitCredential:GitCredential this &lt;git-credential-id&gt;
- * ```
- * 
- */
 @ResourceType(type="databricks:index/gitCredential:GitCredential")
 public class GitCredential extends com.pulumi.resources.CustomResource {
-    /**
-     * specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
-     * 
-     */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
-    /**
-     * @return specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
-     * 
-     */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
-    /**
-     * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-     * 
-     */
     @Export(name="gitProvider", refs={String.class}, tree="[0]")
     private Output<String> gitProvider;
 
-    /**
-     * @return case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-     * 
-     */
     public Output<String> gitProvider() {
         return this.gitProvider;
     }
-    /**
-     * user name at Git provider.
-     * 
-     */
     @Export(name="gitUsername", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gitUsername;
 
-    /**
-     * @return user name at Git provider.
-     * 
-     */
     public Output<Optional<String>> gitUsername() {
         return Codegen.optional(this.gitUsername);
     }
-    /**
-     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
-     * 
-     */
     @Export(name="personalAccessToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> personalAccessToken;
 
-    /**
-     * @return The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
-     * 
-     */
     public Output<Optional<String>> personalAccessToken() {
         return Codegen.optional(this.personalAccessToken);
     }

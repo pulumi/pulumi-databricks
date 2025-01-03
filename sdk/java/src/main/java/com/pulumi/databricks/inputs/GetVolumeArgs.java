@@ -17,47 +17,23 @@ public final class GetVolumeArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetVolumeArgs Empty = new GetVolumeArgs();
 
-    /**
-     * ID of this Unity Catalog Volume in form of `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`.
-     * 
-     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
-    /**
-     * @return ID of this Unity Catalog Volume in form of `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`.
-     * 
-     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-     * 
-     */
     @Import(name="volumeInfo")
     private @Nullable Output<GetVolumeVolumeInfoArgs> volumeInfo;
 
-    /**
-     * @return `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-     * 
-     */
     public Optional<Output<GetVolumeVolumeInfoArgs>> volumeInfo() {
         return Optional.ofNullable(this.volumeInfo);
     }
@@ -88,65 +64,29 @@ public final class GetVolumeArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetVolumeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param id ID of this Unity Catalog Volume in form of `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param id ID of this Unity Catalog Volume in form of `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
-        /**
-         * @param name a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param volumeInfo `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeInfo(@Nullable Output<GetVolumeVolumeInfoArgs> volumeInfo) {
             $.volumeInfo = volumeInfo;
             return this;
         }
 
-        /**
-         * @param volumeInfo `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeInfo(GetVolumeVolumeInfoArgs volumeInfo) {
             return volumeInfo(Output.of(volumeInfo));
         }

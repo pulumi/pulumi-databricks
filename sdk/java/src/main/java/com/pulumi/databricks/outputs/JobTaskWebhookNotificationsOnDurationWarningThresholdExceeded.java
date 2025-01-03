@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
-    /**
-     * @return ID of the job
-     * 
-     */
     private String id;
 
     private JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded() {}
-    /**
-     * @return ID of the job
-     * 
-     */
     public String id() {
         return this.id;
     }

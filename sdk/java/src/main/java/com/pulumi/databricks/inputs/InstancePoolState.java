@@ -39,17 +39,9 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.azureAttributes);
     }
 
-    /**
-     * (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
-     * 
-     */
     @Import(name="customTags")
     private @Nullable Output<Map<String,String>> customTags;
 
-    /**
-     * @return (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
-     * 
-     */
     public Optional<Output<Map<String,String>>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
@@ -61,17 +53,9 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.diskSpec);
     }
 
-    /**
-     * (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
-     * 
-     */
     @Import(name="enableElasticDisk")
     private @Nullable Output<Boolean> enableElasticDisk;
 
-    /**
-     * @return (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
-     * 
-     */
     public Optional<Output<Boolean>> enableElasticDisk() {
         return Optional.ofNullable(this.enableElasticDisk);
     }
@@ -83,17 +67,9 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.gcpAttributes);
     }
 
-    /**
-     * (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
-     * 
-     */
     @Import(name="idleInstanceAutoterminationMinutes")
     private @Nullable Output<Integer> idleInstanceAutoterminationMinutes;
 
-    /**
-     * @return (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
-     * 
-     */
     public Optional<Output<Integer>> idleInstanceAutoterminationMinutes() {
         return Optional.ofNullable(this.idleInstanceAutoterminationMinutes);
     }
@@ -112,62 +88,30 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.instancePoolId);
     }
 
-    /**
-     * (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
-     * 
-     */
     @Import(name="instancePoolName")
     private @Nullable Output<String> instancePoolName;
 
-    /**
-     * @return (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
-     * 
-     */
     public Optional<Output<String>> instancePoolName() {
         return Optional.ofNullable(this.instancePoolName);
     }
 
-    /**
-     * (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
-     * 
-     */
     @Import(name="maxCapacity")
     private @Nullable Output<Integer> maxCapacity;
 
-    /**
-     * @return (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
-     * 
-     */
     public Optional<Output<Integer>> maxCapacity() {
         return Optional.ofNullable(this.maxCapacity);
     }
 
-    /**
-     * (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
-     * 
-     */
     @Import(name="minIdleInstances")
     private @Nullable Output<Integer> minIdleInstances;
 
-    /**
-     * @return (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
-     * 
-     */
     public Optional<Output<Integer>> minIdleInstances() {
         return Optional.ofNullable(this.minIdleInstances);
     }
 
-    /**
-     * (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
-     * 
-     */
     @Import(name="nodeTypeId")
     private @Nullable Output<String> nodeTypeId;
 
-    /**
-     * @return (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
-     * 
-     */
     public Optional<Output<String>> nodeTypeId() {
         return Optional.ofNullable(this.nodeTypeId);
     }
@@ -179,17 +123,9 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.preloadedDockerImages);
     }
 
-    /**
-     * (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks.getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-     * 
-     */
     @Import(name="preloadedSparkVersions")
     private @Nullable Output<List<String>> preloadedSparkVersions;
 
-    /**
-     * @return (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks.getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-     * 
-     */
     public Optional<Output<List<String>>> preloadedSparkVersions() {
         return Optional.ofNullable(this.preloadedSparkVersions);
     }
@@ -250,23 +186,11 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
             return azureAttributes(Output.of(azureAttributes));
         }
 
-        /**
-         * @param customTags (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
-         * 
-         * @return builder
-         * 
-         */
         public Builder customTags(@Nullable Output<Map<String,String>> customTags) {
             $.customTags = customTags;
             return this;
         }
 
-        /**
-         * @param customTags (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
-         * 
-         * @return builder
-         * 
-         */
         public Builder customTags(Map<String,String> customTags) {
             return customTags(Output.of(customTags));
         }
@@ -280,23 +204,11 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
             return diskSpec(Output.of(diskSpec));
         }
 
-        /**
-         * @param enableElasticDisk (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enableElasticDisk(@Nullable Output<Boolean> enableElasticDisk) {
             $.enableElasticDisk = enableElasticDisk;
             return this;
         }
 
-        /**
-         * @param enableElasticDisk (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enableElasticDisk(Boolean enableElasticDisk) {
             return enableElasticDisk(Output.of(enableElasticDisk));
         }
@@ -310,23 +222,11 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
             return gcpAttributes(Output.of(gcpAttributes));
         }
 
-        /**
-         * @param idleInstanceAutoterminationMinutes (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
-         * 
-         * @return builder
-         * 
-         */
         public Builder idleInstanceAutoterminationMinutes(@Nullable Output<Integer> idleInstanceAutoterminationMinutes) {
             $.idleInstanceAutoterminationMinutes = idleInstanceAutoterminationMinutes;
             return this;
         }
 
-        /**
-         * @param idleInstanceAutoterminationMinutes (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
-         * 
-         * @return builder
-         * 
-         */
         public Builder idleInstanceAutoterminationMinutes(Integer idleInstanceAutoterminationMinutes) {
             return idleInstanceAutoterminationMinutes(Output.of(idleInstanceAutoterminationMinutes));
         }
@@ -349,86 +249,38 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
             return instancePoolId(Output.of(instancePoolId));
         }
 
-        /**
-         * @param instancePoolName (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instancePoolName(@Nullable Output<String> instancePoolName) {
             $.instancePoolName = instancePoolName;
             return this;
         }
 
-        /**
-         * @param instancePoolName (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instancePoolName(String instancePoolName) {
             return instancePoolName(Output.of(instancePoolName));
         }
 
-        /**
-         * @param maxCapacity (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxCapacity(@Nullable Output<Integer> maxCapacity) {
             $.maxCapacity = maxCapacity;
             return this;
         }
 
-        /**
-         * @param maxCapacity (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxCapacity(Integer maxCapacity) {
             return maxCapacity(Output.of(maxCapacity));
         }
 
-        /**
-         * @param minIdleInstances (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minIdleInstances(@Nullable Output<Integer> minIdleInstances) {
             $.minIdleInstances = minIdleInstances;
             return this;
         }
 
-        /**
-         * @param minIdleInstances (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minIdleInstances(Integer minIdleInstances) {
             return minIdleInstances(Output.of(minIdleInstances));
         }
 
-        /**
-         * @param nodeTypeId (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeTypeId(@Nullable Output<String> nodeTypeId) {
             $.nodeTypeId = nodeTypeId;
             return this;
         }
 
-        /**
-         * @param nodeTypeId (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeTypeId(String nodeTypeId) {
             return nodeTypeId(Output.of(nodeTypeId));
         }
@@ -446,33 +298,15 @@ public final class InstancePoolState extends com.pulumi.resources.ResourceArgs {
             return preloadedDockerImages(List.of(preloadedDockerImages));
         }
 
-        /**
-         * @param preloadedSparkVersions (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks.getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-         * 
-         * @return builder
-         * 
-         */
         public Builder preloadedSparkVersions(@Nullable Output<List<String>> preloadedSparkVersions) {
             $.preloadedSparkVersions = preloadedSparkVersions;
             return this;
         }
 
-        /**
-         * @param preloadedSparkVersions (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks.getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-         * 
-         * @return builder
-         * 
-         */
         public Builder preloadedSparkVersions(List<String> preloadedSparkVersions) {
             return preloadedSparkVersions(Output.of(preloadedSparkVersions));
         }
 
-        /**
-         * @param preloadedSparkVersions (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks.getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
-         * 
-         * @return builder
-         * 
-         */
         public Builder preloadedSparkVersions(String... preloadedSparkVersions) {
             return preloadedSparkVersions(List.of(preloadedSparkVersions));
         }

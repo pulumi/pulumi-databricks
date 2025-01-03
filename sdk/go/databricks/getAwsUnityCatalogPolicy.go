@@ -11,66 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-//
-// This data source constructs the necessary AWS Unity Catalog policy for you.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.GetAwsUnityCatalogPolicy(ctx, &databricks.GetAwsUnityCatalogPolicyArgs{
-//				AwsAccountId: awsAccountId,
-//				BucketName:   "databricks-bucket",
-//				RoleName:     fmt.Sprintf("%v-uc-access", prefix),
-//				KmsName:      pulumi.StringRef("arn:aws:kms:us-west-2:111122223333:key/databricks-kms"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			thisGetAwsUnityCatalogAssumeRolePolicy, err := databricks.GetAwsUnityCatalogAssumeRolePolicy(ctx, &databricks.GetAwsUnityCatalogAssumeRolePolicyArgs{
-//				AwsAccountId: awsAccountId,
-//				RoleName:     fmt.Sprintf("%v-uc-access", prefix),
-//				ExternalId:   "12345",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			unityMetastore, err := iam.NewPolicy(ctx, "unity_metastore", &iam.PolicyArgs{
-//				Name:   pulumi.Sprintf("%v-unity-catalog-metastore-access-iam-policy", prefix),
-//				Policy: pulumi.String(this.Json),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
-//				Name:             pulumi.Sprintf("%v-uc-access", prefix),
-//				AssumeRolePolicy: pulumi.String(thisGetAwsUnityCatalogAssumeRolePolicy.Json),
-//				ManagedPolicyArns: pulumi.StringArray{
-//					unityMetastore.Arn,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAwsUnityCatalogPolicy(ctx *pulumi.Context, args *GetAwsUnityCatalogPolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsUnityCatalogPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAwsUnityCatalogPolicyResult
@@ -83,23 +23,20 @@ func GetAwsUnityCatalogPolicy(ctx *pulumi.Context, args *GetAwsUnityCatalogPolic
 
 // A collection of arguments for invoking getAwsUnityCatalogPolicy.
 type GetAwsUnityCatalogPolicyArgs struct {
-	// The Account ID of the current AWS account (not your Databricks account).
-	AwsAccountId string `pulumi:"awsAccountId"`
-	// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
-	BucketName string `pulumi:"bucketName"`
-	// If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
-	KmsName *string `pulumi:"kmsName"`
-	// The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
-	RoleName string `pulumi:"roleName"`
+	AwsAccountId string  `pulumi:"awsAccountId"`
+	AwsPartition *string `pulumi:"awsPartition"`
+	BucketName   string  `pulumi:"bucketName"`
+	KmsName      *string `pulumi:"kmsName"`
+	RoleName     string  `pulumi:"roleName"`
 }
 
 // A collection of values returned by getAwsUnityCatalogPolicy.
 type GetAwsUnityCatalogPolicyResult struct {
-	AwsAccountId string `pulumi:"awsAccountId"`
-	BucketName   string `pulumi:"bucketName"`
+	AwsAccountId string  `pulumi:"awsAccountId"`
+	AwsPartition *string `pulumi:"awsPartition"`
+	BucketName   string  `pulumi:"bucketName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// AWS IAM Policy JSON document
+	Id       string  `pulumi:"id"`
 	Json     string  `pulumi:"json"`
 	KmsName  *string `pulumi:"kmsName"`
 	RoleName string  `pulumi:"roleName"`
@@ -116,14 +53,11 @@ func GetAwsUnityCatalogPolicyOutput(ctx *pulumi.Context, args GetAwsUnityCatalog
 
 // A collection of arguments for invoking getAwsUnityCatalogPolicy.
 type GetAwsUnityCatalogPolicyOutputArgs struct {
-	// The Account ID of the current AWS account (not your Databricks account).
-	AwsAccountId pulumi.StringInput `pulumi:"awsAccountId"`
-	// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
-	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
-	KmsName pulumi.StringPtrInput `pulumi:"kmsName"`
-	// The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
-	RoleName pulumi.StringInput `pulumi:"roleName"`
+	AwsAccountId pulumi.StringInput    `pulumi:"awsAccountId"`
+	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
+	BucketName   pulumi.StringInput    `pulumi:"bucketName"`
+	KmsName      pulumi.StringPtrInput `pulumi:"kmsName"`
+	RoleName     pulumi.StringInput    `pulumi:"roleName"`
 }
 
 func (GetAwsUnityCatalogPolicyOutputArgs) ElementType() reflect.Type {
@@ -149,6 +83,10 @@ func (o GetAwsUnityCatalogPolicyResultOutput) AwsAccountId() pulumi.StringOutput
 	return o.ApplyT(func(v GetAwsUnityCatalogPolicyResult) string { return v.AwsAccountId }).(pulumi.StringOutput)
 }
 
+func (o GetAwsUnityCatalogPolicyResultOutput) AwsPartition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsUnityCatalogPolicyResult) *string { return v.AwsPartition }).(pulumi.StringPtrOutput)
+}
+
 func (o GetAwsUnityCatalogPolicyResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsUnityCatalogPolicyResult) string { return v.BucketName }).(pulumi.StringOutput)
 }
@@ -158,7 +96,6 @@ func (o GetAwsUnityCatalogPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsUnityCatalogPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// AWS IAM Policy JSON document
 func (o GetAwsUnityCatalogPolicyResultOutput) Json() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsUnityCatalogPolicyResult) string { return v.Json }).(pulumi.StringOutput)
 }

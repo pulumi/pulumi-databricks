@@ -18,137 +18,65 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
 
     public static final VectorSearchEndpointState Empty = new VectorSearchEndpointState();
 
-    /**
-     * Timestamp of endpoint creation (milliseconds).
-     * 
-     */
     @Import(name="creationTimestamp")
     private @Nullable Output<Integer> creationTimestamp;
 
-    /**
-     * @return Timestamp of endpoint creation (milliseconds).
-     * 
-     */
     public Optional<Output<Integer>> creationTimestamp() {
         return Optional.ofNullable(this.creationTimestamp);
     }
 
-    /**
-     * Creator of the endpoint.
-     * 
-     */
     @Import(name="creator")
     private @Nullable Output<String> creator;
 
-    /**
-     * @return Creator of the endpoint.
-     * 
-     */
     public Optional<Output<String>> creator() {
         return Optional.ofNullable(this.creator);
     }
 
-    /**
-     * Unique internal identifier of the endpoint (UUID).
-     * 
-     */
     @Import(name="endpointId")
     private @Nullable Output<String> endpointId;
 
-    /**
-     * @return Unique internal identifier of the endpoint (UUID).
-     * 
-     */
     public Optional<Output<String>> endpointId() {
         return Optional.ofNullable(this.endpointId);
     }
 
-    /**
-     * Object describing the current status of the endpoint consisting of the following fields:
-     * 
-     */
     @Import(name="endpointStatuses")
     private @Nullable Output<List<VectorSearchEndpointEndpointStatusArgs>> endpointStatuses;
 
-    /**
-     * @return Object describing the current status of the endpoint consisting of the following fields:
-     * 
-     */
     public Optional<Output<List<VectorSearchEndpointEndpointStatusArgs>>> endpointStatuses() {
         return Optional.ofNullable(this.endpointStatuses);
     }
 
-    /**
-     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-     * 
-     */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
-    /**
-     * @return Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-     * 
-     */
     public Optional<Output<String>> endpointType() {
         return Optional.ofNullable(this.endpointType);
     }
 
-    /**
-     * Timestamp of the last update to the endpoint (milliseconds).
-     * 
-     */
     @Import(name="lastUpdatedTimestamp")
     private @Nullable Output<Integer> lastUpdatedTimestamp;
 
-    /**
-     * @return Timestamp of the last update to the endpoint (milliseconds).
-     * 
-     */
     public Optional<Output<Integer>> lastUpdatedTimestamp() {
         return Optional.ofNullable(this.lastUpdatedTimestamp);
     }
 
-    /**
-     * User who last updated the endpoint.
-     * 
-     */
     @Import(name="lastUpdatedUser")
     private @Nullable Output<String> lastUpdatedUser;
 
-    /**
-     * @return User who last updated the endpoint.
-     * 
-     */
     public Optional<Output<String>> lastUpdatedUser() {
         return Optional.ofNullable(this.lastUpdatedUser);
     }
 
-    /**
-     * Name of the Mosaic AI Vector Search Endpoint to create.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the Mosaic AI Vector Search Endpoint to create.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Number of indexes on the endpoint.
-     * 
-     */
     @Import(name="numIndexes")
     private @Nullable Output<Integer> numIndexes;
 
-    /**
-     * @return Number of indexes on the endpoint.
-     * 
-     */
     public Optional<Output<Integer>> numIndexes() {
         return Optional.ofNullable(this.numIndexes);
     }
@@ -185,201 +113,87 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
             $ = new VectorSearchEndpointState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param creationTimestamp Timestamp of endpoint creation (milliseconds).
-         * 
-         * @return builder
-         * 
-         */
         public Builder creationTimestamp(@Nullable Output<Integer> creationTimestamp) {
             $.creationTimestamp = creationTimestamp;
             return this;
         }
 
-        /**
-         * @param creationTimestamp Timestamp of endpoint creation (milliseconds).
-         * 
-         * @return builder
-         * 
-         */
         public Builder creationTimestamp(Integer creationTimestamp) {
             return creationTimestamp(Output.of(creationTimestamp));
         }
 
-        /**
-         * @param creator Creator of the endpoint.
-         * 
-         * @return builder
-         * 
-         */
         public Builder creator(@Nullable Output<String> creator) {
             $.creator = creator;
             return this;
         }
 
-        /**
-         * @param creator Creator of the endpoint.
-         * 
-         * @return builder
-         * 
-         */
         public Builder creator(String creator) {
             return creator(Output.of(creator));
         }
 
-        /**
-         * @param endpointId Unique internal identifier of the endpoint (UUID).
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpointId(@Nullable Output<String> endpointId) {
             $.endpointId = endpointId;
             return this;
         }
 
-        /**
-         * @param endpointId Unique internal identifier of the endpoint (UUID).
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpointId(String endpointId) {
             return endpointId(Output.of(endpointId));
         }
 
-        /**
-         * @param endpointStatuses Object describing the current status of the endpoint consisting of the following fields:
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpointStatuses(@Nullable Output<List<VectorSearchEndpointEndpointStatusArgs>> endpointStatuses) {
             $.endpointStatuses = endpointStatuses;
             return this;
         }
 
-        /**
-         * @param endpointStatuses Object describing the current status of the endpoint consisting of the following fields:
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpointStatuses(List<VectorSearchEndpointEndpointStatusArgs> endpointStatuses) {
             return endpointStatuses(Output.of(endpointStatuses));
         }
 
-        /**
-         * @param endpointStatuses Object describing the current status of the endpoint consisting of the following fields:
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpointStatuses(VectorSearchEndpointEndpointStatusArgs... endpointStatuses) {
             return endpointStatuses(List.of(endpointStatuses));
         }
 
-        /**
-         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpointType(@Nullable Output<String> endpointType) {
             $.endpointType = endpointType;
             return this;
         }
 
-        /**
-         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpointType(String endpointType) {
             return endpointType(Output.of(endpointType));
         }
 
-        /**
-         * @param lastUpdatedTimestamp Timestamp of the last update to the endpoint (milliseconds).
-         * 
-         * @return builder
-         * 
-         */
         public Builder lastUpdatedTimestamp(@Nullable Output<Integer> lastUpdatedTimestamp) {
             $.lastUpdatedTimestamp = lastUpdatedTimestamp;
             return this;
         }
 
-        /**
-         * @param lastUpdatedTimestamp Timestamp of the last update to the endpoint (milliseconds).
-         * 
-         * @return builder
-         * 
-         */
         public Builder lastUpdatedTimestamp(Integer lastUpdatedTimestamp) {
             return lastUpdatedTimestamp(Output.of(lastUpdatedTimestamp));
         }
 
-        /**
-         * @param lastUpdatedUser User who last updated the endpoint.
-         * 
-         * @return builder
-         * 
-         */
         public Builder lastUpdatedUser(@Nullable Output<String> lastUpdatedUser) {
             $.lastUpdatedUser = lastUpdatedUser;
             return this;
         }
 
-        /**
-         * @param lastUpdatedUser User who last updated the endpoint.
-         * 
-         * @return builder
-         * 
-         */
         public Builder lastUpdatedUser(String lastUpdatedUser) {
             return lastUpdatedUser(Output.of(lastUpdatedUser));
         }
 
-        /**
-         * @param name Name of the Mosaic AI Vector Search Endpoint to create.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the Mosaic AI Vector Search Endpoint to create.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param numIndexes Number of indexes on the endpoint.
-         * 
-         * @return builder
-         * 
-         */
         public Builder numIndexes(@Nullable Output<Integer> numIndexes) {
             $.numIndexes = numIndexes;
             return this;
         }
 
-        /**
-         * @param numIndexes Number of indexes on the endpoint.
-         * 
-         * @return builder
-         * 
-         */
         public Builder numIndexes(Integer numIndexes) {
             return numIndexes(Output.of(numIndexes));
         }

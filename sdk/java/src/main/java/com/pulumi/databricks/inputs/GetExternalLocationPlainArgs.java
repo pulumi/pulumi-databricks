@@ -16,47 +16,23 @@ public final class GetExternalLocationPlainArgs extends com.pulumi.resources.Inv
 
     public static final GetExternalLocationPlainArgs Empty = new GetExternalLocationPlainArgs();
 
-    /**
-     * array of objects with information about external location:
-     * 
-     */
     @Import(name="externalLocationInfo")
     private @Nullable GetExternalLocationExternalLocationInfo externalLocationInfo;
 
-    /**
-     * @return array of objects with information about external location:
-     * 
-     */
     public Optional<GetExternalLocationExternalLocationInfo> externalLocationInfo() {
         return Optional.ofNullable(this.externalLocationInfo);
     }
 
-    /**
-     * external location ID - same as name.
-     * 
-     */
     @Import(name="id")
     private @Nullable String id;
 
-    /**
-     * @return external location ID - same as name.
-     * 
-     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * The name of the external location
-     * 
-     */
     @Import(name="name", required=true)
     private String name;
 
-    /**
-     * @return The name of the external location
-     * 
-     */
     public String name() {
         return this.name;
     }
@@ -87,34 +63,16 @@ public final class GetExternalLocationPlainArgs extends com.pulumi.resources.Inv
             $ = new GetExternalLocationPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param externalLocationInfo array of objects with information about external location:
-         * 
-         * @return builder
-         * 
-         */
         public Builder externalLocationInfo(@Nullable GetExternalLocationExternalLocationInfo externalLocationInfo) {
             $.externalLocationInfo = externalLocationInfo;
             return this;
         }
 
-        /**
-         * @param id external location ID - same as name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable String id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param name The name of the external location
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             $.name = name;
             return this;

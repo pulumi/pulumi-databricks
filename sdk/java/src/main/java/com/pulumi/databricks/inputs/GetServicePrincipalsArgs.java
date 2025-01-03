@@ -16,32 +16,16 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
 
     public static final GetServicePrincipalsArgs Empty = new GetServicePrincipalsArgs();
 
-    /**
-     * List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
-     * 
-     */
     @Import(name="applicationIds")
     private @Nullable Output<List<String>> applicationIds;
 
-    /**
-     * @return List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
-     * 
-     */
     public Optional<Output<List<String>>> applicationIds() {
         return Optional.ofNullable(this.applicationIds);
     }
 
-    /**
-     * Only return databricks.ServicePrincipal display name that match the given name string
-     * 
-     */
     @Import(name="displayNameContains")
     private @Nullable Output<String> displayNameContains;
 
-    /**
-     * @return Only return databricks.ServicePrincipal display name that match the given name string
-     * 
-     */
     public Optional<Output<String>> displayNameContains() {
         return Optional.ofNullable(this.displayNameContains);
     }
@@ -71,54 +55,24 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
             $ = new GetServicePrincipalsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param applicationIds List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
-         * 
-         * @return builder
-         * 
-         */
         public Builder applicationIds(@Nullable Output<List<String>> applicationIds) {
             $.applicationIds = applicationIds;
             return this;
         }
 
-        /**
-         * @param applicationIds List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
-         * 
-         * @return builder
-         * 
-         */
         public Builder applicationIds(List<String> applicationIds) {
             return applicationIds(Output.of(applicationIds));
         }
 
-        /**
-         * @param applicationIds List of `application_ids` of service principals Individual service principal can be retrieved using databricks.ServicePrincipal data source
-         * 
-         * @return builder
-         * 
-         */
         public Builder applicationIds(String... applicationIds) {
             return applicationIds(List.of(applicationIds));
         }
 
-        /**
-         * @param displayNameContains Only return databricks.ServicePrincipal display name that match the given name string
-         * 
-         * @return builder
-         * 
-         */
         public Builder displayNameContains(@Nullable Output<String> displayNameContains) {
             $.displayNameContains = displayNameContains;
             return this;
         }
 
-        /**
-         * @param displayNameContains Only return databricks.ServicePrincipal display name that match the given name string
-         * 
-         * @return builder
-         * 
-         */
         public Builder displayNameContains(String displayNameContains) {
             return displayNameContains(Output.of(displayNameContains));
         }

@@ -24,17 +24,9 @@ public final class JobTaskNewClusterDockerImageArgs extends com.pulumi.resources
         return Optional.ofNullable(this.basicAuth);
     }
 
-    /**
-     * URL of the job on the given workspace
-     * 
-     */
     @Import(name="url", required=true)
     private Output<String> url;
 
-    /**
-     * @return URL of the job on the given workspace
-     * 
-     */
     public Output<String> url() {
         return this.url;
     }
@@ -73,23 +65,11 @@ public final class JobTaskNewClusterDockerImageArgs extends com.pulumi.resources
             return basicAuth(Output.of(basicAuth));
         }
 
-        /**
-         * @param url URL of the job on the given workspace
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
-        /**
-         * @param url URL of the job on the given workspace
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

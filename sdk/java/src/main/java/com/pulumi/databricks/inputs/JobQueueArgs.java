@@ -14,17 +14,9 @@ public final class JobQueueArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobQueueArgs Empty = new JobQueueArgs();
 
-    /**
-     * If true, enable queueing for the job.
-     * 
-     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
-    /**
-     * @return If true, enable queueing for the job.
-     * 
-     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
@@ -53,23 +45,11 @@ public final class JobQueueArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobQueueArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param enabled If true, enable queueing for the job.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled If true, enable queueing for the job.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

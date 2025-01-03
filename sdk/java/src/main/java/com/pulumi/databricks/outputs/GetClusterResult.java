@@ -12,44 +12,20 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterResult {
     private String clusterId;
-    /**
-     * @return block, consisting of following fields:
-     * 
-     */
     private GetClusterClusterInfo clusterInfo;
-    /**
-     * @return Cluster name, which doesn’t have to be unique.
-     * 
-     */
     private String clusterName;
-    /**
-     * @return cluster ID
-     * 
-     */
     private String id;
 
     private GetClusterResult() {}
     public String clusterId() {
         return this.clusterId;
     }
-    /**
-     * @return block, consisting of following fields:
-     * 
-     */
     public GetClusterClusterInfo clusterInfo() {
         return this.clusterInfo;
     }
-    /**
-     * @return Cluster name, which doesn’t have to be unique.
-     * 
-     */
     public String clusterName() {
         return this.clusterName;
     }
-    /**
-     * @return cluster ID
-     * 
-     */
     public String id() {
         return this.id;
     }

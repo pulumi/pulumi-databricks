@@ -16,10 +16,6 @@ public final class GetMwsWorkspacesResult {
      * 
      */
     private String id;
-    /**
-     * @return name-to-id map for all of the workspaces in the account
-     * 
-     */
     private Map<String,String> ids;
 
     private GetMwsWorkspacesResult() {}
@@ -30,10 +26,6 @@ public final class GetMwsWorkspacesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return name-to-id map for all of the workspaces in the account
-     * 
-     */
     public Map<String,String> ids() {
         return this.ids;
     }

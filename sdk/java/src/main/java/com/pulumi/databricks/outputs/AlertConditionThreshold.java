@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class AlertConditionThreshold {
-    /**
-     * @return actual value used in comparison (one of the attributes is required):
-     * 
-     */
     private AlertConditionThresholdValue value;
 
     private AlertConditionThreshold() {}
-    /**
-     * @return actual value used in comparison (one of the attributes is required):
-     * 
-     */
     public AlertConditionThresholdValue value() {
         return this.value;
     }

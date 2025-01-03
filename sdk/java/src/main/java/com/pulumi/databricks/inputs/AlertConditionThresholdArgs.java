@@ -14,17 +14,9 @@ public final class AlertConditionThresholdArgs extends com.pulumi.resources.Reso
 
     public static final AlertConditionThresholdArgs Empty = new AlertConditionThresholdArgs();
 
-    /**
-     * actual value used in comparison (one of the attributes is required):
-     * 
-     */
     @Import(name="value", required=true)
     private Output<AlertConditionThresholdValueArgs> value;
 
-    /**
-     * @return actual value used in comparison (one of the attributes is required):
-     * 
-     */
     public Output<AlertConditionThresholdValueArgs> value() {
         return this.value;
     }
@@ -53,23 +45,11 @@ public final class AlertConditionThresholdArgs extends com.pulumi.resources.Reso
             $ = new AlertConditionThresholdArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param value actual value used in comparison (one of the attributes is required):
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(Output<AlertConditionThresholdValueArgs> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value actual value used in comparison (one of the attributes is required):
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(AlertConditionThresholdValueArgs value) {
             return value(Output.of(value));
         }

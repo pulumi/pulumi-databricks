@@ -45,8 +45,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     public static final JobState Empty = new JobState();
 
     /**
-     * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
-     * 
      * @deprecated
      * always_running will be replaced by control_run_state in the next major release.
      * 
@@ -56,8 +54,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> alwaysRunning;
 
     /**
-     * @return (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
-     * 
      * @deprecated
      * always_running will be replaced by control_run_state in the next major release.
      * 
@@ -67,51 +63,23 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.alwaysRunning);
     }
 
-    /**
-     * The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
-     * 
-     */
     @Import(name="budgetPolicyId")
     private @Nullable Output<String> budgetPolicyId;
 
-    /**
-     * @return The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
-     * 
-     */
     public Optional<Output<String>> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
     }
 
-    /**
-     * Configuration block to configure pause status. See continuous Configuration Block.
-     * 
-     */
     @Import(name="continuous")
     private @Nullable Output<JobContinuousArgs> continuous;
 
-    /**
-     * @return Configuration block to configure pause status. See continuous Configuration Block.
-     * 
-     */
     public Optional<Output<JobContinuousArgs>> continuous() {
         return Optional.ofNullable(this.continuous);
     }
 
-    /**
-     * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
-     * 
-     * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-     * 
-     */
     @Import(name="controlRunState")
     private @Nullable Output<Boolean> controlRunState;
 
-    /**
-     * @return (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
-     * 
-     * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-     * 
-     */
     public Optional<Output<Boolean>> controlRunState() {
         return Optional.ofNullable(this.controlRunState);
     }
@@ -142,17 +110,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deployment);
     }
 
-    /**
-     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -164,17 +124,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.editMode);
     }
 
-    /**
-     * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-     * 
-     */
     @Import(name="emailNotifications")
     private @Nullable Output<JobEmailNotificationsArgs> emailNotifications;
 
-    /**
-     * @return (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-     * 
-     */
     public Optional<Output<JobEmailNotificationsArgs>> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
     }
@@ -200,77 +152,37 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.format);
     }
 
-    /**
-     * Specifices the a Git repository for task source code. See git_source Configuration Block below.
-     * 
-     */
     @Import(name="gitSource")
     private @Nullable Output<JobGitSourceArgs> gitSource;
 
-    /**
-     * @return Specifices the a Git repository for task source code. See git_source Configuration Block below.
-     * 
-     */
     public Optional<Output<JobGitSourceArgs>> gitSource() {
         return Optional.ofNullable(this.gitSource);
     }
 
-    /**
-     * An optional block that specifies the health conditions for the job documented below.
-     * 
-     */
     @Import(name="health")
     private @Nullable Output<JobHealthArgs> health;
 
-    /**
-     * @return An optional block that specifies the health conditions for the job documented below.
-     * 
-     */
     public Optional<Output<JobHealthArgs>> health() {
         return Optional.ofNullable(this.health);
     }
 
-    /**
-     * A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-     * 
-     */
     @Import(name="jobClusters")
     private @Nullable Output<List<JobJobClusterArgs>> jobClusters;
 
-    /**
-     * @return A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-     * 
-     */
     public Optional<Output<List<JobJobClusterArgs>>> jobClusters() {
         return Optional.ofNullable(this.jobClusters);
     }
 
-    /**
-     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-     * 
-     */
     @Import(name="libraries")
     private @Nullable Output<List<JobLibraryArgs>> libraries;
 
-    /**
-     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-     * 
-     */
     public Optional<Output<List<JobLibraryArgs>>> libraries() {
         return Optional.ofNullable(this.libraries);
     }
 
-    /**
-     * (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-     * 
-     */
     @Import(name="maxConcurrentRuns")
     private @Nullable Output<Integer> maxConcurrentRuns;
 
-    /**
-     * @return (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-     * 
-     */
     public Optional<Output<Integer>> maxConcurrentRuns() {
         return Optional.ofNullable(this.maxConcurrentRuns);
     }
@@ -295,8 +207,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-     * 
      * @deprecated
      * should be used inside a task block and not inside a job block
      * 
@@ -306,8 +216,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> minRetryIntervalMillis;
 
     /**
-     * @return (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-     * 
      * @deprecated
      * should be used inside a task block and not inside a job block
      * 
@@ -317,17 +225,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.minRetryIntervalMillis);
     }
 
-    /**
-     * An optional name for the job. The default value is Untitled.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return An optional name for the job. The default value is Untitled.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -358,32 +258,16 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.notebookTask);
     }
 
-    /**
-     * An optional block controlling the notification settings on the job level documented below.
-     * 
-     */
     @Import(name="notificationSettings")
     private @Nullable Output<JobNotificationSettingsArgs> notificationSettings;
 
-    /**
-     * @return An optional block controlling the notification settings on the job level documented below.
-     * 
-     */
     public Optional<Output<JobNotificationSettingsArgs>> notificationSettings() {
         return Optional.ofNullable(this.notificationSettings);
     }
 
-    /**
-     * Specifices job parameter for the job. See parameter Configuration Block
-     * 
-     */
     @Import(name="parameters")
     private @Nullable Output<List<JobParameterArgs>> parameters;
 
-    /**
-     * @return Specifices job parameter for the job. See parameter Configuration Block
-     * 
-     */
     public Optional<Output<List<JobParameterArgs>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
@@ -426,17 +310,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pythonWheelTask);
     }
 
-    /**
-     * The queue status for the job. See queue Configuration Block below.
-     * 
-     */
     @Import(name="queue")
     private @Nullable Output<JobQueueArgs> queue;
 
-    /**
-     * @return The queue status for the job. See queue Configuration Block below.
-     * 
-     */
     public Optional<Output<JobQueueArgs>> queue() {
         return Optional.ofNullable(this.queue);
     }
@@ -460,17 +336,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.retryOnTimeout);
     }
 
-    /**
-     * The user or the service prinicipal the job runs as. See run_as Configuration Block below.
-     * 
-     */
     @Import(name="runAs")
     private @Nullable Output<JobRunAsArgs> runAs;
 
-    /**
-     * @return The user or the service prinicipal the job runs as. See run_as Configuration Block below.
-     * 
-     */
     public Optional<Output<JobRunAsArgs>> runAs() {
         return Optional.ofNullable(this.runAs);
     }
@@ -494,17 +362,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.runJobTask);
     }
 
-    /**
-     * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
-     * 
-     */
     @Import(name="schedule")
     private @Nullable Output<JobScheduleArgs> schedule;
 
-    /**
-     * @return An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
-     * 
-     */
     public Optional<Output<JobScheduleArgs>> schedule() {
         return Optional.ofNullable(this.schedule);
     }
@@ -566,92 +426,44 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sparkSubmitTask);
     }
 
-    /**
-     * An optional map of the tags associated with the job. See tags Configuration Map
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
-    /**
-     * @return An optional map of the tags associated with the job. See tags Configuration Map
-     * 
-     */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * A list of task specification that the job will execute. See task Configuration Block below.
-     * 
-     */
     @Import(name="tasks")
     private @Nullable Output<List<JobTaskArgs>> tasks;
 
-    /**
-     * @return A list of task specification that the job will execute. See task Configuration Block below.
-     * 
-     */
     public Optional<Output<List<JobTaskArgs>>> tasks() {
         return Optional.ofNullable(this.tasks);
     }
 
-    /**
-     * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-     * 
-     */
     @Import(name="timeoutSeconds")
     private @Nullable Output<Integer> timeoutSeconds;
 
-    /**
-     * @return (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-     * 
-     */
     public Optional<Output<Integer>> timeoutSeconds() {
         return Optional.ofNullable(this.timeoutSeconds);
     }
 
-    /**
-     * The conditions that triggers the job to start. See trigger Configuration Block below.
-     * 
-     */
     @Import(name="trigger")
     private @Nullable Output<JobTriggerArgs> trigger;
 
-    /**
-     * @return The conditions that triggers the job to start. See trigger Configuration Block below.
-     * 
-     */
     public Optional<Output<JobTriggerArgs>> trigger() {
         return Optional.ofNullable(this.trigger);
     }
 
-    /**
-     * URL of the job on the given workspace
-     * 
-     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
-    /**
-     * @return URL of the job on the given workspace
-     * 
-     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
 
-    /**
-     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-     * 
-     */
     @Import(name="webhookNotifications")
     private @Nullable Output<JobWebhookNotificationsArgs> webhookNotifications;
 
-    /**
-     * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-     * 
-     */
     public Optional<Output<JobWebhookNotificationsArgs>> webhookNotifications() {
         return Optional.ofNullable(this.webhookNotifications);
     }
@@ -720,8 +532,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alwaysRunning (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -735,8 +545,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alwaysRunning (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -748,69 +556,29 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return alwaysRunning(Output.of(alwaysRunning));
         }
 
-        /**
-         * @param budgetPolicyId The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
-         * 
-         * @return builder
-         * 
-         */
         public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
             $.budgetPolicyId = budgetPolicyId;
             return this;
         }
 
-        /**
-         * @param budgetPolicyId The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
-         * 
-         * @return builder
-         * 
-         */
         public Builder budgetPolicyId(String budgetPolicyId) {
             return budgetPolicyId(Output.of(budgetPolicyId));
         }
 
-        /**
-         * @param continuous Configuration block to configure pause status. See continuous Configuration Block.
-         * 
-         * @return builder
-         * 
-         */
         public Builder continuous(@Nullable Output<JobContinuousArgs> continuous) {
             $.continuous = continuous;
             return this;
         }
 
-        /**
-         * @param continuous Configuration block to configure pause status. See continuous Configuration Block.
-         * 
-         * @return builder
-         * 
-         */
         public Builder continuous(JobContinuousArgs continuous) {
             return continuous(Output.of(continuous));
         }
 
-        /**
-         * @param controlRunState (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
-         * 
-         * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-         * 
-         * @return builder
-         * 
-         */
         public Builder controlRunState(@Nullable Output<Boolean> controlRunState) {
             $.controlRunState = controlRunState;
             return this;
         }
 
-        /**
-         * @param controlRunState (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
-         * 
-         * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-         * 
-         * @return builder
-         * 
-         */
         public Builder controlRunState(Boolean controlRunState) {
             return controlRunState(Output.of(controlRunState));
         }
@@ -849,23 +617,11 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return deployment(Output.of(deployment));
         }
 
-        /**
-         * @param description An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -879,23 +635,11 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return editMode(Output.of(editMode));
         }
 
-        /**
-         * @param emailNotifications (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder emailNotifications(@Nullable Output<JobEmailNotificationsArgs> emailNotifications) {
             $.emailNotifications = emailNotifications;
             return this;
         }
 
-        /**
-         * @param emailNotifications (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder emailNotifications(JobEmailNotificationsArgs emailNotifications) {
             return emailNotifications(Output.of(emailNotifications));
         }
@@ -931,127 +675,55 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return format(Output.of(format));
         }
 
-        /**
-         * @param gitSource Specifices the a Git repository for task source code. See git_source Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gitSource(@Nullable Output<JobGitSourceArgs> gitSource) {
             $.gitSource = gitSource;
             return this;
         }
 
-        /**
-         * @param gitSource Specifices the a Git repository for task source code. See git_source Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gitSource(JobGitSourceArgs gitSource) {
             return gitSource(Output.of(gitSource));
         }
 
-        /**
-         * @param health An optional block that specifies the health conditions for the job documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder health(@Nullable Output<JobHealthArgs> health) {
             $.health = health;
             return this;
         }
 
-        /**
-         * @param health An optional block that specifies the health conditions for the job documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder health(JobHealthArgs health) {
             return health(Output.of(health));
         }
 
-        /**
-         * @param jobClusters A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobClusters(@Nullable Output<List<JobJobClusterArgs>> jobClusters) {
             $.jobClusters = jobClusters;
             return this;
         }
 
-        /**
-         * @param jobClusters A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobClusters(List<JobJobClusterArgs> jobClusters) {
             return jobClusters(Output.of(jobClusters));
         }
 
-        /**
-         * @param jobClusters A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobClusters(JobJobClusterArgs... jobClusters) {
             return jobClusters(List.of(jobClusters));
         }
 
-        /**
-         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder libraries(@Nullable Output<List<JobLibraryArgs>> libraries) {
             $.libraries = libraries;
             return this;
         }
 
-        /**
-         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder libraries(List<JobLibraryArgs> libraries) {
             return libraries(Output.of(libraries));
         }
 
-        /**
-         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder libraries(JobLibraryArgs... libraries) {
             return libraries(List.of(libraries));
         }
 
-        /**
-         * @param maxConcurrentRuns (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxConcurrentRuns(@Nullable Output<Integer> maxConcurrentRuns) {
             $.maxConcurrentRuns = maxConcurrentRuns;
             return this;
         }
 
-        /**
-         * @param maxConcurrentRuns (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxConcurrentRuns(Integer maxConcurrentRuns) {
             return maxConcurrentRuns(Output.of(maxConcurrentRuns));
         }
@@ -1082,8 +754,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minRetryIntervalMillis (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -1097,8 +767,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minRetryIntervalMillis (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -1110,23 +778,11 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return minRetryIntervalMillis(Output.of(minRetryIntervalMillis));
         }
 
-        /**
-         * @param name An optional name for the job. The default value is Untitled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name An optional name for the job. The default value is Untitled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -1165,54 +821,24 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return notebookTask(Output.of(notebookTask));
         }
 
-        /**
-         * @param notificationSettings An optional block controlling the notification settings on the job level documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder notificationSettings(@Nullable Output<JobNotificationSettingsArgs> notificationSettings) {
             $.notificationSettings = notificationSettings;
             return this;
         }
 
-        /**
-         * @param notificationSettings An optional block controlling the notification settings on the job level documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder notificationSettings(JobNotificationSettingsArgs notificationSettings) {
             return notificationSettings(Output.of(notificationSettings));
         }
 
-        /**
-         * @param parameters Specifices job parameter for the job. See parameter Configuration Block
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameters(@Nullable Output<List<JobParameterArgs>> parameters) {
             $.parameters = parameters;
             return this;
         }
 
-        /**
-         * @param parameters Specifices job parameter for the job. See parameter Configuration Block
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameters(List<JobParameterArgs> parameters) {
             return parameters(Output.of(parameters));
         }
 
-        /**
-         * @param parameters Specifices job parameter for the job. See parameter Configuration Block
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameters(JobParameterArgs... parameters) {
             return parameters(List.of(parameters));
         }
@@ -1267,23 +893,11 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return pythonWheelTask(Output.of(pythonWheelTask));
         }
 
-        /**
-         * @param queue The queue status for the job. See queue Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder queue(@Nullable Output<JobQueueArgs> queue) {
             $.queue = queue;
             return this;
         }
 
-        /**
-         * @param queue The queue status for the job. See queue Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder queue(JobQueueArgs queue) {
             return queue(Output.of(queue));
         }
@@ -1313,23 +927,11 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return retryOnTimeout(Output.of(retryOnTimeout));
         }
 
-        /**
-         * @param runAs The user or the service prinicipal the job runs as. See run_as Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder runAs(@Nullable Output<JobRunAsArgs> runAs) {
             $.runAs = runAs;
             return this;
         }
 
-        /**
-         * @param runAs The user or the service prinicipal the job runs as. See run_as Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder runAs(JobRunAsArgs runAs) {
             return runAs(Output.of(runAs));
         }
@@ -1359,23 +961,11 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return runJobTask(Output.of(runJobTask));
         }
 
-        /**
-         * @param schedule An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder schedule(@Nullable Output<JobScheduleArgs> schedule) {
             $.schedule = schedule;
             return this;
         }
 
-        /**
-         * @param schedule An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder schedule(JobScheduleArgs schedule) {
             return schedule(Output.of(schedule));
         }
@@ -1455,138 +1045,60 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return sparkSubmitTask(Output.of(sparkSubmitTask));
         }
 
-        /**
-         * @param tags An optional map of the tags associated with the job. See tags Configuration Map
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags An optional map of the tags associated with the job. See tags Configuration Map
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }
 
-        /**
-         * @param tasks A list of task specification that the job will execute. See task Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tasks(@Nullable Output<List<JobTaskArgs>> tasks) {
             $.tasks = tasks;
             return this;
         }
 
-        /**
-         * @param tasks A list of task specification that the job will execute. See task Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tasks(List<JobTaskArgs> tasks) {
             return tasks(Output.of(tasks));
         }
 
-        /**
-         * @param tasks A list of task specification that the job will execute. See task Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tasks(JobTaskArgs... tasks) {
             return tasks(List.of(tasks));
         }
 
-        /**
-         * @param timeoutSeconds (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeoutSeconds(@Nullable Output<Integer> timeoutSeconds) {
             $.timeoutSeconds = timeoutSeconds;
             return this;
         }
 
-        /**
-         * @param timeoutSeconds (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeoutSeconds(Integer timeoutSeconds) {
             return timeoutSeconds(Output.of(timeoutSeconds));
         }
 
-        /**
-         * @param trigger The conditions that triggers the job to start. See trigger Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder trigger(@Nullable Output<JobTriggerArgs> trigger) {
             $.trigger = trigger;
             return this;
         }
 
-        /**
-         * @param trigger The conditions that triggers the job to start. See trigger Configuration Block below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder trigger(JobTriggerArgs trigger) {
             return trigger(Output.of(trigger));
         }
 
-        /**
-         * @param url URL of the job on the given workspace
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
-        /**
-         * @param url URL of the job on the given workspace
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(String url) {
             return url(Output.of(url));
         }
 
-        /**
-         * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder webhookNotifications(@Nullable Output<JobWebhookNotificationsArgs> webhookNotifications) {
             $.webhookNotifications = webhookNotifications;
             return this;
         }
 
-        /**
-         * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder webhookNotifications(JobWebhookNotificationsArgs webhookNotifications) {
             return webhookNotifications(Output.of(webhookNotifications));
         }

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,11 +18,11 @@ public final class PipelineRestartWindowArgs extends com.pulumi.resources.Resour
 
     public static final PipelineRestartWindowArgs Empty = new PipelineRestartWindowArgs();
 
-    @Import(name="daysOfWeek")
-    private @Nullable Output<String> daysOfWeek;
+    @Import(name="daysOfWeeks")
+    private @Nullable Output<List<String>> daysOfWeeks;
 
-    public Optional<Output<String>> daysOfWeek() {
-        return Optional.ofNullable(this.daysOfWeek);
+    public Optional<Output<List<String>>> daysOfWeeks() {
+        return Optional.ofNullable(this.daysOfWeeks);
     }
 
     @Import(name="startHour", required=true)
@@ -41,7 +42,7 @@ public final class PipelineRestartWindowArgs extends com.pulumi.resources.Resour
     private PipelineRestartWindowArgs() {}
 
     private PipelineRestartWindowArgs(PipelineRestartWindowArgs $) {
-        this.daysOfWeek = $.daysOfWeek;
+        this.daysOfWeeks = $.daysOfWeeks;
         this.startHour = $.startHour;
         this.timeZoneId = $.timeZoneId;
     }
@@ -64,13 +65,17 @@ public final class PipelineRestartWindowArgs extends com.pulumi.resources.Resour
             $ = new PipelineRestartWindowArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder daysOfWeek(@Nullable Output<String> daysOfWeek) {
-            $.daysOfWeek = daysOfWeek;
+        public Builder daysOfWeeks(@Nullable Output<List<String>> daysOfWeeks) {
+            $.daysOfWeeks = daysOfWeeks;
             return this;
         }
 
-        public Builder daysOfWeek(String daysOfWeek) {
-            return daysOfWeek(Output.of(daysOfWeek));
+        public Builder daysOfWeeks(List<String> daysOfWeeks) {
+            return daysOfWeeks(Output.of(daysOfWeeks));
+        }
+
+        public Builder daysOfWeeks(String... daysOfWeeks) {
+            return daysOfWeeks(List.of(daysOfWeeks));
         }
 
         public Builder startHour(Output<Integer> startHour) {

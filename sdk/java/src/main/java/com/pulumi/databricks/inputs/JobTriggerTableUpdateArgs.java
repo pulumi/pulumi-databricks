@@ -25,17 +25,9 @@ public final class JobTriggerTableUpdateArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.condition);
     }
 
-    /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     * 
-     */
     @Import(name="minTimeBetweenTriggersSeconds")
     private @Nullable Output<Integer> minTimeBetweenTriggersSeconds;
 
-    /**
-     * @return If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     * 
-     */
     public Optional<Output<Integer>> minTimeBetweenTriggersSeconds() {
         return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
@@ -47,17 +39,9 @@ public final class JobTriggerTableUpdateArgs extends com.pulumi.resources.Resour
         return this.tableNames;
     }
 
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     * 
-     */
     @Import(name="waitAfterLastChangeSeconds")
     private @Nullable Output<Integer> waitAfterLastChangeSeconds;
 
-    /**
-     * @return If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     * 
-     */
     public Optional<Output<Integer>> waitAfterLastChangeSeconds() {
         return Optional.ofNullable(this.waitAfterLastChangeSeconds);
     }
@@ -98,23 +82,11 @@ public final class JobTriggerTableUpdateArgs extends com.pulumi.resources.Resour
             return condition(Output.of(condition));
         }
 
-        /**
-         * @param minTimeBetweenTriggersSeconds If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minTimeBetweenTriggersSeconds(@Nullable Output<Integer> minTimeBetweenTriggersSeconds) {
             $.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             return this;
         }
 
-        /**
-         * @param minTimeBetweenTriggersSeconds If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minTimeBetweenTriggersSeconds(Integer minTimeBetweenTriggersSeconds) {
             return minTimeBetweenTriggersSeconds(Output.of(minTimeBetweenTriggersSeconds));
         }
@@ -132,23 +104,11 @@ public final class JobTriggerTableUpdateArgs extends com.pulumi.resources.Resour
             return tableNames(List.of(tableNames));
         }
 
-        /**
-         * @param waitAfterLastChangeSeconds If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitAfterLastChangeSeconds(@Nullable Output<Integer> waitAfterLastChangeSeconds) {
             $.waitAfterLastChangeSeconds = waitAfterLastChangeSeconds;
             return this;
         }
 
-        /**
-         * @param waitAfterLastChangeSeconds If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitAfterLastChangeSeconds(Integer waitAfterLastChangeSeconds) {
             return waitAfterLastChangeSeconds(Output.of(waitAfterLastChangeSeconds));
         }

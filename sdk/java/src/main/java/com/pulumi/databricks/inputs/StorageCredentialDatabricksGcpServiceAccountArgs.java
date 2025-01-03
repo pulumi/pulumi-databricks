@@ -22,21 +22,9 @@ public final class StorageCredentialDatabricksGcpServiceAccountArgs extends com.
         return Optional.ofNullable(this.credentialId);
     }
 
-    /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
-     * 
-     * `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-     * 
-     */
     @Import(name="email")
     private @Nullable Output<String> email;
 
-    /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
-     * 
-     * `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-     * 
-     */
     public Optional<Output<String>> email() {
         return Optional.ofNullable(this.email);
     }
@@ -75,27 +63,11 @@ public final class StorageCredentialDatabricksGcpServiceAccountArgs extends com.
             return credentialId(Output.of(credentialId));
         }
 
-        /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
-         * 
-         * `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-         * 
-         * @return builder
-         * 
-         */
         public Builder email(@Nullable Output<String> email) {
             $.email = email;
             return this;
         }
 
-        /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
-         * 
-         * `cloudflare_api_token` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-         * 
-         * @return builder
-         * 
-         */
         public Builder email(String email) {
             return email(Output.of(email));
         }

@@ -17,32 +17,16 @@ public final class GetInstancePoolArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetInstancePoolArgs Empty = new GetInstancePoolArgs();
 
-    /**
-     * Name of the instance pool. The instance pool must exist before this resource can be planned.
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return Name of the instance pool. The instance pool must exist before this resource can be planned.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
-     * 
-     */
     @Import(name="poolInfo")
     private @Nullable Output<GetInstancePoolPoolInfoArgs> poolInfo;
 
-    /**
-     * @return block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
-     * 
-     */
     public Optional<Output<GetInstancePoolPoolInfoArgs>> poolInfo() {
         return Optional.ofNullable(this.poolInfo);
     }
@@ -72,44 +56,20 @@ public final class GetInstancePoolArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetInstancePoolArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param name Name of the instance pool. The instance pool must exist before this resource can be planned.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the instance pool. The instance pool must exist before this resource can be planned.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param poolInfo block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder poolInfo(@Nullable Output<GetInstancePoolPoolInfoArgs> poolInfo) {
             $.poolInfo = poolInfo;
             return this;
         }
 
-        /**
-         * @param poolInfo block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder poolInfo(GetInstancePoolPoolInfoArgs poolInfo) {
             return poolInfo(Output.of(poolInfo));
         }

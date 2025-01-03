@@ -15,17 +15,9 @@ public final class CatalogWorkspaceBindingArgs extends com.pulumi.resources.Reso
 
     public static final CatalogWorkspaceBindingArgs Empty = new CatalogWorkspaceBindingArgs();
 
-    /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
-     * 
-     */
     @Import(name="bindingType")
     private @Nullable Output<String> bindingType;
 
-    /**
-     * @return Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
-     * 
-     */
     public Optional<Output<String>> bindingType() {
         return Optional.ofNullable(this.bindingType);
     }
@@ -49,47 +41,23 @@ public final class CatalogWorkspaceBindingArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.catalogName);
     }
 
-    /**
-     * Name of securable. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="securableName")
     private @Nullable Output<String> securableName;
 
-    /**
-     * @return Name of securable. Change forces creation of a new resource.
-     * 
-     */
     public Optional<Output<String>> securableName() {
         return Optional.ofNullable(this.securableName);
     }
 
-    /**
-     * Type of securable. Default to `catalog`. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="securableType")
     private @Nullable Output<String> securableType;
 
-    /**
-     * @return Type of securable. Default to `catalog`. Change forces creation of a new resource.
-     * 
-     */
     public Optional<Output<String>> securableType() {
         return Optional.ofNullable(this.securableType);
     }
 
-    /**
-     * ID of the workspace. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="workspaceId")
     private @Nullable Output<String> workspaceId;
 
-    /**
-     * @return ID of the workspace. Change forces creation of a new resource.
-     * 
-     */
     public Optional<Output<String>> workspaceId() {
         return Optional.ofNullable(this.workspaceId);
     }
@@ -122,23 +90,11 @@ public final class CatalogWorkspaceBindingArgs extends com.pulumi.resources.Reso
             $ = new CatalogWorkspaceBindingArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param bindingType Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
-         * 
-         * @return builder
-         * 
-         */
         public Builder bindingType(@Nullable Output<String> bindingType) {
             $.bindingType = bindingType;
             return this;
         }
 
-        /**
-         * @param bindingType Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
-         * 
-         * @return builder
-         * 
-         */
         public Builder bindingType(String bindingType) {
             return bindingType(Output.of(bindingType));
         }
@@ -168,65 +124,29 @@ public final class CatalogWorkspaceBindingArgs extends com.pulumi.resources.Reso
             return catalogName(Output.of(catalogName));
         }
 
-        /**
-         * @param securableName Name of securable. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securableName(@Nullable Output<String> securableName) {
             $.securableName = securableName;
             return this;
         }
 
-        /**
-         * @param securableName Name of securable. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securableName(String securableName) {
             return securableName(Output.of(securableName));
         }
 
-        /**
-         * @param securableType Type of securable. Default to `catalog`. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securableType(@Nullable Output<String> securableType) {
             $.securableType = securableType;
             return this;
         }
 
-        /**
-         * @param securableType Type of securable. Default to `catalog`. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securableType(String securableType) {
             return securableType(Output.of(securableType));
         }
 
-        /**
-         * @param workspaceId ID of the workspace. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder workspaceId(@Nullable Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
 
-        /**
-         * @param workspaceId ID of the workspace. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }

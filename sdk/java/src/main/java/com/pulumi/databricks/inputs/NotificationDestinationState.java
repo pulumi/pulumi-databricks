@@ -16,47 +16,23 @@ public final class NotificationDestinationState extends com.pulumi.resources.Res
 
     public static final NotificationDestinationState Empty = new NotificationDestinationState();
 
-    /**
-     * The configuration of the Notification Destination. It must contain exactly one of the following blocks:
-     * 
-     */
     @Import(name="config")
     private @Nullable Output<NotificationDestinationConfigArgs> config;
 
-    /**
-     * @return The configuration of the Notification Destination. It must contain exactly one of the following blocks:
-     * 
-     */
     public Optional<Output<NotificationDestinationConfigArgs>> config() {
         return Optional.ofNullable(this.config);
     }
 
-    /**
-     * the type of Notification Destination.
-     * 
-     */
     @Import(name="destinationType")
     private @Nullable Output<String> destinationType;
 
-    /**
-     * @return the type of Notification Destination.
-     * 
-     */
     public Optional<Output<String>> destinationType() {
         return Optional.ofNullable(this.destinationType);
     }
 
-    /**
-     * The display name of the Notification Destination.
-     * 
-     */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
-    /**
-     * @return The display name of the Notification Destination.
-     * 
-     */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
     }
@@ -87,65 +63,29 @@ public final class NotificationDestinationState extends com.pulumi.resources.Res
             $ = new NotificationDestinationState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param config The configuration of the Notification Destination. It must contain exactly one of the following blocks:
-         * 
-         * @return builder
-         * 
-         */
         public Builder config(@Nullable Output<NotificationDestinationConfigArgs> config) {
             $.config = config;
             return this;
         }
 
-        /**
-         * @param config The configuration of the Notification Destination. It must contain exactly one of the following blocks:
-         * 
-         * @return builder
-         * 
-         */
         public Builder config(NotificationDestinationConfigArgs config) {
             return config(Output.of(config));
         }
 
-        /**
-         * @param destinationType the type of Notification Destination.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destinationType(@Nullable Output<String> destinationType) {
             $.destinationType = destinationType;
             return this;
         }
 
-        /**
-         * @param destinationType the type of Notification Destination.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destinationType(String destinationType) {
             return destinationType(Output.of(destinationType));
         }
 
-        /**
-         * @param displayName The display name of the Notification Destination.
-         * 
-         * @return builder
-         * 
-         */
         public Builder displayName(@Nullable Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
 
-        /**
-         * @param displayName The display name of the Notification Destination.
-         * 
-         * @return builder
-         * 
-         */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
         }

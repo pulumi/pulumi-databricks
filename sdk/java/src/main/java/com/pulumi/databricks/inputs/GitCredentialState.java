@@ -16,62 +16,30 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
 
     public static final GitCredentialState Empty = new GitCredentialState();
 
-    /**
-     * specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
-     * 
-     */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
-    /**
-     * @return specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
-     * 
-     */
     public Optional<Output<Boolean>> force() {
         return Optional.ofNullable(this.force);
     }
 
-    /**
-     * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-     * 
-     */
     @Import(name="gitProvider")
     private @Nullable Output<String> gitProvider;
 
-    /**
-     * @return case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-     * 
-     */
     public Optional<Output<String>> gitProvider() {
         return Optional.ofNullable(this.gitProvider);
     }
 
-    /**
-     * user name at Git provider.
-     * 
-     */
     @Import(name="gitUsername")
     private @Nullable Output<String> gitUsername;
 
-    /**
-     * @return user name at Git provider.
-     * 
-     */
     public Optional<Output<String>> gitUsername() {
         return Optional.ofNullable(this.gitUsername);
     }
 
-    /**
-     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
-     * 
-     */
     @Import(name="personalAccessToken")
     private @Nullable Output<String> personalAccessToken;
 
-    /**
-     * @return The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
-     * 
-     */
     public Optional<Output<String>> personalAccessToken() {
         return Optional.ofNullable(this.personalAccessToken);
     }
@@ -103,86 +71,38 @@ public final class GitCredentialState extends com.pulumi.resources.ResourceArgs 
             $ = new GitCredentialState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param force specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder force(@Nullable Output<Boolean> force) {
             $.force = force;
             return this;
         }
 
-        /**
-         * @param force specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
-         * 
-         * @return builder
-         * 
-         */
         public Builder force(Boolean force) {
             return force(Output.of(force));
         }
 
-        /**
-         * @param gitProvider case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gitProvider(@Nullable Output<String> gitProvider) {
             $.gitProvider = gitProvider;
             return this;
         }
 
-        /**
-         * @param gitProvider case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gitProvider(String gitProvider) {
             return gitProvider(Output.of(gitProvider));
         }
 
-        /**
-         * @param gitUsername user name at Git provider.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gitUsername(@Nullable Output<String> gitUsername) {
             $.gitUsername = gitUsername;
             return this;
         }
 
-        /**
-         * @param gitUsername user name at Git provider.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gitUsername(String gitUsername) {
             return gitUsername(Output.of(gitUsername));
         }
 
-        /**
-         * @param personalAccessToken The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder personalAccessToken(@Nullable Output<String> personalAccessToken) {
             $.personalAccessToken = personalAccessToken;
             return this;
         }
 
-        /**
-         * @param personalAccessToken The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder personalAccessToken(String personalAccessToken) {
             return personalAccessToken(Output.of(personalAccessToken));
         }

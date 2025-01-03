@@ -13,44 +13,20 @@ import java.util.Objects;
 
 @CustomType
 public final class GetShareResult {
-    /**
-     * @return Time when the share was created.
-     * 
-     */
     private Integer createdAt;
-    /**
-     * @return The principal that created the share.
-     * 
-     */
     private String createdBy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return Full name of the object being shared.
-     * 
-     */
     private String name;
-    /**
-     * @return arrays containing details of each object in the share.
-     * 
-     */
     private List<GetShareObject> objects;
 
     private GetShareResult() {}
-    /**
-     * @return Time when the share was created.
-     * 
-     */
     public Integer createdAt() {
         return this.createdAt;
     }
-    /**
-     * @return The principal that created the share.
-     * 
-     */
     public String createdBy() {
         return this.createdBy;
     }
@@ -61,17 +37,9 @@ public final class GetShareResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return Full name of the object being shared.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return arrays containing details of each object in the share.
-     * 
-     */
     public List<GetShareObject> objects() {
         return this.objects;
     }

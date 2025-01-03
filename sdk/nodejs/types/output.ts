@@ -2841,18 +2841,18 @@ export interface GetServingEndpointsEndpointAiGateway {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrail {
-    inputs?: outputs.GetServingEndpointsEndpointAiGatewayGuardrailInput[];
+    inputProperties?: outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputProperty[];
     outputs?: outputs.GetServingEndpointsEndpointAiGatewayGuardrailOutput[];
 }
 
-export interface GetServingEndpointsEndpointAiGatewayGuardrailInput {
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputProperty {
     invalidKeywords?: string[];
-    piis?: outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPii[];
+    piis?: outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii[];
     safety?: boolean;
     validTopics?: string[];
 }
 
-export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPii {
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii {
     behavior: string;
 }
 

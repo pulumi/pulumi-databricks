@@ -12,18 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationConfigSlack {
-    /**
-     * @return The Slack webhook URL.
-     * 
-     */
     private @Nullable String url;
     private @Nullable Boolean urlSet;
 
     private NotificationDestinationConfigSlack() {}
-    /**
-     * @return The Slack webhook URL.
-     * 
-     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

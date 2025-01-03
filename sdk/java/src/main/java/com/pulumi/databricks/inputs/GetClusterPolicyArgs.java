@@ -17,122 +17,58 @@ public final class GetClusterPolicyArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetClusterPolicyArgs Empty = new GetClusterPolicyArgs();
 
-    /**
-     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-     * 
-     */
     @Import(name="definition")
     private @Nullable Output<String> definition;
 
-    /**
-     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-     * 
-     */
     public Optional<Output<String>> definition() {
         return Optional.ofNullable(this.definition);
     }
 
-    /**
-     * Additional human-readable description of the cluster policy.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return Additional human-readable description of the cluster policy.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * The id of the cluster policy.
-     * 
-     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
-    /**
-     * @return The id of the cluster policy.
-     * 
-     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * If true, policy is a default policy created and managed by Databricks.
-     * 
-     */
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
-    /**
-     * @return If true, policy is a default policy created and managed by Databricks.
-     * 
-     */
     public Optional<Output<Boolean>> isDefault() {
         return Optional.ofNullable(this.isDefault);
     }
 
-    /**
-     * Max number of clusters per user that can be active using this policy.
-     * 
-     */
     @Import(name="maxClustersPerUser")
     private @Nullable Output<Integer> maxClustersPerUser;
 
-    /**
-     * @return Max number of clusters per user that can be active using this policy.
-     * 
-     */
     public Optional<Output<Integer>> maxClustersPerUser() {
         return Optional.ofNullable(this.maxClustersPerUser);
     }
 
-    /**
-     * Name of the cluster policy. The cluster policy must exist before this resource can be planned.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the cluster policy. The cluster policy must exist before this resource can be planned.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
-     * 
-     */
     @Import(name="policyFamilyDefinitionOverrides")
     private @Nullable Output<String> policyFamilyDefinitionOverrides;
 
-    /**
-     * @return Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
-     * 
-     */
     public Optional<Output<String>> policyFamilyDefinitionOverrides() {
         return Optional.ofNullable(this.policyFamilyDefinitionOverrides);
     }
 
-    /**
-     * ID of the policy family.
-     * 
-     */
     @Import(name="policyFamilyId")
     private @Nullable Output<String> policyFamilyId;
 
-    /**
-     * @return ID of the policy family.
-     * 
-     */
     public Optional<Output<String>> policyFamilyId() {
         return Optional.ofNullable(this.policyFamilyId);
     }
@@ -168,170 +104,74 @@ public final class GetClusterPolicyArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetClusterPolicyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-         * 
-         * @return builder
-         * 
-         */
         public Builder definition(@Nullable Output<String> definition) {
             $.definition = definition;
             return this;
         }
 
-        /**
-         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
-         * 
-         * @return builder
-         * 
-         */
         public Builder definition(String definition) {
             return definition(Output.of(definition));
         }
 
-        /**
-         * @param description Additional human-readable description of the cluster policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description Additional human-readable description of the cluster policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        /**
-         * @param id The id of the cluster policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param id The id of the cluster policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
-        /**
-         * @param isDefault If true, policy is a default policy created and managed by Databricks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isDefault(@Nullable Output<Boolean> isDefault) {
             $.isDefault = isDefault;
             return this;
         }
 
-        /**
-         * @param isDefault If true, policy is a default policy created and managed by Databricks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isDefault(Boolean isDefault) {
             return isDefault(Output.of(isDefault));
         }
 
-        /**
-         * @param maxClustersPerUser Max number of clusters per user that can be active using this policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxClustersPerUser(@Nullable Output<Integer> maxClustersPerUser) {
             $.maxClustersPerUser = maxClustersPerUser;
             return this;
         }
 
-        /**
-         * @param maxClustersPerUser Max number of clusters per user that can be active using this policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxClustersPerUser(Integer maxClustersPerUser) {
             return maxClustersPerUser(Output.of(maxClustersPerUser));
         }
 
-        /**
-         * @param name Name of the cluster policy. The cluster policy must exist before this resource can be planned.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the cluster policy. The cluster policy must exist before this resource can be planned.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param policyFamilyDefinitionOverrides Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyFamilyDefinitionOverrides(@Nullable Output<String> policyFamilyDefinitionOverrides) {
             $.policyFamilyDefinitionOverrides = policyFamilyDefinitionOverrides;
             return this;
         }
 
-        /**
-         * @param policyFamilyDefinitionOverrides Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyFamilyDefinitionOverrides(String policyFamilyDefinitionOverrides) {
             return policyFamilyDefinitionOverrides(Output.of(policyFamilyDefinitionOverrides));
         }
 
-        /**
-         * @param policyFamilyId ID of the policy family.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyFamilyId(@Nullable Output<String> policyFamilyId) {
             $.policyFamilyId = policyFamilyId;
             return this;
         }
 
-        /**
-         * @param policyFamilyId ID of the policy family.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyFamilyId(String policyFamilyId) {
             return policyFamilyId(Output.of(policyFamilyId));
         }

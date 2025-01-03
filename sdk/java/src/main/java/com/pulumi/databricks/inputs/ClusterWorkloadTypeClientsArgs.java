@@ -15,112 +15,16 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
 
     public static final ClusterWorkloadTypeClientsArgs Empty = new ClusterWorkloadTypeClientsArgs();
 
-    /**
-     * boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.Cluster;
-     * import com.pulumi.databricks.ClusterArgs;
-     * import com.pulumi.databricks.inputs.ClusterWorkloadTypeArgs;
-     * import com.pulumi.databricks.inputs.ClusterWorkloadTypeClientsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
-     *             .workloadType(ClusterWorkloadTypeArgs.builder()
-     *                 .clients(ClusterWorkloadTypeClientsArgs.builder()
-     *                     .jobs(false)
-     *                     .notebooks(true)
-     *                     .build())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     @Import(name="jobs")
     private @Nullable Output<Boolean> jobs;
 
-    /**
-     * @return boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.Cluster;
-     * import com.pulumi.databricks.ClusterArgs;
-     * import com.pulumi.databricks.inputs.ClusterWorkloadTypeArgs;
-     * import com.pulumi.databricks.inputs.ClusterWorkloadTypeClientsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
-     *             .workloadType(ClusterWorkloadTypeArgs.builder()
-     *                 .clients(ClusterWorkloadTypeClientsArgs.builder()
-     *                     .jobs(false)
-     *                     .notebooks(true)
-     *                     .build())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public Optional<Output<Boolean>> jobs() {
         return Optional.ofNullable(this.jobs);
     }
 
-    /**
-     * boolean flag defining if it&#39;s possible to run notebooks on this cluster. Default: `true`.
-     * 
-     */
     @Import(name="notebooks")
     private @Nullable Output<Boolean> notebooks;
 
-    /**
-     * @return boolean flag defining if it&#39;s possible to run notebooks on this cluster. Default: `true`.
-     * 
-     */
     public Optional<Output<Boolean>> notebooks() {
         return Optional.ofNullable(this.notebooks);
     }
@@ -150,124 +54,20 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
             $ = new ClusterWorkloadTypeClientsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param jobs boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
-         * 
-         * &lt;!--Start PulumiCodeChooser --&gt;
-         * <pre>
-         * {@code
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.databricks.Cluster;
-         * import com.pulumi.databricks.ClusterArgs;
-         * import com.pulumi.databricks.inputs.ClusterWorkloadTypeArgs;
-         * import com.pulumi.databricks.inputs.ClusterWorkloadTypeClientsArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
-         *             .workloadType(ClusterWorkloadTypeArgs.builder()
-         *                 .clients(ClusterWorkloadTypeClientsArgs.builder()
-         *                     .jobs(false)
-         *                     .notebooks(true)
-         *                     .build())
-         *                 .build())
-         *             .build());
-         * 
-         *     }
-         * }
-         * }
-         * </pre>
-         * &lt;!--End PulumiCodeChooser --&gt;
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobs(@Nullable Output<Boolean> jobs) {
             $.jobs = jobs;
             return this;
         }
 
-        /**
-         * @param jobs boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
-         * 
-         * &lt;!--Start PulumiCodeChooser --&gt;
-         * <pre>
-         * {@code
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.databricks.Cluster;
-         * import com.pulumi.databricks.ClusterArgs;
-         * import com.pulumi.databricks.inputs.ClusterWorkloadTypeArgs;
-         * import com.pulumi.databricks.inputs.ClusterWorkloadTypeClientsArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
-         *             .workloadType(ClusterWorkloadTypeArgs.builder()
-         *                 .clients(ClusterWorkloadTypeClientsArgs.builder()
-         *                     .jobs(false)
-         *                     .notebooks(true)
-         *                     .build())
-         *                 .build())
-         *             .build());
-         * 
-         *     }
-         * }
-         * }
-         * </pre>
-         * &lt;!--End PulumiCodeChooser --&gt;
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobs(Boolean jobs) {
             return jobs(Output.of(jobs));
         }
 
-        /**
-         * @param notebooks boolean flag defining if it&#39;s possible to run notebooks on this cluster. Default: `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder notebooks(@Nullable Output<Boolean> notebooks) {
             $.notebooks = notebooks;
             return this;
         }
 
-        /**
-         * @param notebooks boolean flag defining if it&#39;s possible to run notebooks on this cluster. Default: `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder notebooks(Boolean notebooks) {
             return notebooks(Output.of(notebooks));
         }

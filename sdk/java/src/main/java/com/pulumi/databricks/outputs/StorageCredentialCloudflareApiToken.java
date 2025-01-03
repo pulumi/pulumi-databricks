@@ -10,45 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class StorageCredentialCloudflareApiToken {
-    /**
-     * @return R2 API token access key ID
-     * 
-     */
     private String accessKeyId;
-    /**
-     * @return R2 account ID
-     * 
-     */
     private String accountId;
-    /**
-     * @return R2 API token secret access key
-     * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
-     * 
-     */
     private String secretAccessKey;
 
     private StorageCredentialCloudflareApiToken() {}
-    /**
-     * @return R2 API token access key ID
-     * 
-     */
     public String accessKeyId() {
         return this.accessKeyId;
     }
-    /**
-     * @return R2 account ID
-     * 
-     */
     public String accountId() {
         return this.accountId;
     }
-    /**
-     * @return R2 API token secret access key
-     * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
-     * 
-     */
     public String secretAccessKey() {
         return this.secretAccessKey;
     }

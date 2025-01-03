@@ -11,9 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// Retrieves information about a Cluster using its id. This could be retrieved programmatically using getClusters data source.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
@@ -26,25 +23,18 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getCluster.
 type LookupClusterArgs struct {
-	// The id of the cluster
-	ClusterId *string `pulumi:"clusterId"`
-	// block, consisting of following fields:
+	ClusterId   *string                `pulumi:"clusterId"`
 	ClusterInfo *GetClusterClusterInfo `pulumi:"clusterInfo"`
-	// The exact name of the cluster to search
-	ClusterName *string `pulumi:"clusterName"`
-	// cluster ID
-	Id *string `pulumi:"id"`
+	ClusterName *string                `pulumi:"clusterName"`
+	Id          *string                `pulumi:"id"`
 }
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
-	ClusterId string `pulumi:"clusterId"`
-	// block, consisting of following fields:
+	ClusterId   string                `pulumi:"clusterId"`
 	ClusterInfo GetClusterClusterInfo `pulumi:"clusterInfo"`
-	// Cluster name, which doesn’t have to be unique.
-	ClusterName string `pulumi:"clusterName"`
-	// cluster ID
-	Id string `pulumi:"id"`
+	ClusterName string                `pulumi:"clusterName"`
+	Id          string                `pulumi:"id"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -58,14 +48,10 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 
 // A collection of arguments for invoking getCluster.
 type LookupClusterOutputArgs struct {
-	// The id of the cluster
-	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
-	// block, consisting of following fields:
+	ClusterId   pulumi.StringPtrInput         `pulumi:"clusterId"`
 	ClusterInfo GetClusterClusterInfoPtrInput `pulumi:"clusterInfo"`
-	// The exact name of the cluster to search
-	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
-	// cluster ID
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	ClusterName pulumi.StringPtrInput         `pulumi:"clusterName"`
+	Id          pulumi.StringPtrInput         `pulumi:"id"`
 }
 
 func (LookupClusterOutputArgs) ElementType() reflect.Type {
@@ -91,17 +77,14 @@ func (o LookupClusterResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// block, consisting of following fields:
 func (o LookupClusterResultOutput) ClusterInfo() GetClusterClusterInfoOutput {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterClusterInfo { return v.ClusterInfo }).(GetClusterClusterInfoOutput)
 }
 
-// Cluster name, which doesn’t have to be unique.
 func (o LookupClusterResultOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// cluster ID
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }

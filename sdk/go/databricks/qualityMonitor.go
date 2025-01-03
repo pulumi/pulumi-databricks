@@ -12,218 +12,30 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks.
-//
-// A `QualityMonitor` is attached to a SqlTable and can be of type timeseries, snapshot or inference.
-//
-// ## Plugin Framework Migration
-//
-// The quality monitor resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="QualityMonitor"`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
-//				Name:    pulumi.String("sandbox"),
-//				Comment: pulumi.String("this catalog is managed by terraform"),
-//				Properties: pulumi.StringMap{
-//					"purpose": pulumi.String("testing"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
-//				CatalogName: sandbox.ID(),
-//				Name:        pulumi.String("things"),
-//				Comment:     pulumi.String("this database is managed by terraform"),
-//				Properties: pulumi.StringMap{
-//					"kind": pulumi.String("various"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myTestTable, err := databricks.NewSqlTable(ctx, "myTestTable", &databricks.SqlTableArgs{
-//				CatalogName:      pulumi.String("main"),
-//				SchemaName:       things.Name,
-//				Name:             pulumi.String("bar"),
-//				TableType:        pulumi.String("MANAGED"),
-//				DataSourceFormat: pulumi.String("DELTA"),
-//				Columns: databricks.SqlTableColumnArray{
-//					&databricks.SqlTableColumnArgs{
-//						Name: pulumi.String("timestamp"),
-//						Type: pulumi.String("int"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewQualityMonitor(ctx, "testTimeseriesMonitor", &databricks.QualityMonitorArgs{
-//				TableName: pulumi.All(sandbox.Name, things.Name, myTestTable.Name).ApplyT(func(_args []interface{}) (string, error) {
-//					sandboxName := _args[0].(string)
-//					thingsName := _args[1].(string)
-//					myTestTableName := _args[2].(string)
-//					return fmt.Sprintf("%v.%v.%v", sandboxName, thingsName, myTestTableName), nil
-//				}).(pulumi.StringOutput),
-//				AssetsDir: myTestTable.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("/Shared/provider-test/databricks_quality_monitoring/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				OutputSchemaName: pulumi.All(sandbox.Name, things.Name).ApplyT(func(_args []interface{}) (string, error) {
-//					sandboxName := _args[0].(string)
-//					thingsName := _args[1].(string)
-//					return fmt.Sprintf("%v.%v", sandboxName, thingsName), nil
-//				}).(pulumi.StringOutput),
-//				TimeSeries: &databricks.QualityMonitorTimeSeriesArgs{
-//					Granularities: pulumi.StringArray{
-//						pulumi.String("1 hour"),
-//					},
-//					TimestampCol: pulumi.String("timestamp"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Inference Monitor
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewQualityMonitor(ctx, "testMonitorInference", &databricks.QualityMonitorArgs{
-//				TableName:        pulumi.Sprintf("%v.%v.%v", sandbox.Name, things.Name, myTestTable.Name),
-//				AssetsDir:        pulumi.Sprintf("/Shared/provider-test/databricks_quality_monitoring/%v", myTestTable.Name),
-//				OutputSchemaName: pulumi.Sprintf("%v.%v", sandbox.Name, things.Name),
-//				InferenceLog: &databricks.QualityMonitorInferenceLogArgs{
-//					Granularities: pulumi.StringArray{
-//						pulumi.String("1 hour"),
-//					},
-//					TimestampCol:  pulumi.String("timestamp"),
-//					PredictionCol: pulumi.String("prediction"),
-//					ModelIdCol:    pulumi.String("model_id"),
-//					ProblemType:   pulumi.String("PROBLEM_TYPE_REGRESSION"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Snapshot Monitor
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewQualityMonitor(ctx, "testMonitorInference", &databricks.QualityMonitorArgs{
-//				TableName:        pulumi.Sprintf("%v.%v.%v", sandbox.Name, things.Name, myTestTable.Name),
-//				AssetsDir:        pulumi.Sprintf("/Shared/provider-test/databricks_quality_monitoring/%v", myTestTable.Name),
-//				OutputSchemaName: pulumi.Sprintf("%v.%v", sandbox.Name, things.Name),
-//				Snapshot:         &databricks.QualityMonitorSnapshotArgs{},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * Catalog
-// * Schema
-// * SqlTable
 type QualityMonitor struct {
 	pulumi.CustomResourceState
 
-	// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
-	AssetsDir pulumi.StringOutput `pulumi:"assetsDir"`
-	// Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
-	// table.
-	BaselineTableName pulumi.StringPtrOutput `pulumi:"baselineTableName"`
-	// Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
-	CustomMetrics QualityMonitorCustomMetricArrayOutput `pulumi:"customMetrics"`
-	// The ID of the generated dashboard.
-	DashboardId pulumi.StringOutput `pulumi:"dashboardId"`
-	// The data classification config for the monitor
+	AssetsDir                pulumi.StringOutput                             `pulumi:"assetsDir"`
+	BaselineTableName        pulumi.StringPtrOutput                          `pulumi:"baselineTableName"`
+	CustomMetrics            QualityMonitorCustomMetricArrayOutput           `pulumi:"customMetrics"`
+	DashboardId              pulumi.StringOutput                             `pulumi:"dashboardId"`
 	DataClassificationConfig QualityMonitorDataClassificationConfigPtrOutput `pulumi:"dataClassificationConfig"`
-	// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-	DriftMetricsTableName pulumi.StringOutput `pulumi:"driftMetricsTableName"`
-	// Configuration for the inference log monitor
-	InferenceLog            QualityMonitorInferenceLogPtrOutput `pulumi:"inferenceLog"`
-	LatestMonitorFailureMsg pulumi.StringPtrOutput              `pulumi:"latestMonitorFailureMsg"`
-	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
-	MonitorId pulumi.StringOutput `pulumi:"monitorId"`
-	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-	MonitorVersion pulumi.StringOutput `pulumi:"monitorVersion"`
-	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
-	Notifications QualityMonitorNotificationsPtrOutput `pulumi:"notifications"`
-	// Schema where output metric tables are created
-	OutputSchemaName pulumi.StringOutput `pulumi:"outputSchemaName"`
-	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-	ProfileMetricsTableName pulumi.StringOutput `pulumi:"profileMetricsTableName"`
-	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-	Schedule QualityMonitorSchedulePtrOutput `pulumi:"schedule"`
-	// Whether to skip creating a default dashboard summarizing data quality metrics.
-	SkipBuiltinDashboard pulumi.BoolPtrOutput `pulumi:"skipBuiltinDashboard"`
-	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-	SlicingExprs pulumi.StringArrayOutput `pulumi:"slicingExprs"`
-	// Configuration for monitoring snapshot tables.
-	Snapshot QualityMonitorSnapshotPtrOutput `pulumi:"snapshot"`
-	// Status of the Monitor
-	Status pulumi.StringOutput `pulumi:"status"`
-	// The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-	TableName pulumi.StringOutput `pulumi:"tableName"`
-	// Configuration for monitoring timeseries tables.
-	TimeSeries QualityMonitorTimeSeriesPtrOutput `pulumi:"timeSeries"`
-	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
-	WarehouseId pulumi.StringPtrOutput `pulumi:"warehouseId"`
+	DriftMetricsTableName    pulumi.StringOutput                             `pulumi:"driftMetricsTableName"`
+	InferenceLog             QualityMonitorInferenceLogPtrOutput             `pulumi:"inferenceLog"`
+	LatestMonitorFailureMsg  pulumi.StringPtrOutput                          `pulumi:"latestMonitorFailureMsg"`
+	MonitorId                pulumi.StringOutput                             `pulumi:"monitorId"`
+	MonitorVersion           pulumi.StringOutput                             `pulumi:"monitorVersion"`
+	Notifications            QualityMonitorNotificationsPtrOutput            `pulumi:"notifications"`
+	OutputSchemaName         pulumi.StringOutput                             `pulumi:"outputSchemaName"`
+	ProfileMetricsTableName  pulumi.StringOutput                             `pulumi:"profileMetricsTableName"`
+	Schedule                 QualityMonitorSchedulePtrOutput                 `pulumi:"schedule"`
+	SkipBuiltinDashboard     pulumi.BoolPtrOutput                            `pulumi:"skipBuiltinDashboard"`
+	SlicingExprs             pulumi.StringArrayOutput                        `pulumi:"slicingExprs"`
+	Snapshot                 QualityMonitorSnapshotPtrOutput                 `pulumi:"snapshot"`
+	Status                   pulumi.StringOutput                             `pulumi:"status"`
+	TableName                pulumi.StringOutput                             `pulumi:"tableName"`
+	TimeSeries               QualityMonitorTimeSeriesPtrOutput               `pulumi:"timeSeries"`
+	WarehouseId              pulumi.StringPtrOutput                          `pulumi:"warehouseId"`
 }
 
 // NewQualityMonitor registers a new resource with the given unique name, arguments, and options.
@@ -265,93 +77,51 @@ func GetQualityMonitor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering QualityMonitor resources.
 type qualityMonitorState struct {
-	// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
-	AssetsDir *string `pulumi:"assetsDir"`
-	// Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
-	// table.
-	BaselineTableName *string `pulumi:"baselineTableName"`
-	// Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
-	CustomMetrics []QualityMonitorCustomMetric `pulumi:"customMetrics"`
-	// The ID of the generated dashboard.
-	DashboardId *string `pulumi:"dashboardId"`
-	// The data classification config for the monitor
+	AssetsDir                *string                                 `pulumi:"assetsDir"`
+	BaselineTableName        *string                                 `pulumi:"baselineTableName"`
+	CustomMetrics            []QualityMonitorCustomMetric            `pulumi:"customMetrics"`
+	DashboardId              *string                                 `pulumi:"dashboardId"`
 	DataClassificationConfig *QualityMonitorDataClassificationConfig `pulumi:"dataClassificationConfig"`
-	// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-	DriftMetricsTableName *string `pulumi:"driftMetricsTableName"`
-	// Configuration for the inference log monitor
-	InferenceLog            *QualityMonitorInferenceLog `pulumi:"inferenceLog"`
-	LatestMonitorFailureMsg *string                     `pulumi:"latestMonitorFailureMsg"`
-	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
-	MonitorId *string `pulumi:"monitorId"`
-	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-	MonitorVersion *string `pulumi:"monitorVersion"`
-	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
-	Notifications *QualityMonitorNotifications `pulumi:"notifications"`
-	// Schema where output metric tables are created
-	OutputSchemaName *string `pulumi:"outputSchemaName"`
-	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-	ProfileMetricsTableName *string `pulumi:"profileMetricsTableName"`
-	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-	Schedule *QualityMonitorSchedule `pulumi:"schedule"`
-	// Whether to skip creating a default dashboard summarizing data quality metrics.
-	SkipBuiltinDashboard *bool `pulumi:"skipBuiltinDashboard"`
-	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-	SlicingExprs []string `pulumi:"slicingExprs"`
-	// Configuration for monitoring snapshot tables.
-	Snapshot *QualityMonitorSnapshot `pulumi:"snapshot"`
-	// Status of the Monitor
-	Status *string `pulumi:"status"`
-	// The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-	TableName *string `pulumi:"tableName"`
-	// Configuration for monitoring timeseries tables.
-	TimeSeries *QualityMonitorTimeSeries `pulumi:"timeSeries"`
-	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
-	WarehouseId *string `pulumi:"warehouseId"`
+	DriftMetricsTableName    *string                                 `pulumi:"driftMetricsTableName"`
+	InferenceLog             *QualityMonitorInferenceLog             `pulumi:"inferenceLog"`
+	LatestMonitorFailureMsg  *string                                 `pulumi:"latestMonitorFailureMsg"`
+	MonitorId                *string                                 `pulumi:"monitorId"`
+	MonitorVersion           *string                                 `pulumi:"monitorVersion"`
+	Notifications            *QualityMonitorNotifications            `pulumi:"notifications"`
+	OutputSchemaName         *string                                 `pulumi:"outputSchemaName"`
+	ProfileMetricsTableName  *string                                 `pulumi:"profileMetricsTableName"`
+	Schedule                 *QualityMonitorSchedule                 `pulumi:"schedule"`
+	SkipBuiltinDashboard     *bool                                   `pulumi:"skipBuiltinDashboard"`
+	SlicingExprs             []string                                `pulumi:"slicingExprs"`
+	Snapshot                 *QualityMonitorSnapshot                 `pulumi:"snapshot"`
+	Status                   *string                                 `pulumi:"status"`
+	TableName                *string                                 `pulumi:"tableName"`
+	TimeSeries               *QualityMonitorTimeSeries               `pulumi:"timeSeries"`
+	WarehouseId              *string                                 `pulumi:"warehouseId"`
 }
 
 type QualityMonitorState struct {
-	// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
-	AssetsDir pulumi.StringPtrInput
-	// Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
-	// table.
-	BaselineTableName pulumi.StringPtrInput
-	// Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
-	CustomMetrics QualityMonitorCustomMetricArrayInput
-	// The ID of the generated dashboard.
-	DashboardId pulumi.StringPtrInput
-	// The data classification config for the monitor
+	AssetsDir                pulumi.StringPtrInput
+	BaselineTableName        pulumi.StringPtrInput
+	CustomMetrics            QualityMonitorCustomMetricArrayInput
+	DashboardId              pulumi.StringPtrInput
 	DataClassificationConfig QualityMonitorDataClassificationConfigPtrInput
-	// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-	DriftMetricsTableName pulumi.StringPtrInput
-	// Configuration for the inference log monitor
-	InferenceLog            QualityMonitorInferenceLogPtrInput
-	LatestMonitorFailureMsg pulumi.StringPtrInput
-	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
-	MonitorId pulumi.StringPtrInput
-	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-	MonitorVersion pulumi.StringPtrInput
-	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
-	Notifications QualityMonitorNotificationsPtrInput
-	// Schema where output metric tables are created
-	OutputSchemaName pulumi.StringPtrInput
-	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-	ProfileMetricsTableName pulumi.StringPtrInput
-	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-	Schedule QualityMonitorSchedulePtrInput
-	// Whether to skip creating a default dashboard summarizing data quality metrics.
-	SkipBuiltinDashboard pulumi.BoolPtrInput
-	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-	SlicingExprs pulumi.StringArrayInput
-	// Configuration for monitoring snapshot tables.
-	Snapshot QualityMonitorSnapshotPtrInput
-	// Status of the Monitor
-	Status pulumi.StringPtrInput
-	// The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-	TableName pulumi.StringPtrInput
-	// Configuration for monitoring timeseries tables.
-	TimeSeries QualityMonitorTimeSeriesPtrInput
-	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
-	WarehouseId pulumi.StringPtrInput
+	DriftMetricsTableName    pulumi.StringPtrInput
+	InferenceLog             QualityMonitorInferenceLogPtrInput
+	LatestMonitorFailureMsg  pulumi.StringPtrInput
+	MonitorId                pulumi.StringPtrInput
+	MonitorVersion           pulumi.StringPtrInput
+	Notifications            QualityMonitorNotificationsPtrInput
+	OutputSchemaName         pulumi.StringPtrInput
+	ProfileMetricsTableName  pulumi.StringPtrInput
+	Schedule                 QualityMonitorSchedulePtrInput
+	SkipBuiltinDashboard     pulumi.BoolPtrInput
+	SlicingExprs             pulumi.StringArrayInput
+	Snapshot                 QualityMonitorSnapshotPtrInput
+	Status                   pulumi.StringPtrInput
+	TableName                pulumi.StringPtrInput
+	TimeSeries               QualityMonitorTimeSeriesPtrInput
+	WarehouseId              pulumi.StringPtrInput
 }
 
 func (QualityMonitorState) ElementType() reflect.Type {
@@ -359,74 +129,42 @@ func (QualityMonitorState) ElementType() reflect.Type {
 }
 
 type qualityMonitorArgs struct {
-	// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
-	AssetsDir string `pulumi:"assetsDir"`
-	// Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
-	// table.
-	BaselineTableName *string `pulumi:"baselineTableName"`
-	// Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
-	CustomMetrics []QualityMonitorCustomMetric `pulumi:"customMetrics"`
-	// The data classification config for the monitor
+	AssetsDir                string                                  `pulumi:"assetsDir"`
+	BaselineTableName        *string                                 `pulumi:"baselineTableName"`
+	CustomMetrics            []QualityMonitorCustomMetric            `pulumi:"customMetrics"`
 	DataClassificationConfig *QualityMonitorDataClassificationConfig `pulumi:"dataClassificationConfig"`
-	// Configuration for the inference log monitor
-	InferenceLog            *QualityMonitorInferenceLog `pulumi:"inferenceLog"`
-	LatestMonitorFailureMsg *string                     `pulumi:"latestMonitorFailureMsg"`
-	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
-	MonitorId *string `pulumi:"monitorId"`
-	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
-	Notifications *QualityMonitorNotifications `pulumi:"notifications"`
-	// Schema where output metric tables are created
-	OutputSchemaName string `pulumi:"outputSchemaName"`
-	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-	Schedule *QualityMonitorSchedule `pulumi:"schedule"`
-	// Whether to skip creating a default dashboard summarizing data quality metrics.
-	SkipBuiltinDashboard *bool `pulumi:"skipBuiltinDashboard"`
-	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-	SlicingExprs []string `pulumi:"slicingExprs"`
-	// Configuration for monitoring snapshot tables.
-	Snapshot *QualityMonitorSnapshot `pulumi:"snapshot"`
-	// The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-	TableName string `pulumi:"tableName"`
-	// Configuration for monitoring timeseries tables.
-	TimeSeries *QualityMonitorTimeSeries `pulumi:"timeSeries"`
-	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
-	WarehouseId *string `pulumi:"warehouseId"`
+	InferenceLog             *QualityMonitorInferenceLog             `pulumi:"inferenceLog"`
+	LatestMonitorFailureMsg  *string                                 `pulumi:"latestMonitorFailureMsg"`
+	MonitorId                *string                                 `pulumi:"monitorId"`
+	Notifications            *QualityMonitorNotifications            `pulumi:"notifications"`
+	OutputSchemaName         string                                  `pulumi:"outputSchemaName"`
+	Schedule                 *QualityMonitorSchedule                 `pulumi:"schedule"`
+	SkipBuiltinDashboard     *bool                                   `pulumi:"skipBuiltinDashboard"`
+	SlicingExprs             []string                                `pulumi:"slicingExprs"`
+	Snapshot                 *QualityMonitorSnapshot                 `pulumi:"snapshot"`
+	TableName                string                                  `pulumi:"tableName"`
+	TimeSeries               *QualityMonitorTimeSeries               `pulumi:"timeSeries"`
+	WarehouseId              *string                                 `pulumi:"warehouseId"`
 }
 
 // The set of arguments for constructing a QualityMonitor resource.
 type QualityMonitorArgs struct {
-	// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
-	AssetsDir pulumi.StringInput
-	// Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
-	// table.
-	BaselineTableName pulumi.StringPtrInput
-	// Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
-	CustomMetrics QualityMonitorCustomMetricArrayInput
-	// The data classification config for the monitor
+	AssetsDir                pulumi.StringInput
+	BaselineTableName        pulumi.StringPtrInput
+	CustomMetrics            QualityMonitorCustomMetricArrayInput
 	DataClassificationConfig QualityMonitorDataClassificationConfigPtrInput
-	// Configuration for the inference log monitor
-	InferenceLog            QualityMonitorInferenceLogPtrInput
-	LatestMonitorFailureMsg pulumi.StringPtrInput
-	// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
-	MonitorId pulumi.StringPtrInput
-	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
-	Notifications QualityMonitorNotificationsPtrInput
-	// Schema where output metric tables are created
-	OutputSchemaName pulumi.StringInput
-	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-	Schedule QualityMonitorSchedulePtrInput
-	// Whether to skip creating a default dashboard summarizing data quality metrics.
-	SkipBuiltinDashboard pulumi.BoolPtrInput
-	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
-	SlicingExprs pulumi.StringArrayInput
-	// Configuration for monitoring snapshot tables.
-	Snapshot QualityMonitorSnapshotPtrInput
-	// The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
-	TableName pulumi.StringInput
-	// Configuration for monitoring timeseries tables.
-	TimeSeries QualityMonitorTimeSeriesPtrInput
-	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
-	WarehouseId pulumi.StringPtrInput
+	InferenceLog             QualityMonitorInferenceLogPtrInput
+	LatestMonitorFailureMsg  pulumi.StringPtrInput
+	MonitorId                pulumi.StringPtrInput
+	Notifications            QualityMonitorNotificationsPtrInput
+	OutputSchemaName         pulumi.StringInput
+	Schedule                 QualityMonitorSchedulePtrInput
+	SkipBuiltinDashboard     pulumi.BoolPtrInput
+	SlicingExprs             pulumi.StringArrayInput
+	Snapshot                 QualityMonitorSnapshotPtrInput
+	TableName                pulumi.StringInput
+	TimeSeries               QualityMonitorTimeSeriesPtrInput
+	WarehouseId              pulumi.StringPtrInput
 }
 
 func (QualityMonitorArgs) ElementType() reflect.Type {
@@ -516,40 +254,32 @@ func (o QualityMonitorOutput) ToQualityMonitorOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
 func (o QualityMonitorOutput) AssetsDir() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.AssetsDir }).(pulumi.StringOutput)
 }
 
-// Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
-// table.
 func (o QualityMonitorOutput) BaselineTableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringPtrOutput { return v.BaselineTableName }).(pulumi.StringPtrOutput)
 }
 
-// Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
 func (o QualityMonitorOutput) CustomMetrics() QualityMonitorCustomMetricArrayOutput {
 	return o.ApplyT(func(v *QualityMonitor) QualityMonitorCustomMetricArrayOutput { return v.CustomMetrics }).(QualityMonitorCustomMetricArrayOutput)
 }
 
-// The ID of the generated dashboard.
 func (o QualityMonitorOutput) DashboardId() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.DashboardId }).(pulumi.StringOutput)
 }
 
-// The data classification config for the monitor
 func (o QualityMonitorOutput) DataClassificationConfig() QualityMonitorDataClassificationConfigPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) QualityMonitorDataClassificationConfigPtrOutput {
 		return v.DataClassificationConfig
 	}).(QualityMonitorDataClassificationConfigPtrOutput)
 }
 
-// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
 func (o QualityMonitorOutput) DriftMetricsTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.DriftMetricsTableName }).(pulumi.StringOutput)
 }
 
-// Configuration for the inference log monitor
 func (o QualityMonitorOutput) InferenceLog() QualityMonitorInferenceLogPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) QualityMonitorInferenceLogPtrOutput { return v.InferenceLog }).(QualityMonitorInferenceLogPtrOutput)
 }
@@ -558,67 +288,54 @@ func (o QualityMonitorOutput) LatestMonitorFailureMsg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringPtrOutput { return v.LatestMonitorFailureMsg }).(pulumi.StringPtrOutput)
 }
 
-// ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
 func (o QualityMonitorOutput) MonitorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.MonitorId }).(pulumi.StringOutput)
 }
 
-// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
 func (o QualityMonitorOutput) MonitorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.MonitorVersion }).(pulumi.StringOutput)
 }
 
-// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 func (o QualityMonitorOutput) Notifications() QualityMonitorNotificationsPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) QualityMonitorNotificationsPtrOutput { return v.Notifications }).(QualityMonitorNotificationsPtrOutput)
 }
 
-// Schema where output metric tables are created
 func (o QualityMonitorOutput) OutputSchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.OutputSchemaName }).(pulumi.StringOutput)
 }
 
-// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
 func (o QualityMonitorOutput) ProfileMetricsTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.ProfileMetricsTableName }).(pulumi.StringOutput)
 }
 
-// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 func (o QualityMonitorOutput) Schedule() QualityMonitorSchedulePtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) QualityMonitorSchedulePtrOutput { return v.Schedule }).(QualityMonitorSchedulePtrOutput)
 }
 
-// Whether to skip creating a default dashboard summarizing data quality metrics.
 func (o QualityMonitorOutput) SkipBuiltinDashboard() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.BoolPtrOutput { return v.SkipBuiltinDashboard }).(pulumi.BoolPtrOutput)
 }
 
-// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
 func (o QualityMonitorOutput) SlicingExprs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringArrayOutput { return v.SlicingExprs }).(pulumi.StringArrayOutput)
 }
 
-// Configuration for monitoring snapshot tables.
 func (o QualityMonitorOutput) Snapshot() QualityMonitorSnapshotPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) QualityMonitorSnapshotPtrOutput { return v.Snapshot }).(QualityMonitorSnapshotPtrOutput)
 }
 
-// Status of the Monitor
 func (o QualityMonitorOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
 func (o QualityMonitorOutput) TableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.TableName }).(pulumi.StringOutput)
 }
 
-// Configuration for monitoring timeseries tables.
 func (o QualityMonitorOutput) TimeSeries() QualityMonitorTimeSeriesPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) QualityMonitorTimeSeriesPtrOutput { return v.TimeSeries }).(QualityMonitorTimeSeriesPtrOutput)
 }
 
-// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
 func (o QualityMonitorOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringPtrOutput { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }

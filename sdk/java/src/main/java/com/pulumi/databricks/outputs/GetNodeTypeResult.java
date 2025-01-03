@@ -18,10 +18,6 @@ public final class GetNodeTypeResult {
     private @Nullable Boolean fleet;
     private @Nullable Integer gbPerCore;
     private @Nullable Boolean graviton;
-    /**
-     * @return node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
-     * 
-     */
     private String id;
     private @Nullable Boolean isIoCacheEnabled;
     private @Nullable Boolean localDisk;
@@ -46,10 +42,6 @@ public final class GetNodeTypeResult {
     public Optional<Boolean> graviton() {
         return Optional.ofNullable(this.graviton);
     }
-    /**
-     * @return node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
-     * 
-     */
     public String id() {
         return this.id;
     }

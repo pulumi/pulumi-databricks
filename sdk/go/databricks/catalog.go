@@ -11,88 +11,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > This resource can only be used with a workspace-level provider!
-//
-// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
-//
-// A `Catalog` is contained within Metastore and can contain databricks_schema. By default, Databricks creates `default` schema for every new catalog, but Pulumi plugin is removing this auto-created schema, so that resource destruction could be done in a clean way.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
-//				Name:    pulumi.String("sandbox"),
-//				Comment: pulumi.String("this catalog is managed by terraform"),
-//				Properties: pulumi.StringMap{
-//					"purpose": pulumi.String("testing"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * getTables data to list tables within Unity Catalog.
-// * getSchemas data to list schemas within Unity Catalog.
-// * getCatalogs data to list catalogs within Unity Catalog.
-//
-// ## Import
-//
-// This resource can be imported by name:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/catalog:Catalog this <name>
-// ```
 type Catalog struct {
 	pulumi.CustomResourceState
 
-	// User-supplied free-form text.
-	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
-	ConnectionName pulumi.StringPtrOutput `pulumi:"connectionName"`
-	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
-	EnablePredictiveOptimization pulumi.StringOutput `pulumi:"enablePredictiveOptimization"`
-	// Delete catalog regardless of its contents.
-	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
-	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
-	// ID of the parent metastore.
-	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
-	// Name of Catalog relative to parent metastore.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-	Options pulumi.StringMapOutput `pulumi:"options"`
-	// Username/groupname/sp applicationId of the catalog owner.
-	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Extensible Catalog properties.
-	Properties pulumi.StringMapOutput `pulumi:"properties"`
-	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
-	ProviderName pulumi.StringPtrOutput `pulumi:"providerName"`
-	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-	ShareName pulumi.StringPtrOutput `pulumi:"shareName"`
-	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
-	StorageRoot pulumi.StringPtrOutput `pulumi:"storageRoot"`
+	Comment                      pulumi.StringPtrOutput `pulumi:"comment"`
+	ConnectionName               pulumi.StringPtrOutput `pulumi:"connectionName"`
+	EnablePredictiveOptimization pulumi.StringOutput    `pulumi:"enablePredictiveOptimization"`
+	ForceDestroy                 pulumi.BoolPtrOutput   `pulumi:"forceDestroy"`
+	IsolationMode                pulumi.StringOutput    `pulumi:"isolationMode"`
+	MetastoreId                  pulumi.StringOutput    `pulumi:"metastoreId"`
+	Name                         pulumi.StringOutput    `pulumi:"name"`
+	Options                      pulumi.StringMapOutput `pulumi:"options"`
+	Owner                        pulumi.StringOutput    `pulumi:"owner"`
+	Properties                   pulumi.StringMapOutput `pulumi:"properties"`
+	ProviderName                 pulumi.StringPtrOutput `pulumi:"providerName"`
+	ShareName                    pulumi.StringPtrOutput `pulumi:"shareName"`
+	StorageRoot                  pulumi.StringPtrOutput `pulumi:"storageRoot"`
 }
 
 // NewCatalog registers a new resource with the given unique name, arguments, and options.
@@ -125,61 +59,35 @@ func GetCatalog(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Catalog resources.
 type catalogState struct {
-	// User-supplied free-form text.
-	Comment *string `pulumi:"comment"`
-	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
-	ConnectionName *string `pulumi:"connectionName"`
-	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
-	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
-	// Delete catalog regardless of its contents.
-	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-	IsolationMode *string `pulumi:"isolationMode"`
-	// ID of the parent metastore.
-	MetastoreId *string `pulumi:"metastoreId"`
-	// Name of Catalog relative to parent metastore.
-	Name *string `pulumi:"name"`
-	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-	Options map[string]string `pulumi:"options"`
-	// Username/groupname/sp applicationId of the catalog owner.
-	Owner *string `pulumi:"owner"`
-	// Extensible Catalog properties.
-	Properties map[string]string `pulumi:"properties"`
-	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
-	ProviderName *string `pulumi:"providerName"`
-	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-	ShareName *string `pulumi:"shareName"`
-	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
-	StorageRoot *string `pulumi:"storageRoot"`
+	Comment                      *string           `pulumi:"comment"`
+	ConnectionName               *string           `pulumi:"connectionName"`
+	EnablePredictiveOptimization *string           `pulumi:"enablePredictiveOptimization"`
+	ForceDestroy                 *bool             `pulumi:"forceDestroy"`
+	IsolationMode                *string           `pulumi:"isolationMode"`
+	MetastoreId                  *string           `pulumi:"metastoreId"`
+	Name                         *string           `pulumi:"name"`
+	Options                      map[string]string `pulumi:"options"`
+	Owner                        *string           `pulumi:"owner"`
+	Properties                   map[string]string `pulumi:"properties"`
+	ProviderName                 *string           `pulumi:"providerName"`
+	ShareName                    *string           `pulumi:"shareName"`
+	StorageRoot                  *string           `pulumi:"storageRoot"`
 }
 
 type CatalogState struct {
-	// User-supplied free-form text.
-	Comment pulumi.StringPtrInput
-	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
-	ConnectionName pulumi.StringPtrInput
-	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	Comment                      pulumi.StringPtrInput
+	ConnectionName               pulumi.StringPtrInput
 	EnablePredictiveOptimization pulumi.StringPtrInput
-	// Delete catalog regardless of its contents.
-	ForceDestroy pulumi.BoolPtrInput
-	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-	IsolationMode pulumi.StringPtrInput
-	// ID of the parent metastore.
-	MetastoreId pulumi.StringPtrInput
-	// Name of Catalog relative to parent metastore.
-	Name pulumi.StringPtrInput
-	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-	Options pulumi.StringMapInput
-	// Username/groupname/sp applicationId of the catalog owner.
-	Owner pulumi.StringPtrInput
-	// Extensible Catalog properties.
-	Properties pulumi.StringMapInput
-	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
-	ProviderName pulumi.StringPtrInput
-	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-	ShareName pulumi.StringPtrInput
-	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
-	StorageRoot pulumi.StringPtrInput
+	ForceDestroy                 pulumi.BoolPtrInput
+	IsolationMode                pulumi.StringPtrInput
+	MetastoreId                  pulumi.StringPtrInput
+	Name                         pulumi.StringPtrInput
+	Options                      pulumi.StringMapInput
+	Owner                        pulumi.StringPtrInput
+	Properties                   pulumi.StringMapInput
+	ProviderName                 pulumi.StringPtrInput
+	ShareName                    pulumi.StringPtrInput
+	StorageRoot                  pulumi.StringPtrInput
 }
 
 func (CatalogState) ElementType() reflect.Type {
@@ -187,62 +95,36 @@ func (CatalogState) ElementType() reflect.Type {
 }
 
 type catalogArgs struct {
-	// User-supplied free-form text.
-	Comment *string `pulumi:"comment"`
-	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
-	ConnectionName *string `pulumi:"connectionName"`
-	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
-	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
-	// Delete catalog regardless of its contents.
-	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-	IsolationMode *string `pulumi:"isolationMode"`
-	// ID of the parent metastore.
-	MetastoreId *string `pulumi:"metastoreId"`
-	// Name of Catalog relative to parent metastore.
-	Name *string `pulumi:"name"`
-	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-	Options map[string]string `pulumi:"options"`
-	// Username/groupname/sp applicationId of the catalog owner.
-	Owner *string `pulumi:"owner"`
-	// Extensible Catalog properties.
-	Properties map[string]string `pulumi:"properties"`
-	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
-	ProviderName *string `pulumi:"providerName"`
-	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-	ShareName *string `pulumi:"shareName"`
-	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
-	StorageRoot *string `pulumi:"storageRoot"`
+	Comment                      *string           `pulumi:"comment"`
+	ConnectionName               *string           `pulumi:"connectionName"`
+	EnablePredictiveOptimization *string           `pulumi:"enablePredictiveOptimization"`
+	ForceDestroy                 *bool             `pulumi:"forceDestroy"`
+	IsolationMode                *string           `pulumi:"isolationMode"`
+	MetastoreId                  *string           `pulumi:"metastoreId"`
+	Name                         *string           `pulumi:"name"`
+	Options                      map[string]string `pulumi:"options"`
+	Owner                        *string           `pulumi:"owner"`
+	Properties                   map[string]string `pulumi:"properties"`
+	ProviderName                 *string           `pulumi:"providerName"`
+	ShareName                    *string           `pulumi:"shareName"`
+	StorageRoot                  *string           `pulumi:"storageRoot"`
 }
 
 // The set of arguments for constructing a Catalog resource.
 type CatalogArgs struct {
-	// User-supplied free-form text.
-	Comment pulumi.StringPtrInput
-	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
-	ConnectionName pulumi.StringPtrInput
-	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	Comment                      pulumi.StringPtrInput
+	ConnectionName               pulumi.StringPtrInput
 	EnablePredictiveOptimization pulumi.StringPtrInput
-	// Delete catalog regardless of its contents.
-	ForceDestroy pulumi.BoolPtrInput
-	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-	IsolationMode pulumi.StringPtrInput
-	// ID of the parent metastore.
-	MetastoreId pulumi.StringPtrInput
-	// Name of Catalog relative to parent metastore.
-	Name pulumi.StringPtrInput
-	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
-	Options pulumi.StringMapInput
-	// Username/groupname/sp applicationId of the catalog owner.
-	Owner pulumi.StringPtrInput
-	// Extensible Catalog properties.
-	Properties pulumi.StringMapInput
-	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
-	ProviderName pulumi.StringPtrInput
-	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-	ShareName pulumi.StringPtrInput
-	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
-	StorageRoot pulumi.StringPtrInput
+	ForceDestroy                 pulumi.BoolPtrInput
+	IsolationMode                pulumi.StringPtrInput
+	MetastoreId                  pulumi.StringPtrInput
+	Name                         pulumi.StringPtrInput
+	Options                      pulumi.StringMapInput
+	Owner                        pulumi.StringPtrInput
+	Properties                   pulumi.StringMapInput
+	ProviderName                 pulumi.StringPtrInput
+	ShareName                    pulumi.StringPtrInput
+	StorageRoot                  pulumi.StringPtrInput
 }
 
 func (CatalogArgs) ElementType() reflect.Type {
@@ -332,67 +214,54 @@ func (o CatalogOutput) ToCatalogOutputWithContext(ctx context.Context) CatalogOu
 	return o
 }
 
-// User-supplied free-form text.
 func (o CatalogOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
 func (o CatalogOutput) ConnectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.ConnectionName }).(pulumi.StringPtrOutput)
 }
 
-// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
 func (o CatalogOutput) EnablePredictiveOptimization() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.EnablePredictiveOptimization }).(pulumi.StringOutput)
 }
 
-// Delete catalog regardless of its contents.
 func (o CatalogOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 func (o CatalogOutput) IsolationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.IsolationMode }).(pulumi.StringOutput)
 }
 
-// ID of the parent metastore.
 func (o CatalogOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// Name of Catalog relative to parent metastore.
 func (o CatalogOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
 func (o CatalogOutput) Options() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringMapOutput { return v.Options }).(pulumi.StringMapOutput)
 }
 
-// Username/groupname/sp applicationId of the catalog owner.
 func (o CatalogOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Extensible Catalog properties.
 func (o CatalogOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }
 
-// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 func (o CatalogOutput) ProviderName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.ProviderName }).(pulumi.StringPtrOutput)
 }
 
-// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
 func (o CatalogOutput) ShareName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.ShareName }).(pulumi.StringPtrOutput)
 }
 
-// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
 func (o CatalogOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }

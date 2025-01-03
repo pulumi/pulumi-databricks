@@ -12,20 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class ModelServingConfigTrafficConfigRoute {
     private String servedModelName;
-    /**
-     * @return The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-     * 
-     */
     private Integer trafficPercentage;
 
     private ModelServingConfigTrafficConfigRoute() {}
     public String servedModelName() {
         return this.servedModelName;
     }
-    /**
-     * @return The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
-     * 
-     */
     public Integer trafficPercentage() {
         return this.trafficPercentage;
     }

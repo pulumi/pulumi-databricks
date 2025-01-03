@@ -15,62 +15,30 @@ public final class ModelServingConfigServedEntityExternalModelGoogleCloudVertexA
 
     public static final ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs Empty = new ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs();
 
-    /**
-     * The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-     * 
-     */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
-    /**
-     * @return The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-     * 
-     */
     public Optional<Output<String>> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
 
-    /**
-     * The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
-     * 
-     */
     @Import(name="privateKeyPlaintext")
     private @Nullable Output<String> privateKeyPlaintext;
 
-    /**
-     * @return The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
-     * 
-     */
     public Optional<Output<String>> privateKeyPlaintext() {
         return Optional.ofNullable(this.privateKeyPlaintext);
     }
 
-    /**
-     * This is the Google Cloud project id that the service account is associated with.
-     * 
-     */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
-    /**
-     * @return This is the Google Cloud project id that the service account is associated with.
-     * 
-     */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
 
-    /**
-     * This is the region for the Google Cloud Vertex AI Service.
-     * 
-     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
-    /**
-     * @return This is the region for the Google Cloud Vertex AI Service.
-     * 
-     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -102,86 +70,38 @@ public final class ModelServingConfigServedEntityExternalModelGoogleCloudVertexA
             $ = new ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param privateKey The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateKey(@Nullable Output<String> privateKey) {
             $.privateKey = privateKey;
             return this;
         }
 
-        /**
-         * @param privateKey The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateKey(String privateKey) {
             return privateKey(Output.of(privateKey));
         }
 
-        /**
-         * @param privateKeyPlaintext The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateKeyPlaintext(@Nullable Output<String> privateKeyPlaintext) {
             $.privateKeyPlaintext = privateKeyPlaintext;
             return this;
         }
 
-        /**
-         * @param privateKeyPlaintext The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateKeyPlaintext(String privateKeyPlaintext) {
             return privateKeyPlaintext(Output.of(privateKeyPlaintext));
         }
 
-        /**
-         * @param projectId This is the Google Cloud project id that the service account is associated with.
-         * 
-         * @return builder
-         * 
-         */
         public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
-        /**
-         * @param projectId This is the Google Cloud project id that the service account is associated with.
-         * 
-         * @return builder
-         * 
-         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }
 
-        /**
-         * @param region This is the region for the Google Cloud Vertex AI Service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param region This is the region for the Google Cloud Vertex AI Service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

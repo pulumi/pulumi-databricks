@@ -14,216 +14,80 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCurrentMetastoreMetastoreInfo {
     private @Nullable String cloud;
-    /**
-     * @return Timestamp (in milliseconds) when the current metastore was created.
-     * 
-     */
     private @Nullable Integer createdAt;
-    /**
-     * @return the ID of the identity that created the current metastore.
-     * 
-     */
     private @Nullable String createdBy;
-    /**
-     * @return the ID of the default data access configuration.
-     * 
-     */
     private @Nullable String defaultDataAccessConfigId;
-    /**
-     * @return The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-     * 
-     */
     private @Nullable String deltaSharingOrganizationName;
-    /**
-     * @return the expiration duration in seconds on recipient data access tokens.
-     * 
-     */
     private @Nullable Integer deltaSharingRecipientTokenLifetimeInSeconds;
-    /**
-     * @return Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     * 
-     */
     private @Nullable String deltaSharingScope;
     private @Nullable Boolean externalAccessEnabled;
-    /**
-     * @return Identifier in form of `&lt;cloud&gt;:&lt;region&gt;:&lt;metastore_id&gt;` for use in Databricks to Databricks Delta Sharing.
-     * 
-     */
     private @Nullable String globalMetastoreId;
-    /**
-     * @return Metastore ID.
-     * 
-     */
     private @Nullable String metastoreId;
-    /**
-     * @return Name of metastore.
-     * 
-     */
     private @Nullable String name;
-    /**
-     * @return Username/group name/sp application_id of the metastore owner.
-     * 
-     */
     private @Nullable String owner;
-    /**
-     * @return the version of the privilege model used by the metastore.
-     * 
-     */
     private @Nullable String privilegeModelVersion;
-    /**
-     * @return (Mandatory for account-level) The region of the metastore.
-     * 
-     */
     private @Nullable String region;
-    /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored.
-     * 
-     */
     private @Nullable String storageRoot;
-    /**
-     * @return ID of a storage credential used for the `storage_root`.
-     * 
-     */
     private @Nullable String storageRootCredentialId;
-    /**
-     * @return Name of a storage credential used for the `storage_root`.
-     * 
-     */
     private @Nullable String storageRootCredentialName;
-    /**
-     * @return Timestamp (in milliseconds) when the current metastore was updated.
-     * 
-     */
     private @Nullable Integer updatedAt;
-    /**
-     * @return the ID of the identity that updated the current metastore.
-     * 
-     */
     private @Nullable String updatedBy;
 
     private GetCurrentMetastoreMetastoreInfo() {}
     public Optional<String> cloud() {
         return Optional.ofNullable(this.cloud);
     }
-    /**
-     * @return Timestamp (in milliseconds) when the current metastore was created.
-     * 
-     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
-    /**
-     * @return the ID of the identity that created the current metastore.
-     * 
-     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
-    /**
-     * @return the ID of the default data access configuration.
-     * 
-     */
     public Optional<String> defaultDataAccessConfigId() {
         return Optional.ofNullable(this.defaultDataAccessConfigId);
     }
-    /**
-     * @return The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-     * 
-     */
     public Optional<String> deltaSharingOrganizationName() {
         return Optional.ofNullable(this.deltaSharingOrganizationName);
     }
-    /**
-     * @return the expiration duration in seconds on recipient data access tokens.
-     * 
-     */
     public Optional<Integer> deltaSharingRecipientTokenLifetimeInSeconds() {
         return Optional.ofNullable(this.deltaSharingRecipientTokenLifetimeInSeconds);
     }
-    /**
-     * @return Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     * 
-     */
     public Optional<String> deltaSharingScope() {
         return Optional.ofNullable(this.deltaSharingScope);
     }
     public Optional<Boolean> externalAccessEnabled() {
         return Optional.ofNullable(this.externalAccessEnabled);
     }
-    /**
-     * @return Identifier in form of `&lt;cloud&gt;:&lt;region&gt;:&lt;metastore_id&gt;` for use in Databricks to Databricks Delta Sharing.
-     * 
-     */
     public Optional<String> globalMetastoreId() {
         return Optional.ofNullable(this.globalMetastoreId);
     }
-    /**
-     * @return Metastore ID.
-     * 
-     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
-    /**
-     * @return Name of metastore.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return Username/group name/sp application_id of the metastore owner.
-     * 
-     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
-    /**
-     * @return the version of the privilege model used by the metastore.
-     * 
-     */
     public Optional<String> privilegeModelVersion() {
         return Optional.ofNullable(this.privilegeModelVersion);
     }
-    /**
-     * @return (Mandatory for account-level) The region of the metastore.
-     * 
-     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
-    /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored.
-     * 
-     */
     public Optional<String> storageRoot() {
         return Optional.ofNullable(this.storageRoot);
     }
-    /**
-     * @return ID of a storage credential used for the `storage_root`.
-     * 
-     */
     public Optional<String> storageRootCredentialId() {
         return Optional.ofNullable(this.storageRootCredentialId);
     }
-    /**
-     * @return Name of a storage credential used for the `storage_root`.
-     * 
-     */
     public Optional<String> storageRootCredentialName() {
         return Optional.ofNullable(this.storageRootCredentialName);
     }
-    /**
-     * @return Timestamp (in milliseconds) when the current metastore was updated.
-     * 
-     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
-    /**
-     * @return the ID of the identity that updated the current metastore.
-     * 
-     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }

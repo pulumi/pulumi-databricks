@@ -17,47 +17,23 @@ public final class GetVolumesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetVolumesArgs Empty = new GetVolumesArgs();
 
-    /**
-     * Name of databricks_catalog
-     * 
-     */
     @Import(name="catalogName", required=true)
     private Output<String> catalogName;
 
-    /**
-     * @return Name of databricks_catalog
-     * 
-     */
     public Output<String> catalogName() {
         return this.catalogName;
     }
 
-    /**
-     * a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
-     * 
-     */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
-    /**
-     * @return a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
-     * 
-     */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
-    /**
-     * Name of databricks_schema
-     * 
-     */
     @Import(name="schemaName", required=true)
     private Output<String> schemaName;
 
-    /**
-     * @return Name of databricks_schema
-     * 
-     */
     public Output<String> schemaName() {
         return this.schemaName;
     }
@@ -88,75 +64,33 @@ public final class GetVolumesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetVolumesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param catalogName Name of databricks_catalog
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalogName(Output<String> catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
-        /**
-         * @param catalogName Name of databricks_catalog
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalogName(String catalogName) {
             return catalogName(Output.of(catalogName));
         }
 
-        /**
-         * @param ids a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(@Nullable Output<List<String>> ids) {
             $.ids = ids;
             return this;
         }
 
-        /**
-         * @param ids a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(List<String> ids) {
             return ids(Output.of(ids));
         }
 
-        /**
-         * @param ids a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
-        /**
-         * @param schemaName Name of databricks_schema
-         * 
-         * @return builder
-         * 
-         */
         public Builder schemaName(Output<String> schemaName) {
             $.schemaName = schemaName;
             return this;
         }
 
-        /**
-         * @param schemaName Name of databricks_schema
-         * 
-         * @return builder
-         * 
-         */
         public Builder schemaName(String schemaName) {
             return schemaName(Output.of(schemaName));
         }

@@ -17,10 +17,6 @@ public final class GetInstanceProfilesResult {
      * 
      */
     private String id;
-    /**
-     * @return Set of objects for a databricks_instance_profile. This contains the following attributes:
-     * 
-     */
     private List<GetInstanceProfilesInstanceProfile> instanceProfiles;
 
     private GetInstanceProfilesResult() {}
@@ -31,10 +27,6 @@ public final class GetInstanceProfilesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return Set of objects for a databricks_instance_profile. This contains the following attributes:
-     * 
-     */
     public List<GetInstanceProfilesInstanceProfile> instanceProfiles() {
         return this.instanceProfiles;
     }

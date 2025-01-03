@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingTag {
-    /**
-     * @return The key field for a tag.
-     * 
-     */
     private String key;
-    /**
-     * @return The value field for a tag.
-     * 
-     */
     private @Nullable String value;
 
     private ModelServingTag() {}
-    /**
-     * @return The key field for a tag.
-     * 
-     */
     public String key() {
         return this.key;
     }
-    /**
-     * @return The value field for a tag.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

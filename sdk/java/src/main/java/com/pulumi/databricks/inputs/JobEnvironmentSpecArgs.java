@@ -17,32 +17,16 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
 
     public static final JobEnvironmentSpecArgs Empty = new JobEnvironmentSpecArgs();
 
-    /**
-     * client version used by the environment.
-     * 
-     */
     @Import(name="client", required=true)
     private Output<String> client;
 
-    /**
-     * @return client version used by the environment.
-     * 
-     */
     public Output<String> client() {
         return this.client;
     }
 
-    /**
-     * List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
-     * 
-     */
     @Import(name="dependencies")
     private @Nullable Output<List<String>> dependencies;
 
-    /**
-     * @return List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
-     * 
-     */
     public Optional<Output<List<String>>> dependencies() {
         return Optional.ofNullable(this.dependencies);
     }
@@ -72,54 +56,24 @@ public final class JobEnvironmentSpecArgs extends com.pulumi.resources.ResourceA
             $ = new JobEnvironmentSpecArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param client client version used by the environment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder client(Output<String> client) {
             $.client = client;
             return this;
         }
 
-        /**
-         * @param client client version used by the environment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder client(String client) {
             return client(Output.of(client));
         }
 
-        /**
-         * @param dependencies List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dependencies(@Nullable Output<List<String>> dependencies) {
             $.dependencies = dependencies;
             return this;
         }
 
-        /**
-         * @param dependencies List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dependencies(List<String> dependencies) {
             return dependencies(Output.of(dependencies));
         }
 
-        /**
-         * @param dependencies List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dependencies(String... dependencies) {
             return dependencies(List.of(dependencies));
         }

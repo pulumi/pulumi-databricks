@@ -11,41 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSchemaResult {
-    /**
-     * @return ID of this Unity Catalog Schema in form of `&lt;catalog&gt;.&lt;schema&gt;`.
-     * 
-     */
     private String id;
-    /**
-     * @return Name of schema, relative to parent catalog.
-     * 
-     */
     private String name;
-    /**
-     * @return `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
-     * 
-     */
     private GetSchemaSchemaInfo schemaInfo;
 
     private GetSchemaResult() {}
-    /**
-     * @return ID of this Unity Catalog Schema in form of `&lt;catalog&gt;.&lt;schema&gt;`.
-     * 
-     */
     public String id() {
         return this.id;
     }
-    /**
-     * @return Name of schema, relative to parent catalog.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
-     * 
-     */
     public GetSchemaSchemaInfo schemaInfo() {
         return this.schemaInfo;
     }

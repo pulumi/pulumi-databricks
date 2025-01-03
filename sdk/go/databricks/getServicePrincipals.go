@@ -11,9 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// Retrieves `applicationIds` of all ServicePrincipal based on their `displayName`
 func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, opts ...pulumi.InvokeOption) (*GetServicePrincipalsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServicePrincipalsResult
@@ -26,15 +23,12 @@ func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, o
 
 // A collection of arguments for invoking getServicePrincipals.
 type GetServicePrincipalsArgs struct {
-	// List of `applicationIds` of service principals Individual service principal can be retrieved using ServicePrincipal data source
-	ApplicationIds []string `pulumi:"applicationIds"`
-	// Only return ServicePrincipal display name that match the given name string
-	DisplayNameContains *string `pulumi:"displayNameContains"`
+	ApplicationIds      []string `pulumi:"applicationIds"`
+	DisplayNameContains *string  `pulumi:"displayNameContains"`
 }
 
 // A collection of values returned by getServicePrincipals.
 type GetServicePrincipalsResult struct {
-	// List of `applicationIds` of service principals Individual service principal can be retrieved using ServicePrincipal data source
 	ApplicationIds      []string `pulumi:"applicationIds"`
 	DisplayNameContains string   `pulumi:"displayNameContains"`
 	// The provider-assigned unique ID for this managed resource.
@@ -52,10 +46,8 @@ func GetServicePrincipalsOutput(ctx *pulumi.Context, args GetServicePrincipalsOu
 
 // A collection of arguments for invoking getServicePrincipals.
 type GetServicePrincipalsOutputArgs struct {
-	// List of `applicationIds` of service principals Individual service principal can be retrieved using ServicePrincipal data source
-	ApplicationIds pulumi.StringArrayInput `pulumi:"applicationIds"`
-	// Only return ServicePrincipal display name that match the given name string
-	DisplayNameContains pulumi.StringPtrInput `pulumi:"displayNameContains"`
+	ApplicationIds      pulumi.StringArrayInput `pulumi:"applicationIds"`
+	DisplayNameContains pulumi.StringPtrInput   `pulumi:"displayNameContains"`
 }
 
 func (GetServicePrincipalsOutputArgs) ElementType() reflect.Type {
@@ -77,7 +69,6 @@ func (o GetServicePrincipalsResultOutput) ToGetServicePrincipalsResultOutputWith
 	return o
 }
 
-// List of `applicationIds` of service principals Individual service principal can be retrieved using ServicePrincipal data source
 func (o GetServicePrincipalsResultOutput) ApplicationIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.ApplicationIds }).(pulumi.StringArrayOutput)
 }

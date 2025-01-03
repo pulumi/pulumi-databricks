@@ -13,131 +13,23 @@ import com.pulumi.databricks.inputs.SecretAclState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
-/**
- * Create or overwrite the ACL associated with the given principal (user or group) on the specified databricks_secret_scope. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
- * 
- * ## Example Usage
- * 
- * This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Group;
- * import com.pulumi.databricks.GroupArgs;
- * import com.pulumi.databricks.SecretScope;
- * import com.pulumi.databricks.SecretScopeArgs;
- * import com.pulumi.databricks.SecretAcl;
- * import com.pulumi.databricks.SecretAclArgs;
- * import com.pulumi.databricks.Secret;
- * import com.pulumi.databricks.SecretArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var ds = new Group("ds", GroupArgs.builder()
- *             .displayName("data-scientists")
- *             .build());
- * 
- *         var app = new SecretScope("app", SecretScopeArgs.builder()
- *             .name("app-secret-scope")
- *             .build());
- * 
- *         var mySecretAcl = new SecretAcl("mySecretAcl", SecretAclArgs.builder()
- *             .principal(ds.displayName())
- *             .permission("READ")
- *             .scope(app.name())
- *             .build());
- * 
- *         var publishingApi = new Secret("publishingApi", SecretArgs.builder()
- *             .key("publishing_api")
- *             .stringValue(example.value())
- *             .scope(app.name())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Related Resources
- * 
- * The following resources are often used in the same context:
- * 
- * * End to end workspace management guide.
- * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
- * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
- * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
- * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
- * * databricks.SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
- * 
- * ## Import
- * 
- * The resource secret acl can be imported using `scopeName|||principalName` combination.
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`
- * ```
- * 
- */
 @ResourceType(type="databricks:index/secretAcl:SecretAcl")
 public class SecretAcl extends com.pulumi.resources.CustomResource {
-    /**
-     * `READ`, `WRITE` or `MANAGE`.
-     * 
-     */
     @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
-    /**
-     * @return `READ`, `WRITE` or `MANAGE`.
-     * 
-     */
     public Output<String> permission() {
         return this.permission;
     }
-    /**
-     * principal&#39;s identifier. It can be:
-     * 
-     */
     @Export(name="principal", refs={String.class}, tree="[0]")
     private Output<String> principal;
 
-    /**
-     * @return principal&#39;s identifier. It can be:
-     * 
-     */
     public Output<String> principal() {
         return this.principal;
     }
-    /**
-     * name of the scope
-     * 
-     */
     @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
-    /**
-     * @return name of the scope
-     * 
-     */
     public Output<String> scope() {
         return this.scope;
     }

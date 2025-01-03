@@ -17,47 +17,23 @@ public final class GetExternalLocationArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetExternalLocationArgs Empty = new GetExternalLocationArgs();
 
-    /**
-     * array of objects with information about external location:
-     * 
-     */
     @Import(name="externalLocationInfo")
     private @Nullable Output<GetExternalLocationExternalLocationInfoArgs> externalLocationInfo;
 
-    /**
-     * @return array of objects with information about external location:
-     * 
-     */
     public Optional<Output<GetExternalLocationExternalLocationInfoArgs>> externalLocationInfo() {
         return Optional.ofNullable(this.externalLocationInfo);
     }
 
-    /**
-     * external location ID - same as name.
-     * 
-     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
-    /**
-     * @return external location ID - same as name.
-     * 
-     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * The name of the external location
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return The name of the external location
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
@@ -88,65 +64,29 @@ public final class GetExternalLocationArgs extends com.pulumi.resources.InvokeAr
             $ = new GetExternalLocationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param externalLocationInfo array of objects with information about external location:
-         * 
-         * @return builder
-         * 
-         */
         public Builder externalLocationInfo(@Nullable Output<GetExternalLocationExternalLocationInfoArgs> externalLocationInfo) {
             $.externalLocationInfo = externalLocationInfo;
             return this;
         }
 
-        /**
-         * @param externalLocationInfo array of objects with information about external location:
-         * 
-         * @return builder
-         * 
-         */
         public Builder externalLocationInfo(GetExternalLocationExternalLocationInfoArgs externalLocationInfo) {
             return externalLocationInfo(Output.of(externalLocationInfo));
         }
 
-        /**
-         * @param id external location ID - same as name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param id external location ID - same as name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
-        /**
-         * @param name The name of the external location
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the external location
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

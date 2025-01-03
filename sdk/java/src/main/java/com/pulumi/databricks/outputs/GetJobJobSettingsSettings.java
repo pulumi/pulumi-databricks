@@ -57,10 +57,6 @@ public final class GetJobJobSettingsSettings {
     private @Nullable Integer maxConcurrentRuns;
     private @Nullable Integer maxRetries;
     private @Nullable Integer minRetryIntervalMillis;
-    /**
-     * @return the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     private @Nullable String name;
     private @Nullable GetJobJobSettingsSettingsNewCluster newCluster;
     private @Nullable GetJobJobSettingsSettingsNotebookTask notebookTask;
@@ -131,10 +127,6 @@ public final class GetJobJobSettingsSettings {
     public Optional<Integer> minRetryIntervalMillis() {
         return Optional.ofNullable(this.minRetryIntervalMillis);
     }
-    /**
-     * @return the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

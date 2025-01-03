@@ -32,17 +32,9 @@ public final class GetMlflowModelLatestVersionArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.currentStage);
     }
 
-    /**
-     * User-specified description for the object.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return User-specified description for the object.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -54,17 +46,9 @@ public final class GetMlflowModelLatestVersionArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.lastUpdatedTimestamp);
     }
 
-    /**
-     * Name of the registered model.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the registered model.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -104,32 +88,16 @@ public final class GetMlflowModelLatestVersionArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.statusMessage);
     }
 
-    /**
-     * Array of tags associated with the model.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<List<GetMlflowModelLatestVersionTagArgs>> tags;
 
-    /**
-     * @return Array of tags associated with the model.
-     * 
-     */
     public Optional<Output<List<GetMlflowModelLatestVersionTagArgs>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * The username of the user that created the object.
-     * 
-     */
     @Import(name="userId")
     private @Nullable Output<String> userId;
 
-    /**
-     * @return The username of the user that created the object.
-     * 
-     */
     public Optional<Output<String>> userId() {
         return Optional.ofNullable(this.userId);
     }
@@ -195,23 +163,11 @@ public final class GetMlflowModelLatestVersionArgs extends com.pulumi.resources.
             return currentStage(Output.of(currentStage));
         }
 
-        /**
-         * @param description User-specified description for the object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description User-specified description for the object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -225,23 +181,11 @@ public final class GetMlflowModelLatestVersionArgs extends com.pulumi.resources.
             return lastUpdatedTimestamp(Output.of(lastUpdatedTimestamp));
         }
 
-        /**
-         * @param name Name of the registered model.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the registered model.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -291,54 +235,24 @@ public final class GetMlflowModelLatestVersionArgs extends com.pulumi.resources.
             return statusMessage(Output.of(statusMessage));
         }
 
-        /**
-         * @param tags Array of tags associated with the model.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<List<GetMlflowModelLatestVersionTagArgs>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags Array of tags associated with the model.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(List<GetMlflowModelLatestVersionTagArgs> tags) {
             return tags(Output.of(tags));
         }
 
-        /**
-         * @param tags Array of tags associated with the model.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(GetMlflowModelLatestVersionTagArgs... tags) {
             return tags(List.of(tags));
         }
 
-        /**
-         * @param userId The username of the user that created the object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userId(@Nullable Output<String> userId) {
             $.userId = userId;
             return this;
         }
 
-        /**
-         * @param userId The username of the user that created the object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userId(String userId) {
             return userId(Output.of(userId));
         }

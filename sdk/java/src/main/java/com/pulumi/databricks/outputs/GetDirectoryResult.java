@@ -12,36 +12,20 @@ import java.util.Objects;
 @CustomType
 public final class GetDirectoryResult {
     private String id;
-    /**
-     * @return directory object ID
-     * 
-     */
     private Integer objectId;
     private String path;
-    /**
-     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-     * 
-     */
     private String workspacePath;
 
     private GetDirectoryResult() {}
     public String id() {
         return this.id;
     }
-    /**
-     * @return directory object ID
-     * 
-     */
     public Integer objectId() {
         return this.objectId;
     }
     public String path() {
         return this.path;
     }
-    /**
-     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-     * 
-     */
     public String workspacePath() {
         return this.workspacePath;
     }

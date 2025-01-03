@@ -848,8 +848,8 @@ __all__ = [
     'GetServingEndpointsEndpointResult',
     'GetServingEndpointsEndpointAiGatewayResult',
     'GetServingEndpointsEndpointAiGatewayGuardrailResult',
-    'GetServingEndpointsEndpointAiGatewayGuardrailInputResult',
-    'GetServingEndpointsEndpointAiGatewayGuardrailInputPiiResult',
+    'GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyResult',
+    'GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiResult',
     'GetServingEndpointsEndpointAiGatewayGuardrailOutputResult',
     'GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiResult',
     'GetServingEndpointsEndpointAiGatewayInferenceTableConfigResult',
@@ -35876,17 +35876,17 @@ class GetServingEndpointsEndpointAiGatewayResult(dict):
 @pulumi.output_type
 class GetServingEndpointsEndpointAiGatewayGuardrailResult(dict):
     def __init__(__self__, *,
-                 inputs: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputResult']] = None,
+                 input_properties: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyResult']] = None,
                  outputs: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputResult']] = None):
-        if inputs is not None:
-            pulumi.set(__self__, "inputs", inputs)
+        if input_properties is not None:
+            pulumi.set(__self__, "input_properties", input_properties)
         if outputs is not None:
             pulumi.set(__self__, "outputs", outputs)
 
     @property
-    @pulumi.getter
-    def inputs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputResult']]:
-        return pulumi.get(self, "inputs")
+    @pulumi.getter(name="inputProperties")
+    def input_properties(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyResult']]:
+        return pulumi.get(self, "input_properties")
 
     @property
     @pulumi.getter
@@ -35895,10 +35895,10 @@ class GetServingEndpointsEndpointAiGatewayGuardrailResult(dict):
 
 
 @pulumi.output_type
-class GetServingEndpointsEndpointAiGatewayGuardrailInputResult(dict):
+class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyResult(dict):
     def __init__(__self__, *,
                  invalid_keywords: Optional[Sequence[str]] = None,
-                 piis: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPiiResult']] = None,
+                 piis: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiResult']] = None,
                  safety: Optional[bool] = None,
                  valid_topics: Optional[Sequence[str]] = None):
         if invalid_keywords is not None:
@@ -35917,7 +35917,7 @@ class GetServingEndpointsEndpointAiGatewayGuardrailInputResult(dict):
 
     @property
     @pulumi.getter
-    def piis(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPiiResult']]:
+    def piis(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiResult']]:
         return pulumi.get(self, "piis")
 
     @property
@@ -35932,7 +35932,7 @@ class GetServingEndpointsEndpointAiGatewayGuardrailInputResult(dict):
 
 
 @pulumi.output_type
-class GetServingEndpointsEndpointAiGatewayGuardrailInputPiiResult(dict):
+class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiResult(dict):
     def __init__(__self__, *,
                  behavior: str):
         pulumi.set(__self__, "behavior", behavior)

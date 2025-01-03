@@ -19,10 +19,6 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
     private @Nullable Integer deactivatedAt;
     private @Nullable String endpointName;
     private @Nullable String groupId;
-    /**
-     * @return Canonical unique identifier of Network Connectivity Config in Databricks Account
-     * 
-     */
     private @Nullable String networkConnectivityConfigId;
     private @Nullable String resourceId;
     private @Nullable String ruleId;
@@ -47,10 +43,6 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
     public Optional<String> groupId() {
         return Optional.ofNullable(this.groupId);
     }
-    /**
-     * @return Canonical unique identifier of Network Connectivity Config in Databricks Account
-     * 
-     */
     public Optional<String> networkConnectivityConfigId() {
         return Optional.ofNullable(this.networkConnectivityConfigId);
     }

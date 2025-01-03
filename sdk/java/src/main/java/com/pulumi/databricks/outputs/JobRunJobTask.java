@@ -13,29 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobRunJobTask {
-    /**
-     * @return (String) ID of the job
-     * 
-     */
     private Integer jobId;
-    /**
-     * @return (Map) Job parameters for the task
-     * 
-     */
     private @Nullable Map<String,String> jobParameters;
 
     private JobRunJobTask() {}
-    /**
-     * @return (String) ID of the job
-     * 
-     */
     public Integer jobId() {
         return this.jobId;
     }
-    /**
-     * @return (Map) Job parameters for the task
-     * 
-     */
     public Map<String,String> jobParameters() {
         return this.jobParameters == null ? Map.of() : this.jobParameters;
     }

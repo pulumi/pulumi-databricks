@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstancePoolGcpAttributes {
-    /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     * 
-     */
     private @Nullable String gcpAvailability;
-    /**
-     * @return Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
-     * 
-     */
     private @Nullable Integer localSsdCount;
-    /**
-     * @return Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
-     * 
-     */
     private @Nullable String zoneId;
 
     private InstancePoolGcpAttributes() {}
-    /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     * 
-     */
     public Optional<String> gcpAvailability() {
         return Optional.ofNullable(this.gcpAvailability);
     }
-    /**
-     * @return Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
-     * 
-     */
     public Optional<Integer> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
     }
-    /**
-     * @return Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
-     * 
-     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

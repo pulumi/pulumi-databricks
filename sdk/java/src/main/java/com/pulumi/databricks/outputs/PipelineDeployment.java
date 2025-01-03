@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineDeployment {
-    /**
-     * @return The deployment method that manages the pipeline.
-     * 
-     */
     private @Nullable String kind;
-    /**
-     * @return The path to the file containing metadata about the deployment.
-     * 
-     */
     private @Nullable String metadataFilePath;
 
     private PipelineDeployment() {}
-    /**
-     * @return The deployment method that manages the pipeline.
-     * 
-     */
     public Optional<String> kind() {
         return Optional.ofNullable(this.kind);
     }
-    /**
-     * @return The path to the file containing metadata about the deployment.
-     * 
-     */
     public Optional<String> metadataFilePath() {
         return Optional.ofNullable(this.metadataFilePath);
     }

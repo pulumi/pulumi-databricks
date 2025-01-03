@@ -17,10 +17,6 @@ public final class GetClustersResult {
     private @Nullable String clusterNameContains;
     private @Nullable GetClustersFilterBy filterBy;
     private String id;
-    /**
-     * @return list of databricks.Cluster ids
-     * 
-     */
     private List<String> ids;
 
     private GetClustersResult() {}
@@ -33,10 +29,6 @@ public final class GetClustersResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return list of databricks.Cluster ids
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }

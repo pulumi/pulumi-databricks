@@ -12,66 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > This resource can only be used with a workspace-level provider!
-//
-// The `RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
-//
-// With the status set to `ALLOW_ALL`, workspace admins can:
-//
-// 1. Create service principal personal access tokens on behalf of any service principal in their workspace.
-// 2. Change a job owner to any user in the workspace.
-// 3. Change the job runAs setting to any user in their workspace or a service principal on which they have the Service Principal User role.
-//
-// With the status set to `RESTRICT_TOKENS_AND_JOB_RUN_AS`, workspace admins can:
-//
-// 1. Only create personal access tokens on behalf of service principals on which they have the Service Principal User role.
-// 2. Only change a job owner to themselves.
-// 3. Only change the job runAs setting to themselves a service principal on which they have the Service Principal User role.
-//
-// > Only account admins can update the setting. And the account admin must be part of the workspace to change the setting status.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewRestrictWorkspaceAdminsSetting(ctx, "this", &databricks.RestrictWorkspaceAdminsSettingArgs{
-//				RestrictWorkspaceAdmins: &databricks.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs{
-//					Status: pulumi.String("RESTRICT_TOKENS_AND_JOB_RUN_AS"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// This resource can be imported by predefined name `global`:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global
-// ```
 type RestrictWorkspaceAdminsSetting struct {
 	pulumi.CustomResourceState
 
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The configuration details.
+	Etag                    pulumi.StringOutput                                         `pulumi:"etag"`
 	RestrictWorkspaceAdmins RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsOutput `pulumi:"restrictWorkspaceAdmins"`
 	SettingName             pulumi.StringOutput                                         `pulumi:"settingName"`
 }
@@ -109,15 +53,13 @@ func GetRestrictWorkspaceAdminsSetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RestrictWorkspaceAdminsSetting resources.
 type restrictWorkspaceAdminsSettingState struct {
-	Etag *string `pulumi:"etag"`
-	// The configuration details.
+	Etag                    *string                                                `pulumi:"etag"`
 	RestrictWorkspaceAdmins *RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	SettingName             *string                                                `pulumi:"settingName"`
 }
 
 type RestrictWorkspaceAdminsSettingState struct {
-	Etag pulumi.StringPtrInput
-	// The configuration details.
+	Etag                    pulumi.StringPtrInput
 	RestrictWorkspaceAdmins RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsPtrInput
 	SettingName             pulumi.StringPtrInput
 }
@@ -127,16 +69,14 @@ func (RestrictWorkspaceAdminsSettingState) ElementType() reflect.Type {
 }
 
 type restrictWorkspaceAdminsSettingArgs struct {
-	Etag *string `pulumi:"etag"`
-	// The configuration details.
+	Etag                    *string                                               `pulumi:"etag"`
 	RestrictWorkspaceAdmins RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	SettingName             *string                                               `pulumi:"settingName"`
 }
 
 // The set of arguments for constructing a RestrictWorkspaceAdminsSetting resource.
 type RestrictWorkspaceAdminsSettingArgs struct {
-	Etag pulumi.StringPtrInput
-	// The configuration details.
+	Etag                    pulumi.StringPtrInput
 	RestrictWorkspaceAdmins RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsInput
 	SettingName             pulumi.StringPtrInput
 }
@@ -232,7 +172,6 @@ func (o RestrictWorkspaceAdminsSettingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestrictWorkspaceAdminsSetting) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The configuration details.
 func (o RestrictWorkspaceAdminsSettingOutput) RestrictWorkspaceAdmins() RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsOutput {
 	return o.ApplyT(func(v *RestrictWorkspaceAdminsSetting) RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsOutput {
 		return v.RestrictWorkspaceAdmins

@@ -15,32 +15,16 @@ public final class VectorSearchEndpointEndpointStatusArgs extends com.pulumi.res
 
     public static final VectorSearchEndpointEndpointStatusArgs Empty = new VectorSearchEndpointEndpointStatusArgs();
 
-    /**
-     * Additional status message.
-     * 
-     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
-    /**
-     * @return Additional status message.
-     * 
-     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
 
-    /**
-     * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
-     * 
-     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
-    /**
-     * @return Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
-     * 
-     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
@@ -70,44 +54,20 @@ public final class VectorSearchEndpointEndpointStatusArgs extends com.pulumi.res
             $ = new VectorSearchEndpointEndpointStatusArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param message Additional status message.
-         * 
-         * @return builder
-         * 
-         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
-        /**
-         * @param message Additional status message.
-         * 
-         * @return builder
-         * 
-         */
         public Builder message(String message) {
             return message(Output.of(message));
         }
 
-        /**
-         * @param state Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
-        /**
-         * @param state Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder state(String state) {
             return state(Output.of(state));
         }

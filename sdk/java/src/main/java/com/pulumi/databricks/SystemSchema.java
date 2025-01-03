@@ -14,74 +14,11 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
- * 
- * &gt; This resource can only be used with a workspace-level provider!
- * 
- * Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account’s operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
- * 
- * ## Example Usage
- * 
- * Enable the system schema `access`
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.SystemSchema;
- * import com.pulumi.databricks.SystemSchemaArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var this_ = new SystemSchema("this", SystemSchemaArgs.builder()
- *             .schema("access")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Import
- * 
- * This resource can be imported by the metastore id and schema name
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/systemSchema:SystemSchema this &#39;&lt;metastore_id&gt;|&lt;schema_name&gt;&#39;
- * ```
- * 
- */
 @ResourceType(type="databricks:index/systemSchema:SystemSchema")
 public class SystemSchema extends com.pulumi.resources.CustomResource {
-    /**
-     * the full name of the system schema, in form of `system.&lt;schema&gt;`.
-     * 
-     */
     @Export(name="fullName", refs={String.class}, tree="[0]")
     private Output<String> fullName;
 
-    /**
-     * @return the full name of the system schema, in form of `system.&lt;schema&gt;`.
-     * 
-     */
     public Output<String> fullName() {
         return this.fullName;
     }
@@ -91,31 +28,15 @@ public class SystemSchema extends com.pulumi.resources.CustomResource {
     public Output<String> metastoreId() {
         return this.metastoreId;
     }
-    /**
-     * name of the system schema.
-     * 
-     */
     @Export(name="schema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schema;
 
-    /**
-     * @return name of the system schema.
-     * 
-     */
     public Output<Optional<String>> schema() {
         return Codegen.optional(this.schema);
     }
-    /**
-     * The current state of enablement for the system schema.
-     * 
-     */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
-    /**
-     * @return The current state of enablement for the system schema.
-     * 
-     */
     public Output<String> state() {
         return this.state;
     }

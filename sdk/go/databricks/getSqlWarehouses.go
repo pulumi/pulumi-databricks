@@ -11,71 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// Retrieves a list of SqlEndpoint ids, that were created by Pulumi or manually.
-//
-// ## Example Usage
-//
-// Retrieve IDs for all SQL warehouses:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetSqlWarehouses(ctx, &databricks.GetSqlWarehousesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Retrieve IDs for all clusters having "Shared" in the warehouse name:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetSqlWarehouses(ctx, &databricks.GetSqlWarehousesArgs{
-//				WarehouseNameContains: pulumi.StringRef("shared"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * End to end workspace management guide.
-// * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-// * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
-// * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all getSqlWarehouse of workspace.
-// * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
 func GetSqlWarehouses(ctx *pulumi.Context, args *GetSqlWarehousesArgs, opts ...pulumi.InvokeOption) (*GetSqlWarehousesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSqlWarehousesResult
@@ -88,17 +23,14 @@ func GetSqlWarehouses(ctx *pulumi.Context, args *GetSqlWarehousesArgs, opts ...p
 
 // A collection of arguments for invoking getSqlWarehouses.
 type GetSqlWarehousesArgs struct {
-	// list of SqlEndpoint ids
-	Ids []string `pulumi:"ids"`
-	// Only return SqlEndpoint ids that match the given name string.
-	WarehouseNameContains *string `pulumi:"warehouseNameContains"`
+	Ids                   []string `pulumi:"ids"`
+	WarehouseNameContains *string  `pulumi:"warehouseNameContains"`
 }
 
 // A collection of values returned by getSqlWarehouses.
 type GetSqlWarehousesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// list of SqlEndpoint ids
+	Id                    string   `pulumi:"id"`
 	Ids                   []string `pulumi:"ids"`
 	WarehouseNameContains *string  `pulumi:"warehouseNameContains"`
 }
@@ -114,10 +46,8 @@ func GetSqlWarehousesOutput(ctx *pulumi.Context, args GetSqlWarehousesOutputArgs
 
 // A collection of arguments for invoking getSqlWarehouses.
 type GetSqlWarehousesOutputArgs struct {
-	// list of SqlEndpoint ids
-	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// Only return SqlEndpoint ids that match the given name string.
-	WarehouseNameContains pulumi.StringPtrInput `pulumi:"warehouseNameContains"`
+	Ids                   pulumi.StringArrayInput `pulumi:"ids"`
+	WarehouseNameContains pulumi.StringPtrInput   `pulumi:"warehouseNameContains"`
 }
 
 func (GetSqlWarehousesOutputArgs) ElementType() reflect.Type {
@@ -144,7 +74,6 @@ func (o GetSqlWarehousesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehousesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// list of SqlEndpoint ids
 func (o GetSqlWarehousesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSqlWarehousesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

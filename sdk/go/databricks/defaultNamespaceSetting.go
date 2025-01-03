@@ -12,57 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > This resource can only be used with a workspace-level provider!
-//
-// The `DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
-// Setting the default catalog for the workspace determines the catalog that is used when queries do not reference
-// a fully qualified 3 level name. For example, if the default catalog is set to 'retail_prod' then a query
-// 'SELECT * FROM myTable' would reference the object 'retail_prod.default.myTable'
-// (the schema 'default' is always assumed).
-// This setting requires a restart of clusters and SQL warehouses to take effect. Additionally, the default namespace only applies when using Unity Catalog-enabled compute.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewDefaultNamespaceSetting(ctx, "this", &databricks.DefaultNamespaceSettingArgs{
-//				Namespace: &databricks.DefaultNamespaceSettingNamespaceArgs{
-//					Value: pulumi.String("namespace_value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// This resource can be imported by predefined name `global`:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global
-// ```
 type DefaultNamespaceSetting struct {
 	pulumi.CustomResourceState
 
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The configuration details.
+	Etag        pulumi.StringOutput                    `pulumi:"etag"`
 	Namespace   DefaultNamespaceSettingNamespaceOutput `pulumi:"namespace"`
 	SettingName pulumi.StringOutput                    `pulumi:"settingName"`
 }
@@ -100,15 +53,13 @@ func GetDefaultNamespaceSetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DefaultNamespaceSetting resources.
 type defaultNamespaceSettingState struct {
-	Etag *string `pulumi:"etag"`
-	// The configuration details.
+	Etag        *string                           `pulumi:"etag"`
 	Namespace   *DefaultNamespaceSettingNamespace `pulumi:"namespace"`
 	SettingName *string                           `pulumi:"settingName"`
 }
 
 type DefaultNamespaceSettingState struct {
-	Etag pulumi.StringPtrInput
-	// The configuration details.
+	Etag        pulumi.StringPtrInput
 	Namespace   DefaultNamespaceSettingNamespacePtrInput
 	SettingName pulumi.StringPtrInput
 }
@@ -118,16 +69,14 @@ func (DefaultNamespaceSettingState) ElementType() reflect.Type {
 }
 
 type defaultNamespaceSettingArgs struct {
-	Etag *string `pulumi:"etag"`
-	// The configuration details.
+	Etag        *string                          `pulumi:"etag"`
 	Namespace   DefaultNamespaceSettingNamespace `pulumi:"namespace"`
 	SettingName *string                          `pulumi:"settingName"`
 }
 
 // The set of arguments for constructing a DefaultNamespaceSetting resource.
 type DefaultNamespaceSettingArgs struct {
-	Etag pulumi.StringPtrInput
-	// The configuration details.
+	Etag        pulumi.StringPtrInput
 	Namespace   DefaultNamespaceSettingNamespaceInput
 	SettingName pulumi.StringPtrInput
 }
@@ -223,7 +172,6 @@ func (o DefaultNamespaceSettingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultNamespaceSetting) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The configuration details.
 func (o DefaultNamespaceSettingOutput) Namespace() DefaultNamespaceSettingNamespaceOutput {
 	return o.ApplyT(func(v *DefaultNamespaceSetting) DefaultNamespaceSettingNamespaceOutput { return v.Namespace }).(DefaultNamespaceSettingNamespaceOutput)
 }

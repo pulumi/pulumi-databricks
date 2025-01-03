@@ -41,17 +41,9 @@ public final class GetShareObjectArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.cdfEnabled);
     }
 
-    /**
-     * Description about the object.
-     * 
-     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
-    /**
-     * @return Description about the object.
-     * 
-     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
@@ -63,17 +55,9 @@ public final class GetShareObjectArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.content);
     }
 
-    /**
-     * Type of the object.
-     * 
-     */
     @Import(name="dataObjectType", required=true)
     private Output<String> dataObjectType;
 
-    /**
-     * @return Type of the object.
-     * 
-     */
     public Output<String> dataObjectType() {
         return this.dataObjectType;
     }
@@ -85,17 +69,9 @@ public final class GetShareObjectArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.historyDataSharingStatus);
     }
 
-    /**
-     * The name of the share
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return The name of the share
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
@@ -198,23 +174,11 @@ public final class GetShareObjectArgs extends com.pulumi.resources.ResourceArgs 
             return cdfEnabled(Output.of(cdfEnabled));
         }
 
-        /**
-         * @param comment Description about the object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
-        /**
-         * @param comment Description about the object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
@@ -228,23 +192,11 @@ public final class GetShareObjectArgs extends com.pulumi.resources.ResourceArgs 
             return content(Output.of(content));
         }
 
-        /**
-         * @param dataObjectType Type of the object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataObjectType(Output<String> dataObjectType) {
             $.dataObjectType = dataObjectType;
             return this;
         }
 
-        /**
-         * @param dataObjectType Type of the object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataObjectType(String dataObjectType) {
             return dataObjectType(Output.of(dataObjectType));
         }
@@ -258,23 +210,11 @@ public final class GetShareObjectArgs extends com.pulumi.resources.ResourceArgs 
             return historyDataSharingStatus(Output.of(historyDataSharingStatus));
         }
 
-        /**
-         * @param name The name of the share
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the share
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

@@ -18,32 +18,16 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ConnectionArgs Empty = new ConnectionArgs();
 
-    /**
-     * Free-form text.
-     * 
-     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
-    /**
-     * @return Free-form text.
-     * 
-     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
-    /**
-     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-     * 
-     */
     @Import(name="connectionType", required=true)
     private Output<String> connectionType;
 
-    /**
-     * @return Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-     * 
-     */
     public Output<String> connectionType() {
         return this.connectionType;
     }
@@ -55,62 +39,30 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.metastoreId);
     }
 
-    /**
-     * Name of the Connection.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the Connection.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-     * 
-     */
     @Import(name="options", required=true)
     private Output<Map<String,String>> options;
 
-    /**
-     * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-     * 
-     */
     public Output<Map<String,String>> options() {
         return this.options;
     }
 
-    /**
-     * Name of the connection owner.
-     * 
-     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
-    /**
-     * @return Name of the connection owner.
-     * 
-     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
 
-    /**
-     * Free-form connection properties.
-     * 
-     */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
-    /**
-     * @return Free-form connection properties.
-     * 
-     */
     public Optional<Output<Map<String,String>>> properties() {
         return Optional.ofNullable(this.properties);
     }
@@ -153,44 +105,20 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ConnectionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param comment Free-form text.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
-        /**
-         * @param comment Free-form text.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
-        /**
-         * @param connectionType Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-         * 
-         * @return builder
-         * 
-         */
         public Builder connectionType(Output<String> connectionType) {
             $.connectionType = connectionType;
             return this;
         }
 
-        /**
-         * @param connectionType Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-         * 
-         * @return builder
-         * 
-         */
         public Builder connectionType(String connectionType) {
             return connectionType(Output.of(connectionType));
         }
@@ -204,86 +132,38 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
             return metastoreId(Output.of(metastoreId));
         }
 
-        /**
-         * @param name Name of the Connection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the Connection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param options The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-         * 
-         * @return builder
-         * 
-         */
         public Builder options(Output<Map<String,String>> options) {
             $.options = options;
             return this;
         }
 
-        /**
-         * @param options The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-         * 
-         * @return builder
-         * 
-         */
         public Builder options(Map<String,String> options) {
             return options(Output.of(options));
         }
 
-        /**
-         * @param owner Name of the connection owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
-        /**
-         * @param owner Name of the connection owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
 
-        /**
-         * @param properties Free-form connection properties.
-         * 
-         * @return builder
-         * 
-         */
         public Builder properties(@Nullable Output<Map<String,String>> properties) {
             $.properties = properties;
             return this;
         }
 
-        /**
-         * @param properties Free-form connection properties.
-         * 
-         * @return builder
-         * 
-         */
         public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
         }

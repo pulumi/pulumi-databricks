@@ -16,17 +16,9 @@ public final class WorkspaceConfState extends com.pulumi.resources.ResourceArgs 
 
     public static final WorkspaceConfState Empty = new WorkspaceConfState();
 
-    /**
-     * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-     * 
-     */
     @Import(name="customConfig")
     private @Nullable Output<Map<String,String>> customConfig;
 
-    /**
-     * @return Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-     * 
-     */
     public Optional<Output<Map<String,String>>> customConfig() {
         return Optional.ofNullable(this.customConfig);
     }
@@ -55,23 +47,11 @@ public final class WorkspaceConfState extends com.pulumi.resources.ResourceArgs 
             $ = new WorkspaceConfState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param customConfig Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customConfig(@Nullable Output<Map<String,String>> customConfig) {
             $.customConfig = customConfig;
             return this;
         }
 
-        /**
-         * @param customConfig Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customConfig(Map<String,String> customConfig) {
             return customConfig(Output.of(customConfig));
         }

@@ -11,131 +11,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > Please switch to Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `Grants` resource *doesn't require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT “your.address@email.com“ ON CATALOG main`. This happens if your `defaultCatalogName` was set to a UC catalog instead of `hiveMetastore`. The workaround is to re-assign the metastore again with the default catalog set to be `hiveMetastore`. See databricks_metastore_assignment.
-//
-// This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick `Access Control` tab, click on `Enable` button in `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all Cluster have approximately the following configuration:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewCluster(ctx, "cluster_with_table_access_control", &databricks.ClusterArgs{
-//				SparkConf: pulumi.StringMap{
-//					"spark.databricks.acl.dfAclsEnabled":     pulumi.String("true"),
-//					"spark.databricks.repl.allowedLanguages": pulumi.String("python,sql"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// It is required to define all permissions for a securable in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
-//
-// ``` SHOW GRANT ON TABLE `default`.`foo`  ```
-// * ```REVOKE ALL PRIVILEGES ON TABLE `default`.`foo` FROM ... every group and user that has access to it ...```
-// * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge@example.com`  ```
-// * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewSqlPermissions(ctx, "foo_table", &databricks.SqlPermissionsArgs{
-//				Table: pulumi.String("foo"),
-//				PrivilegeAssignments: databricks.SqlPermissionsPrivilegeAssignmentArray{
-//					&databricks.SqlPermissionsPrivilegeAssignmentArgs{
-//						Principal: pulumi.String("serge@example.com"),
-//						Privileges: pulumi.StringArray{
-//							pulumi.String("SELECT"),
-//							pulumi.String("MODIFY"),
-//						},
-//					},
-//					&databricks.SqlPermissionsPrivilegeAssignmentArgs{
-//						Principal: pulumi.String("special group"),
-//						Privileges: pulumi.StringArray{
-//							pulumi.String("SELECT"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * End to end workspace management guide.
-// * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-// * Grants to manage data access in Unity Catalog.
-// * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-// * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
-//
-// ## Import
-//
-// The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
-//
-// * `table/default.foo` - table `foo` in a `default` database. Database is always mandatory.
-//
-// * `view/bar.foo` - view `foo` in `bar` database.
-//
-// * `database/bar` - `bar` database.
-//
-// * `catalog/` - entire catalog. `/` suffix is mandatory.
-//
-// * `any file/` - direct access to any file. `/` suffix is mandatory.
-//
-// * `anonymous function/` - anonymous function. `/` suffix is mandatory.
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/sqlPermissions:SqlPermissions foo /<object-type>/<object-name>
-// ```
 type SqlPermissions struct {
 	pulumi.CustomResourceState
 
-	// If this access control for using anonymous function. Defaults to `false`.
-	AnonymousFunction pulumi.BoolPtrOutput `pulumi:"anonymousFunction"`
-	// If this access control for reading/writing any file. Defaults to `false`.
-	AnyFile pulumi.BoolPtrOutput `pulumi:"anyFile"`
-	// If this access control for the entire catalog. Defaults to `false`.
-	Catalog   pulumi.BoolPtrOutput `pulumi:"catalog"`
-	ClusterId pulumi.StringOutput  `pulumi:"clusterId"`
-	// Name of the database. Has default value of `default`.
+	AnonymousFunction    pulumi.BoolPtrOutput                         `pulumi:"anonymousFunction"`
+	AnyFile              pulumi.BoolPtrOutput                         `pulumi:"anyFile"`
+	Catalog              pulumi.BoolPtrOutput                         `pulumi:"catalog"`
+	ClusterId            pulumi.StringOutput                          `pulumi:"clusterId"`
 	Database             pulumi.StringPtrOutput                       `pulumi:"database"`
 	PrivilegeAssignments SqlPermissionsPrivilegeAssignmentArrayOutput `pulumi:"privilegeAssignments"`
-	// Name of the table. Can be combined with `database`.
-	Table pulumi.StringPtrOutput `pulumi:"table"`
-	// Name of the view. Can be combined with `database`.
-	View pulumi.StringPtrOutput `pulumi:"view"`
+	Table                pulumi.StringPtrOutput                       `pulumi:"table"`
+	View                 pulumi.StringPtrOutput                       `pulumi:"view"`
 }
 
 // NewSqlPermissions registers a new resource with the given unique name, arguments, and options.
@@ -168,37 +54,25 @@ func GetSqlPermissions(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlPermissions resources.
 type sqlPermissionsState struct {
-	// If this access control for using anonymous function. Defaults to `false`.
-	AnonymousFunction *bool `pulumi:"anonymousFunction"`
-	// If this access control for reading/writing any file. Defaults to `false`.
-	AnyFile *bool `pulumi:"anyFile"`
-	// If this access control for the entire catalog. Defaults to `false`.
-	Catalog   *bool   `pulumi:"catalog"`
-	ClusterId *string `pulumi:"clusterId"`
-	// Name of the database. Has default value of `default`.
+	AnonymousFunction    *bool                               `pulumi:"anonymousFunction"`
+	AnyFile              *bool                               `pulumi:"anyFile"`
+	Catalog              *bool                               `pulumi:"catalog"`
+	ClusterId            *string                             `pulumi:"clusterId"`
 	Database             *string                             `pulumi:"database"`
 	PrivilegeAssignments []SqlPermissionsPrivilegeAssignment `pulumi:"privilegeAssignments"`
-	// Name of the table. Can be combined with `database`.
-	Table *string `pulumi:"table"`
-	// Name of the view. Can be combined with `database`.
-	View *string `pulumi:"view"`
+	Table                *string                             `pulumi:"table"`
+	View                 *string                             `pulumi:"view"`
 }
 
 type SqlPermissionsState struct {
-	// If this access control for using anonymous function. Defaults to `false`.
-	AnonymousFunction pulumi.BoolPtrInput
-	// If this access control for reading/writing any file. Defaults to `false`.
-	AnyFile pulumi.BoolPtrInput
-	// If this access control for the entire catalog. Defaults to `false`.
-	Catalog   pulumi.BoolPtrInput
-	ClusterId pulumi.StringPtrInput
-	// Name of the database. Has default value of `default`.
+	AnonymousFunction    pulumi.BoolPtrInput
+	AnyFile              pulumi.BoolPtrInput
+	Catalog              pulumi.BoolPtrInput
+	ClusterId            pulumi.StringPtrInput
 	Database             pulumi.StringPtrInput
 	PrivilegeAssignments SqlPermissionsPrivilegeAssignmentArrayInput
-	// Name of the table. Can be combined with `database`.
-	Table pulumi.StringPtrInput
-	// Name of the view. Can be combined with `database`.
-	View pulumi.StringPtrInput
+	Table                pulumi.StringPtrInput
+	View                 pulumi.StringPtrInput
 }
 
 func (SqlPermissionsState) ElementType() reflect.Type {
@@ -206,38 +80,26 @@ func (SqlPermissionsState) ElementType() reflect.Type {
 }
 
 type sqlPermissionsArgs struct {
-	// If this access control for using anonymous function. Defaults to `false`.
-	AnonymousFunction *bool `pulumi:"anonymousFunction"`
-	// If this access control for reading/writing any file. Defaults to `false`.
-	AnyFile *bool `pulumi:"anyFile"`
-	// If this access control for the entire catalog. Defaults to `false`.
-	Catalog   *bool   `pulumi:"catalog"`
-	ClusterId *string `pulumi:"clusterId"`
-	// Name of the database. Has default value of `default`.
+	AnonymousFunction    *bool                               `pulumi:"anonymousFunction"`
+	AnyFile              *bool                               `pulumi:"anyFile"`
+	Catalog              *bool                               `pulumi:"catalog"`
+	ClusterId            *string                             `pulumi:"clusterId"`
 	Database             *string                             `pulumi:"database"`
 	PrivilegeAssignments []SqlPermissionsPrivilegeAssignment `pulumi:"privilegeAssignments"`
-	// Name of the table. Can be combined with `database`.
-	Table *string `pulumi:"table"`
-	// Name of the view. Can be combined with `database`.
-	View *string `pulumi:"view"`
+	Table                *string                             `pulumi:"table"`
+	View                 *string                             `pulumi:"view"`
 }
 
 // The set of arguments for constructing a SqlPermissions resource.
 type SqlPermissionsArgs struct {
-	// If this access control for using anonymous function. Defaults to `false`.
-	AnonymousFunction pulumi.BoolPtrInput
-	// If this access control for reading/writing any file. Defaults to `false`.
-	AnyFile pulumi.BoolPtrInput
-	// If this access control for the entire catalog. Defaults to `false`.
-	Catalog   pulumi.BoolPtrInput
-	ClusterId pulumi.StringPtrInput
-	// Name of the database. Has default value of `default`.
+	AnonymousFunction    pulumi.BoolPtrInput
+	AnyFile              pulumi.BoolPtrInput
+	Catalog              pulumi.BoolPtrInput
+	ClusterId            pulumi.StringPtrInput
 	Database             pulumi.StringPtrInput
 	PrivilegeAssignments SqlPermissionsPrivilegeAssignmentArrayInput
-	// Name of the table. Can be combined with `database`.
-	Table pulumi.StringPtrInput
-	// Name of the view. Can be combined with `database`.
-	View pulumi.StringPtrInput
+	Table                pulumi.StringPtrInput
+	View                 pulumi.StringPtrInput
 }
 
 func (SqlPermissionsArgs) ElementType() reflect.Type {
@@ -327,17 +189,14 @@ func (o SqlPermissionsOutput) ToSqlPermissionsOutputWithContext(ctx context.Cont
 	return o
 }
 
-// If this access control for using anonymous function. Defaults to `false`.
 func (o SqlPermissionsOutput) AnonymousFunction() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlPermissions) pulumi.BoolPtrOutput { return v.AnonymousFunction }).(pulumi.BoolPtrOutput)
 }
 
-// If this access control for reading/writing any file. Defaults to `false`.
 func (o SqlPermissionsOutput) AnyFile() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlPermissions) pulumi.BoolPtrOutput { return v.AnyFile }).(pulumi.BoolPtrOutput)
 }
 
-// If this access control for the entire catalog. Defaults to `false`.
 func (o SqlPermissionsOutput) Catalog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlPermissions) pulumi.BoolPtrOutput { return v.Catalog }).(pulumi.BoolPtrOutput)
 }
@@ -346,7 +205,6 @@ func (o SqlPermissionsOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlPermissions) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Name of the database. Has default value of `default`.
 func (o SqlPermissionsOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlPermissions) pulumi.StringPtrOutput { return v.Database }).(pulumi.StringPtrOutput)
 }
@@ -355,12 +213,10 @@ func (o SqlPermissionsOutput) PrivilegeAssignments() SqlPermissionsPrivilegeAssi
 	return o.ApplyT(func(v *SqlPermissions) SqlPermissionsPrivilegeAssignmentArrayOutput { return v.PrivilegeAssignments }).(SqlPermissionsPrivilegeAssignmentArrayOutput)
 }
 
-// Name of the table. Can be combined with `database`.
 func (o SqlPermissionsOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlPermissions) pulumi.StringPtrOutput { return v.Table }).(pulumi.StringPtrOutput)
 }
 
-// Name of the view. Can be combined with `database`.
 func (o SqlPermissionsOutput) View() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlPermissions) pulumi.StringPtrOutput { return v.View }).(pulumi.StringPtrOutput)
 }

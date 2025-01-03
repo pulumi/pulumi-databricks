@@ -15,32 +15,16 @@ public final class GetDbfsFileArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDbfsFileArgs Empty = new GetDbfsFileArgs();
 
-    /**
-     * Do not load content for files larger than 4MB.
-     * 
-     */
     @Import(name="limitFileSize", required=true)
     private Output<Boolean> limitFileSize;
 
-    /**
-     * @return Do not load content for files larger than 4MB.
-     * 
-     */
     public Output<Boolean> limitFileSize() {
         return this.limitFileSize;
     }
 
-    /**
-     * Path on DBFS for the file from which to get content.
-     * 
-     */
     @Import(name="path", required=true)
     private Output<String> path;
 
-    /**
-     * @return Path on DBFS for the file from which to get content.
-     * 
-     */
     public Output<String> path() {
         return this.path;
     }
@@ -70,44 +54,20 @@ public final class GetDbfsFileArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetDbfsFileArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param limitFileSize Do not load content for files larger than 4MB.
-         * 
-         * @return builder
-         * 
-         */
         public Builder limitFileSize(Output<Boolean> limitFileSize) {
             $.limitFileSize = limitFileSize;
             return this;
         }
 
-        /**
-         * @param limitFileSize Do not load content for files larger than 4MB.
-         * 
-         * @return builder
-         * 
-         */
         public Builder limitFileSize(Boolean limitFileSize) {
             return limitFileSize(Output.of(limitFileSize));
         }
 
-        /**
-         * @param path Path on DBFS for the file from which to get content.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
-        /**
-         * @param path Path on DBFS for the file from which to get content.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(String path) {
             return path(Output.of(path));
         }

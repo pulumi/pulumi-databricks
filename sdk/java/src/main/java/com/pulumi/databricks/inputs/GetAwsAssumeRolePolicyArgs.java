@@ -17,39 +17,42 @@ public final class GetAwsAssumeRolePolicyArgs extends com.pulumi.resources.Invok
 
     public static final GetAwsAssumeRolePolicyArgs Empty = new GetAwsAssumeRolePolicyArgs();
 
+    @Import(name="awsPartition")
+    private @Nullable Output<String> awsPartition;
+
+    public Optional<Output<String>> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
+    }
+
+    /**
+     * @deprecated
+     * databricks_account_id will be will be removed in the next major release.
+     * 
+     */
+    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
     @Import(name="databricksAccountId")
     private @Nullable Output<String> databricksAccountId;
 
+    /**
+     * @deprecated
+     * databricks_account_id will be will be removed in the next major release.
+     * 
+     */
+    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
     public Optional<Output<String>> databricksAccountId() {
         return Optional.ofNullable(this.databricksAccountId);
     }
 
-    /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-     * 
-     */
     @Import(name="externalId", required=true)
     private Output<String> externalId;
 
-    /**
-     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-     * 
-     */
     public Output<String> externalId() {
         return this.externalId;
     }
 
-    /**
-     * Either or not this assume role policy should be created for usage log delivery. Defaults to false.
-     * 
-     */
     @Import(name="forLogDelivery")
     private @Nullable Output<Boolean> forLogDelivery;
 
-    /**
-     * @return Either or not this assume role policy should be created for usage log delivery. Defaults to false.
-     * 
-     */
     public Optional<Output<Boolean>> forLogDelivery() {
         return Optional.ofNullable(this.forLogDelivery);
     }
@@ -57,6 +60,7 @@ public final class GetAwsAssumeRolePolicyArgs extends com.pulumi.resources.Invok
     private GetAwsAssumeRolePolicyArgs() {}
 
     private GetAwsAssumeRolePolicyArgs(GetAwsAssumeRolePolicyArgs $) {
+        this.awsPartition = $.awsPartition;
         this.databricksAccountId = $.databricksAccountId;
         this.externalId = $.externalId;
         this.forLogDelivery = $.forLogDelivery;
@@ -80,53 +84,54 @@ public final class GetAwsAssumeRolePolicyArgs extends com.pulumi.resources.Invok
             $ = new GetAwsAssumeRolePolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder awsPartition(@Nullable Output<String> awsPartition) {
+            $.awsPartition = awsPartition;
+            return this;
+        }
+
+        public Builder awsPartition(String awsPartition) {
+            return awsPartition(Output.of(awsPartition));
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * databricks_account_id will be will be removed in the next major release.
+         * 
+         */
+        @Deprecated /* databricks_account_id will be will be removed in the next major release. */
         public Builder databricksAccountId(@Nullable Output<String> databricksAccountId) {
             $.databricksAccountId = databricksAccountId;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * databricks_account_id will be will be removed in the next major release.
+         * 
+         */
+        @Deprecated /* databricks_account_id will be will be removed in the next major release. */
         public Builder databricksAccountId(String databricksAccountId) {
             return databricksAccountId(Output.of(databricksAccountId));
         }
 
-        /**
-         * @param externalId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-         * 
-         * @return builder
-         * 
-         */
         public Builder externalId(Output<String> externalId) {
             $.externalId = externalId;
             return this;
         }
 
-        /**
-         * @param externalId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-         * 
-         * @return builder
-         * 
-         */
         public Builder externalId(String externalId) {
             return externalId(Output.of(externalId));
         }
 
-        /**
-         * @param forLogDelivery Either or not this assume role policy should be created for usage log delivery. Defaults to false.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forLogDelivery(@Nullable Output<Boolean> forLogDelivery) {
             $.forLogDelivery = forLogDelivery;
             return this;
         }
 
-        /**
-         * @param forLogDelivery Either or not this assume role policy should be created for usage log delivery. Defaults to false.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forLogDelivery(Boolean forLogDelivery) {
             return forLogDelivery(Output.of(forLogDelivery));
         }

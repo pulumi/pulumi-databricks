@@ -20,11 +20,7 @@ public final class GetNotificationDestinationsResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-     * 
-     */
-    private @Nullable List<GetNotificationDestinationsNotificationDestination> notificationDestinations;
+    private List<GetNotificationDestinationsNotificationDestination> notificationDestinations;
     private @Nullable String type;
 
     private GetNotificationDestinationsResult() {}
@@ -38,12 +34,8 @@ public final class GetNotificationDestinationsResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-     * 
-     */
     public List<GetNotificationDestinationsNotificationDestination> notificationDestinations() {
-        return this.notificationDestinations == null ? List.of() : this.notificationDestinations;
+        return this.notificationDestinations;
     }
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
@@ -60,7 +52,7 @@ public final class GetNotificationDestinationsResult {
     public static final class Builder {
         private @Nullable String displayNameContains;
         private String id;
-        private @Nullable List<GetNotificationDestinationsNotificationDestination> notificationDestinations;
+        private List<GetNotificationDestinationsNotificationDestination> notificationDestinations;
         private @Nullable String type;
         public Builder() {}
         public Builder(GetNotificationDestinationsResult defaults) {
@@ -86,8 +78,10 @@ public final class GetNotificationDestinationsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder notificationDestinations(@Nullable List<GetNotificationDestinationsNotificationDestination> notificationDestinations) {
-
+        public Builder notificationDestinations(List<GetNotificationDestinationsNotificationDestination> notificationDestinations) {
+            if (notificationDestinations == null) {
+              throw new MissingRequiredPropertyException("GetNotificationDestinationsResult", "notificationDestinations");
+            }
             this.notificationDestinations = notificationDestinations;
             return this;
         }

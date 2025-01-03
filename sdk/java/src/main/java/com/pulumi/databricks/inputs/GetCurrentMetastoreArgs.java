@@ -16,32 +16,16 @@ public final class GetCurrentMetastoreArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetCurrentMetastoreArgs Empty = new GetCurrentMetastoreArgs();
 
-    /**
-     * metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-     * 
-     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
-    /**
-     * @return metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-     * 
-     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-     * 
-     */
     @Import(name="metastoreInfo")
     private @Nullable Output<GetCurrentMetastoreMetastoreInfoArgs> metastoreInfo;
 
-    /**
-     * @return summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-     * 
-     */
     public Optional<Output<GetCurrentMetastoreMetastoreInfoArgs>> metastoreInfo() {
         return Optional.ofNullable(this.metastoreInfo);
     }
@@ -71,44 +55,20 @@ public final class GetCurrentMetastoreArgs extends com.pulumi.resources.InvokeAr
             $ = new GetCurrentMetastoreArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param id metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param id metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
-        /**
-         * @param metastoreInfo summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreInfo(@Nullable Output<GetCurrentMetastoreMetastoreInfoArgs> metastoreInfo) {
             $.metastoreInfo = metastoreInfo;
             return this;
         }
 
-        /**
-         * @param metastoreInfo summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreInfo(GetCurrentMetastoreMetastoreInfoArgs metastoreInfo) {
             return metastoreInfo(Output.of(metastoreInfo));
         }

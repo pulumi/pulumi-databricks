@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class ArtifactAllowlistArtifactMatcher {
-    /**
-     * @return The artifact path or maven coordinate.
-     * 
-     */
     private String artifact;
-    /**
-     * @return The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
-     * 
-     */
     private String matchType;
 
     private ArtifactAllowlistArtifactMatcher() {}
-    /**
-     * @return The artifact path or maven coordinate.
-     * 
-     */
     public String artifact() {
         return this.artifact;
     }
-    /**
-     * @return The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
-     * 
-     */
     public String matchType() {
         return this.matchType;
     }

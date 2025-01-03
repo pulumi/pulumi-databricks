@@ -16,62 +16,30 @@ public final class GetClustersFilterBy extends com.pulumi.resources.InvokeArgs {
 
     public static final GetClustersFilterBy Empty = new GetClustersFilterBy();
 
-    /**
-     * List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
-     * 
-     */
     @Import(name="clusterSources")
     private @Nullable List<String> clusterSources;
 
-    /**
-     * @return List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
-     * 
-     */
     public Optional<List<String>> clusterSources() {
         return Optional.ofNullable(this.clusterSources);
     }
 
-    /**
-     * List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
-     * 
-     */
     @Import(name="clusterStates")
     private @Nullable List<String> clusterStates;
 
-    /**
-     * @return List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
-     * 
-     */
     public Optional<List<String>> clusterStates() {
         return Optional.ofNullable(this.clusterStates);
     }
 
-    /**
-     * Whether to filter by pinned clusters.
-     * 
-     */
     @Import(name="isPinned")
     private @Nullable Boolean isPinned;
 
-    /**
-     * @return Whether to filter by pinned clusters.
-     * 
-     */
     public Optional<Boolean> isPinned() {
         return Optional.ofNullable(this.isPinned);
     }
 
-    /**
-     * Filter by databricks.ClusterPolicy id.
-     * 
-     */
     @Import(name="policyId")
     private @Nullable String policyId;
 
-    /**
-     * @return Filter by databricks.ClusterPolicy id.
-     * 
-     */
     public Optional<String> policyId() {
         return Optional.ofNullable(this.policyId);
     }
@@ -103,65 +71,29 @@ public final class GetClustersFilterBy extends com.pulumi.resources.InvokeArgs {
             $ = new GetClustersFilterBy(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param clusterSources List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterSources(@Nullable List<String> clusterSources) {
             $.clusterSources = clusterSources;
             return this;
         }
 
-        /**
-         * @param clusterSources List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterSources(String... clusterSources) {
             return clusterSources(List.of(clusterSources));
         }
 
-        /**
-         * @param clusterStates List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterStates(@Nullable List<String> clusterStates) {
             $.clusterStates = clusterStates;
             return this;
         }
 
-        /**
-         * @param clusterStates List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterStates(String... clusterStates) {
             return clusterStates(List.of(clusterStates));
         }
 
-        /**
-         * @param isPinned Whether to filter by pinned clusters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isPinned(@Nullable Boolean isPinned) {
             $.isPinned = isPinned;
             return this;
         }
 
-        /**
-         * @param policyId Filter by databricks.ClusterPolicy id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyId(@Nullable String policyId) {
             $.policyId = policyId;
             return this;

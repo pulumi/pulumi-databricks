@@ -44,47 +44,23 @@ public final class GetMetastoreMetastoreInfo extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.defaultDataAccessConfigId);
     }
 
-    /**
-     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-     * 
-     */
     @Import(name="deltaSharingOrganizationName")
     private @Nullable String deltaSharingOrganizationName;
 
-    /**
-     * @return The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-     * 
-     */
     public Optional<String> deltaSharingOrganizationName() {
         return Optional.ofNullable(this.deltaSharingOrganizationName);
     }
 
-    /**
-     * Used to set expiration duration in seconds on recipient data access tokens.
-     * 
-     */
     @Import(name="deltaSharingRecipientTokenLifetimeInSeconds")
     private @Nullable Integer deltaSharingRecipientTokenLifetimeInSeconds;
 
-    /**
-     * @return Used to set expiration duration in seconds on recipient data access tokens.
-     * 
-     */
     public Optional<Integer> deltaSharingRecipientTokenLifetimeInSeconds() {
         return Optional.ofNullable(this.deltaSharingRecipientTokenLifetimeInSeconds);
     }
 
-    /**
-     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     * 
-     */
     @Import(name="deltaSharingScope")
     private @Nullable String deltaSharingScope;
 
-    /**
-     * @return Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     * 
-     */
     public Optional<String> deltaSharingScope() {
         return Optional.ofNullable(this.deltaSharingScope);
     }
@@ -103,47 +79,23 @@ public final class GetMetastoreMetastoreInfo extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.globalMetastoreId);
     }
 
-    /**
-     * ID of the metastore
-     * 
-     */
     @Import(name="metastoreId")
     private @Nullable String metastoreId;
 
-    /**
-     * @return ID of the metastore
-     * 
-     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
 
-    /**
-     * Name of the metastore
-     * 
-     */
     @Import(name="name")
     private @Nullable String name;
 
-    /**
-     * @return Name of the metastore
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Username/groupname/sp application_id of the metastore owner.
-     * 
-     */
     @Import(name="owner")
     private @Nullable String owner;
 
-    /**
-     * @return Username/groupname/sp application_id of the metastore owner.
-     * 
-     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
@@ -155,32 +107,16 @@ public final class GetMetastoreMetastoreInfo extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.privilegeModelVersion);
     }
 
-    /**
-     * Region of the metastore
-     * 
-     */
     @Import(name="region")
     private @Nullable String region;
 
-    /**
-     * @return Region of the metastore
-     * 
-     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
 
-    /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored.
-     * 
-     */
     @Import(name="storageRoot")
     private @Nullable String storageRoot;
 
-    /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored.
-     * 
-     */
     public Optional<String> storageRoot() {
         return Optional.ofNullable(this.storageRoot);
     }
@@ -275,34 +211,16 @@ public final class GetMetastoreMetastoreInfo extends com.pulumi.resources.Invoke
             return this;
         }
 
-        /**
-         * @param deltaSharingOrganizationName The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingOrganizationName(@Nullable String deltaSharingOrganizationName) {
             $.deltaSharingOrganizationName = deltaSharingOrganizationName;
             return this;
         }
 
-        /**
-         * @param deltaSharingRecipientTokenLifetimeInSeconds Used to set expiration duration in seconds on recipient data access tokens.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingRecipientTokenLifetimeInSeconds(@Nullable Integer deltaSharingRecipientTokenLifetimeInSeconds) {
             $.deltaSharingRecipientTokenLifetimeInSeconds = deltaSharingRecipientTokenLifetimeInSeconds;
             return this;
         }
 
-        /**
-         * @param deltaSharingScope Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaSharingScope(@Nullable String deltaSharingScope) {
             $.deltaSharingScope = deltaSharingScope;
             return this;
@@ -318,34 +236,16 @@ public final class GetMetastoreMetastoreInfo extends com.pulumi.resources.Invoke
             return this;
         }
 
-        /**
-         * @param metastoreId ID of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreId(@Nullable String metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
-        /**
-         * @param name Name of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param owner Username/groupname/sp application_id of the metastore owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(@Nullable String owner) {
             $.owner = owner;
             return this;
@@ -356,23 +256,11 @@ public final class GetMetastoreMetastoreInfo extends com.pulumi.resources.Invoke
             return this;
         }
 
-        /**
-         * @param region Region of the metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageRoot(@Nullable String storageRoot) {
             $.storageRoot = storageRoot;
             return this;

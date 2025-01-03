@@ -4,377 +4,138 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.databricks.outputs.GetFunctionsFunctionInputParams;
-import com.pulumi.databricks.outputs.GetFunctionsFunctionReturnParams;
-import com.pulumi.databricks.outputs.GetFunctionsFunctionRoutineDependencies;
+import com.pulumi.databricks.outputs.GetFunctionsFunctionInputParam;
+import com.pulumi.databricks.outputs.GetFunctionsFunctionReturnParam;
+import com.pulumi.databricks.outputs.GetFunctionsFunctionRoutineDependency;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFunctionsFunction {
-    /**
-     * @return Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
-     * 
-     */
     private @Nullable Boolean browseOnly;
-    /**
-     * @return Name of databricks_catalog.
-     * 
-     */
     private @Nullable String catalogName;
-    /**
-     * @return User-provided free-form text description.
-     * 
-     */
     private @Nullable String comment;
-    /**
-     * @return Time at which this function was created, in epoch milliseconds.
-     * 
-     */
     private @Nullable Integer createdAt;
-    /**
-     * @return Username of function creator.
-     * 
-     */
     private @Nullable String createdBy;
-    /**
-     * @return Scalar function return data type.
-     * 
-     */
     private @Nullable String dataType;
-    /**
-     * @return External function language.
-     * 
-     */
     private @Nullable String externalLanguage;
-    /**
-     * @return External function name.
-     * 
-     */
     private @Nullable String externalName;
-    /**
-     * @return Pretty printed function data type.
-     * 
-     */
     private @Nullable String fullDataType;
-    /**
-     * @return Full name of function, in form of catalog_name.schema_name.function__name
-     * 
-     */
     private @Nullable String fullName;
-    /**
-     * @return Id of Function, relative to parent schema.
-     * 
-     */
     private @Nullable String functionId;
-    /**
-     * @return object describing input parameters. Consists of the single attribute:
-     * 
-     */
-    private @Nullable GetFunctionsFunctionInputParams inputParams;
-    /**
-     * @return Boolean flag specifying whether the function is deterministic.
-     * 
-     */
+    private @Nullable List<GetFunctionsFunctionInputParam> inputParams;
     private @Nullable Boolean isDeterministic;
-    /**
-     * @return Boolean flag whether function null call.
-     * 
-     */
     private @Nullable Boolean isNullCall;
-    /**
-     * @return Unique identifier of parent metastore.
-     * 
-     */
     private @Nullable String metastoreId;
-    /**
-     * @return Name of parameter.
-     * 
-     */
     private @Nullable String name;
-    /**
-     * @return Username of current owner of function.
-     * 
-     */
     private @Nullable String owner;
-    /**
-     * @return Function parameter style. `S` is the value for SQL.
-     * 
-     */
     private @Nullable String parameterStyle;
-    /**
-     * @return JSON-serialized key-value pair map, encoded (escaped) as a string.
-     * 
-     */
     private @Nullable String properties;
-    /**
-     * @return Table function return parameters.  See `input_params` for description.
-     * 
-     */
-    private @Nullable GetFunctionsFunctionReturnParams returnParams;
-    /**
-     * @return Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
-     * 
-     */
+    private @Nullable List<GetFunctionsFunctionReturnParam> returnParams;
     private @Nullable String routineBody;
-    /**
-     * @return Function body.
-     * 
-     */
     private @Nullable String routineDefinition;
-    /**
-     * @return Function dependencies.
-     * 
-     */
-    private @Nullable GetFunctionsFunctionRoutineDependencies routineDependencies;
-    /**
-     * @return Name of databricks_schema.
-     * 
-     */
+    private @Nullable List<GetFunctionsFunctionRoutineDependency> routineDependencies;
     private @Nullable String schemaName;
-    /**
-     * @return Function security type. (Enum: `DEFINER`).
-     * 
-     */
     private @Nullable String securityType;
-    /**
-     * @return Specific name of the function; Reserved for future use.
-     * 
-     */
     private @Nullable String specificName;
-    /**
-     * @return Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
-     * 
-     */
     private @Nullable String sqlDataAccess;
-    /**
-     * @return List of schemes whose objects can be referenced without qualification.
-     * 
-     */
     private @Nullable String sqlPath;
-    /**
-     * @return Time at which this function was created, in epoch milliseconds.
-     * 
-     */
     private @Nullable Integer updatedAt;
-    /**
-     * @return Username of user who last modified function.
-     * 
-     */
     private @Nullable String updatedBy;
 
     private GetFunctionsFunction() {}
-    /**
-     * @return Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
-     * 
-     */
     public Optional<Boolean> browseOnly() {
         return Optional.ofNullable(this.browseOnly);
     }
-    /**
-     * @return Name of databricks_catalog.
-     * 
-     */
     public Optional<String> catalogName() {
         return Optional.ofNullable(this.catalogName);
     }
-    /**
-     * @return User-provided free-form text description.
-     * 
-     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
-    /**
-     * @return Time at which this function was created, in epoch milliseconds.
-     * 
-     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
-    /**
-     * @return Username of function creator.
-     * 
-     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
-    /**
-     * @return Scalar function return data type.
-     * 
-     */
     public Optional<String> dataType() {
         return Optional.ofNullable(this.dataType);
     }
-    /**
-     * @return External function language.
-     * 
-     */
     public Optional<String> externalLanguage() {
         return Optional.ofNullable(this.externalLanguage);
     }
-    /**
-     * @return External function name.
-     * 
-     */
     public Optional<String> externalName() {
         return Optional.ofNullable(this.externalName);
     }
-    /**
-     * @return Pretty printed function data type.
-     * 
-     */
     public Optional<String> fullDataType() {
         return Optional.ofNullable(this.fullDataType);
     }
-    /**
-     * @return Full name of function, in form of catalog_name.schema_name.function__name
-     * 
-     */
     public Optional<String> fullName() {
         return Optional.ofNullable(this.fullName);
     }
-    /**
-     * @return Id of Function, relative to parent schema.
-     * 
-     */
     public Optional<String> functionId() {
         return Optional.ofNullable(this.functionId);
     }
-    /**
-     * @return object describing input parameters. Consists of the single attribute:
-     * 
-     */
-    public Optional<GetFunctionsFunctionInputParams> inputParams() {
-        return Optional.ofNullable(this.inputParams);
+    public List<GetFunctionsFunctionInputParam> inputParams() {
+        return this.inputParams == null ? List.of() : this.inputParams;
     }
-    /**
-     * @return Boolean flag specifying whether the function is deterministic.
-     * 
-     */
     public Optional<Boolean> isDeterministic() {
         return Optional.ofNullable(this.isDeterministic);
     }
-    /**
-     * @return Boolean flag whether function null call.
-     * 
-     */
     public Optional<Boolean> isNullCall() {
         return Optional.ofNullable(this.isNullCall);
     }
-    /**
-     * @return Unique identifier of parent metastore.
-     * 
-     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
-    /**
-     * @return Name of parameter.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return Username of current owner of function.
-     * 
-     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
-    /**
-     * @return Function parameter style. `S` is the value for SQL.
-     * 
-     */
     public Optional<String> parameterStyle() {
         return Optional.ofNullable(this.parameterStyle);
     }
-    /**
-     * @return JSON-serialized key-value pair map, encoded (escaped) as a string.
-     * 
-     */
     public Optional<String> properties() {
         return Optional.ofNullable(this.properties);
     }
-    /**
-     * @return Table function return parameters.  See `input_params` for description.
-     * 
-     */
-    public Optional<GetFunctionsFunctionReturnParams> returnParams() {
-        return Optional.ofNullable(this.returnParams);
+    public List<GetFunctionsFunctionReturnParam> returnParams() {
+        return this.returnParams == null ? List.of() : this.returnParams;
     }
-    /**
-     * @return Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
-     * 
-     */
     public Optional<String> routineBody() {
         return Optional.ofNullable(this.routineBody);
     }
-    /**
-     * @return Function body.
-     * 
-     */
     public Optional<String> routineDefinition() {
         return Optional.ofNullable(this.routineDefinition);
     }
-    /**
-     * @return Function dependencies.
-     * 
-     */
-    public Optional<GetFunctionsFunctionRoutineDependencies> routineDependencies() {
-        return Optional.ofNullable(this.routineDependencies);
+    public List<GetFunctionsFunctionRoutineDependency> routineDependencies() {
+        return this.routineDependencies == null ? List.of() : this.routineDependencies;
     }
-    /**
-     * @return Name of databricks_schema.
-     * 
-     */
     public Optional<String> schemaName() {
         return Optional.ofNullable(this.schemaName);
     }
-    /**
-     * @return Function security type. (Enum: `DEFINER`).
-     * 
-     */
     public Optional<String> securityType() {
         return Optional.ofNullable(this.securityType);
     }
-    /**
-     * @return Specific name of the function; Reserved for future use.
-     * 
-     */
     public Optional<String> specificName() {
         return Optional.ofNullable(this.specificName);
     }
-    /**
-     * @return Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
-     * 
-     */
     public Optional<String> sqlDataAccess() {
         return Optional.ofNullable(this.sqlDataAccess);
     }
-    /**
-     * @return List of schemes whose objects can be referenced without qualification.
-     * 
-     */
     public Optional<String> sqlPath() {
         return Optional.ofNullable(this.sqlPath);
     }
-    /**
-     * @return Time at which this function was created, in epoch milliseconds.
-     * 
-     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
-    /**
-     * @return Username of user who last modified function.
-     * 
-     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
@@ -399,7 +160,7 @@ public final class GetFunctionsFunction {
         private @Nullable String fullDataType;
         private @Nullable String fullName;
         private @Nullable String functionId;
-        private @Nullable GetFunctionsFunctionInputParams inputParams;
+        private @Nullable List<GetFunctionsFunctionInputParam> inputParams;
         private @Nullable Boolean isDeterministic;
         private @Nullable Boolean isNullCall;
         private @Nullable String metastoreId;
@@ -407,10 +168,10 @@ public final class GetFunctionsFunction {
         private @Nullable String owner;
         private @Nullable String parameterStyle;
         private @Nullable String properties;
-        private @Nullable GetFunctionsFunctionReturnParams returnParams;
+        private @Nullable List<GetFunctionsFunctionReturnParam> returnParams;
         private @Nullable String routineBody;
         private @Nullable String routineDefinition;
-        private @Nullable GetFunctionsFunctionRoutineDependencies routineDependencies;
+        private @Nullable List<GetFunctionsFunctionRoutineDependency> routineDependencies;
         private @Nullable String schemaName;
         private @Nullable String securityType;
         private @Nullable String specificName;
@@ -520,10 +281,13 @@ public final class GetFunctionsFunction {
             return this;
         }
         @CustomType.Setter
-        public Builder inputParams(@Nullable GetFunctionsFunctionInputParams inputParams) {
+        public Builder inputParams(@Nullable List<GetFunctionsFunctionInputParam> inputParams) {
 
             this.inputParams = inputParams;
             return this;
+        }
+        public Builder inputParams(GetFunctionsFunctionInputParam... inputParams) {
+            return inputParams(List.of(inputParams));
         }
         @CustomType.Setter
         public Builder isDeterministic(@Nullable Boolean isDeterministic) {
@@ -568,10 +332,13 @@ public final class GetFunctionsFunction {
             return this;
         }
         @CustomType.Setter
-        public Builder returnParams(@Nullable GetFunctionsFunctionReturnParams returnParams) {
+        public Builder returnParams(@Nullable List<GetFunctionsFunctionReturnParam> returnParams) {
 
             this.returnParams = returnParams;
             return this;
+        }
+        public Builder returnParams(GetFunctionsFunctionReturnParam... returnParams) {
+            return returnParams(List.of(returnParams));
         }
         @CustomType.Setter
         public Builder routineBody(@Nullable String routineBody) {
@@ -586,10 +353,13 @@ public final class GetFunctionsFunction {
             return this;
         }
         @CustomType.Setter
-        public Builder routineDependencies(@Nullable GetFunctionsFunctionRoutineDependencies routineDependencies) {
+        public Builder routineDependencies(@Nullable List<GetFunctionsFunctionRoutineDependency> routineDependencies) {
 
             this.routineDependencies = routineDependencies;
             return this;
+        }
+        public Builder routineDependencies(GetFunctionsFunctionRoutineDependency... routineDependencies) {
+            return routineDependencies(List.of(routineDependencies));
         }
         @CustomType.Setter
         public Builder schemaName(@Nullable String schemaName) {

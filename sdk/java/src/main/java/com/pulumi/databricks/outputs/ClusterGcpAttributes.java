@@ -13,83 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterGcpAttributes {
-    /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     * 
-     */
     private @Nullable String availability;
-    /**
-     * @return Boot disk size in GB
-     * 
-     */
     private @Nullable Integer bootDiskSize;
-    /**
-     * @return Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
-     * 
-     */
     private @Nullable String googleServiceAccount;
-    /**
-     * @return Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
-     * 
-     */
     private @Nullable Integer localSsdCount;
-    /**
-     * @return if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
-     * 
-     */
     private @Nullable Boolean usePreemptibleExecutors;
-    /**
-     * @return Identifier for the availability zone in which the cluster resides. This can be one of the following:
-     * * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
-     * * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
-     * * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
-     * 
-     */
     private @Nullable String zoneId;
 
     private ClusterGcpAttributes() {}
-    /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     * 
-     */
     public Optional<String> availability() {
         return Optional.ofNullable(this.availability);
     }
-    /**
-     * @return Boot disk size in GB
-     * 
-     */
     public Optional<Integer> bootDiskSize() {
         return Optional.ofNullable(this.bootDiskSize);
     }
-    /**
-     * @return Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
-     * 
-     */
     public Optional<String> googleServiceAccount() {
         return Optional.ofNullable(this.googleServiceAccount);
     }
-    /**
-     * @return Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
-     * 
-     */
     public Optional<Integer> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
     }
-    /**
-     * @return if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
-     * 
-     */
     public Optional<Boolean> usePreemptibleExecutors() {
         return Optional.ofNullable(this.usePreemptibleExecutors);
     }
-    /**
-     * @return Identifier for the availability zone in which the cluster resides. This can be one of the following:
-     * * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
-     * * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
-     * * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
-     * 
-     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

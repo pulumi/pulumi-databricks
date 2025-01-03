@@ -16,62 +16,37 @@ public final class GetAwsUnityCatalogAssumeRolePolicyArgs extends com.pulumi.res
 
     public static final GetAwsUnityCatalogAssumeRolePolicyArgs Empty = new GetAwsUnityCatalogAssumeRolePolicyArgs();
 
-    /**
-     * The Account ID of the current AWS account (not your Databricks account).
-     * 
-     */
     @Import(name="awsAccountId", required=true)
     private Output<String> awsAccountId;
 
-    /**
-     * @return The Account ID of the current AWS account (not your Databricks account).
-     * 
-     */
     public Output<String> awsAccountId() {
         return this.awsAccountId;
     }
 
-    /**
-     * The storage credential external id.
-     * 
-     */
+    @Import(name="awsPartition")
+    private @Nullable Output<String> awsPartition;
+
+    public Optional<Output<String>> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
+    }
+
     @Import(name="externalId", required=true)
     private Output<String> externalId;
 
-    /**
-     * @return The storage credential external id.
-     * 
-     */
     public Output<String> externalId() {
         return this.externalId;
     }
 
-    /**
-     * The name of the AWS IAM role to be created for Unity Catalog.
-     * 
-     */
     @Import(name="roleName", required=true)
     private Output<String> roleName;
 
-    /**
-     * @return The name of the AWS IAM role to be created for Unity Catalog.
-     * 
-     */
     public Output<String> roleName() {
         return this.roleName;
     }
 
-    /**
-     * The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
-     * 
-     */
     @Import(name="unityCatalogIamArn")
     private @Nullable Output<String> unityCatalogIamArn;
 
-    /**
-     * @return The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
-     * 
-     */
     public Optional<Output<String>> unityCatalogIamArn() {
         return Optional.ofNullable(this.unityCatalogIamArn);
     }
@@ -80,6 +55,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyArgs extends com.pulumi.res
 
     private GetAwsUnityCatalogAssumeRolePolicyArgs(GetAwsUnityCatalogAssumeRolePolicyArgs $) {
         this.awsAccountId = $.awsAccountId;
+        this.awsPartition = $.awsPartition;
         this.externalId = $.externalId;
         this.roleName = $.roleName;
         this.unityCatalogIamArn = $.unityCatalogIamArn;
@@ -103,86 +79,47 @@ public final class GetAwsUnityCatalogAssumeRolePolicyArgs extends com.pulumi.res
             $ = new GetAwsUnityCatalogAssumeRolePolicyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param awsAccountId The Account ID of the current AWS account (not your Databricks account).
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsAccountId(Output<String> awsAccountId) {
             $.awsAccountId = awsAccountId;
             return this;
         }
 
-        /**
-         * @param awsAccountId The Account ID of the current AWS account (not your Databricks account).
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsAccountId(String awsAccountId) {
             return awsAccountId(Output.of(awsAccountId));
         }
 
-        /**
-         * @param externalId The storage credential external id.
-         * 
-         * @return builder
-         * 
-         */
+        public Builder awsPartition(@Nullable Output<String> awsPartition) {
+            $.awsPartition = awsPartition;
+            return this;
+        }
+
+        public Builder awsPartition(String awsPartition) {
+            return awsPartition(Output.of(awsPartition));
+        }
+
         public Builder externalId(Output<String> externalId) {
             $.externalId = externalId;
             return this;
         }
 
-        /**
-         * @param externalId The storage credential external id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder externalId(String externalId) {
             return externalId(Output.of(externalId));
         }
 
-        /**
-         * @param roleName The name of the AWS IAM role to be created for Unity Catalog.
-         * 
-         * @return builder
-         * 
-         */
         public Builder roleName(Output<String> roleName) {
             $.roleName = roleName;
             return this;
         }
 
-        /**
-         * @param roleName The name of the AWS IAM role to be created for Unity Catalog.
-         * 
-         * @return builder
-         * 
-         */
         public Builder roleName(String roleName) {
             return roleName(Output.of(roleName));
         }
 
-        /**
-         * @param unityCatalogIamArn The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
-         * 
-         * @return builder
-         * 
-         */
         public Builder unityCatalogIamArn(@Nullable Output<String> unityCatalogIamArn) {
             $.unityCatalogIamArn = unityCatalogIamArn;
             return this;
         }
 
-        /**
-         * @param unityCatalogIamArn The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
-         * 
-         * @return builder
-         * 
-         */
         public Builder unityCatalogIamArn(String unityCatalogIamArn) {
             return unityCatalogIamArn(Output.of(unityCatalogIamArn));
         }

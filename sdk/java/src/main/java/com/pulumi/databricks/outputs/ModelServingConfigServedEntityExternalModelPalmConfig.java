@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelPalmConfig {
-    /**
-     * @return The Databricks secret key reference for a PaLM API key.
-     * 
-     */
     private @Nullable String palmApiKey;
-    /**
-     * @return The PaLM API key provided as a plaintext string.
-     * 
-     */
     private @Nullable String palmApiKeyPlaintext;
 
     private ModelServingConfigServedEntityExternalModelPalmConfig() {}
-    /**
-     * @return The Databricks secret key reference for a PaLM API key.
-     * 
-     */
     public Optional<String> palmApiKey() {
         return Optional.ofNullable(this.palmApiKey);
     }
-    /**
-     * @return The PaLM API key provided as a plaintext string.
-     * 
-     */
     public Optional<String> palmApiKeyPlaintext() {
         return Optional.ofNullable(this.palmApiKeyPlaintext);
     }

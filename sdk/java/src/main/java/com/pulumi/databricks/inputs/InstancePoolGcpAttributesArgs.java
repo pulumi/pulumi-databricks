@@ -16,47 +16,23 @@ public final class InstancePoolGcpAttributesArgs extends com.pulumi.resources.Re
 
     public static final InstancePoolGcpAttributesArgs Empty = new InstancePoolGcpAttributesArgs();
 
-    /**
-     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     * 
-     */
     @Import(name="gcpAvailability")
     private @Nullable Output<String> gcpAvailability;
 
-    /**
-     * @return Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-     * 
-     */
     public Optional<Output<String>> gcpAvailability() {
         return Optional.ofNullable(this.gcpAvailability);
     }
 
-    /**
-     * Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
-     * 
-     */
     @Import(name="localSsdCount")
     private @Nullable Output<Integer> localSsdCount;
 
-    /**
-     * @return Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
-     * 
-     */
     public Optional<Output<Integer>> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
     }
 
-    /**
-     * Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
-     * 
-     */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
-    /**
-     * @return Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
-     * 
-     */
     public Optional<Output<String>> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
@@ -87,65 +63,29 @@ public final class InstancePoolGcpAttributesArgs extends com.pulumi.resources.Re
             $ = new InstancePoolGcpAttributesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param gcpAvailability Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gcpAvailability(@Nullable Output<String> gcpAvailability) {
             $.gcpAvailability = gcpAvailability;
             return this;
         }
 
-        /**
-         * @param gcpAvailability Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gcpAvailability(String gcpAvailability) {
             return gcpAvailability(Output.of(gcpAvailability));
         }
 
-        /**
-         * @param localSsdCount Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder localSsdCount(@Nullable Output<Integer> localSsdCount) {
             $.localSsdCount = localSsdCount;
             return this;
         }
 
-        /**
-         * @param localSsdCount Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder localSsdCount(Integer localSsdCount) {
             return localSsdCount(Output.of(localSsdCount));
         }
 
-        /**
-         * @param zoneId Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
-        /**
-         * @param zoneId Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
         }

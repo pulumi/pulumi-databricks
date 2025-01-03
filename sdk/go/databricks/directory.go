@@ -12,72 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-//
-// ## Example Usage
-//
-// You can declare a Pulumi-managed directory by specifying the `path` attribute of the corresponding directory.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewDirectory(ctx, "my_custom_directory", &databricks.DirectoryArgs{
-//				Path: pulumi.String("/my_custom_directory"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Access Control
-//
-// - Permissions can control which groups or individual users can access folders.
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// - End to end workspace management guide.
-// - Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-// - Notebook data to export a notebook from Databricks Workspace.
-// - getNotebookPaths data to list notebooks in Databricks Workspace.
-// - Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-// - getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in Cluster and other resources.
-// - WorkspaceConf to manage workspace configuration for expert usage.
-//
-// ## Import
-//
-// The resource directory can be imported using directory path:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/directory:Directory this /path/to/directory
-// ```
 type Directory struct {
 	pulumi.CustomResourceState
 
-	// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
 	DeleteRecursive pulumi.BoolPtrOutput `pulumi:"deleteRecursive"`
-	// Unique identifier for a DIRECTORY
-	ObjectId pulumi.IntOutput `pulumi:"objectId"`
-	// The absolute path of the directory, beginning with "/", e.g. "/Demo".
-	Path pulumi.StringOutput `pulumi:"path"`
-	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-	WorkspacePath pulumi.StringOutput `pulumi:"workspacePath"`
+	ObjectId        pulumi.IntOutput     `pulumi:"objectId"`
+	Path            pulumi.StringOutput  `pulumi:"path"`
+	WorkspacePath   pulumi.StringOutput  `pulumi:"workspacePath"`
 }
 
 // NewDirectory registers a new resource with the given unique name, arguments, and options.
@@ -113,25 +54,17 @@ func GetDirectory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Directory resources.
 type directoryState struct {
-	// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
-	DeleteRecursive *bool `pulumi:"deleteRecursive"`
-	// Unique identifier for a DIRECTORY
-	ObjectId *int `pulumi:"objectId"`
-	// The absolute path of the directory, beginning with "/", e.g. "/Demo".
-	Path *string `pulumi:"path"`
-	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-	WorkspacePath *string `pulumi:"workspacePath"`
+	DeleteRecursive *bool   `pulumi:"deleteRecursive"`
+	ObjectId        *int    `pulumi:"objectId"`
+	Path            *string `pulumi:"path"`
+	WorkspacePath   *string `pulumi:"workspacePath"`
 }
 
 type DirectoryState struct {
-	// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
 	DeleteRecursive pulumi.BoolPtrInput
-	// Unique identifier for a DIRECTORY
-	ObjectId pulumi.IntPtrInput
-	// The absolute path of the directory, beginning with "/", e.g. "/Demo".
-	Path pulumi.StringPtrInput
-	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-	WorkspacePath pulumi.StringPtrInput
+	ObjectId        pulumi.IntPtrInput
+	Path            pulumi.StringPtrInput
+	WorkspacePath   pulumi.StringPtrInput
 }
 
 func (DirectoryState) ElementType() reflect.Type {
@@ -139,22 +72,16 @@ func (DirectoryState) ElementType() reflect.Type {
 }
 
 type directoryArgs struct {
-	// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
-	DeleteRecursive *bool `pulumi:"deleteRecursive"`
-	// Unique identifier for a DIRECTORY
-	ObjectId *int `pulumi:"objectId"`
-	// The absolute path of the directory, beginning with "/", e.g. "/Demo".
-	Path string `pulumi:"path"`
+	DeleteRecursive *bool  `pulumi:"deleteRecursive"`
+	ObjectId        *int   `pulumi:"objectId"`
+	Path            string `pulumi:"path"`
 }
 
 // The set of arguments for constructing a Directory resource.
 type DirectoryArgs struct {
-	// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
 	DeleteRecursive pulumi.BoolPtrInput
-	// Unique identifier for a DIRECTORY
-	ObjectId pulumi.IntPtrInput
-	// The absolute path of the directory, beginning with "/", e.g. "/Demo".
-	Path pulumi.StringInput
+	ObjectId        pulumi.IntPtrInput
+	Path            pulumi.StringInput
 }
 
 func (DirectoryArgs) ElementType() reflect.Type {
@@ -244,22 +171,18 @@ func (o DirectoryOutput) ToDirectoryOutputWithContext(ctx context.Context) Direc
 	return o
 }
 
-// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
 func (o DirectoryOutput) DeleteRecursive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Directory) pulumi.BoolPtrOutput { return v.DeleteRecursive }).(pulumi.BoolPtrOutput)
 }
 
-// Unique identifier for a DIRECTORY
 func (o DirectoryOutput) ObjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Directory) pulumi.IntOutput { return v.ObjectId }).(pulumi.IntOutput)
 }
 
-// The absolute path of the directory, beginning with "/", e.g. "/Demo".
 func (o DirectoryOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
-// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 func (o DirectoryOutput) WorkspacePath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.WorkspacePath }).(pulumi.StringOutput)
 }

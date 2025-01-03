@@ -16,17 +16,9 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs exten
 
     public static final MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs Empty = new MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs();
 
-    /**
-     * (Azure only) - list containing information about configure Azure Private Endpoints.
-     * 
-     */
     @Import(name="azurePrivateEndpointRules")
     private @Nullable Output<List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>> azurePrivateEndpointRules;
 
-    /**
-     * @return (Azure only) - list containing information about configure Azure Private Endpoints.
-     * 
-     */
     public Optional<Output<List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>>> azurePrivateEndpointRules() {
         return Optional.ofNullable(this.azurePrivateEndpointRules);
     }
@@ -55,33 +47,15 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs exten
             $ = new MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param azurePrivateEndpointRules (Azure only) - list containing information about configure Azure Private Endpoints.
-         * 
-         * @return builder
-         * 
-         */
         public Builder azurePrivateEndpointRules(@Nullable Output<List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>> azurePrivateEndpointRules) {
             $.azurePrivateEndpointRules = azurePrivateEndpointRules;
             return this;
         }
 
-        /**
-         * @param azurePrivateEndpointRules (Azure only) - list containing information about configure Azure Private Endpoints.
-         * 
-         * @return builder
-         * 
-         */
         public Builder azurePrivateEndpointRules(List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs> azurePrivateEndpointRules) {
             return azurePrivateEndpointRules(Output.of(azurePrivateEndpointRules));
         }
 
-        /**
-         * @param azurePrivateEndpointRules (Azure only) - list containing information about configure Azure Private Endpoints.
-         * 
-         * @return builder
-         * 
-         */
         public Builder azurePrivateEndpointRules(MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs... azurePrivateEndpointRules) {
             return azurePrivateEndpointRules(List.of(azurePrivateEndpointRules));
         }

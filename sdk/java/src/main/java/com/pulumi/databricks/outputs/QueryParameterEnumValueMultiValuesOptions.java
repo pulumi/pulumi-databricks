@@ -11,41 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class QueryParameterEnumValueMultiValuesOptions {
-    /**
-     * @return Character that prefixes each selected parameter value.
-     * 
-     */
     private @Nullable String prefix;
-    /**
-     * @return Character that separates each selected parameter value. Defaults to a comma.
-     * 
-     */
     private @Nullable String separator;
-    /**
-     * @return Character that suffixes each selected parameter value.
-     * 
-     */
     private @Nullable String suffix;
 
     private QueryParameterEnumValueMultiValuesOptions() {}
-    /**
-     * @return Character that prefixes each selected parameter value.
-     * 
-     */
     public Optional<String> prefix() {
         return Optional.ofNullable(this.prefix);
     }
-    /**
-     * @return Character that separates each selected parameter value. Defaults to a comma.
-     * 
-     */
     public Optional<String> separator() {
         return Optional.ofNullable(this.separator);
     }
-    /**
-     * @return Character that suffixes each selected parameter value.
-     * 
-     */
     public Optional<String> suffix() {
         return Optional.ofNullable(this.suffix);
     }

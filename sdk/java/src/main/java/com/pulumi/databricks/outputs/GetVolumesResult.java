@@ -17,10 +17,6 @@ public final class GetVolumesResult {
      * 
      */
     private String id;
-    /**
-     * @return a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
-     * 
-     */
     private List<String> ids;
     private String schemaName;
 
@@ -35,10 +31,6 @@ public final class GetVolumesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }

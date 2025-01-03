@@ -17,10 +17,6 @@ public final class GetTablesResult {
      * 
      */
     private String id;
-    /**
-     * @return set of databricks.Table full names: *`catalog`.`schema`.`table`*
-     * 
-     */
     private List<String> ids;
     private String schemaName;
 
@@ -35,10 +31,6 @@ public final class GetTablesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return set of databricks.Table full names: *`catalog`.`schema`.`table`*
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }

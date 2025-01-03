@@ -11,21 +11,9 @@ import java.util.Objects;
 
 @CustomType
 public final class RepoSparseCheckout {
-    /**
-     * @return array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
-     * 
-     * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
-     * 
-     */
     private List<String> patterns;
 
     private RepoSparseCheckout() {}
-    /**
-     * @return array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
-     * 
-     * Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
-     * 
-     */
     public List<String> patterns() {
         return this.patterns;
     }

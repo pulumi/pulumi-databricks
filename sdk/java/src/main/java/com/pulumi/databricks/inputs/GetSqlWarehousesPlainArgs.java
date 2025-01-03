@@ -15,32 +15,16 @@ public final class GetSqlWarehousesPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetSqlWarehousesPlainArgs Empty = new GetSqlWarehousesPlainArgs();
 
-    /**
-     * list of databricks.SqlEndpoint ids
-     * 
-     */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
-    /**
-     * @return list of databricks.SqlEndpoint ids
-     * 
-     */
     public Optional<List<String>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
-    /**
-     * Only return databricks.SqlEndpoint ids that match the given name string.
-     * 
-     */
     @Import(name="warehouseNameContains")
     private @Nullable String warehouseNameContains;
 
-    /**
-     * @return Only return databricks.SqlEndpoint ids that match the given name string.
-     * 
-     */
     public Optional<String> warehouseNameContains() {
         return Optional.ofNullable(this.warehouseNameContains);
     }
@@ -70,33 +54,15 @@ public final class GetSqlWarehousesPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetSqlWarehousesPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ids list of databricks.SqlEndpoint ids
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(@Nullable List<String> ids) {
             $.ids = ids;
             return this;
         }
 
-        /**
-         * @param ids list of databricks.SqlEndpoint ids
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
-        /**
-         * @param warehouseNameContains Only return databricks.SqlEndpoint ids that match the given name string.
-         * 
-         * @return builder
-         * 
-         */
         public Builder warehouseNameContains(@Nullable String warehouseNameContains) {
             $.warehouseNameContains = warehouseNameContains;
             return this;

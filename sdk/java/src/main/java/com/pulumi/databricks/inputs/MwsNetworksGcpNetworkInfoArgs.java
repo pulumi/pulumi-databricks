@@ -14,92 +14,44 @@ public final class MwsNetworksGcpNetworkInfoArgs extends com.pulumi.resources.Re
 
     public static final MwsNetworksGcpNetworkInfoArgs Empty = new MwsNetworksGcpNetworkInfoArgs();
 
-    /**
-     * The Google Cloud project ID of the VPC network.
-     * 
-     */
     @Import(name="networkProjectId", required=true)
     private Output<String> networkProjectId;
 
-    /**
-     * @return The Google Cloud project ID of the VPC network.
-     * 
-     */
     public Output<String> networkProjectId() {
         return this.networkProjectId;
     }
 
-    /**
-     * The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-     * 
-     */
     @Import(name="podIpRangeName", required=true)
     private Output<String> podIpRangeName;
 
-    /**
-     * @return The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-     * 
-     */
     public Output<String> podIpRangeName() {
         return this.podIpRangeName;
     }
 
-    /**
-     * The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-     * 
-     */
     @Import(name="serviceIpRangeName", required=true)
     private Output<String> serviceIpRangeName;
 
-    /**
-     * @return The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-     * 
-     */
     public Output<String> serviceIpRangeName() {
         return this.serviceIpRangeName;
     }
 
-    /**
-     * The ID of the subnet associated with this network.
-     * 
-     */
     @Import(name="subnetId", required=true)
     private Output<String> subnetId;
 
-    /**
-     * @return The ID of the subnet associated with this network.
-     * 
-     */
     public Output<String> subnetId() {
         return this.subnetId;
     }
 
-    /**
-     * The Google Cloud region of the workspace data plane. For example, `us-east4`.
-     * 
-     */
     @Import(name="subnetRegion", required=true)
     private Output<String> subnetRegion;
 
-    /**
-     * @return The Google Cloud region of the workspace data plane. For example, `us-east4`.
-     * 
-     */
     public Output<String> subnetRegion() {
         return this.subnetRegion;
     }
 
-    /**
-     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-     * 
-     */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
-    /**
-     * @return The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-     * 
-     */
     public Output<String> vpcId() {
         return this.vpcId;
     }
@@ -133,128 +85,56 @@ public final class MwsNetworksGcpNetworkInfoArgs extends com.pulumi.resources.Re
             $ = new MwsNetworksGcpNetworkInfoArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param networkProjectId The Google Cloud project ID of the VPC network.
-         * 
-         * @return builder
-         * 
-         */
         public Builder networkProjectId(Output<String> networkProjectId) {
             $.networkProjectId = networkProjectId;
             return this;
         }
 
-        /**
-         * @param networkProjectId The Google Cloud project ID of the VPC network.
-         * 
-         * @return builder
-         * 
-         */
         public Builder networkProjectId(String networkProjectId) {
             return networkProjectId(Output.of(networkProjectId));
         }
 
-        /**
-         * @param podIpRangeName The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder podIpRangeName(Output<String> podIpRangeName) {
             $.podIpRangeName = podIpRangeName;
             return this;
         }
 
-        /**
-         * @param podIpRangeName The name of the secondary IP range for pods. A Databricks-managed GKE cluster uses this IP range for its pods. This secondary IP range can only be used by one workspace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder podIpRangeName(String podIpRangeName) {
             return podIpRangeName(Output.of(podIpRangeName));
         }
 
-        /**
-         * @param serviceIpRangeName The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serviceIpRangeName(Output<String> serviceIpRangeName) {
             $.serviceIpRangeName = serviceIpRangeName;
             return this;
         }
 
-        /**
-         * @param serviceIpRangeName The name of the secondary IP range for services. A Databricks-managed GKE cluster uses this IP range for its services. This secondary IP range can only be used by one workspace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serviceIpRangeName(String serviceIpRangeName) {
             return serviceIpRangeName(Output.of(serviceIpRangeName));
         }
 
-        /**
-         * @param subnetId The ID of the subnet associated with this network.
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetId(Output<String> subnetId) {
             $.subnetId = subnetId;
             return this;
         }
 
-        /**
-         * @param subnetId The ID of the subnet associated with this network.
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetId(String subnetId) {
             return subnetId(Output.of(subnetId));
         }
 
-        /**
-         * @param subnetRegion The Google Cloud region of the workspace data plane. For example, `us-east4`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetRegion(Output<String> subnetRegion) {
             $.subnetRegion = subnetRegion;
             return this;
         }
 
-        /**
-         * @param subnetRegion The Google Cloud region of the workspace data plane. For example, `us-east4`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetRegion(String subnetRegion) {
             return subnetRegion(Output.of(subnetRegion));
         }
 
-        /**
-         * @param vpcId The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder vpcId(Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
-        /**
-         * @param vpcId The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }

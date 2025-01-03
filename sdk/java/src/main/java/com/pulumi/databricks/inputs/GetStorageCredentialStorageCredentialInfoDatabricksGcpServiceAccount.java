@@ -21,17 +21,9 @@ public final class GetStorageCredentialStorageCredentialInfoDatabricksGcpService
         return Optional.ofNullable(this.credentialId);
     }
 
-    /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
-     * 
-     */
     @Import(name="email")
     private @Nullable String email;
 
-    /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
-     * 
-     */
     public Optional<String> email() {
         return Optional.ofNullable(this.email);
     }
@@ -66,12 +58,6 @@ public final class GetStorageCredentialStorageCredentialInfoDatabricksGcpService
             return this;
         }
 
-        /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
-         * 
-         * @return builder
-         * 
-         */
         public Builder email(@Nullable String email) {
             $.email = email;
             return this;

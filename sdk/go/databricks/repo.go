@@ -12,82 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to manage [Databricks Git folders](https://docs.databricks.com/en/repos/index.html) (formerly known as Databricks Repos).
-//
-// > To create a Git folder from a private repository you need to configure Git token as described in the [documentation](https://docs.databricks.com/en/repos/index.html#configure-your-git-integration-with-databricks).  To set this token you can use GitCredential resource.
-//
-// ## Example Usage
-//
-// You can declare Pulumi-managed Git folder by specifying `url` attribute of Git repository. In addition to that you may need to specify `gitProvider` attribute if Git provider doesn't belong to cloud Git providers (Github, GitLab, ...).  If `path` attribute isn't provided, then Git folder will be created in the default location:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewRepo(ctx, "nutter_in_home", &databricks.RepoArgs{
-//				Url: pulumi.String("https://github.com/user/demo.git"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Access Control
-//
-// * Permissions can control which groups or individual users can access repos.
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * End to end workspace management guide.
-// * GitCredential to manage Git credentials.
-// * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-// * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
-// * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-// * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-// * SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-// * WorkspaceConf to manage workspace configuration for expert usage.
-//
-// ## Import
-//
-// The resource can be imported using the Git folder ID (obtained via UI or using API)
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/repo:Repo this repo_id
-// ```
 type Repo struct {
 	pulumi.CustomResourceState
 
-	// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
-	Branch pulumi.StringOutput `pulumi:"branch"`
-	// Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
-	CommitHash pulumi.StringOutput `pulumi:"commitHash"`
-	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-	GitProvider pulumi.StringOutput `pulumi:"gitProvider"`
-	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
+	Branch         pulumi.StringOutput         `pulumi:"branch"`
+	CommitHash     pulumi.StringOutput         `pulumi:"commitHash"`
+	GitProvider    pulumi.StringOutput         `pulumi:"gitProvider"`
 	Path           pulumi.StringOutput         `pulumi:"path"`
 	SparseCheckout RepoSparseCheckoutPtrOutput `pulumi:"sparseCheckout"`
-	// name of the tag for initial checkout.  Conflicts with `branch`.
-	Tag pulumi.StringPtrOutput `pulumi:"tag"`
-	// The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
-	Url pulumi.StringOutput `pulumi:"url"`
-	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-	WorkspacePath pulumi.StringOutput `pulumi:"workspacePath"`
+	Tag            pulumi.StringPtrOutput      `pulumi:"tag"`
+	Url            pulumi.StringOutput         `pulumi:"url"`
+	WorkspacePath  pulumi.StringOutput         `pulumi:"workspacePath"`
 }
 
 // NewRepo registers a new resource with the given unique name, arguments, and options.
@@ -123,39 +58,25 @@ func GetRepo(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Repo resources.
 type repoState struct {
-	// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
-	Branch *string `pulumi:"branch"`
-	// Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
-	CommitHash *string `pulumi:"commitHash"`
-	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-	GitProvider *string `pulumi:"gitProvider"`
-	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
+	Branch         *string             `pulumi:"branch"`
+	CommitHash     *string             `pulumi:"commitHash"`
+	GitProvider    *string             `pulumi:"gitProvider"`
 	Path           *string             `pulumi:"path"`
 	SparseCheckout *RepoSparseCheckout `pulumi:"sparseCheckout"`
-	// name of the tag for initial checkout.  Conflicts with `branch`.
-	Tag *string `pulumi:"tag"`
-	// The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
-	Url *string `pulumi:"url"`
-	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-	WorkspacePath *string `pulumi:"workspacePath"`
+	Tag            *string             `pulumi:"tag"`
+	Url            *string             `pulumi:"url"`
+	WorkspacePath  *string             `pulumi:"workspacePath"`
 }
 
 type RepoState struct {
-	// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
-	Branch pulumi.StringPtrInput
-	// Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
-	CommitHash pulumi.StringPtrInput
-	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-	GitProvider pulumi.StringPtrInput
-	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
+	Branch         pulumi.StringPtrInput
+	CommitHash     pulumi.StringPtrInput
+	GitProvider    pulumi.StringPtrInput
 	Path           pulumi.StringPtrInput
 	SparseCheckout RepoSparseCheckoutPtrInput
-	// name of the tag for initial checkout.  Conflicts with `branch`.
-	Tag pulumi.StringPtrInput
-	// The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
-	Url pulumi.StringPtrInput
-	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-	WorkspacePath pulumi.StringPtrInput
+	Tag            pulumi.StringPtrInput
+	Url            pulumi.StringPtrInput
+	WorkspacePath  pulumi.StringPtrInput
 }
 
 func (RepoState) ElementType() reflect.Type {
@@ -163,36 +84,24 @@ func (RepoState) ElementType() reflect.Type {
 }
 
 type repoArgs struct {
-	// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
-	Branch *string `pulumi:"branch"`
-	// Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
-	CommitHash *string `pulumi:"commitHash"`
-	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-	GitProvider *string `pulumi:"gitProvider"`
-	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
+	Branch         *string             `pulumi:"branch"`
+	CommitHash     *string             `pulumi:"commitHash"`
+	GitProvider    *string             `pulumi:"gitProvider"`
 	Path           *string             `pulumi:"path"`
 	SparseCheckout *RepoSparseCheckout `pulumi:"sparseCheckout"`
-	// name of the tag for initial checkout.  Conflicts with `branch`.
-	Tag *string `pulumi:"tag"`
-	// The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
-	Url string `pulumi:"url"`
+	Tag            *string             `pulumi:"tag"`
+	Url            string              `pulumi:"url"`
 }
 
 // The set of arguments for constructing a Repo resource.
 type RepoArgs struct {
-	// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
-	Branch pulumi.StringPtrInput
-	// Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
-	CommitHash pulumi.StringPtrInput
-	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
-	GitProvider pulumi.StringPtrInput
-	// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
+	Branch         pulumi.StringPtrInput
+	CommitHash     pulumi.StringPtrInput
+	GitProvider    pulumi.StringPtrInput
 	Path           pulumi.StringPtrInput
 	SparseCheckout RepoSparseCheckoutPtrInput
-	// name of the tag for initial checkout.  Conflicts with `branch`.
-	Tag pulumi.StringPtrInput
-	// The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
-	Url pulumi.StringInput
+	Tag            pulumi.StringPtrInput
+	Url            pulumi.StringInput
 }
 
 func (RepoArgs) ElementType() reflect.Type {
@@ -282,22 +191,18 @@ func (o RepoOutput) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 	return o
 }
 
-// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
 func (o RepoOutput) Branch() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Branch }).(pulumi.StringOutput)
 }
 
-// Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
 func (o RepoOutput) CommitHash() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.CommitHash }).(pulumi.StringOutput)
 }
 
-// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
 func (o RepoOutput) GitProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.GitProvider }).(pulumi.StringOutput)
 }
 
-// path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
 func (o RepoOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
@@ -306,17 +211,14 @@ func (o RepoOutput) SparseCheckout() RepoSparseCheckoutPtrOutput {
 	return o.ApplyT(func(v *Repo) RepoSparseCheckoutPtrOutput { return v.SparseCheckout }).(RepoSparseCheckoutPtrOutput)
 }
 
-// name of the tag for initial checkout.  Conflicts with `branch`.
 func (o RepoOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringPtrOutput { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
-// The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
 func (o RepoOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 func (o RepoOutput) WorkspacePath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.WorkspacePath }).(pulumi.StringOutput)
 }

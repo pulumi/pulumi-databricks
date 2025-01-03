@@ -4,9 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetNotificationDestinationsNotificationDestination;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,57 +14,16 @@ public final class GetNotificationDestinationsPlainArgs extends com.pulumi.resou
 
     public static final GetNotificationDestinationsPlainArgs Empty = new GetNotificationDestinationsPlainArgs();
 
-    /**
-     * A **case-insensitive** substring to filter Notification Destinations by their display name.
-     * 
-     */
     @Import(name="displayNameContains")
     private @Nullable String displayNameContains;
 
-    /**
-     * @return A **case-insensitive** substring to filter Notification Destinations by their display name.
-     * 
-     */
     public Optional<String> displayNameContains() {
         return Optional.ofNullable(this.displayNameContains);
     }
 
-    /**
-     * A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-     * 
-     */
-    @Import(name="notificationDestinations")
-    private @Nullable List<GetNotificationDestinationsNotificationDestination> notificationDestinations;
-
-    /**
-     * @return A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-     * 
-     */
-    public Optional<List<GetNotificationDestinationsNotificationDestination>> notificationDestinations() {
-        return Optional.ofNullable(this.notificationDestinations);
-    }
-
-    /**
-     * The type of the Notification Destination to filter by. Valid values are:
-     * * `EMAIL` - Filters Notification Destinations of type Email.
-     * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
-     * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
-     * * `SLACK` - Filters Notification Destinations of type Slack.
-     * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
-     * 
-     */
     @Import(name="type")
     private @Nullable String type;
 
-    /**
-     * @return The type of the Notification Destination to filter by. Valid values are:
-     * * `EMAIL` - Filters Notification Destinations of type Email.
-     * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
-     * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
-     * * `SLACK` - Filters Notification Destinations of type Slack.
-     * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
@@ -75,7 +32,6 @@ public final class GetNotificationDestinationsPlainArgs extends com.pulumi.resou
 
     private GetNotificationDestinationsPlainArgs(GetNotificationDestinationsPlainArgs $) {
         this.displayNameContains = $.displayNameContains;
-        this.notificationDestinations = $.notificationDestinations;
         this.type = $.type;
     }
 
@@ -97,49 +53,11 @@ public final class GetNotificationDestinationsPlainArgs extends com.pulumi.resou
             $ = new GetNotificationDestinationsPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param displayNameContains A **case-insensitive** substring to filter Notification Destinations by their display name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder displayNameContains(@Nullable String displayNameContains) {
             $.displayNameContains = displayNameContains;
             return this;
         }
 
-        /**
-         * @param notificationDestinations A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
-        public Builder notificationDestinations(@Nullable List<GetNotificationDestinationsNotificationDestination> notificationDestinations) {
-            $.notificationDestinations = notificationDestinations;
-            return this;
-        }
-
-        /**
-         * @param notificationDestinations A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
-        public Builder notificationDestinations(GetNotificationDestinationsNotificationDestination... notificationDestinations) {
-            return notificationDestinations(List.of(notificationDestinations));
-        }
-
-        /**
-         * @param type The type of the Notification Destination to filter by. Valid values are:
-         * * `EMAIL` - Filters Notification Destinations of type Email.
-         * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
-         * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
-         * * `SLACK` - Filters Notification Destinations of type Slack.
-         * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(@Nullable String type) {
             $.type = type;
             return this;

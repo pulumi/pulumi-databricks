@@ -4831,34 +4831,34 @@ export interface GetServingEndpointsEndpointAiGatewayArgs {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrail {
-    inputs?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailInput[];
+    inputProperties?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputProperty[];
     outputs?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutput[];
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailArgs {
-    inputs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputArgs>[]>;
+    inputProperties?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs>[]>;
     outputs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputArgs>[]>;
 }
 
-export interface GetServingEndpointsEndpointAiGatewayGuardrailInput {
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputProperty {
     invalidKeywords?: string[];
-    piis?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPii[];
+    piis?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii[];
     safety?: boolean;
     validTopics?: string[];
 }
 
-export interface GetServingEndpointsEndpointAiGatewayGuardrailInputArgs {
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs {
     invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
-    piis?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgs>[]>;
+    piis?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs>[]>;
     safety?: pulumi.Input<boolean>;
     validTopics?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPii {
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii {
     behavior: string;
 }
 
-export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgs {
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs {
     behavior: pulumi.Input<string>;
 }
 

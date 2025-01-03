@@ -13,6 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAwsAssumeRolePolicyResult {
+    private @Nullable String awsPartition;
+    /**
+     * @deprecated
+     * databricks_account_id will be will be removed in the next major release.
+     * 
+     */
+    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
     private @Nullable String databricksAccountId;
     private String externalId;
     private @Nullable Boolean forLogDelivery;
@@ -21,13 +28,18 @@ public final class GetAwsAssumeRolePolicyResult {
      * 
      */
     private String id;
-    /**
-     * @return AWS IAM Policy JSON document
-     * 
-     */
     private String json;
 
     private GetAwsAssumeRolePolicyResult() {}
+    public Optional<String> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
+    }
+    /**
+     * @deprecated
+     * databricks_account_id will be will be removed in the next major release.
+     * 
+     */
+    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
     public Optional<String> databricksAccountId() {
         return Optional.ofNullable(this.databricksAccountId);
     }
@@ -44,10 +56,6 @@ public final class GetAwsAssumeRolePolicyResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return AWS IAM Policy JSON document
-     * 
-     */
     public String json() {
         return this.json;
     }
@@ -61,6 +69,7 @@ public final class GetAwsAssumeRolePolicyResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String awsPartition;
         private @Nullable String databricksAccountId;
         private String externalId;
         private @Nullable Boolean forLogDelivery;
@@ -69,6 +78,7 @@ public final class GetAwsAssumeRolePolicyResult {
         public Builder() {}
         public Builder(GetAwsAssumeRolePolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.awsPartition = defaults.awsPartition;
     	      this.databricksAccountId = defaults.databricksAccountId;
     	      this.externalId = defaults.externalId;
     	      this.forLogDelivery = defaults.forLogDelivery;
@@ -76,6 +86,12 @@ public final class GetAwsAssumeRolePolicyResult {
     	      this.json = defaults.json;
         }
 
+        @CustomType.Setter
+        public Builder awsPartition(@Nullable String awsPartition) {
+
+            this.awsPartition = awsPartition;
+            return this;
+        }
         @CustomType.Setter
         public Builder databricksAccountId(@Nullable String databricksAccountId) {
 
@@ -114,6 +130,7 @@ public final class GetAwsAssumeRolePolicyResult {
         }
         public GetAwsAssumeRolePolicyResult build() {
             final var _resultValue = new GetAwsAssumeRolePolicyResult();
+            _resultValue.awsPartition = awsPartition;
             _resultValue.databricksAccountId = databricksAccountId;
             _resultValue.externalId = externalId;
             _resultValue.forLogDelivery = forLogDelivery;

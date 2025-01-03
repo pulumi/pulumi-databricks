@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves details about Volume that was created by Pulumi or manually.
-// A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using getVolumes data source.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult
@@ -25,21 +23,15 @@ func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getVolume.
 type LookupVolumeArgs struct {
-	// ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
-	Id *string `pulumi:"id"`
-	// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-	Name string `pulumi:"name"`
-	// `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
+	Id         *string              `pulumi:"id"`
+	Name       string               `pulumi:"name"`
 	VolumeInfo *GetVolumeVolumeInfo `pulumi:"volumeInfo"`
 }
 
 // A collection of values returned by getVolume.
 type LookupVolumeResult struct {
-	// ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
-	Id string `pulumi:"id"`
-	// the name of the volume
-	Name string `pulumi:"name"`
-	// `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
+	Id         string              `pulumi:"id"`
+	Name       string              `pulumi:"name"`
 	VolumeInfo GetVolumeVolumeInfo `pulumi:"volumeInfo"`
 }
 
@@ -54,11 +46,8 @@ func LookupVolumeOutput(ctx *pulumi.Context, args LookupVolumeOutputArgs, opts .
 
 // A collection of arguments for invoking getVolume.
 type LookupVolumeOutputArgs struct {
-	// ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
-	Name pulumi.StringInput `pulumi:"name"`
-	// `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
+	Id         pulumi.StringPtrInput       `pulumi:"id"`
+	Name       pulumi.StringInput          `pulumi:"name"`
 	VolumeInfo GetVolumeVolumeInfoPtrInput `pulumi:"volumeInfo"`
 }
 
@@ -81,17 +70,14 @@ func (o LookupVolumeResultOutput) ToLookupVolumeResultOutputWithContext(ctx cont
 	return o
 }
 
-// ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
 func (o LookupVolumeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// the name of the volume
 func (o LookupVolumeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
 func (o LookupVolumeResultOutput) VolumeInfo() GetVolumeVolumeInfoOutput {
 	return o.ApplyT(func(v LookupVolumeResult) GetVolumeVolumeInfo { return v.VolumeInfo }).(GetVolumeVolumeInfoOutput)
 }

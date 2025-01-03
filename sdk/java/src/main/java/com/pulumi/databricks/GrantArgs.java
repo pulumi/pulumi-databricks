@@ -24,6 +24,13 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.catalog);
     }
 
+    @Import(name="credential")
+    private @Nullable Output<String> credential;
+
+    public Optional<Output<String>> credential() {
+        return Optional.ofNullable(this.credential);
+    }
+
     @Import(name="externalLocation")
     private @Nullable Output<String> externalLocation;
 
@@ -126,6 +133,7 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
 
     private GrantArgs(GrantArgs $) {
         this.catalog = $.catalog;
+        this.credential = $.credential;
         this.externalLocation = $.externalLocation;
         this.foreignConnection = $.foreignConnection;
         this.function = $.function;
@@ -167,6 +175,15 @@ public final class GrantArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder catalog(String catalog) {
             return catalog(Output.of(catalog));
+        }
+
+        public Builder credential(@Nullable Output<String> credential) {
+            $.credential = credential;
+            return this;
+        }
+
+        public Builder credential(String credential) {
+            return credential(Output.of(credential));
         }
 
         public Builder externalLocation(@Nullable Output<String> externalLocation) {

@@ -16,71 +16,6 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
-/**
- * &gt; It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
- * 
- * &gt; This resource can only be used with a workspace-level provider!
- * 
- * In Databricks Runtime 13.3 and above, you can add libraries and init scripts to the allowlist in UC so that users can leverage these artifacts on compute configured with shared access mode.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.ArtifactAllowlist;
- * import com.pulumi.databricks.ArtifactAllowlistArgs;
- * import com.pulumi.databricks.inputs.ArtifactAllowlistArtifactMatcherArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var initScripts = new ArtifactAllowlist("initScripts", ArtifactAllowlistArgs.builder()
- *             .artifactType("INIT_SCRIPT")
- *             .artifactMatchers(ArtifactAllowlistArtifactMatcherArgs.builder()
- *                 .artifact("/Volumes/inits")
- *                 .matchType("PREFIX_MATCH")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Related Resources
- * 
- * The following resources are used in the same context:
- * 
- * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
- * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
- * 
- * ## Import
- * 
- * This resource can be imported by name:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this &#39;&lt;metastore_id&gt;|&lt;artifact_type&gt;&#39;
- * ```
- * 
- */
 @ResourceType(type="databricks:index/artifactAllowlist:ArtifactAllowlist")
 public class ArtifactAllowlist extends com.pulumi.resources.CustomResource {
     @Export(name="artifactMatchers", refs={List.class,ArtifactAllowlistArtifactMatcher.class}, tree="[0,1]")
@@ -89,59 +24,27 @@ public class ArtifactAllowlist extends com.pulumi.resources.CustomResource {
     public Output<List<ArtifactAllowlistArtifactMatcher>> artifactMatchers() {
         return this.artifactMatchers;
     }
-    /**
-     * The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-     * 
-     */
     @Export(name="artifactType", refs={String.class}, tree="[0]")
     private Output<String> artifactType;
 
-    /**
-     * @return The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-     * 
-     */
     public Output<String> artifactType() {
         return this.artifactType;
     }
-    /**
-     * Time at which this artifact allowlist was set.
-     * 
-     */
     @Export(name="createdAt", refs={Integer.class}, tree="[0]")
     private Output<Integer> createdAt;
 
-    /**
-     * @return Time at which this artifact allowlist was set.
-     * 
-     */
     public Output<Integer> createdAt() {
         return this.createdAt;
     }
-    /**
-     * Identity that set the artifact allowlist.
-     * 
-     */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
-    /**
-     * @return Identity that set the artifact allowlist.
-     * 
-     */
     public Output<String> createdBy() {
         return this.createdBy;
     }
-    /**
-     * ID of the parent metastore.
-     * 
-     */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
-    /**
-     * @return ID of the parent metastore.
-     * 
-     */
     public Output<String> metastoreId() {
         return this.metastoreId;
     }

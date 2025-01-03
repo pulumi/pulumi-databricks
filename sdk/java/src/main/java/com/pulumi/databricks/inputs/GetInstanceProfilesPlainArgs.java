@@ -15,17 +15,9 @@ public final class GetInstanceProfilesPlainArgs extends com.pulumi.resources.Inv
 
     public static final GetInstanceProfilesPlainArgs Empty = new GetInstanceProfilesPlainArgs();
 
-    /**
-     * Set of objects for a databricks_instance_profile. This contains the following attributes:
-     * 
-     */
     @Import(name="instanceProfiles")
     private @Nullable List<GetInstanceProfilesInstanceProfile> instanceProfiles;
 
-    /**
-     * @return Set of objects for a databricks_instance_profile. This contains the following attributes:
-     * 
-     */
     public Optional<List<GetInstanceProfilesInstanceProfile>> instanceProfiles() {
         return Optional.ofNullable(this.instanceProfiles);
     }
@@ -54,23 +46,11 @@ public final class GetInstanceProfilesPlainArgs extends com.pulumi.resources.Inv
             $ = new GetInstanceProfilesPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param instanceProfiles Set of objects for a databricks_instance_profile. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceProfiles(@Nullable List<GetInstanceProfilesInstanceProfile> instanceProfiles) {
             $.instanceProfiles = instanceProfiles;
             return this;
         }
 
-        /**
-         * @param instanceProfiles Set of objects for a databricks_instance_profile. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceProfiles(GetInstanceProfilesInstanceProfile... instanceProfiles) {
             return instanceProfiles(List.of(instanceProfiles));
         }

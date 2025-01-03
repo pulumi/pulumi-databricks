@@ -14,36 +14,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VectorSearchIndexDeltaSyncIndexSpec {
-    /**
-     * @return array of objects representing columns that contain the embedding source.  Each entry consists of:
-     * 
-     */
     private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
     private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
     private @Nullable String embeddingWritebackTable;
-    /**
-     * @return ID of the associated Delta Live Table pipeline.
-     * 
-     */
     private @Nullable String pipelineId;
-    /**
-     * @return Pipeline execution mode. Possible values are:
-     * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
-     * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
-     * 
-     */
     private @Nullable String pipelineType;
-    /**
-     * @return The name of the source table.
-     * 
-     */
     private @Nullable String sourceTable;
 
     private VectorSearchIndexDeltaSyncIndexSpec() {}
-    /**
-     * @return array of objects representing columns that contain the embedding source.  Each entry consists of:
-     * 
-     */
     public List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns() {
         return this.embeddingSourceColumns == null ? List.of() : this.embeddingSourceColumns;
     }
@@ -53,26 +31,12 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     public Optional<String> embeddingWritebackTable() {
         return Optional.ofNullable(this.embeddingWritebackTable);
     }
-    /**
-     * @return ID of the associated Delta Live Table pipeline.
-     * 
-     */
     public Optional<String> pipelineId() {
         return Optional.ofNullable(this.pipelineId);
     }
-    /**
-     * @return Pipeline execution mode. Possible values are:
-     * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
-     * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
-     * 
-     */
     public Optional<String> pipelineType() {
         return Optional.ofNullable(this.pipelineType);
     }
-    /**
-     * @return The name of the source table.
-     * 
-     */
     public Optional<String> sourceTable() {
         return Optional.ofNullable(this.sourceTable);
     }

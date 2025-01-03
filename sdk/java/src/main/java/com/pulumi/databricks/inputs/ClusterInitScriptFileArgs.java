@@ -14,17 +14,9 @@ public final class ClusterInitScriptFileArgs extends com.pulumi.resources.Resour
 
     public static final ClusterInitScriptFileArgs Empty = new ClusterInitScriptFileArgs();
 
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     * 
-     */
     @Import(name="destination", required=true)
     private Output<String> destination;
 
-    /**
-     * @return S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     * 
-     */
     public Output<String> destination() {
         return this.destination;
     }
@@ -53,23 +45,11 @@ public final class ClusterInitScriptFileArgs extends com.pulumi.resources.Resour
             $ = new ClusterInitScriptFileArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param destination S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destination(Output<String> destination) {
             $.destination = destination;
             return this;
         }
 
-        /**
-         * @param destination S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destination(String destination) {
             return destination(Output.of(destination));
         }

@@ -15,47 +15,23 @@ public final class MetastoreAssignmentState extends com.pulumi.resources.Resourc
 
     public static final MetastoreAssignmentState Empty = new MetastoreAssignmentState();
 
-    /**
-     * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
-     * 
-     */
     @Import(name="defaultCatalogName")
     private @Nullable Output<String> defaultCatalogName;
 
-    /**
-     * @return Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
-     * 
-     */
     public Optional<Output<String>> defaultCatalogName() {
         return Optional.ofNullable(this.defaultCatalogName);
     }
 
-    /**
-     * Unique identifier of the parent Metastore
-     * 
-     */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
-    /**
-     * @return Unique identifier of the parent Metastore
-     * 
-     */
     public Optional<Output<String>> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
 
-    /**
-     * id of the workspace for the assignment
-     * 
-     */
     @Import(name="workspaceId")
     private @Nullable Output<String> workspaceId;
 
-    /**
-     * @return id of the workspace for the assignment
-     * 
-     */
     public Optional<Output<String>> workspaceId() {
         return Optional.ofNullable(this.workspaceId);
     }
@@ -86,65 +62,29 @@ public final class MetastoreAssignmentState extends com.pulumi.resources.Resourc
             $ = new MetastoreAssignmentState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param defaultCatalogName Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
-         * 
-         * @return builder
-         * 
-         */
         public Builder defaultCatalogName(@Nullable Output<String> defaultCatalogName) {
             $.defaultCatalogName = defaultCatalogName;
             return this;
         }
 
-        /**
-         * @param defaultCatalogName Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
-         * 
-         * @return builder
-         * 
-         */
         public Builder defaultCatalogName(String defaultCatalogName) {
             return defaultCatalogName(Output.of(defaultCatalogName));
         }
 
-        /**
-         * @param metastoreId Unique identifier of the parent Metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
-        /**
-         * @param metastoreId Unique identifier of the parent Metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreId(String metastoreId) {
             return metastoreId(Output.of(metastoreId));
         }
 
-        /**
-         * @param workspaceId id of the workspace for the assignment
-         * 
-         * @return builder
-         * 
-         */
         public Builder workspaceId(@Nullable Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
 
-        /**
-         * @param workspaceId id of the workspace for the assignment
-         * 
-         * @return builder
-         * 
-         */
         public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }

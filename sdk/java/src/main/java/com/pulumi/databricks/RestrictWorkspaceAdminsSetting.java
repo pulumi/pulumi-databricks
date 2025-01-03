@@ -14,74 +14,6 @@ import com.pulumi.databricks.outputs.RestrictWorkspaceAdminsSettingRestrictWorks
 import java.lang.String;
 import javax.annotation.Nullable;
 
-/**
- * &gt; This resource can only be used with a workspace-level provider!
- * 
- * The `databricks.RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
- * 
- * With the status set to `ALLOW_ALL`, workspace admins can:
- * 
- * 1. Create service principal personal access tokens on behalf of any service principal in their workspace.
- * 2. Change a job owner to any user in the workspace.
- * 3. Change the job run_as setting to any user in their workspace or a service principal on which they have the Service Principal User role.
- * 
- * With the status set to `RESTRICT_TOKENS_AND_JOB_RUN_AS`, workspace admins can:
- * 
- * 1. Only create personal access tokens on behalf of service principals on which they have the Service Principal User role.
- * 2. Only change a job owner to themselves.
- * 3. Only change the job run_as setting to themselves a service principal on which they have the Service Principal User role.
- * 
- * &gt; Only account admins can update the setting. And the account admin must be part of the workspace to change the setting status.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.RestrictWorkspaceAdminsSetting;
- * import com.pulumi.databricks.RestrictWorkspaceAdminsSettingArgs;
- * import com.pulumi.databricks.inputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var this_ = new RestrictWorkspaceAdminsSetting("this", RestrictWorkspaceAdminsSettingArgs.builder()
- *             .restrictWorkspaceAdmins(RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs.builder()
- *                 .status("RESTRICT_TOKENS_AND_JOB_RUN_AS")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Import
- * 
- * This resource can be imported by predefined name `global`:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global
- * ```
- * 
- */
 @ResourceType(type="databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting")
 public class RestrictWorkspaceAdminsSetting extends com.pulumi.resources.CustomResource {
     @Export(name="etag", refs={String.class}, tree="[0]")
@@ -90,17 +22,9 @@ public class RestrictWorkspaceAdminsSetting extends com.pulumi.resources.CustomR
     public Output<String> etag() {
         return this.etag;
     }
-    /**
-     * The configuration details.
-     * 
-     */
     @Export(name="restrictWorkspaceAdmins", refs={RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins.class}, tree="[0]")
     private Output<RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins> restrictWorkspaceAdmins;
 
-    /**
-     * @return The configuration details.
-     * 
-     */
     public Output<RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins> restrictWorkspaceAdmins() {
         return this.restrictWorkspaceAdmins;
     }

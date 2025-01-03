@@ -18,62 +18,30 @@ public final class GetShareArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetShareArgs Empty = new GetShareArgs();
 
-    /**
-     * Time when the share was created.
-     * 
-     */
     @Import(name="createdAt")
     private @Nullable Output<Integer> createdAt;
 
-    /**
-     * @return Time when the share was created.
-     * 
-     */
     public Optional<Output<Integer>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
-    /**
-     * The principal that created the share.
-     * 
-     */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
-    /**
-     * @return The principal that created the share.
-     * 
-     */
     public Optional<Output<String>> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
-    /**
-     * The name of the share
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the share
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * arrays containing details of each object in the share.
-     * 
-     */
     @Import(name="objects")
     private @Nullable Output<List<GetShareObjectArgs>> objects;
 
-    /**
-     * @return arrays containing details of each object in the share.
-     * 
-     */
     public Optional<Output<List<GetShareObjectArgs>>> objects() {
         return Optional.ofNullable(this.objects);
     }
@@ -105,96 +73,42 @@ public final class GetShareArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetShareArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param createdAt Time when the share was created.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdAt(@Nullable Output<Integer> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
-        /**
-         * @param createdAt Time when the share was created.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdAt(Integer createdAt) {
             return createdAt(Output.of(createdAt));
         }
 
-        /**
-         * @param createdBy The principal that created the share.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdBy(@Nullable Output<String> createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
-        /**
-         * @param createdBy The principal that created the share.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdBy(String createdBy) {
             return createdBy(Output.of(createdBy));
         }
 
-        /**
-         * @param name The name of the share
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the share
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param objects arrays containing details of each object in the share.
-         * 
-         * @return builder
-         * 
-         */
         public Builder objects(@Nullable Output<List<GetShareObjectArgs>> objects) {
             $.objects = objects;
             return this;
         }
 
-        /**
-         * @param objects arrays containing details of each object in the share.
-         * 
-         * @return builder
-         * 
-         */
         public Builder objects(List<GetShareObjectArgs> objects) {
             return objects(Output.of(objects));
         }
 
-        /**
-         * @param objects arrays containing details of each object in the share.
-         * 
-         * @return builder
-         * 
-         */
         public Builder objects(GetShareObjectArgs... objects) {
             return objects(List.of(objects));
         }

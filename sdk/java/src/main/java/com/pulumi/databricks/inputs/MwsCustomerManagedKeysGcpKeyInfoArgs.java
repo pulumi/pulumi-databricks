@@ -14,17 +14,9 @@ public final class MwsCustomerManagedKeysGcpKeyInfoArgs extends com.pulumi.resou
 
     public static final MwsCustomerManagedKeysGcpKeyInfoArgs Empty = new MwsCustomerManagedKeysGcpKeyInfoArgs();
 
-    /**
-     * The GCP KMS key&#39;s resource name.
-     * 
-     */
     @Import(name="kmsKeyId", required=true)
     private Output<String> kmsKeyId;
 
-    /**
-     * @return The GCP KMS key&#39;s resource name.
-     * 
-     */
     public Output<String> kmsKeyId() {
         return this.kmsKeyId;
     }
@@ -53,23 +45,11 @@ public final class MwsCustomerManagedKeysGcpKeyInfoArgs extends com.pulumi.resou
             $ = new MwsCustomerManagedKeysGcpKeyInfoArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param kmsKeyId The GCP KMS key&#39;s resource name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder kmsKeyId(Output<String> kmsKeyId) {
             $.kmsKeyId = kmsKeyId;
             return this;
         }
 
-        /**
-         * @param kmsKeyId The GCP KMS key&#39;s resource name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
         }

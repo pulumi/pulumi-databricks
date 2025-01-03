@@ -17,46 +17,16 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
 
     public static final AccessControlRuleSetGrantRuleArgs Empty = new AccessControlRuleSetGrantRuleArgs();
 
-    /**
-     * a list of principals who are granted a role. The following format is supported:
-     * * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-     * * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-     * * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
-     * 
-     */
     @Import(name="principals")
     private @Nullable Output<List<String>> principals;
 
-    /**
-     * @return a list of principals who are granted a role. The following format is supported:
-     * * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-     * * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-     * * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
-     * 
-     */
     public Optional<Output<List<String>>> principals() {
         return Optional.ofNullable(this.principals);
     }
 
-    /**
-     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
-     * * `roles/servicePrincipal.manager` - Manager of a service principal.
-     * * `roles/servicePrincipal.user` - User of a service principal.
-     * * `roles/group.manager` - Manager of a group.
-     * * `roles/marketplace.admin` - Admin of marketplace.
-     * 
-     */
     @Import(name="role", required=true)
     private Output<String> role;
 
-    /**
-     * @return Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
-     * * `roles/servicePrincipal.manager` - Manager of a service principal.
-     * * `roles/servicePrincipal.user` - User of a service principal.
-     * * `roles/group.manager` - Manager of a group.
-     * * `roles/marketplace.admin` - Admin of marketplace.
-     * 
-     */
     public Output<String> role() {
         return this.role;
     }
@@ -86,71 +56,24 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
             $ = new AccessControlRuleSetGrantRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param principals a list of principals who are granted a role. The following format is supported:
-         * * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-         * * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-         * * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
-         * 
-         * @return builder
-         * 
-         */
         public Builder principals(@Nullable Output<List<String>> principals) {
             $.principals = principals;
             return this;
         }
 
-        /**
-         * @param principals a list of principals who are granted a role. The following format is supported:
-         * * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-         * * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-         * * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
-         * 
-         * @return builder
-         * 
-         */
         public Builder principals(List<String> principals) {
             return principals(Output.of(principals));
         }
 
-        /**
-         * @param principals a list of principals who are granted a role. The following format is supported:
-         * * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-         * * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-         * * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
-         * 
-         * @return builder
-         * 
-         */
         public Builder principals(String... principals) {
             return principals(List.of(principals));
         }
 
-        /**
-         * @param role Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
-         * * `roles/servicePrincipal.manager` - Manager of a service principal.
-         * * `roles/servicePrincipal.user` - User of a service principal.
-         * * `roles/group.manager` - Manager of a group.
-         * * `roles/marketplace.admin` - Admin of marketplace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder role(Output<String> role) {
             $.role = role;
             return this;
         }
 
-        /**
-         * @param role Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
-         * * `roles/servicePrincipal.manager` - Manager of a service principal.
-         * * `roles/servicePrincipal.user` - User of a service principal.
-         * * `roles/group.manager` - Manager of a group.
-         * * `roles/marketplace.admin` - Admin of marketplace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder role(String role) {
             return role(Output.of(role));
         }

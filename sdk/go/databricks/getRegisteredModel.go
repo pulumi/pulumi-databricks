@@ -11,43 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > This resource can only be used with a workspace-level provider!
-//
-// This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.LookupRegisteredModel(ctx, &databricks.LookupRegisteredModelArgs{
-//				FullName: "main.default.my_model",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * RegisteredModel resource to manage models within Unity Catalog.
-// * ModelServing to serve this model on a Databricks serving endpoint.
-// * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
 func LookupRegisteredModel(ctx *pulumi.Context, args *LookupRegisteredModelArgs, opts ...pulumi.InvokeOption) (*LookupRegisteredModelResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegisteredModelResult
@@ -60,26 +23,20 @@ func LookupRegisteredModel(ctx *pulumi.Context, args *LookupRegisteredModelArgs,
 
 // A collection of arguments for invoking getRegisteredModel.
 type LookupRegisteredModelArgs struct {
-	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-	FullName string `pulumi:"fullName"`
-	// flag to specify if list of aliases should be included into output.
-	IncludeAliases *bool `pulumi:"includeAliases"`
-	// flag to specify if include registered models in the response for which the principal can only access selective metadata for.
-	IncludeBrowse *bool `pulumi:"includeBrowse"`
-	// block with information about the model in Unity Catalog:
-	ModelInfos []GetRegisteredModelModelInfo `pulumi:"modelInfos"`
+	FullName       string                        `pulumi:"fullName"`
+	IncludeAliases *bool                         `pulumi:"includeAliases"`
+	IncludeBrowse  *bool                         `pulumi:"includeBrowse"`
+	ModelInfos     []GetRegisteredModelModelInfo `pulumi:"modelInfos"`
 }
 
 // A collection of values returned by getRegisteredModel.
 type LookupRegisteredModelResult struct {
-	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
 	FullName string `pulumi:"fullName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string `pulumi:"id"`
-	IncludeAliases *bool  `pulumi:"includeAliases"`
-	IncludeBrowse  *bool  `pulumi:"includeBrowse"`
-	// block with information about the model in Unity Catalog:
-	ModelInfos []GetRegisteredModelModelInfo `pulumi:"modelInfos"`
+	Id             string                        `pulumi:"id"`
+	IncludeAliases *bool                         `pulumi:"includeAliases"`
+	IncludeBrowse  *bool                         `pulumi:"includeBrowse"`
+	ModelInfos     []GetRegisteredModelModelInfo `pulumi:"modelInfos"`
 }
 
 func LookupRegisteredModelOutput(ctx *pulumi.Context, args LookupRegisteredModelOutputArgs, opts ...pulumi.InvokeOption) LookupRegisteredModelResultOutput {
@@ -93,14 +50,10 @@ func LookupRegisteredModelOutput(ctx *pulumi.Context, args LookupRegisteredModel
 
 // A collection of arguments for invoking getRegisteredModel.
 type LookupRegisteredModelOutputArgs struct {
-	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-	FullName pulumi.StringInput `pulumi:"fullName"`
-	// flag to specify if list of aliases should be included into output.
-	IncludeAliases pulumi.BoolPtrInput `pulumi:"includeAliases"`
-	// flag to specify if include registered models in the response for which the principal can only access selective metadata for.
-	IncludeBrowse pulumi.BoolPtrInput `pulumi:"includeBrowse"`
-	// block with information about the model in Unity Catalog:
-	ModelInfos GetRegisteredModelModelInfoArrayInput `pulumi:"modelInfos"`
+	FullName       pulumi.StringInput                    `pulumi:"fullName"`
+	IncludeAliases pulumi.BoolPtrInput                   `pulumi:"includeAliases"`
+	IncludeBrowse  pulumi.BoolPtrInput                   `pulumi:"includeBrowse"`
+	ModelInfos     GetRegisteredModelModelInfoArrayInput `pulumi:"modelInfos"`
 }
 
 func (LookupRegisteredModelOutputArgs) ElementType() reflect.Type {
@@ -122,7 +75,6 @@ func (o LookupRegisteredModelResultOutput) ToLookupRegisteredModelResultOutputWi
 	return o
 }
 
-// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
 func (o LookupRegisteredModelResultOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredModelResult) string { return v.FullName }).(pulumi.StringOutput)
 }
@@ -140,7 +92,6 @@ func (o LookupRegisteredModelResultOutput) IncludeBrowse() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v LookupRegisteredModelResult) *bool { return v.IncludeBrowse }).(pulumi.BoolPtrOutput)
 }
 
-// block with information about the model in Unity Catalog:
 func (o LookupRegisteredModelResultOutput) ModelInfos() GetRegisteredModelModelInfoArrayOutput {
 	return o.ApplyT(func(v LookupRegisteredModelResult) []GetRegisteredModelModelInfo { return v.ModelInfos }).(GetRegisteredModelModelInfoArrayOutput)
 }

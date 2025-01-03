@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MlflowWebhookJobSpec {
-    /**
-     * @return The personal access token used to authorize webhook&#39;s job runs.
-     * 
-     */
     private String accessToken;
-    /**
-     * @return ID of the Databricks job that the webhook runs.
-     * 
-     */
     private String jobId;
-    /**
-     * @return URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
-     * 
-     */
     private @Nullable String workspaceUrl;
 
     private MlflowWebhookJobSpec() {}
-    /**
-     * @return The personal access token used to authorize webhook&#39;s job runs.
-     * 
-     */
     public String accessToken() {
         return this.accessToken;
     }
-    /**
-     * @return ID of the Databricks job that the webhook runs.
-     * 
-     */
     public String jobId() {
         return this.jobId;
     }
-    /**
-     * @return URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
-     * 
-     */
     public Optional<String> workspaceUrl() {
         return Optional.ofNullable(this.workspaceUrl);
     }

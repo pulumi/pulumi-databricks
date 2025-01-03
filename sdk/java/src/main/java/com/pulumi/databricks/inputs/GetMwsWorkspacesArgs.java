@@ -16,17 +16,9 @@ public final class GetMwsWorkspacesArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetMwsWorkspacesArgs Empty = new GetMwsWorkspacesArgs();
 
-    /**
-     * name-to-id map for all of the workspaces in the account
-     * 
-     */
     @Import(name="ids")
     private @Nullable Output<Map<String,String>> ids;
 
-    /**
-     * @return name-to-id map for all of the workspaces in the account
-     * 
-     */
     public Optional<Output<Map<String,String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
@@ -55,23 +47,11 @@ public final class GetMwsWorkspacesArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetMwsWorkspacesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ids name-to-id map for all of the workspaces in the account
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(@Nullable Output<Map<String,String>> ids) {
             $.ids = ids;
             return this;
         }
 
-        /**
-         * @param ids name-to-id map for all of the workspaces in the account
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(Map<String,String> ids) {
             return ids(Output.of(ids));
         }

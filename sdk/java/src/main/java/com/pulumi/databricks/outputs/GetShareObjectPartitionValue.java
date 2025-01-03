@@ -12,20 +12,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetShareObjectPartitionValue {
-    /**
-     * @return The name of the share
-     * 
-     */
     private String name;
     private String op;
     private @Nullable String recipientPropertyKey;
     private @Nullable String value;
 
     private GetShareObjectPartitionValue() {}
-    /**
-     * @return The name of the share
-     * 
-     */
     public String name() {
         return this.name;
     }

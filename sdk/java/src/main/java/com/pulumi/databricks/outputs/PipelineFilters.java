@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineFilters {
-    /**
-     * @return Paths to exclude.
-     * 
-     */
     private @Nullable List<String> excludes;
-    /**
-     * @return Paths to include.
-     * 
-     */
     private @Nullable List<String> includes;
 
     private PipelineFilters() {}
-    /**
-     * @return Paths to exclude.
-     * 
-     */
     public List<String> excludes() {
         return this.excludes == null ? List.of() : this.excludes;
     }
-    /**
-     * @return Paths to include.
-     * 
-     */
     public List<String> includes() {
         return this.includes == null ? List.of() : this.includes;
     }

@@ -17,62 +17,30 @@ public final class VectorSearchIndexStatusArgs extends com.pulumi.resources.Reso
 
     public static final VectorSearchIndexStatusArgs Empty = new VectorSearchIndexStatusArgs();
 
-    /**
-     * Index API Url to be used to perform operations on the index
-     * 
-     */
     @Import(name="indexUrl")
     private @Nullable Output<String> indexUrl;
 
-    /**
-     * @return Index API Url to be used to perform operations on the index
-     * 
-     */
     public Optional<Output<String>> indexUrl() {
         return Optional.ofNullable(this.indexUrl);
     }
 
-    /**
-     * Number of rows indexed
-     * 
-     */
     @Import(name="indexedRowCount")
     private @Nullable Output<Integer> indexedRowCount;
 
-    /**
-     * @return Number of rows indexed
-     * 
-     */
     public Optional<Output<Integer>> indexedRowCount() {
         return Optional.ofNullable(this.indexedRowCount);
     }
 
-    /**
-     * Message associated with the index status
-     * 
-     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
-    /**
-     * @return Message associated with the index status
-     * 
-     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
 
-    /**
-     * Whether the index is ready for search
-     * 
-     */
     @Import(name="ready")
     private @Nullable Output<Boolean> ready;
 
-    /**
-     * @return Whether the index is ready for search
-     * 
-     */
     public Optional<Output<Boolean>> ready() {
         return Optional.ofNullable(this.ready);
     }
@@ -104,86 +72,38 @@ public final class VectorSearchIndexStatusArgs extends com.pulumi.resources.Reso
             $ = new VectorSearchIndexStatusArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param indexUrl Index API Url to be used to perform operations on the index
-         * 
-         * @return builder
-         * 
-         */
         public Builder indexUrl(@Nullable Output<String> indexUrl) {
             $.indexUrl = indexUrl;
             return this;
         }
 
-        /**
-         * @param indexUrl Index API Url to be used to perform operations on the index
-         * 
-         * @return builder
-         * 
-         */
         public Builder indexUrl(String indexUrl) {
             return indexUrl(Output.of(indexUrl));
         }
 
-        /**
-         * @param indexedRowCount Number of rows indexed
-         * 
-         * @return builder
-         * 
-         */
         public Builder indexedRowCount(@Nullable Output<Integer> indexedRowCount) {
             $.indexedRowCount = indexedRowCount;
             return this;
         }
 
-        /**
-         * @param indexedRowCount Number of rows indexed
-         * 
-         * @return builder
-         * 
-         */
         public Builder indexedRowCount(Integer indexedRowCount) {
             return indexedRowCount(Output.of(indexedRowCount));
         }
 
-        /**
-         * @param message Message associated with the index status
-         * 
-         * @return builder
-         * 
-         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
-        /**
-         * @param message Message associated with the index status
-         * 
-         * @return builder
-         * 
-         */
         public Builder message(String message) {
             return message(Output.of(message));
         }
 
-        /**
-         * @param ready Whether the index is ready for search
-         * 
-         * @return builder
-         * 
-         */
         public Builder ready(@Nullable Output<Boolean> ready) {
             $.ready = ready;
             return this;
         }
 
-        /**
-         * @param ready Whether the index is ready for search
-         * 
-         * @return builder
-         * 
-         */
         public Builder ready(Boolean ready) {
             return ready(Output.of(ready));
         }

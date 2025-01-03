@@ -16,47 +16,23 @@ public final class GetCatalogPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetCatalogPlainArgs Empty = new GetCatalogPlainArgs();
 
-    /**
-     * the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
-     * 
-     */
     @Import(name="catalogInfo")
     private @Nullable GetCatalogCatalogInfo catalogInfo;
 
-    /**
-     * @return the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
-     * 
-     */
     public Optional<GetCatalogCatalogInfo> catalogInfo() {
         return Optional.ofNullable(this.catalogInfo);
     }
 
-    /**
-     * same as the `name`
-     * 
-     */
     @Import(name="id")
     private @Nullable String id;
 
-    /**
-     * @return same as the `name`
-     * 
-     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * name of the catalog
-     * 
-     */
     @Import(name="name", required=true)
     private String name;
 
-    /**
-     * @return name of the catalog
-     * 
-     */
     public String name() {
         return this.name;
     }
@@ -87,34 +63,16 @@ public final class GetCatalogPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetCatalogPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param catalogInfo the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalogInfo(@Nullable GetCatalogCatalogInfo catalogInfo) {
             $.catalogInfo = catalogInfo;
             return this;
         }
 
-        /**
-         * @param id same as the `name`
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable String id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param name name of the catalog
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             $.name = name;
             return this;

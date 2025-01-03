@@ -15,137 +15,49 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntity {
-    /**
-     * @return The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
-     * 
-     */
     private @Nullable String entityName;
-    /**
-     * @return The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
-     * 
-     */
     private @Nullable String entityVersion;
-    /**
-     * @return An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
-     * 
-     */
     private @Nullable Map<String,String> environmentVars;
-    /**
-     * @return The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
-     * 
-     */
     private @Nullable ModelServingConfigServedEntityExternalModel externalModel;
-    /**
-     * @return ARN of the instance profile that the served entity uses to access AWS resources.
-     * 
-     */
     private @Nullable String instanceProfileArn;
-    /**
-     * @return The maximum tokens per second that the endpoint can scale up to.
-     * 
-     */
     private @Nullable Integer maxProvisionedThroughput;
-    /**
-     * @return The minimum tokens per second that the endpoint can scale down to.
-     * 
-     */
     private @Nullable Integer minProvisionedThroughput;
-    /**
-     * @return The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with &#39;.&#39; and &#39;:&#39; replaced with &#39;-&#39;, and if not specified for other entities, it defaults to -.
-     * 
-     */
     private @Nullable String name;
-    /**
-     * @return Whether the compute resources for the served entity should scale down to zero.
-     * 
-     */
     private @Nullable Boolean scaleToZeroEnabled;
-    /**
-     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
-     * 
-     */
     private @Nullable String workloadSize;
-    /**
-     * @return The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
-     * 
-     */
     private @Nullable String workloadType;
 
     private ModelServingConfigServedEntity() {}
-    /**
-     * @return The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
-     * 
-     */
     public Optional<String> entityName() {
         return Optional.ofNullable(this.entityName);
     }
-    /**
-     * @return The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
-     * 
-     */
     public Optional<String> entityVersion() {
         return Optional.ofNullable(this.entityVersion);
     }
-    /**
-     * @return An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{&#34;OPENAI_API_KEY&#34;: &#34;{{secrets/my_scope/my_key}}&#34;, &#34;DATABRICKS_TOKEN&#34;: &#34;{{secrets/my_scope2/my_key2}}&#34;}```
-     * 
-     */
     public Map<String,String> environmentVars() {
         return this.environmentVars == null ? Map.of() : this.environmentVars;
     }
-    /**
-     * @return The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
-     * 
-     */
     public Optional<ModelServingConfigServedEntityExternalModel> externalModel() {
         return Optional.ofNullable(this.externalModel);
     }
-    /**
-     * @return ARN of the instance profile that the served entity uses to access AWS resources.
-     * 
-     */
     public Optional<String> instanceProfileArn() {
         return Optional.ofNullable(this.instanceProfileArn);
     }
-    /**
-     * @return The maximum tokens per second that the endpoint can scale up to.
-     * 
-     */
     public Optional<Integer> maxProvisionedThroughput() {
         return Optional.ofNullable(this.maxProvisionedThroughput);
     }
-    /**
-     * @return The minimum tokens per second that the endpoint can scale down to.
-     * 
-     */
     public Optional<Integer> minProvisionedThroughput() {
         return Optional.ofNullable(this.minProvisionedThroughput);
     }
-    /**
-     * @return The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with &#39;.&#39; and &#39;:&#39; replaced with &#39;-&#39;, and if not specified for other entities, it defaults to -.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return Whether the compute resources for the served entity should scale down to zero.
-     * 
-     */
     public Optional<Boolean> scaleToZeroEnabled() {
         return Optional.ofNullable(this.scaleToZeroEnabled);
     }
-    /**
-     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
-     * 
-     */
     public Optional<String> workloadSize() {
         return Optional.ofNullable(this.workloadSize);
     }
-    /**
-     * @return The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
-     * 
-     */
     public Optional<String> workloadType() {
         return Optional.ofNullable(this.workloadType);
     }

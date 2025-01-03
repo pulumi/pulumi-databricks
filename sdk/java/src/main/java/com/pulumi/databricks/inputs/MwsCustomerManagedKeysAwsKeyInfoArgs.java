@@ -16,47 +16,23 @@ public final class MwsCustomerManagedKeysAwsKeyInfoArgs extends com.pulumi.resou
 
     public static final MwsCustomerManagedKeysAwsKeyInfoArgs Empty = new MwsCustomerManagedKeysAwsKeyInfoArgs();
 
-    /**
-     * The AWS KMS key alias.
-     * 
-     */
     @Import(name="keyAlias")
     private @Nullable Output<String> keyAlias;
 
-    /**
-     * @return The AWS KMS key alias.
-     * 
-     */
     public Optional<Output<String>> keyAlias() {
         return Optional.ofNullable(this.keyAlias);
     }
 
-    /**
-     * The AWS KMS key&#39;s Amazon Resource Name (ARN).
-     * 
-     */
     @Import(name="keyArn", required=true)
     private Output<String> keyArn;
 
-    /**
-     * @return The AWS KMS key&#39;s Amazon Resource Name (ARN).
-     * 
-     */
     public Output<String> keyArn() {
         return this.keyArn;
     }
 
-    /**
-     * (Computed) The AWS region in which KMS key is deployed to. This is not required.
-     * 
-     */
     @Import(name="keyRegion")
     private @Nullable Output<String> keyRegion;
 
-    /**
-     * @return (Computed) The AWS region in which KMS key is deployed to. This is not required.
-     * 
-     */
     public Optional<Output<String>> keyRegion() {
         return Optional.ofNullable(this.keyRegion);
     }
@@ -87,65 +63,29 @@ public final class MwsCustomerManagedKeysAwsKeyInfoArgs extends com.pulumi.resou
             $ = new MwsCustomerManagedKeysAwsKeyInfoArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param keyAlias The AWS KMS key alias.
-         * 
-         * @return builder
-         * 
-         */
         public Builder keyAlias(@Nullable Output<String> keyAlias) {
             $.keyAlias = keyAlias;
             return this;
         }
 
-        /**
-         * @param keyAlias The AWS KMS key alias.
-         * 
-         * @return builder
-         * 
-         */
         public Builder keyAlias(String keyAlias) {
             return keyAlias(Output.of(keyAlias));
         }
 
-        /**
-         * @param keyArn The AWS KMS key&#39;s Amazon Resource Name (ARN).
-         * 
-         * @return builder
-         * 
-         */
         public Builder keyArn(Output<String> keyArn) {
             $.keyArn = keyArn;
             return this;
         }
 
-        /**
-         * @param keyArn The AWS KMS key&#39;s Amazon Resource Name (ARN).
-         * 
-         * @return builder
-         * 
-         */
         public Builder keyArn(String keyArn) {
             return keyArn(Output.of(keyArn));
         }
 
-        /**
-         * @param keyRegion (Computed) The AWS region in which KMS key is deployed to. This is not required.
-         * 
-         * @return builder
-         * 
-         */
         public Builder keyRegion(@Nullable Output<String> keyRegion) {
             $.keyRegion = keyRegion;
             return this;
         }
 
-        /**
-         * @param keyRegion (Computed) The AWS region in which KMS key is deployed to. This is not required.
-         * 
-         * @return builder
-         * 
-         */
         public Builder keyRegion(String keyRegion) {
             return keyRegion(Output.of(keyRegion));
         }

@@ -12,106 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.
-//
-// ## Example Usage
-//
-// # Attach an instance profile to a group
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instance_profile", &databricks.InstanceProfileArgs{
-//				InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			myGroup, err := databricks.NewGroup(ctx, "my_group", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("my_group_name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewGroupRole(ctx, "my_group_instance_profile", &databricks.GroupRoleArgs{
-//				GroupId: myGroup.ID(),
-//				Role:    instanceProfile.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// # Attach account admin role to an account-level group
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myGroup, err := databricks.NewGroup(ctx, "my_group", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("my_group_name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewGroupRole(ctx, "my_group_account_admin", &databricks.GroupRoleArgs{
-//				GroupId: myGroup.ID(),
-//				Role:    pulumi.String("account_admin"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * End to end workspace management guide.
-// * getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-// * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
-// * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-// * Group data to retrieve information about Group members, entitlements and instance profiles.
-// * GroupMember to attach users and groups as group members.
-// * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-// * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-// * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
-//
-// ## Import
-//
-// !> Importing this resource is not currently supported.
 type GroupRole struct {
 	pulumi.CustomResourceState
 
-	// This is the id of the group resource.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// Either a role name or the ARN/ID of the instance profile resource.
-	Role pulumi.StringOutput `pulumi:"role"`
+	Role    pulumi.StringOutput `pulumi:"role"`
 }
 
 // NewGroupRole registers a new resource with the given unique name, arguments, and options.
@@ -150,17 +55,13 @@ func GetGroupRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupRole resources.
 type groupRoleState struct {
-	// This is the id of the group resource.
 	GroupId *string `pulumi:"groupId"`
-	// Either a role name or the ARN/ID of the instance profile resource.
-	Role *string `pulumi:"role"`
+	Role    *string `pulumi:"role"`
 }
 
 type GroupRoleState struct {
-	// This is the id of the group resource.
 	GroupId pulumi.StringPtrInput
-	// Either a role name or the ARN/ID of the instance profile resource.
-	Role pulumi.StringPtrInput
+	Role    pulumi.StringPtrInput
 }
 
 func (GroupRoleState) ElementType() reflect.Type {
@@ -168,18 +69,14 @@ func (GroupRoleState) ElementType() reflect.Type {
 }
 
 type groupRoleArgs struct {
-	// This is the id of the group resource.
 	GroupId string `pulumi:"groupId"`
-	// Either a role name or the ARN/ID of the instance profile resource.
-	Role string `pulumi:"role"`
+	Role    string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a GroupRole resource.
 type GroupRoleArgs struct {
-	// This is the id of the group resource.
 	GroupId pulumi.StringInput
-	// Either a role name or the ARN/ID of the instance profile resource.
-	Role pulumi.StringInput
+	Role    pulumi.StringInput
 }
 
 func (GroupRoleArgs) ElementType() reflect.Type {
@@ -269,12 +166,10 @@ func (o GroupRoleOutput) ToGroupRoleOutputWithContext(ctx context.Context) Group
 	return o
 }
 
-// This is the id of the group resource.
 func (o GroupRoleOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupRole) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// Either a role name or the ARN/ID of the instance profile resource.
 func (o GroupRoleOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupRole) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

@@ -14,53 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingAiGatewayGuardrailsOutput {
-    /**
-     * @return List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-     * 
-     */
     private @Nullable List<String> invalidKeywords;
-    /**
-     * @return Block with configuration for guardrail PII filter:
-     * 
-     */
     private @Nullable ModelServingAiGatewayGuardrailsOutputPii pii;
-    /**
-     * @return the boolean flag that indicates whether the safety filter is enabled.
-     * 
-     */
     private @Nullable Boolean safety;
-    /**
-     * @return The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-     * 
-     */
     private @Nullable List<String> validTopics;
 
     private ModelServingAiGatewayGuardrailsOutput() {}
-    /**
-     * @return List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
-     * 
-     */
     public List<String> invalidKeywords() {
         return this.invalidKeywords == null ? List.of() : this.invalidKeywords;
     }
-    /**
-     * @return Block with configuration for guardrail PII filter:
-     * 
-     */
     public Optional<ModelServingAiGatewayGuardrailsOutputPii> pii() {
         return Optional.ofNullable(this.pii);
     }
-    /**
-     * @return the boolean flag that indicates whether the safety filter is enabled.
-     * 
-     */
     public Optional<Boolean> safety() {
         return Optional.ofNullable(this.safety);
     }
-    /**
-     * @return The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
-     * 
-     */
     public List<String> validTopics() {
         return this.validTopics == null ? List.of() : this.validTopics;
     }

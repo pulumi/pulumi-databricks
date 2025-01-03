@@ -13,33 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobPipelineTask {
-    /**
-     * @return (Bool) Specifies if there should be full refresh of the pipeline.
-     * 
-     * &gt; The following configuration blocks are only supported inside a `task` block
-     * 
-     */
     private @Nullable Boolean fullRefresh;
-    /**
-     * @return The pipeline&#39;s unique ID.
-     * 
-     */
     private String pipelineId;
 
     private JobPipelineTask() {}
-    /**
-     * @return (Bool) Specifies if there should be full refresh of the pipeline.
-     * 
-     * &gt; The following configuration blocks are only supported inside a `task` block
-     * 
-     */
     public Optional<Boolean> fullRefresh() {
         return Optional.ofNullable(this.fullRefresh);
     }
-    /**
-     * @return The pipeline&#39;s unique ID.
-     * 
-     */
     public String pipelineId() {
         return this.pipelineId;
     }

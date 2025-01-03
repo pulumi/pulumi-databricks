@@ -15,221 +15,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSchemaSchemaInfo {
-    /**
-     * @return indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
-     * 
-     */
     private @Nullable Boolean browseOnly;
-    /**
-     * @return the name of the catalog where the schema is.
-     * 
-     */
     private @Nullable String catalogName;
-    /**
-     * @return the type of the parent catalog.
-     * 
-     */
     private @Nullable String catalogType;
-    /**
-     * @return the comment attached to the volume
-     * 
-     */
     private @Nullable String comment;
-    /**
-     * @return time at which this schema was created, in epoch milliseconds.
-     * 
-     */
     private @Nullable Integer createdAt;
-    /**
-     * @return username of schema creator.
-     * 
-     */
     private @Nullable String createdBy;
-    /**
-     * @return information about actual state of predictive optimization.
-     * 
-     */
     private @Nullable GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag effectivePredictiveOptimizationFlag;
-    /**
-     * @return whether predictive optimization should be enabled for this object and objects under it.
-     * 
-     */
     private @Nullable String enablePredictiveOptimization;
-    /**
-     * @return the two-level (fully qualified) name of the schema
-     * 
-     */
     private @Nullable String fullName;
-    /**
-     * @return the unique identifier of the metastore
-     * 
-     */
     private @Nullable String metastoreId;
-    /**
-     * @return a fully qualified name of databricks_schema: *`catalog`.`schema`*
-     * 
-     */
     private @Nullable String name;
-    /**
-     * @return the identifier of the user who owns the schema
-     * 
-     */
     private @Nullable String owner;
-    /**
-     * @return map of properties set on the schema
-     * 
-     */
     private @Nullable Map<String,String> properties;
-    /**
-     * @return the unique identifier of the volume
-     * 
-     */
     private @Nullable String schemaId;
-    /**
-     * @return the storage location on the cloud.
-     * 
-     */
     private @Nullable String storageLocation;
-    /**
-     * @return storage root URL for managed tables within schema.
-     * 
-     */
     private @Nullable String storageRoot;
-    /**
-     * @return the timestamp of the last time changes were made to the schema
-     * 
-     */
     private @Nullable Integer updatedAt;
-    /**
-     * @return the identifier of the user who updated the schema last time
-     * 
-     */
     private @Nullable String updatedBy;
 
     private GetSchemaSchemaInfo() {}
-    /**
-     * @return indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
-     * 
-     */
     public Optional<Boolean> browseOnly() {
         return Optional.ofNullable(this.browseOnly);
     }
-    /**
-     * @return the name of the catalog where the schema is.
-     * 
-     */
     public Optional<String> catalogName() {
         return Optional.ofNullable(this.catalogName);
     }
-    /**
-     * @return the type of the parent catalog.
-     * 
-     */
     public Optional<String> catalogType() {
         return Optional.ofNullable(this.catalogType);
     }
-    /**
-     * @return the comment attached to the volume
-     * 
-     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
-    /**
-     * @return time at which this schema was created, in epoch milliseconds.
-     * 
-     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
-    /**
-     * @return username of schema creator.
-     * 
-     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
-    /**
-     * @return information about actual state of predictive optimization.
-     * 
-     */
     public Optional<GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag> effectivePredictiveOptimizationFlag() {
         return Optional.ofNullable(this.effectivePredictiveOptimizationFlag);
     }
-    /**
-     * @return whether predictive optimization should be enabled for this object and objects under it.
-     * 
-     */
     public Optional<String> enablePredictiveOptimization() {
         return Optional.ofNullable(this.enablePredictiveOptimization);
     }
-    /**
-     * @return the two-level (fully qualified) name of the schema
-     * 
-     */
     public Optional<String> fullName() {
         return Optional.ofNullable(this.fullName);
     }
-    /**
-     * @return the unique identifier of the metastore
-     * 
-     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
-    /**
-     * @return a fully qualified name of databricks_schema: *`catalog`.`schema`*
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return the identifier of the user who owns the schema
-     * 
-     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
-    /**
-     * @return map of properties set on the schema
-     * 
-     */
     public Map<String,String> properties() {
         return this.properties == null ? Map.of() : this.properties;
     }
-    /**
-     * @return the unique identifier of the volume
-     * 
-     */
     public Optional<String> schemaId() {
         return Optional.ofNullable(this.schemaId);
     }
-    /**
-     * @return the storage location on the cloud.
-     * 
-     */
     public Optional<String> storageLocation() {
         return Optional.ofNullable(this.storageLocation);
     }
-    /**
-     * @return storage root URL for managed tables within schema.
-     * 
-     */
     public Optional<String> storageRoot() {
         return Optional.ofNullable(this.storageRoot);
     }
-    /**
-     * @return the timestamp of the last time changes were made to the schema
-     * 
-     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
-    /**
-     * @return the identifier of the user who updated the schema last time
-     * 
-     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }

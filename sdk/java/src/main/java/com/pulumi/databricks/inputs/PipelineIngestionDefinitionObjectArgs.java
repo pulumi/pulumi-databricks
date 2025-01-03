@@ -24,17 +24,9 @@ public final class PipelineIngestionDefinitionObjectArgs extends com.pulumi.reso
         return Optional.ofNullable(this.report);
     }
 
-    /**
-     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
-     * 
-     */
     @Import(name="schema")
     private @Nullable Output<PipelineIngestionDefinitionObjectSchemaArgs> schema;
 
-    /**
-     * @return The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
-     * 
-     */
     public Optional<Output<PipelineIngestionDefinitionObjectSchemaArgs>> schema() {
         return Optional.ofNullable(this.schema);
     }
@@ -81,23 +73,11 @@ public final class PipelineIngestionDefinitionObjectArgs extends com.pulumi.reso
             return report(Output.of(report));
         }
 
-        /**
-         * @param schema The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
-         * 
-         * @return builder
-         * 
-         */
         public Builder schema(@Nullable Output<PipelineIngestionDefinitionObjectSchemaArgs> schema) {
             $.schema = schema;
             return this;
         }
 
-        /**
-         * @param schema The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
-         * 
-         * @return builder
-         * 
-         */
         public Builder schema(PipelineIngestionDefinitionObjectSchemaArgs schema) {
             return schema(Output.of(schema));
         }

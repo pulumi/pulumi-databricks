@@ -7,16 +7,15 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAwsUnityCatalogAssumeRolePolicyResult {
     private String awsAccountId;
+    private @Nullable String awsPartition;
     private String externalId;
     private String id;
-    /**
-     * @return AWS IAM Policy JSON document for assume role
-     * 
-     */
     private String json;
     private String roleName;
     private String unityCatalogIamArn;
@@ -25,16 +24,15 @@ public final class GetAwsUnityCatalogAssumeRolePolicyResult {
     public String awsAccountId() {
         return this.awsAccountId;
     }
+    public Optional<String> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
+    }
     public String externalId() {
         return this.externalId;
     }
     public String id() {
         return this.id;
     }
-    /**
-     * @return AWS IAM Policy JSON document for assume role
-     * 
-     */
     public String json() {
         return this.json;
     }
@@ -55,6 +53,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyResult {
     @CustomType.Builder
     public static final class Builder {
         private String awsAccountId;
+        private @Nullable String awsPartition;
         private String externalId;
         private String id;
         private String json;
@@ -64,6 +63,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyResult {
         public Builder(GetAwsUnityCatalogAssumeRolePolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsAccountId = defaults.awsAccountId;
+    	      this.awsPartition = defaults.awsPartition;
     	      this.externalId = defaults.externalId;
     	      this.id = defaults.id;
     	      this.json = defaults.json;
@@ -77,6 +77,12 @@ public final class GetAwsUnityCatalogAssumeRolePolicyResult {
               throw new MissingRequiredPropertyException("GetAwsUnityCatalogAssumeRolePolicyResult", "awsAccountId");
             }
             this.awsAccountId = awsAccountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder awsPartition(@Nullable String awsPartition) {
+
+            this.awsPartition = awsPartition;
             return this;
         }
         @CustomType.Setter
@@ -122,6 +128,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyResult {
         public GetAwsUnityCatalogAssumeRolePolicyResult build() {
             final var _resultValue = new GetAwsUnityCatalogAssumeRolePolicyResult();
             _resultValue.awsAccountId = awsAccountId;
+            _resultValue.awsPartition = awsPartition;
             _resultValue.externalId = externalId;
             _resultValue.id = id;
             _resultValue.json = json;

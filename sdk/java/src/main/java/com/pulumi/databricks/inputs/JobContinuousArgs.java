@@ -15,17 +15,9 @@ public final class JobContinuousArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobContinuousArgs Empty = new JobContinuousArgs();
 
-    /**
-     * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-     * 
-     */
     @Import(name="pauseStatus")
     private @Nullable Output<String> pauseStatus;
 
-    /**
-     * @return Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-     * 
-     */
     public Optional<Output<String>> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
@@ -54,23 +46,11 @@ public final class JobContinuousArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobContinuousArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param pauseStatus Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pauseStatus(@Nullable Output<String> pauseStatus) {
             $.pauseStatus = pauseStatus;
             return this;
         }
 
-        /**
-         * @param pauseStatus Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pauseStatus(String pauseStatus) {
             return pauseStatus(Output.of(pauseStatus));
         }

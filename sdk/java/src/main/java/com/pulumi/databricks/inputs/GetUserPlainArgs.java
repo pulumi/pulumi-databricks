@@ -14,32 +14,16 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUserPlainArgs Empty = new GetUserPlainArgs();
 
-    /**
-     * ID of the user.
-     * 
-     */
     @Import(name="userId")
     private @Nullable String userId;
 
-    /**
-     * @return ID of the user.
-     * 
-     */
     public Optional<String> userId() {
         return Optional.ofNullable(this.userId);
     }
 
-    /**
-     * User name of the user. The user must exist before this resource can be planned.
-     * 
-     */
     @Import(name="userName")
     private @Nullable String userName;
 
-    /**
-     * @return User name of the user. The user must exist before this resource can be planned.
-     * 
-     */
     public Optional<String> userName() {
         return Optional.ofNullable(this.userName);
     }
@@ -69,23 +53,11 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetUserPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param userId ID of the user.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userId(@Nullable String userId) {
             $.userId = userId;
             return this;
         }
 
-        /**
-         * @param userName User name of the user. The user must exist before this resource can be planned.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userName(@Nullable String userName) {
             $.userName = userName;
             return this;

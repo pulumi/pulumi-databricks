@@ -11,66 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
-//
-// This data source constructs the necessary AWS Unity Catalog assume role policy for you.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.GetAwsUnityCatalogPolicy(ctx, &databricks.GetAwsUnityCatalogPolicyArgs{
-//				AwsAccountId: awsAccountId,
-//				BucketName:   "databricks-bucket",
-//				RoleName:     fmt.Sprintf("%v-uc-access", prefix),
-//				KmsName:      pulumi.StringRef("arn:aws:kms:us-west-2:111122223333:key/databricks-kms"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			thisGetAwsUnityCatalogAssumeRolePolicy, err := databricks.GetAwsUnityCatalogAssumeRolePolicy(ctx, &databricks.GetAwsUnityCatalogAssumeRolePolicyArgs{
-//				AwsAccountId: awsAccountId,
-//				RoleName:     fmt.Sprintf("%v-uc-access", prefix),
-//				ExternalId:   "12345",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			unityMetastore, err := iam.NewPolicy(ctx, "unity_metastore", &iam.PolicyArgs{
-//				Name:   pulumi.Sprintf("%v-unity-catalog-metastore-access-iam-policy", prefix),
-//				Policy: pulumi.String(this.Json),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
-//				Name:             pulumi.Sprintf("%v-uc-access", prefix),
-//				AssumeRolePolicy: pulumi.String(thisGetAwsUnityCatalogAssumeRolePolicy.Json),
-//				ManagedPolicyArns: pulumi.StringArray{
-//					unityMetastore.Arn,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAwsUnityCatalogAssumeRolePolicy(ctx *pulumi.Context, args *GetAwsUnityCatalogAssumeRolePolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsUnityCatalogAssumeRolePolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAwsUnityCatalogAssumeRolePolicyResult
@@ -83,25 +23,22 @@ func GetAwsUnityCatalogAssumeRolePolicy(ctx *pulumi.Context, args *GetAwsUnityCa
 
 // A collection of arguments for invoking getAwsUnityCatalogAssumeRolePolicy.
 type GetAwsUnityCatalogAssumeRolePolicyArgs struct {
-	// The Account ID of the current AWS account (not your Databricks account).
-	AwsAccountId string `pulumi:"awsAccountId"`
-	// The storage credential external id.
-	ExternalId string `pulumi:"externalId"`
-	// The name of the AWS IAM role to be created for Unity Catalog.
-	RoleName string `pulumi:"roleName"`
-	// The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
+	AwsAccountId       string  `pulumi:"awsAccountId"`
+	AwsPartition       *string `pulumi:"awsPartition"`
+	ExternalId         string  `pulumi:"externalId"`
+	RoleName           string  `pulumi:"roleName"`
 	UnityCatalogIamArn *string `pulumi:"unityCatalogIamArn"`
 }
 
 // A collection of values returned by getAwsUnityCatalogAssumeRolePolicy.
 type GetAwsUnityCatalogAssumeRolePolicyResult struct {
-	AwsAccountId string `pulumi:"awsAccountId"`
-	ExternalId   string `pulumi:"externalId"`
-	Id           string `pulumi:"id"`
-	// AWS IAM Policy JSON document for assume role
-	Json               string `pulumi:"json"`
-	RoleName           string `pulumi:"roleName"`
-	UnityCatalogIamArn string `pulumi:"unityCatalogIamArn"`
+	AwsAccountId       string  `pulumi:"awsAccountId"`
+	AwsPartition       *string `pulumi:"awsPartition"`
+	ExternalId         string  `pulumi:"externalId"`
+	Id                 string  `pulumi:"id"`
+	Json               string  `pulumi:"json"`
+	RoleName           string  `pulumi:"roleName"`
+	UnityCatalogIamArn string  `pulumi:"unityCatalogIamArn"`
 }
 
 func GetAwsUnityCatalogAssumeRolePolicyOutput(ctx *pulumi.Context, args GetAwsUnityCatalogAssumeRolePolicyOutputArgs, opts ...pulumi.InvokeOption) GetAwsUnityCatalogAssumeRolePolicyResultOutput {
@@ -115,13 +52,10 @@ func GetAwsUnityCatalogAssumeRolePolicyOutput(ctx *pulumi.Context, args GetAwsUn
 
 // A collection of arguments for invoking getAwsUnityCatalogAssumeRolePolicy.
 type GetAwsUnityCatalogAssumeRolePolicyOutputArgs struct {
-	// The Account ID of the current AWS account (not your Databricks account).
-	AwsAccountId pulumi.StringInput `pulumi:"awsAccountId"`
-	// The storage credential external id.
-	ExternalId pulumi.StringInput `pulumi:"externalId"`
-	// The name of the AWS IAM role to be created for Unity Catalog.
-	RoleName pulumi.StringInput `pulumi:"roleName"`
-	// The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
+	AwsAccountId       pulumi.StringInput    `pulumi:"awsAccountId"`
+	AwsPartition       pulumi.StringPtrInput `pulumi:"awsPartition"`
+	ExternalId         pulumi.StringInput    `pulumi:"externalId"`
+	RoleName           pulumi.StringInput    `pulumi:"roleName"`
 	UnityCatalogIamArn pulumi.StringPtrInput `pulumi:"unityCatalogIamArn"`
 }
 
@@ -148,6 +82,10 @@ func (o GetAwsUnityCatalogAssumeRolePolicyResultOutput) AwsAccountId() pulumi.St
 	return o.ApplyT(func(v GetAwsUnityCatalogAssumeRolePolicyResult) string { return v.AwsAccountId }).(pulumi.StringOutput)
 }
 
+func (o GetAwsUnityCatalogAssumeRolePolicyResultOutput) AwsPartition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsUnityCatalogAssumeRolePolicyResult) *string { return v.AwsPartition }).(pulumi.StringPtrOutput)
+}
+
 func (o GetAwsUnityCatalogAssumeRolePolicyResultOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsUnityCatalogAssumeRolePolicyResult) string { return v.ExternalId }).(pulumi.StringOutput)
 }
@@ -156,7 +94,6 @@ func (o GetAwsUnityCatalogAssumeRolePolicyResultOutput) Id() pulumi.StringOutput
 	return o.ApplyT(func(v GetAwsUnityCatalogAssumeRolePolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// AWS IAM Policy JSON document for assume role
 func (o GetAwsUnityCatalogAssumeRolePolicyResultOutput) Json() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsUnityCatalogAssumeRolePolicyResult) string { return v.Json }).(pulumi.StringOutput)
 }

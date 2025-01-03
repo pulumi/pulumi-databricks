@@ -7,19 +7,20 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineRestartWindow {
-    private @Nullable String daysOfWeek;
+    private @Nullable List<String> daysOfWeeks;
     private Integer startHour;
     private @Nullable String timeZoneId;
 
     private PipelineRestartWindow() {}
-    public Optional<String> daysOfWeek() {
-        return Optional.ofNullable(this.daysOfWeek);
+    public List<String> daysOfWeeks() {
+        return this.daysOfWeeks == null ? List.of() : this.daysOfWeeks;
     }
     public Integer startHour() {
         return this.startHour;
@@ -37,22 +38,25 @@ public final class PipelineRestartWindow {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String daysOfWeek;
+        private @Nullable List<String> daysOfWeeks;
         private Integer startHour;
         private @Nullable String timeZoneId;
         public Builder() {}
         public Builder(PipelineRestartWindow defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.daysOfWeek = defaults.daysOfWeek;
+    	      this.daysOfWeeks = defaults.daysOfWeeks;
     	      this.startHour = defaults.startHour;
     	      this.timeZoneId = defaults.timeZoneId;
         }
 
         @CustomType.Setter
-        public Builder daysOfWeek(@Nullable String daysOfWeek) {
+        public Builder daysOfWeeks(@Nullable List<String> daysOfWeeks) {
 
-            this.daysOfWeek = daysOfWeek;
+            this.daysOfWeeks = daysOfWeeks;
             return this;
+        }
+        public Builder daysOfWeeks(String... daysOfWeeks) {
+            return daysOfWeeks(List.of(daysOfWeeks));
         }
         @CustomType.Setter
         public Builder startHour(Integer startHour) {
@@ -70,7 +74,7 @@ public final class PipelineRestartWindow {
         }
         public PipelineRestartWindow build() {
             final var _resultValue = new PipelineRestartWindow();
-            _resultValue.daysOfWeek = daysOfWeek;
+            _resultValue.daysOfWeeks = daysOfWeeks;
             _resultValue.startHour = startHour;
             _resultValue.timeZoneId = timeZoneId;
             return _resultValue;

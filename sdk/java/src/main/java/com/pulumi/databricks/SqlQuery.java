@@ -17,175 +17,6 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
- * 
- * &gt; documentation for this resource is a work in progress.
- * 
- * A query may have one or more visualizations.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Directory;
- * import com.pulumi.databricks.DirectoryArgs;
- * import com.pulumi.databricks.SqlQuery;
- * import com.pulumi.databricks.SqlQueryArgs;
- * import com.pulumi.databricks.inputs.SqlQueryParameterArgs;
- * import com.pulumi.databricks.inputs.SqlQueryParameterTextArgs;
- * import com.pulumi.databricks.inputs.SqlQueryParameterEnumArgs;
- * import com.pulumi.databricks.inputs.SqlQueryParameterEnumMultipleArgs;
- * import com.pulumi.databricks.inputs.SqlQueryParameterDateArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()
- *             .path("/Shared/Queries")
- *             .build());
- * 
- *         var q1 = new SqlQuery("q1", SqlQueryArgs.builder()
- *             .dataSourceId(example.dataSourceId())
- *             .name("My Query Name")
- *             .query("""
- *                         SELECT {{ p1 }} AS p1
- *                         WHERE 1=1
- *                         AND p2 in ({{ p2 }})
- *                         AND event_date > date '{{ p3 }}'
- *             """)
- *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
- *             .runAsRole("viewer")
- *             .parameters(            
- *                 SqlQueryParameterArgs.builder()
- *                     .name("p1")
- *                     .title("Title for p1")
- *                     .text(SqlQueryParameterTextArgs.builder()
- *                         .value("default")
- *                         .build())
- *                     .build(),
- *                 SqlQueryParameterArgs.builder()
- *                     .name("p2")
- *                     .title("Title for p2")
- *                     .enum_(SqlQueryParameterEnumArgs.builder()
- *                         .options(                        
- *                             "default",
- *                             "foo",
- *                             "bar")
- *                         .value("default")
- *                         .multiple(SqlQueryParameterEnumMultipleArgs.builder()
- *                             .prefix("\"")
- *                             .suffix("\"")
- *                             .separator(",")
- *                             .build())
- *                         .build())
- *                     .build(),
- *                 SqlQueryParameterArgs.builder()
- *                     .name("p3")
- *                     .title("Title for p3")
- *                     .date(SqlQueryParameterDateArgs.builder()
- *                         .value("2022-01-01")
- *                         .build())
- *                     .build())
- *             .tags(            
- *                 "t1",
- *                 "t2")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * Example permission to share query with all users:
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Permissions;
- * import com.pulumi.databricks.PermissionsArgs;
- * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var q1 = new Permissions("q1", PermissionsArgs.builder()
- *             .sqlQueryId(q1DatabricksSqlQuery.id())
- *             .accessControls(            
- *                 PermissionsAccessControlArgs.builder()
- *                     .groupName(users.displayName())
- *                     .permissionLevel("CAN_RUN")
- *                     .build(),
- *                 PermissionsAccessControlArgs.builder()
- *                     .groupName(team.displayName())
- *                     .permissionLevel("CAN_EDIT")
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Troubleshooting
- * 
- * In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `data_source_id`
- * 
- * Operations on `databricks.SqlQuery` schedules are ⛔️ deprecated. You can create, update or delete a schedule for SQLA and other Databricks resources using the databricks.Job resource.
- * 
- * ## Related Resources
- * 
- * The following resources are often used in the same context:
- * 
- * * End to end workspace management guide.
- * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
- * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
- * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
- * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
- * * databricks.Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
- * 
- * ## Import
- * 
- * You can import a `databricks_sql_query` resource with ID like the following:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/sqlQuery:SqlQuery this &lt;query-id&gt;
- * ```
- * 
- */
 @ResourceType(type="databricks:index/sqlQuery:SqlQuery")
 public class SqlQuery extends com.pulumi.resources.CustomResource {
     @Export(name="createdAt", refs={String.class}, tree="[0]")
@@ -194,45 +25,21 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
     public Output<String> createdAt() {
         return this.createdAt;
     }
-    /**
-     * Data source ID of a SQL warehouse
-     * 
-     */
     @Export(name="dataSourceId", refs={String.class}, tree="[0]")
     private Output<String> dataSourceId;
 
-    /**
-     * @return Data source ID of a SQL warehouse
-     * 
-     */
     public Output<String> dataSourceId() {
         return this.dataSourceId;
     }
-    /**
-     * General description that conveys additional information about this query such as usage notes.
-     * 
-     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
-    /**
-     * @return General description that conveys additional information about this query such as usage notes.
-     * 
-     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    /**
-     * The title of this query that appears in list views, widget headings, and on the query page.
-     * 
-     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return The title of this query that appears in list views, widget headings, and on the query page.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
@@ -242,45 +49,21 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<SqlQueryParameter>>> parameters() {
         return Codegen.optional(this.parameters);
     }
-    /**
-     * The identifier of the workspace folder containing the object.
-     * 
-     */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
-    /**
-     * @return The identifier of the workspace folder containing the object.
-     * 
-     */
     public Output<Optional<String>> parent() {
         return Codegen.optional(this.parent);
     }
-    /**
-     * The text of the query to be run.
-     * 
-     */
     @Export(name="query", refs={String.class}, tree="[0]")
     private Output<String> query;
 
-    /**
-     * @return The text of the query to be run.
-     * 
-     */
     public Output<String> query() {
         return this.query;
     }
-    /**
-     * Run as role. Possible values are `viewer`, `owner`.
-     * 
-     */
     @Export(name="runAsRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> runAsRole;
 
-    /**
-     * @return Run as role. Possible values are `viewer`, `owner`.
-     * 
-     */
     public Output<Optional<String>> runAsRole() {
         return Codegen.optional(this.runAsRole);
     }

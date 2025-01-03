@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess {
-    /**
-     * @return the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     private String id;
 
     private GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess() {}
-    /**
-     * @return the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     public String id() {
         return this.id;
     }

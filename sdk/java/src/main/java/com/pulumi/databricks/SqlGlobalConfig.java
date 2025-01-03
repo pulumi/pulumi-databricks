@@ -16,127 +16,11 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * This resource configures the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace. *Please note that changing parameters of this resource will restart all running databricks_sql_endpoint.*  To use this resource you need to be an administrator.
- * 
- * ## Example Usage
- * 
- * ### AWS example
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.SqlGlobalConfig;
- * import com.pulumi.databricks.SqlGlobalConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var this_ = new SqlGlobalConfig("this", SqlGlobalConfigArgs.builder()
- *             .securityPolicy("DATA_ACCESS_CONTROL")
- *             .instanceProfileArn("arn:....")
- *             .dataAccessConfig(Map.of("spark.sql.session.timeZone", "UTC"))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Azure example
- * 
- * For Azure you should use the `data_access_config` to provide the service principal configuration. You can use the Databricks SQL Admin Console UI to help you generate the right configuration values.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.SqlGlobalConfig;
- * import com.pulumi.databricks.SqlGlobalConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var this_ = new SqlGlobalConfig("this", SqlGlobalConfigArgs.builder()
- *             .securityPolicy("DATA_ACCESS_CONTROL")
- *             .dataAccessConfig(Map.ofEntries(
- *                 Map.entry("spark.hadoop.fs.azure.account.auth.type", "OAuth"),
- *                 Map.entry("spark.hadoop.fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
- *                 Map.entry("spark.hadoop.fs.azure.account.oauth2.client.id", applicationId),
- *                 Map.entry("spark.hadoop.fs.azure.account.oauth2.client.secret", String.format("{{{{secrets/%s/%s}}}}", secretScope,secretKey)),
- *                 Map.entry("spark.hadoop.fs.azure.account.oauth2.client.endpoint", String.format("https://login.microsoftonline.com/%s/oauth2/token", tenantId))
- *             ))
- *             .sqlConfigParams(Map.of("ANSI_MODE", "true"))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Related Resources
- * 
- * The following resources are often used in the same context:
- * 
- * * End to end workspace management guide.
- * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
- * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
- * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
- * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
- * 
- * ## Import
- * 
- * You can import a `databricks_sql_global_config` resource with command like the following (you need to use `global` as ID):
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/sqlGlobalConfig:SqlGlobalConfig this global
- * ```
- * 
- */
 @ResourceType(type="databricks:index/sqlGlobalConfig:SqlGlobalConfig")
 public class SqlGlobalConfig extends com.pulumi.resources.CustomResource {
-    /**
-     * Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
-     * 
-     */
     @Export(name="dataAccessConfig", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> dataAccessConfig;
 
-    /**
-     * @return Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you&#39;re specifying not permitted configuration.
-     * 
-     */
     public Output<Optional<Map<String,String>>> dataAccessConfig() {
         return Codegen.optional(this.dataAccessConfig);
     }
@@ -152,59 +36,27 @@ public class SqlGlobalConfig extends com.pulumi.resources.CustomResource {
     public Output<Boolean> enableServerlessCompute() {
         return this.enableServerlessCompute;
     }
-    /**
-     * used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
-     * 
-     */
     @Export(name="googleServiceAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> googleServiceAccount;
 
-    /**
-     * @return used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
-     * 
-     */
     public Output<Optional<String>> googleServiceAccount() {
         return Codegen.optional(this.googleServiceAccount);
     }
-    /**
-     * databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
-     * 
-     */
     @Export(name="instanceProfileArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceProfileArn;
 
-    /**
-     * @return databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
-     * 
-     */
     public Output<Optional<String>> instanceProfileArn() {
         return Codegen.optional(this.instanceProfileArn);
     }
-    /**
-     * The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
-     * 
-     */
     @Export(name="securityPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityPolicy;
 
-    /**
-     * @return The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
-     * 
-     */
     public Output<Optional<String>> securityPolicy() {
         return Codegen.optional(this.securityPolicy);
     }
-    /**
-     * SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
-     * 
-     */
     @Export(name="sqlConfigParams", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> sqlConfigParams;
 
-    /**
-     * @return SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
-     * 
-     */
     public Output<Optional<Map<String,String>>> sqlConfigParams() {
         return Codegen.optional(this.sqlConfigParams);
     }

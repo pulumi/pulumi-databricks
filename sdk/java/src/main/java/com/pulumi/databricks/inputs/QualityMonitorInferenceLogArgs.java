@@ -17,107 +17,51 @@ public final class QualityMonitorInferenceLogArgs extends com.pulumi.resources.R
 
     public static final QualityMonitorInferenceLogArgs Empty = new QualityMonitorInferenceLogArgs();
 
-    /**
-     * List of granularities to use when aggregating data into time windows based on their timestamp.
-     * 
-     */
     @Import(name="granularities", required=true)
     private Output<List<String>> granularities;
 
-    /**
-     * @return List of granularities to use when aggregating data into time windows based on their timestamp.
-     * 
-     */
     public Output<List<String>> granularities() {
         return this.granularities;
     }
 
-    /**
-     * Column of the model label
-     * 
-     */
     @Import(name="labelCol")
     private @Nullable Output<String> labelCol;
 
-    /**
-     * @return Column of the model label
-     * 
-     */
     public Optional<Output<String>> labelCol() {
         return Optional.ofNullable(this.labelCol);
     }
 
-    /**
-     * Column of the model id or version
-     * 
-     */
     @Import(name="modelIdCol", required=true)
     private Output<String> modelIdCol;
 
-    /**
-     * @return Column of the model id or version
-     * 
-     */
     public Output<String> modelIdCol() {
         return this.modelIdCol;
     }
 
-    /**
-     * Column of the model prediction
-     * 
-     */
     @Import(name="predictionCol", required=true)
     private Output<String> predictionCol;
 
-    /**
-     * @return Column of the model prediction
-     * 
-     */
     public Output<String> predictionCol() {
         return this.predictionCol;
     }
 
-    /**
-     * Column of the model prediction probabilities
-     * 
-     */
     @Import(name="predictionProbaCol")
     private @Nullable Output<String> predictionProbaCol;
 
-    /**
-     * @return Column of the model prediction probabilities
-     * 
-     */
     public Optional<Output<String>> predictionProbaCol() {
         return Optional.ofNullable(this.predictionProbaCol);
     }
 
-    /**
-     * Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
-     * 
-     */
     @Import(name="problemType", required=true)
     private Output<String> problemType;
 
-    /**
-     * @return Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
-     * 
-     */
     public Output<String> problemType() {
         return this.problemType;
     }
 
-    /**
-     * Column of the timestamp of predictions
-     * 
-     */
     @Import(name="timestampCol", required=true)
     private Output<String> timestampCol;
 
-    /**
-     * @return Column of the timestamp of predictions
-     * 
-     */
     public Output<String> timestampCol() {
         return this.timestampCol;
     }
@@ -152,159 +96,69 @@ public final class QualityMonitorInferenceLogArgs extends com.pulumi.resources.R
             $ = new QualityMonitorInferenceLogArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param granularities List of granularities to use when aggregating data into time windows based on their timestamp.
-         * 
-         * @return builder
-         * 
-         */
         public Builder granularities(Output<List<String>> granularities) {
             $.granularities = granularities;
             return this;
         }
 
-        /**
-         * @param granularities List of granularities to use when aggregating data into time windows based on their timestamp.
-         * 
-         * @return builder
-         * 
-         */
         public Builder granularities(List<String> granularities) {
             return granularities(Output.of(granularities));
         }
 
-        /**
-         * @param granularities List of granularities to use when aggregating data into time windows based on their timestamp.
-         * 
-         * @return builder
-         * 
-         */
         public Builder granularities(String... granularities) {
             return granularities(List.of(granularities));
         }
 
-        /**
-         * @param labelCol Column of the model label
-         * 
-         * @return builder
-         * 
-         */
         public Builder labelCol(@Nullable Output<String> labelCol) {
             $.labelCol = labelCol;
             return this;
         }
 
-        /**
-         * @param labelCol Column of the model label
-         * 
-         * @return builder
-         * 
-         */
         public Builder labelCol(String labelCol) {
             return labelCol(Output.of(labelCol));
         }
 
-        /**
-         * @param modelIdCol Column of the model id or version
-         * 
-         * @return builder
-         * 
-         */
         public Builder modelIdCol(Output<String> modelIdCol) {
             $.modelIdCol = modelIdCol;
             return this;
         }
 
-        /**
-         * @param modelIdCol Column of the model id or version
-         * 
-         * @return builder
-         * 
-         */
         public Builder modelIdCol(String modelIdCol) {
             return modelIdCol(Output.of(modelIdCol));
         }
 
-        /**
-         * @param predictionCol Column of the model prediction
-         * 
-         * @return builder
-         * 
-         */
         public Builder predictionCol(Output<String> predictionCol) {
             $.predictionCol = predictionCol;
             return this;
         }
 
-        /**
-         * @param predictionCol Column of the model prediction
-         * 
-         * @return builder
-         * 
-         */
         public Builder predictionCol(String predictionCol) {
             return predictionCol(Output.of(predictionCol));
         }
 
-        /**
-         * @param predictionProbaCol Column of the model prediction probabilities
-         * 
-         * @return builder
-         * 
-         */
         public Builder predictionProbaCol(@Nullable Output<String> predictionProbaCol) {
             $.predictionProbaCol = predictionProbaCol;
             return this;
         }
 
-        /**
-         * @param predictionProbaCol Column of the model prediction probabilities
-         * 
-         * @return builder
-         * 
-         */
         public Builder predictionProbaCol(String predictionProbaCol) {
             return predictionProbaCol(Output.of(predictionProbaCol));
         }
 
-        /**
-         * @param problemType Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
-         * 
-         * @return builder
-         * 
-         */
         public Builder problemType(Output<String> problemType) {
             $.problemType = problemType;
             return this;
         }
 
-        /**
-         * @param problemType Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
-         * 
-         * @return builder
-         * 
-         */
         public Builder problemType(String problemType) {
             return problemType(Output.of(problemType));
         }
 
-        /**
-         * @param timestampCol Column of the timestamp of predictions
-         * 
-         * @return builder
-         * 
-         */
         public Builder timestampCol(Output<String> timestampCol) {
             $.timestampCol = timestampCol;
             return this;
         }
 
-        /**
-         * @param timestampCol Column of the timestamp of predictions
-         * 
-         * @return builder
-         * 
-         */
         public Builder timestampCol(String timestampCol) {
             return timestampCol(Output.of(timestampCol));
         }

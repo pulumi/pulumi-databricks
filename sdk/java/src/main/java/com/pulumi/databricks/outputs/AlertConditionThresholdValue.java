@@ -13,41 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertConditionThresholdValue {
-    /**
-     * @return boolean value (`true` or `false`) to compare against boolean results.
-     * 
-     */
     private @Nullable Boolean boolValue;
-    /**
-     * @return double value to compare against integer and double results.
-     * 
-     */
     private @Nullable Double doubleValue;
-    /**
-     * @return string value to compare against string results.
-     * 
-     */
     private @Nullable String stringValue;
 
     private AlertConditionThresholdValue() {}
-    /**
-     * @return boolean value (`true` or `false`) to compare against boolean results.
-     * 
-     */
     public Optional<Boolean> boolValue() {
         return Optional.ofNullable(this.boolValue);
     }
-    /**
-     * @return double value to compare against integer and double results.
-     * 
-     */
     public Optional<Double> doubleValue() {
         return Optional.ofNullable(this.doubleValue);
     }
-    /**
-     * @return string value to compare against string results.
-     * 
-     */
     public Optional<String> stringValue() {
         return Optional.ofNullable(this.stringValue);
     }

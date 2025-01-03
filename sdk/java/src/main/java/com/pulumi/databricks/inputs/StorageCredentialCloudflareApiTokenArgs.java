@@ -14,51 +14,23 @@ public final class StorageCredentialCloudflareApiTokenArgs extends com.pulumi.re
 
     public static final StorageCredentialCloudflareApiTokenArgs Empty = new StorageCredentialCloudflareApiTokenArgs();
 
-    /**
-     * R2 API token access key ID
-     * 
-     */
     @Import(name="accessKeyId", required=true)
     private Output<String> accessKeyId;
 
-    /**
-     * @return R2 API token access key ID
-     * 
-     */
     public Output<String> accessKeyId() {
         return this.accessKeyId;
     }
 
-    /**
-     * R2 account ID
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return R2 account ID
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
-    /**
-     * R2 API token secret access key
-     * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
-     * 
-     */
     @Import(name="secretAccessKey", required=true)
     private Output<String> secretAccessKey;
 
-    /**
-     * @return R2 API token secret access key
-     * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
-     * 
-     */
     public Output<String> secretAccessKey() {
         return this.secretAccessKey;
     }
@@ -89,69 +61,29 @@ public final class StorageCredentialCloudflareApiTokenArgs extends com.pulumi.re
             $ = new StorageCredentialCloudflareApiTokenArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accessKeyId R2 API token access key ID
-         * 
-         * @return builder
-         * 
-         */
         public Builder accessKeyId(Output<String> accessKeyId) {
             $.accessKeyId = accessKeyId;
             return this;
         }
 
-        /**
-         * @param accessKeyId R2 API token access key ID
-         * 
-         * @return builder
-         * 
-         */
         public Builder accessKeyId(String accessKeyId) {
             return accessKeyId(Output.of(accessKeyId));
         }
 
-        /**
-         * @param accountId R2 account ID
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId R2 account ID
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param secretAccessKey R2 API token secret access key
-         * 
-         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
-         * 
-         * @return builder
-         * 
-         */
         public Builder secretAccessKey(Output<String> secretAccessKey) {
             $.secretAccessKey = secretAccessKey;
             return this;
         }
 
-        /**
-         * @param secretAccessKey R2 API token secret access key
-         * 
-         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
-         * 
-         * @return builder
-         * 
-         */
         public Builder secretAccessKey(String secretAccessKey) {
             return secretAccessKey(Output.of(secretAccessKey));
         }

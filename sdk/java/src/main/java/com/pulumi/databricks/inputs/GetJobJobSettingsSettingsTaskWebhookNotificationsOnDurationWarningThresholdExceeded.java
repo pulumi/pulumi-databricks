@@ -13,17 +13,9 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWa
 
     public static final GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded Empty = new GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded();
 
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     @Import(name="id", required=true)
     private String id;
 
-    /**
-     * @return the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -52,12 +44,6 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWa
             $ = new GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param id the id of databricks.Job if the resource was matched by name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(String id) {
             $.id = id;
             return this;

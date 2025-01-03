@@ -15,62 +15,37 @@ public final class GetAwsUnityCatalogAssumeRolePolicyPlainArgs extends com.pulum
 
     public static final GetAwsUnityCatalogAssumeRolePolicyPlainArgs Empty = new GetAwsUnityCatalogAssumeRolePolicyPlainArgs();
 
-    /**
-     * The Account ID of the current AWS account (not your Databricks account).
-     * 
-     */
     @Import(name="awsAccountId", required=true)
     private String awsAccountId;
 
-    /**
-     * @return The Account ID of the current AWS account (not your Databricks account).
-     * 
-     */
     public String awsAccountId() {
         return this.awsAccountId;
     }
 
-    /**
-     * The storage credential external id.
-     * 
-     */
+    @Import(name="awsPartition")
+    private @Nullable String awsPartition;
+
+    public Optional<String> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
+    }
+
     @Import(name="externalId", required=true)
     private String externalId;
 
-    /**
-     * @return The storage credential external id.
-     * 
-     */
     public String externalId() {
         return this.externalId;
     }
 
-    /**
-     * The name of the AWS IAM role to be created for Unity Catalog.
-     * 
-     */
     @Import(name="roleName", required=true)
     private String roleName;
 
-    /**
-     * @return The name of the AWS IAM role to be created for Unity Catalog.
-     * 
-     */
     public String roleName() {
         return this.roleName;
     }
 
-    /**
-     * The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
-     * 
-     */
     @Import(name="unityCatalogIamArn")
     private @Nullable String unityCatalogIamArn;
 
-    /**
-     * @return The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
-     * 
-     */
     public Optional<String> unityCatalogIamArn() {
         return Optional.ofNullable(this.unityCatalogIamArn);
     }
@@ -79,6 +54,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyPlainArgs extends com.pulum
 
     private GetAwsUnityCatalogAssumeRolePolicyPlainArgs(GetAwsUnityCatalogAssumeRolePolicyPlainArgs $) {
         this.awsAccountId = $.awsAccountId;
+        this.awsPartition = $.awsPartition;
         this.externalId = $.externalId;
         this.roleName = $.roleName;
         this.unityCatalogIamArn = $.unityCatalogIamArn;
@@ -102,45 +78,26 @@ public final class GetAwsUnityCatalogAssumeRolePolicyPlainArgs extends com.pulum
             $ = new GetAwsUnityCatalogAssumeRolePolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param awsAccountId The Account ID of the current AWS account (not your Databricks account).
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsAccountId(String awsAccountId) {
             $.awsAccountId = awsAccountId;
             return this;
         }
 
-        /**
-         * @param externalId The storage credential external id.
-         * 
-         * @return builder
-         * 
-         */
+        public Builder awsPartition(@Nullable String awsPartition) {
+            $.awsPartition = awsPartition;
+            return this;
+        }
+
         public Builder externalId(String externalId) {
             $.externalId = externalId;
             return this;
         }
 
-        /**
-         * @param roleName The name of the AWS IAM role to be created for Unity Catalog.
-         * 
-         * @return builder
-         * 
-         */
         public Builder roleName(String roleName) {
             $.roleName = roleName;
             return this;
         }
 
-        /**
-         * @param unityCatalogIamArn The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
-         * 
-         * @return builder
-         * 
-         */
         public Builder unityCatalogIamArn(@Nullable String unityCatalogIamArn) {
             $.unityCatalogIamArn = unityCatalogIamArn;
             return this;

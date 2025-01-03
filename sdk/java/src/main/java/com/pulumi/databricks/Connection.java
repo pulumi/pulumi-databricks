@@ -17,157 +17,17 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * &gt; This resource can only be used with a workspace-level provider!
- * 
- * Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
- * 
- * - A connection, a securable object in Unity Catalog that specifies a path and credentials for accessing an external database system.
- * - A foreign catalog
- * 
- * This resource manages connections in Unity Catalog
- * 
- * ## Example Usage
- * 
- * Create a connection to a MySQL database
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Connection;
- * import com.pulumi.databricks.ConnectionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var mysql = new Connection("mysql", ConnectionArgs.builder()
- *             .name("mysql_connection")
- *             .connectionType("MYSQL")
- *             .comment("this is a connection to mysql db")
- *             .options(Map.ofEntries(
- *                 Map.entry("host", "test.mysql.database.azure.com"),
- *                 Map.entry("port", "3306"),
- *                 Map.entry("user", "user"),
- *                 Map.entry("password", "password")
- *             ))
- *             .properties(Map.of("purpose", "testing"))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * Create a connection to a BigQuery database
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Connection;
- * import com.pulumi.databricks.ConnectionArgs;
- * import static com.pulumi.codegen.internal.Serialization.*;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var bigquery = new Connection("bigquery", ConnectionArgs.builder()
- *             .name("bq_connection")
- *             .connectionType("BIGQUERY")
- *             .comment("this is a connection to BQ")
- *             .options(Map.of("GoogleServiceAccountKeyJson", serializeJson(
- *                 jsonObject(
- *                     jsonProperty("type", "service_account"),
- *                     jsonProperty("project_id", "PROJECT_ID"),
- *                     jsonProperty("private_key_id", "KEY_ID"),
- *                     jsonProperty("private_key", """
- * -----BEGIN PRIVATE KEY-----
- * PRIVATE_KEY
- * -----END PRIVATE KEY-----
- *                     """),
- *                     jsonProperty("client_email", "SERVICE_ACCOUNT_EMAIL"),
- *                     jsonProperty("client_id", "CLIENT_ID"),
- *                     jsonProperty("auth_uri", "https://accounts.google.com/o/oauth2/auth"),
- *                     jsonProperty("token_uri", "https://accounts.google.com/o/oauth2/token"),
- *                     jsonProperty("auth_provider_x509_cert_url", "https://www.googleapis.com/oauth2/v1/certs"),
- *                     jsonProperty("client_x509_cert_url", "https://www.googleapis.com/robot/v1/metadata/x509/SERVICE_ACCOUNT_EMAIL"),
- *                     jsonProperty("universe_domain", "googleapis.com")
- *                 ))))
- *             .properties(Map.of("purpose", "testing"))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Import
- * 
- * This resource can be imported by `id`:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/connection:Connection this &#39;&lt;metastore_id&gt;|&lt;name&gt;&#39;
- * ```
- * 
- */
 @ResourceType(type="databricks:index/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
-    /**
-     * Free-form text.
-     * 
-     */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
-    /**
-     * @return Free-form text.
-     * 
-     */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
-    /**
-     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-     * 
-     */
     @Export(name="connectionType", refs={String.class}, tree="[0]")
     private Output<String> connectionType;
 
-    /**
-     * @return Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-     * 
-     */
     public Output<String> connectionType() {
         return this.connectionType;
     }
@@ -177,59 +37,27 @@ public class Connection extends com.pulumi.resources.CustomResource {
     public Output<String> metastoreId() {
         return this.metastoreId;
     }
-    /**
-     * Name of the Connection.
-     * 
-     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return Name of the Connection.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-     * 
-     */
     @Export(name="options", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> options;
 
-    /**
-     * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-     * 
-     */
     public Output<Map<String,String>> options() {
         return this.options;
     }
-    /**
-     * Name of the connection owner.
-     * 
-     */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
-    /**
-     * @return Name of the connection owner.
-     * 
-     */
     public Output<String> owner() {
         return this.owner;
     }
-    /**
-     * Free-form connection properties.
-     * 
-     */
     @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> properties;
 
-    /**
-     * @return Free-form connection properties.
-     * 
-     */
     public Output<Optional<Map<String,String>>> properties() {
         return Codegen.optional(this.properties);
     }

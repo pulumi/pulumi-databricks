@@ -12,54 +12,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationConfigGenericWebhook {
-    /**
-     * @return The password for basic authentication.
-     * 
-     * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
-     * 
-     */
     private @Nullable String password;
     private @Nullable Boolean passwordSet;
-    /**
-     * @return The Generic Webhook URL.
-     * 
-     */
     private @Nullable String url;
     private @Nullable Boolean urlSet;
-    /**
-     * @return The username for basic authentication.
-     * 
-     */
     private @Nullable String username;
     private @Nullable Boolean usernameSet;
 
     private NotificationDestinationConfigGenericWebhook() {}
-    /**
-     * @return The password for basic authentication.
-     * 
-     * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
-     * 
-     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     public Optional<Boolean> passwordSet() {
         return Optional.ofNullable(this.passwordSet);
     }
-    /**
-     * @return The Generic Webhook URL.
-     * 
-     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }
     public Optional<Boolean> urlSet() {
         return Optional.ofNullable(this.urlSet);
     }
-    /**
-     * @return The username for basic authentication.
-     * 
-     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }

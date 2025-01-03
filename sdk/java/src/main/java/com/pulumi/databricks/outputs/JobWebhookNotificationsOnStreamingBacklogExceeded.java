@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class JobWebhookNotificationsOnStreamingBacklogExceeded {
-    /**
-     * @return ID of the job
-     * 
-     */
     private String id;
 
     private JobWebhookNotificationsOnStreamingBacklogExceeded() {}
-    /**
-     * @return ID of the job
-     * 
-     */
     public String id() {
         return this.id;
     }

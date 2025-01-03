@@ -14,47 +14,23 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SecretArgs Empty = new SecretArgs();
 
-    /**
-     * (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-     * 
-     */
     @Import(name="key", required=true)
     private Output<String> key;
 
-    /**
-     * @return (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-     * 
-     */
     public Output<String> key() {
         return this.key;
     }
 
-    /**
-     * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-     * 
-     */
     @Import(name="scope", required=true)
     private Output<String> scope;
 
-    /**
-     * @return (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-     * 
-     */
     public Output<String> scope() {
         return this.scope;
     }
 
-    /**
-     * (String) super secret sensitive value.
-     * 
-     */
     @Import(name="stringValue", required=true)
     private Output<String> stringValue;
 
-    /**
-     * @return (String) super secret sensitive value.
-     * 
-     */
     public Output<String> stringValue() {
         return this.stringValue;
     }
@@ -85,65 +61,29 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SecretArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param key (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param scope (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scope(Output<String> scope) {
             $.scope = scope;
             return this;
         }
 
-        /**
-         * @param scope (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scope(String scope) {
             return scope(Output.of(scope));
         }
 
-        /**
-         * @param stringValue (String) super secret sensitive value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stringValue(Output<String> stringValue) {
             $.stringValue = stringValue;
             return this;
         }
 
-        /**
-         * @param stringValue (String) super secret sensitive value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stringValue(String stringValue) {
             return stringValue(Output.of(stringValue));
         }

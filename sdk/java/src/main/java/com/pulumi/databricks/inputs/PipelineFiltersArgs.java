@@ -16,32 +16,16 @@ public final class PipelineFiltersArgs extends com.pulumi.resources.ResourceArgs
 
     public static final PipelineFiltersArgs Empty = new PipelineFiltersArgs();
 
-    /**
-     * Paths to exclude.
-     * 
-     */
     @Import(name="excludes")
     private @Nullable Output<List<String>> excludes;
 
-    /**
-     * @return Paths to exclude.
-     * 
-     */
     public Optional<Output<List<String>>> excludes() {
         return Optional.ofNullable(this.excludes);
     }
 
-    /**
-     * Paths to include.
-     * 
-     */
     @Import(name="includes")
     private @Nullable Output<List<String>> includes;
 
-    /**
-     * @return Paths to include.
-     * 
-     */
     public Optional<Output<List<String>>> includes() {
         return Optional.ofNullable(this.includes);
     }
@@ -71,64 +55,28 @@ public final class PipelineFiltersArgs extends com.pulumi.resources.ResourceArgs
             $ = new PipelineFiltersArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param excludes Paths to exclude.
-         * 
-         * @return builder
-         * 
-         */
         public Builder excludes(@Nullable Output<List<String>> excludes) {
             $.excludes = excludes;
             return this;
         }
 
-        /**
-         * @param excludes Paths to exclude.
-         * 
-         * @return builder
-         * 
-         */
         public Builder excludes(List<String> excludes) {
             return excludes(Output.of(excludes));
         }
 
-        /**
-         * @param excludes Paths to exclude.
-         * 
-         * @return builder
-         * 
-         */
         public Builder excludes(String... excludes) {
             return excludes(List.of(excludes));
         }
 
-        /**
-         * @param includes Paths to include.
-         * 
-         * @return builder
-         * 
-         */
         public Builder includes(@Nullable Output<List<String>> includes) {
             $.includes = includes;
             return this;
         }
 
-        /**
-         * @param includes Paths to include.
-         * 
-         * @return builder
-         * 
-         */
         public Builder includes(List<String> includes) {
             return includes(Output.of(includes));
         }
 
-        /**
-         * @param includes Paths to include.
-         * 
-         * @return builder
-         * 
-         */
         public Builder includes(String... includes) {
             return includes(List.of(includes));
         }

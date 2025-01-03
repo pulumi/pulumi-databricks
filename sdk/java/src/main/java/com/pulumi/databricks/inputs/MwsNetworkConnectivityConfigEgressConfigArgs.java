@@ -16,32 +16,16 @@ public final class MwsNetworkConnectivityConfigEgressConfigArgs extends com.pulu
 
     public static final MwsNetworkConnectivityConfigEgressConfigArgs Empty = new MwsNetworkConnectivityConfigEgressConfigArgs();
 
-    /**
-     * block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
-     * 
-     */
     @Import(name="defaultRules")
     private @Nullable Output<MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs> defaultRules;
 
-    /**
-     * @return block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
-     * 
-     */
     public Optional<Output<MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs>> defaultRules() {
         return Optional.ofNullable(this.defaultRules);
     }
 
-    /**
-     * block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
-     * 
-     */
     @Import(name="targetRules")
     private @Nullable Output<MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs> targetRules;
 
-    /**
-     * @return block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
-     * 
-     */
     public Optional<Output<MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs>> targetRules() {
         return Optional.ofNullable(this.targetRules);
     }
@@ -71,44 +55,20 @@ public final class MwsNetworkConnectivityConfigEgressConfigArgs extends com.pulu
             $ = new MwsNetworkConnectivityConfigEgressConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param defaultRules block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
-         * 
-         * @return builder
-         * 
-         */
         public Builder defaultRules(@Nullable Output<MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs> defaultRules) {
             $.defaultRules = defaultRules;
             return this;
         }
 
-        /**
-         * @param defaultRules block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
-         * 
-         * @return builder
-         * 
-         */
         public Builder defaultRules(MwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs defaultRules) {
             return defaultRules(Output.of(defaultRules));
         }
 
-        /**
-         * @param targetRules block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetRules(@Nullable Output<MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs> targetRules) {
             $.targetRules = targetRules;
             return this;
         }
 
-        /**
-         * @param targetRules block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetRules(MwsNetworkConnectivityConfigEgressConfigTargetRulesArgs targetRules) {
             return targetRules(Output.of(targetRules));
         }

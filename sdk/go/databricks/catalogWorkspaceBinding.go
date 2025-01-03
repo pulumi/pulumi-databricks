@@ -11,70 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > This resource has been deprecated and will be removed soon. Please use the WorkspaceBinding resource instead.
-//
-// # If you use workspaces to isolate user data access, you may want to limit catalog access to specific workspaces in your account, also known as workspace-catalog binding
-//
-// By default, Databricks assigns the catalog to all workspaces attached to the current metastore. By using `CatalogWorkspaceBinding`, the catalog will be unassigned from all workspaces and only assigned explicitly using this resource.
-//
-// > To use this resource the catalog must have its isolation mode set to `ISOLATED` in the `Catalog` resource. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration).
-//
-// > If the catalog's isolation mode was set to `ISOLATED` using Pulumi then the catalog will have been automatically bound to the workspace it was created from.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
-//				Name:          pulumi.String("sandbox"),
-//				IsolationMode: pulumi.String("ISOLATED"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewCatalogWorkspaceBinding(ctx, "sandbox", &databricks.CatalogWorkspaceBindingArgs{
-//				SecurableName: sandbox.Name,
-//				WorkspaceId:   pulumi.Any(other.WorkspaceId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// This resource can be imported by using combination of workspace ID, securable type and name:
-//
-// ```sh
-// $ pulumi import databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding this "<workspace_id>|<securable_type>|<securable_name>"
-// ```
 type CatalogWorkspaceBinding struct {
 	pulumi.CustomResourceState
 
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 	BindingType pulumi.StringPtrOutput `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
-	CatalogName pulumi.StringPtrOutput `pulumi:"catalogName"`
-	// Name of securable. Change forces creation of a new resource.
-	SecurableName pulumi.StringOutput `pulumi:"securableName"`
-	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
+	CatalogName   pulumi.StringPtrOutput `pulumi:"catalogName"`
+	SecurableName pulumi.StringOutput    `pulumi:"securableName"`
 	SecurableType pulumi.StringPtrOutput `pulumi:"securableType"`
-	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
+	WorkspaceId   pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewCatalogWorkspaceBinding registers a new resource with the given unique name, arguments, and options.
@@ -107,29 +52,21 @@ func GetCatalogWorkspaceBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CatalogWorkspaceBinding resources.
 type catalogWorkspaceBindingState struct {
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 	BindingType *string `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
-	CatalogName *string `pulumi:"catalogName"`
-	// Name of securable. Change forces creation of a new resource.
+	CatalogName   *string `pulumi:"catalogName"`
 	SecurableName *string `pulumi:"securableName"`
-	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType *string `pulumi:"securableType"`
-	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId *string `pulumi:"workspaceId"`
+	WorkspaceId   *string `pulumi:"workspaceId"`
 }
 
 type CatalogWorkspaceBindingState struct {
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 	BindingType pulumi.StringPtrInput
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
-	CatalogName pulumi.StringPtrInput
-	// Name of securable. Change forces creation of a new resource.
+	CatalogName   pulumi.StringPtrInput
 	SecurableName pulumi.StringPtrInput
-	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrInput
-	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId pulumi.StringPtrInput
+	WorkspaceId   pulumi.StringPtrInput
 }
 
 func (CatalogWorkspaceBindingState) ElementType() reflect.Type {
@@ -137,30 +74,22 @@ func (CatalogWorkspaceBindingState) ElementType() reflect.Type {
 }
 
 type catalogWorkspaceBindingArgs struct {
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 	BindingType *string `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
-	CatalogName *string `pulumi:"catalogName"`
-	// Name of securable. Change forces creation of a new resource.
+	CatalogName   *string `pulumi:"catalogName"`
 	SecurableName *string `pulumi:"securableName"`
-	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType *string `pulumi:"securableType"`
-	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId *string `pulumi:"workspaceId"`
+	WorkspaceId   *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a CatalogWorkspaceBinding resource.
 type CatalogWorkspaceBindingArgs struct {
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 	BindingType pulumi.StringPtrInput
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
-	CatalogName pulumi.StringPtrInput
-	// Name of securable. Change forces creation of a new resource.
+	CatalogName   pulumi.StringPtrInput
 	SecurableName pulumi.StringPtrInput
-	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
 	SecurableType pulumi.StringPtrInput
-	// ID of the workspace. Change forces creation of a new resource.
-	WorkspaceId pulumi.StringPtrInput
+	WorkspaceId   pulumi.StringPtrInput
 }
 
 func (CatalogWorkspaceBindingArgs) ElementType() reflect.Type {
@@ -250,7 +179,6 @@ func (o CatalogWorkspaceBindingOutput) ToCatalogWorkspaceBindingOutputWithContex
 	return o
 }
 
-// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 func (o CatalogWorkspaceBindingOutput) BindingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CatalogWorkspaceBinding) pulumi.StringPtrOutput { return v.BindingType }).(pulumi.StringPtrOutput)
 }
@@ -260,17 +188,14 @@ func (o CatalogWorkspaceBindingOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CatalogWorkspaceBinding) pulumi.StringPtrOutput { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
-// Name of securable. Change forces creation of a new resource.
 func (o CatalogWorkspaceBindingOutput) SecurableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CatalogWorkspaceBinding) pulumi.StringOutput { return v.SecurableName }).(pulumi.StringOutput)
 }
 
-// Type of securable. Default to `catalog`. Change forces creation of a new resource.
 func (o CatalogWorkspaceBindingOutput) SecurableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CatalogWorkspaceBinding) pulumi.StringPtrOutput { return v.SecurableType }).(pulumi.StringPtrOutput)
 }
 
-// ID of the workspace. Change forces creation of a new resource.
 func (o CatalogWorkspaceBindingOutput) WorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CatalogWorkspaceBinding) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }

@@ -17,10 +17,6 @@ public final class GetInstancePoolResult {
      */
     private String id;
     private String name;
-    /**
-     * @return block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
-     * 
-     */
     private GetInstancePoolPoolInfo poolInfo;
 
     private GetInstancePoolResult() {}
@@ -34,10 +30,6 @@ public final class GetInstancePoolResult {
     public String name() {
         return this.name;
     }
-    /**
-     * @return block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
-     * 
-     */
     public GetInstancePoolPoolInfo poolInfo() {
         return this.poolInfo;
     }

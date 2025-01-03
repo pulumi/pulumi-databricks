@@ -13,17 +13,9 @@ public final class GetTableTableInfoTableConstraintNamedTableConstraint extends 
 
     public static final GetTableTableInfoTableConstraintNamedTableConstraint Empty = new GetTableTableInfoTableConstraintNamedTableConstraint();
 
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     * 
-     */
     @Import(name="name", required=true)
     private String name;
 
-    /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     * 
-     */
     public String name() {
         return this.name;
     }
@@ -52,12 +44,6 @@ public final class GetTableTableInfoTableConstraintNamedTableConstraint extends 
             $ = new GetTableTableInfoTableConstraintNamedTableConstraint(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             $.name = name;
             return this;

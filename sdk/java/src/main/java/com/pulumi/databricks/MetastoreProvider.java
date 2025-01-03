@@ -15,124 +15,29 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * &gt; This resource can only be used with a workspace-level provider!
- * 
- * In Delta Sharing, a provider is an entity that shares data with a recipient. Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
- * 
- * A `databricks.MetastoreProvider` is contained within databricks.Metastore and can contain a list of shares that have been shared with you.
- * 
- * &gt; Databricks to Databricks sharing automatically creates the provider.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.MetastoreProvider;
- * import com.pulumi.databricks.MetastoreProviderArgs;
- * import static com.pulumi.codegen.internal.Serialization.*;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var dbprovider = new MetastoreProvider("dbprovider", MetastoreProviderArgs.builder()
- *             .name("terraform-test-provider")
- *             .comment("made by terraform 2")
- *             .authenticationType("TOKEN")
- *             .recipientProfileStr(serializeJson(
- *                 jsonObject(
- *                     jsonProperty("shareCredentialsVersion", 1),
- *                     jsonProperty("bearerToken", "token"),
- *                     jsonProperty("endpoint", "endpoint"),
- *                     jsonProperty("expirationTime", "expiration-time")
- *                 )))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Related Resources
- * 
- * The following resources are used in the same context:
- * 
- * * databricks.getTables data to list tables within Unity Catalog.
- * * databricks.getSchemas data to list schemas within Unity Catalog.
- * * databricks.getCatalogs data to list catalogs within Unity Catalog.
- * 
- */
 @ResourceType(type="databricks:index/metastoreProvider:MetastoreProvider")
 public class MetastoreProvider extends com.pulumi.resources.CustomResource {
-    /**
-     * The delta sharing authentication type. Valid values are `TOKEN`.
-     * 
-     */
     @Export(name="authenticationType", refs={String.class}, tree="[0]")
     private Output<String> authenticationType;
 
-    /**
-     * @return The delta sharing authentication type. Valid values are `TOKEN`.
-     * 
-     */
     public Output<String> authenticationType() {
         return this.authenticationType;
     }
-    /**
-     * Description about the provider.
-     * 
-     */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
-    /**
-     * @return Description about the provider.
-     * 
-     */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
-    /**
-     * Name of provider. Change forces creation of a new resource.
-     * 
-     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return Name of provider. Change forces creation of a new resource.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * This is the json file that is created from a recipient url.
-     * 
-     */
     @Export(name="recipientProfileStr", refs={String.class}, tree="[0]")
     private Output<String> recipientProfileStr;
 
-    /**
-     * @return This is the json file that is created from a recipient url.
-     * 
-     */
     public Output<String> recipientProfileStr() {
         return this.recipientProfileStr;
     }

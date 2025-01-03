@@ -16,31 +16,15 @@ import javax.annotation.Nullable;
 public final class GetMlflowModelLatestVersion {
     private @Nullable Integer creationTimestamp;
     private @Nullable String currentStage;
-    /**
-     * @return User-specified description for the object.
-     * 
-     */
     private @Nullable String description;
     private @Nullable Integer lastUpdatedTimestamp;
-    /**
-     * @return Name of the registered model.
-     * 
-     */
     private @Nullable String name;
     private @Nullable String runId;
     private @Nullable String runLink;
     private @Nullable String source;
     private @Nullable String status;
     private @Nullable String statusMessage;
-    /**
-     * @return Array of tags associated with the model.
-     * 
-     */
     private @Nullable List<GetMlflowModelLatestVersionTag> tags;
-    /**
-     * @return The username of the user that created the object.
-     * 
-     */
     private @Nullable String userId;
     private @Nullable String version;
 
@@ -51,20 +35,12 @@ public final class GetMlflowModelLatestVersion {
     public Optional<String> currentStage() {
         return Optional.ofNullable(this.currentStage);
     }
-    /**
-     * @return User-specified description for the object.
-     * 
-     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     public Optional<Integer> lastUpdatedTimestamp() {
         return Optional.ofNullable(this.lastUpdatedTimestamp);
     }
-    /**
-     * @return Name of the registered model.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -83,17 +59,9 @@ public final class GetMlflowModelLatestVersion {
     public Optional<String> statusMessage() {
         return Optional.ofNullable(this.statusMessage);
     }
-    /**
-     * @return Array of tags associated with the model.
-     * 
-     */
     public List<GetMlflowModelLatestVersionTag> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
-    /**
-     * @return The username of the user that created the object.
-     * 
-     */
     public Optional<String> userId() {
         return Optional.ofNullable(this.userId);
     }

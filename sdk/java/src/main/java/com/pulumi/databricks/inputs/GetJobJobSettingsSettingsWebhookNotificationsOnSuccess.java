@@ -13,17 +13,9 @@ public final class GetJobJobSettingsSettingsWebhookNotificationsOnSuccess extend
 
     public static final GetJobJobSettingsSettingsWebhookNotificationsOnSuccess Empty = new GetJobJobSettingsSettingsWebhookNotificationsOnSuccess();
 
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     @Import(name="id", required=true)
     private String id;
 
-    /**
-     * @return the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -52,12 +44,6 @@ public final class GetJobJobSettingsSettingsWebhookNotificationsOnSuccess extend
             $ = new GetJobJobSettingsSettingsWebhookNotificationsOnSuccess(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param id the id of databricks.Job if the resource was matched by name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(String id) {
             $.id = id;
             return this;

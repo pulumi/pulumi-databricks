@@ -11,64 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewNotificationDestination(ctx, "email", &databricks.NotificationDestinationArgs{
-//				DisplayName: pulumi.String("Email Destination"),
-//				Config: &databricks.NotificationDestinationConfigArgs{
-//					Email: &databricks.NotificationDestinationConfigEmailArgs{
-//						Addresses: pulumi.StringArray{
-//							pulumi.String("abc@gmail.com"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewNotificationDestination(ctx, "slack", &databricks.NotificationDestinationArgs{
-//				DisplayName: pulumi.String("Slack Destination"),
-//				Config: &databricks.NotificationDestinationConfigArgs{
-//					Slack: &databricks.NotificationDestinationConfigSlackArgs{
-//						Url: pulumi.String("https://hooks.slack.com/services/..."),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Lists all notification desitnations
-//			_, err = databricks.GetNotificationDestinations(ctx, &databricks.GetNotificationDestinationsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// List destinations of specific type and name
-//			_, err = databricks.GetNotificationDestinations(ctx, &databricks.GetNotificationDestinationsArgs{
-//				DisplayNameContains: pulumi.StringRef("Destination"),
-//				Type:                pulumi.StringRef("EMAIL"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetNotificationDestinations(ctx *pulumi.Context, args *GetNotificationDestinationsArgs, opts ...pulumi.InvokeOption) (*GetNotificationDestinationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNotificationDestinationsResult
@@ -81,25 +23,15 @@ func GetNotificationDestinations(ctx *pulumi.Context, args *GetNotificationDesti
 
 // A collection of arguments for invoking getNotificationDestinations.
 type GetNotificationDestinationsArgs struct {
-	// A **case-insensitive** substring to filter Notification Destinations by their display name.
 	DisplayNameContains *string `pulumi:"displayNameContains"`
-	// A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-	NotificationDestinations []GetNotificationDestinationsNotificationDestination `pulumi:"notificationDestinations"`
-	// The type of the Notification Destination to filter by. Valid values are:
-	// * `EMAIL` - Filters Notification Destinations of type Email.
-	// * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
-	// * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
-	// * `SLACK` - Filters Notification Destinations of type Slack.
-	// * `WEBHOOK` - Filters Notification Destinations of type Webhook.
-	Type *string `pulumi:"type"`
+	Type                *string `pulumi:"type"`
 }
 
 // A collection of values returned by getNotificationDestinations.
 type GetNotificationDestinationsResult struct {
 	DisplayNameContains *string `pulumi:"displayNameContains"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
+	Id                       string                                               `pulumi:"id"`
 	NotificationDestinations []GetNotificationDestinationsNotificationDestination `pulumi:"notificationDestinations"`
 	Type                     *string                                              `pulumi:"type"`
 }
@@ -115,17 +47,8 @@ func GetNotificationDestinationsOutput(ctx *pulumi.Context, args GetNotification
 
 // A collection of arguments for invoking getNotificationDestinations.
 type GetNotificationDestinationsOutputArgs struct {
-	// A **case-insensitive** substring to filter Notification Destinations by their display name.
 	DisplayNameContains pulumi.StringPtrInput `pulumi:"displayNameContains"`
-	// A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-	NotificationDestinations GetNotificationDestinationsNotificationDestinationArrayInput `pulumi:"notificationDestinations"`
-	// The type of the Notification Destination to filter by. Valid values are:
-	// * `EMAIL` - Filters Notification Destinations of type Email.
-	// * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
-	// * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
-	// * `SLACK` - Filters Notification Destinations of type Slack.
-	// * `WEBHOOK` - Filters Notification Destinations of type Webhook.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type                pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetNotificationDestinationsOutputArgs) ElementType() reflect.Type {
@@ -156,7 +79,6 @@ func (o GetNotificationDestinationsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotificationDestinationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
 func (o GetNotificationDestinationsResultOutput) NotificationDestinations() GetNotificationDestinationsNotificationDestinationArrayOutput {
 	return o.ApplyT(func(v GetNotificationDestinationsResult) []GetNotificationDestinationsNotificationDestination {
 		return v.NotificationDestinations

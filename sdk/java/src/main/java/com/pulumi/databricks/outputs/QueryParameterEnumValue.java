@@ -13,41 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class QueryParameterEnumValue {
-    /**
-     * @return List of valid query parameter values, newline delimited.
-     * 
-     */
     private @Nullable String enumOptions;
-    /**
-     * @return If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
-     * 
-     */
     private @Nullable QueryParameterEnumValueMultiValuesOptions multiValuesOptions;
-    /**
-     * @return List of selected query parameter values.
-     * 
-     */
     private @Nullable List<String> values;
 
     private QueryParameterEnumValue() {}
-    /**
-     * @return List of valid query parameter values, newline delimited.
-     * 
-     */
     public Optional<String> enumOptions() {
         return Optional.ofNullable(this.enumOptions);
     }
-    /**
-     * @return If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
-     * 
-     */
     public Optional<QueryParameterEnumValueMultiValuesOptions> multiValuesOptions() {
         return Optional.ofNullable(this.multiValuesOptions);
     }
-    /**
-     * @return List of selected query parameter values.
-     * 
-     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

@@ -16,47 +16,23 @@ public final class GetStorageCredentialPlainArgs extends com.pulumi.resources.In
 
     public static final GetStorageCredentialPlainArgs Empty = new GetStorageCredentialPlainArgs();
 
-    /**
-     * Unique ID of storage credential.
-     * 
-     */
     @Import(name="id")
     private @Nullable String id;
 
-    /**
-     * @return Unique ID of storage credential.
-     * 
-     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * The name of the storage credential
-     * 
-     */
     @Import(name="name", required=true)
     private String name;
 
-    /**
-     * @return The name of the storage credential
-     * 
-     */
     public String name() {
         return this.name;
     }
 
-    /**
-     * array of objects with information about storage credential.
-     * 
-     */
     @Import(name="storageCredentialInfo")
     private @Nullable GetStorageCredentialStorageCredentialInfo storageCredentialInfo;
 
-    /**
-     * @return array of objects with information about storage credential.
-     * 
-     */
     public Optional<GetStorageCredentialStorageCredentialInfo> storageCredentialInfo() {
         return Optional.ofNullable(this.storageCredentialInfo);
     }
@@ -87,34 +63,16 @@ public final class GetStorageCredentialPlainArgs extends com.pulumi.resources.In
             $ = new GetStorageCredentialPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param id Unique ID of storage credential.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable String id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param name The name of the storage credential
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param storageCredentialInfo array of objects with information about storage credential.
-         * 
-         * @return builder
-         * 
-         */
         public Builder storageCredentialInfo(@Nullable GetStorageCredentialStorageCredentialInfo storageCredentialInfo) {
             $.storageCredentialInfo = storageCredentialInfo;
             return this;

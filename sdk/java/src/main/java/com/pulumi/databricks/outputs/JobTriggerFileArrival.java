@@ -13,41 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTriggerFileArrival {
-    /**
-     * @return If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     * 
-     */
     private @Nullable Integer minTimeBetweenTriggersSeconds;
-    /**
-     * @return URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
-     * 
-     */
     private String url;
-    /**
-     * @return If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     * 
-     */
     private @Nullable Integer waitAfterLastChangeSeconds;
 
     private JobTriggerFileArrival() {}
-    /**
-     * @return If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     * 
-     */
     public Optional<Integer> minTimeBetweenTriggersSeconds() {
         return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
-    /**
-     * @return URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
-     * 
-     */
     public String url() {
         return this.url;
     }
-    /**
-     * @return If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     * 
-     */
     public Optional<Integer> waitAfterLastChangeSeconds() {
         return Optional.ofNullable(this.waitAfterLastChangeSeconds);
     }

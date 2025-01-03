@@ -16,32 +16,16 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
 
     public static final VectorSearchEndpointArgs Empty = new VectorSearchEndpointArgs();
 
-    /**
-     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-     * 
-     */
     @Import(name="endpointType", required=true)
     private Output<String> endpointType;
 
-    /**
-     * @return Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-     * 
-     */
     public Output<String> endpointType() {
         return this.endpointType;
     }
 
-    /**
-     * Name of the Mosaic AI Vector Search Endpoint to create.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the Mosaic AI Vector Search Endpoint to create.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -71,44 +55,20 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
             $ = new VectorSearchEndpointArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpointType(Output<String> endpointType) {
             $.endpointType = endpointType;
             return this;
         }
 
-        /**
-         * @param endpointType Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpointType(String endpointType) {
             return endpointType(Output.of(endpointType));
         }
 
-        /**
-         * @param name Name of the Mosaic AI Vector Search Endpoint to create.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the Mosaic AI Vector Search Endpoint to create.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

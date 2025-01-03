@@ -26,17 +26,9 @@ public final class OnlineTableStatusArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.continuousUpdateStatus);
     }
 
-    /**
-     * The state of the online table.
-     * 
-     */
     @Import(name="detailedState")
     private @Nullable Output<String> detailedState;
 
-    /**
-     * @return The state of the online table.
-     * 
-     */
     public Optional<Output<String>> detailedState() {
         return Optional.ofNullable(this.detailedState);
     }
@@ -48,17 +40,9 @@ public final class OnlineTableStatusArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.failedStatus);
     }
 
-    /**
-     * A text description of the current state of the online table.
-     * 
-     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
-    /**
-     * @return A text description of the current state of the online table.
-     * 
-     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
@@ -115,23 +99,11 @@ public final class OnlineTableStatusArgs extends com.pulumi.resources.ResourceAr
             return continuousUpdateStatus(Output.of(continuousUpdateStatus));
         }
 
-        /**
-         * @param detailedState The state of the online table.
-         * 
-         * @return builder
-         * 
-         */
         public Builder detailedState(@Nullable Output<String> detailedState) {
             $.detailedState = detailedState;
             return this;
         }
 
-        /**
-         * @param detailedState The state of the online table.
-         * 
-         * @return builder
-         * 
-         */
         public Builder detailedState(String detailedState) {
             return detailedState(Output.of(detailedState));
         }
@@ -145,23 +117,11 @@ public final class OnlineTableStatusArgs extends com.pulumi.resources.ResourceAr
             return failedStatus(Output.of(failedStatus));
         }
 
-        /**
-         * @param message A text description of the current state of the online table.
-         * 
-         * @return builder
-         * 
-         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
-        /**
-         * @param message A text description of the current state of the online table.
-         * 
-         * @return builder
-         * 
-         */
         public Builder message(String message) {
             return message(Output.of(message));
         }

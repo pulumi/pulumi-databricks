@@ -25,77 +25,37 @@ public final class SqlAlertArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createdAt);
     }
 
-    /**
-     * Name of the alert.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the alert.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Alert configuration options.
-     * 
-     */
     @Import(name="options", required=true)
     private Output<SqlAlertOptionsArgs> options;
 
-    /**
-     * @return Alert configuration options.
-     * 
-     */
     public Output<SqlAlertOptionsArgs> options() {
         return this.options;
     }
 
-    /**
-     * The identifier of the workspace folder containing the alert. The default is ther user&#39;s home folder. The folder identifier is formatted as `folder/&lt;folder_id&gt;`.
-     * 
-     */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
-    /**
-     * @return The identifier of the workspace folder containing the alert. The default is ther user&#39;s home folder. The folder identifier is formatted as `folder/&lt;folder_id&gt;`.
-     * 
-     */
     public Optional<Output<String>> parent() {
         return Optional.ofNullable(this.parent);
     }
 
-    /**
-     * ID of the query evaluated by the alert.
-     * 
-     */
     @Import(name="queryId", required=true)
     private Output<String> queryId;
 
-    /**
-     * @return ID of the query evaluated by the alert.
-     * 
-     */
     public Output<String> queryId() {
         return this.queryId;
     }
 
-    /**
-     * Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-     * 
-     */
     @Import(name="rearm")
     private @Nullable Output<Integer> rearm;
 
-    /**
-     * @return Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-     * 
-     */
     public Optional<Output<Integer>> rearm() {
         return Optional.ofNullable(this.rearm);
     }
@@ -146,107 +106,47 @@ public final class SqlAlertArgs extends com.pulumi.resources.ResourceArgs {
             return createdAt(Output.of(createdAt));
         }
 
-        /**
-         * @param name Name of the alert.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the alert.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param options Alert configuration options.
-         * 
-         * @return builder
-         * 
-         */
         public Builder options(Output<SqlAlertOptionsArgs> options) {
             $.options = options;
             return this;
         }
 
-        /**
-         * @param options Alert configuration options.
-         * 
-         * @return builder
-         * 
-         */
         public Builder options(SqlAlertOptionsArgs options) {
             return options(Output.of(options));
         }
 
-        /**
-         * @param parent The identifier of the workspace folder containing the alert. The default is ther user&#39;s home folder. The folder identifier is formatted as `folder/&lt;folder_id&gt;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parent(@Nullable Output<String> parent) {
             $.parent = parent;
             return this;
         }
 
-        /**
-         * @param parent The identifier of the workspace folder containing the alert. The default is ther user&#39;s home folder. The folder identifier is formatted as `folder/&lt;folder_id&gt;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
         }
 
-        /**
-         * @param queryId ID of the query evaluated by the alert.
-         * 
-         * @return builder
-         * 
-         */
         public Builder queryId(Output<String> queryId) {
             $.queryId = queryId;
             return this;
         }
 
-        /**
-         * @param queryId ID of the query evaluated by the alert.
-         * 
-         * @return builder
-         * 
-         */
         public Builder queryId(String queryId) {
             return queryId(Output.of(queryId));
         }
 
-        /**
-         * @param rearm Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rearm(@Nullable Output<Integer> rearm) {
             $.rearm = rearm;
             return this;
         }
 
-        /**
-         * @param rearm Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rearm(Integer rearm) {
             return rearm(Output.of(rearm));
         }

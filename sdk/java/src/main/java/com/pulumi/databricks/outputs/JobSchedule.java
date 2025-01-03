@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobSchedule {
-    /**
-     * @return Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pause_status`.
-     * 
-     */
     private @Nullable String pauseStatus;
-    /**
-     * @return A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
-     * 
-     */
     private String quartzCronExpression;
-    /**
-     * @return A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
-     * 
-     */
     private String timezoneId;
 
     private JobSchedule() {}
-    /**
-     * @return Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pause_status`.
-     * 
-     */
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
-    /**
-     * @return A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
-     * 
-     */
     public String quartzCronExpression() {
         return this.quartzCronExpression;
     }
-    /**
-     * @return A Java timezone ID. The schedule for a job will be resolved with respect to this timezone. See Java TimeZone for details. This field is required.
-     * 
-     */
     public String timezoneId() {
         return this.timezoneId;
     }

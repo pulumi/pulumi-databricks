@@ -12,72 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
-//
-// > This resource can only be used with a workspace-level provider!
-//
-// In Databricks Runtime 13.3 and above, you can add libraries and init scripts to the allowlist in UC so that users can leverage these artifacts on compute configured with shared access mode.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewArtifactAllowlist(ctx, "init_scripts", &databricks.ArtifactAllowlistArgs{
-//				ArtifactType: pulumi.String("INIT_SCRIPT"),
-//				ArtifactMatchers: databricks.ArtifactAllowlistArtifactMatcherArray{
-//					&databricks.ArtifactAllowlistArtifactMatcherArgs{
-//						Artifact:  pulumi.String("/Volumes/inits"),
-//						MatchType: pulumi.String("PREFIX_MATCH"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-// * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-//
-// ## Import
-//
-// This resource can be imported by name:
-//
-// bash
-//
-// ```sh
-// $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '<metastore_id>|<artifact_type>'
-// ```
 type ArtifactAllowlist struct {
 	pulumi.CustomResourceState
 
 	ArtifactMatchers ArtifactAllowlistArtifactMatcherArrayOutput `pulumi:"artifactMatchers"`
-	// The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-	ArtifactType pulumi.StringOutput `pulumi:"artifactType"`
-	// Time at which this artifact allowlist was set.
-	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
-	// Identity that set the artifact allowlist.
-	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
-	// ID of the parent metastore.
-	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
+	ArtifactType     pulumi.StringOutput                         `pulumi:"artifactType"`
+	CreatedAt        pulumi.IntOutput                            `pulumi:"createdAt"`
+	CreatedBy        pulumi.StringOutput                         `pulumi:"createdBy"`
+	MetastoreId      pulumi.StringOutput                         `pulumi:"metastoreId"`
 }
 
 // NewArtifactAllowlist registers a new resource with the given unique name, arguments, and options.
@@ -117,26 +59,18 @@ func GetArtifactAllowlist(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ArtifactAllowlist resources.
 type artifactAllowlistState struct {
 	ArtifactMatchers []ArtifactAllowlistArtifactMatcher `pulumi:"artifactMatchers"`
-	// The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-	ArtifactType *string `pulumi:"artifactType"`
-	// Time at which this artifact allowlist was set.
-	CreatedAt *int `pulumi:"createdAt"`
-	// Identity that set the artifact allowlist.
-	CreatedBy *string `pulumi:"createdBy"`
-	// ID of the parent metastore.
-	MetastoreId *string `pulumi:"metastoreId"`
+	ArtifactType     *string                            `pulumi:"artifactType"`
+	CreatedAt        *int                               `pulumi:"createdAt"`
+	CreatedBy        *string                            `pulumi:"createdBy"`
+	MetastoreId      *string                            `pulumi:"metastoreId"`
 }
 
 type ArtifactAllowlistState struct {
 	ArtifactMatchers ArtifactAllowlistArtifactMatcherArrayInput
-	// The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-	ArtifactType pulumi.StringPtrInput
-	// Time at which this artifact allowlist was set.
-	CreatedAt pulumi.IntPtrInput
-	// Identity that set the artifact allowlist.
-	CreatedBy pulumi.StringPtrInput
-	// ID of the parent metastore.
-	MetastoreId pulumi.StringPtrInput
+	ArtifactType     pulumi.StringPtrInput
+	CreatedAt        pulumi.IntPtrInput
+	CreatedBy        pulumi.StringPtrInput
+	MetastoreId      pulumi.StringPtrInput
 }
 
 func (ArtifactAllowlistState) ElementType() reflect.Type {
@@ -145,27 +79,19 @@ func (ArtifactAllowlistState) ElementType() reflect.Type {
 
 type artifactAllowlistArgs struct {
 	ArtifactMatchers []ArtifactAllowlistArtifactMatcher `pulumi:"artifactMatchers"`
-	// The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-	ArtifactType string `pulumi:"artifactType"`
-	// Time at which this artifact allowlist was set.
-	CreatedAt *int `pulumi:"createdAt"`
-	// Identity that set the artifact allowlist.
-	CreatedBy *string `pulumi:"createdBy"`
-	// ID of the parent metastore.
-	MetastoreId *string `pulumi:"metastoreId"`
+	ArtifactType     string                             `pulumi:"artifactType"`
+	CreatedAt        *int                               `pulumi:"createdAt"`
+	CreatedBy        *string                            `pulumi:"createdBy"`
+	MetastoreId      *string                            `pulumi:"metastoreId"`
 }
 
 // The set of arguments for constructing a ArtifactAllowlist resource.
 type ArtifactAllowlistArgs struct {
 	ArtifactMatchers ArtifactAllowlistArtifactMatcherArrayInput
-	// The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
-	ArtifactType pulumi.StringInput
-	// Time at which this artifact allowlist was set.
-	CreatedAt pulumi.IntPtrInput
-	// Identity that set the artifact allowlist.
-	CreatedBy pulumi.StringPtrInput
-	// ID of the parent metastore.
-	MetastoreId pulumi.StringPtrInput
+	ArtifactType     pulumi.StringInput
+	CreatedAt        pulumi.IntPtrInput
+	CreatedBy        pulumi.StringPtrInput
+	MetastoreId      pulumi.StringPtrInput
 }
 
 func (ArtifactAllowlistArgs) ElementType() reflect.Type {
@@ -259,22 +185,18 @@ func (o ArtifactAllowlistOutput) ArtifactMatchers() ArtifactAllowlistArtifactMat
 	return o.ApplyT(func(v *ArtifactAllowlist) ArtifactAllowlistArtifactMatcherArrayOutput { return v.ArtifactMatchers }).(ArtifactAllowlistArtifactMatcherArrayOutput)
 }
 
-// The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
 func (o ArtifactAllowlistOutput) ArtifactType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArtifactAllowlist) pulumi.StringOutput { return v.ArtifactType }).(pulumi.StringOutput)
 }
 
-// Time at which this artifact allowlist was set.
 func (o ArtifactAllowlistOutput) CreatedAt() pulumi.IntOutput {
 	return o.ApplyT(func(v *ArtifactAllowlist) pulumi.IntOutput { return v.CreatedAt }).(pulumi.IntOutput)
 }
 
-// Identity that set the artifact allowlist.
 func (o ArtifactAllowlistOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArtifactAllowlist) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// ID of the parent metastore.
 func (o ArtifactAllowlistOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArtifactAllowlist) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }

@@ -24,17 +24,9 @@ public final class RestrictWorkspaceAdminsSettingArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.etag);
     }
 
-    /**
-     * The configuration details.
-     * 
-     */
     @Import(name="restrictWorkspaceAdmins", required=true)
     private Output<RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs> restrictWorkspaceAdmins;
 
-    /**
-     * @return The configuration details.
-     * 
-     */
     public Output<RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs> restrictWorkspaceAdmins() {
         return this.restrictWorkspaceAdmins;
     }
@@ -81,23 +73,11 @@ public final class RestrictWorkspaceAdminsSettingArgs extends com.pulumi.resourc
             return etag(Output.of(etag));
         }
 
-        /**
-         * @param restrictWorkspaceAdmins The configuration details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder restrictWorkspaceAdmins(Output<RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs> restrictWorkspaceAdmins) {
             $.restrictWorkspaceAdmins = restrictWorkspaceAdmins;
             return this;
         }
 
-        /**
-         * @param restrictWorkspaceAdmins The configuration details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder restrictWorkspaceAdmins(RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs restrictWorkspaceAdmins) {
             return restrictWorkspaceAdmins(Output.of(restrictWorkspaceAdmins));
         }

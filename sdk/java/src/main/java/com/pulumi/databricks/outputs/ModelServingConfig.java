@@ -15,49 +15,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfig {
-    /**
-     * @return Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
-     * 
-     */
     private @Nullable ModelServingConfigAutoCaptureConfig autoCaptureConfig;
-    /**
-     * @return A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
-     * 
-     */
     private @Nullable List<ModelServingConfigServedEntity> servedEntities;
     /**
-     * @return Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
-     * 
      * @deprecated
      * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
      * 
      */
     @Deprecated /* Please use 'config.served_entities' instead of 'config.served_models'. */
     private @Nullable List<ModelServingConfigServedModel> servedModels;
-    /**
-     * @return A single block represents the traffic split configuration amongst the served models.
-     * 
-     */
     private @Nullable ModelServingConfigTrafficConfig trafficConfig;
 
     private ModelServingConfig() {}
-    /**
-     * @return Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
-     * 
-     */
     public Optional<ModelServingConfigAutoCaptureConfig> autoCaptureConfig() {
         return Optional.ofNullable(this.autoCaptureConfig);
     }
-    /**
-     * @return A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
-     * 
-     */
     public List<ModelServingConfigServedEntity> servedEntities() {
         return this.servedEntities == null ? List.of() : this.servedEntities;
     }
     /**
-     * @return Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
-     * 
      * @deprecated
      * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
      * 
@@ -66,10 +42,6 @@ public final class ModelServingConfig {
     public List<ModelServingConfigServedModel> servedModels() {
         return this.servedModels == null ? List.of() : this.servedModels;
     }
-    /**
-     * @return A single block represents the traffic split configuration amongst the served models.
-     * 
-     */
     public Optional<ModelServingConfigTrafficConfig> trafficConfig() {
         return Optional.ofNullable(this.trafficConfig);
     }

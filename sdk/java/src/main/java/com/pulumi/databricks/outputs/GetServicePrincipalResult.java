@@ -11,94 +11,38 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServicePrincipalResult {
-    /**
-     * @return identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
-     * 
-     */
     private String aclPrincipalId;
-    /**
-     * @return Whether service principal is active or not.
-     * 
-     */
     private Boolean active;
     private String applicationId;
-    /**
-     * @return Display name of the service principal, e.g. `Foo SPN`.
-     * 
-     */
     private String displayName;
-    /**
-     * @return ID of the service principal in an external identity provider.
-     * 
-     */
     private String externalId;
-    /**
-     * @return Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
-     * 
-     */
     private String home;
-    /**
-     * @return The id of the service principal.
-     * 
-     */
     private String id;
-    /**
-     * @return Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
-     * 
-     */
     private String repos;
     private String spId;
 
     private GetServicePrincipalResult() {}
-    /**
-     * @return identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
-     * 
-     */
     public String aclPrincipalId() {
         return this.aclPrincipalId;
     }
-    /**
-     * @return Whether service principal is active or not.
-     * 
-     */
     public Boolean active() {
         return this.active;
     }
     public String applicationId() {
         return this.applicationId;
     }
-    /**
-     * @return Display name of the service principal, e.g. `Foo SPN`.
-     * 
-     */
     public String displayName() {
         return this.displayName;
     }
-    /**
-     * @return ID of the service principal in an external identity provider.
-     * 
-     */
     public String externalId() {
         return this.externalId;
     }
-    /**
-     * @return Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
-     * 
-     */
     public String home() {
         return this.home;
     }
-    /**
-     * @return The id of the service principal.
-     * 
-     */
     public String id() {
         return this.id;
     }
-    /**
-     * @return Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
-     * 
-     */
     public String repos() {
         return this.repos;
     }

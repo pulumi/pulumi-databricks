@@ -15,47 +15,23 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZonesPlainArgs Empty = new GetZonesPlainArgs();
 
-    /**
-     * This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
-     * 
-     */
     @Import(name="defaultZone")
     private @Nullable String defaultZone;
 
-    /**
-     * @return This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
-     * 
-     */
     public Optional<String> defaultZone() {
         return Optional.ofNullable(this.defaultZone);
     }
 
-    /**
-     * The id for the zone object.
-     * 
-     */
     @Import(name="id")
     private @Nullable String id;
 
-    /**
-     * @return The id for the zone object.
-     * 
-     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * This is a list of all the zones available for your subnets in your Databricks workspace.
-     * 
-     */
     @Import(name="zones")
     private @Nullable List<String> zones;
 
-    /**
-     * @return This is a list of all the zones available for your subnets in your Databricks workspace.
-     * 
-     */
     public Optional<List<String>> zones() {
         return Optional.ofNullable(this.zones);
     }
@@ -86,45 +62,21 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetZonesPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param defaultZone This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
-         * 
-         * @return builder
-         * 
-         */
         public Builder defaultZone(@Nullable String defaultZone) {
             $.defaultZone = defaultZone;
             return this;
         }
 
-        /**
-         * @param id The id for the zone object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable String id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param zones This is a list of all the zones available for your subnets in your Databricks workspace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder zones(@Nullable List<String> zones) {
             $.zones = zones;
             return this;
         }
 
-        /**
-         * @param zones This is a list of all the zones available for your subnets in your Databricks workspace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder zones(String... zones) {
             return zones(List.of(zones));
         }

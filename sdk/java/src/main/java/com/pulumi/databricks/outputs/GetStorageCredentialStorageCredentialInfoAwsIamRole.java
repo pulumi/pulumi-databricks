@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStorageCredentialStorageCredentialInfoAwsIamRole {
-    /**
-     * @return (output only) - The external ID used in role assumption to prevent confused deputy problem.
-     * 
-     */
     private @Nullable String externalId;
-    /**
-     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-     * 
-     */
     private String roleArn;
-    /**
-     * @return (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
-     * 
-     */
     private @Nullable String unityCatalogIamArn;
 
     private GetStorageCredentialStorageCredentialInfoAwsIamRole() {}
-    /**
-     * @return (output only) - The external ID used in role assumption to prevent confused deputy problem.
-     * 
-     */
     public Optional<String> externalId() {
         return Optional.ofNullable(this.externalId);
     }
-    /**
-     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-     * 
-     */
     public String roleArn() {
         return this.roleArn;
     }
-    /**
-     * @return (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
-     * 
-     */
     public Optional<String> unityCatalogIamArn() {
         return Optional.ofNullable(this.unityCatalogIamArn);
     }

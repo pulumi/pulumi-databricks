@@ -17,241 +17,101 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * ## Import
- * 
- * This resource can be imported using query ID:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/query:Query this &lt;query-id&gt;
- * ```
- * 
- */
 @ResourceType(type="databricks:index/query:Query")
 public class Query extends com.pulumi.resources.CustomResource {
-    /**
-     * Whether to apply a 1000 row limit to the query result.
-     * 
-     */
     @Export(name="applyAutoLimit", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> applyAutoLimit;
 
-    /**
-     * @return Whether to apply a 1000 row limit to the query result.
-     * 
-     */
     public Output<Optional<Boolean>> applyAutoLimit() {
         return Codegen.optional(this.applyAutoLimit);
     }
-    /**
-     * Name of the catalog where this query will be executed.
-     * 
-     */
     @Export(name="catalog", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> catalog;
 
-    /**
-     * @return Name of the catalog where this query will be executed.
-     * 
-     */
     public Output<Optional<String>> catalog() {
         return Codegen.optional(this.catalog);
     }
-    /**
-     * The timestamp string indicating when the query was created.
-     * 
-     */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
-    /**
-     * @return The timestamp string indicating when the query was created.
-     * 
-     */
     public Output<String> createTime() {
         return this.createTime;
     }
-    /**
-     * General description that conveys additional information about this query such as usage notes.
-     * 
-     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
-    /**
-     * @return General description that conveys additional information about this query such as usage notes.
-     * 
-     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    /**
-     * Name of the query.
-     * 
-     */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
-    /**
-     * @return Name of the query.
-     * 
-     */
     public Output<String> displayName() {
         return this.displayName;
     }
-    /**
-     * Username of the user who last saved changes to this query.
-     * 
-     */
     @Export(name="lastModifierUserName", refs={String.class}, tree="[0]")
     private Output<String> lastModifierUserName;
 
-    /**
-     * @return Username of the user who last saved changes to this query.
-     * 
-     */
     public Output<String> lastModifierUserName() {
         return this.lastModifierUserName;
     }
-    /**
-     * The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-     * 
-     */
     @Export(name="lifecycleState", refs={String.class}, tree="[0]")
     private Output<String> lifecycleState;
 
-    /**
-     * @return The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-     * 
-     */
     public Output<String> lifecycleState() {
         return this.lifecycleState;
     }
-    /**
-     * Query owner&#39;s username.
-     * 
-     */
     @Export(name="ownerUserName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ownerUserName;
 
-    /**
-     * @return Query owner&#39;s username.
-     * 
-     */
     public Output<Optional<String>> ownerUserName() {
         return Codegen.optional(this.ownerUserName);
     }
-    /**
-     * Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-     * 
-     */
     @Export(name="parameters", refs={List.class,QueryParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<QueryParameter>> parameters;
 
-    /**
-     * @return Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-     * 
-     */
     public Output<Optional<List<QueryParameter>>> parameters() {
         return Codegen.optional(this.parameters);
     }
-    /**
-     * The path to a workspace folder containing the query. The default is the user&#39;s home folder.  If changed, the query will be recreated.
-     * 
-     */
     @Export(name="parentPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentPath;
 
-    /**
-     * @return The path to a workspace folder containing the query. The default is the user&#39;s home folder.  If changed, the query will be recreated.
-     * 
-     */
     public Output<Optional<String>> parentPath() {
         return Codegen.optional(this.parentPath);
     }
-    /**
-     * Text of SQL query.
-     * 
-     */
     @Export(name="queryText", refs={String.class}, tree="[0]")
     private Output<String> queryText;
 
-    /**
-     * @return Text of SQL query.
-     * 
-     */
     public Output<String> queryText() {
         return this.queryText;
     }
-    /**
-     * Sets the &#34;Run as&#34; role for the object.
-     * 
-     */
     @Export(name="runAsMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> runAsMode;
 
-    /**
-     * @return Sets the &#34;Run as&#34; role for the object.
-     * 
-     */
     public Output<Optional<String>> runAsMode() {
         return Codegen.optional(this.runAsMode);
     }
-    /**
-     * Name of the schema where this query will be executed.
-     * 
-     */
     @Export(name="schema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schema;
 
-    /**
-     * @return Name of the schema where this query will be executed.
-     * 
-     */
     public Output<Optional<String>> schema() {
         return Codegen.optional(this.schema);
     }
-    /**
-     * Tags that will be added to the query.
-     * 
-     */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
-    /**
-     * @return Tags that will be added to the query.
-     * 
-     */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * The timestamp string indicating when the query was updated.
-     * 
-     */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
-    /**
-     * @return The timestamp string indicating when the query was updated.
-     * 
-     */
     public Output<String> updateTime() {
         return this.updateTime;
     }
-    /**
-     * ID of a SQL warehouse which will be used to execute this query.
-     * 
-     */
     @Export(name="warehouseId", refs={String.class}, tree="[0]")
     private Output<String> warehouseId;
 
-    /**
-     * @return ID of a SQL warehouse which will be used to execute this query.
-     * 
-     */
     public Output<String> warehouseId() {
         return this.warehouseId;
     }

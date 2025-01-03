@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class JobQueue {
-    /**
-     * @return If true, enable queueing for the job.
-     * 
-     */
     private Boolean enabled;
 
     private JobQueue() {}
-    /**
-     * @return If true, enable queueing for the job.
-     * 
-     */
     public Boolean enabled() {
         return this.enabled;
     }

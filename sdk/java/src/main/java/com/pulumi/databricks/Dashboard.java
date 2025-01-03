@@ -15,69 +15,6 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
- * 
- * ## Example Usage
- * 
- * Dashboard using `serialized_dashboard` attribute:
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.DatabricksFunctions;
- * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
- * import com.pulumi.databricks.Dashboard;
- * import com.pulumi.databricks.DashboardArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var starter = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
- *             .name("Starter Warehouse")
- *             .build());
- * 
- *         var dashboard = new Dashboard("dashboard", DashboardArgs.builder()
- *             .displayName("New Dashboard")
- *             .warehouseId(starter.applyValue(getSqlWarehouseResult -> getSqlWarehouseResult.id()))
- *             .serializedDashboard("{\"pages\":[{\"name\":\"new_name\",\"displayName\":\"New Page\"}]}")
- *             .embedCredentials(false)
- *             .parentPath("/Shared/provider-test")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * Dashboard using `file_path` attribute:
- * 
- * ## Import
- * 
- * You can import a `databricks_dashboard` resource with ID like the following:
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import databricks:index/dashboard:Dashboard this &lt;dashboard-id&gt;
- * ```
- * 
- */
 @ResourceType(type="databricks:index/dashboard:Dashboard")
 public class Dashboard extends com.pulumi.resources.CustomResource {
     @Export(name="createTime", refs={String.class}, tree="[0]")
@@ -98,31 +35,15 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     public Output<String> dashboardId() {
         return this.dashboardId;
     }
-    /**
-     * The display name of the dashboard.
-     * 
-     */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
-    /**
-     * @return The display name of the dashboard.
-     * 
-     */
     public Output<String> displayName() {
         return this.displayName;
     }
-    /**
-     * Whether to embed credentials in the dashboard. Default is `true`.
-     * 
-     */
     @Export(name="embedCredentials", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> embedCredentials;
 
-    /**
-     * @return Whether to embed credentials in the dashboard. Default is `true`.
-     * 
-     */
     public Output<Optional<Boolean>> embedCredentials() {
         return Codegen.optional(this.embedCredentials);
     }
@@ -132,17 +53,9 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    /**
-     * The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
-     * 
-     */
     @Export(name="filePath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filePath;
 
-    /**
-     * @return The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
-     * 
-     */
     public Output<Optional<String>> filePath() {
         return Codegen.optional(this.filePath);
     }
@@ -158,17 +71,9 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     public Output<String> md5() {
         return this.md5;
     }
-    /**
-     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn&#39;t exist, it will be created.
-     * 
-     */
     @Export(name="parentPath", refs={String.class}, tree="[0]")
     private Output<String> parentPath;
 
-    /**
-     * @return The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn&#39;t exist, it will be created.
-     * 
-     */
     public Output<String> parentPath() {
         return this.parentPath;
     }
@@ -178,17 +83,9 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     public Output<String> path() {
         return this.path;
     }
-    /**
-     * The contents of the dashboard in serialized string form. Conflicts with `file_path`.
-     * 
-     */
     @Export(name="serializedDashboard", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serializedDashboard;
 
-    /**
-     * @return The contents of the dashboard in serialized string form. Conflicts with `file_path`.
-     * 
-     */
     public Output<Optional<String>> serializedDashboard() {
         return Codegen.optional(this.serializedDashboard);
     }
@@ -198,17 +95,9 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     public Output<String> updateTime() {
         return this.updateTime;
     }
-    /**
-     * The warehouse ID used to run the dashboard.
-     * 
-     */
     @Export(name="warehouseId", refs={String.class}, tree="[0]")
     private Output<String> warehouseId;
 
-    /**
-     * @return The warehouse ID used to run the dashboard.
-     * 
-     */
     public Output<String> warehouseId() {
         return this.warehouseId;
     }

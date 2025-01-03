@@ -13,32 +13,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobSparkJarTask {
     private @Nullable String jarUri;
-    /**
-     * @return The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
-     * 
-     */
     private @Nullable String mainClassName;
-    /**
-     * @return (List) Parameters passed to the main method.
-     * 
-     */
     private @Nullable List<String> parameters;
 
     private JobSparkJarTask() {}
     public Optional<String> jarUri() {
         return Optional.ofNullable(this.jarUri);
     }
-    /**
-     * @return The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
-     * 
-     */
     public Optional<String> mainClassName() {
         return Optional.ofNullable(this.mainClassName);
     }
-    /**
-     * @return (List) Parameters passed to the main method.
-     * 
-     */
     public List<String> parameters() {
         return this.parameters == null ? List.of() : this.parameters;
     }

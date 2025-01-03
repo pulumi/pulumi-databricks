@@ -11,8 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves details about Schema that was created by Pulumi or manually.
-// A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using getSchemas data source.
 func LookupSchema(ctx *pulumi.Context, args *LookupSchemaArgs, opts ...pulumi.InvokeOption) (*LookupSchemaResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaResult
@@ -25,21 +23,15 @@ func LookupSchema(ctx *pulumi.Context, args *LookupSchemaArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getSchema.
 type LookupSchemaArgs struct {
-	// ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
-	Id *string `pulumi:"id"`
-	// a fully qualified name of databricks_schema: *`catalog`.`schema`*
-	Name string `pulumi:"name"`
-	// `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
+	Id         *string              `pulumi:"id"`
+	Name       string               `pulumi:"name"`
 	SchemaInfo *GetSchemaSchemaInfo `pulumi:"schemaInfo"`
 }
 
 // A collection of values returned by getSchema.
 type LookupSchemaResult struct {
-	// ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
-	Id string `pulumi:"id"`
-	// Name of schema, relative to parent catalog.
-	Name string `pulumi:"name"`
-	// `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
+	Id         string              `pulumi:"id"`
+	Name       string              `pulumi:"name"`
 	SchemaInfo GetSchemaSchemaInfo `pulumi:"schemaInfo"`
 }
 
@@ -54,11 +46,8 @@ func LookupSchemaOutput(ctx *pulumi.Context, args LookupSchemaOutputArgs, opts .
 
 // A collection of arguments for invoking getSchema.
 type LookupSchemaOutputArgs struct {
-	// ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// a fully qualified name of databricks_schema: *`catalog`.`schema`*
-	Name pulumi.StringInput `pulumi:"name"`
-	// `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
+	Id         pulumi.StringPtrInput       `pulumi:"id"`
+	Name       pulumi.StringInput          `pulumi:"name"`
 	SchemaInfo GetSchemaSchemaInfoPtrInput `pulumi:"schemaInfo"`
 }
 
@@ -81,17 +70,14 @@ func (o LookupSchemaResultOutput) ToLookupSchemaResultOutputWithContext(ctx cont
 	return o
 }
 
-// ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
 func (o LookupSchemaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSchemaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of schema, relative to parent catalog.
 func (o LookupSchemaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSchemaResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
 func (o LookupSchemaResultOutput) SchemaInfo() GetSchemaSchemaInfoOutput {
 	return o.ApplyT(func(v LookupSchemaResult) GetSchemaSchemaInfo { return v.SchemaInfo }).(GetSchemaSchemaInfoOutput)
 }

@@ -15,32 +15,16 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobJobClusterArgs Empty = new JobJobClusterArgs();
 
-    /**
-     * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-     * 
-     */
     @Import(name="jobClusterKey", required=true)
     private Output<String> jobClusterKey;
 
-    /**
-     * @return Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-     * 
-     */
     public Output<String> jobClusterKey() {
         return this.jobClusterKey;
     }
 
-    /**
-     * Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
-     * 
-     */
     @Import(name="newCluster", required=true)
     private Output<JobJobClusterNewClusterArgs> newCluster;
 
-    /**
-     * @return Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
-     * 
-     */
     public Output<JobJobClusterNewClusterArgs> newCluster() {
         return this.newCluster;
     }
@@ -70,44 +54,20 @@ public final class JobJobClusterArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobJobClusterArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param jobClusterKey Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobClusterKey(Output<String> jobClusterKey) {
             $.jobClusterKey = jobClusterKey;
             return this;
         }
 
-        /**
-         * @param jobClusterKey Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobClusterKey(String jobClusterKey) {
             return jobClusterKey(Output.of(jobClusterKey));
         }
 
-        /**
-         * @param newCluster Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
-         * 
-         * @return builder
-         * 
-         */
         public Builder newCluster(Output<JobJobClusterNewClusterArgs> newCluster) {
             $.newCluster = newCluster;
             return this;
         }
 
-        /**
-         * @param newCluster Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
-         * 
-         * @return builder
-         * 
-         */
         public Builder newCluster(JobJobClusterNewClusterArgs newCluster) {
             return newCluster(Output.of(newCluster));
         }

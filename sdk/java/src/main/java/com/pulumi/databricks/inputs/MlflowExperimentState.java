@@ -16,17 +16,9 @@ public final class MlflowExperimentState extends com.pulumi.resources.ResourceAr
 
     public static final MlflowExperimentState Empty = new MlflowExperimentState();
 
-    /**
-     * Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
-     * 
-     */
     @Import(name="artifactLocation")
     private @Nullable Output<String> artifactLocation;
 
-    /**
-     * @return Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
-     * 
-     */
     public Optional<Output<String>> artifactLocation() {
         return Optional.ofNullable(this.artifactLocation);
     }
@@ -38,17 +30,9 @@ public final class MlflowExperimentState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.creationTime);
     }
 
-    /**
-     * The description of the MLflow experiment.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return The description of the MLflow experiment.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -74,17 +58,9 @@ public final class MlflowExperimentState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.lifecycleStage);
     }
 
-    /**
-     * Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/&lt;some-username&gt;/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/&lt;some-username&gt;/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -119,23 +95,11 @@ public final class MlflowExperimentState extends com.pulumi.resources.ResourceAr
             $ = new MlflowExperimentState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param artifactLocation Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder artifactLocation(@Nullable Output<String> artifactLocation) {
             $.artifactLocation = artifactLocation;
             return this;
         }
 
-        /**
-         * @param artifactLocation Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder artifactLocation(String artifactLocation) {
             return artifactLocation(Output.of(artifactLocation));
         }
@@ -149,23 +113,11 @@ public final class MlflowExperimentState extends com.pulumi.resources.ResourceAr
             return creationTime(Output.of(creationTime));
         }
 
-        /**
-         * @param description The description of the MLflow experiment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description The description of the MLflow experiment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -197,23 +149,11 @@ public final class MlflowExperimentState extends com.pulumi.resources.ResourceAr
             return lifecycleStage(Output.of(lifecycleStage));
         }
 
-        /**
-         * @param name Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/&lt;some-username&gt;/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/&lt;some-username&gt;/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

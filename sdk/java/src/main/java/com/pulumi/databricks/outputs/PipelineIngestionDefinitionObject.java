@@ -14,10 +14,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineIngestionDefinitionObject {
     private @Nullable PipelineIngestionDefinitionObjectReport report;
-    /**
-     * @return The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
-     * 
-     */
     private @Nullable PipelineIngestionDefinitionObjectSchema schema;
     private @Nullable PipelineIngestionDefinitionObjectTable table;
 
@@ -25,10 +21,6 @@ public final class PipelineIngestionDefinitionObject {
     public Optional<PipelineIngestionDefinitionObjectReport> report() {
         return Optional.ofNullable(this.report);
     }
-    /**
-     * @return The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
-     * 
-     */
     public Optional<PipelineIngestionDefinitionObjectSchema> schema() {
         return Optional.ofNullable(this.schema);
     }

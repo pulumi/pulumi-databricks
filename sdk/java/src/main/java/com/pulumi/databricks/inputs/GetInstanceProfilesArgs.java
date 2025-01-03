@@ -16,17 +16,9 @@ public final class GetInstanceProfilesArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetInstanceProfilesArgs Empty = new GetInstanceProfilesArgs();
 
-    /**
-     * Set of objects for a databricks_instance_profile. This contains the following attributes:
-     * 
-     */
     @Import(name="instanceProfiles")
     private @Nullable Output<List<GetInstanceProfilesInstanceProfileArgs>> instanceProfiles;
 
-    /**
-     * @return Set of objects for a databricks_instance_profile. This contains the following attributes:
-     * 
-     */
     public Optional<Output<List<GetInstanceProfilesInstanceProfileArgs>>> instanceProfiles() {
         return Optional.ofNullable(this.instanceProfiles);
     }
@@ -55,33 +47,15 @@ public final class GetInstanceProfilesArgs extends com.pulumi.resources.InvokeAr
             $ = new GetInstanceProfilesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param instanceProfiles Set of objects for a databricks_instance_profile. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceProfiles(@Nullable Output<List<GetInstanceProfilesInstanceProfileArgs>> instanceProfiles) {
             $.instanceProfiles = instanceProfiles;
             return this;
         }
 
-        /**
-         * @param instanceProfiles Set of objects for a databricks_instance_profile. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceProfiles(List<GetInstanceProfilesInstanceProfileArgs> instanceProfiles) {
             return instanceProfiles(Output.of(instanceProfiles));
         }
 
-        /**
-         * @param instanceProfiles Set of objects for a databricks_instance_profile. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceProfiles(GetInstanceProfilesInstanceProfileArgs... instanceProfiles) {
             return instanceProfiles(List.of(instanceProfiles));
         }

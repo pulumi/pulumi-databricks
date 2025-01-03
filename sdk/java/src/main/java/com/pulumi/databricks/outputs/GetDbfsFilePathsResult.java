@@ -19,10 +19,6 @@ public final class GetDbfsFilePathsResult {
      */
     private String id;
     private String path;
-    /**
-     * @return returns list of objects with `path` and `file_size` attributes in each
-     * 
-     */
     private List<GetDbfsFilePathsPathList> pathLists;
     private Boolean recursive;
 
@@ -37,10 +33,6 @@ public final class GetDbfsFilePathsResult {
     public String path() {
         return this.path;
     }
-    /**
-     * @return returns list of objects with `path` and `file_size` attributes in each
-     * 
-     */
     public List<GetDbfsFilePathsPathList> pathLists() {
         return this.pathLists;
     }

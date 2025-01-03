@@ -14,32 +14,16 @@ public final class QueryParameterDateRangeValueDateRangeValueArgs extends com.pu
 
     public static final QueryParameterDateRangeValueDateRangeValueArgs Empty = new QueryParameterDateRangeValueDateRangeValueArgs();
 
-    /**
-     * end of the date range.
-     * 
-     */
     @Import(name="end", required=true)
     private Output<String> end;
 
-    /**
-     * @return end of the date range.
-     * 
-     */
     public Output<String> end() {
         return this.end;
     }
 
-    /**
-     * begin of the date range.
-     * 
-     */
     @Import(name="start", required=true)
     private Output<String> start;
 
-    /**
-     * @return begin of the date range.
-     * 
-     */
     public Output<String> start() {
         return this.start;
     }
@@ -69,44 +53,20 @@ public final class QueryParameterDateRangeValueDateRangeValueArgs extends com.pu
             $ = new QueryParameterDateRangeValueDateRangeValueArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param end end of the date range.
-         * 
-         * @return builder
-         * 
-         */
         public Builder end(Output<String> end) {
             $.end = end;
             return this;
         }
 
-        /**
-         * @param end end of the date range.
-         * 
-         * @return builder
-         * 
-         */
         public Builder end(String end) {
             return end(Output.of(end));
         }
 
-        /**
-         * @param start begin of the date range.
-         * 
-         * @return builder
-         * 
-         */
         public Builder start(Output<String> start) {
             $.start = start;
             return this;
         }
 
-        /**
-         * @param start begin of the date range.
-         * 
-         * @return builder
-         * 
-         */
         public Builder start(String start) {
             return start(Output.of(start));
         }

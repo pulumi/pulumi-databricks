@@ -18,101 +18,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class QueryParameter {
-    /**
-     * @return Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
-     * 
-     */
     private @Nullable QueryParameterDateRangeValue dateRangeValue;
-    /**
-     * @return Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
-     * 
-     */
     private @Nullable QueryParameterDateValue dateValue;
-    /**
-     * @return Dropdown parameter value. Consists of following attributes:
-     * 
-     */
     private @Nullable QueryParameterEnumValue enumValue;
-    /**
-     * @return Literal parameter marker that appears between double curly braces in the query text.
-     * 
-     */
     private String name;
-    /**
-     * @return Numeric parameter value. Consists of following attributes:
-     * 
-     */
     private @Nullable QueryParameterNumericValue numericValue;
-    /**
-     * @return Query-based dropdown parameter value. Consists of following attributes:
-     * 
-     */
     private @Nullable QueryParameterQueryBackedValue queryBackedValue;
-    /**
-     * @return Text parameter value. Consists of following attributes:
-     * 
-     */
     private @Nullable QueryParameterTextValue textValue;
-    /**
-     * @return Text displayed in the user-facing parameter widget in the UI.
-     * 
-     */
     private @Nullable String title;
 
     private QueryParameter() {}
-    /**
-     * @return Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
-     * 
-     */
     public Optional<QueryParameterDateRangeValue> dateRangeValue() {
         return Optional.ofNullable(this.dateRangeValue);
     }
-    /**
-     * @return Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
-     * 
-     */
     public Optional<QueryParameterDateValue> dateValue() {
         return Optional.ofNullable(this.dateValue);
     }
-    /**
-     * @return Dropdown parameter value. Consists of following attributes:
-     * 
-     */
     public Optional<QueryParameterEnumValue> enumValue() {
         return Optional.ofNullable(this.enumValue);
     }
-    /**
-     * @return Literal parameter marker that appears between double curly braces in the query text.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return Numeric parameter value. Consists of following attributes:
-     * 
-     */
     public Optional<QueryParameterNumericValue> numericValue() {
         return Optional.ofNullable(this.numericValue);
     }
-    /**
-     * @return Query-based dropdown parameter value. Consists of following attributes:
-     * 
-     */
     public Optional<QueryParameterQueryBackedValue> queryBackedValue() {
         return Optional.ofNullable(this.queryBackedValue);
     }
-    /**
-     * @return Text parameter value. Consists of following attributes:
-     * 
-     */
     public Optional<QueryParameterTextValue> textValue() {
         return Optional.ofNullable(this.textValue);
     }
-    /**
-     * @return Text displayed in the user-facing parameter widget in the UI.
-     * 
-     */
     public Optional<String> title() {
         return Optional.ofNullable(this.title);
     }

@@ -39,47 +39,23 @@ public final class MwsNetworkConnectivityConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.egressConfig);
     }
 
-    /**
-     * Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Canonical unique identifier of Network Connectivity Config in Databricks Account
-     * 
-     */
     @Import(name="networkConnectivityConfigId")
     private @Nullable Output<String> networkConnectivityConfigId;
 
-    /**
-     * @return Canonical unique identifier of Network Connectivity Config in Databricks Account
-     * 
-     */
     public Optional<Output<String>> networkConnectivityConfigId() {
         return Optional.ofNullable(this.networkConnectivityConfigId);
     }
 
-    /**
-     * Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="region", required=true)
     private Output<String> region;
 
-    /**
-     * @return Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
-     * 
-     */
     public Output<String> region() {
         return this.region;
     }
@@ -148,65 +124,29 @@ public final class MwsNetworkConnectivityConfigArgs extends com.pulumi.resources
             return egressConfig(Output.of(egressConfig));
         }
 
-        /**
-         * @param name Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param networkConnectivityConfigId Canonical unique identifier of Network Connectivity Config in Databricks Account
-         * 
-         * @return builder
-         * 
-         */
         public Builder networkConnectivityConfigId(@Nullable Output<String> networkConnectivityConfigId) {
             $.networkConnectivityConfigId = networkConnectivityConfigId;
             return this;
         }
 
-        /**
-         * @param networkConnectivityConfigId Canonical unique identifier of Network Connectivity Config in Databricks Account
-         * 
-         * @return builder
-         * 
-         */
         public Builder networkConnectivityConfigId(String networkConnectivityConfigId) {
             return networkConnectivityConfigId(Output.of(networkConnectivityConfigId));
         }
 
-        /**
-         * @param region Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(Output<String> region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param region Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

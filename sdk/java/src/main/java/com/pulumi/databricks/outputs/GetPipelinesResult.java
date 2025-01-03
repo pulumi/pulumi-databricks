@@ -18,10 +18,6 @@ public final class GetPipelinesResult {
      * 
      */
     private String id;
-    /**
-     * @return List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
-     * 
-     */
     private List<String> ids;
     private @Nullable String pipelineName;
 
@@ -33,10 +29,6 @@ public final class GetPipelinesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }

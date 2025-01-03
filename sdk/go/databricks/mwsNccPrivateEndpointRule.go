@@ -12,95 +12,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
-//
-// > This feature is only available in Azure.
-//
-// Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			region := cfg.RequireObject("region")
-//			prefix := cfg.RequireObject("prefix")
-//			ncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, "ncc", &databricks.MwsNetworkConnectivityConfigArgs{
-//				Name:   pulumi.Sprintf("ncc-for-%v", prefix),
-//				Region: pulumi.Any(region),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewMwsNccPrivateEndpointRule(ctx, "storage", &databricks.MwsNccPrivateEndpointRuleArgs{
-//				NetworkConnectivityConfigId: ncc.NetworkConnectivityConfigId,
-//				ResourceId:                  pulumi.String("/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa"),
-//				GroupId:                     pulumi.String("blob"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// The following resources are used in the context:
-//
-// * MwsNetworkConnectivityConfig to create Network Connectivity Config objects.
-// * MwsNccBinding to attach an NCC to a workspace.
-//
-// ## Import
-//
-// This resource can be imported by Databricks account ID and Network Connectivity Config ID.
-//
-// ```sh
-// $ pulumi import databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule rule <network_connectivity_config_id>/<rule_id>
-// ```
 type MwsNccPrivateEndpointRule struct {
 	pulumi.CustomResourceState
 
-	// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
-	// The possible values are:
-	// * `PENDING`: The endpoint has been created and pending approval.
-	// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
-	// * `REJECTED`: Connection was rejected by the private link resource owner.
-	// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
-	ConnectionState pulumi.StringOutput `pulumi:"connectionState"`
-	// Time in epoch milliseconds when this object was created.
-	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
-	// Whether this private endpoint is deactivated.
-	Deactivated pulumi.BoolPtrOutput `pulumi:"deactivated"`
-	// Time in epoch milliseconds when this object was deactivated.
-	DeactivatedAt pulumi.IntPtrOutput `pulumi:"deactivatedAt"`
-	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
-	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
-	// The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
-	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
-	NetworkConnectivityConfigId pulumi.StringOutput `pulumi:"networkConnectivityConfigId"`
-	// The Azure resource ID of the target resource. Change forces creation of a new resource.
-	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// the ID of a private endpoint rule.
-	RuleId pulumi.StringOutput `pulumi:"ruleId"`
-	// Time in epoch milliseconds when this object was updated.
-	UpdatedTime pulumi.IntOutput `pulumi:"updatedTime"`
+	ConnectionState             pulumi.StringOutput  `pulumi:"connectionState"`
+	CreationTime                pulumi.IntOutput     `pulumi:"creationTime"`
+	Deactivated                 pulumi.BoolPtrOutput `pulumi:"deactivated"`
+	DeactivatedAt               pulumi.IntPtrOutput  `pulumi:"deactivatedAt"`
+	EndpointName                pulumi.StringOutput  `pulumi:"endpointName"`
+	GroupId                     pulumi.StringOutput  `pulumi:"groupId"`
+	NetworkConnectivityConfigId pulumi.StringOutput  `pulumi:"networkConnectivityConfigId"`
+	ResourceId                  pulumi.StringOutput  `pulumi:"resourceId"`
+	RuleId                      pulumi.StringOutput  `pulumi:"ruleId"`
+	UpdatedTime                 pulumi.IntOutput     `pulumi:"updatedTime"`
 }
 
 // NewMwsNccPrivateEndpointRule registers a new resource with the given unique name, arguments, and options.
@@ -142,59 +66,29 @@ func GetMwsNccPrivateEndpointRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsNccPrivateEndpointRule resources.
 type mwsNccPrivateEndpointRuleState struct {
-	// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
-	// The possible values are:
-	// * `PENDING`: The endpoint has been created and pending approval.
-	// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
-	// * `REJECTED`: Connection was rejected by the private link resource owner.
-	// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
-	ConnectionState *string `pulumi:"connectionState"`
-	// Time in epoch milliseconds when this object was created.
-	CreationTime *int `pulumi:"creationTime"`
-	// Whether this private endpoint is deactivated.
-	Deactivated *bool `pulumi:"deactivated"`
-	// Time in epoch milliseconds when this object was deactivated.
-	DeactivatedAt *int `pulumi:"deactivatedAt"`
-	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
-	EndpointName *string `pulumi:"endpointName"`
-	// The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
-	GroupId *string `pulumi:"groupId"`
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+	ConnectionState             *string `pulumi:"connectionState"`
+	CreationTime                *int    `pulumi:"creationTime"`
+	Deactivated                 *bool   `pulumi:"deactivated"`
+	DeactivatedAt               *int    `pulumi:"deactivatedAt"`
+	EndpointName                *string `pulumi:"endpointName"`
+	GroupId                     *string `pulumi:"groupId"`
 	NetworkConnectivityConfigId *string `pulumi:"networkConnectivityConfigId"`
-	// The Azure resource ID of the target resource. Change forces creation of a new resource.
-	ResourceId *string `pulumi:"resourceId"`
-	// the ID of a private endpoint rule.
-	RuleId *string `pulumi:"ruleId"`
-	// Time in epoch milliseconds when this object was updated.
-	UpdatedTime *int `pulumi:"updatedTime"`
+	ResourceId                  *string `pulumi:"resourceId"`
+	RuleId                      *string `pulumi:"ruleId"`
+	UpdatedTime                 *int    `pulumi:"updatedTime"`
 }
 
 type MwsNccPrivateEndpointRuleState struct {
-	// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
-	// The possible values are:
-	// * `PENDING`: The endpoint has been created and pending approval.
-	// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
-	// * `REJECTED`: Connection was rejected by the private link resource owner.
-	// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
-	ConnectionState pulumi.StringPtrInput
-	// Time in epoch milliseconds when this object was created.
-	CreationTime pulumi.IntPtrInput
-	// Whether this private endpoint is deactivated.
-	Deactivated pulumi.BoolPtrInput
-	// Time in epoch milliseconds when this object was deactivated.
-	DeactivatedAt pulumi.IntPtrInput
-	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
-	EndpointName pulumi.StringPtrInput
-	// The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
-	GroupId pulumi.StringPtrInput
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+	ConnectionState             pulumi.StringPtrInput
+	CreationTime                pulumi.IntPtrInput
+	Deactivated                 pulumi.BoolPtrInput
+	DeactivatedAt               pulumi.IntPtrInput
+	EndpointName                pulumi.StringPtrInput
+	GroupId                     pulumi.StringPtrInput
 	NetworkConnectivityConfigId pulumi.StringPtrInput
-	// The Azure resource ID of the target resource. Change forces creation of a new resource.
-	ResourceId pulumi.StringPtrInput
-	// the ID of a private endpoint rule.
-	RuleId pulumi.StringPtrInput
-	// Time in epoch milliseconds when this object was updated.
-	UpdatedTime pulumi.IntPtrInput
+	ResourceId                  pulumi.StringPtrInput
+	RuleId                      pulumi.StringPtrInput
+	UpdatedTime                 pulumi.IntPtrInput
 }
 
 func (MwsNccPrivateEndpointRuleState) ElementType() reflect.Type {
@@ -202,60 +96,30 @@ func (MwsNccPrivateEndpointRuleState) ElementType() reflect.Type {
 }
 
 type mwsNccPrivateEndpointRuleArgs struct {
-	// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
-	// The possible values are:
-	// * `PENDING`: The endpoint has been created and pending approval.
-	// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
-	// * `REJECTED`: Connection was rejected by the private link resource owner.
-	// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
-	ConnectionState *string `pulumi:"connectionState"`
-	// Time in epoch milliseconds when this object was created.
-	CreationTime *int `pulumi:"creationTime"`
-	// Whether this private endpoint is deactivated.
-	Deactivated *bool `pulumi:"deactivated"`
-	// Time in epoch milliseconds when this object was deactivated.
-	DeactivatedAt *int `pulumi:"deactivatedAt"`
-	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
-	EndpointName *string `pulumi:"endpointName"`
-	// The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
-	GroupId string `pulumi:"groupId"`
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
-	NetworkConnectivityConfigId string `pulumi:"networkConnectivityConfigId"`
-	// The Azure resource ID of the target resource. Change forces creation of a new resource.
-	ResourceId string `pulumi:"resourceId"`
-	// the ID of a private endpoint rule.
-	RuleId *string `pulumi:"ruleId"`
-	// Time in epoch milliseconds when this object was updated.
-	UpdatedTime *int `pulumi:"updatedTime"`
+	ConnectionState             *string `pulumi:"connectionState"`
+	CreationTime                *int    `pulumi:"creationTime"`
+	Deactivated                 *bool   `pulumi:"deactivated"`
+	DeactivatedAt               *int    `pulumi:"deactivatedAt"`
+	EndpointName                *string `pulumi:"endpointName"`
+	GroupId                     string  `pulumi:"groupId"`
+	NetworkConnectivityConfigId string  `pulumi:"networkConnectivityConfigId"`
+	ResourceId                  string  `pulumi:"resourceId"`
+	RuleId                      *string `pulumi:"ruleId"`
+	UpdatedTime                 *int    `pulumi:"updatedTime"`
 }
 
 // The set of arguments for constructing a MwsNccPrivateEndpointRule resource.
 type MwsNccPrivateEndpointRuleArgs struct {
-	// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
-	// The possible values are:
-	// * `PENDING`: The endpoint has been created and pending approval.
-	// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
-	// * `REJECTED`: Connection was rejected by the private link resource owner.
-	// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
-	ConnectionState pulumi.StringPtrInput
-	// Time in epoch milliseconds when this object was created.
-	CreationTime pulumi.IntPtrInput
-	// Whether this private endpoint is deactivated.
-	Deactivated pulumi.BoolPtrInput
-	// Time in epoch milliseconds when this object was deactivated.
-	DeactivatedAt pulumi.IntPtrInput
-	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
-	EndpointName pulumi.StringPtrInput
-	// The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
-	GroupId pulumi.StringInput
-	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+	ConnectionState             pulumi.StringPtrInput
+	CreationTime                pulumi.IntPtrInput
+	Deactivated                 pulumi.BoolPtrInput
+	DeactivatedAt               pulumi.IntPtrInput
+	EndpointName                pulumi.StringPtrInput
+	GroupId                     pulumi.StringInput
 	NetworkConnectivityConfigId pulumi.StringInput
-	// The Azure resource ID of the target resource. Change forces creation of a new resource.
-	ResourceId pulumi.StringInput
-	// the ID of a private endpoint rule.
-	RuleId pulumi.StringPtrInput
-	// Time in epoch milliseconds when this object was updated.
-	UpdatedTime pulumi.IntPtrInput
+	ResourceId                  pulumi.StringInput
+	RuleId                      pulumi.StringPtrInput
+	UpdatedTime                 pulumi.IntPtrInput
 }
 
 func (MwsNccPrivateEndpointRuleArgs) ElementType() reflect.Type {
@@ -345,57 +209,42 @@ func (o MwsNccPrivateEndpointRuleOutput) ToMwsNccPrivateEndpointRuleOutputWithCo
 	return o
 }
 
-// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
-// The possible values are:
-// * `PENDING`: The endpoint has been created and pending approval.
-// * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
-// * `REJECTED`: Connection was rejected by the private link resource owner.
-// * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
 func (o MwsNccPrivateEndpointRuleOutput) ConnectionState() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringOutput { return v.ConnectionState }).(pulumi.StringOutput)
 }
 
-// Time in epoch milliseconds when this object was created.
 func (o MwsNccPrivateEndpointRuleOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.IntOutput { return v.CreationTime }).(pulumi.IntOutput)
 }
 
-// Whether this private endpoint is deactivated.
 func (o MwsNccPrivateEndpointRuleOutput) Deactivated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.BoolPtrOutput { return v.Deactivated }).(pulumi.BoolPtrOutput)
 }
 
-// Time in epoch milliseconds when this object was deactivated.
 func (o MwsNccPrivateEndpointRuleOutput) DeactivatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.IntPtrOutput { return v.DeactivatedAt }).(pulumi.IntPtrOutput)
 }
 
-// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 func (o MwsNccPrivateEndpointRuleOutput) EndpointName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringOutput { return v.EndpointName }).(pulumi.StringOutput)
 }
 
-// The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
 func (o MwsNccPrivateEndpointRuleOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
 func (o MwsNccPrivateEndpointRuleOutput) NetworkConnectivityConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringOutput { return v.NetworkConnectivityConfigId }).(pulumi.StringOutput)
 }
 
-// The Azure resource ID of the target resource. Change forces creation of a new resource.
 func (o MwsNccPrivateEndpointRuleOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// the ID of a private endpoint rule.
 func (o MwsNccPrivateEndpointRuleOutput) RuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringOutput { return v.RuleId }).(pulumi.StringOutput)
 }
 
-// Time in epoch milliseconds when this object was updated.
 func (o MwsNccPrivateEndpointRuleOutput) UpdatedTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.IntOutput { return v.UpdatedTime }).(pulumi.IntOutput)
 }

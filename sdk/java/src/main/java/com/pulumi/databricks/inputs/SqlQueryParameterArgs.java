@@ -75,23 +75,9 @@ public final class SqlQueryParameterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.enum_);
     }
 
-    /**
-     * The literal parameter marker that appears between double curly braces in the query text.
-     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
-     * 
-     * For `text`, `number`, `date`, `datetime`, `datetimesec` block
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return The literal parameter marker that appears between double curly braces in the query text.
-     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
-     * 
-     * For `text`, `number`, `date`, `datetime`, `datetimesec` block
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
@@ -103,17 +89,9 @@ public final class SqlQueryParameterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.number);
     }
 
-    /**
-     * The text of the query to be run.
-     * 
-     */
     @Import(name="query")
     private @Nullable Output<SqlQueryParameterQueryArgs> query;
 
-    /**
-     * @return The text of the query to be run.
-     * 
-     */
     public Optional<Output<SqlQueryParameterQueryArgs>> query() {
         return Optional.ofNullable(this.query);
     }
@@ -125,17 +103,9 @@ public final class SqlQueryParameterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.text);
     }
 
-    /**
-     * The text displayed in a parameter picking widget.
-     * 
-     */
     @Import(name="title")
     private @Nullable Output<String> title;
 
-    /**
-     * @return The text displayed in a parameter picking widget.
-     * 
-     */
     public Optional<Output<String>> title() {
         return Optional.ofNullable(this.title);
     }
@@ -238,29 +208,11 @@ public final class SqlQueryParameterArgs extends com.pulumi.resources.ResourceAr
             return enum_(Output.of(enum_));
         }
 
-        /**
-         * @param name The literal parameter marker that appears between double curly braces in the query text.
-         * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
-         * 
-         * For `text`, `number`, `date`, `datetime`, `datetimesec` block
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The literal parameter marker that appears between double curly braces in the query text.
-         * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
-         * 
-         * For `text`, `number`, `date`, `datetime`, `datetimesec` block
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -274,23 +226,11 @@ public final class SqlQueryParameterArgs extends com.pulumi.resources.ResourceAr
             return number(Output.of(number));
         }
 
-        /**
-         * @param query The text of the query to be run.
-         * 
-         * @return builder
-         * 
-         */
         public Builder query(@Nullable Output<SqlQueryParameterQueryArgs> query) {
             $.query = query;
             return this;
         }
 
-        /**
-         * @param query The text of the query to be run.
-         * 
-         * @return builder
-         * 
-         */
         public Builder query(SqlQueryParameterQueryArgs query) {
             return query(Output.of(query));
         }
@@ -304,23 +244,11 @@ public final class SqlQueryParameterArgs extends com.pulumi.resources.ResourceAr
             return text(Output.of(text));
         }
 
-        /**
-         * @param title The text displayed in a parameter picking widget.
-         * 
-         * @return builder
-         * 
-         */
         public Builder title(@Nullable Output<String> title) {
             $.title = title;
             return this;
         }
 
-        /**
-         * @param title The text displayed in a parameter picking widget.
-         * 
-         * @return builder
-         * 
-         */
         public Builder title(String title) {
             return title(Output.of(title));
         }

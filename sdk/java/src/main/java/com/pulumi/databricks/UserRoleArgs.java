@@ -14,32 +14,16 @@ public final class UserRoleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final UserRoleArgs Empty = new UserRoleArgs();
 
-    /**
-     * Either a role name or the ARN/ID of the instance profile resource.
-     * 
-     */
     @Import(name="role", required=true)
     private Output<String> role;
 
-    /**
-     * @return Either a role name or the ARN/ID of the instance profile resource.
-     * 
-     */
     public Output<String> role() {
         return this.role;
     }
 
-    /**
-     * This is the id of the user resource.
-     * 
-     */
     @Import(name="userId", required=true)
     private Output<String> userId;
 
-    /**
-     * @return This is the id of the user resource.
-     * 
-     */
     public Output<String> userId() {
         return this.userId;
     }
@@ -69,44 +53,20 @@ public final class UserRoleArgs extends com.pulumi.resources.ResourceArgs {
             $ = new UserRoleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param role Either a role name or the ARN/ID of the instance profile resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder role(Output<String> role) {
             $.role = role;
             return this;
         }
 
-        /**
-         * @param role Either a role name or the ARN/ID of the instance profile resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder role(String role) {
             return role(Output.of(role));
         }
 
-        /**
-         * @param userId This is the id of the user resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userId(Output<String> userId) {
             $.userId = userId;
             return this;
         }
 
-        /**
-         * @param userId This is the id of the user resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userId(String userId) {
             return userId(Output.of(userId));
         }

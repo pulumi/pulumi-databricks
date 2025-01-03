@@ -1617,10 +1617,10 @@ __all__ = [
     'GetServingEndpointsEndpointAiGatewayArgsDict',
     'GetServingEndpointsEndpointAiGatewayGuardrailArgs',
     'GetServingEndpointsEndpointAiGatewayGuardrailArgsDict',
-    'GetServingEndpointsEndpointAiGatewayGuardrailInputArgs',
-    'GetServingEndpointsEndpointAiGatewayGuardrailInputArgsDict',
-    'GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgs',
-    'GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgsDict',
+    'GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs',
+    'GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgsDict',
+    'GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs',
+    'GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgsDict',
     'GetServingEndpointsEndpointAiGatewayGuardrailOutputArgs',
     'GetServingEndpointsEndpointAiGatewayGuardrailOutputArgsDict',
     'GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs',
@@ -48453,7 +48453,7 @@ class GetServingEndpointsEndpointAiGatewayArgs:
 
 if not MYPY:
     class GetServingEndpointsEndpointAiGatewayGuardrailArgsDict(TypedDict):
-        inputs: NotRequired[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputArgsDict']]
+        input_properties: NotRequired[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgsDict']]
         outputs: NotRequired[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailOutputArgsDict']]
 elif False:
     GetServingEndpointsEndpointAiGatewayGuardrailArgsDict: TypeAlias = Mapping[str, Any]
@@ -48461,21 +48461,21 @@ elif False:
 @pulumi.input_type
 class GetServingEndpointsEndpointAiGatewayGuardrailArgs:
     def __init__(__self__, *,
-                 inputs: Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputArgs']] = None,
+                 input_properties: Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs']] = None,
                  outputs: Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailOutputArgs']] = None):
-        if inputs is not None:
-            pulumi.set(__self__, "inputs", inputs)
+        if input_properties is not None:
+            pulumi.set(__self__, "input_properties", input_properties)
         if outputs is not None:
             pulumi.set(__self__, "outputs", outputs)
 
     @property
-    @pulumi.getter
-    def inputs(self) -> Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputArgs']]:
-        return pulumi.get(self, "inputs")
+    @pulumi.getter(name="inputProperties")
+    def input_properties(self) -> Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs']]:
+        return pulumi.get(self, "input_properties")
 
-    @inputs.setter
-    def inputs(self, value: Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputArgs']]):
-        pulumi.set(self, "inputs", value)
+    @input_properties.setter
+    def input_properties(self, value: Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs']]):
+        pulumi.set(self, "input_properties", value)
 
     @property
     @pulumi.getter
@@ -48488,19 +48488,19 @@ class GetServingEndpointsEndpointAiGatewayGuardrailArgs:
 
 
 if not MYPY:
-    class GetServingEndpointsEndpointAiGatewayGuardrailInputArgsDict(TypedDict):
+    class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgsDict(TypedDict):
         invalid_keywords: NotRequired[Sequence[str]]
-        piis: NotRequired[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgsDict']]
+        piis: NotRequired[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgsDict']]
         safety: NotRequired[bool]
         valid_topics: NotRequired[Sequence[str]]
 elif False:
-    GetServingEndpointsEndpointAiGatewayGuardrailInputArgsDict: TypeAlias = Mapping[str, Any]
+    GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetServingEndpointsEndpointAiGatewayGuardrailInputArgs:
+class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs:
     def __init__(__self__, *,
                  invalid_keywords: Optional[Sequence[str]] = None,
-                 piis: Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgs']] = None,
+                 piis: Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs']] = None,
                  safety: Optional[bool] = None,
                  valid_topics: Optional[Sequence[str]] = None):
         if invalid_keywords is not None:
@@ -48523,11 +48523,11 @@ class GetServingEndpointsEndpointAiGatewayGuardrailInputArgs:
 
     @property
     @pulumi.getter
-    def piis(self) -> Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgs']]:
+    def piis(self) -> Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs']]:
         return pulumi.get(self, "piis")
 
     @piis.setter
-    def piis(self, value: Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgs']]):
+    def piis(self, value: Optional[Sequence['GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs']]):
         pulumi.set(self, "piis", value)
 
     @property
@@ -48550,13 +48550,13 @@ class GetServingEndpointsEndpointAiGatewayGuardrailInputArgs:
 
 
 if not MYPY:
-    class GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgsDict(TypedDict):
+    class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgsDict(TypedDict):
         behavior: str
 elif False:
-    GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgsDict: TypeAlias = Mapping[str, Any]
+    GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetServingEndpointsEndpointAiGatewayGuardrailInputPiiArgs:
+class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs:
     def __init__(__self__, *,
                  behavior: str):
         pulumi.set(__self__, "behavior", behavior)

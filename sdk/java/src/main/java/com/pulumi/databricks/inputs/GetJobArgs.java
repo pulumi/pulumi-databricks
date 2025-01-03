@@ -16,17 +16,9 @@ public final class GetJobArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobArgs Empty = new GetJobArgs();
 
-    /**
-     * the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
-    /**
-     * @return the id of databricks.Job if the resource was matched by name.
-     * 
-     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
@@ -45,32 +37,16 @@ public final class GetJobArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.jobName);
     }
 
-    /**
-     * the same fields as in databricks_job.
-     * 
-     */
     @Import(name="jobSettings")
     private @Nullable Output<GetJobJobSettingsArgs> jobSettings;
 
-    /**
-     * @return the same fields as in databricks_job.
-     * 
-     */
     public Optional<Output<GetJobJobSettingsArgs>> jobSettings() {
         return Optional.ofNullable(this.jobSettings);
     }
 
-    /**
-     * the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return the job name of databricks.Job if the resource was matched by id.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -103,23 +79,11 @@ public final class GetJobArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetJobArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param id the id of databricks.Job if the resource was matched by name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param id the id of databricks.Job if the resource was matched by name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
@@ -142,44 +106,20 @@ public final class GetJobArgs extends com.pulumi.resources.InvokeArgs {
             return jobName(Output.of(jobName));
         }
 
-        /**
-         * @param jobSettings the same fields as in databricks_job.
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobSettings(@Nullable Output<GetJobJobSettingsArgs> jobSettings) {
             $.jobSettings = jobSettings;
             return this;
         }
 
-        /**
-         * @param jobSettings the same fields as in databricks_job.
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobSettings(GetJobJobSettingsArgs jobSettings) {
             return jobSettings(Output.of(jobSettings));
         }
 
-        /**
-         * @param name the job name of databricks.Job if the resource was matched by id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name the job name of databricks.Job if the resource was matched by id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

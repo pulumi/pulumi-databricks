@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelAi21labsConfig {
-    /**
-     * @return The Databricks secret key reference for an AI21Labs API key.
-     * 
-     */
     private @Nullable String ai21labsApiKey;
-    /**
-     * @return An AI21 Labs API key provided as a plaintext string.
-     * 
-     */
     private @Nullable String ai21labsApiKeyPlaintext;
 
     private ModelServingConfigServedEntityExternalModelAi21labsConfig() {}
-    /**
-     * @return The Databricks secret key reference for an AI21Labs API key.
-     * 
-     */
     public Optional<String> ai21labsApiKey() {
         return Optional.ofNullable(this.ai21labsApiKey);
     }
-    /**
-     * @return An AI21 Labs API key provided as a plaintext string.
-     * 
-     */
     public Optional<String> ai21labsApiKeyPlaintext() {
         return Optional.ofNullable(this.ai21labsApiKeyPlaintext);
     }

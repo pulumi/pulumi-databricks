@@ -15,165 +15,61 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegisteredModelModelInfo {
-    /**
-     * @return the list of aliases associated with this model. Each item is object consisting of following attributes:
-     * 
-     */
     private @Nullable List<GetRegisteredModelModelInfoAlias> aliases;
     private @Nullable Boolean browseOnly;
-    /**
-     * @return The name of the catalog where the schema and the registered model reside.
-     * 
-     */
     private @Nullable String catalogName;
-    /**
-     * @return The comment attached to the registered model.
-     * 
-     */
     private @Nullable String comment;
-    /**
-     * @return the Unix timestamp at the model&#39;s creation
-     * 
-     */
     private @Nullable Integer createdAt;
-    /**
-     * @return the identifier of the user who created the model
-     * 
-     */
     private @Nullable String createdBy;
-    /**
-     * @return The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-     * 
-     */
     private @Nullable String fullName;
-    /**
-     * @return the unique identifier of the metastore
-     * 
-     */
     private @Nullable String metastoreId;
-    /**
-     * @return The name of the registered model.
-     * 
-     */
     private @Nullable String name;
-    /**
-     * @return Name of the registered model owner.
-     * 
-     */
     private @Nullable String owner;
-    /**
-     * @return The name of the schema where the registered model resides.
-     * 
-     */
     private @Nullable String schemaName;
-    /**
-     * @return The storage location under which model version data files are stored.
-     * 
-     */
     private @Nullable String storageLocation;
-    /**
-     * @return the timestamp of the last time changes were made to the model
-     * 
-     */
     private @Nullable Integer updatedAt;
-    /**
-     * @return the identifier of the user who updated the model last time
-     * 
-     */
     private @Nullable String updatedBy;
 
     private GetRegisteredModelModelInfo() {}
-    /**
-     * @return the list of aliases associated with this model. Each item is object consisting of following attributes:
-     * 
-     */
     public List<GetRegisteredModelModelInfoAlias> aliases() {
         return this.aliases == null ? List.of() : this.aliases;
     }
     public Optional<Boolean> browseOnly() {
         return Optional.ofNullable(this.browseOnly);
     }
-    /**
-     * @return The name of the catalog where the schema and the registered model reside.
-     * 
-     */
     public Optional<String> catalogName() {
         return Optional.ofNullable(this.catalogName);
     }
-    /**
-     * @return The comment attached to the registered model.
-     * 
-     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
-    /**
-     * @return the Unix timestamp at the model&#39;s creation
-     * 
-     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
-    /**
-     * @return the identifier of the user who created the model
-     * 
-     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
-    /**
-     * @return The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
-     * 
-     */
     public Optional<String> fullName() {
         return Optional.ofNullable(this.fullName);
     }
-    /**
-     * @return the unique identifier of the metastore
-     * 
-     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
-    /**
-     * @return The name of the registered model.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return Name of the registered model owner.
-     * 
-     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
-    /**
-     * @return The name of the schema where the registered model resides.
-     * 
-     */
     public Optional<String> schemaName() {
         return Optional.ofNullable(this.schemaName);
     }
-    /**
-     * @return The storage location under which model version data files are stored.
-     * 
-     */
     public Optional<String> storageLocation() {
         return Optional.ofNullable(this.storageLocation);
     }
-    /**
-     * @return the timestamp of the last time changes were made to the model
-     * 
-     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
-    /**
-     * @return the identifier of the user who updated the model last time
-     * 
-     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }

@@ -18,17 +18,9 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
 
     public static final VectorSearchIndexDeltaSyncIndexSpecArgs Empty = new VectorSearchIndexDeltaSyncIndexSpecArgs();
 
-    /**
-     * array of objects representing columns that contain the embedding source.  Each entry consists of:
-     * 
-     */
     @Import(name="embeddingSourceColumns")
     private @Nullable Output<List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs>> embeddingSourceColumns;
 
-    /**
-     * @return array of objects representing columns that contain the embedding source.  Each entry consists of:
-     * 
-     */
     public Optional<Output<List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs>>> embeddingSourceColumns() {
         return Optional.ofNullable(this.embeddingSourceColumns);
     }
@@ -47,51 +39,23 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
         return Optional.ofNullable(this.embeddingWritebackTable);
     }
 
-    /**
-     * ID of the associated Delta Live Table pipeline.
-     * 
-     */
     @Import(name="pipelineId")
     private @Nullable Output<String> pipelineId;
 
-    /**
-     * @return ID of the associated Delta Live Table pipeline.
-     * 
-     */
     public Optional<Output<String>> pipelineId() {
         return Optional.ofNullable(this.pipelineId);
     }
 
-    /**
-     * Pipeline execution mode. Possible values are:
-     * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
-     * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
-     * 
-     */
     @Import(name="pipelineType")
     private @Nullable Output<String> pipelineType;
 
-    /**
-     * @return Pipeline execution mode. Possible values are:
-     * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
-     * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
-     * 
-     */
     public Optional<Output<String>> pipelineType() {
         return Optional.ofNullable(this.pipelineType);
     }
 
-    /**
-     * The name of the source table.
-     * 
-     */
     @Import(name="sourceTable")
     private @Nullable Output<String> sourceTable;
 
-    /**
-     * @return The name of the source table.
-     * 
-     */
     public Optional<Output<String>> sourceTable() {
         return Optional.ofNullable(this.sourceTable);
     }
@@ -125,33 +89,15 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
             $ = new VectorSearchIndexDeltaSyncIndexSpecArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param embeddingSourceColumns array of objects representing columns that contain the embedding source.  Each entry consists of:
-         * 
-         * @return builder
-         * 
-         */
         public Builder embeddingSourceColumns(@Nullable Output<List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs>> embeddingSourceColumns) {
             $.embeddingSourceColumns = embeddingSourceColumns;
             return this;
         }
 
-        /**
-         * @param embeddingSourceColumns array of objects representing columns that contain the embedding source.  Each entry consists of:
-         * 
-         * @return builder
-         * 
-         */
         public Builder embeddingSourceColumns(List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs> embeddingSourceColumns) {
             return embeddingSourceColumns(Output.of(embeddingSourceColumns));
         }
 
-        /**
-         * @param embeddingSourceColumns array of objects representing columns that contain the embedding source.  Each entry consists of:
-         * 
-         * @return builder
-         * 
-         */
         public Builder embeddingSourceColumns(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs... embeddingSourceColumns) {
             return embeddingSourceColumns(List.of(embeddingSourceColumns));
         }
@@ -178,69 +124,29 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
             return embeddingWritebackTable(Output.of(embeddingWritebackTable));
         }
 
-        /**
-         * @param pipelineId ID of the associated Delta Live Table pipeline.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pipelineId(@Nullable Output<String> pipelineId) {
             $.pipelineId = pipelineId;
             return this;
         }
 
-        /**
-         * @param pipelineId ID of the associated Delta Live Table pipeline.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pipelineId(String pipelineId) {
             return pipelineId(Output.of(pipelineId));
         }
 
-        /**
-         * @param pipelineType Pipeline execution mode. Possible values are:
-         * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
-         * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pipelineType(@Nullable Output<String> pipelineType) {
             $.pipelineType = pipelineType;
             return this;
         }
 
-        /**
-         * @param pipelineType Pipeline execution mode. Possible values are:
-         * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
-         * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pipelineType(String pipelineType) {
             return pipelineType(Output.of(pipelineType));
         }
 
-        /**
-         * @param sourceTable The name of the source table.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceTable(@Nullable Output<String> sourceTable) {
             $.sourceTable = sourceTable;
             return this;
         }
 
-        /**
-         * @param sourceTable The name of the source table.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceTable(String sourceTable) {
             return sourceTable(Output.of(sourceTable));
         }

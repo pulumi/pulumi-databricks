@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ModelServingAiGatewayGuardrailsInputPii {
-    /**
-     * @return a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-     * 
-     */
     private String behavior;
 
     private ModelServingAiGatewayGuardrailsInputPii() {}
-    /**
-     * @return a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-     * 
-     */
     public String behavior() {
         return this.behavior;
     }

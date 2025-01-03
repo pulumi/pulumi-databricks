@@ -16,25 +16,25 @@ public final class GetJobsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobsArgs Empty = new GetJobsArgs();
 
-    /**
-     * map of databricks.Job names to ids
-     * 
-     */
     @Import(name="ids")
     private @Nullable Output<Map<String,String>> ids;
 
-    /**
-     * @return map of databricks.Job names to ids
-     * 
-     */
     public Optional<Output<Map<String,String>>> ids() {
         return Optional.ofNullable(this.ids);
+    }
+
+    @Import(name="jobNameContains")
+    private @Nullable Output<String> jobNameContains;
+
+    public Optional<Output<String>> jobNameContains() {
+        return Optional.ofNullable(this.jobNameContains);
     }
 
     private GetJobsArgs() {}
 
     private GetJobsArgs(GetJobsArgs $) {
         this.ids = $.ids;
+        this.jobNameContains = $.jobNameContains;
     }
 
     public static Builder builder() {
@@ -55,25 +55,22 @@ public final class GetJobsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetJobsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ids map of databricks.Job names to ids
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(@Nullable Output<Map<String,String>> ids) {
             $.ids = ids;
             return this;
         }
 
-        /**
-         * @param ids map of databricks.Job names to ids
-         * 
-         * @return builder
-         * 
-         */
         public Builder ids(Map<String,String> ids) {
             return ids(Output.of(ids));
+        }
+
+        public Builder jobNameContains(@Nullable Output<String> jobNameContains) {
+            $.jobNameContains = jobNameContains;
+            return this;
+        }
+
+        public Builder jobNameContains(String jobNameContains) {
+            return jobNameContains(Output.of(jobNameContains));
         }
 
         public GetJobsArgs build() {

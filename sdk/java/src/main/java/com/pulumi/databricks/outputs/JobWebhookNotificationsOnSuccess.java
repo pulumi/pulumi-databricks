@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class JobWebhookNotificationsOnSuccess {
-    /**
-     * @return ID of the job
-     * 
-     */
     private String id;
 
     private JobWebhookNotificationsOnSuccess() {}
-    /**
-     * @return ID of the job
-     * 
-     */
     public String id() {
         return this.id;
     }

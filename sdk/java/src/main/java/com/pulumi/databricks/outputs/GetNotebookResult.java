@@ -11,10 +11,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNotebookResult {
-    /**
-     * @return notebook content in selected format
-     * 
-     */
     private String content;
     private String format;
     /**
@@ -22,33 +18,13 @@ public final class GetNotebookResult {
      * 
      */
     private String id;
-    /**
-     * @return notebook language
-     * 
-     */
     private String language;
-    /**
-     * @return notebook object ID
-     * 
-     */
     private Integer objectId;
-    /**
-     * @return notebook object type
-     * 
-     */
     private String objectType;
     private String path;
-    /**
-     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-     * 
-     */
     private String workspacePath;
 
     private GetNotebookResult() {}
-    /**
-     * @return notebook content in selected format
-     * 
-     */
     public String content() {
         return this.content;
     }
@@ -62,34 +38,18 @@ public final class GetNotebookResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return notebook language
-     * 
-     */
     public String language() {
         return this.language;
     }
-    /**
-     * @return notebook object ID
-     * 
-     */
     public Integer objectId() {
         return this.objectId;
     }
-    /**
-     * @return notebook object type
-     * 
-     */
     public String objectType() {
         return this.objectType;
     }
     public String path() {
         return this.path;
     }
-    /**
-     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
-     * 
-     */
     public String workspacePath() {
         return this.workspacePath;
     }

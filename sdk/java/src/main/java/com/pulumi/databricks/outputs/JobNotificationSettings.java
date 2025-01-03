@@ -11,33 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobNotificationSettings {
-    /**
-     * @return (Bool) don&#39;t send alert for cancelled runs.
-     * 
-     * The following parameter is only available on task level.
-     * 
-     */
     private @Nullable Boolean noAlertForCanceledRuns;
-    /**
-     * @return (Bool) don&#39;t send alert for skipped runs.
-     * 
-     */
     private @Nullable Boolean noAlertForSkippedRuns;
 
     private JobNotificationSettings() {}
-    /**
-     * @return (Bool) don&#39;t send alert for cancelled runs.
-     * 
-     * The following parameter is only available on task level.
-     * 
-     */
     public Optional<Boolean> noAlertForCanceledRuns() {
         return Optional.ofNullable(this.noAlertForCanceledRuns);
     }
-    /**
-     * @return (Bool) don&#39;t send alert for skipped runs.
-     * 
-     */
     public Optional<Boolean> noAlertForSkippedRuns() {
         return Optional.ofNullable(this.noAlertForSkippedRuns);
     }

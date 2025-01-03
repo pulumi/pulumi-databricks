@@ -16,32 +16,16 @@ public final class MwsWorkspacesTokenArgs extends com.pulumi.resources.ResourceA
 
     public static final MwsWorkspacesTokenArgs Empty = new MwsWorkspacesTokenArgs();
 
-    /**
-     * Comment, that will appear in &#34;User Settings / Access Tokens&#34; page on Workspace UI. By default it&#39;s &#34;Pulumi PAT&#34;.
-     * 
-     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
-    /**
-     * @return Comment, that will appear in &#34;User Settings / Access Tokens&#34; page on Workspace UI. By default it&#39;s &#34;Pulumi PAT&#34;.
-     * 
-     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
-    /**
-     * Token expiry lifetime. By default its 2592000 (30 days).
-     * 
-     */
     @Import(name="lifetimeSeconds")
     private @Nullable Output<Integer> lifetimeSeconds;
 
-    /**
-     * @return Token expiry lifetime. By default its 2592000 (30 days).
-     * 
-     */
     public Optional<Output<Integer>> lifetimeSeconds() {
         return Optional.ofNullable(this.lifetimeSeconds);
     }
@@ -87,44 +71,20 @@ public final class MwsWorkspacesTokenArgs extends com.pulumi.resources.ResourceA
             $ = new MwsWorkspacesTokenArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param comment Comment, that will appear in &#34;User Settings / Access Tokens&#34; page on Workspace UI. By default it&#39;s &#34;Pulumi PAT&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
-        /**
-         * @param comment Comment, that will appear in &#34;User Settings / Access Tokens&#34; page on Workspace UI. By default it&#39;s &#34;Pulumi PAT&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
-        /**
-         * @param lifetimeSeconds Token expiry lifetime. By default its 2592000 (30 days).
-         * 
-         * @return builder
-         * 
-         */
         public Builder lifetimeSeconds(@Nullable Output<Integer> lifetimeSeconds) {
             $.lifetimeSeconds = lifetimeSeconds;
             return this;
         }
 
-        /**
-         * @param lifetimeSeconds Token expiry lifetime. By default its 2592000 (30 days).
-         * 
-         * @return builder
-         * 
-         */
         public Builder lifetimeSeconds(Integer lifetimeSeconds) {
             return lifetimeSeconds(Output.of(lifetimeSeconds));
         }

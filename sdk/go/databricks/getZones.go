@@ -11,33 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetZones(ctx, &databricks.GetZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZonesResult
@@ -50,22 +23,16 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
-	// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
-	DefaultZone *string `pulumi:"defaultZone"`
-	// The id for the zone object.
-	Id *string `pulumi:"id"`
-	// This is a list of all the zones available for your subnets in your Databricks workspace.
-	Zones []string `pulumi:"zones"`
+	DefaultZone *string  `pulumi:"defaultZone"`
+	Id          *string  `pulumi:"id"`
+	Zones       []string `pulumi:"zones"`
 }
 
 // A collection of values returned by getZones.
 type GetZonesResult struct {
-	// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
-	DefaultZone string `pulumi:"defaultZone"`
-	// The id for the zone object.
-	Id string `pulumi:"id"`
-	// This is a list of all the zones available for your subnets in your Databricks workspace.
-	Zones []string `pulumi:"zones"`
+	DefaultZone string   `pulumi:"defaultZone"`
+	Id          string   `pulumi:"id"`
+	Zones       []string `pulumi:"zones"`
 }
 
 func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
@@ -79,12 +46,9 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getZones.
 type GetZonesOutputArgs struct {
-	// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
-	DefaultZone pulumi.StringPtrInput `pulumi:"defaultZone"`
-	// The id for the zone object.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// This is a list of all the zones available for your subnets in your Databricks workspace.
-	Zones pulumi.StringArrayInput `pulumi:"zones"`
+	DefaultZone pulumi.StringPtrInput   `pulumi:"defaultZone"`
+	Id          pulumi.StringPtrInput   `pulumi:"id"`
+	Zones       pulumi.StringArrayInput `pulumi:"zones"`
 }
 
 func (GetZonesOutputArgs) ElementType() reflect.Type {
@@ -106,17 +70,14 @@ func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
 func (o GetZonesResultOutput) DefaultZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesResult) string { return v.DefaultZone }).(pulumi.StringOutput)
 }
 
-// The id for the zone object.
 func (o GetZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// This is a list of all the zones available for your subnets in your Databricks workspace.
 func (o GetZonesResultOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZonesResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }

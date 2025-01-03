@@ -11,57 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PermissionsAccessControl {
-    /**
-     * @return name of the group. We recommend setting permissions on groups.
-     * 
-     */
     private @Nullable String groupName;
-    /**
-     * @return permission level according to specific resource. See examples above for the reference.
-     * 
-     * Exactly one of the below arguments is required:
-     * 
-     */
     private @Nullable String permissionLevel;
-    /**
-     * @return Application ID of the service_principal.
-     * 
-     */
     private @Nullable String servicePrincipalName;
-    /**
-     * @return name of the user.
-     * 
-     */
     private @Nullable String userName;
 
     private PermissionsAccessControl() {}
-    /**
-     * @return name of the group. We recommend setting permissions on groups.
-     * 
-     */
     public Optional<String> groupName() {
         return Optional.ofNullable(this.groupName);
     }
-    /**
-     * @return permission level according to specific resource. See examples above for the reference.
-     * 
-     * Exactly one of the below arguments is required:
-     * 
-     */
     public Optional<String> permissionLevel() {
         return Optional.ofNullable(this.permissionLevel);
     }
-    /**
-     * @return Application ID of the service_principal.
-     * 
-     */
     public Optional<String> servicePrincipalName() {
         return Optional.ofNullable(this.servicePrincipalName);
     }
-    /**
-     * @return name of the user.
-     * 
-     */
     public Optional<String> userName() {
         return Optional.ofNullable(this.userName);
     }

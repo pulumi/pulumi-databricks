@@ -16,10 +16,6 @@ public final class GetMetastoresResult {
      * 
      */
     private String id;
-    /**
-     * @return Mapping of name to id of databricks_metastore
-     * 
-     */
     private Map<String,String> ids;
 
     private GetMetastoresResult() {}
@@ -30,10 +26,6 @@ public final class GetMetastoresResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return Mapping of name to id of databricks_metastore
-     * 
-     */
     public Map<String,String> ids() {
         return this.ids;
     }

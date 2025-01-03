@@ -19,152 +19,72 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
 
     public static final ModelServingConfigServedModelArgs Empty = new ModelServingConfigServedModelArgs();
 
-    /**
-     * a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
-     * 
-     */
     @Import(name="environmentVars")
     private @Nullable Output<Map<String,String>> environmentVars;
 
-    /**
-     * @return a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
-     * 
-     */
     public Optional<Output<Map<String,String>>> environmentVars() {
         return Optional.ofNullable(this.environmentVars);
     }
 
-    /**
-     * ARN of the instance profile that the served model will use to access AWS resources.
-     * 
-     */
     @Import(name="instanceProfileArn")
     private @Nullable Output<String> instanceProfileArn;
 
-    /**
-     * @return ARN of the instance profile that the served model will use to access AWS resources.
-     * 
-     */
     public Optional<Output<String>> instanceProfileArn() {
         return Optional.ofNullable(this.instanceProfileArn);
     }
 
-    /**
-     * The maximum tokens per second that the endpoint can scale up to.
-     * 
-     */
     @Import(name="maxProvisionedThroughput")
     private @Nullable Output<Integer> maxProvisionedThroughput;
 
-    /**
-     * @return The maximum tokens per second that the endpoint can scale up to.
-     * 
-     */
     public Optional<Output<Integer>> maxProvisionedThroughput() {
         return Optional.ofNullable(this.maxProvisionedThroughput);
     }
 
-    /**
-     * The minimum tokens per second that the endpoint can scale down to.
-     * 
-     */
     @Import(name="minProvisionedThroughput")
     private @Nullable Output<Integer> minProvisionedThroughput;
 
-    /**
-     * @return The minimum tokens per second that the endpoint can scale down to.
-     * 
-     */
     public Optional<Output<Integer>> minProvisionedThroughput() {
         return Optional.ofNullable(this.minProvisionedThroughput);
     }
 
-    /**
-     * The name of the model in Databricks Model Registry to be served.
-     * 
-     */
     @Import(name="modelName", required=true)
     private Output<String> modelName;
 
-    /**
-     * @return The name of the model in Databricks Model Registry to be served.
-     * 
-     */
     public Output<String> modelName() {
         return this.modelName;
     }
 
-    /**
-     * The version of the model in Databricks Model Registry to be served.
-     * 
-     */
     @Import(name="modelVersion", required=true)
     private Output<String> modelVersion;
 
-    /**
-     * @return The version of the model in Databricks Model Registry to be served.
-     * 
-     */
     public Output<String> modelVersion() {
         return this.modelVersion;
     }
 
-    /**
-     * The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
-     * 
-     */
     @Import(name="scaleToZeroEnabled")
     private @Nullable Output<Boolean> scaleToZeroEnabled;
 
-    /**
-     * @return Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
-     * 
-     */
     public Optional<Output<Boolean>> scaleToZeroEnabled() {
         return Optional.ofNullable(this.scaleToZeroEnabled);
     }
 
-    /**
-     * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-     * 
-     */
     @Import(name="workloadSize")
     private @Nullable Output<String> workloadSize;
 
-    /**
-     * @return The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-     * 
-     */
     public Optional<Output<String>> workloadSize() {
         return Optional.ofNullable(this.workloadSize);
     }
 
-    /**
-     * The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
-     * 
-     */
     @Import(name="workloadType")
     private @Nullable Output<String> workloadType;
 
-    /**
-     * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
-     * 
-     */
     public Optional<Output<String>> workloadType() {
         return Optional.ofNullable(this.workloadType);
     }
@@ -202,212 +122,92 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
             $ = new ModelServingConfigServedModelArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param environmentVars a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder environmentVars(@Nullable Output<Map<String,String>> environmentVars) {
             $.environmentVars = environmentVars;
             return this;
         }
 
-        /**
-         * @param environmentVars a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder environmentVars(Map<String,String> environmentVars) {
             return environmentVars(Output.of(environmentVars));
         }
 
-        /**
-         * @param instanceProfileArn ARN of the instance profile that the served model will use to access AWS resources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceProfileArn(@Nullable Output<String> instanceProfileArn) {
             $.instanceProfileArn = instanceProfileArn;
             return this;
         }
 
-        /**
-         * @param instanceProfileArn ARN of the instance profile that the served model will use to access AWS resources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceProfileArn(String instanceProfileArn) {
             return instanceProfileArn(Output.of(instanceProfileArn));
         }
 
-        /**
-         * @param maxProvisionedThroughput The maximum tokens per second that the endpoint can scale up to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxProvisionedThroughput(@Nullable Output<Integer> maxProvisionedThroughput) {
             $.maxProvisionedThroughput = maxProvisionedThroughput;
             return this;
         }
 
-        /**
-         * @param maxProvisionedThroughput The maximum tokens per second that the endpoint can scale up to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxProvisionedThroughput(Integer maxProvisionedThroughput) {
             return maxProvisionedThroughput(Output.of(maxProvisionedThroughput));
         }
 
-        /**
-         * @param minProvisionedThroughput The minimum tokens per second that the endpoint can scale down to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minProvisionedThroughput(@Nullable Output<Integer> minProvisionedThroughput) {
             $.minProvisionedThroughput = minProvisionedThroughput;
             return this;
         }
 
-        /**
-         * @param minProvisionedThroughput The minimum tokens per second that the endpoint can scale down to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minProvisionedThroughput(Integer minProvisionedThroughput) {
             return minProvisionedThroughput(Output.of(minProvisionedThroughput));
         }
 
-        /**
-         * @param modelName The name of the model in Databricks Model Registry to be served.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modelName(Output<String> modelName) {
             $.modelName = modelName;
             return this;
         }
 
-        /**
-         * @param modelName The name of the model in Databricks Model Registry to be served.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modelName(String modelName) {
             return modelName(Output.of(modelName));
         }
 
-        /**
-         * @param modelVersion The version of the model in Databricks Model Registry to be served.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modelVersion(Output<String> modelVersion) {
             $.modelVersion = modelVersion;
             return this;
         }
 
-        /**
-         * @param modelVersion The version of the model in Databricks Model Registry to be served.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modelVersion(String modelVersion) {
             return modelVersion(Output.of(modelVersion));
         }
 
-        /**
-         * @param name The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param scaleToZeroEnabled Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scaleToZeroEnabled(@Nullable Output<Boolean> scaleToZeroEnabled) {
             $.scaleToZeroEnabled = scaleToZeroEnabled;
             return this;
         }
 
-        /**
-         * @param scaleToZeroEnabled Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scaleToZeroEnabled(Boolean scaleToZeroEnabled) {
             return scaleToZeroEnabled(Output.of(scaleToZeroEnabled));
         }
 
-        /**
-         * @param workloadSize The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-         * 
-         * @return builder
-         * 
-         */
         public Builder workloadSize(@Nullable Output<String> workloadSize) {
             $.workloadSize = workloadSize;
             return this;
         }
 
-        /**
-         * @param workloadSize The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
-         * 
-         * @return builder
-         * 
-         */
         public Builder workloadSize(String workloadSize) {
             return workloadSize(Output.of(workloadSize));
         }
 
-        /**
-         * @param workloadType The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder workloadType(@Nullable Output<String> workloadType) {
             $.workloadType = workloadType;
             return this;
         }
 
-        /**
-         * @param workloadType The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder workloadType(String workloadType) {
             return workloadType(Output.of(workloadType));
         }

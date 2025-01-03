@@ -15,62 +15,30 @@ public final class GetInstanceProfilesInstanceProfileArgs extends com.pulumi.res
 
     public static final GetInstanceProfilesInstanceProfileArgs Empty = new GetInstanceProfilesInstanceProfileArgs();
 
-    /**
-     * ARN of the instance profile.
-     * 
-     */
     @Import(name="arn", required=true)
     private Output<String> arn;
 
-    /**
-     * @return ARN of the instance profile.
-     * 
-     */
     public Output<String> arn() {
         return this.arn;
     }
 
-    /**
-     * Whether the instance profile is a meta instance profile or not.
-     * 
-     */
     @Import(name="isMeta", required=true)
     private Output<Boolean> isMeta;
 
-    /**
-     * @return Whether the instance profile is a meta instance profile or not.
-     * 
-     */
     public Output<Boolean> isMeta() {
         return this.isMeta;
     }
 
-    /**
-     * Name of the instance profile.
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return Name of the instance profile.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * ARN of the role attached to the instance profile.
-     * 
-     */
     @Import(name="roleArn", required=true)
     private Output<String> roleArn;
 
-    /**
-     * @return ARN of the role attached to the instance profile.
-     * 
-     */
     public Output<String> roleArn() {
         return this.roleArn;
     }
@@ -102,86 +70,38 @@ public final class GetInstanceProfilesInstanceProfileArgs extends com.pulumi.res
             $ = new GetInstanceProfilesInstanceProfileArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param arn ARN of the instance profile.
-         * 
-         * @return builder
-         * 
-         */
         public Builder arn(Output<String> arn) {
             $.arn = arn;
             return this;
         }
 
-        /**
-         * @param arn ARN of the instance profile.
-         * 
-         * @return builder
-         * 
-         */
         public Builder arn(String arn) {
             return arn(Output.of(arn));
         }
 
-        /**
-         * @param isMeta Whether the instance profile is a meta instance profile or not.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isMeta(Output<Boolean> isMeta) {
             $.isMeta = isMeta;
             return this;
         }
 
-        /**
-         * @param isMeta Whether the instance profile is a meta instance profile or not.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isMeta(Boolean isMeta) {
             return isMeta(Output.of(isMeta));
         }
 
-        /**
-         * @param name Name of the instance profile.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the instance profile.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param roleArn ARN of the role attached to the instance profile.
-         * 
-         * @return builder
-         * 
-         */
         public Builder roleArn(Output<String> roleArn) {
             $.roleArn = roleArn;
             return this;
         }
 
-        /**
-         * @param roleArn ARN of the role attached to the instance profile.
-         * 
-         * @return builder
-         * 
-         */
         public Builder roleArn(String roleArn) {
             return roleArn(Output.of(roleArn));
         }

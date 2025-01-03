@@ -13,29 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobEnvironment {
-    /**
-     * @return an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
-     * 
-     */
     private String environmentKey;
-    /**
-     * @return block describing the Environment. Consists of following attributes:
-     * 
-     */
     private @Nullable JobEnvironmentSpec spec;
 
     private JobEnvironment() {}
-    /**
-     * @return an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
-     * 
-     */
     public String environmentKey() {
         return this.environmentKey;
     }
-    /**
-     * @return block describing the Environment. Consists of following attributes:
-     * 
-     */
     public Optional<JobEnvironmentSpec> spec() {
         return Optional.ofNullable(this.spec);
     }

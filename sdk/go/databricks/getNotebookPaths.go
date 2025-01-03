@@ -11,36 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
-//
-// This data source allows to list notebooks in the Databricks Workspace.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetNotebookPaths(ctx, &databricks.GetNotebookPathsArgs{
-//				Path:      "/Production",
-//				Recursive: true,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetNotebookPaths(ctx *pulumi.Context, args *GetNotebookPathsArgs, opts ...pulumi.InvokeOption) (*GetNotebookPathsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNotebookPathsResult
@@ -53,17 +23,14 @@ func GetNotebookPaths(ctx *pulumi.Context, args *GetNotebookPathsArgs, opts ...p
 
 // A collection of arguments for invoking getNotebookPaths.
 type GetNotebookPathsArgs struct {
-	// Path to workspace directory
-	Path string `pulumi:"path"`
-	// Either or recursively walk given path
-	Recursive bool `pulumi:"recursive"`
+	Path      string `pulumi:"path"`
+	Recursive bool   `pulumi:"recursive"`
 }
 
 // A collection of values returned by getNotebookPaths.
 type GetNotebookPathsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// list of objects with `path` and `language` attributes
+	Id                string                             `pulumi:"id"`
 	NotebookPathLists []GetNotebookPathsNotebookPathList `pulumi:"notebookPathLists"`
 	Path              string                             `pulumi:"path"`
 	Recursive         bool                               `pulumi:"recursive"`
@@ -80,10 +47,8 @@ func GetNotebookPathsOutput(ctx *pulumi.Context, args GetNotebookPathsOutputArgs
 
 // A collection of arguments for invoking getNotebookPaths.
 type GetNotebookPathsOutputArgs struct {
-	// Path to workspace directory
-	Path pulumi.StringInput `pulumi:"path"`
-	// Either or recursively walk given path
-	Recursive pulumi.BoolInput `pulumi:"recursive"`
+	Path      pulumi.StringInput `pulumi:"path"`
+	Recursive pulumi.BoolInput   `pulumi:"recursive"`
 }
 
 func (GetNotebookPathsOutputArgs) ElementType() reflect.Type {
@@ -110,7 +75,6 @@ func (o GetNotebookPathsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotebookPathsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// list of objects with `path` and `language` attributes
 func (o GetNotebookPathsResultOutput) NotebookPathLists() GetNotebookPathsNotebookPathListArrayOutput {
 	return o.ApplyT(func(v GetNotebookPathsResult) []GetNotebookPathsNotebookPathList { return v.NotebookPathLists }).(GetNotebookPathsNotebookPathListArrayOutput)
 }

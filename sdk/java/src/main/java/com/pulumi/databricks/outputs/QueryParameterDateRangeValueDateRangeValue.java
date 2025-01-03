@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class QueryParameterDateRangeValueDateRangeValue {
-    /**
-     * @return end of the date range.
-     * 
-     */
     private String end;
-    /**
-     * @return begin of the date range.
-     * 
-     */
     private String start;
 
     private QueryParameterDateRangeValueDateRangeValue() {}
-    /**
-     * @return end of the date range.
-     * 
-     */
     public String end() {
         return this.end;
     }
-    /**
-     * @return begin of the date range.
-     * 
-     */
     public String start() {
         return this.start;
     }

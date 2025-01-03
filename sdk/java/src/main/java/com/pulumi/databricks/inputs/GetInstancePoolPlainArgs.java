@@ -16,32 +16,16 @@ public final class GetInstancePoolPlainArgs extends com.pulumi.resources.InvokeA
 
     public static final GetInstancePoolPlainArgs Empty = new GetInstancePoolPlainArgs();
 
-    /**
-     * Name of the instance pool. The instance pool must exist before this resource can be planned.
-     * 
-     */
     @Import(name="name", required=true)
     private String name;
 
-    /**
-     * @return Name of the instance pool. The instance pool must exist before this resource can be planned.
-     * 
-     */
     public String name() {
         return this.name;
     }
 
-    /**
-     * block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
-     * 
-     */
     @Import(name="poolInfo")
     private @Nullable GetInstancePoolPoolInfo poolInfo;
 
-    /**
-     * @return block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
-     * 
-     */
     public Optional<GetInstancePoolPoolInfo> poolInfo() {
         return Optional.ofNullable(this.poolInfo);
     }
@@ -71,23 +55,11 @@ public final class GetInstancePoolPlainArgs extends com.pulumi.resources.InvokeA
             $ = new GetInstancePoolPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param name Name of the instance pool. The instance pool must exist before this resource can be planned.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param poolInfo block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder poolInfo(@Nullable GetInstancePoolPoolInfo poolInfo) {
             $.poolInfo = poolInfo;
             return this;

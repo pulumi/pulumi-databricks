@@ -22,17 +22,9 @@ public final class GetTableTableInfoTableConstraintForeignKeyConstraintArgs exte
         return this.childColumns;
     }
 
-    /**
-     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
@@ -91,23 +83,11 @@ public final class GetTableTableInfoTableConstraintForeignKeyConstraintArgs exte
             return childColumns(List.of(childColumns));
         }
 
-        /**
-         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

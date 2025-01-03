@@ -15,89 +15,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OnlineTableSpec {
-    /**
-     * @return Whether to create a full-copy pipeline -- a pipeline that stops after creates a full copy of the source table upon initialization and does not process any change data feeds (CDFs) afterwards. The pipeline can still be manually triggered afterwards, but it always perform a full copy of the source table and there are no incremental updates. This mode is useful for syncing views or tables without CDFs to online tables. Note that the full-copy pipeline only supports &#34;triggered&#34; scheduling policy.
-     * 
-     */
     private @Nullable Boolean performFullCopy;
-    /**
-     * @return ID of the associated Delta Live Table pipeline.
-     * 
-     */
     private @Nullable String pipelineId;
-    /**
-     * @return list of the columns comprising the primary key.
-     * 
-     */
     private @Nullable List<String> primaryKeyColumns;
-    /**
-     * @return empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
-     * 
-     */
     private @Nullable OnlineTableSpecRunContinuously runContinuously;
-    /**
-     * @return empty block that specifies that pipeline stops after generating the initial data and can be triggered later (manually, through a cron job or through data triggers).
-     * 
-     */
     private @Nullable OnlineTableSpecRunTriggered runTriggered;
-    /**
-     * @return full name of the source table.
-     * 
-     */
     private @Nullable String sourceTableFullName;
-    /**
-     * @return Time series key to deduplicate (tie-break) rows with the same primary key.
-     * 
-     */
     private @Nullable String timeseriesKey;
 
     private OnlineTableSpec() {}
-    /**
-     * @return Whether to create a full-copy pipeline -- a pipeline that stops after creates a full copy of the source table upon initialization and does not process any change data feeds (CDFs) afterwards. The pipeline can still be manually triggered afterwards, but it always perform a full copy of the source table and there are no incremental updates. This mode is useful for syncing views or tables without CDFs to online tables. Note that the full-copy pipeline only supports &#34;triggered&#34; scheduling policy.
-     * 
-     */
     public Optional<Boolean> performFullCopy() {
         return Optional.ofNullable(this.performFullCopy);
     }
-    /**
-     * @return ID of the associated Delta Live Table pipeline.
-     * 
-     */
     public Optional<String> pipelineId() {
         return Optional.ofNullable(this.pipelineId);
     }
-    /**
-     * @return list of the columns comprising the primary key.
-     * 
-     */
     public List<String> primaryKeyColumns() {
         return this.primaryKeyColumns == null ? List.of() : this.primaryKeyColumns;
     }
-    /**
-     * @return empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
-     * 
-     */
     public Optional<OnlineTableSpecRunContinuously> runContinuously() {
         return Optional.ofNullable(this.runContinuously);
     }
-    /**
-     * @return empty block that specifies that pipeline stops after generating the initial data and can be triggered later (manually, through a cron job or through data triggers).
-     * 
-     */
     public Optional<OnlineTableSpecRunTriggered> runTriggered() {
         return Optional.ofNullable(this.runTriggered);
     }
-    /**
-     * @return full name of the source table.
-     * 
-     */
     public Optional<String> sourceTableFullName() {
         return Optional.ofNullable(this.sourceTableFullName);
     }
-    /**
-     * @return Time series key to deduplicate (tie-break) rows with the same primary key.
-     * 
-     */
     public Optional<String> timeseriesKey() {
         return Optional.ofNullable(this.timeseriesKey);
     }

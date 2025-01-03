@@ -18,242 +18,114 @@ public final class QueryState extends com.pulumi.resources.ResourceArgs {
 
     public static final QueryState Empty = new QueryState();
 
-    /**
-     * Whether to apply a 1000 row limit to the query result.
-     * 
-     */
     @Import(name="applyAutoLimit")
     private @Nullable Output<Boolean> applyAutoLimit;
 
-    /**
-     * @return Whether to apply a 1000 row limit to the query result.
-     * 
-     */
     public Optional<Output<Boolean>> applyAutoLimit() {
         return Optional.ofNullable(this.applyAutoLimit);
     }
 
-    /**
-     * Name of the catalog where this query will be executed.
-     * 
-     */
     @Import(name="catalog")
     private @Nullable Output<String> catalog;
 
-    /**
-     * @return Name of the catalog where this query will be executed.
-     * 
-     */
     public Optional<Output<String>> catalog() {
         return Optional.ofNullable(this.catalog);
     }
 
-    /**
-     * The timestamp string indicating when the query was created.
-     * 
-     */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
-    /**
-     * @return The timestamp string indicating when the query was created.
-     * 
-     */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
-    /**
-     * General description that conveys additional information about this query such as usage notes.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return General description that conveys additional information about this query such as usage notes.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * Name of the query.
-     * 
-     */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
-    /**
-     * @return Name of the query.
-     * 
-     */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
     }
 
-    /**
-     * Username of the user who last saved changes to this query.
-     * 
-     */
     @Import(name="lastModifierUserName")
     private @Nullable Output<String> lastModifierUserName;
 
-    /**
-     * @return Username of the user who last saved changes to this query.
-     * 
-     */
     public Optional<Output<String>> lastModifierUserName() {
         return Optional.ofNullable(this.lastModifierUserName);
     }
 
-    /**
-     * The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-     * 
-     */
     @Import(name="lifecycleState")
     private @Nullable Output<String> lifecycleState;
 
-    /**
-     * @return The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-     * 
-     */
     public Optional<Output<String>> lifecycleState() {
         return Optional.ofNullable(this.lifecycleState);
     }
 
-    /**
-     * Query owner&#39;s username.
-     * 
-     */
     @Import(name="ownerUserName")
     private @Nullable Output<String> ownerUserName;
 
-    /**
-     * @return Query owner&#39;s username.
-     * 
-     */
     public Optional<Output<String>> ownerUserName() {
         return Optional.ofNullable(this.ownerUserName);
     }
 
-    /**
-     * Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-     * 
-     */
     @Import(name="parameters")
     private @Nullable Output<List<QueryParameterArgs>> parameters;
 
-    /**
-     * @return Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-     * 
-     */
     public Optional<Output<List<QueryParameterArgs>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
 
-    /**
-     * The path to a workspace folder containing the query. The default is the user&#39;s home folder.  If changed, the query will be recreated.
-     * 
-     */
     @Import(name="parentPath")
     private @Nullable Output<String> parentPath;
 
-    /**
-     * @return The path to a workspace folder containing the query. The default is the user&#39;s home folder.  If changed, the query will be recreated.
-     * 
-     */
     public Optional<Output<String>> parentPath() {
         return Optional.ofNullable(this.parentPath);
     }
 
-    /**
-     * Text of SQL query.
-     * 
-     */
     @Import(name="queryText")
     private @Nullable Output<String> queryText;
 
-    /**
-     * @return Text of SQL query.
-     * 
-     */
     public Optional<Output<String>> queryText() {
         return Optional.ofNullable(this.queryText);
     }
 
-    /**
-     * Sets the &#34;Run as&#34; role for the object.
-     * 
-     */
     @Import(name="runAsMode")
     private @Nullable Output<String> runAsMode;
 
-    /**
-     * @return Sets the &#34;Run as&#34; role for the object.
-     * 
-     */
     public Optional<Output<String>> runAsMode() {
         return Optional.ofNullable(this.runAsMode);
     }
 
-    /**
-     * Name of the schema where this query will be executed.
-     * 
-     */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
-    /**
-     * @return Name of the schema where this query will be executed.
-     * 
-     */
     public Optional<Output<String>> schema() {
         return Optional.ofNullable(this.schema);
     }
 
-    /**
-     * Tags that will be added to the query.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
-    /**
-     * @return Tags that will be added to the query.
-     * 
-     */
     public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * The timestamp string indicating when the query was updated.
-     * 
-     */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
-    /**
-     * @return The timestamp string indicating when the query was updated.
-     * 
-     */
     public Optional<Output<String>> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }
 
-    /**
-     * ID of a SQL warehouse which will be used to execute this query.
-     * 
-     */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
-    /**
-     * @return ID of a SQL warehouse which will be used to execute this query.
-     * 
-     */
     public Optional<Output<String>> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }
@@ -297,358 +169,154 @@ public final class QueryState extends com.pulumi.resources.ResourceArgs {
             $ = new QueryState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param applyAutoLimit Whether to apply a 1000 row limit to the query result.
-         * 
-         * @return builder
-         * 
-         */
         public Builder applyAutoLimit(@Nullable Output<Boolean> applyAutoLimit) {
             $.applyAutoLimit = applyAutoLimit;
             return this;
         }
 
-        /**
-         * @param applyAutoLimit Whether to apply a 1000 row limit to the query result.
-         * 
-         * @return builder
-         * 
-         */
         public Builder applyAutoLimit(Boolean applyAutoLimit) {
             return applyAutoLimit(Output.of(applyAutoLimit));
         }
 
-        /**
-         * @param catalog Name of the catalog where this query will be executed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalog(@Nullable Output<String> catalog) {
             $.catalog = catalog;
             return this;
         }
 
-        /**
-         * @param catalog Name of the catalog where this query will be executed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalog(String catalog) {
             return catalog(Output.of(catalog));
         }
 
-        /**
-         * @param createTime The timestamp string indicating when the query was created.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
-        /**
-         * @param createTime The timestamp string indicating when the query was created.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 
-        /**
-         * @param description General description that conveys additional information about this query such as usage notes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description General description that conveys additional information about this query such as usage notes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        /**
-         * @param displayName Name of the query.
-         * 
-         * @return builder
-         * 
-         */
         public Builder displayName(@Nullable Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
 
-        /**
-         * @param displayName Name of the query.
-         * 
-         * @return builder
-         * 
-         */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
         }
 
-        /**
-         * @param lastModifierUserName Username of the user who last saved changes to this query.
-         * 
-         * @return builder
-         * 
-         */
         public Builder lastModifierUserName(@Nullable Output<String> lastModifierUserName) {
             $.lastModifierUserName = lastModifierUserName;
             return this;
         }
 
-        /**
-         * @param lastModifierUserName Username of the user who last saved changes to this query.
-         * 
-         * @return builder
-         * 
-         */
         public Builder lastModifierUserName(String lastModifierUserName) {
             return lastModifierUserName(Output.of(lastModifierUserName));
         }
 
-        /**
-         * @param lifecycleState The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder lifecycleState(@Nullable Output<String> lifecycleState) {
             $.lifecycleState = lifecycleState;
             return this;
         }
 
-        /**
-         * @param lifecycleState The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
-         * 
-         * @return builder
-         * 
-         */
         public Builder lifecycleState(String lifecycleState) {
             return lifecycleState(Output.of(lifecycleState));
         }
 
-        /**
-         * @param ownerUserName Query owner&#39;s username.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ownerUserName(@Nullable Output<String> ownerUserName) {
             $.ownerUserName = ownerUserName;
             return this;
         }
 
-        /**
-         * @param ownerUserName Query owner&#39;s username.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ownerUserName(String ownerUserName) {
             return ownerUserName(Output.of(ownerUserName));
         }
 
-        /**
-         * @param parameters Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameters(@Nullable Output<List<QueryParameterArgs>> parameters) {
             $.parameters = parameters;
             return this;
         }
 
-        /**
-         * @param parameters Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameters(List<QueryParameterArgs> parameters) {
             return parameters(Output.of(parameters));
         }
 
-        /**
-         * @param parameters Query parameter definition.  Consists of following attributes (one of `*_value` is required):
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameters(QueryParameterArgs... parameters) {
             return parameters(List.of(parameters));
         }
 
-        /**
-         * @param parentPath The path to a workspace folder containing the query. The default is the user&#39;s home folder.  If changed, the query will be recreated.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parentPath(@Nullable Output<String> parentPath) {
             $.parentPath = parentPath;
             return this;
         }
 
-        /**
-         * @param parentPath The path to a workspace folder containing the query. The default is the user&#39;s home folder.  If changed, the query will be recreated.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parentPath(String parentPath) {
             return parentPath(Output.of(parentPath));
         }
 
-        /**
-         * @param queryText Text of SQL query.
-         * 
-         * @return builder
-         * 
-         */
         public Builder queryText(@Nullable Output<String> queryText) {
             $.queryText = queryText;
             return this;
         }
 
-        /**
-         * @param queryText Text of SQL query.
-         * 
-         * @return builder
-         * 
-         */
         public Builder queryText(String queryText) {
             return queryText(Output.of(queryText));
         }
 
-        /**
-         * @param runAsMode Sets the &#34;Run as&#34; role for the object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder runAsMode(@Nullable Output<String> runAsMode) {
             $.runAsMode = runAsMode;
             return this;
         }
 
-        /**
-         * @param runAsMode Sets the &#34;Run as&#34; role for the object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder runAsMode(String runAsMode) {
             return runAsMode(Output.of(runAsMode));
         }
 
-        /**
-         * @param schema Name of the schema where this query will be executed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder schema(@Nullable Output<String> schema) {
             $.schema = schema;
             return this;
         }
 
-        /**
-         * @param schema Name of the schema where this query will be executed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder schema(String schema) {
             return schema(Output.of(schema));
         }
 
-        /**
-         * @param tags Tags that will be added to the query.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<List<String>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags Tags that will be added to the query.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(List<String> tags) {
             return tags(Output.of(tags));
         }
 
-        /**
-         * @param tags Tags that will be added to the query.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
 
-        /**
-         * @param updateTime The timestamp string indicating when the query was updated.
-         * 
-         * @return builder
-         * 
-         */
         public Builder updateTime(@Nullable Output<String> updateTime) {
             $.updateTime = updateTime;
             return this;
         }
 
-        /**
-         * @param updateTime The timestamp string indicating when the query was updated.
-         * 
-         * @return builder
-         * 
-         */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
         }
 
-        /**
-         * @param warehouseId ID of a SQL warehouse which will be used to execute this query.
-         * 
-         * @return builder
-         * 
-         */
         public Builder warehouseId(@Nullable Output<String> warehouseId) {
             $.warehouseId = warehouseId;
             return this;
         }
 
-        /**
-         * @param warehouseId ID of a SQL warehouse which will be used to execute this query.
-         * 
-         * @return builder
-         * 
-         */
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
         }

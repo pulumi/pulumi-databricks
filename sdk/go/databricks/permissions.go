@@ -12,1409 +12,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspaces. It ensures that only _admins_, _authenticated principal_ and those declared within `accessControl` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
-//
-// > This resource is _authoritative_ for permissions on objects. Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset.
-//
-// > It is not possible to lower permissions for `admins`, so Databricks Pulumi Provider removes those `accessControl` blocks automatically.
-//
-// > If multiple permission levels are specified for an identity (e.g. `CAN_RESTART` and `CAN_MANAGE` for a cluster), only the highest level permission is returned and will cause permanent drift.
-//
-// > To manage access control on service principals, use databricks_access_control_rule_set.
-//
-// ## Cluster usage
-//
-// It's possible to separate [cluster access control](https://docs.databricks.com/security/access-control/cluster-acl.html) to three different permission levels: `CAN_ATTACH_TO`, `CAN_RESTART` and `CAN_MANAGE`:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ds, err := databricks.NewGroup(ctx, "ds", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Data Science"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			latest, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
-//				LocalDisk: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			sharedAutoscaling, err := databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
-//				ClusterName:            pulumi.String("Shared Autoscaling"),
-//				SparkVersion:           pulumi.String(latest.Id),
-//				NodeTypeId:             pulumi.String(smallest.Id),
-//				AutoterminationMinutes: pulumi.Int(60),
-//				Autoscale: &databricks.ClusterAutoscaleArgs{
-//					MinWorkers: pulumi.Int(1),
-//					MaxWorkers: pulumi.Int(10),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "cluster_usage", &databricks.PermissionsArgs{
-//				ClusterId: sharedAutoscaling.ID(),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_ATTACH_TO"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_RESTART"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       ds.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Cluster Policy usage
-//
-// Cluster policies allow creation of clusters, that match [given policy](https://docs.databricks.com/administration-guide/clusters/policies.html). It's possible to assign `CAN_USE` permission to users and groups:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"encoding/json"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ds, err := databricks.NewGroup(ctx, "ds", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Data Science"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"spark_conf.spark.hadoop.javax.jdo.option.ConnectionURL": map[string]interface{}{
-//					"type": "forbidden",
-//				},
-//				"spark_conf.spark.secondkey": map[string]interface{}{
-//					"type": "forbidden",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			somethingSimple, err := databricks.NewClusterPolicy(ctx, "something_simple", &databricks.ClusterPolicyArgs{
-//				Name:       pulumi.String("Some simple policy"),
-//				Definition: pulumi.String(json0),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "policy_usage", &databricks.PermissionsArgs{
-//				ClusterPolicyId: somethingSimple.ID(),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       ds.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_USE"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_USE"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Instance Pool usage
-//
-// Instance Pools access control [allows to](https://docs.databricks.com/security/access-control/pool-acl.html) assign `CAN_ATTACH_TO` and `CAN_MANAGE` permissions to users, service principals, and groups. It's also possible to grant creation of Instance Pools to individual groups and users, service principals.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
-//				LocalDisk: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			this, err := databricks.NewInstancePool(ctx, "this", &databricks.InstancePoolArgs{
-//				InstancePoolName:                   pulumi.String("Reserved Instances"),
-//				IdleInstanceAutoterminationMinutes: pulumi.Int(60),
-//				NodeTypeId:                         pulumi.String(smallest.Id),
-//				MinIdleInstances:                   pulumi.Int(0),
-//				MaxCapacity:                        pulumi.Int(10),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "pool_usage", &databricks.PermissionsArgs{
-//				InstancePoolId: this.ID(),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_ATTACH_TO"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Job usage
-//
-// There are four assignable [permission levels](https://docs.databricks.com/security/access-control/jobs-acl.html#job-permissions) for databricks_job: `CAN_VIEW`, `CAN_MANAGE_RUN`, `IS_OWNER`, and `CAN_MANAGE`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
-//
-// - The creator of a job has `IS_OWNER` permission. Destroying `Permissions` resource for a job would revert ownership to the creator.
-// - A job must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the job. Nothing would change, per se, if the job was created through Pulumi.
-// - A job cannot have a group as an owner.
-// - Jobs triggered through _Run Now_ assume the permissions of the job owner and not the user, and service principal who issued Run Now.
-// - Read [main documentation](https://docs.databricks.com/security/access-control/jobs-acl.html) for additional detail.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			awsPrincipal, err := databricks.NewServicePrincipal(ctx, "aws_principal", &databricks.ServicePrincipalArgs{
-//				DisplayName: pulumi.String("main"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			latest, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
-//				LocalDisk: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			this, err := databricks.NewJob(ctx, "this", &databricks.JobArgs{
-//				Name:              pulumi.String("Featurization"),
-//				MaxConcurrentRuns: pulumi.Int(1),
-//				Tasks: databricks.JobTaskArray{
-//					&databricks.JobTaskArgs{
-//						TaskKey: pulumi.String("task1"),
-//						NewCluster: &databricks.JobTaskNewClusterArgs{
-//							NumWorkers:   pulumi.Int(300),
-//							SparkVersion: pulumi.String(latest.Id),
-//							NodeTypeId:   pulumi.String(smallest.Id),
-//						},
-//						NotebookTask: &databricks.JobTaskNotebookTaskArgs{
-//							NotebookPath: pulumi.String("/Production/MakeFeatures"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "job_usage", &databricks.PermissionsArgs{
-//				JobId: this.ID(),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.String("users"),
-//						PermissionLevel: pulumi.String("CAN_VIEW"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE_RUN"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						ServicePrincipalName: awsPrincipal.ApplicationId,
-//						PermissionLevel:      pulumi.String("IS_OWNER"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Delta Live Tables usage
-//
-// There are four assignable [permission levels](https://docs.databricks.com/security/access-control/dlt-acl.html#delta-live-tables-permissions) for databricks_pipeline: `CAN_VIEW`, `CAN_RUN`, `CAN_MANAGE`, and `IS_OWNER`. Admins are granted the `CAN_MANAGE` permission by default, and they can assign that permission to non-admin users, and service principals.
-//
-// - The creator of a DLT Pipeline has `IS_OWNER` permission. Destroying `Permissions` resource for a pipeline would revert ownership to the creator.
-// - A DLT pipeline must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the pipeline. Nothing would change, per se, if the pipeline was created through Pulumi.
-// - A DLT pipeline cannot have a group as an owner.
-// - DLT Pipelines triggered through _Start_ assume the permissions of the pipeline owner and not the user, and service principal who issued Run Now.
-// - Read [main documentation](https://docs.databricks.com/security/access-control/dlt-acl.html) for additional detail.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			me, err := databricks.GetCurrentUser(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: `import dlt
-//
-// json_path = "/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json"
-// @dlt.table(
-//
-//	comment="The raw wikipedia clickstream dataset, ingested from /databricks-datasets."
-//
-// )
-// def clickstream_raw():
-//
-//	return (spark.read.format("json").load(json_path))
-//
-// `,
-//
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			dltDemo, err := databricks.NewNotebook(ctx, "dlt_demo", &databricks.NotebookArgs{
-//				ContentBase64: pulumi.String(invokeBase64encode.Result),
-//				Language:      pulumi.String("PYTHON"),
-//				Path:          pulumi.Sprintf("%v/DLT_Demo", me.Home),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			this, err := databricks.NewPipeline(ctx, "this", &databricks.PipelineArgs{
-//				Name:    pulumi.Sprintf("DLT Demo Pipeline (%v)", me.Alphanumeric),
-//				Storage: pulumi.String("/test/tf-pipeline"),
-//				Configuration: pulumi.StringMap{
-//					"key1": pulumi.String("value1"),
-//					"key2": pulumi.String("value2"),
-//				},
-//				Libraries: databricks.PipelineLibraryArray{
-//					&databricks.PipelineLibraryArgs{
-//						Notebook: &databricks.PipelineLibraryNotebookArgs{
-//							Path: dltDemo.ID(),
-//						},
-//					},
-//				},
-//				Continuous: pulumi.Bool(false),
-//				Filters: &databricks.PipelineFiltersArgs{
-//					Includes: pulumi.StringArray{
-//						pulumi.String("com.databricks.include"),
-//					},
-//					Excludes: pulumi.StringArray{
-//						pulumi.String("com.databricks.exclude"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "dlt_usage", &databricks.PermissionsArgs{
-//				PipelineId: this.ID(),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.String("users"),
-//						PermissionLevel: pulumi.String("CAN_VIEW"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Notebook usage
-//
-// Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#notebook-permissions) for Notebook are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
-//
-// A notebook could be specified by using either `notebookPath` or `notebookId` attribute.  The value for the `notebookId` is the object ID of the resource in the Databricks Workspace that is exposed as `objectId` attribute of the `Notebook` resource as shown below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "# Welcome to your Python notebook",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			this, err := databricks.NewNotebook(ctx, "this", &databricks.NotebookArgs{
-//				ContentBase64: pulumi.String(invokeBase64encode.Result),
-//				Path:          pulumi.String("/Production/ETL/Features"),
-//				Language:      pulumi.String("PYTHON"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "notebook_usage_by_path", &databricks.PermissionsArgs{
-//				NotebookPath: this.Path,
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.String("users"),
-//						PermissionLevel: pulumi.String("CAN_READ"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_RUN"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_EDIT"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "notebook_usage_by_id", &databricks.PermissionsArgs{
-//				NotebookId: this.ObjectId,
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.String("users"),
-//						PermissionLevel: pulumi.String("CAN_READ"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_RUN"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_EDIT"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// > when importing a permissions resource, only the `notebookId` is filled!
-//
-// ## Workspace file usage
-//
-// Valid permission levels for WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
-//
-// A workspace file could be specified by using either `workspaceFilePath` or `workspaceFileId` attribute.  The value for the `workspaceFileId` is the object ID of the resource in the Databricks Workspace that is exposed as `objectId` attribute of the `WorkspaceFile` resource as shown below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "print('Hello World')",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			this, err := databricks.NewWorkspaceFile(ctx, "this", &databricks.WorkspaceFileArgs{
-//				ContentBase64: pulumi.String(invokeBase64encode.Result),
-//				Path:          pulumi.String("/Production/ETL/Features.py"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "workspace_file_usage_by_path", &databricks.PermissionsArgs{
-//				WorkspaceFilePath: this.Path,
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.String("users"),
-//						PermissionLevel: pulumi.String("CAN_READ"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_RUN"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_EDIT"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "workspace_file_usage_by_id", &databricks.PermissionsArgs{
-//				WorkspaceFileId: this.ObjectId,
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.String("users"),
-//						PermissionLevel: pulumi.String("CAN_READ"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_RUN"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_EDIT"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// > when importing a permissions resource, only the `workspaceFileId` is filled!
-//
-// ## Folder usage
-//
-// Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#folder-permissions) for folders of Directory are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`. Notebooks and experiments in a folder inherit all permissions settings of that folder. For example, a user (or service principal) that has `CAN_RUN` permission on a folder has `CAN_RUN` permission on the notebooks in that folder.
-//
-// - All users can list items in the folder without any permissions.
-// - All users (or service principals) have `CAN_MANAGE` permission for items in the Workspace > Shared Icon Shared folder. You can grant `CAN_MANAGE` permission to notebooks and folders by moving them to the Shared Icon Shared folder.
-// - All users (or service principals) have `CAN_MANAGE` permission for objects the user creates.
-// - User home directory - The user (or service principal) has `CAN_MANAGE` permission. All other users (or service principals) can list their directories.
-//
-// A folder could be specified by using either `directoryPath` or `directoryId` attribute.  The value for the `directoryId` is the object ID of the resource in the Databricks Workspace that is exposed as `objectId` attribute of the `Directory` resource as shown below.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			this, err := databricks.NewDirectory(ctx, "this", &databricks.DirectoryArgs{
-//				Path: pulumi.String("/Production/ETL"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "folder_usage_by_path", &databricks.PermissionsArgs{
-//				DirectoryPath: this.Path,
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.String("users"),
-//						PermissionLevel: pulumi.String("CAN_READ"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_RUN"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_EDIT"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "folder_usage_by_id", &databricks.PermissionsArgs{
-//				DirectoryId: this.ObjectId,
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.String("users"),
-//						PermissionLevel: pulumi.String("CAN_READ"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_RUN"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_EDIT"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// > when importing a permissions resource, only the `directoryId` is filled!
-//
-// ## Repos usage
-//
-// Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html) for Repo are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			this, err := databricks.NewRepo(ctx, "this", &databricks.RepoArgs{
-//				Url: pulumi.String("https://github.com/user/demo.git"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "repo_usage", &databricks.PermissionsArgs{
-//				RepoId: this.ID(),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.String("users"),
-//						PermissionLevel: pulumi.String("CAN_READ"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_RUN"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_EDIT"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## MLflow Experiment usage
-//
-// Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#mlflow-experiment-permissions-1) for MlflowExperiment are: `CAN_READ`, `CAN_EDIT`, and `CAN_MANAGE`.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			me, err := databricks.GetCurrentUser(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			this, err := databricks.NewMlflowExperiment(ctx, "this", &databricks.MlflowExperimentArgs{
-//				Name:             pulumi.Sprintf("%v/Sample", me.Home),
-//				ArtifactLocation: pulumi.String("dbfs:/tmp/my-experiment"),
-//				Description:      pulumi.String("My MLflow experiment description"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "experiment_usage", &databricks.PermissionsArgs{
-//				ExperimentId: this.ID(),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.String("users"),
-//						PermissionLevel: pulumi.String("CAN_READ"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_EDIT"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## MLflow Model usage
-//
-// Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#mlflow-model-permissions-1) for MlflowModel are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE_STAGING_VERSIONS`, `CAN_MANAGE_PRODUCTION_VERSIONS`, and `CAN_MANAGE`. You can also manage permissions for all MLflow models by `registeredModelId = "root"`.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.NewMlflowModel(ctx, "this", &databricks.MlflowModelArgs{
-//				Name: pulumi.String("SomePredictions"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "model_usage", &databricks.PermissionsArgs{
-//				RegisteredModelId: this.RegisteredModelId,
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.String("users"),
-//						PermissionLevel: pulumi.String("CAN_READ"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE_PRODUCTION_VERSIONS"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE_STAGING_VERSIONS"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Model serving usage
-//
-// Valid permission levels for ModelServing are: `CAN_VIEW`, `CAN_QUERY`, and `CAN_MANAGE`.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := databricks.NewModelServing(ctx, "this", &databricks.ModelServingArgs{
-//				Name: pulumi.String("tf-test"),
-//				Config: &databricks.ModelServingConfigArgs{
-//					ServedModels: databricks.ModelServingConfigServedModelArray{
-//						&databricks.ModelServingConfigServedModelArgs{
-//							Name:               pulumi.String("prod_model"),
-//							ModelName:          pulumi.String("test"),
-//							ModelVersion:       pulumi.String("1"),
-//							WorkloadSize:       pulumi.String("Small"),
-//							ScaleToZeroEnabled: pulumi.Bool(true),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "ml_serving_usage", &databricks.PermissionsArgs{
-//				ServingEndpointId: this.ServingEndpointId,
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.String("users"),
-//						PermissionLevel: pulumi.String("CAN_VIEW"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_QUERY"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Passwords usage
-//
-// By default on AWS deployments, all admin users can sign in to Databricks using either SSO or their username and password, and all API users can authenticate to the Databricks REST APIs using their username and password. As an admin, you [can limit](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#optional-configure-password-access-control) admin users’ and API users’ ability to authenticate with their username and password by configuring `CAN_USE` permissions using password access control.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			guests, err := databricks.NewGroup(ctx, "guests", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Guest Users"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "password_usage", &databricks.PermissionsArgs{
-//				Authorization: pulumi.String("passwords"),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       guests.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_USE"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Token usage
-//
-// It is required to have at least 1 personal access token in the workspace before you can manage tokens permissions.
-//
-// !> **Warning** There can be only one `authorization = "tokens"` permissions resource per workspace, otherwise there'll be a permanent configuration drift. After applying changes, users who previously had either `CAN_USE` or `CAN_MANAGE` permission but no longer have either permission have their access to token-based authentication revoked. Their active tokens are immediately deleted (revoked).
-//
-// Only [possible permission](https://docs.databricks.com/administration-guide/access-control/tokens.html) to assign to non-admin group is `CAN_USE`, where _admins_ `CAN_MANAGE` all tokens:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "token_usage", &databricks.PermissionsArgs{
-//				Authorization: pulumi.String("tokens"),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_USE"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_USE"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## SQL warehouse usage
-//
-// [SQL warehouses](https://docs.databricks.com/sql/user/security/access-control/sql-endpoint-acl.html) have four possible permissions: `CAN_USE`, `CAN_MONITOR`, `CAN_MANAGE` and `IS_OWNER`:
-//
-// - The creator of a warehouse has `IS_OWNER` permission. Destroying `Permissions` resource for a warehouse would revert ownership to the creator.
-// - A warehouse must have exactly one owner. If a resource is changed and no owner is specified, the currently authenticated principal would become the new owner of the warehouse. Nothing would change, per se, if the warehouse was created through Pulumi.
-// - A warehouse cannot have a group as an owner.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			me, err := databricks.GetCurrentUser(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			this, err := databricks.NewSqlEndpoint(ctx, "this", &databricks.SqlEndpointArgs{
-//				Name:           pulumi.Sprintf("Endpoint of %v", me.Alphanumeric),
-//				ClusterSize:    pulumi.String("Small"),
-//				MaxNumClusters: pulumi.Int(1),
-//				Tags: &databricks.SqlEndpointTagsArgs{
-//					CustomTags: databricks.SqlEndpointTagsCustomTagArray{
-//						&databricks.SqlEndpointTagsCustomTagArgs{
-//							Key:   pulumi.String("City"),
-//							Value: pulumi.String("Amsterdam"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "endpoint_usage", &databricks.PermissionsArgs{
-//				SqlEndpointId: this.ID(),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_USE"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Dashboard usage
-//
-// [Dashboards](https://docs.databricks.com/en/dashboards/tutorials/manage-permissions.html) have four possible permissions: `CAN_READ`, `CAN_RUN`, `CAN_EDIT` and `CAN_MANAGE`:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			dashboard, err := databricks.NewDashboard(ctx, "dashboard", &databricks.DashboardArgs{
-//				DisplayName: pulumi.String("TF New Dashboard"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "dashboard_usage", &databricks.PermissionsArgs{
-//				DashboardId: dashboard.ID(),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_RUN"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Legacy SQL Dashboard usage
-//
-// [Legacy SQL dashboards](https://docs.databricks.com/sql/user/security/access-control/dashboard-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "sql_dashboard_usage", &databricks.PermissionsArgs{
-//				SqlDashboardId: pulumi.String("3244325"),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_RUN"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## SQL Query usage
-//
-// [SQL queries](https://docs.databricks.com/sql/user/security/access-control/query-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
-//
-// > If you do not define an `accessControl` block granting `CAN_MANAGE` explictly for the user calling this provider, Databricks Pulumi Provider will add `CAN_MANAGE` permission for the caller. This is a failsafe to prevent situations where the caller is locked out from making changes to the targeted `SqlQuery` resource when backend API do not apply permission inheritance correctly.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "query_usage", &databricks.PermissionsArgs{
-//				SqlQueryId: pulumi.String("3244325"),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_RUN"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## SQL Alert usage
-//
-// [SQL alerts](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			auto, err := databricks.NewGroup(ctx, "auto", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Automation"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
-//				DisplayName: pulumi.String("Engineering"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewPermissions(ctx, "alert_usage", &databricks.PermissionsArgs{
-//				SqlAlertId: pulumi.String("3244325"),
-//				AccessControls: databricks.PermissionsAccessControlArray{
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       auto.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_RUN"),
-//					},
-//					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       eng.DisplayName,
-//						PermissionLevel: pulumi.String("CAN_MANAGE"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Instance Profiles
-//
-// Instance Profiles are not managed by General Permissions API and therefore GroupInstanceProfile and UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
-//
-// ## Secrets
-//
-// One can control access to Secret through `initialManagePrincipal` argument on SecretScope or databricks_secret_acl, so that users (or service principals) can `READ`, `WRITE` or `MANAGE` entries within secret scope.
-//
-// ## Tables, Views and Databases
-//
-// General Permissions API does not apply to access control for tables and they have to be managed separately using the SqlPermissions resource, though you're encouraged to use Unity Catalog or migrate to it.
-//
-// ## Data Access with Unity Catalog
-//
-// Initially in Unity Catalog all users have no access to data, which has to be later assigned through Grants resource.
-//
-// ## Import
-//
-// # The resource permissions can be imported using the object id
-//
-// ```sh
-// $ pulumi import databricks:index/permissions:Permissions databricks_permissions <object type>/<object id>
-// ```
 type Permissions struct {
 	pulumi.CustomResourceState
 
-	AccessControls  PermissionsAccessControlArrayOutput `pulumi:"accessControls"`
-	Authorization   pulumi.StringPtrOutput              `pulumi:"authorization"`
-	ClusterId       pulumi.StringPtrOutput              `pulumi:"clusterId"`
-	ClusterPolicyId pulumi.StringPtrOutput              `pulumi:"clusterPolicyId"`
-	DashboardId     pulumi.StringPtrOutput              `pulumi:"dashboardId"`
-	DirectoryId     pulumi.StringPtrOutput              `pulumi:"directoryId"`
-	DirectoryPath   pulumi.StringPtrOutput              `pulumi:"directoryPath"`
-	ExperimentId    pulumi.StringPtrOutput              `pulumi:"experimentId"`
-	InstancePoolId  pulumi.StringPtrOutput              `pulumi:"instancePoolId"`
-	JobId           pulumi.StringPtrOutput              `pulumi:"jobId"`
-	NotebookId      pulumi.StringPtrOutput              `pulumi:"notebookId"`
-	NotebookPath    pulumi.StringPtrOutput              `pulumi:"notebookPath"`
-	// type of permissions.
-	ObjectType        pulumi.StringOutput    `pulumi:"objectType"`
-	PipelineId        pulumi.StringPtrOutput `pulumi:"pipelineId"`
-	RegisteredModelId pulumi.StringPtrOutput `pulumi:"registeredModelId"`
-	RepoId            pulumi.StringPtrOutput `pulumi:"repoId"`
-	RepoPath          pulumi.StringPtrOutput `pulumi:"repoPath"`
-	ServingEndpointId pulumi.StringPtrOutput `pulumi:"servingEndpointId"`
-	SqlAlertId        pulumi.StringPtrOutput `pulumi:"sqlAlertId"`
-	SqlDashboardId    pulumi.StringPtrOutput `pulumi:"sqlDashboardId"`
-	SqlEndpointId     pulumi.StringPtrOutput `pulumi:"sqlEndpointId"`
-	SqlQueryId        pulumi.StringPtrOutput `pulumi:"sqlQueryId"`
-	WorkspaceFileId   pulumi.StringPtrOutput `pulumi:"workspaceFileId"`
-	WorkspaceFilePath pulumi.StringPtrOutput `pulumi:"workspaceFilePath"`
+	AccessControls         PermissionsAccessControlArrayOutput `pulumi:"accessControls"`
+	AppName                pulumi.StringPtrOutput              `pulumi:"appName"`
+	Authorization          pulumi.StringPtrOutput              `pulumi:"authorization"`
+	ClusterId              pulumi.StringPtrOutput              `pulumi:"clusterId"`
+	ClusterPolicyId        pulumi.StringPtrOutput              `pulumi:"clusterPolicyId"`
+	DashboardId            pulumi.StringPtrOutput              `pulumi:"dashboardId"`
+	DirectoryId            pulumi.StringPtrOutput              `pulumi:"directoryId"`
+	DirectoryPath          pulumi.StringPtrOutput              `pulumi:"directoryPath"`
+	ExperimentId           pulumi.StringPtrOutput              `pulumi:"experimentId"`
+	InstancePoolId         pulumi.StringPtrOutput              `pulumi:"instancePoolId"`
+	JobId                  pulumi.StringPtrOutput              `pulumi:"jobId"`
+	NotebookId             pulumi.StringPtrOutput              `pulumi:"notebookId"`
+	NotebookPath           pulumi.StringPtrOutput              `pulumi:"notebookPath"`
+	ObjectType             pulumi.StringOutput                 `pulumi:"objectType"`
+	PipelineId             pulumi.StringPtrOutput              `pulumi:"pipelineId"`
+	RegisteredModelId      pulumi.StringPtrOutput              `pulumi:"registeredModelId"`
+	RepoId                 pulumi.StringPtrOutput              `pulumi:"repoId"`
+	RepoPath               pulumi.StringPtrOutput              `pulumi:"repoPath"`
+	ServingEndpointId      pulumi.StringPtrOutput              `pulumi:"servingEndpointId"`
+	SqlAlertId             pulumi.StringPtrOutput              `pulumi:"sqlAlertId"`
+	SqlDashboardId         pulumi.StringPtrOutput              `pulumi:"sqlDashboardId"`
+	SqlEndpointId          pulumi.StringPtrOutput              `pulumi:"sqlEndpointId"`
+	SqlQueryId             pulumi.StringPtrOutput              `pulumi:"sqlQueryId"`
+	VectorSearchEndpointId pulumi.StringPtrOutput              `pulumi:"vectorSearchEndpointId"`
+	WorkspaceFileId        pulumi.StringPtrOutput              `pulumi:"workspaceFileId"`
+	WorkspaceFilePath      pulumi.StringPtrOutput              `pulumi:"workspaceFilePath"`
 }
 
 // NewPermissions registers a new resource with the given unique name, arguments, and options.
@@ -1450,59 +76,61 @@ func GetPermissions(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Permissions resources.
 type permissionsState struct {
-	AccessControls  []PermissionsAccessControl `pulumi:"accessControls"`
-	Authorization   *string                    `pulumi:"authorization"`
-	ClusterId       *string                    `pulumi:"clusterId"`
-	ClusterPolicyId *string                    `pulumi:"clusterPolicyId"`
-	DashboardId     *string                    `pulumi:"dashboardId"`
-	DirectoryId     *string                    `pulumi:"directoryId"`
-	DirectoryPath   *string                    `pulumi:"directoryPath"`
-	ExperimentId    *string                    `pulumi:"experimentId"`
-	InstancePoolId  *string                    `pulumi:"instancePoolId"`
-	JobId           *string                    `pulumi:"jobId"`
-	NotebookId      *string                    `pulumi:"notebookId"`
-	NotebookPath    *string                    `pulumi:"notebookPath"`
-	// type of permissions.
-	ObjectType        *string `pulumi:"objectType"`
-	PipelineId        *string `pulumi:"pipelineId"`
-	RegisteredModelId *string `pulumi:"registeredModelId"`
-	RepoId            *string `pulumi:"repoId"`
-	RepoPath          *string `pulumi:"repoPath"`
-	ServingEndpointId *string `pulumi:"servingEndpointId"`
-	SqlAlertId        *string `pulumi:"sqlAlertId"`
-	SqlDashboardId    *string `pulumi:"sqlDashboardId"`
-	SqlEndpointId     *string `pulumi:"sqlEndpointId"`
-	SqlQueryId        *string `pulumi:"sqlQueryId"`
-	WorkspaceFileId   *string `pulumi:"workspaceFileId"`
-	WorkspaceFilePath *string `pulumi:"workspaceFilePath"`
+	AccessControls         []PermissionsAccessControl `pulumi:"accessControls"`
+	AppName                *string                    `pulumi:"appName"`
+	Authorization          *string                    `pulumi:"authorization"`
+	ClusterId              *string                    `pulumi:"clusterId"`
+	ClusterPolicyId        *string                    `pulumi:"clusterPolicyId"`
+	DashboardId            *string                    `pulumi:"dashboardId"`
+	DirectoryId            *string                    `pulumi:"directoryId"`
+	DirectoryPath          *string                    `pulumi:"directoryPath"`
+	ExperimentId           *string                    `pulumi:"experimentId"`
+	InstancePoolId         *string                    `pulumi:"instancePoolId"`
+	JobId                  *string                    `pulumi:"jobId"`
+	NotebookId             *string                    `pulumi:"notebookId"`
+	NotebookPath           *string                    `pulumi:"notebookPath"`
+	ObjectType             *string                    `pulumi:"objectType"`
+	PipelineId             *string                    `pulumi:"pipelineId"`
+	RegisteredModelId      *string                    `pulumi:"registeredModelId"`
+	RepoId                 *string                    `pulumi:"repoId"`
+	RepoPath               *string                    `pulumi:"repoPath"`
+	ServingEndpointId      *string                    `pulumi:"servingEndpointId"`
+	SqlAlertId             *string                    `pulumi:"sqlAlertId"`
+	SqlDashboardId         *string                    `pulumi:"sqlDashboardId"`
+	SqlEndpointId          *string                    `pulumi:"sqlEndpointId"`
+	SqlQueryId             *string                    `pulumi:"sqlQueryId"`
+	VectorSearchEndpointId *string                    `pulumi:"vectorSearchEndpointId"`
+	WorkspaceFileId        *string                    `pulumi:"workspaceFileId"`
+	WorkspaceFilePath      *string                    `pulumi:"workspaceFilePath"`
 }
 
 type PermissionsState struct {
-	AccessControls  PermissionsAccessControlArrayInput
-	Authorization   pulumi.StringPtrInput
-	ClusterId       pulumi.StringPtrInput
-	ClusterPolicyId pulumi.StringPtrInput
-	DashboardId     pulumi.StringPtrInput
-	DirectoryId     pulumi.StringPtrInput
-	DirectoryPath   pulumi.StringPtrInput
-	ExperimentId    pulumi.StringPtrInput
-	InstancePoolId  pulumi.StringPtrInput
-	JobId           pulumi.StringPtrInput
-	NotebookId      pulumi.StringPtrInput
-	NotebookPath    pulumi.StringPtrInput
-	// type of permissions.
-	ObjectType        pulumi.StringPtrInput
-	PipelineId        pulumi.StringPtrInput
-	RegisteredModelId pulumi.StringPtrInput
-	RepoId            pulumi.StringPtrInput
-	RepoPath          pulumi.StringPtrInput
-	ServingEndpointId pulumi.StringPtrInput
-	SqlAlertId        pulumi.StringPtrInput
-	SqlDashboardId    pulumi.StringPtrInput
-	SqlEndpointId     pulumi.StringPtrInput
-	SqlQueryId        pulumi.StringPtrInput
-	WorkspaceFileId   pulumi.StringPtrInput
-	WorkspaceFilePath pulumi.StringPtrInput
+	AccessControls         PermissionsAccessControlArrayInput
+	AppName                pulumi.StringPtrInput
+	Authorization          pulumi.StringPtrInput
+	ClusterId              pulumi.StringPtrInput
+	ClusterPolicyId        pulumi.StringPtrInput
+	DashboardId            pulumi.StringPtrInput
+	DirectoryId            pulumi.StringPtrInput
+	DirectoryPath          pulumi.StringPtrInput
+	ExperimentId           pulumi.StringPtrInput
+	InstancePoolId         pulumi.StringPtrInput
+	JobId                  pulumi.StringPtrInput
+	NotebookId             pulumi.StringPtrInput
+	NotebookPath           pulumi.StringPtrInput
+	ObjectType             pulumi.StringPtrInput
+	PipelineId             pulumi.StringPtrInput
+	RegisteredModelId      pulumi.StringPtrInput
+	RepoId                 pulumi.StringPtrInput
+	RepoPath               pulumi.StringPtrInput
+	ServingEndpointId      pulumi.StringPtrInput
+	SqlAlertId             pulumi.StringPtrInput
+	SqlDashboardId         pulumi.StringPtrInput
+	SqlEndpointId          pulumi.StringPtrInput
+	SqlQueryId             pulumi.StringPtrInput
+	VectorSearchEndpointId pulumi.StringPtrInput
+	WorkspaceFileId        pulumi.StringPtrInput
+	WorkspaceFilePath      pulumi.StringPtrInput
 }
 
 func (PermissionsState) ElementType() reflect.Type {
@@ -1510,60 +138,62 @@ func (PermissionsState) ElementType() reflect.Type {
 }
 
 type permissionsArgs struct {
-	AccessControls  []PermissionsAccessControl `pulumi:"accessControls"`
-	Authorization   *string                    `pulumi:"authorization"`
-	ClusterId       *string                    `pulumi:"clusterId"`
-	ClusterPolicyId *string                    `pulumi:"clusterPolicyId"`
-	DashboardId     *string                    `pulumi:"dashboardId"`
-	DirectoryId     *string                    `pulumi:"directoryId"`
-	DirectoryPath   *string                    `pulumi:"directoryPath"`
-	ExperimentId    *string                    `pulumi:"experimentId"`
-	InstancePoolId  *string                    `pulumi:"instancePoolId"`
-	JobId           *string                    `pulumi:"jobId"`
-	NotebookId      *string                    `pulumi:"notebookId"`
-	NotebookPath    *string                    `pulumi:"notebookPath"`
-	// type of permissions.
-	ObjectType        *string `pulumi:"objectType"`
-	PipelineId        *string `pulumi:"pipelineId"`
-	RegisteredModelId *string `pulumi:"registeredModelId"`
-	RepoId            *string `pulumi:"repoId"`
-	RepoPath          *string `pulumi:"repoPath"`
-	ServingEndpointId *string `pulumi:"servingEndpointId"`
-	SqlAlertId        *string `pulumi:"sqlAlertId"`
-	SqlDashboardId    *string `pulumi:"sqlDashboardId"`
-	SqlEndpointId     *string `pulumi:"sqlEndpointId"`
-	SqlQueryId        *string `pulumi:"sqlQueryId"`
-	WorkspaceFileId   *string `pulumi:"workspaceFileId"`
-	WorkspaceFilePath *string `pulumi:"workspaceFilePath"`
+	AccessControls         []PermissionsAccessControl `pulumi:"accessControls"`
+	AppName                *string                    `pulumi:"appName"`
+	Authorization          *string                    `pulumi:"authorization"`
+	ClusterId              *string                    `pulumi:"clusterId"`
+	ClusterPolicyId        *string                    `pulumi:"clusterPolicyId"`
+	DashboardId            *string                    `pulumi:"dashboardId"`
+	DirectoryId            *string                    `pulumi:"directoryId"`
+	DirectoryPath          *string                    `pulumi:"directoryPath"`
+	ExperimentId           *string                    `pulumi:"experimentId"`
+	InstancePoolId         *string                    `pulumi:"instancePoolId"`
+	JobId                  *string                    `pulumi:"jobId"`
+	NotebookId             *string                    `pulumi:"notebookId"`
+	NotebookPath           *string                    `pulumi:"notebookPath"`
+	ObjectType             *string                    `pulumi:"objectType"`
+	PipelineId             *string                    `pulumi:"pipelineId"`
+	RegisteredModelId      *string                    `pulumi:"registeredModelId"`
+	RepoId                 *string                    `pulumi:"repoId"`
+	RepoPath               *string                    `pulumi:"repoPath"`
+	ServingEndpointId      *string                    `pulumi:"servingEndpointId"`
+	SqlAlertId             *string                    `pulumi:"sqlAlertId"`
+	SqlDashboardId         *string                    `pulumi:"sqlDashboardId"`
+	SqlEndpointId          *string                    `pulumi:"sqlEndpointId"`
+	SqlQueryId             *string                    `pulumi:"sqlQueryId"`
+	VectorSearchEndpointId *string                    `pulumi:"vectorSearchEndpointId"`
+	WorkspaceFileId        *string                    `pulumi:"workspaceFileId"`
+	WorkspaceFilePath      *string                    `pulumi:"workspaceFilePath"`
 }
 
 // The set of arguments for constructing a Permissions resource.
 type PermissionsArgs struct {
-	AccessControls  PermissionsAccessControlArrayInput
-	Authorization   pulumi.StringPtrInput
-	ClusterId       pulumi.StringPtrInput
-	ClusterPolicyId pulumi.StringPtrInput
-	DashboardId     pulumi.StringPtrInput
-	DirectoryId     pulumi.StringPtrInput
-	DirectoryPath   pulumi.StringPtrInput
-	ExperimentId    pulumi.StringPtrInput
-	InstancePoolId  pulumi.StringPtrInput
-	JobId           pulumi.StringPtrInput
-	NotebookId      pulumi.StringPtrInput
-	NotebookPath    pulumi.StringPtrInput
-	// type of permissions.
-	ObjectType        pulumi.StringPtrInput
-	PipelineId        pulumi.StringPtrInput
-	RegisteredModelId pulumi.StringPtrInput
-	RepoId            pulumi.StringPtrInput
-	RepoPath          pulumi.StringPtrInput
-	ServingEndpointId pulumi.StringPtrInput
-	SqlAlertId        pulumi.StringPtrInput
-	SqlDashboardId    pulumi.StringPtrInput
-	SqlEndpointId     pulumi.StringPtrInput
-	SqlQueryId        pulumi.StringPtrInput
-	WorkspaceFileId   pulumi.StringPtrInput
-	WorkspaceFilePath pulumi.StringPtrInput
+	AccessControls         PermissionsAccessControlArrayInput
+	AppName                pulumi.StringPtrInput
+	Authorization          pulumi.StringPtrInput
+	ClusterId              pulumi.StringPtrInput
+	ClusterPolicyId        pulumi.StringPtrInput
+	DashboardId            pulumi.StringPtrInput
+	DirectoryId            pulumi.StringPtrInput
+	DirectoryPath          pulumi.StringPtrInput
+	ExperimentId           pulumi.StringPtrInput
+	InstancePoolId         pulumi.StringPtrInput
+	JobId                  pulumi.StringPtrInput
+	NotebookId             pulumi.StringPtrInput
+	NotebookPath           pulumi.StringPtrInput
+	ObjectType             pulumi.StringPtrInput
+	PipelineId             pulumi.StringPtrInput
+	RegisteredModelId      pulumi.StringPtrInput
+	RepoId                 pulumi.StringPtrInput
+	RepoPath               pulumi.StringPtrInput
+	ServingEndpointId      pulumi.StringPtrInput
+	SqlAlertId             pulumi.StringPtrInput
+	SqlDashboardId         pulumi.StringPtrInput
+	SqlEndpointId          pulumi.StringPtrInput
+	SqlQueryId             pulumi.StringPtrInput
+	VectorSearchEndpointId pulumi.StringPtrInput
+	WorkspaceFileId        pulumi.StringPtrInput
+	WorkspaceFilePath      pulumi.StringPtrInput
 }
 
 func (PermissionsArgs) ElementType() reflect.Type {
@@ -1657,6 +287,10 @@ func (o PermissionsOutput) AccessControls() PermissionsAccessControlArrayOutput 
 	return o.ApplyT(func(v *Permissions) PermissionsAccessControlArrayOutput { return v.AccessControls }).(PermissionsAccessControlArrayOutput)
 }
 
+func (o PermissionsOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.AppName }).(pulumi.StringPtrOutput)
+}
+
 func (o PermissionsOutput) Authorization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.Authorization }).(pulumi.StringPtrOutput)
 }
@@ -1701,7 +335,6 @@ func (o PermissionsOutput) NotebookPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.NotebookPath }).(pulumi.StringPtrOutput)
 }
 
-// type of permissions.
 func (o PermissionsOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
 }
@@ -1740,6 +373,10 @@ func (o PermissionsOutput) SqlEndpointId() pulumi.StringPtrOutput {
 
 func (o PermissionsOutput) SqlQueryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlQueryId }).(pulumi.StringPtrOutput)
+}
+
+func (o PermissionsOutput) VectorSearchEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.VectorSearchEndpointId }).(pulumi.StringPtrOutput)
 }
 
 func (o PermissionsOutput) WorkspaceFileId() pulumi.StringPtrOutput {

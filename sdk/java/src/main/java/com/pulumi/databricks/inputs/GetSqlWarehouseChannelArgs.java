@@ -22,17 +22,9 @@ public final class GetSqlWarehouseChannelArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.dbsqlVersion);
     }
 
-    /**
-     * Name of the SQL warehouse to search (case-sensitive).
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the SQL warehouse to search (case-sensitive).
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -71,23 +63,11 @@ public final class GetSqlWarehouseChannelArgs extends com.pulumi.resources.Resou
             return dbsqlVersion(Output.of(dbsqlVersion));
         }
 
-        /**
-         * @param name Name of the SQL warehouse to search (case-sensitive).
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the SQL warehouse to search (case-sensitive).
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

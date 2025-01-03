@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstancePoolAwsAttributes {
-    /**
-     * @return (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
-     * 
-     */
     private @Nullable String availability;
-    /**
-     * @return (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
-     * 
-     */
     private @Nullable Integer spotBidPricePercent;
-    /**
-     * @return (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
-     * 
-     */
     private @Nullable String zoneId;
 
     private InstancePoolAwsAttributes() {}
-    /**
-     * @return (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
-     * 
-     */
     public Optional<String> availability() {
         return Optional.ofNullable(this.availability);
     }
-    /**
-     * @return (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
-     * 
-     */
     public Optional<Integer> spotBidPricePercent() {
         return Optional.ofNullable(this.spotBidPricePercent);
     }
-    /**
-     * @return (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `&#34;us-west-2a&#34;`. The provided availability zone must be in the same region as the Databricks deployment. For example, `&#34;us-west-2a&#34;` is not a valid zone ID if the Databricks deployment resides in the `&#34;us-east-1&#34;` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
-     * 
-     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

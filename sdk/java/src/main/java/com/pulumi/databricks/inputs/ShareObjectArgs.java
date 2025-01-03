@@ -34,32 +34,16 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.addedBy);
     }
 
-    /**
-     * Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
-     * 
-     */
     @Import(name="cdfEnabled")
     private @Nullable Output<Boolean> cdfEnabled;
 
-    /**
-     * @return Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
-     * 
-     */
     public Optional<Output<Boolean>> cdfEnabled() {
         return Optional.ofNullable(this.cdfEnabled);
     }
 
-    /**
-     * Description about the object.
-     * 
-     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
-    /**
-     * @return Description about the object.
-     * 
-     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
@@ -71,51 +55,23 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.content);
     }
 
-    /**
-     * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
-     * 
-     */
     @Import(name="dataObjectType", required=true)
     private Output<String> dataObjectType;
 
-    /**
-     * @return Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
-     * 
-     */
     public Output<String> dataObjectType() {
         return this.dataObjectType;
     }
 
-    /**
-     * Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
-     * 
-     * To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
-     * 
-     */
     @Import(name="historyDataSharingStatus")
     private @Nullable Output<String> historyDataSharingStatus;
 
-    /**
-     * @return Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
-     * 
-     * To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
-     * 
-     */
     public Optional<Output<String>> historyDataSharingStatus() {
         return Optional.ofNullable(this.historyDataSharingStatus);
     }
 
-    /**
-     * Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
@@ -127,47 +83,23 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.partitions);
     }
 
-    /**
-     * A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="sharedAs")
     private @Nullable Output<String> sharedAs;
 
-    /**
-     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
-     * 
-     */
     public Optional<Output<String>> sharedAs() {
         return Optional.ofNullable(this.sharedAs);
     }
 
-    /**
-     * The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
-     * 
-     */
     @Import(name="startVersion")
     private @Nullable Output<Integer> startVersion;
 
-    /**
-     * @return The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
-     * 
-     */
     public Optional<Output<Integer>> startVersion() {
         return Optional.ofNullable(this.startVersion);
     }
 
-    /**
-     * Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
-     * 
-     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
-    /**
-     * @return Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
-     * 
-     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -233,44 +165,20 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
             return addedBy(Output.of(addedBy));
         }
 
-        /**
-         * @param cdfEnabled Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cdfEnabled(@Nullable Output<Boolean> cdfEnabled) {
             $.cdfEnabled = cdfEnabled;
             return this;
         }
 
-        /**
-         * @param cdfEnabled Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cdfEnabled(Boolean cdfEnabled) {
             return cdfEnabled(Output.of(cdfEnabled));
         }
 
-        /**
-         * @param comment Description about the object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
-        /**
-         * @param comment Description about the object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
@@ -284,69 +192,29 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
             return content(Output.of(content));
         }
 
-        /**
-         * @param dataObjectType Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataObjectType(Output<String> dataObjectType) {
             $.dataObjectType = dataObjectType;
             return this;
         }
 
-        /**
-         * @param dataObjectType Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataObjectType(String dataObjectType) {
             return dataObjectType(Output.of(dataObjectType));
         }
 
-        /**
-         * @param historyDataSharingStatus Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
-         * 
-         * To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder historyDataSharingStatus(@Nullable Output<String> historyDataSharingStatus) {
             $.historyDataSharingStatus = historyDataSharingStatus;
             return this;
         }
 
-        /**
-         * @param historyDataSharingStatus Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
-         * 
-         * To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder historyDataSharingStatus(String historyDataSharingStatus) {
             return historyDataSharingStatus(Output.of(historyDataSharingStatus));
         }
 
-        /**
-         * @param name Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -364,65 +232,29 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
             return partitions(List.of(partitions));
         }
 
-        /**
-         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sharedAs(@Nullable Output<String> sharedAs) {
             $.sharedAs = sharedAs;
             return this;
         }
 
-        /**
-         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sharedAs(String sharedAs) {
             return sharedAs(Output.of(sharedAs));
         }
 
-        /**
-         * @param startVersion The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
-         * 
-         * @return builder
-         * 
-         */
         public Builder startVersion(@Nullable Output<Integer> startVersion) {
             $.startVersion = startVersion;
             return this;
         }
 
-        /**
-         * @param startVersion The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
-         * 
-         * @return builder
-         * 
-         */
         public Builder startVersion(Integer startVersion) {
             return startVersion(Output.of(startVersion));
         }
 
-        /**
-         * @param status Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
-        /**
-         * @param status Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

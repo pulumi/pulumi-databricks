@@ -17,47 +17,23 @@ public final class GetSchemaArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSchemaArgs Empty = new GetSchemaArgs();
 
-    /**
-     * ID of this Unity Catalog Schema in form of `&lt;catalog&gt;.&lt;schema&gt;`.
-     * 
-     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
-    /**
-     * @return ID of this Unity Catalog Schema in form of `&lt;catalog&gt;.&lt;schema&gt;`.
-     * 
-     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * a fully qualified name of databricks_schema: *`catalog`.`schema`*
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return a fully qualified name of databricks_schema: *`catalog`.`schema`*
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
-     * 
-     */
     @Import(name="schemaInfo")
     private @Nullable Output<GetSchemaSchemaInfoArgs> schemaInfo;
 
-    /**
-     * @return `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
-     * 
-     */
     public Optional<Output<GetSchemaSchemaInfoArgs>> schemaInfo() {
         return Optional.ofNullable(this.schemaInfo);
     }
@@ -88,65 +64,29 @@ public final class GetSchemaArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetSchemaArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param id ID of this Unity Catalog Schema in form of `&lt;catalog&gt;.&lt;schema&gt;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param id ID of this Unity Catalog Schema in form of `&lt;catalog&gt;.&lt;schema&gt;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
-        /**
-         * @param name a fully qualified name of databricks_schema: *`catalog`.`schema`*
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name a fully qualified name of databricks_schema: *`catalog`.`schema`*
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param schemaInfo `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder schemaInfo(@Nullable Output<GetSchemaSchemaInfoArgs> schemaInfo) {
             $.schemaInfo = schemaInfo;
             return this;
         }
 
-        /**
-         * @param schemaInfo `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
         public Builder schemaInfo(GetSchemaSchemaInfoArgs schemaInfo) {
             return schemaInfo(Output.of(schemaInfo));
         }

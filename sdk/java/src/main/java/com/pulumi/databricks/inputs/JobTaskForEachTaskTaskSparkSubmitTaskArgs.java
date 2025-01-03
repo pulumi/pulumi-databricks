@@ -16,17 +16,9 @@ public final class JobTaskForEachTaskTaskSparkSubmitTaskArgs extends com.pulumi.
 
     public static final JobTaskForEachTaskTaskSparkSubmitTaskArgs Empty = new JobTaskForEachTaskTaskSparkSubmitTaskArgs();
 
-    /**
-     * (List) Command-line parameters passed to spark submit.
-     * 
-     */
     @Import(name="parameters")
     private @Nullable Output<List<String>> parameters;
 
-    /**
-     * @return (List) Command-line parameters passed to spark submit.
-     * 
-     */
     public Optional<Output<List<String>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
@@ -55,33 +47,15 @@ public final class JobTaskForEachTaskTaskSparkSubmitTaskArgs extends com.pulumi.
             $ = new JobTaskForEachTaskTaskSparkSubmitTaskArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param parameters (List) Command-line parameters passed to spark submit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameters(@Nullable Output<List<String>> parameters) {
             $.parameters = parameters;
             return this;
         }
 
-        /**
-         * @param parameters (List) Command-line parameters passed to spark submit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameters(List<String> parameters) {
             return parameters(Output.of(parameters));
         }
 
-        /**
-         * @param parameters (List) Command-line parameters passed to spark submit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameters(String... parameters) {
             return parameters(List.of(parameters));
         }

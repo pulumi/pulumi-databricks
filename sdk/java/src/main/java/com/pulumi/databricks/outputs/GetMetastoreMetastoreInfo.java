@@ -17,48 +17,16 @@ public final class GetMetastoreMetastoreInfo {
     private @Nullable Integer createdAt;
     private @Nullable String createdBy;
     private @Nullable String defaultDataAccessConfigId;
-    /**
-     * @return The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-     * 
-     */
     private @Nullable String deltaSharingOrganizationName;
-    /**
-     * @return Used to set expiration duration in seconds on recipient data access tokens.
-     * 
-     */
     private @Nullable Integer deltaSharingRecipientTokenLifetimeInSeconds;
-    /**
-     * @return Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     * 
-     */
     private @Nullable String deltaSharingScope;
     private @Nullable Boolean externalAccessEnabled;
     private @Nullable String globalMetastoreId;
-    /**
-     * @return ID of the metastore
-     * 
-     */
     private @Nullable String metastoreId;
-    /**
-     * @return Name of the metastore
-     * 
-     */
     private @Nullable String name;
-    /**
-     * @return Username/groupname/sp application_id of the metastore owner.
-     * 
-     */
     private @Nullable String owner;
     private @Nullable String privilegeModelVersion;
-    /**
-     * @return Region of the metastore
-     * 
-     */
     private @Nullable String region;
-    /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored.
-     * 
-     */
     private @Nullable String storageRoot;
     private @Nullable String storageRootCredentialId;
     private @Nullable String storageRootCredentialName;
@@ -78,24 +46,12 @@ public final class GetMetastoreMetastoreInfo {
     public Optional<String> defaultDataAccessConfigId() {
         return Optional.ofNullable(this.defaultDataAccessConfigId);
     }
-    /**
-     * @return The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
-     * 
-     */
     public Optional<String> deltaSharingOrganizationName() {
         return Optional.ofNullable(this.deltaSharingOrganizationName);
     }
-    /**
-     * @return Used to set expiration duration in seconds on recipient data access tokens.
-     * 
-     */
     public Optional<Integer> deltaSharingRecipientTokenLifetimeInSeconds() {
         return Optional.ofNullable(this.deltaSharingRecipientTokenLifetimeInSeconds);
     }
-    /**
-     * @return Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-     * 
-     */
     public Optional<String> deltaSharingScope() {
         return Optional.ofNullable(this.deltaSharingScope);
     }
@@ -105,41 +61,21 @@ public final class GetMetastoreMetastoreInfo {
     public Optional<String> globalMetastoreId() {
         return Optional.ofNullable(this.globalMetastoreId);
     }
-    /**
-     * @return ID of the metastore
-     * 
-     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
-    /**
-     * @return Name of the metastore
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return Username/groupname/sp application_id of the metastore owner.
-     * 
-     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
     public Optional<String> privilegeModelVersion() {
         return Optional.ofNullable(this.privilegeModelVersion);
     }
-    /**
-     * @return Region of the metastore
-     * 
-     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
-    /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored.
-     * 
-     */
     public Optional<String> storageRoot() {
         return Optional.ofNullable(this.storageRoot);
     }

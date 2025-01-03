@@ -47,17 +47,9 @@ public final class JobNewClusterInitScriptArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.dbfs);
     }
 
-    /**
-     * block consisting of single string fields:
-     * 
-     */
     @Import(name="file")
     private @Nullable Output<JobNewClusterInitScriptFileArgs> file;
 
-    /**
-     * @return block consisting of single string fields:
-     * 
-     */
     public Optional<Output<JobNewClusterInitScriptFileArgs>> file() {
         return Optional.ofNullable(this.file);
     }
@@ -154,23 +146,11 @@ public final class JobNewClusterInitScriptArgs extends com.pulumi.resources.Reso
             return dbfs(Output.of(dbfs));
         }
 
-        /**
-         * @param file block consisting of single string fields:
-         * 
-         * @return builder
-         * 
-         */
         public Builder file(@Nullable Output<JobNewClusterInitScriptFileArgs> file) {
             $.file = file;
             return this;
         }
 
-        /**
-         * @param file block consisting of single string fields:
-         * 
-         * @return builder
-         * 
-         */
         public Builder file(JobNewClusterInitScriptFileArgs file) {
             return file(Output.of(file));
         }

@@ -14,130 +14,46 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExternalLocationExternalLocationInfo {
-    /**
-     * @return The ARN of the s3 access point to use with the external location (AWS).
-     * 
-     */
     private @Nullable String accessPoint;
     private @Nullable Boolean browseOnly;
-    /**
-     * @return User-supplied comment.
-     * 
-     */
     private @Nullable String comment;
-    /**
-     * @return Time at which this catalog was created, in epoch milliseconds.
-     * 
-     */
     private @Nullable Integer createdAt;
-    /**
-     * @return Username of catalog creator.
-     * 
-     */
     private @Nullable String createdBy;
-    /**
-     * @return Unique ID of storage credential.
-     * 
-     */
     private @Nullable String credentialId;
-    /**
-     * @return Name of the databricks.StorageCredential to use with this external location.
-     * 
-     */
     private @Nullable String credentialName;
-    /**
-     * @return The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-     * 
-     */
     private @Nullable GetExternalLocationExternalLocationInfoEncryptionDetails encryptionDetails;
     private @Nullable Boolean fallback;
     private @Nullable String isolationMode;
-    /**
-     * @return Unique identifier of the parent Metastore.
-     * 
-     */
     private @Nullable String metastoreId;
-    /**
-     * @return The name of the external location
-     * 
-     */
     private @Nullable String name;
-    /**
-     * @return Username/groupname/sp application_id of the external location owner.
-     * 
-     */
     private @Nullable String owner;
-    /**
-     * @return Indicates whether the external location is read-only.
-     * 
-     */
     private @Nullable Boolean readOnly;
-    /**
-     * @return Time at which this catalog was last modified, in epoch milliseconds.
-     * 
-     */
     private @Nullable Integer updatedAt;
-    /**
-     * @return Username of user who last modified catalog.
-     * 
-     */
     private @Nullable String updatedBy;
-    /**
-     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
-     * 
-     */
     private @Nullable String url;
 
     private GetExternalLocationExternalLocationInfo() {}
-    /**
-     * @return The ARN of the s3 access point to use with the external location (AWS).
-     * 
-     */
     public Optional<String> accessPoint() {
         return Optional.ofNullable(this.accessPoint);
     }
     public Optional<Boolean> browseOnly() {
         return Optional.ofNullable(this.browseOnly);
     }
-    /**
-     * @return User-supplied comment.
-     * 
-     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
-    /**
-     * @return Time at which this catalog was created, in epoch milliseconds.
-     * 
-     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
-    /**
-     * @return Username of catalog creator.
-     * 
-     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
-    /**
-     * @return Unique ID of storage credential.
-     * 
-     */
     public Optional<String> credentialId() {
         return Optional.ofNullable(this.credentialId);
     }
-    /**
-     * @return Name of the databricks.StorageCredential to use with this external location.
-     * 
-     */
     public Optional<String> credentialName() {
         return Optional.ofNullable(this.credentialName);
     }
-    /**
-     * @return The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
-     * 
-     */
     public Optional<GetExternalLocationExternalLocationInfoEncryptionDetails> encryptionDetails() {
         return Optional.ofNullable(this.encryptionDetails);
     }
@@ -147,52 +63,24 @@ public final class GetExternalLocationExternalLocationInfo {
     public Optional<String> isolationMode() {
         return Optional.ofNullable(this.isolationMode);
     }
-    /**
-     * @return Unique identifier of the parent Metastore.
-     * 
-     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
-    /**
-     * @return The name of the external location
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return Username/groupname/sp application_id of the external location owner.
-     * 
-     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
-    /**
-     * @return Indicates whether the external location is read-only.
-     * 
-     */
     public Optional<Boolean> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
-    /**
-     * @return Time at which this catalog was last modified, in epoch milliseconds.
-     * 
-     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
-    /**
-     * @return Username of user who last modified catalog.
-     * 
-     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
-    /**
-     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
-     * 
-     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

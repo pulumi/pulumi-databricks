@@ -12,12 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetServingEndpointsEndpointAiGatewayGuardrailArgs : global::Pulumi.InvokeArgs
     {
-        [Input("inputs")]
-        private List<Inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputArgs>? _inputs;
-        public List<Inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputArgs> Inputs
+        [Input("inputProperties")]
+        private List<Inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs>? _inputProperties;
+        public List<Inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs> InputProperties
         {
-            get => _inputs ?? (_inputs = new List<Inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputArgs>());
-            set => _inputs = value;
+            get => _inputProperties ?? (_inputProperties = new List<Inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs>());
+            set => _inputProperties = value;
         }
 
         [Input("outputs")]

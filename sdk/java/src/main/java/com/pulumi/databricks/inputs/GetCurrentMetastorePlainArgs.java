@@ -15,32 +15,16 @@ public final class GetCurrentMetastorePlainArgs extends com.pulumi.resources.Inv
 
     public static final GetCurrentMetastorePlainArgs Empty = new GetCurrentMetastorePlainArgs();
 
-    /**
-     * metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-     * 
-     */
     @Import(name="id")
     private @Nullable String id;
 
-    /**
-     * @return metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-     * 
-     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-     * 
-     */
     @Import(name="metastoreInfo")
     private @Nullable GetCurrentMetastoreMetastoreInfo metastoreInfo;
 
-    /**
-     * @return summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-     * 
-     */
     public Optional<GetCurrentMetastoreMetastoreInfo> metastoreInfo() {
         return Optional.ofNullable(this.metastoreInfo);
     }
@@ -70,23 +54,11 @@ public final class GetCurrentMetastorePlainArgs extends com.pulumi.resources.Inv
             $ = new GetCurrentMetastorePlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param id metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable String id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param metastoreInfo summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreInfo(@Nullable GetCurrentMetastoreMetastoreInfo metastoreInfo) {
             $.metastoreInfo = metastoreInfo;
             return this;
