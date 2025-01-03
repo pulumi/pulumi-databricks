@@ -37,16 +37,32 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dashboardId);
     }
 
+    /**
+     * The display name of the dashboard.
+     * 
+     */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
+    /**
+     * @return The display name of the dashboard.
+     * 
+     */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
     }
 
+    /**
+     * Whether to embed credentials in the dashboard. Default is `true`.
+     * 
+     */
     @Import(name="embedCredentials")
     private @Nullable Output<Boolean> embedCredentials;
 
+    /**
+     * @return Whether to embed credentials in the dashboard. Default is `true`.
+     * 
+     */
     public Optional<Output<Boolean>> embedCredentials() {
         return Optional.ofNullable(this.embedCredentials);
     }
@@ -58,9 +74,17 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.etag);
     }
 
+    /**
+     * The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+     * 
+     */
     @Import(name="filePath")
     private @Nullable Output<String> filePath;
 
+    /**
+     * @return The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+     * 
+     */
     public Optional<Output<String>> filePath() {
         return Optional.ofNullable(this.filePath);
     }
@@ -79,9 +103,17 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.md5);
     }
 
+    /**
+     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn&#39;t exist, it will be created.
+     * 
+     */
     @Import(name="parentPath")
     private @Nullable Output<String> parentPath;
 
+    /**
+     * @return The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn&#39;t exist, it will be created.
+     * 
+     */
     public Optional<Output<String>> parentPath() {
         return Optional.ofNullable(this.parentPath);
     }
@@ -93,9 +125,17 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.path);
     }
 
+    /**
+     * The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+     * 
+     */
     @Import(name="serializedDashboard")
     private @Nullable Output<String> serializedDashboard;
 
+    /**
+     * @return The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+     * 
+     */
     public Optional<Output<String>> serializedDashboard() {
         return Optional.ofNullable(this.serializedDashboard);
     }
@@ -107,9 +147,17 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updateTime);
     }
 
+    /**
+     * The warehouse ID used to run the dashboard.
+     * 
+     */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
+    /**
+     * @return The warehouse ID used to run the dashboard.
+     * 
+     */
     public Optional<Output<String>> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }
@@ -178,20 +226,44 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
             return dashboardId(Output.of(dashboardId));
         }
 
+        /**
+         * @param displayName The display name of the dashboard.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(@Nullable Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
 
+        /**
+         * @param displayName The display name of the dashboard.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
         }
 
+        /**
+         * @param embedCredentials Whether to embed credentials in the dashboard. Default is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder embedCredentials(@Nullable Output<Boolean> embedCredentials) {
             $.embedCredentials = embedCredentials;
             return this;
         }
 
+        /**
+         * @param embedCredentials Whether to embed credentials in the dashboard. Default is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder embedCredentials(Boolean embedCredentials) {
             return embedCredentials(Output.of(embedCredentials));
         }
@@ -205,11 +277,23 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
             return etag(Output.of(etag));
         }
 
+        /**
+         * @param filePath The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filePath(@Nullable Output<String> filePath) {
             $.filePath = filePath;
             return this;
         }
 
+        /**
+         * @param filePath The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filePath(String filePath) {
             return filePath(Output.of(filePath));
         }
@@ -232,11 +316,23 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
             return md5(Output.of(md5));
         }
 
+        /**
+         * @param parentPath The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn&#39;t exist, it will be created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parentPath(@Nullable Output<String> parentPath) {
             $.parentPath = parentPath;
             return this;
         }
 
+        /**
+         * @param parentPath The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn&#39;t exist, it will be created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parentPath(String parentPath) {
             return parentPath(Output.of(parentPath));
         }
@@ -250,11 +346,23 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
             return path(Output.of(path));
         }
 
+        /**
+         * @param serializedDashboard The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serializedDashboard(@Nullable Output<String> serializedDashboard) {
             $.serializedDashboard = serializedDashboard;
             return this;
         }
 
+        /**
+         * @param serializedDashboard The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serializedDashboard(String serializedDashboard) {
             return serializedDashboard(Output.of(serializedDashboard));
         }
@@ -268,11 +376,23 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
             return updateTime(Output.of(updateTime));
         }
 
+        /**
+         * @param warehouseId The warehouse ID used to run the dashboard.
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(@Nullable Output<String> warehouseId) {
             $.warehouseId = warehouseId;
             return this;
         }
 
+        /**
+         * @param warehouseId The warehouse ID used to run the dashboard.
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
         }

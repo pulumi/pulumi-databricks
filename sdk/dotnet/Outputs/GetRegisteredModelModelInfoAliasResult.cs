@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetRegisteredModelModelInfoAliasResult
     {
+        /// <summary>
+        /// string with the name of alias
+        /// </summary>
         public readonly string? AliasName;
+        /// <summary>
+        /// associated model version
+        /// </summary>
         public readonly int? VersionNum;
 
         [OutputConstructor]

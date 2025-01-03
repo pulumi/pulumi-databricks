@@ -11,12 +11,84 @@ namespace Pulumi.Databricks
 {
     public static class GetInstanceProfiles
     {
+        /// <summary>
+        /// Lists all available databricks_instance_profiles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get all instance profiles:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetInstanceProfiles.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allInstanceProfiles"] = all.Apply(getInstanceProfilesResult =&gt; getInstanceProfilesResult.InstanceProfiles),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetInstanceProfilesResult> InvokeAsync(GetInstanceProfilesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceProfilesResult>("databricks:index/getInstanceProfiles:getInstanceProfiles", args ?? new GetInstanceProfilesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Lists all available databricks_instance_profiles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get all instance profiles:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetInstanceProfiles.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allInstanceProfiles"] = all.Apply(getInstanceProfilesResult =&gt; getInstanceProfilesResult.InstanceProfiles),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetInstanceProfilesResult> Invoke(GetInstanceProfilesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceProfilesResult>("databricks:index/getInstanceProfiles:getInstanceProfiles", args ?? new GetInstanceProfilesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Lists all available databricks_instance_profiles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get all instance profiles:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetInstanceProfiles.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allInstanceProfiles"] = all.Apply(getInstanceProfilesResult =&gt; getInstanceProfilesResult.InstanceProfiles),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetInstanceProfilesResult> Invoke(GetInstanceProfilesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceProfilesResult>("databricks:index/getInstanceProfiles:getInstanceProfiles", args ?? new GetInstanceProfilesInvokeArgs(), options.WithDefaults());
     }
@@ -26,6 +98,10 @@ namespace Pulumi.Databricks
     {
         [Input("instanceProfiles")]
         private List<Inputs.GetInstanceProfilesInstanceProfileArgs>? _instanceProfiles;
+
+        /// <summary>
+        /// Set of objects for a databricks_instance_profile. This contains the following attributes:
+        /// </summary>
         public List<Inputs.GetInstanceProfilesInstanceProfileArgs> InstanceProfiles
         {
             get => _instanceProfiles ?? (_instanceProfiles = new List<Inputs.GetInstanceProfilesInstanceProfileArgs>());
@@ -42,6 +118,10 @@ namespace Pulumi.Databricks
     {
         [Input("instanceProfiles")]
         private InputList<Inputs.GetInstanceProfilesInstanceProfileInputArgs>? _instanceProfiles;
+
+        /// <summary>
+        /// Set of objects for a databricks_instance_profile. This contains the following attributes:
+        /// </summary>
         public InputList<Inputs.GetInstanceProfilesInstanceProfileInputArgs> InstanceProfiles
         {
             get => _instanceProfiles ?? (_instanceProfiles = new InputList<Inputs.GetInstanceProfilesInstanceProfileInputArgs>());
@@ -62,6 +142,9 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Set of objects for a databricks_instance_profile. This contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceProfilesInstanceProfileResult> InstanceProfiles;
 
         [OutputConstructor]

@@ -12,37 +12,93 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterPolicyResult {
+    /**
+     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * 
+     */
     private String definition;
+    /**
+     * @return Additional human-readable description of the cluster policy.
+     * 
+     */
     private String description;
+    /**
+     * @return The id of the cluster policy.
+     * 
+     */
     private String id;
+    /**
+     * @return If true, policy is a default policy created and managed by Databricks.
+     * 
+     */
     private Boolean isDefault;
+    /**
+     * @return Max number of clusters per user that can be active using this policy.
+     * 
+     */
     private Integer maxClustersPerUser;
     private String name;
+    /**
+     * @return Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+     * 
+     */
     private String policyFamilyDefinitionOverrides;
+    /**
+     * @return ID of the policy family.
+     * 
+     */
     private String policyFamilyId;
 
     private GetClusterPolicyResult() {}
+    /**
+     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     * 
+     */
     public String definition() {
         return this.definition;
     }
+    /**
+     * @return Additional human-readable description of the cluster policy.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The id of the cluster policy.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return If true, policy is a default policy created and managed by Databricks.
+     * 
+     */
     public Boolean isDefault() {
         return this.isDefault;
     }
+    /**
+     * @return Max number of clusters per user that can be active using this policy.
+     * 
+     */
     public Integer maxClustersPerUser() {
         return this.maxClustersPerUser;
     }
     public String name() {
         return this.name;
     }
+    /**
+     * @return Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+     * 
+     */
     public String policyFamilyDefinitionOverrides() {
         return this.policyFamilyDefinitionOverrides;
     }
+    /**
+     * @return ID of the policy family.
+     * 
+     */
     public String policyFamilyId() {
         return this.policyFamilyId;
     }

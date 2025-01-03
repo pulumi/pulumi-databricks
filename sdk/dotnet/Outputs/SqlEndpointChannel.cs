@@ -14,6 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class SqlEndpointChannel
     {
         public readonly string? DbsqlVersion;
+        /// <summary>
+        /// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

@@ -12,11 +12,70 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Deprecated** Please rewrite with databricks_user_role. This resource will be removed in v0.5.x
+//
+// This resource allows you to attach InstanceProfile (AWS) to databricks_user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instance_profile", &databricks.InstanceProfileArgs{
+//				InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myUser, err := databricks.NewUser(ctx, "my_user", &databricks.UserArgs{
+//				UserName: pulumi.String("me@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewUserInstanceProfile(ctx, "my_user_instance_profile", &databricks.UserInstanceProfileArgs{
+//				UserId:            myUser.ID(),
+//				InstanceProfileId: instanceProfile.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * End to end workspace management guide.
+// * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+// * GroupMember to attach users and groups as group members.
+// * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+// * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
+// * User data to retrieve information about databricks_user.
+//
+// ## Import
+//
+// !> Importing this resource is not currently supported.
 type UserInstanceProfile struct {
 	pulumi.CustomResourceState
 
+	// This is the id of the instance profile resource.
 	InstanceProfileId pulumi.StringOutput `pulumi:"instanceProfileId"`
-	UserId            pulumi.StringOutput `pulumi:"userId"`
+	// This is the id of the user resource.
+	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
 // NewUserInstanceProfile registers a new resource with the given unique name, arguments, and options.
@@ -55,13 +114,17 @@ func GetUserInstanceProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserInstanceProfile resources.
 type userInstanceProfileState struct {
+	// This is the id of the instance profile resource.
 	InstanceProfileId *string `pulumi:"instanceProfileId"`
-	UserId            *string `pulumi:"userId"`
+	// This is the id of the user resource.
+	UserId *string `pulumi:"userId"`
 }
 
 type UserInstanceProfileState struct {
+	// This is the id of the instance profile resource.
 	InstanceProfileId pulumi.StringPtrInput
-	UserId            pulumi.StringPtrInput
+	// This is the id of the user resource.
+	UserId pulumi.StringPtrInput
 }
 
 func (UserInstanceProfileState) ElementType() reflect.Type {
@@ -69,14 +132,18 @@ func (UserInstanceProfileState) ElementType() reflect.Type {
 }
 
 type userInstanceProfileArgs struct {
+	// This is the id of the instance profile resource.
 	InstanceProfileId string `pulumi:"instanceProfileId"`
-	UserId            string `pulumi:"userId"`
+	// This is the id of the user resource.
+	UserId string `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a UserInstanceProfile resource.
 type UserInstanceProfileArgs struct {
+	// This is the id of the instance profile resource.
 	InstanceProfileId pulumi.StringInput
-	UserId            pulumi.StringInput
+	// This is the id of the user resource.
+	UserId pulumi.StringInput
 }
 
 func (UserInstanceProfileArgs) ElementType() reflect.Type {
@@ -166,10 +233,12 @@ func (o UserInstanceProfileOutput) ToUserInstanceProfileOutputWithContext(ctx co
 	return o
 }
 
+// This is the id of the instance profile resource.
 func (o UserInstanceProfileOutput) InstanceProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserInstanceProfile) pulumi.StringOutput { return v.InstanceProfileId }).(pulumi.StringOutput)
 }
 
+// This is the id of the user resource.
 func (o UserInstanceProfileOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserInstanceProfile) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }

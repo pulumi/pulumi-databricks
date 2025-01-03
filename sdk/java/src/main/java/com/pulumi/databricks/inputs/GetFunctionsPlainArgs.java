@@ -18,30 +18,62 @@ public final class GetFunctionsPlainArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetFunctionsPlainArgs Empty = new GetFunctionsPlainArgs();
 
+    /**
+     * Name of databricks_catalog.
+     * 
+     */
     @Import(name="catalogName", required=true)
     private String catalogName;
 
+    /**
+     * @return Name of databricks_catalog.
+     * 
+     */
     public String catalogName() {
         return this.catalogName;
     }
 
+    /**
+     * list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+     * 
+     */
     @Import(name="functions")
     private @Nullable List<GetFunctionsFunction> functions;
 
+    /**
+     * @return list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+     * 
+     */
     public Optional<List<GetFunctionsFunction>> functions() {
         return Optional.ofNullable(this.functions);
     }
 
+    /**
+     * flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
+     * 
+     */
     @Import(name="includeBrowse")
     private @Nullable Boolean includeBrowse;
 
+    /**
+     * @return flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
+     * 
+     */
     public Optional<Boolean> includeBrowse() {
         return Optional.ofNullable(this.includeBrowse);
     }
 
+    /**
+     * Name of databricks_schema.
+     * 
+     */
     @Import(name="schemaName", required=true)
     private String schemaName;
 
+    /**
+     * @return Name of databricks_schema.
+     * 
+     */
     public String schemaName() {
         return this.schemaName;
     }
@@ -73,25 +105,55 @@ public final class GetFunctionsPlainArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetFunctionsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param catalogName Name of databricks_catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(String catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
+        /**
+         * @param functions list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+         * 
+         * @return builder
+         * 
+         */
         public Builder functions(@Nullable List<GetFunctionsFunction> functions) {
             $.functions = functions;
             return this;
         }
 
+        /**
+         * @param functions list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+         * 
+         * @return builder
+         * 
+         */
         public Builder functions(GetFunctionsFunction... functions) {
             return functions(List.of(functions));
         }
 
+        /**
+         * @param includeBrowse flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeBrowse(@Nullable Boolean includeBrowse) {
             $.includeBrowse = includeBrowse;
             return this;
         }
 
+        /**
+         * @param schemaName Name of databricks_schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaName(String schemaName) {
             $.schemaName = schemaName;
             return this;

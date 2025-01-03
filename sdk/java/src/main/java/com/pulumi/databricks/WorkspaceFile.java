@@ -15,11 +15,33 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
+ * 
+ * ## Import
+ * 
+ * The workspace file resource can be imported using workspace file path
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/workspaceFile:WorkspaceFile")
 public class WorkspaceFile extends com.pulumi.resources.CustomResource {
+    /**
+     * The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+     * 
+     */
     @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
+    /**
+     * @return The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+     * 
+     */
     public Output<Optional<String>> contentBase64() {
         return Codegen.optional(this.contentBase64);
     }
@@ -29,33 +51,73 @@ public class WorkspaceFile extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> md5() {
         return Codegen.optional(this.md5);
     }
+    /**
+     * Unique identifier for a workspace file
+     * 
+     */
     @Export(name="objectId", refs={Integer.class}, tree="[0]")
     private Output<Integer> objectId;
 
+    /**
+     * @return Unique identifier for a workspace file
+     * 
+     */
     public Output<Integer> objectId() {
         return this.objectId;
     }
+    /**
+     * The absolute path of the workspace file, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+     * 
+     */
     @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
+    /**
+     * @return The absolute path of the workspace file, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
+    /**
+     * Path to file on local filesystem. Conflicts with `content_base64`.
+     * 
+     */
     @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
+    /**
+     * @return Path to file on local filesystem. Conflicts with `content_base64`.
+     * 
+     */
     public Output<Optional<String>> source() {
         return Codegen.optional(this.source);
     }
+    /**
+     * Routable URL of the workspace file
+     * 
+     */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
+    /**
+     * @return Routable URL of the workspace file
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
     @Export(name="workspacePath", refs={String.class}, tree="[0]")
     private Output<String> workspacePath;
 
+    /**
+     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
     public Output<String> workspacePath() {
         return this.workspacePath;
     }

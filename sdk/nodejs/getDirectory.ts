@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows to get information about a directory in a Databricks Workspace.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const prod = databricks.getDirectory({
+ *     path: "/Production",
+ * });
+ * ```
+ */
 export function getDirectory(args: GetDirectoryArgs, opts?: pulumi.InvokeOptions): Promise<GetDirectoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDirectory:getDirectory", {
@@ -19,8 +35,17 @@ export function getDirectory(args: GetDirectoryArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetDirectoryArgs {
     id?: string;
+    /**
+     * directory object ID
+     */
     objectId?: number;
+    /**
+     * Path to a directory in the workspace
+     */
     path: string;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
     workspacePath?: string;
 }
 
@@ -29,10 +54,32 @@ export interface GetDirectoryArgs {
  */
 export interface GetDirectoryResult {
     readonly id: string;
+    /**
+     * directory object ID
+     */
     readonly objectId: number;
     readonly path: string;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
     readonly workspacePath: string;
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows to get information about a directory in a Databricks Workspace.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const prod = databricks.getDirectory({
+ *     path: "/Production",
+ * });
+ * ```
+ */
 export function getDirectoryOutput(args: GetDirectoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDirectoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDirectory:getDirectory", {
@@ -48,7 +95,16 @@ export function getDirectoryOutput(args: GetDirectoryOutputArgs, opts?: pulumi.I
  */
 export interface GetDirectoryOutputArgs {
     id?: pulumi.Input<string>;
+    /**
+     * directory object ID
+     */
     objectId?: pulumi.Input<number>;
+    /**
+     * Path to a directory in the workspace
+     */
     path: pulumi.Input<string>;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
     workspacePath?: pulumi.Input<string>;
 }

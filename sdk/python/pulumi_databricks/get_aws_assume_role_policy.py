@@ -78,6 +78,9 @@ class GetAwsAssumeRolePolicyResult:
     @property
     @pulumi.getter
     def json(self) -> str:
+        """
+        AWS IAM Policy JSON document
+        """
         return pulumi.get(self, "json")
 
 
@@ -101,7 +104,51 @@ def get_aws_assume_role_policy(aws_partition: Optional[str] = None,
                                for_log_delivery: Optional[bool] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsAssumeRolePolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source constructs necessary AWS STS assume role policy for you.
+
+    ## Example Usage
+
+    End-to-end example of provisioning Cross-account IAM role with MwsCredentials and aws_iam_role:
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_databricks as databricks
+
+    config = pulumi.Config()
+    # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+    databricks_account_id = config.require_object("databricksAccountId")
+    this = databricks.get_aws_cross_account_policy()
+    cross_account_policy = aws.iam.Policy("cross_account_policy",
+        name=f"{prefix}-crossaccount-iam-policy",
+        policy=this.json)
+    this_get_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
+    cross_account = aws.iam.Role("cross_account",
+        name=f"{prefix}-crossaccount-iam-role",
+        assume_role_policy=this_get_aws_assume_role_policy.json,
+        description="Grants Databricks full access to VPC resources")
+    cross_account_role_policy_attachment = aws.iam.RolePolicyAttachment("cross_account",
+        policy_arn=cross_account_policy.arn,
+        role=cross_account.name)
+    # required only in case of multi-workspace setup
+    this_mws_credentials = databricks.MwsCredentials("this",
+        account_id=databricks_account_id,
+        credentials_name=f"{prefix}-creds",
+        role_arn=cross_account.arn)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide
+    * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+
+
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+    :param bool for_log_delivery: Either or not this assume role policy should be created for usage log delivery. Defaults to false.
     """
     __args__ = dict()
     __args__['awsPartition'] = aws_partition
@@ -124,7 +171,51 @@ def get_aws_assume_role_policy_output(aws_partition: Optional[pulumi.Input[Optio
                                       for_log_delivery: Optional[pulumi.Input[Optional[bool]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsAssumeRolePolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source constructs necessary AWS STS assume role policy for you.
+
+    ## Example Usage
+
+    End-to-end example of provisioning Cross-account IAM role with MwsCredentials and aws_iam_role:
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_databricks as databricks
+
+    config = pulumi.Config()
+    # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+    databricks_account_id = config.require_object("databricksAccountId")
+    this = databricks.get_aws_cross_account_policy()
+    cross_account_policy = aws.iam.Policy("cross_account_policy",
+        name=f"{prefix}-crossaccount-iam-policy",
+        policy=this.json)
+    this_get_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
+    cross_account = aws.iam.Role("cross_account",
+        name=f"{prefix}-crossaccount-iam-role",
+        assume_role_policy=this_get_aws_assume_role_policy.json,
+        description="Grants Databricks full access to VPC resources")
+    cross_account_role_policy_attachment = aws.iam.RolePolicyAttachment("cross_account",
+        policy_arn=cross_account_policy.arn,
+        role=cross_account.name)
+    # required only in case of multi-workspace setup
+    this_mws_credentials = databricks.MwsCredentials("this",
+        account_id=databricks_account_id,
+        credentials_name=f"{prefix}-creds",
+        role_arn=cross_account.arn)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide
+    * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+
+
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+    :param bool for_log_delivery: Either or not this assume role policy should be created for usage log delivery. Defaults to false.
     """
     __args__ = dict()
     __args__['awsPartition'] = aws_partition

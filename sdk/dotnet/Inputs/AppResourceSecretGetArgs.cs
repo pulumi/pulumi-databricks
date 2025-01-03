@@ -12,12 +12,21 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppResourceSecretGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Key of the secret to grant permission on.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// Permission to grant on the secret scope. For secrets, only one permission is allowed. Permission must be one of: `READ`, `WRITE`, `MANAGE`.
+        /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
+        /// <summary>
+        /// Scope of the secret to grant permission on.
+        /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
 

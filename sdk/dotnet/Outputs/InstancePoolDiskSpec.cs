@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class InstancePoolDiskSpec
     {
+        /// <summary>
+        /// (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
+        /// </summary>
         public readonly int? DiskCount;
+        /// <summary>
+        /// (Integer) The size of each disk (in GiB) to attach.
+        /// </summary>
         public readonly int? DiskSize;
         public readonly Outputs.InstancePoolDiskSpecDiskType? DiskType;
 

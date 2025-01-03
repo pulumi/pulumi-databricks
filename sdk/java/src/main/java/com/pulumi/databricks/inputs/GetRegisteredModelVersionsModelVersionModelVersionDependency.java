@@ -15,9 +15,17 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependency 
 
     public static final GetRegisteredModelVersionsModelVersionModelVersionDependency Empty = new GetRegisteredModelVersionsModelVersionModelVersionDependency();
 
+    /**
+     * list of dependencies consisting of following attributes:
+     * 
+     */
     @Import(name="dependencies")
     private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency> dependencies;
 
+    /**
+     * @return list of dependencies consisting of following attributes:
+     * 
+     */
     public Optional<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency>> dependencies() {
         return Optional.ofNullable(this.dependencies);
     }
@@ -46,11 +54,23 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependency 
             $ = new GetRegisteredModelVersionsModelVersionModelVersionDependency(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dependencies list of dependencies consisting of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependencies(@Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency> dependencies) {
             $.dependencies = dependencies;
             return this;
         }
 
+        /**
+         * @param dependencies list of dependencies consisting of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependencies(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency... dependencies) {
             return dependencies(List.of(dependencies));
         }

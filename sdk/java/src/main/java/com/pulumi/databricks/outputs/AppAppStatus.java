@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppAppStatus {
+    /**
+     * @return Application status message
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return State of the application.
+     * 
+     */
     private @Nullable String state;
 
     private AppAppStatus() {}
+    /**
+     * @return Application status message
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return State of the application.
+     * 
+     */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }

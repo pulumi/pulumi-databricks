@@ -13,8 +13,19 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class CredentialAzureManagedIdentity
     {
+        /// <summary>
+        /// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+        /// </summary>
         public readonly string AccessConnectorId;
+        /// <summary>
+        /// Unique ID of the credential.
+        /// </summary>
         public readonly string? CredentialId;
+        /// <summary>
+        /// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+        /// 
+        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure. Only applicable when purpose is `STORAGE` (Legacy):
+        /// </summary>
         public readonly string? ManagedIdentityId;
 
         [OutputConstructor]

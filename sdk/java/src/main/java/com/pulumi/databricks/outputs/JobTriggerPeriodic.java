@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class JobTriggerPeriodic {
+    /**
+     * @return Specifies the interval at which the job should run. This value is required.
+     * 
+     */
     private Integer interval;
+    /**
+     * @return Options are {&#34;DAYS&#34;, &#34;HOURS&#34;, &#34;WEEKS&#34;}.
+     * 
+     */
     private String unit;
 
     private JobTriggerPeriodic() {}
+    /**
+     * @return Specifies the interval at which the job should run. This value is required.
+     * 
+     */
     public Integer interval() {
         return this.interval;
     }
+    /**
+     * @return Options are {&#34;DAYS&#34;, &#34;HOURS&#34;, &#34;WEEKS&#34;}.
+     * 
+     */
     public String unit() {
         return this.unit;
     }

@@ -11,12 +11,84 @@ namespace Pulumi.Databricks
 {
     public static class GetNotebook
     {
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// This data source allows to export a notebook from Databricks Workspace.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var features = Databricks.GetNotebook.Invoke(new()
+        ///     {
+        ///         Path = "/Production/Features",
+        ///         Format = "SOURCE",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetNotebookResult> InvokeAsync(GetNotebookArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotebookResult>("databricks:index/getNotebook:getNotebook", args ?? new GetNotebookArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// This data source allows to export a notebook from Databricks Workspace.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var features = Databricks.GetNotebook.Invoke(new()
+        ///     {
+        ///         Path = "/Production/Features",
+        ///         Format = "SOURCE",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetNotebookResult> Invoke(GetNotebookInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNotebookResult>("databricks:index/getNotebook:getNotebook", args ?? new GetNotebookInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// This data source allows to export a notebook from Databricks Workspace.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var features = Databricks.GetNotebook.Invoke(new()
+        ///     {
+        ///         Path = "/Production/Features",
+        ///         Format = "SOURCE",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetNotebookResult> Invoke(GetNotebookInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNotebookResult>("databricks:index/getNotebook:getNotebook", args ?? new GetNotebookInvokeArgs(), options.WithDefaults());
     }
@@ -24,18 +96,33 @@ namespace Pulumi.Databricks
 
     public sealed class GetNotebookArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
+        /// </summary>
         [Input("format", required: true)]
         public string Format { get; set; } = null!;
 
+        /// <summary>
+        /// notebook language
+        /// </summary>
         [Input("language")]
         public string? Language { get; set; }
 
+        /// <summary>
+        /// notebook object ID
+        /// </summary>
         [Input("objectId")]
         public int? ObjectId { get; set; }
 
+        /// <summary>
+        /// notebook object type
+        /// </summary>
         [Input("objectType")]
         public string? ObjectType { get; set; }
 
+        /// <summary>
+        /// Notebook path on the workspace
+        /// </summary>
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
 
@@ -47,18 +134,33 @@ namespace Pulumi.Databricks
 
     public sealed class GetNotebookInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
+        /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
 
+        /// <summary>
+        /// notebook language
+        /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
 
+        /// <summary>
+        /// notebook object ID
+        /// </summary>
         [Input("objectId")]
         public Input<int>? ObjectId { get; set; }
 
+        /// <summary>
+        /// notebook object type
+        /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
 
+        /// <summary>
+        /// Notebook path on the workspace
+        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
@@ -72,16 +174,31 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetNotebookResult
     {
+        /// <summary>
+        /// notebook content in selected format
+        /// </summary>
         public readonly string Content;
         public readonly string Format;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// notebook language
+        /// </summary>
         public readonly string Language;
+        /// <summary>
+        /// notebook object ID
+        /// </summary>
         public readonly int ObjectId;
+        /// <summary>
+        /// notebook object type
+        /// </summary>
         public readonly string ObjectType;
         public readonly string Path;
+        /// <summary>
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// </summary>
         public readonly string WorkspacePath;
 
         [OutputConstructor]

@@ -15,9 +15,17 @@ public final class SystemSchemaState extends com.pulumi.resources.ResourceArgs {
 
     public static final SystemSchemaState Empty = new SystemSchemaState();
 
+    /**
+     * the full name of the system schema, in form of `system.&lt;schema&gt;`.
+     * 
+     */
     @Import(name="fullName")
     private @Nullable Output<String> fullName;
 
+    /**
+     * @return the full name of the system schema, in form of `system.&lt;schema&gt;`.
+     * 
+     */
     public Optional<Output<String>> fullName() {
         return Optional.ofNullable(this.fullName);
     }
@@ -29,16 +37,32 @@ public final class SystemSchemaState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.metastoreId);
     }
 
+    /**
+     * name of the system schema.
+     * 
+     */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
+    /**
+     * @return name of the system schema.
+     * 
+     */
     public Optional<Output<String>> schema() {
         return Optional.ofNullable(this.schema);
     }
 
+    /**
+     * The current state of enablement for the system schema.
+     * 
+     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
+    /**
+     * @return The current state of enablement for the system schema.
+     * 
+     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
@@ -70,11 +94,23 @@ public final class SystemSchemaState extends com.pulumi.resources.ResourceArgs {
             $ = new SystemSchemaState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fullName the full name of the system schema, in form of `system.&lt;schema&gt;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(@Nullable Output<String> fullName) {
             $.fullName = fullName;
             return this;
         }
 
+        /**
+         * @param fullName the full name of the system schema, in form of `system.&lt;schema&gt;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(String fullName) {
             return fullName(Output.of(fullName));
         }
@@ -88,20 +124,44 @@ public final class SystemSchemaState extends com.pulumi.resources.ResourceArgs {
             return metastoreId(Output.of(metastoreId));
         }
 
+        /**
+         * @param schema name of the system schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(@Nullable Output<String> schema) {
             $.schema = schema;
             return this;
         }
 
+        /**
+         * @param schema name of the system schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(String schema) {
             return schema(Output.of(schema));
         }
 
+        /**
+         * @param state The current state of enablement for the system schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
+        /**
+         * @param state The current state of enablement for the system schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(String state) {
             return state(Output.of(state));
         }

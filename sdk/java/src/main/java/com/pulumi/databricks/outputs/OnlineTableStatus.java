@@ -16,8 +16,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OnlineTableStatus {
     private @Nullable OnlineTableStatusContinuousUpdateStatus continuousUpdateStatus;
+    /**
+     * @return The state of the online table.
+     * 
+     */
     private @Nullable String detailedState;
     private @Nullable OnlineTableStatusFailedStatus failedStatus;
+    /**
+     * @return A text description of the current state of the online table.
+     * 
+     */
     private @Nullable String message;
     private @Nullable OnlineTableStatusProvisioningStatus provisioningStatus;
     private @Nullable OnlineTableStatusTriggeredUpdateStatus triggeredUpdateStatus;
@@ -26,12 +34,20 @@ public final class OnlineTableStatus {
     public Optional<OnlineTableStatusContinuousUpdateStatus> continuousUpdateStatus() {
         return Optional.ofNullable(this.continuousUpdateStatus);
     }
+    /**
+     * @return The state of the online table.
+     * 
+     */
     public Optional<String> detailedState() {
         return Optional.ofNullable(this.detailedState);
     }
     public Optional<OnlineTableStatusFailedStatus> failedStatus() {
         return Optional.ofNullable(this.failedStatus);
     }
+    /**
+     * @return A text description of the current state of the online table.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }

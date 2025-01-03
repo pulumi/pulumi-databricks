@@ -14,9 +14,17 @@ public final class MwsWorkspacesCloudResourceContainerArgs extends com.pulumi.re
 
     public static final MwsWorkspacesCloudResourceContainerArgs Empty = new MwsWorkspacesCloudResourceContainerArgs();
 
+    /**
+     * A block that consists of the following field:
+     * 
+     */
     @Import(name="gcp", required=true)
     private Output<MwsWorkspacesCloudResourceContainerGcpArgs> gcp;
 
+    /**
+     * @return A block that consists of the following field:
+     * 
+     */
     public Output<MwsWorkspacesCloudResourceContainerGcpArgs> gcp() {
         return this.gcp;
     }
@@ -45,11 +53,23 @@ public final class MwsWorkspacesCloudResourceContainerArgs extends com.pulumi.re
             $ = new MwsWorkspacesCloudResourceContainerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gcp A block that consists of the following field:
+         * 
+         * @return builder
+         * 
+         */
         public Builder gcp(Output<MwsWorkspacesCloudResourceContainerGcpArgs> gcp) {
             $.gcp = gcp;
             return this;
         }
 
+        /**
+         * @param gcp A block that consists of the following field:
+         * 
+         * @return builder
+         * 
+         */
         public Builder gcp(MwsWorkspacesCloudResourceContainerGcpArgs gcp) {
             return gcp(Output.of(gcp));
         }

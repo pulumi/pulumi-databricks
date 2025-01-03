@@ -15,16 +15,32 @@ public final class MwsNccBindingState extends com.pulumi.resources.ResourceArgs 
 
     public static final MwsNccBindingState Empty = new MwsNccBindingState();
 
+    /**
+     * Canonical unique identifier of Network Connectivity Config in Databricks Account.
+     * 
+     */
     @Import(name="networkConnectivityConfigId")
     private @Nullable Output<String> networkConnectivityConfigId;
 
+    /**
+     * @return Canonical unique identifier of Network Connectivity Config in Databricks Account.
+     * 
+     */
     public Optional<Output<String>> networkConnectivityConfigId() {
         return Optional.ofNullable(this.networkConnectivityConfigId);
     }
 
+    /**
+     * Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
+     * 
+     */
     @Import(name="workspaceId")
     private @Nullable Output<String> workspaceId;
 
+    /**
+     * @return Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
+     * 
+     */
     public Optional<Output<String>> workspaceId() {
         return Optional.ofNullable(this.workspaceId);
     }
@@ -54,20 +70,44 @@ public final class MwsNccBindingState extends com.pulumi.resources.ResourceArgs 
             $ = new MwsNccBindingState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param networkConnectivityConfigId Canonical unique identifier of Network Connectivity Config in Databricks Account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkConnectivityConfigId(@Nullable Output<String> networkConnectivityConfigId) {
             $.networkConnectivityConfigId = networkConnectivityConfigId;
             return this;
         }
 
+        /**
+         * @param networkConnectivityConfigId Canonical unique identifier of Network Connectivity Config in Databricks Account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkConnectivityConfigId(String networkConnectivityConfigId) {
             return networkConnectivityConfigId(Output.of(networkConnectivityConfigId));
         }
 
+        /**
+         * @param workspaceId Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceId(@Nullable Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
 
+        /**
+         * @param workspaceId Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }

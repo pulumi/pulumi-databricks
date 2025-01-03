@@ -13,9 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskPythonWheelTask
     {
+        /// <summary>
+        /// Python function as entry point for the task
+        /// </summary>
         public readonly string? EntryPoint;
+        /// <summary>
+        /// Named parameters for the task
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? NamedParameters;
+        /// <summary>
+        /// Name of Python package
+        /// </summary>
         public readonly string? PackageName;
+        /// <summary>
+        /// Parameters for the task
+        /// </summary>
         public readonly ImmutableArray<string> Parameters;
 
         [OutputConstructor]

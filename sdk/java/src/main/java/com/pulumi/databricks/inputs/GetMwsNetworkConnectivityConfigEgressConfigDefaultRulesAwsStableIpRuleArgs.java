@@ -16,9 +16,17 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsSta
 
     public static final GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs Empty = new GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs();
 
+    /**
+     * The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+     * 
+     */
     @Import(name="cidrBlocks")
     private @Nullable Output<List<String>> cidrBlocks;
 
+    /**
+     * @return The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+     * 
+     */
     public Optional<Output<List<String>>> cidrBlocks() {
         return Optional.ofNullable(this.cidrBlocks);
     }
@@ -47,15 +55,33 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsSta
             $ = new GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cidrBlocks The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlocks(@Nullable Output<List<String>> cidrBlocks) {
             $.cidrBlocks = cidrBlocks;
             return this;
         }
 
+        /**
+         * @param cidrBlocks The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlocks(List<String> cidrBlocks) {
             return cidrBlocks(Output.of(cidrBlocks));
         }
 
+        /**
+         * @param cidrBlocks The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlocks(String... cidrBlocks) {
             return cidrBlocks(List.of(cidrBlocks));
         }

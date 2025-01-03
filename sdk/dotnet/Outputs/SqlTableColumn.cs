@@ -13,10 +13,25 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class SqlTableColumn
     {
+        /// <summary>
+        /// User-supplied free-form text.
+        /// </summary>
         public readonly string? Comment;
+        /// <summary>
+        /// Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+        /// </summary>
         public readonly string? Identity;
+        /// <summary>
+        /// User-visible name of column
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Whether field is nullable (Default: `true`)
+        /// </summary>
         public readonly bool? Nullable;
+        /// <summary>
+        /// Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+        /// </summary>
         public readonly string? Type;
         public readonly string? TypeJson;
 

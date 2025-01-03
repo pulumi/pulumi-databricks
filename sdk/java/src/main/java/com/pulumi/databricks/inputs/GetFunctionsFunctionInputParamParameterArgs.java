@@ -17,86 +17,182 @@ public final class GetFunctionsFunctionInputParamParameterArgs extends com.pulum
 
     public static final GetFunctionsFunctionInputParamParameterArgs Empty = new GetFunctionsFunctionInputParamParameterArgs();
 
+    /**
+     * User-provided free-form text description.
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return User-provided free-form text description.
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * Name of parameter.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Name of parameter.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * Default value of the parameter.
+     * 
+     */
     @Import(name="parameterDefault")
     private @Nullable Output<String> parameterDefault;
 
+    /**
+     * @return Default value of the parameter.
+     * 
+     */
     public Optional<Output<String>> parameterDefault() {
         return Optional.ofNullable(this.parameterDefault);
     }
 
+    /**
+     * The mode of the function parameter.
+     * 
+     */
     @Import(name="parameterMode")
     private @Nullable Output<String> parameterMode;
 
+    /**
+     * @return The mode of the function parameter.
+     * 
+     */
     public Optional<Output<String>> parameterMode() {
         return Optional.ofNullable(this.parameterMode);
     }
 
+    /**
+     * The type of function parameter (`PARAM` or `COLUMN`).
+     * 
+     */
     @Import(name="parameterType")
     private @Nullable Output<String> parameterType;
 
+    /**
+     * @return The type of function parameter (`PARAM` or `COLUMN`).
+     * 
+     */
     public Optional<Output<String>> parameterType() {
         return Optional.ofNullable(this.parameterType);
     }
 
+    /**
+     * Ordinal position of column (starting at position 0).
+     * 
+     */
     @Import(name="position", required=true)
     private Output<Integer> position;
 
+    /**
+     * @return Ordinal position of column (starting at position 0).
+     * 
+     */
     public Output<Integer> position() {
         return this.position;
     }
 
+    /**
+     * Format of IntervalType.
+     * 
+     */
     @Import(name="typeIntervalType")
     private @Nullable Output<String> typeIntervalType;
 
+    /**
+     * @return Format of IntervalType.
+     * 
+     */
     public Optional<Output<String>> typeIntervalType() {
         return Optional.ofNullable(this.typeIntervalType);
     }
 
+    /**
+     * Full data type spec, JSON-serialized.
+     * 
+     */
     @Import(name="typeJson")
     private @Nullable Output<String> typeJson;
 
+    /**
+     * @return Full data type spec, JSON-serialized.
+     * 
+     */
     public Optional<Output<String>> typeJson() {
         return Optional.ofNullable(this.typeJson);
     }
 
+    /**
+     * Name of type (INT, STRUCT, MAP, etc.).
+     * 
+     */
     @Import(name="typeName", required=true)
     private Output<String> typeName;
 
+    /**
+     * @return Name of type (INT, STRUCT, MAP, etc.).
+     * 
+     */
     public Output<String> typeName() {
         return this.typeName;
     }
 
+    /**
+     * Digits of precision; required on Create for DecimalTypes.
+     * 
+     */
     @Import(name="typePrecision")
     private @Nullable Output<Integer> typePrecision;
 
+    /**
+     * @return Digits of precision; required on Create for DecimalTypes.
+     * 
+     */
     public Optional<Output<Integer>> typePrecision() {
         return Optional.ofNullable(this.typePrecision);
     }
 
+    /**
+     * Digits to right of decimal; Required on Create for DecimalTypes.
+     * 
+     */
     @Import(name="typeScale")
     private @Nullable Output<Integer> typeScale;
 
+    /**
+     * @return Digits to right of decimal; Required on Create for DecimalTypes.
+     * 
+     */
     public Optional<Output<Integer>> typeScale() {
         return Optional.ofNullable(this.typeScale);
     }
 
+    /**
+     * Full data type spec, SQL/catalogString text.
+     * 
+     */
     @Import(name="typeText", required=true)
     private Output<String> typeText;
 
+    /**
+     * @return Full data type spec, SQL/catalogString text.
+     * 
+     */
     public Output<String> typeText() {
         return this.typeText;
     }
@@ -136,110 +232,254 @@ public final class GetFunctionsFunctionInputParamParameterArgs extends com.pulum
             $ = new GetFunctionsFunctionInputParamParameterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param comment User-provided free-form text description.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment User-provided free-form text description.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param name Name of parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param parameterDefault Default value of the parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterDefault(@Nullable Output<String> parameterDefault) {
             $.parameterDefault = parameterDefault;
             return this;
         }
 
+        /**
+         * @param parameterDefault Default value of the parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterDefault(String parameterDefault) {
             return parameterDefault(Output.of(parameterDefault));
         }
 
+        /**
+         * @param parameterMode The mode of the function parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterMode(@Nullable Output<String> parameterMode) {
             $.parameterMode = parameterMode;
             return this;
         }
 
+        /**
+         * @param parameterMode The mode of the function parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterMode(String parameterMode) {
             return parameterMode(Output.of(parameterMode));
         }
 
+        /**
+         * @param parameterType The type of function parameter (`PARAM` or `COLUMN`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterType(@Nullable Output<String> parameterType) {
             $.parameterType = parameterType;
             return this;
         }
 
+        /**
+         * @param parameterType The type of function parameter (`PARAM` or `COLUMN`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterType(String parameterType) {
             return parameterType(Output.of(parameterType));
         }
 
+        /**
+         * @param position Ordinal position of column (starting at position 0).
+         * 
+         * @return builder
+         * 
+         */
         public Builder position(Output<Integer> position) {
             $.position = position;
             return this;
         }
 
+        /**
+         * @param position Ordinal position of column (starting at position 0).
+         * 
+         * @return builder
+         * 
+         */
         public Builder position(Integer position) {
             return position(Output.of(position));
         }
 
+        /**
+         * @param typeIntervalType Format of IntervalType.
+         * 
+         * @return builder
+         * 
+         */
         public Builder typeIntervalType(@Nullable Output<String> typeIntervalType) {
             $.typeIntervalType = typeIntervalType;
             return this;
         }
 
+        /**
+         * @param typeIntervalType Format of IntervalType.
+         * 
+         * @return builder
+         * 
+         */
         public Builder typeIntervalType(String typeIntervalType) {
             return typeIntervalType(Output.of(typeIntervalType));
         }
 
+        /**
+         * @param typeJson Full data type spec, JSON-serialized.
+         * 
+         * @return builder
+         * 
+         */
         public Builder typeJson(@Nullable Output<String> typeJson) {
             $.typeJson = typeJson;
             return this;
         }
 
+        /**
+         * @param typeJson Full data type spec, JSON-serialized.
+         * 
+         * @return builder
+         * 
+         */
         public Builder typeJson(String typeJson) {
             return typeJson(Output.of(typeJson));
         }
 
+        /**
+         * @param typeName Name of type (INT, STRUCT, MAP, etc.).
+         * 
+         * @return builder
+         * 
+         */
         public Builder typeName(Output<String> typeName) {
             $.typeName = typeName;
             return this;
         }
 
+        /**
+         * @param typeName Name of type (INT, STRUCT, MAP, etc.).
+         * 
+         * @return builder
+         * 
+         */
         public Builder typeName(String typeName) {
             return typeName(Output.of(typeName));
         }
 
+        /**
+         * @param typePrecision Digits of precision; required on Create for DecimalTypes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder typePrecision(@Nullable Output<Integer> typePrecision) {
             $.typePrecision = typePrecision;
             return this;
         }
 
+        /**
+         * @param typePrecision Digits of precision; required on Create for DecimalTypes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder typePrecision(Integer typePrecision) {
             return typePrecision(Output.of(typePrecision));
         }
 
+        /**
+         * @param typeScale Digits to right of decimal; Required on Create for DecimalTypes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder typeScale(@Nullable Output<Integer> typeScale) {
             $.typeScale = typeScale;
             return this;
         }
 
+        /**
+         * @param typeScale Digits to right of decimal; Required on Create for DecimalTypes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder typeScale(Integer typeScale) {
             return typeScale(Output.of(typeScale));
         }
 
+        /**
+         * @param typeText Full data type spec, SQL/catalogString text.
+         * 
+         * @return builder
+         * 
+         */
         public Builder typeText(Output<String> typeText) {
             $.typeText = typeText;
             return this;
         }
 
+        /**
+         * @param typeText Full data type spec, SQL/catalogString text.
+         * 
+         * @return builder
+         * 
+         */
         public Builder typeText(String typeText) {
             return typeText(Output.of(typeText));
         }

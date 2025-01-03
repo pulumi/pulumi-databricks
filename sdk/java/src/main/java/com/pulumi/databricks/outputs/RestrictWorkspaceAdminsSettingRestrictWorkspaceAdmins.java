@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
+    /**
+     * @return The restrict workspace admins status for the workspace.
+     * 
+     */
     private String status;
 
     private RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins() {}
+    /**
+     * @return The restrict workspace admins status for the workspace.
+     * 
+     */
     public String status() {
         return this.status;
     }

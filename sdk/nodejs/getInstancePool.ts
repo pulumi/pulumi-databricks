@@ -6,6 +6,25 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves information about databricks_instance_pool.
+ *
+ * ## Example Usage
+ *
+ * Referring to an instance pool by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const pool = databricks.getInstancePool({
+ *     name: "All spot",
+ * });
+ * const myCluster = new databricks.Cluster("my_cluster", {instancePoolId: pool.then(pool => pool.id)});
+ * ```
+ */
 export function getInstancePool(args: GetInstancePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getInstancePool:getInstancePool", {
@@ -18,7 +37,13 @@ export function getInstancePool(args: GetInstancePoolArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getInstancePool.
  */
 export interface GetInstancePoolArgs {
+    /**
+     * Name of the instance pool. The instance pool must exist before this resource can be planned.
+     */
     name: string;
+    /**
+     * block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
+     */
     poolInfo?: inputs.GetInstancePoolPoolInfo;
 }
 
@@ -31,8 +56,30 @@ export interface GetInstancePoolResult {
      */
     readonly id: string;
     readonly name: string;
+    /**
+     * block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
+     */
     readonly poolInfo: outputs.GetInstancePoolPoolInfo;
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves information about databricks_instance_pool.
+ *
+ * ## Example Usage
+ *
+ * Referring to an instance pool by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const pool = databricks.getInstancePool({
+ *     name: "All spot",
+ * });
+ * const myCluster = new databricks.Cluster("my_cluster", {instancePoolId: pool.then(pool => pool.id)});
+ * ```
+ */
 export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getInstancePool:getInstancePool", {
@@ -45,6 +92,12 @@ export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pu
  * A collection of arguments for invoking getInstancePool.
  */
 export interface GetInstancePoolOutputArgs {
+    /**
+     * Name of the instance pool. The instance pool must exist before this resource can be planned.
+     */
     name: pulumi.Input<string>;
+    /**
+     * block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
+     */
     poolInfo?: pulumi.Input<inputs.GetInstancePoolPoolInfoArgs>;
 }

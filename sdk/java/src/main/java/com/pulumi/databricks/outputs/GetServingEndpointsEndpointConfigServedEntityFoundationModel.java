@@ -14,6 +14,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityFoundationModel 
     private @Nullable String description;
     private @Nullable String displayName;
     private @Nullable String docs;
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     private @Nullable String name;
 
     private GetServingEndpointsEndpointConfigServedEntityFoundationModel() {}
@@ -26,6 +30,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityFoundationModel 
     public Optional<String> docs() {
         return Optional.ofNullable(this.docs);
     }
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

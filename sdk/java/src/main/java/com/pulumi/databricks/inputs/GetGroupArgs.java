@@ -18,30 +18,62 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetGroupArgs Empty = new GetGroupArgs();
 
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
     @Import(name="aclPrincipalId")
     private @Nullable Output<String> aclPrincipalId;
 
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
     public Optional<Output<String>> aclPrincipalId() {
         return Optional.ofNullable(this.aclPrincipalId);
     }
 
+    /**
+     * True if group members can create clusters
+     * 
+     */
     @Import(name="allowClusterCreate")
     private @Nullable Output<Boolean> allowClusterCreate;
 
+    /**
+     * @return True if group members can create clusters
+     * 
+     */
     public Optional<Output<Boolean>> allowClusterCreate() {
         return Optional.ofNullable(this.allowClusterCreate);
     }
 
+    /**
+     * True if group members can create instance pools
+     * 
+     */
     @Import(name="allowInstancePoolCreate")
     private @Nullable Output<Boolean> allowInstancePoolCreate;
 
+    /**
+     * @return True if group members can create instance pools
+     * 
+     */
     public Optional<Output<Boolean>> allowInstancePoolCreate() {
         return Optional.ofNullable(this.allowInstancePoolCreate);
     }
 
+    /**
+     * Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     @Import(name="childGroups")
     private @Nullable Output<List<String>> childGroups;
 
+    /**
+     * @return Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     public Optional<Output<List<String>>> childGroups() {
         return Optional.ofNullable(this.childGroups);
     }
@@ -53,30 +85,62 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.databricksSqlAccess);
     }
 
+    /**
+     * Display name of the group. The group must exist before this resource can be planned.
+     * 
+     */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
+    /**
+     * @return Display name of the group. The group must exist before this resource can be planned.
+     * 
+     */
     public Output<String> displayName() {
         return this.displayName;
     }
 
+    /**
+     * ID of the group in an external identity provider.
+     * 
+     */
     @Import(name="externalId")
     private @Nullable Output<String> externalId;
 
+    /**
+     * @return ID of the group in an external identity provider.
+     * 
+     */
     public Optional<Output<String>> externalId() {
         return Optional.ofNullable(this.externalId);
     }
 
+    /**
+     * Set of group identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     @Import(name="groups")
     private @Nullable Output<List<String>> groups;
 
+    /**
+     * @return Set of group identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     public Optional<Output<List<String>>> groups() {
         return Optional.ofNullable(this.groups);
     }
 
+    /**
+     * Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+     * 
+     */
     @Import(name="instanceProfiles")
     private @Nullable Output<List<String>> instanceProfiles;
 
+    /**
+     * @return Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+     * 
+     */
     public Optional<Output<List<String>>> instanceProfiles() {
         return Optional.ofNullable(this.instanceProfiles);
     }
@@ -100,23 +164,47 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.members);
     }
 
+    /**
+     * Collect information for all nested groups. *Defaults to true.*
+     * 
+     */
     @Import(name="recursive")
     private @Nullable Output<Boolean> recursive;
 
+    /**
+     * @return Collect information for all nested groups. *Defaults to true.*
+     * 
+     */
     public Optional<Output<Boolean>> recursive() {
         return Optional.ofNullable(this.recursive);
     }
 
+    /**
+     * Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     @Import(name="servicePrincipals")
     private @Nullable Output<List<String>> servicePrincipals;
 
+    /**
+     * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     public Optional<Output<List<String>>> servicePrincipals() {
         return Optional.ofNullable(this.servicePrincipals);
     }
 
+    /**
+     * Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     @Import(name="users")
     private @Nullable Output<List<String>> users;
 
+    /**
+     * @return Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     public Optional<Output<List<String>>> users() {
         return Optional.ofNullable(this.users);
     }
@@ -165,42 +253,96 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetGroupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aclPrincipalId(@Nullable Output<String> aclPrincipalId) {
             $.aclPrincipalId = aclPrincipalId;
             return this;
         }
 
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aclPrincipalId(String aclPrincipalId) {
             return aclPrincipalId(Output.of(aclPrincipalId));
         }
 
+        /**
+         * @param allowClusterCreate True if group members can create clusters
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowClusterCreate(@Nullable Output<Boolean> allowClusterCreate) {
             $.allowClusterCreate = allowClusterCreate;
             return this;
         }
 
+        /**
+         * @param allowClusterCreate True if group members can create clusters
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowClusterCreate(Boolean allowClusterCreate) {
             return allowClusterCreate(Output.of(allowClusterCreate));
         }
 
+        /**
+         * @param allowInstancePoolCreate True if group members can create instance pools
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowInstancePoolCreate(@Nullable Output<Boolean> allowInstancePoolCreate) {
             $.allowInstancePoolCreate = allowInstancePoolCreate;
             return this;
         }
 
+        /**
+         * @param allowInstancePoolCreate True if group members can create instance pools
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowInstancePoolCreate(Boolean allowInstancePoolCreate) {
             return allowInstancePoolCreate(Output.of(allowInstancePoolCreate));
         }
 
+        /**
+         * @param childGroups Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder childGroups(@Nullable Output<List<String>> childGroups) {
             $.childGroups = childGroups;
             return this;
         }
 
+        /**
+         * @param childGroups Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder childGroups(List<String> childGroups) {
             return childGroups(Output.of(childGroups));
         }
 
+        /**
+         * @param childGroups Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder childGroups(String... childGroups) {
             return childGroups(List.of(childGroups));
         }
@@ -214,46 +356,106 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
             return databricksSqlAccess(Output.of(databricksSqlAccess));
         }
 
+        /**
+         * @param displayName Display name of the group. The group must exist before this resource can be planned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
 
+        /**
+         * @param displayName Display name of the group. The group must exist before this resource can be planned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
         }
 
+        /**
+         * @param externalId ID of the group in an external identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalId(@Nullable Output<String> externalId) {
             $.externalId = externalId;
             return this;
         }
 
+        /**
+         * @param externalId ID of the group in an external identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalId(String externalId) {
             return externalId(Output.of(externalId));
         }
 
+        /**
+         * @param groups Set of group identifiers, that can be modified with databricks.GroupMember resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groups(@Nullable Output<List<String>> groups) {
             $.groups = groups;
             return this;
         }
 
+        /**
+         * @param groups Set of group identifiers, that can be modified with databricks.GroupMember resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groups(List<String> groups) {
             return groups(Output.of(groups));
         }
 
+        /**
+         * @param groups Set of group identifiers, that can be modified with databricks.GroupMember resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groups(String... groups) {
             return groups(List.of(groups));
         }
 
+        /**
+         * @param instanceProfiles Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceProfiles(@Nullable Output<List<String>> instanceProfiles) {
             $.instanceProfiles = instanceProfiles;
             return this;
         }
 
+        /**
+         * @param instanceProfiles Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceProfiles(List<String> instanceProfiles) {
             return instanceProfiles(Output.of(instanceProfiles));
         }
 
+        /**
+         * @param instanceProfiles Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceProfiles(String... instanceProfiles) {
             return instanceProfiles(List.of(instanceProfiles));
         }
@@ -295,37 +497,85 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
             return members(List.of(members));
         }
 
+        /**
+         * @param recursive Collect information for all nested groups. *Defaults to true.*
+         * 
+         * @return builder
+         * 
+         */
         public Builder recursive(@Nullable Output<Boolean> recursive) {
             $.recursive = recursive;
             return this;
         }
 
+        /**
+         * @param recursive Collect information for all nested groups. *Defaults to true.*
+         * 
+         * @return builder
+         * 
+         */
         public Builder recursive(Boolean recursive) {
             return recursive(Output.of(recursive));
         }
 
+        /**
+         * @param servicePrincipals Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePrincipals(@Nullable Output<List<String>> servicePrincipals) {
             $.servicePrincipals = servicePrincipals;
             return this;
         }
 
+        /**
+         * @param servicePrincipals Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePrincipals(List<String> servicePrincipals) {
             return servicePrincipals(Output.of(servicePrincipals));
         }
 
+        /**
+         * @param servicePrincipals Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePrincipals(String... servicePrincipals) {
             return servicePrincipals(List.of(servicePrincipals));
         }
 
+        /**
+         * @param users Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder users(@Nullable Output<List<String>> users) {
             $.users = users;
             return this;
         }
 
+        /**
+         * @param users Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder users(List<String> users) {
             return users(Output.of(users));
         }
 
+        /**
+         * @param users Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder users(String... users) {
             return users(List.of(users));
         }

@@ -6,6 +6,23 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows to list notebooks in the Databricks Workspace.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const prod = databricks.getNotebookPaths({
+ *     path: "/Production",
+ *     recursive: true,
+ * });
+ * ```
+ */
 export function getNotebookPaths(args: GetNotebookPathsArgs, opts?: pulumi.InvokeOptions): Promise<GetNotebookPathsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNotebookPaths:getNotebookPaths", {
@@ -18,7 +35,13 @@ export function getNotebookPaths(args: GetNotebookPathsArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getNotebookPaths.
  */
 export interface GetNotebookPathsArgs {
+    /**
+     * Path to workspace directory
+     */
     path: string;
+    /**
+     * Either or recursively walk given path
+     */
     recursive: boolean;
 }
 
@@ -30,10 +53,30 @@ export interface GetNotebookPathsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * list of objects with `path` and `language` attributes
+     */
     readonly notebookPathLists: outputs.GetNotebookPathsNotebookPathList[];
     readonly path: string;
     readonly recursive: boolean;
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows to list notebooks in the Databricks Workspace.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const prod = databricks.getNotebookPaths({
+ *     path: "/Production",
+ *     recursive: true,
+ * });
+ * ```
+ */
 export function getNotebookPathsOutput(args: GetNotebookPathsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotebookPathsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getNotebookPaths:getNotebookPaths", {
@@ -46,6 +89,12 @@ export function getNotebookPathsOutput(args: GetNotebookPathsOutputArgs, opts?: 
  * A collection of arguments for invoking getNotebookPaths.
  */
 export interface GetNotebookPathsOutputArgs {
+    /**
+     * Path to workspace directory
+     */
     path: pulumi.Input<string>;
+    /**
+     * Either or recursively walk given path
+     */
     recursive: pulumi.Input<boolean>;
 }

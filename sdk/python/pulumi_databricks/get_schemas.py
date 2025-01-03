@@ -53,6 +53,9 @@ class GetSchemasResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        set of Schema full names: *`catalog`.`schema`*
+        """
         return pulumi.get(self, "ids")
 
 
@@ -71,7 +74,34 @@ def get_schemas(catalog_name: Optional[str] = None,
                 ids: Optional[Sequence[str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSchemasResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with a workspace-level provider!
+
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves a list of Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+
+    ## Example Usage
+
+    Listing all schemas in a _sandbox_ databricks_catalog:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    sandbox = databricks.get_schemas(catalog_name="sandbox")
+    pulumi.export("allSandboxSchemas", sandbox)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Schema to manage schemas within Unity Catalog.
+    * Catalog to manage catalogs within Unity Catalog.
+
+
+    :param str catalog_name: Name of databricks_catalog
+    :param Sequence[str] ids: set of Schema full names: *`catalog`.`schema`*
     """
     __args__ = dict()
     __args__['catalogName'] = catalog_name
@@ -87,7 +117,34 @@ def get_schemas_output(catalog_name: Optional[pulumi.Input[str]] = None,
                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchemasResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with a workspace-level provider!
+
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves a list of Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+
+    ## Example Usage
+
+    Listing all schemas in a _sandbox_ databricks_catalog:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    sandbox = databricks.get_schemas(catalog_name="sandbox")
+    pulumi.export("allSandboxSchemas", sandbox)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Schema to manage schemas within Unity Catalog.
+    * Catalog to manage catalogs within Unity Catalog.
+
+
+    :param str catalog_name: Name of databricks_catalog
+    :param Sequence[str] ids: set of Schema full names: *`catalog`.`schema`*
     """
     __args__ = dict()
     __args__['catalogName'] = catalog_name

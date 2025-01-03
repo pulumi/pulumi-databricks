@@ -12,33 +12,63 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The current status of this private endpoint.
+        /// </summary>
         [Input("connectionState")]
         public string? ConnectionState { get; set; }
 
+        /// <summary>
+        /// Time in epoch milliseconds when this object was created.
+        /// </summary>
         [Input("creationTime")]
         public int? CreationTime { get; set; }
 
+        /// <summary>
+        /// Whether this private endpoint is deactivated.
+        /// </summary>
         [Input("deactivated")]
         public bool? Deactivated { get; set; }
 
+        /// <summary>
+        /// Time in epoch milliseconds when this object was deactivated.
+        /// </summary>
         [Input("deactivatedAt")]
         public int? DeactivatedAt { get; set; }
 
+        /// <summary>
+        /// The name of the Azure private endpoint resource.
+        /// </summary>
         [Input("endpointName")]
         public string? EndpointName { get; set; }
 
+        /// <summary>
+        /// The sub-resource type (group ID) of the target resource.
+        /// </summary>
         [Input("groupId")]
         public string? GroupId { get; set; }
 
+        /// <summary>
+        /// The Databricks network connectivity configuration ID.
+        /// </summary>
         [Input("networkConnectivityConfigId")]
         public string? NetworkConnectivityConfigId { get; set; }
 
+        /// <summary>
+        /// The Azure resource ID of the target resource.
+        /// </summary>
         [Input("resourceId")]
         public string? ResourceId { get; set; }
 
+        /// <summary>
+        /// The ID of a private endpoint rule.
+        /// </summary>
         [Input("ruleId")]
         public string? RuleId { get; set; }
 
+        /// <summary>
+        /// Time in epoch milliseconds when the network was updated.
+        /// </summary>
         [Input("updatedTime")]
         public int? UpdatedTime { get; set; }
 

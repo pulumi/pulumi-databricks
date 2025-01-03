@@ -14,17 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTask {
+    /**
+     * @return Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
+     * 
+     */
     private @Nullable Integer concurrency;
+    /**
+     * @return (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
+     * 
+     */
     private String inputs;
+    /**
+     * @return Task to run against the `inputs` list.
+     * 
+     */
     private JobTaskForEachTaskTask task;
 
     private JobTaskForEachTask() {}
+    /**
+     * @return Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
+     * 
+     */
     public Optional<Integer> concurrency() {
         return Optional.ofNullable(this.concurrency);
     }
+    /**
+     * @return (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
+     * 
+     */
     public String inputs() {
         return this.inputs;
     }
+    /**
+     * @return Task to run against the `inputs` list.
+     * 
+     */
     public JobTaskForEachTaskTask task() {
         return this.task;
     }

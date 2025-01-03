@@ -16,59 +16,183 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; This resource can only be used on a Unity Catalog-enabled workspace!
+ * 
+ * This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.VectorSearchEndpoint;
+ * import com.pulumi.databricks.VectorSearchEndpointArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new VectorSearchEndpoint("this", VectorSearchEndpointArgs.builder()
+ *             .name("vector-search-test")
+ *             .endpointType("STANDARD")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * The resource can be imported using the name of the Mosaic AI Vector Search Endpoint
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/vectorSearchEndpoint:VectorSearchEndpoint this &lt;endpoint-name&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/vectorSearchEndpoint:VectorSearchEndpoint")
 public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
+    /**
+     * Timestamp of endpoint creation (milliseconds).
+     * 
+     */
     @Export(name="creationTimestamp", refs={Integer.class}, tree="[0]")
     private Output<Integer> creationTimestamp;
 
+    /**
+     * @return Timestamp of endpoint creation (milliseconds).
+     * 
+     */
     public Output<Integer> creationTimestamp() {
         return this.creationTimestamp;
     }
+    /**
+     * Creator of the endpoint.
+     * 
+     */
     @Export(name="creator", refs={String.class}, tree="[0]")
     private Output<String> creator;
 
+    /**
+     * @return Creator of the endpoint.
+     * 
+     */
     public Output<String> creator() {
         return this.creator;
     }
+    /**
+     * Unique internal identifier of the endpoint (UUID).
+     * 
+     */
     @Export(name="endpointId", refs={String.class}, tree="[0]")
     private Output<String> endpointId;
 
+    /**
+     * @return Unique internal identifier of the endpoint (UUID).
+     * 
+     */
     public Output<String> endpointId() {
         return this.endpointId;
     }
+    /**
+     * Object describing the current status of the endpoint consisting of the following fields:
+     * 
+     */
     @Export(name="endpointStatuses", refs={List.class,VectorSearchEndpointEndpointStatus.class}, tree="[0,1]")
     private Output<List<VectorSearchEndpointEndpointStatus>> endpointStatuses;
 
+    /**
+     * @return Object describing the current status of the endpoint consisting of the following fields:
+     * 
+     */
     public Output<List<VectorSearchEndpointEndpointStatus>> endpointStatuses() {
         return this.endpointStatuses;
     }
+    /**
+     * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * 
+     */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
+    /**
+     * @return Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+     * 
+     */
     public Output<String> endpointType() {
         return this.endpointType;
     }
+    /**
+     * Timestamp of the last update to the endpoint (milliseconds).
+     * 
+     */
     @Export(name="lastUpdatedTimestamp", refs={Integer.class}, tree="[0]")
     private Output<Integer> lastUpdatedTimestamp;
 
+    /**
+     * @return Timestamp of the last update to the endpoint (milliseconds).
+     * 
+     */
     public Output<Integer> lastUpdatedTimestamp() {
         return this.lastUpdatedTimestamp;
     }
+    /**
+     * User who last updated the endpoint.
+     * 
+     */
     @Export(name="lastUpdatedUser", refs={String.class}, tree="[0]")
     private Output<String> lastUpdatedUser;
 
+    /**
+     * @return User who last updated the endpoint.
+     * 
+     */
     public Output<String> lastUpdatedUser() {
         return this.lastUpdatedUser;
     }
+    /**
+     * Name of the Mosaic AI Vector Search Endpoint to create.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Name of the Mosaic AI Vector Search Endpoint to create.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Number of indexes on the endpoint.
+     * 
+     */
     @Export(name="numIndexes", refs={Integer.class}, tree="[0]")
     private Output<Integer> numIndexes;
 
+    /**
+     * @return Number of indexes on the endpoint.
+     * 
+     */
     public Output<Integer> numIndexes() {
         return this.numIndexes;
     }

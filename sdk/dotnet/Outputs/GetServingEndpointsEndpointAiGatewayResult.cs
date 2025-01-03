@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayGuardrailResult> Guardrails;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfigResult> InferenceTableConfigs;
+        /// <summary>
+        /// A list of rate limit blocks to be applied to the serving endpoint.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayRateLimitResult> RateLimits;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfigResult> UsageTrackingConfigs;
 

@@ -13,29 +13,69 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BudgetAlertConfiguration {
+    /**
+     * @return List of action configurations to take when the budget alert is triggered. Consists of the following fields:
+     * 
+     */
     private @Nullable List<BudgetAlertConfigurationActionConfiguration> actionConfigurations;
     private @Nullable String alertConfigurationId;
+    /**
+     * @return The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+     * 
+     */
     private @Nullable String quantityThreshold;
+    /**
+     * @return The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+     * 
+     */
     private @Nullable String quantityType;
+    /**
+     * @return The time window of usage data for the budget. (Enum: `MONTH`)
+     * 
+     */
     private @Nullable String timePeriod;
+    /**
+     * @return The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
+     * 
+     */
     private @Nullable String triggerType;
 
     private BudgetAlertConfiguration() {}
+    /**
+     * @return List of action configurations to take when the budget alert is triggered. Consists of the following fields:
+     * 
+     */
     public List<BudgetAlertConfigurationActionConfiguration> actionConfigurations() {
         return this.actionConfigurations == null ? List.of() : this.actionConfigurations;
     }
     public Optional<String> alertConfigurationId() {
         return Optional.ofNullable(this.alertConfigurationId);
     }
+    /**
+     * @return The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+     * 
+     */
     public Optional<String> quantityThreshold() {
         return Optional.ofNullable(this.quantityThreshold);
     }
+    /**
+     * @return The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+     * 
+     */
     public Optional<String> quantityType() {
         return Optional.ofNullable(this.quantityType);
     }
+    /**
+     * @return The time window of usage data for the budget. (Enum: `MONTH`)
+     * 
+     */
     public Optional<String> timePeriod() {
         return Optional.ofNullable(this.timePeriod);
     }
+    /**
+     * @return The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
+     * 
+     */
     public Optional<String> triggerType() {
         return Optional.ofNullable(this.triggerType);
     }

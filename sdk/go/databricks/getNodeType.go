@@ -11,6 +11,70 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// Gets the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
+//
+// > **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `minGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn't match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			withGpu, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+//				LocalDisk: pulumi.BoolRef(true),
+//				MinCores:  pulumi.IntRef(16),
+//				GbPerCore: pulumi.IntRef(1),
+//				MinGpus:   pulumi.IntRef(1),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			gpuMl, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
+//				Gpu: pulumi.BoolRef(true),
+//				Ml:  pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewCluster(ctx, "research", &databricks.ClusterArgs{
+//				ClusterName:            pulumi.String("Research Cluster"),
+//				SparkVersion:           pulumi.String(gpuMl.Id),
+//				NodeTypeId:             pulumi.String(withGpu.Id),
+//				AutoterminationMinutes: pulumi.Int(20),
+//				Autoscale: &databricks.ClusterAutoscaleArgs{
+//					MinWorkers: pulumi.Int(1),
+//					MaxWorkers: pulumi.Int(50),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * End to end workspace management guide.
+// * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+// * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
+// * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+// * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 func GetNodeType(ctx *pulumi.Context, args *GetNodeTypeArgs, opts ...pulumi.InvokeOption) (*GetNodeTypeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNodeTypeResult
@@ -23,38 +87,60 @@ func GetNodeType(ctx *pulumi.Context, args *GetNodeTypeArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getNodeType.
 type GetNodeTypeArgs struct {
-	Category              *string `pulumi:"category"`
-	Fleet                 *bool   `pulumi:"fleet"`
-	GbPerCore             *int    `pulumi:"gbPerCore"`
-	Graviton              *bool   `pulumi:"graviton"`
-	Id                    *string `pulumi:"id"`
-	IsIoCacheEnabled      *bool   `pulumi:"isIoCacheEnabled"`
-	LocalDisk             *bool   `pulumi:"localDisk"`
-	LocalDiskMinSize      *int    `pulumi:"localDiskMinSize"`
-	MinCores              *int    `pulumi:"minCores"`
-	MinGpus               *int    `pulumi:"minGpus"`
-	MinMemoryGb           *int    `pulumi:"minMemoryGb"`
-	PhotonDriverCapable   *bool   `pulumi:"photonDriverCapable"`
-	PhotonWorkerCapable   *bool   `pulumi:"photonWorkerCapable"`
-	SupportPortForwarding *bool   `pulumi:"supportPortForwarding"`
+	// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
+	// * `General Purpose` (all clouds)
+	// * `General Purpose (HDD)` (Azure)
+	// * `Compute Optimized` (all clouds)
+	// * `Memory Optimized` (all clouds)
+	// * `Memory Optimized (Remote HDD)` (Azure)
+	// * `Storage Optimized` (AWS, Azure)
+	// * `GPU Accelerated` (AWS, Azure)
+	Category *string `pulumi:"category"`
+	// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
+	Fleet *bool `pulumi:"fleet"`
+	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
+	GbPerCore *int `pulumi:"gbPerCore"`
+	// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+	Graviton *bool `pulumi:"graviton"`
+	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+	Id *string `pulumi:"id"`
+	// . Pick only nodes that have IO Cache. Defaults to _false_.
+	IsIoCacheEnabled *bool `pulumi:"isIoCacheEnabled"`
+	// Pick only nodes with local storage. Defaults to _false_.
+	LocalDisk *bool `pulumi:"localDisk"`
+	// Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
+	LocalDiskMinSize *int `pulumi:"localDiskMinSize"`
+	// Minimum number of CPU cores available on instance. Defaults to _0_.
+	MinCores *int `pulumi:"minCores"`
+	// Minimum number of GPU's attached to instance. Defaults to _0_.
+	MinGpus *int `pulumi:"minGpus"`
+	// Minimum amount of memory per node in gigabytes. Defaults to _0_.
+	MinMemoryGb *int `pulumi:"minMemoryGb"`
+	// Pick only nodes that can run Photon driver. Defaults to _false_.
+	PhotonDriverCapable *bool `pulumi:"photonDriverCapable"`
+	// Pick only nodes that can run Photon workers. Defaults to _false_.
+	PhotonWorkerCapable *bool `pulumi:"photonWorkerCapable"`
+	// Pick only nodes that support port forwarding. Defaults to _false_.
+	SupportPortForwarding *bool `pulumi:"supportPortForwarding"`
 }
 
 // A collection of values returned by getNodeType.
 type GetNodeTypeResult struct {
-	Category              *string `pulumi:"category"`
-	Fleet                 *bool   `pulumi:"fleet"`
-	GbPerCore             *int    `pulumi:"gbPerCore"`
-	Graviton              *bool   `pulumi:"graviton"`
-	Id                    string  `pulumi:"id"`
-	IsIoCacheEnabled      *bool   `pulumi:"isIoCacheEnabled"`
-	LocalDisk             *bool   `pulumi:"localDisk"`
-	LocalDiskMinSize      *int    `pulumi:"localDiskMinSize"`
-	MinCores              *int    `pulumi:"minCores"`
-	MinGpus               *int    `pulumi:"minGpus"`
-	MinMemoryGb           *int    `pulumi:"minMemoryGb"`
-	PhotonDriverCapable   *bool   `pulumi:"photonDriverCapable"`
-	PhotonWorkerCapable   *bool   `pulumi:"photonWorkerCapable"`
-	SupportPortForwarding *bool   `pulumi:"supportPortForwarding"`
+	Category  *string `pulumi:"category"`
+	Fleet     *bool   `pulumi:"fleet"`
+	GbPerCore *int    `pulumi:"gbPerCore"`
+	Graviton  *bool   `pulumi:"graviton"`
+	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+	Id                    string `pulumi:"id"`
+	IsIoCacheEnabled      *bool  `pulumi:"isIoCacheEnabled"`
+	LocalDisk             *bool  `pulumi:"localDisk"`
+	LocalDiskMinSize      *int   `pulumi:"localDiskMinSize"`
+	MinCores              *int   `pulumi:"minCores"`
+	MinGpus               *int   `pulumi:"minGpus"`
+	MinMemoryGb           *int   `pulumi:"minMemoryGb"`
+	PhotonDriverCapable   *bool  `pulumi:"photonDriverCapable"`
+	PhotonWorkerCapable   *bool  `pulumi:"photonWorkerCapable"`
+	SupportPortForwarding *bool  `pulumi:"supportPortForwarding"`
 }
 
 func GetNodeTypeOutput(ctx *pulumi.Context, args GetNodeTypeOutputArgs, opts ...pulumi.InvokeOption) GetNodeTypeResultOutput {
@@ -68,20 +154,41 @@ func GetNodeTypeOutput(ctx *pulumi.Context, args GetNodeTypeOutputArgs, opts ...
 
 // A collection of arguments for invoking getNodeType.
 type GetNodeTypeOutputArgs struct {
-	Category              pulumi.StringPtrInput `pulumi:"category"`
-	Fleet                 pulumi.BoolPtrInput   `pulumi:"fleet"`
-	GbPerCore             pulumi.IntPtrInput    `pulumi:"gbPerCore"`
-	Graviton              pulumi.BoolPtrInput   `pulumi:"graviton"`
-	Id                    pulumi.StringPtrInput `pulumi:"id"`
-	IsIoCacheEnabled      pulumi.BoolPtrInput   `pulumi:"isIoCacheEnabled"`
-	LocalDisk             pulumi.BoolPtrInput   `pulumi:"localDisk"`
-	LocalDiskMinSize      pulumi.IntPtrInput    `pulumi:"localDiskMinSize"`
-	MinCores              pulumi.IntPtrInput    `pulumi:"minCores"`
-	MinGpus               pulumi.IntPtrInput    `pulumi:"minGpus"`
-	MinMemoryGb           pulumi.IntPtrInput    `pulumi:"minMemoryGb"`
-	PhotonDriverCapable   pulumi.BoolPtrInput   `pulumi:"photonDriverCapable"`
-	PhotonWorkerCapable   pulumi.BoolPtrInput   `pulumi:"photonWorkerCapable"`
-	SupportPortForwarding pulumi.BoolPtrInput   `pulumi:"supportPortForwarding"`
+	// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
+	// * `General Purpose` (all clouds)
+	// * `General Purpose (HDD)` (Azure)
+	// * `Compute Optimized` (all clouds)
+	// * `Memory Optimized` (all clouds)
+	// * `Memory Optimized (Remote HDD)` (Azure)
+	// * `Storage Optimized` (AWS, Azure)
+	// * `GPU Accelerated` (AWS, Azure)
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
+	Fleet pulumi.BoolPtrInput `pulumi:"fleet"`
+	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
+	GbPerCore pulumi.IntPtrInput `pulumi:"gbPerCore"`
+	// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+	Graviton pulumi.BoolPtrInput `pulumi:"graviton"`
+	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// . Pick only nodes that have IO Cache. Defaults to _false_.
+	IsIoCacheEnabled pulumi.BoolPtrInput `pulumi:"isIoCacheEnabled"`
+	// Pick only nodes with local storage. Defaults to _false_.
+	LocalDisk pulumi.BoolPtrInput `pulumi:"localDisk"`
+	// Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
+	LocalDiskMinSize pulumi.IntPtrInput `pulumi:"localDiskMinSize"`
+	// Minimum number of CPU cores available on instance. Defaults to _0_.
+	MinCores pulumi.IntPtrInput `pulumi:"minCores"`
+	// Minimum number of GPU's attached to instance. Defaults to _0_.
+	MinGpus pulumi.IntPtrInput `pulumi:"minGpus"`
+	// Minimum amount of memory per node in gigabytes. Defaults to _0_.
+	MinMemoryGb pulumi.IntPtrInput `pulumi:"minMemoryGb"`
+	// Pick only nodes that can run Photon driver. Defaults to _false_.
+	PhotonDriverCapable pulumi.BoolPtrInput `pulumi:"photonDriverCapable"`
+	// Pick only nodes that can run Photon workers. Defaults to _false_.
+	PhotonWorkerCapable pulumi.BoolPtrInput `pulumi:"photonWorkerCapable"`
+	// Pick only nodes that support port forwarding. Defaults to _false_.
+	SupportPortForwarding pulumi.BoolPtrInput `pulumi:"supportPortForwarding"`
 }
 
 func (GetNodeTypeOutputArgs) ElementType() reflect.Type {
@@ -119,6 +226,7 @@ func (o GetNodeTypeResultOutput) Graviton() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) *bool { return v.Graviton }).(pulumi.BoolPtrOutput)
 }
 
+// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
 func (o GetNodeTypeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) string { return v.Id }).(pulumi.StringOutput)
 }

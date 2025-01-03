@@ -15,9 +15,17 @@ public final class GetCatalogsPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetCatalogsPlainArgs Empty = new GetCatalogsPlainArgs();
 
+    /**
+     * set of databricks.Catalog names
+     * 
+     */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
+    /**
+     * @return set of databricks.Catalog names
+     * 
+     */
     public Optional<List<String>> ids() {
         return Optional.ofNullable(this.ids);
     }
@@ -46,11 +54,23 @@ public final class GetCatalogsPlainArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetCatalogsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids set of databricks.Catalog names
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable List<String> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids set of databricks.Catalog names
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }

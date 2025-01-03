@@ -16,89 +16,249 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSqlWarehouseResult {
+    /**
+     * @return Time in minutes until an idle SQL warehouse terminates all clusters and stops.
+     * 
+     */
     private Integer autoStopMins;
+    /**
+     * @return block, consisting of following fields:
+     * 
+     */
     private GetSqlWarehouseChannel channel;
+    /**
+     * @return The size of the clusters allocated to the warehouse: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
+     * 
+     */
     private String clusterSize;
+    /**
+     * @return The username of the user who created the endpoint.
+     * 
+     */
     private String creatorName;
+    /**
+     * @return ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+     * 
+     */
     private String dataSourceId;
+    /**
+     * @return Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
+     * 
+     */
     private Boolean enablePhoton;
+    /**
+     * @return Whether this SQL warehouse is a serverless SQL warehouse.
+     * 
+     */
     private Boolean enableServerlessCompute;
+    /**
+     * @return Health status of the endpoint.
+     * 
+     */
     private GetSqlWarehouseHealth health;
+    /**
+     * @return The ID of the SQL warehouse.
+     * 
+     */
     private String id;
     private String instanceProfileArn;
+    /**
+     * @return JDBC connection string.
+     * 
+     */
     private String jdbcUrl;
+    /**
+     * @return Maximum number of clusters available when a SQL warehouse is running.
+     * 
+     */
     private Integer maxNumClusters;
+    /**
+     * @return Minimum number of clusters available when a SQL warehouse is running.
+     * 
+     */
     private Integer minNumClusters;
+    /**
+     * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * 
+     */
     private String name;
+    /**
+     * @return The current number of clusters used by the endpoint.
+     * 
+     */
     private Integer numActiveSessions;
+    /**
+     * @return The current number of clusters used by the endpoint.
+     * 
+     */
     private Integer numClusters;
+    /**
+     * @return ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
+     * 
+     */
     private GetSqlWarehouseOdbcParams odbcParams;
+    /**
+     * @return The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
+     * 
+     */
     private String spotInstancePolicy;
+    /**
+     * @return The current state of the endpoint.
+     * 
+     */
     private String state;
+    /**
+     * @return tags used for SQL warehouse resources.
+     * 
+     */
     private GetSqlWarehouseTags tags;
+    /**
+     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     * 
+     */
     private String warehouseType;
 
     private GetSqlWarehouseResult() {}
+    /**
+     * @return Time in minutes until an idle SQL warehouse terminates all clusters and stops.
+     * 
+     */
     public Integer autoStopMins() {
         return this.autoStopMins;
     }
+    /**
+     * @return block, consisting of following fields:
+     * 
+     */
     public GetSqlWarehouseChannel channel() {
         return this.channel;
     }
+    /**
+     * @return The size of the clusters allocated to the warehouse: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
+     * 
+     */
     public String clusterSize() {
         return this.clusterSize;
     }
+    /**
+     * @return The username of the user who created the endpoint.
+     * 
+     */
     public String creatorName() {
         return this.creatorName;
     }
+    /**
+     * @return ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+     * 
+     */
     public String dataSourceId() {
         return this.dataSourceId;
     }
+    /**
+     * @return Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
+     * 
+     */
     public Boolean enablePhoton() {
         return this.enablePhoton;
     }
+    /**
+     * @return Whether this SQL warehouse is a serverless SQL warehouse.
+     * 
+     */
     public Boolean enableServerlessCompute() {
         return this.enableServerlessCompute;
     }
+    /**
+     * @return Health status of the endpoint.
+     * 
+     */
     public GetSqlWarehouseHealth health() {
         return this.health;
     }
+    /**
+     * @return The ID of the SQL warehouse.
+     * 
+     */
     public String id() {
         return this.id;
     }
     public String instanceProfileArn() {
         return this.instanceProfileArn;
     }
+    /**
+     * @return JDBC connection string.
+     * 
+     */
     public String jdbcUrl() {
         return this.jdbcUrl;
     }
+    /**
+     * @return Maximum number of clusters available when a SQL warehouse is running.
+     * 
+     */
     public Integer maxNumClusters() {
         return this.maxNumClusters;
     }
+    /**
+     * @return Minimum number of clusters available when a SQL warehouse is running.
+     * 
+     */
     public Integer minNumClusters() {
         return this.minNumClusters;
     }
+    /**
+     * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The current number of clusters used by the endpoint.
+     * 
+     */
     public Integer numActiveSessions() {
         return this.numActiveSessions;
     }
+    /**
+     * @return The current number of clusters used by the endpoint.
+     * 
+     */
     public Integer numClusters() {
         return this.numClusters;
     }
+    /**
+     * @return ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
+     * 
+     */
     public GetSqlWarehouseOdbcParams odbcParams() {
         return this.odbcParams;
     }
+    /**
+     * @return The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
+     * 
+     */
     public String spotInstancePolicy() {
         return this.spotInstancePolicy;
     }
+    /**
+     * @return The current state of the endpoint.
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return tags used for SQL warehouse resources.
+     * 
+     */
     public GetSqlWarehouseTags tags() {
         return this.tags;
     }
+    /**
+     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     * 
+     */
     public String warehouseType() {
         return this.warehouseType;
     }

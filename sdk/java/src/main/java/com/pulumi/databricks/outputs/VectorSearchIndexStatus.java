@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VectorSearchIndexStatus {
+    /**
+     * @return Index API Url to be used to perform operations on the index
+     * 
+     */
     private @Nullable String indexUrl;
+    /**
+     * @return Number of rows indexed
+     * 
+     */
     private @Nullable Integer indexedRowCount;
+    /**
+     * @return Message associated with the index status
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return Whether the index is ready for search
+     * 
+     */
     private @Nullable Boolean ready;
 
     private VectorSearchIndexStatus() {}
+    /**
+     * @return Index API Url to be used to perform operations on the index
+     * 
+     */
     public Optional<String> indexUrl() {
         return Optional.ofNullable(this.indexUrl);
     }
+    /**
+     * @return Number of rows indexed
+     * 
+     */
     public Optional<Integer> indexedRowCount() {
         return Optional.ofNullable(this.indexedRowCount);
     }
+    /**
+     * @return Message associated with the index status
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return Whether the index is ready for search
+     * 
+     */
     public Optional<Boolean> ready() {
         return Optional.ofNullable(this.ready);
     }

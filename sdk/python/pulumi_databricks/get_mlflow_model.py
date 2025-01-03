@@ -54,36 +54,57 @@ class GetMlflowModelResult:
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        User-specified description for the object.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        Unique identifier for the object.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="latestVersions")
     def latest_versions(self) -> Sequence['outputs.GetMlflowModelLatestVersionResult']:
+        """
+        Array of model versions, each the latest version for its stage.
+        """
         return pulumi.get(self, "latest_versions")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the model.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="permissionLevel")
     def permission_level(self) -> str:
+        """
+        Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+        """
         return pulumi.get(self, "permission_level")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetMlflowModelTagResult']:
+        """
+        Array of tags associated with the model.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
+        """
+        The username of the user that created the object.
+        """
         return pulumi.get(self, "user_id")
 
 
@@ -110,7 +131,58 @@ def get_mlflow_model(description: Optional[str] = None,
                      user_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMlflowModelResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves the settings of MlflowModel by name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this_mlflow_model = databricks.MlflowModel("this",
+        name="My MLflow Model",
+        description="My MLflow model description",
+        tags=[
+            {
+                "key": "key1",
+                "value": "value1",
+            },
+            {
+                "key": "key2",
+                "value": "value2",
+            },
+        ])
+    this = databricks.get_mlflow_model(name="My MLflow Model")
+    pulumi.export("model", this)
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_mlflow_model(name="My MLflow Model with multiple versions")
+    this_model_serving = databricks.ModelServing("this",
+        name="model-serving-endpoint",
+        config={
+            "served_models": [{
+                "name": "model_serving_prod",
+                "model_name": this.name,
+                "model_version": this.latest_versions[0].version,
+                "workload_size": "Small",
+                "scale_to_zero_enabled": True,
+            }],
+        })
+    ```
+
+
+    :param str description: User-specified description for the object.
+    :param Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']] latest_versions: Array of model versions, each the latest version for its stage.
+    :param str name: Name of the registered model.
+    :param str permission_level: Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+    :param Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']] tags: Array of tags associated with the model.
+    :param str user_id: The username of the user that created the object.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -138,7 +210,58 @@ def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[str]]] =
                             user_id: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowModelResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves the settings of MlflowModel by name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this_mlflow_model = databricks.MlflowModel("this",
+        name="My MLflow Model",
+        description="My MLflow model description",
+        tags=[
+            {
+                "key": "key1",
+                "value": "value1",
+            },
+            {
+                "key": "key2",
+                "value": "value2",
+            },
+        ])
+    this = databricks.get_mlflow_model(name="My MLflow Model")
+    pulumi.export("model", this)
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_mlflow_model(name="My MLflow Model with multiple versions")
+    this_model_serving = databricks.ModelServing("this",
+        name="model-serving-endpoint",
+        config={
+            "served_models": [{
+                "name": "model_serving_prod",
+                "model_name": this.name,
+                "model_version": this.latest_versions[0].version,
+                "workload_size": "Small",
+                "scale_to_zero_enabled": True,
+            }],
+        })
+    ```
+
+
+    :param str description: User-specified description for the object.
+    :param Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']] latest_versions: Array of model versions, each the latest version for its stage.
+    :param str name: Name of the registered model.
+    :param str permission_level: Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+    :param Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']] tags: Array of tags associated with the model.
+    :param str user_id: The username of the user that created the object.
     """
     __args__ = dict()
     __args__['description'] = description

@@ -16,16 +16,32 @@ public final class LakehouseMonitorNotificationsArgs extends com.pulumi.resource
 
     public static final LakehouseMonitorNotificationsArgs Empty = new LakehouseMonitorNotificationsArgs();
 
+    /**
+     * who to send notifications to on monitor failure.
+     * 
+     */
     @Import(name="onFailure")
     private @Nullable Output<LakehouseMonitorNotificationsOnFailureArgs> onFailure;
 
+    /**
+     * @return who to send notifications to on monitor failure.
+     * 
+     */
     public Optional<Output<LakehouseMonitorNotificationsOnFailureArgs>> onFailure() {
         return Optional.ofNullable(this.onFailure);
     }
 
+    /**
+     * Who to send notifications to when new data classification tags are detected.
+     * 
+     */
     @Import(name="onNewClassificationTagDetected")
     private @Nullable Output<LakehouseMonitorNotificationsOnNewClassificationTagDetectedArgs> onNewClassificationTagDetected;
 
+    /**
+     * @return Who to send notifications to when new data classification tags are detected.
+     * 
+     */
     public Optional<Output<LakehouseMonitorNotificationsOnNewClassificationTagDetectedArgs>> onNewClassificationTagDetected() {
         return Optional.ofNullable(this.onNewClassificationTagDetected);
     }
@@ -55,20 +71,44 @@ public final class LakehouseMonitorNotificationsArgs extends com.pulumi.resource
             $ = new LakehouseMonitorNotificationsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param onFailure who to send notifications to on monitor failure.
+         * 
+         * @return builder
+         * 
+         */
         public Builder onFailure(@Nullable Output<LakehouseMonitorNotificationsOnFailureArgs> onFailure) {
             $.onFailure = onFailure;
             return this;
         }
 
+        /**
+         * @param onFailure who to send notifications to on monitor failure.
+         * 
+         * @return builder
+         * 
+         */
         public Builder onFailure(LakehouseMonitorNotificationsOnFailureArgs onFailure) {
             return onFailure(Output.of(onFailure));
         }
 
+        /**
+         * @param onNewClassificationTagDetected Who to send notifications to when new data classification tags are detected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder onNewClassificationTagDetected(@Nullable Output<LakehouseMonitorNotificationsOnNewClassificationTagDetectedArgs> onNewClassificationTagDetected) {
             $.onNewClassificationTagDetected = onNewClassificationTagDetected;
             return this;
         }
 
+        /**
+         * @param onNewClassificationTagDetected Who to send notifications to when new data classification tags are detected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder onNewClassificationTagDetected(LakehouseMonitorNotificationsOnNewClassificationTagDetectedArgs onNewClassificationTagDetected) {
             return onNewClassificationTagDetected(Output.of(onNewClassificationTagDetected));
         }

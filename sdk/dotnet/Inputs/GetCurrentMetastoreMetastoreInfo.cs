@@ -15,57 +15,108 @@ namespace Pulumi.Databricks.Inputs
         [Input("cloud")]
         public string? Cloud { get; set; }
 
+        /// <summary>
+        /// Timestamp (in milliseconds) when the current metastore was created.
+        /// </summary>
         [Input("createdAt")]
         public int? CreatedAt { get; set; }
 
+        /// <summary>
+        /// the ID of the identity that created the current metastore.
+        /// </summary>
         [Input("createdBy")]
         public string? CreatedBy { get; set; }
 
+        /// <summary>
+        /// the ID of the default data access configuration.
+        /// </summary>
         [Input("defaultDataAccessConfigId")]
         public string? DefaultDataAccessConfigId { get; set; }
 
+        /// <summary>
+        /// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+        /// </summary>
         [Input("deltaSharingOrganizationName")]
         public string? DeltaSharingOrganizationName { get; set; }
 
+        /// <summary>
+        /// the expiration duration in seconds on recipient data access tokens.
+        /// </summary>
         [Input("deltaSharingRecipientTokenLifetimeInSeconds")]
         public int? DeltaSharingRecipientTokenLifetimeInSeconds { get; set; }
 
+        /// <summary>
+        /// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        /// </summary>
         [Input("deltaSharingScope")]
         public string? DeltaSharingScope { get; set; }
 
         [Input("externalAccessEnabled")]
         public bool? ExternalAccessEnabled { get; set; }
 
+        /// <summary>
+        /// Identifier in form of `&lt;cloud&gt;:&lt;region&gt;:&lt;metastore_id&gt;` for use in Databricks to Databricks Delta Sharing.
+        /// </summary>
         [Input("globalMetastoreId")]
         public string? GlobalMetastoreId { get; set; }
 
+        /// <summary>
+        /// Metastore ID.
+        /// </summary>
         [Input("metastoreId")]
         public string? MetastoreId { get; set; }
 
+        /// <summary>
+        /// Name of metastore.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Username/group name/sp application_id of the metastore owner.
+        /// </summary>
         [Input("owner")]
         public string? Owner { get; set; }
 
+        /// <summary>
+        /// the version of the privilege model used by the metastore.
+        /// </summary>
         [Input("privilegeModelVersion")]
         public string? PrivilegeModelVersion { get; set; }
 
+        /// <summary>
+        /// (Mandatory for account-level) The region of the metastore.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
+        /// <summary>
+        /// Path on cloud storage account, where managed `databricks.Table` are stored.
+        /// </summary>
         [Input("storageRoot")]
         public string? StorageRoot { get; set; }
 
+        /// <summary>
+        /// ID of a storage credential used for the `storage_root`.
+        /// </summary>
         [Input("storageRootCredentialId")]
         public string? StorageRootCredentialId { get; set; }
 
+        /// <summary>
+        /// Name of a storage credential used for the `storage_root`.
+        /// </summary>
         [Input("storageRootCredentialName")]
         public string? StorageRootCredentialName { get; set; }
 
+        /// <summary>
+        /// Timestamp (in milliseconds) when the current metastore was updated.
+        /// </summary>
         [Input("updatedAt")]
         public int? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// the ID of the identity that updated the current metastore.
+        /// </summary>
         [Input("updatedBy")]
         public string? UpdatedBy { get; set; }
 

@@ -15,9 +15,17 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsSta
 
     public static final GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule Empty = new GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule();
 
+    /**
+     * The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+     * 
+     */
     @Import(name="cidrBlocks")
     private @Nullable List<String> cidrBlocks;
 
+    /**
+     * @return The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+     * 
+     */
     public Optional<List<String>> cidrBlocks() {
         return Optional.ofNullable(this.cidrBlocks);
     }
@@ -46,11 +54,23 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsSta
             $ = new GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cidrBlocks The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlocks(@Nullable List<String> cidrBlocks) {
             $.cidrBlocks = cidrBlocks;
             return this;
         }
 
+        /**
+         * @param cidrBlocks The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlocks(String... cidrBlocks) {
             return cidrBlocks(List.of(cidrBlocks));
         }

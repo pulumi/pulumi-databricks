@@ -15,17 +15,92 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Sometimes accessing data requires that you authenticate to external data sources through JDBC. Instead of directly entering your credentials into a notebook, use Databricks secrets to store your credentials and reference them in notebooks and jobs. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.SecretScope;
+ * import com.pulumi.databricks.SecretScopeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new SecretScope("this", SecretScopeArgs.builder()
+ *             .name("terraform-demo-scope")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * End to end workspace management guide.
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+ * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * 
+ * ## Import
+ * 
+ * The secret resource scope can be imported using the scope name. `initial_manage_principal` state won&#39;t be imported, because the underlying API doesn&#39;t include it in the response.
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/secretScope:SecretScope object &lt;scopeName&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/secretScope:SecretScope")
 public class SecretScope extends com.pulumi.resources.CustomResource {
+    /**
+     * Either `DATABRICKS` or `AZURE_KEYVAULT`
+     * 
+     */
     @Export(name="backendType", refs={String.class}, tree="[0]")
     private Output<String> backendType;
 
+    /**
+     * @return Either `DATABRICKS` or `AZURE_KEYVAULT`
+     * 
+     */
     public Output<String> backendType() {
         return this.backendType;
     }
+    /**
+     * The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it&#39;s omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer&#39;s user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
+     * 
+     */
     @Export(name="initialManagePrincipal", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> initialManagePrincipal;
 
+    /**
+     * @return The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it&#39;s omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer&#39;s user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
+     * 
+     */
     public Output<Optional<String>> initialManagePrincipal() {
         return Codegen.optional(this.initialManagePrincipal);
     }
@@ -35,9 +110,17 @@ public class SecretScope extends com.pulumi.resources.CustomResource {
     public Output<Optional<SecretScopeKeyvaultMetadata>> keyvaultMetadata() {
         return Codegen.optional(this.keyvaultMetadata);
     }
+    /**
+     * Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }

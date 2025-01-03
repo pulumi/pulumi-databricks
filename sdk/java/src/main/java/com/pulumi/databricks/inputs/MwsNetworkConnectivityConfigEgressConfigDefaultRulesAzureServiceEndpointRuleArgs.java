@@ -16,23 +16,47 @@ public final class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServ
 
     public static final MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs Empty = new MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs();
 
+    /**
+     * list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+     * 
+     */
     @Import(name="subnets")
     private @Nullable Output<List<String>> subnets;
 
+    /**
+     * @return list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+     * 
+     */
     public Optional<Output<List<String>>> subnets() {
         return Optional.ofNullable(this.subnets);
     }
 
+    /**
+     * the Azure region in which this service endpoint rule applies.
+     * 
+     */
     @Import(name="targetRegion")
     private @Nullable Output<String> targetRegion;
 
+    /**
+     * @return the Azure region in which this service endpoint rule applies.
+     * 
+     */
     public Optional<Output<String>> targetRegion() {
         return Optional.ofNullable(this.targetRegion);
     }
 
+    /**
+     * the Azure services to which this service endpoint rule applies to.
+     * 
+     */
     @Import(name="targetServices")
     private @Nullable Output<List<String>> targetServices;
 
+    /**
+     * @return the Azure services to which this service endpoint rule applies to.
+     * 
+     */
     public Optional<Output<List<String>>> targetServices() {
         return Optional.ofNullable(this.targetServices);
     }
@@ -63,37 +87,85 @@ public final class MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServ
             $ = new MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param subnets list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnets(@Nullable Output<List<String>> subnets) {
             $.subnets = subnets;
             return this;
         }
 
+        /**
+         * @param subnets list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnets(List<String> subnets) {
             return subnets(Output.of(subnets));
         }
 
+        /**
+         * @param subnets list of subnets from which Databricks network traffic originates when accessing your Azure resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnets(String... subnets) {
             return subnets(List.of(subnets));
         }
 
+        /**
+         * @param targetRegion the Azure region in which this service endpoint rule applies.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetRegion(@Nullable Output<String> targetRegion) {
             $.targetRegion = targetRegion;
             return this;
         }
 
+        /**
+         * @param targetRegion the Azure region in which this service endpoint rule applies.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetRegion(String targetRegion) {
             return targetRegion(Output.of(targetRegion));
         }
 
+        /**
+         * @param targetServices the Azure services to which this service endpoint rule applies to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetServices(@Nullable Output<List<String>> targetServices) {
             $.targetServices = targetServices;
             return this;
         }
 
+        /**
+         * @param targetServices the Azure services to which this service endpoint rule applies to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetServices(List<String> targetServices) {
             return targetServices(Output.of(targetServices));
         }
 
+        /**
+         * @param targetServices the Azure services to which this service endpoint rule applies to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetServices(String... targetServices) {
             return targetServices(List.of(targetServices));
         }

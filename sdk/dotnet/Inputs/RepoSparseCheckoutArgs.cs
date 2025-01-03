@@ -14,6 +14,12 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("patterns", required: true)]
         private InputList<string>? _patterns;
+
+        /// <summary>
+        /// array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
+        /// 
+        /// Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
+        /// </summary>
         public InputList<string> Patterns
         {
             get => _patterns ?? (_patterns = new InputList<string>());

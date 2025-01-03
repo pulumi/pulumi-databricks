@@ -4,6 +4,32 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** This data source can only be used with a workspace-level provider!
+ *
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
+ *
+ * ## Example Usage
+ *
+ * Listing all catalogs:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getCatalogs({});
+ * export const allCatalogs = all;
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
+ */
 export function getCatalogs(args?: GetCatalogsArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,6 +42,9 @@ export function getCatalogs(args?: GetCatalogsArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getCatalogs.
  */
 export interface GetCatalogsArgs {
+    /**
+     * set of databricks.Catalog names
+     */
     ids?: string[];
 }
 
@@ -27,8 +56,37 @@ export interface GetCatalogsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * set of databricks.Catalog names
+     */
     readonly ids: string[];
 }
+/**
+ * > **Note** This data source can only be used with a workspace-level provider!
+ *
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
+ *
+ * ## Example Usage
+ *
+ * Listing all catalogs:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getCatalogs({});
+ * export const allCatalogs = all;
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
+ */
 export function getCatalogsOutput(args?: GetCatalogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCatalogsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,5 +99,8 @@ export function getCatalogsOutput(args?: GetCatalogsOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getCatalogs.
  */
 export interface GetCatalogsOutputArgs {
+    /**
+     * set of databricks.Catalog names
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }

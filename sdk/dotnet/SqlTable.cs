@@ -9,60 +9,182 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables / views.
+    /// 
+    /// A `databricks.SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table or a view.
+    /// 
+    /// This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
+    /// 
+    /// ## Use an Identity Column
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     {
+    ///         Name = "sandbox",
+    ///         Comment = "this catalog is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
+    /// 
+    ///     var things = new Databricks.Schema("things", new()
+    ///     {
+    ///         CatalogName = sandbox.Id,
+    ///         Name = "things",
+    ///         Comment = "this database is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "kind", "various" },
+    ///         },
+    ///     });
+    /// 
+    ///     var thing = new Databricks.SqlTable("thing", new()
+    ///     {
+    ///         Name = "quickstart_table",
+    ///         CatalogName = sandbox.Name,
+    ///         SchemaName = things.Name,
+    ///         TableType = "MANAGED",
+    ///         DataSourceFormat = "DELTA",
+    ///         StorageLocation = "",
+    ///         Columns = new[]
+    ///         {
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "id",
+    ///                 Type = "bigint",
+    ///                 Identity = "default",
+    ///             },
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "name",
+    ///                 Type = "string",
+    ///                 Comment = "name of thing",
+    ///             },
+    ///         },
+    ///         Comment = "this table is managed by terraform",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by its full name:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/sqlTable:SqlTable this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/sqlTable:SqlTable")]
     public partial class SqlTable : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Name of parent catalog. Change forces creation of a new resource.
+        /// </summary>
         [Output("catalogName")]
         public Output<string> CatalogName { get; private set; } = null!;
 
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
+        /// <summary>
+        /// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        /// </summary>
         [Output("clusterKeys")]
         public Output<ImmutableArray<string>> ClusterKeys { get; private set; } = null!;
 
         [Output("columns")]
         public Output<ImmutableArray<Outputs.SqlTableColumn>> Columns { get; private set; } = null!;
 
+        /// <summary>
+        /// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+        /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
+        /// <summary>
+        /// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        /// </summary>
         [Output("dataSourceFormat")]
         public Output<string?> DataSourceFormat { get; private set; } = null!;
 
         [Output("effectiveProperties")]
         public Output<ImmutableDictionary<string, string>> EffectiveProperties { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Map of user defined table options. Change forces creation of a new resource.
+        /// </summary>
         [Output("options")]
         public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
 
+        /// <summary>
+        /// Username/groupname/sp application_id of the schema owner.
+        /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
+        /// <summary>
+        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        /// </summary>
         [Output("partitions")]
         public Output<ImmutableArray<string>> Partitions { get; private set; } = null!;
 
+        /// <summary>
+        /// Map of table properties.
+        /// </summary>
         [Output("properties")]
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        /// </summary>
         [Output("schemaName")]
         public Output<string> SchemaName { get; private set; } = null!;
 
+        /// <summary>
+        /// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        /// </summary>
         [Output("storageCredentialName")]
         public Output<string?> StorageCredentialName { get; private set; } = null!;
 
+        /// <summary>
+        /// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        /// </summary>
         [Output("storageLocation")]
         public Output<string?> StorageLocation { get; private set; } = null!;
 
+        /// <summary>
+        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        /// </summary>
         [Output("tableType")]
         public Output<string> TableType { get; private set; } = null!;
 
+        /// <summary>
+        /// SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+        /// </summary>
         [Output("viewDefinition")]
         public Output<string?> ViewDefinition { get; private set; } = null!;
 
+        /// <summary>
+        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+        /// </summary>
         [Output("warehouseId")]
         public Output<string?> WarehouseId { get; private set; } = null!;
 
@@ -112,6 +234,9 @@ namespace Pulumi.Databricks
 
     public sealed class SqlTableArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of parent catalog. Change forces creation of a new resource.
+        /// </summary>
         [Input("catalogName", required: true)]
         public Input<string> CatalogName { get; set; } = null!;
 
@@ -120,6 +245,10 @@ namespace Pulumi.Databricks
 
         [Input("clusterKeys")]
         private InputList<string>? _clusterKeys;
+
+        /// <summary>
+        /// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        /// </summary>
         public InputList<string> ClusterKeys
         {
             get => _clusterKeys ?? (_clusterKeys = new InputList<string>());
@@ -134,28 +263,48 @@ namespace Pulumi.Databricks
             set => _columns = value;
         }
 
+        /// <summary>
+        /// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        /// </summary>
         [Input("dataSourceFormat")]
         public Input<string>? DataSourceFormat { get; set; }
 
+        /// <summary>
+        /// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("options")]
         private InputMap<string>? _options;
+
+        /// <summary>
+        /// Map of user defined table options. Change forces creation of a new resource.
+        /// </summary>
         public InputMap<string> Options
         {
             get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
 
+        /// <summary>
+        /// Username/groupname/sp application_id of the schema owner.
+        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
         [Input("partitions")]
         private InputList<string>? _partitions;
+
+        /// <summary>
+        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        /// </summary>
         public InputList<string> Partitions
         {
             get => _partitions ?? (_partitions = new InputList<string>());
@@ -164,27 +313,49 @@ namespace Pulumi.Databricks
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// Map of table properties.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
+        /// <summary>
+        /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        /// </summary>
         [Input("schemaName", required: true)]
         public Input<string> SchemaName { get; set; } = null!;
 
+        /// <summary>
+        /// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        /// </summary>
         [Input("storageCredentialName")]
         public Input<string>? StorageCredentialName { get; set; }
 
+        /// <summary>
+        /// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }
 
+        /// <summary>
+        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        /// </summary>
         [Input("tableType", required: true)]
         public Input<string> TableType { get; set; } = null!;
 
+        /// <summary>
+        /// SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+        /// </summary>
         [Input("viewDefinition")]
         public Input<string>? ViewDefinition { get; set; }
 
+        /// <summary>
+        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+        /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
 
@@ -196,6 +367,9 @@ namespace Pulumi.Databricks
 
     public sealed class SqlTableState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of parent catalog. Change forces creation of a new resource.
+        /// </summary>
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
 
@@ -204,6 +378,10 @@ namespace Pulumi.Databricks
 
         [Input("clusterKeys")]
         private InputList<string>? _clusterKeys;
+
+        /// <summary>
+        /// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        /// </summary>
         public InputList<string> ClusterKeys
         {
             get => _clusterKeys ?? (_clusterKeys = new InputList<string>());
@@ -218,9 +396,15 @@ namespace Pulumi.Databricks
             set => _columns = value;
         }
 
+        /// <summary>
+        /// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        /// </summary>
         [Input("dataSourceFormat")]
         public Input<string>? DataSourceFormat { get; set; }
 
@@ -232,22 +416,36 @@ namespace Pulumi.Databricks
             set => _effectiveProperties = value;
         }
 
+        /// <summary>
+        /// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("options")]
         private InputMap<string>? _options;
+
+        /// <summary>
+        /// Map of user defined table options. Change forces creation of a new resource.
+        /// </summary>
         public InputMap<string> Options
         {
             get => _options ?? (_options = new InputMap<string>());
             set => _options = value;
         }
 
+        /// <summary>
+        /// Username/groupname/sp application_id of the schema owner.
+        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
         [Input("partitions")]
         private InputList<string>? _partitions;
+
+        /// <summary>
+        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        /// </summary>
         public InputList<string> Partitions
         {
             get => _partitions ?? (_partitions = new InputList<string>());
@@ -256,27 +454,49 @@ namespace Pulumi.Databricks
 
         [Input("properties")]
         private InputMap<string>? _properties;
+
+        /// <summary>
+        /// Map of table properties.
+        /// </summary>
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
+        /// <summary>
+        /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        /// </summary>
         [Input("schemaName")]
         public Input<string>? SchemaName { get; set; }
 
+        /// <summary>
+        /// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        /// </summary>
         [Input("storageCredentialName")]
         public Input<string>? StorageCredentialName { get; set; }
 
+        /// <summary>
+        /// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }
 
+        /// <summary>
+        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        /// </summary>
         [Input("tableType")]
         public Input<string>? TableType { get; set; }
 
+        /// <summary>
+        /// SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+        /// </summary>
         [Input("viewDefinition")]
         public Input<string>? ViewDefinition { get; set; }
 
+        /// <summary>
+        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+        /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
 

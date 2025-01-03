@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegisteredModelResult {
+    /**
+     * @return The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+     * 
+     */
     private String fullName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,9 +27,17 @@ public final class GetRegisteredModelResult {
     private String id;
     private @Nullable Boolean includeAliases;
     private @Nullable Boolean includeBrowse;
+    /**
+     * @return block with information about the model in Unity Catalog:
+     * 
+     */
     private List<GetRegisteredModelModelInfo> modelInfos;
 
     private GetRegisteredModelResult() {}
+    /**
+     * @return The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+     * 
+     */
     public String fullName() {
         return this.fullName;
     }
@@ -42,6 +54,10 @@ public final class GetRegisteredModelResult {
     public Optional<Boolean> includeBrowse() {
         return Optional.ofNullable(this.includeBrowse);
     }
+    /**
+     * @return block with information about the model in Unity Catalog:
+     * 
+     */
     public List<GetRegisteredModelModelInfo> modelInfos() {
         return this.modelInfos;
     }

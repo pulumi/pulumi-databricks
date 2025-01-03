@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction {
+    /**
+     * @return Full name of the dependent function
+     * 
+     */
     private String functionFullName;
 
     private GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction() {}
+    /**
+     * @return Full name of the dependent function
+     * 
+     */
     public String functionFullName() {
         return this.functionFullName;
     }

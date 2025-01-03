@@ -16,29 +16,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsAppResource {
+    /**
+     * @return The description of the resource.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable GetAppsAppResourceJob job;
+    /**
+     * @return Name of the serving endpoint to grant permission on.
+     * 
+     */
     private String name;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable GetAppsAppResourceSecret secret;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable GetAppsAppResourceServingEndpoint servingEndpoint;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable GetAppsAppResourceSqlWarehouse sqlWarehouse;
 
     private GetAppsAppResource() {}
+    /**
+     * @return The description of the resource.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<GetAppsAppResourceJob> job() {
         return Optional.ofNullable(this.job);
     }
+    /**
+     * @return Name of the serving endpoint to grant permission on.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<GetAppsAppResourceSecret> secret() {
         return Optional.ofNullable(this.secret);
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<GetAppsAppResourceServingEndpoint> servingEndpoint() {
         return Optional.ofNullable(this.servingEndpoint);
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<GetAppsAppResourceSqlWarehouse> sqlWarehouse() {
         return Optional.ofNullable(this.sqlWarehouse);
     }

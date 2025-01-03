@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClustersFilterBy {
+    /**
+     * @return List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
+     * 
+     */
     private @Nullable List<String> clusterSources;
+    /**
+     * @return List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+     * 
+     */
     private @Nullable List<String> clusterStates;
+    /**
+     * @return Whether to filter by pinned clusters.
+     * 
+     */
     private @Nullable Boolean isPinned;
+    /**
+     * @return Filter by databricks.ClusterPolicy id.
+     * 
+     */
     private @Nullable String policyId;
 
     private GetClustersFilterBy() {}
+    /**
+     * @return List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
+     * 
+     */
     public List<String> clusterSources() {
         return this.clusterSources == null ? List.of() : this.clusterSources;
     }
+    /**
+     * @return List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+     * 
+     */
     public List<String> clusterStates() {
         return this.clusterStates == null ? List.of() : this.clusterStates;
     }
+    /**
+     * @return Whether to filter by pinned clusters.
+     * 
+     */
     public Optional<Boolean> isPinned() {
         return Optional.ofNullable(this.isPinned);
     }
+    /**
+     * @return Filter by databricks.ClusterPolicy id.
+     * 
+     */
     public Optional<String> policyId() {
         return Optional.ofNullable(this.policyId);
     }

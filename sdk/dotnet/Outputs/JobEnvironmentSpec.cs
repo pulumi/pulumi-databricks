@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobEnvironmentSpec
     {
+        /// <summary>
+        /// client version used by the environment.
+        /// </summary>
         public readonly string Client;
+        /// <summary>
+        /// List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
+        /// </summary>
         public readonly ImmutableArray<string> Dependencies;
 
         [OutputConstructor]

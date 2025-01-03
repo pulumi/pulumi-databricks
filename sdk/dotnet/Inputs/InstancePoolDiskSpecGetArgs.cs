@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class InstancePoolDiskSpecGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
+        /// </summary>
         [Input("diskCount")]
         public Input<int>? DiskCount { get; set; }
 
+        /// <summary>
+        /// (Integer) The size of each disk (in GiB) to attach.
+        /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }
 

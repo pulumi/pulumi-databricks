@@ -15,9 +15,17 @@ public final class GetServingEndpointsPlainArgs extends com.pulumi.resources.Inv
 
     public static final GetServingEndpointsPlainArgs Empty = new GetServingEndpointsPlainArgs();
 
+    /**
+     * List of objects describing the serving endpoints. Each object consists of following attributes:
+     * 
+     */
     @Import(name="endpoints")
     private @Nullable List<GetServingEndpointsEndpoint> endpoints;
 
+    /**
+     * @return List of objects describing the serving endpoints. Each object consists of following attributes:
+     * 
+     */
     public Optional<List<GetServingEndpointsEndpoint>> endpoints() {
         return Optional.ofNullable(this.endpoints);
     }
@@ -46,11 +54,23 @@ public final class GetServingEndpointsPlainArgs extends com.pulumi.resources.Inv
             $ = new GetServingEndpointsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param endpoints List of objects describing the serving endpoints. Each object consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoints(@Nullable List<GetServingEndpointsEndpoint> endpoints) {
             $.endpoints = endpoints;
             return this;
         }
 
+        /**
+         * @param endpoints List of objects describing the serving endpoints. Each object consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoints(GetServingEndpointsEndpoint... endpoints) {
             return endpoints(List.of(endpoints));
         }

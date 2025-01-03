@@ -9,6 +9,57 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// &gt; This resource can be used with an account or workspace-level provider.
+    /// 
+    /// A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
+    /// 
+    /// Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
+    /// 
+    /// A Unity Catalog metastore can be created without a root location &amp; credential to maintain strict separation of storage across catalogs or environments.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// For AWS
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.Metastore("this", new()
+    ///     {
+    ///         Name = "primary",
+    ///         StorageRoot = $"s3://{metastore.Id}/metastore",
+    ///         Owner = "uc admins",
+    ///         Region = "us-east-1",
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var thisMetastoreAssignment = new Databricks.MetastoreAssignment("this", new()
+    ///     {
+    ///         MetastoreId = @this.Id,
+    ///         WorkspaceId = workspaceId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// For Azure
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by ID:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/metastore:Metastore this &lt;id&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/metastore:Metastore")]
     public partial class Metastore : global::Pulumi.CustomResource
     {
@@ -24,15 +75,27 @@ namespace Pulumi.Databricks
         [Output("defaultDataAccessConfigId")]
         public Output<string?> DefaultDataAccessConfigId { get; private set; } = null!;
 
+        /// <summary>
+        /// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
+        /// </summary>
         [Output("deltaSharingOrganizationName")]
         public Output<string?> DeltaSharingOrganizationName { get; private set; } = null!;
 
+        /// <summary>
+        /// Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        /// </summary>
         [Output("deltaSharingRecipientTokenLifetimeInSeconds")]
         public Output<int?> DeltaSharingRecipientTokenLifetimeInSeconds { get; private set; } = null!;
 
+        /// <summary>
+        /// Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        /// </summary>
         [Output("deltaSharingScope")]
         public Output<string?> DeltaSharingScope { get; private set; } = null!;
 
+        /// <summary>
+        /// Destroy metastore regardless of its contents.
+        /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
@@ -42,15 +105,27 @@ namespace Pulumi.Databricks
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of metastore.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Username/groupname/sp application_id of the metastore owner.
+        /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
+        /// <summary>
+        /// The region of the metastore
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        /// </summary>
         [Output("storageRoot")]
         public Output<string?> StorageRoot { get; private set; } = null!;
 
@@ -121,15 +196,27 @@ namespace Pulumi.Databricks
         [Input("defaultDataAccessConfigId")]
         public Input<string>? DefaultDataAccessConfigId { get; set; }
 
+        /// <summary>
+        /// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
+        /// </summary>
         [Input("deltaSharingOrganizationName")]
         public Input<string>? DeltaSharingOrganizationName { get; set; }
 
+        /// <summary>
+        /// Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        /// </summary>
         [Input("deltaSharingRecipientTokenLifetimeInSeconds")]
         public Input<int>? DeltaSharingRecipientTokenLifetimeInSeconds { get; set; }
 
+        /// <summary>
+        /// Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        /// </summary>
         [Input("deltaSharingScope")]
         public Input<string>? DeltaSharingScope { get; set; }
 
+        /// <summary>
+        /// Destroy metastore regardless of its contents.
+        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
@@ -139,15 +226,27 @@ namespace Pulumi.Databricks
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
+        /// <summary>
+        /// Name of metastore.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Username/groupname/sp application_id of the metastore owner.
+        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// The region of the metastore
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
 
@@ -180,15 +279,27 @@ namespace Pulumi.Databricks
         [Input("defaultDataAccessConfigId")]
         public Input<string>? DefaultDataAccessConfigId { get; set; }
 
+        /// <summary>
+        /// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
+        /// </summary>
         [Input("deltaSharingOrganizationName")]
         public Input<string>? DeltaSharingOrganizationName { get; set; }
 
+        /// <summary>
+        /// Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        /// </summary>
         [Input("deltaSharingRecipientTokenLifetimeInSeconds")]
         public Input<int>? DeltaSharingRecipientTokenLifetimeInSeconds { get; set; }
 
+        /// <summary>
+        /// Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        /// </summary>
         [Input("deltaSharingScope")]
         public Input<string>? DeltaSharingScope { get; set; }
 
+        /// <summary>
+        /// Destroy metastore regardless of its contents.
+        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
@@ -198,15 +309,27 @@ namespace Pulumi.Databricks
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
+        /// <summary>
+        /// Name of metastore.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Username/groupname/sp application_id of the metastore owner.
+        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// The region of the metastore
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
 

@@ -17,16 +17,36 @@ public final class JobTaskPipelineTaskArgs extends com.pulumi.resources.Resource
 
     public static final JobTaskPipelineTaskArgs Empty = new JobTaskPipelineTaskArgs();
 
+    /**
+     * (Bool) Specifies if there should be full refresh of the pipeline.
+     * 
+     * &gt; The following configuration blocks are only supported inside a `task` block
+     * 
+     */
     @Import(name="fullRefresh")
     private @Nullable Output<Boolean> fullRefresh;
 
+    /**
+     * @return (Bool) Specifies if there should be full refresh of the pipeline.
+     * 
+     * &gt; The following configuration blocks are only supported inside a `task` block
+     * 
+     */
     public Optional<Output<Boolean>> fullRefresh() {
         return Optional.ofNullable(this.fullRefresh);
     }
 
+    /**
+     * The pipeline&#39;s unique ID.
+     * 
+     */
     @Import(name="pipelineId", required=true)
     private Output<String> pipelineId;
 
+    /**
+     * @return The pipeline&#39;s unique ID.
+     * 
+     */
     public Output<String> pipelineId() {
         return this.pipelineId;
     }
@@ -56,20 +76,48 @@ public final class JobTaskPipelineTaskArgs extends com.pulumi.resources.Resource
             $ = new JobTaskPipelineTaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fullRefresh (Bool) Specifies if there should be full refresh of the pipeline.
+         * 
+         * &gt; The following configuration blocks are only supported inside a `task` block
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullRefresh(@Nullable Output<Boolean> fullRefresh) {
             $.fullRefresh = fullRefresh;
             return this;
         }
 
+        /**
+         * @param fullRefresh (Bool) Specifies if there should be full refresh of the pipeline.
+         * 
+         * &gt; The following configuration blocks are only supported inside a `task` block
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullRefresh(Boolean fullRefresh) {
             return fullRefresh(Output.of(fullRefresh));
         }
 
+        /**
+         * @param pipelineId The pipeline&#39;s unique ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pipelineId(Output<String> pipelineId) {
             $.pipelineId = pipelineId;
             return this;
         }
 
+        /**
+         * @param pipelineId The pipeline&#39;s unique ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pipelineId(String pipelineId) {
             return pipelineId(Output.of(pipelineId));
         }

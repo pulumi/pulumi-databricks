@@ -12,16 +12,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
+//
+// ## Import
+//
+// # The workspace file resource can be imported using workspace file path
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file
+// ```
 type WorkspaceFile struct {
 	pulumi.CustomResourceState
 
+	// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrOutput `pulumi:"contentBase64"`
 	Md5           pulumi.StringPtrOutput `pulumi:"md5"`
-	ObjectId      pulumi.IntOutput       `pulumi:"objectId"`
-	Path          pulumi.StringOutput    `pulumi:"path"`
-	Source        pulumi.StringPtrOutput `pulumi:"source"`
-	Url           pulumi.StringOutput    `pulumi:"url"`
-	WorkspacePath pulumi.StringOutput    `pulumi:"workspacePath"`
+	// Unique identifier for a workspace file
+	ObjectId pulumi.IntOutput `pulumi:"objectId"`
+	// The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
+	Path pulumi.StringOutput `pulumi:"path"`
+	// Path to file on local filesystem. Conflicts with `contentBase64`.
+	Source pulumi.StringPtrOutput `pulumi:"source"`
+	// Routable URL of the workspace file
+	Url pulumi.StringOutput `pulumi:"url"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath pulumi.StringOutput `pulumi:"workspacePath"`
 }
 
 // NewWorkspaceFile registers a new resource with the given unique name, arguments, and options.
@@ -57,22 +74,34 @@ func GetWorkspaceFile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkspaceFile resources.
 type workspaceFileState struct {
+	// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 	ContentBase64 *string `pulumi:"contentBase64"`
 	Md5           *string `pulumi:"md5"`
-	ObjectId      *int    `pulumi:"objectId"`
-	Path          *string `pulumi:"path"`
-	Source        *string `pulumi:"source"`
-	Url           *string `pulumi:"url"`
+	// Unique identifier for a workspace file
+	ObjectId *int `pulumi:"objectId"`
+	// The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
+	Path *string `pulumi:"path"`
+	// Path to file on local filesystem. Conflicts with `contentBase64`.
+	Source *string `pulumi:"source"`
+	// Routable URL of the workspace file
+	Url *string `pulumi:"url"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 	WorkspacePath *string `pulumi:"workspacePath"`
 }
 
 type WorkspaceFileState struct {
+	// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrInput
 	Md5           pulumi.StringPtrInput
-	ObjectId      pulumi.IntPtrInput
-	Path          pulumi.StringPtrInput
-	Source        pulumi.StringPtrInput
-	Url           pulumi.StringPtrInput
+	// Unique identifier for a workspace file
+	ObjectId pulumi.IntPtrInput
+	// The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
+	Path pulumi.StringPtrInput
+	// Path to file on local filesystem. Conflicts with `contentBase64`.
+	Source pulumi.StringPtrInput
+	// Routable URL of the workspace file
+	Url pulumi.StringPtrInput
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 	WorkspacePath pulumi.StringPtrInput
 }
 
@@ -81,20 +110,28 @@ func (WorkspaceFileState) ElementType() reflect.Type {
 }
 
 type workspaceFileArgs struct {
+	// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 	ContentBase64 *string `pulumi:"contentBase64"`
 	Md5           *string `pulumi:"md5"`
-	ObjectId      *int    `pulumi:"objectId"`
-	Path          string  `pulumi:"path"`
-	Source        *string `pulumi:"source"`
+	// Unique identifier for a workspace file
+	ObjectId *int `pulumi:"objectId"`
+	// The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
+	Path string `pulumi:"path"`
+	// Path to file on local filesystem. Conflicts with `contentBase64`.
+	Source *string `pulumi:"source"`
 }
 
 // The set of arguments for constructing a WorkspaceFile resource.
 type WorkspaceFileArgs struct {
+	// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrInput
 	Md5           pulumi.StringPtrInput
-	ObjectId      pulumi.IntPtrInput
-	Path          pulumi.StringInput
-	Source        pulumi.StringPtrInput
+	// Unique identifier for a workspace file
+	ObjectId pulumi.IntPtrInput
+	// The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
+	Path pulumi.StringInput
+	// Path to file on local filesystem. Conflicts with `contentBase64`.
+	Source pulumi.StringPtrInput
 }
 
 func (WorkspaceFileArgs) ElementType() reflect.Type {
@@ -184,6 +221,7 @@ func (o WorkspaceFileOutput) ToWorkspaceFileOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
 func (o WorkspaceFileOutput) ContentBase64() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceFile) pulumi.StringPtrOutput { return v.ContentBase64 }).(pulumi.StringPtrOutput)
 }
@@ -192,22 +230,27 @@ func (o WorkspaceFileOutput) Md5() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceFile) pulumi.StringPtrOutput { return v.Md5 }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier for a workspace file
 func (o WorkspaceFileOutput) ObjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *WorkspaceFile) pulumi.IntOutput { return v.ObjectId }).(pulumi.IntOutput)
 }
 
+// The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
 func (o WorkspaceFileOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceFile) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
+// Path to file on local filesystem. Conflicts with `contentBase64`.
 func (o WorkspaceFileOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceFile) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// Routable URL of the workspace file
 func (o WorkspaceFileOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceFile) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
+// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 func (o WorkspaceFileOutput) WorkspacePath() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceFile) pulumi.StringOutput { return v.WorkspacePath }).(pulumi.StringOutput)
 }

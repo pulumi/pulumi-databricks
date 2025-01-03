@@ -4,6 +4,42 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > This resource can only be used with a workspace-level provider!
+ *
+ * In Delta Sharing, a provider is an entity that shares data with a recipient. Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
+ *
+ * A `databricks.MetastoreProvider` is contained within databricks.Metastore and can contain a list of shares that have been shared with you.
+ *
+ * > Databricks to Databricks sharing automatically creates the provider.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const dbprovider = new databricks.MetastoreProvider("dbprovider", {
+ *     name: "terraform-test-provider",
+ *     comment: "made by terraform 2",
+ *     authenticationType: "TOKEN",
+ *     recipientProfileStr: JSON.stringify({
+ *         shareCredentialsVersion: 1,
+ *         bearerToken: "token",
+ *         endpoint: "endpoint",
+ *         expirationTime: "expiration-time",
+ *     }),
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.getTables data to list tables within Unity Catalog.
+ * * databricks.getSchemas data to list schemas within Unity Catalog.
+ * * databricks.getCatalogs data to list catalogs within Unity Catalog.
+ */
 export class MetastoreProvider extends pulumi.CustomResource {
     /**
      * Get an existing MetastoreProvider resource's state with the given name, ID, and optional extra
@@ -32,9 +68,21 @@ export class MetastoreProvider extends pulumi.CustomResource {
         return obj['__pulumiType'] === MetastoreProvider.__pulumiType;
     }
 
+    /**
+     * The delta sharing authentication type. Valid values are `TOKEN`.
+     */
     public readonly authenticationType!: pulumi.Output<string>;
+    /**
+     * Description about the provider.
+     */
     public readonly comment!: pulumi.Output<string | undefined>;
+    /**
+     * Name of provider. Change forces creation of a new resource.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * This is the json file that is created from a recipient url.
+     */
     public readonly recipientProfileStr!: pulumi.Output<string>;
 
     /**
@@ -78,9 +126,21 @@ export class MetastoreProvider extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MetastoreProvider resources.
  */
 export interface MetastoreProviderState {
+    /**
+     * The delta sharing authentication type. Valid values are `TOKEN`.
+     */
     authenticationType?: pulumi.Input<string>;
+    /**
+     * Description about the provider.
+     */
     comment?: pulumi.Input<string>;
+    /**
+     * Name of provider. Change forces creation of a new resource.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * This is the json file that is created from a recipient url.
+     */
     recipientProfileStr?: pulumi.Input<string>;
 }
 
@@ -88,8 +148,20 @@ export interface MetastoreProviderState {
  * The set of arguments for constructing a MetastoreProvider resource.
  */
 export interface MetastoreProviderArgs {
+    /**
+     * The delta sharing authentication type. Valid values are `TOKEN`.
+     */
     authenticationType: pulumi.Input<string>;
+    /**
+     * Description about the provider.
+     */
     comment?: pulumi.Input<string>;
+    /**
+     * Name of provider. Change forces creation of a new resource.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * This is the json file that is created from a recipient url.
+     */
     recipientProfileStr: pulumi.Input<string>;
 }

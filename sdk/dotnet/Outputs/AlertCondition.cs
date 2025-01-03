@@ -13,9 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AlertCondition
     {
+        /// <summary>
+        /// Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+        /// </summary>
         public readonly string? EmptyResultState;
+        /// <summary>
+        /// Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+        /// </summary>
         public readonly string Op;
+        /// <summary>
+        /// Name of the column from the query result to use for comparison in alert evaluation:
+        /// </summary>
         public readonly Outputs.AlertConditionOperand Operand;
+        /// <summary>
+        /// Threshold value used for comparison in alert evaluation:
+        /// </summary>
         public readonly Outputs.AlertConditionThreshold? Threshold;
 
         [OutputConstructor]

@@ -6,6 +6,170 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * > This resource can be used with an account or workspace-level provider.
+ *
+ * This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
+ *
+ * > Currently, we only support managing access rules on service principal, group and account resources through `databricks.AccessControlRuleSet`.
+ *
+ * !> `databricks.AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
+ *
+ * ## Service principal rule set usage
+ *
+ * Through a Databricks workspace:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const accountId = "00000000-0000-0000-0000-000000000000";
+ * // account level group
+ * const ds = databricks.getGroup({
+ *     displayName: "Data Science",
+ * });
+ * const automationSp = new databricks.ServicePrincipal("automation_sp", {displayName: "SP_FOR_AUTOMATION"});
+ * const automationSpRuleSet = new databricks.AccessControlRuleSet("automation_sp_rule_set", {
+ *     name: pulumi.interpolate`accounts/${accountId}/servicePrincipals/${automationSp.applicationId}/ruleSets/default`,
+ *     grantRules: [{
+ *         principals: [ds.then(ds => ds.aclPrincipalId)],
+ *         role: "roles/servicePrincipal.user",
+ *     }],
+ * });
+ * ```
+ *
+ * Through AWS Databricks account:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const accountId = "00000000-0000-0000-0000-000000000000";
+ * // account level group creation
+ * const ds = new databricks.Group("ds", {displayName: "Data Science"});
+ * const automationSp = new databricks.ServicePrincipal("automation_sp", {displayName: "SP_FOR_AUTOMATION"});
+ * const automationSpRuleSet = new databricks.AccessControlRuleSet("automation_sp_rule_set", {
+ *     name: pulumi.interpolate`accounts/${accountId}/servicePrincipals/${automationSp.applicationId}/ruleSets/default`,
+ *     grantRules: [{
+ *         principals: [ds.aclPrincipalId],
+ *         role: "roles/servicePrincipal.user",
+ *     }],
+ * });
+ * ```
+ *
+ * Through Azure Databricks account:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const accountId = "00000000-0000-0000-0000-000000000000";
+ * // account level group creation
+ * const ds = new databricks.Group("ds", {displayName: "Data Science"});
+ * const automationSp = new databricks.ServicePrincipal("automation_sp", {
+ *     applicationId: "00000000-0000-0000-0000-000000000000",
+ *     displayName: "SP_FOR_AUTOMATION",
+ * });
+ * const automationSpRuleSet = new databricks.AccessControlRuleSet("automation_sp_rule_set", {
+ *     name: pulumi.interpolate`accounts/${accountId}/servicePrincipals/${automationSp.applicationId}/ruleSets/default`,
+ *     grantRules: [{
+ *         principals: [ds.aclPrincipalId],
+ *         role: "roles/servicePrincipal.user",
+ *     }],
+ * });
+ * ```
+ *
+ * Through GCP Databricks account:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const accountId = "00000000-0000-0000-0000-000000000000";
+ * // account level group creation
+ * const ds = new databricks.Group("ds", {displayName: "Data Science"});
+ * const automationSp = new databricks.ServicePrincipal("automation_sp", {displayName: "SP_FOR_AUTOMATION"});
+ * const automationSpRuleSet = new databricks.AccessControlRuleSet("automation_sp_rule_set", {
+ *     name: pulumi.interpolate`accounts/${accountId}/servicePrincipals/${automationSp.applicationId}/ruleSets/default`,
+ *     grantRules: [{
+ *         principals: [ds.aclPrincipalId],
+ *         role: "roles/servicePrincipal.user",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Group rule set usage
+ *
+ * Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const accountId = "00000000-0000-0000-0000-000000000000";
+ * // account level group
+ * const ds = databricks.getGroup({
+ *     displayName: "Data Science",
+ * });
+ * const john = databricks.getUser({
+ *     userName: "john.doe@example.com",
+ * });
+ * const dsGroupRuleSet = new databricks.AccessControlRuleSet("ds_group_rule_set", {
+ *     name: `accounts/${accountId}/groups/${dsDatabricksGroup.id}/ruleSets/default`,
+ *     grantRules: [{
+ *         principals: [john.then(john => john.aclPrincipalId)],
+ *         role: "roles/group.manager",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Account rule set usage
+ *
+ * Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const accountId = "00000000-0000-0000-0000-000000000000";
+ * // account level group
+ * const ds = databricks.getGroup({
+ *     displayName: "Data Science",
+ * });
+ * // account level group
+ * const marketplaceAdmins = databricks.getGroup({
+ *     displayName: "Marketplace Admins",
+ * });
+ * const john = databricks.getUser({
+ *     userName: "john.doe@example.com",
+ * });
+ * const accountRuleSet = new databricks.AccessControlRuleSet("account_rule_set", {
+ *     name: `accounts/${accountId}/ruleSets/default`,
+ *     grantRules: [
+ *         {
+ *             principals: [john.then(john => john.aclPrincipalId)],
+ *             role: "roles/group.manager",
+ *         },
+ *         {
+ *             principals: [ds.then(ds => ds.aclPrincipalId)],
+ *             role: "roles/servicePrincipal.manager",
+ *         },
+ *         {
+ *             principals: [marketplaceAdmins.then(marketplaceAdmins => marketplaceAdmins.aclPrincipalId)],
+ *             role: "roles/marketplace.admin",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * databricks.Group
+ * * databricks.User
+ * * databricks.ServicePrincipal
+ */
 export class AccessControlRuleSet extends pulumi.CustomResource {
     /**
      * Get an existing AccessControlRuleSet resource's state with the given name, ID, and optional extra
@@ -35,7 +199,18 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
+     *
+     * !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+     */
     public readonly grantRules!: pulumi.Output<outputs.AccessControlRuleSetGrantRule[] | undefined>;
+    /**
+     * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
+     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+     * * `accounts/{account_id}/ruleSets/default`
+     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -70,7 +245,18 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
  */
 export interface AccessControlRuleSetState {
     etag?: pulumi.Input<string>;
+    /**
+     * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
+     *
+     * !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+     */
     grantRules?: pulumi.Input<pulumi.Input<inputs.AccessControlRuleSetGrantRule>[]>;
+    /**
+     * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
+     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+     * * `accounts/{account_id}/ruleSets/default`
+     */
     name?: pulumi.Input<string>;
 }
 
@@ -78,6 +264,17 @@ export interface AccessControlRuleSetState {
  * The set of arguments for constructing a AccessControlRuleSet resource.
  */
 export interface AccessControlRuleSetArgs {
+    /**
+     * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
+     *
+     * !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+     */
     grantRules?: pulumi.Input<pulumi.Input<inputs.AccessControlRuleSetGrantRule>[]>;
+    /**
+     * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
+     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
+     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
+     * * `accounts/{account_id}/ruleSets/default`
+     */
     name?: pulumi.Input<string>;
 }

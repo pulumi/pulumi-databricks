@@ -11,25 +11,63 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+//
+// [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+//
+// ## Import
+//
+// This resource can be imported by name:
+//
+// hcl
+//
+// import {
+//
+//	to = databricks_app.this
+//
+//	id = "<app_name>"
+//
+// }
+//
+// or using the `terraform` CLI:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/app:App this <app_name>
+// ```
 type App struct {
 	pulumi.CustomResourceState
 
-	ActiveDeployment         AppActiveDeploymentOutput  `pulumi:"activeDeployment"`
-	AppStatus                AppAppStatusOutput         `pulumi:"appStatus"`
-	ComputeStatus            AppComputeStatusOutput     `pulumi:"computeStatus"`
-	CreateTime               pulumi.StringOutput        `pulumi:"createTime"`
-	Creator                  pulumi.StringOutput        `pulumi:"creator"`
-	DefaultSourceCodePath    pulumi.StringOutput        `pulumi:"defaultSourceCodePath"`
-	Description              pulumi.StringPtrOutput     `pulumi:"description"`
-	Name                     pulumi.StringOutput        `pulumi:"name"`
-	PendingDeployment        AppPendingDeploymentOutput `pulumi:"pendingDeployment"`
-	Resources                AppResourceArrayOutput     `pulumi:"resources"`
-	ServicePrincipalClientId pulumi.StringOutput        `pulumi:"servicePrincipalClientId"`
-	ServicePrincipalId       pulumi.IntOutput           `pulumi:"servicePrincipalId"`
-	ServicePrincipalName     pulumi.StringOutput        `pulumi:"servicePrincipalName"`
-	UpdateTime               pulumi.StringOutput        `pulumi:"updateTime"`
-	Updater                  pulumi.StringOutput        `pulumi:"updater"`
-	Url                      pulumi.StringOutput        `pulumi:"url"`
+	ActiveDeployment AppActiveDeploymentOutput `pulumi:"activeDeployment"`
+	// attribute
+	AppStatus AppAppStatusOutput `pulumi:"appStatus"`
+	// attribute
+	ComputeStatus AppComputeStatusOutput `pulumi:"computeStatus"`
+	// The creation time of the app.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The email of the user that created the app.
+	Creator pulumi.StringOutput `pulumi:"creator"`
+	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+	DefaultSourceCodePath pulumi.StringOutput `pulumi:"defaultSourceCodePath"`
+	// The description of the app.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+	Name              pulumi.StringOutput        `pulumi:"name"`
+	PendingDeployment AppPendingDeploymentOutput `pulumi:"pendingDeployment"`
+	// A list of resources that the app have access to.
+	Resources                AppResourceArrayOutput `pulumi:"resources"`
+	ServicePrincipalClientId pulumi.StringOutput    `pulumi:"servicePrincipalClientId"`
+	// id of the app service principal
+	ServicePrincipalId pulumi.IntOutput `pulumi:"servicePrincipalId"`
+	// name of the app service principal
+	ServicePrincipalName pulumi.StringOutput `pulumi:"servicePrincipalName"`
+	// The update time of the app.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// The email of the user that last updated the app.
+	Updater pulumi.StringOutput `pulumi:"updater"`
+	// The URL of the app once it is deployed.
+	Url pulumi.StringOutput `pulumi:"url"`
 }
 
 // NewApp registers a new resource with the given unique name, arguments, and options.
@@ -62,41 +100,67 @@ func GetApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering App resources.
 type appState struct {
-	ActiveDeployment         *AppActiveDeployment  `pulumi:"activeDeployment"`
-	AppStatus                *AppAppStatus         `pulumi:"appStatus"`
-	ComputeStatus            *AppComputeStatus     `pulumi:"computeStatus"`
-	CreateTime               *string               `pulumi:"createTime"`
-	Creator                  *string               `pulumi:"creator"`
-	DefaultSourceCodePath    *string               `pulumi:"defaultSourceCodePath"`
-	Description              *string               `pulumi:"description"`
-	Name                     *string               `pulumi:"name"`
-	PendingDeployment        *AppPendingDeployment `pulumi:"pendingDeployment"`
-	Resources                []AppResource         `pulumi:"resources"`
-	ServicePrincipalClientId *string               `pulumi:"servicePrincipalClientId"`
-	ServicePrincipalId       *int                  `pulumi:"servicePrincipalId"`
-	ServicePrincipalName     *string               `pulumi:"servicePrincipalName"`
-	UpdateTime               *string               `pulumi:"updateTime"`
-	Updater                  *string               `pulumi:"updater"`
-	Url                      *string               `pulumi:"url"`
+	ActiveDeployment *AppActiveDeployment `pulumi:"activeDeployment"`
+	// attribute
+	AppStatus *AppAppStatus `pulumi:"appStatus"`
+	// attribute
+	ComputeStatus *AppComputeStatus `pulumi:"computeStatus"`
+	// The creation time of the app.
+	CreateTime *string `pulumi:"createTime"`
+	// The email of the user that created the app.
+	Creator *string `pulumi:"creator"`
+	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+	DefaultSourceCodePath *string `pulumi:"defaultSourceCodePath"`
+	// The description of the app.
+	Description *string `pulumi:"description"`
+	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+	Name              *string               `pulumi:"name"`
+	PendingDeployment *AppPendingDeployment `pulumi:"pendingDeployment"`
+	// A list of resources that the app have access to.
+	Resources                []AppResource `pulumi:"resources"`
+	ServicePrincipalClientId *string       `pulumi:"servicePrincipalClientId"`
+	// id of the app service principal
+	ServicePrincipalId *int `pulumi:"servicePrincipalId"`
+	// name of the app service principal
+	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
+	// The update time of the app.
+	UpdateTime *string `pulumi:"updateTime"`
+	// The email of the user that last updated the app.
+	Updater *string `pulumi:"updater"`
+	// The URL of the app once it is deployed.
+	Url *string `pulumi:"url"`
 }
 
 type AppState struct {
-	ActiveDeployment         AppActiveDeploymentPtrInput
-	AppStatus                AppAppStatusPtrInput
-	ComputeStatus            AppComputeStatusPtrInput
-	CreateTime               pulumi.StringPtrInput
-	Creator                  pulumi.StringPtrInput
-	DefaultSourceCodePath    pulumi.StringPtrInput
-	Description              pulumi.StringPtrInput
-	Name                     pulumi.StringPtrInput
-	PendingDeployment        AppPendingDeploymentPtrInput
+	ActiveDeployment AppActiveDeploymentPtrInput
+	// attribute
+	AppStatus AppAppStatusPtrInput
+	// attribute
+	ComputeStatus AppComputeStatusPtrInput
+	// The creation time of the app.
+	CreateTime pulumi.StringPtrInput
+	// The email of the user that created the app.
+	Creator pulumi.StringPtrInput
+	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+	DefaultSourceCodePath pulumi.StringPtrInput
+	// The description of the app.
+	Description pulumi.StringPtrInput
+	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+	Name              pulumi.StringPtrInput
+	PendingDeployment AppPendingDeploymentPtrInput
+	// A list of resources that the app have access to.
 	Resources                AppResourceArrayInput
 	ServicePrincipalClientId pulumi.StringPtrInput
-	ServicePrincipalId       pulumi.IntPtrInput
-	ServicePrincipalName     pulumi.StringPtrInput
-	UpdateTime               pulumi.StringPtrInput
-	Updater                  pulumi.StringPtrInput
-	Url                      pulumi.StringPtrInput
+	// id of the app service principal
+	ServicePrincipalId pulumi.IntPtrInput
+	// name of the app service principal
+	ServicePrincipalName pulumi.StringPtrInput
+	// The update time of the app.
+	UpdateTime pulumi.StringPtrInput
+	// The email of the user that last updated the app.
+	Updater pulumi.StringPtrInput
+	// The URL of the app once it is deployed.
+	Url pulumi.StringPtrInput
 }
 
 func (AppState) ElementType() reflect.Type {
@@ -104,16 +168,22 @@ func (AppState) ElementType() reflect.Type {
 }
 
 type appArgs struct {
-	Description *string       `pulumi:"description"`
-	Name        *string       `pulumi:"name"`
-	Resources   []AppResource `pulumi:"resources"`
+	// The description of the app.
+	Description *string `pulumi:"description"`
+	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+	Name *string `pulumi:"name"`
+	// A list of resources that the app have access to.
+	Resources []AppResource `pulumi:"resources"`
 }
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
+	// The description of the app.
 	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
-	Resources   AppResourceArrayInput
+	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+	Name pulumi.StringPtrInput
+	// A list of resources that the app have access to.
+	Resources AppResourceArrayInput
 }
 
 func (AppArgs) ElementType() reflect.Type {
@@ -207,30 +277,37 @@ func (o AppOutput) ActiveDeployment() AppActiveDeploymentOutput {
 	return o.ApplyT(func(v *App) AppActiveDeploymentOutput { return v.ActiveDeployment }).(AppActiveDeploymentOutput)
 }
 
+// attribute
 func (o AppOutput) AppStatus() AppAppStatusOutput {
 	return o.ApplyT(func(v *App) AppAppStatusOutput { return v.AppStatus }).(AppAppStatusOutput)
 }
 
+// attribute
 func (o AppOutput) ComputeStatus() AppComputeStatusOutput {
 	return o.ApplyT(func(v *App) AppComputeStatusOutput { return v.ComputeStatus }).(AppComputeStatusOutput)
 }
 
+// The creation time of the app.
 func (o AppOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The email of the user that created the app.
 func (o AppOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
 
+// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 func (o AppOutput) DefaultSourceCodePath() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DefaultSourceCodePath }).(pulumi.StringOutput)
 }
 
+// The description of the app.
 func (o AppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 func (o AppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -239,6 +316,7 @@ func (o AppOutput) PendingDeployment() AppPendingDeploymentOutput {
 	return o.ApplyT(func(v *App) AppPendingDeploymentOutput { return v.PendingDeployment }).(AppPendingDeploymentOutput)
 }
 
+// A list of resources that the app have access to.
 func (o AppOutput) Resources() AppResourceArrayOutput {
 	return o.ApplyT(func(v *App) AppResourceArrayOutput { return v.Resources }).(AppResourceArrayOutput)
 }
@@ -247,22 +325,27 @@ func (o AppOutput) ServicePrincipalClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ServicePrincipalClientId }).(pulumi.StringOutput)
 }
 
+// id of the app service principal
 func (o AppOutput) ServicePrincipalId() pulumi.IntOutput {
 	return o.ApplyT(func(v *App) pulumi.IntOutput { return v.ServicePrincipalId }).(pulumi.IntOutput)
 }
 
+// name of the app service principal
 func (o AppOutput) ServicePrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ServicePrincipalName }).(pulumi.StringOutput)
 }
 
+// The update time of the app.
 func (o AppOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// The email of the user that last updated the app.
 func (o AppOutput) Updater() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Updater }).(pulumi.StringOutput)
 }
 
+// The URL of the app once it is deployed.
 func (o AppOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

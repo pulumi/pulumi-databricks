@@ -4,6 +4,19 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with databricks.Notebook and databricks.getNotebookPaths data sources.
+ *
+ * ## Import
+ *
+ * The resource notebook can be imported using notebook path
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
+ * ```
+ */
 export class Notebook extends pulumi.CustomResource {
     /**
      * Get an existing Notebook resource's state with the given name, ID, and optional extra
@@ -32,18 +45,39 @@ export class Notebook extends pulumi.CustomResource {
         return obj['__pulumiType'] === Notebook.__pulumiType;
     }
 
+    /**
+     * The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     */
     public readonly contentBase64!: pulumi.Output<string | undefined>;
     public readonly format!: pulumi.Output<string | undefined>;
+    /**
+     * One of `SCALA`, `PYTHON`, `SQL`, `R`.
+     */
     public readonly language!: pulumi.Output<string | undefined>;
     public readonly md5!: pulumi.Output<string | undefined>;
+    /**
+     * Unique identifier for a NOTEBOOK
+     */
     public readonly objectId!: pulumi.Output<number>;
     /**
      * @deprecated Always is a notebook
      */
     public readonly objectType!: pulumi.Output<string>;
+    /**
+     * The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+     */
     public readonly path!: pulumi.Output<string>;
+    /**
+     * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
+     */
     public readonly source!: pulumi.Output<string | undefined>;
+    /**
+     * Routable URL of the notebook
+     */
     public /*out*/ readonly url!: pulumi.Output<string>;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
     public /*out*/ readonly workspacePath!: pulumi.Output<string>;
 
     /**
@@ -94,18 +128,39 @@ export class Notebook extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Notebook resources.
  */
 export interface NotebookState {
+    /**
+     * The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     */
     contentBase64?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
+    /**
+     * One of `SCALA`, `PYTHON`, `SQL`, `R`.
+     */
     language?: pulumi.Input<string>;
     md5?: pulumi.Input<string>;
+    /**
+     * Unique identifier for a NOTEBOOK
+     */
     objectId?: pulumi.Input<number>;
     /**
      * @deprecated Always is a notebook
      */
     objectType?: pulumi.Input<string>;
+    /**
+     * The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+     */
     path?: pulumi.Input<string>;
+    /**
+     * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
+     */
     source?: pulumi.Input<string>;
+    /**
+     * Routable URL of the notebook
+     */
     url?: pulumi.Input<string>;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
     workspacePath?: pulumi.Input<string>;
 }
 
@@ -113,15 +168,30 @@ export interface NotebookState {
  * The set of arguments for constructing a Notebook resource.
  */
 export interface NotebookArgs {
+    /**
+     * The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     */
     contentBase64?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
+    /**
+     * One of `SCALA`, `PYTHON`, `SQL`, `R`.
+     */
     language?: pulumi.Input<string>;
     md5?: pulumi.Input<string>;
+    /**
+     * Unique identifier for a NOTEBOOK
+     */
     objectId?: pulumi.Input<number>;
     /**
      * @deprecated Always is a notebook
      */
     objectType?: pulumi.Input<string>;
+    /**
+     * The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+     */
     path: pulumi.Input<string>;
+    /**
+     * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
+     */
     source?: pulumi.Input<string>;
 }

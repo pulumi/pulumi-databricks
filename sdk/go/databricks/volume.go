@@ -12,17 +12,135 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+//
+// > This resource can only be used with a workspace-level provider!
+//
+// Volumes are Unity Catalog objects representing a logical volume of storage in a cloud object storage location. Volumes provide capabilities for accessing, storing, governing, and organizing files. While tables provide governance over tabular datasets, volumes add governance over non-tabular datasets. You can use volumes to store and access files in any format, including structured, semi-structured, and unstructured data.
+//
+// A volume resides in the third layer of Unity Catalog’s three-level namespace. Volumes are siblings to tables, views, and other objects organized under a schema in Unity Catalog.
+//
+// A volume can be **managed** or **external**.
+//
+// A **managed volume** is a Unity Catalog-governed storage volume created within the default storage location of the containing schema. Managed volumes allow the creation of governed storage for working with files without the overhead of external locations and storage credentials. You do not need to specify a location when creating a managed volume, and all file access for data in managed volumes is through paths managed by Unity Catalog.
+//
+// An **external volume** is a Unity Catalog-governed storage volume registered against a directory within an external location.
+//
+// A volume can be referenced using its identifier: ```<catalogName>.<schemaName>.<volumeName>```, where:
+//
+// * ```<catalogName>```: The name of the catalog containing the Volume.
+// * ```<schemaName>```: The name of the schema containing the Volume.
+// * ```<volumeName>```: The name of the Volume. It identifies the volume object.
+//
+// The path to access files in volumes uses the following format:
+//
+// ```/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>```
+//
+// Databricks also supports an optional ```dbfs:/``` scheme, so the following path also works:
+//
+// ```dbfs:/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>```
+//
+// This resource manages Volumes in Unity Catalog.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:    pulumi.String("sandbox"),
+//				Comment: pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
+//				CatalogName: sandbox.Name,
+//				Name:        pulumi.String("things"),
+//				Comment:     pulumi.String("this schema is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"kind": pulumi.String("various"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			external, err := databricks.NewStorageCredential(ctx, "external", &databricks.StorageCredentialArgs{
+//				Name: pulumi.String("creds"),
+//				AwsIamRole: &databricks.StorageCredentialAwsIamRoleArgs{
+//					RoleArn: pulumi.Any(externalDataAccess.Arn),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			some, err := databricks.NewExternalLocation(ctx, "some", &databricks.ExternalLocationArgs{
+//				Name:           pulumi.String("external_location"),
+//				Url:            pulumi.Sprintf("s3://%v/some", externalAwsS3Bucket.Id),
+//				CredentialName: external.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewVolume(ctx, "this", &databricks.VolumeArgs{
+//				Name:            pulumi.String("quickstart_volume"),
+//				CatalogName:     sandbox.Name,
+//				SchemaName:      things.Name,
+//				VolumeType:      pulumi.String("EXTERNAL"),
+//				StorageLocation: some.Url,
+//				Comment:         pulumi.String("this volume is managed by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// This resource can be imported by `full_name` which is the 3-level Volume identifier: `<catalog>.<schema>.<name>`
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
+// ```
 type Volume struct {
 	pulumi.CustomResourceState
 
-	CatalogName     pulumi.StringOutput    `pulumi:"catalogName"`
-	Comment         pulumi.StringPtrOutput `pulumi:"comment"`
-	Name            pulumi.StringOutput    `pulumi:"name"`
-	Owner           pulumi.StringOutput    `pulumi:"owner"`
-	SchemaName      pulumi.StringOutput    `pulumi:"schemaName"`
+	// Name of parent Catalog. Change forces creation of a new resource.
+	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
+	// Free-form text.
+	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// Name of the Volume
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Name of the volume owner.
+	Owner pulumi.StringOutput `pulumi:"owner"`
+	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
+	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
 	StorageLocation pulumi.StringPtrOutput `pulumi:"storageLocation"`
-	VolumePath      pulumi.StringOutput    `pulumi:"volumePath"`
-	VolumeType      pulumi.StringOutput    `pulumi:"volumeType"`
+	// base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+	VolumePath pulumi.StringOutput `pulumi:"volumePath"`
+	// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
+	VolumeType pulumi.StringOutput `pulumi:"volumeType"`
 }
 
 // NewVolume registers a new resource with the given unique name, arguments, and options.
@@ -64,25 +182,41 @@ func GetVolume(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Volume resources.
 type volumeState struct {
-	CatalogName     *string `pulumi:"catalogName"`
-	Comment         *string `pulumi:"comment"`
-	Name            *string `pulumi:"name"`
-	Owner           *string `pulumi:"owner"`
-	SchemaName      *string `pulumi:"schemaName"`
+	// Name of parent Catalog. Change forces creation of a new resource.
+	CatalogName *string `pulumi:"catalogName"`
+	// Free-form text.
+	Comment *string `pulumi:"comment"`
+	// Name of the Volume
+	Name *string `pulumi:"name"`
+	// Name of the volume owner.
+	Owner *string `pulumi:"owner"`
+	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+	SchemaName *string `pulumi:"schemaName"`
+	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
 	StorageLocation *string `pulumi:"storageLocation"`
-	VolumePath      *string `pulumi:"volumePath"`
-	VolumeType      *string `pulumi:"volumeType"`
+	// base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+	VolumePath *string `pulumi:"volumePath"`
+	// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
+	VolumeType *string `pulumi:"volumeType"`
 }
 
 type VolumeState struct {
-	CatalogName     pulumi.StringPtrInput
-	Comment         pulumi.StringPtrInput
-	Name            pulumi.StringPtrInput
-	Owner           pulumi.StringPtrInput
-	SchemaName      pulumi.StringPtrInput
+	// Name of parent Catalog. Change forces creation of a new resource.
+	CatalogName pulumi.StringPtrInput
+	// Free-form text.
+	Comment pulumi.StringPtrInput
+	// Name of the Volume
+	Name pulumi.StringPtrInput
+	// Name of the volume owner.
+	Owner pulumi.StringPtrInput
+	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+	SchemaName pulumi.StringPtrInput
+	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
 	StorageLocation pulumi.StringPtrInput
-	VolumePath      pulumi.StringPtrInput
-	VolumeType      pulumi.StringPtrInput
+	// base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+	VolumePath pulumi.StringPtrInput
+	// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
+	VolumeType pulumi.StringPtrInput
 }
 
 func (VolumeState) ElementType() reflect.Type {
@@ -90,24 +224,38 @@ func (VolumeState) ElementType() reflect.Type {
 }
 
 type volumeArgs struct {
-	CatalogName     string  `pulumi:"catalogName"`
-	Comment         *string `pulumi:"comment"`
-	Name            *string `pulumi:"name"`
-	Owner           *string `pulumi:"owner"`
-	SchemaName      string  `pulumi:"schemaName"`
+	// Name of parent Catalog. Change forces creation of a new resource.
+	CatalogName string `pulumi:"catalogName"`
+	// Free-form text.
+	Comment *string `pulumi:"comment"`
+	// Name of the Volume
+	Name *string `pulumi:"name"`
+	// Name of the volume owner.
+	Owner *string `pulumi:"owner"`
+	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+	SchemaName string `pulumi:"schemaName"`
+	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
 	StorageLocation *string `pulumi:"storageLocation"`
-	VolumeType      string  `pulumi:"volumeType"`
+	// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
+	VolumeType string `pulumi:"volumeType"`
 }
 
 // The set of arguments for constructing a Volume resource.
 type VolumeArgs struct {
-	CatalogName     pulumi.StringInput
-	Comment         pulumi.StringPtrInput
-	Name            pulumi.StringPtrInput
-	Owner           pulumi.StringPtrInput
-	SchemaName      pulumi.StringInput
+	// Name of parent Catalog. Change forces creation of a new resource.
+	CatalogName pulumi.StringInput
+	// Free-form text.
+	Comment pulumi.StringPtrInput
+	// Name of the Volume
+	Name pulumi.StringPtrInput
+	// Name of the volume owner.
+	Owner pulumi.StringPtrInput
+	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+	SchemaName pulumi.StringInput
+	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
 	StorageLocation pulumi.StringPtrInput
-	VolumeType      pulumi.StringInput
+	// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
+	VolumeType pulumi.StringInput
 }
 
 func (VolumeArgs) ElementType() reflect.Type {
@@ -197,34 +345,42 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 	return o
 }
 
+// Name of parent Catalog. Change forces creation of a new resource.
 func (o VolumeOutput) CatalogName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.CatalogName }).(pulumi.StringOutput)
 }
 
+// Free-form text.
 func (o VolumeOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Name of the Volume
 func (o VolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Name of the volume owner.
 func (o VolumeOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
+// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 func (o VolumeOutput) SchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.SchemaName }).(pulumi.StringOutput)
 }
 
+// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
 func (o VolumeOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.StorageLocation }).(pulumi.StringPtrOutput)
 }
 
+// base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
 func (o VolumeOutput) VolumePath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.VolumePath }).(pulumi.StringOutput)
 }
 
+// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
 func (o VolumeOutput) VolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.VolumeType }).(pulumi.StringOutput)
 }

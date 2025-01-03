@@ -11,6 +11,73 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// Retrieves a list of Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+//
+// ## Example Usage
+//
+// Retrieve cluster IDs for all clusters:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetClusters(ctx, &databricks.GetClustersArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Retrieve cluster IDs for all clusters having "Shared" in the cluster name:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetClusters(ctx, &databricks.GetClustersArgs{
+//				ClusterNameContains: pulumi.StringRef("shared"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * End to end workspace management guide.
+// * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+// * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
+// * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+// * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+// * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+// * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClustersResult
@@ -23,10 +90,13 @@ func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getClusters.
 type GetClustersArgs struct {
-	ClusterNameContains *string              `pulumi:"clusterNameContains"`
-	FilterBy            *GetClustersFilterBy `pulumi:"filterBy"`
-	Id                  *string              `pulumi:"id"`
-	Ids                 []string             `pulumi:"ids"`
+	// Only return Cluster ids that match the given name string.
+	ClusterNameContains *string `pulumi:"clusterNameContains"`
+	// Filters to apply to the listed clusters. See filterBy Configuration Block below for details.
+	FilterBy *GetClustersFilterBy `pulumi:"filterBy"`
+	Id       *string              `pulumi:"id"`
+	// list of Cluster ids
+	Ids []string `pulumi:"ids"`
 }
 
 // A collection of values returned by getClusters.
@@ -34,7 +104,8 @@ type GetClustersResult struct {
 	ClusterNameContains *string              `pulumi:"clusterNameContains"`
 	FilterBy            *GetClustersFilterBy `pulumi:"filterBy"`
 	Id                  string               `pulumi:"id"`
-	Ids                 []string             `pulumi:"ids"`
+	// list of Cluster ids
+	Ids []string `pulumi:"ids"`
 }
 
 func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...pulumi.InvokeOption) GetClustersResultOutput {
@@ -48,10 +119,13 @@ func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...
 
 // A collection of arguments for invoking getClusters.
 type GetClustersOutputArgs struct {
-	ClusterNameContains pulumi.StringPtrInput       `pulumi:"clusterNameContains"`
-	FilterBy            GetClustersFilterByPtrInput `pulumi:"filterBy"`
-	Id                  pulumi.StringPtrInput       `pulumi:"id"`
-	Ids                 pulumi.StringArrayInput     `pulumi:"ids"`
+	// Only return Cluster ids that match the given name string.
+	ClusterNameContains pulumi.StringPtrInput `pulumi:"clusterNameContains"`
+	// Filters to apply to the listed clusters. See filterBy Configuration Block below for details.
+	FilterBy GetClustersFilterByPtrInput `pulumi:"filterBy"`
+	Id       pulumi.StringPtrInput       `pulumi:"id"`
+	// list of Cluster ids
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (GetClustersOutputArgs) ElementType() reflect.Type {
@@ -85,6 +159,7 @@ func (o GetClustersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// list of Cluster ids
 func (o GetClustersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

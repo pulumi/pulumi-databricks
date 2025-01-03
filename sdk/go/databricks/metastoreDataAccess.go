@@ -11,6 +11,66 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This resource can be used with an account or workspace-level provider.
+//
+// Optionally, each Metastore can have a default StorageCredential defined as `MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
+//
+// ## Example Usage
+//
+// # For AWS
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewMetastore(ctx, "this", &databricks.MetastoreArgs{
+//				Name:         pulumi.String("primary"),
+//				StorageRoot:  pulumi.Sprintf("s3://%v/metastore", metastore.Id),
+//				Owner:        pulumi.String("uc admins"),
+//				Region:       pulumi.String("us-east-1"),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMetastoreDataAccess(ctx, "this", &databricks.MetastoreDataAccessArgs{
+//				MetastoreId: this.ID(),
+//				Name:        pulumi.Any(metastoreDataAccess.Name),
+//				AwsIamRole: &databricks.MetastoreDataAccessAwsIamRoleArgs{
+//					RoleArn: pulumi.Any(metastoreDataAccess.Arn),
+//				},
+//				IsDefault: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// For Azure using managed identity as credential (recommended)
+//
+// ## Import
+//
+// This resource can be imported by combination of metastore id and the data access name.
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'
+// ```
 type MetastoreDataAccess struct {
 	pulumi.CustomResourceState
 
@@ -23,13 +83,14 @@ type MetastoreDataAccess struct {
 	ForceDestroy                pulumi.BoolPtrOutput                                 `pulumi:"forceDestroy"`
 	ForceUpdate                 pulumi.BoolPtrOutput                                 `pulumi:"forceUpdate"`
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrOutput     `pulumi:"gcpServiceAccountKey"`
-	IsDefault                   pulumi.BoolPtrOutput                                 `pulumi:"isDefault"`
-	IsolationMode               pulumi.StringOutput                                  `pulumi:"isolationMode"`
-	MetastoreId                 pulumi.StringOutput                                  `pulumi:"metastoreId"`
-	Name                        pulumi.StringOutput                                  `pulumi:"name"`
-	Owner                       pulumi.StringOutput                                  `pulumi:"owner"`
-	ReadOnly                    pulumi.BoolPtrOutput                                 `pulumi:"readOnly"`
-	SkipValidation              pulumi.BoolPtrOutput                                 `pulumi:"skipValidation"`
+	// whether to set this credential as the default for the metastore. In practice, this should always be true.
+	IsDefault      pulumi.BoolPtrOutput `pulumi:"isDefault"`
+	IsolationMode  pulumi.StringOutput  `pulumi:"isolationMode"`
+	MetastoreId    pulumi.StringOutput  `pulumi:"metastoreId"`
+	Name           pulumi.StringOutput  `pulumi:"name"`
+	Owner          pulumi.StringOutput  `pulumi:"owner"`
+	ReadOnly       pulumi.BoolPtrOutput `pulumi:"readOnly"`
+	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
 }
 
 // NewMetastoreDataAccess registers a new resource with the given unique name, arguments, and options.
@@ -71,13 +132,14 @@ type metastoreDataAccessState struct {
 	ForceDestroy                *bool                                           `pulumi:"forceDestroy"`
 	ForceUpdate                 *bool                                           `pulumi:"forceUpdate"`
 	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
-	IsDefault                   *bool                                           `pulumi:"isDefault"`
-	IsolationMode               *string                                         `pulumi:"isolationMode"`
-	MetastoreId                 *string                                         `pulumi:"metastoreId"`
-	Name                        *string                                         `pulumi:"name"`
-	Owner                       *string                                         `pulumi:"owner"`
-	ReadOnly                    *bool                                           `pulumi:"readOnly"`
-	SkipValidation              *bool                                           `pulumi:"skipValidation"`
+	// whether to set this credential as the default for the metastore. In practice, this should always be true.
+	IsDefault      *bool   `pulumi:"isDefault"`
+	IsolationMode  *string `pulumi:"isolationMode"`
+	MetastoreId    *string `pulumi:"metastoreId"`
+	Name           *string `pulumi:"name"`
+	Owner          *string `pulumi:"owner"`
+	ReadOnly       *bool   `pulumi:"readOnly"`
+	SkipValidation *bool   `pulumi:"skipValidation"`
 }
 
 type MetastoreDataAccessState struct {
@@ -90,13 +152,14 @@ type MetastoreDataAccessState struct {
 	ForceDestroy                pulumi.BoolPtrInput
 	ForceUpdate                 pulumi.BoolPtrInput
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
-	IsDefault                   pulumi.BoolPtrInput
-	IsolationMode               pulumi.StringPtrInput
-	MetastoreId                 pulumi.StringPtrInput
-	Name                        pulumi.StringPtrInput
-	Owner                       pulumi.StringPtrInput
-	ReadOnly                    pulumi.BoolPtrInput
-	SkipValidation              pulumi.BoolPtrInput
+	// whether to set this credential as the default for the metastore. In practice, this should always be true.
+	IsDefault      pulumi.BoolPtrInput
+	IsolationMode  pulumi.StringPtrInput
+	MetastoreId    pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
+	Owner          pulumi.StringPtrInput
+	ReadOnly       pulumi.BoolPtrInput
+	SkipValidation pulumi.BoolPtrInput
 }
 
 func (MetastoreDataAccessState) ElementType() reflect.Type {
@@ -113,13 +176,14 @@ type metastoreDataAccessArgs struct {
 	ForceDestroy                *bool                                           `pulumi:"forceDestroy"`
 	ForceUpdate                 *bool                                           `pulumi:"forceUpdate"`
 	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
-	IsDefault                   *bool                                           `pulumi:"isDefault"`
-	IsolationMode               *string                                         `pulumi:"isolationMode"`
-	MetastoreId                 *string                                         `pulumi:"metastoreId"`
-	Name                        *string                                         `pulumi:"name"`
-	Owner                       *string                                         `pulumi:"owner"`
-	ReadOnly                    *bool                                           `pulumi:"readOnly"`
-	SkipValidation              *bool                                           `pulumi:"skipValidation"`
+	// whether to set this credential as the default for the metastore. In practice, this should always be true.
+	IsDefault      *bool   `pulumi:"isDefault"`
+	IsolationMode  *string `pulumi:"isolationMode"`
+	MetastoreId    *string `pulumi:"metastoreId"`
+	Name           *string `pulumi:"name"`
+	Owner          *string `pulumi:"owner"`
+	ReadOnly       *bool   `pulumi:"readOnly"`
+	SkipValidation *bool   `pulumi:"skipValidation"`
 }
 
 // The set of arguments for constructing a MetastoreDataAccess resource.
@@ -133,13 +197,14 @@ type MetastoreDataAccessArgs struct {
 	ForceDestroy                pulumi.BoolPtrInput
 	ForceUpdate                 pulumi.BoolPtrInput
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
-	IsDefault                   pulumi.BoolPtrInput
-	IsolationMode               pulumi.StringPtrInput
-	MetastoreId                 pulumi.StringPtrInput
-	Name                        pulumi.StringPtrInput
-	Owner                       pulumi.StringPtrInput
-	ReadOnly                    pulumi.BoolPtrInput
-	SkipValidation              pulumi.BoolPtrInput
+	// whether to set this credential as the default for the metastore. In practice, this should always be true.
+	IsDefault      pulumi.BoolPtrInput
+	IsolationMode  pulumi.StringPtrInput
+	MetastoreId    pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
+	Owner          pulumi.StringPtrInput
+	ReadOnly       pulumi.BoolPtrInput
+	SkipValidation pulumi.BoolPtrInput
 }
 
 func (MetastoreDataAccessArgs) ElementType() reflect.Type {
@@ -275,6 +340,7 @@ func (o MetastoreDataAccessOutput) GcpServiceAccountKey() MetastoreDataAccessGcp
 	}).(MetastoreDataAccessGcpServiceAccountKeyPtrOutput)
 }
 
+// whether to set this credential as the default for the metastore. In practice, this should always be true.
 func (o MetastoreDataAccessOutput) IsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }

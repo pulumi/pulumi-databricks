@@ -17,30 +17,62 @@ public final class IpAccessListState extends com.pulumi.resources.ResourceArgs {
 
     public static final IpAccessListState Empty = new IpAccessListState();
 
+    /**
+     * Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * A string list of IP addresses and CIDR ranges.
+     * 
+     */
     @Import(name="ipAddresses")
     private @Nullable Output<List<String>> ipAddresses;
 
+    /**
+     * @return A string list of IP addresses and CIDR ranges.
+     * 
+     */
     public Optional<Output<List<String>>> ipAddresses() {
         return Optional.ofNullable(this.ipAddresses);
     }
 
+    /**
+     * This is the display name for the given IP ACL List.
+     * 
+     */
     @Import(name="label")
     private @Nullable Output<String> label;
 
+    /**
+     * @return This is the display name for the given IP ACL List.
+     * 
+     */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
     }
 
+    /**
+     * Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;.
+     * 
+     */
     @Import(name="listType")
     private @Nullable Output<String> listType;
 
+    /**
+     * @return Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;.
+     * 
+     */
     public Optional<Output<String>> listType() {
         return Optional.ofNullable(this.listType);
     }
@@ -72,42 +104,96 @@ public final class IpAccessListState extends com.pulumi.resources.ResourceArgs {
             $ = new IpAccessListState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param ipAddresses A string list of IP addresses and CIDR ranges.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAddresses(@Nullable Output<List<String>> ipAddresses) {
             $.ipAddresses = ipAddresses;
             return this;
         }
 
+        /**
+         * @param ipAddresses A string list of IP addresses and CIDR ranges.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAddresses(List<String> ipAddresses) {
             return ipAddresses(Output.of(ipAddresses));
         }
 
+        /**
+         * @param ipAddresses A string list of IP addresses and CIDR ranges.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAddresses(String... ipAddresses) {
             return ipAddresses(List.of(ipAddresses));
         }
 
+        /**
+         * @param label This is the display name for the given IP ACL List.
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(@Nullable Output<String> label) {
             $.label = label;
             return this;
         }
 
+        /**
+         * @param label This is the display name for the given IP ACL List.
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(String label) {
             return label(Output.of(label));
         }
 
+        /**
+         * @param listType Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder listType(@Nullable Output<String> listType) {
             $.listType = listType;
             return this;
         }
 
+        /**
+         * @param listType Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder listType(String listType) {
             return listType(Output.of(listType));
         }

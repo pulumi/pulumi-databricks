@@ -13,12 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDbfsFilePathsPathList {
     private @Nullable Integer fileSize;
+    /**
+     * @return Path on DBFS for the file to perform listing
+     * 
+     */
     private @Nullable String path;
 
     private GetDbfsFilePathsPathList() {}
     public Optional<Integer> fileSize() {
         return Optional.ofNullable(this.fileSize);
     }
+    /**
+     * @return Path on DBFS for the file to perform listing
+     * 
+     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }

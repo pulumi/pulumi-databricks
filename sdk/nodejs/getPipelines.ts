@@ -4,6 +4,57 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _authentication is not configured for provider_ errors.
+ *
+ * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+ *
+ * ## Example Usage
+ *
+ * Get all Delta Live Tables pipelines:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getPipelines({});
+ * export const allPipelines = all.then(all => all.ids);
+ * ```
+ *
+ * Filter Delta Live Tables pipelines by name (exact match):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getPipelines({
+ *     pipelineName: "my_pipeline",
+ * });
+ * export const myPipeline = _this.then(_this => _this.ids);
+ * ```
+ *
+ * Filter Delta Live Tables pipelines by name (wildcard search):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getPipelines({
+ *     pipelineName: "%pipeline%",
+ * });
+ * export const wildcardPipelines = _this.then(_this => _this.ids);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ */
 export function getPipelines(args?: GetPipelinesArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelinesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -17,7 +68,13 @@ export function getPipelines(args?: GetPipelinesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getPipelines.
  */
 export interface GetPipelinesArgs {
+    /**
+     * List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+     */
     ids?: string[];
+    /**
+     * Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+     */
     pipelineName?: string;
 }
 
@@ -29,9 +86,63 @@ export interface GetPipelinesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+     */
     readonly ids: string[];
     readonly pipelineName?: string;
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _authentication is not configured for provider_ errors.
+ *
+ * Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+ *
+ * ## Example Usage
+ *
+ * Get all Delta Live Tables pipelines:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getPipelines({});
+ * export const allPipelines = all.then(all => all.ids);
+ * ```
+ *
+ * Filter Delta Live Tables pipelines by name (exact match):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getPipelines({
+ *     pipelineName: "my_pipeline",
+ * });
+ * export const myPipeline = _this.then(_this => _this.ids);
+ * ```
+ *
+ * Filter Delta Live Tables pipelines by name (wildcard search):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getPipelines({
+ *     pipelineName: "%pipeline%",
+ * });
+ * export const wildcardPipelines = _this.then(_this => _this.ids);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ */
 export function getPipelinesOutput(args?: GetPipelinesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelinesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,6 +156,12 @@ export function getPipelinesOutput(args?: GetPipelinesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getPipelines.
  */
 export interface GetPipelinesOutputArgs {
+    /**
+     * List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+     */
     pipelineName?: pulumi.Input<string>;
 }

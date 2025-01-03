@@ -16,9 +16,17 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyA
 
     public static final GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs Empty = new GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs();
 
+    /**
+     * list of dependencies consisting of following attributes:
+     * 
+     */
     @Import(name="dependencies")
     private @Nullable Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs>> dependencies;
 
+    /**
+     * @return list of dependencies consisting of following attributes:
+     * 
+     */
     public Optional<Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs>>> dependencies() {
         return Optional.ofNullable(this.dependencies);
     }
@@ -47,15 +55,33 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyA
             $ = new GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dependencies list of dependencies consisting of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependencies(@Nullable Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs>> dependencies) {
             $.dependencies = dependencies;
             return this;
         }
 
+        /**
+         * @param dependencies list of dependencies consisting of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependencies(List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs> dependencies) {
             return dependencies(Output.of(dependencies));
         }
 
+        /**
+         * @param dependencies list of dependencies consisting of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependencies(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs... dependencies) {
             return dependencies(List.of(dependencies));
         }

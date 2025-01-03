@@ -15,16 +15,32 @@ public final class GetAwsBucketPolicyPlainArgs extends com.pulumi.resources.Invo
 
     public static final GetAwsBucketPolicyPlainArgs Empty = new GetAwsBucketPolicyPlainArgs();
 
+    /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
     @Import(name="awsPartition")
     private @Nullable String awsPartition;
 
+    /**
+     * @return AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
     public Optional<String> awsPartition() {
         return Optional.ofNullable(this.awsPartition);
     }
 
+    /**
+     * AWS S3 Bucket name for which to generate the policy document.
+     * 
+     */
     @Import(name="bucket", required=true)
     private String bucket;
 
+    /**
+     * @return AWS S3 Bucket name for which to generate the policy document.
+     * 
+     */
     public String bucket() {
         return this.bucket;
     }
@@ -48,16 +64,32 @@ public final class GetAwsBucketPolicyPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.databricksAccountId);
     }
 
+    /**
+     * Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+     * 
+     */
     @Import(name="databricksE2AccountId")
     private @Nullable String databricksE2AccountId;
 
+    /**
+     * @return Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+     * 
+     */
     public Optional<String> databricksE2AccountId() {
         return Optional.ofNullable(this.databricksE2AccountId);
     }
 
+    /**
+     * Data access role that can have full access for this bucket
+     * 
+     */
     @Import(name="fullAccessRole")
     private @Nullable String fullAccessRole;
 
+    /**
+     * @return Data access role that can have full access for this bucket
+     * 
+     */
     public Optional<String> fullAccessRole() {
         return Optional.ofNullable(this.fullAccessRole);
     }
@@ -90,11 +122,23 @@ public final class GetAwsBucketPolicyPlainArgs extends com.pulumi.resources.Invo
             $ = new GetAwsBucketPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsPartition(@Nullable String awsPartition) {
             $.awsPartition = awsPartition;
             return this;
         }
 
+        /**
+         * @param bucket AWS S3 Bucket name for which to generate the policy document.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucket(String bucket) {
             $.bucket = bucket;
             return this;
@@ -113,11 +157,23 @@ public final class GetAwsBucketPolicyPlainArgs extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param databricksE2AccountId Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+         * 
+         * @return builder
+         * 
+         */
         public Builder databricksE2AccountId(@Nullable String databricksE2AccountId) {
             $.databricksE2AccountId = databricksE2AccountId;
             return this;
         }
 
+        /**
+         * @param fullAccessRole Data access role that can have full access for this bucket
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullAccessRole(@Nullable String fullAccessRole) {
             $.fullAccessRole = fullAccessRole;
             return this;

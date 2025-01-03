@@ -13,6 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StorageCredentialAwsIamRole {
     private @Nullable String externalId;
+    /**
+     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * 
+     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+     * 
+     */
     private String roleArn;
     private @Nullable String unityCatalogIamArn;
 
@@ -20,6 +26,12 @@ public final class StorageCredentialAwsIamRole {
     public Optional<String> externalId() {
         return Optional.ofNullable(this.externalId);
     }
+    /**
+     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * 
+     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+     * 
+     */
     public String roleArn() {
         return this.roleArn;
     }

@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BudgetFilterTag {
+    /**
+     * @return The key of the tag.
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return Consists of the following fields:
+     * 
+     */
     private @Nullable BudgetFilterTagValue value;
 
     private BudgetFilterTag() {}
+    /**
+     * @return The key of the tag.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return Consists of the following fields:
+     * 
+     */
     public Optional<BudgetFilterTagValue> value() {
         return Optional.ofNullable(this.value);
     }

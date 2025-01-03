@@ -45,6 +45,9 @@ class GetMwsCredentialsResult:
     @property
     @pulumi.getter
     def ids(self) -> Mapping[str, str]:
+        """
+        name-to-id map for all of the credentials in the account
+        """
         return pulumi.get(self, "ids")
 
 
@@ -61,7 +64,37 @@ class AwaitableGetMwsCredentialsResult(GetMwsCredentialsResult):
 def get_mws_credentials(ids: Optional[Mapping[str, str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsCredentialsResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Lists all MwsCredentials in Databricks Account.
+
+    > **Note** `account_id` provider configuration property is required for this resource to work.
+
+    ## Example Usage
+
+    Listing all credentials in Databricks Account
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_mws_credentials()
+    pulumi.export("allMwsCredentials", all.ids)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Provisioning Databricks on AWS guide.
+    * MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+    * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+    * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+    * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+    * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
+
+    :param Mapping[str, str] ids: name-to-id map for all of the credentials in the account
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -74,7 +107,37 @@ def get_mws_credentials(ids: Optional[Mapping[str, str]] = None,
 def get_mws_credentials_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsCredentialsResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Lists all MwsCredentials in Databricks Account.
+
+    > **Note** `account_id` provider configuration property is required for this resource to work.
+
+    ## Example Usage
+
+    Listing all credentials in Databricks Account
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_mws_credentials()
+    pulumi.export("allMwsCredentials", all.ids)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Provisioning Databricks on AWS guide.
+    * MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+    * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+    * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+    * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+    * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
+
+    :param Mapping[str, str] ids: name-to-id map for all of the credentials in the account
     """
     __args__ = dict()
     __args__['ids'] = ids

@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class QueryParameterNumericValue
     {
+        /// <summary>
+        /// actual numeric value.
+        /// </summary>
         public readonly double Value;
 
         [OutputConstructor]

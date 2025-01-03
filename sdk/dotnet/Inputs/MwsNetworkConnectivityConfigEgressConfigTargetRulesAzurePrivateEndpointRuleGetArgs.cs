@@ -30,6 +30,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
+        /// <summary>
+        /// Canonical unique identifier of Network Connectivity Config in Databricks Account
+        /// </summary>
         [Input("networkConnectivityConfigId")]
         public Input<string>? NetworkConnectivityConfigId { get; set; }
 

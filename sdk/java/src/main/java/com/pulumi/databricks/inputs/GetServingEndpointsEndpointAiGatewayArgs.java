@@ -33,9 +33,17 @@ public final class GetServingEndpointsEndpointAiGatewayArgs extends com.pulumi.r
         return Optional.ofNullable(this.inferenceTableConfigs);
     }
 
+    /**
+     * A list of rate limit blocks to be applied to the serving endpoint.
+     * 
+     */
     @Import(name="rateLimits")
     private @Nullable Output<List<GetServingEndpointsEndpointAiGatewayRateLimitArgs>> rateLimits;
 
+    /**
+     * @return A list of rate limit blocks to be applied to the serving endpoint.
+     * 
+     */
     public Optional<Output<List<GetServingEndpointsEndpointAiGatewayRateLimitArgs>>> rateLimits() {
         return Optional.ofNullable(this.rateLimits);
     }
@@ -100,15 +108,33 @@ public final class GetServingEndpointsEndpointAiGatewayArgs extends com.pulumi.r
             return inferenceTableConfigs(List.of(inferenceTableConfigs));
         }
 
+        /**
+         * @param rateLimits A list of rate limit blocks to be applied to the serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rateLimits(@Nullable Output<List<GetServingEndpointsEndpointAiGatewayRateLimitArgs>> rateLimits) {
             $.rateLimits = rateLimits;
             return this;
         }
 
+        /**
+         * @param rateLimits A list of rate limit blocks to be applied to the serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rateLimits(List<GetServingEndpointsEndpointAiGatewayRateLimitArgs> rateLimits) {
             return rateLimits(Output.of(rateLimits));
         }
 
+        /**
+         * @param rateLimits A list of rate limit blocks to be applied to the serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rateLimits(GetServingEndpointsEndpointAiGatewayRateLimitArgs... rateLimits) {
             return rateLimits(List.of(rateLimits));
         }

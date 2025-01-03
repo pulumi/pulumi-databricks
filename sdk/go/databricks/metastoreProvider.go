@@ -12,13 +12,73 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This resource can only be used with a workspace-level provider!
+//
+// In Delta Sharing, a provider is an entity that shares data with a recipient. Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
+//
+// A `MetastoreProvider` is contained within Metastore and can contain a list of shares that have been shared with you.
+//
+// > Databricks to Databricks sharing automatically creates the provider.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"shareCredentialsVersion": 1,
+//				"bearerToken":             "token",
+//				"endpoint":                "endpoint",
+//				"expirationTime":          "expiration-time",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = databricks.NewMetastoreProvider(ctx, "dbprovider", &databricks.MetastoreProviderArgs{
+//				Name:                pulumi.String("terraform-test-provider"),
+//				Comment:             pulumi.String("made by terraform 2"),
+//				AuthenticationType:  pulumi.String("TOKEN"),
+//				RecipientProfileStr: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * getTables data to list tables within Unity Catalog.
+// * getSchemas data to list schemas within Unity Catalog.
+// * getCatalogs data to list catalogs within Unity Catalog.
 type MetastoreProvider struct {
 	pulumi.CustomResourceState
 
-	AuthenticationType  pulumi.StringOutput    `pulumi:"authenticationType"`
-	Comment             pulumi.StringPtrOutput `pulumi:"comment"`
-	Name                pulumi.StringOutput    `pulumi:"name"`
-	RecipientProfileStr pulumi.StringOutput    `pulumi:"recipientProfileStr"`
+	// The delta sharing authentication type. Valid values are `TOKEN`.
+	AuthenticationType pulumi.StringOutput `pulumi:"authenticationType"`
+	// Description about the provider.
+	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// Name of provider. Change forces creation of a new resource.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// This is the json file that is created from a recipient url.
+	RecipientProfileStr pulumi.StringOutput `pulumi:"recipientProfileStr"`
 }
 
 // NewMetastoreProvider registers a new resource with the given unique name, arguments, and options.
@@ -64,16 +124,24 @@ func GetMetastoreProvider(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MetastoreProvider resources.
 type metastoreProviderState struct {
-	AuthenticationType  *string `pulumi:"authenticationType"`
-	Comment             *string `pulumi:"comment"`
-	Name                *string `pulumi:"name"`
+	// The delta sharing authentication type. Valid values are `TOKEN`.
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// Description about the provider.
+	Comment *string `pulumi:"comment"`
+	// Name of provider. Change forces creation of a new resource.
+	Name *string `pulumi:"name"`
+	// This is the json file that is created from a recipient url.
 	RecipientProfileStr *string `pulumi:"recipientProfileStr"`
 }
 
 type MetastoreProviderState struct {
-	AuthenticationType  pulumi.StringPtrInput
-	Comment             pulumi.StringPtrInput
-	Name                pulumi.StringPtrInput
+	// The delta sharing authentication type. Valid values are `TOKEN`.
+	AuthenticationType pulumi.StringPtrInput
+	// Description about the provider.
+	Comment pulumi.StringPtrInput
+	// Name of provider. Change forces creation of a new resource.
+	Name pulumi.StringPtrInput
+	// This is the json file that is created from a recipient url.
 	RecipientProfileStr pulumi.StringPtrInput
 }
 
@@ -82,17 +150,25 @@ func (MetastoreProviderState) ElementType() reflect.Type {
 }
 
 type metastoreProviderArgs struct {
-	AuthenticationType  string  `pulumi:"authenticationType"`
-	Comment             *string `pulumi:"comment"`
-	Name                *string `pulumi:"name"`
-	RecipientProfileStr string  `pulumi:"recipientProfileStr"`
+	// The delta sharing authentication type. Valid values are `TOKEN`.
+	AuthenticationType string `pulumi:"authenticationType"`
+	// Description about the provider.
+	Comment *string `pulumi:"comment"`
+	// Name of provider. Change forces creation of a new resource.
+	Name *string `pulumi:"name"`
+	// This is the json file that is created from a recipient url.
+	RecipientProfileStr string `pulumi:"recipientProfileStr"`
 }
 
 // The set of arguments for constructing a MetastoreProvider resource.
 type MetastoreProviderArgs struct {
-	AuthenticationType  pulumi.StringInput
-	Comment             pulumi.StringPtrInput
-	Name                pulumi.StringPtrInput
+	// The delta sharing authentication type. Valid values are `TOKEN`.
+	AuthenticationType pulumi.StringInput
+	// Description about the provider.
+	Comment pulumi.StringPtrInput
+	// Name of provider. Change forces creation of a new resource.
+	Name pulumi.StringPtrInput
+	// This is the json file that is created from a recipient url.
 	RecipientProfileStr pulumi.StringInput
 }
 
@@ -183,18 +259,22 @@ func (o MetastoreProviderOutput) ToMetastoreProviderOutputWithContext(ctx contex
 	return o
 }
 
+// The delta sharing authentication type. Valid values are `TOKEN`.
 func (o MetastoreProviderOutput) AuthenticationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreProvider) pulumi.StringOutput { return v.AuthenticationType }).(pulumi.StringOutput)
 }
 
+// Description about the provider.
 func (o MetastoreProviderOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreProvider) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Name of provider. Change forces creation of a new resource.
 func (o MetastoreProviderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreProvider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// This is the json file that is created from a recipient url.
 func (o MetastoreProviderOutput) RecipientProfileStr() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreProvider) pulumi.StringOutput { return v.RecipientProfileStr }).(pulumi.StringOutput)
 }

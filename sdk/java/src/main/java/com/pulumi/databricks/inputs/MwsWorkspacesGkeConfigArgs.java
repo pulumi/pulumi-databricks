@@ -14,16 +14,32 @@ public final class MwsWorkspacesGkeConfigArgs extends com.pulumi.resources.Resou
 
     public static final MwsWorkspacesGkeConfigArgs Empty = new MwsWorkspacesGkeConfigArgs();
 
+    /**
+     * Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
+     * 
+     */
     @Import(name="connectivityType", required=true)
     private Output<String> connectivityType;
 
+    /**
+     * @return Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
+     * 
+     */
     public Output<String> connectivityType() {
         return this.connectivityType;
     }
 
+    /**
+     * The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
+     * 
+     */
     @Import(name="masterIpRange", required=true)
     private Output<String> masterIpRange;
 
+    /**
+     * @return The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
+     * 
+     */
     public Output<String> masterIpRange() {
         return this.masterIpRange;
     }
@@ -53,20 +69,44 @@ public final class MwsWorkspacesGkeConfigArgs extends com.pulumi.resources.Resou
             $ = new MwsWorkspacesGkeConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param connectivityType Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectivityType(Output<String> connectivityType) {
             $.connectivityType = connectivityType;
             return this;
         }
 
+        /**
+         * @param connectivityType Specifies the network connectivity types for the GKE nodes and the GKE master network. Possible values are: `PRIVATE_NODE_PUBLIC_MASTER`, `PUBLIC_NODE_PUBLIC_MASTER`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectivityType(String connectivityType) {
             return connectivityType(Output.of(connectivityType));
         }
 
+        /**
+         * @param masterIpRange The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterIpRange(Output<String> masterIpRange) {
             $.masterIpRange = masterIpRange;
             return this;
         }
 
+        /**
+         * @param masterIpRange The IP range from which to allocate GKE cluster master resources. This field will be ignored if GKE private cluster is not enabled. It must be exactly as big as `/28`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterIpRange(String masterIpRange) {
             return masterIpRange(Output.of(masterIpRange));
         }

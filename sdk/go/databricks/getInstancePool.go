@@ -11,6 +11,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// Retrieves information about databricks_instance_pool.
+//
+// ## Example Usage
+//
+// Referring to an instance pool by name:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := databricks.LookupInstancePool(ctx, &databricks.LookupInstancePoolArgs{
+//				Name: "All spot",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewCluster(ctx, "my_cluster", &databricks.ClusterArgs{
+//				InstancePoolId: pulumi.String(pool.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupInstancePool(ctx *pulumi.Context, args *LookupInstancePoolArgs, opts ...pulumi.InvokeOption) (*LookupInstancePoolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstancePoolResult
@@ -23,15 +60,18 @@ func LookupInstancePool(ctx *pulumi.Context, args *LookupInstancePoolArgs, opts 
 
 // A collection of arguments for invoking getInstancePool.
 type LookupInstancePoolArgs struct {
-	Name     string                   `pulumi:"name"`
+	// Name of the instance pool. The instance pool must exist before this resource can be planned.
+	Name string `pulumi:"name"`
+	// block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
 	PoolInfo *GetInstancePoolPoolInfo `pulumi:"poolInfo"`
 }
 
 // A collection of values returned by getInstancePool.
 type LookupInstancePoolResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id       string                  `pulumi:"id"`
-	Name     string                  `pulumi:"name"`
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+	// block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
 	PoolInfo GetInstancePoolPoolInfo `pulumi:"poolInfo"`
 }
 
@@ -46,7 +86,9 @@ func LookupInstancePoolOutput(ctx *pulumi.Context, args LookupInstancePoolOutput
 
 // A collection of arguments for invoking getInstancePool.
 type LookupInstancePoolOutputArgs struct {
-	Name     pulumi.StringInput              `pulumi:"name"`
+	// Name of the instance pool. The instance pool must exist before this resource can be planned.
+	Name pulumi.StringInput `pulumi:"name"`
+	// block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
 	PoolInfo GetInstancePoolPoolInfoPtrInput `pulumi:"poolInfo"`
 }
 
@@ -78,6 +120,7 @@ func (o LookupInstancePoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
 func (o LookupInstancePoolResultOutput) PoolInfo() GetInstancePoolPoolInfoOutput {
 	return o.ApplyT(func(v LookupInstancePoolResult) GetInstancePoolPoolInfo { return v.PoolInfo }).(GetInstancePoolPoolInfoOutput)
 }

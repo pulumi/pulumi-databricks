@@ -11,6 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source can only be used with an account-level provider!
+//
+// Retrieves information about MwsNetworkConnectivityConfig in Databricks Account.
+//
+// ## Example Usage
+//
+// # Fetching information about a network connectivity configuration in Databricks Account
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.LookupMwsNetworkConnectivityConfig(ctx, &databricks.LookupMwsNetworkConnectivityConfigArgs{
+//				Name: "ncc",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("config", this)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * getMwsNetworkConnectivityConfigs to get names of all network connectivity configurations.
+// * MwsNetworkConnectivityConfig to manage network connectivity configuration.
 func LookupMwsNetworkConnectivityConfig(ctx *pulumi.Context, args *LookupMwsNetworkConnectivityConfigArgs, opts ...pulumi.InvokeOption) (*LookupMwsNetworkConnectivityConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMwsNetworkConnectivityConfigResult
@@ -23,26 +62,40 @@ func LookupMwsNetworkConnectivityConfig(ctx *pulumi.Context, args *LookupMwsNetw
 
 // A collection of arguments for invoking getMwsNetworkConnectivityConfig.
 type LookupMwsNetworkConnectivityConfigArgs struct {
-	AccountId                   *string                                      `pulumi:"accountId"`
-	CreationTime                *int                                         `pulumi:"creationTime"`
-	EgressConfig                *GetMwsNetworkConnectivityConfigEgressConfig `pulumi:"egressConfig"`
-	Name                        string                                       `pulumi:"name"`
-	NetworkConnectivityConfigId *string                                      `pulumi:"networkConnectivityConfigId"`
-	Region                      *string                                      `pulumi:"region"`
-	UpdatedTime                 *int                                         `pulumi:"updatedTime"`
+	// The Databricks account ID associated with this network configuration.
+	AccountId *string `pulumi:"accountId"`
+	// Time in epoch milliseconds when this object was created.
+	CreationTime *int `pulumi:"creationTime"`
+	// Array of egress configuration objects.
+	EgressConfig *GetMwsNetworkConnectivityConfigEgressConfig `pulumi:"egressConfig"`
+	// Name of the network connectivity configuration.
+	Name string `pulumi:"name"`
+	// The Databricks network connectivity configuration ID.
+	NetworkConnectivityConfigId *string `pulumi:"networkConnectivityConfigId"`
+	// The region of the network connectivity configuration.
+	Region *string `pulumi:"region"`
+	// Time in epoch milliseconds when the network was updated.
+	UpdatedTime *int `pulumi:"updatedTime"`
 }
 
 // A collection of values returned by getMwsNetworkConnectivityConfig.
 type LookupMwsNetworkConnectivityConfigResult struct {
-	AccountId    string                                      `pulumi:"accountId"`
-	CreationTime int                                         `pulumi:"creationTime"`
+	// The Databricks account ID associated with this network configuration.
+	AccountId string `pulumi:"accountId"`
+	// Time in epoch milliseconds when this object was created.
+	CreationTime int `pulumi:"creationTime"`
+	// Array of egress configuration objects.
 	EgressConfig GetMwsNetworkConnectivityConfigEgressConfig `pulumi:"egressConfig"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                          string `pulumi:"id"`
-	Name                        string `pulumi:"name"`
+	Id string `pulumi:"id"`
+	// The name of the network connectivity configuration.
+	Name string `pulumi:"name"`
+	// The Databricks network connectivity configuration ID.
 	NetworkConnectivityConfigId string `pulumi:"networkConnectivityConfigId"`
-	Region                      string `pulumi:"region"`
-	UpdatedTime                 int    `pulumi:"updatedTime"`
+	// The region of the network connectivity configuration.
+	Region string `pulumi:"region"`
+	// Time in epoch milliseconds when the network was updated.
+	UpdatedTime int `pulumi:"updatedTime"`
 }
 
 func LookupMwsNetworkConnectivityConfigOutput(ctx *pulumi.Context, args LookupMwsNetworkConnectivityConfigOutputArgs, opts ...pulumi.InvokeOption) LookupMwsNetworkConnectivityConfigResultOutput {
@@ -56,13 +109,20 @@ func LookupMwsNetworkConnectivityConfigOutput(ctx *pulumi.Context, args LookupMw
 
 // A collection of arguments for invoking getMwsNetworkConnectivityConfig.
 type LookupMwsNetworkConnectivityConfigOutputArgs struct {
-	AccountId                   pulumi.StringPtrInput                               `pulumi:"accountId"`
-	CreationTime                pulumi.IntPtrInput                                  `pulumi:"creationTime"`
-	EgressConfig                GetMwsNetworkConnectivityConfigEgressConfigPtrInput `pulumi:"egressConfig"`
-	Name                        pulumi.StringInput                                  `pulumi:"name"`
-	NetworkConnectivityConfigId pulumi.StringPtrInput                               `pulumi:"networkConnectivityConfigId"`
-	Region                      pulumi.StringPtrInput                               `pulumi:"region"`
-	UpdatedTime                 pulumi.IntPtrInput                                  `pulumi:"updatedTime"`
+	// The Databricks account ID associated with this network configuration.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Time in epoch milliseconds when this object was created.
+	CreationTime pulumi.IntPtrInput `pulumi:"creationTime"`
+	// Array of egress configuration objects.
+	EgressConfig GetMwsNetworkConnectivityConfigEgressConfigPtrInput `pulumi:"egressConfig"`
+	// Name of the network connectivity configuration.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Databricks network connectivity configuration ID.
+	NetworkConnectivityConfigId pulumi.StringPtrInput `pulumi:"networkConnectivityConfigId"`
+	// The region of the network connectivity configuration.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Time in epoch milliseconds when the network was updated.
+	UpdatedTime pulumi.IntPtrInput `pulumi:"updatedTime"`
 }
 
 func (LookupMwsNetworkConnectivityConfigOutputArgs) ElementType() reflect.Type {
@@ -84,14 +144,17 @@ func (o LookupMwsNetworkConnectivityConfigResultOutput) ToLookupMwsNetworkConnec
 	return o
 }
 
+// The Databricks account ID associated with this network configuration.
 func (o LookupMwsNetworkConnectivityConfigResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMwsNetworkConnectivityConfigResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Time in epoch milliseconds when this object was created.
 func (o LookupMwsNetworkConnectivityConfigResultOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupMwsNetworkConnectivityConfigResult) int { return v.CreationTime }).(pulumi.IntOutput)
 }
 
+// Array of egress configuration objects.
 func (o LookupMwsNetworkConnectivityConfigResultOutput) EgressConfig() GetMwsNetworkConnectivityConfigEgressConfigOutput {
 	return o.ApplyT(func(v LookupMwsNetworkConnectivityConfigResult) GetMwsNetworkConnectivityConfigEgressConfig {
 		return v.EgressConfig
@@ -103,18 +166,22 @@ func (o LookupMwsNetworkConnectivityConfigResultOutput) Id() pulumi.StringOutput
 	return o.ApplyT(func(v LookupMwsNetworkConnectivityConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the network connectivity configuration.
 func (o LookupMwsNetworkConnectivityConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMwsNetworkConnectivityConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The Databricks network connectivity configuration ID.
 func (o LookupMwsNetworkConnectivityConfigResultOutput) NetworkConnectivityConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMwsNetworkConnectivityConfigResult) string { return v.NetworkConnectivityConfigId }).(pulumi.StringOutput)
 }
 
+// The region of the network connectivity configuration.
 func (o LookupMwsNetworkConnectivityConfigResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMwsNetworkConnectivityConfigResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// Time in epoch milliseconds when the network was updated.
 func (o LookupMwsNetworkConnectivityConfigResultOutput) UpdatedTime() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupMwsNetworkConnectivityConfigResult) int { return v.UpdatedTime }).(pulumi.IntOutput)
 }

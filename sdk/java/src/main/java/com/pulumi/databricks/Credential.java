@@ -20,6 +20,185 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; This resource can only be used with a workspace-level provider.
+ * 
+ * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+ * 
+ * A credential represents an authentication and authorization mechanism for accessing services on your cloud tenant. Each credential is subject to Unity Catalog access-control policies that control which users and groups can access the credential.
+ * 
+ * The type of credential to be created is determined by the `purpose` field, which should be either `SERVICE` or `STORAGE`.
+ * The caller must be a metastore admin or have the metastore privilege `CREATE_STORAGE_CREDENTIAL` for storage credentials, or `CREATE_SERVICE_CREDENTIAL` for service credentials. The user who creates the credential can delegate ownership to another user or group to manage permissions on it
+ * 
+ * On AWS, the IAM role for a credential requires a trust policy. See [documentation](https://docs.databricks.com/en/connect/unity-catalog/cloud-services/service-credentials.html#step-1-create-an-iam-role) for more details. The data source databricks.getAwsUnityCatalogAssumeRolePolicy can be used to create the necessary AWS Unity Catalog assume role policy.
+ * 
+ * ## Example Usage
+ * 
+ * For AWS
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Credential;
+ * import com.pulumi.databricks.CredentialArgs;
+ * import com.pulumi.databricks.inputs.CredentialAwsIamRoleArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var external = new Credential("external", CredentialArgs.builder()
+ *             .name(externalDataAccess.name())
+ *             .awsIamRole(CredentialAwsIamRoleArgs.builder()
+ *                 .roleArn(externalDataAccess.arn())
+ *                 .build())
+ *             .purpose("SERVICE")
+ *             .comment("Managed by TF")
+ *             .build());
+ * 
+ *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
+ *             .credential(external.id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("Data Engineers")
+ *                 .privileges("ACCESS")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * For Azure
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Credential;
+ * import com.pulumi.databricks.CredentialArgs;
+ * import com.pulumi.databricks.inputs.CredentialAzureManagedIdentityArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var externalMi = new Credential("externalMi", CredentialArgs.builder()
+ *             .name("mi_credential")
+ *             .azureManagedIdentity(CredentialAzureManagedIdentityArgs.builder()
+ *                 .accessConnectorId(example.id())
+ *                 .build())
+ *             .purpose("SERVICE")
+ *             .comment("Managed identity credential managed by TF")
+ *             .build());
+ * 
+ *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
+ *             .credential(externalMi.id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("Data Engineers")
+ *                 .privileges("ACCESS")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * For GCP (only applicable when purpose is `STORAGE`)
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Credential;
+ * import com.pulumi.databricks.CredentialArgs;
+ * import com.pulumi.databricks.inputs.CredentialDatabricksGcpServiceAccountArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var externalGcpSa = new Credential("externalGcpSa", CredentialArgs.builder()
+ *             .name("gcp_sa_credential")
+ *             .databricksGcpServiceAccount()
+ *             .purpose("STORAGE")
+ *             .comment("GCP SA credential managed by TF")
+ *             .build());
+ * 
+ *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
+ *             .credential(externalGcpSa.id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("Data Engineers")
+ *                 .privileges("ACCESS")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * This resource can be imported by name:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/credential:Credential this &lt;name&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/credential:Credential")
 public class Credential extends com.pulumi.resources.CustomResource {
     @Export(name="awsIamRole", refs={CredentialAwsIamRole.class}, tree="[0]")
@@ -58,9 +237,17 @@ public class Credential extends com.pulumi.resources.CustomResource {
     public Output<String> createdBy() {
         return this.createdBy;
     }
+    /**
+     * Unique ID of the credential.
+     * 
+     */
     @Export(name="credentialId", refs={String.class}, tree="[0]")
     private Output<String> credentialId;
 
+    /**
+     * @return Unique ID of the credential.
+     * 
+     */
     public Output<String> credentialId() {
         return this.credentialId;
     }
@@ -70,15 +257,31 @@ public class Credential extends com.pulumi.resources.CustomResource {
     public Output<CredentialDatabricksGcpServiceAccount> databricksGcpServiceAccount() {
         return this.databricksGcpServiceAccount;
     }
+    /**
+     * Delete credential regardless of its dependencies.
+     * 
+     */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
+    /**
+     * @return Delete credential regardless of its dependencies.
+     * 
+     */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
+    /**
+     * Update credential regardless of its dependents.
+     * 
+     */
     @Export(name="forceUpdate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceUpdate;
 
+    /**
+     * @return Update credential regardless of its dependents.
+     * 
+     */
     public Output<Optional<Boolean>> forceUpdate() {
         return Codegen.optional(this.forceUpdate);
     }
@@ -88,9 +291,21 @@ public class Credential extends com.pulumi.resources.CustomResource {
     public Output<String> fullName() {
         return this.fullName;
     }
+    /**
+     * Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
     @Export(name="isolationMode", refs={String.class}, tree="[0]")
     private Output<String> isolationMode;
 
+    /**
+     * @return Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
     public Output<String> isolationMode() {
         return this.isolationMode;
     }
@@ -100,33 +315,73 @@ public class Credential extends com.pulumi.resources.CustomResource {
     public Output<String> metastoreId() {
         return this.metastoreId;
     }
+    /**
+     * Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Username/groupname/sp application_id of the credential owner.
+     * 
+     */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
+    /**
+     * @return Username/groupname/sp application_id of the credential owner.
+     * 
+     */
     public Output<String> owner() {
         return this.owner;
     }
+    /**
+     * Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+     * 
+     */
     @Export(name="purpose", refs={String.class}, tree="[0]")
     private Output<String> purpose;
 
+    /**
+     * @return Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+     * 
+     */
     public Output<String> purpose() {
         return this.purpose;
     }
+    /**
+     * Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+     * 
+     */
     @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> readOnly;
 
+    /**
+     * @return Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+     * 
+     */
     public Output<Optional<Boolean>> readOnly() {
         return Codegen.optional(this.readOnly);
     }
+    /**
+     * Suppress validation errors if any &amp; force save the credential.
+     * 
+     */
     @Export(name="skipValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipValidation;
 
+    /**
+     * @return Suppress validation errors if any &amp; force save the credential.
+     * 
+     */
     public Output<Optional<Boolean>> skipValidation() {
         return Codegen.optional(this.skipValidation);
     }

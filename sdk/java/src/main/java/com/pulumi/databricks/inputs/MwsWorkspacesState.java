@@ -23,16 +23,32 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
 
     public static final MwsWorkspacesState Empty = new MwsWorkspacesState();
 
+    /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * 
+     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
+    /**
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * 
+     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * region of VPC.
+     * 
+     */
     @Import(name="awsRegion")
     private @Nullable Output<String> awsRegion;
 
+    /**
+     * @return region of VPC.
+     * 
+     */
     public Optional<Output<String>> awsRegion() {
         return Optional.ofNullable(this.awsRegion);
     }
@@ -44,16 +60,32 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.cloud);
     }
 
+    /**
+     * A block that specifies GCP workspace configurations, consisting of following blocks:
+     * 
+     */
     @Import(name="cloudResourceContainer")
     private @Nullable Output<MwsWorkspacesCloudResourceContainerArgs> cloudResourceContainer;
 
+    /**
+     * @return A block that specifies GCP workspace configurations, consisting of following blocks:
+     * 
+     */
     public Optional<Output<MwsWorkspacesCloudResourceContainerArgs>> cloudResourceContainer() {
         return Optional.ofNullable(this.cloudResourceContainer);
     }
 
+    /**
+     * (Integer) time when workspace was created
+     * 
+     */
     @Import(name="creationTime")
     private @Nullable Output<Integer> creationTime;
 
+    /**
+     * @return (Integer) time when workspace was created
+     * 
+     */
     public Optional<Output<Integer>> creationTime() {
         return Optional.ofNullable(this.creationTime);
     }
@@ -65,9 +97,17 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.credentialsId);
     }
 
+    /**
+     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+     * 
+     */
     @Import(name="customTags")
     private @Nullable Output<Map<String,String>> customTags;
 
+    /**
+     * @return The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+     * 
+     */
     public Optional<Output<Map<String,String>>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
@@ -91,9 +131,17 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.customerManagedKeyId);
     }
 
+    /**
+     * part of URL as in `https://&lt;prefix&gt;-&lt;deployment-name&gt;.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+     * 
+     */
     @Import(name="deploymentName")
     private @Nullable Output<String> deploymentName;
 
+    /**
+     * @return part of URL as in `https://&lt;prefix&gt;-&lt;deployment-name&gt;.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+     * 
+     */
     public Optional<Output<String>> deploymentName() {
         return Optional.ofNullable(this.deploymentName);
     }
@@ -112,16 +160,32 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.gcpManagedNetworkConfig);
     }
 
+    /**
+     * (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;{@literal @}prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
+     * 
+     */
     @Import(name="gcpWorkspaceSa")
     private @Nullable Output<String> gcpWorkspaceSa;
 
+    /**
+     * @return (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;{@literal @}prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
+     * 
+     */
     public Optional<Output<String>> gcpWorkspaceSa() {
         return Optional.ofNullable(this.gcpWorkspaceSa);
     }
 
+    /**
+     * A block that specifies GKE configuration for the Databricks workspace:
+     * 
+     */
     @Import(name="gkeConfig")
     private @Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig;
 
+    /**
+     * @return A block that specifies GKE configuration for the Databricks workspace:
+     * 
+     */
     public Optional<Output<MwsWorkspacesGkeConfigArgs>> gkeConfig() {
         return Optional.ofNullable(this.gkeConfig);
     }
@@ -133,51 +197,107 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.isNoPublicIpEnabled);
     }
 
+    /**
+     * region of the subnet.
+     * 
+     */
     @Import(name="location")
     private @Nullable Output<String> location;
 
+    /**
+     * @return region of the subnet.
+     * 
+     */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
 
+    /**
+     * `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
+     * 
+     */
     @Import(name="managedServicesCustomerManagedKeyId")
     private @Nullable Output<String> managedServicesCustomerManagedKeyId;
 
+    /**
+     * @return `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
+     * 
+     */
     public Optional<Output<String>> managedServicesCustomerManagedKeyId() {
         return Optional.ofNullable(this.managedServicesCustomerManagedKeyId);
     }
 
+    /**
+     * `network_id` from networks.
+     * 
+     */
     @Import(name="networkId")
     private @Nullable Output<String> networkId;
 
+    /**
+     * @return `network_id` from networks.
+     * 
+     */
     public Optional<Output<String>> networkId() {
         return Optional.ofNullable(this.networkId);
     }
 
+    /**
+     * The pricing tier of the workspace.
+     * 
+     */
     @Import(name="pricingTier")
     private @Nullable Output<String> pricingTier;
 
+    /**
+     * @return The pricing tier of the workspace.
+     * 
+     */
     public Optional<Output<String>> pricingTier() {
         return Optional.ofNullable(this.pricingTier);
     }
 
+    /**
+     * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+     * 
+     */
     @Import(name="privateAccessSettingsId")
     private @Nullable Output<String> privateAccessSettingsId;
 
+    /**
+     * @return Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+     * 
+     */
     public Optional<Output<String>> privateAccessSettingsId() {
         return Optional.ofNullable(this.privateAccessSettingsId);
     }
 
+    /**
+     * `storage_configuration_id` from storage configuration.
+     * 
+     */
     @Import(name="storageConfigurationId")
     private @Nullable Output<String> storageConfigurationId;
 
+    /**
+     * @return `storage_configuration_id` from storage configuration.
+     * 
+     */
     public Optional<Output<String>> storageConfigurationId() {
         return Optional.ofNullable(this.storageConfigurationId);
     }
 
+    /**
+     * `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+     * 
+     */
     @Import(name="storageCustomerManagedKeyId")
     private @Nullable Output<String> storageCustomerManagedKeyId;
 
+    /**
+     * @return `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+     * 
+     */
     public Optional<Output<String>> storageCustomerManagedKeyId() {
         return Optional.ofNullable(this.storageCustomerManagedKeyId);
     }
@@ -189,37 +309,77 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.token);
     }
 
+    /**
+     * (String) workspace id
+     * 
+     */
     @Import(name="workspaceId")
     private @Nullable Output<String> workspaceId;
 
+    /**
+     * @return (String) workspace id
+     * 
+     */
     public Optional<Output<String>> workspaceId() {
         return Optional.ofNullable(this.workspaceId);
     }
 
+    /**
+     * name of the workspace, will appear on UI.
+     * 
+     */
     @Import(name="workspaceName")
     private @Nullable Output<String> workspaceName;
 
+    /**
+     * @return name of the workspace, will appear on UI.
+     * 
+     */
     public Optional<Output<String>> workspaceName() {
         return Optional.ofNullable(this.workspaceName);
     }
 
+    /**
+     * (String) workspace status
+     * 
+     */
     @Import(name="workspaceStatus")
     private @Nullable Output<String> workspaceStatus;
 
+    /**
+     * @return (String) workspace status
+     * 
+     */
     public Optional<Output<String>> workspaceStatus() {
         return Optional.ofNullable(this.workspaceStatus);
     }
 
+    /**
+     * (String) updates on workspace status
+     * 
+     */
     @Import(name="workspaceStatusMessage")
     private @Nullable Output<String> workspaceStatusMessage;
 
+    /**
+     * @return (String) updates on workspace status
+     * 
+     */
     public Optional<Output<String>> workspaceStatusMessage() {
         return Optional.ofNullable(this.workspaceStatusMessage);
     }
 
+    /**
+     * (String) URL of the workspace
+     * 
+     */
     @Import(name="workspaceUrl")
     private @Nullable Output<String> workspaceUrl;
 
+    /**
+     * @return (String) URL of the workspace
+     * 
+     */
     public Optional<Output<String>> workspaceUrl() {
         return Optional.ofNullable(this.workspaceUrl);
     }
@@ -274,20 +434,44 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             $ = new MwsWorkspacesState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param awsRegion region of VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsRegion(@Nullable Output<String> awsRegion) {
             $.awsRegion = awsRegion;
             return this;
         }
 
+        /**
+         * @param awsRegion region of VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsRegion(String awsRegion) {
             return awsRegion(Output.of(awsRegion));
         }
@@ -301,20 +485,44 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return cloud(Output.of(cloud));
         }
 
+        /**
+         * @param cloudResourceContainer A block that specifies GCP workspace configurations, consisting of following blocks:
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudResourceContainer(@Nullable Output<MwsWorkspacesCloudResourceContainerArgs> cloudResourceContainer) {
             $.cloudResourceContainer = cloudResourceContainer;
             return this;
         }
 
+        /**
+         * @param cloudResourceContainer A block that specifies GCP workspace configurations, consisting of following blocks:
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudResourceContainer(MwsWorkspacesCloudResourceContainerArgs cloudResourceContainer) {
             return cloudResourceContainer(Output.of(cloudResourceContainer));
         }
 
+        /**
+         * @param creationTime (Integer) time when workspace was created
+         * 
+         * @return builder
+         * 
+         */
         public Builder creationTime(@Nullable Output<Integer> creationTime) {
             $.creationTime = creationTime;
             return this;
         }
 
+        /**
+         * @param creationTime (Integer) time when workspace was created
+         * 
+         * @return builder
+         * 
+         */
         public Builder creationTime(Integer creationTime) {
             return creationTime(Output.of(creationTime));
         }
@@ -328,11 +536,23 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return credentialsId(Output.of(credentialsId));
         }
 
+        /**
+         * @param customTags The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customTags(@Nullable Output<Map<String,String>> customTags) {
             $.customTags = customTags;
             return this;
         }
 
+        /**
+         * @param customTags The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customTags(Map<String,String> customTags) {
             return customTags(Output.of(customTags));
         }
@@ -362,11 +582,23 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return customerManagedKeyId(Output.of(customerManagedKeyId));
         }
 
+        /**
+         * @param deploymentName part of URL as in `https://&lt;prefix&gt;-&lt;deployment-name&gt;.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deploymentName(@Nullable Output<String> deploymentName) {
             $.deploymentName = deploymentName;
             return this;
         }
 
+        /**
+         * @param deploymentName part of URL as in `https://&lt;prefix&gt;-&lt;deployment-name&gt;.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deploymentName(String deploymentName) {
             return deploymentName(Output.of(deploymentName));
         }
@@ -389,20 +621,44 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return gcpManagedNetworkConfig(Output.of(gcpManagedNetworkConfig));
         }
 
+        /**
+         * @param gcpWorkspaceSa (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;{@literal @}prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
+         * 
+         * @return builder
+         * 
+         */
         public Builder gcpWorkspaceSa(@Nullable Output<String> gcpWorkspaceSa) {
             $.gcpWorkspaceSa = gcpWorkspaceSa;
             return this;
         }
 
+        /**
+         * @param gcpWorkspaceSa (String, GCP only) identifier of a service account created for the workspace in form of `db-&lt;workspace-id&gt;{@literal @}prod-gcp-&lt;region&gt;.iam.gserviceaccount.com`
+         * 
+         * @return builder
+         * 
+         */
         public Builder gcpWorkspaceSa(String gcpWorkspaceSa) {
             return gcpWorkspaceSa(Output.of(gcpWorkspaceSa));
         }
 
+        /**
+         * @param gkeConfig A block that specifies GKE configuration for the Databricks workspace:
+         * 
+         * @return builder
+         * 
+         */
         public Builder gkeConfig(@Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig) {
             $.gkeConfig = gkeConfig;
             return this;
         }
 
+        /**
+         * @param gkeConfig A block that specifies GKE configuration for the Databricks workspace:
+         * 
+         * @return builder
+         * 
+         */
         public Builder gkeConfig(MwsWorkspacesGkeConfigArgs gkeConfig) {
             return gkeConfig(Output.of(gkeConfig));
         }
@@ -416,65 +672,149 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return isNoPublicIpEnabled(Output.of(isNoPublicIpEnabled));
         }
 
+        /**
+         * @param location region of the subnet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(@Nullable Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location region of the subnet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }
 
+        /**
+         * @param managedServicesCustomerManagedKeyId `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedServicesCustomerManagedKeyId(@Nullable Output<String> managedServicesCustomerManagedKeyId) {
             $.managedServicesCustomerManagedKeyId = managedServicesCustomerManagedKeyId;
             return this;
         }
 
+        /**
+         * @param managedServicesCustomerManagedKeyId `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedServicesCustomerManagedKeyId(String managedServicesCustomerManagedKeyId) {
             return managedServicesCustomerManagedKeyId(Output.of(managedServicesCustomerManagedKeyId));
         }
 
+        /**
+         * @param networkId `network_id` from networks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkId(@Nullable Output<String> networkId) {
             $.networkId = networkId;
             return this;
         }
 
+        /**
+         * @param networkId `network_id` from networks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkId(String networkId) {
             return networkId(Output.of(networkId));
         }
 
+        /**
+         * @param pricingTier The pricing tier of the workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pricingTier(@Nullable Output<String> pricingTier) {
             $.pricingTier = pricingTier;
             return this;
         }
 
+        /**
+         * @param pricingTier The pricing tier of the workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pricingTier(String pricingTier) {
             return pricingTier(Output.of(pricingTier));
         }
 
+        /**
+         * @param privateAccessSettingsId Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccessSettingsId(@Nullable Output<String> privateAccessSettingsId) {
             $.privateAccessSettingsId = privateAccessSettingsId;
             return this;
         }
 
+        /**
+         * @param privateAccessSettingsId Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccessSettingsId(String privateAccessSettingsId) {
             return privateAccessSettingsId(Output.of(privateAccessSettingsId));
         }
 
+        /**
+         * @param storageConfigurationId `storage_configuration_id` from storage configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageConfigurationId(@Nullable Output<String> storageConfigurationId) {
             $.storageConfigurationId = storageConfigurationId;
             return this;
         }
 
+        /**
+         * @param storageConfigurationId `storage_configuration_id` from storage configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageConfigurationId(String storageConfigurationId) {
             return storageConfigurationId(Output.of(storageConfigurationId));
         }
 
+        /**
+         * @param storageCustomerManagedKeyId `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageCustomerManagedKeyId(@Nullable Output<String> storageCustomerManagedKeyId) {
             $.storageCustomerManagedKeyId = storageCustomerManagedKeyId;
             return this;
         }
 
+        /**
+         * @param storageCustomerManagedKeyId `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageCustomerManagedKeyId(String storageCustomerManagedKeyId) {
             return storageCustomerManagedKeyId(Output.of(storageCustomerManagedKeyId));
         }
@@ -488,47 +828,107 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return token(Output.of(token));
         }
 
+        /**
+         * @param workspaceId (String) workspace id
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceId(@Nullable Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
 
+        /**
+         * @param workspaceId (String) workspace id
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }
 
+        /**
+         * @param workspaceName name of the workspace, will appear on UI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceName(@Nullable Output<String> workspaceName) {
             $.workspaceName = workspaceName;
             return this;
         }
 
+        /**
+         * @param workspaceName name of the workspace, will appear on UI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceName(String workspaceName) {
             return workspaceName(Output.of(workspaceName));
         }
 
+        /**
+         * @param workspaceStatus (String) workspace status
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceStatus(@Nullable Output<String> workspaceStatus) {
             $.workspaceStatus = workspaceStatus;
             return this;
         }
 
+        /**
+         * @param workspaceStatus (String) workspace status
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceStatus(String workspaceStatus) {
             return workspaceStatus(Output.of(workspaceStatus));
         }
 
+        /**
+         * @param workspaceStatusMessage (String) updates on workspace status
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceStatusMessage(@Nullable Output<String> workspaceStatusMessage) {
             $.workspaceStatusMessage = workspaceStatusMessage;
             return this;
         }
 
+        /**
+         * @param workspaceStatusMessage (String) updates on workspace status
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceStatusMessage(String workspaceStatusMessage) {
             return workspaceStatusMessage(Output.of(workspaceStatusMessage));
         }
 
+        /**
+         * @param workspaceUrl (String) URL of the workspace
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceUrl(@Nullable Output<String> workspaceUrl) {
             $.workspaceUrl = workspaceUrl;
             return this;
         }
 
+        /**
+         * @param workspaceUrl (String) URL of the workspace
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceUrl(String workspaceUrl) {
             return workspaceUrl(Output.of(workspaceUrl));
         }

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class JobTaskForEachTaskTaskWebhookNotificationsOnStart {
+    /**
+     * @return ID of the job
+     * 
+     */
     private String id;
 
     private JobTaskForEachTaskTaskWebhookNotificationsOnStart() {}
+    /**
+     * @return ID of the job
+     * 
+     */
     public String id() {
         return this.id;
     }

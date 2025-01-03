@@ -26,6 +26,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel {
     private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig> cohereConfigs;
     private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig> databricksModelServingConfigs;
     private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig> googleCloudVertexAiConfigs;
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     private String name;
     private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig> openaiConfigs;
     private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig> palmConfigs;
@@ -51,6 +55,10 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel {
     public List<GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig> googleCloudVertexAiConfigs() {
         return this.googleCloudVertexAiConfigs == null ? List.of() : this.googleCloudVertexAiConfigs;
     }
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     public String name() {
         return this.name;
     }

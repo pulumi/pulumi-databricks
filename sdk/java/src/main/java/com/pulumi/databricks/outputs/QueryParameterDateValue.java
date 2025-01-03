@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class QueryParameterDateValue {
+    /**
+     * @return Manually specified date-time value
+     * 
+     */
     private @Nullable String dateValue;
+    /**
+     * @return Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
+     * 
+     */
     private @Nullable String dynamicDateValue;
+    /**
+     * @return Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+     * 
+     */
     private @Nullable String precision;
 
     private QueryParameterDateValue() {}
+    /**
+     * @return Manually specified date-time value
+     * 
+     */
     public Optional<String> dateValue() {
         return Optional.ofNullable(this.dateValue);
     }
+    /**
+     * @return Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
+     * 
+     */
     public Optional<String> dynamicDateValue() {
         return Optional.ofNullable(this.dynamicDateValue);
     }
+    /**
+     * @return Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+     * 
+     */
     public Optional<String> precision() {
         return Optional.ofNullable(this.precision);
     }

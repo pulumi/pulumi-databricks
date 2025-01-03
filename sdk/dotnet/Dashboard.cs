@@ -9,6 +9,50 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Dashboard using `serialized_dashboard` attribute:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var starter = Databricks.GetSqlWarehouse.Invoke(new()
+    ///     {
+    ///         Name = "Starter Warehouse",
+    ///     });
+    /// 
+    ///     var dashboard = new Databricks.Dashboard("dashboard", new()
+    ///     {
+    ///         DisplayName = "New Dashboard",
+    ///         WarehouseId = starter.Apply(getSqlWarehouseResult =&gt; getSqlWarehouseResult.Id),
+    ///         SerializedDashboard = "{\"pages\":[{\"name\":\"new_name\",\"displayName\":\"New Page\"}]}",
+    ///         EmbedCredentials = false,
+    ///         ParentPath = "/Shared/provider-test",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Dashboard using `file_path` attribute:
+    /// 
+    /// ## Import
+    /// 
+    /// You can import a `databricks_dashboard` resource with ID like the following:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/dashboard:Dashboard this &lt;dashboard-id&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/dashboard:Dashboard")]
     public partial class Dashboard : global::Pulumi.CustomResource
     {
@@ -21,15 +65,24 @@ namespace Pulumi.Databricks
         [Output("dashboardId")]
         public Output<string> DashboardId { get; private set; } = null!;
 
+        /// <summary>
+        /// The display name of the dashboard.
+        /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to embed credentials in the dashboard. Default is `true`.
+        /// </summary>
         [Output("embedCredentials")]
         public Output<bool?> EmbedCredentials { get; private set; } = null!;
 
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        /// </summary>
         [Output("filePath")]
         public Output<string?> FilePath { get; private set; } = null!;
 
@@ -39,18 +92,27 @@ namespace Pulumi.Databricks
         [Output("md5")]
         public Output<string> Md5 { get; private set; } = null!;
 
+        /// <summary>
+        /// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+        /// </summary>
         [Output("parentPath")]
         public Output<string> ParentPath { get; private set; } = null!;
 
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+        /// </summary>
         [Output("serializedDashboard")]
         public Output<string?> SerializedDashboard { get; private set; } = null!;
 
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The warehouse ID used to run the dashboard.
+        /// </summary>
         [Output("warehouseId")]
         public Output<string> WarehouseId { get; private set; } = null!;
 
@@ -109,15 +171,24 @@ namespace Pulumi.Databricks
         [Input("dashboardId")]
         public Input<string>? DashboardId { get; set; }
 
+        /// <summary>
+        /// The display name of the dashboard.
+        /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to embed credentials in the dashboard. Default is `true`.
+        /// </summary>
         [Input("embedCredentials")]
         public Input<bool>? EmbedCredentials { get; set; }
 
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        /// </summary>
         [Input("filePath")]
         public Input<string>? FilePath { get; set; }
 
@@ -127,18 +198,27 @@ namespace Pulumi.Databricks
         [Input("md5")]
         public Input<string>? Md5 { get; set; }
 
+        /// <summary>
+        /// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+        /// </summary>
         [Input("parentPath", required: true)]
         public Input<string> ParentPath { get; set; } = null!;
 
         [Input("path")]
         public Input<string>? Path { get; set; }
 
+        /// <summary>
+        /// The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+        /// </summary>
         [Input("serializedDashboard")]
         public Input<string>? SerializedDashboard { get; set; }
 
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 
+        /// <summary>
+        /// The warehouse ID used to run the dashboard.
+        /// </summary>
         [Input("warehouseId", required: true)]
         public Input<string> WarehouseId { get; set; } = null!;
 
@@ -159,15 +239,24 @@ namespace Pulumi.Databricks
         [Input("dashboardId")]
         public Input<string>? DashboardId { get; set; }
 
+        /// <summary>
+        /// The display name of the dashboard.
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Whether to embed credentials in the dashboard. Default is `true`.
+        /// </summary>
         [Input("embedCredentials")]
         public Input<bool>? EmbedCredentials { get; set; }
 
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        /// </summary>
         [Input("filePath")]
         public Input<string>? FilePath { get; set; }
 
@@ -177,18 +266,27 @@ namespace Pulumi.Databricks
         [Input("md5")]
         public Input<string>? Md5 { get; set; }
 
+        /// <summary>
+        /// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+        /// </summary>
         [Input("parentPath")]
         public Input<string>? ParentPath { get; set; }
 
         [Input("path")]
         public Input<string>? Path { get; set; }
 
+        /// <summary>
+        /// The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+        /// </summary>
         [Input("serializedDashboard")]
         public Input<string>? SerializedDashboard { get; set; }
 
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 
+        /// <summary>
+        /// The warehouse ID used to run the dashboard.
+        /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
 

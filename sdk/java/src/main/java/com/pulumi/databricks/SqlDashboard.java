@@ -16,6 +16,120 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; Please switch to databricks.Dashboard to author new AI/BI dashboards using the latest tooling.
+ * 
+ * This resource is used to manage [Legacy dashboards](https://docs.databricks.com/sql/user/dashboards/index.html). To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
+ * 
+ * &gt; documentation for this resource is a work in progress.
+ * 
+ * A dashboard may have one or more widgets.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Directory;
+ * import com.pulumi.databricks.DirectoryArgs;
+ * import com.pulumi.databricks.SqlDashboard;
+ * import com.pulumi.databricks.SqlDashboardArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()
+ *             .path("/Shared/Dashboards")
+ *             .build());
+ * 
+ *         var d1 = new SqlDashboard("d1", SqlDashboardArgs.builder()
+ *             .name("My Dashboard Name")
+ *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
+ *             .tags(            
+ *                 "some-tag",
+ *                 "another-tag")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Example permission to share dashboard with all users:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Permissions;
+ * import com.pulumi.databricks.PermissionsArgs;
+ * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var d1 = new Permissions("d1", PermissionsArgs.builder()
+ *             .sqlDashboardId(d1DatabricksSqlDashboard.id())
+ *             .accessControls(PermissionsAccessControlArgs.builder()
+ *                 .groupName(users.displayName())
+ *                 .permissionLevel("CAN_RUN")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * End to end workspace management guide.
+ * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
+ * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+ * 
+ * ## Import
+ * 
+ * You can import a `databricks_sql_dashboard` resource with ID like the following:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/sqlDashboard:SqlDashboard this &lt;dashboard-id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/sqlDashboard:SqlDashboard")
 public class SqlDashboard extends com.pulumi.resources.CustomResource {
     @Export(name="createdAt", refs={String.class}, tree="[0]")

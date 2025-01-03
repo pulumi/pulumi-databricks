@@ -17,23 +17,47 @@ public final class QueryParameterEnumValueArgs extends com.pulumi.resources.Reso
 
     public static final QueryParameterEnumValueArgs Empty = new QueryParameterEnumValueArgs();
 
+    /**
+     * List of valid query parameter values, newline delimited.
+     * 
+     */
     @Import(name="enumOptions")
     private @Nullable Output<String> enumOptions;
 
+    /**
+     * @return List of valid query parameter values, newline delimited.
+     * 
+     */
     public Optional<Output<String>> enumOptions() {
         return Optional.ofNullable(this.enumOptions);
     }
 
+    /**
+     * If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+     * 
+     */
     @Import(name="multiValuesOptions")
     private @Nullable Output<QueryParameterEnumValueMultiValuesOptionsArgs> multiValuesOptions;
 
+    /**
+     * @return If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+     * 
+     */
     public Optional<Output<QueryParameterEnumValueMultiValuesOptionsArgs>> multiValuesOptions() {
         return Optional.ofNullable(this.multiValuesOptions);
     }
 
+    /**
+     * List of selected query parameter values.
+     * 
+     */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
+    /**
+     * @return List of selected query parameter values.
+     * 
+     */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -64,33 +88,75 @@ public final class QueryParameterEnumValueArgs extends com.pulumi.resources.Reso
             $ = new QueryParameterEnumValueArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enumOptions List of valid query parameter values, newline delimited.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enumOptions(@Nullable Output<String> enumOptions) {
             $.enumOptions = enumOptions;
             return this;
         }
 
+        /**
+         * @param enumOptions List of valid query parameter values, newline delimited.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enumOptions(String enumOptions) {
             return enumOptions(Output.of(enumOptions));
         }
 
+        /**
+         * @param multiValuesOptions If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder multiValuesOptions(@Nullable Output<QueryParameterEnumValueMultiValuesOptionsArgs> multiValuesOptions) {
             $.multiValuesOptions = multiValuesOptions;
             return this;
         }
 
+        /**
+         * @param multiValuesOptions If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder multiValuesOptions(QueryParameterEnumValueMultiValuesOptionsArgs multiValuesOptions) {
             return multiValuesOptions(Output.of(multiValuesOptions));
         }
 
+        /**
+         * @param values List of selected query parameter values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values List of selected query parameter values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values List of selected query parameter values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

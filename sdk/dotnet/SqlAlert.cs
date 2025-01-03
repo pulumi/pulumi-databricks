@@ -9,24 +9,108 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
+    /// 
+    /// &gt; To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sharedDir = new Databricks.Directory("shared_dir", new()
+    ///     {
+    ///         Path = "/Shared/Queries",
+    ///     });
+    /// 
+    ///     var @this = new Databricks.SqlQuery("this", new()
+    ///     {
+    ///         DataSourceId = example.DataSourceId,
+    ///         Name = "My Query Name",
+    ///         Query = "SELECT 1 AS p1, 2 as p2",
+    ///         Parent = sharedDir.ObjectId.Apply(objectId =&gt; $"folders/{objectId}"),
+    ///     });
+    /// 
+    ///     var alert = new Databricks.SqlAlert("alert", new()
+    ///     {
+    ///         QueryId = @this.Id,
+    ///         Name = "My Alert",
+    ///         Parent = sharedDir.ObjectId.Apply(objectId =&gt; $"folders/{objectId}"),
+    ///         Rearm = 1,
+    ///         Options = new Databricks.Inputs.SqlAlertOptionsArgs
+    ///         {
+    ///             Column = "p1",
+    ///             Op = "==",
+    ///             Value = "2",
+    ///             Muted = false,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Access Control
+    /// 
+    /// databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * End to end workspace management guide.
+    /// * databricks.SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
+    /// * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+    /// * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported using alert ID:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/sqlAlert:SqlAlert this &lt;alert-id&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/sqlAlert:SqlAlert")]
     public partial class SqlAlert : global::Pulumi.CustomResource
     {
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the alert.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Alert configuration options.
+        /// </summary>
         [Output("options")]
         public Output<Outputs.SqlAlertOptions> Options { get; private set; } = null!;
 
+        /// <summary>
+        /// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/&lt;folder_id&gt;`.
+        /// </summary>
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of the query evaluated by the alert.
+        /// </summary>
         [Output("queryId")]
         public Output<string> QueryId { get; private set; } = null!;
 
+        /// <summary>
+        /// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
+        /// </summary>
         [Output("rearm")]
         public Output<int?> Rearm { get; private set; } = null!;
 
@@ -82,18 +166,33 @@ namespace Pulumi.Databricks
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Name of the alert.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Alert configuration options.
+        /// </summary>
         [Input("options", required: true)]
         public Input<Inputs.SqlAlertOptionsArgs> Options { get; set; } = null!;
 
+        /// <summary>
+        /// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/&lt;folder_id&gt;`.
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        /// <summary>
+        /// ID of the query evaluated by the alert.
+        /// </summary>
         [Input("queryId", required: true)]
         public Input<string> QueryId { get; set; } = null!;
 
+        /// <summary>
+        /// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
+        /// </summary>
         [Input("rearm")]
         public Input<int>? Rearm { get; set; }
 
@@ -111,18 +210,33 @@ namespace Pulumi.Databricks
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Name of the alert.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Alert configuration options.
+        /// </summary>
         [Input("options")]
         public Input<Inputs.SqlAlertOptionsGetArgs>? Options { get; set; }
 
+        /// <summary>
+        /// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/&lt;folder_id&gt;`.
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        /// <summary>
+        /// ID of the query evaluated by the alert.
+        /// </summary>
         [Input("queryId")]
         public Input<string>? QueryId { get; set; }
 
+        /// <summary>
+        /// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
+        /// </summary>
         [Input("rearm")]
         public Input<int>? Rearm { get; set; }
 

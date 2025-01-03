@@ -19,30 +19,62 @@ public final class GetRegisteredModelArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetRegisteredModelArgs Empty = new GetRegisteredModelArgs();
 
+    /**
+     * The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+     * 
+     */
     @Import(name="fullName", required=true)
     private Output<String> fullName;
 
+    /**
+     * @return The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+     * 
+     */
     public Output<String> fullName() {
         return this.fullName;
     }
 
+    /**
+     * flag to specify if list of aliases should be included into output.
+     * 
+     */
     @Import(name="includeAliases")
     private @Nullable Output<Boolean> includeAliases;
 
+    /**
+     * @return flag to specify if list of aliases should be included into output.
+     * 
+     */
     public Optional<Output<Boolean>> includeAliases() {
         return Optional.ofNullable(this.includeAliases);
     }
 
+    /**
+     * flag to specify if include registered models in the response for which the principal can only access selective metadata for.
+     * 
+     */
     @Import(name="includeBrowse")
     private @Nullable Output<Boolean> includeBrowse;
 
+    /**
+     * @return flag to specify if include registered models in the response for which the principal can only access selective metadata for.
+     * 
+     */
     public Optional<Output<Boolean>> includeBrowse() {
         return Optional.ofNullable(this.includeBrowse);
     }
 
+    /**
+     * block with information about the model in Unity Catalog:
+     * 
+     */
     @Import(name="modelInfos")
     private @Nullable Output<List<GetRegisteredModelModelInfoArgs>> modelInfos;
 
+    /**
+     * @return block with information about the model in Unity Catalog:
+     * 
+     */
     public Optional<Output<List<GetRegisteredModelModelInfoArgs>>> modelInfos() {
         return Optional.ofNullable(this.modelInfos);
     }
@@ -74,42 +106,96 @@ public final class GetRegisteredModelArgs extends com.pulumi.resources.InvokeArg
             $ = new GetRegisteredModelArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fullName The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(Output<String> fullName) {
             $.fullName = fullName;
             return this;
         }
 
+        /**
+         * @param fullName The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(String fullName) {
             return fullName(Output.of(fullName));
         }
 
+        /**
+         * @param includeAliases flag to specify if list of aliases should be included into output.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeAliases(@Nullable Output<Boolean> includeAliases) {
             $.includeAliases = includeAliases;
             return this;
         }
 
+        /**
+         * @param includeAliases flag to specify if list of aliases should be included into output.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeAliases(Boolean includeAliases) {
             return includeAliases(Output.of(includeAliases));
         }
 
+        /**
+         * @param includeBrowse flag to specify if include registered models in the response for which the principal can only access selective metadata for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeBrowse(@Nullable Output<Boolean> includeBrowse) {
             $.includeBrowse = includeBrowse;
             return this;
         }
 
+        /**
+         * @param includeBrowse flag to specify if include registered models in the response for which the principal can only access selective metadata for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeBrowse(Boolean includeBrowse) {
             return includeBrowse(Output.of(includeBrowse));
         }
 
+        /**
+         * @param modelInfos block with information about the model in Unity Catalog:
+         * 
+         * @return builder
+         * 
+         */
         public Builder modelInfos(@Nullable Output<List<GetRegisteredModelModelInfoArgs>> modelInfos) {
             $.modelInfos = modelInfos;
             return this;
         }
 
+        /**
+         * @param modelInfos block with information about the model in Unity Catalog:
+         * 
+         * @return builder
+         * 
+         */
         public Builder modelInfos(List<GetRegisteredModelModelInfoArgs> modelInfos) {
             return modelInfos(Output.of(modelInfos));
         }
 
+        /**
+         * @param modelInfos block with information about the model in Unity Catalog:
+         * 
+         * @return builder
+         * 
+         */
         public Builder modelInfos(GetRegisteredModelModelInfoArgs... modelInfos) {
             return modelInfos(List.of(modelInfos));
         }

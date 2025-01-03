@@ -11,15 +11,90 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource creates [Personal Access Tokens](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for the same user that is authenticated with the provider. Most likely you should use OboToken to create [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a ServicePrincipal in Databricks workspaces on AWS. Databricks workspaces on other clouds use their own native OAuth token flows.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// create PAT token to provision entities within workspace
+//			pat, err := databricks.NewToken(ctx, "pat", &databricks.TokenArgs{
+//				Comment:         pulumi.String("Pulumi Provisioning"),
+//				LifetimeSeconds: pulumi.Int(8640000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databricksToken", pat.TokenValue)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// A token can be automatically rotated by taking a dependency on the `timeRotating` resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := time.NewRotating(ctx, "this", &time.RotatingArgs{
+//				RotationDays: pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewToken(ctx, "pat", &databricks.TokenArgs{
+//				Comment: this.Rfc3339.ApplyT(func(rfc3339 string) (string, error) {
+//					return fmt.Sprintf("Pulumi (created: %v)", rfc3339), nil
+//				}).(pulumi.StringOutput),
+//				LifetimeSeconds: int(60 * 24 * 60 * 60),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !> Importing this resource is not currently supported.
 type Token struct {
 	pulumi.CustomResourceState
 
-	Comment         pulumi.StringPtrOutput `pulumi:"comment"`
-	CreationTime    pulumi.IntOutput       `pulumi:"creationTime"`
-	ExpiryTime      pulumi.IntOutput       `pulumi:"expiryTime"`
-	LifetimeSeconds pulumi.IntPtrOutput    `pulumi:"lifetimeSeconds"`
-	TokenId         pulumi.StringOutput    `pulumi:"tokenId"`
-	TokenValue      pulumi.StringOutput    `pulumi:"tokenValue"`
+	// (String) Comment that will appear on the user’s settings page for this token.
+	Comment      pulumi.StringPtrOutput `pulumi:"comment"`
+	CreationTime pulumi.IntOutput       `pulumi:"creationTime"`
+	ExpiryTime   pulumi.IntOutput       `pulumi:"expiryTime"`
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+	LifetimeSeconds pulumi.IntPtrOutput `pulumi:"lifetimeSeconds"`
+	TokenId         pulumi.StringOutput `pulumi:"tokenId"`
+	// **Sensitive** value of the newly-created token.
+	TokenValue pulumi.StringOutput `pulumi:"tokenValue"`
 }
 
 // NewToken registers a new resource with the given unique name, arguments, and options.
@@ -56,21 +131,27 @@ func GetToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Token resources.
 type tokenState struct {
-	Comment         *string `pulumi:"comment"`
-	CreationTime    *int    `pulumi:"creationTime"`
-	ExpiryTime      *int    `pulumi:"expiryTime"`
+	// (String) Comment that will appear on the user’s settings page for this token.
+	Comment      *string `pulumi:"comment"`
+	CreationTime *int    `pulumi:"creationTime"`
+	ExpiryTime   *int    `pulumi:"expiryTime"`
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
 	LifetimeSeconds *int    `pulumi:"lifetimeSeconds"`
 	TokenId         *string `pulumi:"tokenId"`
-	TokenValue      *string `pulumi:"tokenValue"`
+	// **Sensitive** value of the newly-created token.
+	TokenValue *string `pulumi:"tokenValue"`
 }
 
 type TokenState struct {
-	Comment         pulumi.StringPtrInput
-	CreationTime    pulumi.IntPtrInput
-	ExpiryTime      pulumi.IntPtrInput
+	// (String) Comment that will appear on the user’s settings page for this token.
+	Comment      pulumi.StringPtrInput
+	CreationTime pulumi.IntPtrInput
+	ExpiryTime   pulumi.IntPtrInput
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
 	LifetimeSeconds pulumi.IntPtrInput
 	TokenId         pulumi.StringPtrInput
-	TokenValue      pulumi.StringPtrInput
+	// **Sensitive** value of the newly-created token.
+	TokenValue pulumi.StringPtrInput
 }
 
 func (TokenState) ElementType() reflect.Type {
@@ -78,18 +159,22 @@ func (TokenState) ElementType() reflect.Type {
 }
 
 type tokenArgs struct {
-	Comment         *string `pulumi:"comment"`
-	CreationTime    *int    `pulumi:"creationTime"`
-	ExpiryTime      *int    `pulumi:"expiryTime"`
+	// (String) Comment that will appear on the user’s settings page for this token.
+	Comment      *string `pulumi:"comment"`
+	CreationTime *int    `pulumi:"creationTime"`
+	ExpiryTime   *int    `pulumi:"expiryTime"`
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
 	LifetimeSeconds *int    `pulumi:"lifetimeSeconds"`
 	TokenId         *string `pulumi:"tokenId"`
 }
 
 // The set of arguments for constructing a Token resource.
 type TokenArgs struct {
-	Comment         pulumi.StringPtrInput
-	CreationTime    pulumi.IntPtrInput
-	ExpiryTime      pulumi.IntPtrInput
+	// (String) Comment that will appear on the user’s settings page for this token.
+	Comment      pulumi.StringPtrInput
+	CreationTime pulumi.IntPtrInput
+	ExpiryTime   pulumi.IntPtrInput
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
 	LifetimeSeconds pulumi.IntPtrInput
 	TokenId         pulumi.StringPtrInput
 }
@@ -181,6 +266,7 @@ func (o TokenOutput) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 	return o
 }
 
+// (String) Comment that will appear on the user’s settings page for this token.
 func (o TokenOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
@@ -193,6 +279,7 @@ func (o TokenOutput) ExpiryTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Token) pulumi.IntOutput { return v.ExpiryTime }).(pulumi.IntOutput)
 }
 
+// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
 func (o TokenOutput) LifetimeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.IntPtrOutput { return v.LifetimeSeconds }).(pulumi.IntPtrOutput)
 }
@@ -201,6 +288,7 @@ func (o TokenOutput) TokenId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.TokenId }).(pulumi.StringOutput)
 }
 
+// **Sensitive** value of the newly-created token.
 func (o TokenOutput) TokenValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.TokenValue }).(pulumi.StringOutput)
 }

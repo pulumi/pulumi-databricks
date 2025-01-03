@@ -13,19 +13,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppPendingDeployment {
+    /**
+     * @return The creation time of the app.
+     * 
+     */
     private @Nullable String createTime;
+    /**
+     * @return The email of the user that created the app.
+     * 
+     */
     private @Nullable String creator;
     private @Nullable AppPendingDeploymentDeploymentArtifacts deploymentArtifacts;
     private @Nullable String deploymentId;
     private @Nullable String mode;
     private @Nullable String sourceCodePath;
     private @Nullable AppPendingDeploymentStatus status;
+    /**
+     * @return The update time of the app.
+     * 
+     */
     private @Nullable String updateTime;
 
     private AppPendingDeployment() {}
+    /**
+     * @return The creation time of the app.
+     * 
+     */
     public Optional<String> createTime() {
         return Optional.ofNullable(this.createTime);
     }
+    /**
+     * @return The email of the user that created the app.
+     * 
+     */
     public Optional<String> creator() {
         return Optional.ofNullable(this.creator);
     }
@@ -44,6 +64,10 @@ public final class AppPendingDeployment {
     public Optional<AppPendingDeploymentStatus> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The update time of the app.
+     * 
+     */
     public Optional<String> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }

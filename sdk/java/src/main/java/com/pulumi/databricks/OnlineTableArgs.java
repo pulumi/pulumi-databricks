@@ -16,16 +16,32 @@ public final class OnlineTableArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OnlineTableArgs Empty = new OnlineTableArgs();
 
+    /**
+     * 3-level name of the Online Table to create.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return 3-level name of the Online Table to create.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * object containing specification of the online table:
+     * 
+     */
     @Import(name="spec")
     private @Nullable Output<OnlineTableSpecArgs> spec;
 
+    /**
+     * @return object containing specification of the online table:
+     * 
+     */
     public Optional<Output<OnlineTableSpecArgs>> spec() {
         return Optional.ofNullable(this.spec);
     }
@@ -55,20 +71,44 @@ public final class OnlineTableArgs extends com.pulumi.resources.ResourceArgs {
             $ = new OnlineTableArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name 3-level name of the Online Table to create.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name 3-level name of the Online Table to create.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param spec object containing specification of the online table:
+         * 
+         * @return builder
+         * 
+         */
         public Builder spec(@Nullable Output<OnlineTableSpecArgs> spec) {
             $.spec = spec;
             return this;
         }
 
+        /**
+         * @param spec object containing specification of the online table:
+         * 
+         * @return builder
+         * 
+         */
         public Builder spec(OnlineTableSpecArgs spec) {
             return spec(Output.of(spec));
         }

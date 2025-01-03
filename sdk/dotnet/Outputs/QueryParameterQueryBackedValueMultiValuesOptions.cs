@@ -13,8 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class QueryParameterQueryBackedValueMultiValuesOptions
     {
+        /// <summary>
+        /// Character that prefixes each selected parameter value.
+        /// </summary>
         public readonly string? Prefix;
+        /// <summary>
+        /// Character that separates each selected parameter value. Defaults to a comma.
+        /// </summary>
         public readonly string? Separator;
+        /// <summary>
+        /// Character that suffixes each selected parameter value.
+        /// </summary>
         public readonly string? Suffix;
 
         [OutputConstructor]

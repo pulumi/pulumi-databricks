@@ -12,6 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CredentialAwsIamRole {
     private @Nullable String externalId;
+    /**
+     * @return The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * 
+     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over `azure_service_principal`):
+     * 
+     */
     private @Nullable String roleArn;
     private @Nullable String unityCatalogIamArn;
 
@@ -19,6 +25,12 @@ public final class CredentialAwsIamRole {
     public Optional<String> externalId() {
         return Optional.ofNullable(this.externalId);
     }
+    /**
+     * @return The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * 
+     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over `azure_service_principal`):
+     * 
+     */
     public Optional<String> roleArn() {
         return Optional.ofNullable(this.roleArn);
     }

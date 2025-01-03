@@ -16,9 +16,17 @@ public final class GetMlflowModelsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetMlflowModelsArgs Empty = new GetMlflowModelsArgs();
 
+    /**
+     * List of names of databricks_mlflow_model
+     * 
+     */
     @Import(name="names")
     private @Nullable Output<List<String>> names;
 
+    /**
+     * @return List of names of databricks_mlflow_model
+     * 
+     */
     public Optional<Output<List<String>>> names() {
         return Optional.ofNullable(this.names);
     }
@@ -47,15 +55,33 @@ public final class GetMlflowModelsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetMlflowModelsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param names List of names of databricks_mlflow_model
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(@Nullable Output<List<String>> names) {
             $.names = names;
             return this;
         }
 
+        /**
+         * @param names List of names of databricks_mlflow_model
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(List<String> names) {
             return names(Output.of(names));
         }
 
+        /**
+         * @param names List of names of databricks_mlflow_model
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(String... names) {
             return names(List.of(names));
         }

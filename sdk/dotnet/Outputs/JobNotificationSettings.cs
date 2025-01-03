@@ -13,7 +13,15 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobNotificationSettings
     {
+        /// <summary>
+        /// (Bool) don't send alert for cancelled runs.
+        /// 
+        /// The following parameter is only available on task level.
+        /// </summary>
         public readonly bool? NoAlertForCanceledRuns;
+        /// <summary>
+        /// (Bool) don't send alert for skipped runs.
+        /// </summary>
         public readonly bool? NoAlertForSkippedRuns;
 
         [OutputConstructor]

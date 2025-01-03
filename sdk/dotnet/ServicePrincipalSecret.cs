@@ -9,12 +9,53 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// &gt; This resource can only be used with an account-level provider.
+    /// 
+    /// With this resource you can create a secret for a given [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html).
+    /// 
+    /// This secret can be used to configure the Databricks Pulumi Provider to authenticate with the service principal. See Authenticating with service principal.
+    /// 
+    /// Additionally, the secret can be used to request OAuth tokens for the service principal, which can be used to authenticate to Databricks REST APIs. See [Authentication using OAuth tokens for service principals](https://docs.databricks.com/dev-tools/authentication-oauth.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Create service principal secret
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var terraformSp = new Databricks.ServicePrincipalSecret("terraform_sp", new()
+    ///     {
+    ///         ServicePrincipalId = @this.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * databricks.ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) in Databricks
+    /// </summary>
     [DatabricksResourceType("databricks:index/servicePrincipalSecret:ServicePrincipalSecret")]
     public partial class ServicePrincipalSecret : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Generated secret for the service principal
+        /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of the databricks.ServicePrincipal (not application ID).
+        /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
 
@@ -73,6 +114,10 @@ namespace Pulumi.Databricks
     {
         [Input("secret")]
         private Input<string>? _secret;
+
+        /// <summary>
+        /// Generated secret for the service principal
+        /// </summary>
         public Input<string>? Secret
         {
             get => _secret;
@@ -83,6 +128,9 @@ namespace Pulumi.Databricks
             }
         }
 
+        /// <summary>
+        /// ID of the databricks.ServicePrincipal (not application ID).
+        /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
 
@@ -99,6 +147,10 @@ namespace Pulumi.Databricks
     {
         [Input("secret")]
         private Input<string>? _secret;
+
+        /// <summary>
+        /// Generated secret for the service principal
+        /// </summary>
         public Input<string>? Secret
         {
             get => _secret;
@@ -109,6 +161,9 @@ namespace Pulumi.Databricks
             }
         }
 
+        /// <summary>
+        /// ID of the databricks.ServicePrincipal (not application ID).
+        /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }
 

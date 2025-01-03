@@ -14,16 +14,32 @@ public final class GetNotebookPathsPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetNotebookPathsPlainArgs Empty = new GetNotebookPathsPlainArgs();
 
+    /**
+     * Path to workspace directory
+     * 
+     */
     @Import(name="path", required=true)
     private String path;
 
+    /**
+     * @return Path to workspace directory
+     * 
+     */
     public String path() {
         return this.path;
     }
 
+    /**
+     * Either or recursively walk given path
+     * 
+     */
     @Import(name="recursive", required=true)
     private Boolean recursive;
 
+    /**
+     * @return Either or recursively walk given path
+     * 
+     */
     public Boolean recursive() {
         return this.recursive;
     }
@@ -53,11 +69,23 @@ public final class GetNotebookPathsPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetNotebookPathsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param path Path to workspace directory
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param recursive Either or recursively walk given path
+         * 
+         * @return builder
+         * 
+         */
         public Builder recursive(Boolean recursive) {
             $.recursive = recursive;
             return this;

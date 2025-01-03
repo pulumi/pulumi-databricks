@@ -17,89 +17,213 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Import
+ * 
+ * This resource can be imported using alert ID:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/alert:Alert this &lt;alert-id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/alert:Alert")
 public class Alert extends com.pulumi.resources.CustomResource {
+    /**
+     * Trigger conditions of the alert. Block consists of the following attributes:
+     * 
+     */
     @Export(name="condition", refs={AlertCondition.class}, tree="[0]")
     private Output<AlertCondition> condition;
 
+    /**
+     * @return Trigger conditions of the alert. Block consists of the following attributes:
+     * 
+     */
     public Output<AlertCondition> condition() {
         return this.condition;
     }
+    /**
+     * The timestamp string indicating when the alert was created.
+     * 
+     */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
+    /**
+     * @return The timestamp string indicating when the alert was created.
+     * 
+     */
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
+     * 
+     */
     @Export(name="customBody", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customBody;
 
+    /**
+     * @return Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
+     * 
+     */
     public Output<Optional<String>> customBody() {
         return Codegen.optional(this.customBody);
     }
+    /**
+     * Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
+     * 
+     */
     @Export(name="customSubject", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customSubject;
 
+    /**
+     * @return Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
+     * 
+     */
     public Output<Optional<String>> customSubject() {
         return Codegen.optional(this.customSubject);
     }
+    /**
+     * Name of the alert.
+     * 
+     */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
+    /**
+     * @return Name of the alert.
+     * 
+     */
     public Output<String> displayName() {
         return this.displayName;
     }
+    /**
+     * The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
+     * 
+     */
     @Export(name="lifecycleState", refs={String.class}, tree="[0]")
     private Output<String> lifecycleState;
 
+    /**
+     * @return The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
+     * 
+     */
     public Output<String> lifecycleState() {
         return this.lifecycleState;
     }
+    /**
+     * Whether to notify alert subscribers when alert returns back to normal.
+     * 
+     */
     @Export(name="notifyOnOk", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> notifyOnOk;
 
+    /**
+     * @return Whether to notify alert subscribers when alert returns back to normal.
+     * 
+     */
     public Output<Optional<Boolean>> notifyOnOk() {
         return Codegen.optional(this.notifyOnOk);
     }
+    /**
+     * Alert owner&#39;s username.
+     * 
+     */
     @Export(name="ownerUserName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ownerUserName;
 
+    /**
+     * @return Alert owner&#39;s username.
+     * 
+     */
     public Output<Optional<String>> ownerUserName() {
         return Codegen.optional(this.ownerUserName);
     }
+    /**
+     * The path to a workspace folder containing the alert. The default is the user&#39;s home folder.  If changed, the alert will be recreated.
+     * 
+     */
     @Export(name="parentPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentPath;
 
+    /**
+     * @return The path to a workspace folder containing the alert. The default is the user&#39;s home folder.  If changed, the alert will be recreated.
+     * 
+     */
     public Output<Optional<String>> parentPath() {
         return Codegen.optional(this.parentPath);
     }
+    /**
+     * ID of the query evaluated by the alert.
+     * 
+     */
     @Export(name="queryId", refs={String.class}, tree="[0]")
     private Output<String> queryId;
 
+    /**
+     * @return ID of the query evaluated by the alert.
+     * 
+     */
     public Output<String> queryId() {
         return this.queryId;
     }
+    /**
+     * Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
+     * 
+     */
     @Export(name="secondsToRetrigger", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> secondsToRetrigger;
 
+    /**
+     * @return Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
+     * 
+     */
     public Output<Optional<Integer>> secondsToRetrigger() {
         return Codegen.optional(this.secondsToRetrigger);
     }
+    /**
+     * Current state of the alert&#39;s trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
+     * 
+     */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
+    /**
+     * @return Current state of the alert&#39;s trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
+     * 
+     */
     public Output<String> state() {
         return this.state;
     }
+    /**
+     * The timestamp string when the alert was last triggered if the alert has been triggered before.
+     * 
+     */
     @Export(name="triggerTime", refs={String.class}, tree="[0]")
     private Output<String> triggerTime;
 
+    /**
+     * @return The timestamp string when the alert was last triggered if the alert has been triggered before.
+     * 
+     */
     public Output<String> triggerTime() {
         return this.triggerTime;
     }
+    /**
+     * The timestamp string indicating when the alert was updated.
+     * 
+     */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
+    /**
+     * @return The timestamp string indicating when the alert was updated.
+     * 
+     */
     public Output<String> updateTime() {
         return this.updateTime;
     }

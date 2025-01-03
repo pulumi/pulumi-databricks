@@ -16,9 +16,17 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
 
     public static final NotificationDestinationConfigMicrosoftTeamsArgs Empty = new NotificationDestinationConfigMicrosoftTeamsArgs();
 
+    /**
+     * The Microsoft Teams webhook URL.
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return The Microsoft Teams webhook URL.
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -55,11 +63,23 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
             $ = new NotificationDestinationConfigMicrosoftTeamsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param url The Microsoft Teams webhook URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url The Microsoft Teams webhook URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

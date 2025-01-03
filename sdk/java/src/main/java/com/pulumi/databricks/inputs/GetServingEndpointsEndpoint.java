@@ -20,16 +20,32 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
 
     public static final GetServingEndpointsEndpoint Empty = new GetServingEndpointsEndpoint();
 
+    /**
+     * A block with AI Gateway configuration for the serving endpoint.
+     * 
+     */
     @Import(name="aiGateways")
     private @Nullable List<GetServingEndpointsEndpointAiGateway> aiGateways;
 
+    /**
+     * @return A block with AI Gateway configuration for the serving endpoint.
+     * 
+     */
     public Optional<List<GetServingEndpointsEndpointAiGateway>> aiGateways() {
         return Optional.ofNullable(this.aiGateways);
     }
 
+    /**
+     * The model serving endpoint configuration.
+     * 
+     */
     @Import(name="configs")
     private @Nullable List<GetServingEndpointsEndpointConfig> configs;
 
+    /**
+     * @return The model serving endpoint configuration.
+     * 
+     */
     public Optional<List<GetServingEndpointsEndpointConfig>> configs() {
         return Optional.ofNullable(this.configs);
     }
@@ -62,9 +78,17 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.lastUpdatedTimestamp);
     }
 
+    /**
+     * The name of the model serving endpoint.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -76,9 +100,17 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.states);
     }
 
+    /**
+     * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     * 
+     */
     @Import(name="tags")
     private @Nullable List<GetServingEndpointsEndpointTag> tags;
 
+    /**
+     * @return Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     * 
+     */
     public Optional<List<GetServingEndpointsEndpointTag>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -123,20 +155,44 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
             $ = new GetServingEndpointsEndpoint(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aiGateways A block with AI Gateway configuration for the serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aiGateways(@Nullable List<GetServingEndpointsEndpointAiGateway> aiGateways) {
             $.aiGateways = aiGateways;
             return this;
         }
 
+        /**
+         * @param aiGateways A block with AI Gateway configuration for the serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aiGateways(GetServingEndpointsEndpointAiGateway... aiGateways) {
             return aiGateways(List.of(aiGateways));
         }
 
+        /**
+         * @param configs The model serving endpoint configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configs(@Nullable List<GetServingEndpointsEndpointConfig> configs) {
             $.configs = configs;
             return this;
         }
 
+        /**
+         * @param configs The model serving endpoint configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configs(GetServingEndpointsEndpointConfig... configs) {
             return configs(List.of(configs));
         }
@@ -161,6 +217,12 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param name The name of the model serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
@@ -175,11 +237,23 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
             return states(List.of(states));
         }
 
+        /**
+         * @param tags Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable List<GetServingEndpointsEndpointTag> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(GetServingEndpointsEndpointTag... tags) {
             return tags(List.of(tags));
         }

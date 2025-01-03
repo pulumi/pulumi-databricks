@@ -48,6 +48,9 @@ class GetMwsNetworkConnectivityConfigsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        List of names of databricks_mws_network_connectivity_config
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -71,7 +74,42 @@ def get_mws_network_connectivity_configs(names: Optional[Sequence[str]] = None,
                                          region: Optional[str] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsNetworkConnectivityConfigsResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with an account-level provider!
+
+    Lists all MwsNetworkConnectivityConfig in Databricks Account.
+
+    ## Example Usage
+
+    List all network connectivity configurations in Databricks Account
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_mws_network_connectivity_configs()
+    pulumi.export("all", this)
+    ```
+
+    List network connectivity configurations from a specific region in Databricks Account
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_mws_network_connectivity_configs(region="us-east-1")
+    pulumi.export("filtered", this)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * MwsNetworkConnectivityConfig to get information about a single network connectivity configuration.
+    * MwsNetworkConnectivityConfig to manage network connectivity configuration.
+
+
+    :param Sequence[str] names: List of names of databricks_mws_network_connectivity_config
+    :param str region: Filter network connectivity configurations by region.
     """
     __args__ = dict()
     __args__['names'] = names
@@ -87,7 +125,42 @@ def get_mws_network_connectivity_configs_output(names: Optional[pulumi.Input[Opt
                                                 region: Optional[pulumi.Input[Optional[str]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsNetworkConnectivityConfigsResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with an account-level provider!
+
+    Lists all MwsNetworkConnectivityConfig in Databricks Account.
+
+    ## Example Usage
+
+    List all network connectivity configurations in Databricks Account
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_mws_network_connectivity_configs()
+    pulumi.export("all", this)
+    ```
+
+    List network connectivity configurations from a specific region in Databricks Account
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_mws_network_connectivity_configs(region="us-east-1")
+    pulumi.export("filtered", this)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * MwsNetworkConnectivityConfig to get information about a single network connectivity configuration.
+    * MwsNetworkConnectivityConfig to manage network connectivity configuration.
+
+
+    :param Sequence[str] names: List of names of databricks_mws_network_connectivity_config
+    :param str region: Filter network connectivity configurations by region.
     """
     __args__ = dict()
     __args__['names'] = names

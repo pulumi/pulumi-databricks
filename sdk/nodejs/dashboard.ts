@@ -4,6 +4,41 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
+ *
+ * ## Example Usage
+ *
+ * Dashboard using `serializedDashboard` attribute:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const starter = databricks.getSqlWarehouse({
+ *     name: "Starter Warehouse",
+ * });
+ * const dashboard = new databricks.Dashboard("dashboard", {
+ *     displayName: "New Dashboard",
+ *     warehouseId: starter.then(starter => starter.id),
+ *     serializedDashboard: "{\"pages\":[{\"name\":\"new_name\",\"displayName\":\"New Page\"}]}",
+ *     embedCredentials: false,
+ *     parentPath: "/Shared/provider-test",
+ * });
+ * ```
+ *
+ * Dashboard using `filePath` attribute:
+ *
+ * ## Import
+ *
+ * You can import a `databricks_dashboard` resource with ID like the following:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/dashboard:Dashboard this <dashboard-id>
+ * ```
+ */
 export class Dashboard extends pulumi.CustomResource {
     /**
      * Get an existing Dashboard resource's state with the given name, ID, and optional extra
@@ -35,16 +70,34 @@ export class Dashboard extends pulumi.CustomResource {
     public readonly createTime!: pulumi.Output<string>;
     public readonly dashboardChangeDetected!: pulumi.Output<boolean | undefined>;
     public readonly dashboardId!: pulumi.Output<string>;
+    /**
+     * The display name of the dashboard.
+     */
     public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Whether to embed credentials in the dashboard. Default is `true`.
+     */
     public readonly embedCredentials!: pulumi.Output<boolean | undefined>;
     public readonly etag!: pulumi.Output<string>;
+    /**
+     * The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
+     */
     public readonly filePath!: pulumi.Output<string | undefined>;
     public readonly lifecycleState!: pulumi.Output<string>;
     public readonly md5!: pulumi.Output<string>;
+    /**
+     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+     */
     public readonly parentPath!: pulumi.Output<string>;
     public readonly path!: pulumi.Output<string>;
+    /**
+     * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
+     */
     public readonly serializedDashboard!: pulumi.Output<string | undefined>;
     public readonly updateTime!: pulumi.Output<string>;
+    /**
+     * The warehouse ID used to run the dashboard.
+     */
     public readonly warehouseId!: pulumi.Output<string>;
 
     /**
@@ -112,16 +165,34 @@ export interface DashboardState {
     createTime?: pulumi.Input<string>;
     dashboardChangeDetected?: pulumi.Input<boolean>;
     dashboardId?: pulumi.Input<string>;
+    /**
+     * The display name of the dashboard.
+     */
     displayName?: pulumi.Input<string>;
+    /**
+     * Whether to embed credentials in the dashboard. Default is `true`.
+     */
     embedCredentials?: pulumi.Input<boolean>;
     etag?: pulumi.Input<string>;
+    /**
+     * The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
+     */
     filePath?: pulumi.Input<string>;
     lifecycleState?: pulumi.Input<string>;
     md5?: pulumi.Input<string>;
+    /**
+     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+     */
     parentPath?: pulumi.Input<string>;
     path?: pulumi.Input<string>;
+    /**
+     * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
+     */
     serializedDashboard?: pulumi.Input<string>;
     updateTime?: pulumi.Input<string>;
+    /**
+     * The warehouse ID used to run the dashboard.
+     */
     warehouseId?: pulumi.Input<string>;
 }
 
@@ -132,15 +203,33 @@ export interface DashboardArgs {
     createTime?: pulumi.Input<string>;
     dashboardChangeDetected?: pulumi.Input<boolean>;
     dashboardId?: pulumi.Input<string>;
+    /**
+     * The display name of the dashboard.
+     */
     displayName: pulumi.Input<string>;
+    /**
+     * Whether to embed credentials in the dashboard. Default is `true`.
+     */
     embedCredentials?: pulumi.Input<boolean>;
     etag?: pulumi.Input<string>;
+    /**
+     * The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
+     */
     filePath?: pulumi.Input<string>;
     lifecycleState?: pulumi.Input<string>;
     md5?: pulumi.Input<string>;
+    /**
+     * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+     */
     parentPath: pulumi.Input<string>;
     path?: pulumi.Input<string>;
+    /**
+     * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
+     */
     serializedDashboard?: pulumi.Input<string>;
     updateTime?: pulumi.Input<string>;
+    /**
+     * The warehouse ID used to run the dashboard.
+     */
     warehouseId: pulumi.Input<string>;
 }

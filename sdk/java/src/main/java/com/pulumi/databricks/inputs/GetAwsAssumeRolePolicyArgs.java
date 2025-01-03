@@ -17,9 +17,17 @@ public final class GetAwsAssumeRolePolicyArgs extends com.pulumi.resources.Invok
 
     public static final GetAwsAssumeRolePolicyArgs Empty = new GetAwsAssumeRolePolicyArgs();
 
+    /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
     @Import(name="awsPartition")
     private @Nullable Output<String> awsPartition;
 
+    /**
+     * @return AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
     public Optional<Output<String>> awsPartition() {
         return Optional.ofNullable(this.awsPartition);
     }
@@ -43,16 +51,32 @@ public final class GetAwsAssumeRolePolicyArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.databricksAccountId);
     }
 
+    /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * 
+     */
     @Import(name="externalId", required=true)
     private Output<String> externalId;
 
+    /**
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * 
+     */
     public Output<String> externalId() {
         return this.externalId;
     }
 
+    /**
+     * Either or not this assume role policy should be created for usage log delivery. Defaults to false.
+     * 
+     */
     @Import(name="forLogDelivery")
     private @Nullable Output<Boolean> forLogDelivery;
 
+    /**
+     * @return Either or not this assume role policy should be created for usage log delivery. Defaults to false.
+     * 
+     */
     public Optional<Output<Boolean>> forLogDelivery() {
         return Optional.ofNullable(this.forLogDelivery);
     }
@@ -84,11 +108,23 @@ public final class GetAwsAssumeRolePolicyArgs extends com.pulumi.resources.Invok
             $ = new GetAwsAssumeRolePolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsPartition(@Nullable Output<String> awsPartition) {
             $.awsPartition = awsPartition;
             return this;
         }
 
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsPartition(String awsPartition) {
             return awsPartition(Output.of(awsPartition));
         }
@@ -118,20 +154,44 @@ public final class GetAwsAssumeRolePolicyArgs extends com.pulumi.resources.Invok
             return databricksAccountId(Output.of(databricksAccountId));
         }
 
+        /**
+         * @param externalId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalId(Output<String> externalId) {
             $.externalId = externalId;
             return this;
         }
 
+        /**
+         * @param externalId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalId(String externalId) {
             return externalId(Output.of(externalId));
         }
 
+        /**
+         * @param forLogDelivery Either or not this assume role policy should be created for usage log delivery. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forLogDelivery(@Nullable Output<Boolean> forLogDelivery) {
             $.forLogDelivery = forLogDelivery;
             return this;
         }
 
+        /**
+         * @param forLogDelivery Either or not this assume role policy should be created for usage log delivery. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forLogDelivery(Boolean forLogDelivery) {
             return forLogDelivery(Output.of(forLogDelivery));
         }

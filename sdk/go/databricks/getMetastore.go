@@ -11,6 +11,68 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source can only be used with an account-level provider!
+//
+// Retrieves information about metastore for a given id of Metastore object, that was created by Pulumi or manually, so that special handling could be applied.
+//
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _authentication is not configured for provider_ errors.
+//
+// ## Example Usage
+//
+// # MetastoreInfo response for a given metastore id
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/s3"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			metastore, err := s3.NewBucketV2(ctx, "metastore", &s3.BucketV2Args{
+//				Bucket:       pulumi.Sprintf("%v-metastore", prefix),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisMetastore, err := databricks.NewMetastore(ctx, "this", &databricks.MetastoreArgs{
+//				Name: pulumi.String("primary"),
+//				StorageRoot: metastore.ID().ApplyT(func(id string) (string, error) {
+//					return fmt.Sprintf("s3://%v/metastore", id), nil
+//				}).(pulumi.StringOutput),
+//				Owner:        pulumi.Any(unityAdminGroup),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			this := databricks.LookupMetastoreOutput(ctx, databricks.GetMetastoreOutputArgs{
+//				MetastoreId: thisMetastore.ID(),
+//			}, nil)
+//			ctx.Export("someMetastore", this.ApplyT(func(this databricks.GetMetastoreResult) (databricks.GetMetastoreMetastoreInfo, error) {
+//				return this.MetastoreInfo, nil
+//			}).(databricks.GetMetastoreMetastoreInfoOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * getMetastores to get mapping of name to id of all metastores.
+// * Metastore to manage Metastores within Unity Catalog.
+// * Catalog to manage catalogs within Unity Catalog.
 func LookupMetastore(ctx *pulumi.Context, args *LookupMetastoreArgs, opts ...pulumi.InvokeOption) (*LookupMetastoreResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetastoreResult
@@ -23,20 +85,28 @@ func LookupMetastore(ctx *pulumi.Context, args *LookupMetastoreArgs, opts ...pul
 
 // A collection of arguments for invoking getMetastore.
 type LookupMetastoreArgs struct {
-	Id            *string                    `pulumi:"id"`
-	MetastoreId   *string                    `pulumi:"metastoreId"`
+	// ID of the metastore
+	Id *string `pulumi:"id"`
+	// ID of the metastore
+	MetastoreId *string `pulumi:"metastoreId"`
+	// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
 	MetastoreInfo *GetMetastoreMetastoreInfo `pulumi:"metastoreInfo"`
-	Name          *string                    `pulumi:"name"`
-	Region        *string                    `pulumi:"region"`
+	// Name of the metastore
+	Name *string `pulumi:"name"`
+	// Region of the metastore
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getMetastore.
 type LookupMetastoreResult struct {
-	Id            string                    `pulumi:"id"`
-	MetastoreId   string                    `pulumi:"metastoreId"`
+	// ID of the metastore
+	Id          string `pulumi:"id"`
+	MetastoreId string `pulumi:"metastoreId"`
+	// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
 	MetastoreInfo GetMetastoreMetastoreInfo `pulumi:"metastoreInfo"`
-	Name          string                    `pulumi:"name"`
-	Region        string                    `pulumi:"region"`
+	// Name of metastore.
+	Name   string `pulumi:"name"`
+	Region string `pulumi:"region"`
 }
 
 func LookupMetastoreOutput(ctx *pulumi.Context, args LookupMetastoreOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreResultOutput {
@@ -50,11 +120,16 @@ func LookupMetastoreOutput(ctx *pulumi.Context, args LookupMetastoreOutputArgs, 
 
 // A collection of arguments for invoking getMetastore.
 type LookupMetastoreOutputArgs struct {
-	Id            pulumi.StringPtrInput             `pulumi:"id"`
-	MetastoreId   pulumi.StringPtrInput             `pulumi:"metastoreId"`
+	// ID of the metastore
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// ID of the metastore
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
 	MetastoreInfo GetMetastoreMetastoreInfoPtrInput `pulumi:"metastoreInfo"`
-	Name          pulumi.StringPtrInput             `pulumi:"name"`
-	Region        pulumi.StringPtrInput             `pulumi:"region"`
+	// Name of the metastore
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Region of the metastore
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupMetastoreOutputArgs) ElementType() reflect.Type {
@@ -76,6 +151,7 @@ func (o LookupMetastoreResultOutput) ToLookupMetastoreResultOutputWithContext(ct
 	return o
 }
 
+// ID of the metastore
 func (o LookupMetastoreResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetastoreResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -84,10 +160,12 @@ func (o LookupMetastoreResultOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetastoreResult) string { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
+// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
 func (o LookupMetastoreResultOutput) MetastoreInfo() GetMetastoreMetastoreInfoOutput {
 	return o.ApplyT(func(v LookupMetastoreResult) GetMetastoreMetastoreInfo { return v.MetastoreInfo }).(GetMetastoreMetastoreInfoOutput)
 }
 
+// Name of metastore.
 func (o LookupMetastoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetastoreResult) string { return v.Name }).(pulumi.StringOutput)
 }

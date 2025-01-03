@@ -24,6 +24,9 @@ class DirectoryArgs:
                  object_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Directory resource.
+        :param pulumi.Input[str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[bool] delete_recursive: Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+        :param pulumi.Input[int] object_id: Unique identifier for a DIRECTORY
         """
         pulumi.set(__self__, "path", path)
         if delete_recursive is not None:
@@ -34,6 +37,9 @@ class DirectoryArgs:
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input[str]:
+        """
+        The absolute path of the directory, beginning with "/", e.g. "/Demo".
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -43,6 +49,9 @@ class DirectoryArgs:
     @property
     @pulumi.getter(name="deleteRecursive")
     def delete_recursive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+        """
         return pulumi.get(self, "delete_recursive")
 
     @delete_recursive.setter
@@ -52,6 +61,9 @@ class DirectoryArgs:
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Unique identifier for a DIRECTORY
+        """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
@@ -68,6 +80,10 @@ class _DirectoryState:
                  workspace_path: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Directory resources.
+        :param pulumi.Input[bool] delete_recursive: Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+        :param pulumi.Input[int] object_id: Unique identifier for a DIRECTORY
+        :param pulumi.Input[str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         if delete_recursive is not None:
             pulumi.set(__self__, "delete_recursive", delete_recursive)
@@ -81,6 +97,9 @@ class _DirectoryState:
     @property
     @pulumi.getter(name="deleteRecursive")
     def delete_recursive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+        """
         return pulumi.get(self, "delete_recursive")
 
     @delete_recursive.setter
@@ -90,6 +109,9 @@ class _DirectoryState:
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Unique identifier for a DIRECTORY
+        """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
@@ -99,6 +121,9 @@ class _DirectoryState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The absolute path of the directory, beginning with "/", e.g. "/Demo".
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -108,6 +133,9 @@ class _DirectoryState:
     @property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
         return pulumi.get(self, "workspace_path")
 
     @workspace_path.setter
@@ -125,9 +153,50 @@ class Directory(pulumi.CustomResource):
                  path: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Directory resource with the given unique name, props, and options.
+        This resource allows you to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+
+        ## Example Usage
+
+        You can declare a Pulumi-managed directory by specifying the `path` attribute of the corresponding directory.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        my_custom_directory = databricks.Directory("my_custom_directory", path="/my_custom_directory")
+        ```
+
+        ## Access Control
+
+        - Permissions can control which groups or individual users can access folders.
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        - End to end workspace management guide.
+        - Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+        - Notebook data to export a notebook from Databricks Workspace.
+        - get_notebook_paths data to list notebooks in Databricks Workspace.
+        - Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+        - get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
+        - WorkspaceConf to manage workspace configuration for expert usage.
+
+        ## Import
+
+        The resource directory can be imported using directory path:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/directory:Directory this /path/to/directory
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] delete_recursive: Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+        :param pulumi.Input[int] object_id: Unique identifier for a DIRECTORY
+        :param pulumi.Input[str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
         """
         ...
     @overload
@@ -136,7 +205,45 @@ class Directory(pulumi.CustomResource):
                  args: DirectoryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Directory resource with the given unique name, props, and options.
+        This resource allows you to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+
+        ## Example Usage
+
+        You can declare a Pulumi-managed directory by specifying the `path` attribute of the corresponding directory.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        my_custom_directory = databricks.Directory("my_custom_directory", path="/my_custom_directory")
+        ```
+
+        ## Access Control
+
+        - Permissions can control which groups or individual users can access folders.
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        - End to end workspace management guide.
+        - Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+        - Notebook data to export a notebook from Databricks Workspace.
+        - get_notebook_paths data to list notebooks in Databricks Workspace.
+        - Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+        - get_spark_version data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources.
+        - WorkspaceConf to manage workspace configuration for expert usage.
+
+        ## Import
+
+        The resource directory can be imported using directory path:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/directory:Directory this /path/to/directory
+        ```
+
         :param str resource_name: The name of the resource.
         :param DirectoryArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -191,6 +298,10 @@ class Directory(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] delete_recursive: Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+        :param pulumi.Input[int] object_id: Unique identifier for a DIRECTORY
+        :param pulumi.Input[str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -205,20 +316,32 @@ class Directory(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deleteRecursive")
     def delete_recursive(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+        """
         return pulumi.get(self, "delete_recursive")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Output[int]:
+        """
+        Unique identifier for a DIRECTORY
+        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output[str]:
+        """
+        The absolute path of the directory, beginning with "/", e.g. "/Demo".
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> pulumi.Output[str]:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
         return pulumi.get(self, "workspace_path")
 

@@ -16,16 +16,32 @@ public final class BudgetFilterTagValueArgs extends com.pulumi.resources.Resourc
 
     public static final BudgetFilterTagValueArgs Empty = new BudgetFilterTagValueArgs();
 
+    /**
+     * The operator to use for the filter. (Enum: `IN`)
+     * 
+     */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
+    /**
+     * @return The operator to use for the filter. (Enum: `IN`)
+     * 
+     */
     public Optional<Output<String>> operator() {
         return Optional.ofNullable(this.operator);
     }
 
+    /**
+     * The values to filter by.
+     * 
+     */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
+    /**
+     * @return The values to filter by.
+     * 
+     */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -55,24 +71,54 @@ public final class BudgetFilterTagValueArgs extends com.pulumi.resources.Resourc
             $ = new BudgetFilterTagValueArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param operator The operator to use for the filter. (Enum: `IN`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(@Nullable Output<String> operator) {
             $.operator = operator;
             return this;
         }
 
+        /**
+         * @param operator The operator to use for the filter. (Enum: `IN`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(String operator) {
             return operator(Output.of(operator));
         }
 
+        /**
+         * @param values The values to filter by.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values The values to filter by.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values The values to filter by.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class NotificationDestinationConfigEmail
     {
+        /// <summary>
+        /// The list of email addresses to send notifications to.
+        /// </summary>
         public readonly ImmutableArray<string> Addresses;
 
         [OutputConstructor]

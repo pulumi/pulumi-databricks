@@ -4,6 +4,17 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * You can import a `databricks_sql_visualization` resource with ID like the following:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/sqlVisualization:SqlVisualization this <query-id>/<visualization-id>
+ * ```
+ */
 export class SqlVisualization extends pulumi.CustomResource {
     /**
      * Get an existing SqlVisualization resource's state with the given name, ID, and optional extra

@@ -12,12 +12,67 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This resource can be used with an account or workspace-level provider.
+//
+// A single Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. You can only create a single metastore for each region in which your organization operates.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewMetastore(ctx, "this", &databricks.MetastoreArgs{
+//				Name:         pulumi.String("primary"),
+//				StorageRoot:  pulumi.Sprintf("s3://%v/metastore", metastore.Id),
+//				Owner:        pulumi.String("uc admins"),
+//				Region:       pulumi.String("us-east-1"),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMetastoreAssignment(ctx, "this", &databricks.MetastoreAssignmentArgs{
+//				MetastoreId: this.ID(),
+//				WorkspaceId: pulumi.Any(workspaceId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// This resource can be imported by combination of workspace id and metastore id:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '<workspace_id>|<metastore_id>'
+// ```
 type MetastoreAssignment struct {
 	pulumi.CustomResourceState
 
+	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
 	DefaultCatalogName pulumi.StringPtrOutput `pulumi:"defaultCatalogName"`
-	MetastoreId        pulumi.StringOutput    `pulumi:"metastoreId"`
-	WorkspaceId        pulumi.StringOutput    `pulumi:"workspaceId"`
+	// Unique identifier of the parent Metastore
+	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
+	// id of the workspace for the assignment
+	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
 }
 
 // NewMetastoreAssignment registers a new resource with the given unique name, arguments, and options.
@@ -56,15 +111,21 @@ func GetMetastoreAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MetastoreAssignment resources.
 type metastoreAssignmentState struct {
+	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
 	DefaultCatalogName *string `pulumi:"defaultCatalogName"`
-	MetastoreId        *string `pulumi:"metastoreId"`
-	WorkspaceId        *string `pulumi:"workspaceId"`
+	// Unique identifier of the parent Metastore
+	MetastoreId *string `pulumi:"metastoreId"`
+	// id of the workspace for the assignment
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type MetastoreAssignmentState struct {
+	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
 	DefaultCatalogName pulumi.StringPtrInput
-	MetastoreId        pulumi.StringPtrInput
-	WorkspaceId        pulumi.StringPtrInput
+	// Unique identifier of the parent Metastore
+	MetastoreId pulumi.StringPtrInput
+	// id of the workspace for the assignment
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (MetastoreAssignmentState) ElementType() reflect.Type {
@@ -72,16 +133,22 @@ func (MetastoreAssignmentState) ElementType() reflect.Type {
 }
 
 type metastoreAssignmentArgs struct {
+	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
 	DefaultCatalogName *string `pulumi:"defaultCatalogName"`
-	MetastoreId        string  `pulumi:"metastoreId"`
-	WorkspaceId        string  `pulumi:"workspaceId"`
+	// Unique identifier of the parent Metastore
+	MetastoreId string `pulumi:"metastoreId"`
+	// id of the workspace for the assignment
+	WorkspaceId string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a MetastoreAssignment resource.
 type MetastoreAssignmentArgs struct {
+	// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
 	DefaultCatalogName pulumi.StringPtrInput
-	MetastoreId        pulumi.StringInput
-	WorkspaceId        pulumi.StringInput
+	// Unique identifier of the parent Metastore
+	MetastoreId pulumi.StringInput
+	// id of the workspace for the assignment
+	WorkspaceId pulumi.StringInput
 }
 
 func (MetastoreAssignmentArgs) ElementType() reflect.Type {
@@ -171,14 +238,17 @@ func (o MetastoreAssignmentOutput) ToMetastoreAssignmentOutputWithContext(ctx co
 	return o
 }
 
+// Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
 func (o MetastoreAssignmentOutput) DefaultCatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreAssignment) pulumi.StringPtrOutput { return v.DefaultCatalogName }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the parent Metastore
 func (o MetastoreAssignmentOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreAssignment) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
+// id of the workspace for the assignment
 func (o MetastoreAssignmentOutput) WorkspaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreAssignment) pulumi.StringOutput { return v.WorkspaceId }).(pulumi.StringOutput)
 }

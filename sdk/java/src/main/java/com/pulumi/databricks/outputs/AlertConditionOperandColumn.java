@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class AlertConditionOperandColumn {
+    /**
+     * @return Name of the column.
+     * 
+     */
     private String name;
 
     private AlertConditionOperandColumn() {}
+    /**
+     * @return Name of the column.
+     * 
+     */
     public String name() {
         return this.name;
     }

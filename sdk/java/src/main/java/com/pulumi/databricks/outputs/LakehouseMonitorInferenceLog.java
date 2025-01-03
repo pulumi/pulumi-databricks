@@ -13,33 +13,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LakehouseMonitorInferenceLog {
+    /**
+     * @return List of granularities to use when aggregating data into time windows based on their timestamp.
+     * 
+     */
     private List<String> granularities;
+    /**
+     * @return Column of the model label
+     * 
+     */
     private @Nullable String labelCol;
+    /**
+     * @return Column of the model id or version
+     * 
+     */
     private String modelIdCol;
+    /**
+     * @return Column of the model prediction
+     * 
+     */
     private String predictionCol;
+    /**
+     * @return Column of the model prediction probabilities
+     * 
+     */
     private @Nullable String predictionProbaCol;
+    /**
+     * @return Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+     * 
+     */
     private String problemType;
+    /**
+     * @return Column of the timestamp of predictions
+     * 
+     */
     private String timestampCol;
 
     private LakehouseMonitorInferenceLog() {}
+    /**
+     * @return List of granularities to use when aggregating data into time windows based on their timestamp.
+     * 
+     */
     public List<String> granularities() {
         return this.granularities;
     }
+    /**
+     * @return Column of the model label
+     * 
+     */
     public Optional<String> labelCol() {
         return Optional.ofNullable(this.labelCol);
     }
+    /**
+     * @return Column of the model id or version
+     * 
+     */
     public String modelIdCol() {
         return this.modelIdCol;
     }
+    /**
+     * @return Column of the model prediction
+     * 
+     */
     public String predictionCol() {
         return this.predictionCol;
     }
+    /**
+     * @return Column of the model prediction probabilities
+     * 
+     */
     public Optional<String> predictionProbaCol() {
         return Optional.ofNullable(this.predictionProbaCol);
     }
+    /**
+     * @return Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+     * 
+     */
     public String problemType() {
         return this.problemType;
     }
+    /**
+     * @return Column of the timestamp of predictions
+     * 
+     */
     public String timestampCol() {
         return this.timestampCol;
     }

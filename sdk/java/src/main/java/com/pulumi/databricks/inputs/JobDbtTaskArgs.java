@@ -17,51 +17,115 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobDbtTaskArgs Empty = new JobDbtTaskArgs();
 
+    /**
+     * The name of the catalog to use inside Unity Catalog.
+     * 
+     */
     @Import(name="catalog")
     private @Nullable Output<String> catalog;
 
+    /**
+     * @return The name of the catalog to use inside Unity Catalog.
+     * 
+     */
     public Optional<Output<String>> catalog() {
         return Optional.ofNullable(this.catalog);
     }
 
+    /**
+     * (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
+     * 
+     */
     @Import(name="commands", required=true)
     private Output<List<String>> commands;
 
+    /**
+     * @return (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
+     * 
+     */
     public Output<List<String>> commands() {
         return this.commands;
     }
 
+    /**
+     * The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     * 
+     */
     @Import(name="profilesDirectory")
     private @Nullable Output<String> profilesDirectory;
 
+    /**
+     * @return The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     * 
+     */
     public Optional<Output<String>> profilesDirectory() {
         return Optional.ofNullable(this.profilesDirectory);
     }
 
+    /**
+     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository&#39;s root directory when not specified.
+     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
+     * 
+     */
     @Import(name="projectDirectory")
     private @Nullable Output<String> projectDirectory;
 
+    /**
+     * @return The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository&#39;s root directory when not specified.
+     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
+     * 
+     */
     public Optional<Output<String>> projectDirectory() {
         return Optional.ofNullable(this.projectDirectory);
     }
 
+    /**
+     * The name of the schema dbt should run in. Defaults to `default`.
+     * 
+     */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
+    /**
+     * @return The name of the schema dbt should run in. Defaults to `default`.
+     * 
+     */
     public Optional<Output<String>> schema() {
         return Optional.ofNullable(this.schema);
     }
 
+    /**
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * 
+     */
     @Import(name="source")
     private @Nullable Output<String> source;
 
+    /**
+     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * 
+     */
     public Optional<Output<String>> source() {
         return Optional.ofNullable(this.source);
     }
 
+    /**
+     * The ID of the SQL warehouse that dbt should execute against.
+     * 
+     * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+     * 
+     */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
+    /**
+     * @return The ID of the SQL warehouse that dbt should execute against.
+     * 
+     * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+     * 
+     */
     public Optional<Output<String>> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }
@@ -96,69 +160,167 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobDbtTaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param catalog The name of the catalog to use inside Unity Catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalog(@Nullable Output<String> catalog) {
             $.catalog = catalog;
             return this;
         }
 
+        /**
+         * @param catalog The name of the catalog to use inside Unity Catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalog(String catalog) {
             return catalog(Output.of(catalog));
         }
 
+        /**
+         * @param commands (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commands(Output<List<String>> commands) {
             $.commands = commands;
             return this;
         }
 
+        /**
+         * @param commands (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commands(List<String> commands) {
             return commands(Output.of(commands));
         }
 
+        /**
+         * @param commands (Array) Series of dbt commands to execute in sequence. Every command must start with &#34;dbt&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commands(String... commands) {
             return commands(List.of(commands));
         }
 
+        /**
+         * @param profilesDirectory The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+         * 
+         * @return builder
+         * 
+         */
         public Builder profilesDirectory(@Nullable Output<String> profilesDirectory) {
             $.profilesDirectory = profilesDirectory;
             return this;
         }
 
+        /**
+         * @param profilesDirectory The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+         * 
+         * @return builder
+         * 
+         */
         public Builder profilesDirectory(String profilesDirectory) {
             return profilesDirectory(Output.of(profilesDirectory));
         }
 
+        /**
+         * @param projectDirectory The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
+         * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository&#39;s root directory when not specified.
+         * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectDirectory(@Nullable Output<String> projectDirectory) {
             $.projectDirectory = projectDirectory;
             return this;
         }
 
+        /**
+         * @param projectDirectory The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
+         * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository&#39;s root directory when not specified.
+         * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectDirectory(String projectDirectory) {
             return projectDirectory(Output.of(projectDirectory));
         }
 
+        /**
+         * @param schema The name of the schema dbt should run in. Defaults to `default`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(@Nullable Output<String> schema) {
             $.schema = schema;
             return this;
         }
 
+        /**
+         * @param schema The name of the schema dbt should run in. Defaults to `default`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(String schema) {
             return schema(Output.of(schema));
         }
 
+        /**
+         * @param source The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(@Nullable Output<String> source) {
             $.source = source;
             return this;
         }
 
+        /**
+         * @param source The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(String source) {
             return source(Output.of(source));
         }
 
+        /**
+         * @param warehouseId The ID of the SQL warehouse that dbt should execute against.
+         * 
+         * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(@Nullable Output<String> warehouseId) {
             $.warehouseId = warehouseId;
             return this;
         }
 
+        /**
+         * @param warehouseId The ID of the SQL warehouse that dbt should execute against.
+         * 
+         * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
         }

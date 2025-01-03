@@ -63,9 +63,17 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createdBy);
     }
 
+    /**
+     * Unique ID of the credential.
+     * 
+     */
     @Import(name="credentialId")
     private @Nullable Output<String> credentialId;
 
+    /**
+     * @return Unique ID of the credential.
+     * 
+     */
     public Optional<Output<String>> credentialId() {
         return Optional.ofNullable(this.credentialId);
     }
@@ -77,16 +85,32 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.databricksGcpServiceAccount);
     }
 
+    /**
+     * Delete credential regardless of its dependencies.
+     * 
+     */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
+    /**
+     * @return Delete credential regardless of its dependencies.
+     * 
+     */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
     }
 
+    /**
+     * Update credential regardless of its dependents.
+     * 
+     */
     @Import(name="forceUpdate")
     private @Nullable Output<Boolean> forceUpdate;
 
+    /**
+     * @return Update credential regardless of its dependents.
+     * 
+     */
     public Optional<Output<Boolean>> forceUpdate() {
         return Optional.ofNullable(this.forceUpdate);
     }
@@ -98,9 +122,21 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.fullName);
     }
 
+    /**
+     * Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
     @Import(name="isolationMode")
     private @Nullable Output<String> isolationMode;
 
+    /**
+     * @return Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
     public Optional<Output<String>> isolationMode() {
         return Optional.ofNullable(this.isolationMode);
     }
@@ -112,37 +148,77 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.metastoreId);
     }
 
+    /**
+     * Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Username/groupname/sp application_id of the credential owner.
+     * 
+     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
+    /**
+     * @return Username/groupname/sp application_id of the credential owner.
+     * 
+     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+     * 
+     */
     @Import(name="purpose")
     private @Nullable Output<String> purpose;
 
+    /**
+     * @return Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+     * 
+     */
     public Optional<Output<String>> purpose() {
         return Optional.ofNullable(this.purpose);
     }
 
+    /**
+     * Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+     * 
+     */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
+    /**
+     * @return Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+     * 
+     */
     public Optional<Output<Boolean>> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
 
+    /**
+     * Suppress validation errors if any &amp; force save the credential.
+     * 
+     */
     @Import(name="skipValidation")
     private @Nullable Output<Boolean> skipValidation;
 
+    /**
+     * @return Suppress validation errors if any &amp; force save the credential.
+     * 
+     */
     public Optional<Output<Boolean>> skipValidation() {
         return Optional.ofNullable(this.skipValidation);
     }
@@ -266,11 +342,23 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
             return createdBy(Output.of(createdBy));
         }
 
+        /**
+         * @param credentialId Unique ID of the credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialId(@Nullable Output<String> credentialId) {
             $.credentialId = credentialId;
             return this;
         }
 
+        /**
+         * @param credentialId Unique ID of the credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialId(String credentialId) {
             return credentialId(Output.of(credentialId));
         }
@@ -284,20 +372,44 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
             return databricksGcpServiceAccount(Output.of(databricksGcpServiceAccount));
         }
 
+        /**
+         * @param forceDestroy Delete credential regardless of its dependencies.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
             $.forceDestroy = forceDestroy;
             return this;
         }
 
+        /**
+         * @param forceDestroy Delete credential regardless of its dependencies.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
         }
 
+        /**
+         * @param forceUpdate Update credential regardless of its dependents.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceUpdate(@Nullable Output<Boolean> forceUpdate) {
             $.forceUpdate = forceUpdate;
             return this;
         }
 
+        /**
+         * @param forceUpdate Update credential regardless of its dependents.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceUpdate(Boolean forceUpdate) {
             return forceUpdate(Output.of(forceUpdate));
         }
@@ -311,11 +423,27 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
             return fullName(Output.of(fullName));
         }
 
+        /**
+         * @param isolationMode Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+         * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
         public Builder isolationMode(@Nullable Output<String> isolationMode) {
             $.isolationMode = isolationMode;
             return this;
         }
 
+        /**
+         * @param isolationMode Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+         * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
         public Builder isolationMode(String isolationMode) {
             return isolationMode(Output.of(isolationMode));
         }
@@ -329,47 +457,107 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
             return metastoreId(Output.of(metastoreId));
         }
 
+        /**
+         * @param name Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param owner Username/groupname/sp application_id of the credential owner.
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
+        /**
+         * @param owner Username/groupname/sp application_id of the credential owner.
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
 
+        /**
+         * @param purpose Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder purpose(@Nullable Output<String> purpose) {
             $.purpose = purpose;
             return this;
         }
 
+        /**
+         * @param purpose Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder purpose(String purpose) {
             return purpose(Output.of(purpose));
         }
 
+        /**
+         * @param readOnly Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readOnly(@Nullable Output<Boolean> readOnly) {
             $.readOnly = readOnly;
             return this;
         }
 
+        /**
+         * @param readOnly Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readOnly(Boolean readOnly) {
             return readOnly(Output.of(readOnly));
         }
 
+        /**
+         * @param skipValidation Suppress validation errors if any &amp; force save the credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder skipValidation(@Nullable Output<Boolean> skipValidation) {
             $.skipValidation = skipValidation;
             return this;
         }
 
+        /**
+         * @param skipValidation Suppress validation errors if any &amp; force save the credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder skipValidation(Boolean skipValidation) {
             return skipValidation(Output.of(skipValidation));
         }

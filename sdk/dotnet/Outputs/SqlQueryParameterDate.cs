@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class SqlQueryParameterDate
     {
+        /// <summary>
+        /// The default value for this parameter.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

@@ -17,51 +17,107 @@ public final class GetMwsNetworkConnectivityConfigPlainArgs extends com.pulumi.r
 
     public static final GetMwsNetworkConnectivityConfigPlainArgs Empty = new GetMwsNetworkConnectivityConfigPlainArgs();
 
+    /**
+     * The Databricks account ID associated with this network configuration.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable String accountId;
 
+    /**
+     * @return The Databricks account ID associated with this network configuration.
+     * 
+     */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Time in epoch milliseconds when this object was created.
+     * 
+     */
     @Import(name="creationTime")
     private @Nullable Integer creationTime;
 
+    /**
+     * @return Time in epoch milliseconds when this object was created.
+     * 
+     */
     public Optional<Integer> creationTime() {
         return Optional.ofNullable(this.creationTime);
     }
 
+    /**
+     * Array of egress configuration objects.
+     * 
+     */
     @Import(name="egressConfig")
     private @Nullable GetMwsNetworkConnectivityConfigEgressConfig egressConfig;
 
+    /**
+     * @return Array of egress configuration objects.
+     * 
+     */
     public Optional<GetMwsNetworkConnectivityConfigEgressConfig> egressConfig() {
         return Optional.ofNullable(this.egressConfig);
     }
 
+    /**
+     * Name of the network connectivity configuration.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return Name of the network connectivity configuration.
+     * 
+     */
     public String name() {
         return this.name;
     }
 
+    /**
+     * The Databricks network connectivity configuration ID.
+     * 
+     */
     @Import(name="networkConnectivityConfigId")
     private @Nullable String networkConnectivityConfigId;
 
+    /**
+     * @return The Databricks network connectivity configuration ID.
+     * 
+     */
     public Optional<String> networkConnectivityConfigId() {
         return Optional.ofNullable(this.networkConnectivityConfigId);
     }
 
+    /**
+     * The region of the network connectivity configuration.
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return The region of the network connectivity configuration.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * Time in epoch milliseconds when the network was updated.
+     * 
+     */
     @Import(name="updatedTime")
     private @Nullable Integer updatedTime;
 
+    /**
+     * @return Time in epoch milliseconds when the network was updated.
+     * 
+     */
     public Optional<Integer> updatedTime() {
         return Optional.ofNullable(this.updatedTime);
     }
@@ -96,36 +152,78 @@ public final class GetMwsNetworkConnectivityConfigPlainArgs extends com.pulumi.r
             $ = new GetMwsNetworkConnectivityConfigPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId The Databricks account ID associated with this network configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param creationTime Time in epoch milliseconds when this object was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder creationTime(@Nullable Integer creationTime) {
             $.creationTime = creationTime;
             return this;
         }
 
+        /**
+         * @param egressConfig Array of egress configuration objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder egressConfig(@Nullable GetMwsNetworkConnectivityConfigEgressConfig egressConfig) {
             $.egressConfig = egressConfig;
             return this;
         }
 
+        /**
+         * @param name Name of the network connectivity configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param networkConnectivityConfigId The Databricks network connectivity configuration ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkConnectivityConfigId(@Nullable String networkConnectivityConfigId) {
             $.networkConnectivityConfigId = networkConnectivityConfigId;
             return this;
         }
 
+        /**
+         * @param region The region of the network connectivity configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param updatedTime Time in epoch milliseconds when the network was updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedTime(@Nullable Integer updatedTime) {
             $.updatedTime = updatedTime;
             return this;

@@ -4,6 +4,25 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves information about databricks_cluster_policy.
+ *
+ * ## Example Usage
+ *
+ * Referring to a cluster policy by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const personal = databricks.getClusterPolicy({
+ *     name: "Personal Compute",
+ * });
+ * const myCluster = new databricks.Cluster("my_cluster", {policyId: personal.then(personal => personal.id)});
+ * ```
+ */
 export function getClusterPolicy(args?: GetClusterPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -23,13 +42,37 @@ export function getClusterPolicy(args?: GetClusterPolicyArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getClusterPolicy.
  */
 export interface GetClusterPolicyArgs {
+    /**
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     */
     definition?: string;
+    /**
+     * Additional human-readable description of the cluster policy.
+     */
     description?: string;
+    /**
+     * The id of the cluster policy.
+     */
     id?: string;
+    /**
+     * If true, policy is a default policy created and managed by Databricks.
+     */
     isDefault?: boolean;
+    /**
+     * Max number of clusters per user that can be active using this policy.
+     */
     maxClustersPerUser?: number;
+    /**
+     * Name of the cluster policy. The cluster policy must exist before this resource can be planned.
+     */
     name?: string;
+    /**
+     * Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+     */
     policyFamilyDefinitionOverrides?: string;
+    /**
+     * ID of the policy family.
+     */
     policyFamilyId?: string;
 }
 
@@ -37,15 +80,55 @@ export interface GetClusterPolicyArgs {
  * A collection of values returned by getClusterPolicy.
  */
 export interface GetClusterPolicyResult {
+    /**
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     */
     readonly definition: string;
+    /**
+     * Additional human-readable description of the cluster policy.
+     */
     readonly description: string;
+    /**
+     * The id of the cluster policy.
+     */
     readonly id: string;
+    /**
+     * If true, policy is a default policy created and managed by Databricks.
+     */
     readonly isDefault: boolean;
+    /**
+     * Max number of clusters per user that can be active using this policy.
+     */
     readonly maxClustersPerUser: number;
     readonly name: string;
+    /**
+     * Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+     */
     readonly policyFamilyDefinitionOverrides: string;
+    /**
+     * ID of the policy family.
+     */
     readonly policyFamilyId: string;
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves information about databricks_cluster_policy.
+ *
+ * ## Example Usage
+ *
+ * Referring to a cluster policy by name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const personal = databricks.getClusterPolicy({
+ *     name: "Personal Compute",
+ * });
+ * const myCluster = new databricks.Cluster("my_cluster", {policyId: personal.then(personal => personal.id)});
+ * ```
+ */
 export function getClusterPolicyOutput(args?: GetClusterPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -65,12 +148,36 @@ export function getClusterPolicyOutput(args?: GetClusterPolicyOutputArgs, opts?:
  * A collection of arguments for invoking getClusterPolicy.
  */
 export interface GetClusterPolicyOutputArgs {
+    /**
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+     */
     definition?: pulumi.Input<string>;
+    /**
+     * Additional human-readable description of the cluster policy.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The id of the cluster policy.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * If true, policy is a default policy created and managed by Databricks.
+     */
     isDefault?: pulumi.Input<boolean>;
+    /**
+     * Max number of clusters per user that can be active using this policy.
+     */
     maxClustersPerUser?: pulumi.Input<number>;
+    /**
+     * Name of the cluster policy. The cluster policy must exist before this resource can be planned.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
+     */
     policyFamilyDefinitionOverrides?: pulumi.Input<string>;
+    /**
+     * ID of the policy family.
+     */
     policyFamilyId?: pulumi.Input<string>;
 }

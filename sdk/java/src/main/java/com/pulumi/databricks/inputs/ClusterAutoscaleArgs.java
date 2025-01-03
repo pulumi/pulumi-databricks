@@ -15,16 +15,158 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
 
     public static final ClusterAutoscaleArgs Empty = new ClusterAutoscaleArgs();
 
+    /**
+     * The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
+     * 
+     * When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
+     * 
+     * * `spark.master` must have prefix `local`, like `local[*]`
+     * * `spark.databricks.cluster.profile` must have value `singleNode`
+     * 
+     * and also `custom_tag` entry:
+     * 
+     * * `&#34;ResourceClass&#34; = &#34;SingleNode&#34;`
+     * 
+     * The following example demonstrates how to create an single node cluster:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+     * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+     *             .localDisk(true)
+     *             .build());
+     * 
+     *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+     *             .longTermSupport(true)
+     *             .build());
+     * 
+     *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()
+     *             .clusterName("Single Node")
+     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .autoterminationMinutes(20)
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
+     *                 Map.entry("spark.master", "local[*]")
+     *             ))
+     *             .customTags(Map.of("ResourceClass", "SingleNode"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     @Import(name="maxWorkers")
     private @Nullable Output<Integer> maxWorkers;
 
+    /**
+     * @return The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
+     * 
+     * When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
+     * 
+     * * `spark.master` must have prefix `local`, like `local[*]`
+     * * `spark.databricks.cluster.profile` must have value `singleNode`
+     * 
+     * and also `custom_tag` entry:
+     * 
+     * * `&#34;ResourceClass&#34; = &#34;SingleNode&#34;`
+     * 
+     * The following example demonstrates how to create an single node cluster:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+     * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+     *             .localDisk(true)
+     *             .build());
+     * 
+     *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+     *             .longTermSupport(true)
+     *             .build());
+     * 
+     *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()
+     *             .clusterName("Single Node")
+     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .autoterminationMinutes(20)
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
+     *                 Map.entry("spark.master", "local[*]")
+     *             ))
+     *             .customTags(Map.of("ResourceClass", "SingleNode"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public Optional<Output<Integer>> maxWorkers() {
         return Optional.ofNullable(this.maxWorkers);
     }
 
+    /**
+     * The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
+     * 
+     */
     @Import(name="minWorkers")
     private @Nullable Output<Integer> minWorkers;
 
+    /**
+     * @return The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
+     * 
+     */
     public Optional<Output<Integer>> minWorkers() {
         return Optional.ofNullable(this.minWorkers);
     }
@@ -54,20 +196,170 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
             $ = new ClusterAutoscaleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maxWorkers The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
+         * 
+         * When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
+         * 
+         * * `spark.master` must have prefix `local`, like `local[*]`
+         * * `spark.databricks.cluster.profile` must have value `singleNode`
+         * 
+         * and also `custom_tag` entry:
+         * 
+         * * `&#34;ResourceClass&#34; = &#34;SingleNode&#34;`
+         * 
+         * The following example demonstrates how to create an single node cluster:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.DatabricksFunctions;
+         * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+         * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+         * import com.pulumi.databricks.Cluster;
+         * import com.pulumi.databricks.ClusterArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+         *             .localDisk(true)
+         *             .build());
+         * 
+         *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+         *             .longTermSupport(true)
+         *             .build());
+         * 
+         *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()
+         *             .clusterName("Single Node")
+         *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+         *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+         *             .autoterminationMinutes(20)
+         *             .sparkConf(Map.ofEntries(
+         *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
+         *                 Map.entry("spark.master", "local[*]")
+         *             ))
+         *             .customTags(Map.of("ResourceClass", "SingleNode"))
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * &lt;!--End PulumiCodeChooser --&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxWorkers(@Nullable Output<Integer> maxWorkers) {
             $.maxWorkers = maxWorkers;
             return this;
         }
 
+        /**
+         * @param maxWorkers The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
+         * 
+         * When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
+         * 
+         * * `spark.master` must have prefix `local`, like `local[*]`
+         * * `spark.databricks.cluster.profile` must have value `singleNode`
+         * 
+         * and also `custom_tag` entry:
+         * 
+         * * `&#34;ResourceClass&#34; = &#34;SingleNode&#34;`
+         * 
+         * The following example demonstrates how to create an single node cluster:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.DatabricksFunctions;
+         * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+         * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+         * import com.pulumi.databricks.Cluster;
+         * import com.pulumi.databricks.ClusterArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+         *             .localDisk(true)
+         *             .build());
+         * 
+         *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+         *             .longTermSupport(true)
+         *             .build());
+         * 
+         *         var singleNode = new Cluster("singleNode", ClusterArgs.builder()
+         *             .clusterName("Single Node")
+         *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+         *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+         *             .autoterminationMinutes(20)
+         *             .sparkConf(Map.ofEntries(
+         *                 Map.entry("spark.databricks.cluster.profile", "singleNode"),
+         *                 Map.entry("spark.master", "local[*]")
+         *             ))
+         *             .customTags(Map.of("ResourceClass", "SingleNode"))
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * &lt;!--End PulumiCodeChooser --&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxWorkers(Integer maxWorkers) {
             return maxWorkers(Output.of(maxWorkers));
         }
 
+        /**
+         * @param minWorkers The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minWorkers(@Nullable Output<Integer> minWorkers) {
             $.minWorkers = minWorkers;
             return this;
         }
 
+        /**
+         * @param minWorkers The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minWorkers(Integer minWorkers) {
             return minWorkers(Output.of(minWorkers));
         }

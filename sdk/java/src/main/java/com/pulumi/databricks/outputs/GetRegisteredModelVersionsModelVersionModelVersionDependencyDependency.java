@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency {
+    /**
+     * @return A function that is dependent on a SQL object:
+     * 
+     */
     private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction> functions;
+    /**
+     * @return A table that is dependent on a SQL object
+     * 
+     */
     private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable> tables;
 
     private GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency() {}
+    /**
+     * @return A function that is dependent on a SQL object:
+     * 
+     */
     public List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction> functions() {
         return this.functions == null ? List.of() : this.functions;
     }
+    /**
+     * @return A table that is dependent on a SQL object
+     * 
+     */
     public List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable> tables() {
         return this.tables == null ? List.of() : this.tables;
     }

@@ -16,16 +16,32 @@ public final class GetJobsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobsArgs Empty = new GetJobsArgs();
 
+    /**
+     * map of databricks.Job names to ids
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<Map<String,String>> ids;
 
+    /**
+     * @return map of databricks.Job names to ids
+     * 
+     */
     public Optional<Output<Map<String,String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * Only return databricks.Job ids that match the given name string (case-insensitive).
+     * 
+     */
     @Import(name="jobNameContains")
     private @Nullable Output<String> jobNameContains;
 
+    /**
+     * @return Only return databricks.Job ids that match the given name string (case-insensitive).
+     * 
+     */
     public Optional<Output<String>> jobNameContains() {
         return Optional.ofNullable(this.jobNameContains);
     }
@@ -55,20 +71,44 @@ public final class GetJobsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetJobsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids map of databricks.Job names to ids
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<Map<String,String>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids map of databricks.Job names to ids
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(Map<String,String> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param jobNameContains Only return databricks.Job ids that match the given name string (case-insensitive).
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobNameContains(@Nullable Output<String> jobNameContains) {
             $.jobNameContains = jobNameContains;
             return this;
         }
 
+        /**
+         * @param jobNameContains Only return databricks.Job ids that match the given name string (case-insensitive).
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobNameContains(String jobNameContains) {
             return jobNameContains(Output.of(jobNameContains));
         }

@@ -20,6 +20,10 @@ public final class GetAwsCrossAccountPolicyResult {
      * 
      */
     private String id;
+    /**
+     * @return AWS IAM Policy JSON document
+     * 
+     */
     private String json;
     private @Nullable List<String> passRoles;
     private @Nullable String policyType;
@@ -41,6 +45,10 @@ public final class GetAwsCrossAccountPolicyResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return AWS IAM Policy JSON document
+     * 
+     */
     public String json() {
         return this.json;
     }

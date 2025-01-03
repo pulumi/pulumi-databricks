@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class QueryParameterNumericValueGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// actual numeric value.
+        /// </summary>
         [Input("value", required: true)]
         public Input<double> Value { get; set; } = null!;
 

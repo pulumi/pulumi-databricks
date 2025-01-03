@@ -4,6 +4,43 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
+ *
+ * ## Example Usage
+ *
+ * Retrieve IDs for all SQL warehouses:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getSqlWarehouses({});
+ * ```
+ *
+ * Retrieve IDs for all clusters having "Shared" in the warehouse name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const allShared = databricks.getSqlWarehouses({
+ *     warehouseNameContains: "shared",
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+ * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+ * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+ */
 export function getSqlWarehouses(args?: GetSqlWarehousesArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlWarehousesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -17,7 +54,13 @@ export function getSqlWarehouses(args?: GetSqlWarehousesArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getSqlWarehouses.
  */
 export interface GetSqlWarehousesArgs {
+    /**
+     * list of databricks.SqlEndpoint ids
+     */
     ids?: string[];
+    /**
+     * Only return databricks.SqlEndpoint ids that match the given name string.
+     */
     warehouseNameContains?: string;
 }
 
@@ -29,9 +72,49 @@ export interface GetSqlWarehousesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * list of databricks.SqlEndpoint ids
+     */
     readonly ids: string[];
     readonly warehouseNameContains?: string;
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves a list of databricks.SqlEndpoint ids, that were created by Pulumi or manually.
+ *
+ * ## Example Usage
+ *
+ * Retrieve IDs for all SQL warehouses:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getSqlWarehouses({});
+ * ```
+ *
+ * Retrieve IDs for all clusters having "Shared" in the warehouse name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const allShared = databricks.getSqlWarehouses({
+ *     warehouseNameContains: "shared",
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+ * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+ * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+ */
 export function getSqlWarehousesOutput(args?: GetSqlWarehousesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSqlWarehousesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,6 +128,12 @@ export function getSqlWarehousesOutput(args?: GetSqlWarehousesOutputArgs, opts?:
  * A collection of arguments for invoking getSqlWarehouses.
  */
 export interface GetSqlWarehousesOutputArgs {
+    /**
+     * list of databricks.SqlEndpoint ids
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Only return databricks.SqlEndpoint ids that match the given name string.
+     */
     warehouseNameContains?: pulumi.Input<string>;
 }

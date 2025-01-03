@@ -20,6 +20,10 @@ public final class GetNotificationDestinationsResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
+     * 
+     */
     private List<GetNotificationDestinationsNotificationDestination> notificationDestinations;
     private @Nullable String type;
 
@@ -34,6 +38,10 @@ public final class GetNotificationDestinationsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
+     * 
+     */
     public List<GetNotificationDestinationsNotificationDestination> notificationDestinations() {
         return this.notificationDestinations;
     }

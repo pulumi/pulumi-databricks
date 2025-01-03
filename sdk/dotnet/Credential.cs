@@ -9,6 +9,147 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// &gt; This resource can only be used with a workspace-level provider.
+    /// 
+    /// &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+    /// 
+    /// A credential represents an authentication and authorization mechanism for accessing services on your cloud tenant. Each credential is subject to Unity Catalog access-control policies that control which users and groups can access the credential.
+    /// 
+    /// The type of credential to be created is determined by the `purpose` field, which should be either `SERVICE` or `STORAGE`.
+    /// The caller must be a metastore admin or have the metastore privilege `CREATE_STORAGE_CREDENTIAL` for storage credentials, or `CREATE_SERVICE_CREDENTIAL` for service credentials. The user who creates the credential can delegate ownership to another user or group to manage permissions on it
+    /// 
+    /// On AWS, the IAM role for a credential requires a trust policy. See [documentation](https://docs.databricks.com/en/connect/unity-catalog/cloud-services/service-credentials.html#step-1-create-an-iam-role) for more details. The data source databricks.getAwsUnityCatalogAssumeRolePolicy can be used to create the necessary AWS Unity Catalog assume role policy.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// For AWS
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var external = new Databricks.Credential("external", new()
+    ///     {
+    ///         Name = externalDataAccess.Name,
+    ///         AwsIamRole = new Databricks.Inputs.CredentialAwsIamRoleArgs
+    ///         {
+    ///             RoleArn = externalDataAccess.Arn,
+    ///         },
+    ///         Purpose = "SERVICE",
+    ///         Comment = "Managed by TF",
+    ///     });
+    /// 
+    ///     var externalCreds = new Databricks.Grants("external_creds", new()
+    ///     {
+    ///         Credential = external.Id,
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "Data Engineers",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "ACCESS",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// For Azure
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var externalMi = new Databricks.Credential("external_mi", new()
+    ///     {
+    ///         Name = "mi_credential",
+    ///         AzureManagedIdentity = new Databricks.Inputs.CredentialAzureManagedIdentityArgs
+    ///         {
+    ///             AccessConnectorId = example.Id,
+    ///         },
+    ///         Purpose = "SERVICE",
+    ///         Comment = "Managed identity credential managed by TF",
+    ///     });
+    /// 
+    ///     var externalCreds = new Databricks.Grants("external_creds", new()
+    ///     {
+    ///         Credential = externalMi.Id,
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "Data Engineers",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "ACCESS",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// For GCP (only applicable when purpose is `STORAGE`)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var externalGcpSa = new Databricks.Credential("external_gcp_sa", new()
+    ///     {
+    ///         Name = "gcp_sa_credential",
+    ///         DatabricksGcpServiceAccount = null,
+    ///         Purpose = "STORAGE",
+    ///         Comment = "GCP SA credential managed by TF",
+    ///     });
+    /// 
+    ///     var externalCreds = new Databricks.Grants("external_creds", new()
+    ///     {
+    ///         Credential = externalGcpSa.Id,
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "Data Engineers",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "ACCESS",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by name:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/credential:Credential this &lt;name&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/credential:Credential")]
     public partial class Credential : global::Pulumi.CustomResource
     {
@@ -30,39 +171,68 @@ namespace Pulumi.Databricks
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
+        /// <summary>
+        /// Unique ID of the credential.
+        /// </summary>
         [Output("credentialId")]
         public Output<string> CredentialId { get; private set; } = null!;
 
         [Output("databricksGcpServiceAccount")]
         public Output<Outputs.CredentialDatabricksGcpServiceAccount> DatabricksGcpServiceAccount { get; private set; } = null!;
 
+        /// <summary>
+        /// Delete credential regardless of its dependencies.
+        /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
+        /// <summary>
+        /// Update credential regardless of its dependents.
+        /// </summary>
         [Output("forceUpdate")]
         public Output<bool?> ForceUpdate { get; private set; } = null!;
 
         [Output("fullName")]
         public Output<string> FullName { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// </summary>
         [Output("isolationMode")]
         public Output<string> IsolationMode { get; private set; } = null!;
 
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Username/groupname/sp application_id of the credential owner.
+        /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+        /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+        /// </summary>
         [Output("readOnly")]
         public Output<bool?> ReadOnly { get; private set; } = null!;
 
+        /// <summary>
+        /// Suppress validation errors if any &amp; force save the credential.
+        /// </summary>
         [Output("skipValidation")]
         public Output<bool?> SkipValidation { get; private set; } = null!;
 
@@ -142,33 +312,59 @@ namespace Pulumi.Databricks
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.CredentialDatabricksGcpServiceAccountArgs>? DatabricksGcpServiceAccount { get; set; }
 
+        /// <summary>
+        /// Delete credential regardless of its dependencies.
+        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        /// <summary>
+        /// Update credential regardless of its dependents.
+        /// </summary>
         [Input("forceUpdate")]
         public Input<bool>? ForceUpdate { get; set; }
 
         [Input("fullName")]
         public Input<string>? FullName { get; set; }
 
+        /// <summary>
+        /// Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
+        /// <summary>
+        /// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Username/groupname/sp application_id of the credential owner.
+        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+        /// </summary>
         [Input("purpose", required: true)]
         public Input<string> Purpose { get; set; } = null!;
 
+        /// <summary>
+        /// Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+        /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        /// <summary>
+        /// Suppress validation errors if any &amp; force save the credential.
+        /// </summary>
         [Input("skipValidation")]
         public Input<bool>? SkipValidation { get; set; }
 
@@ -207,39 +403,68 @@ namespace Pulumi.Databricks
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// Unique ID of the credential.
+        /// </summary>
         [Input("credentialId")]
         public Input<string>? CredentialId { get; set; }
 
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.CredentialDatabricksGcpServiceAccountGetArgs>? DatabricksGcpServiceAccount { get; set; }
 
+        /// <summary>
+        /// Delete credential regardless of its dependencies.
+        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        /// <summary>
+        /// Update credential regardless of its dependents.
+        /// </summary>
         [Input("forceUpdate")]
         public Input<bool>? ForceUpdate { get; set; }
 
         [Input("fullName")]
         public Input<string>? FullName { get; set; }
 
+        /// <summary>
+        /// Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
 
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
+        /// <summary>
+        /// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Username/groupname/sp application_id of the credential owner.
+        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+        /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
 
+        /// <summary>
+        /// Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+        /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        /// <summary>
+        /// Suppress validation errors if any &amp; force save the credential.
+        /// </summary>
         [Input("skipValidation")]
         public Input<bool>? SkipValidation { get; set; }
 

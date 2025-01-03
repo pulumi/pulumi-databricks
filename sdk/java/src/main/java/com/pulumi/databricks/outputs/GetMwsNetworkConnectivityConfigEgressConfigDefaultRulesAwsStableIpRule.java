@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+    /**
+     * @return The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+     * 
+     */
     private @Nullable List<String> cidrBlocks;
 
     private GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule() {}
+    /**
+     * @return The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+     * 
+     */
     public List<String> cidrBlocks() {
         return this.cidrBlocks == null ? List.of() : this.cidrBlocks;
     }

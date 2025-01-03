@@ -86,6 +86,9 @@ class GetAwsBucketPolicyResult:
     @property
     @pulumi.getter
     def json(self) -> str:
+        """
+        (Read-only) AWS IAM Policy JSON document to grant Databricks full access to bucket.
+        """
         return pulumi.get(self, "json")
 
 
@@ -111,7 +114,31 @@ def get_aws_bucket_policy(aws_partition: Optional[str] = None,
                           full_access_role: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsBucketPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_databricks as databricks
+
+    this_bucket_v2 = aws.s3.BucketV2("this",
+        bucket="<unique_bucket_name>",
+        force_destroy=True)
+    this = databricks.get_aws_bucket_policy_output(bucket=this_bucket_v2.bucket)
+    this_bucket_policy = aws.s3.BucketPolicy("this",
+        bucket=this_bucket_v2.id,
+        policy=this.json)
+    ```
+
+    Bucket policy with full access:
+
+
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param str bucket: AWS S3 Bucket name for which to generate the policy document.
+    :param str databricks_e2_account_id: Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+    :param str full_access_role: Data access role that can have full access for this bucket
     """
     __args__ = dict()
     __args__['awsPartition'] = aws_partition
@@ -137,7 +164,31 @@ def get_aws_bucket_policy_output(aws_partition: Optional[pulumi.Input[Optional[s
                                  full_access_role: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsBucketPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_databricks as databricks
+
+    this_bucket_v2 = aws.s3.BucketV2("this",
+        bucket="<unique_bucket_name>",
+        force_destroy=True)
+    this = databricks.get_aws_bucket_policy_output(bucket=this_bucket_v2.bucket)
+    this_bucket_policy = aws.s3.BucketPolicy("this",
+        bucket=this_bucket_v2.id,
+        policy=this.json)
+    ```
+
+    Bucket policy with full access:
+
+
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param str bucket: AWS S3 Bucket name for which to generate the policy document.
+    :param str databricks_e2_account_id: Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
+    :param str full_access_role: Data access role that can have full access for this bucket
     """
     __args__ = dict()
     __args__['awsPartition'] = aws_partition

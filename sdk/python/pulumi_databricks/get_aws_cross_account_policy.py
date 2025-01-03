@@ -76,6 +76,9 @@ class GetAwsCrossAccountPolicyResult:
     @property
     @pulumi.getter
     def json(self) -> str:
+        """
+        AWS IAM Policy JSON document
+        """
         return pulumi.get(self, "json")
 
     @property
@@ -130,7 +133,39 @@ def get_aws_cross_account_policy(aws_account_id: Optional[str] = None,
                                  vpc_id: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsCrossAccountPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with an account-level provider!
+
+    This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+
+    ## Example Usage
+
+    For more detailed usage please see get_aws_assume_role_policy or databricks_aws_s3_mount pages.
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_aws_cross_account_policy()
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide
+    * get_aws_assume_role_policy data to construct the necessary AWS STS assume role policy.
+    * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+    * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+
+
+    :param str aws_account_id: — Your AWS account ID, which is a number.
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param Sequence[str] pass_roles: List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+           The below arguments are only valid for `restricted` policy type
+    :param str policy_type: The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
+    :param str region: — AWS Region name for your VPC deployment, for example `us-west-2`.
+    :param str security_group_id: — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+    :param str vpc_id: — ID of the AWS VPC where you want to launch workspaces.
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id
@@ -162,7 +197,39 @@ def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Op
                                         vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsCrossAccountPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with an account-level provider!
+
+    This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+
+    ## Example Usage
+
+    For more detailed usage please see get_aws_assume_role_policy or databricks_aws_s3_mount pages.
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_aws_cross_account_policy()
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide
+    * get_aws_assume_role_policy data to construct the necessary AWS STS assume role policy.
+    * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+    * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+
+
+    :param str aws_account_id: — Your AWS account ID, which is a number.
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param Sequence[str] pass_roles: List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+           The below arguments are only valid for `restricted` policy type
+    :param str policy_type: The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
+    :param str region: — AWS Region name for your VPC deployment, for example `us-west-2`.
+    :param str security_group_id: — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+    :param str vpc_id: — ID of the AWS VPC where you want to launch workspaces.
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id

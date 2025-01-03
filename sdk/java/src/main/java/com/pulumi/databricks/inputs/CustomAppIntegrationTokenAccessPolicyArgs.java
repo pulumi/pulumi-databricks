@@ -15,16 +15,32 @@ public final class CustomAppIntegrationTokenAccessPolicyArgs extends com.pulumi.
 
     public static final CustomAppIntegrationTokenAccessPolicyArgs Empty = new CustomAppIntegrationTokenAccessPolicyArgs();
 
+    /**
+     * access token time to live (TTL) in minutes.
+     * 
+     */
     @Import(name="accessTokenTtlInMinutes")
     private @Nullable Output<Integer> accessTokenTtlInMinutes;
 
+    /**
+     * @return access token time to live (TTL) in minutes.
+     * 
+     */
     public Optional<Output<Integer>> accessTokenTtlInMinutes() {
         return Optional.ofNullable(this.accessTokenTtlInMinutes);
     }
 
+    /**
+     * refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+     * 
+     */
     @Import(name="refreshTokenTtlInMinutes")
     private @Nullable Output<Integer> refreshTokenTtlInMinutes;
 
+    /**
+     * @return refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+     * 
+     */
     public Optional<Output<Integer>> refreshTokenTtlInMinutes() {
         return Optional.ofNullable(this.refreshTokenTtlInMinutes);
     }
@@ -54,20 +70,44 @@ public final class CustomAppIntegrationTokenAccessPolicyArgs extends com.pulumi.
             $ = new CustomAppIntegrationTokenAccessPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessTokenTtlInMinutes access token time to live (TTL) in minutes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessTokenTtlInMinutes(@Nullable Output<Integer> accessTokenTtlInMinutes) {
             $.accessTokenTtlInMinutes = accessTokenTtlInMinutes;
             return this;
         }
 
+        /**
+         * @param accessTokenTtlInMinutes access token time to live (TTL) in minutes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessTokenTtlInMinutes(Integer accessTokenTtlInMinutes) {
             return accessTokenTtlInMinutes(Output.of(accessTokenTtlInMinutes));
         }
 
+        /**
+         * @param refreshTokenTtlInMinutes refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshTokenTtlInMinutes(@Nullable Output<Integer> refreshTokenTtlInMinutes) {
             $.refreshTokenTtlInMinutes = refreshTokenTtlInMinutes;
             return this;
         }
 
+        /**
+         * @param refreshTokenTtlInMinutes refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshTokenTtlInMinutes(Integer refreshTokenTtlInMinutes) {
             return refreshTokenTtlInMinutes(Output.of(refreshTokenTtlInMinutes));
         }

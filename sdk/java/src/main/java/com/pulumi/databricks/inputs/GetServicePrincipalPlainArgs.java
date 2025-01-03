@@ -15,58 +15,122 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
 
     public static final GetServicePrincipalPlainArgs Empty = new GetServicePrincipalPlainArgs();
 
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
     @Import(name="aclPrincipalId")
     private @Nullable String aclPrincipalId;
 
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     * 
+     */
     public Optional<String> aclPrincipalId() {
         return Optional.ofNullable(this.aclPrincipalId);
     }
 
+    /**
+     * Whether service principal is active or not.
+     * 
+     */
     @Import(name="active")
     private @Nullable Boolean active;
 
+    /**
+     * @return Whether service principal is active or not.
+     * 
+     */
     public Optional<Boolean> active() {
         return Optional.ofNullable(this.active);
     }
 
+    /**
+     * ID of the service principal. The service principal must exist before this resource can be retrieved.
+     * 
+     */
     @Import(name="applicationId")
     private @Nullable String applicationId;
 
+    /**
+     * @return ID of the service principal. The service principal must exist before this resource can be retrieved.
+     * 
+     */
     public Optional<String> applicationId() {
         return Optional.ofNullable(this.applicationId);
     }
 
+    /**
+     * Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
+     * 
+     */
     @Import(name="displayName")
     private @Nullable String displayName;
 
+    /**
+     * @return Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
+     * 
+     */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }
 
+    /**
+     * ID of the service principal in an external identity provider.
+     * 
+     */
     @Import(name="externalId")
     private @Nullable String externalId;
 
+    /**
+     * @return ID of the service principal in an external identity provider.
+     * 
+     */
     public Optional<String> externalId() {
         return Optional.ofNullable(this.externalId);
     }
 
+    /**
+     * Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+     * 
+     */
     @Import(name="home")
     private @Nullable String home;
 
+    /**
+     * @return Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+     * 
+     */
     public Optional<String> home() {
         return Optional.ofNullable(this.home);
     }
 
+    /**
+     * The id of the service principal.
+     * 
+     */
     @Import(name="id")
     private @Nullable String id;
 
+    /**
+     * @return The id of the service principal.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+     * 
+     */
     @Import(name="repos")
     private @Nullable String repos;
 
+    /**
+     * @return Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+     * 
+     */
     public Optional<String> repos() {
         return Optional.ofNullable(this.repos);
     }
@@ -110,41 +174,89 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
             $ = new GetServicePrincipalPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aclPrincipalId identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aclPrincipalId(@Nullable String aclPrincipalId) {
             $.aclPrincipalId = aclPrincipalId;
             return this;
         }
 
+        /**
+         * @param active Whether service principal is active or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder active(@Nullable Boolean active) {
             $.active = active;
             return this;
         }
 
+        /**
+         * @param applicationId ID of the service principal. The service principal must exist before this resource can be retrieved.
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationId(@Nullable String applicationId) {
             $.applicationId = applicationId;
             return this;
         }
 
+        /**
+         * @param displayName Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(@Nullable String displayName) {
             $.displayName = displayName;
             return this;
         }
 
+        /**
+         * @param externalId ID of the service principal in an external identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalId(@Nullable String externalId) {
             $.externalId = externalId;
             return this;
         }
 
+        /**
+         * @param home Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder home(@Nullable String home) {
             $.home = home;
             return this;
         }
 
+        /**
+         * @param id The id of the service principal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable String id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param repos Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repos(@Nullable String repos) {
             $.repos = repos;
             return this;

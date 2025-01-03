@@ -13,9 +13,17 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
 
     public static final GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable Empty = new GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable();
 
+    /**
+     * Full name of the dependent table
+     * 
+     */
     @Import(name="tableFullName", required=true)
     private String tableFullName;
 
+    /**
+     * @return Full name of the dependent table
+     * 
+     */
     public String tableFullName() {
         return this.tableFullName;
     }
@@ -44,6 +52,12 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
             $ = new GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param tableFullName Full name of the dependent table
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableFullName(String tableFullName) {
             $.tableFullName = tableFullName;
             return this;

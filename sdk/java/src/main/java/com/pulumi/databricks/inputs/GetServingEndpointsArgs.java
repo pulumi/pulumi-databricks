@@ -16,9 +16,17 @@ public final class GetServingEndpointsArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetServingEndpointsArgs Empty = new GetServingEndpointsArgs();
 
+    /**
+     * List of objects describing the serving endpoints. Each object consists of following attributes:
+     * 
+     */
     @Import(name="endpoints")
     private @Nullable Output<List<GetServingEndpointsEndpointArgs>> endpoints;
 
+    /**
+     * @return List of objects describing the serving endpoints. Each object consists of following attributes:
+     * 
+     */
     public Optional<Output<List<GetServingEndpointsEndpointArgs>>> endpoints() {
         return Optional.ofNullable(this.endpoints);
     }
@@ -47,15 +55,33 @@ public final class GetServingEndpointsArgs extends com.pulumi.resources.InvokeAr
             $ = new GetServingEndpointsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param endpoints List of objects describing the serving endpoints. Each object consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoints(@Nullable Output<List<GetServingEndpointsEndpointArgs>> endpoints) {
             $.endpoints = endpoints;
             return this;
         }
 
+        /**
+         * @param endpoints List of objects describing the serving endpoints. Each object consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoints(List<GetServingEndpointsEndpointArgs> endpoints) {
             return endpoints(Output.of(endpoints));
         }
 
+        /**
+         * @param endpoints List of objects describing the serving endpoints. Each object consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoints(GetServingEndpointsEndpointArgs... endpoints) {
             return endpoints(List.of(endpoints));
         }

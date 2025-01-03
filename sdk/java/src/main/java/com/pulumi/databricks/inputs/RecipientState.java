@@ -28,121 +28,257 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.activated);
     }
 
+    /**
+     * Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+     * 
+     */
     @Import(name="activationUrl")
     private @Nullable Output<String> activationUrl;
 
+    /**
+     * @return Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+     * 
+     */
     public Optional<Output<String>> activationUrl() {
         return Optional.ofNullable(this.activationUrl);
     }
 
+    /**
+     * The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
+     * 
+     */
     @Import(name="authenticationType")
     private @Nullable Output<String> authenticationType;
 
+    /**
+     * @return The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
+     * 
+     */
     public Optional<Output<String>> authenticationType() {
         return Optional.ofNullable(this.authenticationType);
     }
 
+    /**
+     * Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
     @Import(name="cloud")
     private @Nullable Output<String> cloud;
 
+    /**
+     * @return Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
     public Optional<Output<String>> cloud() {
         return Optional.ofNullable(this.cloud);
     }
 
+    /**
+     * Description about the recipient.
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return Description about the recipient.
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * Time at which this recipient was created, in epoch milliseconds.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Output<Integer> createdAt;
 
+    /**
+     * @return Time at which this recipient was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Output<Integer>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Username of recipient creator.
+     * 
+     */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
+    /**
+     * @return Username of recipient creator.
+     * 
+     */
     public Optional<Output<String>> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
+    /**
+     * Required when `authentication_type` is `DATABRICKS`.
+     * 
+     */
     @Import(name="dataRecipientGlobalMetastoreId")
     private @Nullable Output<String> dataRecipientGlobalMetastoreId;
 
+    /**
+     * @return Required when `authentication_type` is `DATABRICKS`.
+     * 
+     */
     public Optional<Output<String>> dataRecipientGlobalMetastoreId() {
         return Optional.ofNullable(this.dataRecipientGlobalMetastoreId);
     }
 
+    /**
+     * Recipient IP access list.
+     * 
+     */
     @Import(name="ipAccessList")
     private @Nullable Output<RecipientIpAccessListArgs> ipAccessList;
 
+    /**
+     * @return Recipient IP access list.
+     * 
+     */
     public Optional<Output<RecipientIpAccessListArgs>> ipAccessList() {
         return Optional.ofNullable(this.ipAccessList);
     }
 
+    /**
+     * Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
+    /**
+     * @return Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
     public Optional<Output<String>> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
 
+    /**
+     * Name of recipient. Change forces creation of a new resource.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Name of recipient. Change forces creation of a new resource.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Username/groupname/sp application_id of the recipient owner.
+     * 
+     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
+    /**
+     * @return Username/groupname/sp application_id of the recipient owner.
+     * 
+     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * Recipient properties - object consisting of following fields:
+     * 
+     */
     @Import(name="propertiesKvpairs")
     private @Nullable Output<RecipientPropertiesKvpairsArgs> propertiesKvpairs;
 
+    /**
+     * @return Recipient properties - object consisting of following fields:
+     * 
+     */
     public Optional<Output<RecipientPropertiesKvpairsArgs>> propertiesKvpairs() {
         return Optional.ofNullable(this.propertiesKvpairs);
     }
 
+    /**
+     * Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * The one-time sharing code provided by the data recipient.
+     * 
+     */
     @Import(name="sharingCode")
     private @Nullable Output<String> sharingCode;
 
+    /**
+     * @return The one-time sharing code provided by the data recipient.
+     * 
+     */
     public Optional<Output<String>> sharingCode() {
         return Optional.ofNullable(this.sharingCode);
     }
 
+    /**
+     * List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+     * 
+     */
     @Import(name="tokens")
     private @Nullable Output<List<RecipientTokenArgs>> tokens;
 
+    /**
+     * @return List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+     * 
+     */
     public Optional<Output<List<RecipientTokenArgs>>> tokens() {
         return Optional.ofNullable(this.tokens);
     }
 
+    /**
+     * Time at which this recipient was updated, in epoch milliseconds.
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Output<Integer> updatedAt;
 
+    /**
+     * @return Time at which this recipient was updated, in epoch milliseconds.
+     * 
+     */
     public Optional<Output<Integer>> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * Username of recipient Token updater.
+     * 
+     */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
+    /**
+     * @return Username of recipient Token updater.
+     * 
+     */
     public Optional<Output<String>> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
@@ -197,159 +333,369 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
             return activated(Output.of(activated));
         }
 
+        /**
+         * @param activationUrl Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activationUrl(@Nullable Output<String> activationUrl) {
             $.activationUrl = activationUrl;
             return this;
         }
 
+        /**
+         * @param activationUrl Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activationUrl(String activationUrl) {
             return activationUrl(Output.of(activationUrl));
         }
 
+        /**
+         * @param authenticationType The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authenticationType(@Nullable Output<String> authenticationType) {
             $.authenticationType = authenticationType;
             return this;
         }
 
+        /**
+         * @param authenticationType The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authenticationType(String authenticationType) {
             return authenticationType(Output.of(authenticationType));
         }
 
+        /**
+         * @param cloud Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloud(@Nullable Output<String> cloud) {
             $.cloud = cloud;
             return this;
         }
 
+        /**
+         * @param cloud Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloud(String cloud) {
             return cloud(Output.of(cloud));
         }
 
+        /**
+         * @param comment Description about the recipient.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment Description about the recipient.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param createdAt Time at which this recipient was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Output<Integer> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdAt Time at which this recipient was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(Integer createdAt) {
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param createdBy Username of recipient creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(@Nullable Output<String> createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
+        /**
+         * @param createdBy Username of recipient creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(String createdBy) {
             return createdBy(Output.of(createdBy));
         }
 
+        /**
+         * @param dataRecipientGlobalMetastoreId Required when `authentication_type` is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataRecipientGlobalMetastoreId(@Nullable Output<String> dataRecipientGlobalMetastoreId) {
             $.dataRecipientGlobalMetastoreId = dataRecipientGlobalMetastoreId;
             return this;
         }
 
+        /**
+         * @param dataRecipientGlobalMetastoreId Required when `authentication_type` is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataRecipientGlobalMetastoreId(String dataRecipientGlobalMetastoreId) {
             return dataRecipientGlobalMetastoreId(Output.of(dataRecipientGlobalMetastoreId));
         }
 
+        /**
+         * @param ipAccessList Recipient IP access list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAccessList(@Nullable Output<RecipientIpAccessListArgs> ipAccessList) {
             $.ipAccessList = ipAccessList;
             return this;
         }
 
+        /**
+         * @param ipAccessList Recipient IP access list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAccessList(RecipientIpAccessListArgs ipAccessList) {
             return ipAccessList(Output.of(ipAccessList));
         }
 
+        /**
+         * @param metastoreId Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
+        /**
+         * @param metastoreId Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(String metastoreId) {
             return metastoreId(Output.of(metastoreId));
         }
 
+        /**
+         * @param name Name of recipient. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of recipient. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param owner Username/groupname/sp application_id of the recipient owner.
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
+        /**
+         * @param owner Username/groupname/sp application_id of the recipient owner.
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
 
+        /**
+         * @param propertiesKvpairs Recipient properties - object consisting of following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder propertiesKvpairs(@Nullable Output<RecipientPropertiesKvpairsArgs> propertiesKvpairs) {
             $.propertiesKvpairs = propertiesKvpairs;
             return this;
         }
 
+        /**
+         * @param propertiesKvpairs Recipient properties - object consisting of following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder propertiesKvpairs(RecipientPropertiesKvpairsArgs propertiesKvpairs) {
             return propertiesKvpairs(Output.of(propertiesKvpairs));
         }
 
+        /**
+         * @param region Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
+        /**
+         * @param sharingCode The one-time sharing code provided by the data recipient.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sharingCode(@Nullable Output<String> sharingCode) {
             $.sharingCode = sharingCode;
             return this;
         }
 
+        /**
+         * @param sharingCode The one-time sharing code provided by the data recipient.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sharingCode(String sharingCode) {
             return sharingCode(Output.of(sharingCode));
         }
 
+        /**
+         * @param tokens List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(@Nullable Output<List<RecipientTokenArgs>> tokens) {
             $.tokens = tokens;
             return this;
         }
 
+        /**
+         * @param tokens List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(List<RecipientTokenArgs> tokens) {
             return tokens(Output.of(tokens));
         }
 
+        /**
+         * @param tokens List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(RecipientTokenArgs... tokens) {
             return tokens(List.of(tokens));
         }
 
+        /**
+         * @param updatedAt Time at which this recipient was updated, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Output<Integer> updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedAt Time at which this recipient was updated, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(Integer updatedAt) {
             return updatedAt(Output.of(updatedAt));
         }
 
+        /**
+         * @param updatedBy Username of recipient Token updater.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(@Nullable Output<String> updatedBy) {
             $.updatedBy = updatedBy;
             return this;
         }
 
+        /**
+         * @param updatedBy Username of recipient Token updater.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(String updatedBy) {
             return updatedBy(Output.of(updatedBy));
         }

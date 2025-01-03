@@ -17,16 +17,32 @@ public final class BudgetFilterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BudgetFilterArgs Empty = new BudgetFilterArgs();
 
+    /**
+     * List of tags to filter by. Consists of the following fields:
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<List<BudgetFilterTagArgs>> tags;
 
+    /**
+     * @return List of tags to filter by. Consists of the following fields:
+     * 
+     */
     public Optional<Output<List<BudgetFilterTagArgs>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
+     * 
+     */
     @Import(name="workspaceId")
     private @Nullable Output<BudgetFilterWorkspaceIdArgs> workspaceId;
 
+    /**
+     * @return Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
+     * 
+     */
     public Optional<Output<BudgetFilterWorkspaceIdArgs>> workspaceId() {
         return Optional.ofNullable(this.workspaceId);
     }
@@ -56,24 +72,54 @@ public final class BudgetFilterArgs extends com.pulumi.resources.ResourceArgs {
             $ = new BudgetFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param tags List of tags to filter by. Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<List<BudgetFilterTagArgs>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags List of tags to filter by. Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(List<BudgetFilterTagArgs> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tags List of tags to filter by. Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(BudgetFilterTagArgs... tags) {
             return tags(List.of(tags));
         }
 
+        /**
+         * @param workspaceId Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceId(@Nullable Output<BudgetFilterWorkspaceIdArgs> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
 
+        /**
+         * @param workspaceId Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspaceId(BudgetFilterWorkspaceIdArgs workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }

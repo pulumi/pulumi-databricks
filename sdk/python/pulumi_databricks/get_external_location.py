@@ -42,11 +42,17 @@ class GetExternalLocationResult:
     @property
     @pulumi.getter(name="externalLocationInfo")
     def external_location_info(self) -> 'outputs.GetExternalLocationExternalLocationInfoResult':
+        """
+        array of objects with information about external location:
+        """
         return pulumi.get(self, "external_location_info")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        external location ID - same as name.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -71,7 +77,33 @@ def get_external_location(external_location_info: Optional[Union['GetExternalLoc
                           name: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalLocationResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with a workspace-level provider!
+
+    Retrieves details about a ExternalLocation that were created by Pulumi or manually.
+
+    ## Example Usage
+
+    Getting details of an existing external location in the metastore
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_external_location(name="this")
+    pulumi.export("createdBy", this.external_location_info.created_by)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * get_external_locations to get names of all external locations
+    * ExternalLocation to manage external locations within Unity Catalog.
+
+
+    :param Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict'] external_location_info: array of objects with information about external location:
+    :param str id: external location ID - same as name.
+    :param str name: The name of the external location
     """
     __args__ = dict()
     __args__['externalLocationInfo'] = external_location_info
@@ -89,7 +121,33 @@ def get_external_location_output(external_location_info: Optional[pulumi.Input[O
                                  name: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLocationResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with a workspace-level provider!
+
+    Retrieves details about a ExternalLocation that were created by Pulumi or manually.
+
+    ## Example Usage
+
+    Getting details of an existing external location in the metastore
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_external_location(name="this")
+    pulumi.export("createdBy", this.external_location_info.created_by)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * get_external_locations to get names of all external locations
+    * ExternalLocation to manage external locations within Unity Catalog.
+
+
+    :param Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict'] external_location_info: array of objects with information about external location:
+    :param str id: external location ID - same as name.
+    :param str name: The name of the external location
     """
     __args__ = dict()
     __args__['externalLocationInfo'] = external_location_info

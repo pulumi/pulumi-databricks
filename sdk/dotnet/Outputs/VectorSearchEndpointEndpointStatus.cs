@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class VectorSearchEndpointEndpointStatus
     {
+        /// <summary>
+        /// Additional status message.
+        /// </summary>
         public readonly string? Message;
+        /// <summary>
+        /// Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+        /// </summary>
         public readonly string? State;
 
         [OutputConstructor]

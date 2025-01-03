@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// !&gt; Importing this resource is not currently supported.
+    /// </summary>
     [DatabricksResourceType("databricks:index/mount:Mount")]
     public partial class Mount : global::Pulumi.CustomResource
     {
@@ -39,6 +44,9 @@ namespace Pulumi.Databricks
         [Output("s3")]
         public Output<Outputs.MountS3?> S3 { get; private set; } = null!;
 
+        /// <summary>
+        /// (String) HDFS-compatible url
+        /// </summary>
         [Output("source")]
         public Output<string> Source { get; private set; } = null!;
 
@@ -172,6 +180,9 @@ namespace Pulumi.Databricks
         [Input("s3")]
         public Input<Inputs.MountS3GetArgs>? S3 { get; set; }
 
+        /// <summary>
+        /// (String) HDFS-compatible url
+        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 

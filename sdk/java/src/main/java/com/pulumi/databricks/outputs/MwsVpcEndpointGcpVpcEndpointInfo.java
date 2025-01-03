@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsVpcEndpointGcpVpcEndpointInfo {
+    /**
+     * @return Region of the PSC endpoint.
+     * 
+     */
     private String endpointRegion;
+    /**
+     * @return The Google Cloud project ID of the VPC network where the PSC connection resides.
+     * 
+     */
     private String projectId;
+    /**
+     * @return The unique ID of this PSC connection.
+     * 
+     */
     private @Nullable String pscConnectionId;
+    /**
+     * @return The name of the PSC endpoint in the Google Cloud project.
+     * 
+     */
     private String pscEndpointName;
+    /**
+     * @return The service attachment this PSC connection connects to.
+     * 
+     */
     private @Nullable String serviceAttachmentId;
 
     private MwsVpcEndpointGcpVpcEndpointInfo() {}
+    /**
+     * @return Region of the PSC endpoint.
+     * 
+     */
     public String endpointRegion() {
         return this.endpointRegion;
     }
+    /**
+     * @return The Google Cloud project ID of the VPC network where the PSC connection resides.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return The unique ID of this PSC connection.
+     * 
+     */
     public Optional<String> pscConnectionId() {
         return Optional.ofNullable(this.pscConnectionId);
     }
+    /**
+     * @return The name of the PSC endpoint in the Google Cloud project.
+     * 
+     */
     public String pscEndpointName() {
         return this.pscEndpointName;
     }
+    /**
+     * @return The service attachment this PSC connection connects to.
+     * 
+     */
     public Optional<String> serviceAttachmentId() {
         return Optional.ofNullable(this.serviceAttachmentId);
     }

@@ -20,6 +20,10 @@ public final class GetAwsUnityCatalogPolicyResult {
      * 
      */
     private String id;
+    /**
+     * @return AWS IAM Policy JSON document
+     * 
+     */
     private String json;
     private @Nullable String kmsName;
     private String roleName;
@@ -41,6 +45,10 @@ public final class GetAwsUnityCatalogPolicyResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return AWS IAM Policy JSON document
+     * 
+     */
     public String json() {
         return this.json;
     }

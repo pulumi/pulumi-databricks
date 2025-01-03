@@ -19,86 +19,182 @@ public final class QueryArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final QueryArgs Empty = new QueryArgs();
 
+    /**
+     * Whether to apply a 1000 row limit to the query result.
+     * 
+     */
     @Import(name="applyAutoLimit")
     private @Nullable Output<Boolean> applyAutoLimit;
 
+    /**
+     * @return Whether to apply a 1000 row limit to the query result.
+     * 
+     */
     public Optional<Output<Boolean>> applyAutoLimit() {
         return Optional.ofNullable(this.applyAutoLimit);
     }
 
+    /**
+     * Name of the catalog where this query will be executed.
+     * 
+     */
     @Import(name="catalog")
     private @Nullable Output<String> catalog;
 
+    /**
+     * @return Name of the catalog where this query will be executed.
+     * 
+     */
     public Optional<Output<String>> catalog() {
         return Optional.ofNullable(this.catalog);
     }
 
+    /**
+     * General description that conveys additional information about this query such as usage notes.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return General description that conveys additional information about this query such as usage notes.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Name of the query.
+     * 
+     */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
+    /**
+     * @return Name of the query.
+     * 
+     */
     public Output<String> displayName() {
         return this.displayName;
     }
 
+    /**
+     * Query owner&#39;s username.
+     * 
+     */
     @Import(name="ownerUserName")
     private @Nullable Output<String> ownerUserName;
 
+    /**
+     * @return Query owner&#39;s username.
+     * 
+     */
     public Optional<Output<String>> ownerUserName() {
         return Optional.ofNullable(this.ownerUserName);
     }
 
+    /**
+     * Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+     * 
+     */
     @Import(name="parameters")
     private @Nullable Output<List<QueryParameterArgs>> parameters;
 
+    /**
+     * @return Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+     * 
+     */
     public Optional<Output<List<QueryParameterArgs>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
 
+    /**
+     * The path to a workspace folder containing the query. The default is the user&#39;s home folder.  If changed, the query will be recreated.
+     * 
+     */
     @Import(name="parentPath")
     private @Nullable Output<String> parentPath;
 
+    /**
+     * @return The path to a workspace folder containing the query. The default is the user&#39;s home folder.  If changed, the query will be recreated.
+     * 
+     */
     public Optional<Output<String>> parentPath() {
         return Optional.ofNullable(this.parentPath);
     }
 
+    /**
+     * Text of SQL query.
+     * 
+     */
     @Import(name="queryText", required=true)
     private Output<String> queryText;
 
+    /**
+     * @return Text of SQL query.
+     * 
+     */
     public Output<String> queryText() {
         return this.queryText;
     }
 
+    /**
+     * Sets the &#34;Run as&#34; role for the object.  Should be one of `OWNER`, `VIEWER`.
+     * 
+     */
     @Import(name="runAsMode")
     private @Nullable Output<String> runAsMode;
 
+    /**
+     * @return Sets the &#34;Run as&#34; role for the object.  Should be one of `OWNER`, `VIEWER`.
+     * 
+     */
     public Optional<Output<String>> runAsMode() {
         return Optional.ofNullable(this.runAsMode);
     }
 
+    /**
+     * Name of the schema where this query will be executed.
+     * 
+     */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
+    /**
+     * @return Name of the schema where this query will be executed.
+     * 
+     */
     public Optional<Output<String>> schema() {
         return Optional.ofNullable(this.schema);
     }
 
+    /**
+     * Tags that will be added to the query.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
+    /**
+     * @return Tags that will be added to the query.
+     * 
+     */
     public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * ID of a SQL warehouse which will be used to execute this query.
+     * 
+     */
     @Import(name="warehouseId", required=true)
     private Output<String> warehouseId;
 
+    /**
+     * @return ID of a SQL warehouse which will be used to execute this query.
+     * 
+     */
     public Output<String> warehouseId() {
         return this.warehouseId;
     }
@@ -138,118 +234,274 @@ public final class QueryArgs extends com.pulumi.resources.ResourceArgs {
             $ = new QueryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param applyAutoLimit Whether to apply a 1000 row limit to the query result.
+         * 
+         * @return builder
+         * 
+         */
         public Builder applyAutoLimit(@Nullable Output<Boolean> applyAutoLimit) {
             $.applyAutoLimit = applyAutoLimit;
             return this;
         }
 
+        /**
+         * @param applyAutoLimit Whether to apply a 1000 row limit to the query result.
+         * 
+         * @return builder
+         * 
+         */
         public Builder applyAutoLimit(Boolean applyAutoLimit) {
             return applyAutoLimit(Output.of(applyAutoLimit));
         }
 
+        /**
+         * @param catalog Name of the catalog where this query will be executed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalog(@Nullable Output<String> catalog) {
             $.catalog = catalog;
             return this;
         }
 
+        /**
+         * @param catalog Name of the catalog where this query will be executed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalog(String catalog) {
             return catalog(Output.of(catalog));
         }
 
+        /**
+         * @param description General description that conveys additional information about this query such as usage notes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description General description that conveys additional information about this query such as usage notes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param displayName Name of the query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
 
+        /**
+         * @param displayName Name of the query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
         }
 
+        /**
+         * @param ownerUserName Query owner&#39;s username.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ownerUserName(@Nullable Output<String> ownerUserName) {
             $.ownerUserName = ownerUserName;
             return this;
         }
 
+        /**
+         * @param ownerUserName Query owner&#39;s username.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ownerUserName(String ownerUserName) {
             return ownerUserName(Output.of(ownerUserName));
         }
 
+        /**
+         * @param parameters Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(@Nullable Output<List<QueryParameterArgs>> parameters) {
             $.parameters = parameters;
             return this;
         }
 
+        /**
+         * @param parameters Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(List<QueryParameterArgs> parameters) {
             return parameters(Output.of(parameters));
         }
 
+        /**
+         * @param parameters Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(QueryParameterArgs... parameters) {
             return parameters(List.of(parameters));
         }
 
+        /**
+         * @param parentPath The path to a workspace folder containing the query. The default is the user&#39;s home folder.  If changed, the query will be recreated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parentPath(@Nullable Output<String> parentPath) {
             $.parentPath = parentPath;
             return this;
         }
 
+        /**
+         * @param parentPath The path to a workspace folder containing the query. The default is the user&#39;s home folder.  If changed, the query will be recreated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parentPath(String parentPath) {
             return parentPath(Output.of(parentPath));
         }
 
+        /**
+         * @param queryText Text of SQL query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryText(Output<String> queryText) {
             $.queryText = queryText;
             return this;
         }
 
+        /**
+         * @param queryText Text of SQL query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryText(String queryText) {
             return queryText(Output.of(queryText));
         }
 
+        /**
+         * @param runAsMode Sets the &#34;Run as&#34; role for the object.  Should be one of `OWNER`, `VIEWER`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runAsMode(@Nullable Output<String> runAsMode) {
             $.runAsMode = runAsMode;
             return this;
         }
 
+        /**
+         * @param runAsMode Sets the &#34;Run as&#34; role for the object.  Should be one of `OWNER`, `VIEWER`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runAsMode(String runAsMode) {
             return runAsMode(Output.of(runAsMode));
         }
 
+        /**
+         * @param schema Name of the schema where this query will be executed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(@Nullable Output<String> schema) {
             $.schema = schema;
             return this;
         }
 
+        /**
+         * @param schema Name of the schema where this query will be executed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schema(String schema) {
             return schema(Output.of(schema));
         }
 
+        /**
+         * @param tags Tags that will be added to the query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<List<String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags Tags that will be added to the query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(List<String> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tags Tags that will be added to the query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
 
+        /**
+         * @param warehouseId ID of a SQL warehouse which will be used to execute this query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(Output<String> warehouseId) {
             $.warehouseId = warehouseId;
             return this;
         }
 
+        /**
+         * @param warehouseId ID of a SQL warehouse which will be used to execute this query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
         }

@@ -14,16 +14,32 @@ public final class GroupRoleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GroupRoleArgs Empty = new GroupRoleArgs();
 
+    /**
+     * This is the id of the group resource.
+     * 
+     */
     @Import(name="groupId", required=true)
     private Output<String> groupId;
 
+    /**
+     * @return This is the id of the group resource.
+     * 
+     */
     public Output<String> groupId() {
         return this.groupId;
     }
 
+    /**
+     * Either a role name or the ARN/ID of the instance profile resource.
+     * 
+     */
     @Import(name="role", required=true)
     private Output<String> role;
 
+    /**
+     * @return Either a role name or the ARN/ID of the instance profile resource.
+     * 
+     */
     public Output<String> role() {
         return this.role;
     }
@@ -53,20 +69,44 @@ public final class GroupRoleArgs extends com.pulumi.resources.ResourceArgs {
             $ = new GroupRoleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param groupId This is the id of the group resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(Output<String> groupId) {
             $.groupId = groupId;
             return this;
         }
 
+        /**
+         * @param groupId This is the id of the group resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
         }
 
+        /**
+         * @param role Either a role name or the ARN/ID of the instance profile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role Either a role name or the ARN/ID of the instance profile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }

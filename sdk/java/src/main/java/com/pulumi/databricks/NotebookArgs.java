@@ -17,9 +17,17 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NotebookArgs Empty = new NotebookArgs();
 
+    /**
+     * The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     * 
+     */
     @Import(name="contentBase64")
     private @Nullable Output<String> contentBase64;
 
+    /**
+     * @return The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     * 
+     */
     public Optional<Output<String>> contentBase64() {
         return Optional.ofNullable(this.contentBase64);
     }
@@ -31,9 +39,17 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.format);
     }
 
+    /**
+     * One of `SCALA`, `PYTHON`, `SQL`, `R`.
+     * 
+     */
     @Import(name="language")
     private @Nullable Output<String> language;
 
+    /**
+     * @return One of `SCALA`, `PYTHON`, `SQL`, `R`.
+     * 
+     */
     public Optional<Output<String>> language() {
         return Optional.ofNullable(this.language);
     }
@@ -45,9 +61,17 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.md5);
     }
 
+    /**
+     * Unique identifier for a NOTEBOOK
+     * 
+     */
     @Import(name="objectId")
     private @Nullable Output<Integer> objectId;
 
+    /**
+     * @return Unique identifier for a NOTEBOOK
+     * 
+     */
     public Optional<Output<Integer>> objectId() {
         return Optional.ofNullable(this.objectId);
     }
@@ -71,16 +95,32 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.objectType);
     }
 
+    /**
+     * The absolute path of the notebook or directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+     * 
+     */
     @Import(name="path", required=true)
     private Output<String> path;
 
+    /**
+     * @return The absolute path of the notebook or directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
 
+    /**
+     * Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+     * 
+     */
     @Import(name="source")
     private @Nullable Output<String> source;
 
+    /**
+     * @return Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+     * 
+     */
     public Optional<Output<String>> source() {
         return Optional.ofNullable(this.source);
     }
@@ -116,11 +156,23 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
             $ = new NotebookArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contentBase64 The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentBase64(@Nullable Output<String> contentBase64) {
             $.contentBase64 = contentBase64;
             return this;
         }
 
+        /**
+         * @param contentBase64 The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentBase64(String contentBase64) {
             return contentBase64(Output.of(contentBase64));
         }
@@ -134,11 +186,23 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
             return format(Output.of(format));
         }
 
+        /**
+         * @param language One of `SCALA`, `PYTHON`, `SQL`, `R`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder language(@Nullable Output<String> language) {
             $.language = language;
             return this;
         }
 
+        /**
+         * @param language One of `SCALA`, `PYTHON`, `SQL`, `R`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder language(String language) {
             return language(Output.of(language));
         }
@@ -152,11 +216,23 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
             return md5(Output.of(md5));
         }
 
+        /**
+         * @param objectId Unique identifier for a NOTEBOOK
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectId(@Nullable Output<Integer> objectId) {
             $.objectId = objectId;
             return this;
         }
 
+        /**
+         * @param objectId Unique identifier for a NOTEBOOK
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectId(Integer objectId) {
             return objectId(Output.of(objectId));
         }
@@ -186,20 +262,44 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
             return objectType(Output.of(objectType));
         }
 
+        /**
+         * @param path The absolute path of the notebook or directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path The absolute path of the notebook or directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
+        /**
+         * @param source Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(@Nullable Output<String> source) {
             $.source = source;
             return this;
         }
 
+        /**
+         * @param source Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(String source) {
             return source(Output.of(source));
         }

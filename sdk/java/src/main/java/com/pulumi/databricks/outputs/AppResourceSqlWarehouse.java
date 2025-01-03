@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class AppResourceSqlWarehouse {
+    /**
+     * @return Id of the SQL warehouse to grant permission on.
+     * 
+     */
     private String id;
+    /**
+     * @return Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
+     * 
+     */
     private String permission;
 
     private AppResourceSqlWarehouse() {}
+    /**
+     * @return Id of the SQL warehouse to grant permission on.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
+     * 
+     */
     public String permission() {
         return this.permission;
     }

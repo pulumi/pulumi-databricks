@@ -12,16 +12,32 @@ import java.util.Objects;
 @CustomType
 public final class GetTableResult {
     private String id;
+    /**
+     * @return Name of table, relative to parent schema.
+     * 
+     */
     private String name;
+    /**
+     * @return TableInfo object for a Unity Catalog table. This contains the following attributes:
+     * 
+     */
     private GetTableTableInfo tableInfo;
 
     private GetTableResult() {}
     public String id() {
         return this.id;
     }
+    /**
+     * @return Name of table, relative to parent schema.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return TableInfo object for a Unity Catalog table. This contains the following attributes:
+     * 
+     */
     public GetTableTableInfo tableInfo() {
         return this.tableInfo;
     }

@@ -17,6 +17,10 @@ public final class GetSchemasResult {
      * 
      */
     private String id;
+    /**
+     * @return set of databricks.Schema full names: *`catalog`.`schema`*
+     * 
+     */
     private List<String> ids;
 
     private GetSchemasResult() {}
@@ -30,6 +34,10 @@ public final class GetSchemasResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return set of databricks.Schema full names: *`catalog`.`schema`*
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }

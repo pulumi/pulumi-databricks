@@ -12,12 +12,21 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// (output only) - The external ID used in role assumption to prevent confused deputy problem.
+        /// </summary>
         [Input("externalId")]
         public string? ExternalId { get; set; }
 
+        /// <summary>
+        /// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+        /// </summary>
         [Input("roleArn", required: true)]
         public string RoleArn { get; set; } = null!;
 
+        /// <summary>
+        /// (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+        /// </summary>
         [Input("unityCatalogIamArn")]
         public string? UnityCatalogIamArn { get; set; }
 

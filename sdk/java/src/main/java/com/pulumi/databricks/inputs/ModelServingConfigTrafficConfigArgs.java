@@ -16,9 +16,17 @@ public final class ModelServingConfigTrafficConfigArgs extends com.pulumi.resour
 
     public static final ModelServingConfigTrafficConfigArgs Empty = new ModelServingConfigTrafficConfigArgs();
 
+    /**
+     * Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+     * 
+     */
     @Import(name="routes")
     private @Nullable Output<List<ModelServingConfigTrafficConfigRouteArgs>> routes;
 
+    /**
+     * @return Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+     * 
+     */
     public Optional<Output<List<ModelServingConfigTrafficConfigRouteArgs>>> routes() {
         return Optional.ofNullable(this.routes);
     }
@@ -47,15 +55,33 @@ public final class ModelServingConfigTrafficConfigArgs extends com.pulumi.resour
             $ = new ModelServingConfigTrafficConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param routes Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routes(@Nullable Output<List<ModelServingConfigTrafficConfigRouteArgs>> routes) {
             $.routes = routes;
             return this;
         }
 
+        /**
+         * @param routes Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routes(List<ModelServingConfigTrafficConfigRouteArgs> routes) {
             return routes(Output.of(routes));
         }
 
+        /**
+         * @param routes Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routes(ModelServingConfigTrafficConfigRouteArgs... routes) {
             return routes(List.of(routes));
         }

@@ -20,65 +20,137 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RecipientArgs Empty = new RecipientArgs();
 
+    /**
+     * The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
+     * 
+     */
     @Import(name="authenticationType", required=true)
     private Output<String> authenticationType;
 
+    /**
+     * @return The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
+     * 
+     */
     public Output<String> authenticationType() {
         return this.authenticationType;
     }
 
+    /**
+     * Description about the recipient.
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return Description about the recipient.
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * Required when `authentication_type` is `DATABRICKS`.
+     * 
+     */
     @Import(name="dataRecipientGlobalMetastoreId")
     private @Nullable Output<String> dataRecipientGlobalMetastoreId;
 
+    /**
+     * @return Required when `authentication_type` is `DATABRICKS`.
+     * 
+     */
     public Optional<Output<String>> dataRecipientGlobalMetastoreId() {
         return Optional.ofNullable(this.dataRecipientGlobalMetastoreId);
     }
 
+    /**
+     * Recipient IP access list.
+     * 
+     */
     @Import(name="ipAccessList")
     private @Nullable Output<RecipientIpAccessListArgs> ipAccessList;
 
+    /**
+     * @return Recipient IP access list.
+     * 
+     */
     public Optional<Output<RecipientIpAccessListArgs>> ipAccessList() {
         return Optional.ofNullable(this.ipAccessList);
     }
 
+    /**
+     * Name of recipient. Change forces creation of a new resource.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Name of recipient. Change forces creation of a new resource.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Username/groupname/sp application_id of the recipient owner.
+     * 
+     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
+    /**
+     * @return Username/groupname/sp application_id of the recipient owner.
+     * 
+     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * Recipient properties - object consisting of following fields:
+     * 
+     */
     @Import(name="propertiesKvpairs")
     private @Nullable Output<RecipientPropertiesKvpairsArgs> propertiesKvpairs;
 
+    /**
+     * @return Recipient properties - object consisting of following fields:
+     * 
+     */
     public Optional<Output<RecipientPropertiesKvpairsArgs>> propertiesKvpairs() {
         return Optional.ofNullable(this.propertiesKvpairs);
     }
 
+    /**
+     * The one-time sharing code provided by the data recipient.
+     * 
+     */
     @Import(name="sharingCode")
     private @Nullable Output<String> sharingCode;
 
+    /**
+     * @return The one-time sharing code provided by the data recipient.
+     * 
+     */
     public Optional<Output<String>> sharingCode() {
         return Optional.ofNullable(this.sharingCode);
     }
 
+    /**
+     * List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+     * 
+     */
     @Import(name="tokens")
     private @Nullable Output<List<RecipientTokenArgs>> tokens;
 
+    /**
+     * @return List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+     * 
+     */
     public Optional<Output<List<RecipientTokenArgs>>> tokens() {
         return Optional.ofNullable(this.tokens);
     }
@@ -115,87 +187,201 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
             $ = new RecipientArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param authenticationType The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authenticationType(Output<String> authenticationType) {
             $.authenticationType = authenticationType;
             return this;
         }
 
+        /**
+         * @param authenticationType The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authenticationType(String authenticationType) {
             return authenticationType(Output.of(authenticationType));
         }
 
+        /**
+         * @param comment Description about the recipient.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment Description about the recipient.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param dataRecipientGlobalMetastoreId Required when `authentication_type` is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataRecipientGlobalMetastoreId(@Nullable Output<String> dataRecipientGlobalMetastoreId) {
             $.dataRecipientGlobalMetastoreId = dataRecipientGlobalMetastoreId;
             return this;
         }
 
+        /**
+         * @param dataRecipientGlobalMetastoreId Required when `authentication_type` is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataRecipientGlobalMetastoreId(String dataRecipientGlobalMetastoreId) {
             return dataRecipientGlobalMetastoreId(Output.of(dataRecipientGlobalMetastoreId));
         }
 
+        /**
+         * @param ipAccessList Recipient IP access list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAccessList(@Nullable Output<RecipientIpAccessListArgs> ipAccessList) {
             $.ipAccessList = ipAccessList;
             return this;
         }
 
+        /**
+         * @param ipAccessList Recipient IP access list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAccessList(RecipientIpAccessListArgs ipAccessList) {
             return ipAccessList(Output.of(ipAccessList));
         }
 
+        /**
+         * @param name Name of recipient. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of recipient. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param owner Username/groupname/sp application_id of the recipient owner.
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
+        /**
+         * @param owner Username/groupname/sp application_id of the recipient owner.
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
 
+        /**
+         * @param propertiesKvpairs Recipient properties - object consisting of following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder propertiesKvpairs(@Nullable Output<RecipientPropertiesKvpairsArgs> propertiesKvpairs) {
             $.propertiesKvpairs = propertiesKvpairs;
             return this;
         }
 
+        /**
+         * @param propertiesKvpairs Recipient properties - object consisting of following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder propertiesKvpairs(RecipientPropertiesKvpairsArgs propertiesKvpairs) {
             return propertiesKvpairs(Output.of(propertiesKvpairs));
         }
 
+        /**
+         * @param sharingCode The one-time sharing code provided by the data recipient.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sharingCode(@Nullable Output<String> sharingCode) {
             $.sharingCode = sharingCode;
             return this;
         }
 
+        /**
+         * @param sharingCode The one-time sharing code provided by the data recipient.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sharingCode(String sharingCode) {
             return sharingCode(Output.of(sharingCode));
         }
 
+        /**
+         * @param tokens List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(@Nullable Output<List<RecipientTokenArgs>> tokens) {
             $.tokens = tokens;
             return this;
         }
 
+        /**
+         * @param tokens List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(List<RecipientTokenArgs> tokens) {
             return tokens(Output.of(tokens));
         }
 
+        /**
+         * @param tokens List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(RecipientTokenArgs... tokens) {
             return tokens(List.of(tokens));
         }

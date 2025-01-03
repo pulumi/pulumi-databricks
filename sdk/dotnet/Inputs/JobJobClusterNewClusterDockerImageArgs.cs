@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("basicAuth")]
         public Input<Inputs.JobJobClusterNewClusterDockerImageBasicAuthArgs>? BasicAuth { get; set; }
 
+        /// <summary>
+        /// URL of the job on the given workspace
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 

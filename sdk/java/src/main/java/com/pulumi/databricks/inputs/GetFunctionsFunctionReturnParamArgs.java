@@ -16,9 +16,17 @@ public final class GetFunctionsFunctionReturnParamArgs extends com.pulumi.resour
 
     public static final GetFunctionsFunctionReturnParamArgs Empty = new GetFunctionsFunctionReturnParamArgs();
 
+    /**
+     * The array of definitions of the function&#39;s parameters:
+     * 
+     */
     @Import(name="parameters")
     private @Nullable Output<List<GetFunctionsFunctionReturnParamParameterArgs>> parameters;
 
+    /**
+     * @return The array of definitions of the function&#39;s parameters:
+     * 
+     */
     public Optional<Output<List<GetFunctionsFunctionReturnParamParameterArgs>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
@@ -47,15 +55,33 @@ public final class GetFunctionsFunctionReturnParamArgs extends com.pulumi.resour
             $ = new GetFunctionsFunctionReturnParamArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param parameters The array of definitions of the function&#39;s parameters:
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(@Nullable Output<List<GetFunctionsFunctionReturnParamParameterArgs>> parameters) {
             $.parameters = parameters;
             return this;
         }
 
+        /**
+         * @param parameters The array of definitions of the function&#39;s parameters:
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(List<GetFunctionsFunctionReturnParamParameterArgs> parameters) {
             return parameters(Output.of(parameters));
         }
 
+        /**
+         * @param parameters The array of definitions of the function&#39;s parameters:
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(GetFunctionsFunctionReturnParamParameterArgs... parameters) {
             return parameters(List.of(parameters));
         }

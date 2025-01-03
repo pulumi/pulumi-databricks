@@ -12,37 +12,393 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ### Creating a Databricks on AWS workspace
+//
+// !Simplest multiworkspace
+//
+// To get workspace running, you have to configure a couple of things:
+//
+// * MwsCredentials - You can share a credentials (cross-account IAM role) configuration ID with multiple workspaces. It is not required to create a new one for each workspace.
+// * MwsStorageConfigurations - You can share a root S3 bucket with multiple workspaces in a single account. You do not have to create new ones for each workspace. If you share a root S3 bucket for multiple workspaces in an account, data on the root S3 bucket is partitioned into separate directories by workspace.
+// * MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) with multiple workspaces in a single account. However, Databricks recommends using unique subnets and security groups for each workspace. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
+// * MwsCustomerManagedKeys - You can share a customer-managed key across workspaces.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			// Account ID that can be found in the dropdown under the email address in the upper-right corner of https://accounts.cloud.databricks.com/
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			// register cross-account ARN
+//			this, err := databricks.NewMwsCredentials(ctx, "this", &databricks.MwsCredentialsArgs{
+//				AccountId:       pulumi.Any(databricksAccountId),
+//				CredentialsName: pulumi.Sprintf("%v-creds", prefix),
+//				RoleArn:         pulumi.Any(crossaccountArn),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// register root bucket
+//			thisMwsStorageConfigurations, err := databricks.NewMwsStorageConfigurations(ctx, "this", &databricks.MwsStorageConfigurationsArgs{
+//				AccountId:                pulumi.Any(databricksAccountId),
+//				StorageConfigurationName: pulumi.Sprintf("%v-storage", prefix),
+//				BucketName:               pulumi.Any(rootBucket),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// register VPC
+//			thisMwsNetworks, err := databricks.NewMwsNetworks(ctx, "this", &databricks.MwsNetworksArgs{
+//				AccountId:   pulumi.Any(databricksAccountId),
+//				NetworkName: pulumi.Sprintf("%v-network", prefix),
+//				VpcId:       pulumi.Any(vpcId),
+//				SubnetIds:   pulumi.Any(subnetsPrivate),
+//				SecurityGroupIds: pulumi.StringArray{
+//					securityGroup,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// create workspace in given VPC with DBFS on root bucket
+//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
+//				AccountId:              pulumi.Any(databricksAccountId),
+//				WorkspaceName:          pulumi.Any(prefix),
+//				AwsRegion:              pulumi.Any(region),
+//				CredentialsId:          this.CredentialsId,
+//				StorageConfigurationId: thisMwsStorageConfigurations.StorageConfigurationId,
+//				NetworkId:              thisMwsNetworks.NetworkId,
+//				Token:                  &databricks.MwsWorkspacesTokenArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databricksToken", thisMwsWorkspaces.Token.ApplyT(func(token databricks.MwsWorkspacesToken) (*string, error) {
+//				return &token.TokenValue, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Creating a Databricks on AWS workspace with Databricks-Managed VPC
+//
+// ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
+//
+// By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with MwsNetworks so that you can configure it according to your organization’s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/s3"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			naming, err := random.NewString(ctx, "naming", &random.StringArgs{
+//				Special: false,
+//				Upper:   false,
+//				Length:  6,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			prefix := fmt.Sprintf("dltp%v", naming.Result)
+//			this, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
+//				ExternalId: databricksAccountId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			crossAccountRole, err := iam.NewRole(ctx, "cross_account_role", &iam.RoleArgs{
+//				Name:             pulumi.Sprintf("%v-crossaccount", prefix),
+//				AssumeRolePolicy: pulumi.String(this.Json),
+//				Tags:             pulumi.Any(tags),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisGetAwsCrossAccountPolicy, err := databricks.GetAwsCrossAccountPolicy(ctx, &databricks.GetAwsCrossAccountPolicyArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewRolePolicy(ctx, "this", &iam.RolePolicyArgs{
+//				Name:   pulumi.Sprintf("%v-policy", prefix),
+//				Role:   crossAccountRole.ID(),
+//				Policy: pulumi.String(thisGetAwsCrossAccountPolicy.Json),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisMwsCredentials, err := databricks.NewMwsCredentials(ctx, "this", &databricks.MwsCredentialsArgs{
+//				AccountId:       pulumi.Any(databricksAccountId),
+//				CredentialsName: pulumi.Sprintf("%v-creds", prefix),
+//				RoleArn:         crossAccountRole.Arn,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			rootStorageBucket, err := s3.NewBucketV2(ctx, "root_storage_bucket", &s3.BucketV2Args{
+//				Bucket:       pulumi.Sprintf("%v-rootbucket", prefix),
+//				Acl:          pulumi.String("private"),
+//				ForceDestroy: pulumi.Bool(true),
+//				Tags:         pulumi.Any(tags),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = s3.NewBucketVersioningV2(ctx, "root_versioning", &s3.BucketVersioningV2Args{
+//				Bucket: rootStorageBucket.ID(),
+//				VersioningConfiguration: &s3.BucketVersioningV2VersioningConfigurationArgs{
+//					Status: pulumi.String("Disabled"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = s3.NewBucketServerSideEncryptionConfigurationV2(ctx, "root_storage_bucket", &s3.BucketServerSideEncryptionConfigurationV2Args{
+//				Bucket: rootStorageBucket.Bucket,
+//				Rules: s3.BucketServerSideEncryptionConfigurationV2RuleArray{
+//					&s3.BucketServerSideEncryptionConfigurationV2RuleArgs{
+//						ApplyServerSideEncryptionByDefault: &s3.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs{
+//							SseAlgorithm: pulumi.String("AES256"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			rootStorageBucketBucketPublicAccessBlock, err := s3.NewBucketPublicAccessBlock(ctx, "root_storage_bucket", &s3.BucketPublicAccessBlockArgs{
+//				Bucket:                rootStorageBucket.ID(),
+//				BlockPublicAcls:       pulumi.Bool(true),
+//				BlockPublicPolicy:     pulumi.Bool(true),
+//				IgnorePublicAcls:      pulumi.Bool(true),
+//				RestrictPublicBuckets: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				rootStorageBucket,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			thisGetAwsBucketPolicy := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
+//				Bucket: rootStorageBucket.Bucket,
+//			}, nil)
+//			_, err = s3.NewBucketPolicy(ctx, "root_bucket_policy", &s3.BucketPolicyArgs{
+//				Bucket: rootStorageBucket.ID(),
+//				Policy: pulumi.String(thisGetAwsBucketPolicy.ApplyT(func(thisGetAwsBucketPolicy databricks.GetAwsBucketPolicyResult) (*string, error) {
+//					return &thisGetAwsBucketPolicy.Json, nil
+//				}).(pulumi.StringPtrOutput)),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				rootStorageBucketBucketPublicAccessBlock,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			thisMwsStorageConfigurations, err := databricks.NewMwsStorageConfigurations(ctx, "this", &databricks.MwsStorageConfigurationsArgs{
+//				AccountId:                pulumi.Any(databricksAccountId),
+//				StorageConfigurationName: pulumi.Sprintf("%v-storage", prefix),
+//				BucketName:               rootStorageBucket.Bucket,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
+//				AccountId:              pulumi.Any(databricksAccountId),
+//				WorkspaceName:          pulumi.String(prefix),
+//				AwsRegion:              pulumi.String("us-east-1"),
+//				CredentialsId:          thisMwsCredentials.CredentialsId,
+//				StorageConfigurationId: thisMwsStorageConfigurations.StorageConfigurationId,
+//				Token:                  &databricks.MwsWorkspacesTokenArgs{},
+//				CustomTags: pulumi.StringMap{
+//					"SoldToCode": pulumi.String("1234"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databricksToken", thisMwsWorkspaces.Token.ApplyT(func(token databricks.MwsWorkspacesToken) (*string, error) {
+//				return &token.TokenValue, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
+//
+// ### Creating a Databricks on GCP workspace
+//
+// To get workspace running, you have to configure a network object:
+//
+// * MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/customer-managed-vpc.html) with multiple workspaces in a single account. You do not have to create a new VPC for each workspace. However, you cannot reuse subnets with other resources, including other workspaces or non-Databricks resources. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			databricksGoogleServiceAccount := cfg.RequireObject("databricksGoogleServiceAccount")
+//			googleProject := cfg.RequireObject("googleProject")
+//			// register VPC
+//			this, err := databricks.NewMwsNetworks(ctx, "this", &databricks.MwsNetworksArgs{
+//				AccountId:   pulumi.Any(databricksAccountId),
+//				NetworkName: pulumi.Sprintf("%v-network", prefix),
+//				GcpNetworkInfo: &databricks.MwsNetworksGcpNetworkInfoArgs{
+//					NetworkProjectId:   pulumi.Any(googleProject),
+//					VpcId:              pulumi.Any(vpcId),
+//					SubnetId:           pulumi.Any(subnetId),
+//					SubnetRegion:       pulumi.Any(subnetRegion),
+//					PodIpRangeName:     pulumi.String("pods"),
+//					ServiceIpRangeName: pulumi.String("svc"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// create workspace in given VPC
+//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
+//				AccountId:     pulumi.Any(databricksAccountId),
+//				WorkspaceName: pulumi.Any(prefix),
+//				Location:      pulumi.Any(subnetRegion),
+//				CloudResourceContainer: &databricks.MwsWorkspacesCloudResourceContainerArgs{
+//					Gcp: &databricks.MwsWorkspacesCloudResourceContainerGcpArgs{
+//						ProjectId: pulumi.Any(googleProject),
+//					},
+//				},
+//				NetworkId: this.NetworkId,
+//				GkeConfig: &databricks.MwsWorkspacesGkeConfigArgs{
+//					ConnectivityType: pulumi.String("PRIVATE_NODE_PUBLIC_MASTER"),
+//					MasterIpRange:    pulumi.String("10.3.0.0/28"),
+//				},
+//				Token: &databricks.MwsWorkspacesTokenArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databricksToken", thisMwsWorkspaces.Token.ApplyT(func(token databricks.MwsWorkspacesToken) (*string, error) {
+//				return &token.TokenValue, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
+//
+// ## Import
+//
+// This resource can be imported by Databricks account ID and workspace ID.
+//
+// ```sh
+// $ pulumi import databricks:index/mwsWorkspaces:MwsWorkspaces this '<account_id>/<workspace_id>'
+// ```
+//
+// ~> Not all fields of `databricks_mws_workspaces` can be updated without causing the workspace to be recreated.
+//
+//	If the configuration for these immutable fields does not match the existing workspace, the workspace will
+//
+//	be deleted and recreated in the next `pulumi up`. After importing, verify that the configuration
+//
+//	matches the existing resource by running `pulumi preview`. The only fields that can be updated are
+//
+//	`credentials_id`, `network_id`, `storage_customer_managed_key_id`, `private_access_settings_id`,
+//
+//	`managed_services_customer_managed_key_id`, and `custom_tags`.
 type MwsWorkspaces struct {
 	pulumi.CustomResourceState
 
-	AccountId              pulumi.StringOutput                          `pulumi:"accountId"`
-	AwsRegion              pulumi.StringPtrOutput                       `pulumi:"awsRegion"`
-	Cloud                  pulumi.StringOutput                          `pulumi:"cloud"`
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// region of VPC.
+	AwsRegion pulumi.StringPtrOutput `pulumi:"awsRegion"`
+	Cloud     pulumi.StringOutput    `pulumi:"cloud"`
+	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrOutput `pulumi:"cloudResourceContainer"`
-	CreationTime           pulumi.IntOutput                             `pulumi:"creationTime"`
-	CredentialsId          pulumi.StringPtrOutput                       `pulumi:"credentialsId"`
-	CustomTags             pulumi.StringMapOutput                       `pulumi:"customTags"`
+	// (Integer) time when workspace was created
+	CreationTime  pulumi.IntOutput       `pulumi:"creationTime"`
+	CredentialsId pulumi.StringPtrOutput `pulumi:"credentialsId"`
+	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+	CustomTags pulumi.StringMapOutput `pulumi:"customTags"`
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
-	CustomerManagedKeyId                pulumi.StringPtrOutput                        `pulumi:"customerManagedKeyId"`
-	DeploymentName                      pulumi.StringPtrOutput                        `pulumi:"deploymentName"`
-	ExternalCustomerInfo                MwsWorkspacesExternalCustomerInfoPtrOutput    `pulumi:"externalCustomerInfo"`
-	GcpManagedNetworkConfig             MwsWorkspacesGcpManagedNetworkConfigPtrOutput `pulumi:"gcpManagedNetworkConfig"`
-	GcpWorkspaceSa                      pulumi.StringOutput                           `pulumi:"gcpWorkspaceSa"`
-	GkeConfig                           MwsWorkspacesGkeConfigPtrOutput               `pulumi:"gkeConfig"`
-	IsNoPublicIpEnabled                 pulumi.BoolPtrOutput                          `pulumi:"isNoPublicIpEnabled"`
-	Location                            pulumi.StringPtrOutput                        `pulumi:"location"`
-	ManagedServicesCustomerManagedKeyId pulumi.StringPtrOutput                        `pulumi:"managedServicesCustomerManagedKeyId"`
-	NetworkId                           pulumi.StringPtrOutput                        `pulumi:"networkId"`
-	PricingTier                         pulumi.StringOutput                           `pulumi:"pricingTier"`
-	PrivateAccessSettingsId             pulumi.StringPtrOutput                        `pulumi:"privateAccessSettingsId"`
-	StorageConfigurationId              pulumi.StringPtrOutput                        `pulumi:"storageConfigurationId"`
-	StorageCustomerManagedKeyId         pulumi.StringPtrOutput                        `pulumi:"storageCustomerManagedKeyId"`
-	Token                               MwsWorkspacesTokenPtrOutput                   `pulumi:"token"`
-	WorkspaceId                         pulumi.StringOutput                           `pulumi:"workspaceId"`
-	WorkspaceName                       pulumi.StringOutput                           `pulumi:"workspaceName"`
-	WorkspaceStatus                     pulumi.StringOutput                           `pulumi:"workspaceStatus"`
-	WorkspaceStatusMessage              pulumi.StringOutput                           `pulumi:"workspaceStatusMessage"`
-	WorkspaceUrl                        pulumi.StringOutput                           `pulumi:"workspaceUrl"`
+	CustomerManagedKeyId pulumi.StringPtrOutput `pulumi:"customerManagedKeyId"`
+	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+	DeploymentName          pulumi.StringPtrOutput                        `pulumi:"deploymentName"`
+	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrOutput    `pulumi:"externalCustomerInfo"`
+	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrOutput `pulumi:"gcpManagedNetworkConfig"`
+	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
+	GcpWorkspaceSa pulumi.StringOutput `pulumi:"gcpWorkspaceSa"`
+	// A block that specifies GKE configuration for the Databricks workspace:
+	GkeConfig           MwsWorkspacesGkeConfigPtrOutput `pulumi:"gkeConfig"`
+	IsNoPublicIpEnabled pulumi.BoolPtrOutput            `pulumi:"isNoPublicIpEnabled"`
+	// region of the subnet.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
+	ManagedServicesCustomerManagedKeyId pulumi.StringPtrOutput `pulumi:"managedServicesCustomerManagedKeyId"`
+	// `networkId` from networks.
+	NetworkId pulumi.StringPtrOutput `pulumi:"networkId"`
+	// The pricing tier of the workspace.
+	PricingTier pulumi.StringOutput `pulumi:"pricingTier"`
+	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
+	PrivateAccessSettingsId pulumi.StringPtrOutput `pulumi:"privateAccessSettingsId"`
+	// `storageConfigurationId` from storage configuration.
+	StorageConfigurationId pulumi.StringPtrOutput `pulumi:"storageConfigurationId"`
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
+	StorageCustomerManagedKeyId pulumi.StringPtrOutput      `pulumi:"storageCustomerManagedKeyId"`
+	Token                       MwsWorkspacesTokenPtrOutput `pulumi:"token"`
+	// (String) workspace id
+	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
+	// name of the workspace, will appear on UI.
+	WorkspaceName pulumi.StringOutput `pulumi:"workspaceName"`
+	// (String) workspace status
+	WorkspaceStatus pulumi.StringOutput `pulumi:"workspaceStatus"`
+	// (String) updates on workspace status
+	WorkspaceStatusMessage pulumi.StringOutput `pulumi:"workspaceStatusMessage"`
+	// (String) URL of the workspace
+	WorkspaceUrl pulumi.StringOutput `pulumi:"workspaceUrl"`
 }
 
 // NewMwsWorkspaces registers a new resource with the given unique name, arguments, and options.
@@ -88,65 +444,105 @@ func GetMwsWorkspaces(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsWorkspaces resources.
 type mwsWorkspacesState struct {
-	AccountId              *string                              `pulumi:"accountId"`
-	AwsRegion              *string                              `pulumi:"awsRegion"`
-	Cloud                  *string                              `pulumi:"cloud"`
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	AccountId *string `pulumi:"accountId"`
+	// region of VPC.
+	AwsRegion *string `pulumi:"awsRegion"`
+	Cloud     *string `pulumi:"cloud"`
+	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer *MwsWorkspacesCloudResourceContainer `pulumi:"cloudResourceContainer"`
-	CreationTime           *int                                 `pulumi:"creationTime"`
-	CredentialsId          *string                              `pulumi:"credentialsId"`
-	CustomTags             map[string]string                    `pulumi:"customTags"`
+	// (Integer) time when workspace was created
+	CreationTime  *int    `pulumi:"creationTime"`
+	CredentialsId *string `pulumi:"credentialsId"`
+	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+	CustomTags map[string]string `pulumi:"customTags"`
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
-	CustomerManagedKeyId                *string                               `pulumi:"customerManagedKeyId"`
-	DeploymentName                      *string                               `pulumi:"deploymentName"`
-	ExternalCustomerInfo                *MwsWorkspacesExternalCustomerInfo    `pulumi:"externalCustomerInfo"`
-	GcpManagedNetworkConfig             *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
-	GcpWorkspaceSa                      *string                               `pulumi:"gcpWorkspaceSa"`
-	GkeConfig                           *MwsWorkspacesGkeConfig               `pulumi:"gkeConfig"`
-	IsNoPublicIpEnabled                 *bool                                 `pulumi:"isNoPublicIpEnabled"`
-	Location                            *string                               `pulumi:"location"`
-	ManagedServicesCustomerManagedKeyId *string                               `pulumi:"managedServicesCustomerManagedKeyId"`
-	NetworkId                           *string                               `pulumi:"networkId"`
-	PricingTier                         *string                               `pulumi:"pricingTier"`
-	PrivateAccessSettingsId             *string                               `pulumi:"privateAccessSettingsId"`
-	StorageConfigurationId              *string                               `pulumi:"storageConfigurationId"`
-	StorageCustomerManagedKeyId         *string                               `pulumi:"storageCustomerManagedKeyId"`
-	Token                               *MwsWorkspacesToken                   `pulumi:"token"`
-	WorkspaceId                         *string                               `pulumi:"workspaceId"`
-	WorkspaceName                       *string                               `pulumi:"workspaceName"`
-	WorkspaceStatus                     *string                               `pulumi:"workspaceStatus"`
-	WorkspaceStatusMessage              *string                               `pulumi:"workspaceStatusMessage"`
-	WorkspaceUrl                        *string                               `pulumi:"workspaceUrl"`
+	CustomerManagedKeyId *string `pulumi:"customerManagedKeyId"`
+	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+	DeploymentName          *string                               `pulumi:"deploymentName"`
+	ExternalCustomerInfo    *MwsWorkspacesExternalCustomerInfo    `pulumi:"externalCustomerInfo"`
+	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
+	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
+	GcpWorkspaceSa *string `pulumi:"gcpWorkspaceSa"`
+	// A block that specifies GKE configuration for the Databricks workspace:
+	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
+	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
+	// region of the subnet.
+	Location *string `pulumi:"location"`
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
+	ManagedServicesCustomerManagedKeyId *string `pulumi:"managedServicesCustomerManagedKeyId"`
+	// `networkId` from networks.
+	NetworkId *string `pulumi:"networkId"`
+	// The pricing tier of the workspace.
+	PricingTier *string `pulumi:"pricingTier"`
+	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
+	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
+	// `storageConfigurationId` from storage configuration.
+	StorageConfigurationId *string `pulumi:"storageConfigurationId"`
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
+	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
+	Token                       *MwsWorkspacesToken `pulumi:"token"`
+	// (String) workspace id
+	WorkspaceId *string `pulumi:"workspaceId"`
+	// name of the workspace, will appear on UI.
+	WorkspaceName *string `pulumi:"workspaceName"`
+	// (String) workspace status
+	WorkspaceStatus *string `pulumi:"workspaceStatus"`
+	// (String) updates on workspace status
+	WorkspaceStatusMessage *string `pulumi:"workspaceStatusMessage"`
+	// (String) URL of the workspace
+	WorkspaceUrl *string `pulumi:"workspaceUrl"`
 }
 
 type MwsWorkspacesState struct {
-	AccountId              pulumi.StringPtrInput
-	AwsRegion              pulumi.StringPtrInput
-	Cloud                  pulumi.StringPtrInput
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	AccountId pulumi.StringPtrInput
+	// region of VPC.
+	AwsRegion pulumi.StringPtrInput
+	Cloud     pulumi.StringPtrInput
+	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrInput
-	CreationTime           pulumi.IntPtrInput
-	CredentialsId          pulumi.StringPtrInput
-	CustomTags             pulumi.StringMapInput
+	// (Integer) time when workspace was created
+	CreationTime  pulumi.IntPtrInput
+	CredentialsId pulumi.StringPtrInput
+	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+	CustomTags pulumi.StringMapInput
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
-	CustomerManagedKeyId                pulumi.StringPtrInput
-	DeploymentName                      pulumi.StringPtrInput
-	ExternalCustomerInfo                MwsWorkspacesExternalCustomerInfoPtrInput
-	GcpManagedNetworkConfig             MwsWorkspacesGcpManagedNetworkConfigPtrInput
-	GcpWorkspaceSa                      pulumi.StringPtrInput
-	GkeConfig                           MwsWorkspacesGkeConfigPtrInput
-	IsNoPublicIpEnabled                 pulumi.BoolPtrInput
-	Location                            pulumi.StringPtrInput
+	CustomerManagedKeyId pulumi.StringPtrInput
+	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+	DeploymentName          pulumi.StringPtrInput
+	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrInput
+	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
+	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
+	GcpWorkspaceSa pulumi.StringPtrInput
+	// A block that specifies GKE configuration for the Databricks workspace:
+	GkeConfig           MwsWorkspacesGkeConfigPtrInput
+	IsNoPublicIpEnabled pulumi.BoolPtrInput
+	// region of the subnet.
+	Location pulumi.StringPtrInput
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrInput
-	NetworkId                           pulumi.StringPtrInput
-	PricingTier                         pulumi.StringPtrInput
-	PrivateAccessSettingsId             pulumi.StringPtrInput
-	StorageConfigurationId              pulumi.StringPtrInput
-	StorageCustomerManagedKeyId         pulumi.StringPtrInput
-	Token                               MwsWorkspacesTokenPtrInput
-	WorkspaceId                         pulumi.StringPtrInput
-	WorkspaceName                       pulumi.StringPtrInput
-	WorkspaceStatus                     pulumi.StringPtrInput
-	WorkspaceStatusMessage              pulumi.StringPtrInput
-	WorkspaceUrl                        pulumi.StringPtrInput
+	// `networkId` from networks.
+	NetworkId pulumi.StringPtrInput
+	// The pricing tier of the workspace.
+	PricingTier pulumi.StringPtrInput
+	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
+	PrivateAccessSettingsId pulumi.StringPtrInput
+	// `storageConfigurationId` from storage configuration.
+	StorageConfigurationId pulumi.StringPtrInput
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
+	StorageCustomerManagedKeyId pulumi.StringPtrInput
+	Token                       MwsWorkspacesTokenPtrInput
+	// (String) workspace id
+	WorkspaceId pulumi.StringPtrInput
+	// name of the workspace, will appear on UI.
+	WorkspaceName pulumi.StringPtrInput
+	// (String) workspace status
+	WorkspaceStatus pulumi.StringPtrInput
+	// (String) updates on workspace status
+	WorkspaceStatusMessage pulumi.StringPtrInput
+	// (String) URL of the workspace
+	WorkspaceUrl pulumi.StringPtrInput
 }
 
 func (MwsWorkspacesState) ElementType() reflect.Type {
@@ -154,64 +550,102 @@ func (MwsWorkspacesState) ElementType() reflect.Type {
 }
 
 type mwsWorkspacesArgs struct {
-	AccountId              string                               `pulumi:"accountId"`
-	AwsRegion              *string                              `pulumi:"awsRegion"`
-	Cloud                  *string                              `pulumi:"cloud"`
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	AccountId string `pulumi:"accountId"`
+	// region of VPC.
+	AwsRegion *string `pulumi:"awsRegion"`
+	Cloud     *string `pulumi:"cloud"`
+	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer *MwsWorkspacesCloudResourceContainer `pulumi:"cloudResourceContainer"`
-	CreationTime           *int                                 `pulumi:"creationTime"`
-	CredentialsId          *string                              `pulumi:"credentialsId"`
-	CustomTags             map[string]string                    `pulumi:"customTags"`
+	// (Integer) time when workspace was created
+	CreationTime  *int    `pulumi:"creationTime"`
+	CredentialsId *string `pulumi:"credentialsId"`
+	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+	CustomTags map[string]string `pulumi:"customTags"`
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
-	CustomerManagedKeyId                *string                               `pulumi:"customerManagedKeyId"`
-	DeploymentName                      *string                               `pulumi:"deploymentName"`
-	ExternalCustomerInfo                *MwsWorkspacesExternalCustomerInfo    `pulumi:"externalCustomerInfo"`
-	GcpManagedNetworkConfig             *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
-	GkeConfig                           *MwsWorkspacesGkeConfig               `pulumi:"gkeConfig"`
-	IsNoPublicIpEnabled                 *bool                                 `pulumi:"isNoPublicIpEnabled"`
-	Location                            *string                               `pulumi:"location"`
-	ManagedServicesCustomerManagedKeyId *string                               `pulumi:"managedServicesCustomerManagedKeyId"`
-	NetworkId                           *string                               `pulumi:"networkId"`
-	PricingTier                         *string                               `pulumi:"pricingTier"`
-	PrivateAccessSettingsId             *string                               `pulumi:"privateAccessSettingsId"`
-	StorageConfigurationId              *string                               `pulumi:"storageConfigurationId"`
-	StorageCustomerManagedKeyId         *string                               `pulumi:"storageCustomerManagedKeyId"`
-	Token                               *MwsWorkspacesToken                   `pulumi:"token"`
-	WorkspaceId                         *string                               `pulumi:"workspaceId"`
-	WorkspaceName                       string                                `pulumi:"workspaceName"`
-	WorkspaceStatus                     *string                               `pulumi:"workspaceStatus"`
-	WorkspaceStatusMessage              *string                               `pulumi:"workspaceStatusMessage"`
-	WorkspaceUrl                        *string                               `pulumi:"workspaceUrl"`
+	CustomerManagedKeyId *string `pulumi:"customerManagedKeyId"`
+	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+	DeploymentName          *string                               `pulumi:"deploymentName"`
+	ExternalCustomerInfo    *MwsWorkspacesExternalCustomerInfo    `pulumi:"externalCustomerInfo"`
+	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
+	// A block that specifies GKE configuration for the Databricks workspace:
+	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
+	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
+	// region of the subnet.
+	Location *string `pulumi:"location"`
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
+	ManagedServicesCustomerManagedKeyId *string `pulumi:"managedServicesCustomerManagedKeyId"`
+	// `networkId` from networks.
+	NetworkId *string `pulumi:"networkId"`
+	// The pricing tier of the workspace.
+	PricingTier *string `pulumi:"pricingTier"`
+	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
+	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
+	// `storageConfigurationId` from storage configuration.
+	StorageConfigurationId *string `pulumi:"storageConfigurationId"`
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
+	StorageCustomerManagedKeyId *string             `pulumi:"storageCustomerManagedKeyId"`
+	Token                       *MwsWorkspacesToken `pulumi:"token"`
+	// (String) workspace id
+	WorkspaceId *string `pulumi:"workspaceId"`
+	// name of the workspace, will appear on UI.
+	WorkspaceName string `pulumi:"workspaceName"`
+	// (String) workspace status
+	WorkspaceStatus *string `pulumi:"workspaceStatus"`
+	// (String) updates on workspace status
+	WorkspaceStatusMessage *string `pulumi:"workspaceStatusMessage"`
+	// (String) URL of the workspace
+	WorkspaceUrl *string `pulumi:"workspaceUrl"`
 }
 
 // The set of arguments for constructing a MwsWorkspaces resource.
 type MwsWorkspacesArgs struct {
-	AccountId              pulumi.StringInput
-	AwsRegion              pulumi.StringPtrInput
-	Cloud                  pulumi.StringPtrInput
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	AccountId pulumi.StringInput
+	// region of VPC.
+	AwsRegion pulumi.StringPtrInput
+	Cloud     pulumi.StringPtrInput
+	// A block that specifies GCP workspace configurations, consisting of following blocks:
 	CloudResourceContainer MwsWorkspacesCloudResourceContainerPtrInput
-	CreationTime           pulumi.IntPtrInput
-	CredentialsId          pulumi.StringPtrInput
-	CustomTags             pulumi.StringMapInput
+	// (Integer) time when workspace was created
+	CreationTime  pulumi.IntPtrInput
+	CredentialsId pulumi.StringPtrInput
+	// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+	CustomTags pulumi.StringMapInput
 	// Deprecated: Use managedServicesCustomerManagedKeyId instead
-	CustomerManagedKeyId                pulumi.StringPtrInput
-	DeploymentName                      pulumi.StringPtrInput
-	ExternalCustomerInfo                MwsWorkspacesExternalCustomerInfoPtrInput
-	GcpManagedNetworkConfig             MwsWorkspacesGcpManagedNetworkConfigPtrInput
-	GkeConfig                           MwsWorkspacesGkeConfigPtrInput
-	IsNoPublicIpEnabled                 pulumi.BoolPtrInput
-	Location                            pulumi.StringPtrInput
+	CustomerManagedKeyId pulumi.StringPtrInput
+	// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
+	DeploymentName          pulumi.StringPtrInput
+	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrInput
+	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
+	// A block that specifies GKE configuration for the Databricks workspace:
+	GkeConfig           MwsWorkspacesGkeConfigPtrInput
+	IsNoPublicIpEnabled pulumi.BoolPtrInput
+	// region of the subnet.
+	Location pulumi.StringPtrInput
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrInput
-	NetworkId                           pulumi.StringPtrInput
-	PricingTier                         pulumi.StringPtrInput
-	PrivateAccessSettingsId             pulumi.StringPtrInput
-	StorageConfigurationId              pulumi.StringPtrInput
-	StorageCustomerManagedKeyId         pulumi.StringPtrInput
-	Token                               MwsWorkspacesTokenPtrInput
-	WorkspaceId                         pulumi.StringPtrInput
-	WorkspaceName                       pulumi.StringInput
-	WorkspaceStatus                     pulumi.StringPtrInput
-	WorkspaceStatusMessage              pulumi.StringPtrInput
-	WorkspaceUrl                        pulumi.StringPtrInput
+	// `networkId` from networks.
+	NetworkId pulumi.StringPtrInput
+	// The pricing tier of the workspace.
+	PricingTier pulumi.StringPtrInput
+	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
+	PrivateAccessSettingsId pulumi.StringPtrInput
+	// `storageConfigurationId` from storage configuration.
+	StorageConfigurationId pulumi.StringPtrInput
+	// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
+	StorageCustomerManagedKeyId pulumi.StringPtrInput
+	Token                       MwsWorkspacesTokenPtrInput
+	// (String) workspace id
+	WorkspaceId pulumi.StringPtrInput
+	// name of the workspace, will appear on UI.
+	WorkspaceName pulumi.StringInput
+	// (String) workspace status
+	WorkspaceStatus pulumi.StringPtrInput
+	// (String) updates on workspace status
+	WorkspaceStatusMessage pulumi.StringPtrInput
+	// (String) URL of the workspace
+	WorkspaceUrl pulumi.StringPtrInput
 }
 
 func (MwsWorkspacesArgs) ElementType() reflect.Type {
@@ -301,10 +735,12 @@ func (o MwsWorkspacesOutput) ToMwsWorkspacesOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 func (o MwsWorkspacesOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// region of VPC.
 func (o MwsWorkspacesOutput) AwsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.AwsRegion }).(pulumi.StringPtrOutput)
 }
@@ -313,10 +749,12 @@ func (o MwsWorkspacesOutput) Cloud() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.Cloud }).(pulumi.StringOutput)
 }
 
+// A block that specifies GCP workspace configurations, consisting of following blocks:
 func (o MwsWorkspacesOutput) CloudResourceContainer() MwsWorkspacesCloudResourceContainerPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesCloudResourceContainerPtrOutput { return v.CloudResourceContainer }).(MwsWorkspacesCloudResourceContainerPtrOutput)
 }
 
+// (Integer) time when workspace was created
 func (o MwsWorkspacesOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.IntOutput { return v.CreationTime }).(pulumi.IntOutput)
 }
@@ -325,6 +763,7 @@ func (o MwsWorkspacesOutput) CredentialsId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.CredentialsId }).(pulumi.StringPtrOutput)
 }
 
+// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
 func (o MwsWorkspacesOutput) CustomTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringMapOutput { return v.CustomTags }).(pulumi.StringMapOutput)
 }
@@ -334,6 +773,7 @@ func (o MwsWorkspacesOutput) CustomerManagedKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.CustomerManagedKeyId }).(pulumi.StringPtrOutput)
 }
 
+// part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
 func (o MwsWorkspacesOutput) DeploymentName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.DeploymentName }).(pulumi.StringPtrOutput)
 }
@@ -346,10 +786,12 @@ func (o MwsWorkspacesOutput) GcpManagedNetworkConfig() MwsWorkspacesGcpManagedNe
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesGcpManagedNetworkConfigPtrOutput { return v.GcpManagedNetworkConfig }).(MwsWorkspacesGcpManagedNetworkConfigPtrOutput)
 }
 
+// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 func (o MwsWorkspacesOutput) GcpWorkspaceSa() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.GcpWorkspaceSa }).(pulumi.StringOutput)
 }
 
+// A block that specifies GKE configuration for the Databricks workspace:
 func (o MwsWorkspacesOutput) GkeConfig() MwsWorkspacesGkeConfigPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesGkeConfigPtrOutput { return v.GkeConfig }).(MwsWorkspacesGkeConfigPtrOutput)
 }
@@ -358,30 +800,37 @@ func (o MwsWorkspacesOutput) IsNoPublicIpEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.BoolPtrOutput { return v.IsNoPublicIpEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// region of the subnet.
 func (o MwsWorkspacesOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 func (o MwsWorkspacesOutput) ManagedServicesCustomerManagedKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.ManagedServicesCustomerManagedKeyId }).(pulumi.StringPtrOutput)
 }
 
+// `networkId` from networks.
 func (o MwsWorkspacesOutput) NetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
 
+// The pricing tier of the workspace.
 func (o MwsWorkspacesOutput) PricingTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.PricingTier }).(pulumi.StringOutput)
 }
 
+// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 func (o MwsWorkspacesOutput) PrivateAccessSettingsId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.PrivateAccessSettingsId }).(pulumi.StringPtrOutput)
 }
 
+// `storageConfigurationId` from storage configuration.
 func (o MwsWorkspacesOutput) StorageConfigurationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.StorageConfigurationId }).(pulumi.StringPtrOutput)
 }
 
+// `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
 func (o MwsWorkspacesOutput) StorageCustomerManagedKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.StorageCustomerManagedKeyId }).(pulumi.StringPtrOutput)
 }
@@ -390,22 +839,27 @@ func (o MwsWorkspacesOutput) Token() MwsWorkspacesTokenPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesTokenPtrOutput { return v.Token }).(MwsWorkspacesTokenPtrOutput)
 }
 
+// (String) workspace id
 func (o MwsWorkspacesOutput) WorkspaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
+// name of the workspace, will appear on UI.
 func (o MwsWorkspacesOutput) WorkspaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.WorkspaceName }).(pulumi.StringOutput)
 }
 
+// (String) workspace status
 func (o MwsWorkspacesOutput) WorkspaceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.WorkspaceStatus }).(pulumi.StringOutput)
 }
 
+// (String) updates on workspace status
 func (o MwsWorkspacesOutput) WorkspaceStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.WorkspaceStatusMessage }).(pulumi.StringOutput)
 }
 
+// (String) URL of the workspace
 func (o MwsWorkspacesOutput) WorkspaceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.WorkspaceUrl }).(pulumi.StringOutput)
 }

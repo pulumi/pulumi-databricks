@@ -14,16 +14,42 @@ public final class GetNotificationDestinationsPlainArgs extends com.pulumi.resou
 
     public static final GetNotificationDestinationsPlainArgs Empty = new GetNotificationDestinationsPlainArgs();
 
+    /**
+     * A **case-insensitive** substring to filter Notification Destinations by their display name.
+     * 
+     */
     @Import(name="displayNameContains")
     private @Nullable String displayNameContains;
 
+    /**
+     * @return A **case-insensitive** substring to filter Notification Destinations by their display name.
+     * 
+     */
     public Optional<String> displayNameContains() {
         return Optional.ofNullable(this.displayNameContains);
     }
 
+    /**
+     * The type of the Notification Destination to filter by. Valid values are:
+     * * `EMAIL` - Filters Notification Destinations of type Email.
+     * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
+     * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
+     * * `SLACK` - Filters Notification Destinations of type Slack.
+     * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
+     * 
+     */
     @Import(name="type")
     private @Nullable String type;
 
+    /**
+     * @return The type of the Notification Destination to filter by. Valid values are:
+     * * `EMAIL` - Filters Notification Destinations of type Email.
+     * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
+     * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
+     * * `SLACK` - Filters Notification Destinations of type Slack.
+     * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
@@ -53,11 +79,28 @@ public final class GetNotificationDestinationsPlainArgs extends com.pulumi.resou
             $ = new GetNotificationDestinationsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param displayNameContains A **case-insensitive** substring to filter Notification Destinations by their display name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayNameContains(@Nullable String displayNameContains) {
             $.displayNameContains = displayNameContains;
             return this;
         }
 
+        /**
+         * @param type The type of the Notification Destination to filter by. Valid values are:
+         * * `EMAIL` - Filters Notification Destinations of type Email.
+         * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
+         * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
+         * * `SLACK` - Filters Notification Destinations of type Slack.
+         * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable String type) {
             $.type = type;
             return this;

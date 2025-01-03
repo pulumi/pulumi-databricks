@@ -12,10 +12,102 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to attach a role or InstanceProfile (AWS) to databricks_user.
+//
+// ## Example Usage
+//
+// # Adding AWS instance profile to a user
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instance_profile", &databricks.InstanceProfileArgs{
+//				InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myUser, err := databricks.NewUser(ctx, "my_user", &databricks.UserArgs{
+//				UserName: pulumi.String("me@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewUserRole(ctx, "my_user_role", &databricks.UserRoleArgs{
+//				UserId: myUser.ID(),
+//				Role:   instanceProfile.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Adding user as administrator to Databricks Account
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myUser, err := databricks.NewUser(ctx, "my_user", &databricks.UserArgs{
+//				UserName: pulumi.String("me@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewUserRole(ctx, "my_user_account_admin", &databricks.UserRoleArgs{
+//				UserId: myUser.ID(),
+//				Role:   pulumi.String("account_admin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * End to end workspace management guide.
+// * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+// * GroupMember to attach users and groups as group members.
+// * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+// * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
+// * User data to retrieve information about databricks_user.
+//
+// ## Import
+//
+// !> Importing this resource is not currently supported.
 type UserRole struct {
 	pulumi.CustomResourceState
 
-	Role   pulumi.StringOutput `pulumi:"role"`
+	// Either a role name or the ARN/ID of the instance profile resource.
+	Role pulumi.StringOutput `pulumi:"role"`
+	// This is the id of the user resource.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
@@ -55,12 +147,16 @@ func GetUserRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserRole resources.
 type userRoleState struct {
-	Role   *string `pulumi:"role"`
+	// Either a role name or the ARN/ID of the instance profile resource.
+	Role *string `pulumi:"role"`
+	// This is the id of the user resource.
 	UserId *string `pulumi:"userId"`
 }
 
 type UserRoleState struct {
-	Role   pulumi.StringPtrInput
+	// Either a role name or the ARN/ID of the instance profile resource.
+	Role pulumi.StringPtrInput
+	// This is the id of the user resource.
 	UserId pulumi.StringPtrInput
 }
 
@@ -69,13 +165,17 @@ func (UserRoleState) ElementType() reflect.Type {
 }
 
 type userRoleArgs struct {
-	Role   string `pulumi:"role"`
+	// Either a role name or the ARN/ID of the instance profile resource.
+	Role string `pulumi:"role"`
+	// This is the id of the user resource.
 	UserId string `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a UserRole resource.
 type UserRoleArgs struct {
-	Role   pulumi.StringInput
+	// Either a role name or the ARN/ID of the instance profile resource.
+	Role pulumi.StringInput
+	// This is the id of the user resource.
 	UserId pulumi.StringInput
 }
 
@@ -166,10 +266,12 @@ func (o UserRoleOutput) ToUserRoleOutputWithContext(ctx context.Context) UserRol
 	return o
 }
 
+// Either a role name or the ARN/ID of the instance profile resource.
 func (o UserRoleOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserRole) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// This is the id of the user resource.
 func (o UserRoleOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserRole) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }

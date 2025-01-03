@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("azurePrivateEndpointRules")]
         private List<Inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>? _azurePrivateEndpointRules;
+
+        /// <summary>
+        /// Array of private endpoint rule objects.
+        /// </summary>
         public List<Inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs> AzurePrivateEndpointRules
         {
             get => _azurePrivateEndpointRules ?? (_azurePrivateEndpointRules = new List<Inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>());

@@ -47,6 +47,10 @@ public final class JobTaskNewCluster {
     private @Nullable String instancePoolId;
     private @Nullable Boolean isSingleNode;
     private @Nullable String kind;
+    /**
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+     * 
+     */
     private @Nullable List<JobTaskNewClusterLibrary> libraries;
     private @Nullable String nodeTypeId;
     private @Nullable Integer numWorkers;
@@ -58,6 +62,10 @@ public final class JobTaskNewCluster {
     private String sparkVersion;
     private @Nullable List<String> sshPublicKeys;
     private @Nullable Boolean useMlRuntime;
+    /**
+     * @return isn&#39;t supported
+     * 
+     */
     private @Nullable JobTaskNewClusterWorkloadType workloadType;
 
     private JobTaskNewCluster() {}
@@ -124,6 +132,10 @@ public final class JobTaskNewCluster {
     public Optional<String> kind() {
         return Optional.ofNullable(this.kind);
     }
+    /**
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+     * 
+     */
     public List<JobTaskNewClusterLibrary> libraries() {
         return this.libraries == null ? List.of() : this.libraries;
     }
@@ -157,6 +169,10 @@ public final class JobTaskNewCluster {
     public Optional<Boolean> useMlRuntime() {
         return Optional.ofNullable(this.useMlRuntime);
     }
+    /**
+     * @return isn&#39;t supported
+     * 
+     */
     public Optional<JobTaskNewClusterWorkloadType> workloadType() {
         return Optional.ofNullable(this.workloadType);
     }

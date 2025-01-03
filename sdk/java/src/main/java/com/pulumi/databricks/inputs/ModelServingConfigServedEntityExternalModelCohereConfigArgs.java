@@ -22,16 +22,32 @@ public final class ModelServingConfigServedEntityExternalModelCohereConfigArgs e
         return Optional.ofNullable(this.cohereApiBase);
     }
 
+    /**
+     * The Databricks secret key reference for a Cohere API key.
+     * 
+     */
     @Import(name="cohereApiKey")
     private @Nullable Output<String> cohereApiKey;
 
+    /**
+     * @return The Databricks secret key reference for a Cohere API key.
+     * 
+     */
     public Optional<Output<String>> cohereApiKey() {
         return Optional.ofNullable(this.cohereApiKey);
     }
 
+    /**
+     * The Cohere API key provided as a plaintext string.
+     * 
+     */
     @Import(name="cohereApiKeyPlaintext")
     private @Nullable Output<String> cohereApiKeyPlaintext;
 
+    /**
+     * @return The Cohere API key provided as a plaintext string.
+     * 
+     */
     public Optional<Output<String>> cohereApiKeyPlaintext() {
         return Optional.ofNullable(this.cohereApiKeyPlaintext);
     }
@@ -71,20 +87,44 @@ public final class ModelServingConfigServedEntityExternalModelCohereConfigArgs e
             return cohereApiBase(Output.of(cohereApiBase));
         }
 
+        /**
+         * @param cohereApiKey The Databricks secret key reference for a Cohere API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cohereApiKey(@Nullable Output<String> cohereApiKey) {
             $.cohereApiKey = cohereApiKey;
             return this;
         }
 
+        /**
+         * @param cohereApiKey The Databricks secret key reference for a Cohere API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cohereApiKey(String cohereApiKey) {
             return cohereApiKey(Output.of(cohereApiKey));
         }
 
+        /**
+         * @param cohereApiKeyPlaintext The Cohere API key provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cohereApiKeyPlaintext(@Nullable Output<String> cohereApiKeyPlaintext) {
             $.cohereApiKeyPlaintext = cohereApiKeyPlaintext;
             return this;
         }
 
+        /**
+         * @param cohereApiKeyPlaintext The Cohere API key provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cohereApiKeyPlaintext(String cohereApiKeyPlaintext) {
             return cohereApiKeyPlaintext(Output.of(cohereApiKeyPlaintext));
         }

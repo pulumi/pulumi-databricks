@@ -17,30 +17,62 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
 
     public static final DirectoryState Empty = new DirectoryState();
 
+    /**
+     * Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+     * 
+     */
     @Import(name="deleteRecursive")
     private @Nullable Output<Boolean> deleteRecursive;
 
+    /**
+     * @return Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+     * 
+     */
     public Optional<Output<Boolean>> deleteRecursive() {
         return Optional.ofNullable(this.deleteRecursive);
     }
 
+    /**
+     * Unique identifier for a DIRECTORY
+     * 
+     */
     @Import(name="objectId")
     private @Nullable Output<Integer> objectId;
 
+    /**
+     * @return Unique identifier for a DIRECTORY
+     * 
+     */
     public Optional<Output<Integer>> objectId() {
         return Optional.ofNullable(this.objectId);
     }
 
+    /**
+     * The absolute path of the directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+     * 
+     */
     @Import(name="path")
     private @Nullable Output<String> path;
 
+    /**
+     * @return The absolute path of the directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+     * 
+     */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
     }
 
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
     @Import(name="workspacePath")
     private @Nullable Output<String> workspacePath;
 
+    /**
+     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
     public Optional<Output<String>> workspacePath() {
         return Optional.ofNullable(this.workspacePath);
     }
@@ -72,38 +104,86 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
             $ = new DirectoryState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deleteRecursive Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteRecursive(@Nullable Output<Boolean> deleteRecursive) {
             $.deleteRecursive = deleteRecursive;
             return this;
         }
 
+        /**
+         * @param deleteRecursive Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteRecursive(Boolean deleteRecursive) {
             return deleteRecursive(Output.of(deleteRecursive));
         }
 
+        /**
+         * @param objectId Unique identifier for a DIRECTORY
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectId(@Nullable Output<Integer> objectId) {
             $.objectId = objectId;
             return this;
         }
 
+        /**
+         * @param objectId Unique identifier for a DIRECTORY
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectId(Integer objectId) {
             return objectId(Output.of(objectId));
         }
 
+        /**
+         * @param path The absolute path of the directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path The absolute path of the directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
+        /**
+         * @param workspacePath path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspacePath(@Nullable Output<String> workspacePath) {
             $.workspacePath = workspacePath;
             return this;
         }
 
+        /**
+         * @param workspacePath path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspacePath(String workspacePath) {
             return workspacePath(Output.of(workspacePath));
         }

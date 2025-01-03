@@ -26,6 +26,9 @@ class AppArgs:
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]] = None):
         """
         The set of arguments for constructing a App resource.
+        :param pulumi.Input[str] description: The description of the app.
+        :param pulumi.Input[str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+        :param pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]] resources: A list of resources that the app have access to.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -37,6 +40,9 @@ class AppArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the app.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -46,6 +52,9 @@ class AppArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -55,6 +64,9 @@ class AppArgs:
     @property
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]]:
+        """
+        A list of resources that the app have access to.
+        """
         return pulumi.get(self, "resources")
 
     @resources.setter
@@ -83,6 +95,19 @@ class _AppState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering App resources.
+        :param pulumi.Input['AppAppStatusArgs'] app_status: attribute
+        :param pulumi.Input['AppComputeStatusArgs'] compute_status: attribute
+        :param pulumi.Input[str] create_time: The creation time of the app.
+        :param pulumi.Input[str] creator: The email of the user that created the app.
+        :param pulumi.Input[str] default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        :param pulumi.Input[str] description: The description of the app.
+        :param pulumi.Input[str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+        :param pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]] resources: A list of resources that the app have access to.
+        :param pulumi.Input[int] service_principal_id: id of the app service principal
+        :param pulumi.Input[str] service_principal_name: name of the app service principal
+        :param pulumi.Input[str] update_time: The update time of the app.
+        :param pulumi.Input[str] updater: The email of the user that last updated the app.
+        :param pulumi.Input[str] url: The URL of the app once it is deployed.
         """
         if active_deployment is not None:
             pulumi.set(__self__, "active_deployment", active_deployment)
@@ -129,6 +154,9 @@ class _AppState:
     @property
     @pulumi.getter(name="appStatus")
     def app_status(self) -> Optional[pulumi.Input['AppAppStatusArgs']]:
+        """
+        attribute
+        """
         return pulumi.get(self, "app_status")
 
     @app_status.setter
@@ -138,6 +166,9 @@ class _AppState:
     @property
     @pulumi.getter(name="computeStatus")
     def compute_status(self) -> Optional[pulumi.Input['AppComputeStatusArgs']]:
+        """
+        attribute
+        """
         return pulumi.get(self, "compute_status")
 
     @compute_status.setter
@@ -147,6 +178,9 @@ class _AppState:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the app.
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -156,6 +190,9 @@ class _AppState:
     @property
     @pulumi.getter
     def creator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email of the user that created the app.
+        """
         return pulumi.get(self, "creator")
 
     @creator.setter
@@ -165,6 +202,9 @@ class _AppState:
     @property
     @pulumi.getter(name="defaultSourceCodePath")
     def default_source_code_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        """
         return pulumi.get(self, "default_source_code_path")
 
     @default_source_code_path.setter
@@ -174,6 +214,9 @@ class _AppState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the app.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -183,6 +226,9 @@ class _AppState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -201,6 +247,9 @@ class _AppState:
     @property
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]]:
+        """
+        A list of resources that the app have access to.
+        """
         return pulumi.get(self, "resources")
 
     @resources.setter
@@ -219,6 +268,9 @@ class _AppState:
     @property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        id of the app service principal
+        """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
@@ -228,6 +280,9 @@ class _AppState:
     @property
     @pulumi.getter(name="servicePrincipalName")
     def service_principal_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        name of the app service principal
+        """
         return pulumi.get(self, "service_principal_name")
 
     @service_principal_name.setter
@@ -237,6 +292,9 @@ class _AppState:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The update time of the app.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -246,6 +304,9 @@ class _AppState:
     @property
     @pulumi.getter
     def updater(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email of the user that last updated the app.
+        """
         return pulumi.get(self, "updater")
 
     @updater.setter
@@ -255,6 +316,9 @@ class _AppState:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the app once it is deployed.
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -272,9 +336,37 @@ class App(pulumi.CustomResource):
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
                  __props__=None):
         """
-        Create a App resource with the given unique name, props, and options.
+        > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+
+        [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+
+        ## Import
+
+        This resource can be imported by name:
+
+        hcl
+
+        import {
+
+          to = databricks_app.this
+
+          id = "<app_name>"
+
+        }
+
+        or using the `terraform` CLI:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/app:App this <app_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the app.
+        :param pulumi.Input[str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]] resources: A list of resources that the app have access to.
         """
         ...
     @overload
@@ -283,7 +375,32 @@ class App(pulumi.CustomResource):
                  args: Optional[AppArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a App resource with the given unique name, props, and options.
+        > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+
+        [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+
+        ## Import
+
+        This resource can be imported by name:
+
+        hcl
+
+        import {
+
+          to = databricks_app.this
+
+          id = "<app_name>"
+
+        }
+
+        or using the `terraform` CLI:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/app:App this <app_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param AppArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -360,6 +477,19 @@ class App(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['AppAppStatusArgs', 'AppAppStatusArgsDict']] app_status: attribute
+        :param pulumi.Input[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict']] compute_status: attribute
+        :param pulumi.Input[str] create_time: The creation time of the app.
+        :param pulumi.Input[str] creator: The email of the user that created the app.
+        :param pulumi.Input[str] default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        :param pulumi.Input[str] description: The description of the app.
+        :param pulumi.Input[str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]] resources: A list of resources that the app have access to.
+        :param pulumi.Input[int] service_principal_id: id of the app service principal
+        :param pulumi.Input[str] service_principal_name: name of the app service principal
+        :param pulumi.Input[str] update_time: The update time of the app.
+        :param pulumi.Input[str] updater: The email of the user that last updated the app.
+        :param pulumi.Input[str] url: The URL of the app once it is deployed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -391,36 +521,57 @@ class App(pulumi.CustomResource):
     @property
     @pulumi.getter(name="appStatus")
     def app_status(self) -> pulumi.Output['outputs.AppAppStatus']:
+        """
+        attribute
+        """
         return pulumi.get(self, "app_status")
 
     @property
     @pulumi.getter(name="computeStatus")
     def compute_status(self) -> pulumi.Output['outputs.AppComputeStatus']:
+        """
+        attribute
+        """
         return pulumi.get(self, "compute_status")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the app.
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def creator(self) -> pulumi.Output[str]:
+        """
+        The email of the user that created the app.
+        """
         return pulumi.get(self, "creator")
 
     @property
     @pulumi.getter(name="defaultSourceCodePath")
     def default_source_code_path(self) -> pulumi.Output[str]:
+        """
+        The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        """
         return pulumi.get(self, "default_source_code_path")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the app.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -431,6 +582,9 @@ class App(pulumi.CustomResource):
     @property
     @pulumi.getter
     def resources(self) -> pulumi.Output[Optional[Sequence['outputs.AppResource']]]:
+        """
+        A list of resources that the app have access to.
+        """
         return pulumi.get(self, "resources")
 
     @property
@@ -441,25 +595,40 @@ class App(pulumi.CustomResource):
     @property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Output[int]:
+        """
+        id of the app service principal
+        """
         return pulumi.get(self, "service_principal_id")
 
     @property
     @pulumi.getter(name="servicePrincipalName")
     def service_principal_name(self) -> pulumi.Output[str]:
+        """
+        name of the app service principal
+        """
         return pulumi.get(self, "service_principal_name")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
+        """
+        The update time of the app.
+        """
         return pulumi.get(self, "update_time")
 
     @property
     @pulumi.getter
     def updater(self) -> pulumi.Output[str]:
+        """
+        The email of the user that last updated the app.
+        """
         return pulumi.get(self, "updater")
 
     @property
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
+        """
+        The URL of the app once it is deployed.
+        """
         return pulumi.get(self, "url")
 

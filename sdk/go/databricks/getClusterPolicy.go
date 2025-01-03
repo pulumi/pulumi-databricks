@@ -11,6 +11,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// Retrieves information about databricks_cluster_policy.
+//
+// ## Example Usage
+//
+// Referring to a cluster policy by name:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			personal, err := databricks.LookupClusterPolicy(ctx, &databricks.LookupClusterPolicyArgs{
+//				Name: pulumi.StringRef("Personal Compute"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewCluster(ctx, "my_cluster", &databricks.ClusterArgs{
+//				PolicyId: pulumi.String(personal.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupClusterPolicy(ctx *pulumi.Context, args *LookupClusterPolicyArgs, opts ...pulumi.InvokeOption) (*LookupClusterPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterPolicyResult
@@ -23,26 +60,41 @@ func LookupClusterPolicy(ctx *pulumi.Context, args *LookupClusterPolicyArgs, opt
 
 // A collection of arguments for invoking getClusterPolicy.
 type LookupClusterPolicyArgs struct {
-	Definition                      *string `pulumi:"definition"`
-	Description                     *string `pulumi:"description"`
-	Id                              *string `pulumi:"id"`
-	IsDefault                       *bool   `pulumi:"isDefault"`
-	MaxClustersPerUser              *int    `pulumi:"maxClustersPerUser"`
-	Name                            *string `pulumi:"name"`
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+	Definition *string `pulumi:"definition"`
+	// Additional human-readable description of the cluster policy.
+	Description *string `pulumi:"description"`
+	// The id of the cluster policy.
+	Id *string `pulumi:"id"`
+	// If true, policy is a default policy created and managed by Databricks.
+	IsDefault *bool `pulumi:"isDefault"`
+	// Max number of clusters per user that can be active using this policy.
+	MaxClustersPerUser *int `pulumi:"maxClustersPerUser"`
+	// Name of the cluster policy. The cluster policy must exist before this resource can be planned.
+	Name *string `pulumi:"name"`
+	// Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
 	PolicyFamilyDefinitionOverrides *string `pulumi:"policyFamilyDefinitionOverrides"`
-	PolicyFamilyId                  *string `pulumi:"policyFamilyId"`
+	// ID of the policy family.
+	PolicyFamilyId *string `pulumi:"policyFamilyId"`
 }
 
 // A collection of values returned by getClusterPolicy.
 type LookupClusterPolicyResult struct {
-	Definition                      string `pulumi:"definition"`
-	Description                     string `pulumi:"description"`
-	Id                              string `pulumi:"id"`
-	IsDefault                       bool   `pulumi:"isDefault"`
-	MaxClustersPerUser              int    `pulumi:"maxClustersPerUser"`
-	Name                            string `pulumi:"name"`
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+	Definition string `pulumi:"definition"`
+	// Additional human-readable description of the cluster policy.
+	Description string `pulumi:"description"`
+	// The id of the cluster policy.
+	Id string `pulumi:"id"`
+	// If true, policy is a default policy created and managed by Databricks.
+	IsDefault bool `pulumi:"isDefault"`
+	// Max number of clusters per user that can be active using this policy.
+	MaxClustersPerUser int    `pulumi:"maxClustersPerUser"`
+	Name               string `pulumi:"name"`
+	// Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
 	PolicyFamilyDefinitionOverrides string `pulumi:"policyFamilyDefinitionOverrides"`
-	PolicyFamilyId                  string `pulumi:"policyFamilyId"`
+	// ID of the policy family.
+	PolicyFamilyId string `pulumi:"policyFamilyId"`
 }
 
 func LookupClusterPolicyOutput(ctx *pulumi.Context, args LookupClusterPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupClusterPolicyResultOutput {
@@ -56,14 +108,22 @@ func LookupClusterPolicyOutput(ctx *pulumi.Context, args LookupClusterPolicyOutp
 
 // A collection of arguments for invoking getClusterPolicy.
 type LookupClusterPolicyOutputArgs struct {
-	Definition                      pulumi.StringPtrInput `pulumi:"definition"`
-	Description                     pulumi.StringPtrInput `pulumi:"description"`
-	Id                              pulumi.StringPtrInput `pulumi:"id"`
-	IsDefault                       pulumi.BoolPtrInput   `pulumi:"isDefault"`
-	MaxClustersPerUser              pulumi.IntPtrInput    `pulumi:"maxClustersPerUser"`
-	Name                            pulumi.StringPtrInput `pulumi:"name"`
+	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
+	Definition pulumi.StringPtrInput `pulumi:"definition"`
+	// Additional human-readable description of the cluster policy.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The id of the cluster policy.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// If true, policy is a default policy created and managed by Databricks.
+	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
+	// Max number of clusters per user that can be active using this policy.
+	MaxClustersPerUser pulumi.IntPtrInput `pulumi:"maxClustersPerUser"`
+	// Name of the cluster policy. The cluster policy must exist before this resource can be planned.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
 	PolicyFamilyDefinitionOverrides pulumi.StringPtrInput `pulumi:"policyFamilyDefinitionOverrides"`
-	PolicyFamilyId                  pulumi.StringPtrInput `pulumi:"policyFamilyId"`
+	// ID of the policy family.
+	PolicyFamilyId pulumi.StringPtrInput `pulumi:"policyFamilyId"`
 }
 
 func (LookupClusterPolicyOutputArgs) ElementType() reflect.Type {
@@ -85,22 +145,27 @@ func (o LookupClusterPolicyResultOutput) ToLookupClusterPolicyResultOutputWithCo
 	return o
 }
 
+// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
 func (o LookupClusterPolicyResultOutput) Definition() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterPolicyResult) string { return v.Definition }).(pulumi.StringOutput)
 }
 
+// Additional human-readable description of the cluster policy.
 func (o LookupClusterPolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterPolicyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The id of the cluster policy.
 func (o LookupClusterPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// If true, policy is a default policy created and managed by Databricks.
 func (o LookupClusterPolicyResultOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClusterPolicyResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
+// Max number of clusters per user that can be active using this policy.
 func (o LookupClusterPolicyResultOutput) MaxClustersPerUser() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterPolicyResult) int { return v.MaxClustersPerUser }).(pulumi.IntOutput)
 }
@@ -109,10 +174,12 @@ func (o LookupClusterPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
 func (o LookupClusterPolicyResultOutput) PolicyFamilyDefinitionOverrides() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterPolicyResult) string { return v.PolicyFamilyDefinitionOverrides }).(pulumi.StringOutput)
 }
 
+// ID of the policy family.
 func (o LookupClusterPolicyResultOutput) PolicyFamilyId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterPolicyResult) string { return v.PolicyFamilyId }).(pulumi.StringOutput)
 }

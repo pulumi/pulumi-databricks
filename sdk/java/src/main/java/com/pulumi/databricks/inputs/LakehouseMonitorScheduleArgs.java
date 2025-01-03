@@ -16,23 +16,47 @@ public final class LakehouseMonitorScheduleArgs extends com.pulumi.resources.Res
 
     public static final LakehouseMonitorScheduleArgs Empty = new LakehouseMonitorScheduleArgs();
 
+    /**
+     * optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+     * 
+     */
     @Import(name="pauseStatus")
     private @Nullable Output<String> pauseStatus;
 
+    /**
+     * @return optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+     * 
+     */
     public Optional<Output<String>> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
 
+    /**
+     * string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+     * 
+     */
     @Import(name="quartzCronExpression", required=true)
     private Output<String> quartzCronExpression;
 
+    /**
+     * @return string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+     * 
+     */
     public Output<String> quartzCronExpression() {
         return this.quartzCronExpression;
     }
 
+    /**
+     * string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+     * 
+     */
     @Import(name="timezoneId", required=true)
     private Output<String> timezoneId;
 
+    /**
+     * @return string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+     * 
+     */
     public Output<String> timezoneId() {
         return this.timezoneId;
     }
@@ -63,29 +87,65 @@ public final class LakehouseMonitorScheduleArgs extends com.pulumi.resources.Res
             $ = new LakehouseMonitorScheduleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pauseStatus optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder pauseStatus(@Nullable Output<String> pauseStatus) {
             $.pauseStatus = pauseStatus;
             return this;
         }
 
+        /**
+         * @param pauseStatus optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder pauseStatus(String pauseStatus) {
             return pauseStatus(Output.of(pauseStatus));
         }
 
+        /**
+         * @param quartzCronExpression string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+         * 
+         * @return builder
+         * 
+         */
         public Builder quartzCronExpression(Output<String> quartzCronExpression) {
             $.quartzCronExpression = quartzCronExpression;
             return this;
         }
 
+        /**
+         * @param quartzCronExpression string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+         * 
+         * @return builder
+         * 
+         */
         public Builder quartzCronExpression(String quartzCronExpression) {
             return quartzCronExpression(Output.of(quartzCronExpression));
         }
 
+        /**
+         * @param timezoneId string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timezoneId(Output<String> timezoneId) {
             $.timezoneId = timezoneId;
             return this;
         }
 
+        /**
+         * @param timezoneId string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timezoneId(String timezoneId) {
             return timezoneId(Output.of(timezoneId));
         }

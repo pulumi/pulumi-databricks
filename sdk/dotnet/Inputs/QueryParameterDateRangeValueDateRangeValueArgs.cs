@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class QueryParameterDateRangeValueDateRangeValueArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// end of the date range.
+        /// </summary>
         [Input("end", required: true)]
         public Input<string> End { get; set; } = null!;
 
+        /// <summary>
+        /// begin of the date range.
+        /// </summary>
         [Input("start", required: true)]
         public Input<string> Start { get; set; } = null!;
 

@@ -6,6 +6,37 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * > This resource can only be used on a Unity Catalog-enabled workspace!
+ *
+ * This resource allows you to create [Online Table](https://docs.databricks.com/en/machine-learning/feature-store/online-tables.html) in Databricks.  An online table is a read-only copy of a Delta Table that is stored in row-oriented format optimized for online access. Online tables are fully serverless tables that auto-scale throughput capacity with the request load and provide low latency and high throughput access to data of any scale. Online tables are designed to work with Databricks Model Serving, Feature Serving, and retrieval-augmented generation (RAG) applications where they are used for fast data lookups.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.OnlineTable("this", {
+ *     name: "main.default.online_table",
+ *     spec: {
+ *         sourceTableFullName: "main.default.source_table",
+ *         primaryKeyColumns: ["id"],
+ *         runTriggered: {},
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The resource can be imported using the name of the Online Table:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/onlineTable:OnlineTable this <endpoint-name>
+ * ```
+ */
 export class OnlineTable extends pulumi.CustomResource {
     /**
      * Get an existing OnlineTable resource's state with the given name, ID, and optional extra
@@ -34,10 +65,25 @@ export class OnlineTable extends pulumi.CustomResource {
         return obj['__pulumiType'] === OnlineTable.__pulumiType;
     }
 
+    /**
+     * 3-level name of the Online Table to create.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * object containing specification of the online table:
+     */
     public readonly spec!: pulumi.Output<outputs.OnlineTableSpec | undefined>;
+    /**
+     * object describing status of the online table:
+     */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.OnlineTableStatus[]>;
+    /**
+     * Data serving REST API URL for this table.
+     */
     public /*out*/ readonly tableServingUrl!: pulumi.Output<string>;
+    /**
+     * The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+     */
     public /*out*/ readonly unityCatalogProvisioningState!: pulumi.Output<string>;
 
     /**
@@ -75,10 +121,25 @@ export class OnlineTable extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OnlineTable resources.
  */
 export interface OnlineTableState {
+    /**
+     * 3-level name of the Online Table to create.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * object containing specification of the online table:
+     */
     spec?: pulumi.Input<inputs.OnlineTableSpec>;
+    /**
+     * object describing status of the online table:
+     */
     statuses?: pulumi.Input<pulumi.Input<inputs.OnlineTableStatus>[]>;
+    /**
+     * Data serving REST API URL for this table.
+     */
     tableServingUrl?: pulumi.Input<string>;
+    /**
+     * The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+     */
     unityCatalogProvisioningState?: pulumi.Input<string>;
 }
 
@@ -86,6 +147,12 @@ export interface OnlineTableState {
  * The set of arguments for constructing a OnlineTable resource.
  */
 export interface OnlineTableArgs {
+    /**
+     * 3-level name of the Online Table to create.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * object containing specification of the online table:
+     */
     spec?: pulumi.Input<inputs.OnlineTableSpec>;
 }

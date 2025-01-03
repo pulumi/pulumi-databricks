@@ -15,7 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFunctionsResult {
+    /**
+     * @return Name of parent catalog.
+     * 
+     */
     private String catalogName;
+    /**
+     * @return list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+     * 
+     */
     private List<GetFunctionsFunction> functions;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,12 +31,24 @@ public final class GetFunctionsResult {
      */
     private String id;
     private @Nullable Boolean includeBrowse;
+    /**
+     * @return Name of parent schema relative to its parent catalog.
+     * 
+     */
     private String schemaName;
 
     private GetFunctionsResult() {}
+    /**
+     * @return Name of parent catalog.
+     * 
+     */
     public String catalogName() {
         return this.catalogName;
     }
+    /**
+     * @return list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+     * 
+     */
     public List<GetFunctionsFunction> functions() {
         return this.functions;
     }
@@ -42,6 +62,10 @@ public final class GetFunctionsResult {
     public Optional<Boolean> includeBrowse() {
         return Optional.ofNullable(this.includeBrowse);
     }
+    /**
+     * @return Name of parent schema relative to its parent catalog.
+     * 
+     */
     public String schemaName() {
         return this.schemaName;
     }

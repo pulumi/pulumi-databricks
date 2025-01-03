@@ -26,6 +26,9 @@ class FileArgs:
                  source: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a File resource.
+        :param pulumi.Input[str] path: The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        :param pulumi.Input[str] content_base64: Contents in base 64 format. Conflicts with `source`.
+        :param pulumi.Input[str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         pulumi.set(__self__, "path", path)
         if content_base64 is not None:
@@ -40,6 +43,9 @@ class FileArgs:
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input[str]:
+        """
+        The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -49,6 +55,9 @@ class FileArgs:
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        Contents in base 64 format. Conflicts with `source`.
+        """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
@@ -76,6 +85,9 @@ class FileArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full absolute path to the file. Conflicts with `content_base64`.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -95,6 +107,11 @@ class _FileState:
                  source: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering File resources.
+        :param pulumi.Input[str] content_base64: Contents in base 64 format. Conflicts with `source`.
+        :param pulumi.Input[int] file_size: The file size of the file that is being tracked by this resource in bytes.
+        :param pulumi.Input[str] modification_time: The last time stamp when the file was modified
+        :param pulumi.Input[str] path: The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        :param pulumi.Input[str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         if content_base64 is not None:
             pulumi.set(__self__, "content_base64", content_base64)
@@ -114,6 +131,9 @@ class _FileState:
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        Contents in base 64 format. Conflicts with `source`.
+        """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
@@ -123,6 +143,9 @@ class _FileState:
     @property
     @pulumi.getter(name="fileSize")
     def file_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The file size of the file that is being tracked by this resource in bytes.
+        """
         return pulumi.get(self, "file_size")
 
     @file_size.setter
@@ -141,6 +164,9 @@ class _FileState:
     @property
     @pulumi.getter(name="modificationTime")
     def modification_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The last time stamp when the file was modified
+        """
         return pulumi.get(self, "modification_time")
 
     @modification_time.setter
@@ -150,6 +176,9 @@ class _FileState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -168,6 +197,9 @@ class _FileState:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full absolute path to the file. Conflicts with `content_base64`.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -187,9 +219,83 @@ class File(pulumi.CustomResource):
                  source: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a File resource with the given unique name, props, and options.
+        This resource allows uploading and downloading files in databricks_volume.
+
+        Notes:
+
+        * Currently the limit is 5GiB in octet-stream.
+        * Currently, only UC volumes are supported. The list of destinations may change.
+
+        ## Example Usage
+
+        In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `source` attribute containing the full path to the file on the local filesystem.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            metastore_id=this_databricks_metastore["id"],
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        things = databricks.Schema("things",
+            catalog_name=sandbox.name,
+            name="things",
+            comment="this schema is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        this = databricks.Volume("this",
+            name="quickstart_volume",
+            catalog_name=sandbox.name,
+            schema_name=things.name,
+            volume_type="MANAGED",
+            comment="this volume is managed by terraform")
+        this_file = databricks.File("this",
+            source="/full/path/on/local/system",
+            path=this.volume_path.apply(lambda volume_path: f"{volume_path}/fileName"))
+        ```
+
+        You can also inline sources through `content_base64`  attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        init_script = databricks.File("init_script",
+            content_base64=std.base64encode(input=\"\"\"#!/bin/bash
+        echo "Hello World"
+        \"\"\").result,
+            path=f"{this['volumePath']}/fileName")
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * WorkspaceFile
+        * End to end workspace management guide.
+        * Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
+
+        ## Import
+
+        The resource `databricks_file` can be imported using the path of the file:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/file:File this <path>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_base64: Contents in base 64 format. Conflicts with `source`.
+        :param pulumi.Input[str] path: The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        :param pulumi.Input[str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         ...
     @overload
@@ -198,7 +304,78 @@ class File(pulumi.CustomResource):
                  args: FileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a File resource with the given unique name, props, and options.
+        This resource allows uploading and downloading files in databricks_volume.
+
+        Notes:
+
+        * Currently the limit is 5GiB in octet-stream.
+        * Currently, only UC volumes are supported. The list of destinations may change.
+
+        ## Example Usage
+
+        In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `source` attribute containing the full path to the file on the local filesystem.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            metastore_id=this_databricks_metastore["id"],
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        things = databricks.Schema("things",
+            catalog_name=sandbox.name,
+            name="things",
+            comment="this schema is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        this = databricks.Volume("this",
+            name="quickstart_volume",
+            catalog_name=sandbox.name,
+            schema_name=things.name,
+            volume_type="MANAGED",
+            comment="this volume is managed by terraform")
+        this_file = databricks.File("this",
+            source="/full/path/on/local/system",
+            path=this.volume_path.apply(lambda volume_path: f"{volume_path}/fileName"))
+        ```
+
+        You can also inline sources through `content_base64`  attribute.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        init_script = databricks.File("init_script",
+            content_base64=std.base64encode(input=\"\"\"#!/bin/bash
+        echo "Hello World"
+        \"\"\").result,
+            path=f"{this['volumePath']}/fileName")
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * WorkspaceFile
+        * End to end workspace management guide.
+        * Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
+
+        ## Import
+
+        The resource `databricks_file` can be imported using the path of the file:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/file:File this <path>
+        ```
+
         :param str resource_name: The name of the resource.
         :param FileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -261,6 +438,11 @@ class File(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_base64: Contents in base 64 format. Conflicts with `source`.
+        :param pulumi.Input[int] file_size: The file size of the file that is being tracked by this resource in bytes.
+        :param pulumi.Input[str] modification_time: The last time stamp when the file was modified
+        :param pulumi.Input[str] path: The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        :param pulumi.Input[str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -278,11 +460,17 @@ class File(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> pulumi.Output[Optional[str]]:
+        """
+        Contents in base 64 format. Conflicts with `source`.
+        """
         return pulumi.get(self, "content_base64")
 
     @property
     @pulumi.getter(name="fileSize")
     def file_size(self) -> pulumi.Output[int]:
+        """
+        The file size of the file that is being tracked by this resource in bytes.
+        """
         return pulumi.get(self, "file_size")
 
     @property
@@ -293,11 +481,17 @@ class File(pulumi.CustomResource):
     @property
     @pulumi.getter(name="modificationTime")
     def modification_time(self) -> pulumi.Output[str]:
+        """
+        The last time stamp when the file was modified
+        """
         return pulumi.get(self, "modification_time")
 
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output[str]:
+        """
+        The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        """
         return pulumi.get(self, "path")
 
     @property
@@ -308,5 +502,8 @@ class File(pulumi.CustomResource):
     @property
     @pulumi.getter
     def source(self) -> pulumi.Output[Optional[str]]:
+        """
+        The full absolute path to the file. Conflicts with `content_base64`.
+        """
         return pulumi.get(self, "source")
 

@@ -13,33 +13,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlAlertOptions {
+    /**
+     * @return Name of column in the query result to compare in alert evaluation.
+     * 
+     */
     private String column;
+    /**
+     * @return Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+     * 
+     */
     private @Nullable String customBody;
+    /**
+     * @return Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+     * 
+     */
     private @Nullable String customSubject;
+    /**
+     * @return State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+     * 
+     */
     private @Nullable String emptyResultState;
+    /**
+     * @return Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+     * 
+     */
     private @Nullable Boolean muted;
+    /**
+     * @return Operator used to compare in alert evaluation. (Enum: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`, `!=`)
+     * 
+     */
     private String op;
+    /**
+     * @return Value used to compare in alert evaluation.
+     * 
+     */
     private String value;
 
     private SqlAlertOptions() {}
+    /**
+     * @return Name of column in the query result to compare in alert evaluation.
+     * 
+     */
     public String column() {
         return this.column;
     }
+    /**
+     * @return Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+     * 
+     */
     public Optional<String> customBody() {
         return Optional.ofNullable(this.customBody);
     }
+    /**
+     * @return Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+     * 
+     */
     public Optional<String> customSubject() {
         return Optional.ofNullable(this.customSubject);
     }
+    /**
+     * @return State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+     * 
+     */
     public Optional<String> emptyResultState() {
         return Optional.ofNullable(this.emptyResultState);
     }
+    /**
+     * @return Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+     * 
+     */
     public Optional<Boolean> muted() {
         return Optional.ofNullable(this.muted);
     }
+    /**
+     * @return Operator used to compare in alert evaluation. (Enum: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`, `!=`)
+     * 
+     */
     public String op() {
         return this.op;
     }
+    /**
+     * @return Value used to compare in alert evaluation.
+     * 
+     */
     public String value() {
         return this.value;
     }

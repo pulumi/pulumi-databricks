@@ -11,12 +11,153 @@ namespace Pulumi.Databricks
 {
     public static class GetGroup
     {
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about databricks.Group members, entitlements and instance profiles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Adding user to administrative group
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var admins = Databricks.GetGroup.Invoke(new()
+        ///     {
+        ///         DisplayName = "admins",
+        ///     });
+        /// 
+        ///     var me = new Databricks.User("me", new()
+        ///     {
+        ///         UserName = "me@example.com",
+        ///     });
+        /// 
+        ///     var myMemberA = new Databricks.GroupMember("my_member_a", new()
+        ///     {
+        ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         MemberId = me.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * End to end workspace management guide
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+        /// * databricks.GroupMember to attach users and groups as group members.
+        /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+        /// * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
+        /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("databricks:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about databricks.Group members, entitlements and instance profiles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Adding user to administrative group
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var admins = Databricks.GetGroup.Invoke(new()
+        ///     {
+        ///         DisplayName = "admins",
+        ///     });
+        /// 
+        ///     var me = new Databricks.User("me", new()
+        ///     {
+        ///         UserName = "me@example.com",
+        ///     });
+        /// 
+        ///     var myMemberA = new Databricks.GroupMember("my_member_a", new()
+        ///     {
+        ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         MemberId = me.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * End to end workspace management guide
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+        /// * databricks.GroupMember to attach users and groups as group members.
+        /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+        /// * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
+        /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("databricks:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about databricks.Group members, entitlements and instance profiles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Adding user to administrative group
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var admins = Databricks.GetGroup.Invoke(new()
+        ///     {
+        ///         DisplayName = "admins",
+        ///     });
+        /// 
+        ///     var me = new Databricks.User("me", new()
+        ///     {
+        ///         UserName = "me@example.com",
+        ///     });
+        /// 
+        ///     var myMemberA = new Databricks.GroupMember("my_member_a", new()
+        ///     {
+        ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         MemberId = me.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * End to end workspace management guide
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+        /// * databricks.GroupMember to attach users and groups as group members.
+        /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+        /// * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
+        /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("databricks:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
     }
@@ -24,17 +165,30 @@ namespace Pulumi.Databricks
 
     public sealed class GetGroupArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        /// </summary>
         [Input("aclPrincipalId")]
         public string? AclPrincipalId { get; set; }
 
+        /// <summary>
+        /// True if group members can create clusters
+        /// </summary>
         [Input("allowClusterCreate")]
         public bool? AllowClusterCreate { get; set; }
 
+        /// <summary>
+        /// True if group members can create instance pools
+        /// </summary>
         [Input("allowInstancePoolCreate")]
         public bool? AllowInstancePoolCreate { get; set; }
 
         [Input("childGroups")]
         private List<string>? _childGroups;
+
+        /// <summary>
+        /// Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
+        /// </summary>
         public List<string> ChildGroups
         {
             get => _childGroups ?? (_childGroups = new List<string>());
@@ -44,14 +198,24 @@ namespace Pulumi.Databricks
         [Input("databricksSqlAccess")]
         public bool? DatabricksSqlAccess { get; set; }
 
+        /// <summary>
+        /// Display name of the group. The group must exist before this resource can be planned.
+        /// </summary>
         [Input("displayName", required: true)]
         public string DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// ID of the group in an external identity provider.
+        /// </summary>
         [Input("externalId")]
         public string? ExternalId { get; set; }
 
         [Input("groups")]
         private List<string>? _groups;
+
+        /// <summary>
+        /// Set of group identifiers, that can be modified with databricks.GroupMember resource.
+        /// </summary>
         public List<string> Groups
         {
             get => _groups ?? (_groups = new List<string>());
@@ -60,6 +224,10 @@ namespace Pulumi.Databricks
 
         [Input("instanceProfiles")]
         private List<string>? _instanceProfiles;
+
+        /// <summary>
+        /// Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+        /// </summary>
         public List<string> InstanceProfiles
         {
             get => _instanceProfiles ?? (_instanceProfiles = new List<string>());
@@ -75,11 +243,18 @@ namespace Pulumi.Databricks
             set => _members = value;
         }
 
+        /// <summary>
+        /// Collect information for all nested groups. *Defaults to true.*
+        /// </summary>
         [Input("recursive")]
         public bool? Recursive { get; set; }
 
         [Input("servicePrincipals")]
         private List<string>? _servicePrincipals;
+
+        /// <summary>
+        /// Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
+        /// </summary>
         public List<string> ServicePrincipals
         {
             get => _servicePrincipals ?? (_servicePrincipals = new List<string>());
@@ -88,6 +263,10 @@ namespace Pulumi.Databricks
 
         [Input("users")]
         private List<string>? _users;
+
+        /// <summary>
+        /// Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
+        /// </summary>
         public List<string> Users
         {
             get => _users ?? (_users = new List<string>());
@@ -105,17 +284,30 @@ namespace Pulumi.Databricks
 
     public sealed class GetGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        /// </summary>
         [Input("aclPrincipalId")]
         public Input<string>? AclPrincipalId { get; set; }
 
+        /// <summary>
+        /// True if group members can create clusters
+        /// </summary>
         [Input("allowClusterCreate")]
         public Input<bool>? AllowClusterCreate { get; set; }
 
+        /// <summary>
+        /// True if group members can create instance pools
+        /// </summary>
         [Input("allowInstancePoolCreate")]
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
         [Input("childGroups")]
         private InputList<string>? _childGroups;
+
+        /// <summary>
+        /// Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
+        /// </summary>
         public InputList<string> ChildGroups
         {
             get => _childGroups ?? (_childGroups = new InputList<string>());
@@ -125,14 +317,24 @@ namespace Pulumi.Databricks
         [Input("databricksSqlAccess")]
         public Input<bool>? DatabricksSqlAccess { get; set; }
 
+        /// <summary>
+        /// Display name of the group. The group must exist before this resource can be planned.
+        /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// ID of the group in an external identity provider.
+        /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
         [Input("groups")]
         private InputList<string>? _groups;
+
+        /// <summary>
+        /// Set of group identifiers, that can be modified with databricks.GroupMember resource.
+        /// </summary>
         public InputList<string> Groups
         {
             get => _groups ?? (_groups = new InputList<string>());
@@ -141,6 +343,10 @@ namespace Pulumi.Databricks
 
         [Input("instanceProfiles")]
         private InputList<string>? _instanceProfiles;
+
+        /// <summary>
+        /// Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+        /// </summary>
         public InputList<string> InstanceProfiles
         {
             get => _instanceProfiles ?? (_instanceProfiles = new InputList<string>());
@@ -156,11 +362,18 @@ namespace Pulumi.Databricks
             set => _members = value;
         }
 
+        /// <summary>
+        /// Collect information for all nested groups. *Defaults to true.*
+        /// </summary>
         [Input("recursive")]
         public Input<bool>? Recursive { get; set; }
 
         [Input("servicePrincipals")]
         private InputList<string>? _servicePrincipals;
+
+        /// <summary>
+        /// Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
+        /// </summary>
         public InputList<string> ServicePrincipals
         {
             get => _servicePrincipals ?? (_servicePrincipals = new InputList<string>());
@@ -169,6 +382,10 @@ namespace Pulumi.Databricks
 
         [Input("users")]
         private InputList<string>? _users;
+
+        /// <summary>
+        /// Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
+        /// </summary>
         public InputList<string> Users
         {
             get => _users ?? (_users = new InputList<string>());
@@ -188,22 +405,49 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetGroupResult
     {
+        /// <summary>
+        /// identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        /// </summary>
         public readonly string AclPrincipalId;
+        /// <summary>
+        /// True if group members can create clusters
+        /// </summary>
         public readonly bool? AllowClusterCreate;
+        /// <summary>
+        /// True if group members can create instance pools
+        /// </summary>
         public readonly bool? AllowInstancePoolCreate;
+        /// <summary>
+        /// Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
+        /// </summary>
         public readonly ImmutableArray<string> ChildGroups;
         public readonly bool? DatabricksSqlAccess;
         public readonly string DisplayName;
+        /// <summary>
+        /// ID of the group in an external identity provider.
+        /// </summary>
         public readonly string ExternalId;
+        /// <summary>
+        /// Set of group identifiers, that can be modified with databricks.GroupMember resource.
+        /// </summary>
         public readonly ImmutableArray<string> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+        /// </summary>
         public readonly ImmutableArray<string> InstanceProfiles;
         public readonly ImmutableArray<string> Members;
         public readonly bool? Recursive;
+        /// <summary>
+        /// Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
+        /// </summary>
         public readonly ImmutableArray<string> ServicePrincipals;
+        /// <summary>
+        /// Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
+        /// </summary>
         public readonly ImmutableArray<string> Users;
         public readonly bool? WorkspaceAccess;
 

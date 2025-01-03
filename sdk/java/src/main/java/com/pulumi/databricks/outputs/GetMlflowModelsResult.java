@@ -16,6 +16,10 @@ public final class GetMlflowModelsResult {
      * 
      */
     private String id;
+    /**
+     * @return List of names of databricks_mlflow_model
+     * 
+     */
     private List<String> names;
 
     private GetMlflowModelsResult() {}
@@ -26,6 +30,10 @@ public final class GetMlflowModelsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return List of names of databricks_mlflow_model
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

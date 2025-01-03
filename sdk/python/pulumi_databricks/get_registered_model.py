@@ -48,6 +48,9 @@ class GetRegisteredModelResult:
     @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> str:
+        """
+        The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+        """
         return pulumi.get(self, "full_name")
 
     @property
@@ -71,6 +74,9 @@ class GetRegisteredModelResult:
     @property
     @pulumi.getter(name="modelInfos")
     def model_infos(self) -> Sequence['outputs.GetRegisteredModelModelInfoResult']:
+        """
+        block with information about the model in Unity Catalog:
+        """
         return pulumi.get(self, "model_infos")
 
 
@@ -93,7 +99,32 @@ def get_registered_model(full_name: Optional[str] = None,
                          model_infos: Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegisteredModelResult:
     """
-    Use this data source to access information about an existing resource.
+    > This resource can only be used with a workspace-level provider!
+
+    This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_registered_model(full_name="main.default.my_model")
+    ```
+
+    ## Related Resources
+
+    The following resources are often used in the same context:
+
+    * RegisteredModel resource to manage models within Unity Catalog.
+    * ModelServing to serve this model on a Databricks serving endpoint.
+    * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+
+
+    :param str full_name: The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+    :param bool include_aliases: flag to specify if list of aliases should be included into output.
+    :param bool include_browse: flag to specify if include registered models in the response for which the principal can only access selective metadata for.
+    :param Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']] model_infos: block with information about the model in Unity Catalog:
     """
     __args__ = dict()
     __args__['fullName'] = full_name
@@ -115,7 +146,32 @@ def get_registered_model_output(full_name: Optional[pulumi.Input[str]] = None,
                                 model_infos: Optional[pulumi.Input[Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegisteredModelResult]:
     """
-    Use this data source to access information about an existing resource.
+    > This resource can only be used with a workspace-level provider!
+
+    This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_registered_model(full_name="main.default.my_model")
+    ```
+
+    ## Related Resources
+
+    The following resources are often used in the same context:
+
+    * RegisteredModel resource to manage models within Unity Catalog.
+    * ModelServing to serve this model on a Databricks serving endpoint.
+    * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+
+
+    :param str full_name: The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+    :param bool include_aliases: flag to specify if list of aliases should be included into output.
+    :param bool include_browse: flag to specify if include registered models in the response for which the principal can only access selective metadata for.
+    :param Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']] model_infos: block with information about the model in Unity Catalog:
     """
     __args__ = dict()
     __args__['fullName'] = full_name

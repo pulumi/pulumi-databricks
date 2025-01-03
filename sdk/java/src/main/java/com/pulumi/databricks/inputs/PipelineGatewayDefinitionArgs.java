@@ -15,9 +15,17 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
 
     public static final PipelineGatewayDefinitionArgs Empty = new PipelineGatewayDefinitionArgs();
 
+    /**
+     * Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+     * 
+     */
     @Import(name="connectionId")
     private @Nullable Output<String> connectionId;
 
+    /**
+     * @return Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+     * 
+     */
     public Optional<Output<String>> connectionId() {
         return Optional.ofNullable(this.connectionId);
     }
@@ -29,23 +37,47 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.connectionName);
     }
 
+    /**
+     * Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
+     * 
+     */
     @Import(name="gatewayStorageCatalog")
     private @Nullable Output<String> gatewayStorageCatalog;
 
+    /**
+     * @return Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
+     * 
+     */
     public Optional<Output<String>> gatewayStorageCatalog() {
         return Optional.ofNullable(this.gatewayStorageCatalog);
     }
 
+    /**
+     * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+     * 
+     */
     @Import(name="gatewayStorageName")
     private @Nullable Output<String> gatewayStorageName;
 
+    /**
+     * @return Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+     * 
+     */
     public Optional<Output<String>> gatewayStorageName() {
         return Optional.ofNullable(this.gatewayStorageName);
     }
 
+    /**
+     * Required, Immutable. The name of the schema for the gateway pipelines&#39;s storage location.
+     * 
+     */
     @Import(name="gatewayStorageSchema")
     private @Nullable Output<String> gatewayStorageSchema;
 
+    /**
+     * @return Required, Immutable. The name of the schema for the gateway pipelines&#39;s storage location.
+     * 
+     */
     public Optional<Output<String>> gatewayStorageSchema() {
         return Optional.ofNullable(this.gatewayStorageSchema);
     }
@@ -78,11 +110,23 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
             $ = new PipelineGatewayDefinitionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param connectionId Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionId(@Nullable Output<String> connectionId) {
             $.connectionId = connectionId;
             return this;
         }
 
+        /**
+         * @param connectionId Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionId(String connectionId) {
             return connectionId(Output.of(connectionId));
         }
@@ -96,29 +140,65 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
             return connectionName(Output.of(connectionName));
         }
 
+        /**
+         * @param gatewayStorageCatalog Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayStorageCatalog(@Nullable Output<String> gatewayStorageCatalog) {
             $.gatewayStorageCatalog = gatewayStorageCatalog;
             return this;
         }
 
+        /**
+         * @param gatewayStorageCatalog Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayStorageCatalog(String gatewayStorageCatalog) {
             return gatewayStorageCatalog(Output.of(gatewayStorageCatalog));
         }
 
+        /**
+         * @param gatewayStorageName Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayStorageName(@Nullable Output<String> gatewayStorageName) {
             $.gatewayStorageName = gatewayStorageName;
             return this;
         }
 
+        /**
+         * @param gatewayStorageName Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayStorageName(String gatewayStorageName) {
             return gatewayStorageName(Output.of(gatewayStorageName));
         }
 
+        /**
+         * @param gatewayStorageSchema Required, Immutable. The name of the schema for the gateway pipelines&#39;s storage location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayStorageSchema(@Nullable Output<String> gatewayStorageSchema) {
             $.gatewayStorageSchema = gatewayStorageSchema;
             return this;
         }
 
+        /**
+         * @param gatewayStorageSchema Required, Immutable. The name of the schema for the gateway pipelines&#39;s storage location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gatewayStorageSchema(String gatewayStorageSchema) {
             return gatewayStorageSchema(Output.of(gatewayStorageSchema));
         }

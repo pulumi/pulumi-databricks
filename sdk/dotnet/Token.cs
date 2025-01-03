@@ -9,9 +9,68 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// This resource creates [Personal Access Tokens](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for the same user that is authenticated with the provider. Most likely you should use databricks.OboToken to create [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a databricks.ServicePrincipal in Databricks workspaces on AWS. Databricks workspaces on other clouds use their own native OAuth token flows.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // create PAT token to provision entities within workspace
+    ///     var pat = new Databricks.Token("pat", new()
+    ///     {
+    ///         Comment = "Pulumi Provisioning",
+    ///         LifetimeSeconds = 8640000,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["databricksToken"] = pat.TokenValue,
+    ///     };
+    /// });
+    /// ```
+    /// 
+    /// A token can be automatically rotated by taking a dependency on the `time_rotating` resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Time.Rotating("this", new()
+    ///     {
+    ///         RotationDays = 30,
+    ///     });
+    /// 
+    ///     var pat = new Databricks.Token("pat", new()
+    ///     {
+    ///         Comment = @this.Rfc3339.Apply(rfc3339 =&gt; $"Pulumi (created: {rfc3339})"),
+    ///         LifetimeSeconds = 60 * 24 * 60 * 60,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !&gt; Importing this resource is not currently supported.
+    /// </summary>
     [DatabricksResourceType("databricks:index/token:Token")]
     public partial class Token : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (String) Comment that will appear on the user’s settings page for this token.
+        /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
@@ -21,12 +80,18 @@ namespace Pulumi.Databricks
         [Output("expiryTime")]
         public Output<int> ExpiryTime { get; private set; } = null!;
 
+        /// <summary>
+        /// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        /// </summary>
         [Output("lifetimeSeconds")]
         public Output<int?> LifetimeSeconds { get; private set; } = null!;
 
         [Output("tokenId")]
         public Output<string> TokenId { get; private set; } = null!;
 
+        /// <summary>
+        /// **Sensitive** value of the newly-created token.
+        /// </summary>
         [Output("tokenValue")]
         public Output<string> TokenValue { get; private set; } = null!;
 
@@ -80,6 +145,9 @@ namespace Pulumi.Databricks
 
     public sealed class TokenArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (String) Comment that will appear on the user’s settings page for this token.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
@@ -89,6 +157,9 @@ namespace Pulumi.Databricks
         [Input("expiryTime")]
         public Input<int>? ExpiryTime { get; set; }
 
+        /// <summary>
+        /// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        /// </summary>
         [Input("lifetimeSeconds")]
         public Input<int>? LifetimeSeconds { get; set; }
 
@@ -103,6 +174,9 @@ namespace Pulumi.Databricks
 
     public sealed class TokenState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (String) Comment that will appear on the user’s settings page for this token.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
@@ -112,6 +186,9 @@ namespace Pulumi.Databricks
         [Input("expiryTime")]
         public Input<int>? ExpiryTime { get; set; }
 
+        /// <summary>
+        /// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        /// </summary>
         [Input("lifetimeSeconds")]
         public Input<int>? LifetimeSeconds { get; set; }
 
@@ -120,6 +197,10 @@ namespace Pulumi.Databricks
 
         [Input("tokenValue")]
         private Input<string>? _tokenValue;
+
+        /// <summary>
+        /// **Sensitive** value of the newly-created token.
+        /// </summary>
         public Input<string>? TokenValue
         {
             get => _tokenValue;

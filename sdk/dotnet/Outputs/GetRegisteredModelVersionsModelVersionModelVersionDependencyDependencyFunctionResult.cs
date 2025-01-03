@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionResult
     {
+        /// <summary>
+        /// Full name of the dependent function
+        /// </summary>
         public readonly string FunctionFullName;
 
         [OutputConstructor]

@@ -12,29 +12,51 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class OnlineTableSpecGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to create a full-copy pipeline -- a pipeline that stops after creates a full copy of the source table upon initialization and does not process any change data feeds (CDFs) afterwards. The pipeline can still be manually triggered afterwards, but it always perform a full copy of the source table and there are no incremental updates. This mode is useful for syncing views or tables without CDFs to online tables. Note that the full-copy pipeline only supports "triggered" scheduling policy.
+        /// </summary>
         [Input("performFullCopy")]
         public Input<bool>? PerformFullCopy { get; set; }
 
+        /// <summary>
+        /// ID of the associated Delta Live Table pipeline.
+        /// </summary>
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }
 
         [Input("primaryKeyColumns")]
         private InputList<string>? _primaryKeyColumns;
+
+        /// <summary>
+        /// list of the columns comprising the primary key.
+        /// </summary>
         public InputList<string> PrimaryKeyColumns
         {
             get => _primaryKeyColumns ?? (_primaryKeyColumns = new InputList<string>());
             set => _primaryKeyColumns = value;
         }
 
+        /// <summary>
+        /// empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
+        /// </summary>
         [Input("runContinuously")]
         public Input<Inputs.OnlineTableSpecRunContinuouslyGetArgs>? RunContinuously { get; set; }
 
+        /// <summary>
+        /// empty block that specifies that pipeline stops after generating the initial data and can be triggered later (manually, through a cron job or through data triggers).
+        /// </summary>
         [Input("runTriggered")]
         public Input<Inputs.OnlineTableSpecRunTriggeredGetArgs>? RunTriggered { get; set; }
 
+        /// <summary>
+        /// full name of the source table.
+        /// </summary>
         [Input("sourceTableFullName")]
         public Input<string>? SourceTableFullName { get; set; }
 
+        /// <summary>
+        /// Time series key to deduplicate (tie-break) rows with the same primary key.
+        /// </summary>
         [Input("timeseriesKey")]
         public Input<string>? TimeseriesKey { get; set; }
 

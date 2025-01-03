@@ -14,17 +14,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VectorSearchIndexDirectAccessIndexSpec {
+    /**
+     * @return array of objects representing columns that contain the embedding source.  Each entry consists of:
+     * 
+     */
     private @Nullable List<VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
     private @Nullable List<VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
+    /**
+     * @return The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+     * 
+     */
     private @Nullable String schemaJson;
 
     private VectorSearchIndexDirectAccessIndexSpec() {}
+    /**
+     * @return array of objects representing columns that contain the embedding source.  Each entry consists of:
+     * 
+     */
     public List<VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn> embeddingSourceColumns() {
         return this.embeddingSourceColumns == null ? List.of() : this.embeddingSourceColumns;
     }
     public List<VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn> embeddingVectorColumns() {
         return this.embeddingVectorColumns == null ? List.of() : this.embeddingVectorColumns;
     }
+    /**
+     * @return The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+     * 
+     */
     public Optional<String> schemaJson() {
         return Optional.ofNullable(this.schemaJson);
     }

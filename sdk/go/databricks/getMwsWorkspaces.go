@@ -11,6 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// Lists all MwsWorkspaces in Databricks Account.
+//
+// > **Note** `accountId` provider configuration property is required for this resource to work.
+//
+// ## Example Usage
+//
+// # Listing all workspaces in
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.LookupMwsWorkspaces(ctx, &databricks.LookupMwsWorkspacesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allMwsWorkspaces", all.Ids)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
+// * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurermDatabricksWorkspace
 func LookupMwsWorkspaces(ctx *pulumi.Context, args *LookupMwsWorkspacesArgs, opts ...pulumi.InvokeOption) (*LookupMwsWorkspacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMwsWorkspacesResult
@@ -23,13 +62,15 @@ func LookupMwsWorkspaces(ctx *pulumi.Context, args *LookupMwsWorkspacesArgs, opt
 
 // A collection of arguments for invoking getMwsWorkspaces.
 type LookupMwsWorkspacesArgs struct {
+	// name-to-id map for all of the workspaces in the account
 	Ids map[string]string `pulumi:"ids"`
 }
 
 // A collection of values returned by getMwsWorkspaces.
 type LookupMwsWorkspacesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id  string            `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// name-to-id map for all of the workspaces in the account
 	Ids map[string]string `pulumi:"ids"`
 }
 
@@ -44,6 +85,7 @@ func LookupMwsWorkspacesOutput(ctx *pulumi.Context, args LookupMwsWorkspacesOutp
 
 // A collection of arguments for invoking getMwsWorkspaces.
 type LookupMwsWorkspacesOutputArgs struct {
+	// name-to-id map for all of the workspaces in the account
 	Ids pulumi.StringMapInput `pulumi:"ids"`
 }
 
@@ -71,6 +113,7 @@ func (o LookupMwsWorkspacesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMwsWorkspacesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// name-to-id map for all of the workspaces in the account
 func (o LookupMwsWorkspacesResultOutput) Ids() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMwsWorkspacesResult) map[string]string { return v.Ids }).(pulumi.StringMapOutput)
 }

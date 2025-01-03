@@ -17,51 +17,107 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
 
     public static final ExternalLocationState Empty = new ExternalLocationState();
 
+    /**
+     * The ARN of the s3 access point to use with the external location (AWS).
+     * 
+     */
     @Import(name="accessPoint")
     private @Nullable Output<String> accessPoint;
 
+    /**
+     * @return The ARN of the s3 access point to use with the external location (AWS).
+     * 
+     */
     public Optional<Output<String>> accessPoint() {
         return Optional.ofNullable(this.accessPoint);
     }
 
+    /**
+     * User-supplied free-form text.
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return User-supplied free-form text.
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * Name of the databricks.StorageCredential to use with this external location.
+     * 
+     */
     @Import(name="credentialName")
     private @Nullable Output<String> credentialName;
 
+    /**
+     * @return Name of the databricks.StorageCredential to use with this external location.
+     * 
+     */
     public Optional<Output<String>> credentialName() {
         return Optional.ofNullable(this.credentialName);
     }
 
+    /**
+     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     * 
+     */
     @Import(name="encryptionDetails")
     private @Nullable Output<ExternalLocationEncryptionDetailsArgs> encryptionDetails;
 
+    /**
+     * @return The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     * 
+     */
     public Optional<Output<ExternalLocationEncryptionDetailsArgs>> encryptionDetails() {
         return Optional.ofNullable(this.encryptionDetails);
     }
 
+    /**
+     * Destroy external location regardless of its dependents.
+     * 
+     */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
+    /**
+     * @return Destroy external location regardless of its dependents.
+     * 
+     */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
     }
 
+    /**
+     * Update external location regardless of its dependents.
+     * 
+     */
     @Import(name="forceUpdate")
     private @Nullable Output<Boolean> forceUpdate;
 
+    /**
+     * @return Update external location regardless of its dependents.
+     * 
+     */
     public Optional<Output<Boolean>> forceUpdate() {
         return Optional.ofNullable(this.forceUpdate);
     }
 
+    /**
+     * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
+     * 
+     */
     @Import(name="isolationMode")
     private @Nullable Output<String> isolationMode;
 
+    /**
+     * @return Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
+     * 
+     */
     public Optional<Output<String>> isolationMode() {
         return Optional.ofNullable(this.isolationMode);
     }
@@ -73,37 +129,77 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.metastoreId);
     }
 
+    /**
+     * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Username/groupname/sp application_id of the external location owner.
+     * 
+     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
+    /**
+     * @return Username/groupname/sp application_id of the external location owner.
+     * 
+     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * Indicates whether the external location is read-only.
+     * 
+     */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
+    /**
+     * @return Indicates whether the external location is read-only.
+     * 
+     */
     public Optional<Output<Boolean>> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
 
+    /**
+     * Suppress validation errors if any &amp; force save the external location
+     * 
+     */
     @Import(name="skipValidation")
     private @Nullable Output<Boolean> skipValidation;
 
+    /**
+     * @return Suppress validation errors if any &amp; force save the external location
+     * 
+     */
     public Optional<Output<Boolean>> skipValidation() {
         return Optional.ofNullable(this.skipValidation);
     }
 
+    /**
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -144,65 +240,149 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
             $ = new ExternalLocationState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessPoint The ARN of the s3 access point to use with the external location (AWS).
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessPoint(@Nullable Output<String> accessPoint) {
             $.accessPoint = accessPoint;
             return this;
         }
 
+        /**
+         * @param accessPoint The ARN of the s3 access point to use with the external location (AWS).
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessPoint(String accessPoint) {
             return accessPoint(Output.of(accessPoint));
         }
 
+        /**
+         * @param comment User-supplied free-form text.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment User-supplied free-form text.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param credentialName Name of the databricks.StorageCredential to use with this external location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialName(@Nullable Output<String> credentialName) {
             $.credentialName = credentialName;
             return this;
         }
 
+        /**
+         * @param credentialName Name of the databricks.StorageCredential to use with this external location.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialName(String credentialName) {
             return credentialName(Output.of(credentialName));
         }
 
+        /**
+         * @param encryptionDetails The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptionDetails(@Nullable Output<ExternalLocationEncryptionDetailsArgs> encryptionDetails) {
             $.encryptionDetails = encryptionDetails;
             return this;
         }
 
+        /**
+         * @param encryptionDetails The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptionDetails(ExternalLocationEncryptionDetailsArgs encryptionDetails) {
             return encryptionDetails(Output.of(encryptionDetails));
         }
 
+        /**
+         * @param forceDestroy Destroy external location regardless of its dependents.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
             $.forceDestroy = forceDestroy;
             return this;
         }
 
+        /**
+         * @param forceDestroy Destroy external location regardless of its dependents.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
         }
 
+        /**
+         * @param forceUpdate Update external location regardless of its dependents.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceUpdate(@Nullable Output<Boolean> forceUpdate) {
             $.forceUpdate = forceUpdate;
             return this;
         }
 
+        /**
+         * @param forceUpdate Update external location regardless of its dependents.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceUpdate(Boolean forceUpdate) {
             return forceUpdate(Output.of(forceUpdate));
         }
 
+        /**
+         * @param isolationMode Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isolationMode(@Nullable Output<String> isolationMode) {
             $.isolationMode = isolationMode;
             return this;
         }
 
+        /**
+         * @param isolationMode Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isolationMode(String isolationMode) {
             return isolationMode(Output.of(isolationMode));
         }
@@ -216,47 +396,107 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
             return metastoreId(Output.of(metastoreId));
         }
 
+        /**
+         * @param name Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param owner Username/groupname/sp application_id of the external location owner.
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
+        /**
+         * @param owner Username/groupname/sp application_id of the external location owner.
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
 
+        /**
+         * @param readOnly Indicates whether the external location is read-only.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readOnly(@Nullable Output<Boolean> readOnly) {
             $.readOnly = readOnly;
             return this;
         }
 
+        /**
+         * @param readOnly Indicates whether the external location is read-only.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readOnly(Boolean readOnly) {
             return readOnly(Output.of(readOnly));
         }
 
+        /**
+         * @param skipValidation Suppress validation errors if any &amp; force save the external location
+         * 
+         * @return builder
+         * 
+         */
         public Builder skipValidation(@Nullable Output<Boolean> skipValidation) {
             $.skipValidation = skipValidation;
             return this;
         }
 
+        /**
+         * @param skipValidation Suppress validation errors if any &amp; force save the external location
+         * 
+         * @return builder
+         * 
+         */
         public Builder skipValidation(Boolean skipValidation) {
             return skipValidation(Output.of(skipValidation));
         }
 
+        /**
+         * @param url Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

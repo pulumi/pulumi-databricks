@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("embeddingSourceColumns")]
         private InputList<Inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnGetArgs>? _embeddingSourceColumns;
+
+        /// <summary>
+        /// array of objects representing columns that contain the embedding source.  Each entry consists of:
+        /// </summary>
         public InputList<Inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnGetArgs> EmbeddingSourceColumns
         {
             get => _embeddingSourceColumns ?? (_embeddingSourceColumns = new InputList<Inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnGetArgs>());
@@ -31,12 +35,23 @@ namespace Pulumi.Databricks.Inputs
         [Input("embeddingWritebackTable")]
         public Input<string>? EmbeddingWritebackTable { get; set; }
 
+        /// <summary>
+        /// ID of the associated Delta Live Table pipeline.
+        /// </summary>
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }
 
+        /// <summary>
+        /// Pipeline execution mode. Possible values are:
+        /// * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+        /// * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+        /// </summary>
         [Input("pipelineType")]
         public Input<string>? PipelineType { get; set; }
 
+        /// <summary>
+        /// The name of the source table.
+        /// </summary>
         [Input("sourceTable")]
         public Input<string>? SourceTable { get; set; }
 

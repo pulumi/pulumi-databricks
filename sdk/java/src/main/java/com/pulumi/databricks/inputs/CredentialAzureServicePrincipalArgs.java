@@ -14,23 +14,51 @@ public final class CredentialAzureServicePrincipalArgs extends com.pulumi.resour
 
     public static final CredentialAzureServicePrincipalArgs Empty = new CredentialAzureServicePrincipalArgs();
 
+    /**
+     * The application ID of the application registration within the referenced AAD tenant
+     * 
+     */
     @Import(name="applicationId", required=true)
     private Output<String> applicationId;
 
+    /**
+     * @return The application ID of the application registration within the referenced AAD tenant
+     * 
+     */
     public Output<String> applicationId() {
         return this.applicationId;
     }
 
+    /**
+     * The client secret generated for the above app ID in AAD. **This field is redacted on output**
+     * 
+     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+     * 
+     */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
+    /**
+     * @return The client secret generated for the above app ID in AAD. **This field is redacted on output**
+     * 
+     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+     * 
+     */
     public Output<String> clientSecret() {
         return this.clientSecret;
     }
 
+    /**
+     * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+     * 
+     */
     @Import(name="directoryId", required=true)
     private Output<String> directoryId;
 
+    /**
+     * @return The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+     * 
+     */
     public Output<String> directoryId() {
         return this.directoryId;
     }
@@ -61,29 +89,69 @@ public final class CredentialAzureServicePrincipalArgs extends com.pulumi.resour
             $ = new CredentialAzureServicePrincipalArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param applicationId The application ID of the application registration within the referenced AAD tenant
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationId(Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
 
+        /**
+         * @param applicationId The application ID of the application registration within the referenced AAD tenant
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
         }
 
+        /**
+         * @param clientSecret The client secret generated for the above app ID in AAD. **This field is redacted on output**
+         * 
+         * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
 
+        /**
+         * @param clientSecret The client secret generated for the above app ID in AAD. **This field is redacted on output**
+         * 
+         * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
         }
 
+        /**
+         * @param directoryId The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+         * 
+         * @return builder
+         * 
+         */
         public Builder directoryId(Output<String> directoryId) {
             $.directoryId = directoryId;
             return this;
         }
 
+        /**
+         * @param directoryId The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+         * 
+         * @return builder
+         * 
+         */
         public Builder directoryId(String directoryId) {
             return directoryId(Output.of(directoryId));
         }

@@ -16,23 +16,47 @@ public final class GetSchemaPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSchemaPlainArgs Empty = new GetSchemaPlainArgs();
 
+    /**
+     * ID of this Unity Catalog Schema in form of `&lt;catalog&gt;.&lt;schema&gt;`.
+     * 
+     */
     @Import(name="id")
     private @Nullable String id;
 
+    /**
+     * @return ID of this Unity Catalog Schema in form of `&lt;catalog&gt;.&lt;schema&gt;`.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * a fully qualified name of databricks_schema: *`catalog`.`schema`*
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return a fully qualified name of databricks_schema: *`catalog`.`schema`*
+     * 
+     */
     public String name() {
         return this.name;
     }
 
+    /**
+     * `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
+     * 
+     */
     @Import(name="schemaInfo")
     private @Nullable GetSchemaSchemaInfo schemaInfo;
 
+    /**
+     * @return `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
+     * 
+     */
     public Optional<GetSchemaSchemaInfo> schemaInfo() {
         return Optional.ofNullable(this.schemaInfo);
     }
@@ -63,16 +87,34 @@ public final class GetSchemaPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetSchemaPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id ID of this Unity Catalog Schema in form of `&lt;catalog&gt;.&lt;schema&gt;`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable String id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param name a fully qualified name of databricks_schema: *`catalog`.`schema`*
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param schemaInfo `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaInfo(@Nullable GetSchemaSchemaInfo schemaInfo) {
             $.schemaInfo = schemaInfo;
             return this;

@@ -14,16 +14,32 @@ public final class ArtifactAllowlistArtifactMatcherArgs extends com.pulumi.resou
 
     public static final ArtifactAllowlistArtifactMatcherArgs Empty = new ArtifactAllowlistArtifactMatcherArgs();
 
+    /**
+     * The artifact path or maven coordinate.
+     * 
+     */
     @Import(name="artifact", required=true)
     private Output<String> artifact;
 
+    /**
+     * @return The artifact path or maven coordinate.
+     * 
+     */
     public Output<String> artifact() {
         return this.artifact;
     }
 
+    /**
+     * The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+     * 
+     */
     @Import(name="matchType", required=true)
     private Output<String> matchType;
 
+    /**
+     * @return The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+     * 
+     */
     public Output<String> matchType() {
         return this.matchType;
     }
@@ -53,20 +69,44 @@ public final class ArtifactAllowlistArtifactMatcherArgs extends com.pulumi.resou
             $ = new ArtifactAllowlistArtifactMatcherArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param artifact The artifact path or maven coordinate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder artifact(Output<String> artifact) {
             $.artifact = artifact;
             return this;
         }
 
+        /**
+         * @param artifact The artifact path or maven coordinate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder artifact(String artifact) {
             return artifact(Output.of(artifact));
         }
 
+        /**
+         * @param matchType The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder matchType(Output<String> matchType) {
             $.matchType = matchType;
             return this;
         }
 
+        /**
+         * @param matchType The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder matchType(String matchType) {
             return matchType(Output.of(matchType));
         }

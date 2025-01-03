@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTriggerPeriodicArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the interval at which the job should run. This value is required.
+        /// </summary>
         [Input("interval", required: true)]
         public Input<int> Interval { get; set; } = null!;
 
+        /// <summary>
+        /// Options are {"DAYS", "HOURS", "WEEKS"}.
+        /// </summary>
         [Input("unit", required: true)]
         public Input<string> Unit { get; set; } = null!;
 

@@ -6,6 +6,58 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves the settings of databricks.MlflowModel by name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thisMlflowModel = new databricks.MlflowModel("this", {
+ *     name: "My MLflow Model",
+ *     description: "My MLflow model description",
+ *     tags: [
+ *         {
+ *             key: "key1",
+ *             value: "value1",
+ *         },
+ *         {
+ *             key: "key2",
+ *             value: "value2",
+ *         },
+ *     ],
+ * });
+ * const this = databricks.getMlflowModel({
+ *     name: "My MLflow Model",
+ * });
+ * export const model = _this;
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getMlflowModel({
+ *     name: "My MLflow Model with multiple versions",
+ * });
+ * const thisModelServing = new databricks.ModelServing("this", {
+ *     name: "model-serving-endpoint",
+ *     config: {
+ *         servedModels: [{
+ *             name: "model_serving_prod",
+ *             modelName: _this.then(_this => _this.name),
+ *             modelVersion: _this.then(_this => _this.latestVersions?.[0]?.version),
+ *             workloadSize: "Small",
+ *             scaleToZeroEnabled: true,
+ *         }],
+ *     },
+ * });
+ * ```
+ */
 export function getMlflowModel(args: GetMlflowModelArgs, opts?: pulumi.InvokeOptions): Promise<GetMlflowModelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMlflowModel:getMlflowModel", {
@@ -22,11 +74,29 @@ export function getMlflowModel(args: GetMlflowModelArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getMlflowModel.
  */
 export interface GetMlflowModelArgs {
+    /**
+     * User-specified description for the object.
+     */
     description?: string;
+    /**
+     * Array of model versions, each the latest version for its stage.
+     */
     latestVersions?: inputs.GetMlflowModelLatestVersion[];
+    /**
+     * Name of the registered model.
+     */
     name: string;
+    /**
+     * Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+     */
     permissionLevel?: string;
+    /**
+     * Array of tags associated with the model.
+     */
     tags?: inputs.GetMlflowModelTag[];
+    /**
+     * The username of the user that created the object.
+     */
     userId?: string;
 }
 
@@ -34,14 +104,87 @@ export interface GetMlflowModelArgs {
  * A collection of values returned by getMlflowModel.
  */
 export interface GetMlflowModelResult {
+    /**
+     * User-specified description for the object.
+     */
     readonly description: string;
+    /**
+     * Unique identifier for the object.
+     */
     readonly id: string;
+    /**
+     * Array of model versions, each the latest version for its stage.
+     */
     readonly latestVersions: outputs.GetMlflowModelLatestVersion[];
+    /**
+     * Name of the model.
+     */
     readonly name: string;
+    /**
+     * Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+     */
     readonly permissionLevel: string;
+    /**
+     * Array of tags associated with the model.
+     */
     readonly tags: outputs.GetMlflowModelTag[];
+    /**
+     * The username of the user that created the object.
+     */
     readonly userId: string;
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves the settings of databricks.MlflowModel by name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thisMlflowModel = new databricks.MlflowModel("this", {
+ *     name: "My MLflow Model",
+ *     description: "My MLflow model description",
+ *     tags: [
+ *         {
+ *             key: "key1",
+ *             value: "value1",
+ *         },
+ *         {
+ *             key: "key2",
+ *             value: "value2",
+ *         },
+ *     ],
+ * });
+ * const this = databricks.getMlflowModel({
+ *     name: "My MLflow Model",
+ * });
+ * export const model = _this;
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getMlflowModel({
+ *     name: "My MLflow Model with multiple versions",
+ * });
+ * const thisModelServing = new databricks.ModelServing("this", {
+ *     name: "model-serving-endpoint",
+ *     config: {
+ *         servedModels: [{
+ *             name: "model_serving_prod",
+ *             modelName: _this.then(_this => _this.name),
+ *             modelVersion: _this.then(_this => _this.latestVersions?.[0]?.version),
+ *             workloadSize: "Small",
+ *             scaleToZeroEnabled: true,
+ *         }],
+ *     },
+ * });
+ * ```
+ */
 export function getMlflowModelOutput(args: GetMlflowModelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMlflowModelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMlflowModel:getMlflowModel", {
@@ -58,10 +201,28 @@ export function getMlflowModelOutput(args: GetMlflowModelOutputArgs, opts?: pulu
  * A collection of arguments for invoking getMlflowModel.
  */
 export interface GetMlflowModelOutputArgs {
+    /**
+     * User-specified description for the object.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Array of model versions, each the latest version for its stage.
+     */
     latestVersions?: pulumi.Input<pulumi.Input<inputs.GetMlflowModelLatestVersionArgs>[]>;
+    /**
+     * Name of the registered model.
+     */
     name: pulumi.Input<string>;
+    /**
+     * Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+     */
     permissionLevel?: pulumi.Input<string>;
+    /**
+     * Array of tags associated with the model.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.GetMlflowModelTagArgs>[]>;
+    /**
+     * The username of the user that created the object.
+     */
     userId?: pulumi.Input<string>;
 }

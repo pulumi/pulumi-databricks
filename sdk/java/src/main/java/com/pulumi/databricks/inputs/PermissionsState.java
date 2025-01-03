@@ -108,9 +108,17 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.notebookPath);
     }
 
+    /**
+     * type of permissions.
+     * 
+     */
     @Import(name="objectType")
     private @Nullable Output<String> objectType;
 
+    /**
+     * @return type of permissions.
+     * 
+     */
     public Optional<Output<String>> objectType() {
         return Optional.ofNullable(this.objectType);
     }
@@ -369,11 +377,23 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
             return notebookPath(Output.of(notebookPath));
         }
 
+        /**
+         * @param objectType type of permissions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectType(@Nullable Output<String> objectType) {
             $.objectType = objectType;
             return this;
         }
 
+        /**
+         * @param objectType type of permissions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectType(String objectType) {
             return objectType(Output.of(objectType));
         }

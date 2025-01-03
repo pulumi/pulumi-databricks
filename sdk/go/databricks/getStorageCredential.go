@@ -11,6 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source can only be used with a workspace-level provider!
+//
+// Retrieves details about a StorageCredential that were created by Pulumi or manually.
+//
+// ## Example Usage
+//
+// # Getting details of an existing storage credential in the metastore
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.LookupStorageCredential(ctx, &databricks.LookupStorageCredentialArgs{
+//				Name: "this",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("createdBy", this.StorageCredentialInfo.CreatedBy)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * getStorageCredentials to get names of all credentials
+// * StorageCredential to manage Storage Credentials within Unity Catalog.
 func LookupStorageCredential(ctx *pulumi.Context, args *LookupStorageCredentialArgs, opts ...pulumi.InvokeOption) (*LookupStorageCredentialResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageCredentialResult
@@ -23,15 +62,20 @@ func LookupStorageCredential(ctx *pulumi.Context, args *LookupStorageCredentialA
 
 // A collection of arguments for invoking getStorageCredential.
 type LookupStorageCredentialArgs struct {
-	Id                    *string                                    `pulumi:"id"`
-	Name                  string                                     `pulumi:"name"`
+	// Unique ID of storage credential.
+	Id *string `pulumi:"id"`
+	// The name of the storage credential
+	Name string `pulumi:"name"`
+	// array of objects with information about storage credential.
 	StorageCredentialInfo *GetStorageCredentialStorageCredentialInfo `pulumi:"storageCredentialInfo"`
 }
 
 // A collection of values returned by getStorageCredential.
 type LookupStorageCredentialResult struct {
-	Id                    string                                    `pulumi:"id"`
-	Name                  string                                    `pulumi:"name"`
+	// Unique ID of storage credential.
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+	// array of objects with information about storage credential.
 	StorageCredentialInfo GetStorageCredentialStorageCredentialInfo `pulumi:"storageCredentialInfo"`
 }
 
@@ -46,8 +90,11 @@ func LookupStorageCredentialOutput(ctx *pulumi.Context, args LookupStorageCreden
 
 // A collection of arguments for invoking getStorageCredential.
 type LookupStorageCredentialOutputArgs struct {
-	Id                    pulumi.StringPtrInput                             `pulumi:"id"`
-	Name                  pulumi.StringInput                                `pulumi:"name"`
+	// Unique ID of storage credential.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of the storage credential
+	Name pulumi.StringInput `pulumi:"name"`
+	// array of objects with information about storage credential.
 	StorageCredentialInfo GetStorageCredentialStorageCredentialInfoPtrInput `pulumi:"storageCredentialInfo"`
 }
 
@@ -70,6 +117,7 @@ func (o LookupStorageCredentialResultOutput) ToLookupStorageCredentialResultOutp
 	return o
 }
 
+// Unique ID of storage credential.
 func (o LookupStorageCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -78,6 +126,7 @@ func (o LookupStorageCredentialResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageCredentialResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// array of objects with information about storage credential.
 func (o LookupStorageCredentialResultOutput) StorageCredentialInfo() GetStorageCredentialStorageCredentialInfoOutput {
 	return o.ApplyT(func(v LookupStorageCredentialResult) GetStorageCredentialStorageCredentialInfo {
 		return v.StorageCredentialInfo

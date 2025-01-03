@@ -23,6 +23,8 @@ class UserRoleArgs:
                  user_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a UserRole resource.
+        :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
+        :param pulumi.Input[str] user_id: This is the id of the user resource.
         """
         pulumi.set(__self__, "role", role)
         pulumi.set(__self__, "user_id", user_id)
@@ -30,6 +32,9 @@ class UserRoleArgs:
     @property
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
+        """
+        Either a role name or the ARN/ID of the instance profile resource.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -39,6 +44,9 @@ class UserRoleArgs:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[str]:
+        """
+        This is the id of the user resource.
+        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -53,6 +61,8 @@ class _UserRoleState:
                  user_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering UserRole resources.
+        :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
+        :param pulumi.Input[str] user_id: This is the id of the user resource.
         """
         if role is not None:
             pulumi.set(__self__, "role", role)
@@ -62,6 +72,9 @@ class _UserRoleState:
     @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Either a role name or the ARN/ID of the instance profile resource.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -71,6 +84,9 @@ class _UserRoleState:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the id of the user resource.
+        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -87,9 +103,54 @@ class UserRole(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a UserRole resource with the given unique name, props, and options.
+        This resource allows you to attach a role or InstanceProfile (AWS) to databricks_user.
+
+        ## Example Usage
+
+        Adding AWS instance profile to a user
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
+        my_user = databricks.User("my_user", user_name="me@example.com")
+        my_user_role = databricks.UserRole("my_user_role",
+            user_id=my_user.id,
+            role=instance_profile.id)
+        ```
+
+        Adding user as administrator to Databricks Account
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        my_user = databricks.User("my_user", user_name="me@example.com")
+        my_user_account_admin = databricks.UserRole("my_user_account_admin",
+            user_id=my_user.id,
+            role="account_admin")
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * End to end workspace management guide.
+        * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+        * GroupMember to attach users and groups as group members.
+        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+        * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
+        * User data to retrieve information about databricks_user.
+
+        ## Import
+
+        !> Importing this resource is not currently supported.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
+        :param pulumi.Input[str] user_id: This is the id of the user resource.
         """
         ...
     @overload
@@ -98,7 +159,50 @@ class UserRole(pulumi.CustomResource):
                  args: UserRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a UserRole resource with the given unique name, props, and options.
+        This resource allows you to attach a role or InstanceProfile (AWS) to databricks_user.
+
+        ## Example Usage
+
+        Adding AWS instance profile to a user
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
+        my_user = databricks.User("my_user", user_name="me@example.com")
+        my_user_role = databricks.UserRole("my_user_role",
+            user_id=my_user.id,
+            role=instance_profile.id)
+        ```
+
+        Adding user as administrator to Databricks Account
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        my_user = databricks.User("my_user", user_name="me@example.com")
+        my_user_account_admin = databricks.UserRole("my_user_account_admin",
+            user_id=my_user.id,
+            role="account_admin")
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * End to end workspace management guide.
+        * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+        * GroupMember to attach users and groups as group members.
+        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+        * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
+        * User data to retrieve information about databricks_user.
+
+        ## Import
+
+        !> Importing this resource is not currently supported.
+
         :param str resource_name: The name of the resource.
         :param UserRoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -150,6 +254,8 @@ class UserRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
+        :param pulumi.Input[str] user_id: This is the id of the user resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -162,10 +268,16 @@ class UserRole(pulumi.CustomResource):
     @property
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
+        """
+        Either a role name or the ARN/ID of the instance profile resource.
+        """
         return pulumi.get(self, "role")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
+        """
+        This is the id of the user resource.
+        """
         return pulumi.get(self, "user_id")
 

@@ -6,6 +6,97 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * > This resource can only be used with a workspace-level provider.
+ *
+ * > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+ *
+ * A credential represents an authentication and authorization mechanism for accessing services on your cloud tenant. Each credential is subject to Unity Catalog access-control policies that control which users and groups can access the credential.
+ *
+ * The type of credential to be created is determined by the `purpose` field, which should be either `SERVICE` or `STORAGE`.
+ * The caller must be a metastore admin or have the metastore privilege `CREATE_STORAGE_CREDENTIAL` for storage credentials, or `CREATE_SERVICE_CREDENTIAL` for service credentials. The user who creates the credential can delegate ownership to another user or group to manage permissions on it
+ *
+ * On AWS, the IAM role for a credential requires a trust policy. See [documentation](https://docs.databricks.com/en/connect/unity-catalog/cloud-services/service-credentials.html#step-1-create-an-iam-role) for more details. The data source databricks.getAwsUnityCatalogAssumeRolePolicy can be used to create the necessary AWS Unity Catalog assume role policy.
+ *
+ * ## Example Usage
+ *
+ * For AWS
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const external = new databricks.Credential("external", {
+ *     name: externalDataAccess.name,
+ *     awsIamRole: {
+ *         roleArn: externalDataAccess.arn,
+ *     },
+ *     purpose: "SERVICE",
+ *     comment: "Managed by TF",
+ * });
+ * const externalCreds = new databricks.Grants("external_creds", {
+ *     credential: external.id,
+ *     grants: [{
+ *         principal: "Data Engineers",
+ *         privileges: ["ACCESS"],
+ *     }],
+ * });
+ * ```
+ *
+ * For Azure
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const externalMi = new databricks.Credential("external_mi", {
+ *     name: "mi_credential",
+ *     azureManagedIdentity: {
+ *         accessConnectorId: example.id,
+ *     },
+ *     purpose: "SERVICE",
+ *     comment: "Managed identity credential managed by TF",
+ * });
+ * const externalCreds = new databricks.Grants("external_creds", {
+ *     credential: externalMi.id,
+ *     grants: [{
+ *         principal: "Data Engineers",
+ *         privileges: ["ACCESS"],
+ *     }],
+ * });
+ * ```
+ *
+ * For GCP (only applicable when purpose is `STORAGE`)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const externalGcpSa = new databricks.Credential("external_gcp_sa", {
+ *     name: "gcp_sa_credential",
+ *     databricksGcpServiceAccount: {},
+ *     purpose: "STORAGE",
+ *     comment: "GCP SA credential managed by TF",
+ * });
+ * const externalCreds = new databricks.Grants("external_creds", {
+ *     credential: externalGcpSa.id,
+ *     grants: [{
+ *         principal: "Data Engineers",
+ *         privileges: ["ACCESS"],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by name:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/credential:Credential this <name>
+ * ```
+ */
 export class Credential extends pulumi.CustomResource {
     /**
      * Get an existing Credential resource's state with the given name, ID, and optional extra
@@ -40,17 +131,46 @@ export class Credential extends pulumi.CustomResource {
     public readonly comment!: pulumi.Output<string | undefined>;
     public readonly createdAt!: pulumi.Output<number>;
     public readonly createdBy!: pulumi.Output<string>;
+    /**
+     * Unique ID of the credential.
+     */
     public /*out*/ readonly credentialId!: pulumi.Output<string>;
     public readonly databricksGcpServiceAccount!: pulumi.Output<outputs.CredentialDatabricksGcpServiceAccount>;
+    /**
+     * Delete credential regardless of its dependencies.
+     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    /**
+     * Update credential regardless of its dependents.
+     */
     public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
     public readonly fullName!: pulumi.Output<string>;
+    /**
+     * Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     */
     public readonly isolationMode!: pulumi.Output<string>;
     public readonly metastoreId!: pulumi.Output<string>;
+    /**
+     * Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Username/groupname/sp applicationId of the credential owner.
+     */
     public readonly owner!: pulumi.Output<string>;
+    /**
+     * Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+     */
     public readonly purpose!: pulumi.Output<string>;
+    /**
+     * Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+     */
     public readonly readOnly!: pulumi.Output<boolean | undefined>;
+    /**
+     * Suppress validation errors if any & force save the credential.
+     */
     public readonly skipValidation!: pulumi.Output<boolean | undefined>;
     public readonly updatedAt!: pulumi.Output<number>;
     public readonly updatedBy!: pulumi.Output<string>;
@@ -132,17 +252,46 @@ export interface CredentialState {
     comment?: pulumi.Input<string>;
     createdAt?: pulumi.Input<number>;
     createdBy?: pulumi.Input<string>;
+    /**
+     * Unique ID of the credential.
+     */
     credentialId?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.CredentialDatabricksGcpServiceAccount>;
+    /**
+     * Delete credential regardless of its dependencies.
+     */
     forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * Update credential regardless of its dependents.
+     */
     forceUpdate?: pulumi.Input<boolean>;
     fullName?: pulumi.Input<string>;
+    /**
+     * Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     */
     isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
+    /**
+     * Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Username/groupname/sp applicationId of the credential owner.
+     */
     owner?: pulumi.Input<string>;
+    /**
+     * Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+     */
     purpose?: pulumi.Input<string>;
+    /**
+     * Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+     */
     readOnly?: pulumi.Input<boolean>;
+    /**
+     * Suppress validation errors if any & force save the credential.
+     */
     skipValidation?: pulumi.Input<boolean>;
     updatedAt?: pulumi.Input<number>;
     updatedBy?: pulumi.Input<string>;
@@ -160,15 +309,41 @@ export interface CredentialArgs {
     createdAt?: pulumi.Input<number>;
     createdBy?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.CredentialDatabricksGcpServiceAccount>;
+    /**
+     * Delete credential regardless of its dependencies.
+     */
     forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * Update credential regardless of its dependents.
+     */
     forceUpdate?: pulumi.Input<boolean>;
     fullName?: pulumi.Input<string>;
+    /**
+     * Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     */
     isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
+    /**
+     * Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Username/groupname/sp applicationId of the credential owner.
+     */
     owner?: pulumi.Input<string>;
+    /**
+     * Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+     */
     purpose: pulumi.Input<string>;
+    /**
+     * Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+     */
     readOnly?: pulumi.Input<boolean>;
+    /**
+     * Suppress validation errors if any & force save the credential.
+     */
     skipValidation?: pulumi.Input<boolean>;
     updatedAt?: pulumi.Input<number>;
     updatedBy?: pulumi.Input<string>;

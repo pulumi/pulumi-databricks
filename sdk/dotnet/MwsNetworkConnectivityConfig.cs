@@ -9,6 +9,57 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// &gt; Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+    /// 
+    /// &gt; **Public Preview** This feature is available for AWS &amp; Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
+    /// 
+    /// Allows you to create a Network Connectivity Config that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var region = config.RequireObject&lt;dynamic&gt;("region");
+    ///     var prefix = config.RequireObject&lt;dynamic&gt;("prefix");
+    ///     var ncc = new Databricks.MwsNetworkConnectivityConfig("ncc", new()
+    ///     {
+    ///         Name = $"ncc-for-{prefix}",
+    ///         Region = region,
+    ///     });
+    /// 
+    ///     var nccBinding = new Databricks.MwsNccBinding("ncc_binding", new()
+    ///     {
+    ///         NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,
+    ///         WorkspaceId = databricksWorkspaceId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are used in the context:
+    /// 
+    /// * databricks.MwsWorkspaces to set up Databricks workspaces.
+    /// * databricks.MwsNccBinding to attach an NCC to a workspace.
+    /// * databricks.MwsNccPrivateEndpointRule to create a private endpoint rule.
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by Databricks account ID and Network Connectivity Config ID.
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig ncc &lt;account_id&gt;/&lt;network_connectivity_config_id&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig")]
     public partial class MwsNetworkConnectivityConfig : global::Pulumi.CustomResource
     {
@@ -21,12 +72,21 @@ namespace Pulumi.Databricks
         [Output("egressConfig")]
         public Output<Outputs.MwsNetworkConnectivityConfigEgressConfig> EgressConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Canonical unique identifier of Network Connectivity Config in Databricks Account
+        /// </summary>
         [Output("networkConnectivityConfigId")]
         public Output<string> NetworkConnectivityConfigId { get; private set; } = null!;
 
+        /// <summary>
+        /// Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -88,12 +148,21 @@ namespace Pulumi.Databricks
         [Input("egressConfig")]
         public Input<Inputs.MwsNetworkConnectivityConfigEgressConfigArgs>? EgressConfig { get; set; }
 
+        /// <summary>
+        /// Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Canonical unique identifier of Network Connectivity Config in Databricks Account
+        /// </summary>
         [Input("networkConnectivityConfigId")]
         public Input<string>? NetworkConnectivityConfigId { get; set; }
 
+        /// <summary>
+        /// Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
@@ -117,12 +186,21 @@ namespace Pulumi.Databricks
         [Input("egressConfig")]
         public Input<Inputs.MwsNetworkConnectivityConfigEgressConfigGetArgs>? EgressConfig { get; set; }
 
+        /// <summary>
+        /// Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Canonical unique identifier of Network Connectivity Config in Databricks Account
+        /// </summary>
         [Input("networkConnectivityConfigId")]
         public Input<string>? NetworkConnectivityConfigId { get; set; }
 
+        /// <summary>
+        /// Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

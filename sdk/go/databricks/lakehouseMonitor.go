@@ -12,29 +12,214 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// NOTE: This resource has been deprecated and will be removed soon. Please use the QualityMonitor resource instead.
+//
+// This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks.
+//
+// A `LakehouseMonitor` is attached to a SqlTable and can be of type timeseries, snapshot or inference.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:    pulumi.String("sandbox"),
+//				Comment: pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
+//				CatalogName: sandbox.ID(),
+//				Name:        pulumi.String("things"),
+//				Comment:     pulumi.String("this database is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"kind": pulumi.String("various"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myTestTable, err := databricks.NewSqlTable(ctx, "myTestTable", &databricks.SqlTableArgs{
+//				CatalogName:      pulumi.String("main"),
+//				SchemaName:       things.Name,
+//				Name:             pulumi.String("bar"),
+//				TableType:        pulumi.String("MANAGED"),
+//				DataSourceFormat: pulumi.String("DELTA"),
+//				Columns: databricks.SqlTableColumnArray{
+//					&databricks.SqlTableColumnArgs{
+//						Name: pulumi.String("timestamp"),
+//						Type: pulumi.String("int"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewLakehouseMonitor(ctx, "testTimeseriesMonitor", &databricks.LakehouseMonitorArgs{
+//				TableName: pulumi.All(sandbox.Name, things.Name, myTestTable.Name).ApplyT(func(_args []interface{}) (string, error) {
+//					sandboxName := _args[0].(string)
+//					thingsName := _args[1].(string)
+//					myTestTableName := _args[2].(string)
+//					return fmt.Sprintf("%v.%v.%v", sandboxName, thingsName, myTestTableName), nil
+//				}).(pulumi.StringOutput),
+//				AssetsDir: myTestTable.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("/Shared/provider-test/databricks_lakehouse_monitoring/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				OutputSchemaName: pulumi.All(sandbox.Name, things.Name).ApplyT(func(_args []interface{}) (string, error) {
+//					sandboxName := _args[0].(string)
+//					thingsName := _args[1].(string)
+//					return fmt.Sprintf("%v.%v", sandboxName, thingsName), nil
+//				}).(pulumi.StringOutput),
+//				TimeSeries: &databricks.LakehouseMonitorTimeSeriesArgs{
+//					Granularities: pulumi.StringArray{
+//						pulumi.String("1 hour"),
+//					},
+//					TimestampCol: pulumi.String("timestamp"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Inference Monitor
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewLakehouseMonitor(ctx, "testMonitorInference", &databricks.LakehouseMonitorArgs{
+//				TableName:        pulumi.Sprintf("%v.%v.%v", sandbox.Name, things.Name, myTestTable.Name),
+//				AssetsDir:        pulumi.Sprintf("/Shared/provider-test/databricks_lakehouse_monitoring/%v", myTestTable.Name),
+//				OutputSchemaName: pulumi.Sprintf("%v.%v", sandbox.Name, things.Name),
+//				InferenceLog: &databricks.LakehouseMonitorInferenceLogArgs{
+//					Granularities: pulumi.StringArray{
+//						pulumi.String("1 hour"),
+//					},
+//					TimestampCol:  pulumi.String("timestamp"),
+//					PredictionCol: pulumi.String("prediction"),
+//					ModelIdCol:    pulumi.String("model_id"),
+//					ProblemType:   pulumi.String("PROBLEM_TYPE_REGRESSION"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Snapshot Monitor
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewLakehouseMonitor(ctx, "testMonitorInference", &databricks.LakehouseMonitorArgs{
+//				TableName:        pulumi.Sprintf("%v.%v.%v", sandbox.Name, things.Name, myTestTable.Name),
+//				AssetsDir:        pulumi.Sprintf("/Shared/provider-test/databricks_lakehouse_monitoring/%v", myTestTable.Name),
+//				OutputSchemaName: pulumi.Sprintf("%v.%v", sandbox.Name, things.Name),
+//				Snapshot:         &databricks.LakehouseMonitorSnapshotArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * Catalog
+// * Schema
+// * SqlTable
 type LakehouseMonitor struct {
 	pulumi.CustomResourceState
 
-	AssetsDir                pulumi.StringOutput                               `pulumi:"assetsDir"`
-	BaselineTableName        pulumi.StringPtrOutput                            `pulumi:"baselineTableName"`
-	CustomMetrics            LakehouseMonitorCustomMetricArrayOutput           `pulumi:"customMetrics"`
-	DashboardId              pulumi.StringOutput                               `pulumi:"dashboardId"`
+	// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
+	AssetsDir pulumi.StringOutput `pulumi:"assetsDir"`
+	// Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
+	// table.
+	BaselineTableName pulumi.StringPtrOutput `pulumi:"baselineTableName"`
+	// Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
+	CustomMetrics LakehouseMonitorCustomMetricArrayOutput `pulumi:"customMetrics"`
+	// The ID of the generated dashboard.
+	DashboardId pulumi.StringOutput `pulumi:"dashboardId"`
+	// The data classification config for the monitor
 	DataClassificationConfig LakehouseMonitorDataClassificationConfigPtrOutput `pulumi:"dataClassificationConfig"`
-	DriftMetricsTableName    pulumi.StringOutput                               `pulumi:"driftMetricsTableName"`
-	InferenceLog             LakehouseMonitorInferenceLogPtrOutput             `pulumi:"inferenceLog"`
-	LatestMonitorFailureMsg  pulumi.StringPtrOutput                            `pulumi:"latestMonitorFailureMsg"`
-	MonitorVersion           pulumi.StringOutput                               `pulumi:"monitorVersion"`
-	Notifications            LakehouseMonitorNotificationsPtrOutput            `pulumi:"notifications"`
-	OutputSchemaName         pulumi.StringOutput                               `pulumi:"outputSchemaName"`
-	ProfileMetricsTableName  pulumi.StringOutput                               `pulumi:"profileMetricsTableName"`
-	Schedule                 LakehouseMonitorSchedulePtrOutput                 `pulumi:"schedule"`
-	SkipBuiltinDashboard     pulumi.BoolPtrOutput                              `pulumi:"skipBuiltinDashboard"`
-	SlicingExprs             pulumi.StringArrayOutput                          `pulumi:"slicingExprs"`
-	Snapshot                 LakehouseMonitorSnapshotPtrOutput                 `pulumi:"snapshot"`
-	Status                   pulumi.StringOutput                               `pulumi:"status"`
-	TableName                pulumi.StringOutput                               `pulumi:"tableName"`
-	TimeSeries               LakehouseMonitorTimeSeriesPtrOutput               `pulumi:"timeSeries"`
-	WarehouseId              pulumi.StringPtrOutput                            `pulumi:"warehouseId"`
+	// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	DriftMetricsTableName pulumi.StringOutput `pulumi:"driftMetricsTableName"`
+	// Configuration for the inference log monitor
+	InferenceLog            LakehouseMonitorInferenceLogPtrOutput `pulumi:"inferenceLog"`
+	LatestMonitorFailureMsg pulumi.StringPtrOutput                `pulumi:"latestMonitorFailureMsg"`
+	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
+	MonitorVersion pulumi.StringOutput `pulumi:"monitorVersion"`
+	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
+	Notifications LakehouseMonitorNotificationsPtrOutput `pulumi:"notifications"`
+	// Schema where output metric tables are created
+	OutputSchemaName pulumi.StringOutput `pulumi:"outputSchemaName"`
+	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	ProfileMetricsTableName pulumi.StringOutput `pulumi:"profileMetricsTableName"`
+	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
+	Schedule LakehouseMonitorSchedulePtrOutput `pulumi:"schedule"`
+	// Whether to skip creating a default dashboard summarizing data quality metrics.
+	SkipBuiltinDashboard pulumi.BoolPtrOutput `pulumi:"skipBuiltinDashboard"`
+	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
+	SlicingExprs pulumi.StringArrayOutput `pulumi:"slicingExprs"`
+	// Configuration for monitoring snapshot tables.
+	Snapshot LakehouseMonitorSnapshotPtrOutput `pulumi:"snapshot"`
+	// Status of the Monitor
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
+	TableName pulumi.StringOutput `pulumi:"tableName"`
+	// Configuration for monitoring timeseries tables.
+	TimeSeries LakehouseMonitorTimeSeriesPtrOutput `pulumi:"timeSeries"`
+	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+	WarehouseId pulumi.StringPtrOutput `pulumi:"warehouseId"`
 }
 
 // NewLakehouseMonitor registers a new resource with the given unique name, arguments, and options.
@@ -76,49 +261,89 @@ func GetLakehouseMonitor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LakehouseMonitor resources.
 type lakehouseMonitorState struct {
-	AssetsDir                *string                                   `pulumi:"assetsDir"`
-	BaselineTableName        *string                                   `pulumi:"baselineTableName"`
-	CustomMetrics            []LakehouseMonitorCustomMetric            `pulumi:"customMetrics"`
-	DashboardId              *string                                   `pulumi:"dashboardId"`
+	// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
+	AssetsDir *string `pulumi:"assetsDir"`
+	// Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
+	// table.
+	BaselineTableName *string `pulumi:"baselineTableName"`
+	// Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
+	CustomMetrics []LakehouseMonitorCustomMetric `pulumi:"customMetrics"`
+	// The ID of the generated dashboard.
+	DashboardId *string `pulumi:"dashboardId"`
+	// The data classification config for the monitor
 	DataClassificationConfig *LakehouseMonitorDataClassificationConfig `pulumi:"dataClassificationConfig"`
-	DriftMetricsTableName    *string                                   `pulumi:"driftMetricsTableName"`
-	InferenceLog             *LakehouseMonitorInferenceLog             `pulumi:"inferenceLog"`
-	LatestMonitorFailureMsg  *string                                   `pulumi:"latestMonitorFailureMsg"`
-	MonitorVersion           *string                                   `pulumi:"monitorVersion"`
-	Notifications            *LakehouseMonitorNotifications            `pulumi:"notifications"`
-	OutputSchemaName         *string                                   `pulumi:"outputSchemaName"`
-	ProfileMetricsTableName  *string                                   `pulumi:"profileMetricsTableName"`
-	Schedule                 *LakehouseMonitorSchedule                 `pulumi:"schedule"`
-	SkipBuiltinDashboard     *bool                                     `pulumi:"skipBuiltinDashboard"`
-	SlicingExprs             []string                                  `pulumi:"slicingExprs"`
-	Snapshot                 *LakehouseMonitorSnapshot                 `pulumi:"snapshot"`
-	Status                   *string                                   `pulumi:"status"`
-	TableName                *string                                   `pulumi:"tableName"`
-	TimeSeries               *LakehouseMonitorTimeSeries               `pulumi:"timeSeries"`
-	WarehouseId              *string                                   `pulumi:"warehouseId"`
+	// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	DriftMetricsTableName *string `pulumi:"driftMetricsTableName"`
+	// Configuration for the inference log monitor
+	InferenceLog            *LakehouseMonitorInferenceLog `pulumi:"inferenceLog"`
+	LatestMonitorFailureMsg *string                       `pulumi:"latestMonitorFailureMsg"`
+	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
+	MonitorVersion *string `pulumi:"monitorVersion"`
+	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
+	Notifications *LakehouseMonitorNotifications `pulumi:"notifications"`
+	// Schema where output metric tables are created
+	OutputSchemaName *string `pulumi:"outputSchemaName"`
+	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	ProfileMetricsTableName *string `pulumi:"profileMetricsTableName"`
+	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
+	Schedule *LakehouseMonitorSchedule `pulumi:"schedule"`
+	// Whether to skip creating a default dashboard summarizing data quality metrics.
+	SkipBuiltinDashboard *bool `pulumi:"skipBuiltinDashboard"`
+	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
+	SlicingExprs []string `pulumi:"slicingExprs"`
+	// Configuration for monitoring snapshot tables.
+	Snapshot *LakehouseMonitorSnapshot `pulumi:"snapshot"`
+	// Status of the Monitor
+	Status *string `pulumi:"status"`
+	// The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
+	TableName *string `pulumi:"tableName"`
+	// Configuration for monitoring timeseries tables.
+	TimeSeries *LakehouseMonitorTimeSeries `pulumi:"timeSeries"`
+	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+	WarehouseId *string `pulumi:"warehouseId"`
 }
 
 type LakehouseMonitorState struct {
-	AssetsDir                pulumi.StringPtrInput
-	BaselineTableName        pulumi.StringPtrInput
-	CustomMetrics            LakehouseMonitorCustomMetricArrayInput
-	DashboardId              pulumi.StringPtrInput
+	// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
+	AssetsDir pulumi.StringPtrInput
+	// Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
+	// table.
+	BaselineTableName pulumi.StringPtrInput
+	// Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
+	CustomMetrics LakehouseMonitorCustomMetricArrayInput
+	// The ID of the generated dashboard.
+	DashboardId pulumi.StringPtrInput
+	// The data classification config for the monitor
 	DataClassificationConfig LakehouseMonitorDataClassificationConfigPtrInput
-	DriftMetricsTableName    pulumi.StringPtrInput
-	InferenceLog             LakehouseMonitorInferenceLogPtrInput
-	LatestMonitorFailureMsg  pulumi.StringPtrInput
-	MonitorVersion           pulumi.StringPtrInput
-	Notifications            LakehouseMonitorNotificationsPtrInput
-	OutputSchemaName         pulumi.StringPtrInput
-	ProfileMetricsTableName  pulumi.StringPtrInput
-	Schedule                 LakehouseMonitorSchedulePtrInput
-	SkipBuiltinDashboard     pulumi.BoolPtrInput
-	SlicingExprs             pulumi.StringArrayInput
-	Snapshot                 LakehouseMonitorSnapshotPtrInput
-	Status                   pulumi.StringPtrInput
-	TableName                pulumi.StringPtrInput
-	TimeSeries               LakehouseMonitorTimeSeriesPtrInput
-	WarehouseId              pulumi.StringPtrInput
+	// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	DriftMetricsTableName pulumi.StringPtrInput
+	// Configuration for the inference log monitor
+	InferenceLog            LakehouseMonitorInferenceLogPtrInput
+	LatestMonitorFailureMsg pulumi.StringPtrInput
+	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
+	MonitorVersion pulumi.StringPtrInput
+	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
+	Notifications LakehouseMonitorNotificationsPtrInput
+	// Schema where output metric tables are created
+	OutputSchemaName pulumi.StringPtrInput
+	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+	ProfileMetricsTableName pulumi.StringPtrInput
+	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
+	Schedule LakehouseMonitorSchedulePtrInput
+	// Whether to skip creating a default dashboard summarizing data quality metrics.
+	SkipBuiltinDashboard pulumi.BoolPtrInput
+	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
+	SlicingExprs pulumi.StringArrayInput
+	// Configuration for monitoring snapshot tables.
+	Snapshot LakehouseMonitorSnapshotPtrInput
+	// Status of the Monitor
+	Status pulumi.StringPtrInput
+	// The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
+	TableName pulumi.StringPtrInput
+	// Configuration for monitoring timeseries tables.
+	TimeSeries LakehouseMonitorTimeSeriesPtrInput
+	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+	WarehouseId pulumi.StringPtrInput
 }
 
 func (LakehouseMonitorState) ElementType() reflect.Type {
@@ -126,40 +351,70 @@ func (LakehouseMonitorState) ElementType() reflect.Type {
 }
 
 type lakehouseMonitorArgs struct {
-	AssetsDir                string                                    `pulumi:"assetsDir"`
-	BaselineTableName        *string                                   `pulumi:"baselineTableName"`
-	CustomMetrics            []LakehouseMonitorCustomMetric            `pulumi:"customMetrics"`
+	// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
+	AssetsDir string `pulumi:"assetsDir"`
+	// Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
+	// table.
+	BaselineTableName *string `pulumi:"baselineTableName"`
+	// Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
+	CustomMetrics []LakehouseMonitorCustomMetric `pulumi:"customMetrics"`
+	// The data classification config for the monitor
 	DataClassificationConfig *LakehouseMonitorDataClassificationConfig `pulumi:"dataClassificationConfig"`
-	InferenceLog             *LakehouseMonitorInferenceLog             `pulumi:"inferenceLog"`
-	LatestMonitorFailureMsg  *string                                   `pulumi:"latestMonitorFailureMsg"`
-	Notifications            *LakehouseMonitorNotifications            `pulumi:"notifications"`
-	OutputSchemaName         string                                    `pulumi:"outputSchemaName"`
-	Schedule                 *LakehouseMonitorSchedule                 `pulumi:"schedule"`
-	SkipBuiltinDashboard     *bool                                     `pulumi:"skipBuiltinDashboard"`
-	SlicingExprs             []string                                  `pulumi:"slicingExprs"`
-	Snapshot                 *LakehouseMonitorSnapshot                 `pulumi:"snapshot"`
-	TableName                string                                    `pulumi:"tableName"`
-	TimeSeries               *LakehouseMonitorTimeSeries               `pulumi:"timeSeries"`
-	WarehouseId              *string                                   `pulumi:"warehouseId"`
+	// Configuration for the inference log monitor
+	InferenceLog            *LakehouseMonitorInferenceLog `pulumi:"inferenceLog"`
+	LatestMonitorFailureMsg *string                       `pulumi:"latestMonitorFailureMsg"`
+	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
+	Notifications *LakehouseMonitorNotifications `pulumi:"notifications"`
+	// Schema where output metric tables are created
+	OutputSchemaName string `pulumi:"outputSchemaName"`
+	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
+	Schedule *LakehouseMonitorSchedule `pulumi:"schedule"`
+	// Whether to skip creating a default dashboard summarizing data quality metrics.
+	SkipBuiltinDashboard *bool `pulumi:"skipBuiltinDashboard"`
+	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
+	SlicingExprs []string `pulumi:"slicingExprs"`
+	// Configuration for monitoring snapshot tables.
+	Snapshot *LakehouseMonitorSnapshot `pulumi:"snapshot"`
+	// The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
+	TableName string `pulumi:"tableName"`
+	// Configuration for monitoring timeseries tables.
+	TimeSeries *LakehouseMonitorTimeSeries `pulumi:"timeSeries"`
+	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+	WarehouseId *string `pulumi:"warehouseId"`
 }
 
 // The set of arguments for constructing a LakehouseMonitor resource.
 type LakehouseMonitorArgs struct {
-	AssetsDir                pulumi.StringInput
-	BaselineTableName        pulumi.StringPtrInput
-	CustomMetrics            LakehouseMonitorCustomMetricArrayInput
+	// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
+	AssetsDir pulumi.StringInput
+	// Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
+	// table.
+	BaselineTableName pulumi.StringPtrInput
+	// Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
+	CustomMetrics LakehouseMonitorCustomMetricArrayInput
+	// The data classification config for the monitor
 	DataClassificationConfig LakehouseMonitorDataClassificationConfigPtrInput
-	InferenceLog             LakehouseMonitorInferenceLogPtrInput
-	LatestMonitorFailureMsg  pulumi.StringPtrInput
-	Notifications            LakehouseMonitorNotificationsPtrInput
-	OutputSchemaName         pulumi.StringInput
-	Schedule                 LakehouseMonitorSchedulePtrInput
-	SkipBuiltinDashboard     pulumi.BoolPtrInput
-	SlicingExprs             pulumi.StringArrayInput
-	Snapshot                 LakehouseMonitorSnapshotPtrInput
-	TableName                pulumi.StringInput
-	TimeSeries               LakehouseMonitorTimeSeriesPtrInput
-	WarehouseId              pulumi.StringPtrInput
+	// Configuration for the inference log monitor
+	InferenceLog            LakehouseMonitorInferenceLogPtrInput
+	LatestMonitorFailureMsg pulumi.StringPtrInput
+	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
+	Notifications LakehouseMonitorNotificationsPtrInput
+	// Schema where output metric tables are created
+	OutputSchemaName pulumi.StringInput
+	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
+	Schedule LakehouseMonitorSchedulePtrInput
+	// Whether to skip creating a default dashboard summarizing data quality metrics.
+	SkipBuiltinDashboard pulumi.BoolPtrInput
+	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
+	SlicingExprs pulumi.StringArrayInput
+	// Configuration for monitoring snapshot tables.
+	Snapshot LakehouseMonitorSnapshotPtrInput
+	// The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
+	TableName pulumi.StringInput
+	// Configuration for monitoring timeseries tables.
+	TimeSeries LakehouseMonitorTimeSeriesPtrInput
+	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+	WarehouseId pulumi.StringPtrInput
 }
 
 func (LakehouseMonitorArgs) ElementType() reflect.Type {
@@ -249,32 +504,40 @@ func (o LakehouseMonitorOutput) ToLakehouseMonitorOutputWithContext(ctx context.
 	return o
 }
 
+// The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
 func (o LakehouseMonitorOutput) AssetsDir() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.AssetsDir }).(pulumi.StringOutput)
 }
 
+// Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
+// table.
 func (o LakehouseMonitorOutput) BaselineTableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringPtrOutput { return v.BaselineTableName }).(pulumi.StringPtrOutput)
 }
 
+// Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
 func (o LakehouseMonitorOutput) CustomMetrics() LakehouseMonitorCustomMetricArrayOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) LakehouseMonitorCustomMetricArrayOutput { return v.CustomMetrics }).(LakehouseMonitorCustomMetricArrayOutput)
 }
 
+// The ID of the generated dashboard.
 func (o LakehouseMonitorOutput) DashboardId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.DashboardId }).(pulumi.StringOutput)
 }
 
+// The data classification config for the monitor
 func (o LakehouseMonitorOutput) DataClassificationConfig() LakehouseMonitorDataClassificationConfigPtrOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) LakehouseMonitorDataClassificationConfigPtrOutput {
 		return v.DataClassificationConfig
 	}).(LakehouseMonitorDataClassificationConfigPtrOutput)
 }
 
+// The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
 func (o LakehouseMonitorOutput) DriftMetricsTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.DriftMetricsTableName }).(pulumi.StringOutput)
 }
 
+// Configuration for the inference log monitor
 func (o LakehouseMonitorOutput) InferenceLog() LakehouseMonitorInferenceLogPtrOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) LakehouseMonitorInferenceLogPtrOutput { return v.InferenceLog }).(LakehouseMonitorInferenceLogPtrOutput)
 }
@@ -283,50 +546,62 @@ func (o LakehouseMonitorOutput) LatestMonitorFailureMsg() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringPtrOutput { return v.LatestMonitorFailureMsg }).(pulumi.StringPtrOutput)
 }
 
+// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
 func (o LakehouseMonitorOutput) MonitorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.MonitorVersion }).(pulumi.StringOutput)
 }
 
+// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 func (o LakehouseMonitorOutput) Notifications() LakehouseMonitorNotificationsPtrOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) LakehouseMonitorNotificationsPtrOutput { return v.Notifications }).(LakehouseMonitorNotificationsPtrOutput)
 }
 
+// Schema where output metric tables are created
 func (o LakehouseMonitorOutput) OutputSchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.OutputSchemaName }).(pulumi.StringOutput)
 }
 
+// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
 func (o LakehouseMonitorOutput) ProfileMetricsTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.ProfileMetricsTableName }).(pulumi.StringOutput)
 }
 
+// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 func (o LakehouseMonitorOutput) Schedule() LakehouseMonitorSchedulePtrOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) LakehouseMonitorSchedulePtrOutput { return v.Schedule }).(LakehouseMonitorSchedulePtrOutput)
 }
 
+// Whether to skip creating a default dashboard summarizing data quality metrics.
 func (o LakehouseMonitorOutput) SkipBuiltinDashboard() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.BoolPtrOutput { return v.SkipBuiltinDashboard }).(pulumi.BoolPtrOutput)
 }
 
+// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
 func (o LakehouseMonitorOutput) SlicingExprs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringArrayOutput { return v.SlicingExprs }).(pulumi.StringArrayOutput)
 }
 
+// Configuration for monitoring snapshot tables.
 func (o LakehouseMonitorOutput) Snapshot() LakehouseMonitorSnapshotPtrOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) LakehouseMonitorSnapshotPtrOutput { return v.Snapshot }).(LakehouseMonitorSnapshotPtrOutput)
 }
 
+// Status of the Monitor
 func (o LakehouseMonitorOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
 func (o LakehouseMonitorOutput) TableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.TableName }).(pulumi.StringOutput)
 }
 
+// Configuration for monitoring timeseries tables.
 func (o LakehouseMonitorOutput) TimeSeries() LakehouseMonitorTimeSeriesPtrOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) LakehouseMonitorTimeSeriesPtrOutput { return v.TimeSeries }).(LakehouseMonitorTimeSeriesPtrOutput)
 }
 
+// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
 func (o LakehouseMonitorOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringPtrOutput { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }

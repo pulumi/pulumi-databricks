@@ -15,16 +15,32 @@ public final class GetDbfsFilePathsArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetDbfsFilePathsArgs Empty = new GetDbfsFilePathsArgs();
 
+    /**
+     * Path on DBFS for the file to perform listing
+     * 
+     */
     @Import(name="path", required=true)
     private Output<String> path;
 
+    /**
+     * @return Path on DBFS for the file to perform listing
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
 
+    /**
+     * Either or not recursively list all files
+     * 
+     */
     @Import(name="recursive", required=true)
     private Output<Boolean> recursive;
 
+    /**
+     * @return Either or not recursively list all files
+     * 
+     */
     public Output<Boolean> recursive() {
         return this.recursive;
     }
@@ -54,20 +70,44 @@ public final class GetDbfsFilePathsArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetDbfsFilePathsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param path Path on DBFS for the file to perform listing
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path Path on DBFS for the file to perform listing
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
+        /**
+         * @param recursive Either or not recursively list all files
+         * 
+         * @return builder
+         * 
+         */
         public Builder recursive(Output<Boolean> recursive) {
             $.recursive = recursive;
             return this;
         }
 
+        /**
+         * @param recursive Either or not recursively list all files
+         * 
+         * @return builder
+         * 
+         */
         public Builder recursive(Boolean recursive) {
             return recursive(Output.of(recursive));
         }

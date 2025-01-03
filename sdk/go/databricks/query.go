@@ -12,25 +12,50 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// This resource can be imported using query ID:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/query:Query this <query-id>
+// ```
 type Query struct {
 	pulumi.CustomResourceState
 
-	ApplyAutoLimit       pulumi.BoolPtrOutput      `pulumi:"applyAutoLimit"`
-	Catalog              pulumi.StringPtrOutput    `pulumi:"catalog"`
-	CreateTime           pulumi.StringOutput       `pulumi:"createTime"`
-	Description          pulumi.StringPtrOutput    `pulumi:"description"`
-	DisplayName          pulumi.StringOutput       `pulumi:"displayName"`
-	LastModifierUserName pulumi.StringOutput       `pulumi:"lastModifierUserName"`
-	LifecycleState       pulumi.StringOutput       `pulumi:"lifecycleState"`
-	OwnerUserName        pulumi.StringPtrOutput    `pulumi:"ownerUserName"`
-	Parameters           QueryParameterArrayOutput `pulumi:"parameters"`
-	ParentPath           pulumi.StringPtrOutput    `pulumi:"parentPath"`
-	QueryText            pulumi.StringOutput       `pulumi:"queryText"`
-	RunAsMode            pulumi.StringPtrOutput    `pulumi:"runAsMode"`
-	Schema               pulumi.StringPtrOutput    `pulumi:"schema"`
-	Tags                 pulumi.StringArrayOutput  `pulumi:"tags"`
-	UpdateTime           pulumi.StringOutput       `pulumi:"updateTime"`
-	WarehouseId          pulumi.StringOutput       `pulumi:"warehouseId"`
+	// Whether to apply a 1000 row limit to the query result.
+	ApplyAutoLimit pulumi.BoolPtrOutput `pulumi:"applyAutoLimit"`
+	// Name of the catalog where this query will be executed.
+	Catalog pulumi.StringPtrOutput `pulumi:"catalog"`
+	// The timestamp string indicating when the query was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// General description that conveys additional information about this query such as usage notes.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Name of the query.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Username of the user who last saved changes to this query.
+	LastModifierUserName pulumi.StringOutput `pulumi:"lastModifierUserName"`
+	// The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
+	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
+	// Query owner's username.
+	OwnerUserName pulumi.StringPtrOutput `pulumi:"ownerUserName"`
+	// Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+	Parameters QueryParameterArrayOutput `pulumi:"parameters"`
+	// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
+	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
+	// Text of SQL query.
+	QueryText pulumi.StringOutput `pulumi:"queryText"`
+	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
+	RunAsMode pulumi.StringPtrOutput `pulumi:"runAsMode"`
+	// Name of the schema where this query will be executed.
+	Schema pulumi.StringPtrOutput `pulumi:"schema"`
+	// Tags that will be added to the query.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// The timestamp string indicating when the query was updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// ID of a SQL warehouse which will be used to execute this query.
+	WarehouseId pulumi.StringOutput `pulumi:"warehouseId"`
 }
 
 // NewQuery registers a new resource with the given unique name, arguments, and options.
@@ -72,41 +97,73 @@ func GetQuery(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Query resources.
 type queryState struct {
-	ApplyAutoLimit       *bool            `pulumi:"applyAutoLimit"`
-	Catalog              *string          `pulumi:"catalog"`
-	CreateTime           *string          `pulumi:"createTime"`
-	Description          *string          `pulumi:"description"`
-	DisplayName          *string          `pulumi:"displayName"`
-	LastModifierUserName *string          `pulumi:"lastModifierUserName"`
-	LifecycleState       *string          `pulumi:"lifecycleState"`
-	OwnerUserName        *string          `pulumi:"ownerUserName"`
-	Parameters           []QueryParameter `pulumi:"parameters"`
-	ParentPath           *string          `pulumi:"parentPath"`
-	QueryText            *string          `pulumi:"queryText"`
-	RunAsMode            *string          `pulumi:"runAsMode"`
-	Schema               *string          `pulumi:"schema"`
-	Tags                 []string         `pulumi:"tags"`
-	UpdateTime           *string          `pulumi:"updateTime"`
-	WarehouseId          *string          `pulumi:"warehouseId"`
+	// Whether to apply a 1000 row limit to the query result.
+	ApplyAutoLimit *bool `pulumi:"applyAutoLimit"`
+	// Name of the catalog where this query will be executed.
+	Catalog *string `pulumi:"catalog"`
+	// The timestamp string indicating when the query was created.
+	CreateTime *string `pulumi:"createTime"`
+	// General description that conveys additional information about this query such as usage notes.
+	Description *string `pulumi:"description"`
+	// Name of the query.
+	DisplayName *string `pulumi:"displayName"`
+	// Username of the user who last saved changes to this query.
+	LastModifierUserName *string `pulumi:"lastModifierUserName"`
+	// The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
+	LifecycleState *string `pulumi:"lifecycleState"`
+	// Query owner's username.
+	OwnerUserName *string `pulumi:"ownerUserName"`
+	// Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+	Parameters []QueryParameter `pulumi:"parameters"`
+	// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
+	ParentPath *string `pulumi:"parentPath"`
+	// Text of SQL query.
+	QueryText *string `pulumi:"queryText"`
+	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
+	RunAsMode *string `pulumi:"runAsMode"`
+	// Name of the schema where this query will be executed.
+	Schema *string `pulumi:"schema"`
+	// Tags that will be added to the query.
+	Tags []string `pulumi:"tags"`
+	// The timestamp string indicating when the query was updated.
+	UpdateTime *string `pulumi:"updateTime"`
+	// ID of a SQL warehouse which will be used to execute this query.
+	WarehouseId *string `pulumi:"warehouseId"`
 }
 
 type QueryState struct {
-	ApplyAutoLimit       pulumi.BoolPtrInput
-	Catalog              pulumi.StringPtrInput
-	CreateTime           pulumi.StringPtrInput
-	Description          pulumi.StringPtrInput
-	DisplayName          pulumi.StringPtrInput
+	// Whether to apply a 1000 row limit to the query result.
+	ApplyAutoLimit pulumi.BoolPtrInput
+	// Name of the catalog where this query will be executed.
+	Catalog pulumi.StringPtrInput
+	// The timestamp string indicating when the query was created.
+	CreateTime pulumi.StringPtrInput
+	// General description that conveys additional information about this query such as usage notes.
+	Description pulumi.StringPtrInput
+	// Name of the query.
+	DisplayName pulumi.StringPtrInput
+	// Username of the user who last saved changes to this query.
 	LastModifierUserName pulumi.StringPtrInput
-	LifecycleState       pulumi.StringPtrInput
-	OwnerUserName        pulumi.StringPtrInput
-	Parameters           QueryParameterArrayInput
-	ParentPath           pulumi.StringPtrInput
-	QueryText            pulumi.StringPtrInput
-	RunAsMode            pulumi.StringPtrInput
-	Schema               pulumi.StringPtrInput
-	Tags                 pulumi.StringArrayInput
-	UpdateTime           pulumi.StringPtrInput
-	WarehouseId          pulumi.StringPtrInput
+	// The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
+	LifecycleState pulumi.StringPtrInput
+	// Query owner's username.
+	OwnerUserName pulumi.StringPtrInput
+	// Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+	Parameters QueryParameterArrayInput
+	// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
+	ParentPath pulumi.StringPtrInput
+	// Text of SQL query.
+	QueryText pulumi.StringPtrInput
+	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
+	RunAsMode pulumi.StringPtrInput
+	// Name of the schema where this query will be executed.
+	Schema pulumi.StringPtrInput
+	// Tags that will be added to the query.
+	Tags pulumi.StringArrayInput
+	// The timestamp string indicating when the query was updated.
+	UpdateTime pulumi.StringPtrInput
+	// ID of a SQL warehouse which will be used to execute this query.
+	WarehouseId pulumi.StringPtrInput
 }
 
 func (QueryState) ElementType() reflect.Type {
@@ -114,34 +171,58 @@ func (QueryState) ElementType() reflect.Type {
 }
 
 type queryArgs struct {
-	ApplyAutoLimit *bool            `pulumi:"applyAutoLimit"`
-	Catalog        *string          `pulumi:"catalog"`
-	Description    *string          `pulumi:"description"`
-	DisplayName    string           `pulumi:"displayName"`
-	OwnerUserName  *string          `pulumi:"ownerUserName"`
-	Parameters     []QueryParameter `pulumi:"parameters"`
-	ParentPath     *string          `pulumi:"parentPath"`
-	QueryText      string           `pulumi:"queryText"`
-	RunAsMode      *string          `pulumi:"runAsMode"`
-	Schema         *string          `pulumi:"schema"`
-	Tags           []string         `pulumi:"tags"`
-	WarehouseId    string           `pulumi:"warehouseId"`
+	// Whether to apply a 1000 row limit to the query result.
+	ApplyAutoLimit *bool `pulumi:"applyAutoLimit"`
+	// Name of the catalog where this query will be executed.
+	Catalog *string `pulumi:"catalog"`
+	// General description that conveys additional information about this query such as usage notes.
+	Description *string `pulumi:"description"`
+	// Name of the query.
+	DisplayName string `pulumi:"displayName"`
+	// Query owner's username.
+	OwnerUserName *string `pulumi:"ownerUserName"`
+	// Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+	Parameters []QueryParameter `pulumi:"parameters"`
+	// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
+	ParentPath *string `pulumi:"parentPath"`
+	// Text of SQL query.
+	QueryText string `pulumi:"queryText"`
+	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
+	RunAsMode *string `pulumi:"runAsMode"`
+	// Name of the schema where this query will be executed.
+	Schema *string `pulumi:"schema"`
+	// Tags that will be added to the query.
+	Tags []string `pulumi:"tags"`
+	// ID of a SQL warehouse which will be used to execute this query.
+	WarehouseId string `pulumi:"warehouseId"`
 }
 
 // The set of arguments for constructing a Query resource.
 type QueryArgs struct {
+	// Whether to apply a 1000 row limit to the query result.
 	ApplyAutoLimit pulumi.BoolPtrInput
-	Catalog        pulumi.StringPtrInput
-	Description    pulumi.StringPtrInput
-	DisplayName    pulumi.StringInput
-	OwnerUserName  pulumi.StringPtrInput
-	Parameters     QueryParameterArrayInput
-	ParentPath     pulumi.StringPtrInput
-	QueryText      pulumi.StringInput
-	RunAsMode      pulumi.StringPtrInput
-	Schema         pulumi.StringPtrInput
-	Tags           pulumi.StringArrayInput
-	WarehouseId    pulumi.StringInput
+	// Name of the catalog where this query will be executed.
+	Catalog pulumi.StringPtrInput
+	// General description that conveys additional information about this query such as usage notes.
+	Description pulumi.StringPtrInput
+	// Name of the query.
+	DisplayName pulumi.StringInput
+	// Query owner's username.
+	OwnerUserName pulumi.StringPtrInput
+	// Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+	Parameters QueryParameterArrayInput
+	// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
+	ParentPath pulumi.StringPtrInput
+	// Text of SQL query.
+	QueryText pulumi.StringInput
+	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
+	RunAsMode pulumi.StringPtrInput
+	// Name of the schema where this query will be executed.
+	Schema pulumi.StringPtrInput
+	// Tags that will be added to the query.
+	Tags pulumi.StringArrayInput
+	// ID of a SQL warehouse which will be used to execute this query.
+	WarehouseId pulumi.StringInput
 }
 
 func (QueryArgs) ElementType() reflect.Type {
@@ -231,66 +312,82 @@ func (o QueryOutput) ToQueryOutputWithContext(ctx context.Context) QueryOutput {
 	return o
 }
 
+// Whether to apply a 1000 row limit to the query result.
 func (o QueryOutput) ApplyAutoLimit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Query) pulumi.BoolPtrOutput { return v.ApplyAutoLimit }).(pulumi.BoolPtrOutput)
 }
 
+// Name of the catalog where this query will be executed.
 func (o QueryOutput) Catalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringPtrOutput { return v.Catalog }).(pulumi.StringPtrOutput)
 }
 
+// The timestamp string indicating when the query was created.
 func (o QueryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// General description that conveys additional information about this query such as usage notes.
 func (o QueryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Name of the query.
 func (o QueryOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Username of the user who last saved changes to this query.
 func (o QueryOutput) LastModifierUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.LastModifierUserName }).(pulumi.StringOutput)
 }
 
+// The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
 func (o QueryOutput) LifecycleState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.LifecycleState }).(pulumi.StringOutput)
 }
 
+// Query owner's username.
 func (o QueryOutput) OwnerUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringPtrOutput { return v.OwnerUserName }).(pulumi.StringPtrOutput)
 }
 
+// Query parameter definition.  Consists of following attributes (one of `*_value` is required):
 func (o QueryOutput) Parameters() QueryParameterArrayOutput {
 	return o.ApplyT(func(v *Query) QueryParameterArrayOutput { return v.Parameters }).(QueryParameterArrayOutput)
 }
 
+// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
 func (o QueryOutput) ParentPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringPtrOutput { return v.ParentPath }).(pulumi.StringPtrOutput)
 }
 
+// Text of SQL query.
 func (o QueryOutput) QueryText() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.QueryText }).(pulumi.StringOutput)
 }
 
+// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
 func (o QueryOutput) RunAsMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringPtrOutput { return v.RunAsMode }).(pulumi.StringPtrOutput)
 }
 
+// Name of the schema where this query will be executed.
 func (o QueryOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)
 }
 
+// Tags that will be added to the query.
 func (o QueryOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// The timestamp string indicating when the query was updated.
 func (o QueryOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// ID of a SQL warehouse which will be used to execute this query.
 func (o QueryOutput) WarehouseId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.WarehouseId }).(pulumi.StringOutput)
 }

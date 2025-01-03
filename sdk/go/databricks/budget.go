@@ -11,16 +11,106 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > Initialize provider with `alias = "account"`, and `host` pointing to the account URL, like, `host = "https://accounts.cloud.databricks.com"`. Use `provider = databricks.account` for all account-level resources.
+//
+// > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+//
+// This resource allows you to manage [Databricks Budgets](https://docs.databricks.com/en/admin/account-settings/budgets.html).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewBudget(ctx, "this", &databricks.BudgetArgs{
+//				DisplayName: pulumi.String("databricks-workspace-budget"),
+//				AlertConfigurations: databricks.BudgetAlertConfigurationArray{
+//					&databricks.BudgetAlertConfigurationArgs{
+//						TimePeriod:        pulumi.String("MONTH"),
+//						TriggerType:       pulumi.String("CUMULATIVE_SPENDING_EXCEEDED"),
+//						QuantityType:      pulumi.String("LIST_PRICE_DOLLARS_USD"),
+//						QuantityThreshold: pulumi.String("840"),
+//						ActionConfigurations: databricks.BudgetAlertConfigurationActionConfigurationArray{
+//							&databricks.BudgetAlertConfigurationActionConfigurationArgs{
+//								ActionType: pulumi.String("EMAIL_NOTIFICATION"),
+//								Target:     pulumi.String("abc@gmail.com"),
+//							},
+//						},
+//					},
+//				},
+//				Filter: &databricks.BudgetFilterArgs{
+//					WorkspaceId: &databricks.BudgetFilterWorkspaceIdArgs{
+//						Operator: pulumi.String("IN"),
+//						Values: pulumi.IntArray{
+//							pulumi.Int(1234567890098765),
+//						},
+//					},
+//					Tags: databricks.BudgetFilterTagArray{
+//						&databricks.BudgetFilterTagArgs{
+//							Key: pulumi.String("Team"),
+//							Value: &databricks.BudgetFilterTagValueArgs{
+//								Operator: pulumi.String("IN"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("Data Science"),
+//								},
+//							},
+//						},
+//						&databricks.BudgetFilterTagArgs{
+//							Key: pulumi.String("Environment"),
+//							Value: &databricks.BudgetFilterTagValueArgs{
+//								Operator: pulumi.String("IN"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("Development"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the context:
+//
+// * MwsWorkspaces to set up Databricks workspaces.
+//
+// ## Import
+//
+// This resource can be imported by Databricks account ID and Budget.
+//
+// ```sh
+// $ pulumi import databricks:index/budget:Budget this '<account_id>|<budget_configuration_id>'
+// ```
 type Budget struct {
 	pulumi.CustomResourceState
 
-	AccountId             pulumi.StringOutput                 `pulumi:"accountId"`
-	AlertConfigurations   BudgetAlertConfigurationArrayOutput `pulumi:"alertConfigurations"`
-	BudgetConfigurationId pulumi.StringOutput                 `pulumi:"budgetConfigurationId"`
-	CreateTime            pulumi.IntOutput                    `pulumi:"createTime"`
-	DisplayName           pulumi.StringPtrOutput              `pulumi:"displayName"`
-	Filter                BudgetFilterPtrOutput               `pulumi:"filter"`
-	UpdateTime            pulumi.IntOutput                    `pulumi:"updateTime"`
+	// The ID of the Databricks Account.
+	AccountId           pulumi.StringOutput                 `pulumi:"accountId"`
+	AlertConfigurations BudgetAlertConfigurationArrayOutput `pulumi:"alertConfigurations"`
+	// The ID of the budget configuration.
+	BudgetConfigurationId pulumi.StringOutput `pulumi:"budgetConfigurationId"`
+	CreateTime            pulumi.IntOutput    `pulumi:"createTime"`
+	// Name of the budget in Databricks Account.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	Filter      BudgetFilterPtrOutput  `pulumi:"filter"`
+	UpdateTime  pulumi.IntOutput       `pulumi:"updateTime"`
 }
 
 // NewBudget registers a new resource with the given unique name, arguments, and options.
@@ -53,23 +143,29 @@ func GetBudget(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Budget resources.
 type budgetState struct {
-	AccountId             *string                    `pulumi:"accountId"`
-	AlertConfigurations   []BudgetAlertConfiguration `pulumi:"alertConfigurations"`
-	BudgetConfigurationId *string                    `pulumi:"budgetConfigurationId"`
-	CreateTime            *int                       `pulumi:"createTime"`
-	DisplayName           *string                    `pulumi:"displayName"`
-	Filter                *BudgetFilter              `pulumi:"filter"`
-	UpdateTime            *int                       `pulumi:"updateTime"`
+	// The ID of the Databricks Account.
+	AccountId           *string                    `pulumi:"accountId"`
+	AlertConfigurations []BudgetAlertConfiguration `pulumi:"alertConfigurations"`
+	// The ID of the budget configuration.
+	BudgetConfigurationId *string `pulumi:"budgetConfigurationId"`
+	CreateTime            *int    `pulumi:"createTime"`
+	// Name of the budget in Databricks Account.
+	DisplayName *string       `pulumi:"displayName"`
+	Filter      *BudgetFilter `pulumi:"filter"`
+	UpdateTime  *int          `pulumi:"updateTime"`
 }
 
 type BudgetState struct {
-	AccountId             pulumi.StringPtrInput
-	AlertConfigurations   BudgetAlertConfigurationArrayInput
+	// The ID of the Databricks Account.
+	AccountId           pulumi.StringPtrInput
+	AlertConfigurations BudgetAlertConfigurationArrayInput
+	// The ID of the budget configuration.
 	BudgetConfigurationId pulumi.StringPtrInput
 	CreateTime            pulumi.IntPtrInput
-	DisplayName           pulumi.StringPtrInput
-	Filter                BudgetFilterPtrInput
-	UpdateTime            pulumi.IntPtrInput
+	// Name of the budget in Databricks Account.
+	DisplayName pulumi.StringPtrInput
+	Filter      BudgetFilterPtrInput
+	UpdateTime  pulumi.IntPtrInput
 }
 
 func (BudgetState) ElementType() reflect.Type {
@@ -77,24 +173,30 @@ func (BudgetState) ElementType() reflect.Type {
 }
 
 type budgetArgs struct {
-	AccountId             *string                    `pulumi:"accountId"`
-	AlertConfigurations   []BudgetAlertConfiguration `pulumi:"alertConfigurations"`
-	BudgetConfigurationId *string                    `pulumi:"budgetConfigurationId"`
-	CreateTime            *int                       `pulumi:"createTime"`
-	DisplayName           *string                    `pulumi:"displayName"`
-	Filter                *BudgetFilter              `pulumi:"filter"`
-	UpdateTime            *int                       `pulumi:"updateTime"`
+	// The ID of the Databricks Account.
+	AccountId           *string                    `pulumi:"accountId"`
+	AlertConfigurations []BudgetAlertConfiguration `pulumi:"alertConfigurations"`
+	// The ID of the budget configuration.
+	BudgetConfigurationId *string `pulumi:"budgetConfigurationId"`
+	CreateTime            *int    `pulumi:"createTime"`
+	// Name of the budget in Databricks Account.
+	DisplayName *string       `pulumi:"displayName"`
+	Filter      *BudgetFilter `pulumi:"filter"`
+	UpdateTime  *int          `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Budget resource.
 type BudgetArgs struct {
-	AccountId             pulumi.StringPtrInput
-	AlertConfigurations   BudgetAlertConfigurationArrayInput
+	// The ID of the Databricks Account.
+	AccountId           pulumi.StringPtrInput
+	AlertConfigurations BudgetAlertConfigurationArrayInput
+	// The ID of the budget configuration.
 	BudgetConfigurationId pulumi.StringPtrInput
 	CreateTime            pulumi.IntPtrInput
-	DisplayName           pulumi.StringPtrInput
-	Filter                BudgetFilterPtrInput
-	UpdateTime            pulumi.IntPtrInput
+	// Name of the budget in Databricks Account.
+	DisplayName pulumi.StringPtrInput
+	Filter      BudgetFilterPtrInput
+	UpdateTime  pulumi.IntPtrInput
 }
 
 func (BudgetArgs) ElementType() reflect.Type {
@@ -184,6 +286,7 @@ func (o BudgetOutput) ToBudgetOutputWithContext(ctx context.Context) BudgetOutpu
 	return o
 }
 
+// The ID of the Databricks Account.
 func (o BudgetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -192,6 +295,7 @@ func (o BudgetOutput) AlertConfigurations() BudgetAlertConfigurationArrayOutput 
 	return o.ApplyT(func(v *Budget) BudgetAlertConfigurationArrayOutput { return v.AlertConfigurations }).(BudgetAlertConfigurationArrayOutput)
 }
 
+// The ID of the budget configuration.
 func (o BudgetOutput) BudgetConfigurationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.BudgetConfigurationId }).(pulumi.StringOutput)
 }
@@ -200,6 +304,7 @@ func (o BudgetOutput) CreateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Budget) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
 }
 
+// Name of the budget in Databricks Account.
 func (o BudgetOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }

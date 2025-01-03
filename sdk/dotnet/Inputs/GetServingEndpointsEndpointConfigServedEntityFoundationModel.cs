@@ -21,6 +21,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("docs")]
         public string? Docs { get; set; }
 
+        /// <summary>
+        /// The name of the model serving endpoint.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 

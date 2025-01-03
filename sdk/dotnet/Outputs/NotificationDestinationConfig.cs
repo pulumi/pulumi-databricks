@@ -13,10 +13,25 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class NotificationDestinationConfig
     {
+        /// <summary>
+        /// The email configuration of the Notification Destination. It must contain the following:
+        /// </summary>
         public readonly Outputs.NotificationDestinationConfigEmail? Email;
+        /// <summary>
+        /// The Generic Webhook configuration of the Notification Destination. It must contain the following:
+        /// </summary>
         public readonly Outputs.NotificationDestinationConfigGenericWebhook? GenericWebhook;
+        /// <summary>
+        /// The Microsoft Teams configuration of the Notification Destination. It must contain the following:
+        /// </summary>
         public readonly Outputs.NotificationDestinationConfigMicrosoftTeams? MicrosoftTeams;
+        /// <summary>
+        /// The PagerDuty configuration of the Notification Destination. It must contain the following:
+        /// </summary>
         public readonly Outputs.NotificationDestinationConfigPagerduty? Pagerduty;
+        /// <summary>
+        /// The Slack configuration of the Notification Destination. It must contain the following:
+        /// </summary>
         public readonly Outputs.NotificationDestinationConfigSlack? Slack;
 
         [OutputConstructor]

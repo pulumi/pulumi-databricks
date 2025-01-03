@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BudgetFilterTagValue {
+    /**
+     * @return The operator to use for the filter. (Enum: `IN`)
+     * 
+     */
     private @Nullable String operator;
+    /**
+     * @return The values to filter by.
+     * 
+     */
     private @Nullable List<String> values;
 
     private BudgetFilterTagValue() {}
+    /**
+     * @return The operator to use for the filter. (Enum: `IN`)
+     * 
+     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
+    /**
+     * @return The values to filter by.
+     * 
+     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

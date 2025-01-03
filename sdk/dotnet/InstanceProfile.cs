@@ -9,18 +9,296 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// This resource allows you to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount. The following example demonstrates how to create an instance profile and create a cluster with it. When creating a new `databricks.InstanceProfile`, Databricks validates that it has sufficient permissions to launch instances with the instance profile. This validation uses AWS dry-run mode for the [AWS EC2 RunInstances API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html).
+    /// 
+    /// &gt; Please switch to databricks.StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     // Role that you've specified on https://accounts.cloud.databricks.com/#aws
+    ///     var crossaccountRoleName = config.Require("crossaccountRoleName");
+    ///     var assumeRoleForEc2 = Aws.Iam.GetPolicyDocument.Invoke(new()
+    ///     {
+    ///         Statements = new[]
+    ///         {
+    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+    ///             {
+    ///                 Effect = "Allow",
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "sts:AssumeRole",
+    ///                 },
+    ///                 Principals = new[]
+    ///                 {
+    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+    ///                     {
+    ///                         Identifiers = new[]
+    ///                         {
+    ///                             "ec2.amazonaws.com",
+    ///                         },
+    ///                         Type = "Service",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var roleForS3Access = new Aws.Iam.Role("role_for_s3_access", new()
+    ///     {
+    ///         Name = "shared-ec2-role-for-s3",
+    ///         Description = "Role for shared access",
+    ///         AssumeRolePolicy = assumeRoleForEc2.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
+    ///     });
+    /// 
+    ///     var passRoleForS3Access = Aws.Iam.GetPolicyDocument.Invoke(new()
+    ///     {
+    ///         Statements = new[]
+    ///         {
+    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+    ///             {
+    ///                 Effect = "Allow",
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "iam:PassRole",
+    ///                 },
+    ///                 Resources = new[]
+    ///                 {
+    ///                     roleForS3Access.Arn,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var passRoleForS3AccessPolicy = new Aws.Iam.Policy("pass_role_for_s3_access", new()
+    ///     {
+    ///         Name = "shared-pass-role-for-s3-access",
+    ///         Path = "/",
+    ///         PolicyDocument = passRoleForS3Access.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
+    ///     });
+    /// 
+    ///     var crossAccount = new Aws.Iam.RolePolicyAttachment("cross_account", new()
+    ///     {
+    ///         PolicyArn = passRoleForS3AccessPolicy.Arn,
+    ///         Role = crossaccountRoleName,
+    ///     });
+    /// 
+    ///     var shared = new Aws.Iam.InstanceProfile("shared", new()
+    ///     {
+    ///         Name = "shared-instance-profile",
+    ///         Role = roleForS3Access.Name,
+    ///     });
+    /// 
+    ///     var sharedInstanceProfile = new Databricks.InstanceProfile("shared", new()
+    ///     {
+    ///         InstanceProfileArn = shared.Arn,
+    ///     });
+    /// 
+    ///     var latest = Databricks.GetSparkVersion.Invoke();
+    /// 
+    ///     var smallest = Databricks.GetNodeType.Invoke(new()
+    ///     {
+    ///         LocalDisk = true,
+    ///     });
+    /// 
+    ///     var @this = new Databricks.Cluster("this", new()
+    ///     {
+    ///         ClusterName = "Shared Autoscaling",
+    ///         SparkVersion = latest.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
+    ///         NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
+    ///         AutoterminationMinutes = 20,
+    ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
+    ///         {
+    ///             MinWorkers = 1,
+    ///             MaxWorkers = 50,
+    ///         },
+    ///         AwsAttributes = new Databricks.Inputs.ClusterAwsAttributesArgs
+    ///         {
+    ///             InstanceProfileArn = sharedInstanceProfile.Id,
+    ///             Availability = "SPOT",
+    ///             ZoneId = "us-east-1",
+    ///             FirstOnDemand = 1,
+    ///             SpotBidPricePercent = 100,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Usage with Cluster Policies
+    /// 
+    /// It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `databricks.Cluster` above could be replaced with `databricks.ClusterPolicy`:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.ClusterPolicy("this", new()
+    ///     {
+    ///         Name = "Policy with predefined instance profile",
+    ///         Definition = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["aws_attributes.instance_profile_arn"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["type"] = "fixed",
+    ///                 ["value"] = shared.Arn,
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Granting access to all users
+    /// 
+    /// You can make instance profile available to all users by associating it with the special group called `users` through databricks.Group data source.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.InstanceProfile("this", new()
+    ///     {
+    ///         InstanceProfileArn = shared.Arn,
+    ///     });
+    /// 
+    ///     var users = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "users",
+    ///     });
+    /// 
+    ///     var all = new Databricks.GroupInstanceProfile("all", new()
+    ///     {
+    ///         GroupId = users.Apply(getGroupResult =&gt; getGroupResult.Id),
+    ///         InstanceProfileId = @this.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Usage with Databricks SQL serverless
+    /// 
+    /// When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sqlServerlessAssumeRole = Aws.Iam.GetPolicyDocument.Invoke(new()
+    ///     {
+    ///         Statements = new[]
+    ///         {
+    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+    ///             {
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "sts:AssumeRole",
+    ///                 },
+    ///                 Principals = new[]
+    ///                 {
+    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+    ///                     {
+    ///                         Type = "AWS",
+    ///                         Identifiers = new[]
+    ///                         {
+    ///                             "arn:aws:iam::790110701330:role/serverless-customer-resource-role",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Conditions = new[]
+    ///                 {
+    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
+    ///                     {
+    ///                         Test = "StringEquals",
+    ///                         Variable = "sts:ExternalID",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "databricks-serverless-&lt;YOUR_WORKSPACE_ID1&gt;",
+    ///                             "databricks-serverless-&lt;YOUR_WORKSPACE_ID2&gt;",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @this = new Aws.Iam.Role("this", new()
+    ///     {
+    ///         Name = "my-databricks-sql-serverless-role",
+    ///         AssumeRolePolicy = sqlServerlessAssumeRole.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
+    ///     });
+    /// 
+    ///     var thisInstanceProfile = new Aws.Iam.InstanceProfile("this", new()
+    ///     {
+    ///         Name = "my-databricks-sql-serverless-instance-profile",
+    ///         Role = @this.Name,
+    ///     });
+    /// 
+    ///     var thisInstanceProfile2 = new Databricks.InstanceProfile("this", new()
+    ///     {
+    ///         InstanceProfileArn = thisInstanceProfile.Arn,
+    ///         IamRoleArn = @this.Arn,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The resource instance profile can be imported using the ARN of it
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/instanceProfile:InstanceProfile this &lt;instance-profile-arn&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/instanceProfile:InstanceProfile")]
     public partial class InstanceProfile : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+        /// </summary>
         [Output("iamRoleArn")]
         public Output<string?> IamRoleArn { get; private set; } = null!;
 
+        /// <summary>
+        /// `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+        /// </summary>
         [Output("instanceProfileArn")]
         public Output<string> InstanceProfileArn { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
+        /// </summary>
         [Output("isMetaInstanceProfile")]
         public Output<bool?> IsMetaInstanceProfile { get; private set; } = null!;
 
+        /// <summary>
+        /// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
+        /// </summary>
         [Output("skipValidation")]
         public Output<bool> SkipValidation { get; private set; } = null!;
 
@@ -70,15 +348,27 @@ namespace Pulumi.Databricks
 
     public sealed class InstanceProfileArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+        /// </summary>
         [Input("iamRoleArn")]
         public Input<string>? IamRoleArn { get; set; }
 
+        /// <summary>
+        /// `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+        /// </summary>
         [Input("instanceProfileArn", required: true)]
         public Input<string> InstanceProfileArn { get; set; } = null!;
 
+        /// <summary>
+        /// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
+        /// </summary>
         [Input("isMetaInstanceProfile")]
         public Input<bool>? IsMetaInstanceProfile { get; set; }
 
+        /// <summary>
+        /// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
+        /// </summary>
         [Input("skipValidation")]
         public Input<bool>? SkipValidation { get; set; }
 
@@ -90,15 +380,27 @@ namespace Pulumi.Databricks
 
     public sealed class InstanceProfileState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
+        /// </summary>
         [Input("iamRoleArn")]
         public Input<string>? IamRoleArn { get; set; }
 
+        /// <summary>
+        /// `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+        /// </summary>
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }
 
+        /// <summary>
+        /// Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
+        /// </summary>
         [Input("isMetaInstanceProfile")]
         public Input<bool>? IsMetaInstanceProfile { get; set; }
 
+        /// <summary>
+        /// **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
+        /// </summary>
         [Input("skipValidation")]
         public Input<bool>? SkipValidation { get; set; }
 

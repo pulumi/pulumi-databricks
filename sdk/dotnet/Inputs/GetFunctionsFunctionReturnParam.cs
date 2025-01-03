@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("parameters")]
         private List<Inputs.GetFunctionsFunctionReturnParamParameterArgs>? _parameters;
+
+        /// <summary>
+        /// The array of definitions of the function's parameters:
+        /// </summary>
         public List<Inputs.GetFunctionsFunctionReturnParamParameterArgs> Parameters
         {
             get => _parameters ?? (_parameters = new List<Inputs.GetFunctionsFunctionReturnParamParameterArgs>());

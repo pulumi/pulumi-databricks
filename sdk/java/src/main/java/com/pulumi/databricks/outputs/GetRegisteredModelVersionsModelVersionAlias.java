@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegisteredModelVersionsModelVersionAlias {
+    /**
+     * @return string with the name of alias
+     * 
+     */
     private @Nullable String aliasName;
+    /**
+     * @return associated model version
+     * 
+     */
     private @Nullable Integer versionNum;
 
     private GetRegisteredModelVersionsModelVersionAlias() {}
+    /**
+     * @return string with the name of alias
+     * 
+     */
     public Optional<String> aliasName() {
         return Optional.ofNullable(this.aliasName);
     }
+    /**
+     * @return associated model version
+     * 
+     */
     public Optional<Integer> versionNum() {
         return Optional.ofNullable(this.versionNum);
     }

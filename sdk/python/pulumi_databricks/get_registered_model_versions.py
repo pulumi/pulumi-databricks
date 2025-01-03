@@ -42,6 +42,9 @@ class GetRegisteredModelVersionsResult:
     @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> str:
+        """
+        The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+        """
         return pulumi.get(self, "full_name")
 
     @property
@@ -55,6 +58,9 @@ class GetRegisteredModelVersionsResult:
     @property
     @pulumi.getter(name="modelVersions")
     def model_versions(self) -> Sequence['outputs.GetRegisteredModelVersionsModelVersionResult']:
+        """
+        list of objects describing the model versions. Each object consists of following attributes:
+        """
         return pulumi.get(self, "model_versions")
 
 
@@ -73,7 +79,31 @@ def get_registered_model_versions(full_name: Optional[str] = None,
                                   model_versions: Optional[Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegisteredModelVersionsResult:
     """
-    Use this data source to access information about an existing resource.
+    > This resource can only be used with a workspace-level provider!
+
+    This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_registered_model_versions(full_name="main.default.my_model")
+    ```
+
+    ## Related Resources
+
+    The following resources are often used in the same context:
+
+    * RegisteredModel data source to retrieve information about a model within Unity Catalog.
+    * RegisteredModel resource to manage models within Unity Catalog.
+    * ModelServing to serve this model on a Databricks serving endpoint.
+    * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+
+
+    :param str full_name: The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+    :param Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']] model_versions: list of objects describing the model versions. Each object consists of following attributes:
     """
     __args__ = dict()
     __args__['fullName'] = full_name
@@ -89,7 +119,31 @@ def get_registered_model_versions_output(full_name: Optional[pulumi.Input[str]] 
                                          model_versions: Optional[pulumi.Input[Optional[Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']]]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegisteredModelVersionsResult]:
     """
-    Use this data source to access information about an existing resource.
+    > This resource can only be used with a workspace-level provider!
+
+    This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_registered_model_versions(full_name="main.default.my_model")
+    ```
+
+    ## Related Resources
+
+    The following resources are often used in the same context:
+
+    * RegisteredModel data source to retrieve information about a model within Unity Catalog.
+    * RegisteredModel resource to manage models within Unity Catalog.
+    * ModelServing to serve this model on a Databricks serving endpoint.
+    * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+
+
+    :param str full_name: The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+    :param Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']] model_versions: list of objects describing the model versions. Each object consists of following attributes:
     """
     __args__ = dict()
     __args__['fullName'] = full_name

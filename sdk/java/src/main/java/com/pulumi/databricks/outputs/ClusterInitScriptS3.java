@@ -13,33 +13,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterInitScriptS3 {
+    /**
+     * @return Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+     * 
+     */
     private @Nullable String cannedAcl;
+    /**
+     * @return S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     * 
+     */
     private String destination;
+    /**
+     * @return Enable server-side encryption, false by default.
+     * 
+     */
     private @Nullable Boolean enableEncryption;
+    /**
+     * @return The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+     * 
+     */
     private @Nullable String encryptionType;
+    /**
+     * @return S3 endpoint, e.g. &lt;https://s3-us-west-2.amazonaws.com&gt;. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+     * 
+     */
     private @Nullable String endpoint;
+    /**
+     * @return KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+     * 
+     */
     private @Nullable String kmsKey;
+    /**
+     * @return S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+     * 
+     */
     private @Nullable String region;
 
     private ClusterInitScriptS3() {}
+    /**
+     * @return Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+     * 
+     */
     public Optional<String> cannedAcl() {
         return Optional.ofNullable(this.cannedAcl);
     }
+    /**
+     * @return S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     * 
+     */
     public String destination() {
         return this.destination;
     }
+    /**
+     * @return Enable server-side encryption, false by default.
+     * 
+     */
     public Optional<Boolean> enableEncryption() {
         return Optional.ofNullable(this.enableEncryption);
     }
+    /**
+     * @return The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+     * 
+     */
     public Optional<String> encryptionType() {
         return Optional.ofNullable(this.encryptionType);
     }
+    /**
+     * @return S3 endpoint, e.g. &lt;https://s3-us-west-2.amazonaws.com&gt;. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+     * 
+     */
     public Optional<String> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
+    /**
+     * @return KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+     * 
+     */
     public Optional<String> kmsKey() {
         return Optional.ofNullable(this.kmsKey);
     }
+    /**
+     * @return S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }

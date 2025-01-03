@@ -12,23 +12,80 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
+//
+// ## Example Usage
+//
+// Dashboard using `serializedDashboard` attribute:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			starter, err := databricks.GetSqlWarehouse(ctx, &databricks.GetSqlWarehouseArgs{
+//				Name: pulumi.StringRef("Starter Warehouse"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewDashboard(ctx, "dashboard", &databricks.DashboardArgs{
+//				DisplayName:         pulumi.String("New Dashboard"),
+//				WarehouseId:         pulumi.String(starter.Id),
+//				SerializedDashboard: pulumi.String("{\"pages\":[{\"name\":\"new_name\",\"displayName\":\"New Page\"}]}"),
+//				EmbedCredentials:    pulumi.Bool(false),
+//				ParentPath:          pulumi.String("/Shared/provider-test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Dashboard using `filePath` attribute:
+//
+// ## Import
+//
+// You can import a `databricks_dashboard` resource with ID like the following:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/dashboard:Dashboard this <dashboard-id>
+// ```
 type Dashboard struct {
 	pulumi.CustomResourceState
 
-	CreateTime              pulumi.StringOutput    `pulumi:"createTime"`
-	DashboardChangeDetected pulumi.BoolPtrOutput   `pulumi:"dashboardChangeDetected"`
-	DashboardId             pulumi.StringOutput    `pulumi:"dashboardId"`
-	DisplayName             pulumi.StringOutput    `pulumi:"displayName"`
-	EmbedCredentials        pulumi.BoolPtrOutput   `pulumi:"embedCredentials"`
-	Etag                    pulumi.StringOutput    `pulumi:"etag"`
-	FilePath                pulumi.StringPtrOutput `pulumi:"filePath"`
-	LifecycleState          pulumi.StringOutput    `pulumi:"lifecycleState"`
-	Md5                     pulumi.StringOutput    `pulumi:"md5"`
-	ParentPath              pulumi.StringOutput    `pulumi:"parentPath"`
-	Path                    pulumi.StringOutput    `pulumi:"path"`
-	SerializedDashboard     pulumi.StringPtrOutput `pulumi:"serializedDashboard"`
-	UpdateTime              pulumi.StringOutput    `pulumi:"updateTime"`
-	WarehouseId             pulumi.StringOutput    `pulumi:"warehouseId"`
+	CreateTime              pulumi.StringOutput  `pulumi:"createTime"`
+	DashboardChangeDetected pulumi.BoolPtrOutput `pulumi:"dashboardChangeDetected"`
+	DashboardId             pulumi.StringOutput  `pulumi:"dashboardId"`
+	// The display name of the dashboard.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Whether to embed credentials in the dashboard. Default is `true`.
+	EmbedCredentials pulumi.BoolPtrOutput `pulumi:"embedCredentials"`
+	Etag             pulumi.StringOutput  `pulumi:"etag"`
+	// The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
+	FilePath       pulumi.StringPtrOutput `pulumi:"filePath"`
+	LifecycleState pulumi.StringOutput    `pulumi:"lifecycleState"`
+	Md5            pulumi.StringOutput    `pulumi:"md5"`
+	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+	ParentPath pulumi.StringOutput `pulumi:"parentPath"`
+	Path       pulumi.StringOutput `pulumi:"path"`
+	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
+	SerializedDashboard pulumi.StringPtrOutput `pulumi:"serializedDashboard"`
+	UpdateTime          pulumi.StringOutput    `pulumi:"updateTime"`
+	// The warehouse ID used to run the dashboard.
+	WarehouseId pulumi.StringOutput `pulumi:"warehouseId"`
 }
 
 // NewDashboard registers a new resource with the given unique name, arguments, and options.
@@ -73,34 +130,46 @@ type dashboardState struct {
 	CreateTime              *string `pulumi:"createTime"`
 	DashboardChangeDetected *bool   `pulumi:"dashboardChangeDetected"`
 	DashboardId             *string `pulumi:"dashboardId"`
-	DisplayName             *string `pulumi:"displayName"`
-	EmbedCredentials        *bool   `pulumi:"embedCredentials"`
-	Etag                    *string `pulumi:"etag"`
-	FilePath                *string `pulumi:"filePath"`
-	LifecycleState          *string `pulumi:"lifecycleState"`
-	Md5                     *string `pulumi:"md5"`
-	ParentPath              *string `pulumi:"parentPath"`
-	Path                    *string `pulumi:"path"`
-	SerializedDashboard     *string `pulumi:"serializedDashboard"`
-	UpdateTime              *string `pulumi:"updateTime"`
-	WarehouseId             *string `pulumi:"warehouseId"`
+	// The display name of the dashboard.
+	DisplayName *string `pulumi:"displayName"`
+	// Whether to embed credentials in the dashboard. Default is `true`.
+	EmbedCredentials *bool   `pulumi:"embedCredentials"`
+	Etag             *string `pulumi:"etag"`
+	// The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
+	FilePath       *string `pulumi:"filePath"`
+	LifecycleState *string `pulumi:"lifecycleState"`
+	Md5            *string `pulumi:"md5"`
+	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+	ParentPath *string `pulumi:"parentPath"`
+	Path       *string `pulumi:"path"`
+	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
+	SerializedDashboard *string `pulumi:"serializedDashboard"`
+	UpdateTime          *string `pulumi:"updateTime"`
+	// The warehouse ID used to run the dashboard.
+	WarehouseId *string `pulumi:"warehouseId"`
 }
 
 type DashboardState struct {
 	CreateTime              pulumi.StringPtrInput
 	DashboardChangeDetected pulumi.BoolPtrInput
 	DashboardId             pulumi.StringPtrInput
-	DisplayName             pulumi.StringPtrInput
-	EmbedCredentials        pulumi.BoolPtrInput
-	Etag                    pulumi.StringPtrInput
-	FilePath                pulumi.StringPtrInput
-	LifecycleState          pulumi.StringPtrInput
-	Md5                     pulumi.StringPtrInput
-	ParentPath              pulumi.StringPtrInput
-	Path                    pulumi.StringPtrInput
-	SerializedDashboard     pulumi.StringPtrInput
-	UpdateTime              pulumi.StringPtrInput
-	WarehouseId             pulumi.StringPtrInput
+	// The display name of the dashboard.
+	DisplayName pulumi.StringPtrInput
+	// Whether to embed credentials in the dashboard. Default is `true`.
+	EmbedCredentials pulumi.BoolPtrInput
+	Etag             pulumi.StringPtrInput
+	// The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
+	FilePath       pulumi.StringPtrInput
+	LifecycleState pulumi.StringPtrInput
+	Md5            pulumi.StringPtrInput
+	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+	ParentPath pulumi.StringPtrInput
+	Path       pulumi.StringPtrInput
+	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
+	SerializedDashboard pulumi.StringPtrInput
+	UpdateTime          pulumi.StringPtrInput
+	// The warehouse ID used to run the dashboard.
+	WarehouseId pulumi.StringPtrInput
 }
 
 func (DashboardState) ElementType() reflect.Type {
@@ -111,17 +180,23 @@ type dashboardArgs struct {
 	CreateTime              *string `pulumi:"createTime"`
 	DashboardChangeDetected *bool   `pulumi:"dashboardChangeDetected"`
 	DashboardId             *string `pulumi:"dashboardId"`
-	DisplayName             string  `pulumi:"displayName"`
-	EmbedCredentials        *bool   `pulumi:"embedCredentials"`
-	Etag                    *string `pulumi:"etag"`
-	FilePath                *string `pulumi:"filePath"`
-	LifecycleState          *string `pulumi:"lifecycleState"`
-	Md5                     *string `pulumi:"md5"`
-	ParentPath              string  `pulumi:"parentPath"`
-	Path                    *string `pulumi:"path"`
-	SerializedDashboard     *string `pulumi:"serializedDashboard"`
-	UpdateTime              *string `pulumi:"updateTime"`
-	WarehouseId             string  `pulumi:"warehouseId"`
+	// The display name of the dashboard.
+	DisplayName string `pulumi:"displayName"`
+	// Whether to embed credentials in the dashboard. Default is `true`.
+	EmbedCredentials *bool   `pulumi:"embedCredentials"`
+	Etag             *string `pulumi:"etag"`
+	// The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
+	FilePath       *string `pulumi:"filePath"`
+	LifecycleState *string `pulumi:"lifecycleState"`
+	Md5            *string `pulumi:"md5"`
+	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+	ParentPath string  `pulumi:"parentPath"`
+	Path       *string `pulumi:"path"`
+	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
+	SerializedDashboard *string `pulumi:"serializedDashboard"`
+	UpdateTime          *string `pulumi:"updateTime"`
+	// The warehouse ID used to run the dashboard.
+	WarehouseId string `pulumi:"warehouseId"`
 }
 
 // The set of arguments for constructing a Dashboard resource.
@@ -129,17 +204,23 @@ type DashboardArgs struct {
 	CreateTime              pulumi.StringPtrInput
 	DashboardChangeDetected pulumi.BoolPtrInput
 	DashboardId             pulumi.StringPtrInput
-	DisplayName             pulumi.StringInput
-	EmbedCredentials        pulumi.BoolPtrInput
-	Etag                    pulumi.StringPtrInput
-	FilePath                pulumi.StringPtrInput
-	LifecycleState          pulumi.StringPtrInput
-	Md5                     pulumi.StringPtrInput
-	ParentPath              pulumi.StringInput
-	Path                    pulumi.StringPtrInput
-	SerializedDashboard     pulumi.StringPtrInput
-	UpdateTime              pulumi.StringPtrInput
-	WarehouseId             pulumi.StringInput
+	// The display name of the dashboard.
+	DisplayName pulumi.StringInput
+	// Whether to embed credentials in the dashboard. Default is `true`.
+	EmbedCredentials pulumi.BoolPtrInput
+	Etag             pulumi.StringPtrInput
+	// The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
+	FilePath       pulumi.StringPtrInput
+	LifecycleState pulumi.StringPtrInput
+	Md5            pulumi.StringPtrInput
+	// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+	ParentPath pulumi.StringInput
+	Path       pulumi.StringPtrInput
+	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
+	SerializedDashboard pulumi.StringPtrInput
+	UpdateTime          pulumi.StringPtrInput
+	// The warehouse ID used to run the dashboard.
+	WarehouseId pulumi.StringInput
 }
 
 func (DashboardArgs) ElementType() reflect.Type {
@@ -241,10 +322,12 @@ func (o DashboardOutput) DashboardId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.DashboardId }).(pulumi.StringOutput)
 }
 
+// The display name of the dashboard.
 func (o DashboardOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Whether to embed credentials in the dashboard. Default is `true`.
 func (o DashboardOutput) EmbedCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.BoolPtrOutput { return v.EmbedCredentials }).(pulumi.BoolPtrOutput)
 }
@@ -253,6 +336,7 @@ func (o DashboardOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
 func (o DashboardOutput) FilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.FilePath }).(pulumi.StringPtrOutput)
 }
@@ -265,6 +349,7 @@ func (o DashboardOutput) Md5() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Md5 }).(pulumi.StringOutput)
 }
 
+// The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
 func (o DashboardOutput) ParentPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.ParentPath }).(pulumi.StringOutput)
 }
@@ -273,6 +358,7 @@ func (o DashboardOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
+// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
 func (o DashboardOutput) SerializedDashboard() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.SerializedDashboard }).(pulumi.StringPtrOutput)
 }
@@ -281,6 +367,7 @@ func (o DashboardOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// The warehouse ID used to run the dashboard.
 func (o DashboardOutput) WarehouseId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.WarehouseId }).(pulumi.StringOutput)
 }

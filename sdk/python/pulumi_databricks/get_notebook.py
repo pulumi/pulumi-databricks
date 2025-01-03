@@ -55,6 +55,9 @@ class GetNotebookResult:
     @property
     @pulumi.getter
     def content(self) -> str:
+        """
+        notebook content in selected format
+        """
         return pulumi.get(self, "content")
 
     @property
@@ -73,16 +76,25 @@ class GetNotebookResult:
     @property
     @pulumi.getter
     def language(self) -> str:
+        """
+        notebook language
+        """
         return pulumi.get(self, "language")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> int:
+        """
+        notebook object ID
+        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter(name="objectType")
     def object_type(self) -> str:
+        """
+        notebook object type
+        """
         return pulumi.get(self, "object_type")
 
     @property
@@ -93,6 +105,9 @@ class GetNotebookResult:
     @property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> str:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
         return pulumi.get(self, "workspace_path")
 
 
@@ -119,7 +134,26 @@ def get_notebook(format: Optional[str] = None,
                  path: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotebookResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    This data source allows to export a notebook from Databricks Workspace.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    features = databricks.get_notebook(path="/Production/Features",
+        format="SOURCE")
+    ```
+
+
+    :param str format: Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
+    :param str language: notebook language
+    :param int object_id: notebook object ID
+    :param str object_type: notebook object type
+    :param str path: Notebook path on the workspace
     """
     __args__ = dict()
     __args__['format'] = format
@@ -146,7 +180,26 @@ def get_notebook_output(format: Optional[pulumi.Input[str]] = None,
                         path: Optional[pulumi.Input[str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotebookResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    This data source allows to export a notebook from Databricks Workspace.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    features = databricks.get_notebook(path="/Production/Features",
+        format="SOURCE")
+    ```
+
+
+    :param str format: Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
+    :param str language: notebook language
+    :param int object_id: notebook object ID
+    :param str object_type: notebook object type
+    :param str path: Notebook path on the workspace
     """
     __args__ = dict()
     __args__['format'] = format

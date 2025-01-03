@@ -16,16 +16,32 @@ public final class QualityMonitorNotificationsArgs extends com.pulumi.resources.
 
     public static final QualityMonitorNotificationsArgs Empty = new QualityMonitorNotificationsArgs();
 
+    /**
+     * who to send notifications to on monitor failure.
+     * 
+     */
     @Import(name="onFailure")
     private @Nullable Output<QualityMonitorNotificationsOnFailureArgs> onFailure;
 
+    /**
+     * @return who to send notifications to on monitor failure.
+     * 
+     */
     public Optional<Output<QualityMonitorNotificationsOnFailureArgs>> onFailure() {
         return Optional.ofNullable(this.onFailure);
     }
 
+    /**
+     * Who to send notifications to when new data classification tags are detected.
+     * 
+     */
     @Import(name="onNewClassificationTagDetected")
     private @Nullable Output<QualityMonitorNotificationsOnNewClassificationTagDetectedArgs> onNewClassificationTagDetected;
 
+    /**
+     * @return Who to send notifications to when new data classification tags are detected.
+     * 
+     */
     public Optional<Output<QualityMonitorNotificationsOnNewClassificationTagDetectedArgs>> onNewClassificationTagDetected() {
         return Optional.ofNullable(this.onNewClassificationTagDetected);
     }
@@ -55,20 +71,44 @@ public final class QualityMonitorNotificationsArgs extends com.pulumi.resources.
             $ = new QualityMonitorNotificationsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param onFailure who to send notifications to on monitor failure.
+         * 
+         * @return builder
+         * 
+         */
         public Builder onFailure(@Nullable Output<QualityMonitorNotificationsOnFailureArgs> onFailure) {
             $.onFailure = onFailure;
             return this;
         }
 
+        /**
+         * @param onFailure who to send notifications to on monitor failure.
+         * 
+         * @return builder
+         * 
+         */
         public Builder onFailure(QualityMonitorNotificationsOnFailureArgs onFailure) {
             return onFailure(Output.of(onFailure));
         }
 
+        /**
+         * @param onNewClassificationTagDetected Who to send notifications to when new data classification tags are detected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder onNewClassificationTagDetected(@Nullable Output<QualityMonitorNotificationsOnNewClassificationTagDetectedArgs> onNewClassificationTagDetected) {
             $.onNewClassificationTagDetected = onNewClassificationTagDetected;
             return this;
         }
 
+        /**
+         * @param onNewClassificationTagDetected Who to send notifications to when new data classification tags are detected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder onNewClassificationTagDetected(QualityMonitorNotificationsOnNewClassificationTagDetectedArgs onNewClassificationTagDetected) {
             return onNewClassificationTagDetected(Output.of(onNewClassificationTagDetected));
         }

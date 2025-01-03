@@ -13,33 +13,89 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMlflowModelResult {
+    /**
+     * @return User-specified description for the object.
+     * 
+     */
     private String description;
+    /**
+     * @return Unique identifier for the object.
+     * 
+     */
     private String id;
+    /**
+     * @return Array of model versions, each the latest version for its stage.
+     * 
+     */
     private List<GetMlflowModelLatestVersion> latestVersions;
+    /**
+     * @return Name of the model.
+     * 
+     */
     private String name;
+    /**
+     * @return Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+     * 
+     */
     private String permissionLevel;
+    /**
+     * @return Array of tags associated with the model.
+     * 
+     */
     private List<GetMlflowModelTag> tags;
+    /**
+     * @return The username of the user that created the object.
+     * 
+     */
     private String userId;
 
     private GetMlflowModelResult() {}
+    /**
+     * @return User-specified description for the object.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Unique identifier for the object.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Array of model versions, each the latest version for its stage.
+     * 
+     */
     public List<GetMlflowModelLatestVersion> latestVersions() {
         return this.latestVersions;
     }
+    /**
+     * @return Name of the model.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+     * 
+     */
     public String permissionLevel() {
         return this.permissionLevel;
     }
+    /**
+     * @return Array of tags associated with the model.
+     * 
+     */
     public List<GetMlflowModelTag> tags() {
         return this.tags;
     }
+    /**
+     * @return The username of the user that created the object.
+     * 
+     */
     public String userId() {
         return this.userId;
     }

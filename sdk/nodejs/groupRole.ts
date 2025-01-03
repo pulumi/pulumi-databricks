@@ -4,6 +4,56 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.
+ *
+ * ## Example Usage
+ *
+ * Attach an instance profile to a group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const instanceProfile = new databricks.InstanceProfile("instance_profile", {instanceProfileArn: "my_instance_profile_arn"});
+ * const myGroup = new databricks.Group("my_group", {displayName: "my_group_name"});
+ * const myGroupInstanceProfile = new databricks.GroupRole("my_group_instance_profile", {
+ *     groupId: myGroup.id,
+ *     role: instanceProfile.id,
+ * });
+ * ```
+ *
+ * Attach account admin role to an account-level group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const myGroup = new databricks.Group("my_group", {displayName: "my_group_name"});
+ * const myGroupAccountAdmin = new databricks.GroupRole("my_group_account_admin", {
+ *     groupId: myGroup.id,
+ *     role: "account_admin",
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+ * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+ * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+ * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+ * * databricks.GroupMember to attach users and groups as group members.
+ * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+ * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
+ *
+ * ## Import
+ *
+ * !> Importing this resource is not currently supported.
+ */
 export class GroupRole extends pulumi.CustomResource {
     /**
      * Get an existing GroupRole resource's state with the given name, ID, and optional extra
@@ -32,7 +82,13 @@ export class GroupRole extends pulumi.CustomResource {
         return obj['__pulumiType'] === GroupRole.__pulumiType;
     }
 
+    /**
+     * This is the id of the group resource.
+     */
     public readonly groupId!: pulumi.Output<string>;
+    /**
+     * Either a role name or the ARN/ID of the instance profile resource.
+     */
     public readonly role!: pulumi.Output<string>;
 
     /**
@@ -70,7 +126,13 @@ export class GroupRole extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GroupRole resources.
  */
 export interface GroupRoleState {
+    /**
+     * This is the id of the group resource.
+     */
     groupId?: pulumi.Input<string>;
+    /**
+     * Either a role name or the ARN/ID of the instance profile resource.
+     */
     role?: pulumi.Input<string>;
 }
 
@@ -78,6 +140,12 @@ export interface GroupRoleState {
  * The set of arguments for constructing a GroupRole resource.
  */
 export interface GroupRoleArgs {
+    /**
+     * This is the id of the group resource.
+     */
     groupId: pulumi.Input<string>;
+    /**
+     * Either a role name or the ARN/ID of the instance profile resource.
+     */
     role: pulumi.Input<string>;
 }

@@ -18,30 +18,62 @@ public final class AlertConditionArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final AlertConditionArgs Empty = new AlertConditionArgs();
 
+    /**
+     * Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+     * 
+     */
     @Import(name="emptyResultState")
     private @Nullable Output<String> emptyResultState;
 
+    /**
+     * @return Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+     * 
+     */
     public Optional<Output<String>> emptyResultState() {
         return Optional.ofNullable(this.emptyResultState);
     }
 
+    /**
+     * Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+     * 
+     */
     @Import(name="op", required=true)
     private Output<String> op;
 
+    /**
+     * @return Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+     * 
+     */
     public Output<String> op() {
         return this.op;
     }
 
+    /**
+     * Name of the column from the query result to use for comparison in alert evaluation:
+     * 
+     */
     @Import(name="operand", required=true)
     private Output<AlertConditionOperandArgs> operand;
 
+    /**
+     * @return Name of the column from the query result to use for comparison in alert evaluation:
+     * 
+     */
     public Output<AlertConditionOperandArgs> operand() {
         return this.operand;
     }
 
+    /**
+     * Threshold value used for comparison in alert evaluation:
+     * 
+     */
     @Import(name="threshold")
     private @Nullable Output<AlertConditionThresholdArgs> threshold;
 
+    /**
+     * @return Threshold value used for comparison in alert evaluation:
+     * 
+     */
     public Optional<Output<AlertConditionThresholdArgs>> threshold() {
         return Optional.ofNullable(this.threshold);
     }
@@ -73,38 +105,86 @@ public final class AlertConditionArgs extends com.pulumi.resources.ResourceArgs 
             $ = new AlertConditionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param emptyResultState Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder emptyResultState(@Nullable Output<String> emptyResultState) {
             $.emptyResultState = emptyResultState;
             return this;
         }
 
+        /**
+         * @param emptyResultState Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder emptyResultState(String emptyResultState) {
             return emptyResultState(Output.of(emptyResultState));
         }
 
+        /**
+         * @param op Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder op(Output<String> op) {
             $.op = op;
             return this;
         }
 
+        /**
+         * @param op Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder op(String op) {
             return op(Output.of(op));
         }
 
+        /**
+         * @param operand Name of the column from the query result to use for comparison in alert evaluation:
+         * 
+         * @return builder
+         * 
+         */
         public Builder operand(Output<AlertConditionOperandArgs> operand) {
             $.operand = operand;
             return this;
         }
 
+        /**
+         * @param operand Name of the column from the query result to use for comparison in alert evaluation:
+         * 
+         * @return builder
+         * 
+         */
         public Builder operand(AlertConditionOperandArgs operand) {
             return operand(Output.of(operand));
         }
 
+        /**
+         * @param threshold Threshold value used for comparison in alert evaluation:
+         * 
+         * @return builder
+         * 
+         */
         public Builder threshold(@Nullable Output<AlertConditionThresholdArgs> threshold) {
             $.threshold = threshold;
             return this;
         }
 
+        /**
+         * @param threshold Threshold value used for comparison in alert evaluation:
+         * 
+         * @return builder
+         * 
+         */
         public Builder threshold(AlertConditionThresholdArgs threshold) {
             return threshold(Output.of(threshold));
         }

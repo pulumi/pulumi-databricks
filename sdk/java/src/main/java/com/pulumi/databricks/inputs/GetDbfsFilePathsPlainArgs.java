@@ -14,16 +14,32 @@ public final class GetDbfsFilePathsPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetDbfsFilePathsPlainArgs Empty = new GetDbfsFilePathsPlainArgs();
 
+    /**
+     * Path on DBFS for the file to perform listing
+     * 
+     */
     @Import(name="path", required=true)
     private String path;
 
+    /**
+     * @return Path on DBFS for the file to perform listing
+     * 
+     */
     public String path() {
         return this.path;
     }
 
+    /**
+     * Either or not recursively list all files
+     * 
+     */
     @Import(name="recursive", required=true)
     private Boolean recursive;
 
+    /**
+     * @return Either or not recursively list all files
+     * 
+     */
     public Boolean recursive() {
         return this.recursive;
     }
@@ -53,11 +69,23 @@ public final class GetDbfsFilePathsPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetDbfsFilePathsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param path Path on DBFS for the file to perform listing
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param recursive Either or not recursively list all files
+         * 
+         * @return builder
+         * 
+         */
         public Builder recursive(Boolean recursive) {
             $.recursive = recursive;
             return this;

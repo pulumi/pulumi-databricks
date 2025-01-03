@@ -11,12 +11,177 @@ namespace Pulumi.Databricks
 {
     public static class GetMwsNetworkConnectivityConfigs
     {
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// Lists all databricks.MwsNetworkConnectivityConfig in Databricks Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// List all network connectivity configurations in Databricks Account
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetMwsNetworkConnectivityConfigs.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["all"] = @this,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// List network connectivity configurations from a specific region in Databricks Account
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetMwsNetworkConnectivityConfigs.Invoke(new()
+        ///     {
+        ///         Region = "us-east-1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["filtered"] = @this,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.MwsNetworkConnectivityConfig to get information about a single network connectivity configuration.
+        /// * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+        /// </summary>
         public static Task<GetMwsNetworkConnectivityConfigsResult> InvokeAsync(GetMwsNetworkConnectivityConfigsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsNetworkConnectivityConfigsResult>("databricks:index/getMwsNetworkConnectivityConfigs:getMwsNetworkConnectivityConfigs", args ?? new GetMwsNetworkConnectivityConfigsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// Lists all databricks.MwsNetworkConnectivityConfig in Databricks Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// List all network connectivity configurations in Databricks Account
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetMwsNetworkConnectivityConfigs.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["all"] = @this,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// List network connectivity configurations from a specific region in Databricks Account
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetMwsNetworkConnectivityConfigs.Invoke(new()
+        ///     {
+        ///         Region = "us-east-1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["filtered"] = @this,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.MwsNetworkConnectivityConfig to get information about a single network connectivity configuration.
+        /// * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+        /// </summary>
         public static Output<GetMwsNetworkConnectivityConfigsResult> Invoke(GetMwsNetworkConnectivityConfigsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMwsNetworkConnectivityConfigsResult>("databricks:index/getMwsNetworkConnectivityConfigs:getMwsNetworkConnectivityConfigs", args ?? new GetMwsNetworkConnectivityConfigsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// Lists all databricks.MwsNetworkConnectivityConfig in Databricks Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// List all network connectivity configurations in Databricks Account
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetMwsNetworkConnectivityConfigs.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["all"] = @this,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// List network connectivity configurations from a specific region in Databricks Account
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetMwsNetworkConnectivityConfigs.Invoke(new()
+        ///     {
+        ///         Region = "us-east-1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["filtered"] = @this,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.MwsNetworkConnectivityConfig to get information about a single network connectivity configuration.
+        /// * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+        /// </summary>
         public static Output<GetMwsNetworkConnectivityConfigsResult> Invoke(GetMwsNetworkConnectivityConfigsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMwsNetworkConnectivityConfigsResult>("databricks:index/getMwsNetworkConnectivityConfigs:getMwsNetworkConnectivityConfigs", args ?? new GetMwsNetworkConnectivityConfigsInvokeArgs(), options.WithDefaults());
     }
@@ -26,12 +191,19 @@ namespace Pulumi.Databricks
     {
         [Input("names")]
         private List<string>? _names;
+
+        /// <summary>
+        /// List of names of databricks_mws_network_connectivity_config
+        /// </summary>
         public List<string> Names
         {
             get => _names ?? (_names = new List<string>());
             set => _names = value;
         }
 
+        /// <summary>
+        /// Filter network connectivity configurations by region.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
@@ -45,12 +217,19 @@ namespace Pulumi.Databricks
     {
         [Input("names")]
         private InputList<string>? _names;
+
+        /// <summary>
+        /// List of names of databricks_mws_network_connectivity_config
+        /// </summary>
         public InputList<string> Names
         {
             get => _names ?? (_names = new InputList<string>());
             set => _names = value;
         }
 
+        /// <summary>
+        /// Filter network connectivity configurations by region.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -68,6 +247,9 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// List of names of databricks_mws_network_connectivity_config
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? Region;
 

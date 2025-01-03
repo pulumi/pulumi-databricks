@@ -16,6 +16,95 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
+ * 
+ * &gt; To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Directory;
+ * import com.pulumi.databricks.DirectoryArgs;
+ * import com.pulumi.databricks.SqlQuery;
+ * import com.pulumi.databricks.SqlQueryArgs;
+ * import com.pulumi.databricks.SqlAlert;
+ * import com.pulumi.databricks.SqlAlertArgs;
+ * import com.pulumi.databricks.inputs.SqlAlertOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sharedDir = new Directory("sharedDir", DirectoryArgs.builder()
+ *             .path("/Shared/Queries")
+ *             .build());
+ * 
+ *         var this_ = new SqlQuery("this", SqlQueryArgs.builder()
+ *             .dataSourceId(example.dataSourceId())
+ *             .name("My Query Name")
+ *             .query("SELECT 1 AS p1, 2 as p2")
+ *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
+ *             .build());
+ * 
+ *         var alert = new SqlAlert("alert", SqlAlertArgs.builder()
+ *             .queryId(this_.id())
+ *             .name("My Alert")
+ *             .parent(sharedDir.objectId().applyValue(objectId -> String.format("folders/%s", objectId)))
+ *             .rearm(1)
+ *             .options(SqlAlertOptionsArgs.builder()
+ *                 .column("p1")
+ *                 .op("==")
+ *                 .value("2")
+ *                 .muted(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Access Control
+ * 
+ * databricks.Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * End to end workspace management guide.
+ * * databricks.SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
+ * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+ * 
+ * ## Import
+ * 
+ * This resource can be imported using alert ID:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/sqlAlert:SqlAlert this &lt;alert-id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/sqlAlert:SqlAlert")
 public class SqlAlert extends com.pulumi.resources.CustomResource {
     @Export(name="createdAt", refs={String.class}, tree="[0]")
@@ -24,33 +113,73 @@ public class SqlAlert extends com.pulumi.resources.CustomResource {
     public Output<String> createdAt() {
         return this.createdAt;
     }
+    /**
+     * Name of the alert.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Name of the alert.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Alert configuration options.
+     * 
+     */
     @Export(name="options", refs={SqlAlertOptions.class}, tree="[0]")
     private Output<SqlAlertOptions> options;
 
+    /**
+     * @return Alert configuration options.
+     * 
+     */
     public Output<SqlAlertOptions> options() {
         return this.options;
     }
+    /**
+     * The identifier of the workspace folder containing the alert. The default is ther user&#39;s home folder. The folder identifier is formatted as `folder/&lt;folder_id&gt;`.
+     * 
+     */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
+    /**
+     * @return The identifier of the workspace folder containing the alert. The default is ther user&#39;s home folder. The folder identifier is formatted as `folder/&lt;folder_id&gt;`.
+     * 
+     */
     public Output<Optional<String>> parent() {
         return Codegen.optional(this.parent);
     }
+    /**
+     * ID of the query evaluated by the alert.
+     * 
+     */
     @Export(name="queryId", refs={String.class}, tree="[0]")
     private Output<String> queryId;
 
+    /**
+     * @return ID of the query evaluated by the alert.
+     * 
+     */
     public Output<String> queryId() {
         return this.queryId;
     }
+    /**
+     * Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
+     * 
+     */
     @Export(name="rearm", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> rearm;
 
+    /**
+     * @return Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
+     * 
+     */
     public Output<Optional<Integer>> rearm() {
         return Codegen.optional(this.rearm);
     }

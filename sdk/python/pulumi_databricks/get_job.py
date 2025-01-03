@@ -48,6 +48,9 @@ class GetJobResult:
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        the id of Job if the resource was matched by name.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -63,11 +66,17 @@ class GetJobResult:
     @property
     @pulumi.getter(name="jobSettings")
     def job_settings(self) -> 'outputs.GetJobJobSettingsResult':
+        """
+        the same fields as in databricks_job.
+        """
         return pulumi.get(self, "job_settings")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        the job name of Job if the resource was matched by id.
+        """
         return pulumi.get(self, "name")
 
 
@@ -91,7 +100,33 @@ def get_job(id: Optional[str] = None,
             name: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves the settings of Job by name or by id. Complements the feature of the get_jobs data source.
+
+    ## Example Usage
+
+    Getting the existing cluster id of specific Job by name or by id:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_job(job_name="My job")
+    pulumi.export("jobNumWorkers", this.job_settings.settings.new_cluster.num_workers)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * get_jobs data to get all jobs and their names from a workspace.
+    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+
+
+    :param str id: the id of Job if the resource was matched by name.
+    :param Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict'] job_settings: the same fields as in databricks_job.
+    :param str name: the job name of Job if the resource was matched by id.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -115,7 +150,33 @@ def get_job_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                    name: Optional[pulumi.Input[Optional[str]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves the settings of Job by name or by id. Complements the feature of the get_jobs data source.
+
+    ## Example Usage
+
+    Getting the existing cluster id of specific Job by name or by id:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_job(job_name="My job")
+    pulumi.export("jobNumWorkers", this.job_settings.settings.new_cluster.num_workers)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * get_jobs data to get all jobs and their names from a workspace.
+    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+
+
+    :param str id: the id of Job if the resource was matched by name.
+    :param Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict'] job_settings: the same fields as in databricks_job.
+    :param str name: the job name of Job if the resource was matched by id.
     """
     __args__ = dict()
     __args__['id'] = id

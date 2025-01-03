@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingAiGatewayGuardrails
     {
+        /// <summary>
+        /// A block with configuration for input guardrail filters:
+        /// </summary>
         public readonly Outputs.ModelServingAiGatewayGuardrailsInput? Input;
+        /// <summary>
+        /// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+        /// </summary>
         public readonly Outputs.ModelServingAiGatewayGuardrailsOutput? Output;
 
         [OutputConstructor]

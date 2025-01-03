@@ -15,23 +15,61 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for databricks.Cluster or databricks_job. You can also use databricks.DbfsFile and databricks.getDbfsFilePaths data sources.
+ * 
+ * ## Import
+ * 
+ * The resource dbfs file can be imported using the path of the file:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/dbfsFile:DbfsFile this &lt;path&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/dbfsFile:DbfsFile")
 public class DbfsFile extends com.pulumi.resources.CustomResource {
+    /**
+     * Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+     * 
+     */
     @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
+    /**
+     * @return Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+     * 
+     */
     public Output<Optional<String>> contentBase64() {
         return Codegen.optional(this.contentBase64);
     }
+    /**
+     * Path, but with `dbfs:` prefix.
+     * 
+     */
     @Export(name="dbfsPath", refs={String.class}, tree="[0]")
     private Output<String> dbfsPath;
 
+    /**
+     * @return Path, but with `dbfs:` prefix.
+     * 
+     */
     public Output<String> dbfsPath() {
         return this.dbfsPath;
     }
+    /**
+     * The file size of the file that is being tracked by this resource in bytes.
+     * 
+     */
     @Export(name="fileSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> fileSize;
 
+    /**
+     * @return The file size of the file that is being tracked by this resource in bytes.
+     * 
+     */
     public Output<Integer> fileSize() {
         return this.fileSize;
     }
@@ -41,15 +79,31 @@ public class DbfsFile extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> md5() {
         return Codegen.optional(this.md5);
     }
+    /**
+     * The path of the file in which you wish to save.
+     * 
+     */
     @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
+    /**
+     * @return The path of the file in which you wish to save.
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
+    /**
+     * The full absolute path to the file. Conflicts with `content_base64`.
+     * 
+     */
     @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
+    /**
+     * @return The full absolute path to the file. Conflicts with `content_base64`.
+     * 
+     */
     public Output<Optional<String>> source() {
         return Codegen.optional(this.source);
     }

@@ -12,12 +12,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetSqlWarehouseChannel {
     private @Nullable String dbsqlVersion;
+    /**
+     * @return Name of the SQL warehouse to search (case-sensitive).
+     * 
+     */
     private @Nullable String name;
 
     private GetSqlWarehouseChannel() {}
     public Optional<String> dbsqlVersion() {
         return Optional.ofNullable(this.dbsqlVersion);
     }
+    /**
+     * @return Name of the SQL warehouse to search (case-sensitive).
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

@@ -13,19 +13,58 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetRegisteredModelModelInfoResult
     {
+        /// <summary>
+        /// the list of aliases associated with this model. Each item is object consisting of following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegisteredModelModelInfoAliasResult> Aliases;
         public readonly bool? BrowseOnly;
+        /// <summary>
+        /// The name of the catalog where the schema and the registered model reside.
+        /// </summary>
         public readonly string? CatalogName;
+        /// <summary>
+        /// The comment attached to the registered model.
+        /// </summary>
         public readonly string? Comment;
+        /// <summary>
+        /// the Unix timestamp at the model's creation
+        /// </summary>
         public readonly int? CreatedAt;
+        /// <summary>
+        /// the identifier of the user who created the model
+        /// </summary>
         public readonly string? CreatedBy;
+        /// <summary>
+        /// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+        /// </summary>
         public readonly string? FullName;
+        /// <summary>
+        /// the unique identifier of the metastore
+        /// </summary>
         public readonly string? MetastoreId;
+        /// <summary>
+        /// The name of the registered model.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Name of the registered model owner.
+        /// </summary>
         public readonly string? Owner;
+        /// <summary>
+        /// The name of the schema where the registered model resides.
+        /// </summary>
         public readonly string? SchemaName;
+        /// <summary>
+        /// The storage location under which model version data files are stored.
+        /// </summary>
         public readonly string? StorageLocation;
+        /// <summary>
+        /// the timestamp of the last time changes were made to the model
+        /// </summary>
         public readonly int? UpdatedAt;
+        /// <summary>
+        /// the identifier of the user who updated the model last time
+        /// </summary>
         public readonly string? UpdatedBy;
 
         [OutputConstructor]

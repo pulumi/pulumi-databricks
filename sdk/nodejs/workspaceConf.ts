@@ -4,6 +4,36 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > This resource has an evolving API, which may change in future versions of the provider.
+ *
+ * Manages workspace configuration for expert usage. Currently, more than one instance of resource can exist in Pulumi state, though there's no deterministic behavior, when they manage the same property. We strongly recommend to use a single `databricks.WorkspaceConf` per workspace.
+ *
+ * > Deleting `databricks.WorkspaceConf` resources may fail depending on the configuration properties set, including but not limited to `enableIpAccessLists`, `enableGp3`, and `maxTokenLifetimeDays`. The provider will print a warning if this occurs. You can verify the workspace configuration by reviewing [the workspace settings in the UI](https://docs.databricks.com/en/admin/workspace-settings/index.html).
+ *
+ * ## Example Usage
+ *
+ * Allows specification of custom configuration properties for expert usage:
+ *
+ * - `enableIpAccessLists` - enables the use of databricks.IpAccessList resources
+ * - `maxTokenLifetimeDays` - (string) Maximum token lifetime of new tokens in days, as an integer. This value can range from 1 day to 730 days (2 years). If not specified, the maximum lifetime of new tokens is 730 days. **WARNING:** This limit only applies to new tokens, so there may be tokens with lifetimes longer than this value, including unlimited lifetime. Such tokens may have been created before the current maximum token lifetime was set.
+ * - `enableTokensConfig` - (boolean) Enable or disable personal access tokens for this workspace.
+ * - `enableDeprecatedClusterNamedInitScripts` - (boolean) Enable or disable [legacy cluster-named init scripts](https://docs.databricks.com/clusters/init-scripts.html#disable-legacy-cluster-named-init-scripts-for-a-workspace) for this workspace.
+ * - `enableDeprecatedGlobalInitScripts` - (boolean) Enable or disable [legacy global init scripts](https://docs.databricks.com/clusters/init-scripts.html#migrate-legacy-scripts) for this workspace.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.WorkspaceConf("this", {customConfig: {
+ *     enableIpAccessLists: "true",
+ * }});
+ * ```
+ *
+ * ## Import
+ *
+ * !> Importing this resource is not currently supported.
+ */
 export class WorkspaceConf extends pulumi.CustomResource {
     /**
      * Get an existing WorkspaceConf resource's state with the given name, ID, and optional extra
@@ -32,6 +62,9 @@ export class WorkspaceConf extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkspaceConf.__pulumiType;
     }
 
+    /**
+     * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
+     */
     public readonly customConfig!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -61,6 +94,9 @@ export class WorkspaceConf extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkspaceConf resources.
  */
 export interface WorkspaceConfState {
+    /**
+     * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
+     */
     customConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -68,5 +104,8 @@ export interface WorkspaceConfState {
  * The set of arguments for constructing a WorkspaceConf resource.
  */
 export interface WorkspaceConfArgs {
+    /**
+     * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
+     */
     customConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

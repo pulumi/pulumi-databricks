@@ -12,16 +12,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BudgetAlertConfigurationActionConfiguration {
     private @Nullable String actionConfigurationId;
+    /**
+     * @return The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+     * 
+     */
     private @Nullable String actionType;
+    /**
+     * @return The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+     * 
+     */
     private @Nullable String target;
 
     private BudgetAlertConfigurationActionConfiguration() {}
     public Optional<String> actionConfigurationId() {
         return Optional.ofNullable(this.actionConfigurationId);
     }
+    /**
+     * @return The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+     * 
+     */
     public Optional<String> actionType() {
         return Optional.ofNullable(this.actionType);
     }
+    /**
+     * @return The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+     * 
+     */
     public Optional<String> target() {
         return Optional.ofNullable(this.target);
     }

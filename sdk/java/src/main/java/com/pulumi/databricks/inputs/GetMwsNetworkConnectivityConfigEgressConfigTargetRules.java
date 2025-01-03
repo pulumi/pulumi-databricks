@@ -15,9 +15,17 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRules extend
 
     public static final GetMwsNetworkConnectivityConfigEgressConfigTargetRules Empty = new GetMwsNetworkConnectivityConfigEgressConfigTargetRules();
 
+    /**
+     * Array of private endpoint rule objects.
+     * 
+     */
     @Import(name="azurePrivateEndpointRules")
     private @Nullable List<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule> azurePrivateEndpointRules;
 
+    /**
+     * @return Array of private endpoint rule objects.
+     * 
+     */
     public Optional<List<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule>> azurePrivateEndpointRules() {
         return Optional.ofNullable(this.azurePrivateEndpointRules);
     }
@@ -46,11 +54,23 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRules extend
             $ = new GetMwsNetworkConnectivityConfigEgressConfigTargetRules(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param azurePrivateEndpointRules Array of private endpoint rule objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder azurePrivateEndpointRules(@Nullable List<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule> azurePrivateEndpointRules) {
             $.azurePrivateEndpointRules = azurePrivateEndpointRules;
             return this;
         }
 
+        /**
+         * @param azurePrivateEndpointRules Array of private endpoint rule objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder azurePrivateEndpointRules(GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule... azurePrivateEndpointRules) {
             return azurePrivateEndpointRules(List.of(azurePrivateEndpointRules));
         }

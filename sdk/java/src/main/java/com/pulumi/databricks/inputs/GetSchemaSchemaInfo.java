@@ -18,128 +18,272 @@ public final class GetSchemaSchemaInfo extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSchemaSchemaInfo Empty = new GetSchemaSchemaInfo();
 
+    /**
+     * indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+     * 
+     */
     @Import(name="browseOnly")
     private @Nullable Boolean browseOnly;
 
+    /**
+     * @return indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+     * 
+     */
     public Optional<Boolean> browseOnly() {
         return Optional.ofNullable(this.browseOnly);
     }
 
+    /**
+     * the name of the catalog where the schema is.
+     * 
+     */
     @Import(name="catalogName")
     private @Nullable String catalogName;
 
+    /**
+     * @return the name of the catalog where the schema is.
+     * 
+     */
     public Optional<String> catalogName() {
         return Optional.ofNullable(this.catalogName);
     }
 
+    /**
+     * the type of the parent catalog.
+     * 
+     */
     @Import(name="catalogType")
     private @Nullable String catalogType;
 
+    /**
+     * @return the type of the parent catalog.
+     * 
+     */
     public Optional<String> catalogType() {
         return Optional.ofNullable(this.catalogType);
     }
 
+    /**
+     * the comment attached to the volume
+     * 
+     */
     @Import(name="comment")
     private @Nullable String comment;
 
+    /**
+     * @return the comment attached to the volume
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * time at which this schema was created, in epoch milliseconds.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Integer createdAt;
 
+    /**
+     * @return time at which this schema was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * username of schema creator.
+     * 
+     */
     @Import(name="createdBy")
     private @Nullable String createdBy;
 
+    /**
+     * @return username of schema creator.
+     * 
+     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
+    /**
+     * information about actual state of predictive optimization.
+     * 
+     */
     @Import(name="effectivePredictiveOptimizationFlag")
     private @Nullable GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag effectivePredictiveOptimizationFlag;
 
+    /**
+     * @return information about actual state of predictive optimization.
+     * 
+     */
     public Optional<GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag> effectivePredictiveOptimizationFlag() {
         return Optional.ofNullable(this.effectivePredictiveOptimizationFlag);
     }
 
+    /**
+     * whether predictive optimization should be enabled for this object and objects under it.
+     * 
+     */
     @Import(name="enablePredictiveOptimization")
     private @Nullable String enablePredictiveOptimization;
 
+    /**
+     * @return whether predictive optimization should be enabled for this object and objects under it.
+     * 
+     */
     public Optional<String> enablePredictiveOptimization() {
         return Optional.ofNullable(this.enablePredictiveOptimization);
     }
 
+    /**
+     * the two-level (fully qualified) name of the schema
+     * 
+     */
     @Import(name="fullName")
     private @Nullable String fullName;
 
+    /**
+     * @return the two-level (fully qualified) name of the schema
+     * 
+     */
     public Optional<String> fullName() {
         return Optional.ofNullable(this.fullName);
     }
 
+    /**
+     * the unique identifier of the metastore
+     * 
+     */
     @Import(name="metastoreId")
     private @Nullable String metastoreId;
 
+    /**
+     * @return the unique identifier of the metastore
+     * 
+     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
 
+    /**
+     * a fully qualified name of databricks_schema: *`catalog`.`schema`*
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return a fully qualified name of databricks_schema: *`catalog`.`schema`*
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * the identifier of the user who owns the schema
+     * 
+     */
     @Import(name="owner")
     private @Nullable String owner;
 
+    /**
+     * @return the identifier of the user who owns the schema
+     * 
+     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * map of properties set on the schema
+     * 
+     */
     @Import(name="properties")
     private @Nullable Map<String,String> properties;
 
+    /**
+     * @return map of properties set on the schema
+     * 
+     */
     public Optional<Map<String,String>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
+    /**
+     * the unique identifier of the volume
+     * 
+     */
     @Import(name="schemaId")
     private @Nullable String schemaId;
 
+    /**
+     * @return the unique identifier of the volume
+     * 
+     */
     public Optional<String> schemaId() {
         return Optional.ofNullable(this.schemaId);
     }
 
+    /**
+     * the storage location on the cloud.
+     * 
+     */
     @Import(name="storageLocation")
     private @Nullable String storageLocation;
 
+    /**
+     * @return the storage location on the cloud.
+     * 
+     */
     public Optional<String> storageLocation() {
         return Optional.ofNullable(this.storageLocation);
     }
 
+    /**
+     * storage root URL for managed tables within schema.
+     * 
+     */
     @Import(name="storageRoot")
     private @Nullable String storageRoot;
 
+    /**
+     * @return storage root URL for managed tables within schema.
+     * 
+     */
     public Optional<String> storageRoot() {
         return Optional.ofNullable(this.storageRoot);
     }
 
+    /**
+     * the timestamp of the last time changes were made to the schema
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Integer updatedAt;
 
+    /**
+     * @return the timestamp of the last time changes were made to the schema
+     * 
+     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * the identifier of the user who updated the schema last time
+     * 
+     */
     @Import(name="updatedBy")
     private @Nullable String updatedBy;
 
+    /**
+     * @return the identifier of the user who updated the schema last time
+     * 
+     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
@@ -185,91 +329,199 @@ public final class GetSchemaSchemaInfo extends com.pulumi.resources.InvokeArgs {
             $ = new GetSchemaSchemaInfo(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param browseOnly indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+         * 
+         * @return builder
+         * 
+         */
         public Builder browseOnly(@Nullable Boolean browseOnly) {
             $.browseOnly = browseOnly;
             return this;
         }
 
+        /**
+         * @param catalogName the name of the catalog where the schema is.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(@Nullable String catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
+        /**
+         * @param catalogType the type of the parent catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogType(@Nullable String catalogType) {
             $.catalogType = catalogType;
             return this;
         }
 
+        /**
+         * @param comment the comment attached to the volume
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable String comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param createdAt time at which this schema was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Integer createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdBy username of schema creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(@Nullable String createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
+        /**
+         * @param effectivePredictiveOptimizationFlag information about actual state of predictive optimization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectivePredictiveOptimizationFlag(@Nullable GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag effectivePredictiveOptimizationFlag) {
             $.effectivePredictiveOptimizationFlag = effectivePredictiveOptimizationFlag;
             return this;
         }
 
+        /**
+         * @param enablePredictiveOptimization whether predictive optimization should be enabled for this object and objects under it.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enablePredictiveOptimization(@Nullable String enablePredictiveOptimization) {
             $.enablePredictiveOptimization = enablePredictiveOptimization;
             return this;
         }
 
+        /**
+         * @param fullName the two-level (fully qualified) name of the schema
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(@Nullable String fullName) {
             $.fullName = fullName;
             return this;
         }
 
+        /**
+         * @param metastoreId the unique identifier of the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(@Nullable String metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
+        /**
+         * @param name a fully qualified name of databricks_schema: *`catalog`.`schema`*
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param owner the identifier of the user who owns the schema
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(@Nullable String owner) {
             $.owner = owner;
             return this;
         }
 
+        /**
+         * @param properties map of properties set on the schema
+         * 
+         * @return builder
+         * 
+         */
         public Builder properties(@Nullable Map<String,String> properties) {
             $.properties = properties;
             return this;
         }
 
+        /**
+         * @param schemaId the unique identifier of the volume
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaId(@Nullable String schemaId) {
             $.schemaId = schemaId;
             return this;
         }
 
+        /**
+         * @param storageLocation the storage location on the cloud.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageLocation(@Nullable String storageLocation) {
             $.storageLocation = storageLocation;
             return this;
         }
 
+        /**
+         * @param storageRoot storage root URL for managed tables within schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageRoot(@Nullable String storageRoot) {
             $.storageRoot = storageRoot;
             return this;
         }
 
+        /**
+         * @param updatedAt the timestamp of the last time changes were made to the schema
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Integer updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedBy the identifier of the user who updated the schema last time
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(@Nullable String updatedBy) {
             $.updatedBy = updatedBy;
             return this;

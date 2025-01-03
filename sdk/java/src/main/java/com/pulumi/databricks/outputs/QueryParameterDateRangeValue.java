@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class QueryParameterDateRangeValue {
+    /**
+     * @return Manually specified date-time range value.  Consists of the following attributes:
+     * 
+     */
     private @Nullable QueryParameterDateRangeValueDateRangeValue dateRangeValue;
+    /**
+     * @return Dynamic date-time range value based on current date-time.  Possible values are `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_YEAR`, `LAST_WEEK`, `LAST_MONTH`, `LAST_YEAR`, `LAST_HOUR`, `LAST_8_HOURS`, `LAST_24_HOURS`, `LAST_7_DAYS`, `LAST_14_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`, `LAST_12_MONTHS`.
+     * 
+     */
     private @Nullable String dynamicDateRangeValue;
+    /**
+     * @return Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+     * 
+     */
     private @Nullable String precision;
+    /**
+     * @return Specify what day that starts the week.
+     * 
+     */
     private @Nullable Integer startDayOfWeek;
 
     private QueryParameterDateRangeValue() {}
+    /**
+     * @return Manually specified date-time range value.  Consists of the following attributes:
+     * 
+     */
     public Optional<QueryParameterDateRangeValueDateRangeValue> dateRangeValue() {
         return Optional.ofNullable(this.dateRangeValue);
     }
+    /**
+     * @return Dynamic date-time range value based on current date-time.  Possible values are `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_YEAR`, `LAST_WEEK`, `LAST_MONTH`, `LAST_YEAR`, `LAST_HOUR`, `LAST_8_HOURS`, `LAST_24_HOURS`, `LAST_7_DAYS`, `LAST_14_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`, `LAST_12_MONTHS`.
+     * 
+     */
     public Optional<String> dynamicDateRangeValue() {
         return Optional.ofNullable(this.dynamicDateRangeValue);
     }
+    /**
+     * @return Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+     * 
+     */
     public Optional<String> precision() {
         return Optional.ofNullable(this.precision);
     }
+    /**
+     * @return Specify what day that starts the week.
+     * 
+     */
     public Optional<Integer> startDayOfWeek() {
         return Optional.ofNullable(this.startDayOfWeek);
     }

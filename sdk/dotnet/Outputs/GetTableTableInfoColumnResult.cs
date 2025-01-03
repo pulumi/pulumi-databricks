@@ -13,8 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetTableTableInfoColumnResult
     {
+        /// <summary>
+        /// Free-form text description
+        /// </summary>
         public readonly string? Comment;
         public readonly Outputs.GetTableTableInfoColumnMaskResult? Mask;
+        /// <summary>
+        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        /// </summary>
         public readonly string? Name;
         public readonly bool? Nullable;
         public readonly int? PartitionIndex;

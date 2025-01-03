@@ -12,22 +12,110 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This resource can only be used with a workspace-level provider!
+//
+// To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
+//
+// - StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
+// - `ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
+//
+// ## Example Usage
+//
+// # For AWS
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			external, err := databricks.NewStorageCredential(ctx, "external", &databricks.StorageCredentialArgs{
+//				Name: pulumi.Any(externalDataAccess.Name),
+//				AwsIamRole: &databricks.StorageCredentialAwsIamRoleArgs{
+//					RoleArn: pulumi.Any(externalDataAccess.Arn),
+//				},
+//				Comment: pulumi.String("Managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			some, err := databricks.NewExternalLocation(ctx, "some", &databricks.ExternalLocationArgs{
+//				Name:           pulumi.String("external"),
+//				Url:            pulumi.Sprintf("s3://%v/some", externalAwsS3Bucket.Id),
+//				CredentialName: external.ID(),
+//				Comment:        pulumi.String("Managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "some", &databricks.GrantsArgs{
+//				ExternalLocation: some.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_EXTERNAL_TABLE"),
+//							pulumi.String("READ_FILES"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # For Azure
+//
+// ## Import
+//
+// This resource can be imported by `name`:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>
+// ```
 type ExternalLocation struct {
 	pulumi.CustomResourceState
 
-	AccessPoint       pulumi.StringPtrOutput                     `pulumi:"accessPoint"`
-	Comment           pulumi.StringPtrOutput                     `pulumi:"comment"`
-	CredentialName    pulumi.StringOutput                        `pulumi:"credentialName"`
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint pulumi.StringPtrOutput `pulumi:"accessPoint"`
+	// User-supplied free-form text.
+	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// Name of the StorageCredential to use with this external location.
+	CredentialName pulumi.StringOutput `pulumi:"credentialName"`
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrOutput `pulumi:"encryptionDetails"`
-	ForceDestroy      pulumi.BoolPtrOutput                       `pulumi:"forceDestroy"`
-	ForceUpdate       pulumi.BoolPtrOutput                       `pulumi:"forceUpdate"`
-	IsolationMode     pulumi.StringOutput                        `pulumi:"isolationMode"`
-	MetastoreId       pulumi.StringOutput                        `pulumi:"metastoreId"`
-	Name              pulumi.StringOutput                        `pulumi:"name"`
-	Owner             pulumi.StringOutput                        `pulumi:"owner"`
-	ReadOnly          pulumi.BoolPtrOutput                       `pulumi:"readOnly"`
-	SkipValidation    pulumi.BoolPtrOutput                       `pulumi:"skipValidation"`
-	Url               pulumi.StringOutput                        `pulumi:"url"`
+	// Destroy external location regardless of its dependents.
+	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
+	// Update external location regardless of its dependents.
+	ForceUpdate pulumi.BoolPtrOutput `pulumi:"forceUpdate"`
+	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
+	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
+	MetastoreId   pulumi.StringOutput `pulumi:"metastoreId"`
+	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Username/groupname/sp applicationId of the external location owner.
+	Owner pulumi.StringOutput `pulumi:"owner"`
+	// Indicates whether the external location is read-only.
+	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
+	// Suppress validation errors if any & force save the external location
+	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	Url pulumi.StringOutput `pulumi:"url"`
 }
 
 // NewExternalLocation registers a new resource with the given unique name, arguments, and options.
@@ -66,35 +154,59 @@ func GetExternalLocation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ExternalLocation resources.
 type externalLocationState struct {
-	AccessPoint       *string                            `pulumi:"accessPoint"`
-	Comment           *string                            `pulumi:"comment"`
-	CredentialName    *string                            `pulumi:"credentialName"`
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint *string `pulumi:"accessPoint"`
+	// User-supplied free-form text.
+	Comment *string `pulumi:"comment"`
+	// Name of the StorageCredential to use with this external location.
+	CredentialName *string `pulumi:"credentialName"`
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails *ExternalLocationEncryptionDetails `pulumi:"encryptionDetails"`
-	ForceDestroy      *bool                              `pulumi:"forceDestroy"`
-	ForceUpdate       *bool                              `pulumi:"forceUpdate"`
-	IsolationMode     *string                            `pulumi:"isolationMode"`
-	MetastoreId       *string                            `pulumi:"metastoreId"`
-	Name              *string                            `pulumi:"name"`
-	Owner             *string                            `pulumi:"owner"`
-	ReadOnly          *bool                              `pulumi:"readOnly"`
-	SkipValidation    *bool                              `pulumi:"skipValidation"`
-	Url               *string                            `pulumi:"url"`
+	// Destroy external location regardless of its dependents.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// Update external location regardless of its dependents.
+	ForceUpdate *bool `pulumi:"forceUpdate"`
+	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
+	IsolationMode *string `pulumi:"isolationMode"`
+	MetastoreId   *string `pulumi:"metastoreId"`
+	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the external location owner.
+	Owner *string `pulumi:"owner"`
+	// Indicates whether the external location is read-only.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Suppress validation errors if any & force save the external location
+	SkipValidation *bool `pulumi:"skipValidation"`
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	Url *string `pulumi:"url"`
 }
 
 type ExternalLocationState struct {
-	AccessPoint       pulumi.StringPtrInput
-	Comment           pulumi.StringPtrInput
-	CredentialName    pulumi.StringPtrInput
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint pulumi.StringPtrInput
+	// User-supplied free-form text.
+	Comment pulumi.StringPtrInput
+	// Name of the StorageCredential to use with this external location.
+	CredentialName pulumi.StringPtrInput
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrInput
-	ForceDestroy      pulumi.BoolPtrInput
-	ForceUpdate       pulumi.BoolPtrInput
-	IsolationMode     pulumi.StringPtrInput
-	MetastoreId       pulumi.StringPtrInput
-	Name              pulumi.StringPtrInput
-	Owner             pulumi.StringPtrInput
-	ReadOnly          pulumi.BoolPtrInput
-	SkipValidation    pulumi.BoolPtrInput
-	Url               pulumi.StringPtrInput
+	// Destroy external location regardless of its dependents.
+	ForceDestroy pulumi.BoolPtrInput
+	// Update external location regardless of its dependents.
+	ForceUpdate pulumi.BoolPtrInput
+	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
+	IsolationMode pulumi.StringPtrInput
+	MetastoreId   pulumi.StringPtrInput
+	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the external location owner.
+	Owner pulumi.StringPtrInput
+	// Indicates whether the external location is read-only.
+	ReadOnly pulumi.BoolPtrInput
+	// Suppress validation errors if any & force save the external location
+	SkipValidation pulumi.BoolPtrInput
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	Url pulumi.StringPtrInput
 }
 
 func (ExternalLocationState) ElementType() reflect.Type {
@@ -102,36 +214,60 @@ func (ExternalLocationState) ElementType() reflect.Type {
 }
 
 type externalLocationArgs struct {
-	AccessPoint       *string                            `pulumi:"accessPoint"`
-	Comment           *string                            `pulumi:"comment"`
-	CredentialName    string                             `pulumi:"credentialName"`
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint *string `pulumi:"accessPoint"`
+	// User-supplied free-form text.
+	Comment *string `pulumi:"comment"`
+	// Name of the StorageCredential to use with this external location.
+	CredentialName string `pulumi:"credentialName"`
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails *ExternalLocationEncryptionDetails `pulumi:"encryptionDetails"`
-	ForceDestroy      *bool                              `pulumi:"forceDestroy"`
-	ForceUpdate       *bool                              `pulumi:"forceUpdate"`
-	IsolationMode     *string                            `pulumi:"isolationMode"`
-	MetastoreId       *string                            `pulumi:"metastoreId"`
-	Name              *string                            `pulumi:"name"`
-	Owner             *string                            `pulumi:"owner"`
-	ReadOnly          *bool                              `pulumi:"readOnly"`
-	SkipValidation    *bool                              `pulumi:"skipValidation"`
-	Url               string                             `pulumi:"url"`
+	// Destroy external location regardless of its dependents.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// Update external location regardless of its dependents.
+	ForceUpdate *bool `pulumi:"forceUpdate"`
+	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
+	IsolationMode *string `pulumi:"isolationMode"`
+	MetastoreId   *string `pulumi:"metastoreId"`
+	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the external location owner.
+	Owner *string `pulumi:"owner"`
+	// Indicates whether the external location is read-only.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Suppress validation errors if any & force save the external location
+	SkipValidation *bool `pulumi:"skipValidation"`
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	Url string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a ExternalLocation resource.
 type ExternalLocationArgs struct {
-	AccessPoint       pulumi.StringPtrInput
-	Comment           pulumi.StringPtrInput
-	CredentialName    pulumi.StringInput
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint pulumi.StringPtrInput
+	// User-supplied free-form text.
+	Comment pulumi.StringPtrInput
+	// Name of the StorageCredential to use with this external location.
+	CredentialName pulumi.StringInput
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrInput
-	ForceDestroy      pulumi.BoolPtrInput
-	ForceUpdate       pulumi.BoolPtrInput
-	IsolationMode     pulumi.StringPtrInput
-	MetastoreId       pulumi.StringPtrInput
-	Name              pulumi.StringPtrInput
-	Owner             pulumi.StringPtrInput
-	ReadOnly          pulumi.BoolPtrInput
-	SkipValidation    pulumi.BoolPtrInput
-	Url               pulumi.StringInput
+	// Destroy external location regardless of its dependents.
+	ForceDestroy pulumi.BoolPtrInput
+	// Update external location regardless of its dependents.
+	ForceUpdate pulumi.BoolPtrInput
+	// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
+	IsolationMode pulumi.StringPtrInput
+	MetastoreId   pulumi.StringPtrInput
+	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the external location owner.
+	Owner pulumi.StringPtrInput
+	// Indicates whether the external location is read-only.
+	ReadOnly pulumi.BoolPtrInput
+	// Suppress validation errors if any & force save the external location
+	SkipValidation pulumi.BoolPtrInput
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	Url pulumi.StringInput
 }
 
 func (ExternalLocationArgs) ElementType() reflect.Type {
@@ -221,30 +357,37 @@ func (o ExternalLocationOutput) ToExternalLocationOutputWithContext(ctx context.
 	return o
 }
 
+// The ARN of the s3 access point to use with the external location (AWS).
 func (o ExternalLocationOutput) AccessPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringPtrOutput { return v.AccessPoint }).(pulumi.StringPtrOutput)
 }
 
+// User-supplied free-form text.
 func (o ExternalLocationOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Name of the StorageCredential to use with this external location.
 func (o ExternalLocationOutput) CredentialName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.CredentialName }).(pulumi.StringOutput)
 }
 
+// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 func (o ExternalLocationOutput) EncryptionDetails() ExternalLocationEncryptionDetailsPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) ExternalLocationEncryptionDetailsPtrOutput { return v.EncryptionDetails }).(ExternalLocationEncryptionDetailsPtrOutput)
 }
 
+// Destroy external location regardless of its dependents.
 func (o ExternalLocationOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
+// Update external location regardless of its dependents.
 func (o ExternalLocationOutput) ForceUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
 }
 
+// Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
 func (o ExternalLocationOutput) IsolationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.IsolationMode }).(pulumi.StringOutput)
 }
@@ -253,22 +396,27 @@ func (o ExternalLocationOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
+// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 func (o ExternalLocationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Username/groupname/sp applicationId of the external location owner.
 func (o ExternalLocationOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
+// Indicates whether the external location is read-only.
 func (o ExternalLocationOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Suppress validation errors if any & force save the external location
 func (o ExternalLocationOutput) SkipValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.SkipValidation }).(pulumi.BoolPtrOutput)
 }
 
+// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
 func (o ExternalLocationOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

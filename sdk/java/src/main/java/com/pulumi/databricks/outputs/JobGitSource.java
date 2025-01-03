@@ -14,18 +14,46 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobGitSource {
+    /**
+     * @return name of the Git branch to use. Conflicts with `tag` and `commit`.
+     * 
+     */
     private @Nullable String branch;
+    /**
+     * @return hash of Git commit to use. Conflicts with `branch` and `tag`.
+     * 
+     */
     private @Nullable String commit;
     private @Nullable JobGitSourceGitSnapshot gitSnapshot;
     private @Nullable JobGitSourceJobSource jobSource;
+    /**
+     * @return case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
+     * 
+     */
     private @Nullable String provider;
+    /**
+     * @return name of the Git branch to use. Conflicts with `branch` and `commit`.
+     * 
+     */
     private @Nullable String tag;
+    /**
+     * @return URL of the Git repository to use.
+     * 
+     */
     private String url;
 
     private JobGitSource() {}
+    /**
+     * @return name of the Git branch to use. Conflicts with `tag` and `commit`.
+     * 
+     */
     public Optional<String> branch() {
         return Optional.ofNullable(this.branch);
     }
+    /**
+     * @return hash of Git commit to use. Conflicts with `branch` and `tag`.
+     * 
+     */
     public Optional<String> commit() {
         return Optional.ofNullable(this.commit);
     }
@@ -35,12 +63,24 @@ public final class JobGitSource {
     public Optional<JobGitSourceJobSource> jobSource() {
         return Optional.ofNullable(this.jobSource);
     }
+    /**
+     * @return case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
+     * 
+     */
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
     }
+    /**
+     * @return name of the Git branch to use. Conflicts with `branch` and `commit`.
+     * 
+     */
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }
+    /**
+     * @return URL of the Git repository to use.
+     * 
+     */
     public String url() {
         return this.url;
     }

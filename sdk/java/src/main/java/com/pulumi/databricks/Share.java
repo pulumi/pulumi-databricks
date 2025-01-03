@@ -17,6 +17,134 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; This resource can only be used with a workspace-level provider!
+ * 
+ * In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
+ * 
+ * In a Unity Catalog-enabled Databricks workspace, a share is a securable object registered in Unity Catalog. A `databricks.Share` is contained within a databricks_metastore. If you remove a share from your Unity Catalog metastore, all recipients of that share lose the ability to access it.
+ * 
+ * ## Example Usage
+ * 
+ * &gt; In Pulumi configuration, it is recommended to define objects in alphabetical order of their `name` arguments, so that you get consistent and readable diff. Whenever objects are added or removed, or `name` is renamed, you&#39;ll observe a change in the majority of tasks. It&#39;s related to the fact that the current version of the provider treats `object` blocks as an ordered list. Alternatively, `object` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+ * 
+ * Creating a Delta Sharing share and add some existing tables to it
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Creating a Delta Sharing share and add a schema to it(including all current and future tables).
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Share;
+ * import com.pulumi.databricks.ShareArgs;
+ * import com.pulumi.databricks.inputs.ShareObjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var schemaShare = new Share("schemaShare", ShareArgs.builder()
+ *             .name("schema_share")
+ *             .objects(ShareObjectArgs.builder()
+ *                 .name("catalog_name.schema_name")
+ *                 .dataObjectType("SCHEMA")
+ *                 .historyDataSharingStatus("ENABLED")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Creating a Delta Sharing share and share a table with partitions spec and history
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Share;
+ * import com.pulumi.databricks.ShareArgs;
+ * import com.pulumi.databricks.inputs.ShareObjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var some = new Share("some", ShareArgs.builder()
+ *             .name("my_share")
+ *             .objects(ShareObjectArgs.builder()
+ *                 .name("my_catalog.my_schema.my_table")
+ *                 .dataObjectType("TABLE")
+ *                 .historyDataSharingStatus("ENABLED")
+ *                 .partitions(                
+ *                     ShareObjectPartitionArgs.builder()
+ *                         .values(                        
+ *                             ShareObjectPartitionValueArgs.builder()
+ *                                 .name("year")
+ *                                 .op("EQUAL")
+ *                                 .value("2009")
+ *                                 .build(),
+ *                             ShareObjectPartitionValueArgs.builder()
+ *                                 .name("month")
+ *                                 .op("EQUAL")
+ *                                 .value("12")
+ *                                 .build())
+ *                         .build(),
+ *                     ShareObjectPartitionArgs.builder()
+ *                         .values(ShareObjectPartitionValueArgs.builder()
+ *                             .name("year")
+ *                             .op("EQUAL")
+ *                             .value("2010")
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * databricks.Recipient to create Delta Sharing recipients.
+ * * databricks.Grants to manage Delta Sharing permissions.
+ * * databricks.getShares to read existing Delta Sharing shares.
+ * 
+ */
 @ResourceType(type="databricks:index/share:Share")
 public class Share extends com.pulumi.resources.CustomResource {
     @Export(name="comment", refs={String.class}, tree="[0]")
@@ -25,21 +153,45 @@ public class Share extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
+    /**
+     * Time when the share was created.
+     * 
+     */
     @Export(name="createdAt", refs={Integer.class}, tree="[0]")
     private Output<Integer> createdAt;
 
+    /**
+     * @return Time when the share was created.
+     * 
+     */
     public Output<Integer> createdAt() {
         return this.createdAt;
     }
+    /**
+     * The principal that created the share.
+     * 
+     */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
+    /**
+     * @return The principal that created the share.
+     * 
+     */
     public Output<String> createdBy() {
         return this.createdBy;
     }
+    /**
+     * Name of share. Change forces creation of a new resource.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Name of share. Change forces creation of a new resource.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -49,9 +201,17 @@ public class Share extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ShareObject>>> objects() {
         return Codegen.optional(this.objects);
     }
+    /**
+     * User name/group name/sp application_id of the share owner.
+     * 
+     */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> owner;
 
+    /**
+     * @return User name/group name/sp application_id of the share owner.
+     * 
+     */
     public Output<Optional<String>> owner() {
         return Codegen.optional(this.owner);
     }

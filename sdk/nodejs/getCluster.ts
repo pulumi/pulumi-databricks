@@ -6,6 +6,37 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+ *
+ * ## Example Usage
+ *
+ * Retrieve attributes of each SQL warehouses in a workspace
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getClusters({});
+ * const allGetCluster = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getCluster({
+ *     clusterId: __value,
+ * }) })));
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+ * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ */
 export function getCluster(args?: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -21,9 +52,21 @@ export function getCluster(args?: GetClusterArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getCluster.
  */
 export interface GetClusterArgs {
+    /**
+     * The id of the cluster
+     */
     clusterId?: string;
+    /**
+     * block, consisting of following fields:
+     */
     clusterInfo?: inputs.GetClusterClusterInfo;
+    /**
+     * The exact name of the cluster to search
+     */
     clusterName?: string;
+    /**
+     * cluster ID
+     */
     id?: string;
 }
 
@@ -32,10 +75,50 @@ export interface GetClusterArgs {
  */
 export interface GetClusterResult {
     readonly clusterId: string;
+    /**
+     * block, consisting of following fields:
+     */
     readonly clusterInfo: outputs.GetClusterClusterInfo;
+    /**
+     * Cluster name, which doesn’t have to be unique.
+     */
     readonly clusterName: string;
+    /**
+     * cluster ID
+     */
     readonly id: string;
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+ *
+ * ## Example Usage
+ *
+ * Retrieve attributes of each SQL warehouses in a workspace
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getClusters({});
+ * const allGetCluster = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getCluster({
+ *     clusterId: __value,
+ * }) })));
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+ * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ */
 export function getClusterOutput(args?: GetClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,8 +134,20 @@ export function getClusterOutput(args?: GetClusterOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getCluster.
  */
 export interface GetClusterOutputArgs {
+    /**
+     * The id of the cluster
+     */
     clusterId?: pulumi.Input<string>;
+    /**
+     * block, consisting of following fields:
+     */
     clusterInfo?: pulumi.Input<inputs.GetClusterClusterInfoArgs>;
+    /**
+     * The exact name of the cluster to search
+     */
     clusterName?: pulumi.Input<string>;
+    /**
+     * cluster ID
+     */
     id?: pulumi.Input<string>;
 }

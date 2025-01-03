@@ -16,16 +16,32 @@ public final class InstancePoolDiskSpecArgs extends com.pulumi.resources.Resourc
 
     public static final InstancePoolDiskSpecArgs Empty = new InstancePoolDiskSpecArgs();
 
+    /**
+     * (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
+     * 
+     */
     @Import(name="diskCount")
     private @Nullable Output<Integer> diskCount;
 
+    /**
+     * @return (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
+     * 
+     */
     public Optional<Output<Integer>> diskCount() {
         return Optional.ofNullable(this.diskCount);
     }
 
+    /**
+     * (Integer) The size of each disk (in GiB) to attach.
+     * 
+     */
     @Import(name="diskSize")
     private @Nullable Output<Integer> diskSize;
 
+    /**
+     * @return (Integer) The size of each disk (in GiB) to attach.
+     * 
+     */
     public Optional<Output<Integer>> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }
@@ -63,20 +79,44 @@ public final class InstancePoolDiskSpecArgs extends com.pulumi.resources.Resourc
             $ = new InstancePoolDiskSpecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param diskCount (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskCount(@Nullable Output<Integer> diskCount) {
             $.diskCount = diskCount;
             return this;
         }
 
+        /**
+         * @param diskCount (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskCount(Integer diskCount) {
             return diskCount(Output.of(diskCount));
         }
 
+        /**
+         * @param diskSize (Integer) The size of each disk (in GiB) to attach.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskSize(@Nullable Output<Integer> diskSize) {
             $.diskSize = diskSize;
             return this;
         }
 
+        /**
+         * @param diskSize (Integer) The size of each disk (in GiB) to attach.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskSize(Integer diskSize) {
             return diskSize(Output.of(diskSize));
         }

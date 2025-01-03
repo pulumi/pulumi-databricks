@@ -16,9 +16,17 @@ public final class NotificationDestinationConfigPagerdutyArgs extends com.pulumi
 
     public static final NotificationDestinationConfigPagerdutyArgs Empty = new NotificationDestinationConfigPagerdutyArgs();
 
+    /**
+     * The PagerDuty integration key.
+     * 
+     */
     @Import(name="integrationKey")
     private @Nullable Output<String> integrationKey;
 
+    /**
+     * @return The PagerDuty integration key.
+     * 
+     */
     public Optional<Output<String>> integrationKey() {
         return Optional.ofNullable(this.integrationKey);
     }
@@ -55,11 +63,23 @@ public final class NotificationDestinationConfigPagerdutyArgs extends com.pulumi
             $ = new NotificationDestinationConfigPagerdutyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param integrationKey The PagerDuty integration key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationKey(@Nullable Output<String> integrationKey) {
             $.integrationKey = integrationKey;
             return this;
         }
 
+        /**
+         * @param integrationKey The PagerDuty integration key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationKey(String integrationKey) {
             return integrationKey(Output.of(integrationKey));
         }

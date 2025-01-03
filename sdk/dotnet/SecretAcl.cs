@@ -9,15 +9,87 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// Create or overwrite the ACL associated with the given principal (user or group) on the specified databricks_secret_scope. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ds = new Databricks.Group("ds", new()
+    ///     {
+    ///         DisplayName = "data-scientists",
+    ///     });
+    /// 
+    ///     var app = new Databricks.SecretScope("app", new()
+    ///     {
+    ///         Name = "app-secret-scope",
+    ///     });
+    /// 
+    ///     var mySecretAcl = new Databricks.SecretAcl("my_secret_acl", new()
+    ///     {
+    ///         Principal = ds.DisplayName,
+    ///         Permission = "READ",
+    ///         Scope = app.Name,
+    ///     });
+    /// 
+    ///     var publishingApi = new Databricks.Secret("publishing_api", new()
+    ///     {
+    ///         Key = "publishing_api",
+    ///         StringValue = example.Value,
+    ///         Scope = app.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * End to end workspace management guide.
+    /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+    /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+    /// * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+    /// * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+    /// * databricks.SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+    /// 
+    /// ## Import
+    /// 
+    /// The resource secret acl can be imported using `scopeName|||principalName` combination.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/secretAcl:SecretAcl")]
     public partial class SecretAcl : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// `READ`, `WRITE` or `MANAGE`.
+        /// </summary>
         [Output("permission")]
         public Output<string> Permission { get; private set; } = null!;
 
+        /// <summary>
+        /// principal's identifier. It can be:
+        /// </summary>
         [Output("principal")]
         public Output<string> Principal { get; private set; } = null!;
 
+        /// <summary>
+        /// name of the scope
+        /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
 
@@ -67,12 +139,21 @@ namespace Pulumi.Databricks
 
     public sealed class SecretAclArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// `READ`, `WRITE` or `MANAGE`.
+        /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
+        /// <summary>
+        /// principal's identifier. It can be:
+        /// </summary>
         [Input("principal", required: true)]
         public Input<string> Principal { get; set; } = null!;
 
+        /// <summary>
+        /// name of the scope
+        /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
 
@@ -84,12 +165,21 @@ namespace Pulumi.Databricks
 
     public sealed class SecretAclState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// `READ`, `WRITE` or `MANAGE`.
+        /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }
 
+        /// <summary>
+        /// principal's identifier. It can be:
+        /// </summary>
         [Input("principal")]
         public Input<string>? Principal { get; set; }
 
+        /// <summary>
+        /// name of the scope
+        /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 

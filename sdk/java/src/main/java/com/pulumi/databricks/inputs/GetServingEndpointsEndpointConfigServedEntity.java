@@ -45,9 +45,17 @@ public final class GetServingEndpointsEndpointConfigServedEntity extends com.pul
         return Optional.ofNullable(this.foundationModels);
     }
 
+    /**
+     * The name of the model serving endpoint.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -108,6 +116,12 @@ public final class GetServingEndpointsEndpointConfigServedEntity extends com.pul
             return foundationModels(List.of(foundationModels));
         }
 
+        /**
+         * @param name The name of the model serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;

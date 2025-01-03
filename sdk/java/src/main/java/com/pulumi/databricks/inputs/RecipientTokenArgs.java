@@ -16,51 +16,107 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final RecipientTokenArgs Empty = new RecipientTokenArgs();
 
+    /**
+     * Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+     * 
+     */
     @Import(name="activationUrl")
     private @Nullable Output<String> activationUrl;
 
+    /**
+     * @return Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+     * 
+     */
     public Optional<Output<String>> activationUrl() {
         return Optional.ofNullable(this.activationUrl);
     }
 
+    /**
+     * Time at which this recipient was created, in epoch milliseconds.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Output<Integer> createdAt;
 
+    /**
+     * @return Time at which this recipient was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Output<Integer>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Username of recipient creator.
+     * 
+     */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
+    /**
+     * @return Username of recipient creator.
+     * 
+     */
     public Optional<Output<String>> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
+    /**
+     * Expiration timestamp of the token in epoch milliseconds.
+     * 
+     */
     @Import(name="expirationTime")
     private @Nullable Output<Integer> expirationTime;
 
+    /**
+     * @return Expiration timestamp of the token in epoch milliseconds.
+     * 
+     */
     public Optional<Output<Integer>> expirationTime() {
         return Optional.ofNullable(this.expirationTime);
     }
 
+    /**
+     * Unique ID of the recipient token.
+     * 
+     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
+    /**
+     * @return Unique ID of the recipient token.
+     * 
+     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * Time at which this recipient was updated, in epoch milliseconds.
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Output<Integer> updatedAt;
 
+    /**
+     * @return Time at which this recipient was updated, in epoch milliseconds.
+     * 
+     */
     public Optional<Output<Integer>> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * Username of recipient Token updater.
+     * 
+     */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
+    /**
+     * @return Username of recipient Token updater.
+     * 
+     */
     public Optional<Output<String>> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
@@ -95,65 +151,149 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
             $ = new RecipientTokenArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param activationUrl Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activationUrl(@Nullable Output<String> activationUrl) {
             $.activationUrl = activationUrl;
             return this;
         }
 
+        /**
+         * @param activationUrl Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activationUrl(String activationUrl) {
             return activationUrl(Output.of(activationUrl));
         }
 
+        /**
+         * @param createdAt Time at which this recipient was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Output<Integer> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdAt Time at which this recipient was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(Integer createdAt) {
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param createdBy Username of recipient creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(@Nullable Output<String> createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
+        /**
+         * @param createdBy Username of recipient creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(String createdBy) {
             return createdBy(Output.of(createdBy));
         }
 
+        /**
+         * @param expirationTime Expiration timestamp of the token in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expirationTime(@Nullable Output<Integer> expirationTime) {
             $.expirationTime = expirationTime;
             return this;
         }
 
+        /**
+         * @param expirationTime Expiration timestamp of the token in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expirationTime(Integer expirationTime) {
             return expirationTime(Output.of(expirationTime));
         }
 
+        /**
+         * @param id Unique ID of the recipient token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id Unique ID of the recipient token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
+        /**
+         * @param updatedAt Time at which this recipient was updated, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Output<Integer> updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedAt Time at which this recipient was updated, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(Integer updatedAt) {
             return updatedAt(Output.of(updatedAt));
         }
 
+        /**
+         * @param updatedBy Username of recipient Token updater.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(@Nullable Output<String> updatedBy) {
             $.updatedBy = updatedBy;
             return this;
         }
 
+        /**
+         * @param updatedBy Username of recipient Token updater.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(String updatedBy) {
             return updatedBy(Output.of(updatedBy));
         }

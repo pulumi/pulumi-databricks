@@ -18,9 +18,17 @@ public final class GetTableTableInfoColumnArgs extends com.pulumi.resources.Reso
 
     public static final GetTableTableInfoColumnArgs Empty = new GetTableTableInfoColumnArgs();
 
+    /**
+     * Free-form text description
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return Free-form text description
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
@@ -32,9 +40,17 @@ public final class GetTableTableInfoColumnArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.mask);
     }
 
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -137,11 +153,23 @@ public final class GetTableTableInfoColumnArgs extends com.pulumi.resources.Reso
             $ = new GetTableTableInfoColumnArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param comment Free-form text description
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment Free-form text description
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
@@ -155,11 +183,23 @@ public final class GetTableTableInfoColumnArgs extends com.pulumi.resources.Reso
             return mask(Output.of(mask));
         }
 
+        /**
+         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

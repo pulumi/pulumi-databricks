@@ -52,6 +52,9 @@ class GetNotebookPathsResult:
     @property
     @pulumi.getter(name="notebookPathLists")
     def notebook_path_lists(self) -> Sequence['outputs.GetNotebookPathsNotebookPathListResult']:
+        """
+        list of objects with `path` and `language` attributes
+        """
         return pulumi.get(self, "notebook_path_lists")
 
     @property
@@ -81,7 +84,23 @@ def get_notebook_paths(path: Optional[str] = None,
                        recursive: Optional[bool] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotebookPathsResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    This data source allows to list notebooks in the Databricks Workspace.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    prod = databricks.get_notebook_paths(path="/Production",
+        recursive=True)
+    ```
+
+
+    :param str path: Path to workspace directory
+    :param bool recursive: Either or recursively walk given path
     """
     __args__ = dict()
     __args__['path'] = path
@@ -98,7 +117,23 @@ def get_notebook_paths_output(path: Optional[pulumi.Input[str]] = None,
                               recursive: Optional[pulumi.Input[bool]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotebookPathsResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    This data source allows to list notebooks in the Databricks Workspace.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    prod = databricks.get_notebook_paths(path="/Production",
+        recursive=True)
+    ```
+
+
+    :param str path: Path to workspace directory
+    :param bool recursive: Either or recursively walk given path
     """
     __args__ = dict()
     __args__['path'] = path

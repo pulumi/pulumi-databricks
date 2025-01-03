@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Full name of the dependent function
+        /// </summary>
         [Input("functionFullName", required: true)]
         public Input<string> FunctionFullName { get; set; } = null!;
 

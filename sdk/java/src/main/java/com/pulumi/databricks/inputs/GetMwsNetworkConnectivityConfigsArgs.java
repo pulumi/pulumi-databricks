@@ -16,16 +16,32 @@ public final class GetMwsNetworkConnectivityConfigsArgs extends com.pulumi.resou
 
     public static final GetMwsNetworkConnectivityConfigsArgs Empty = new GetMwsNetworkConnectivityConfigsArgs();
 
+    /**
+     * List of names of databricks_mws_network_connectivity_config
+     * 
+     */
     @Import(name="names")
     private @Nullable Output<List<String>> names;
 
+    /**
+     * @return List of names of databricks_mws_network_connectivity_config
+     * 
+     */
     public Optional<Output<List<String>>> names() {
         return Optional.ofNullable(this.names);
     }
 
+    /**
+     * Filter network connectivity configurations by region.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return Filter network connectivity configurations by region.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -55,24 +71,54 @@ public final class GetMwsNetworkConnectivityConfigsArgs extends com.pulumi.resou
             $ = new GetMwsNetworkConnectivityConfigsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param names List of names of databricks_mws_network_connectivity_config
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(@Nullable Output<List<String>> names) {
             $.names = names;
             return this;
         }
 
+        /**
+         * @param names List of names of databricks_mws_network_connectivity_config
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(List<String> names) {
             return names(Output.of(names));
         }
 
+        /**
+         * @param names List of names of databricks_mws_network_connectivity_config
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(String... names) {
             return names(List.of(names));
         }
 
+        /**
+         * @param region Filter network connectivity configurations by region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region Filter network connectivity configurations by region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

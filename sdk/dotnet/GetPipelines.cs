@@ -11,12 +11,252 @@ namespace Pulumi.Databricks
 {
     public static class GetPipelines
     {
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+        /// 
+        /// Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get all Delta Live Tables pipelines:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetPipelines.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allPipelines"] = all.Apply(getPipelinesResult =&gt; getPipelinesResult.Ids),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Filter Delta Live Tables pipelines by name (exact match):
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPipelines.Invoke(new()
+        ///     {
+        ///         PipelineName = "my_pipeline",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myPipeline"] = @this.Apply(@this =&gt; @this.Apply(getPipelinesResult =&gt; getPipelinesResult.Ids)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Filter Delta Live Tables pipelines by name (wildcard search):
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPipelines.Invoke(new()
+        ///     {
+        ///         PipelineName = "%pipeline%",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["wildcardPipelines"] = @this.Apply(@this =&gt; @this.Apply(getPipelinesResult =&gt; getPipelinesResult.Ids)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * End to end workspace management guide.
+        /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+        /// </summary>
         public static Task<GetPipelinesResult> InvokeAsync(GetPipelinesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPipelinesResult>("databricks:index/getPipelines:getPipelines", args ?? new GetPipelinesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+        /// 
+        /// Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get all Delta Live Tables pipelines:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetPipelines.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allPipelines"] = all.Apply(getPipelinesResult =&gt; getPipelinesResult.Ids),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Filter Delta Live Tables pipelines by name (exact match):
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPipelines.Invoke(new()
+        ///     {
+        ///         PipelineName = "my_pipeline",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myPipeline"] = @this.Apply(@this =&gt; @this.Apply(getPipelinesResult =&gt; getPipelinesResult.Ids)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Filter Delta Live Tables pipelines by name (wildcard search):
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPipelines.Invoke(new()
+        ///     {
+        ///         PipelineName = "%pipeline%",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["wildcardPipelines"] = @this.Apply(@this =&gt; @this.Apply(getPipelinesResult =&gt; getPipelinesResult.Ids)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * End to end workspace management guide.
+        /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+        /// </summary>
         public static Output<GetPipelinesResult> Invoke(GetPipelinesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPipelinesResult>("databricks:index/getPipelines:getPipelines", args ?? new GetPipelinesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+        /// 
+        /// Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Get all Delta Live Tables pipelines:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetPipelines.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allPipelines"] = all.Apply(getPipelinesResult =&gt; getPipelinesResult.Ids),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Filter Delta Live Tables pipelines by name (exact match):
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPipelines.Invoke(new()
+        ///     {
+        ///         PipelineName = "my_pipeline",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myPipeline"] = @this.Apply(@this =&gt; @this.Apply(getPipelinesResult =&gt; getPipelinesResult.Ids)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Filter Delta Live Tables pipelines by name (wildcard search):
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPipelines.Invoke(new()
+        ///     {
+        ///         PipelineName = "%pipeline%",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["wildcardPipelines"] = @this.Apply(@this =&gt; @this.Apply(getPipelinesResult =&gt; getPipelinesResult.Ids)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * End to end workspace management guide.
+        /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+        /// </summary>
         public static Output<GetPipelinesResult> Invoke(GetPipelinesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPipelinesResult>("databricks:index/getPipelines:getPipelines", args ?? new GetPipelinesInvokeArgs(), options.WithDefaults());
     }
@@ -26,12 +266,19 @@ namespace Pulumi.Databricks
     {
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+        /// </summary>
         [Input("pipelineName")]
         public string? PipelineName { get; set; }
 
@@ -45,12 +292,19 @@ namespace Pulumi.Databricks
     {
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+        /// </summary>
         [Input("pipelineName")]
         public Input<string>? PipelineName { get; set; }
 
@@ -68,6 +322,9 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? PipelineName;
 

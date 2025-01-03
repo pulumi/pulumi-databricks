@@ -17,6 +17,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? EntityVersion;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelResult> ExternalModels;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityFoundationModelResult> FoundationModels;
+        /// <summary>
+        /// The name of the model serving endpoint.
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

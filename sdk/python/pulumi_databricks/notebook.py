@@ -29,6 +29,11 @@ class NotebookArgs:
                  source: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Notebook resource.
+        :param pulumi.Input[str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        :param pulumi.Input[str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
+        :param pulumi.Input[int] object_id: Unique identifier for a NOTEBOOK
+        :param pulumi.Input[str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         """
         pulumi.set(__self__, "path", path)
         if content_base64 is not None:
@@ -52,6 +57,9 @@ class NotebookArgs:
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input[str]:
+        """
+        The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -61,6 +69,9 @@ class NotebookArgs:
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
@@ -79,6 +90,9 @@ class NotebookArgs:
     @property
     @pulumi.getter
     def language(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of `SCALA`, `PYTHON`, `SQL`, `R`.
+        """
         return pulumi.get(self, "language")
 
     @language.setter
@@ -97,6 +111,9 @@ class NotebookArgs:
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Unique identifier for a NOTEBOOK
+        """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
@@ -116,6 +133,9 @@ class NotebookArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -138,6 +158,13 @@ class _NotebookState:
                  workspace_path: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Notebook resources.
+        :param pulumi.Input[str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        :param pulumi.Input[str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
+        :param pulumi.Input[int] object_id: Unique identifier for a NOTEBOOK
+        :param pulumi.Input[str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+        :param pulumi.Input[str] url: Routable URL of the notebook
+        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         if content_base64 is not None:
             pulumi.set(__self__, "content_base64", content_base64)
@@ -166,6 +193,9 @@ class _NotebookState:
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
@@ -184,6 +214,9 @@ class _NotebookState:
     @property
     @pulumi.getter
     def language(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of `SCALA`, `PYTHON`, `SQL`, `R`.
+        """
         return pulumi.get(self, "language")
 
     @language.setter
@@ -202,6 +235,9 @@ class _NotebookState:
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Unique identifier for a NOTEBOOK
+        """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
@@ -221,6 +257,9 @@ class _NotebookState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -230,6 +269,9 @@ class _NotebookState:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -239,6 +281,9 @@ class _NotebookState:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Routable URL of the notebook
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -248,6 +293,9 @@ class _NotebookState:
     @property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
         return pulumi.get(self, "workspace_path")
 
     @workspace_path.setter
@@ -270,9 +318,25 @@ class Notebook(pulumi.CustomResource):
                  source: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Notebook resource with the given unique name, props, and options.
+        This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with Notebook and get_notebook_paths data sources.
+
+        ## Import
+
+        The resource notebook can be imported using notebook path
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        :param pulumi.Input[str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
+        :param pulumi.Input[int] object_id: Unique identifier for a NOTEBOOK
+        :param pulumi.Input[str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         """
         ...
     @overload
@@ -281,7 +345,18 @@ class Notebook(pulumi.CustomResource):
                  args: NotebookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Notebook resource with the given unique name, props, and options.
+        This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with Notebook and get_notebook_paths data sources.
+
+        ## Import
+
+        The resource notebook can be imported using notebook path
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
+        ```
+
         :param str resource_name: The name of the resource.
         :param NotebookArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -353,6 +428,13 @@ class Notebook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        :param pulumi.Input[str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
+        :param pulumi.Input[int] object_id: Unique identifier for a NOTEBOOK
+        :param pulumi.Input[str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+        :param pulumi.Input[str] url: Routable URL of the notebook
+        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -373,6 +455,9 @@ class Notebook(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> pulumi.Output[Optional[str]]:
+        """
+        The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+        """
         return pulumi.get(self, "content_base64")
 
     @property
@@ -383,6 +468,9 @@ class Notebook(pulumi.CustomResource):
     @property
     @pulumi.getter
     def language(self) -> pulumi.Output[Optional[str]]:
+        """
+        One of `SCALA`, `PYTHON`, `SQL`, `R`.
+        """
         return pulumi.get(self, "language")
 
     @property
@@ -393,6 +481,9 @@ class Notebook(pulumi.CustomResource):
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Output[int]:
+        """
+        Unique identifier for a NOTEBOOK
+        """
         return pulumi.get(self, "object_id")
 
     @property
@@ -404,20 +495,32 @@ class Notebook(pulumi.CustomResource):
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output[str]:
+        """
+        The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def source(self) -> pulumi.Output[Optional[str]]:
+        """
+        Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+        """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
+        """
+        Routable URL of the notebook
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> pulumi.Output[str]:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
         return pulumi.get(self, "workspace_path")
 

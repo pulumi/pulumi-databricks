@@ -12,10 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationConfigMicrosoftTeams {
+    /**
+     * @return The Microsoft Teams webhook URL.
+     * 
+     */
     private @Nullable String url;
     private @Nullable Boolean urlSet;
 
     private NotificationDestinationConfigMicrosoftTeams() {}
+    /**
+     * @return The Microsoft Teams webhook URL.
+     * 
+     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

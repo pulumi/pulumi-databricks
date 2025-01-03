@@ -23,16 +23,32 @@ public final class GetTablePlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     public String name() {
         return this.name;
     }
 
+    /**
+     * TableInfo object for a Unity Catalog table. This contains the following attributes:
+     * 
+     */
     @Import(name="tableInfo")
     private @Nullable GetTableTableInfo tableInfo;
 
+    /**
+     * @return TableInfo object for a Unity Catalog table. This contains the following attributes:
+     * 
+     */
     public Optional<GetTableTableInfo> tableInfo() {
         return Optional.ofNullable(this.tableInfo);
     }
@@ -68,11 +84,23 @@ public final class GetTablePlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param tableInfo TableInfo object for a Unity Catalog table. This contains the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableInfo(@Nullable GetTableTableInfo tableInfo) {
             $.tableInfo = tableInfo;
             return this;

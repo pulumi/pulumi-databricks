@@ -12,18 +12,90 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This resource can only be used with a workspace-level provider!
+//
+// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
+//
+// A `Schema` is contained within Catalog and can contain tables & views.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:    pulumi.String("sandbox"),
+//				Comment: pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
+//				CatalogName: sandbox.ID(),
+//				Name:        pulumi.String("things"),
+//				Comment:     pulumi.String("this database is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"kind": pulumi.String("various"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * getTables data to list tables within Unity Catalog.
+// * getSchemas data to list schemas within Unity Catalog.
+// * getCatalogs data to list catalogs within Unity Catalog.
+//
+// ## Import
+//
+// This resource can be imported by its full name:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/schema:Schema this <catalog_name>.<name>
+// ```
 type Schema struct {
 	pulumi.CustomResourceState
 
-	CatalogName                  pulumi.StringOutput    `pulumi:"catalogName"`
-	Comment                      pulumi.StringPtrOutput `pulumi:"comment"`
-	EnablePredictiveOptimization pulumi.StringOutput    `pulumi:"enablePredictiveOptimization"`
-	ForceDestroy                 pulumi.BoolPtrOutput   `pulumi:"forceDestroy"`
-	MetastoreId                  pulumi.StringOutput    `pulumi:"metastoreId"`
-	Name                         pulumi.StringOutput    `pulumi:"name"`
-	Owner                        pulumi.StringOutput    `pulumi:"owner"`
-	Properties                   pulumi.StringMapOutput `pulumi:"properties"`
-	StorageRoot                  pulumi.StringPtrOutput `pulumi:"storageRoot"`
+	// Name of parent catalog. Change forces creation of a new resource.
+	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
+	// User-supplied free-form text.
+	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization pulumi.StringOutput `pulumi:"enablePredictiveOptimization"`
+	// Delete schema regardless of its contents.
+	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
+	MetastoreId  pulumi.StringOutput  `pulumi:"metastoreId"`
+	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Username/groupname/sp applicationId of the schema owner.
+	Owner pulumi.StringOutput `pulumi:"owner"`
+	// Extensible Schema properties.
+	Properties pulumi.StringMapOutput `pulumi:"properties"`
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+	StorageRoot pulumi.StringPtrOutput `pulumi:"storageRoot"`
 }
 
 // NewSchema registers a new resource with the given unique name, arguments, and options.
@@ -59,27 +131,43 @@ func GetSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Schema resources.
 type schemaState struct {
-	CatalogName                  *string           `pulumi:"catalogName"`
-	Comment                      *string           `pulumi:"comment"`
-	EnablePredictiveOptimization *string           `pulumi:"enablePredictiveOptimization"`
-	ForceDestroy                 *bool             `pulumi:"forceDestroy"`
-	MetastoreId                  *string           `pulumi:"metastoreId"`
-	Name                         *string           `pulumi:"name"`
-	Owner                        *string           `pulumi:"owner"`
-	Properties                   map[string]string `pulumi:"properties"`
-	StorageRoot                  *string           `pulumi:"storageRoot"`
+	// Name of parent catalog. Change forces creation of a new resource.
+	CatalogName *string `pulumi:"catalogName"`
+	// User-supplied free-form text.
+	Comment *string `pulumi:"comment"`
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
+	// Delete schema regardless of its contents.
+	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	MetastoreId  *string `pulumi:"metastoreId"`
+	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the schema owner.
+	Owner *string `pulumi:"owner"`
+	// Extensible Schema properties.
+	Properties map[string]string `pulumi:"properties"`
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+	StorageRoot *string `pulumi:"storageRoot"`
 }
 
 type SchemaState struct {
-	CatalogName                  pulumi.StringPtrInput
-	Comment                      pulumi.StringPtrInput
+	// Name of parent catalog. Change forces creation of a new resource.
+	CatalogName pulumi.StringPtrInput
+	// User-supplied free-form text.
+	Comment pulumi.StringPtrInput
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
 	EnablePredictiveOptimization pulumi.StringPtrInput
-	ForceDestroy                 pulumi.BoolPtrInput
-	MetastoreId                  pulumi.StringPtrInput
-	Name                         pulumi.StringPtrInput
-	Owner                        pulumi.StringPtrInput
-	Properties                   pulumi.StringMapInput
-	StorageRoot                  pulumi.StringPtrInput
+	// Delete schema regardless of its contents.
+	ForceDestroy pulumi.BoolPtrInput
+	MetastoreId  pulumi.StringPtrInput
+	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
+	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the schema owner.
+	Owner pulumi.StringPtrInput
+	// Extensible Schema properties.
+	Properties pulumi.StringMapInput
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+	StorageRoot pulumi.StringPtrInput
 }
 
 func (SchemaState) ElementType() reflect.Type {
@@ -87,28 +175,44 @@ func (SchemaState) ElementType() reflect.Type {
 }
 
 type schemaArgs struct {
-	CatalogName                  string            `pulumi:"catalogName"`
-	Comment                      *string           `pulumi:"comment"`
-	EnablePredictiveOptimization *string           `pulumi:"enablePredictiveOptimization"`
-	ForceDestroy                 *bool             `pulumi:"forceDestroy"`
-	MetastoreId                  *string           `pulumi:"metastoreId"`
-	Name                         *string           `pulumi:"name"`
-	Owner                        *string           `pulumi:"owner"`
-	Properties                   map[string]string `pulumi:"properties"`
-	StorageRoot                  *string           `pulumi:"storageRoot"`
+	// Name of parent catalog. Change forces creation of a new resource.
+	CatalogName string `pulumi:"catalogName"`
+	// User-supplied free-form text.
+	Comment *string `pulumi:"comment"`
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
+	// Delete schema regardless of its contents.
+	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	MetastoreId  *string `pulumi:"metastoreId"`
+	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the schema owner.
+	Owner *string `pulumi:"owner"`
+	// Extensible Schema properties.
+	Properties map[string]string `pulumi:"properties"`
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+	StorageRoot *string `pulumi:"storageRoot"`
 }
 
 // The set of arguments for constructing a Schema resource.
 type SchemaArgs struct {
-	CatalogName                  pulumi.StringInput
-	Comment                      pulumi.StringPtrInput
+	// Name of parent catalog. Change forces creation of a new resource.
+	CatalogName pulumi.StringInput
+	// User-supplied free-form text.
+	Comment pulumi.StringPtrInput
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
 	EnablePredictiveOptimization pulumi.StringPtrInput
-	ForceDestroy                 pulumi.BoolPtrInput
-	MetastoreId                  pulumi.StringPtrInput
-	Name                         pulumi.StringPtrInput
-	Owner                        pulumi.StringPtrInput
-	Properties                   pulumi.StringMapInput
-	StorageRoot                  pulumi.StringPtrInput
+	// Delete schema regardless of its contents.
+	ForceDestroy pulumi.BoolPtrInput
+	MetastoreId  pulumi.StringPtrInput
+	// Name of Schema relative to parent catalog. Change forces creation of a new resource.
+	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the schema owner.
+	Owner pulumi.StringPtrInput
+	// Extensible Schema properties.
+	Properties pulumi.StringMapInput
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+	StorageRoot pulumi.StringPtrInput
 }
 
 func (SchemaArgs) ElementType() reflect.Type {
@@ -198,18 +302,22 @@ func (o SchemaOutput) ToSchemaOutputWithContext(ctx context.Context) SchemaOutpu
 	return o
 }
 
+// Name of parent catalog. Change forces creation of a new resource.
 func (o SchemaOutput) CatalogName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.CatalogName }).(pulumi.StringOutput)
 }
 
+// User-supplied free-form text.
 func (o SchemaOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
 func (o SchemaOutput) EnablePredictiveOptimization() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.EnablePredictiveOptimization }).(pulumi.StringOutput)
 }
 
+// Delete schema regardless of its contents.
 func (o SchemaOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Schema) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
@@ -218,18 +326,22 @@ func (o SchemaOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
+// Name of Schema relative to parent catalog. Change forces creation of a new resource.
 func (o SchemaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Username/groupname/sp applicationId of the schema owner.
 func (o SchemaOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
+// Extensible Schema properties.
 func (o SchemaOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 func (o SchemaOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringPtrOutput { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }

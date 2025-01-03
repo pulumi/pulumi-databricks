@@ -12,14 +12,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstancePoolDiskSpec {
+    /**
+     * @return (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
+     * 
+     */
     private @Nullable Integer diskCount;
+    /**
+     * @return (Integer) The size of each disk (in GiB) to attach.
+     * 
+     */
     private @Nullable Integer diskSize;
     private @Nullable InstancePoolDiskSpecDiskType diskType;
 
     private InstancePoolDiskSpec() {}
+    /**
+     * @return (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
+     * 
+     */
     public Optional<Integer> diskCount() {
         return Optional.ofNullable(this.diskCount);
     }
+    /**
+     * @return (Integer) The size of each disk (in GiB) to attach.
+     * 
+     */
     public Optional<Integer> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }

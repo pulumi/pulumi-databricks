@@ -13,9 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetClustersFilterByResult
     {
+        /// <summary>
+        /// List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
+        /// </summary>
         public readonly ImmutableArray<string> ClusterSources;
+        /// <summary>
+        /// List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+        /// </summary>
         public readonly ImmutableArray<string> ClusterStates;
+        /// <summary>
+        /// Whether to filter by pinned clusters.
+        /// </summary>
         public readonly bool? IsPinned;
+        /// <summary>
+        /// Filter by databricks.ClusterPolicy id.
+        /// </summary>
         public readonly string? PolicyId;
 
         [OutputConstructor]

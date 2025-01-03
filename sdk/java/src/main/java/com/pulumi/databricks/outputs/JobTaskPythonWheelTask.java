@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskPythonWheelTask {
+    /**
+     * @return Python function as entry point for the task
+     * 
+     */
     private @Nullable String entryPoint;
+    /**
+     * @return Named parameters for the task
+     * 
+     */
     private @Nullable Map<String,String> namedParameters;
+    /**
+     * @return Name of Python package
+     * 
+     */
     private @Nullable String packageName;
+    /**
+     * @return Parameters for the task
+     * 
+     */
     private @Nullable List<String> parameters;
 
     private JobTaskPythonWheelTask() {}
+    /**
+     * @return Python function as entry point for the task
+     * 
+     */
     public Optional<String> entryPoint() {
         return Optional.ofNullable(this.entryPoint);
     }
+    /**
+     * @return Named parameters for the task
+     * 
+     */
     public Map<String,String> namedParameters() {
         return this.namedParameters == null ? Map.of() : this.namedParameters;
     }
+    /**
+     * @return Name of Python package
+     * 
+     */
     public Optional<String> packageName() {
         return Optional.ofNullable(this.packageName);
     }
+    /**
+     * @return Parameters for the task
+     * 
+     */
     public List<String> parameters() {
         return this.parameters == null ? List.of() : this.parameters;
     }

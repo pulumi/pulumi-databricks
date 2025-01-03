@@ -13,8 +13,19 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class StorageCredentialCloudflareApiToken
     {
+        /// <summary>
+        /// R2 API token access key ID
+        /// </summary>
         public readonly string AccessKeyId;
+        /// <summary>
+        /// R2 account ID
+        /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// R2 API token secret access key
+        /// 
+        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+        /// </summary>
         public readonly string SecretAccessKey;
 
         [OutputConstructor]

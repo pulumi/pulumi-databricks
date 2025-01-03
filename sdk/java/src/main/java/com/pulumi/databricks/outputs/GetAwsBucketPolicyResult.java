@@ -28,6 +28,10 @@ public final class GetAwsBucketPolicyResult {
      * 
      */
     private String id;
+    /**
+     * @return (Read-only) AWS IAM Policy JSON document to grant Databricks full access to bucket.
+     * 
+     */
     private String json;
 
     private GetAwsBucketPolicyResult() {}
@@ -59,6 +63,10 @@ public final class GetAwsBucketPolicyResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Read-only) AWS IAM Policy JSON document to grant Databricks full access to bucket.
+     * 
+     */
     public String json() {
         return this.json;
     }

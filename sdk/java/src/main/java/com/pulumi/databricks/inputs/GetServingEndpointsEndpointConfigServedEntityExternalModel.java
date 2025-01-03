@@ -66,9 +66,17 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel ex
         return Optional.ofNullable(this.googleCloudVertexAiConfigs);
     }
 
+    /**
+     * The name of the model serving endpoint.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -189,6 +197,12 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModel ex
             return googleCloudVertexAiConfigs(List.of(googleCloudVertexAiConfigs));
         }
 
+        /**
+         * @param name The name of the model serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VectorSearchEndpointEndpointStatus {
+    /**
+     * @return Additional status message.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+     * 
+     */
     private @Nullable String state;
 
     private VectorSearchEndpointEndpointStatus() {}
+    /**
+     * @return Additional status message.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+     * 
+     */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }

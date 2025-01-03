@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTableTableInfoTableConstraintNamedTableConstraint {
+    /**
+     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     private String name;
 
     private GetTableTableInfoTableConstraintNamedTableConstraint() {}
+    /**
+     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     public String name() {
         return this.name;
     }

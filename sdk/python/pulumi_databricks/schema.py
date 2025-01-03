@@ -30,6 +30,14 @@ class SchemaArgs:
                  storage_root: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Schema resource.
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
+        :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Extensible Schema properties.
+        :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
         if comment is not None:
@@ -52,6 +60,9 @@ class SchemaArgs:
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Input[str]:
+        """
+        Name of parent catalog. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -61,6 +72,9 @@ class SchemaArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-supplied free-form text.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -70,6 +84,9 @@ class SchemaArgs:
     @property
     @pulumi.getter(name="enablePredictiveOptimization")
     def enable_predictive_optimization(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        """
         return pulumi.get(self, "enable_predictive_optimization")
 
     @enable_predictive_optimization.setter
@@ -79,6 +96,9 @@ class SchemaArgs:
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete schema regardless of its contents.
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -97,6 +117,9 @@ class SchemaArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Schema relative to parent catalog. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -106,6 +129,9 @@ class SchemaArgs:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username/groupname/sp application_id of the schema owner.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -115,6 +141,9 @@ class SchemaArgs:
     @property
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Extensible Schema properties.
+        """
         return pulumi.get(self, "properties")
 
     @properties.setter
@@ -124,6 +153,9 @@ class SchemaArgs:
     @property
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[str]]:
+        """
+        Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "storage_root")
 
     @storage_root.setter
@@ -145,6 +177,14 @@ class _SchemaState:
                  storage_root: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Schema resources.
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
+        :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Extensible Schema properties.
+        :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
@@ -168,6 +208,9 @@ class _SchemaState:
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of parent catalog. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -177,6 +220,9 @@ class _SchemaState:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-supplied free-form text.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -186,6 +232,9 @@ class _SchemaState:
     @property
     @pulumi.getter(name="enablePredictiveOptimization")
     def enable_predictive_optimization(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        """
         return pulumi.get(self, "enable_predictive_optimization")
 
     @enable_predictive_optimization.setter
@@ -195,6 +244,9 @@ class _SchemaState:
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete schema regardless of its contents.
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -213,6 +265,9 @@ class _SchemaState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Schema relative to parent catalog. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -222,6 +277,9 @@ class _SchemaState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username/groupname/sp application_id of the schema owner.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -231,6 +289,9 @@ class _SchemaState:
     @property
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Extensible Schema properties.
+        """
         return pulumi.get(self, "properties")
 
     @properties.setter
@@ -240,6 +301,9 @@ class _SchemaState:
     @property
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[str]]:
+        """
+        Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "storage_root")
 
     @storage_root.setter
@@ -263,9 +327,61 @@ class Schema(pulumi.CustomResource):
                  storage_root: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Schema resource with the given unique name, props, and options.
+        > This resource can only be used with a workspace-level provider!
+
+        Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
+
+        A `Schema` is contained within Catalog and can contain tables & views.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        things = databricks.Schema("things",
+            catalog_name=sandbox.id,
+            name="things",
+            comment="this database is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        ```
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * get_tables data to list tables within Unity Catalog.
+        * get_schemas data to list schemas within Unity Catalog.
+        * get_catalogs data to list catalogs within Unity Catalog.
+
+        ## Import
+
+        This resource can be imported by its full name:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/schema:Schema this <catalog_name>.<name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
+        :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Extensible Schema properties.
+        :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         ...
     @overload
@@ -274,7 +390,51 @@ class Schema(pulumi.CustomResource):
                  args: SchemaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Schema resource with the given unique name, props, and options.
+        > This resource can only be used with a workspace-level provider!
+
+        Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
+
+        A `Schema` is contained within Catalog and can contain tables & views.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        things = databricks.Schema("things",
+            catalog_name=sandbox.id,
+            name="things",
+            comment="this database is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        ```
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * get_tables data to list tables within Unity Catalog.
+        * get_schemas data to list schemas within Unity Catalog.
+        * get_catalogs data to list catalogs within Unity Catalog.
+
+        ## Import
+
+        This resource can be imported by its full name:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/schema:Schema this <catalog_name>.<name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param SchemaArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -345,6 +505,14 @@ class Schema(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
+        :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Extensible Schema properties.
+        :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -364,21 +532,33 @@ class Schema(pulumi.CustomResource):
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[str]:
+        """
+        Name of parent catalog. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "catalog_name")
 
     @property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
+        """
+        User-supplied free-form text.
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter(name="enablePredictiveOptimization")
     def enable_predictive_optimization(self) -> pulumi.Output[str]:
+        """
+        Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        """
         return pulumi.get(self, "enable_predictive_optimization")
 
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Delete schema regardless of its contents.
+        """
         return pulumi.get(self, "force_destroy")
 
     @property
@@ -389,20 +569,32 @@ class Schema(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Name of Schema relative to parent catalog. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
+        """
+        Username/groupname/sp application_id of the schema owner.
+        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter
     def properties(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Extensible Schema properties.
+        """
         return pulumi.get(self, "properties")
 
     @property
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> pulumi.Output[Optional[str]]:
+        """
+        Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "storage_root")
 

@@ -18,6 +18,10 @@ public final class GetServingEndpointsEndpointConfigServedEntity {
     private @Nullable String entityVersion;
     private @Nullable List<GetServingEndpointsEndpointConfigServedEntityExternalModel> externalModels;
     private @Nullable List<GetServingEndpointsEndpointConfigServedEntityFoundationModel> foundationModels;
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     private @Nullable String name;
 
     private GetServingEndpointsEndpointConfigServedEntity() {}
@@ -33,6 +37,10 @@ public final class GetServingEndpointsEndpointConfigServedEntity {
     public List<GetServingEndpointsEndpointConfigServedEntityFoundationModel> foundationModels() {
         return this.foundationModels == null ? List.of() : this.foundationModels;
     }
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

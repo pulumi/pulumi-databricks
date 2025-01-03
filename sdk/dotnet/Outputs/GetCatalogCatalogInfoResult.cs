@@ -14,28 +14,94 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetCatalogCatalogInfoResult
     {
         public readonly bool? BrowseOnly;
+        /// <summary>
+        /// Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+        /// </summary>
         public readonly string? CatalogType;
+        /// <summary>
+        /// Free-form text description
+        /// </summary>
         public readonly string? Comment;
+        /// <summary>
+        /// The name of the connection to an external data source.
+        /// </summary>
         public readonly string? ConnectionName;
+        /// <summary>
+        /// Time at which this catalog was created, in epoch milliseconds.
+        /// </summary>
         public readonly int? CreatedAt;
+        /// <summary>
+        /// Username of catalog creator.
+        /// </summary>
         public readonly string? CreatedBy;
+        /// <summary>
+        /// object describing applied predictive optimization flag.
+        /// </summary>
         public readonly Outputs.GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagResult? EffectivePredictiveOptimizationFlag;
+        /// <summary>
+        /// Whether predictive optimization should be enabled for this object and objects under it.
+        /// </summary>
         public readonly string? EnablePredictiveOptimization;
+        /// <summary>
+        /// The full name of the catalog. Corresponds with the name field.
+        /// </summary>
         public readonly string? FullName;
+        /// <summary>
+        /// Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+        /// </summary>
         public readonly string? IsolationMode;
+        /// <summary>
+        /// Unique identifier of parent metastore.
+        /// </summary>
         public readonly string? MetastoreId;
+        /// <summary>
+        /// name of the catalog
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// A map of key-value properties attached to the securable.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Options;
+        /// <summary>
+        /// Current owner of the catalog
+        /// </summary>
         public readonly string? Owner;
+        /// <summary>
+        /// A map of key-value properties attached to the securable.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
+        /// <summary>
+        /// The name of delta sharing provider.
+        /// </summary>
         public readonly string? ProviderName;
         public readonly Outputs.GetCatalogCatalogInfoProvisioningInfoResult? ProvisioningInfo;
+        /// <summary>
+        /// Kind of catalog securable.
+        /// </summary>
         public readonly string? SecurableKind;
+        /// <summary>
+        /// Securable type.
+        /// </summary>
         public readonly string? SecurableType;
+        /// <summary>
+        /// The name of the share under the share provider.
+        /// </summary>
         public readonly string? ShareName;
+        /// <summary>
+        /// Storage Location URL (full path) for managed tables within catalog.
+        /// </summary>
         public readonly string? StorageLocation;
+        /// <summary>
+        /// Storage root URL for managed tables within catalog.
+        /// </summary>
         public readonly string? StorageRoot;
+        /// <summary>
+        /// Time at which this catalog was last modified, in epoch milliseconds.
+        /// </summary>
         public readonly int? UpdatedAt;
+        /// <summary>
+        /// Username of user who last modified catalog.
+        /// </summary>
         public readonly string? UpdatedBy;
 
         [OutputConstructor]

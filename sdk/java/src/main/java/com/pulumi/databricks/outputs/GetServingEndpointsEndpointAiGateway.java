@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 public final class GetServingEndpointsEndpointAiGateway {
     private @Nullable List<GetServingEndpointsEndpointAiGatewayGuardrail> guardrails;
     private @Nullable List<GetServingEndpointsEndpointAiGatewayInferenceTableConfig> inferenceTableConfigs;
+    /**
+     * @return A list of rate limit blocks to be applied to the serving endpoint.
+     * 
+     */
     private @Nullable List<GetServingEndpointsEndpointAiGatewayRateLimit> rateLimits;
     private @Nullable List<GetServingEndpointsEndpointAiGatewayUsageTrackingConfig> usageTrackingConfigs;
 
@@ -26,6 +30,10 @@ public final class GetServingEndpointsEndpointAiGateway {
     public List<GetServingEndpointsEndpointAiGatewayInferenceTableConfig> inferenceTableConfigs() {
         return this.inferenceTableConfigs == null ? List.of() : this.inferenceTableConfigs;
     }
+    /**
+     * @return A list of rate limit blocks to be applied to the serving endpoint.
+     * 
+     */
     public List<GetServingEndpointsEndpointAiGatewayRateLimit> rateLimits() {
         return this.rateLimits == null ? List.of() : this.rateLimits;
     }

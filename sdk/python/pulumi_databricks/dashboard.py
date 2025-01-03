@@ -35,6 +35,12 @@ class DashboardArgs:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
+        :param pulumi.Input[str] display_name: The display name of the dashboard.
+        :param pulumi.Input[str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+        :param pulumi.Input[str] warehouse_id: The warehouse ID used to run the dashboard.
+        :param pulumi.Input[bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
+        :param pulumi.Input[str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        :param pulumi.Input[str] serialized_dashboard: The contents of the dashboard in serialized string form. Conflicts with `file_path`.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "parent_path", parent_path)
@@ -65,6 +71,9 @@ class DashboardArgs:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name of the dashboard.
+        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -74,6 +83,9 @@ class DashboardArgs:
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> pulumi.Input[str]:
+        """
+        The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+        """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
@@ -83,6 +95,9 @@ class DashboardArgs:
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> pulumi.Input[str]:
+        """
+        The warehouse ID used to run the dashboard.
+        """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
@@ -119,6 +134,9 @@ class DashboardArgs:
     @property
     @pulumi.getter(name="embedCredentials")
     def embed_credentials(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to embed credentials in the dashboard. Default is `true`.
+        """
         return pulumi.get(self, "embed_credentials")
 
     @embed_credentials.setter
@@ -137,6 +155,9 @@ class DashboardArgs:
     @property
     @pulumi.getter(name="filePath")
     def file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        """
         return pulumi.get(self, "file_path")
 
     @file_path.setter
@@ -173,6 +194,9 @@ class DashboardArgs:
     @property
     @pulumi.getter(name="serializedDashboard")
     def serialized_dashboard(self) -> Optional[pulumi.Input[str]]:
+        """
+        The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+        """
         return pulumi.get(self, "serialized_dashboard")
 
     @serialized_dashboard.setter
@@ -208,6 +232,12 @@ class _DashboardState:
                  warehouse_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
+        :param pulumi.Input[str] display_name: The display name of the dashboard.
+        :param pulumi.Input[bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
+        :param pulumi.Input[str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        :param pulumi.Input[str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+        :param pulumi.Input[str] serialized_dashboard: The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+        :param pulumi.Input[str] warehouse_id: The warehouse ID used to run the dashboard.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -268,6 +298,9 @@ class _DashboardState:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the dashboard.
+        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -277,6 +310,9 @@ class _DashboardState:
     @property
     @pulumi.getter(name="embedCredentials")
     def embed_credentials(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to embed credentials in the dashboard. Default is `true`.
+        """
         return pulumi.get(self, "embed_credentials")
 
     @embed_credentials.setter
@@ -295,6 +331,9 @@ class _DashboardState:
     @property
     @pulumi.getter(name="filePath")
     def file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        """
         return pulumi.get(self, "file_path")
 
     @file_path.setter
@@ -322,6 +361,9 @@ class _DashboardState:
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+        """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
@@ -340,6 +382,9 @@ class _DashboardState:
     @property
     @pulumi.getter(name="serializedDashboard")
     def serialized_dashboard(self) -> Optional[pulumi.Input[str]]:
+        """
+        The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+        """
         return pulumi.get(self, "serialized_dashboard")
 
     @serialized_dashboard.setter
@@ -358,6 +403,9 @@ class _DashboardState:
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The warehouse ID used to run the dashboard.
+        """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
@@ -386,9 +434,45 @@ class Dashboard(pulumi.CustomResource):
                  warehouse_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Dashboard resource with the given unique name, props, and options.
+        This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
+
+        ## Example Usage
+
+        Dashboard using `serialized_dashboard` attribute:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        starter = databricks.get_sql_warehouse(name="Starter Warehouse")
+        dashboard = databricks.Dashboard("dashboard",
+            display_name="New Dashboard",
+            warehouse_id=starter.id,
+            serialized_dashboard="{\\"pages\\":[{\\"name\\":\\"new_name\\",\\"displayName\\":\\"New Page\\"}]}",
+            embed_credentials=False,
+            parent_path="/Shared/provider-test")
+        ```
+
+        Dashboard using `file_path` attribute:
+
+        ## Import
+
+        You can import a `databricks_dashboard` resource with ID like the following:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/dashboard:Dashboard this <dashboard-id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] display_name: The display name of the dashboard.
+        :param pulumi.Input[bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
+        :param pulumi.Input[str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        :param pulumi.Input[str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+        :param pulumi.Input[str] serialized_dashboard: The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+        :param pulumi.Input[str] warehouse_id: The warehouse ID used to run the dashboard.
         """
         ...
     @overload
@@ -397,7 +481,37 @@ class Dashboard(pulumi.CustomResource):
                  args: DashboardArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Dashboard resource with the given unique name, props, and options.
+        This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
+
+        ## Example Usage
+
+        Dashboard using `serialized_dashboard` attribute:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        starter = databricks.get_sql_warehouse(name="Starter Warehouse")
+        dashboard = databricks.Dashboard("dashboard",
+            display_name="New Dashboard",
+            warehouse_id=starter.id,
+            serialized_dashboard="{\\"pages\\":[{\\"name\\":\\"new_name\\",\\"displayName\\":\\"New Page\\"}]}",
+            embed_credentials=False,
+            parent_path="/Shared/provider-test")
+        ```
+
+        Dashboard using `file_path` attribute:
+
+        ## Import
+
+        You can import a `databricks_dashboard` resource with ID like the following:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/dashboard:Dashboard this <dashboard-id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param DashboardArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -487,6 +601,12 @@ class Dashboard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] display_name: The display name of the dashboard.
+        :param pulumi.Input[bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
+        :param pulumi.Input[str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        :param pulumi.Input[str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+        :param pulumi.Input[str] serialized_dashboard: The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+        :param pulumi.Input[str] warehouse_id: The warehouse ID used to run the dashboard.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -526,11 +646,17 @@ class Dashboard(pulumi.CustomResource):
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
+        """
+        The display name of the dashboard.
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="embedCredentials")
     def embed_credentials(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to embed credentials in the dashboard. Default is `true`.
+        """
         return pulumi.get(self, "embed_credentials")
 
     @property
@@ -541,6 +667,9 @@ class Dashboard(pulumi.CustomResource):
     @property
     @pulumi.getter(name="filePath")
     def file_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        """
         return pulumi.get(self, "file_path")
 
     @property
@@ -556,6 +685,9 @@ class Dashboard(pulumi.CustomResource):
     @property
     @pulumi.getter(name="parentPath")
     def parent_path(self) -> pulumi.Output[str]:
+        """
+        The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
+        """
         return pulumi.get(self, "parent_path")
 
     @property
@@ -566,6 +698,9 @@ class Dashboard(pulumi.CustomResource):
     @property
     @pulumi.getter(name="serializedDashboard")
     def serialized_dashboard(self) -> pulumi.Output[Optional[str]]:
+        """
+        The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+        """
         return pulumi.get(self, "serialized_dashboard")
 
     @property
@@ -576,5 +711,8 @@ class Dashboard(pulumi.CustomResource):
     @property
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> pulumi.Output[str]:
+        """
+        The warehouse ID used to run the dashboard.
+        """
         return pulumi.get(self, "warehouse_id")
 

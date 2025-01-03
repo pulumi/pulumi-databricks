@@ -11,10 +11,18 @@ import java.util.Objects;
 
 @CustomType
 public final class SqlPermissionsPrivilegeAssignment {
+    /**
+     * @return `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+     * 
+     */
     private String principal;
     private List<String> privileges;
 
     private SqlPermissionsPrivilegeAssignment() {}
+    /**
+     * @return `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+     * 
+     */
     public String principal() {
         return this.principal;
     }

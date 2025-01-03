@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobRunJobTask
     {
+        /// <summary>
+        /// (String) ID of the job
+        /// </summary>
         public readonly int JobId;
+        /// <summary>
+        /// (Map) Job parameters for the task
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? JobParameters;
 
         [OutputConstructor]

@@ -15,7 +15,13 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly ImmutableArray<string> DbtCommands;
         public readonly ImmutableArray<string> JarParams;
+        /// <summary>
+        /// (String) ID of the job
+        /// </summary>
         public readonly int JobId;
+        /// <summary>
+        /// (Map) Job parameters for the task
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? JobParameters;
         public readonly ImmutableDictionary<string, string>? NotebookParams;
         public readonly Outputs.JobTaskRunJobTaskPipelineParams? PipelineParams;

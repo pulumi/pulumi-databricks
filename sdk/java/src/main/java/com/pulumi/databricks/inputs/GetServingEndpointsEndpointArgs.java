@@ -21,16 +21,32 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
 
     public static final GetServingEndpointsEndpointArgs Empty = new GetServingEndpointsEndpointArgs();
 
+    /**
+     * A block with AI Gateway configuration for the serving endpoint.
+     * 
+     */
     @Import(name="aiGateways")
     private @Nullable Output<List<GetServingEndpointsEndpointAiGatewayArgs>> aiGateways;
 
+    /**
+     * @return A block with AI Gateway configuration for the serving endpoint.
+     * 
+     */
     public Optional<Output<List<GetServingEndpointsEndpointAiGatewayArgs>>> aiGateways() {
         return Optional.ofNullable(this.aiGateways);
     }
 
+    /**
+     * The model serving endpoint configuration.
+     * 
+     */
     @Import(name="configs")
     private @Nullable Output<List<GetServingEndpointsEndpointConfigArgs>> configs;
 
+    /**
+     * @return The model serving endpoint configuration.
+     * 
+     */
     public Optional<Output<List<GetServingEndpointsEndpointConfigArgs>>> configs() {
         return Optional.ofNullable(this.configs);
     }
@@ -63,9 +79,17 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.lastUpdatedTimestamp);
     }
 
+    /**
+     * The name of the model serving endpoint.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -77,9 +101,17 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.states);
     }
 
+    /**
+     * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<List<GetServingEndpointsEndpointTagArgs>> tags;
 
+    /**
+     * @return Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     * 
+     */
     public Optional<Output<List<GetServingEndpointsEndpointTagArgs>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -124,28 +156,64 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
             $ = new GetServingEndpointsEndpointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aiGateways A block with AI Gateway configuration for the serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aiGateways(@Nullable Output<List<GetServingEndpointsEndpointAiGatewayArgs>> aiGateways) {
             $.aiGateways = aiGateways;
             return this;
         }
 
+        /**
+         * @param aiGateways A block with AI Gateway configuration for the serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aiGateways(List<GetServingEndpointsEndpointAiGatewayArgs> aiGateways) {
             return aiGateways(Output.of(aiGateways));
         }
 
+        /**
+         * @param aiGateways A block with AI Gateway configuration for the serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aiGateways(GetServingEndpointsEndpointAiGatewayArgs... aiGateways) {
             return aiGateways(List.of(aiGateways));
         }
 
+        /**
+         * @param configs The model serving endpoint configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configs(@Nullable Output<List<GetServingEndpointsEndpointConfigArgs>> configs) {
             $.configs = configs;
             return this;
         }
 
+        /**
+         * @param configs The model serving endpoint configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configs(List<GetServingEndpointsEndpointConfigArgs> configs) {
             return configs(Output.of(configs));
         }
 
+        /**
+         * @param configs The model serving endpoint configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configs(GetServingEndpointsEndpointConfigArgs... configs) {
             return configs(List.of(configs));
         }
@@ -186,11 +254,23 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
             return lastUpdatedTimestamp(Output.of(lastUpdatedTimestamp));
         }
 
+        /**
+         * @param name The name of the model serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the model serving endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -208,15 +288,33 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
             return states(List.of(states));
         }
 
+        /**
+         * @param tags Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<List<GetServingEndpointsEndpointTagArgs>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(List<GetServingEndpointsEndpointTagArgs> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tags Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(GetServingEndpointsEndpointTagArgs... tags) {
             return tags(List.of(tags));
         }

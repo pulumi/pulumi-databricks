@@ -15,16 +15,32 @@ public final class CredentialDatabricksGcpServiceAccountArgs extends com.pulumi.
 
     public static final CredentialDatabricksGcpServiceAccountArgs Empty = new CredentialDatabricksGcpServiceAccountArgs();
 
+    /**
+     * Unique ID of the credential.
+     * 
+     */
     @Import(name="credentialId")
     private @Nullable Output<String> credentialId;
 
+    /**
+     * @return Unique ID of the credential.
+     * 
+     */
     public Optional<Output<String>> credentialId() {
         return Optional.ofNullable(this.credentialId);
     }
 
+    /**
+     * The email of the GCP service account created, to be granted access to relevant buckets.
+     * 
+     */
     @Import(name="email")
     private @Nullable Output<String> email;
 
+    /**
+     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * 
+     */
     public Optional<Output<String>> email() {
         return Optional.ofNullable(this.email);
     }
@@ -62,20 +78,44 @@ public final class CredentialDatabricksGcpServiceAccountArgs extends com.pulumi.
             $ = new CredentialDatabricksGcpServiceAccountArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param credentialId Unique ID of the credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialId(@Nullable Output<String> credentialId) {
             $.credentialId = credentialId;
             return this;
         }
 
+        /**
+         * @param credentialId Unique ID of the credential.
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialId(String credentialId) {
             return credentialId(Output.of(credentialId));
         }
 
+        /**
+         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(@Nullable Output<String> email) {
             $.email = email;
             return this;
         }
 
+        /**
+         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(String email) {
             return email(Output.of(email));
         }

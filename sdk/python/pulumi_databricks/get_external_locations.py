@@ -45,6 +45,9 @@ class GetExternalLocationsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        List of names of ExternalLocation in the metastore
+        """
         return pulumi.get(self, "names")
 
 
@@ -61,7 +64,31 @@ class AwaitableGetExternalLocationsResult(GetExternalLocationsResult):
 def get_external_locations(names: Optional[Sequence[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalLocationsResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with a workspace-level provider!
+
+    Retrieves a list of ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+
+    ## Example Usage
+
+    List all external locations in the metastore
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_external_locations()
+    pulumi.export("allExternalLocations", all.names)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * ExternalLocation to get information about a single external location
+    * ExternalLocation to manage external locations within Unity Catalog.
+
+
+    :param Sequence[str] names: List of names of ExternalLocation in the metastore
     """
     __args__ = dict()
     __args__['names'] = names
@@ -74,7 +101,31 @@ def get_external_locations(names: Optional[Sequence[str]] = None,
 def get_external_locations_output(names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLocationsResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with a workspace-level provider!
+
+    Retrieves a list of ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+
+    ## Example Usage
+
+    List all external locations in the metastore
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_external_locations()
+    pulumi.export("allExternalLocations", all.names)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * ExternalLocation to get information about a single external location
+    * ExternalLocation to manage external locations within Unity Catalog.
+
+
+    :param Sequence[str] names: List of names of ExternalLocation in the metastore
     """
     __args__ = dict()
     __args__['names'] = names

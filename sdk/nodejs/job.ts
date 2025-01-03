@@ -6,6 +6,86 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The `databricks.Job` resource allows you to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ *
+ * ## Example Usage
+ *
+ * > In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `taskKey` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `taskKey` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+ *
+ * It is possible to create [a Databricks job](https://docs.databricks.com/data-engineering/jobs/jobs-user-guide.html) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `taskKey`, and additional arguments described below.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.Job("this", {
+ *     name: "Job with multiple tasks",
+ *     description: "This job executes multiple tasks on a shared job cluster, which will be provisioned as part of execution, and terminated once all tasks are finished.",
+ *     jobClusters: [{
+ *         jobClusterKey: "j",
+ *         newCluster: {
+ *             numWorkers: 2,
+ *             sparkVersion: latest.id,
+ *             nodeTypeId: smallest.id,
+ *         },
+ *     }],
+ *     tasks: [
+ *         {
+ *             taskKey: "a",
+ *             newCluster: {
+ *                 numWorkers: 1,
+ *                 sparkVersion: latest.id,
+ *                 nodeTypeId: smallest.id,
+ *             },
+ *             notebookTask: {
+ *                 notebookPath: thisDatabricksNotebook.path,
+ *             },
+ *         },
+ *         {
+ *             taskKey: "b",
+ *             dependsOns: [{
+ *                 taskKey: "a",
+ *             }],
+ *             existingClusterId: shared.id,
+ *             sparkJarTask: {
+ *                 mainClassName: "com.acme.data.Main",
+ *             },
+ *         },
+ *         {
+ *             taskKey: "c",
+ *             jobClusterKey: "j",
+ *             notebookTask: {
+ *                 notebookPath: thisDatabricksNotebook.path,
+ *             },
+ *         },
+ *         {
+ *             taskKey: "d",
+ *             pipelineTask: {
+ *                 pipelineId: thisDatabricksPipeline.id,
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Access Control
+ *
+ * By default, all users can create and modify jobs unless an administrator [enables jobs access control](https://docs.databricks.com/administration-guide/access-control/jobs-acl.html). With jobs access control, individual permissions determine a user’s abilities.
+ *
+ * * databricks.Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
+ * * databricks.ClusterPolicy can control which kinds of clusters users can create for jobs.
+ *
+ * ## Import
+ *
+ * The resource job can be imported using the id of the job
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/job:Job this <job-id>
+ * ```
+ */
 export class Job extends pulumi.CustomResource {
     /**
      * Get an existing Job resource's state with the given name, ID, and optional extra
@@ -35,43 +115,88 @@ export class Job extends pulumi.CustomResource {
     }
 
     /**
+     * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
+     *
      * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     public readonly alwaysRunning!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+     */
     public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
+    /**
+     * Configuration block to configure pause status. See continuous Configuration Block.
+     */
     public readonly continuous!: pulumi.Output<outputs.JobContinuous | undefined>;
+    /**
+     * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+     *
+     * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+     */
     public readonly controlRunState!: pulumi.Output<boolean | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly dbtTask!: pulumi.Output<outputs.JobDbtTask | undefined>;
     public readonly deployment!: pulumi.Output<outputs.JobDeployment | undefined>;
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly editMode!: pulumi.Output<string | undefined>;
+    /**
+     * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     */
     public readonly emailNotifications!: pulumi.Output<outputs.JobEmailNotifications | undefined>;
     public readonly environments!: pulumi.Output<outputs.JobEnvironment[] | undefined>;
     public readonly existingClusterId!: pulumi.Output<string | undefined>;
     public readonly format!: pulumi.Output<string>;
+    /**
+     * Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+     */
     public readonly gitSource!: pulumi.Output<outputs.JobGitSource | undefined>;
+    /**
+     * An optional block that specifies the health conditions for the job documented below.
+     */
     public readonly health!: pulumi.Output<outputs.JobHealth | undefined>;
+    /**
+     * A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+     */
     public readonly jobClusters!: pulumi.Output<outputs.JobJobCluster[] | undefined>;
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+     */
     public readonly libraries!: pulumi.Output<outputs.JobLibrary[] | undefined>;
+    /**
+     * (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
+     */
     public readonly maxConcurrentRuns!: pulumi.Output<number | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly maxRetries!: pulumi.Output<number | undefined>;
     /**
+     * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+     *
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly minRetryIntervalMillis!: pulumi.Output<number | undefined>;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
     public readonly name!: pulumi.Output<string>;
     public readonly newCluster!: pulumi.Output<outputs.JobNewCluster | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly notebookTask!: pulumi.Output<outputs.JobNotebookTask | undefined>;
+    /**
+     * An optional block controlling the notification settings on the job level documented below.
+     */
     public readonly notificationSettings!: pulumi.Output<outputs.JobNotificationSettings | undefined>;
+    /**
+     * Specifices job parameter for the job. See parameter Configuration Block
+     */
     public readonly parameters!: pulumi.Output<outputs.JobParameter[] | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -81,16 +206,25 @@ export class Job extends pulumi.CustomResource {
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly pythonWheelTask!: pulumi.Output<outputs.JobPythonWheelTask | undefined>;
+    /**
+     * The queue status for the job. See queue Configuration Block below.
+     */
     public readonly queue!: pulumi.Output<outputs.JobQueue | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly retryOnTimeout!: pulumi.Output<boolean | undefined>;
+    /**
+     * The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+     */
     public readonly runAs!: pulumi.Output<outputs.JobRunAs>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly runJobTask!: pulumi.Output<outputs.JobRunJobTask | undefined>;
+    /**
+     * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+     */
     public readonly schedule!: pulumi.Output<outputs.JobSchedule | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -104,11 +238,29 @@ export class Job extends pulumi.CustomResource {
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly sparkSubmitTask!: pulumi.Output<outputs.JobSparkSubmitTask | undefined>;
+    /**
+     * An optional map of the tags associated with the job. See tags Configuration Map
+     */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * A list of task specification that the job will execute. See task Configuration Block below.
+     */
     public readonly tasks!: pulumi.Output<outputs.JobTask[] | undefined>;
+    /**
+     * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+     */
     public readonly timeoutSeconds!: pulumi.Output<number | undefined>;
+    /**
+     * The conditions that triggers the job to start. See trigger Configuration Block below.
+     */
     public readonly trigger!: pulumi.Output<outputs.JobTrigger | undefined>;
+    /**
+     * URL of the job on the given workspace
+     */
     public /*out*/ readonly url!: pulumi.Output<string>;
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     */
     public readonly webhookNotifications!: pulumi.Output<outputs.JobWebhookNotifications | undefined>;
 
     /**
@@ -217,43 +369,88 @@ export class Job extends pulumi.CustomResource {
  */
 export interface JobState {
     /**
+     * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
+     *
      * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     alwaysRunning?: pulumi.Input<boolean>;
+    /**
+     * The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+     */
     budgetPolicyId?: pulumi.Input<string>;
+    /**
+     * Configuration block to configure pause status. See continuous Configuration Block.
+     */
     continuous?: pulumi.Input<inputs.JobContinuous>;
+    /**
+     * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+     *
+     * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+     */
     controlRunState?: pulumi.Input<boolean>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     dbtTask?: pulumi.Input<inputs.JobDbtTask>;
     deployment?: pulumi.Input<inputs.JobDeployment>;
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
     description?: pulumi.Input<string>;
     editMode?: pulumi.Input<string>;
+    /**
+     * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     */
     emailNotifications?: pulumi.Input<inputs.JobEmailNotifications>;
     environments?: pulumi.Input<pulumi.Input<inputs.JobEnvironment>[]>;
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
+    /**
+     * Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+     */
     gitSource?: pulumi.Input<inputs.JobGitSource>;
+    /**
+     * An optional block that specifies the health conditions for the job documented below.
+     */
     health?: pulumi.Input<inputs.JobHealth>;
+    /**
+     * A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+     */
     jobClusters?: pulumi.Input<pulumi.Input<inputs.JobJobCluster>[]>;
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+     */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobLibrary>[]>;
+    /**
+     * (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
+     */
     maxConcurrentRuns?: pulumi.Input<number>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     maxRetries?: pulumi.Input<number>;
     /**
+     * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+     *
      * @deprecated should be used inside a task block and not inside a job block
      */
     minRetryIntervalMillis?: pulumi.Input<number>;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
     name?: pulumi.Input<string>;
     newCluster?: pulumi.Input<inputs.JobNewCluster>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     notebookTask?: pulumi.Input<inputs.JobNotebookTask>;
+    /**
+     * An optional block controlling the notification settings on the job level documented below.
+     */
     notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
+    /**
+     * Specifices job parameter for the job. See parameter Configuration Block
+     */
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -263,16 +460,25 @@ export interface JobState {
      * @deprecated should be used inside a task block and not inside a job block
      */
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
+    /**
+     * The queue status for the job. See queue Configuration Block below.
+     */
     queue?: pulumi.Input<inputs.JobQueue>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     retryOnTimeout?: pulumi.Input<boolean>;
+    /**
+     * The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+     */
     runAs?: pulumi.Input<inputs.JobRunAs>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     runJobTask?: pulumi.Input<inputs.JobRunJobTask>;
+    /**
+     * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+     */
     schedule?: pulumi.Input<inputs.JobSchedule>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -286,11 +492,29 @@ export interface JobState {
      * @deprecated should be used inside a task block and not inside a job block
      */
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
+    /**
+     * An optional map of the tags associated with the job. See tags Configuration Map
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A list of task specification that the job will execute. See task Configuration Block below.
+     */
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
+    /**
+     * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+     */
     timeoutSeconds?: pulumi.Input<number>;
+    /**
+     * The conditions that triggers the job to start. See trigger Configuration Block below.
+     */
     trigger?: pulumi.Input<inputs.JobTrigger>;
+    /**
+     * URL of the job on the given workspace
+     */
     url?: pulumi.Input<string>;
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     */
     webhookNotifications?: pulumi.Input<inputs.JobWebhookNotifications>;
 }
 
@@ -299,43 +523,88 @@ export interface JobState {
  */
 export interface JobArgs {
     /**
+     * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
+     *
      * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     alwaysRunning?: pulumi.Input<boolean>;
+    /**
+     * The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+     */
     budgetPolicyId?: pulumi.Input<string>;
+    /**
+     * Configuration block to configure pause status. See continuous Configuration Block.
+     */
     continuous?: pulumi.Input<inputs.JobContinuous>;
+    /**
+     * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+     *
+     * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+     */
     controlRunState?: pulumi.Input<boolean>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     dbtTask?: pulumi.Input<inputs.JobDbtTask>;
     deployment?: pulumi.Input<inputs.JobDeployment>;
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
     description?: pulumi.Input<string>;
     editMode?: pulumi.Input<string>;
+    /**
+     * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     */
     emailNotifications?: pulumi.Input<inputs.JobEmailNotifications>;
     environments?: pulumi.Input<pulumi.Input<inputs.JobEnvironment>[]>;
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
+    /**
+     * Specifices the a Git repository for task source code. See gitSource Configuration Block below.
+     */
     gitSource?: pulumi.Input<inputs.JobGitSource>;
+    /**
+     * An optional block that specifies the health conditions for the job documented below.
+     */
     health?: pulumi.Input<inputs.JobHealth>;
+    /**
+     * A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+     */
     jobClusters?: pulumi.Input<pulumi.Input<inputs.JobJobCluster>[]>;
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+     */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobLibrary>[]>;
+    /**
+     * (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
+     */
     maxConcurrentRuns?: pulumi.Input<number>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     maxRetries?: pulumi.Input<number>;
     /**
+     * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+     *
      * @deprecated should be used inside a task block and not inside a job block
      */
     minRetryIntervalMillis?: pulumi.Input<number>;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
     name?: pulumi.Input<string>;
     newCluster?: pulumi.Input<inputs.JobNewCluster>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     notebookTask?: pulumi.Input<inputs.JobNotebookTask>;
+    /**
+     * An optional block controlling the notification settings on the job level documented below.
+     */
     notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
+    /**
+     * Specifices job parameter for the job. See parameter Configuration Block
+     */
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -345,16 +614,25 @@ export interface JobArgs {
      * @deprecated should be used inside a task block and not inside a job block
      */
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
+    /**
+     * The queue status for the job. See queue Configuration Block below.
+     */
     queue?: pulumi.Input<inputs.JobQueue>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     retryOnTimeout?: pulumi.Input<boolean>;
+    /**
+     * The user or the service prinicipal the job runs as. See runAs Configuration Block below.
+     */
     runAs?: pulumi.Input<inputs.JobRunAs>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     runJobTask?: pulumi.Input<inputs.JobRunJobTask>;
+    /**
+     * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+     */
     schedule?: pulumi.Input<inputs.JobSchedule>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -368,9 +646,24 @@ export interface JobArgs {
      * @deprecated should be used inside a task block and not inside a job block
      */
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
+    /**
+     * An optional map of the tags associated with the job. See tags Configuration Map
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A list of task specification that the job will execute. See task Configuration Block below.
+     */
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
+    /**
+     * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+     */
     timeoutSeconds?: pulumi.Input<number>;
+    /**
+     * The conditions that triggers the job to start. See trigger Configuration Block below.
+     */
     trigger?: pulumi.Input<inputs.JobTrigger>;
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     */
     webhookNotifications?: pulumi.Input<inputs.JobWebhookNotifications>;
 }

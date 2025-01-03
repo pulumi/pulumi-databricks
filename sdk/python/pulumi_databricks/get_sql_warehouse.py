@@ -96,46 +96,73 @@ class GetSqlWarehouseResult:
     @property
     @pulumi.getter(name="autoStopMins")
     def auto_stop_mins(self) -> int:
+        """
+        Time in minutes until an idle SQL warehouse terminates all clusters and stops.
+        """
         return pulumi.get(self, "auto_stop_mins")
 
     @property
     @pulumi.getter
     def channel(self) -> 'outputs.GetSqlWarehouseChannelResult':
+        """
+        block, consisting of following fields:
+        """
         return pulumi.get(self, "channel")
 
     @property
     @pulumi.getter(name="clusterSize")
     def cluster_size(self) -> str:
+        """
+        The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+        """
         return pulumi.get(self, "cluster_size")
 
     @property
     @pulumi.getter(name="creatorName")
     def creator_name(self) -> str:
+        """
+        The username of the user who created the endpoint.
+        """
         return pulumi.get(self, "creator_name")
 
     @property
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> str:
+        """
+        ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+        """
         return pulumi.get(self, "data_source_id")
 
     @property
     @pulumi.getter(name="enablePhoton")
     def enable_photon(self) -> bool:
+        """
+        Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
+        """
         return pulumi.get(self, "enable_photon")
 
     @property
     @pulumi.getter(name="enableServerlessCompute")
     def enable_serverless_compute(self) -> bool:
+        """
+        Whether this SQL warehouse is a serverless SQL warehouse.
+        """
         return pulumi.get(self, "enable_serverless_compute")
 
     @property
     @pulumi.getter
     def health(self) -> 'outputs.GetSqlWarehouseHealthResult':
+        """
+        Health status of the endpoint.
+        """
         return pulumi.get(self, "health")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of the SQL warehouse.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -146,56 +173,89 @@ class GetSqlWarehouseResult:
     @property
     @pulumi.getter(name="jdbcUrl")
     def jdbc_url(self) -> str:
+        """
+        JDBC connection string.
+        """
         return pulumi.get(self, "jdbc_url")
 
     @property
     @pulumi.getter(name="maxNumClusters")
     def max_num_clusters(self) -> int:
+        """
+        Maximum number of clusters available when a SQL warehouse is running.
+        """
         return pulumi.get(self, "max_num_clusters")
 
     @property
     @pulumi.getter(name="minNumClusters")
     def min_num_clusters(self) -> int:
+        """
+        Minimum number of clusters available when a SQL warehouse is running.
+        """
         return pulumi.get(self, "min_num_clusters")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="numActiveSessions")
     def num_active_sessions(self) -> int:
+        """
+        The current number of clusters used by the endpoint.
+        """
         return pulumi.get(self, "num_active_sessions")
 
     @property
     @pulumi.getter(name="numClusters")
     def num_clusters(self) -> int:
+        """
+        The current number of clusters used by the endpoint.
+        """
         return pulumi.get(self, "num_clusters")
 
     @property
     @pulumi.getter(name="odbcParams")
     def odbc_params(self) -> 'outputs.GetSqlWarehouseOdbcParamsResult':
+        """
+        ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
+        """
         return pulumi.get(self, "odbc_params")
 
     @property
     @pulumi.getter(name="spotInstancePolicy")
     def spot_instance_policy(self) -> str:
+        """
+        The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
+        """
         return pulumi.get(self, "spot_instance_policy")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The current state of the endpoint.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> 'outputs.GetSqlWarehouseTagsResult':
+        """
+        tags used for SQL warehouse resources.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="warehouseType")
     def warehouse_type(self) -> str:
+        """
+        SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+        """
         return pulumi.get(self, "warehouse_type")
 
 
@@ -251,7 +311,62 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
                       warehouse_type: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSqlWarehouseResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about a get_sql_warehouse using its id. This could be retrieved programmatically using get_sql_warehouses data source.
+
+    ## Example Usage
+
+    * Retrieve attributes of each SQL warehouses in a workspace:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_sql_warehouses()
+    this = {__key: databricks.get_sql_warehouse(id=__value) for __key, __value in all.ids}
+    ```
+
+    * Search for a specific SQL Warehouse by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_sql_warehouse(name="Starter Warehouse")
+    ```
+
+    ## Related resources
+
+    The following resources are often used in the same context:
+
+    * End to end workspace management guide.
+    * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+    * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+    * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all get_sql_warehouse of workspace.
+    * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+
+
+    :param int auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops.
+    :param Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict'] channel: block, consisting of following fields:
+    :param str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+    :param str creator_name: The username of the user who created the endpoint.
+    :param str data_source_id: ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+    :param bool enable_photon: Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
+    :param bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse.
+    :param Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict'] health: Health status of the endpoint.
+    :param str id: The ID of the SQL warehouse.
+    :param str jdbc_url: JDBC connection string.
+    :param int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.
+    :param int min_num_clusters: Minimum number of clusters available when a SQL warehouse is running.
+    :param str name: Name of the SQL warehouse to search (case-sensitive).
+    :param int num_active_sessions: The current number of clusters used by the endpoint.
+    :param int num_clusters: The current number of clusters used by the endpoint.
+    :param Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
+    :param str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
+    :param str state: The current state of the endpoint.
+    :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict'] tags: tags used for SQL warehouse resources.
+    :param str warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
     """
     __args__ = dict()
     __args__['autoStopMins'] = auto_stop_mins
@@ -323,7 +438,62 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
                              warehouse_type: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlWarehouseResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about a get_sql_warehouse using its id. This could be retrieved programmatically using get_sql_warehouses data source.
+
+    ## Example Usage
+
+    * Retrieve attributes of each SQL warehouses in a workspace:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_sql_warehouses()
+    this = {__key: databricks.get_sql_warehouse(id=__value) for __key, __value in all.ids}
+    ```
+
+    * Search for a specific SQL Warehouse by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_sql_warehouse(name="Starter Warehouse")
+    ```
+
+    ## Related resources
+
+    The following resources are often used in the same context:
+
+    * End to end workspace management guide.
+    * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+    * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+    * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all get_sql_warehouse of workspace.
+    * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+
+
+    :param int auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops.
+    :param Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict'] channel: block, consisting of following fields:
+    :param str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+    :param str creator_name: The username of the user who created the endpoint.
+    :param str data_source_id: ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
+    :param bool enable_photon: Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
+    :param bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse.
+    :param Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict'] health: Health status of the endpoint.
+    :param str id: The ID of the SQL warehouse.
+    :param str jdbc_url: JDBC connection string.
+    :param int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.
+    :param int min_num_clusters: Minimum number of clusters available when a SQL warehouse is running.
+    :param str name: Name of the SQL warehouse to search (case-sensitive).
+    :param int num_active_sessions: The current number of clusters used by the endpoint.
+    :param int num_clusters: The current number of clusters used by the endpoint.
+    :param Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
+    :param str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
+    :param str state: The current state of the endpoint.
+    :param Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict'] tags: tags used for SQL warehouse resources.
+    :param str warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
     """
     __args__ = dict()
     __args__['autoStopMins'] = auto_stop_mins

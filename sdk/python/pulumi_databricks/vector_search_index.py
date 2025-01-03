@@ -29,6 +29,14 @@ class VectorSearchIndexArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VectorSearchIndex resource.
+        :param pulumi.Input[str] endpoint_name: The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
+        :param pulumi.Input[str] index_type: Mosaic AI Vector Search index type. Currently supported values are:
+               * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+               * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
+        :param pulumi.Input[str] primary_key: The column name that will be used as a primary key.
+        :param pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecArgs'] delta_sync_index_spec: Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+        :param pulumi.Input['VectorSearchIndexDirectAccessIndexSpecArgs'] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+        :param pulumi.Input[str] name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
         """
         pulumi.set(__self__, "endpoint_name", endpoint_name)
         pulumi.set(__self__, "index_type", index_type)
@@ -43,6 +51,9 @@ class VectorSearchIndexArgs:
     @property
     @pulumi.getter(name="endpointName")
     def endpoint_name(self) -> pulumi.Input[str]:
+        """
+        The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
+        """
         return pulumi.get(self, "endpoint_name")
 
     @endpoint_name.setter
@@ -52,6 +63,11 @@ class VectorSearchIndexArgs:
     @property
     @pulumi.getter(name="indexType")
     def index_type(self) -> pulumi.Input[str]:
+        """
+        Mosaic AI Vector Search index type. Currently supported values are:
+        * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+        * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
+        """
         return pulumi.get(self, "index_type")
 
     @index_type.setter
@@ -61,6 +77,9 @@ class VectorSearchIndexArgs:
     @property
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> pulumi.Input[str]:
+        """
+        The column name that will be used as a primary key.
+        """
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
@@ -70,6 +89,9 @@ class VectorSearchIndexArgs:
     @property
     @pulumi.getter(name="deltaSyncIndexSpec")
     def delta_sync_index_spec(self) -> Optional[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecArgs']]:
+        """
+        Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+        """
         return pulumi.get(self, "delta_sync_index_spec")
 
     @delta_sync_index_spec.setter
@@ -79,6 +101,9 @@ class VectorSearchIndexArgs:
     @property
     @pulumi.getter(name="directAccessIndexSpec")
     def direct_access_index_spec(self) -> Optional[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecArgs']]:
+        """
+        Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+        """
         return pulumi.get(self, "direct_access_index_spec")
 
     @direct_access_index_spec.setter
@@ -88,6 +113,9 @@ class VectorSearchIndexArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -108,6 +136,16 @@ class _VectorSearchIndexState:
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexStatusArgs']]]] = None):
         """
         Input properties used for looking up and filtering VectorSearchIndex resources.
+        :param pulumi.Input[str] creator: Creator of the endpoint.
+        :param pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecArgs'] delta_sync_index_spec: Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+        :param pulumi.Input['VectorSearchIndexDirectAccessIndexSpecArgs'] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+        :param pulumi.Input[str] endpoint_name: The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
+        :param pulumi.Input[str] index_type: Mosaic AI Vector Search index type. Currently supported values are:
+               * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+               * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
+        :param pulumi.Input[str] name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        :param pulumi.Input[str] primary_key: The column name that will be used as a primary key.
+        :param pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexStatusArgs']]] statuses: Object describing the current status of the index consisting of the following fields:
         """
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
@@ -129,6 +167,9 @@ class _VectorSearchIndexState:
     @property
     @pulumi.getter
     def creator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creator of the endpoint.
+        """
         return pulumi.get(self, "creator")
 
     @creator.setter
@@ -138,6 +179,9 @@ class _VectorSearchIndexState:
     @property
     @pulumi.getter(name="deltaSyncIndexSpec")
     def delta_sync_index_spec(self) -> Optional[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecArgs']]:
+        """
+        Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+        """
         return pulumi.get(self, "delta_sync_index_spec")
 
     @delta_sync_index_spec.setter
@@ -147,6 +191,9 @@ class _VectorSearchIndexState:
     @property
     @pulumi.getter(name="directAccessIndexSpec")
     def direct_access_index_spec(self) -> Optional[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecArgs']]:
+        """
+        Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+        """
         return pulumi.get(self, "direct_access_index_spec")
 
     @direct_access_index_spec.setter
@@ -156,6 +203,9 @@ class _VectorSearchIndexState:
     @property
     @pulumi.getter(name="endpointName")
     def endpoint_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
+        """
         return pulumi.get(self, "endpoint_name")
 
     @endpoint_name.setter
@@ -165,6 +215,11 @@ class _VectorSearchIndexState:
     @property
     @pulumi.getter(name="indexType")
     def index_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mosaic AI Vector Search index type. Currently supported values are:
+        * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+        * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
+        """
         return pulumi.get(self, "index_type")
 
     @index_type.setter
@@ -174,6 +229,9 @@ class _VectorSearchIndexState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -183,6 +241,9 @@ class _VectorSearchIndexState:
     @property
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The column name that will be used as a primary key.
+        """
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
@@ -192,6 +253,9 @@ class _VectorSearchIndexState:
     @property
     @pulumi.getter
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexStatusArgs']]]]:
+        """
+        Object describing the current status of the index consisting of the following fields:
+        """
         return pulumi.get(self, "statuses")
 
     @statuses.setter
@@ -212,9 +276,51 @@ class VectorSearchIndex(pulumi.CustomResource):
                  primary_key: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a VectorSearchIndex resource with the given unique name, props, and options.
+        > This resource can only be used on a Unity Catalog-enabled workspace!
+
+        This resource allows you to create [Mosaic AI Vector Search Index](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Index provides the ability to search data in the linked Delta Table.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sync = databricks.VectorSearchIndex("sync",
+            name="main.default.vector_search_index",
+            endpoint_name=this_databricks_vector_search_endpoint["name"],
+            primary_key="id",
+            index_type="DELTA_SYNC",
+            delta_sync_index_spec={
+                "source_table": "main.default.source_table",
+                "pipeline_type": "TRIGGERED",
+                "embedding_source_columns": [{
+                    "name": "text",
+                    "embedding_model_endpoint_name": this["name"],
+                }],
+            })
+        ```
+
+        ## Import
+
+        The resource can be imported using the name of the Mosaic AI Vector Search Index
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/vectorSearchIndex:VectorSearchIndex this <index-name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict']] delta_sync_index_spec: Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+        :param pulumi.Input[Union['VectorSearchIndexDirectAccessIndexSpecArgs', 'VectorSearchIndexDirectAccessIndexSpecArgsDict']] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+        :param pulumi.Input[str] endpoint_name: The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
+        :param pulumi.Input[str] index_type: Mosaic AI Vector Search index type. Currently supported values are:
+               * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+               * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
+        :param pulumi.Input[str] name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        :param pulumi.Input[str] primary_key: The column name that will be used as a primary key.
         """
         ...
     @overload
@@ -223,7 +329,41 @@ class VectorSearchIndex(pulumi.CustomResource):
                  args: VectorSearchIndexArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VectorSearchIndex resource with the given unique name, props, and options.
+        > This resource can only be used on a Unity Catalog-enabled workspace!
+
+        This resource allows you to create [Mosaic AI Vector Search Index](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Index provides the ability to search data in the linked Delta Table.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sync = databricks.VectorSearchIndex("sync",
+            name="main.default.vector_search_index",
+            endpoint_name=this_databricks_vector_search_endpoint["name"],
+            primary_key="id",
+            index_type="DELTA_SYNC",
+            delta_sync_index_spec={
+                "source_table": "main.default.source_table",
+                "pipeline_type": "TRIGGERED",
+                "embedding_source_columns": [{
+                    "name": "text",
+                    "embedding_model_endpoint_name": this["name"],
+                }],
+            })
+        ```
+
+        ## Import
+
+        The resource can be imported using the name of the Mosaic AI Vector Search Index
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/vectorSearchIndex:VectorSearchIndex this <index-name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param VectorSearchIndexArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -293,6 +433,16 @@ class VectorSearchIndex(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] creator: Creator of the endpoint.
+        :param pulumi.Input[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict']] delta_sync_index_spec: Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+        :param pulumi.Input[Union['VectorSearchIndexDirectAccessIndexSpecArgs', 'VectorSearchIndexDirectAccessIndexSpecArgsDict']] direct_access_index_spec: Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+        :param pulumi.Input[str] endpoint_name: The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
+        :param pulumi.Input[str] index_type: Mosaic AI Vector Search index type. Currently supported values are:
+               * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+               * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
+        :param pulumi.Input[str] name: Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        :param pulumi.Input[str] primary_key: The column name that will be used as a primary key.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchIndexStatusArgs', 'VectorSearchIndexStatusArgsDict']]]] statuses: Object describing the current status of the index consisting of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -311,40 +461,66 @@ class VectorSearchIndex(pulumi.CustomResource):
     @property
     @pulumi.getter
     def creator(self) -> pulumi.Output[str]:
+        """
+        Creator of the endpoint.
+        """
         return pulumi.get(self, "creator")
 
     @property
     @pulumi.getter(name="deltaSyncIndexSpec")
     def delta_sync_index_spec(self) -> pulumi.Output[Optional['outputs.VectorSearchIndexDeltaSyncIndexSpec']]:
+        """
+        Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+        """
         return pulumi.get(self, "delta_sync_index_spec")
 
     @property
     @pulumi.getter(name="directAccessIndexSpec")
     def direct_access_index_spec(self) -> pulumi.Output[Optional['outputs.VectorSearchIndexDirectAccessIndexSpec']]:
+        """
+        Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+        """
         return pulumi.get(self, "direct_access_index_spec")
 
     @property
     @pulumi.getter(name="endpointName")
     def endpoint_name(self) -> pulumi.Output[str]:
+        """
+        The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
+        """
         return pulumi.get(self, "endpoint_name")
 
     @property
     @pulumi.getter(name="indexType")
     def index_type(self) -> pulumi.Output[str]:
+        """
+        Mosaic AI Vector Search index type. Currently supported values are:
+        * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+        * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
+        """
         return pulumi.get(self, "index_type")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> pulumi.Output[str]:
+        """
+        The column name that will be used as a primary key.
+        """
         return pulumi.get(self, "primary_key")
 
     @property
     @pulumi.getter
     def statuses(self) -> pulumi.Output[Sequence['outputs.VectorSearchIndexStatus']]:
+        """
+        Object describing the current status of the index consisting of the following fields:
+        """
         return pulumi.get(self, "statuses")
 

@@ -28,23 +28,155 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Notebook;
+ * import com.pulumi.databricks.Repo;
+ * import com.pulumi.databricks.Pipeline;
+ * import com.pulumi.databricks.PipelineArgs;
+ * import com.pulumi.databricks.inputs.PipelineClusterArgs;
+ * import com.pulumi.databricks.inputs.PipelineLibraryArgs;
+ * import com.pulumi.databricks.inputs.PipelineLibraryNotebookArgs;
+ * import com.pulumi.databricks.inputs.PipelineLibraryFileArgs;
+ * import com.pulumi.databricks.inputs.PipelineNotificationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var dltDemo = new Notebook("dltDemo");
+ * 
+ *         var dltDemoRepo = new Repo("dltDemoRepo");
+ * 
+ *         var this_ = new Pipeline("this", PipelineArgs.builder()
+ *             .name("Pipeline Name")
+ *             .storage("/test/first-pipeline")
+ *             .configuration(Map.ofEntries(
+ *                 Map.entry("key1", "value1"),
+ *                 Map.entry("key2", "value2")
+ *             ))
+ *             .clusters(            
+ *                 PipelineClusterArgs.builder()
+ *                     .label("default")
+ *                     .numWorkers(2)
+ *                     .customTags(Map.of("cluster_type", "default"))
+ *                     .build(),
+ *                 PipelineClusterArgs.builder()
+ *                     .label("maintenance")
+ *                     .numWorkers(1)
+ *                     .customTags(Map.of("cluster_type", "maintenance"))
+ *                     .build())
+ *             .libraries(            
+ *                 PipelineLibraryArgs.builder()
+ *                     .notebook(PipelineLibraryNotebookArgs.builder()
+ *                         .path(dltDemo.id())
+ *                         .build())
+ *                     .build(),
+ *                 PipelineLibraryArgs.builder()
+ *                     .file(PipelineLibraryFileArgs.builder()
+ *                         .path(dltDemoRepo.path().applyValue(path -> String.format("%s/pipeline.sql", path)))
+ *                         .build())
+ *                     .build())
+ *             .continuous(false)
+ *             .notifications(PipelineNotificationArgs.builder()
+ *                 .emailRecipients(                
+ *                     "user}{@literal @}{@code domain.com",
+ *                     "user1}{@literal @}{@code domain.com")
+ *                 .alerts(                
+ *                     "on-update-failure",
+ *                     "on-update-fatal-failure",
+ *                     "on-update-success",
+ *                     "on-flow-failure")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * End to end workspace management guide.
+ * * databricks.getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipeline data.
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ * 
+ * ## Import
+ * 
+ * The resource job can be imported using the id of the pipeline
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/pipeline:Pipeline this &lt;pipeline-id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/pipeline:Pipeline")
 public class Pipeline extends com.pulumi.resources.CustomResource {
+    /**
+     * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+     * 
+     */
     @Export(name="allowDuplicateNames", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowDuplicateNames;
 
+    /**
+     * @return Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+     * 
+     */
     public Output<Optional<Boolean>> allowDuplicateNames() {
         return Codegen.optional(this.allowDuplicateNames);
     }
+    /**
+     * optional string specifying ID of the budget policy for this DLT pipeline.
+     * 
+     */
     @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> budgetPolicyId;
 
+    /**
+     * @return optional string specifying ID of the budget policy for this DLT pipeline.
+     * 
+     */
     public Output<Optional<String>> budgetPolicyId() {
         return Codegen.optional(this.budgetPolicyId);
     }
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * 
+     */
     @Export(name="catalog", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> catalog;
 
+    /**
+     * @return The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * 
+     */
     public Output<Optional<String>> catalog() {
         return Codegen.optional(this.catalog);
     }
@@ -54,9 +186,17 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<String> cause() {
         return this.cause;
     }
+    /**
+     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+     * 
+     */
     @Export(name="channel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> channel;
 
+    /**
+     * @return optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+     * 
+     */
     public Output<Optional<String>> channel() {
         return Codegen.optional(this.channel);
     }
@@ -66,21 +206,45 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<String> clusterId() {
         return this.clusterId;
     }
+    /**
+     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     * 
+     */
     @Export(name="clusters", refs={List.class,PipelineCluster.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PipelineCluster>> clusters;
 
+    /**
+     * @return blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     * 
+     */
     public Output<Optional<List<PipelineCluster>>> clusters() {
         return Codegen.optional(this.clusters);
     }
+    /**
+     * An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+     * 
+     */
     @Export(name="configuration", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> configuration;
 
+    /**
+     * @return An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+     * 
+     */
     public Output<Optional<Map<String,String>>> configuration() {
         return Codegen.optional(this.configuration);
     }
+    /**
+     * A flag indicating whether to run the pipeline continuously. The default value is `false`.
+     * 
+     */
     @Export(name="continuous", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> continuous;
 
+    /**
+     * @return A flag indicating whether to run the pipeline continuously. The default value is `false`.
+     * 
+     */
     public Output<Optional<Boolean>> continuous() {
         return Codegen.optional(this.continuous);
     }
@@ -90,21 +254,45 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<String> creatorUserName() {
         return this.creatorUserName;
     }
+    /**
+     * Deployment type of this pipeline. Supports following attributes:
+     * 
+     */
     @Export(name="deployment", refs={PipelineDeployment.class}, tree="[0]")
     private Output</* @Nullable */ PipelineDeployment> deployment;
 
+    /**
+     * @return Deployment type of this pipeline. Supports following attributes:
+     * 
+     */
     public Output<Optional<PipelineDeployment>> deployment() {
         return Codegen.optional(this.deployment);
     }
+    /**
+     * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+     * 
+     */
     @Export(name="development", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> development;
 
+    /**
+     * @return A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+     * 
+     */
     public Output<Optional<Boolean>> development() {
         return Codegen.optional(this.development);
     }
+    /**
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+     * 
+     */
     @Export(name="edition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edition;
 
+    /**
+     * @return optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+     * 
+     */
     public Output<Optional<String>> edition() {
         return Codegen.optional(this.edition);
     }
@@ -114,15 +302,31 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> expectedLastModified() {
         return Codegen.optional(this.expectedLastModified);
     }
+    /**
+     * Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+     * 
+     */
     @Export(name="filters", refs={PipelineFilters.class}, tree="[0]")
     private Output</* @Nullable */ PipelineFilters> filters;
 
+    /**
+     * @return Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+     * 
+     */
     public Output<Optional<PipelineFilters>> filters() {
         return Codegen.optional(this.filters);
     }
+    /**
+     * The definition of a gateway pipeline to support CDC. Consists of following attributes:
+     * 
+     */
     @Export(name="gatewayDefinition", refs={PipelineGatewayDefinition.class}, tree="[0]")
     private Output</* @Nullable */ PipelineGatewayDefinition> gatewayDefinition;
 
+    /**
+     * @return The definition of a gateway pipeline to support CDC. Consists of following attributes:
+     * 
+     */
     public Output<Optional<PipelineGatewayDefinition>> gatewayDefinition() {
         return Codegen.optional(this.gatewayDefinition);
     }
@@ -150,15 +354,31 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<List<PipelineLatestUpdate>> latestUpdates() {
         return this.latestUpdates;
     }
+    /**
+     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
+     * 
+     */
     @Export(name="libraries", refs={List.class,PipelineLibrary.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PipelineLibrary>> libraries;
 
+    /**
+     * @return blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
+     * 
+     */
     public Output<Optional<List<PipelineLibrary>>> libraries() {
         return Codegen.optional(this.libraries);
     }
+    /**
+     * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -168,9 +388,17 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<PipelineNotification>>> notifications() {
         return Codegen.optional(this.notifications);
     }
+    /**
+     * A flag indicating whether to use Photon engine. The default value is `false`.
+     * 
+     */
     @Export(name="photon", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> photon;
 
+    /**
+     * @return A flag indicating whether to use Photon engine. The default value is `false`.
+     * 
+     */
     public Output<Optional<Boolean>> photon() {
         return Codegen.optional(this.photon);
     }
@@ -186,15 +414,31 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<String> runAsUserName() {
         return this.runAsUserName;
     }
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     * 
+     */
     @Export(name="schema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schema;
 
+    /**
+     * @return The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     * 
+     */
     public Output<Optional<String>> schema() {
         return Codegen.optional(this.schema);
     }
+    /**
+     * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     * 
+     */
     @Export(name="serverless", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> serverless;
 
+    /**
+     * @return An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     * 
+     */
     public Output<Optional<Boolean>> serverless() {
         return Codegen.optional(this.serverless);
     }
@@ -204,15 +448,31 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<String> state() {
         return this.state;
     }
+    /**
+     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+     * 
+     */
     @Export(name="storage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storage;
 
+    /**
+     * @return A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+     * 
+     */
     public Output<Optional<String>> storage() {
         return Codegen.optional(this.storage);
     }
+    /**
+     * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+     * 
+     */
     @Export(name="target", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> target;
 
+    /**
+     * @return The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+     * 
+     */
     public Output<Optional<String>> target() {
         return Codegen.optional(this.target);
     }
@@ -222,9 +482,17 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<PipelineTrigger>> trigger() {
         return Codegen.optional(this.trigger);
     }
+    /**
+     * URL of the DLT pipeline on the given workspace.
+     * 
+     */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
+    /**
+     * @return URL of the DLT pipeline on the given workspace.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }

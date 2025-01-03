@@ -12,11 +12,18 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class BudgetFilterWorkspaceIdGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The operator to use for the filter. (Enum: `IN`)
+        /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
         [Input("values")]
         private InputList<int>? _values;
+
+        /// <summary>
+        /// The values to filter by.
+        /// </summary>
         public InputList<int> Values
         {
             get => _values ?? (_values = new InputList<int>());

@@ -18,16 +18,32 @@ public final class JobRunJobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobRunJobTaskArgs Empty = new JobRunJobTaskArgs();
 
+    /**
+     * (String) ID of the job
+     * 
+     */
     @Import(name="jobId", required=true)
     private Output<Integer> jobId;
 
+    /**
+     * @return (String) ID of the job
+     * 
+     */
     public Output<Integer> jobId() {
         return this.jobId;
     }
 
+    /**
+     * (Map) Job parameters for the task
+     * 
+     */
     @Import(name="jobParameters")
     private @Nullable Output<Map<String,String>> jobParameters;
 
+    /**
+     * @return (Map) Job parameters for the task
+     * 
+     */
     public Optional<Output<Map<String,String>>> jobParameters() {
         return Optional.ofNullable(this.jobParameters);
     }
@@ -57,20 +73,44 @@ public final class JobRunJobTaskArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobRunJobTaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param jobId (String) ID of the job
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobId(Output<Integer> jobId) {
             $.jobId = jobId;
             return this;
         }
 
+        /**
+         * @param jobId (String) ID of the job
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobId(Integer jobId) {
             return jobId(Output.of(jobId));
         }
 
+        /**
+         * @param jobParameters (Map) Job parameters for the task
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobParameters(@Nullable Output<Map<String,String>> jobParameters) {
             $.jobParameters = jobParameters;
             return this;
         }
 
+        /**
+         * @param jobParameters (Map) Job parameters for the task
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobParameters(Map<String,String> jobParameters) {
             return jobParameters(Output.of(jobParameters));
         }

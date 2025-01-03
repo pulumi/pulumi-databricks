@@ -16,16 +16,40 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
 
     public static final PipelineNotificationArgs Empty = new PipelineNotificationArgs();
 
+    /**
+     * non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+     * * `on-update-success` - a pipeline update completes successfully.
+     * * `on-update-failure` - a pipeline update fails with a retryable error.
+     * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+     * * `on-flow-failure` - a single data flow fails.
+     * 
+     */
     @Import(name="alerts")
     private @Nullable Output<List<String>> alerts;
 
+    /**
+     * @return non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+     * * `on-update-success` - a pipeline update completes successfully.
+     * * `on-update-failure` - a pipeline update fails with a retryable error.
+     * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+     * * `on-flow-failure` - a single data flow fails.
+     * 
+     */
     public Optional<Output<List<String>>> alerts() {
         return Optional.ofNullable(this.alerts);
     }
 
+    /**
+     * non-empty list of emails to notify.
+     * 
+     */
     @Import(name="emailRecipients")
     private @Nullable Output<List<String>> emailRecipients;
 
+    /**
+     * @return non-empty list of emails to notify.
+     * 
+     */
     public Optional<Output<List<String>>> emailRecipients() {
         return Optional.ofNullable(this.emailRecipients);
     }
@@ -55,28 +79,76 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
             $ = new PipelineNotificationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alerts non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+         * * `on-update-success` - a pipeline update completes successfully.
+         * * `on-update-failure` - a pipeline update fails with a retryable error.
+         * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+         * * `on-flow-failure` - a single data flow fails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alerts(@Nullable Output<List<String>> alerts) {
             $.alerts = alerts;
             return this;
         }
 
+        /**
+         * @param alerts non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+         * * `on-update-success` - a pipeline update completes successfully.
+         * * `on-update-failure` - a pipeline update fails with a retryable error.
+         * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+         * * `on-flow-failure` - a single data flow fails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alerts(List<String> alerts) {
             return alerts(Output.of(alerts));
         }
 
+        /**
+         * @param alerts non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+         * * `on-update-success` - a pipeline update completes successfully.
+         * * `on-update-failure` - a pipeline update fails with a retryable error.
+         * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+         * * `on-flow-failure` - a single data flow fails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alerts(String... alerts) {
             return alerts(List.of(alerts));
         }
 
+        /**
+         * @param emailRecipients non-empty list of emails to notify.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailRecipients(@Nullable Output<List<String>> emailRecipients) {
             $.emailRecipients = emailRecipients;
             return this;
         }
 
+        /**
+         * @param emailRecipients non-empty list of emails to notify.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailRecipients(List<String> emailRecipients) {
             return emailRecipients(Output.of(emailRecipients));
         }
 
+        /**
+         * @param emailRecipients non-empty list of emails to notify.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailRecipients(String... emailRecipients) {
             return emailRecipients(List.of(emailRecipients));
         }

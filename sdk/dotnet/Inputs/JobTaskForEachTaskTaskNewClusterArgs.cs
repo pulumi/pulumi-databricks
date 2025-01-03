@@ -92,6 +92,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("libraries")]
         private InputList<Inputs.JobTaskForEachTaskTaskNewClusterLibraryArgs>? _libraries;
+
+        /// <summary>
+        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        /// </summary>
         public InputList<Inputs.JobTaskForEachTaskTaskNewClusterLibraryArgs> Libraries
         {
             get => _libraries ?? (_libraries = new InputList<Inputs.JobTaskForEachTaskTaskNewClusterLibraryArgs>());
@@ -143,6 +147,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("useMlRuntime")]
         public Input<bool>? UseMlRuntime { get; set; }
 
+        /// <summary>
+        /// isn't supported
+        /// </summary>
         [Input("workloadType")]
         public Input<Inputs.JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs>? WorkloadType { get; set; }
 

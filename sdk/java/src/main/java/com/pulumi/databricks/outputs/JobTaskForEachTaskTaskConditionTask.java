@@ -10,17 +10,45 @@ import java.util.Objects;
 
 @CustomType
 public final class JobTaskForEachTaskTaskConditionTask {
+    /**
+     * @return The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+     * 
+     */
     private String left;
+    /**
+     * @return The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * 
+     * This task does not require a cluster to execute and does not support retries or notifications.
+     * 
+     */
     private String op;
+    /**
+     * @return The right operand of the condition task. It could be a string value, job state, or parameter reference.
+     * 
+     */
     private String right;
 
     private JobTaskForEachTaskTaskConditionTask() {}
+    /**
+     * @return The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+     * 
+     */
     public String left() {
         return this.left;
     }
+    /**
+     * @return The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * 
+     * This task does not require a cluster to execute and does not support retries or notifications.
+     * 
+     */
     public String op() {
         return this.op;
     }
+    /**
+     * @return The right operand of the condition task. It could be a string value, job state, or parameter reference.
+     * 
+     */
     public String right() {
         return this.right;
     }

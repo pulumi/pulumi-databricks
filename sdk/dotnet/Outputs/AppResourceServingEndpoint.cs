@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppResourceServingEndpoint
     {
+        /// <summary>
+        /// Name of the serving endpoint to grant permission on.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Permission to grant on the serving endpoint. Supported permissions are: `CAN_MANAGE`, `CAN_QUERY`, `CAN_VIEW`.
+        /// </summary>
         public readonly string Permission;
 
         [OutputConstructor]

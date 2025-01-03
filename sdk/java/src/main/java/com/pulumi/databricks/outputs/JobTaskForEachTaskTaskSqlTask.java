@@ -17,29 +17,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTaskSqlTask {
+    /**
+     * @return block consisting of following fields:
+     * 
+     */
     private @Nullable JobTaskForEachTaskTaskSqlTaskAlert alert;
+    /**
+     * @return block consisting of following fields:
+     * 
+     */
     private @Nullable JobTaskForEachTaskTaskSqlTaskDashboard dashboard;
+    /**
+     * @return block consisting of single string fields:
+     * 
+     */
     private @Nullable JobTaskForEachTaskTaskSqlTaskFile file;
+    /**
+     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * 
+     */
     private @Nullable Map<String,String> parameters;
+    /**
+     * @return block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
+     * 
+     */
     private @Nullable JobTaskForEachTaskTaskSqlTaskQuery query;
+    /**
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
+     * 
+     */
     private String warehouseId;
 
     private JobTaskForEachTaskTaskSqlTask() {}
+    /**
+     * @return block consisting of following fields:
+     * 
+     */
     public Optional<JobTaskForEachTaskTaskSqlTaskAlert> alert() {
         return Optional.ofNullable(this.alert);
     }
+    /**
+     * @return block consisting of following fields:
+     * 
+     */
     public Optional<JobTaskForEachTaskTaskSqlTaskDashboard> dashboard() {
         return Optional.ofNullable(this.dashboard);
     }
+    /**
+     * @return block consisting of single string fields:
+     * 
+     */
     public Optional<JobTaskForEachTaskTaskSqlTaskFile> file() {
         return Optional.ofNullable(this.file);
     }
+    /**
+     * @return (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     * 
+     */
     public Map<String,String> parameters() {
         return this.parameters == null ? Map.of() : this.parameters;
     }
+    /**
+     * @return block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
+     * 
+     */
     public Optional<JobTaskForEachTaskTaskSqlTaskQuery> query() {
         return Optional.ofNullable(this.query);
     }
+    /**
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
+     * 
+     */
     public String warehouseId() {
         return this.warehouseId;
     }

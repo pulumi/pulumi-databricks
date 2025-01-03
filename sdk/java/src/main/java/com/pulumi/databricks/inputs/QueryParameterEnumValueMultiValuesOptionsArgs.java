@@ -15,23 +15,47 @@ public final class QueryParameterEnumValueMultiValuesOptionsArgs extends com.pul
 
     public static final QueryParameterEnumValueMultiValuesOptionsArgs Empty = new QueryParameterEnumValueMultiValuesOptionsArgs();
 
+    /**
+     * Character that prefixes each selected parameter value.
+     * 
+     */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
+    /**
+     * @return Character that prefixes each selected parameter value.
+     * 
+     */
     public Optional<Output<String>> prefix() {
         return Optional.ofNullable(this.prefix);
     }
 
+    /**
+     * Character that separates each selected parameter value. Defaults to a comma.
+     * 
+     */
     @Import(name="separator")
     private @Nullable Output<String> separator;
 
+    /**
+     * @return Character that separates each selected parameter value. Defaults to a comma.
+     * 
+     */
     public Optional<Output<String>> separator() {
         return Optional.ofNullable(this.separator);
     }
 
+    /**
+     * Character that suffixes each selected parameter value.
+     * 
+     */
     @Import(name="suffix")
     private @Nullable Output<String> suffix;
 
+    /**
+     * @return Character that suffixes each selected parameter value.
+     * 
+     */
     public Optional<Output<String>> suffix() {
         return Optional.ofNullable(this.suffix);
     }
@@ -62,29 +86,65 @@ public final class QueryParameterEnumValueMultiValuesOptionsArgs extends com.pul
             $ = new QueryParameterEnumValueMultiValuesOptionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param prefix Character that prefixes each selected parameter value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefix(@Nullable Output<String> prefix) {
             $.prefix = prefix;
             return this;
         }
 
+        /**
+         * @param prefix Character that prefixes each selected parameter value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefix(String prefix) {
             return prefix(Output.of(prefix));
         }
 
+        /**
+         * @param separator Character that separates each selected parameter value. Defaults to a comma.
+         * 
+         * @return builder
+         * 
+         */
         public Builder separator(@Nullable Output<String> separator) {
             $.separator = separator;
             return this;
         }
 
+        /**
+         * @param separator Character that separates each selected parameter value. Defaults to a comma.
+         * 
+         * @return builder
+         * 
+         */
         public Builder separator(String separator) {
             return separator(Output.of(separator));
         }
 
+        /**
+         * @param suffix Character that suffixes each selected parameter value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder suffix(@Nullable Output<String> suffix) {
             $.suffix = suffix;
             return this;
         }
 
+        /**
+         * @param suffix Character that suffixes each selected parameter value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder suffix(String suffix) {
             return suffix(Output.of(suffix));
         }

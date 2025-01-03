@@ -28,6 +28,12 @@ class MwsPrivateAccessSettingsArgs:
                  public_access_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a MwsPrivateAccessSettings resource.
+        :param pulumi.Input[str] private_access_settings_name: Name of Private Access Settings in Databricks Account
+        :param pulumi.Input[str] region: Region of AWS VPC or the Google Cloud VPC network
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_vpc_endpoint_ids: An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+        :param pulumi.Input[str] private_access_level: The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+        :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of Private Access Settings in Databricks Account
+        :param pulumi.Input[bool] public_access_enabled: If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
         """
         pulumi.set(__self__, "private_access_settings_name", private_access_settings_name)
         pulumi.set(__self__, "region", region)
@@ -48,6 +54,9 @@ class MwsPrivateAccessSettingsArgs:
     @property
     @pulumi.getter(name="privateAccessSettingsName")
     def private_access_settings_name(self) -> pulumi.Input[str]:
+        """
+        Name of Private Access Settings in Databricks Account
+        """
         return pulumi.get(self, "private_access_settings_name")
 
     @private_access_settings_name.setter
@@ -57,6 +66,9 @@ class MwsPrivateAccessSettingsArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        Region of AWS VPC or the Google Cloud VPC network
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -76,6 +88,9 @@ class MwsPrivateAccessSettingsArgs:
     @property
     @pulumi.getter(name="allowedVpcEndpointIds")
     def allowed_vpc_endpoint_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+        """
         return pulumi.get(self, "allowed_vpc_endpoint_ids")
 
     @allowed_vpc_endpoint_ids.setter
@@ -85,6 +100,9 @@ class MwsPrivateAccessSettingsArgs:
     @property
     @pulumi.getter(name="privateAccessLevel")
     def private_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+        """
         return pulumi.get(self, "private_access_level")
 
     @private_access_level.setter
@@ -94,6 +112,9 @@ class MwsPrivateAccessSettingsArgs:
     @property
     @pulumi.getter(name="privateAccessSettingsId")
     def private_access_settings_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Canonical unique identifier of Private Access Settings in Databricks Account
+        """
         return pulumi.get(self, "private_access_settings_id")
 
     @private_access_settings_id.setter
@@ -103,6 +124,9 @@ class MwsPrivateAccessSettingsArgs:
     @property
     @pulumi.getter(name="publicAccessEnabled")
     def public_access_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
+        """
         return pulumi.get(self, "public_access_enabled")
 
     @public_access_enabled.setter
@@ -122,6 +146,12 @@ class _MwsPrivateAccessSettingsState:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MwsPrivateAccessSettings resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_vpc_endpoint_ids: An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+        :param pulumi.Input[str] private_access_level: The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+        :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of Private Access Settings in Databricks Account
+        :param pulumi.Input[str] private_access_settings_name: Name of Private Access Settings in Databricks Account
+        :param pulumi.Input[bool] public_access_enabled: If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
+        :param pulumi.Input[str] region: Region of AWS VPC or the Google Cloud VPC network
         """
         if account_id is not None:
             warnings.warn("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""", DeprecationWarning)
@@ -154,6 +184,9 @@ class _MwsPrivateAccessSettingsState:
     @property
     @pulumi.getter(name="allowedVpcEndpointIds")
     def allowed_vpc_endpoint_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+        """
         return pulumi.get(self, "allowed_vpc_endpoint_ids")
 
     @allowed_vpc_endpoint_ids.setter
@@ -163,6 +196,9 @@ class _MwsPrivateAccessSettingsState:
     @property
     @pulumi.getter(name="privateAccessLevel")
     def private_access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+        """
         return pulumi.get(self, "private_access_level")
 
     @private_access_level.setter
@@ -172,6 +208,9 @@ class _MwsPrivateAccessSettingsState:
     @property
     @pulumi.getter(name="privateAccessSettingsId")
     def private_access_settings_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Canonical unique identifier of Private Access Settings in Databricks Account
+        """
         return pulumi.get(self, "private_access_settings_id")
 
     @private_access_settings_id.setter
@@ -181,6 +220,9 @@ class _MwsPrivateAccessSettingsState:
     @property
     @pulumi.getter(name="privateAccessSettingsName")
     def private_access_settings_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Private Access Settings in Databricks Account
+        """
         return pulumi.get(self, "private_access_settings_name")
 
     @private_access_settings_name.setter
@@ -190,6 +232,9 @@ class _MwsPrivateAccessSettingsState:
     @property
     @pulumi.getter(name="publicAccessEnabled")
     def public_access_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
+        """
         return pulumi.get(self, "public_access_enabled")
 
     @public_access_enabled.setter
@@ -199,6 +244,9 @@ class _MwsPrivateAccessSettingsState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Region of AWS VPC or the Google Cloud VPC network
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -220,9 +268,96 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a MwsPrivateAccessSettings resource with the given unique name, props, and options.
+        Allows you to create a Private Access Setting resource that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
+
+        It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
+
+        ## Databricks on AWS usage
+
+        > Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        pas = databricks.MwsPrivateAccessSettings("pas",
+            account_id=databricks_account_id,
+            private_access_settings_name=f"Private Access Settings for {prefix}",
+            region=region,
+            public_access_enabled=True)
+        ```
+
+        The `databricks_mws_private_access_settings.pas.private_access_settings_id` can then be used as part of a MwsWorkspaces resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.MwsWorkspaces("this",
+            aws_region=region,
+            workspace_name=prefix,
+            credentials_id=this_databricks_mws_credentials["credentialsId"],
+            storage_configuration_id=this_databricks_mws_storage_configurations["storageConfigurationId"],
+            network_id=this_databricks_mws_networks["networkId"],
+            private_access_settings_id=pas["privateAccessSettingsId"],
+            pricing_tier="ENTERPRISE",
+            opts = pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
+        ```
+
+        ## Databricks on GCP usage
+
+        > Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.MwsWorkspaces("this",
+            workspace_name="gcp-workspace",
+            location=subnet_region,
+            cloud_resource_container={
+                "gcp": {
+                    "project_id": google_project,
+                },
+            },
+            gke_config={
+                "connectivity_type": "PRIVATE_NODE_PUBLIC_MASTER",
+                "master_ip_range": "10.3.0.0/28",
+            },
+            network_id=this_databricks_mws_networks["networkId"],
+            private_access_settings_id=pas["privateAccessSettingsId"],
+            pricing_tier="PREMIUM",
+            opts = pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
+        ```
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * Provisioning Databricks on AWS guide.
+        * Provisioning Databricks on AWS with Private Link guide.
+        * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
+        * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+        * MwsVpcEndpoint to register aws_vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
+        * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+        * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
+        ## Import
+
+        This resource can be imported by Databricks account ID and private access settings ID.
+
+        ```sh
+        $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this '<account_id>/<private_access_settings_id>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_vpc_endpoint_ids: An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+        :param pulumi.Input[str] private_access_level: The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+        :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of Private Access Settings in Databricks Account
+        :param pulumi.Input[str] private_access_settings_name: Name of Private Access Settings in Databricks Account
+        :param pulumi.Input[bool] public_access_enabled: If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
+        :param pulumi.Input[str] region: Region of AWS VPC or the Google Cloud VPC network
         """
         ...
     @overload
@@ -231,7 +366,88 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
                  args: MwsPrivateAccessSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a MwsPrivateAccessSettings resource with the given unique name, props, and options.
+        Allows you to create a Private Access Setting resource that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
+
+        It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
+
+        ## Databricks on AWS usage
+
+        > Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        pas = databricks.MwsPrivateAccessSettings("pas",
+            account_id=databricks_account_id,
+            private_access_settings_name=f"Private Access Settings for {prefix}",
+            region=region,
+            public_access_enabled=True)
+        ```
+
+        The `databricks_mws_private_access_settings.pas.private_access_settings_id` can then be used as part of a MwsWorkspaces resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.MwsWorkspaces("this",
+            aws_region=region,
+            workspace_name=prefix,
+            credentials_id=this_databricks_mws_credentials["credentialsId"],
+            storage_configuration_id=this_databricks_mws_storage_configurations["storageConfigurationId"],
+            network_id=this_databricks_mws_networks["networkId"],
+            private_access_settings_id=pas["privateAccessSettingsId"],
+            pricing_tier="ENTERPRISE",
+            opts = pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
+        ```
+
+        ## Databricks on GCP usage
+
+        > Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.MwsWorkspaces("this",
+            workspace_name="gcp-workspace",
+            location=subnet_region,
+            cloud_resource_container={
+                "gcp": {
+                    "project_id": google_project,
+                },
+            },
+            gke_config={
+                "connectivity_type": "PRIVATE_NODE_PUBLIC_MASTER",
+                "master_ip_range": "10.3.0.0/28",
+            },
+            network_id=this_databricks_mws_networks["networkId"],
+            private_access_settings_id=pas["privateAccessSettingsId"],
+            pricing_tier="PREMIUM",
+            opts = pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
+        ```
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * Provisioning Databricks on AWS guide.
+        * Provisioning Databricks on AWS with Private Link guide.
+        * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
+        * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+        * MwsVpcEndpoint to register aws_vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
+        * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+        * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
+        ## Import
+
+        This resource can be imported by Databricks account ID and private access settings ID.
+
+        ```sh
+        $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this '<account_id>/<private_access_settings_id>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param MwsPrivateAccessSettingsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -298,6 +514,12 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_vpc_endpoint_ids: An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+        :param pulumi.Input[str] private_access_level: The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+        :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of Private Access Settings in Databricks Account
+        :param pulumi.Input[str] private_access_settings_name: Name of Private Access Settings in Databricks Account
+        :param pulumi.Input[bool] public_access_enabled: If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
+        :param pulumi.Input[str] region: Region of AWS VPC or the Google Cloud VPC network
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -321,30 +543,48 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowedVpcEndpointIds")
     def allowed_vpc_endpoint_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+        """
         return pulumi.get(self, "allowed_vpc_endpoint_ids")
 
     @property
     @pulumi.getter(name="privateAccessLevel")
     def private_access_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+        """
         return pulumi.get(self, "private_access_level")
 
     @property
     @pulumi.getter(name="privateAccessSettingsId")
     def private_access_settings_id(self) -> pulumi.Output[str]:
+        """
+        Canonical unique identifier of Private Access Settings in Databricks Account
+        """
         return pulumi.get(self, "private_access_settings_id")
 
     @property
     @pulumi.getter(name="privateAccessSettingsName")
     def private_access_settings_name(self) -> pulumi.Output[str]:
+        """
+        Name of Private Access Settings in Databricks Account
+        """
         return pulumi.get(self, "private_access_settings_name")
 
     @property
     @pulumi.getter(name="publicAccessEnabled")
     def public_access_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
+        """
         return pulumi.get(self, "public_access_enabled")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        Region of AWS VPC or the Google Cloud VPC network
+        """
         return pulumi.get(self, "region")
 

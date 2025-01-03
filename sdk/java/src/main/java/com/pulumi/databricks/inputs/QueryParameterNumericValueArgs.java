@@ -14,9 +14,17 @@ public final class QueryParameterNumericValueArgs extends com.pulumi.resources.R
 
     public static final QueryParameterNumericValueArgs Empty = new QueryParameterNumericValueArgs();
 
+    /**
+     * actual numeric value.
+     * 
+     */
     @Import(name="value", required=true)
     private Output<Double> value;
 
+    /**
+     * @return actual numeric value.
+     * 
+     */
     public Output<Double> value() {
         return this.value;
     }
@@ -45,11 +53,23 @@ public final class QueryParameterNumericValueArgs extends com.pulumi.resources.R
             $ = new QueryParameterNumericValueArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param value actual numeric value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<Double> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value actual numeric value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Double value) {
             return value(Output.of(value));
         }

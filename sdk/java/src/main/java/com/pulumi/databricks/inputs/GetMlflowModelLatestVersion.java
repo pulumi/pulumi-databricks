@@ -31,9 +31,17 @@ public final class GetMlflowModelLatestVersion extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.currentStage);
     }
 
+    /**
+     * User-specified description for the object.
+     * 
+     */
     @Import(name="description")
     private @Nullable String description;
 
+    /**
+     * @return User-specified description for the object.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -45,9 +53,17 @@ public final class GetMlflowModelLatestVersion extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.lastUpdatedTimestamp);
     }
 
+    /**
+     * Name of the registered model.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return Name of the registered model.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -87,16 +103,32 @@ public final class GetMlflowModelLatestVersion extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.statusMessage);
     }
 
+    /**
+     * Array of tags associated with the model.
+     * 
+     */
     @Import(name="tags")
     private @Nullable List<GetMlflowModelLatestVersionTag> tags;
 
+    /**
+     * @return Array of tags associated with the model.
+     * 
+     */
     public Optional<List<GetMlflowModelLatestVersionTag>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The username of the user that created the object.
+     * 
+     */
     @Import(name="userId")
     private @Nullable String userId;
 
+    /**
+     * @return The username of the user that created the object.
+     * 
+     */
     public Optional<String> userId() {
         return Optional.ofNullable(this.userId);
     }
@@ -154,6 +186,12 @@ public final class GetMlflowModelLatestVersion extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param description User-specified description for the object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable String description) {
             $.description = description;
             return this;
@@ -164,6 +202,12 @@ public final class GetMlflowModelLatestVersion extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param name Name of the registered model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
@@ -194,15 +238,33 @@ public final class GetMlflowModelLatestVersion extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param tags Array of tags associated with the model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable List<GetMlflowModelLatestVersionTag> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags Array of tags associated with the model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(GetMlflowModelLatestVersionTag... tags) {
             return tags(List.of(tags));
         }
 
+        /**
+         * @param userId The username of the user that created the object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(@Nullable String userId) {
             $.userId = userId;
             return this;

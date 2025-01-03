@@ -12,12 +12,20 @@ import java.util.Objects;
 @CustomType
 public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint {
     private List<String> childColumns;
+    /**
+     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     private String name;
 
     private GetTableTableInfoTableConstraintPrimaryKeyConstraint() {}
     public List<String> childColumns() {
         return this.childColumns;
     }
+    /**
+     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     public String name() {
         return this.name;
     }

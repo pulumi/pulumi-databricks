@@ -14,19 +14,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsAppActiveDeployment {
+    /**
+     * @return The creation time of the app.
+     * 
+     */
     private String createTime;
+    /**
+     * @return The email of the user that created the app.
+     * 
+     */
     private String creator;
     private GetAppsAppActiveDeploymentDeploymentArtifacts deploymentArtifacts;
     private @Nullable String deploymentId;
     private @Nullable String mode;
     private @Nullable String sourceCodePath;
     private GetAppsAppActiveDeploymentStatus status;
+    /**
+     * @return The update time of the app.
+     * 
+     */
     private String updateTime;
 
     private GetAppsAppActiveDeployment() {}
+    /**
+     * @return The creation time of the app.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return The email of the user that created the app.
+     * 
+     */
     public String creator() {
         return this.creator;
     }
@@ -45,6 +65,10 @@ public final class GetAppsAppActiveDeployment {
     public GetAppsAppActiveDeploymentStatus status() {
         return this.status;
     }
+    /**
+     * @return The update time of the app.
+     * 
+     */
     public String updateTime() {
         return this.updateTime;
     }

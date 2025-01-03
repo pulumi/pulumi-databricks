@@ -16,65 +16,225 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; Initialize provider with `alias = &#34;account&#34;`, `host = &#34;https://accounts.azuredatabricks.net&#34;` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+ * 
+ * &gt; This feature is only available in Azure.
+ * 
+ * Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsNetworkConnectivityConfig;
+ * import com.pulumi.databricks.MwsNetworkConnectivityConfigArgs;
+ * import com.pulumi.databricks.MwsNccPrivateEndpointRule;
+ * import com.pulumi.databricks.MwsNccPrivateEndpointRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var region = config.get("region");
+ *         final var prefix = config.get("prefix");
+ *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()
+ *             .name(String.format("ncc-for-%s", prefix))
+ *             .region(region)
+ *             .build());
+ * 
+ *         var storage = new MwsNccPrivateEndpointRule("storage", MwsNccPrivateEndpointRuleArgs.builder()
+ *             .networkConnectivityConfigId(ncc.networkConnectivityConfigId())
+ *             .resourceId("/subscriptions/653bb673-1234-abcd-a90b-d064d5d53ca4/resourcegroups/example-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa")
+ *             .groupId("blob")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are used in the context:
+ * 
+ * * databricks.MwsNetworkConnectivityConfig to create Network Connectivity Config objects.
+ * * databricks.MwsNccBinding to attach an NCC to a workspace.
+ * 
+ * ## Import
+ * 
+ * This resource can be imported by Databricks account ID and Network Connectivity Config ID.
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule rule &lt;network_connectivity_config_id&gt;/&lt;rule_id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule")
 public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResource {
+    /**
+     * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+     * The possible values are:
+     * * `PENDING`: The endpoint has been created and pending approval.
+     * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+     * * `REJECTED`: Connection was rejected by the private link resource owner.
+     * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+     * 
+     */
     @Export(name="connectionState", refs={String.class}, tree="[0]")
     private Output<String> connectionState;
 
+    /**
+     * @return The current status of this private endpoint. The private endpoint rules are effective only if the connection state is ESTABLISHED. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
+     * The possible values are:
+     * * `PENDING`: The endpoint has been created and pending approval.
+     * * `ESTABLISHED`: The endpoint has been approved and is ready to be used in your serverless compute resources.
+     * * `REJECTED`: Connection was rejected by the private link resource owner.
+     * * `DISCONNECTED`: Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean-up.
+     * 
+     */
     public Output<String> connectionState() {
         return this.connectionState;
     }
+    /**
+     * Time in epoch milliseconds when this object was created.
+     * 
+     */
     @Export(name="creationTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> creationTime;
 
+    /**
+     * @return Time in epoch milliseconds when this object was created.
+     * 
+     */
     public Output<Integer> creationTime() {
         return this.creationTime;
     }
+    /**
+     * Whether this private endpoint is deactivated.
+     * 
+     */
     @Export(name="deactivated", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deactivated;
 
+    /**
+     * @return Whether this private endpoint is deactivated.
+     * 
+     */
     public Output<Optional<Boolean>> deactivated() {
         return Codegen.optional(this.deactivated);
     }
+    /**
+     * Time in epoch milliseconds when this object was deactivated.
+     * 
+     */
     @Export(name="deactivatedAt", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> deactivatedAt;
 
+    /**
+     * @return Time in epoch milliseconds when this object was deactivated.
+     * 
+     */
     public Output<Optional<Integer>> deactivatedAt() {
         return Codegen.optional(this.deactivatedAt);
     }
+    /**
+     * The name of the Azure private endpoint resource, e.g. &#34;databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234&#34;
+     * 
+     */
     @Export(name="endpointName", refs={String.class}, tree="[0]")
     private Output<String> endpointName;
 
+    /**
+     * @return The name of the Azure private endpoint resource, e.g. &#34;databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234&#34;
+     * 
+     */
     public Output<String> endpointName() {
         return this.endpointName;
     }
+    /**
+     * The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+     * 
+     */
     @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
+    /**
+     * @return The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
+     * 
+     */
     public Output<String> groupId() {
         return this.groupId;
     }
+    /**
+     * Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+     * 
+     */
     @Export(name="networkConnectivityConfigId", refs={String.class}, tree="[0]")
     private Output<String> networkConnectivityConfigId;
 
+    /**
+     * @return Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+     * 
+     */
     public Output<String> networkConnectivityConfigId() {
         return this.networkConnectivityConfigId;
     }
+    /**
+     * The Azure resource ID of the target resource. Change forces creation of a new resource.
+     * 
+     */
     @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
+    /**
+     * @return The Azure resource ID of the target resource. Change forces creation of a new resource.
+     * 
+     */
     public Output<String> resourceId() {
         return this.resourceId;
     }
+    /**
+     * the ID of a private endpoint rule.
+     * 
+     */
     @Export(name="ruleId", refs={String.class}, tree="[0]")
     private Output<String> ruleId;
 
+    /**
+     * @return the ID of a private endpoint rule.
+     * 
+     */
     public Output<String> ruleId() {
         return this.ruleId;
     }
+    /**
+     * Time in epoch milliseconds when this object was updated.
+     * 
+     */
     @Export(name="updatedTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> updatedTime;
 
+    /**
+     * @return Time in epoch milliseconds when this object was updated.
+     * 
+     */
     public Output<Integer> updatedTime() {
         return this.updatedTime;
     }

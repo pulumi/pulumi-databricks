@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppResourceJobArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Id of the job to grant permission on.
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 

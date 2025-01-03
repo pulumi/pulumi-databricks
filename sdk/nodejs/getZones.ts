@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const zones = databricks.getZones({});
+ * ```
+ */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,8 +32,17 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
+    /**
+     * This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+     */
     defaultZone?: string;
+    /**
+     * The id for the zone object.
+     */
     id?: string;
+    /**
+     * This is a list of all the zones available for your subnets in your Databricks workspace.
+     */
     zones?: string[];
 }
 
@@ -27,10 +50,33 @@ export interface GetZonesArgs {
  * A collection of values returned by getZones.
  */
 export interface GetZonesResult {
+    /**
+     * This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+     */
     readonly defaultZone: string;
+    /**
+     * The id for the zone object.
+     */
     readonly id: string;
+    /**
+     * This is a list of all the zones available for your subnets in your Databricks workspace.
+     */
     readonly zones: string[];
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const zones = databricks.getZones({});
+ * ```
+ */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,7 +91,16 @@ export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesOutputArgs {
+    /**
+     * This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+     */
     defaultZone?: pulumi.Input<string>;
+    /**
+     * The id for the zone object.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * This is a list of all the zones available for your subnets in your Databricks workspace.
+     */
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

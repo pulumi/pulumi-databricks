@@ -113,14 +113,14 @@ func Provider() tfbridge.ProviderInfo {
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "databricks", "category/infrastructure"},
-		License:    "Apache-2.0",
-		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/pulumi/pulumi-databricks",
+		Keywords:         []string{"pulumi", "databricks", "category/infrastructure"},
+		License:          "Apache-2.0",
+		Homepage:         "https://www.pulumi.com",
+		Repository:       "https://github.com/pulumi/pulumi-databricks",
 		UpstreamRepoPath: "./upstream",
-		GitHubOrg:  "databricks",
-		Config:     map[string]*tfbridge.SchemaInfo{},
-		DocRules:   &tfbridge.DocRuleInfo{EditRules: editRules},
+		GitHubOrg:        "databricks",
+		Config:           map[string]*tfbridge.SchemaInfo{},
+		DocRules:         &tfbridge.DocRuleInfo{EditRules: editRules},
 		IgnoreMappings: []string{
 			"databricks_aws_s3_mount",
 			"databricks_azure_adls_gen1_mount",

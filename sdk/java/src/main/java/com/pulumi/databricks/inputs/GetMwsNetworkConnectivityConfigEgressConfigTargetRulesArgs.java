@@ -16,9 +16,17 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs ex
 
     public static final GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs Empty = new GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs();
 
+    /**
+     * Array of private endpoint rule objects.
+     * 
+     */
     @Import(name="azurePrivateEndpointRules")
     private @Nullable Output<List<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>> azurePrivateEndpointRules;
 
+    /**
+     * @return Array of private endpoint rule objects.
+     * 
+     */
     public Optional<Output<List<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>>> azurePrivateEndpointRules() {
         return Optional.ofNullable(this.azurePrivateEndpointRules);
     }
@@ -47,15 +55,33 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs ex
             $ = new GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param azurePrivateEndpointRules Array of private endpoint rule objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder azurePrivateEndpointRules(@Nullable Output<List<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>> azurePrivateEndpointRules) {
             $.azurePrivateEndpointRules = azurePrivateEndpointRules;
             return this;
         }
 
+        /**
+         * @param azurePrivateEndpointRules Array of private endpoint rule objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder azurePrivateEndpointRules(List<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs> azurePrivateEndpointRules) {
             return azurePrivateEndpointRules(Output.of(azurePrivateEndpointRules));
         }
 
+        /**
+         * @param azurePrivateEndpointRules Array of private endpoint rule objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder azurePrivateEndpointRules(GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs... azurePrivateEndpointRules) {
             return azurePrivateEndpointRules(List.of(azurePrivateEndpointRules));
         }

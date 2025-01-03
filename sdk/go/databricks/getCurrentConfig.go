@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
 func GetCurrentConfig(ctx *pulumi.Context, args *GetCurrentConfigArgs, opts ...pulumi.InvokeOption) (*GetCurrentConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCurrentConfigResult

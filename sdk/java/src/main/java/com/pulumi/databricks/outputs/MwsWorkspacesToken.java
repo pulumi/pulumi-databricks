@@ -12,15 +12,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsWorkspacesToken {
+    /**
+     * @return Comment, that will appear in &#34;User Settings / Access Tokens&#34; page on Workspace UI. By default it&#39;s &#34;Pulumi PAT&#34;.
+     * 
+     */
     private @Nullable String comment;
+    /**
+     * @return Token expiry lifetime. By default its 2592000 (30 days).
+     * 
+     */
     private @Nullable Integer lifetimeSeconds;
     private @Nullable String tokenId;
     private @Nullable String tokenValue;
 
     private MwsWorkspacesToken() {}
+    /**
+     * @return Comment, that will appear in &#34;User Settings / Access Tokens&#34; page on Workspace UI. By default it&#39;s &#34;Pulumi PAT&#34;.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return Token expiry lifetime. By default its 2592000 (30 days).
+     * 
+     */
     public Optional<Integer> lifetimeSeconds() {
         return Optional.ofNullable(this.lifetimeSeconds);
     }

@@ -34,6 +34,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? InstancePoolId;
         public readonly bool? IsSingleNode;
         public readonly string? Kind;
+        /// <summary>
+        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.JobJobClusterNewClusterLibrary> Libraries;
         public readonly string? NodeTypeId;
         public readonly int? NumWorkers;
@@ -45,6 +48,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly string SparkVersion;
         public readonly ImmutableArray<string> SshPublicKeys;
         public readonly bool? UseMlRuntime;
+        /// <summary>
+        /// isn't supported
+        /// </summary>
         public readonly Outputs.JobJobClusterNewClusterWorkloadType? WorkloadType;
 
         [OutputConstructor]

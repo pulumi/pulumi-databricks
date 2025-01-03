@@ -17,16 +17,32 @@ public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
 
     public static final MlflowModelState Empty = new MlflowModelState();
 
+    /**
+     * The description of the MLflow model.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return The description of the MLflow model.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Name of MLflow model. Change of name triggers new resource.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Name of MLflow model. Change of name triggers new resource.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -38,9 +54,17 @@ public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.registeredModelId);
     }
 
+    /**
+     * Tags for the MLflow model.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<List<MlflowModelTagArgs>> tags;
 
+    /**
+     * @return Tags for the MLflow model.
+     * 
+     */
     public Optional<Output<List<MlflowModelTagArgs>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -72,20 +96,44 @@ public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
             $ = new MlflowModelState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description The description of the MLflow model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description The description of the MLflow model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param name Name of MLflow model. Change of name triggers new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of MLflow model. Change of name triggers new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -99,15 +147,33 @@ public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
             return registeredModelId(Output.of(registeredModelId));
         }
 
+        /**
+         * @param tags Tags for the MLflow model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<List<MlflowModelTagArgs>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags Tags for the MLflow model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(List<MlflowModelTagArgs> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tags Tags for the MLflow model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(MlflowModelTagArgs... tags) {
             return tags(List.of(tags));
         }

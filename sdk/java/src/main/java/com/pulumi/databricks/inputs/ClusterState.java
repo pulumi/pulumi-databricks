@@ -29,9 +29,17 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterState Empty = new ClusterState();
 
+    /**
+     * Whether to use policy default values for missing cluster attributes.
+     * 
+     */
     @Import(name="applyPolicyDefaultValues")
     private @Nullable Output<Boolean> applyPolicyDefaultValues;
 
+    /**
+     * @return Whether to use policy default values for missing cluster attributes.
+     * 
+     */
     public Optional<Output<Boolean>> applyPolicyDefaultValues() {
         return Optional.ofNullable(this.applyPolicyDefaultValues);
     }
@@ -43,9 +51,17 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.autoscale);
     }
 
+    /**
+     * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
+     * 
+     */
     @Import(name="autoterminationMinutes")
     private @Nullable Output<Integer> autoterminationMinutes;
 
+    /**
+     * @return Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
+     * 
+     */
     public Optional<Output<Integer>> autoterminationMinutes() {
         return Optional.ofNullable(this.autoterminationMinutes);
     }
@@ -85,30 +101,148 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clusterMountInfos);
     }
 
+    /**
+     * Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
+     * 
+     */
     @Import(name="clusterName")
     private @Nullable Output<String> clusterName;
 
+    /**
+     * @return Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
+     * 
+     */
     public Optional<Output<String>> clusterName() {
         return Optional.ofNullable(this.clusterName);
     }
 
+    /**
+     * should have tag `ResourceClass` set to value `Serverless`
+     * 
+     * For example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()
+     *             .clusterName("Shared High-Concurrency")
+     *             .sparkVersion(latestLts.id())
+     *             .nodeTypeId(smallest.id())
+     *             .autoterminationMinutes(20)
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry("spark.databricks.repl.allowedLanguages", "python,sql"),
+     *                 Map.entry("spark.databricks.cluster.profile", "serverless")
+     *             ))
+     *             .customTags(Map.of("ResourceClass", "Serverless"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     @Import(name="customTags")
     private @Nullable Output<Map<String,String>> customTags;
 
+    /**
+     * @return should have tag `ResourceClass` set to value `Serverless`
+     * 
+     * For example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()
+     *             .clusterName("Shared High-Concurrency")
+     *             .sparkVersion(latestLts.id())
+     *             .nodeTypeId(smallest.id())
+     *             .autoterminationMinutes(20)
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry("spark.databricks.repl.allowedLanguages", "python,sql"),
+     *                 Map.entry("spark.databricks.cluster.profile", "serverless")
+     *             ))
+     *             .customTags(Map.of("ResourceClass", "Serverless"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public Optional<Output<Map<String,String>>> customTags() {
         return Optional.ofNullable(this.customTags);
     }
 
+    /**
+     * Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+     * 
+     */
     @Import(name="dataSecurityMode")
     private @Nullable Output<String> dataSecurityMode;
 
+    /**
+     * @return Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+     * 
+     */
     public Optional<Output<String>> dataSecurityMode() {
         return Optional.ofNullable(this.dataSecurityMode);
     }
 
+    /**
+     * (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
+     * 
+     */
     @Import(name="defaultTags")
     private @Nullable Output<Map<String,String>> defaultTags;
 
+    /**
+     * @return (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
+     * 
+     */
     public Optional<Output<Map<String,String>>> defaultTags() {
         return Optional.ofNullable(this.defaultTags);
     }
@@ -120,30 +254,62 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dockerImage);
     }
 
+    /**
+     * similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
+     * 
+     */
     @Import(name="driverInstancePoolId")
     private @Nullable Output<String> driverInstancePoolId;
 
+    /**
+     * @return similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
+     * 
+     */
     public Optional<Output<String>> driverInstancePoolId() {
         return Optional.ofNullable(this.driverInstancePoolId);
     }
 
+    /**
+     * The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
+     * 
+     */
     @Import(name="driverNodeTypeId")
     private @Nullable Output<String> driverNodeTypeId;
 
+    /**
+     * @return The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
+     * 
+     */
     public Optional<Output<String>> driverNodeTypeId() {
         return Optional.ofNullable(this.driverNodeTypeId);
     }
 
+    /**
+     * If you don’t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster’s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance’s local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
+     * 
+     */
     @Import(name="enableElasticDisk")
     private @Nullable Output<Boolean> enableElasticDisk;
 
+    /**
+     * @return If you don’t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster’s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance’s local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
+     * 
+     */
     public Optional<Output<Boolean>> enableElasticDisk() {
         return Optional.ofNullable(this.enableElasticDisk);
     }
 
+    /**
+     * Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. *Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access.*
+     * 
+     */
     @Import(name="enableLocalDiskEncryption")
     private @Nullable Output<Boolean> enableLocalDiskEncryption;
 
+    /**
+     * @return Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. *Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access.*
+     * 
+     */
     public Optional<Output<Boolean>> enableLocalDiskEncryption() {
         return Optional.ofNullable(this.enableLocalDiskEncryption);
     }
@@ -155,9 +321,17 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.gcpAttributes);
     }
 
+    /**
+     * An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster&#39;s ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
+     * 
+     */
     @Import(name="idempotencyToken")
     private @Nullable Output<String> idempotencyToken;
 
+    /**
+     * @return An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster&#39;s ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
+     * 
+     */
     public Optional<Output<String>> idempotencyToken() {
         return Optional.ofNullable(this.idempotencyToken);
     }
@@ -169,16 +343,32 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.initScripts);
     }
 
+    /**
+     * To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
+     * 
+     */
     @Import(name="instancePoolId")
     private @Nullable Output<String> instancePoolId;
 
+    /**
+     * @return To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
+     * 
+     */
     public Optional<Output<String>> instancePoolId() {
         return Optional.ofNullable(this.instancePoolId);
     }
 
+    /**
+     * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters&#39; maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+     * 
+     */
     @Import(name="isPinned")
     private @Nullable Output<Boolean> isPinned;
 
+    /**
+     * @return boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters&#39; maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+     * 
+     */
     public Optional<Output<Boolean>> isPinned() {
         return Optional.ofNullable(this.isPinned);
     }
@@ -204,79 +394,289 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.libraries);
     }
 
+    /**
+     * If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
+     * 
+     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+     * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+     *             .localDisk(true)
+     *             .build());
+     * 
+     *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+     *             .longTermSupport(true)
+     *             .build());
+     * 
+     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
+     *             .clusterName("Shared Autoscaling")
+     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .autoterminationMinutes(20)
+     *             .autoscale(ClusterAutoscaleArgs.builder()
+     *                 .minWorkers(1)
+     *                 .maxWorkers(50)
+     *                 .build())
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry("spark.databricks.io.cache.enabled", true),
+     *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
+     *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     @Import(name="noWait")
     private @Nullable Output<Boolean> noWait;
 
+    /**
+     * @return If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
+     * 
+     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+     * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+     *             .localDisk(true)
+     *             .build());
+     * 
+     *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+     *             .longTermSupport(true)
+     *             .build());
+     * 
+     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
+     *             .clusterName("Shared Autoscaling")
+     *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+     *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+     *             .autoterminationMinutes(20)
+     *             .autoscale(ClusterAutoscaleArgs.builder()
+     *                 .minWorkers(1)
+     *                 .maxWorkers(50)
+     *                 .build())
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry("spark.databricks.io.cache.enabled", true),
+     *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
+     *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
+     *             ))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public Optional<Output<Boolean>> noWait() {
         return Optional.ofNullable(this.noWait);
     }
 
+    /**
+     * Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
+     * 
+     */
     @Import(name="nodeTypeId")
     private @Nullable Output<String> nodeTypeId;
 
+    /**
+     * @return Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
+     * 
+     */
     public Optional<Output<String>> nodeTypeId() {
         return Optional.ofNullable(this.nodeTypeId);
     }
 
+    /**
+     * Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+     * 
+     */
     @Import(name="numWorkers")
     private @Nullable Output<Integer> numWorkers;
 
+    /**
+     * @return Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+     * 
+     */
     public Optional<Output<Integer>> numWorkers() {
         return Optional.ofNullable(this.numWorkers);
     }
 
+    /**
+     * Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren&#39;t filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+     * 
+     */
     @Import(name="policyId")
     private @Nullable Output<String> policyId;
 
+    /**
+     * @return Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren&#39;t filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+     * 
+     */
     public Optional<Output<String>> policyId() {
         return Optional.ofNullable(this.policyId);
     }
 
+    /**
+     * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
+     * 
+     */
     @Import(name="runtimeEngine")
     private @Nullable Output<String> runtimeEngine;
 
+    /**
+     * @return The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
+     * 
+     */
     public Optional<Output<String>> runtimeEngine() {
         return Optional.ofNullable(this.runtimeEngine);
     }
 
+    /**
+     * The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     * 
+     */
     @Import(name="singleUserName")
     private @Nullable Output<String> singleUserName;
 
+    /**
+     * @return The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     * 
+     */
     public Optional<Output<String>> singleUserName() {
         return Optional.ofNullable(this.singleUserName);
     }
 
+    /**
+     * should have following items:
+     * * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+     * * `spark.databricks.cluster.profile` set to `serverless`
+     * 
+     */
     @Import(name="sparkConf")
     private @Nullable Output<Map<String,String>> sparkConf;
 
+    /**
+     * @return should have following items:
+     * * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+     * * `spark.databricks.cluster.profile` set to `serverless`
+     * 
+     */
     public Optional<Output<Map<String,String>>> sparkConf() {
         return Optional.ofNullable(this.sparkConf);
     }
 
+    /**
+     * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
+     * 
+     */
     @Import(name="sparkEnvVars")
     private @Nullable Output<Map<String,String>> sparkEnvVars;
 
+    /**
+     * @return Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
+     * 
+     */
     public Optional<Output<Map<String,String>>> sparkEnvVars() {
         return Optional.ofNullable(this.sparkEnvVars);
     }
 
+    /**
+     * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported databricks.getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
+     * 
+     */
     @Import(name="sparkVersion")
     private @Nullable Output<String> sparkVersion;
 
+    /**
+     * @return [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported databricks.getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
+     * 
+     */
     public Optional<Output<String>> sparkVersion() {
         return Optional.ofNullable(this.sparkVersion);
     }
 
+    /**
+     * SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
+     * 
+     */
     @Import(name="sshPublicKeys")
     private @Nullable Output<List<String>> sshPublicKeys;
 
+    /**
+     * @return SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
+     * 
+     */
     public Optional<Output<List<String>>> sshPublicKeys() {
         return Optional.ofNullable(this.sshPublicKeys);
     }
 
+    /**
+     * (string) State of the cluster.
+     * 
+     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
+    /**
+     * @return (string) State of the cluster.
+     * 
+     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
@@ -364,11 +764,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             $ = new ClusterState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param applyPolicyDefaultValues Whether to use policy default values for missing cluster attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder applyPolicyDefaultValues(@Nullable Output<Boolean> applyPolicyDefaultValues) {
             $.applyPolicyDefaultValues = applyPolicyDefaultValues;
             return this;
         }
 
+        /**
+         * @param applyPolicyDefaultValues Whether to use policy default values for missing cluster attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder applyPolicyDefaultValues(Boolean applyPolicyDefaultValues) {
             return applyPolicyDefaultValues(Output.of(applyPolicyDefaultValues));
         }
@@ -382,11 +794,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return autoscale(Output.of(autoscale));
         }
 
+        /**
+         * @param autoterminationMinutes Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoterminationMinutes(@Nullable Output<Integer> autoterminationMinutes) {
             $.autoterminationMinutes = autoterminationMinutes;
             return this;
         }
 
+        /**
+         * @param autoterminationMinutes Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoterminationMinutes(Integer autoterminationMinutes) {
             return autoterminationMinutes(Output.of(autoterminationMinutes));
         }
@@ -440,38 +864,172 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return clusterMountInfos(List.of(clusterMountInfos));
         }
 
+        /**
+         * @param clusterName Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterName(@Nullable Output<String> clusterName) {
             $.clusterName = clusterName;
             return this;
         }
 
+        /**
+         * @param clusterName Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterName(String clusterName) {
             return clusterName(Output.of(clusterName));
         }
 
+        /**
+         * @param customTags should have tag `ResourceClass` set to value `Serverless`
+         * 
+         * For example:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.Cluster;
+         * import com.pulumi.databricks.ClusterArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()
+         *             .clusterName("Shared High-Concurrency")
+         *             .sparkVersion(latestLts.id())
+         *             .nodeTypeId(smallest.id())
+         *             .autoterminationMinutes(20)
+         *             .sparkConf(Map.ofEntries(
+         *                 Map.entry("spark.databricks.repl.allowedLanguages", "python,sql"),
+         *                 Map.entry("spark.databricks.cluster.profile", "serverless")
+         *             ))
+         *             .customTags(Map.of("ResourceClass", "Serverless"))
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * &lt;!--End PulumiCodeChooser --&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder customTags(@Nullable Output<Map<String,String>> customTags) {
             $.customTags = customTags;
             return this;
         }
 
+        /**
+         * @param customTags should have tag `ResourceClass` set to value `Serverless`
+         * 
+         * For example:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.Cluster;
+         * import com.pulumi.databricks.ClusterArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var clusterWithTableAccessControl = new Cluster("clusterWithTableAccessControl", ClusterArgs.builder()
+         *             .clusterName("Shared High-Concurrency")
+         *             .sparkVersion(latestLts.id())
+         *             .nodeTypeId(smallest.id())
+         *             .autoterminationMinutes(20)
+         *             .sparkConf(Map.ofEntries(
+         *                 Map.entry("spark.databricks.repl.allowedLanguages", "python,sql"),
+         *                 Map.entry("spark.databricks.cluster.profile", "serverless")
+         *             ))
+         *             .customTags(Map.of("ResourceClass", "Serverless"))
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * &lt;!--End PulumiCodeChooser --&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder customTags(Map<String,String> customTags) {
             return customTags(Output.of(customTags));
         }
 
+        /**
+         * @param dataSecurityMode Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataSecurityMode(@Nullable Output<String> dataSecurityMode) {
             $.dataSecurityMode = dataSecurityMode;
             return this;
         }
 
+        /**
+         * @param dataSecurityMode Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataSecurityMode(String dataSecurityMode) {
             return dataSecurityMode(Output.of(dataSecurityMode));
         }
 
+        /**
+         * @param defaultTags (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultTags(@Nullable Output<Map<String,String>> defaultTags) {
             $.defaultTags = defaultTags;
             return this;
         }
 
+        /**
+         * @param defaultTags (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultTags(Map<String,String> defaultTags) {
             return defaultTags(Output.of(defaultTags));
         }
@@ -485,38 +1043,86 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return dockerImage(Output.of(dockerImage));
         }
 
+        /**
+         * @param driverInstancePoolId similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder driverInstancePoolId(@Nullable Output<String> driverInstancePoolId) {
             $.driverInstancePoolId = driverInstancePoolId;
             return this;
         }
 
+        /**
+         * @param driverInstancePoolId similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder driverInstancePoolId(String driverInstancePoolId) {
             return driverInstancePoolId(Output.of(driverInstancePoolId));
         }
 
+        /**
+         * @param driverNodeTypeId The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
+         * 
+         * @return builder
+         * 
+         */
         public Builder driverNodeTypeId(@Nullable Output<String> driverNodeTypeId) {
             $.driverNodeTypeId = driverNodeTypeId;
             return this;
         }
 
+        /**
+         * @param driverNodeTypeId The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
+         * 
+         * @return builder
+         * 
+         */
         public Builder driverNodeTypeId(String driverNodeTypeId) {
             return driverNodeTypeId(Output.of(driverNodeTypeId));
         }
 
+        /**
+         * @param enableElasticDisk If you don’t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster’s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance’s local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableElasticDisk(@Nullable Output<Boolean> enableElasticDisk) {
             $.enableElasticDisk = enableElasticDisk;
             return this;
         }
 
+        /**
+         * @param enableElasticDisk If you don’t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster’s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance’s local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableElasticDisk(Boolean enableElasticDisk) {
             return enableElasticDisk(Output.of(enableElasticDisk));
         }
 
+        /**
+         * @param enableLocalDiskEncryption Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. *Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access.*
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableLocalDiskEncryption(@Nullable Output<Boolean> enableLocalDiskEncryption) {
             $.enableLocalDiskEncryption = enableLocalDiskEncryption;
             return this;
         }
 
+        /**
+         * @param enableLocalDiskEncryption Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster’s local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. *Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access.*
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableLocalDiskEncryption(Boolean enableLocalDiskEncryption) {
             return enableLocalDiskEncryption(Output.of(enableLocalDiskEncryption));
         }
@@ -530,11 +1136,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return gcpAttributes(Output.of(gcpAttributes));
         }
 
+        /**
+         * @param idempotencyToken An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster&#39;s ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder idempotencyToken(@Nullable Output<String> idempotencyToken) {
             $.idempotencyToken = idempotencyToken;
             return this;
         }
 
+        /**
+         * @param idempotencyToken An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster&#39;s ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder idempotencyToken(String idempotencyToken) {
             return idempotencyToken(Output.of(idempotencyToken));
         }
@@ -552,20 +1170,44 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return initScripts(List.of(initScripts));
         }
 
+        /**
+         * @param instancePoolId To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instancePoolId(@Nullable Output<String> instancePoolId) {
             $.instancePoolId = instancePoolId;
             return this;
         }
 
+        /**
+         * @param instancePoolId To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instancePoolId(String instancePoolId) {
             return instancePoolId(Output.of(instancePoolId));
         }
 
+        /**
+         * @param isPinned boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters&#39; maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+         * 
+         * @return builder
+         * 
+         */
         public Builder isPinned(@Nullable Output<Boolean> isPinned) {
             $.isPinned = isPinned;
             return this;
         }
 
+        /**
+         * @param isPinned boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters&#39; maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+         * 
+         * @return builder
+         * 
+         */
         public Builder isPinned(Boolean isPinned) {
             return isPinned(Output.of(isPinned));
         }
@@ -601,105 +1243,365 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return libraries(List.of(libraries));
         }
 
+        /**
+         * @param noWait If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
+         * 
+         * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.DatabricksFunctions;
+         * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+         * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+         * import com.pulumi.databricks.Cluster;
+         * import com.pulumi.databricks.ClusterArgs;
+         * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+         *             .localDisk(true)
+         *             .build());
+         * 
+         *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+         *             .longTermSupport(true)
+         *             .build());
+         * 
+         *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
+         *             .clusterName("Shared Autoscaling")
+         *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+         *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+         *             .autoterminationMinutes(20)
+         *             .autoscale(ClusterAutoscaleArgs.builder()
+         *                 .minWorkers(1)
+         *                 .maxWorkers(50)
+         *                 .build())
+         *             .sparkConf(Map.ofEntries(
+         *                 Map.entry("spark.databricks.io.cache.enabled", true),
+         *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
+         *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
+         *             ))
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * &lt;!--End PulumiCodeChooser --&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder noWait(@Nullable Output<Boolean> noWait) {
             $.noWait = noWait;
             return this;
         }
 
+        /**
+         * @param noWait If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
+         * 
+         * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.DatabricksFunctions;
+         * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+         * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+         * import com.pulumi.databricks.Cluster;
+         * import com.pulumi.databricks.ClusterArgs;
+         * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+         *             .localDisk(true)
+         *             .build());
+         * 
+         *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+         *             .longTermSupport(true)
+         *             .build());
+         * 
+         *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
+         *             .clusterName("Shared Autoscaling")
+         *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -> getSparkVersionResult.id()))
+         *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -> getNodeTypeResult.id()))
+         *             .autoterminationMinutes(20)
+         *             .autoscale(ClusterAutoscaleArgs.builder()
+         *                 .minWorkers(1)
+         *                 .maxWorkers(50)
+         *                 .build())
+         *             .sparkConf(Map.ofEntries(
+         *                 Map.entry("spark.databricks.io.cache.enabled", true),
+         *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
+         *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
+         *             ))
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * &lt;!--End PulumiCodeChooser --&gt;
+         * 
+         * @return builder
+         * 
+         */
         public Builder noWait(Boolean noWait) {
             return noWait(Output.of(noWait));
         }
 
+        /**
+         * @param nodeTypeId Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeTypeId(@Nullable Output<String> nodeTypeId) {
             $.nodeTypeId = nodeTypeId;
             return this;
         }
 
+        /**
+         * @param nodeTypeId Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeTypeId(String nodeTypeId) {
             return nodeTypeId(Output.of(nodeTypeId));
         }
 
+        /**
+         * @param numWorkers Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numWorkers(@Nullable Output<Integer> numWorkers) {
             $.numWorkers = numWorkers;
             return this;
         }
 
+        /**
+         * @param numWorkers Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numWorkers(Integer numWorkers) {
             return numWorkers(Output.of(numWorkers));
         }
 
+        /**
+         * @param policyId Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren&#39;t filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder policyId(@Nullable Output<String> policyId) {
             $.policyId = policyId;
             return this;
         }
 
+        /**
+         * @param policyId Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren&#39;t filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder policyId(String policyId) {
             return policyId(Output.of(policyId));
         }
 
+        /**
+         * @param runtimeEngine The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runtimeEngine(@Nullable Output<String> runtimeEngine) {
             $.runtimeEngine = runtimeEngine;
             return this;
         }
 
+        /**
+         * @param runtimeEngine The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runtimeEngine(String runtimeEngine) {
             return runtimeEngine(Output.of(runtimeEngine));
         }
 
+        /**
+         * @param singleUserName The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+         * 
+         * @return builder
+         * 
+         */
         public Builder singleUserName(@Nullable Output<String> singleUserName) {
             $.singleUserName = singleUserName;
             return this;
         }
 
+        /**
+         * @param singleUserName The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+         * 
+         * @return builder
+         * 
+         */
         public Builder singleUserName(String singleUserName) {
             return singleUserName(Output.of(singleUserName));
         }
 
+        /**
+         * @param sparkConf should have following items:
+         * * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+         * * `spark.databricks.cluster.profile` set to `serverless`
+         * 
+         * @return builder
+         * 
+         */
         public Builder sparkConf(@Nullable Output<Map<String,String>> sparkConf) {
             $.sparkConf = sparkConf;
             return this;
         }
 
+        /**
+         * @param sparkConf should have following items:
+         * * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+         * * `spark.databricks.cluster.profile` set to `serverless`
+         * 
+         * @return builder
+         * 
+         */
         public Builder sparkConf(Map<String,String> sparkConf) {
             return sparkConf(Output.of(sparkConf));
         }
 
+        /**
+         * @param sparkEnvVars Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sparkEnvVars(@Nullable Output<Map<String,String>> sparkEnvVars) {
             $.sparkEnvVars = sparkEnvVars;
             return this;
         }
 
+        /**
+         * @param sparkEnvVars Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X=&#39;Y&#39;) while launching the driver and workers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sparkEnvVars(Map<String,String> sparkEnvVars) {
             return sparkEnvVars(Output.of(sparkEnvVars));
         }
 
+        /**
+         * @param sparkVersion [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported databricks.getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sparkVersion(@Nullable Output<String> sparkVersion) {
             $.sparkVersion = sparkVersion;
             return this;
         }
 
+        /**
+         * @param sparkVersion [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported databricks.getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sparkVersion(String sparkVersion) {
             return sparkVersion(Output.of(sparkVersion));
         }
 
+        /**
+         * @param sshPublicKeys SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshPublicKeys(@Nullable Output<List<String>> sshPublicKeys) {
             $.sshPublicKeys = sshPublicKeys;
             return this;
         }
 
+        /**
+         * @param sshPublicKeys SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshPublicKeys(List<String> sshPublicKeys) {
             return sshPublicKeys(Output.of(sshPublicKeys));
         }
 
+        /**
+         * @param sshPublicKeys SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
         }
 
+        /**
+         * @param state (string) State of the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
+        /**
+         * @param state (string) State of the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(String state) {
             return state(Output.of(state));
         }

@@ -6,6 +6,45 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+ *
+ * ## Example Usage
+ *
+ * Retrieve cluster IDs for all clusters:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getClusters({});
+ * ```
+ *
+ * Retrieve cluster IDs for all clusters having "Shared" in the cluster name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const allShared = databricks.getClusters({
+ *     clusterNameContains: "shared",
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+ * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -21,9 +60,18 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getClusters.
  */
 export interface GetClustersArgs {
+    /**
+     * Only return databricks.Cluster ids that match the given name string.
+     */
     clusterNameContains?: string;
+    /**
+     * Filters to apply to the listed clusters. See filterBy Configuration Block below for details.
+     */
     filterBy?: inputs.GetClustersFilterBy;
     id?: string;
+    /**
+     * list of databricks.Cluster ids
+     */
     ids?: string[];
 }
 
@@ -34,8 +82,50 @@ export interface GetClustersResult {
     readonly clusterNameContains?: string;
     readonly filterBy?: outputs.GetClustersFilterBy;
     readonly id: string;
+    /**
+     * list of databricks.Cluster ids
+     */
     readonly ids: string[];
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
+ *
+ * ## Example Usage
+ *
+ * Retrieve cluster IDs for all clusters:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getClusters({});
+ * ```
+ *
+ * Retrieve cluster IDs for all clusters having "Shared" in the cluster name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const allShared = databricks.getClusters({
+ *     clusterNameContains: "shared",
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+ * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,8 +141,17 @@ export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getClusters.
  */
 export interface GetClustersOutputArgs {
+    /**
+     * Only return databricks.Cluster ids that match the given name string.
+     */
     clusterNameContains?: pulumi.Input<string>;
+    /**
+     * Filters to apply to the listed clusters. See filterBy Configuration Block below for details.
+     */
     filterBy?: pulumi.Input<inputs.GetClustersFilterByArgs>;
     id?: pulumi.Input<string>;
+    /**
+     * list of databricks.Cluster ids
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }

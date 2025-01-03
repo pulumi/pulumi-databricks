@@ -4,6 +4,84 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > This resource can only be used with a workspace-level provider!
+ *
+ * Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
+ *
+ * - A connection, a securable object in Unity Catalog that specifies a path and credentials for accessing an external database system.
+ * - A foreign catalog
+ *
+ * This resource manages connections in Unity Catalog
+ *
+ * ## Example Usage
+ *
+ * Create a connection to a MySQL database
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const mysql = new databricks.Connection("mysql", {
+ *     name: "mysql_connection",
+ *     connectionType: "MYSQL",
+ *     comment: "this is a connection to mysql db",
+ *     options: {
+ *         host: "test.mysql.database.azure.com",
+ *         port: "3306",
+ *         user: "user",
+ *         password: "password",
+ *     },
+ *     properties: {
+ *         purpose: "testing",
+ *     },
+ * });
+ * ```
+ *
+ * Create a connection to a BigQuery database
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const bigquery = new databricks.Connection("bigquery", {
+ *     name: "bq_connection",
+ *     connectionType: "BIGQUERY",
+ *     comment: "this is a connection to BQ",
+ *     options: {
+ *         GoogleServiceAccountKeyJson: JSON.stringify({
+ *             type: "service_account",
+ *             project_id: "PROJECT_ID",
+ *             private_key_id: "KEY_ID",
+ *             private_key: `-----BEGIN PRIVATE KEY-----
+ * PRIVATE_KEY
+ * -----END PRIVATE KEY-----
+ * `,
+ *             client_email: "SERVICE_ACCOUNT_EMAIL",
+ *             client_id: "CLIENT_ID",
+ *             auth_uri: "https://accounts.google.com/o/oauth2/auth",
+ *             token_uri: "https://accounts.google.com/o/oauth2/token",
+ *             auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+ *             client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/SERVICE_ACCOUNT_EMAIL",
+ *             universe_domain: "googleapis.com",
+ *         }),
+ *     },
+ *     properties: {
+ *         purpose: "testing",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by `id`:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/connection:Connection this '<metastore_id>|<name>'
+ * ```
+ */
 export class Connection extends pulumi.CustomResource {
     /**
      * Get an existing Connection resource's state with the given name, ID, and optional extra
@@ -32,12 +110,30 @@ export class Connection extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connection.__pulumiType;
     }
 
+    /**
+     * Free-form text.
+     */
     public readonly comment!: pulumi.Output<string | undefined>;
+    /**
+     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     */
     public readonly connectionType!: pulumi.Output<string>;
     public readonly metastoreId!: pulumi.Output<string>;
+    /**
+     * Name of the Connection.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     */
     public readonly options!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Name of the connection owner.
+     */
     public readonly owner!: pulumi.Output<string>;
+    /**
+     * Free-form connection properties.
+     */
     public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly readOnly!: pulumi.Output<boolean>;
 
@@ -90,12 +186,30 @@ export class Connection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connection resources.
  */
 export interface ConnectionState {
+    /**
+     * Free-form text.
+     */
     comment?: pulumi.Input<string>;
+    /**
+     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     */
     connectionType?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
+    /**
+     * Name of the Connection.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     */
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the connection owner.
+     */
     owner?: pulumi.Input<string>;
+    /**
+     * Free-form connection properties.
+     */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readOnly?: pulumi.Input<boolean>;
 }
@@ -104,12 +218,30 @@ export interface ConnectionState {
  * The set of arguments for constructing a Connection resource.
  */
 export interface ConnectionArgs {
+    /**
+     * Free-form text.
+     */
     comment?: pulumi.Input<string>;
+    /**
+     * Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+     */
     connectionType: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
+    /**
+     * Name of the Connection.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     */
     options: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the connection owner.
+     */
     owner?: pulumi.Input<string>;
+    /**
+     * Free-form connection properties.
+     */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readOnly?: pulumi.Input<boolean>;
 }

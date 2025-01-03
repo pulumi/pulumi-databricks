@@ -13,45 +13,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
+    /**
+     * @return The current status of this private endpoint.
+     * 
+     */
     private @Nullable String connectionState;
+    /**
+     * @return Time in epoch milliseconds when this object was created.
+     * 
+     */
     private @Nullable Integer creationTime;
+    /**
+     * @return Whether this private endpoint is deactivated.
+     * 
+     */
     private @Nullable Boolean deactivated;
+    /**
+     * @return Time in epoch milliseconds when this object was deactivated.
+     * 
+     */
     private @Nullable Integer deactivatedAt;
+    /**
+     * @return The name of the Azure private endpoint resource.
+     * 
+     */
     private @Nullable String endpointName;
+    /**
+     * @return The sub-resource type (group ID) of the target resource.
+     * 
+     */
     private @Nullable String groupId;
+    /**
+     * @return The Databricks network connectivity configuration ID.
+     * 
+     */
     private @Nullable String networkConnectivityConfigId;
+    /**
+     * @return The Azure resource ID of the target resource.
+     * 
+     */
     private @Nullable String resourceId;
+    /**
+     * @return The ID of a private endpoint rule.
+     * 
+     */
     private @Nullable String ruleId;
+    /**
+     * @return Time in epoch milliseconds when the network was updated.
+     * 
+     */
     private @Nullable Integer updatedTime;
 
     private GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule() {}
+    /**
+     * @return The current status of this private endpoint.
+     * 
+     */
     public Optional<String> connectionState() {
         return Optional.ofNullable(this.connectionState);
     }
+    /**
+     * @return Time in epoch milliseconds when this object was created.
+     * 
+     */
     public Optional<Integer> creationTime() {
         return Optional.ofNullable(this.creationTime);
     }
+    /**
+     * @return Whether this private endpoint is deactivated.
+     * 
+     */
     public Optional<Boolean> deactivated() {
         return Optional.ofNullable(this.deactivated);
     }
+    /**
+     * @return Time in epoch milliseconds when this object was deactivated.
+     * 
+     */
     public Optional<Integer> deactivatedAt() {
         return Optional.ofNullable(this.deactivatedAt);
     }
+    /**
+     * @return The name of the Azure private endpoint resource.
+     * 
+     */
     public Optional<String> endpointName() {
         return Optional.ofNullable(this.endpointName);
     }
+    /**
+     * @return The sub-resource type (group ID) of the target resource.
+     * 
+     */
     public Optional<String> groupId() {
         return Optional.ofNullable(this.groupId);
     }
+    /**
+     * @return The Databricks network connectivity configuration ID.
+     * 
+     */
     public Optional<String> networkConnectivityConfigId() {
         return Optional.ofNullable(this.networkConnectivityConfigId);
     }
+    /**
+     * @return The Azure resource ID of the target resource.
+     * 
+     */
     public Optional<String> resourceId() {
         return Optional.ofNullable(this.resourceId);
     }
+    /**
+     * @return The ID of a private endpoint rule.
+     * 
+     */
     public Optional<String> ruleId() {
         return Optional.ofNullable(this.ruleId);
     }
+    /**
+     * @return Time in epoch milliseconds when the network was updated.
+     * 
+     */
     public Optional<Integer> updatedTime() {
         return Optional.ofNullable(this.updatedTime);
     }

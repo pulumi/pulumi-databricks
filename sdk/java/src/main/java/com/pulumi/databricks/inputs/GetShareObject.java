@@ -40,9 +40,17 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.cdfEnabled);
     }
 
+    /**
+     * Description about the object.
+     * 
+     */
     @Import(name="comment")
     private @Nullable String comment;
 
+    /**
+     * @return Description about the object.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
@@ -54,9 +62,17 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.content);
     }
 
+    /**
+     * Type of the object.
+     * 
+     */
     @Import(name="dataObjectType", required=true)
     private String dataObjectType;
 
+    /**
+     * @return Type of the object.
+     * 
+     */
     public String dataObjectType() {
         return this.dataObjectType;
     }
@@ -68,9 +84,17 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.historyDataSharingStatus);
     }
 
+    /**
+     * The name of the share
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the share
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -161,6 +185,12 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param comment Description about the object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable String comment) {
             $.comment = comment;
             return this;
@@ -171,6 +201,12 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param dataObjectType Type of the object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataObjectType(String dataObjectType) {
             $.dataObjectType = dataObjectType;
             return this;
@@ -181,6 +217,12 @@ public final class GetShareObject extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param name The name of the share
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

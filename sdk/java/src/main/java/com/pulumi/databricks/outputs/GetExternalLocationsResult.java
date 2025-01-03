@@ -16,6 +16,10 @@ public final class GetExternalLocationsResult {
      * 
      */
     private String id;
+    /**
+     * @return List of names of databricks.ExternalLocation in the metastore
+     * 
+     */
     private List<String> names;
 
     private GetExternalLocationsResult() {}
@@ -26,6 +30,10 @@ public final class GetExternalLocationsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return List of names of databricks.ExternalLocation in the metastore
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

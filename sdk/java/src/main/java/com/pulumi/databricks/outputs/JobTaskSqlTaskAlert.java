@@ -15,17 +15,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskSqlTaskAlert {
+    /**
+     * @return (String) identifier of the Databricks Alert (databricks_alert).
+     * 
+     */
     private String alertId;
+    /**
+     * @return flag that specifies if subscriptions are paused or not.
+     * 
+     */
     private @Nullable Boolean pauseSubscriptions;
+    /**
+     * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * 
+     */
     private @Nullable List<JobTaskSqlTaskAlertSubscription> subscriptions;
 
     private JobTaskSqlTaskAlert() {}
+    /**
+     * @return (String) identifier of the Databricks Alert (databricks_alert).
+     * 
+     */
     public String alertId() {
         return this.alertId;
     }
+    /**
+     * @return flag that specifies if subscriptions are paused or not.
+     * 
+     */
     public Optional<Boolean> pauseSubscriptions() {
         return Optional.ofNullable(this.pauseSubscriptions);
     }
+    /**
+     * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * 
+     */
     public List<JobTaskSqlTaskAlertSubscription> subscriptions() {
         return this.subscriptions == null ? List.of() : this.subscriptions;
     }

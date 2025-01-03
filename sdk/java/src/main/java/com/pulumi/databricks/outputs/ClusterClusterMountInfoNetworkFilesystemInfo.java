@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterClusterMountInfoNetworkFilesystemInfo {
+    /**
+     * @return string that will be passed as options passed to the `mount` command.
+     * 
+     */
     private @Nullable String mountOptions;
+    /**
+     * @return host name.
+     * 
+     */
     private String serverAddress;
 
     private ClusterClusterMountInfoNetworkFilesystemInfo() {}
+    /**
+     * @return string that will be passed as options passed to the `mount` command.
+     * 
+     */
     public Optional<String> mountOptions() {
         return Optional.ofNullable(this.mountOptions);
     }
+    /**
+     * @return host name.
+     * 
+     */
     public String serverAddress() {
         return this.serverAddress;
     }

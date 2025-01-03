@@ -16,6 +16,10 @@ public final class GetAwsUnityCatalogAssumeRolePolicyResult {
     private @Nullable String awsPartition;
     private String externalId;
     private String id;
+    /**
+     * @return AWS IAM Policy JSON document for assume role
+     * 
+     */
     private String json;
     private String roleName;
     private String unityCatalogIamArn;
@@ -33,6 +37,10 @@ public final class GetAwsUnityCatalogAssumeRolePolicyResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return AWS IAM Policy JSON document for assume role
+     * 
+     */
     public String json() {
         return this.json;
     }

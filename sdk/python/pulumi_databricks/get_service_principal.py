@@ -58,11 +58,17 @@ class GetServicePrincipalResult:
     @property
     @pulumi.getter(name="aclPrincipalId")
     def acl_principal_id(self) -> str:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        """
         return pulumi.get(self, "acl_principal_id")
 
     @property
     @pulumi.getter
     def active(self) -> bool:
+        """
+        Whether service principal is active or not.
+        """
         return pulumi.get(self, "active")
 
     @property
@@ -73,26 +79,41 @@ class GetServicePrincipalResult:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        Display name of the service principal, e.g. `Foo SPN`.
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> str:
+        """
+        ID of the service principal in an external identity provider.
+        """
         return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter
     def home(self) -> str:
+        """
+        Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+        """
         return pulumi.get(self, "home")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The id of the service principal.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def repos(self) -> str:
+        """
+        Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+        """
         return pulumi.get(self, "repos")
 
     @property
@@ -129,7 +150,47 @@ def get_service_principal(acl_principal_id: Optional[str] = None,
                           sp_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_service_principal.
+
+    ## Example Usage
+
+    Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    admins = databricks.get_group(display_name="admins")
+    spn = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
+    my_member_a = databricks.GroupMember("my_member_a",
+        group_id=admins.id,
+        member_id=spn.id)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    - End to end workspace management guide.
+    - get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+    - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+    - Group data to retrieve information about Group members, entitlements and instance profiles.
+    - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+    - GroupMember to attach users and groups as group members.
+    - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+    - databricks_service principal to manage service principals
+
+
+    :param str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+    :param bool active: Whether service principal is active or not.
+    :param str application_id: ID of the service principal. The service principal must exist before this resource can be retrieved.
+    :param str display_name: Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
+    :param str external_id: ID of the service principal in an external identity provider.
+    :param str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+    :param str id: The id of the service principal.
+    :param str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
     """
     __args__ = dict()
     __args__['aclPrincipalId'] = acl_principal_id
@@ -165,7 +226,47 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
                                  sp_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_service_principal.
+
+    ## Example Usage
+
+    Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    admins = databricks.get_group(display_name="admins")
+    spn = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
+    my_member_a = databricks.GroupMember("my_member_a",
+        group_id=admins.id,
+        member_id=spn.id)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    - End to end workspace management guide.
+    - get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+    - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+    - Group data to retrieve information about Group members, entitlements and instance profiles.
+    - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+    - GroupMember to attach users and groups as group members.
+    - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+    - databricks_service principal to manage service principals
+
+
+    :param str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+    :param bool active: Whether service principal is active or not.
+    :param str application_id: ID of the service principal. The service principal must exist before this resource can be retrieved.
+    :param str display_name: Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
+    :param str external_id: ID of the service principal in an external identity provider.
+    :param str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+    :param str id: The id of the service principal.
+    :param str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
     """
     __args__ = dict()
     __args__['aclPrincipalId'] = acl_principal_id

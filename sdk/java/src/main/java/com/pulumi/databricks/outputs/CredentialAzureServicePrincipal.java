@@ -10,17 +10,45 @@ import java.util.Objects;
 
 @CustomType
 public final class CredentialAzureServicePrincipal {
+    /**
+     * @return The application ID of the application registration within the referenced AAD tenant
+     * 
+     */
     private String applicationId;
+    /**
+     * @return The client secret generated for the above app ID in AAD. **This field is redacted on output**
+     * 
+     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+     * 
+     */
     private String clientSecret;
+    /**
+     * @return The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+     * 
+     */
     private String directoryId;
 
     private CredentialAzureServicePrincipal() {}
+    /**
+     * @return The application ID of the application registration within the referenced AAD tenant
+     * 
+     */
     public String applicationId() {
         return this.applicationId;
     }
+    /**
+     * @return The client secret generated for the above app ID in AAD. **This field is redacted on output**
+     * 
+     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+     * 
+     */
     public String clientSecret() {
         return this.clientSecret;
     }
+    /**
+     * @return The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+     * 
+     */
     public String directoryId() {
         return this.directoryId;
     }

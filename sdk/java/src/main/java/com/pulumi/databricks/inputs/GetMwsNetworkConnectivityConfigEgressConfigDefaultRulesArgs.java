@@ -16,16 +16,32 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs e
 
     public static final GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs Empty = new GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs();
 
+    /**
+     * The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+     * 
+     */
     @Import(name="awsStableIpRule")
     private @Nullable Output<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs> awsStableIpRule;
 
+    /**
+     * @return The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+     * 
+     */
     public Optional<Output<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs>> awsStableIpRule() {
         return Optional.ofNullable(this.awsStableIpRule);
     }
 
+    /**
+     * Array of Azure service endpoint rules.
+     * 
+     */
     @Import(name="azureServiceEndpointRule")
     private @Nullable Output<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs> azureServiceEndpointRule;
 
+    /**
+     * @return Array of Azure service endpoint rules.
+     * 
+     */
     public Optional<Output<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs>> azureServiceEndpointRule() {
         return Optional.ofNullable(this.azureServiceEndpointRule);
     }
@@ -55,20 +71,44 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs e
             $ = new GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param awsStableIpRule The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsStableIpRule(@Nullable Output<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs> awsStableIpRule) {
             $.awsStableIpRule = awsStableIpRule;
             return this;
         }
 
+        /**
+         * @param awsStableIpRule The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsStableIpRule(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs awsStableIpRule) {
             return awsStableIpRule(Output.of(awsStableIpRule));
         }
 
+        /**
+         * @param azureServiceEndpointRule Array of Azure service endpoint rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureServiceEndpointRule(@Nullable Output<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs> azureServiceEndpointRule) {
             $.azureServiceEndpointRule = azureServiceEndpointRule;
             return this;
         }
 
+        /**
+         * @param azureServiceEndpointRule Array of Azure service endpoint rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureServiceEndpointRule(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs azureServiceEndpointRule) {
             return azureServiceEndpointRule(Output.of(azureServiceEndpointRule));
         }

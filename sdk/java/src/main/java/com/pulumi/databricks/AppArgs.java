@@ -17,23 +17,47 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppArgs Empty = new AppArgs();
 
+    /**
+     * The description of the app.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return The description of the app.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * A list of resources that the app have access to.
+     * 
+     */
     @Import(name="resources")
     private @Nullable Output<List<AppResourceArgs>> resources;
 
+    /**
+     * @return A list of resources that the app have access to.
+     * 
+     */
     public Optional<Output<List<AppResourceArgs>>> resources() {
         return Optional.ofNullable(this.resources);
     }
@@ -64,33 +88,75 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
             $ = new AppArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description The description of the app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description The description of the app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param name The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param resources A list of resources that the app have access to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resources(@Nullable Output<List<AppResourceArgs>> resources) {
             $.resources = resources;
             return this;
         }
 
+        /**
+         * @param resources A list of resources that the app have access to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resources(List<AppResourceArgs> resources) {
             return resources(Output.of(resources));
         }
 
+        /**
+         * @param resources A list of resources that the app have access to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resources(AppResourceArgs... resources) {
             return resources(List.of(resources));
         }

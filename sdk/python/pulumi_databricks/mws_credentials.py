@@ -27,6 +27,11 @@ class MwsCredentialsArgs:
                  external_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MwsCredentials resource.
+        :param pulumi.Input[str] credentials_name: name of credentials to register
+        :param pulumi.Input[str] role_arn: ARN of cross-account role
+        :param pulumi.Input[str] account_id: **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+        :param pulumi.Input[int] creation_time: (Integer) time of credentials registration
+        :param pulumi.Input[str] credentials_id: (String) identifier of credentials
         """
         pulumi.set(__self__, "credentials_name", credentials_name)
         pulumi.set(__self__, "role_arn", role_arn)
@@ -45,6 +50,9 @@ class MwsCredentialsArgs:
     @property
     @pulumi.getter(name="credentialsName")
     def credentials_name(self) -> pulumi.Input[str]:
+        """
+        name of credentials to register
+        """
         return pulumi.get(self, "credentials_name")
 
     @credentials_name.setter
@@ -54,6 +62,9 @@ class MwsCredentialsArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[str]:
+        """
+        ARN of cross-account role
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -64,6 +75,9 @@ class MwsCredentialsArgs:
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""`account_id` should be set as part of the Databricks Config, not in the resource.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -73,6 +87,9 @@ class MwsCredentialsArgs:
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Integer) time of credentials registration
+        """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
@@ -82,6 +99,9 @@ class MwsCredentialsArgs:
     @property
     @pulumi.getter(name="credentialsId")
     def credentials_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (String) identifier of credentials
+        """
         return pulumi.get(self, "credentials_id")
 
     @credentials_id.setter
@@ -109,6 +129,11 @@ class _MwsCredentialsState:
                  role_arn: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MwsCredentials resources.
+        :param pulumi.Input[str] account_id: **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+        :param pulumi.Input[int] creation_time: (Integer) time of credentials registration
+        :param pulumi.Input[str] credentials_id: (String) identifier of credentials
+        :param pulumi.Input[str] credentials_name: name of credentials to register
+        :param pulumi.Input[str] role_arn: ARN of cross-account role
         """
         if account_id is not None:
             warnings.warn("""`account_id` should be set as part of the Databricks Config, not in the resource.""", DeprecationWarning)
@@ -130,6 +155,9 @@ class _MwsCredentialsState:
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""`account_id` should be set as part of the Databricks Config, not in the resource.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -139,6 +167,9 @@ class _MwsCredentialsState:
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Integer) time of credentials registration
+        """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
@@ -148,6 +179,9 @@ class _MwsCredentialsState:
     @property
     @pulumi.getter(name="credentialsId")
     def credentials_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (String) identifier of credentials
+        """
         return pulumi.get(self, "credentials_id")
 
     @credentials_id.setter
@@ -157,6 +191,9 @@ class _MwsCredentialsState:
     @property
     @pulumi.getter(name="credentialsName")
     def credentials_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        name of credentials to register
+        """
         return pulumi.get(self, "credentials_name")
 
     @credentials_name.setter
@@ -175,6 +212,9 @@ class _MwsCredentialsState:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        ARN of cross-account role
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -195,9 +235,61 @@ class MwsCredentials(pulumi.CustomResource):
                  role_arn: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a MwsCredentials resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+        databricks_account_id = config.require_object("databricksAccountId")
+        # Names of created resources will be prefixed with this value
+        prefix = config.require_object("prefix")
+        this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
+        cross_account_role = aws.iam.Role("cross_account_role",
+            name=f"{prefix}-crossaccount",
+            assume_role_policy=this.json,
+            tags=tags)
+        this_get_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
+        this_role_policy = aws.iam.RolePolicy("this",
+            name=f"{prefix}-policy",
+            role=cross_account_role.id,
+            policy=this_get_aws_cross_account_policy.json)
+        this_mws_credentials = databricks.MwsCredentials("this",
+            credentials_name=f"{prefix}-creds",
+            role_arn=cross_account_role.arn)
+        ```
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * Provisioning Databricks on AWS guide.
+        * MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+        * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+        * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+        * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+        * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
+        ## Import
+
+        This resource can be imported by the combination of its identifier and the account id:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/mwsCredentials:MwsCredentials this <account_id>/<credentials_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+        :param pulumi.Input[int] creation_time: (Integer) time of credentials registration
+        :param pulumi.Input[str] credentials_id: (String) identifier of credentials
+        :param pulumi.Input[str] credentials_name: name of credentials to register
+        :param pulumi.Input[str] role_arn: ARN of cross-account role
         """
         ...
     @overload
@@ -206,7 +298,54 @@ class MwsCredentials(pulumi.CustomResource):
                  args: MwsCredentialsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a MwsCredentials resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+        databricks_account_id = config.require_object("databricksAccountId")
+        # Names of created resources will be prefixed with this value
+        prefix = config.require_object("prefix")
+        this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
+        cross_account_role = aws.iam.Role("cross_account_role",
+            name=f"{prefix}-crossaccount",
+            assume_role_policy=this.json,
+            tags=tags)
+        this_get_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
+        this_role_policy = aws.iam.RolePolicy("this",
+            name=f"{prefix}-policy",
+            role=cross_account_role.id,
+            policy=this_get_aws_cross_account_policy.json)
+        this_mws_credentials = databricks.MwsCredentials("this",
+            credentials_name=f"{prefix}-creds",
+            role_arn=cross_account_role.arn)
+        ```
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * Provisioning Databricks on AWS guide.
+        * MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+        * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+        * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+        * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+        * MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+
+        ## Import
+
+        This resource can be imported by the combination of its identifier and the account id:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/mwsCredentials:MwsCredentials this <account_id>/<credentials_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param MwsCredentialsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -270,6 +409,11 @@ class MwsCredentials(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+        :param pulumi.Input[int] creation_time: (Integer) time of credentials registration
+        :param pulumi.Input[str] credentials_id: (String) identifier of credentials
+        :param pulumi.Input[str] credentials_name: name of credentials to register
+        :param pulumi.Input[str] role_arn: ARN of cross-account role
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -287,21 +431,33 @@ class MwsCredentials(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""`account_id` should be set as part of the Databricks Config, not in the resource.""")
     def account_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> pulumi.Output[int]:
+        """
+        (Integer) time of credentials registration
+        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter(name="credentialsId")
     def credentials_id(self) -> pulumi.Output[str]:
+        """
+        (String) identifier of credentials
+        """
         return pulumi.get(self, "credentials_id")
 
     @property
     @pulumi.getter(name="credentialsName")
     def credentials_name(self) -> pulumi.Output[str]:
+        """
+        name of credentials to register
+        """
         return pulumi.get(self, "credentials_name")
 
     @property
@@ -312,5 +468,8 @@ class MwsCredentials(pulumi.CustomResource):
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[str]:
+        """
+        ARN of cross-account role
+        """
         return pulumi.get(self, "role_arn")
 

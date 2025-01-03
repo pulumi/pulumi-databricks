@@ -15,9 +15,17 @@ public final class GetFunctionsFunctionInputParam extends com.pulumi.resources.I
 
     public static final GetFunctionsFunctionInputParam Empty = new GetFunctionsFunctionInputParam();
 
+    /**
+     * The array of definitions of the function&#39;s parameters:
+     * 
+     */
     @Import(name="parameters")
     private @Nullable List<GetFunctionsFunctionInputParamParameter> parameters;
 
+    /**
+     * @return The array of definitions of the function&#39;s parameters:
+     * 
+     */
     public Optional<List<GetFunctionsFunctionInputParamParameter>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
@@ -46,11 +54,23 @@ public final class GetFunctionsFunctionInputParam extends com.pulumi.resources.I
             $ = new GetFunctionsFunctionInputParam(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param parameters The array of definitions of the function&#39;s parameters:
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(@Nullable List<GetFunctionsFunctionInputParamParameter> parameters) {
             $.parameters = parameters;
             return this;
         }
 
+        /**
+         * @param parameters The array of definitions of the function&#39;s parameters:
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(GetFunctionsFunctionInputParamParameter... parameters) {
             return parameters(List.of(parameters));
         }

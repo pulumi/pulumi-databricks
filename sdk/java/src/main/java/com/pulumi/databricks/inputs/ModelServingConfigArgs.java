@@ -19,21 +19,39 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
 
     public static final ModelServingConfigArgs Empty = new ModelServingConfigArgs();
 
+    /**
+     * Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
+     * 
+     */
     @Import(name="autoCaptureConfig")
     private @Nullable Output<ModelServingConfigAutoCaptureConfigArgs> autoCaptureConfig;
 
+    /**
+     * @return Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
+     * 
+     */
     public Optional<Output<ModelServingConfigAutoCaptureConfigArgs>> autoCaptureConfig() {
         return Optional.ofNullable(this.autoCaptureConfig);
     }
 
+    /**
+     * A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
+     * 
+     */
     @Import(name="servedEntities")
     private @Nullable Output<List<ModelServingConfigServedEntityArgs>> servedEntities;
 
+    /**
+     * @return A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
+     * 
+     */
     public Optional<Output<List<ModelServingConfigServedEntityArgs>>> servedEntities() {
         return Optional.ofNullable(this.servedEntities);
     }
 
     /**
+     * Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+     * 
      * @deprecated
      * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
      * 
@@ -43,6 +61,8 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<List<ModelServingConfigServedModelArgs>> servedModels;
 
     /**
+     * @return Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+     * 
      * @deprecated
      * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
      * 
@@ -52,9 +72,17 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.servedModels);
     }
 
+    /**
+     * A single block represents the traffic split configuration amongst the served models.
+     * 
+     */
     @Import(name="trafficConfig")
     private @Nullable Output<ModelServingConfigTrafficConfigArgs> trafficConfig;
 
+    /**
+     * @return A single block represents the traffic split configuration amongst the served models.
+     * 
+     */
     public Optional<Output<ModelServingConfigTrafficConfigArgs>> trafficConfig() {
         return Optional.ofNullable(this.trafficConfig);
     }
@@ -86,29 +114,61 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
             $ = new ModelServingConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoCaptureConfig Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoCaptureConfig(@Nullable Output<ModelServingConfigAutoCaptureConfigArgs> autoCaptureConfig) {
             $.autoCaptureConfig = autoCaptureConfig;
             return this;
         }
 
+        /**
+         * @param autoCaptureConfig Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoCaptureConfig(ModelServingConfigAutoCaptureConfigArgs autoCaptureConfig) {
             return autoCaptureConfig(Output.of(autoCaptureConfig));
         }
 
+        /**
+         * @param servedEntities A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servedEntities(@Nullable Output<List<ModelServingConfigServedEntityArgs>> servedEntities) {
             $.servedEntities = servedEntities;
             return this;
         }
 
+        /**
+         * @param servedEntities A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servedEntities(List<ModelServingConfigServedEntityArgs> servedEntities) {
             return servedEntities(Output.of(servedEntities));
         }
 
+        /**
+         * @param servedEntities A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servedEntities(ModelServingConfigServedEntityArgs... servedEntities) {
             return servedEntities(List.of(servedEntities));
         }
 
         /**
+         * @param servedModels Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -122,6 +182,8 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param servedModels Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -134,6 +196,8 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param servedModels Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -145,11 +209,23 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
             return servedModels(List.of(servedModels));
         }
 
+        /**
+         * @param trafficConfig A single block represents the traffic split configuration amongst the served models.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trafficConfig(@Nullable Output<ModelServingConfigTrafficConfigArgs> trafficConfig) {
             $.trafficConfig = trafficConfig;
             return this;
         }
 
+        /**
+         * @param trafficConfig A single block represents the traffic split configuration amongst the served models.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trafficConfig(ModelServingConfigTrafficConfigArgs trafficConfig) {
             return trafficConfig(Output.of(trafficConfig));
         }

@@ -12,16 +12,103 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
+//
+// > To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sharedDir, err := databricks.NewDirectory(ctx, "shared_dir", &databricks.DirectoryArgs{
+//				Path: pulumi.String("/Shared/Queries"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			this, err := databricks.NewSqlQuery(ctx, "this", &databricks.SqlQueryArgs{
+//				DataSourceId: pulumi.Any(example.DataSourceId),
+//				Name:         pulumi.String("My Query Name"),
+//				Query:        pulumi.String("SELECT 1 AS p1, 2 as p2"),
+//				Parent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {
+//					return fmt.Sprintf("folders/%v", objectId), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSqlAlert(ctx, "alert", &databricks.SqlAlertArgs{
+//				QueryId: this.ID(),
+//				Name:    pulumi.String("My Alert"),
+//				Parent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {
+//					return fmt.Sprintf("folders/%v", objectId), nil
+//				}).(pulumi.StringOutput),
+//				Rearm: pulumi.Int(1),
+//				Options: &databricks.SqlAlertOptionsArgs{
+//					Column: pulumi.String("p1"),
+//					Op:     pulumi.String("=="),
+//					Value:  pulumi.String("2"),
+//					Muted:  pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Access Control
+//
+// Permissions can control which groups or individual users can *Manage*, *Edit*, *Run* or *View* individual alerts.
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * End to end workspace management guide.
+// * SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
+// * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+// * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+//
+// ## Import
+//
+// This resource can be imported using alert ID:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/sqlAlert:SqlAlert this <alert-id>
+// ```
 type SqlAlert struct {
 	pulumi.CustomResourceState
 
-	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
-	Name      pulumi.StringOutput    `pulumi:"name"`
-	Options   SqlAlertOptionsOutput  `pulumi:"options"`
-	Parent    pulumi.StringPtrOutput `pulumi:"parent"`
-	QueryId   pulumi.StringOutput    `pulumi:"queryId"`
-	Rearm     pulumi.IntPtrOutput    `pulumi:"rearm"`
-	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Name of the alert.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Alert configuration options.
+	Options SqlAlertOptionsOutput `pulumi:"options"`
+	// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
+	Parent pulumi.StringPtrOutput `pulumi:"parent"`
+	// ID of the query evaluated by the alert.
+	QueryId pulumi.StringOutput `pulumi:"queryId"`
+	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
+	Rearm     pulumi.IntPtrOutput `pulumi:"rearm"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
 // NewSqlAlert registers a new resource with the given unique name, arguments, and options.
@@ -60,21 +147,31 @@ func GetSqlAlert(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlAlert resources.
 type sqlAlertState struct {
-	CreatedAt *string          `pulumi:"createdAt"`
-	Name      *string          `pulumi:"name"`
-	Options   *SqlAlertOptions `pulumi:"options"`
-	Parent    *string          `pulumi:"parent"`
-	QueryId   *string          `pulumi:"queryId"`
-	Rearm     *int             `pulumi:"rearm"`
-	UpdatedAt *string          `pulumi:"updatedAt"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Name of the alert.
+	Name *string `pulumi:"name"`
+	// Alert configuration options.
+	Options *SqlAlertOptions `pulumi:"options"`
+	// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
+	Parent *string `pulumi:"parent"`
+	// ID of the query evaluated by the alert.
+	QueryId *string `pulumi:"queryId"`
+	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
+	Rearm     *int    `pulumi:"rearm"`
+	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type SqlAlertState struct {
 	CreatedAt pulumi.StringPtrInput
-	Name      pulumi.StringPtrInput
-	Options   SqlAlertOptionsPtrInput
-	Parent    pulumi.StringPtrInput
-	QueryId   pulumi.StringPtrInput
+	// Name of the alert.
+	Name pulumi.StringPtrInput
+	// Alert configuration options.
+	Options SqlAlertOptionsPtrInput
+	// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
+	Parent pulumi.StringPtrInput
+	// ID of the query evaluated by the alert.
+	QueryId pulumi.StringPtrInput
+	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
 	Rearm     pulumi.IntPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -84,22 +181,32 @@ func (SqlAlertState) ElementType() reflect.Type {
 }
 
 type sqlAlertArgs struct {
-	CreatedAt *string         `pulumi:"createdAt"`
-	Name      *string         `pulumi:"name"`
-	Options   SqlAlertOptions `pulumi:"options"`
-	Parent    *string         `pulumi:"parent"`
-	QueryId   string          `pulumi:"queryId"`
-	Rearm     *int            `pulumi:"rearm"`
-	UpdatedAt *string         `pulumi:"updatedAt"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Name of the alert.
+	Name *string `pulumi:"name"`
+	// Alert configuration options.
+	Options SqlAlertOptions `pulumi:"options"`
+	// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
+	Parent *string `pulumi:"parent"`
+	// ID of the query evaluated by the alert.
+	QueryId string `pulumi:"queryId"`
+	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
+	Rearm     *int    `pulumi:"rearm"`
+	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 // The set of arguments for constructing a SqlAlert resource.
 type SqlAlertArgs struct {
 	CreatedAt pulumi.StringPtrInput
-	Name      pulumi.StringPtrInput
-	Options   SqlAlertOptionsInput
-	Parent    pulumi.StringPtrInput
-	QueryId   pulumi.StringInput
+	// Name of the alert.
+	Name pulumi.StringPtrInput
+	// Alert configuration options.
+	Options SqlAlertOptionsInput
+	// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
+	Parent pulumi.StringPtrInput
+	// ID of the query evaluated by the alert.
+	QueryId pulumi.StringInput
+	// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
 	Rearm     pulumi.IntPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -195,22 +302,27 @@ func (o SqlAlertOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlAlert) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Name of the alert.
 func (o SqlAlertOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlAlert) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Alert configuration options.
 func (o SqlAlertOutput) Options() SqlAlertOptionsOutput {
 	return o.ApplyT(func(v *SqlAlert) SqlAlertOptionsOutput { return v.Options }).(SqlAlertOptionsOutput)
 }
 
+// The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
 func (o SqlAlertOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlAlert) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
+// ID of the query evaluated by the alert.
 func (o SqlAlertOutput) QueryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlAlert) pulumi.StringOutput { return v.QueryId }).(pulumi.StringOutput)
 }
 
+// Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
 func (o SqlAlertOutput) Rearm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SqlAlert) pulumi.IntPtrOutput { return v.Rearm }).(pulumi.IntPtrOutput)
 }

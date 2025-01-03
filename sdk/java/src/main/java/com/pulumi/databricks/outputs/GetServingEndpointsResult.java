@@ -12,6 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServingEndpointsResult {
+    /**
+     * @return List of objects describing the serving endpoints. Each object consists of following attributes:
+     * 
+     */
     private List<GetServingEndpointsEndpoint> endpoints;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -20,6 +24,10 @@ public final class GetServingEndpointsResult {
     private String id;
 
     private GetServingEndpointsResult() {}
+    /**
+     * @return List of objects describing the serving endpoints. Each object consists of following attributes:
+     * 
+     */
     public List<GetServingEndpointsEndpoint> endpoints() {
         return this.endpoints;
     }

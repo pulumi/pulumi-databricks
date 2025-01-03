@@ -13,9 +13,17 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart exte
 
     public static final GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart Empty = new GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart();
 
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     * 
+     */
     @Import(name="id", required=true)
     private String id;
 
+    /**
+     * @return the id of databricks.Job if the resource was matched by name.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -44,6 +52,12 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart exte
             $ = new GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id the id of databricks.Job if the resource was matched by name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             $.id = id;
             return this;

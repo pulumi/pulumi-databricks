@@ -11,6 +11,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// This data source allows to export a notebook from Databricks Workspace.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.LookupNotebook(ctx, &databricks.LookupNotebookArgs{
+//				Path:   "/Production/Features",
+//				Format: "SOURCE",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupNotebook(ctx *pulumi.Context, args *LookupNotebookArgs, opts ...pulumi.InvokeOption) (*LookupNotebookResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotebookResult
@@ -23,23 +53,33 @@ func LookupNotebook(ctx *pulumi.Context, args *LookupNotebookArgs, opts ...pulum
 
 // A collection of arguments for invoking getNotebook.
 type LookupNotebookArgs struct {
-	Format     string  `pulumi:"format"`
-	Language   *string `pulumi:"language"`
-	ObjectId   *int    `pulumi:"objectId"`
+	// Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
+	Format string `pulumi:"format"`
+	// notebook language
+	Language *string `pulumi:"language"`
+	// notebook object ID
+	ObjectId *int `pulumi:"objectId"`
+	// notebook object type
 	ObjectType *string `pulumi:"objectType"`
-	Path       string  `pulumi:"path"`
+	// Notebook path on the workspace
+	Path string `pulumi:"path"`
 }
 
 // A collection of values returned by getNotebook.
 type LookupNotebookResult struct {
+	// notebook content in selected format
 	Content string `pulumi:"content"`
 	Format  string `pulumi:"format"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string `pulumi:"id"`
-	Language      string `pulumi:"language"`
-	ObjectId      int    `pulumi:"objectId"`
-	ObjectType    string `pulumi:"objectType"`
-	Path          string `pulumi:"path"`
+	Id string `pulumi:"id"`
+	// notebook language
+	Language string `pulumi:"language"`
+	// notebook object ID
+	ObjectId int `pulumi:"objectId"`
+	// notebook object type
+	ObjectType string `pulumi:"objectType"`
+	Path       string `pulumi:"path"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 	WorkspacePath string `pulumi:"workspacePath"`
 }
 
@@ -54,11 +94,16 @@ func LookupNotebookOutput(ctx *pulumi.Context, args LookupNotebookOutputArgs, op
 
 // A collection of arguments for invoking getNotebook.
 type LookupNotebookOutputArgs struct {
-	Format     pulumi.StringInput    `pulumi:"format"`
-	Language   pulumi.StringPtrInput `pulumi:"language"`
-	ObjectId   pulumi.IntPtrInput    `pulumi:"objectId"`
+	// Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
+	Format pulumi.StringInput `pulumi:"format"`
+	// notebook language
+	Language pulumi.StringPtrInput `pulumi:"language"`
+	// notebook object ID
+	ObjectId pulumi.IntPtrInput `pulumi:"objectId"`
+	// notebook object type
 	ObjectType pulumi.StringPtrInput `pulumi:"objectType"`
-	Path       pulumi.StringInput    `pulumi:"path"`
+	// Notebook path on the workspace
+	Path pulumi.StringInput `pulumi:"path"`
 }
 
 func (LookupNotebookOutputArgs) ElementType() reflect.Type {
@@ -80,6 +125,7 @@ func (o LookupNotebookResultOutput) ToLookupNotebookResultOutputWithContext(ctx 
 	return o
 }
 
+// notebook content in selected format
 func (o LookupNotebookResultOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookResult) string { return v.Content }).(pulumi.StringOutput)
 }
@@ -93,14 +139,17 @@ func (o LookupNotebookResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// notebook language
 func (o LookupNotebookResultOutput) Language() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookResult) string { return v.Language }).(pulumi.StringOutput)
 }
 
+// notebook object ID
 func (o LookupNotebookResultOutput) ObjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNotebookResult) int { return v.ObjectId }).(pulumi.IntOutput)
 }
 
+// notebook object type
 func (o LookupNotebookResultOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookResult) string { return v.ObjectType }).(pulumi.StringOutput)
 }
@@ -109,6 +158,7 @@ func (o LookupNotebookResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookResult) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 func (o LookupNotebookResultOutput) WorkspacePath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookResult) string { return v.WorkspacePath }).(pulumi.StringOutput)
 }

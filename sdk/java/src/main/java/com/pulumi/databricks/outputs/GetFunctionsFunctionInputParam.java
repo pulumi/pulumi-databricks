@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFunctionsFunctionInputParam {
+    /**
+     * @return The array of definitions of the function&#39;s parameters:
+     * 
+     */
     private @Nullable List<GetFunctionsFunctionInputParamParameter> parameters;
 
     private GetFunctionsFunctionInputParam() {}
+    /**
+     * @return The array of definitions of the function&#39;s parameters:
+     * 
+     */
     public List<GetFunctionsFunctionInputParamParameter> parameters() {
         return this.parameters == null ? List.of() : this.parameters;
     }

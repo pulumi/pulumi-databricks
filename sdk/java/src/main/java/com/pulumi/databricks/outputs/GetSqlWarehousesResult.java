@@ -18,6 +18,10 @@ public final class GetSqlWarehousesResult {
      * 
      */
     private String id;
+    /**
+     * @return list of databricks.SqlEndpoint ids
+     * 
+     */
     private List<String> ids;
     private @Nullable String warehouseNameContains;
 
@@ -29,6 +33,10 @@ public final class GetSqlWarehousesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return list of databricks.SqlEndpoint ids
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }

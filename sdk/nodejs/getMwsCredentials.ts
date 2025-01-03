@@ -4,6 +4,36 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Lists all databricks.MwsCredentials in Databricks Account.
+ *
+ * > **Note** `accountId` provider configuration property is required for this resource to work.
+ *
+ * ## Example Usage
+ *
+ * Listing all credentials in Databricks Account
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getMwsCredentials({});
+ * export const allMwsCredentials = all.then(all => all.ids);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * Provisioning Databricks on AWS guide.
+ * * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+ * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+ * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+ * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+ * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+ */
 export function getMwsCredentials(args?: GetMwsCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetMwsCredentialsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,6 +46,9 @@ export function getMwsCredentials(args?: GetMwsCredentialsArgs, opts?: pulumi.In
  * A collection of arguments for invoking getMwsCredentials.
  */
 export interface GetMwsCredentialsArgs {
+    /**
+     * name-to-id map for all of the credentials in the account
+     */
     ids?: {[key: string]: string};
 }
 
@@ -27,8 +60,41 @@ export interface GetMwsCredentialsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * name-to-id map for all of the credentials in the account
+     */
     readonly ids: {[key: string]: string};
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Lists all databricks.MwsCredentials in Databricks Account.
+ *
+ * > **Note** `accountId` provider configuration property is required for this resource to work.
+ *
+ * ## Example Usage
+ *
+ * Listing all credentials in Databricks Account
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getMwsCredentials({});
+ * export const allMwsCredentials = all.then(all => all.ids);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * Provisioning Databricks on AWS guide.
+ * * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+ * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+ * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+ * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+ * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+ */
 export function getMwsCredentialsOutput(args?: GetMwsCredentialsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMwsCredentialsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,5 +107,8 @@ export function getMwsCredentialsOutput(args?: GetMwsCredentialsOutputArgs, opts
  * A collection of arguments for invoking getMwsCredentials.
  */
 export interface GetMwsCredentialsOutputArgs {
+    /**
+     * name-to-id map for all of the credentials in the account
+     */
     ids?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

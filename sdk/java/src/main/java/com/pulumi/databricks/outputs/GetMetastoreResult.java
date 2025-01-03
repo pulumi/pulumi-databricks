@@ -11,22 +11,46 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMetastoreResult {
+    /**
+     * @return ID of the metastore
+     * 
+     */
     private String id;
     private String metastoreId;
+    /**
+     * @return MetastoreInfo object for a databricks_metastore. This contains the following attributes:
+     * 
+     */
     private GetMetastoreMetastoreInfo metastoreInfo;
+    /**
+     * @return Name of metastore.
+     * 
+     */
     private String name;
     private String region;
 
     private GetMetastoreResult() {}
+    /**
+     * @return ID of the metastore
+     * 
+     */
     public String id() {
         return this.id;
     }
     public String metastoreId() {
         return this.metastoreId;
     }
+    /**
+     * @return MetastoreInfo object for a databricks_metastore. This contains the following attributes:
+     * 
+     */
     public GetMetastoreMetastoreInfo metastoreInfo() {
         return this.metastoreInfo;
     }
+    /**
+     * @return Name of metastore.
+     * 
+     */
     public String name() {
         return this.name;
     }

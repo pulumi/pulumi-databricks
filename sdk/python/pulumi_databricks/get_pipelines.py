@@ -48,6 +48,9 @@ class GetPipelinesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -71,7 +74,55 @@ def get_pipelines(ids: Optional[Sequence[str]] = None,
                   pipeline_name: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPipelinesResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+
+    Retrieves a list of all Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+
+    ## Example Usage
+
+    Get all Delta Live Tables pipelines:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_pipelines()
+    pulumi.export("allPipelines", all.ids)
+    ```
+
+    Filter Delta Live Tables pipelines by name (exact match):
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_pipelines(pipeline_name="my_pipeline")
+    pulumi.export("myPipeline", this.ids)
+    ```
+
+    Filter Delta Live Tables pipelines by name (wildcard search):
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_pipelines(pipeline_name="%pipeline%")
+    pulumi.export("wildcardPipelines", this.ids)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * End to end workspace management guide.
+    * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+    * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+    * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+
+
+    :param Sequence[str] ids: List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+    :param str pipeline_name: Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -87,7 +138,55 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
                          pipeline_name: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelinesResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _authentication is not configured for provider_ errors.
+
+    Retrieves a list of all Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+
+    ## Example Usage
+
+    Get all Delta Live Tables pipelines:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_pipelines()
+    pulumi.export("allPipelines", all.ids)
+    ```
+
+    Filter Delta Live Tables pipelines by name (exact match):
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_pipelines(pipeline_name="my_pipeline")
+    pulumi.export("myPipeline", this.ids)
+    ```
+
+    Filter Delta Live Tables pipelines by name (wildcard search):
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_pipelines(pipeline_name="%pipeline%")
+    pulumi.export("wildcardPipelines", this.ids)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * End to end workspace management guide.
+    * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+    * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+    * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+
+
+    :param Sequence[str] ids: List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+    :param str pipeline_name: Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
     """
     __args__ = dict()
     __args__['ids'] = ids

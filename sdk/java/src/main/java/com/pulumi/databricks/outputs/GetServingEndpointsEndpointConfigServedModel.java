@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 public final class GetServingEndpointsEndpointConfigServedModel {
     private @Nullable String modelName;
     private @Nullable String modelVersion;
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     private @Nullable String name;
 
     private GetServingEndpointsEndpointConfigServedModel() {}
@@ -22,6 +26,10 @@ public final class GetServingEndpointsEndpointConfigServedModel {
     public Optional<String> modelVersion() {
         return Optional.ofNullable(this.modelVersion);
     }
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

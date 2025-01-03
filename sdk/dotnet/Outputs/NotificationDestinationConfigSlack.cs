@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class NotificationDestinationConfigSlack
     {
+        /// <summary>
+        /// The Slack webhook URL.
+        /// </summary>
         public readonly string? Url;
         public readonly bool? UrlSet;
 

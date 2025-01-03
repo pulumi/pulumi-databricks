@@ -14,6 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetSqlWarehouseChannelResult
     {
         public readonly string? DbsqlVersion;
+        /// <summary>
+        /// Name of the SQL warehouse to search (case-sensitive).
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

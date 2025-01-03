@@ -4,6 +4,83 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * These resources are invoked in the workspace context.
+ *
+ * ## Example Usage
+ *
+ * In workspace context, adding account-level user to a workspace:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // Use the account provider
+ * const me = databricks.getUser({
+ *     userName: "me@example.com",
+ * });
+ * const addUser = new databricks.PermissionAssignment("add_user", {
+ *     principalId: me.then(me => me.id),
+ *     permissions: ["USER"],
+ * });
+ * ```
+ *
+ * In workspace context, adding account-level service principal to a workspace:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // Use the account provider
+ * const sp = databricks.getServicePrincipal({
+ *     displayName: "Automation-only SP",
+ * });
+ * const addAdminSpn = new databricks.PermissionAssignment("add_admin_spn", {
+ *     principalId: sp.then(sp => sp.id),
+ *     permissions: ["ADMIN"],
+ * });
+ * ```
+ *
+ * In workspace context, adding account-level group to a workspace:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // Use the account provider
+ * const accountLevel = databricks.getGroup({
+ *     displayName: "example-group",
+ * });
+ * // Use the workspace provider
+ * const _this = new databricks.PermissionAssignment("this", {
+ *     principalId: accountLevel.then(accountLevel => accountLevel.id),
+ *     permissions: ["USER"],
+ * });
+ * const workspaceLevel = databricks.getGroup({
+ *     displayName: "example-group",
+ * });
+ * export const databricksGroupId = workspaceLevel.then(workspaceLevel => workspaceLevel.id);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+ * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+ * * databricks.GroupMember to attach users and groups as group members.
+ * * databricks.MwsPermissionAssignment to manage permission assignment from an account context
+ *
+ * ## Import
+ *
+ * The resource `databricks_permission_assignment` can be imported using the principal id
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this principal_id
+ * ```
+ */
 export class PermissionAssignment extends pulumi.CustomResource {
     /**
      * Get an existing PermissionAssignment resource's state with the given name, ID, and optional extra
@@ -32,7 +109,15 @@ export class PermissionAssignment extends pulumi.CustomResource {
         return obj['__pulumiType'] === PermissionAssignment.__pulumiType;
     }
 
+    /**
+     * The list of workspace permissions to assign to the principal:
+     * * `"USER"` - Can access the workspace with basic privileges.
+     * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     */
     public readonly permissions!: pulumi.Output<string[]>;
+    /**
+     * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
+     */
     public readonly principalId!: pulumi.Output<string>;
 
     /**
@@ -70,7 +155,15 @@ export class PermissionAssignment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PermissionAssignment resources.
  */
 export interface PermissionAssignmentState {
+    /**
+     * The list of workspace permissions to assign to the principal:
+     * * `"USER"` - Can access the workspace with basic privileges.
+     * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
+     */
     principalId?: pulumi.Input<string>;
 }
 
@@ -78,6 +171,14 @@ export interface PermissionAssignmentState {
  * The set of arguments for constructing a PermissionAssignment resource.
  */
 export interface PermissionAssignmentArgs {
+    /**
+     * The list of workspace permissions to assign to the principal:
+     * * `"USER"` - Can access the workspace with basic privileges.
+     * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
+     */
     principalId: pulumi.Input<string>;
 }

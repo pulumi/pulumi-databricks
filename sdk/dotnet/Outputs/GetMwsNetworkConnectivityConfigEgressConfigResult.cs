@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetMwsNetworkConnectivityConfigEgressConfigResult
     {
+        /// <summary>
+        /// Array of default rules.
+        /// </summary>
         public readonly Outputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesResult? DefaultRules;
+        /// <summary>
+        /// Array of target rules.
+        /// </summary>
         public readonly Outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesResult? TargetRules;
 
         [OutputConstructor]

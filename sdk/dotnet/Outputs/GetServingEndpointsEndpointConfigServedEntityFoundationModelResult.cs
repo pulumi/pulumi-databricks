@@ -16,6 +16,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Description;
         public readonly string? DisplayName;
         public readonly string? Docs;
+        /// <summary>
+        /// The name of the model serving endpoint.
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

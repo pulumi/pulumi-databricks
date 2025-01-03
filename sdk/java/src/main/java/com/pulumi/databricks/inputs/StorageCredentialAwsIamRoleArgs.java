@@ -23,9 +23,21 @@ public final class StorageCredentialAwsIamRoleArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.externalId);
     }
 
+    /**
+     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * 
+     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+     * 
+     */
     @Import(name="roleArn", required=true)
     private Output<String> roleArn;
 
+    /**
+     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * 
+     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+     * 
+     */
     public Output<String> roleArn() {
         return this.roleArn;
     }
@@ -72,11 +84,27 @@ public final class StorageCredentialAwsIamRoleArgs extends com.pulumi.resources.
             return externalId(Output.of(externalId));
         }
 
+        /**
+         * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+         * 
+         * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(Output<String> roleArn) {
             $.roleArn = roleArn;
             return this;
         }
 
+        /**
+         * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+         * 
+         * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(String roleArn) {
             return roleArn(Output.of(roleArn));
         }

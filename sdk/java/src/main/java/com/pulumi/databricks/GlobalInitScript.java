@@ -16,17 +16,47 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * This resource allows you to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.
+ * 
+ * ## Import
+ * 
+ * The resource global init script can be imported using script ID:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/globalInitScript:GlobalInitScript")
 public class GlobalInitScript extends com.pulumi.resources.CustomResource {
+    /**
+     * The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+     * 
+     */
     @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
+    /**
+     * @return The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+     * 
+     */
     public Output<Optional<String>> contentBase64() {
         return Codegen.optional(this.contentBase64);
     }
+    /**
+     * specifies if the script is enabled for execution, or not
+     * 
+     */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
+    /**
+     * @return specifies if the script is enabled for execution, or not
+     * 
+     */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
@@ -36,21 +66,45 @@ public class GlobalInitScript extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> md5() {
         return Codegen.optional(this.md5);
     }
+    /**
+     * the name of the script.  It should be unique
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return the name of the script.  It should be unique
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * 
+     */
     @Export(name="position", refs={Integer.class}, tree="[0]")
     private Output<Integer> position;
 
+    /**
+     * @return the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * 
+     */
     public Output<Integer> position() {
         return this.position;
     }
+    /**
+     * Path to script&#39;s source code on local filesystem. Conflicts with `content_base64`
+     * 
+     */
     @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
+    /**
+     * @return Path to script&#39;s source code on local filesystem. Conflicts with `content_base64`
+     * 
+     */
     public Output<Optional<String>> source() {
         return Codegen.optional(this.source);
     }

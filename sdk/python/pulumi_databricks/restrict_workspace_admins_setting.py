@@ -26,6 +26,7 @@ class RestrictWorkspaceAdminsSettingArgs:
                  setting_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RestrictWorkspaceAdminsSetting resource.
+        :param pulumi.Input['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs'] restrict_workspace_admins: The configuration details.
         """
         pulumi.set(__self__, "restrict_workspace_admins", restrict_workspace_admins)
         if etag is not None:
@@ -36,6 +37,9 @@ class RestrictWorkspaceAdminsSettingArgs:
     @property
     @pulumi.getter(name="restrictWorkspaceAdmins")
     def restrict_workspace_admins(self) -> pulumi.Input['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs']:
+        """
+        The configuration details.
+        """
         return pulumi.get(self, "restrict_workspace_admins")
 
     @restrict_workspace_admins.setter
@@ -69,6 +73,7 @@ class _RestrictWorkspaceAdminsSettingState:
                  setting_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RestrictWorkspaceAdminsSetting resources.
+        :param pulumi.Input['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs'] restrict_workspace_admins: The configuration details.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -89,6 +94,9 @@ class _RestrictWorkspaceAdminsSettingState:
     @property
     @pulumi.getter(name="restrictWorkspaceAdmins")
     def restrict_workspace_admins(self) -> Optional[pulumi.Input['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs']]:
+        """
+        The configuration details.
+        """
         return pulumi.get(self, "restrict_workspace_admins")
 
     @restrict_workspace_admins.setter
@@ -115,9 +123,48 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  setting_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a RestrictWorkspaceAdminsSetting resource with the given unique name, props, and options.
+        > This resource can only be used with a workspace-level provider!
+
+        The `RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
+
+        With the status set to `ALLOW_ALL`, workspace admins can:
+
+        1. Create service principal personal access tokens on behalf of any service principal in their workspace.
+        2. Change a job owner to any user in the workspace.
+        3. Change the job run_as setting to any user in their workspace or a service principal on which they have the Service Principal User role.
+
+        With the status set to `RESTRICT_TOKENS_AND_JOB_RUN_AS`, workspace admins can:
+
+        1. Only create personal access tokens on behalf of service principals on which they have the Service Principal User role.
+        2. Only change a job owner to themselves.
+        3. Only change the job run_as setting to themselves a service principal on which they have the Service Principal User role.
+
+        > Only account admins can update the setting. And the account admin must be part of the workspace to change the setting status.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.RestrictWorkspaceAdminsSetting("this", restrict_workspace_admins={
+            "status": "RESTRICT_TOKENS_AND_JOB_RUN_AS",
+        })
+        ```
+
+        ## Import
+
+        This resource can be imported by predefined name `global`:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: The configuration details.
         """
         ...
     @overload
@@ -126,7 +173,45 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  args: RestrictWorkspaceAdminsSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RestrictWorkspaceAdminsSetting resource with the given unique name, props, and options.
+        > This resource can only be used with a workspace-level provider!
+
+        The `RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
+
+        With the status set to `ALLOW_ALL`, workspace admins can:
+
+        1. Create service principal personal access tokens on behalf of any service principal in their workspace.
+        2. Change a job owner to any user in the workspace.
+        3. Change the job run_as setting to any user in their workspace or a service principal on which they have the Service Principal User role.
+
+        With the status set to `RESTRICT_TOKENS_AND_JOB_RUN_AS`, workspace admins can:
+
+        1. Only create personal access tokens on behalf of service principals on which they have the Service Principal User role.
+        2. Only change a job owner to themselves.
+        3. Only change the job run_as setting to themselves a service principal on which they have the Service Principal User role.
+
+        > Only account admins can update the setting. And the account admin must be part of the workspace to change the setting status.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.RestrictWorkspaceAdminsSetting("this", restrict_workspace_admins={
+            "status": "RESTRICT_TOKENS_AND_JOB_RUN_AS",
+        })
+        ```
+
+        ## Import
+
+        This resource can be imported by predefined name `global`:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global
+        ```
+
         :param str resource_name: The name of the resource.
         :param RestrictWorkspaceAdminsSettingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -179,6 +264,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs', 'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: The configuration details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -197,6 +283,9 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
     @property
     @pulumi.getter(name="restrictWorkspaceAdmins")
     def restrict_workspace_admins(self) -> pulumi.Output['outputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins']:
+        """
+        The configuration details.
+        """
         return pulumi.get(self, "restrict_workspace_admins")
 
     @property

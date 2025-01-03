@@ -4,6 +4,54 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Security-conscious enterprises that use cloud SaaS applications need to restrict access to their own employees. Authentication helps to prove user identity, but that does not enforce network location of the users. Accessing a cloud service from an unsecured network can pose security risks to an enterprise, especially when the user may have authorized access to sensitive or personal data. Enterprise network perimeters apply security policies and limit access to external services (for example, firewalls, proxies, DLP, and logging), so access beyond these controls are assumed to be untrusted. Please see [IP Access List](https://docs.databricks.com/security/network/ip-access-list.html) for full feature documentation.
+ *
+ * > The total number of IP addresses and CIDR scopes provided across all ACL Lists in a workspace can not exceed 1000.  Refer to the docs above for specifics.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.WorkspaceConf("this", {customConfig: {
+ *     enableIpAccessLists: "true",
+ * }});
+ * const allowed_list = new databricks.IpAccessList("allowed-list", {
+ *     label: "allow_in",
+ *     listType: "ALLOW",
+ *     ipAddresses: [
+ *         "1.1.1.1",
+ *         "1.2.3.0/24",
+ *         "1.2.5.0/24",
+ *     ],
+ * }, {
+ *     dependsOn: [_this],
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * Provisioning AWS Databricks workspaces with a Hub & Spoke firewall for data exfiltration protection guide.
+ * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+ * * databricks.MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
+ * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+ * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+ *
+ * ## Import
+ *
+ * The databricks_ip_access_list can be imported using id:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
+ * ```
+ */
 export class IpAccessList extends pulumi.CustomResource {
     /**
      * Get an existing IpAccessList resource's state with the given name, ID, and optional extra
@@ -32,9 +80,21 @@ export class IpAccessList extends pulumi.CustomResource {
         return obj['__pulumiType'] === IpAccessList.__pulumiType;
     }
 
+    /**
+     * Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
+     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * A string list of IP addresses and CIDR ranges.
+     */
     public readonly ipAddresses!: pulumi.Output<string[]>;
+    /**
+     * This is the display name for the given IP ACL List.
+     */
     public readonly label!: pulumi.Output<string>;
+    /**
+     * Can only be "ALLOW" or "BLOCK".
+     */
     public readonly listType!: pulumi.Output<string>;
 
     /**
@@ -79,9 +139,21 @@ export class IpAccessList extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IpAccessList resources.
  */
 export interface IpAccessListState {
+    /**
+     * Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * A string list of IP addresses and CIDR ranges.
+     */
     ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This is the display name for the given IP ACL List.
+     */
     label?: pulumi.Input<string>;
+    /**
+     * Can only be "ALLOW" or "BLOCK".
+     */
     listType?: pulumi.Input<string>;
 }
 
@@ -89,8 +161,20 @@ export interface IpAccessListState {
  * The set of arguments for constructing a IpAccessList resource.
  */
 export interface IpAccessListArgs {
+    /**
+     * Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * A string list of IP addresses and CIDR ranges.
+     */
     ipAddresses: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This is the display name for the given IP ACL List.
+     */
     label: pulumi.Input<string>;
+    /**
+     * Can only be "ALLOW" or "BLOCK".
+     */
     listType: pulumi.Input<string>;
 }

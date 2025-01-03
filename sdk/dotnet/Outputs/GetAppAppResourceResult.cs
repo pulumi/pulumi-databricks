@@ -13,11 +13,29 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAppAppResourceResult
     {
+        /// <summary>
+        /// The description of the resource.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppAppResourceJobResult? Job;
+        /// <summary>
+        /// The name of the app.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppAppResourceSecretResult? Secret;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppAppResourceServingEndpointResult? ServingEndpoint;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppAppResourceSqlWarehouseResult? SqlWarehouse;
 
         [OutputConstructor]

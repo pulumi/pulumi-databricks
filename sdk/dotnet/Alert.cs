@@ -9,48 +9,101 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// This resource can be imported using alert ID:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/alert:Alert this &lt;alert-id&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/alert:Alert")]
     public partial class Alert : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Trigger conditions of the alert. Block consists of the following attributes:
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.AlertCondition> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// The timestamp string indicating when the alert was created.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
+        /// </summary>
         [Output("customBody")]
         public Output<string?> CustomBody { get; private set; } = null!;
 
+        /// <summary>
+        /// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
+        /// </summary>
         [Output("customSubject")]
         public Output<string?> CustomSubject { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the alert.
+        /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
+        /// </summary>
         [Output("lifecycleState")]
         public Output<string> LifecycleState { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to notify alert subscribers when alert returns back to normal.
+        /// </summary>
         [Output("notifyOnOk")]
         public Output<bool?> NotifyOnOk { get; private set; } = null!;
 
+        /// <summary>
+        /// Alert owner's username.
+        /// </summary>
         [Output("ownerUserName")]
         public Output<string?> OwnerUserName { get; private set; } = null!;
 
+        /// <summary>
+        /// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
+        /// </summary>
         [Output("parentPath")]
         public Output<string?> ParentPath { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of the query evaluated by the alert.
+        /// </summary>
         [Output("queryId")]
         public Output<string> QueryId { get; private set; } = null!;
 
+        /// <summary>
+        /// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
+        /// </summary>
         [Output("secondsToRetrigger")]
         public Output<int?> SecondsToRetrigger { get; private set; } = null!;
 
+        /// <summary>
+        /// Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
+        /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// The timestamp string when the alert was last triggered if the alert has been triggered before.
+        /// </summary>
         [Output("triggerTime")]
         public Output<string> TriggerTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The timestamp string indicating when the alert was updated.
+        /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
@@ -100,30 +153,57 @@ namespace Pulumi.Databricks
 
     public sealed class AlertArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Trigger conditions of the alert. Block consists of the following attributes:
+        /// </summary>
         [Input("condition", required: true)]
         public Input<Inputs.AlertConditionArgs> Condition { get; set; } = null!;
 
+        /// <summary>
+        /// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
+        /// </summary>
         [Input("customBody")]
         public Input<string>? CustomBody { get; set; }
 
+        /// <summary>
+        /// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
+        /// </summary>
         [Input("customSubject")]
         public Input<string>? CustomSubject { get; set; }
 
+        /// <summary>
+        /// Name of the alert.
+        /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to notify alert subscribers when alert returns back to normal.
+        /// </summary>
         [Input("notifyOnOk")]
         public Input<bool>? NotifyOnOk { get; set; }
 
+        /// <summary>
+        /// Alert owner's username.
+        /// </summary>
         [Input("ownerUserName")]
         public Input<string>? OwnerUserName { get; set; }
 
+        /// <summary>
+        /// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
+        /// </summary>
         [Input("parentPath")]
         public Input<string>? ParentPath { get; set; }
 
+        /// <summary>
+        /// ID of the query evaluated by the alert.
+        /// </summary>
         [Input("queryId", required: true)]
         public Input<string> QueryId { get; set; } = null!;
 
+        /// <summary>
+        /// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
+        /// </summary>
         [Input("secondsToRetrigger")]
         public Input<int>? SecondsToRetrigger { get; set; }
 
@@ -135,45 +215,87 @@ namespace Pulumi.Databricks
 
     public sealed class AlertState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Trigger conditions of the alert. Block consists of the following attributes:
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.AlertConditionGetArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// The timestamp string indicating when the alert was created.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
+        /// </summary>
         [Input("customBody")]
         public Input<string>? CustomBody { get; set; }
 
+        /// <summary>
+        /// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
+        /// </summary>
         [Input("customSubject")]
         public Input<string>? CustomSubject { get; set; }
 
+        /// <summary>
+        /// Name of the alert.
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
+        /// </summary>
         [Input("lifecycleState")]
         public Input<string>? LifecycleState { get; set; }
 
+        /// <summary>
+        /// Whether to notify alert subscribers when alert returns back to normal.
+        /// </summary>
         [Input("notifyOnOk")]
         public Input<bool>? NotifyOnOk { get; set; }
 
+        /// <summary>
+        /// Alert owner's username.
+        /// </summary>
         [Input("ownerUserName")]
         public Input<string>? OwnerUserName { get; set; }
 
+        /// <summary>
+        /// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
+        /// </summary>
         [Input("parentPath")]
         public Input<string>? ParentPath { get; set; }
 
+        /// <summary>
+        /// ID of the query evaluated by the alert.
+        /// </summary>
         [Input("queryId")]
         public Input<string>? QueryId { get; set; }
 
+        /// <summary>
+        /// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
+        /// </summary>
         [Input("secondsToRetrigger")]
         public Input<int>? SecondsToRetrigger { get; set; }
 
+        /// <summary>
+        /// Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// The timestamp string when the alert was last triggered if the alert has been triggered before.
+        /// </summary>
         [Input("triggerTime")]
         public Input<string>? TriggerTime { get; set; }
 
+        /// <summary>
+        /// The timestamp string indicating when the alert was updated.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Full name of the dependent table
+        /// </summary>
         [Input("tableFullName", required: true)]
         public string TableFullName { get; set; } = null!;
 

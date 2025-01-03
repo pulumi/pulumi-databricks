@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins
     {
+        /// <summary>
+        /// The restrict workspace admins status for the workspace.
+        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

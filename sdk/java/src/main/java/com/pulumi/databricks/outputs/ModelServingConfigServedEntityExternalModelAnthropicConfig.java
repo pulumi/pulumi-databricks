@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelAnthropicConfig {
+    /**
+     * @return The Databricks secret key reference for an Anthropic API key.
+     * 
+     */
     private @Nullable String anthropicApiKey;
+    /**
+     * @return The Anthropic API key provided as a plaintext string.
+     * 
+     */
     private @Nullable String anthropicApiKeyPlaintext;
 
     private ModelServingConfigServedEntityExternalModelAnthropicConfig() {}
+    /**
+     * @return The Databricks secret key reference for an Anthropic API key.
+     * 
+     */
     public Optional<String> anthropicApiKey() {
         return Optional.ofNullable(this.anthropicApiKey);
     }
+    /**
+     * @return The Anthropic API key provided as a plaintext string.
+     * 
+     */
     public Optional<String> anthropicApiKeyPlaintext() {
         return Optional.ofNullable(this.anthropicApiKeyPlaintext);
     }

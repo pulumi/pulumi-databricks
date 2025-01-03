@@ -26,6 +26,10 @@ class WorkspaceFileArgs:
                  source: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkspaceFile resource.
+        :param pulumi.Input[str] path: The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] content_base64: The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+        :param pulumi.Input[int] object_id: Unique identifier for a workspace file
+        :param pulumi.Input[str] source: Path to file on local filesystem. Conflicts with `content_base64`.
         """
         pulumi.set(__self__, "path", path)
         if content_base64 is not None:
@@ -40,6 +44,9 @@ class WorkspaceFileArgs:
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input[str]:
+        """
+        The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -49,6 +56,9 @@ class WorkspaceFileArgs:
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+        """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
@@ -67,6 +77,9 @@ class WorkspaceFileArgs:
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Unique identifier for a workspace file
+        """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
@@ -76,6 +89,9 @@ class WorkspaceFileArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to file on local filesystem. Conflicts with `content_base64`.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -95,6 +111,12 @@ class _WorkspaceFileState:
                  workspace_path: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceFile resources.
+        :param pulumi.Input[str] content_base64: The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+        :param pulumi.Input[int] object_id: Unique identifier for a workspace file
+        :param pulumi.Input[str] path: The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] source: Path to file on local filesystem. Conflicts with `content_base64`.
+        :param pulumi.Input[str] url: Routable URL of the workspace file
+        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         if content_base64 is not None:
             pulumi.set(__self__, "content_base64", content_base64)
@@ -114,6 +136,9 @@ class _WorkspaceFileState:
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+        """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
@@ -132,6 +157,9 @@ class _WorkspaceFileState:
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Unique identifier for a workspace file
+        """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
@@ -141,6 +169,9 @@ class _WorkspaceFileState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -150,6 +181,9 @@ class _WorkspaceFileState:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to file on local filesystem. Conflicts with `content_base64`.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -159,6 +193,9 @@ class _WorkspaceFileState:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Routable URL of the workspace file
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -168,6 +205,9 @@ class _WorkspaceFileState:
     @property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
         return pulumi.get(self, "workspace_path")
 
     @workspace_path.setter
@@ -187,9 +227,24 @@ class WorkspaceFile(pulumi.CustomResource):
                  source: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a WorkspaceFile resource with the given unique name, props, and options.
+        This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
+
+        ## Import
+
+        The workspace file resource can be imported using workspace file path
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_base64: The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+        :param pulumi.Input[int] object_id: Unique identifier for a workspace file
+        :param pulumi.Input[str] path: The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] source: Path to file on local filesystem. Conflicts with `content_base64`.
         """
         ...
     @overload
@@ -198,7 +253,18 @@ class WorkspaceFile(pulumi.CustomResource):
                  args: WorkspaceFileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a WorkspaceFile resource with the given unique name, props, and options.
+        This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
+
+        ## Import
+
+        The workspace file resource can be imported using workspace file path
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file
+        ```
+
         :param str resource_name: The name of the resource.
         :param WorkspaceFileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -261,6 +327,12 @@ class WorkspaceFile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_base64: The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+        :param pulumi.Input[int] object_id: Unique identifier for a workspace file
+        :param pulumi.Input[str] path: The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] source: Path to file on local filesystem. Conflicts with `content_base64`.
+        :param pulumi.Input[str] url: Routable URL of the workspace file
+        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -278,6 +350,9 @@ class WorkspaceFile(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> pulumi.Output[Optional[str]]:
+        """
+        The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+        """
         return pulumi.get(self, "content_base64")
 
     @property
@@ -288,25 +363,40 @@ class WorkspaceFile(pulumi.CustomResource):
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Output[int]:
+        """
+        Unique identifier for a workspace file
+        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output[str]:
+        """
+        The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def source(self) -> pulumi.Output[Optional[str]]:
+        """
+        Path to file on local filesystem. Conflicts with `content_base64`.
+        """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
+        """
+        Routable URL of the workspace file
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> pulumi.Output[str]:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
         return pulumi.get(self, "workspace_path")
 

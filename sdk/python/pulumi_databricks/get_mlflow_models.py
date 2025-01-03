@@ -45,6 +45,9 @@ class GetMlflowModelsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        List of names of databricks_mlflow_model
+        """
         return pulumi.get(self, "names")
 
 
@@ -61,7 +64,22 @@ class AwaitableGetMlflowModelsResult(GetMlflowModelsResult):
 def get_mlflow_models(names: Optional[Sequence[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMlflowModelsResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source could be only used with workspace-level provider!
+
+    Retrieves a list of MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_mlflow_models()
+    pulumi.export("model", this)
+    ```
+
+
+    :param Sequence[str] names: List of names of databricks_mlflow_model
     """
     __args__ = dict()
     __args__['names'] = names
@@ -74,7 +92,22 @@ def get_mlflow_models(names: Optional[Sequence[str]] = None,
 def get_mlflow_models_output(names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowModelsResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source could be only used with workspace-level provider!
+
+    Retrieves a list of MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_mlflow_models()
+    pulumi.export("model", this)
+    ```
+
+
+    :param Sequence[str] names: List of names of databricks_mlflow_model
     """
     __args__ = dict()
     __args__['names'] = names

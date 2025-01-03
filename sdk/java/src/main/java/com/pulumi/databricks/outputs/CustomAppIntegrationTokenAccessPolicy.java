@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CustomAppIntegrationTokenAccessPolicy {
+    /**
+     * @return access token time to live (TTL) in minutes.
+     * 
+     */
     private @Nullable Integer accessTokenTtlInMinutes;
+    /**
+     * @return refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+     * 
+     */
     private @Nullable Integer refreshTokenTtlInMinutes;
 
     private CustomAppIntegrationTokenAccessPolicy() {}
+    /**
+     * @return access token time to live (TTL) in minutes.
+     * 
+     */
     public Optional<Integer> accessTokenTtlInMinutes() {
         return Optional.ofNullable(this.accessTokenTtlInMinutes);
     }
+    /**
+     * @return refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
+     * 
+     */
     public Optional<Integer> refreshTokenTtlInMinutes() {
         return Optional.ofNullable(this.refreshTokenTtlInMinutes);
     }

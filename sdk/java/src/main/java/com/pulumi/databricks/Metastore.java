@@ -16,6 +16,76 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; This resource can be used with an account or workspace-level provider.
+ * 
+ * A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
+ * 
+ * Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
+ * 
+ * A Unity Catalog metastore can be created without a root location &amp; credential to maintain strict separation of storage across catalogs or environments.
+ * 
+ * ## Example Usage
+ * 
+ * For AWS
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Metastore;
+ * import com.pulumi.databricks.MetastoreArgs;
+ * import com.pulumi.databricks.MetastoreAssignment;
+ * import com.pulumi.databricks.MetastoreAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Metastore("this", MetastoreArgs.builder()
+ *             .name("primary")
+ *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+ *             .owner("uc admins")
+ *             .region("us-east-1")
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var thisMetastoreAssignment = new MetastoreAssignment("thisMetastoreAssignment", MetastoreAssignmentArgs.builder()
+ *             .metastoreId(this_.id())
+ *             .workspaceId(workspaceId)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * For Azure
+ * 
+ * ## Import
+ * 
+ * This resource can be imported by ID:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/metastore:Metastore this &lt;id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/metastore:Metastore")
 public class Metastore extends com.pulumi.resources.CustomResource {
     @Export(name="cloud", refs={String.class}, tree="[0]")
@@ -42,27 +112,59 @@ public class Metastore extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> defaultDataAccessConfigId() {
         return Codegen.optional(this.defaultDataAccessConfigId);
     }
+    /**
+     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
+     * 
+     */
     @Export(name="deltaSharingOrganizationName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deltaSharingOrganizationName;
 
+    /**
+     * @return The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
+     * 
+     */
     public Output<Optional<String>> deltaSharingOrganizationName() {
         return Codegen.optional(this.deltaSharingOrganizationName);
     }
+    /**
+     * Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+     * 
+     */
     @Export(name="deltaSharingRecipientTokenLifetimeInSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> deltaSharingRecipientTokenLifetimeInSeconds;
 
+    /**
+     * @return Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+     * 
+     */
     public Output<Optional<Integer>> deltaSharingRecipientTokenLifetimeInSeconds() {
         return Codegen.optional(this.deltaSharingRecipientTokenLifetimeInSeconds);
     }
+    /**
+     * Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+     * 
+     */
     @Export(name="deltaSharingScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deltaSharingScope;
 
+    /**
+     * @return Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+     * 
+     */
     public Output<Optional<String>> deltaSharingScope() {
         return Codegen.optional(this.deltaSharingScope);
     }
+    /**
+     * Destroy metastore regardless of its contents.
+     * 
+     */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
+    /**
+     * @return Destroy metastore regardless of its contents.
+     * 
+     */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
@@ -78,27 +180,59 @@ public class Metastore extends com.pulumi.resources.CustomResource {
     public Output<String> metastoreId() {
         return this.metastoreId;
     }
+    /**
+     * Name of metastore.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Name of metastore.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Username/groupname/sp application_id of the metastore owner.
+     * 
+     */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
+    /**
+     * @return Username/groupname/sp application_id of the metastore owner.
+     * 
+     */
     public Output<String> owner() {
         return this.owner;
     }
+    /**
+     * The region of the metastore
+     * 
+     */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
+    /**
+     * @return The region of the metastore
+     * 
+     */
     public Output<String> region() {
         return this.region;
     }
+    /**
+     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+     * 
+     */
     @Export(name="storageRoot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageRoot;
 
+    /**
+     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+     * 
+     */
     public Output<Optional<String>> storageRoot() {
         return Codegen.optional(this.storageRoot);
     }

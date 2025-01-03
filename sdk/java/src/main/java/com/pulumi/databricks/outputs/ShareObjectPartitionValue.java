@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ShareObjectPartitionValue {
+    /**
+     * @return The name of the partition column.
+     * 
+     */
     private String name;
+    /**
+     * @return The operator to apply for the value, one of: `EQUAL`, `LIKE`
+     * 
+     */
     private String op;
+    /**
+     * @return The key of a Delta Sharing recipient&#39;s property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+     * 
+     */
     private @Nullable String recipientPropertyKey;
+    /**
+     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+     * 
+     */
     private @Nullable String value;
 
     private ShareObjectPartitionValue() {}
+    /**
+     * @return The name of the partition column.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The operator to apply for the value, one of: `EQUAL`, `LIKE`
+     * 
+     */
     public String op() {
         return this.op;
     }
+    /**
+     * @return The key of a Delta Sharing recipient&#39;s property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+     * 
+     */
     public Optional<String> recipientPropertyKey() {
         return Optional.ofNullable(this.recipientPropertyKey);
     }
+    /**
+     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

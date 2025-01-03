@@ -11,12 +11,120 @@ namespace Pulumi.Databricks
 {
     public static class GetMwsNetworkConnectivityConfig
     {
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Fetching information about a network connectivity configuration in Databricks Account
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetMwsNetworkConnectivityConfig.Invoke(new()
+        ///     {
+        ///         Name = "ncc",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["config"] = @this,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getMwsNetworkConnectivityConfigs to get names of all network connectivity configurations.
+        /// * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+        /// </summary>
         public static Task<GetMwsNetworkConnectivityConfigResult> InvokeAsync(GetMwsNetworkConnectivityConfigArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsNetworkConnectivityConfigResult>("databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig", args ?? new GetMwsNetworkConnectivityConfigArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Fetching information about a network connectivity configuration in Databricks Account
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetMwsNetworkConnectivityConfig.Invoke(new()
+        ///     {
+        ///         Name = "ncc",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["config"] = @this,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getMwsNetworkConnectivityConfigs to get names of all network connectivity configurations.
+        /// * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+        /// </summary>
         public static Output<GetMwsNetworkConnectivityConfigResult> Invoke(GetMwsNetworkConnectivityConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMwsNetworkConnectivityConfigResult>("databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig", args ?? new GetMwsNetworkConnectivityConfigInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Fetching information about a network connectivity configuration in Databricks Account
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetMwsNetworkConnectivityConfig.Invoke(new()
+        ///     {
+        ///         Name = "ncc",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["config"] = @this,
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getMwsNetworkConnectivityConfigs to get names of all network connectivity configurations.
+        /// * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+        /// </summary>
         public static Output<GetMwsNetworkConnectivityConfigResult> Invoke(GetMwsNetworkConnectivityConfigInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMwsNetworkConnectivityConfigResult>("databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig", args ?? new GetMwsNetworkConnectivityConfigInvokeArgs(), options.WithDefaults());
     }
@@ -24,24 +132,45 @@ namespace Pulumi.Databricks
 
     public sealed class GetMwsNetworkConnectivityConfigArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The Databricks account ID associated with this network configuration.
+        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
+        /// <summary>
+        /// Time in epoch milliseconds when this object was created.
+        /// </summary>
         [Input("creationTime")]
         public int? CreationTime { get; set; }
 
+        /// <summary>
+        /// Array of egress configuration objects.
+        /// </summary>
         [Input("egressConfig")]
         public Inputs.GetMwsNetworkConnectivityConfigEgressConfigArgs? EgressConfig { get; set; }
 
+        /// <summary>
+        /// Name of the network connectivity configuration.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The Databricks network connectivity configuration ID.
+        /// </summary>
         [Input("networkConnectivityConfigId")]
         public string? NetworkConnectivityConfigId { get; set; }
 
+        /// <summary>
+        /// The region of the network connectivity configuration.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
+        /// <summary>
+        /// Time in epoch milliseconds when the network was updated.
+        /// </summary>
         [Input("updatedTime")]
         public int? UpdatedTime { get; set; }
 
@@ -53,24 +182,45 @@ namespace Pulumi.Databricks
 
     public sealed class GetMwsNetworkConnectivityConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The Databricks account ID associated with this network configuration.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Time in epoch milliseconds when this object was created.
+        /// </summary>
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
+        /// <summary>
+        /// Array of egress configuration objects.
+        /// </summary>
         [Input("egressConfig")]
         public Input<Inputs.GetMwsNetworkConnectivityConfigEgressConfigInputArgs>? EgressConfig { get; set; }
 
+        /// <summary>
+        /// Name of the network connectivity configuration.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The Databricks network connectivity configuration ID.
+        /// </summary>
         [Input("networkConnectivityConfigId")]
         public Input<string>? NetworkConnectivityConfigId { get; set; }
 
+        /// <summary>
+        /// The region of the network connectivity configuration.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Time in epoch milliseconds when the network was updated.
+        /// </summary>
         [Input("updatedTime")]
         public Input<int>? UpdatedTime { get; set; }
 
@@ -84,16 +234,37 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetMwsNetworkConnectivityConfigResult
     {
+        /// <summary>
+        /// The Databricks account ID associated with this network configuration.
+        /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// Time in epoch milliseconds when this object was created.
+        /// </summary>
         public readonly int CreationTime;
+        /// <summary>
+        /// Array of egress configuration objects.
+        /// </summary>
         public readonly Outputs.GetMwsNetworkConnectivityConfigEgressConfigResult EgressConfig;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the network connectivity configuration.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The Databricks network connectivity configuration ID.
+        /// </summary>
         public readonly string NetworkConnectivityConfigId;
+        /// <summary>
+        /// The region of the network connectivity configuration.
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// Time in epoch milliseconds when the network was updated.
+        /// </summary>
         public readonly int UpdatedTime;
 
         [OutputConstructor]

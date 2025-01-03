@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppResourceServingEndpointArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the serving endpoint to grant permission on.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Permission to grant on the serving endpoint. Supported permissions are: `CAN_MANAGE`, `CAN_QUERY`, `CAN_VIEW`.
+        /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 

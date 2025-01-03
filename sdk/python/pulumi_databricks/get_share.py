@@ -48,11 +48,17 @@ class GetShareResult:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> int:
+        """
+        Time when the share was created.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
+        """
+        The principal that created the share.
+        """
         return pulumi.get(self, "created_by")
 
     @property
@@ -66,11 +72,17 @@ class GetShareResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Full name of the object being shared.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def objects(self) -> Sequence['outputs.GetShareObjectResult']:
+        """
+        arrays containing details of each object in the share.
+        """
         return pulumi.get(self, "objects")
 
 
@@ -93,7 +105,33 @@ def get_share(created_at: Optional[int] = None,
               objects: Optional[Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetShareResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves details about a Share that were created by Pulumi or manually.
+
+    ## Example Usage
+
+    Getting details of an existing share in the metastore
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_share(name="this")
+    pulumi.export("createdBy", this.created_by)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Share to create Delta Sharing shares.
+    * Recipient to create Delta Sharing recipients.
+    * Grants to manage Delta Sharing permissions.
+
+
+    :param int created_at: Time when the share was created.
+    :param str created_by: The principal that created the share.
+    :param str name: The name of the share
+    :param Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']] objects: arrays containing details of each object in the share.
     """
     __args__ = dict()
     __args__['createdAt'] = created_at
@@ -115,7 +153,33 @@ def get_share_output(created_at: Optional[pulumi.Input[Optional[int]]] = None,
                      objects: Optional[pulumi.Input[Optional[Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetShareResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves details about a Share that were created by Pulumi or manually.
+
+    ## Example Usage
+
+    Getting details of an existing share in the metastore
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_share(name="this")
+    pulumi.export("createdBy", this.created_by)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Share to create Delta Sharing shares.
+    * Recipient to create Delta Sharing recipients.
+    * Grants to manage Delta Sharing permissions.
+
+
+    :param int created_at: Time when the share was created.
+    :param str created_by: The principal that created the share.
+    :param str name: The name of the share
+    :param Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']] objects: arrays containing details of each object in the share.
     """
     __args__ = dict()
     __args__['createdAt'] = created_at

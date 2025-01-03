@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("functions")]
         private List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs>? _functions;
+
+        /// <summary>
+        /// A function that is dependent on a SQL object:
+        /// </summary>
         public List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs> Functions
         {
             get => _functions ?? (_functions = new List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs>());
@@ -22,6 +26,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("tables")]
         private List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs>? _tables;
+
+        /// <summary>
+        /// A table that is dependent on a SQL object
+        /// </summary>
         public List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs> Tables
         {
             get => _tables ?? (_tables = new List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs>());

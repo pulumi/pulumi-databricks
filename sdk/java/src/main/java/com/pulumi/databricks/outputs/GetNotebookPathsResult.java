@@ -18,6 +18,10 @@ public final class GetNotebookPathsResult {
      * 
      */
     private String id;
+    /**
+     * @return list of objects with `path` and `language` attributes
+     * 
+     */
     private List<GetNotebookPathsNotebookPathList> notebookPathLists;
     private String path;
     private Boolean recursive;
@@ -30,6 +34,10 @@ public final class GetNotebookPathsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return list of objects with `path` and `language` attributes
+     * 
+     */
     public List<GetNotebookPathsNotebookPathList> notebookPathLists() {
         return this.notebookPathLists;
     }

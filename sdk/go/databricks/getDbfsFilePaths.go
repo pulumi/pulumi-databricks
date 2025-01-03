@@ -11,6 +11,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetDbfsFilePaths(ctx, &databricks.GetDbfsFilePathsArgs{
+//				Path:      "dbfs:/user/hive/default.db/table",
+//				Recursive: false,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * End to end workspace management guide.
+// * DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+// * getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+// * DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+// * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+// * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
 func GetDbfsFilePaths(ctx *pulumi.Context, args *GetDbfsFilePathsArgs, opts ...pulumi.InvokeOption) (*GetDbfsFilePathsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDbfsFilePathsResult
@@ -23,15 +64,18 @@ func GetDbfsFilePaths(ctx *pulumi.Context, args *GetDbfsFilePathsArgs, opts ...p
 
 // A collection of arguments for invoking getDbfsFilePaths.
 type GetDbfsFilePathsArgs struct {
-	Path      string `pulumi:"path"`
-	Recursive bool   `pulumi:"recursive"`
+	// Path on DBFS for the file to perform listing
+	Path string `pulumi:"path"`
+	// Either or not recursively list all files
+	Recursive bool `pulumi:"recursive"`
 }
 
 // A collection of values returned by getDbfsFilePaths.
 type GetDbfsFilePathsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id        string                     `pulumi:"id"`
-	Path      string                     `pulumi:"path"`
+	Id   string `pulumi:"id"`
+	Path string `pulumi:"path"`
+	// returns list of objects with `path` and `fileSize` attributes in each
 	PathLists []GetDbfsFilePathsPathList `pulumi:"pathLists"`
 	Recursive bool                       `pulumi:"recursive"`
 }
@@ -47,8 +91,10 @@ func GetDbfsFilePathsOutput(ctx *pulumi.Context, args GetDbfsFilePathsOutputArgs
 
 // A collection of arguments for invoking getDbfsFilePaths.
 type GetDbfsFilePathsOutputArgs struct {
-	Path      pulumi.StringInput `pulumi:"path"`
-	Recursive pulumi.BoolInput   `pulumi:"recursive"`
+	// Path on DBFS for the file to perform listing
+	Path pulumi.StringInput `pulumi:"path"`
+	// Either or not recursively list all files
+	Recursive pulumi.BoolInput `pulumi:"recursive"`
 }
 
 func (GetDbfsFilePathsOutputArgs) ElementType() reflect.Type {
@@ -79,6 +125,7 @@ func (o GetDbfsFilePathsResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbfsFilePathsResult) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// returns list of objects with `path` and `fileSize` attributes in each
 func (o GetDbfsFilePathsResultOutput) PathLists() GetDbfsFilePathsPathListArrayOutput {
 	return o.ApplyT(func(v GetDbfsFilePathsResult) []GetDbfsFilePathsPathList { return v.PathLists }).(GetDbfsFilePathsPathListArrayOutput)
 }

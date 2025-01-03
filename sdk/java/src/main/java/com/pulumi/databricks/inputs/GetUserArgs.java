@@ -15,16 +15,32 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUserArgs Empty = new GetUserArgs();
 
+    /**
+     * ID of the user.
+     * 
+     */
     @Import(name="userId")
     private @Nullable Output<String> userId;
 
+    /**
+     * @return ID of the user.
+     * 
+     */
     public Optional<Output<String>> userId() {
         return Optional.ofNullable(this.userId);
     }
 
+    /**
+     * User name of the user. The user must exist before this resource can be planned.
+     * 
+     */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
+    /**
+     * @return User name of the user. The user must exist before this resource can be planned.
+     * 
+     */
     public Optional<Output<String>> userName() {
         return Optional.ofNullable(this.userName);
     }
@@ -54,20 +70,44 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetUserArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param userId ID of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(@Nullable Output<String> userId) {
             $.userId = userId;
             return this;
         }
 
+        /**
+         * @param userId ID of the user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(String userId) {
             return userId(Output.of(userId));
         }
 
+        /**
+         * @param userName User name of the user. The user must exist before this resource can be planned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userName(@Nullable Output<String> userName) {
             $.userName = userName;
             return this;
         }
 
+        /**
+         * @param userName User name of the user. The user must exist before this resource can be planned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userName(String userName) {
             return userName(Output.of(userName));
         }

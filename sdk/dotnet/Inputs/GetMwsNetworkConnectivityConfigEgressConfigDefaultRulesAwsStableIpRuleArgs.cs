@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("cidrBlocks")]
         private InputList<string>? _cidrBlocks;
+
+        /// <summary>
+        /// The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+        /// </summary>
         public InputList<string> CidrBlocks
         {
             get => _cidrBlocks ?? (_cidrBlocks = new InputList<string>());

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable {
+    /**
+     * @return Full name of the dependent table
+     * 
+     */
     private String tableFullName;
 
     private GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable() {}
+    /**
+     * @return Full name of the dependent table
+     * 
+     */
     public String tableFullName() {
         return this.tableFullName;
     }

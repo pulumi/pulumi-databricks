@@ -17,30 +17,62 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSharePlainArgs Empty = new GetSharePlainArgs();
 
+    /**
+     * Time when the share was created.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Integer createdAt;
 
+    /**
+     * @return Time when the share was created.
+     * 
+     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * The principal that created the share.
+     * 
+     */
     @Import(name="createdBy")
     private @Nullable String createdBy;
 
+    /**
+     * @return The principal that created the share.
+     * 
+     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
+    /**
+     * The name of the share
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return The name of the share
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * arrays containing details of each object in the share.
+     * 
+     */
     @Import(name="objects")
     private @Nullable List<GetShareObject> objects;
 
+    /**
+     * @return arrays containing details of each object in the share.
+     * 
+     */
     public Optional<List<GetShareObject>> objects() {
         return Optional.ofNullable(this.objects);
     }
@@ -72,26 +104,56 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetSharePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param createdAt Time when the share was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Integer createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdBy The principal that created the share.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(@Nullable String createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
+        /**
+         * @param name The name of the share
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param objects arrays containing details of each object in the share.
+         * 
+         * @return builder
+         * 
+         */
         public Builder objects(@Nullable List<GetShareObject> objects) {
             $.objects = objects;
             return this;
         }
 
+        /**
+         * @param objects arrays containing details of each object in the share.
+         * 
+         * @return builder
+         * 
+         */
         public Builder objects(GetShareObject... objects) {
             return objects(List.of(objects));
         }

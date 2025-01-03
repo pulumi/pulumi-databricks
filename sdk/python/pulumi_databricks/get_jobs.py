@@ -48,6 +48,9 @@ class GetJobsResult:
     @property
     @pulumi.getter
     def ids(self) -> Mapping[str, str]:
+        """
+        map of Job names to ids
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -71,7 +74,51 @@ def get_jobs(ids: Optional[Mapping[str, str]] = None,
              job_name_contains: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobsResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves a list of Job ids, that were created by Pulumi or manually, so that special handling could be applied.
+
+    > **Note** Data resource will error in case of jobs with duplicate names.
+
+    ## Example Usage
+
+    Granting view Permissions to all Job within the workspace:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_jobs()
+    tests = databricks.get_jobs(job_name_contains="test")
+    everyone_can_view_all_jobs = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
+        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
+            job_id=range["value"],
+            access_controls=[{
+                "group_name": "users",
+                "permission_level": "CAN_VIEW",
+            }]))
+    ```
+
+    Getting ID of specific Job by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_jobs()
+    pulumi.export("x", f"ID of `x` job is {this.ids['x']}")
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+
+
+    :param Mapping[str, str] ids: map of Job names to ids
+    :param str job_name_contains: Only return Job ids that match the given name string (case-insensitive).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -87,7 +134,51 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = N
                     job_name_contains: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobsResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves a list of Job ids, that were created by Pulumi or manually, so that special handling could be applied.
+
+    > **Note** Data resource will error in case of jobs with duplicate names.
+
+    ## Example Usage
+
+    Granting view Permissions to all Job within the workspace:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_jobs()
+    tests = databricks.get_jobs(job_name_contains="test")
+    everyone_can_view_all_jobs = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
+        everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
+            job_id=range["value"],
+            access_controls=[{
+                "group_name": "users",
+                "permission_level": "CAN_VIEW",
+            }]))
+    ```
+
+    Getting ID of specific Job by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_jobs()
+    pulumi.export("x", f"ID of `x` job is {this.ids['x']}")
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+
+
+    :param Mapping[str, str] ids: map of Job names to ids
+    :param str job_name_contains: Only return Job ids that match the given name string (case-insensitive).
     """
     __args__ = dict()
     __args__['ids'] = ids

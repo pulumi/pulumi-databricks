@@ -14,9 +14,17 @@ public final class JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs exten
 
     public static final JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs Empty = new JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs();
 
+    /**
+     * ID of the job
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return ID of the job
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
@@ -45,11 +53,23 @@ public final class JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs exten
             $ = new JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id ID of the job
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id ID of the job
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }

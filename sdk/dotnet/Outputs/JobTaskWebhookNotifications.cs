@@ -13,10 +13,26 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskWebhookNotifications
     {
+        /// <summary>
+        /// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+        /// 
+        /// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
+        /// 
+        /// Example
+        /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded> OnDurationWarningThresholdExceededs;
+        /// <summary>
+        /// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+        /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskWebhookNotificationsOnFailure> OnFailures;
+        /// <summary>
+        /// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+        /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskWebhookNotificationsOnStart> OnStarts;
         public readonly ImmutableArray<Outputs.JobTaskWebhookNotificationsOnStreamingBacklogExceeded> OnStreamingBacklogExceededs;
+        /// <summary>
+        /// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+        /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskWebhookNotificationsOnSuccess> OnSuccesses;
 
         [OutputConstructor]

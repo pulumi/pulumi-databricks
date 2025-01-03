@@ -13,9 +13,17 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingB
 
     public static final GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded Empty = new GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded();
 
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     * 
+     */
     @Import(name="id", required=true)
     private String id;
 
+    /**
+     * @return the id of databricks.Job if the resource was matched by name.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -44,6 +52,12 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingB
             $ = new GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id the id of databricks.Job if the resource was matched by name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             $.id = id;
             return this;

@@ -13,29 +13,73 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobEmailNotifications {
+    /**
+     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * 
+     */
     private @Nullable Boolean noAlertForSkippedRuns;
+    /**
+     * @return (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     * 
+     * The following parameter is only available for the job level configuration.
+     * 
+     */
     private @Nullable List<String> onDurationWarningThresholdExceededs;
+    /**
+     * @return (List) list of emails to notify when the run fails.
+     * 
+     */
     private @Nullable List<String> onFailures;
+    /**
+     * @return (List) list of emails to notify when the run starts.
+     * 
+     */
     private @Nullable List<String> onStarts;
     private @Nullable List<String> onStreamingBacklogExceededs;
+    /**
+     * @return (List) list of emails to notify when the run completes successfully.
+     * 
+     */
     private @Nullable List<String> onSuccesses;
 
     private JobEmailNotifications() {}
+    /**
+     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * 
+     */
     public Optional<Boolean> noAlertForSkippedRuns() {
         return Optional.ofNullable(this.noAlertForSkippedRuns);
     }
+    /**
+     * @return (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     * 
+     * The following parameter is only available for the job level configuration.
+     * 
+     */
     public List<String> onDurationWarningThresholdExceededs() {
         return this.onDurationWarningThresholdExceededs == null ? List.of() : this.onDurationWarningThresholdExceededs;
     }
+    /**
+     * @return (List) list of emails to notify when the run fails.
+     * 
+     */
     public List<String> onFailures() {
         return this.onFailures == null ? List.of() : this.onFailures;
     }
+    /**
+     * @return (List) list of emails to notify when the run starts.
+     * 
+     */
     public List<String> onStarts() {
         return this.onStarts == null ? List.of() : this.onStarts;
     }
     public List<String> onStreamingBacklogExceededs() {
         return this.onStreamingBacklogExceededs == null ? List.of() : this.onStreamingBacklogExceededs;
     }
+    /**
+     * @return (List) list of emails to notify when the run completes successfully.
+     * 
+     */
     public List<String> onSuccesses() {
         return this.onSuccesses == null ? List.of() : this.onSuccesses;
     }

@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class BudgetFilterTag
     {
+        /// <summary>
+        /// The key of the tag.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Consists of the following fields:
+        /// </summary>
         public readonly Outputs.BudgetFilterTagValue? Value;
 
         [OutputConstructor]

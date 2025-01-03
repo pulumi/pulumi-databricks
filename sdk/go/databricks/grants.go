@@ -12,6 +12,769 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This article refers to the privileges and inheritance model in Privilege Model version 1.0. If you created your metastore during the public preview (before August 25, 2022), you can upgrade to Privilege Model version 1.0 following [Upgrade to privilege inheritance](https://docs.databricks.com/data-governance/unity-catalog/hive-metastore.html)
+//
+// > Most of Unity Catalog APIs are only accessible via **workspace-level APIs**. This design may change in the future. Account-level principal grants can be assigned with any valid workspace as the Unity Catalog is decoupled from specific workspaces. More information in [the official documentation](https://docs.databricks.com/data-governance/unity-catalog/index.html).
+//
+// Two different resources help you manage your Unity Catalog grants for a securable. Each of these resources serves a different use case:
+//
+// - databricks_grants: Authoritative. Sets the grants of a securable and replaces any existing grants defined inside or outside of Pulumi.
+// - databricks_grant: Authoritative for a given principal. Updates the grants of a securable to a single principal. Other principals within the grants for the securables are preserved.
+//
+// In Unity Catalog all users initially have no access to data. Only Metastore Admins can create objects and can grant/revoke access on individual objects to users and groups. Every securable object in Unity Catalog has an owner. The owner can be any account-level user or group, called principals in general. The principal that creates an object becomes its owner. Owners receive `ALL_PRIVILEGES` on the securable object (e.g., `SELECT` and `MODIFY` on a table), as well as the permission to grant privileges to other principals.
+//
+// Securable objects are hierarchical and privileges are inherited downward. The highest level object that privileges are inherited from is the catalog. This means that granting a privilege on a catalog or schema automatically grants the privilege to all current and future objects within the catalog or schema. Privileges that are granted on a metastore are not inherited.
+//
+// Every `Grants` resource must have exactly one securable identifier and one or more `grant` blocks with the following arguments:
+//
+// - `principal` - User name, group name or service principal application ID.
+// - `privileges` - One or more privileges that are specific to a securable type.
+//
+// For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
+//
+// Pulumi will handle any configuration drift on every `pulumi up` run, even when grants are changed outside of Pulumi state.
+//
+// Unlike the [SQL specification](https://docs.databricks.com/sql/language-manual/sql-ref-privileges.html#privilege-types), all privileges to be written with underscore instead of space, e.g. `CREATE_TABLE` and not `CREATE TABLE`. Below summarizes which privilege types apply to each securable object in the catalog:
+//
+// ## Metastore grants
+//
+// You can grant `CREATE_CATALOG`, `CREATE_CLEAN_ROOM`, `CREATE_CONNECTION`, `CREATE_EXTERNAL_LOCATION`, `CREATE_PROVIDER`, `CREATE_RECIPIENT`, `CREATE_SHARE`, `CREATE_SERVICE_CREDENTIAL`, `CREATE_STORAGE_CREDENTIAL`, `SET_SHARE_PERMISSION`, `USE_MARKETPLACE_ASSETS`, `USE_PROVIDER`, `USE_RECIPIENT`, and `USE_SHARE` privileges to Metastore assigned to the workspace.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGrants(ctx, "sandbox", &databricks.GrantsArgs{
+//				Metastore: pulumi.String("metastore_id"),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_CATALOG"),
+//							pulumi.String("CREATE_EXTERNAL_LOCATION"),
+//						},
+//					},
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Sharer"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_RECIPIENT"),
+//							pulumi.String("CREATE_SHARE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Catalog grants
+//
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_CONNECTION`, `CREATE_SCHEMA`, `USE_CATALOG` privileges to Catalog specified in the `catalog` attribute. You can also grant `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME`, `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` and `USE_SCHEMA` at the catalog level to apply them to the pertinent current and future securable objects within the catalog:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:    pulumi.String("sandbox"),
+//				Comment: pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "sandbox", &databricks.GrantsArgs{
+//				Catalog: sandbox.Name,
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Scientists"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("USE_CATALOG"),
+//							pulumi.String("USE_SCHEMA"),
+//							pulumi.String("CREATE_TABLE"),
+//							pulumi.String("SELECT"),
+//						},
+//					},
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("USE_CATALOG"),
+//							pulumi.String("USE_SCHEMA"),
+//							pulumi.String("CREATE_SCHEMA"),
+//							pulumi.String("CREATE_TABLE"),
+//							pulumi.String("MODIFY"),
+//						},
+//					},
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Analyst"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("USE_CATALOG"),
+//							pulumi.String("USE_SCHEMA"),
+//							pulumi.String("SELECT"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Schema grants
+//
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME` and `USE_SCHEMA` privileges to _`catalog.schema`_ specified in the `schema` attribute. You can also grant `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` at the schema level to apply them to the pertinent current and future securable objects within the schema:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
+//				CatalogName: pulumi.Any(sandbox.Id),
+//				Name:        pulumi.String("things"),
+//				Comment:     pulumi.String("this schema is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"kind": pulumi.String("various"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "things", &databricks.GrantsArgs{
+//				Schema: things.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("USE_SCHEMA"),
+//							pulumi.String("MODIFY"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Table grants
+//
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `SELECT` and `MODIFY` privileges to _`catalog.schema.table`_ specified in the `table` attribute.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGrants(ctx, "customers", &databricks.GrantsArgs{
+//				Table: pulumi.String("main.reporting.customers"),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("MODIFY"),
+//							pulumi.String("SELECT"),
+//						},
+//					},
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Analysts"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("SELECT"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// You can also apply grants dynamically with getTables data resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			things, err := databricks.GetTables(ctx, &databricks.GetTablesArgs{
+//				CatalogName: "sandbox",
+//				SchemaName:  "things",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var thingsGrants []*databricks.Grants
+//			for key0, val0 := range things.Ids {
+//				__res, err := databricks.NewGrants(ctx, fmt.Sprintf("things-%v", key0), &databricks.GrantsArgs{
+//					Table: pulumi.String(val0),
+//					Grants: databricks.GrantsGrantArray{
+//						&databricks.GrantsGrantArgs{
+//							Principal: pulumi.String("sensitive"),
+//							Privileges: pulumi.StringArray{
+//								pulumi.String("SELECT"),
+//								pulumi.String("MODIFY"),
+//							},
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				thingsGrants = append(thingsGrants, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## View grants
+//
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG` and `SELECT` privileges to _`catalog.schema.view`_ specified in `table` attribute.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGrants(ctx, "customer360", &databricks.GrantsArgs{
+//				Table: pulumi.String("main.reporting.customer360"),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Analysts"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("SELECT"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// You can also apply grants dynamically with getViews data resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			customers, err := databricks.GetViews(ctx, &databricks.GetViewsArgs{
+//				CatalogName: "main",
+//				SchemaName:  "customers",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var customersGrants []*databricks.Grants
+//			for key0, val0 := range customers.Ids {
+//				__res, err := databricks.NewGrants(ctx, fmt.Sprintf("customers-%v", key0), &databricks.GrantsArgs{
+//					Table: pulumi.String(val0),
+//					Grants: databricks.GrantsGrantArray{
+//						&databricks.GrantsGrantArgs{
+//							Principal: pulumi.String("sensitive"),
+//							Privileges: pulumi.StringArray{
+//								pulumi.String("SELECT"),
+//								pulumi.String("MODIFY"),
+//							},
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				customersGrants = append(customersGrants, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Volume grants
+//
+// You can grant `ALL_PRIVILEGES`, `READ_VOLUME` and `WRITE_VOLUME` privileges to _`catalog.schema.volume`_ specified in the `volume` attribute.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewVolume(ctx, "this", &databricks.VolumeArgs{
+//				Name:            pulumi.String("quickstart_volume"),
+//				CatalogName:     pulumi.Any(sandbox.Name),
+//				SchemaName:      pulumi.Any(things.Name),
+//				VolumeType:      pulumi.String("EXTERNAL"),
+//				StorageLocation: pulumi.Any(some.Url),
+//				Comment:         pulumi.String("this volume is managed by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "volume", &databricks.GrantsArgs{
+//				Volume: this.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("WRITE_VOLUME"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Registered model grants
+//
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges to _`catalog.schema.model`_ specified in the `model` attribute.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGrants(ctx, "customers", &databricks.GrantsArgs{
+//				Model: pulumi.String("main.reporting.customer_model"),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("APPLY_TAG"),
+//							pulumi.String("EXECUTE"),
+//						},
+//					},
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Analysts"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("EXECUTE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Function grants
+//
+// You can grant `ALL_PRIVILEGES` and `EXECUTE` privileges to _`catalog.schema.function`_ specified in the `function` attribute.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGrants(ctx, "udf", &databricks.GrantsArgs{
+//				Function: pulumi.String("main.reporting.udf"),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("EXECUTE"),
+//						},
+//					},
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Analysts"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("EXECUTE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Service credential grants
+//
+// You can grant `ALL_PRIVILEGES`, `ACCESS` and `CREATE_CONNECTION` privileges to Credential id specified in `credential` attribute:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			external, err := databricks.NewCredential(ctx, "external", &databricks.CredentialArgs{
+//				Name: pulumi.Any(externalDataAccess.Name),
+//				AwsIamRole: &databricks.CredentialAwsIamRoleArgs{
+//					RoleArn: pulumi.Any(externalDataAccess.Arn),
+//				},
+//				Purpose: pulumi.String("SERVICE"),
+//				Comment: pulumi.String("Managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
+//				Credential: external.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_CONNECTION"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Storage credential grants
+//
+// You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `READ_FILES` and `WRITE_FILES` privileges to StorageCredential id specified in `storageCredential` attribute:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			external, err := databricks.NewStorageCredential(ctx, "external", &databricks.StorageCredentialArgs{
+//				Name: pulumi.Any(externalDataAccess.Name),
+//				AwsIamRole: &databricks.StorageCredentialAwsIamRoleArgs{
+//					RoleArn: pulumi.Any(externalDataAccess.Arn),
+//				},
+//				Comment: pulumi.String("Managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
+//				StorageCredential: external.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_EXTERNAL_TABLE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## External location grants
+//
+// You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_TABLE`, `CREATE_MANAGED_STORAGE`, `CREATE EXTERNAL VOLUME`, `READ_FILES` and `WRITE_FILES` privileges to ExternalLocation id specified in `externalLocation` attribute:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			some, err := databricks.NewExternalLocation(ctx, "some", &databricks.ExternalLocationArgs{
+//				Name:           pulumi.String("external"),
+//				Url:            pulumi.Sprintf("s3://%v/some", externalAwsS3Bucket.Id),
+//				CredentialName: pulumi.Any(external.Id),
+//				Comment:        pulumi.String("Managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "some", &databricks.GrantsArgs{
+//				ExternalLocation: some.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_EXTERNAL_TABLE"),
+//							pulumi.String("READ_FILES"),
+//						},
+//					},
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.Any(mySp.ApplicationId),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_EXTERNAL_TABLE"),
+//							pulumi.String("READ_FILES"),
+//						},
+//					},
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.Any(myGroup.DisplayName),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_EXTERNAL_TABLE"),
+//							pulumi.String("READ_FILES"),
+//						},
+//					},
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.Any(myUser.UserName),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_EXTERNAL_TABLE"),
+//							pulumi.String("READ_FILES"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Connection grants
+//
+// You can grant `ALL_PRIVILEGES`, `USE_CONNECTION` and `CREATE_FOREIGN_CATALOG` to Connection specified in `foreignConnection` attribute:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mysql, err := databricks.NewConnection(ctx, "mysql", &databricks.ConnectionArgs{
+//				Name:           pulumi.String("mysql_connection"),
+//				ConnectionType: pulumi.String("MYSQL"),
+//				Comment:        pulumi.String("this is a connection to mysql db"),
+//				Options: pulumi.StringMap{
+//					"host":     pulumi.String("test.mysql.database.azure.com"),
+//					"port":     pulumi.String("3306"),
+//					"user":     pulumi.String("user"),
+//					"password": pulumi.String("password"),
+//				},
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "some", &databricks.GrantsArgs{
+//				ForeignConnection: mysql.Name,
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_FOREIGN_CATALOG"),
+//							pulumi.String("USE_CONNECTION"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Delta Sharing share grants
+//
+// You can grant `SELECT` to Recipient on Share name specified in `share` attribute:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			some, err := databricks.NewShare(ctx, "some", &databricks.ShareArgs{
+//				Name: pulumi.String("my_share"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			someRecipient, err := databricks.NewRecipient(ctx, "some", &databricks.RecipientArgs{
+//				Name: pulumi.String("my_recipient"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "some", &databricks.GrantsArgs{
+//				Share: some.Name,
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: someRecipient.Name,
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("SELECT"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Other access control
+//
+// You can control Databricks General Permissions through Permissions resource.
+//
+// ## Import
+//
+// The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and it's name:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/grants:Grants this catalog/abc
+// ```
 type Grants struct {
 	pulumi.CustomResourceState
 

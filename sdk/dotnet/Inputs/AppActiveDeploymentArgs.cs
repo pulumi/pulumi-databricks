@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppActiveDeploymentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The creation time of the app.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// The email of the user that created the app.
+        /// </summary>
         [Input("creator")]
         public Input<string>? Creator { get; set; }
 
@@ -33,6 +39,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("status")]
         public Input<Inputs.AppActiveDeploymentStatusArgs>? Status { get; set; }
 
+        /// <summary>
+        /// The update time of the app.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

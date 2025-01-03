@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
+    /**
+     * @return The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+     * 
+     */
     private @Nullable String databricksApiToken;
+    /**
+     * @return The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
+     * 
+     */
     private @Nullable String databricksApiTokenPlaintext;
+    /**
+     * @return The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+     * 
+     */
     private String databricksWorkspaceUrl;
 
     private ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig() {}
+    /**
+     * @return The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+     * 
+     */
     public Optional<String> databricksApiToken() {
         return Optional.ofNullable(this.databricksApiToken);
     }
+    /**
+     * @return The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
+     * 
+     */
     public Optional<String> databricksApiTokenPlaintext() {
         return Optional.ofNullable(this.databricksApiTokenPlaintext);
     }
+    /**
+     * @return The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+     * 
+     */
     public String databricksWorkspaceUrl() {
         return this.databricksWorkspaceUrl;
     }

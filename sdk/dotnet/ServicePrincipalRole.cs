@@ -9,12 +9,66 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// This resource allows you to attach a role or databricks.InstanceProfile (AWS) to a databricks_service_principal.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Granting a service principal access to an instance profile
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instanceProfile = new Databricks.InstanceProfile("instance_profile", new()
+    ///     {
+    ///         InstanceProfileArn = "my_instance_profile_arn",
+    ///     });
+    /// 
+    ///     var @this = new Databricks.ServicePrincipal("this", new()
+    ///     {
+    ///         DisplayName = "My Service Principal",
+    ///     });
+    /// 
+    ///     var myServicePrincipalInstanceProfile = new Databricks.ServicePrincipalRole("my_service_principal_instance_profile", new()
+    ///     {
+    ///         ServicePrincipalId = @this.Id,
+    ///         Role = instanceProfile.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * End to end workspace management guide.
+    /// * databricks.UserRole to attach role or databricks.InstanceProfile (AWS) to databricks_user.
+    /// * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+    /// * databricks.GroupMember to attach users and groups as group members.
+    /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+    /// 
+    /// ## Import
+    /// 
+    /// !&gt; Importing this resource is not currently supported.
+    /// </summary>
     [DatabricksResourceType("databricks:index/servicePrincipalRole:ServicePrincipalRole")]
     public partial class ServicePrincipalRole : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// This is the id of the role or instance profile resource.
+        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
+        /// <summary>
+        /// This is the id of the service principal resource.
+        /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
 
@@ -64,9 +118,15 @@ namespace Pulumi.Databricks
 
     public sealed class ServicePrincipalRoleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This is the id of the role or instance profile resource.
+        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
+        /// <summary>
+        /// This is the id of the service principal resource.
+        /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
 
@@ -78,9 +138,15 @@ namespace Pulumi.Databricks
 
     public sealed class ServicePrincipalRoleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This is the id of the role or instance profile resource.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// This is the id of the service principal resource.
+        /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }
 

@@ -13,8 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class QueryParameterDateValue
     {
+        /// <summary>
+        /// Manually specified date-time value
+        /// </summary>
         public readonly string? DateValue;
+        /// <summary>
+        /// Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
+        /// </summary>
         public readonly string? DynamicDateValue;
+        /// <summary>
+        /// Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
+        /// </summary>
         public readonly string? Precision;
 
         [OutputConstructor]

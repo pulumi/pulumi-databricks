@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class QueryParameterNumericValue {
+    /**
+     * @return actual numeric value.
+     * 
+     */
     private Double value;
 
     private QueryParameterNumericValue() {}
+    /**
+     * @return actual numeric value.
+     * 
+     */
     public Double value() {
         return this.value;
     }

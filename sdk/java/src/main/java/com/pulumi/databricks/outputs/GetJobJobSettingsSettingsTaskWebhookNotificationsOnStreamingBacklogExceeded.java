@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded {
+    /**
+     * @return the id of databricks.Job if the resource was matched by name.
+     * 
+     */
     private String id;
 
     private GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded() {}
+    /**
+     * @return the id of databricks.Job if the resource was matched by name.
+     * 
+     */
     public String id() {
         return this.id;
     }

@@ -9,18 +9,71 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// You can declare Pulumi-managed Git credential using following code:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ado = new Databricks.GitCredential("ado", new()
+    ///     {
+    ///         GitUsername = "myuser",
+    ///         GitProvider = "azureDevOpsServices",
+    ///         PersonalAccessToken = "sometoken",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * databricks.Repo to manage Databricks Repos.
+    /// 
+    /// ## Import
+    /// 
+    /// The resource cluster can be imported using ID of Git credential that could be obtained via REST API:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/gitCredential:GitCredential this &lt;git-credential-id&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/gitCredential:GitCredential")]
     public partial class GitCredential : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+        /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
+        /// <summary>
+        /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+        /// </summary>
         [Output("gitProvider")]
         public Output<string> GitProvider { get; private set; } = null!;
 
+        /// <summary>
+        /// user name at Git provider.
+        /// </summary>
         [Output("gitUsername")]
         public Output<string?> GitUsername { get; private set; } = null!;
 
+        /// <summary>
+        /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        /// </summary>
         [Output("personalAccessToken")]
         public Output<string?> PersonalAccessToken { get; private set; } = null!;
 
@@ -70,15 +123,27 @@ namespace Pulumi.Databricks
 
     public sealed class GitCredentialArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
+        /// <summary>
+        /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+        /// </summary>
         [Input("gitProvider", required: true)]
         public Input<string> GitProvider { get; set; } = null!;
 
+        /// <summary>
+        /// user name at Git provider.
+        /// </summary>
         [Input("gitUsername")]
         public Input<string>? GitUsername { get; set; }
 
+        /// <summary>
+        /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        /// </summary>
         [Input("personalAccessToken")]
         public Input<string>? PersonalAccessToken { get; set; }
 
@@ -90,15 +155,27 @@ namespace Pulumi.Databricks
 
     public sealed class GitCredentialState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it's already configured, the apply operation will fail.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
+        /// <summary>
+        /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+        /// </summary>
         [Input("gitProvider")]
         public Input<string>? GitProvider { get; set; }
 
+        /// <summary>
+        /// user name at Git provider.
+        /// </summary>
         [Input("gitUsername")]
         public Input<string>? GitUsername { get; set; }
 
+        /// <summary>
+        /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        /// </summary>
         [Input("personalAccessToken")]
         public Input<string>? PersonalAccessToken { get; set; }
 

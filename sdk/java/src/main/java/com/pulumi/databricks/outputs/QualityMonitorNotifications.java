@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class QualityMonitorNotifications {
+    /**
+     * @return who to send notifications to on monitor failure.
+     * 
+     */
     private @Nullable QualityMonitorNotificationsOnFailure onFailure;
+    /**
+     * @return Who to send notifications to when new data classification tags are detected.
+     * 
+     */
     private @Nullable QualityMonitorNotificationsOnNewClassificationTagDetected onNewClassificationTagDetected;
 
     private QualityMonitorNotifications() {}
+    /**
+     * @return who to send notifications to on monitor failure.
+     * 
+     */
     public Optional<QualityMonitorNotificationsOnFailure> onFailure() {
         return Optional.ofNullable(this.onFailure);
     }
+    /**
+     * @return Who to send notifications to when new data classification tags are detected.
+     * 
+     */
     public Optional<QualityMonitorNotificationsOnNewClassificationTagDetected> onNewClassificationTagDetected() {
         return Optional.ofNullable(this.onNewClassificationTagDetected);
     }

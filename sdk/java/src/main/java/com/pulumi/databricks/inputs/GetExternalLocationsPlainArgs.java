@@ -15,9 +15,17 @@ public final class GetExternalLocationsPlainArgs extends com.pulumi.resources.In
 
     public static final GetExternalLocationsPlainArgs Empty = new GetExternalLocationsPlainArgs();
 
+    /**
+     * List of names of databricks.ExternalLocation in the metastore
+     * 
+     */
     @Import(name="names")
     private @Nullable List<String> names;
 
+    /**
+     * @return List of names of databricks.ExternalLocation in the metastore
+     * 
+     */
     public Optional<List<String>> names() {
         return Optional.ofNullable(this.names);
     }
@@ -46,11 +54,23 @@ public final class GetExternalLocationsPlainArgs extends com.pulumi.resources.In
             $ = new GetExternalLocationsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param names List of names of databricks.ExternalLocation in the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(@Nullable List<String> names) {
             $.names = names;
             return this;
         }
 
+        /**
+         * @param names List of names of databricks.ExternalLocation in the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(String... names) {
             return names(List.of(names));
         }

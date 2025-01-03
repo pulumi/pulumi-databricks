@@ -18,6 +18,10 @@ public final class GetJobsResult {
      * 
      */
     private String id;
+    /**
+     * @return map of databricks.Job names to ids
+     * 
+     */
     private Map<String,String> ids;
     private @Nullable String jobNameContains;
 
@@ -29,6 +33,10 @@ public final class GetJobsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return map of databricks.Job names to ids
+     * 
+     */
     public Map<String,String> ids() {
         return this.ids;
     }

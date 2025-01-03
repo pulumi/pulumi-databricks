@@ -17,17 +17,129 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * This resource creates a cluster policy, which limits the ability to create clusters based on a set of rules. The policy rules limit the attributes or attribute values available for cluster creation. cluster policies have ACLs that limit their use to specific users and groups. Only admin users can create, edit, and delete policies. Admin users also have access to all policies.
+ * 
+ * Cluster policies let you:
+ * 
+ * * Limit users to create clusters with prescribed settings.
+ * * Simplify the user interface and enable more users to create their own clusters (by fixing and hiding some values).
+ * * Control cost by limiting per cluster maximum cost (by setting limits on attributes whose values contribute to hourly price).
+ * 
+ * Cluster policy permissions limit which policies a user can select in the Policy drop-down when the user creates a cluster:
+ * 
+ * * If no policies have been created in the workspace, the Policy drop-down does not display.
+ * * A user who has cluster create permission can select the `Free form` policy and create fully-configurable clusters.
+ * * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
+ * * A user that has access to only cluster policies, can select the policies they have access to.
+ * 
+ * ### Overriding the built-in cluster policies
+ * 
+ * You can override built-in cluster policies by creating a `databricks.ClusterPolicy` resource with following attributes:
+ * 
+ * * `name` - the name of the built-in cluster policy.
+ * * `policy_family_id` - the ID of the cluster policy family used for built-in cluster policy.
+ * * `policy_family_definition_overrides` - settings to override in the built-in cluster policy.
+ * 
+ * You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.ClusterPolicy;
+ * import com.pulumi.databricks.ClusterPolicyArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var personalVmOverride = %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var personalVm = new ClusterPolicy("personalVm", ClusterPolicyArgs.builder()
+ *             .policyFamilyId("personal-vm")
+ *             .policyFamilyDefinitionOverrides(serializeJson(
+ *                 personalVmOverride))
+ *             .name("Personal Compute")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * Dynamic Passthrough Clusters for a Group guide.
+ * * End to end workspace management guide.
+ * * databricks.getClusters data to retrieve a list of databricks.Cluster ids.
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+ * * databricks.GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.
+ * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+ * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.IpAccessList to allow access from [predefined IP ranges](https://docs.databricks.com/security/network/ip-access-list.html).
+ * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+ * * databricks.getNodeType data to get the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores.
+ * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+ * * databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources.
+ * * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
+ * * databricks.WorkspaceConf to manage workspace configuration for expert usage.
+ * 
+ * ## Import
+ * 
+ * The resource cluster policy can be imported using the policy id:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this &lt;cluster-policy-id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/clusterPolicy:ClusterPolicy")
 public class ClusterPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+     * 
+     */
     @Export(name="definition", refs={String.class}, tree="[0]")
     private Output<String> definition;
 
+    /**
+     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+     * 
+     */
     public Output<String> definition() {
         return this.definition;
     }
+    /**
+     * Additional human-readable description of the cluster policy.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return Additional human-readable description of the cluster policy.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
@@ -37,33 +149,73 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ClusterPolicyLibrary>>> libraries() {
         return Codegen.optional(this.libraries);
     }
+    /**
+     * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
+     * 
+     */
     @Export(name="maxClustersPerUser", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxClustersPerUser;
 
+    /**
+     * @return Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
+     * 
+     */
     public Output<Optional<Integer>> maxClustersPerUser() {
         return Codegen.optional(this.maxClustersPerUser);
     }
+    /**
+     * Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+     * 
+     */
     @Export(name="policyFamilyDefinitionOverrides", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policyFamilyDefinitionOverrides;
 
+    /**
+     * @return Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
+     * 
+     */
     public Output<Optional<String>> policyFamilyDefinitionOverrides() {
         return Codegen.optional(this.policyFamilyDefinitionOverrides);
     }
+    /**
+     * ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+     * 
+     */
     @Export(name="policyFamilyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policyFamilyId;
 
+    /**
+     * @return ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+     * 
+     */
     public Output<Optional<String>> policyFamilyId() {
         return Codegen.optional(this.policyFamilyId);
     }
+    /**
+     * Canonical unique identifier for the cluster policy.
+     * 
+     */
     @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
+    /**
+     * @return Canonical unique identifier for the cluster policy.
+     * 
+     */
     public Output<String> policyId() {
         return this.policyId;
     }

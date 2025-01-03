@@ -17,16 +17,32 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
 
     public static final AppActiveDeploymentArgs Empty = new AppActiveDeploymentArgs();
 
+    /**
+     * The creation time of the app.
+     * 
+     */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
+    /**
+     * @return The creation time of the app.
+     * 
+     */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * The email of the user that created the app.
+     * 
+     */
     @Import(name="creator")
     private @Nullable Output<String> creator;
 
+    /**
+     * @return The email of the user that created the app.
+     * 
+     */
     public Optional<Output<String>> creator() {
         return Optional.ofNullable(this.creator);
     }
@@ -66,9 +82,17 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The update time of the app.
+     * 
+     */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
+    /**
+     * @return The update time of the app.
+     * 
+     */
     public Optional<Output<String>> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }
@@ -104,20 +128,44 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
             $ = new AppActiveDeploymentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param createTime The creation time of the app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
+        /**
+         * @param createTime The creation time of the app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param creator The email of the user that created the app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder creator(@Nullable Output<String> creator) {
             $.creator = creator;
             return this;
         }
 
+        /**
+         * @param creator The email of the user that created the app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder creator(String creator) {
             return creator(Output.of(creator));
         }
@@ -167,11 +215,23 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
             return status(Output.of(status));
         }
 
+        /**
+         * @param updateTime The update time of the app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(@Nullable Output<String> updateTime) {
             $.updateTime = updateTime;
             return this;
         }
 
+        /**
+         * @param updateTime The update time of the app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
         }

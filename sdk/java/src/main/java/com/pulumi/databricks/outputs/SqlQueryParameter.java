@@ -29,10 +29,25 @@ public final class SqlQueryParameter {
     private @Nullable SqlQueryParameterDatetimesec datetimesec;
     private @Nullable SqlQueryParameterDatetimesecRange datetimesecRange;
     private @Nullable SqlQueryParameterEnum enum_;
+    /**
+     * @return The literal parameter marker that appears between double curly braces in the query text.
+     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
+     * 
+     * For `text`, `number`, `date`, `datetime`, `datetimesec` block
+     * 
+     */
     private String name;
     private @Nullable SqlQueryParameterNumber number;
+    /**
+     * @return The text of the query to be run.
+     * 
+     */
     private @Nullable SqlQueryParameterQuery query;
     private @Nullable SqlQueryParameterText text;
+    /**
+     * @return The text displayed in a parameter picking widget.
+     * 
+     */
     private @Nullable String title;
 
     private SqlQueryParameter() {}
@@ -57,18 +72,33 @@ public final class SqlQueryParameter {
     public Optional<SqlQueryParameterEnum> enum_() {
         return Optional.ofNullable(this.enum_);
     }
+    /**
+     * @return The literal parameter marker that appears between double curly braces in the query text.
+     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
+     * 
+     * For `text`, `number`, `date`, `datetime`, `datetimesec` block
+     * 
+     */
     public String name() {
         return this.name;
     }
     public Optional<SqlQueryParameterNumber> number() {
         return Optional.ofNullable(this.number);
     }
+    /**
+     * @return The text of the query to be run.
+     * 
+     */
     public Optional<SqlQueryParameterQuery> query() {
         return Optional.ofNullable(this.query);
     }
     public Optional<SqlQueryParameterText> text() {
         return Optional.ofNullable(this.text);
     }
+    /**
+     * @return The text displayed in a parameter picking widget.
+     * 
+     */
     public Optional<String> title() {
         return Optional.ofNullable(this.title);
     }

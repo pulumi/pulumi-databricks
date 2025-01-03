@@ -11,6 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// Retrieves the settings of Job by name or by id. Complements the feature of the getJobs data source.
+//
+// ## Example Usage
+//
+// Getting the existing cluster id of specific Job by name or by id:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.LookupJob(ctx, &databricks.LookupJobArgs{
+//				JobName: pulumi.StringRef("My job"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("jobNumWorkers", this.JobSettings.Settings.NewCluster.NumWorkers)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * getJobs data to get all jobs and their names from a workspace.
+// * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobResult
@@ -23,20 +62,26 @@ func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getJob.
 type LookupJobArgs struct {
-	Id          *string            `pulumi:"id"`
-	JobId       *string            `pulumi:"jobId"`
-	JobName     *string            `pulumi:"jobName"`
+	// the id of Job if the resource was matched by name.
+	Id      *string `pulumi:"id"`
+	JobId   *string `pulumi:"jobId"`
+	JobName *string `pulumi:"jobName"`
+	// the same fields as in databricks_job.
 	JobSettings *GetJobJobSettings `pulumi:"jobSettings"`
-	Name        *string            `pulumi:"name"`
+	// the job name of Job if the resource was matched by id.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getJob.
 type LookupJobResult struct {
-	Id          string            `pulumi:"id"`
-	JobId       string            `pulumi:"jobId"`
-	JobName     string            `pulumi:"jobName"`
+	// the id of Job if the resource was matched by name.
+	Id      string `pulumi:"id"`
+	JobId   string `pulumi:"jobId"`
+	JobName string `pulumi:"jobName"`
+	// the same fields as in databricks_job.
 	JobSettings GetJobJobSettings `pulumi:"jobSettings"`
-	Name        string            `pulumi:"name"`
+	// the job name of Job if the resource was matched by id.
+	Name string `pulumi:"name"`
 }
 
 func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulumi.InvokeOption) LookupJobResultOutput {
@@ -50,11 +95,14 @@ func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getJob.
 type LookupJobOutputArgs struct {
-	Id          pulumi.StringPtrInput     `pulumi:"id"`
-	JobId       pulumi.StringPtrInput     `pulumi:"jobId"`
-	JobName     pulumi.StringPtrInput     `pulumi:"jobName"`
+	// the id of Job if the resource was matched by name.
+	Id      pulumi.StringPtrInput `pulumi:"id"`
+	JobId   pulumi.StringPtrInput `pulumi:"jobId"`
+	JobName pulumi.StringPtrInput `pulumi:"jobName"`
+	// the same fields as in databricks_job.
 	JobSettings GetJobJobSettingsPtrInput `pulumi:"jobSettings"`
-	Name        pulumi.StringPtrInput     `pulumi:"name"`
+	// the job name of Job if the resource was matched by id.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupJobOutputArgs) ElementType() reflect.Type {
@@ -76,6 +124,7 @@ func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o LookupJobResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -88,10 +137,12 @@ func (o LookupJobResultOutput) JobName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.JobName }).(pulumi.StringOutput)
 }
 
+// the same fields as in databricks_job.
 func (o LookupJobResultOutput) JobSettings() GetJobJobSettingsOutput {
 	return o.ApplyT(func(v LookupJobResult) GetJobJobSettings { return v.JobSettings }).(GetJobJobSettingsOutput)
 }
 
+// the job name of Job if the resource was matched by id.
 func (o LookupJobResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Name }).(pulumi.StringOutput)
 }

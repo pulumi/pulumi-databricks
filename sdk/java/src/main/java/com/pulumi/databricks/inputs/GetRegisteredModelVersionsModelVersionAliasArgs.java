@@ -16,16 +16,32 @@ public final class GetRegisteredModelVersionsModelVersionAliasArgs extends com.p
 
     public static final GetRegisteredModelVersionsModelVersionAliasArgs Empty = new GetRegisteredModelVersionsModelVersionAliasArgs();
 
+    /**
+     * string with the name of alias
+     * 
+     */
     @Import(name="aliasName")
     private @Nullable Output<String> aliasName;
 
+    /**
+     * @return string with the name of alias
+     * 
+     */
     public Optional<Output<String>> aliasName() {
         return Optional.ofNullable(this.aliasName);
     }
 
+    /**
+     * associated model version
+     * 
+     */
     @Import(name="versionNum")
     private @Nullable Output<Integer> versionNum;
 
+    /**
+     * @return associated model version
+     * 
+     */
     public Optional<Output<Integer>> versionNum() {
         return Optional.ofNullable(this.versionNum);
     }
@@ -55,20 +71,44 @@ public final class GetRegisteredModelVersionsModelVersionAliasArgs extends com.p
             $ = new GetRegisteredModelVersionsModelVersionAliasArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aliasName string with the name of alias
+         * 
+         * @return builder
+         * 
+         */
         public Builder aliasName(@Nullable Output<String> aliasName) {
             $.aliasName = aliasName;
             return this;
         }
 
+        /**
+         * @param aliasName string with the name of alias
+         * 
+         * @return builder
+         * 
+         */
         public Builder aliasName(String aliasName) {
             return aliasName(Output.of(aliasName));
         }
 
+        /**
+         * @param versionNum associated model version
+         * 
+         * @return builder
+         * 
+         */
         public Builder versionNum(@Nullable Output<Integer> versionNum) {
             $.versionNum = versionNum;
             return this;
         }
 
+        /**
+         * @param versionNum associated model version
+         * 
+         * @return builder
+         * 
+         */
         public Builder versionNum(Integer versionNum) {
             return versionNum(Output.of(versionNum));
         }

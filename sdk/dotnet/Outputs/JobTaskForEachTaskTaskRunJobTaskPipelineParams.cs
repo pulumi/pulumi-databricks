@@ -13,6 +13,11 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskForEachTaskTaskRunJobTaskPipelineParams
     {
+        /// <summary>
+        /// (Bool) Specifies if there should be full refresh of the pipeline.
+        /// 
+        /// &gt; The following configuration blocks are only supported inside a `task` block
+        /// </summary>
         public readonly bool? FullRefresh;
 
         [OutputConstructor]

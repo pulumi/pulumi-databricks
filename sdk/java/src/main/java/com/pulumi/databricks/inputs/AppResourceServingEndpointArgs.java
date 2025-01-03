@@ -14,16 +14,32 @@ public final class AppResourceServingEndpointArgs extends com.pulumi.resources.R
 
     public static final AppResourceServingEndpointArgs Empty = new AppResourceServingEndpointArgs();
 
+    /**
+     * Name of the serving endpoint to grant permission on.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Name of the serving endpoint to grant permission on.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * Permission to grant on the serving endpoint. Supported permissions are: `CAN_MANAGE`, `CAN_QUERY`, `CAN_VIEW`.
+     * 
+     */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
+    /**
+     * @return Permission to grant on the serving endpoint. Supported permissions are: `CAN_MANAGE`, `CAN_QUERY`, `CAN_VIEW`.
+     * 
+     */
     public Output<String> permission() {
         return this.permission;
     }
@@ -53,20 +69,44 @@ public final class AppResourceServingEndpointArgs extends com.pulumi.resources.R
             $ = new AppResourceServingEndpointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Name of the serving endpoint to grant permission on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of the serving endpoint to grant permission on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param permission Permission to grant on the serving endpoint. Supported permissions are: `CAN_MANAGE`, `CAN_QUERY`, `CAN_VIEW`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission Permission to grant on the serving endpoint. Supported permissions are: `CAN_MANAGE`, `CAN_QUERY`, `CAN_VIEW`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }

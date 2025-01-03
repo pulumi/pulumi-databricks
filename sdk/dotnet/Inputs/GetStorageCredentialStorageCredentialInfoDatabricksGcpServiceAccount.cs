@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("credentialId")]
         public string? CredentialId { get; set; }
 
+        /// <summary>
+        /// The email of the GCP service account created, to be granted access to relevant buckets.
+        /// </summary>
         [Input("email")]
         public string? Email { get; set; }
 

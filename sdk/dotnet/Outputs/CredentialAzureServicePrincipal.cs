@@ -13,8 +13,19 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class CredentialAzureServicePrincipal
     {
+        /// <summary>
+        /// The application ID of the application registration within the referenced AAD tenant
+        /// </summary>
         public readonly string ApplicationId;
+        /// <summary>
+        /// The client secret generated for the above app ID in AAD. **This field is redacted on output**
+        /// 
+        /// `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+        /// </summary>
         public readonly string ClientSecret;
+        /// <summary>
+        /// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+        /// </summary>
         public readonly string DirectoryId;
 
         [OutputConstructor]

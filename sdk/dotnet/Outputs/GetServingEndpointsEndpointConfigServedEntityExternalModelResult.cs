@@ -19,6 +19,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigResult> CohereConfigs;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigResult> DatabricksModelServingConfigs;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigResult> GoogleCloudVertexAiConfigs;
+        /// <summary>
+        /// The name of the model serving endpoint.
+        /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigResult> OpenaiConfigs;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigResult> PalmConfigs;

@@ -13,13 +13,22 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppActiveDeployment
     {
+        /// <summary>
+        /// The creation time of the app.
+        /// </summary>
         public readonly string? CreateTime;
+        /// <summary>
+        /// The email of the user that created the app.
+        /// </summary>
         public readonly string? Creator;
         public readonly Outputs.AppActiveDeploymentDeploymentArtifacts? DeploymentArtifacts;
         public readonly string? DeploymentId;
         public readonly string? Mode;
         public readonly string? SourceCodePath;
         public readonly Outputs.AppActiveDeploymentStatus? Status;
+        /// <summary>
+        /// The update time of the app.
+        /// </summary>
         public readonly string? UpdateTime;
 
         [OutputConstructor]

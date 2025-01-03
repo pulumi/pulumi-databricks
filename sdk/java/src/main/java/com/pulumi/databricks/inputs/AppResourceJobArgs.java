@@ -14,16 +14,32 @@ public final class AppResourceJobArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final AppResourceJobArgs Empty = new AppResourceJobArgs();
 
+    /**
+     * Id of the job to grant permission on.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return Id of the job to grant permission on.
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
 
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * 
+     */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
+    /**
+     * @return Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * 
+     */
     public Output<String> permission() {
         return this.permission;
     }
@@ -53,20 +69,44 @@ public final class AppResourceJobArgs extends com.pulumi.resources.ResourceArgs 
             $ = new AppResourceJobArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id Id of the job to grant permission on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id Id of the job to grant permission on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
+        /**
+         * @param permission Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }

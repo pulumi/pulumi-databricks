@@ -17,6 +17,10 @@ public final class GetViewsResult {
      * 
      */
     private String id;
+    /**
+     * @return set of databricks_view full names: *`catalog`.`schema`.`view`*
+     * 
+     */
     private List<String> ids;
     private String schemaName;
 
@@ -31,6 +35,10 @@ public final class GetViewsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return set of databricks_view full names: *`catalog`.`schema`.`view`*
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }

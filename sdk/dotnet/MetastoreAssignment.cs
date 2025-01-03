@@ -9,15 +9,67 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// &gt; This resource can be used with an account or workspace-level provider.
+    /// 
+    /// A single databricks.Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. You can only create a single metastore for each region in which your organization operates.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.Metastore("this", new()
+    ///     {
+    ///         Name = "primary",
+    ///         StorageRoot = $"s3://{metastore.Id}/metastore",
+    ///         Owner = "uc admins",
+    ///         Region = "us-east-1",
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var thisMetastoreAssignment = new Databricks.MetastoreAssignment("this", new()
+    ///     {
+    ///         MetastoreId = @this.Id,
+    ///         WorkspaceId = workspaceId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by combination of workspace id and metastore id:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '&lt;workspace_id&gt;|&lt;metastore_id&gt;'
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/metastoreAssignment:MetastoreAssignment")]
     public partial class MetastoreAssignment : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
+        /// </summary>
         [Output("defaultCatalogName")]
         public Output<string?> DefaultCatalogName { get; private set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the parent Metastore
+        /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
+        /// <summary>
+        /// id of the workspace for the assignment
+        /// </summary>
         [Output("workspaceId")]
         public Output<string> WorkspaceId { get; private set; } = null!;
 
@@ -67,12 +119,21 @@ namespace Pulumi.Databricks
 
     public sealed class MetastoreAssignmentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
+        /// </summary>
         [Input("defaultCatalogName")]
         public Input<string>? DefaultCatalogName { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the parent Metastore
+        /// </summary>
         [Input("metastoreId", required: true)]
         public Input<string> MetastoreId { get; set; } = null!;
 
+        /// <summary>
+        /// id of the workspace for the assignment
+        /// </summary>
         [Input("workspaceId", required: true)]
         public Input<string> WorkspaceId { get; set; } = null!;
 
@@ -84,12 +145,21 @@ namespace Pulumi.Databricks
 
     public sealed class MetastoreAssignmentState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
+        /// </summary>
         [Input("defaultCatalogName")]
         public Input<string>? DefaultCatalogName { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the parent Metastore
+        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
+        /// <summary>
+        /// id of the workspace for the assignment
+        /// </summary>
         [Input("workspaceId")]
         public Input<string>? WorkspaceId { get; set; }
 

@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("dbfs")]
         public Input<Inputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfsArgs>? Dbfs { get; set; }
 
+        /// <summary>
+        /// block consisting of single string fields:
+        /// </summary>
         [Input("file")]
         public Input<Inputs.JobTaskForEachTaskTaskNewClusterInitScriptFileArgs>? File { get; set; }
 

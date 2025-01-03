@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceProfilesInstanceProfile {
+    /**
+     * @return ARN of the instance profile.
+     * 
+     */
     private String arn;
+    /**
+     * @return Whether the instance profile is a meta instance profile or not.
+     * 
+     */
     private Boolean isMeta;
+    /**
+     * @return Name of the instance profile.
+     * 
+     */
     private String name;
+    /**
+     * @return ARN of the role attached to the instance profile.
+     * 
+     */
     private String roleArn;
 
     private GetInstanceProfilesInstanceProfile() {}
+    /**
+     * @return ARN of the instance profile.
+     * 
+     */
     public String arn() {
         return this.arn;
     }
+    /**
+     * @return Whether the instance profile is a meta instance profile or not.
+     * 
+     */
     public Boolean isMeta() {
         return this.isMeta;
     }
+    /**
+     * @return Name of the instance profile.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return ARN of the role attached to the instance profile.
+     * 
+     */
     public String roleArn() {
         return this.roleArn;
     }

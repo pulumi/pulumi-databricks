@@ -20,47 +20,200 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+ * 
+ * &gt; If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.ModelServing;
+ * import com.pulumi.databricks.ModelServingArgs;
+ * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+ * import com.pulumi.databricks.inputs.ModelServingConfigTrafficConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new ModelServing("this", ModelServingArgs.builder()
+ *             .name("ads-serving-endpoint")
+ *             .config(ModelServingConfigArgs.builder()
+ *                 .servedEntities(                
+ *                     ModelServingConfigServedEntityArgs.builder()
+ *                         .name("prod_model")
+ *                         .entityName("ads-model")
+ *                         .entityVersion("2")
+ *                         .workloadSize("Small")
+ *                         .scaleToZeroEnabled(true)
+ *                         .build(),
+ *                     ModelServingConfigServedEntityArgs.builder()
+ *                         .name("candidate_model")
+ *                         .entityName("ads-model")
+ *                         .entityVersion("4")
+ *                         .workloadSize("Small")
+ *                         .scaleToZeroEnabled(false)
+ *                         .build())
+ *                 .trafficConfig(ModelServingConfigTrafficConfigArgs.builder()
+ *                     .routes(                    
+ *                         ModelServingConfigTrafficConfigRouteArgs.builder()
+ *                             .servedModelName("prod_model")
+ *                             .trafficPercentage(90)
+ *                             .build(),
+ *                         ModelServingConfigTrafficConfigRouteArgs.builder()
+ *                             .servedModelName("candidate_model")
+ *                             .trafficPercentage(10)
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Access Control
+ * 
+ * * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * databricks.RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+ * * End to end workspace management guide.
+ * * databricks.Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
+ * * databricks.MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ * * databricks.Notebook data to export a notebook from Databricks Workspace.
+ * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+ * 
+ * ## Import
+ * 
+ * The model serving resource can be imported using the name of the endpoint.
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/modelServing:ModelServing this &lt;model-serving-endpoint-name&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/modelServing:ModelServing")
 public class ModelServing extends com.pulumi.resources.CustomResource {
+    /**
+     * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+     * 
+     */
     @Export(name="aiGateway", refs={ModelServingAiGateway.class}, tree="[0]")
     private Output</* @Nullable */ ModelServingAiGateway> aiGateway;
 
+    /**
+     * @return A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+     * 
+     */
     public Output<Optional<ModelServingAiGateway>> aiGateway() {
         return Codegen.optional(this.aiGateway);
     }
+    /**
+     * The model serving endpoint configuration.
+     * 
+     */
     @Export(name="config", refs={ModelServingConfig.class}, tree="[0]")
     private Output<ModelServingConfig> config;
 
+    /**
+     * @return The model serving endpoint configuration.
+     * 
+     */
     public Output<ModelServingConfig> config() {
         return this.config;
     }
+    /**
+     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+     * 
+     */
     @Export(name="rateLimits", refs={List.class,ModelServingRateLimit.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ModelServingRateLimit>> rateLimits;
 
+    /**
+     * @return A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
+     * 
+     */
     public Output<Optional<List<ModelServingRateLimit>>> rateLimits() {
         return Codegen.optional(this.rateLimits);
     }
+    /**
+     * A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
+     * 
+     */
     @Export(name="routeOptimized", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeOptimized;
 
+    /**
+     * @return A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
+     * 
+     */
     public Output<Optional<Boolean>> routeOptimized() {
         return Codegen.optional(this.routeOptimized);
     }
+    /**
+     * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+     * 
+     */
     @Export(name="servingEndpointId", refs={String.class}, tree="[0]")
     private Output<String> servingEndpointId;
 
+    /**
+     * @return Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+     * 
+     */
     public Output<String> servingEndpointId() {
         return this.servingEndpointId;
     }
+    /**
+     * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     * 
+     */
     @Export(name="tags", refs={List.class,ModelServingTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ModelServingTag>> tags;
 
+    /**
+     * @return Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     * 
+     */
     public Output<Optional<List<ModelServingTag>>> tags() {
         return Codegen.optional(this.tags);
     }

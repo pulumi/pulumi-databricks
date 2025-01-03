@@ -17,23 +17,47 @@ public final class AlertConditionThresholdValueArgs extends com.pulumi.resources
 
     public static final AlertConditionThresholdValueArgs Empty = new AlertConditionThresholdValueArgs();
 
+    /**
+     * boolean value (`true` or `false`) to compare against boolean results.
+     * 
+     */
     @Import(name="boolValue")
     private @Nullable Output<Boolean> boolValue;
 
+    /**
+     * @return boolean value (`true` or `false`) to compare against boolean results.
+     * 
+     */
     public Optional<Output<Boolean>> boolValue() {
         return Optional.ofNullable(this.boolValue);
     }
 
+    /**
+     * double value to compare against integer and double results.
+     * 
+     */
     @Import(name="doubleValue")
     private @Nullable Output<Double> doubleValue;
 
+    /**
+     * @return double value to compare against integer and double results.
+     * 
+     */
     public Optional<Output<Double>> doubleValue() {
         return Optional.ofNullable(this.doubleValue);
     }
 
+    /**
+     * string value to compare against string results.
+     * 
+     */
     @Import(name="stringValue")
     private @Nullable Output<String> stringValue;
 
+    /**
+     * @return string value to compare against string results.
+     * 
+     */
     public Optional<Output<String>> stringValue() {
         return Optional.ofNullable(this.stringValue);
     }
@@ -64,29 +88,65 @@ public final class AlertConditionThresholdValueArgs extends com.pulumi.resources
             $ = new AlertConditionThresholdValueArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param boolValue boolean value (`true` or `false`) to compare against boolean results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder boolValue(@Nullable Output<Boolean> boolValue) {
             $.boolValue = boolValue;
             return this;
         }
 
+        /**
+         * @param boolValue boolean value (`true` or `false`) to compare against boolean results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder boolValue(Boolean boolValue) {
             return boolValue(Output.of(boolValue));
         }
 
+        /**
+         * @param doubleValue double value to compare against integer and double results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder doubleValue(@Nullable Output<Double> doubleValue) {
             $.doubleValue = doubleValue;
             return this;
         }
 
+        /**
+         * @param doubleValue double value to compare against integer and double results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder doubleValue(Double doubleValue) {
             return doubleValue(Output.of(doubleValue));
         }
 
+        /**
+         * @param stringValue string value to compare against string results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stringValue(@Nullable Output<String> stringValue) {
             $.stringValue = stringValue;
             return this;
         }
 
+        /**
+         * @param stringValue string value to compare against string results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stringValue(String stringValue) {
             return stringValue(Output.of(stringValue));
         }

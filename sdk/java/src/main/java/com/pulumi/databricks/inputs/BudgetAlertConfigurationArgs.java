@@ -17,9 +17,17 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
 
     public static final BudgetAlertConfigurationArgs Empty = new BudgetAlertConfigurationArgs();
 
+    /**
+     * List of action configurations to take when the budget alert is triggered. Consists of the following fields:
+     * 
+     */
     @Import(name="actionConfigurations")
     private @Nullable Output<List<BudgetAlertConfigurationActionConfigurationArgs>> actionConfigurations;
 
+    /**
+     * @return List of action configurations to take when the budget alert is triggered. Consists of the following fields:
+     * 
+     */
     public Optional<Output<List<BudgetAlertConfigurationActionConfigurationArgs>>> actionConfigurations() {
         return Optional.ofNullable(this.actionConfigurations);
     }
@@ -31,30 +39,62 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.alertConfigurationId);
     }
 
+    /**
+     * The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+     * 
+     */
     @Import(name="quantityThreshold")
     private @Nullable Output<String> quantityThreshold;
 
+    /**
+     * @return The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+     * 
+     */
     public Optional<Output<String>> quantityThreshold() {
         return Optional.ofNullable(this.quantityThreshold);
     }
 
+    /**
+     * The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+     * 
+     */
     @Import(name="quantityType")
     private @Nullable Output<String> quantityType;
 
+    /**
+     * @return The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+     * 
+     */
     public Optional<Output<String>> quantityType() {
         return Optional.ofNullable(this.quantityType);
     }
 
+    /**
+     * The time window of usage data for the budget. (Enum: `MONTH`)
+     * 
+     */
     @Import(name="timePeriod")
     private @Nullable Output<String> timePeriod;
 
+    /**
+     * @return The time window of usage data for the budget. (Enum: `MONTH`)
+     * 
+     */
     public Optional<Output<String>> timePeriod() {
         return Optional.ofNullable(this.timePeriod);
     }
 
+    /**
+     * The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
+     * 
+     */
     @Import(name="triggerType")
     private @Nullable Output<String> triggerType;
 
+    /**
+     * @return The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
+     * 
+     */
     public Optional<Output<String>> triggerType() {
         return Optional.ofNullable(this.triggerType);
     }
@@ -88,15 +128,33 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
             $ = new BudgetAlertConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param actionConfigurations List of action configurations to take when the budget alert is triggered. Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionConfigurations(@Nullable Output<List<BudgetAlertConfigurationActionConfigurationArgs>> actionConfigurations) {
             $.actionConfigurations = actionConfigurations;
             return this;
         }
 
+        /**
+         * @param actionConfigurations List of action configurations to take when the budget alert is triggered. Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionConfigurations(List<BudgetAlertConfigurationActionConfigurationArgs> actionConfigurations) {
             return actionConfigurations(Output.of(actionConfigurations));
         }
 
+        /**
+         * @param actionConfigurations List of action configurations to take when the budget alert is triggered. Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionConfigurations(BudgetAlertConfigurationActionConfigurationArgs... actionConfigurations) {
             return actionConfigurations(List.of(actionConfigurations));
         }
@@ -110,38 +168,86 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
             return alertConfigurationId(Output.of(alertConfigurationId));
         }
 
+        /**
+         * @param quantityThreshold The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder quantityThreshold(@Nullable Output<String> quantityThreshold) {
             $.quantityThreshold = quantityThreshold;
             return this;
         }
 
+        /**
+         * @param quantityThreshold The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder quantityThreshold(String quantityThreshold) {
             return quantityThreshold(Output.of(quantityThreshold));
         }
 
+        /**
+         * @param quantityType The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder quantityType(@Nullable Output<String> quantityType) {
             $.quantityType = quantityType;
             return this;
         }
 
+        /**
+         * @param quantityType The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder quantityType(String quantityType) {
             return quantityType(Output.of(quantityType));
         }
 
+        /**
+         * @param timePeriod The time window of usage data for the budget. (Enum: `MONTH`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder timePeriod(@Nullable Output<String> timePeriod) {
             $.timePeriod = timePeriod;
             return this;
         }
 
+        /**
+         * @param timePeriod The time window of usage data for the budget. (Enum: `MONTH`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder timePeriod(String timePeriod) {
             return timePeriod(Output.of(timePeriod));
         }
 
+        /**
+         * @param triggerType The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder triggerType(@Nullable Output<String> triggerType) {
             $.triggerType = triggerType;
             return this;
         }
 
+        /**
+         * @param triggerType The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder triggerType(String triggerType) {
             return triggerType(Output.of(triggerType));
         }

@@ -17,9 +17,17 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FileArgs Empty = new FileArgs();
 
+    /**
+     * Contents in base 64 format. Conflicts with `source`.
+     * 
+     */
     @Import(name="contentBase64")
     private @Nullable Output<String> contentBase64;
 
+    /**
+     * @return Contents in base 64 format. Conflicts with `source`.
+     * 
+     */
     public Optional<Output<String>> contentBase64() {
         return Optional.ofNullable(this.contentBase64);
     }
@@ -31,9 +39,17 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.md5);
     }
 
+    /**
+     * The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+     * 
+     */
     @Import(name="path", required=true)
     private Output<String> path;
 
+    /**
+     * @return The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
@@ -45,9 +61,17 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.remoteFileModified);
     }
 
+    /**
+     * The full absolute path to the file. Conflicts with `content_base64`.
+     * 
+     */
     @Import(name="source")
     private @Nullable Output<String> source;
 
+    /**
+     * @return The full absolute path to the file. Conflicts with `content_base64`.
+     * 
+     */
     public Optional<Output<String>> source() {
         return Optional.ofNullable(this.source);
     }
@@ -80,11 +104,23 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
             $ = new FileArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contentBase64 Contents in base 64 format. Conflicts with `source`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentBase64(@Nullable Output<String> contentBase64) {
             $.contentBase64 = contentBase64;
             return this;
         }
 
+        /**
+         * @param contentBase64 Contents in base 64 format. Conflicts with `source`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentBase64(String contentBase64) {
             return contentBase64(Output.of(contentBase64));
         }
@@ -98,11 +134,23 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
             return md5(Output.of(md5));
         }
 
+        /**
+         * @param path The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
@@ -116,11 +164,23 @@ public final class FileArgs extends com.pulumi.resources.ResourceArgs {
             return remoteFileModified(Output.of(remoteFileModified));
         }
 
+        /**
+         * @param source The full absolute path to the file. Conflicts with `content_base64`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(@Nullable Output<String> source) {
             $.source = source;
             return this;
         }
 
+        /**
+         * @param source The full absolute path to the file. Conflicts with `content_base64`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(String source) {
             return source(Output.of(source));
         }

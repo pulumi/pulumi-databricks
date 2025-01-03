@@ -19,10 +19,22 @@ public final class GetShareObject {
     private Integer addedAt;
     private String addedBy;
     private @Nullable Boolean cdfEnabled;
+    /**
+     * @return Description about the object.
+     * 
+     */
     private @Nullable String comment;
     private @Nullable String content;
+    /**
+     * @return Type of the object.
+     * 
+     */
     private String dataObjectType;
     private @Nullable String historyDataSharingStatus;
+    /**
+     * @return The name of the share
+     * 
+     */
     private String name;
     private @Nullable List<GetShareObjectPartition> partitions;
     private @Nullable String sharedAs;
@@ -40,18 +52,30 @@ public final class GetShareObject {
     public Optional<Boolean> cdfEnabled() {
         return Optional.ofNullable(this.cdfEnabled);
     }
+    /**
+     * @return Description about the object.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }
+    /**
+     * @return Type of the object.
+     * 
+     */
     public String dataObjectType() {
         return this.dataObjectType;
     }
     public Optional<String> historyDataSharingStatus() {
         return Optional.ofNullable(this.historyDataSharingStatus);
     }
+    /**
+     * @return The name of the share
+     * 
+     */
     public String name() {
         return this.name;
     }

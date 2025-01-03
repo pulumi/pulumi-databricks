@@ -11,6 +11,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source could be only used with workspace-level provider!
+//
+// Retrieves a list of MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetMlflowModels(ctx, &databricks.GetMlflowModelsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("model", this)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetMlflowModels(ctx *pulumi.Context, args *GetMlflowModelsArgs, opts ...pulumi.InvokeOption) (*GetMlflowModelsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMlflowModelsResult
@@ -23,13 +51,15 @@ func GetMlflowModels(ctx *pulumi.Context, args *GetMlflowModelsArgs, opts ...pul
 
 // A collection of arguments for invoking getMlflowModels.
 type GetMlflowModelsArgs struct {
+	// List of names of databricks_mlflow_model
 	Names []string `pulumi:"names"`
 }
 
 // A collection of values returned by getMlflowModels.
 type GetMlflowModelsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id    string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// List of names of databricks_mlflow_model
 	Names []string `pulumi:"names"`
 }
 
@@ -44,6 +74,7 @@ func GetMlflowModelsOutput(ctx *pulumi.Context, args GetMlflowModelsOutputArgs, 
 
 // A collection of arguments for invoking getMlflowModels.
 type GetMlflowModelsOutputArgs struct {
+	// List of names of databricks_mlflow_model
 	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
@@ -71,6 +102,7 @@ func (o GetMlflowModelsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMlflowModelsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of names of databricks_mlflow_model
 func (o GetMlflowModelsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMlflowModelsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

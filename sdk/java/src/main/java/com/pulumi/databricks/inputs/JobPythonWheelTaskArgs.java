@@ -17,30 +17,62 @@ public final class JobPythonWheelTaskArgs extends com.pulumi.resources.ResourceA
 
     public static final JobPythonWheelTaskArgs Empty = new JobPythonWheelTaskArgs();
 
+    /**
+     * Python function as entry point for the task
+     * 
+     */
     @Import(name="entryPoint")
     private @Nullable Output<String> entryPoint;
 
+    /**
+     * @return Python function as entry point for the task
+     * 
+     */
     public Optional<Output<String>> entryPoint() {
         return Optional.ofNullable(this.entryPoint);
     }
 
+    /**
+     * Named parameters for the task
+     * 
+     */
     @Import(name="namedParameters")
     private @Nullable Output<Map<String,String>> namedParameters;
 
+    /**
+     * @return Named parameters for the task
+     * 
+     */
     public Optional<Output<Map<String,String>>> namedParameters() {
         return Optional.ofNullable(this.namedParameters);
     }
 
+    /**
+     * Name of Python package
+     * 
+     */
     @Import(name="packageName")
     private @Nullable Output<String> packageName;
 
+    /**
+     * @return Name of Python package
+     * 
+     */
     public Optional<Output<String>> packageName() {
         return Optional.ofNullable(this.packageName);
     }
 
+    /**
+     * Parameters for the task
+     * 
+     */
     @Import(name="parameters")
     private @Nullable Output<List<String>> parameters;
 
+    /**
+     * @return Parameters for the task
+     * 
+     */
     public Optional<Output<List<String>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
@@ -72,42 +104,96 @@ public final class JobPythonWheelTaskArgs extends com.pulumi.resources.ResourceA
             $ = new JobPythonWheelTaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param entryPoint Python function as entry point for the task
+         * 
+         * @return builder
+         * 
+         */
         public Builder entryPoint(@Nullable Output<String> entryPoint) {
             $.entryPoint = entryPoint;
             return this;
         }
 
+        /**
+         * @param entryPoint Python function as entry point for the task
+         * 
+         * @return builder
+         * 
+         */
         public Builder entryPoint(String entryPoint) {
             return entryPoint(Output.of(entryPoint));
         }
 
+        /**
+         * @param namedParameters Named parameters for the task
+         * 
+         * @return builder
+         * 
+         */
         public Builder namedParameters(@Nullable Output<Map<String,String>> namedParameters) {
             $.namedParameters = namedParameters;
             return this;
         }
 
+        /**
+         * @param namedParameters Named parameters for the task
+         * 
+         * @return builder
+         * 
+         */
         public Builder namedParameters(Map<String,String> namedParameters) {
             return namedParameters(Output.of(namedParameters));
         }
 
+        /**
+         * @param packageName Name of Python package
+         * 
+         * @return builder
+         * 
+         */
         public Builder packageName(@Nullable Output<String> packageName) {
             $.packageName = packageName;
             return this;
         }
 
+        /**
+         * @param packageName Name of Python package
+         * 
+         * @return builder
+         * 
+         */
         public Builder packageName(String packageName) {
             return packageName(Output.of(packageName));
         }
 
+        /**
+         * @param parameters Parameters for the task
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(@Nullable Output<List<String>> parameters) {
             $.parameters = parameters;
             return this;
         }
 
+        /**
+         * @param parameters Parameters for the task
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(List<String> parameters) {
             return parameters(Output.of(parameters));
         }
 
+        /**
+         * @param parameters Parameters for the task
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(String... parameters) {
             return parameters(List.of(parameters));
         }

@@ -15,23 +15,47 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureS
 
     public static final GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule Empty = new GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule();
 
+    /**
+     * Array of strings representing the subnet IDs.
+     * 
+     */
     @Import(name="subnets")
     private @Nullable List<String> subnets;
 
+    /**
+     * @return Array of strings representing the subnet IDs.
+     * 
+     */
     public Optional<List<String>> subnets() {
         return Optional.ofNullable(this.subnets);
     }
 
+    /**
+     * The target region for the service endpoint.
+     * 
+     */
     @Import(name="targetRegion")
     private @Nullable String targetRegion;
 
+    /**
+     * @return The target region for the service endpoint.
+     * 
+     */
     public Optional<String> targetRegion() {
         return Optional.ofNullable(this.targetRegion);
     }
 
+    /**
+     * Array of target services.
+     * 
+     */
     @Import(name="targetServices")
     private @Nullable List<String> targetServices;
 
+    /**
+     * @return Array of target services.
+     * 
+     */
     public Optional<List<String>> targetServices() {
         return Optional.ofNullable(this.targetServices);
     }
@@ -62,25 +86,55 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureS
             $ = new GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param subnets Array of strings representing the subnet IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnets(@Nullable List<String> subnets) {
             $.subnets = subnets;
             return this;
         }
 
+        /**
+         * @param subnets Array of strings representing the subnet IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnets(String... subnets) {
             return subnets(List.of(subnets));
         }
 
+        /**
+         * @param targetRegion The target region for the service endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetRegion(@Nullable String targetRegion) {
             $.targetRegion = targetRegion;
             return this;
         }
 
+        /**
+         * @param targetServices Array of target services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetServices(@Nullable List<String> targetServices) {
             $.targetServices = targetServices;
             return this;
         }
 
+        /**
+         * @param targetServices Array of target services.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetServices(String... targetServices) {
             return targetServices(List.of(targetServices));
         }

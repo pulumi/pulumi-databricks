@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("aiGateways")]
         private List<Inputs.GetServingEndpointsEndpointAiGatewayArgs>? _aiGateways;
+
+        /// <summary>
+        /// A block with AI Gateway configuration for the serving endpoint.
+        /// </summary>
         public List<Inputs.GetServingEndpointsEndpointAiGatewayArgs> AiGateways
         {
             get => _aiGateways ?? (_aiGateways = new List<Inputs.GetServingEndpointsEndpointAiGatewayArgs>());
@@ -22,6 +26,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("configs")]
         private List<Inputs.GetServingEndpointsEndpointConfigArgs>? _configs;
+
+        /// <summary>
+        /// The model serving endpoint configuration.
+        /// </summary>
         public List<Inputs.GetServingEndpointsEndpointConfigArgs> Configs
         {
             get => _configs ?? (_configs = new List<Inputs.GetServingEndpointsEndpointConfigArgs>());
@@ -40,6 +48,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("lastUpdatedTimestamp")]
         public int? LastUpdatedTimestamp { get; set; }
 
+        /// <summary>
+        /// The name of the model serving endpoint.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -53,6 +64,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("tags")]
         private List<Inputs.GetServingEndpointsEndpointTagArgs>? _tags;
+
+        /// <summary>
+        /// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        /// </summary>
         public List<Inputs.GetServingEndpointsEndpointTagArgs> Tags
         {
             get => _tags ?? (_tags = new List<Inputs.GetServingEndpointsEndpointTagArgs>());

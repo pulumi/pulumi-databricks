@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobJobClusterArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
+        /// </summary>
         [Input("jobClusterKey", required: true)]
         public Input<string> JobClusterKey { get; set; } = null!;
 
+        /// <summary>
+        /// Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
+        /// </summary>
         [Input("newCluster", required: true)]
         public Input<Inputs.JobJobClusterNewClusterArgs> NewCluster { get; set; } = null!;
 

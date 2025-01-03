@@ -14,41 +14,155 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; This resource can only be used with a workspace-level provider!
+ * 
+ * This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.RegisteredModel;
+ * import com.pulumi.databricks.RegisteredModelArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new RegisteredModel("this", RegisteredModelArgs.builder()
+ *             .name("my_model")
+ *             .catalogName("main")
+ *             .schemaName("default")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Access Control
+ * 
+ * * databricks.Grants can be used to grant principals `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges.
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+ * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+ * * databricks.Schema to manage schemas within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
+ * 
+ * ## Import
+ * 
+ * The registered model resource can be imported using the full (3-level) name of the model.
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/registeredModel:RegisteredModel this &lt;catalog_name.schema_name.model_name&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/registeredModel:RegisteredModel")
 public class RegisteredModel extends com.pulumi.resources.CustomResource {
+    /**
+     * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+     * 
+     */
     @Export(name="catalogName", refs={String.class}, tree="[0]")
     private Output<String> catalogName;
 
+    /**
+     * @return The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+     * 
+     */
     public Output<String> catalogName() {
         return this.catalogName;
     }
+    /**
+     * The comment attached to the registered model.
+     * 
+     */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
+    /**
+     * @return The comment attached to the registered model.
+     * 
+     */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
+    /**
+     * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Name of the registered model owner.
+     * 
+     */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
+    /**
+     * @return Name of the registered model owner.
+     * 
+     */
     public Output<String> owner() {
         return this.owner;
     }
+    /**
+     * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+     * 
+     */
     @Export(name="schemaName", refs={String.class}, tree="[0]")
     private Output<String> schemaName;
 
+    /**
+     * @return The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+     * 
+     */
     public Output<String> schemaName() {
         return this.schemaName;
     }
+    /**
+     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * 
+     */
     @Export(name="storageLocation", refs={String.class}, tree="[0]")
     private Output<String> storageLocation;
 
+    /**
+     * @return The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * 
+     */
     public Output<String> storageLocation() {
         return this.storageLocation;
     }

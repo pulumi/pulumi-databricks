@@ -16,9 +16,17 @@ public final class GetStorageCredentialsArgs extends com.pulumi.resources.Invoke
 
     public static final GetStorageCredentialsArgs Empty = new GetStorageCredentialsArgs();
 
+    /**
+     * List of names of databricks.StorageCredential in the metastore
+     * 
+     */
     @Import(name="names")
     private @Nullable Output<List<String>> names;
 
+    /**
+     * @return List of names of databricks.StorageCredential in the metastore
+     * 
+     */
     public Optional<Output<List<String>>> names() {
         return Optional.ofNullable(this.names);
     }
@@ -47,15 +55,33 @@ public final class GetStorageCredentialsArgs extends com.pulumi.resources.Invoke
             $ = new GetStorageCredentialsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param names List of names of databricks.StorageCredential in the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(@Nullable Output<List<String>> names) {
             $.names = names;
             return this;
         }
 
+        /**
+         * @param names List of names of databricks.StorageCredential in the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(List<String> names) {
             return names(Output.of(names));
         }
 
+        /**
+         * @param names List of names of databricks.StorageCredential in the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(String... names) {
             return names(List.of(names));
         }

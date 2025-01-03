@@ -18,7 +18,15 @@ import javax.annotation.Nullable;
 public final class JobTaskRunJobTask {
     private @Nullable List<String> dbtCommands;
     private @Nullable List<String> jarParams;
+    /**
+     * @return (String) ID of the job
+     * 
+     */
     private Integer jobId;
+    /**
+     * @return (Map) Job parameters for the task
+     * 
+     */
     private @Nullable Map<String,String> jobParameters;
     private @Nullable Map<String,String> notebookParams;
     private @Nullable JobTaskRunJobTaskPipelineParams pipelineParams;
@@ -34,9 +42,17 @@ public final class JobTaskRunJobTask {
     public List<String> jarParams() {
         return this.jarParams == null ? List.of() : this.jarParams;
     }
+    /**
+     * @return (String) ID of the job
+     * 
+     */
     public Integer jobId() {
         return this.jobId;
     }
+    /**
+     * @return (Map) Job parameters for the task
+     * 
+     */
     public Map<String,String> jobParameters() {
         return this.jobParameters == null ? Map.of() : this.jobParameters;
     }

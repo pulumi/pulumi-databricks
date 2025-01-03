@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsNetworkConnectivityConfigEgressConfigTargetRules {
+    /**
+     * @return (Azure only) - list containing information about configure Azure Private Endpoints.
+     * 
+     */
     private @Nullable List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule> azurePrivateEndpointRules;
 
     private MwsNetworkConnectivityConfigEgressConfigTargetRules() {}
+    /**
+     * @return (Azure only) - list containing information about configure Azure Private Endpoints.
+     * 
+     */
     public List<MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule> azurePrivateEndpointRules() {
         return this.azurePrivateEndpointRules == null ? List.of() : this.azurePrivateEndpointRules;
     }

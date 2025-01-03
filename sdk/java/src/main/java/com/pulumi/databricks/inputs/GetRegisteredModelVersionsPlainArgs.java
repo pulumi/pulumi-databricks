@@ -17,16 +17,32 @@ public final class GetRegisteredModelVersionsPlainArgs extends com.pulumi.resour
 
     public static final GetRegisteredModelVersionsPlainArgs Empty = new GetRegisteredModelVersionsPlainArgs();
 
+    /**
+     * The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+     * 
+     */
     @Import(name="fullName", required=true)
     private String fullName;
 
+    /**
+     * @return The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+     * 
+     */
     public String fullName() {
         return this.fullName;
     }
 
+    /**
+     * list of objects describing the model versions. Each object consists of following attributes:
+     * 
+     */
     @Import(name="modelVersions")
     private @Nullable List<GetRegisteredModelVersionsModelVersion> modelVersions;
 
+    /**
+     * @return list of objects describing the model versions. Each object consists of following attributes:
+     * 
+     */
     public Optional<List<GetRegisteredModelVersionsModelVersion>> modelVersions() {
         return Optional.ofNullable(this.modelVersions);
     }
@@ -56,16 +72,34 @@ public final class GetRegisteredModelVersionsPlainArgs extends com.pulumi.resour
             $ = new GetRegisteredModelVersionsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fullName The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(String fullName) {
             $.fullName = fullName;
             return this;
         }
 
+        /**
+         * @param modelVersions list of objects describing the model versions. Each object consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder modelVersions(@Nullable List<GetRegisteredModelVersionsModelVersion> modelVersions) {
             $.modelVersions = modelVersions;
             return this;
         }
 
+        /**
+         * @param modelVersions list of objects describing the model versions. Each object consists of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder modelVersions(GetRegisteredModelVersionsModelVersion... modelVersions) {
             return modelVersions(List.of(modelVersions));
         }

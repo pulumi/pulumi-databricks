@@ -15,37 +15,77 @@ public final class GetMetastorePlainArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetMetastorePlainArgs Empty = new GetMetastorePlainArgs();
 
+    /**
+     * ID of the metastore
+     * 
+     */
     @Import(name="id")
     private @Nullable String id;
 
+    /**
+     * @return ID of the metastore
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * ID of the metastore
+     * 
+     */
     @Import(name="metastoreId")
     private @Nullable String metastoreId;
 
+    /**
+     * @return ID of the metastore
+     * 
+     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
 
+    /**
+     * MetastoreInfo object for a databricks_metastore. This contains the following attributes:
+     * 
+     */
     @Import(name="metastoreInfo")
     private @Nullable GetMetastoreMetastoreInfo metastoreInfo;
 
+    /**
+     * @return MetastoreInfo object for a databricks_metastore. This contains the following attributes:
+     * 
+     */
     public Optional<GetMetastoreMetastoreInfo> metastoreInfo() {
         return Optional.ofNullable(this.metastoreInfo);
     }
 
+    /**
+     * Name of the metastore
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return Name of the metastore
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Region of the metastore
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return Region of the metastore
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -78,26 +118,56 @@ public final class GetMetastorePlainArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetMetastorePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id ID of the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable String id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param metastoreId ID of the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(@Nullable String metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
+        /**
+         * @param metastoreInfo MetastoreInfo object for a databricks_metastore. This contains the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreInfo(@Nullable GetMetastoreMetastoreInfo metastoreInfo) {
             $.metastoreInfo = metastoreInfo;
             return this;
         }
 
+        /**
+         * @param name Name of the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param region Region of the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;

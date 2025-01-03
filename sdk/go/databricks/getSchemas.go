@@ -11,6 +11,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source can only be used with a workspace-level provider!
+//
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// Retrieves a list of Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
+//
+// ## Example Usage
+//
+// Listing all schemas in a _sandbox_ databricks_catalog:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.GetSchemas(ctx, &databricks.GetSchemasArgs{
+//				CatalogName: "sandbox",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allSandboxSchemas", sandbox)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Schema to manage schemas within Unity Catalog.
+// * Catalog to manage catalogs within Unity Catalog.
 func GetSchemas(ctx *pulumi.Context, args *GetSchemasArgs, opts ...pulumi.InvokeOption) (*GetSchemasResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSchemasResult
@@ -23,15 +64,18 @@ func GetSchemas(ctx *pulumi.Context, args *GetSchemasArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getSchemas.
 type GetSchemasArgs struct {
-	CatalogName string   `pulumi:"catalogName"`
-	Ids         []string `pulumi:"ids"`
+	// Name of databricks_catalog
+	CatalogName string `pulumi:"catalogName"`
+	// set of Schema full names: *`catalog`.`schema`*
+	Ids []string `pulumi:"ids"`
 }
 
 // A collection of values returned by getSchemas.
 type GetSchemasResult struct {
 	CatalogName string `pulumi:"catalogName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id  string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// set of Schema full names: *`catalog`.`schema`*
 	Ids []string `pulumi:"ids"`
 }
 
@@ -46,8 +90,10 @@ func GetSchemasOutput(ctx *pulumi.Context, args GetSchemasOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getSchemas.
 type GetSchemasOutputArgs struct {
-	CatalogName pulumi.StringInput      `pulumi:"catalogName"`
-	Ids         pulumi.StringArrayInput `pulumi:"ids"`
+	// Name of databricks_catalog
+	CatalogName pulumi.StringInput `pulumi:"catalogName"`
+	// set of Schema full names: *`catalog`.`schema`*
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (GetSchemasOutputArgs) ElementType() reflect.Type {
@@ -78,6 +124,7 @@ func (o GetSchemasResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSchemasResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// set of Schema full names: *`catalog`.`schema`*
 func (o GetSchemasResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSchemasResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

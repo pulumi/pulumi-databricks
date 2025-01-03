@@ -13,11 +13,31 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppResource
     {
+        /// <summary>
+        /// The description of the resource.
+        /// 
+        /// Exactly one of the following attributes must be provided:
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.AppResourceJob? Job;
+        /// <summary>
+        /// The name of the resource.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.AppResourceSecret? Secret;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.AppResourceServingEndpoint? ServingEndpoint;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.AppResourceSqlWarehouse? SqlWarehouse;
 
         [OutputConstructor]

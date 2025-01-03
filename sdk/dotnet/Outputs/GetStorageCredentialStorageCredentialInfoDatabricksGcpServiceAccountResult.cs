@@ -14,6 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountResult
     {
         public readonly string? CredentialId;
+        /// <summary>
+        /// The email of the GCP service account created, to be granted access to relevant buckets.
+        /// </summary>
         public readonly string? Email;
 
         [OutputConstructor]

@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCurrentMetastoreResult {
+    /**
+     * @return metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
+     * 
+     */
     private String id;
+    /**
+     * @return summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
+     * 
+     */
     private GetCurrentMetastoreMetastoreInfo metastoreInfo;
 
     private GetCurrentMetastoreResult() {}
+    /**
+     * @return metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
+     * 
+     */
     public GetCurrentMetastoreMetastoreInfo metastoreInfo() {
         return this.metastoreInfo;
     }

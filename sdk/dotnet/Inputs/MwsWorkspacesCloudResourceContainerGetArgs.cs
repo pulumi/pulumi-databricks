@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class MwsWorkspacesCloudResourceContainerGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A block that consists of the following field:
+        /// </summary>
         [Input("gcp", required: true)]
         public Input<Inputs.MwsWorkspacesCloudResourceContainerGcpGetArgs> Gcp { get; set; } = null!;
 

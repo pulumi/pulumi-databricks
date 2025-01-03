@@ -15,6 +15,76 @@ import java.lang.Integer;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; Initialize provider with `alias = &#34;account&#34;`, `host = &#34;https://accounts.azuredatabricks.net&#34;` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+ * 
+ * &gt; **Public Preview** This feature is available for AWS &amp; Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
+ * 
+ * Allows you to create a Network Connectivity Config that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsNetworkConnectivityConfig;
+ * import com.pulumi.databricks.MwsNetworkConnectivityConfigArgs;
+ * import com.pulumi.databricks.MwsNccBinding;
+ * import com.pulumi.databricks.MwsNccBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var region = config.get("region");
+ *         final var prefix = config.get("prefix");
+ *         var ncc = new MwsNetworkConnectivityConfig("ncc", MwsNetworkConnectivityConfigArgs.builder()
+ *             .name(String.format("ncc-for-%s", prefix))
+ *             .region(region)
+ *             .build());
+ * 
+ *         var nccBinding = new MwsNccBinding("nccBinding", MwsNccBindingArgs.builder()
+ *             .networkConnectivityConfigId(ncc.networkConnectivityConfigId())
+ *             .workspaceId(databricksWorkspaceId)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are used in the context:
+ * 
+ * * databricks.MwsWorkspaces to set up Databricks workspaces.
+ * * databricks.MwsNccBinding to attach an NCC to a workspace.
+ * * databricks.MwsNccPrivateEndpointRule to create a private endpoint rule.
+ * 
+ * ## Import
+ * 
+ * This resource can be imported by Databricks account ID and Network Connectivity Config ID.
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig ncc &lt;account_id&gt;/&lt;network_connectivity_config_id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig")
 public class MwsNetworkConnectivityConfig extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
@@ -35,21 +105,45 @@ public class MwsNetworkConnectivityConfig extends com.pulumi.resources.CustomRes
     public Output<MwsNetworkConnectivityConfigEgressConfig> egressConfig() {
         return this.egressConfig;
     }
+    /**
+     * Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Canonical unique identifier of Network Connectivity Config in Databricks Account
+     * 
+     */
     @Export(name="networkConnectivityConfigId", refs={String.class}, tree="[0]")
     private Output<String> networkConnectivityConfigId;
 
+    /**
+     * @return Canonical unique identifier of Network Connectivity Config in Databricks Account
+     * 
+     */
     public Output<String> networkConnectivityConfigId() {
         return this.networkConnectivityConfigId;
     }
+    /**
+     * Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+     * 
+     */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
+    /**
+     * @return Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+     * 
+     */
     public Output<String> region() {
         return this.region;
     }

@@ -11,13 +11,83 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
+//
+// > This documentation covers the Workspace Model Registry. Databricks recommends using Models in Unity Catalog. Models in Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMlflowModel(ctx, "test", &databricks.MlflowModelArgs{
+//				Name:        pulumi.String("My MLflow Model"),
+//				Description: pulumi.String("My MLflow model description"),
+//				Tags: databricks.MlflowModelTagArray{
+//					&databricks.MlflowModelTagArgs{
+//						Key:   pulumi.String("key1"),
+//						Value: pulumi.String("value1"),
+//					},
+//					&databricks.MlflowModelTagArgs{
+//						Key:   pulumi.String("key2"),
+//						Value: pulumi.String("value2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Access Control
+//
+// * Permissions can control which groups or individual users can *Read*, *Edit*, *Manage Staging Versions*, *Manage Production Versions*, and *Manage* individual models.
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+// * End to end workspace management guide.
+// * ModelServing to serve this model on a Databricks serving endpoint.
+// * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
+// * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+// * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+// * Notebook data to export a notebook from Databricks Workspace.
+// * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+//
+// ## Import
+//
+// # The model resource can be imported using the name
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
+// ```
 type MlflowModel struct {
 	pulumi.CustomResourceState
 
-	Description       pulumi.StringPtrOutput    `pulumi:"description"`
-	Name              pulumi.StringOutput       `pulumi:"name"`
-	RegisteredModelId pulumi.StringOutput       `pulumi:"registeredModelId"`
-	Tags              MlflowModelTagArrayOutput `pulumi:"tags"`
+	// The description of the MLflow model.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Name of MLflow model. Change of name triggers new resource.
+	Name              pulumi.StringOutput `pulumi:"name"`
+	RegisteredModelId pulumi.StringOutput `pulumi:"registeredModelId"`
+	// Tags for the MLflow model.
+	Tags MlflowModelTagArrayOutput `pulumi:"tags"`
 }
 
 // NewMlflowModel registers a new resource with the given unique name, arguments, and options.
@@ -50,17 +120,23 @@ func GetMlflowModel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MlflowModel resources.
 type mlflowModelState struct {
-	Description       *string          `pulumi:"description"`
-	Name              *string          `pulumi:"name"`
-	RegisteredModelId *string          `pulumi:"registeredModelId"`
-	Tags              []MlflowModelTag `pulumi:"tags"`
+	// The description of the MLflow model.
+	Description *string `pulumi:"description"`
+	// Name of MLflow model. Change of name triggers new resource.
+	Name              *string `pulumi:"name"`
+	RegisteredModelId *string `pulumi:"registeredModelId"`
+	// Tags for the MLflow model.
+	Tags []MlflowModelTag `pulumi:"tags"`
 }
 
 type MlflowModelState struct {
-	Description       pulumi.StringPtrInput
+	// The description of the MLflow model.
+	Description pulumi.StringPtrInput
+	// Name of MLflow model. Change of name triggers new resource.
 	Name              pulumi.StringPtrInput
 	RegisteredModelId pulumi.StringPtrInput
-	Tags              MlflowModelTagArrayInput
+	// Tags for the MLflow model.
+	Tags MlflowModelTagArrayInput
 }
 
 func (MlflowModelState) ElementType() reflect.Type {
@@ -68,16 +144,22 @@ func (MlflowModelState) ElementType() reflect.Type {
 }
 
 type mlflowModelArgs struct {
-	Description *string          `pulumi:"description"`
-	Name        *string          `pulumi:"name"`
-	Tags        []MlflowModelTag `pulumi:"tags"`
+	// The description of the MLflow model.
+	Description *string `pulumi:"description"`
+	// Name of MLflow model. Change of name triggers new resource.
+	Name *string `pulumi:"name"`
+	// Tags for the MLflow model.
+	Tags []MlflowModelTag `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a MlflowModel resource.
 type MlflowModelArgs struct {
+	// The description of the MLflow model.
 	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
-	Tags        MlflowModelTagArrayInput
+	// Name of MLflow model. Change of name triggers new resource.
+	Name pulumi.StringPtrInput
+	// Tags for the MLflow model.
+	Tags MlflowModelTagArrayInput
 }
 
 func (MlflowModelArgs) ElementType() reflect.Type {
@@ -167,10 +249,12 @@ func (o MlflowModelOutput) ToMlflowModelOutputWithContext(ctx context.Context) M
 	return o
 }
 
+// The description of the MLflow model.
 func (o MlflowModelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MlflowModel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Name of MLflow model. Change of name triggers new resource.
 func (o MlflowModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MlflowModel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -179,6 +263,7 @@ func (o MlflowModelOutput) RegisteredModelId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MlflowModel) pulumi.StringOutput { return v.RegisteredModelId }).(pulumi.StringOutput)
 }
 
+// Tags for the MLflow model.
 func (o MlflowModelOutput) Tags() MlflowModelTagArrayOutput {
 	return o.ApplyT(func(v *MlflowModel) MlflowModelTagArrayOutput { return v.Tags }).(MlflowModelTagArrayOutput)
 }

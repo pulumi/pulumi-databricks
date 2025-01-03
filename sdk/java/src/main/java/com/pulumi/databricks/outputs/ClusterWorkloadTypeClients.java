@@ -11,13 +11,109 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterWorkloadTypeClients {
+    /**
+     * @return boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import com.pulumi.databricks.inputs.ClusterWorkloadTypeArgs;
+     * import com.pulumi.databricks.inputs.ClusterWorkloadTypeClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
+     *             .workloadType(ClusterWorkloadTypeArgs.builder()
+     *                 .clients(ClusterWorkloadTypeClientsArgs.builder()
+     *                     .jobs(false)
+     *                     .notebooks(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     private @Nullable Boolean jobs;
+    /**
+     * @return boolean flag defining if it&#39;s possible to run notebooks on this cluster. Default: `true`.
+     * 
+     */
     private @Nullable Boolean notebooks;
 
     private ClusterWorkloadTypeClients() {}
+    /**
+     * @return boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import com.pulumi.databricks.inputs.ClusterWorkloadTypeArgs;
+     * import com.pulumi.databricks.inputs.ClusterWorkloadTypeClientsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
+     *             .workloadType(ClusterWorkloadTypeArgs.builder()
+     *                 .clients(ClusterWorkloadTypeClientsArgs.builder()
+     *                     .jobs(false)
+     *                     .notebooks(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public Optional<Boolean> jobs() {
         return Optional.ofNullable(this.jobs);
     }
+    /**
+     * @return boolean flag defining if it&#39;s possible to run notebooks on this cluster. Default: `true`.
+     * 
+     */
     public Optional<Boolean> notebooks() {
         return Optional.ofNullable(this.notebooks);
     }

@@ -4,6 +4,32 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Lists all databricks.MwsWorkspaces in Databricks Account.
+ *
+ * > **Note** `accountId` provider configuration property is required for this resource to work.
+ *
+ * ## Example Usage
+ *
+ * Listing all workspaces in
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getMwsWorkspaces({});
+ * export const allMwsWorkspaces = all.then(all => all.ids);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
+ * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
+ */
 export function getMwsWorkspaces(args?: GetMwsWorkspacesArgs, opts?: pulumi.InvokeOptions): Promise<GetMwsWorkspacesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,6 +42,9 @@ export function getMwsWorkspaces(args?: GetMwsWorkspacesArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getMwsWorkspaces.
  */
 export interface GetMwsWorkspacesArgs {
+    /**
+     * name-to-id map for all of the workspaces in the account
+     */
     ids?: {[key: string]: string};
 }
 
@@ -27,8 +56,37 @@ export interface GetMwsWorkspacesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * name-to-id map for all of the workspaces in the account
+     */
     readonly ids: {[key: string]: string};
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * Lists all databricks.MwsWorkspaces in Databricks Account.
+ *
+ * > **Note** `accountId` provider configuration property is required for this resource to work.
+ *
+ * ## Example Usage
+ *
+ * Listing all workspaces in
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getMwsWorkspaces({});
+ * export const allMwsWorkspaces = all.then(all => all.ids);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
+ * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
+ */
 export function getMwsWorkspacesOutput(args?: GetMwsWorkspacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMwsWorkspacesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,5 +99,8 @@ export function getMwsWorkspacesOutput(args?: GetMwsWorkspacesOutputArgs, opts?:
  * A collection of arguments for invoking getMwsWorkspaces.
  */
 export interface GetMwsWorkspacesOutputArgs {
+    /**
+     * name-to-id map for all of the workspaces in the account
+     */
     ids?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -16,6 +16,10 @@ public final class GetMwsCredentialsResult {
      * 
      */
     private String id;
+    /**
+     * @return name-to-id map for all of the credentials in the account
+     * 
+     */
     private Map<String,String> ids;
 
     private GetMwsCredentialsResult() {}
@@ -26,6 +30,10 @@ public final class GetMwsCredentialsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return name-to-id map for all of the credentials in the account
+     * 
+     */
     public Map<String,String> ids() {
         return this.ids;
     }

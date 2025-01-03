@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegisteredModelVersionsModelVersionModelVersionDependency {
+    /**
+     * @return list of dependencies consisting of following attributes:
+     * 
+     */
     private @Nullable List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency> dependencies;
 
     private GetRegisteredModelVersionsModelVersionModelVersionDependency() {}
+    /**
+     * @return list of dependencies consisting of following attributes:
+     * 
+     */
     public List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency> dependencies() {
         return this.dependencies == null ? List.of() : this.dependencies;
     }

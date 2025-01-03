@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotificationDestinationsNotificationDestination {
+    /**
+     * @return The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+     * 
+     */
     private @Nullable String destinationType;
+    /**
+     * @return The display name of the Notification Destination.
+     * 
+     */
     private @Nullable String displayName;
+    /**
+     * @return The unique ID of the Notification Destination.
+     * 
+     */
     private @Nullable String id;
 
     private GetNotificationDestinationsNotificationDestination() {}
+    /**
+     * @return The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+     * 
+     */
     public Optional<String> destinationType() {
         return Optional.ofNullable(this.destinationType);
     }
+    /**
+     * @return The display name of the Notification Destination.
+     * 
+     */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }
+    /**
+     * @return The unique ID of the Notification Destination.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }

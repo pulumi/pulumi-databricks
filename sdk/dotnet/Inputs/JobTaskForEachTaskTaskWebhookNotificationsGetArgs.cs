@@ -14,6 +14,14 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("onDurationWarningThresholdExceededs")]
         private InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededGetArgs>? _onDurationWarningThresholdExceededs;
+
+        /// <summary>
+        /// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+        /// 
+        /// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
+        /// 
+        /// Example
+        /// </summary>
         public InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededGetArgs> OnDurationWarningThresholdExceededs
         {
             get => _onDurationWarningThresholdExceededs ?? (_onDurationWarningThresholdExceededs = new InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededGetArgs>());
@@ -22,6 +30,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("onFailures")]
         private InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailureGetArgs>? _onFailures;
+
+        /// <summary>
+        /// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+        /// </summary>
         public InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailureGetArgs> OnFailures
         {
             get => _onFailures ?? (_onFailures = new InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailureGetArgs>());
@@ -30,6 +42,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("onStarts")]
         private InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStartGetArgs>? _onStarts;
+
+        /// <summary>
+        /// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+        /// </summary>
         public InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStartGetArgs> OnStarts
         {
             get => _onStarts ?? (_onStarts = new InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStartGetArgs>());
@@ -46,6 +62,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("onSuccesses")]
         private InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccessGetArgs>? _onSuccesses;
+
+        /// <summary>
+        /// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+        /// </summary>
         public InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccessGetArgs> OnSuccesses
         {
             get => _onSuccesses ?? (_onSuccesses = new InputList<Inputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccessGetArgs>());

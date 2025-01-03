@@ -16,17 +16,167 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * This resource allows uploading and downloading files in databricks_volume.
+ * 
+ * Notes:
+ * 
+ * * Currently the limit is 5GiB in octet-stream.
+ * * Currently, only UC volumes are supported. The list of destinations may change.
+ * 
+ * ## Example Usage
+ * 
+ * In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `source` attribute containing the full path to the file on the local filesystem.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Catalog;
+ * import com.pulumi.databricks.CatalogArgs;
+ * import com.pulumi.databricks.Schema;
+ * import com.pulumi.databricks.SchemaArgs;
+ * import com.pulumi.databricks.Volume;
+ * import com.pulumi.databricks.VolumeArgs;
+ * import com.pulumi.databricks.File;
+ * import com.pulumi.databricks.FileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
+ *             .metastoreId(thisDatabricksMetastore.id())
+ *             .name("sandbox")
+ *             .comment("this catalog is managed by terraform")
+ *             .properties(Map.of("purpose", "testing"))
+ *             .build());
+ * 
+ *         var things = new Schema("things", SchemaArgs.builder()
+ *             .catalogName(sandbox.name())
+ *             .name("things")
+ *             .comment("this schema is managed by terraform")
+ *             .properties(Map.of("kind", "various"))
+ *             .build());
+ * 
+ *         var this_ = new Volume("this", VolumeArgs.builder()
+ *             .name("quickstart_volume")
+ *             .catalogName(sandbox.name())
+ *             .schemaName(things.name())
+ *             .volumeType("MANAGED")
+ *             .comment("this volume is managed by terraform")
+ *             .build());
+ * 
+ *         var thisFile = new File("thisFile", FileArgs.builder()
+ *             .source("/full/path/on/local/system")
+ *             .path(this_.volumePath().applyValue(volumePath -> String.format("%s/fileName", volumePath)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * You can also inline sources through `content_base64`  attribute.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.File;
+ * import com.pulumi.databricks.FileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var initScript = new File("initScript", FileArgs.builder()
+ *             .contentBase64(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                 .input("""
+ * #!/bin/bash
+ * echo "Hello World"
+ *                 """)
+ *                 .build()).result())
+ *             .path(String.format("%s/fileName", this_.volumePath()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * databricks.WorkspaceFile
+ * * End to end workspace management guide.
+ * * databricks.Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
+ * 
+ * ## Import
+ * 
+ * The resource `databricks_file` can be imported using the path of the file:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/file:File this &lt;path&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/file:File")
 public class File extends com.pulumi.resources.CustomResource {
+    /**
+     * Contents in base 64 format. Conflicts with `source`.
+     * 
+     */
     @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
+    /**
+     * @return Contents in base 64 format. Conflicts with `source`.
+     * 
+     */
     public Output<Optional<String>> contentBase64() {
         return Codegen.optional(this.contentBase64);
     }
+    /**
+     * The file size of the file that is being tracked by this resource in bytes.
+     * 
+     */
     @Export(name="fileSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> fileSize;
 
+    /**
+     * @return The file size of the file that is being tracked by this resource in bytes.
+     * 
+     */
     public Output<Integer> fileSize() {
         return this.fileSize;
     }
@@ -36,15 +186,31 @@ public class File extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> md5() {
         return Codegen.optional(this.md5);
     }
+    /**
+     * The last time stamp when the file was modified
+     * 
+     */
     @Export(name="modificationTime", refs={String.class}, tree="[0]")
     private Output<String> modificationTime;
 
+    /**
+     * @return The last time stamp when the file was modified
+     * 
+     */
     public Output<String> modificationTime() {
         return this.modificationTime;
     }
+    /**
+     * The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+     * 
+     */
     @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
+    /**
+     * @return The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
@@ -54,9 +220,17 @@ public class File extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> remoteFileModified() {
         return Codegen.optional(this.remoteFileModified);
     }
+    /**
+     * The full absolute path to the file. Conflicts with `content_base64`.
+     * 
+     */
     @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
+    /**
+     * @return The full absolute path to the file. Conflicts with `content_base64`.
+     * 
+     */
     public Output<Optional<String>> source() {
         return Codegen.optional(this.source);
     }

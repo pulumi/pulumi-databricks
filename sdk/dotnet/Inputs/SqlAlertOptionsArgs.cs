@@ -12,24 +12,45 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class SqlAlertOptionsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of column in the query result to compare in alert evaluation.
+        /// </summary>
         [Input("column", required: true)]
         public Input<string> Column { get; set; } = null!;
 
+        /// <summary>
+        /// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+        /// </summary>
         [Input("customBody")]
         public Input<string>? CustomBody { get; set; }
 
+        /// <summary>
+        /// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+        /// </summary>
         [Input("customSubject")]
         public Input<string>? CustomSubject { get; set; }
 
+        /// <summary>
+        /// State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+        /// </summary>
         [Input("emptyResultState")]
         public Input<string>? EmptyResultState { get; set; }
 
+        /// <summary>
+        /// Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+        /// </summary>
         [Input("muted")]
         public Input<bool>? Muted { get; set; }
 
+        /// <summary>
+        /// Operator used to compare in alert evaluation. (Enum: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`, `!=`)
+        /// </summary>
         [Input("op", required: true)]
         public Input<string> Op { get; set; } = null!;
 
+        /// <summary>
+        /// Value used to compare in alert evaluation.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

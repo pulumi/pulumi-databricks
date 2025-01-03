@@ -15,11 +15,374 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; Initialize provider with `alias = &#34;mws&#34;`, `host  = &#34;https://accounts.cloud.databricks.com&#34;` and use `provider = databricks.mws`
+ * 
+ * Enables you to register aws_vpc_endpoint resources or gcp vpc_endpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
+ * 
+ * It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or the [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
+ * 
+ * ## Example Usage
+ * 
+ * ### Databricks on AWS usage
+ * 
+ * Before using this resource, you will need to create the necessary VPC Endpoints as per your [VPC endpoint requirements](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#vpc-endpoint-requirements). You can use the aws_vpc_endpoint resource for this, for example:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aws.ec2.VpcEndpoint;
+ * import com.pulumi.aws.ec2.VpcEndpointArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var workspace = new VpcEndpoint("workspace", VpcEndpointArgs.builder()
+ *             .vpcId(vpc.vpcId())
+ *             .serviceName(privateLink.workspaceService())
+ *             .vpcEndpointType("Interface")
+ *             .securityGroupIds(vpc.defaultSecurityGroupId())
+ *             .subnetIds(plSubnet.id())
+ *             .privateDnsEnabled(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(plSubnet)
+ *                 .build());
+ * 
+ *         var relay = new VpcEndpoint("relay", VpcEndpointArgs.builder()
+ *             .vpcId(vpc.vpcId())
+ *             .serviceName(privateLink.relayService())
+ *             .vpcEndpointType("Interface")
+ *             .securityGroupIds(vpc.defaultSecurityGroupId())
+ *             .subnetIds(plSubnet.id())
+ *             .privateDnsEnabled(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(plSubnet)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Depending on your use case, you may need or choose to add VPC Endpoints for the AWS Services Databricks uses. See [Add VPC endpoints for other AWS services (recommended but optional)
+ * ](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-9-add-vpc-endpoints-for-other-aws-services-recommended-but-optional) for more information. For example:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aws.ec2.VpcEndpoint;
+ * import com.pulumi.aws.ec2.VpcEndpointArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var s3 = new VpcEndpoint("s3", VpcEndpointArgs.builder()
+ *             .vpcId(vpc.vpcId())
+ *             .routeTableIds(vpc.privateRouteTableIds())
+ *             .serviceName(String.format("com.amazonaws.%s.s3", region))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpc)
+ *                 .build());
+ * 
+ *         var sts = new VpcEndpoint("sts", VpcEndpointArgs.builder()
+ *             .vpcId(vpc.vpcId())
+ *             .serviceName(String.format("com.amazonaws.%s.sts", region))
+ *             .vpcEndpointType("Interface")
+ *             .subnetIds(vpc.privateSubnets())
+ *             .securityGroupIds(vpc.defaultSecurityGroupId())
+ *             .privateDnsEnabled(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpc)
+ *                 .build());
+ * 
+ *         var kinesis_streams = new VpcEndpoint("kinesis-streams", VpcEndpointArgs.builder()
+ *             .vpcId(vpc.vpcId())
+ *             .serviceName(String.format("com.amazonaws.%s.kinesis-streams", region))
+ *             .vpcEndpointType("Interface")
+ *             .subnetIds(vpc.privateSubnets())
+ *             .securityGroupIds(vpc.defaultSecurityGroupId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpc)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Once you have created the necessary endpoints, you need to register each of them via *this* Pulumi resource, which calls out to the [Databricks Account API](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-your-vpc-endpoint-ids-with-the-account-api)):
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsVpcEndpoint;
+ * import com.pulumi.databricks.MwsVpcEndpointArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var workspace = new MwsVpcEndpoint("workspace", MwsVpcEndpointArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .awsVpcEndpointId(workspaceAwsVpcEndpoint.id())
+ *             .vpcEndpointName(String.format("VPC Relay for %s", vpc.vpcId()))
+ *             .region(region)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(workspaceAwsVpcEndpoint)
+ *                 .build());
+ * 
+ *         var relay = new MwsVpcEndpoint("relay", MwsVpcEndpointArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .awsVpcEndpointId(relayAwsVpcEndpoint.id())
+ *             .vpcEndpointName(String.format("VPC Relay for %s", vpc.vpcId()))
+ *             .region(region)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(relayAwsVpcEndpoint)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Typically the next steps after this would be to create a databricks.MwsPrivateAccessSettings and databricks.MwsNetworks configuration, before passing the `databricks_mws_private_access_settings.pas.private_access_settings_id` and `databricks_mws_networks.this.network_id` into a databricks.MwsWorkspaces resource:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsWorkspaces;
+ * import com.pulumi.databricks.MwsWorkspacesArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new MwsWorkspaces("this", MwsWorkspacesArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .awsRegion(region)
+ *             .workspaceName(prefix)
+ *             .credentialsId(thisDatabricksMwsCredentials.credentialsId())
+ *             .storageConfigurationId(thisDatabricksMwsStorageConfigurations.storageConfigurationId())
+ *             .networkId(thisDatabricksMwsNetworks.networkId())
+ *             .privateAccessSettingsId(pas.privateAccessSettingsId())
+ *             .pricingTier("ENTERPRISE")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(thisDatabricksMwsNetworks)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Databricks on GCP usage
+ * 
+ * Before using this resource, you will need to create the necessary Private Service Connect (PSC) connections on your Google Cloud VPC networks. You can see [Enable Private Service Connect for your workspace](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) for more details.
+ * 
+ * Once you have created the necessary PSC connections, you need to register each of them via *this* Pulumi resource, which calls out to the Databricks Account API.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsVpcEndpoint;
+ * import com.pulumi.databricks.MwsVpcEndpointArgs;
+ * import com.pulumi.databricks.inputs.MwsVpcEndpointGcpVpcEndpointInfoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var databricksAccountId = config.get("databricksAccountId");
+ *         final var databricksGoogleServiceAccount = config.get("databricksGoogleServiceAccount");
+ *         final var googleProject = config.get("googleProject");
+ *         final var subnetRegion = config.get("subnetRegion");
+ *         var workspace = new MwsVpcEndpoint("workspace", MwsVpcEndpointArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .vpcEndpointName("PSC Rest API endpoint")
+ *             .gcpVpcEndpointInfo(MwsVpcEndpointGcpVpcEndpointInfoArgs.builder()
+ *                 .projectId(googleProject)
+ *                 .pscEndpointName("PSC Rest API endpoint")
+ *                 .endpointRegion(subnetRegion)
+ *                 .build())
+ *             .build());
+ * 
+ *         var relay = new MwsVpcEndpoint("relay", MwsVpcEndpointArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .vpcEndpointName("PSC Relay endpoint")
+ *             .gcpVpcEndpointInfo(MwsVpcEndpointGcpVpcEndpointInfoArgs.builder()
+ *                 .projectId(googleProject)
+ *                 .pscEndpointName("PSC Relay endpoint")
+ *                 .endpointRegion(subnetRegion)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Typically the next steps after this would be to create a databricks.MwsPrivateAccessSettings and databricks.MwsNetworks configuration, before passing the `databricks_mws_private_access_settings.pas.private_access_settings_id` and `databricks_mws_networks.this.network_id` into a databricks.MwsWorkspaces resource:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsWorkspaces;
+ * import com.pulumi.databricks.MwsWorkspacesArgs;
+ * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerArgs;
+ * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerGcpArgs;
+ * import com.pulumi.databricks.inputs.MwsWorkspacesGkeConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new MwsWorkspaces("this", MwsWorkspacesArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .workspaceName("gcp workspace")
+ *             .location(subnetRegion)
+ *             .cloudResourceContainer(MwsWorkspacesCloudResourceContainerArgs.builder()
+ *                 .gcp(MwsWorkspacesCloudResourceContainerGcpArgs.builder()
+ *                     .projectId(googleProject)
+ *                     .build())
+ *                 .build())
+ *             .gkeConfig(MwsWorkspacesGkeConfigArgs.builder()
+ *                 .connectivityType("PRIVATE_NODE_PUBLIC_MASTER")
+ *                 .masterIpRange("10.3.0.0/28")
+ *                 .build())
+ *             .networkId(thisDatabricksMwsNetworks.networkId())
+ *             .privateAccessSettingsId(pas.privateAccessSettingsId())
+ *             .pricingTier("PREMIUM")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(thisDatabricksMwsNetworks)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are used in the same context:
+ * 
+ * * Provisioning Databricks on AWS guide.
+ * * Provisioning Databricks on AWS with Private Link guide.
+ * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide.
+ * * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+ * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
+ * * databricks.MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
+ * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+ * 
+ * ## Import
+ * 
+ * -&gt; Importing this resource is not currently supported.
+ * 
+ */
 @ResourceType(type="databricks:index/mwsVpcEndpoint:MwsVpcEndpoint")
 public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
+    /**
+     * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
+     * 
+     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
+    /**
+     * @return Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
+     * 
+     */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
@@ -29,33 +392,73 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
     public Output<String> awsAccountId() {
         return this.awsAccountId;
     }
+    /**
+     * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+     * 
+     */
     @Export(name="awsEndpointServiceId", refs={String.class}, tree="[0]")
     private Output<String> awsEndpointServiceId;
 
+    /**
+     * @return (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
+     * 
+     */
     public Output<String> awsEndpointServiceId() {
         return this.awsEndpointServiceId;
     }
+    /**
+     * ID of configured aws_vpc_endpoint
+     * 
+     */
     @Export(name="awsVpcEndpointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> awsVpcEndpointId;
 
+    /**
+     * @return ID of configured aws_vpc_endpoint
+     * 
+     */
     public Output<Optional<String>> awsVpcEndpointId() {
         return Codegen.optional(this.awsVpcEndpointId);
     }
+    /**
+     * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * 
+     */
     @Export(name="gcpVpcEndpointInfo", refs={MwsVpcEndpointGcpVpcEndpointInfo.class}, tree="[0]")
     private Output</* @Nullable */ MwsVpcEndpointGcpVpcEndpointInfo> gcpVpcEndpointInfo;
 
+    /**
+     * @return a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * 
+     */
     public Output<Optional<MwsVpcEndpointGcpVpcEndpointInfo>> gcpVpcEndpointInfo() {
         return Codegen.optional(this.gcpVpcEndpointInfo);
     }
+    /**
+     * Region of AWS VPC
+     * 
+     */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
+    /**
+     * @return Region of AWS VPC
+     * 
+     */
     public Output<Optional<String>> region() {
         return Codegen.optional(this.region);
     }
+    /**
+     * (AWS Only) State of VPC Endpoint
+     * 
+     */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
+    /**
+     * @return (AWS Only) State of VPC Endpoint
+     * 
+     */
     public Output<String> state() {
         return this.state;
     }
@@ -65,15 +468,31 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
     public Output<String> useCase() {
         return this.useCase;
     }
+    /**
+     * Canonical unique identifier of VPC Endpoint in Databricks Account
+     * 
+     */
     @Export(name="vpcEndpointId", refs={String.class}, tree="[0]")
     private Output<String> vpcEndpointId;
 
+    /**
+     * @return Canonical unique identifier of VPC Endpoint in Databricks Account
+     * 
+     */
     public Output<String> vpcEndpointId() {
         return this.vpcEndpointId;
     }
+    /**
+     * Name of VPC Endpoint in Databricks Account
+     * 
+     */
     @Export(name="vpcEndpointName", refs={String.class}, tree="[0]")
     private Output<String> vpcEndpointName;
 
+    /**
+     * @return Name of VPC Endpoint in Databricks Account
+     * 
+     */
     public Output<String> vpcEndpointName() {
         return this.vpcEndpointName;
     }

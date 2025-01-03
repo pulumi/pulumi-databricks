@@ -16,6 +16,172 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Allows you to create a Private Access Setting resource that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
+ * 
+ * It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
+ * 
+ * ## Databricks on AWS usage
+ * 
+ * &gt; Initialize provider with `alias = &#34;mws&#34;`, `host  = &#34;https://accounts.cloud.databricks.com&#34;` and use `provider = databricks.mws`
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsPrivateAccessSettings;
+ * import com.pulumi.databricks.MwsPrivateAccessSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pas = new MwsPrivateAccessSettings("pas", MwsPrivateAccessSettingsArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .privateAccessSettingsName(String.format("Private Access Settings for %s", prefix))
+ *             .region(region)
+ *             .publicAccessEnabled(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * The `databricks_mws_private_access_settings.pas.private_access_settings_id` can then be used as part of a databricks.MwsWorkspaces resource:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsWorkspaces;
+ * import com.pulumi.databricks.MwsWorkspacesArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new MwsWorkspaces("this", MwsWorkspacesArgs.builder()
+ *             .awsRegion(region)
+ *             .workspaceName(prefix)
+ *             .credentialsId(thisDatabricksMwsCredentials.credentialsId())
+ *             .storageConfigurationId(thisDatabricksMwsStorageConfigurations.storageConfigurationId())
+ *             .networkId(thisDatabricksMwsNetworks.networkId())
+ *             .privateAccessSettingsId(pas.privateAccessSettingsId())
+ *             .pricingTier("ENTERPRISE")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(thisDatabricksMwsNetworks)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Databricks on GCP usage
+ * 
+ * &gt; Initialize provider with `alias = &#34;mws&#34;`, `host  = &#34;https://accounts.gcp.databricks.com&#34;` and use `provider = databricks.mws`
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsWorkspaces;
+ * import com.pulumi.databricks.MwsWorkspacesArgs;
+ * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerArgs;
+ * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerGcpArgs;
+ * import com.pulumi.databricks.inputs.MwsWorkspacesGkeConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new MwsWorkspaces("this", MwsWorkspacesArgs.builder()
+ *             .workspaceName("gcp-workspace")
+ *             .location(subnetRegion)
+ *             .cloudResourceContainer(MwsWorkspacesCloudResourceContainerArgs.builder()
+ *                 .gcp(MwsWorkspacesCloudResourceContainerGcpArgs.builder()
+ *                     .projectId(googleProject)
+ *                     .build())
+ *                 .build())
+ *             .gkeConfig(MwsWorkspacesGkeConfigArgs.builder()
+ *                 .connectivityType("PRIVATE_NODE_PUBLIC_MASTER")
+ *                 .masterIpRange("10.3.0.0/28")
+ *                 .build())
+ *             .networkId(thisDatabricksMwsNetworks.networkId())
+ *             .privateAccessSettingsId(pas.privateAccessSettingsId())
+ *             .pricingTier("PREMIUM")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(thisDatabricksMwsNetworks)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are used in the same context:
+ * 
+ * * Provisioning Databricks on AWS guide.
+ * * Provisioning Databricks on AWS with Private Link guide.
+ * * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide.
+ * * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+ * * databricks.MwsVpcEndpoint to register aws_vpc_endpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
+ * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
+ * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+ * 
+ * ## Import
+ * 
+ * This resource can be imported by Databricks account ID and private access settings ID.
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this &#39;&lt;account_id&gt;/&lt;private_access_settings_id&gt;&#39;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings")
 public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResource {
     /**
@@ -30,39 +196,87 @@ public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResourc
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * An array of databricks.MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+     * 
+     */
     @Export(name="allowedVpcEndpointIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedVpcEndpointIds;
 
+    /**
+     * @return An array of databricks.MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+     * 
+     */
     public Output<Optional<List<String>>> allowedVpcEndpointIds() {
         return Codegen.optional(this.allowedVpcEndpointIds);
     }
+    /**
+     * The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+     * 
+     */
     @Export(name="privateAccessLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateAccessLevel;
 
+    /**
+     * @return The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+     * 
+     */
     public Output<Optional<String>> privateAccessLevel() {
         return Codegen.optional(this.privateAccessLevel);
     }
+    /**
+     * Canonical unique identifier of Private Access Settings in Databricks Account
+     * 
+     */
     @Export(name="privateAccessSettingsId", refs={String.class}, tree="[0]")
     private Output<String> privateAccessSettingsId;
 
+    /**
+     * @return Canonical unique identifier of Private Access Settings in Databricks Account
+     * 
+     */
     public Output<String> privateAccessSettingsId() {
         return this.privateAccessSettingsId;
     }
+    /**
+     * Name of Private Access Settings in Databricks Account
+     * 
+     */
     @Export(name="privateAccessSettingsName", refs={String.class}, tree="[0]")
     private Output<String> privateAccessSettingsName;
 
+    /**
+     * @return Name of Private Access Settings in Databricks Account
+     * 
+     */
     public Output<String> privateAccessSettingsName() {
         return this.privateAccessSettingsName;
     }
+    /**
+     * If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
+     * 
+     */
     @Export(name="publicAccessEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> publicAccessEnabled;
 
+    /**
+     * @return If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
+     * 
+     */
     public Output<Optional<Boolean>> publicAccessEnabled() {
         return Codegen.optional(this.publicAccessEnabled);
     }
+    /**
+     * Region of AWS VPC or the Google Cloud VPC network
+     * 
+     */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
+    /**
+     * @return Region of AWS VPC or the Google Cloud VPC network
+     * 
+     */
     public Output<String> region() {
         return this.region;
     }

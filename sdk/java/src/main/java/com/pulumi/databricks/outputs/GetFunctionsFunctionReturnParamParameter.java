@@ -13,53 +13,149 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFunctionsFunctionReturnParamParameter {
+    /**
+     * @return User-provided free-form text description.
+     * 
+     */
     private @Nullable String comment;
+    /**
+     * @return Name of parameter.
+     * 
+     */
     private String name;
+    /**
+     * @return Default value of the parameter.
+     * 
+     */
     private @Nullable String parameterDefault;
+    /**
+     * @return The mode of the function parameter.
+     * 
+     */
     private @Nullable String parameterMode;
+    /**
+     * @return The type of function parameter (`PARAM` or `COLUMN`).
+     * 
+     */
     private @Nullable String parameterType;
+    /**
+     * @return Ordinal position of column (starting at position 0).
+     * 
+     */
     private Integer position;
+    /**
+     * @return Format of IntervalType.
+     * 
+     */
     private @Nullable String typeIntervalType;
+    /**
+     * @return Full data type spec, JSON-serialized.
+     * 
+     */
     private @Nullable String typeJson;
+    /**
+     * @return Name of type (INT, STRUCT, MAP, etc.).
+     * 
+     */
     private String typeName;
+    /**
+     * @return Digits of precision; required on Create for DecimalTypes.
+     * 
+     */
     private @Nullable Integer typePrecision;
+    /**
+     * @return Digits to right of decimal; Required on Create for DecimalTypes.
+     * 
+     */
     private @Nullable Integer typeScale;
+    /**
+     * @return Full data type spec, SQL/catalogString text.
+     * 
+     */
     private String typeText;
 
     private GetFunctionsFunctionReturnParamParameter() {}
+    /**
+     * @return User-provided free-form text description.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return Name of parameter.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Default value of the parameter.
+     * 
+     */
     public Optional<String> parameterDefault() {
         return Optional.ofNullable(this.parameterDefault);
     }
+    /**
+     * @return The mode of the function parameter.
+     * 
+     */
     public Optional<String> parameterMode() {
         return Optional.ofNullable(this.parameterMode);
     }
+    /**
+     * @return The type of function parameter (`PARAM` or `COLUMN`).
+     * 
+     */
     public Optional<String> parameterType() {
         return Optional.ofNullable(this.parameterType);
     }
+    /**
+     * @return Ordinal position of column (starting at position 0).
+     * 
+     */
     public Integer position() {
         return this.position;
     }
+    /**
+     * @return Format of IntervalType.
+     * 
+     */
     public Optional<String> typeIntervalType() {
         return Optional.ofNullable(this.typeIntervalType);
     }
+    /**
+     * @return Full data type spec, JSON-serialized.
+     * 
+     */
     public Optional<String> typeJson() {
         return Optional.ofNullable(this.typeJson);
     }
+    /**
+     * @return Name of type (INT, STRUCT, MAP, etc.).
+     * 
+     */
     public String typeName() {
         return this.typeName;
     }
+    /**
+     * @return Digits of precision; required on Create for DecimalTypes.
+     * 
+     */
     public Optional<Integer> typePrecision() {
         return Optional.ofNullable(this.typePrecision);
     }
+    /**
+     * @return Digits to right of decimal; Required on Create for DecimalTypes.
+     * 
+     */
     public Optional<Integer> typeScale() {
         return Optional.ofNullable(this.typeScale);
     }
+    /**
+     * @return Full data type spec, SQL/catalogString text.
+     * 
+     */
     public String typeText() {
         return this.typeText;
     }

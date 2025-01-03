@@ -11,6 +11,63 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// Retrieves information about databricks_service_principal.
+//
+// ## Example Usage
+//
+// # Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admins, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//				DisplayName: "admins",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			spn, err := databricks.LookupServicePrincipal(ctx, &databricks.LookupServicePrincipalArgs{
+//				ApplicationId: pulumi.StringRef("11111111-2222-3333-4444-555666777888"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGroupMember(ctx, "my_member_a", &databricks.GroupMemberArgs{
+//				GroupId:  pulumi.String(admins.Id),
+//				MemberId: pulumi.String(spn.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// - End to end workspace management guide.
+// - getCurrentUser data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+// - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+// - Group data to retrieve information about Group members, entitlements and instance profiles.
+// - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+// - GroupMember to attach users and groups as group members.
+// - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+// - databricksService principal to manage service principals
 func LookupServicePrincipal(ctx *pulumi.Context, args *LookupServicePrincipalArgs, opts ...pulumi.InvokeOption) (*LookupServicePrincipalResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServicePrincipalResult
@@ -23,28 +80,43 @@ func LookupServicePrincipal(ctx *pulumi.Context, args *LookupServicePrincipalArg
 
 // A collection of arguments for invoking getServicePrincipal.
 type LookupServicePrincipalArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
 	AclPrincipalId *string `pulumi:"aclPrincipalId"`
-	Active         *bool   `pulumi:"active"`
-	ApplicationId  *string `pulumi:"applicationId"`
-	DisplayName    *string `pulumi:"displayName"`
-	ExternalId     *string `pulumi:"externalId"`
-	Home           *string `pulumi:"home"`
-	Id             *string `pulumi:"id"`
-	Repos          *string `pulumi:"repos"`
-	SpId           *string `pulumi:"spId"`
+	// Whether service principal is active or not.
+	Active *bool `pulumi:"active"`
+	// ID of the service principal. The service principal must exist before this resource can be retrieved.
+	ApplicationId *string `pulumi:"applicationId"`
+	// Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
+	DisplayName *string `pulumi:"displayName"`
+	// ID of the service principal in an external identity provider.
+	ExternalId *string `pulumi:"externalId"`
+	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+	Home *string `pulumi:"home"`
+	// The id of the service principal.
+	Id *string `pulumi:"id"`
+	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+	Repos *string `pulumi:"repos"`
+	SpId  *string `pulumi:"spId"`
 }
 
 // A collection of values returned by getServicePrincipal.
 type LookupServicePrincipalResult struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
 	AclPrincipalId string `pulumi:"aclPrincipalId"`
-	Active         bool   `pulumi:"active"`
-	ApplicationId  string `pulumi:"applicationId"`
-	DisplayName    string `pulumi:"displayName"`
-	ExternalId     string `pulumi:"externalId"`
-	Home           string `pulumi:"home"`
-	Id             string `pulumi:"id"`
-	Repos          string `pulumi:"repos"`
-	SpId           string `pulumi:"spId"`
+	// Whether service principal is active or not.
+	Active        bool   `pulumi:"active"`
+	ApplicationId string `pulumi:"applicationId"`
+	// Display name of the service principal, e.g. `Foo SPN`.
+	DisplayName string `pulumi:"displayName"`
+	// ID of the service principal in an external identity provider.
+	ExternalId string `pulumi:"externalId"`
+	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+	Home string `pulumi:"home"`
+	// The id of the service principal.
+	Id string `pulumi:"id"`
+	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+	Repos string `pulumi:"repos"`
+	SpId  string `pulumi:"spId"`
 }
 
 func LookupServicePrincipalOutput(ctx *pulumi.Context, args LookupServicePrincipalOutputArgs, opts ...pulumi.InvokeOption) LookupServicePrincipalResultOutput {
@@ -58,15 +130,23 @@ func LookupServicePrincipalOutput(ctx *pulumi.Context, args LookupServicePrincip
 
 // A collection of arguments for invoking getServicePrincipal.
 type LookupServicePrincipalOutputArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
 	AclPrincipalId pulumi.StringPtrInput `pulumi:"aclPrincipalId"`
-	Active         pulumi.BoolPtrInput   `pulumi:"active"`
-	ApplicationId  pulumi.StringPtrInput `pulumi:"applicationId"`
-	DisplayName    pulumi.StringPtrInput `pulumi:"displayName"`
-	ExternalId     pulumi.StringPtrInput `pulumi:"externalId"`
-	Home           pulumi.StringPtrInput `pulumi:"home"`
-	Id             pulumi.StringPtrInput `pulumi:"id"`
-	Repos          pulumi.StringPtrInput `pulumi:"repos"`
-	SpId           pulumi.StringPtrInput `pulumi:"spId"`
+	// Whether service principal is active or not.
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+	// ID of the service principal. The service principal must exist before this resource can be retrieved.
+	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
+	// Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// ID of the service principal in an external identity provider.
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
+	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+	Home pulumi.StringPtrInput `pulumi:"home"`
+	// The id of the service principal.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+	Repos pulumi.StringPtrInput `pulumi:"repos"`
+	SpId  pulumi.StringPtrInput `pulumi:"spId"`
 }
 
 func (LookupServicePrincipalOutputArgs) ElementType() reflect.Type {
@@ -88,10 +168,12 @@ func (o LookupServicePrincipalResultOutput) ToLookupServicePrincipalResultOutput
 	return o
 }
 
+// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
 func (o LookupServicePrincipalResultOutput) AclPrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.AclPrincipalId }).(pulumi.StringOutput)
 }
 
+// Whether service principal is active or not.
 func (o LookupServicePrincipalResultOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) bool { return v.Active }).(pulumi.BoolOutput)
 }
@@ -100,22 +182,27 @@ func (o LookupServicePrincipalResultOutput) ApplicationId() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
+// Display name of the service principal, e.g. `Foo SPN`.
 func (o LookupServicePrincipalResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// ID of the service principal in an external identity provider.
 func (o LookupServicePrincipalResultOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.ExternalId }).(pulumi.StringOutput)
 }
 
+// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
 func (o LookupServicePrincipalResultOutput) Home() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Home }).(pulumi.StringOutput)
 }
 
+// The id of the service principal.
 func (o LookupServicePrincipalResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
 func (o LookupServicePrincipalResultOutput) Repos() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Repos }).(pulumi.StringOutput)
 }

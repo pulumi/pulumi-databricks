@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetMwsNetworkConnectivityConfigEgressConfigInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Array of default rules.
+        /// </summary>
         [Input("defaultRules")]
         public Input<Inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesInputArgs>? DefaultRules { get; set; }
 
+        /// <summary>
+        /// Array of target rules.
+        /// </summary>
         [Input("targetRules")]
         public Input<Inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesInputArgs>? TargetRules { get; set; }
 

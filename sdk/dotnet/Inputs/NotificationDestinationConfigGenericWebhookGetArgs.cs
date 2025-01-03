@@ -14,6 +14,12 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// The password for basic authentication.
+        /// 
+        /// &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -29,6 +35,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("url")]
         private Input<string>? _url;
+
+        /// <summary>
+        /// The Generic Webhook URL.
+        /// </summary>
         public Input<string>? Url
         {
             get => _url;
@@ -44,6 +54,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("username")]
         private Input<string>? _username;
+
+        /// <summary>
+        /// The username for basic authentication.
+        /// </summary>
         public Input<string>? Username
         {
             get => _username;

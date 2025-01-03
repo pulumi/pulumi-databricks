@@ -15,23 +15,47 @@ public final class SecretAclState extends com.pulumi.resources.ResourceArgs {
 
     public static final SecretAclState Empty = new SecretAclState();
 
+    /**
+     * `READ`, `WRITE` or `MANAGE`.
+     * 
+     */
     @Import(name="permission")
     private @Nullable Output<String> permission;
 
+    /**
+     * @return `READ`, `WRITE` or `MANAGE`.
+     * 
+     */
     public Optional<Output<String>> permission() {
         return Optional.ofNullable(this.permission);
     }
 
+    /**
+     * principal&#39;s identifier. It can be:
+     * 
+     */
     @Import(name="principal")
     private @Nullable Output<String> principal;
 
+    /**
+     * @return principal&#39;s identifier. It can be:
+     * 
+     */
     public Optional<Output<String>> principal() {
         return Optional.ofNullable(this.principal);
     }
 
+    /**
+     * name of the scope
+     * 
+     */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
+    /**
+     * @return name of the scope
+     * 
+     */
     public Optional<Output<String>> scope() {
         return Optional.ofNullable(this.scope);
     }
@@ -62,29 +86,65 @@ public final class SecretAclState extends com.pulumi.resources.ResourceArgs {
             $ = new SecretAclState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param permission `READ`, `WRITE` or `MANAGE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(@Nullable Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission `READ`, `WRITE` or `MANAGE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }
 
+        /**
+         * @param principal principal&#39;s identifier. It can be:
+         * 
+         * @return builder
+         * 
+         */
         public Builder principal(@Nullable Output<String> principal) {
             $.principal = principal;
             return this;
         }
 
+        /**
+         * @param principal principal&#39;s identifier. It can be:
+         * 
+         * @return builder
+         * 
+         */
         public Builder principal(String principal) {
             return principal(Output.of(principal));
         }
 
+        /**
+         * @param scope name of the scope
+         * 
+         * @return builder
+         * 
+         */
         public Builder scope(@Nullable Output<String> scope) {
             $.scope = scope;
             return this;
         }
 
+        /**
+         * @param scope name of the scope
+         * 
+         * @return builder
+         * 
+         */
         public Builder scope(String scope) {
             return scope(Output.of(scope));
         }

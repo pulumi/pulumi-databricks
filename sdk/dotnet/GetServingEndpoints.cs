@@ -11,12 +11,171 @@ namespace Pulumi.Databricks
 {
     public static class GetServingEndpoints
     {
+        /// <summary>
+        /// &gt; This resource can only be used with a workspace-level provider!
+        /// 
+        /// This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetServingEndpoints.Invoke();
+        /// 
+        ///     var mlServingUsage = new List&lt;Databricks.Permissions&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; allDatabricksServingEndpoints.Endpoints; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         mlServingUsage.Add(new Databricks.Permissions($"ml_serving_usage-{range.Value}", new()
+        ///         {
+        ///             ServingEndpointId = range.Value.Id,
+        ///             AccessControls = new[]
+        ///             {
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = "users",
+        ///                     PermissionLevel = "CAN_VIEW",
+        ///                 },
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = auto.DisplayName,
+        ///                     PermissionLevel = "CAN_MANAGE",
+        ///                 },
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = eng.DisplayName,
+        ///                     PermissionLevel = "CAN_QUERY",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are often used in the same context:
+        /// 
+        /// * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+        /// </summary>
         public static Task<GetServingEndpointsResult> InvokeAsync(GetServingEndpointsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServingEndpointsResult>("databricks:index/getServingEndpoints:getServingEndpoints", args ?? new GetServingEndpointsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; This resource can only be used with a workspace-level provider!
+        /// 
+        /// This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetServingEndpoints.Invoke();
+        /// 
+        ///     var mlServingUsage = new List&lt;Databricks.Permissions&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; allDatabricksServingEndpoints.Endpoints; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         mlServingUsage.Add(new Databricks.Permissions($"ml_serving_usage-{range.Value}", new()
+        ///         {
+        ///             ServingEndpointId = range.Value.Id,
+        ///             AccessControls = new[]
+        ///             {
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = "users",
+        ///                     PermissionLevel = "CAN_VIEW",
+        ///                 },
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = auto.DisplayName,
+        ///                     PermissionLevel = "CAN_MANAGE",
+        ///                 },
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = eng.DisplayName,
+        ///                     PermissionLevel = "CAN_QUERY",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are often used in the same context:
+        /// 
+        /// * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+        /// </summary>
         public static Output<GetServingEndpointsResult> Invoke(GetServingEndpointsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServingEndpointsResult>("databricks:index/getServingEndpoints:getServingEndpoints", args ?? new GetServingEndpointsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; This resource can only be used with a workspace-level provider!
+        /// 
+        /// This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetServingEndpoints.Invoke();
+        /// 
+        ///     var mlServingUsage = new List&lt;Databricks.Permissions&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; allDatabricksServingEndpoints.Endpoints; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         mlServingUsage.Add(new Databricks.Permissions($"ml_serving_usage-{range.Value}", new()
+        ///         {
+        ///             ServingEndpointId = range.Value.Id,
+        ///             AccessControls = new[]
+        ///             {
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = "users",
+        ///                     PermissionLevel = "CAN_VIEW",
+        ///                 },
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = auto.DisplayName,
+        ///                     PermissionLevel = "CAN_MANAGE",
+        ///                 },
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = eng.DisplayName,
+        ///                     PermissionLevel = "CAN_QUERY",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are often used in the same context:
+        /// 
+        /// * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+        /// </summary>
         public static Output<GetServingEndpointsResult> Invoke(GetServingEndpointsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetServingEndpointsResult>("databricks:index/getServingEndpoints:getServingEndpoints", args ?? new GetServingEndpointsInvokeArgs(), options.WithDefaults());
     }
@@ -26,6 +185,10 @@ namespace Pulumi.Databricks
     {
         [Input("endpoints")]
         private List<Inputs.GetServingEndpointsEndpointArgs>? _endpoints;
+
+        /// <summary>
+        /// List of objects describing the serving endpoints. Each object consists of following attributes:
+        /// </summary>
         public List<Inputs.GetServingEndpointsEndpointArgs> Endpoints
         {
             get => _endpoints ?? (_endpoints = new List<Inputs.GetServingEndpointsEndpointArgs>());
@@ -42,6 +205,10 @@ namespace Pulumi.Databricks
     {
         [Input("endpoints")]
         private InputList<Inputs.GetServingEndpointsEndpointInputArgs>? _endpoints;
+
+        /// <summary>
+        /// List of objects describing the serving endpoints. Each object consists of following attributes:
+        /// </summary>
         public InputList<Inputs.GetServingEndpointsEndpointInputArgs> Endpoints
         {
             get => _endpoints ?? (_endpoints = new InputList<Inputs.GetServingEndpointsEndpointInputArgs>());
@@ -58,6 +225,9 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetServingEndpointsResult
     {
+        /// <summary>
+        /// List of objects describing the serving endpoints. Each object consists of following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointResult> Endpoints;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

@@ -15,16 +15,32 @@ public final class AppPendingDeploymentStatusArgs extends com.pulumi.resources.R
 
     public static final AppPendingDeploymentStatusArgs Empty = new AppPendingDeploymentStatusArgs();
 
+    /**
+     * Application status message
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return Application status message
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
 
+    /**
+     * State of the application.
+     * 
+     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
+    /**
+     * @return State of the application.
+     * 
+     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
@@ -54,20 +70,44 @@ public final class AppPendingDeploymentStatusArgs extends com.pulumi.resources.R
             $ = new AppPendingDeploymentStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param message Application status message
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message Application status message
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }
 
+        /**
+         * @param state State of the application.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
+        /**
+         * @param state State of the application.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(String state) {
             return state(Output.of(state));
         }

@@ -17,16 +17,32 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSchemasArgs Empty = new GetSchemasArgs();
 
+    /**
+     * Name of databricks_catalog
+     * 
+     */
     @Import(name="catalogName", required=true)
     private Output<String> catalogName;
 
+    /**
+     * @return Name of databricks_catalog
+     * 
+     */
     public Output<String> catalogName() {
         return this.catalogName;
     }
 
+    /**
+     * set of databricks.Schema full names: *`catalog`.`schema`*
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
+    /**
+     * @return set of databricks.Schema full names: *`catalog`.`schema`*
+     * 
+     */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
@@ -56,24 +72,54 @@ public final class GetSchemasArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetSchemasArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param catalogName Name of databricks_catalog
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(Output<String> catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
+        /**
+         * @param catalogName Name of databricks_catalog
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(String catalogName) {
             return catalogName(Output.of(catalogName));
         }
 
+        /**
+         * @param ids set of databricks.Schema full names: *`catalog`.`schema`*
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<List<String>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids set of databricks.Schema full names: *`catalog`.`schema`*
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(List<String> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param ids set of databricks.Schema full names: *`catalog`.`schema`*
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }

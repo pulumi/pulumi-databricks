@@ -21,9 +21,17 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint extends 
         return this.childColumns;
     }
 
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -62,6 +70,12 @@ public final class GetTableTableInfoTableConstraintPrimaryKeyConstraint extends 
             return childColumns(List.of(childColumns));
         }
 
+        /**
+         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

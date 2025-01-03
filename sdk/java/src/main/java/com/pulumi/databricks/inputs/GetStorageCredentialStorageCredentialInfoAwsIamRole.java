@@ -15,23 +15,47 @@ public final class GetStorageCredentialStorageCredentialInfoAwsIamRole extends c
 
     public static final GetStorageCredentialStorageCredentialInfoAwsIamRole Empty = new GetStorageCredentialStorageCredentialInfoAwsIamRole();
 
+    /**
+     * (output only) - The external ID used in role assumption to prevent confused deputy problem.
+     * 
+     */
     @Import(name="externalId")
     private @Nullable String externalId;
 
+    /**
+     * @return (output only) - The external ID used in role assumption to prevent confused deputy problem.
+     * 
+     */
     public Optional<String> externalId() {
         return Optional.ofNullable(this.externalId);
     }
 
+    /**
+     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * 
+     */
     @Import(name="roleArn", required=true)
     private String roleArn;
 
+    /**
+     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * 
+     */
     public String roleArn() {
         return this.roleArn;
     }
 
+    /**
+     * (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+     * 
+     */
     @Import(name="unityCatalogIamArn")
     private @Nullable String unityCatalogIamArn;
 
+    /**
+     * @return (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+     * 
+     */
     public Optional<String> unityCatalogIamArn() {
         return Optional.ofNullable(this.unityCatalogIamArn);
     }
@@ -62,16 +86,34 @@ public final class GetStorageCredentialStorageCredentialInfoAwsIamRole extends c
             $ = new GetStorageCredentialStorageCredentialInfoAwsIamRole(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param externalId (output only) - The external ID used in role assumption to prevent confused deputy problem.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalId(@Nullable String externalId) {
             $.externalId = externalId;
             return this;
         }
 
+        /**
+         * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(String roleArn) {
             $.roleArn = roleArn;
             return this;
         }
 
+        /**
+         * @param unityCatalogIamArn (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+         * 
+         * @return builder
+         * 
+         */
         public Builder unityCatalogIamArn(@Nullable String unityCatalogIamArn) {
             $.unityCatalogIamArn = unityCatalogIamArn;
             return this;

@@ -12,18 +12,33 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class SqlTableColumnArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// User-supplied free-form text.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+        /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }
 
+        /// <summary>
+        /// User-visible name of column
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Whether field is nullable (Default: `true`)
+        /// </summary>
         [Input("nullable")]
         public Input<bool>? Nullable { get; set; }
 
+        /// <summary>
+        /// Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

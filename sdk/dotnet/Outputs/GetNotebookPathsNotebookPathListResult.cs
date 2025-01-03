@@ -14,6 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetNotebookPathsNotebookPathListResult
     {
         public readonly string? Language;
+        /// <summary>
+        /// Path to workspace directory
+        /// </summary>
         public readonly string? Path;
 
         [OutputConstructor]

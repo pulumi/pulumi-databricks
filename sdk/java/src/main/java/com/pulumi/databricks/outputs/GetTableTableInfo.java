@@ -24,12 +24,28 @@ import javax.annotation.Nullable;
 public final class GetTableTableInfo {
     private @Nullable String accessPoint;
     private @Nullable Boolean browseOnly;
+    /**
+     * @return Name of parent catalog.
+     * 
+     */
     private @Nullable String catalogName;
+    /**
+     * @return Array of ColumnInfo objects of the table&#39;s columns
+     * 
+     */
     private @Nullable List<GetTableTableInfoColumn> columns;
+    /**
+     * @return Free-form text description
+     * 
+     */
     private @Nullable String comment;
     private @Nullable Integer createdAt;
     private @Nullable String createdBy;
     private @Nullable String dataAccessConfigurationId;
+    /**
+     * @return Table format, e.g. DELTA, CSV, JSON
+     * 
+     */
     private @Nullable String dataSourceFormat;
     private @Nullable Integer deletedAt;
     private @Nullable GetTableTableInfoDeltaRuntimePropertiesKvpairs deltaRuntimePropertiesKvpairs;
@@ -38,21 +54,45 @@ public final class GetTableTableInfo {
     private @Nullable GetTableTableInfoEncryptionDetails encryptionDetails;
     private @Nullable String fullName;
     private @Nullable String metastoreId;
+    /**
+     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Current owner of the table
+     * 
+     */
     private @Nullable String owner;
     private @Nullable String pipelineId;
     private @Nullable Map<String,String> properties;
     private @Nullable GetTableTableInfoRowFilter rowFilter;
+    /**
+     * @return Name of parent schema relative to its parent catalog.
+     * 
+     */
     private @Nullable String schemaName;
     private @Nullable String sqlPath;
     private @Nullable String storageCredentialName;
     private @Nullable String storageLocation;
     private @Nullable List<GetTableTableInfoTableConstraint> tableConstraints;
     private @Nullable String tableId;
+    /**
+     * @return Table type, e.g. MANAGED, EXTERNAL, VIEW
+     * 
+     */
     private @Nullable String tableType;
     private @Nullable Integer updatedAt;
     private @Nullable String updatedBy;
+    /**
+     * @return View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     * 
+     */
     private @Nullable String viewDefinition;
+    /**
+     * @return View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     * 
+     */
     private @Nullable GetTableTableInfoViewDependencies viewDependencies;
 
     private GetTableTableInfo() {}
@@ -62,12 +102,24 @@ public final class GetTableTableInfo {
     public Optional<Boolean> browseOnly() {
         return Optional.ofNullable(this.browseOnly);
     }
+    /**
+     * @return Name of parent catalog.
+     * 
+     */
     public Optional<String> catalogName() {
         return Optional.ofNullable(this.catalogName);
     }
+    /**
+     * @return Array of ColumnInfo objects of the table&#39;s columns
+     * 
+     */
     public List<GetTableTableInfoColumn> columns() {
         return this.columns == null ? List.of() : this.columns;
     }
+    /**
+     * @return Free-form text description
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
@@ -80,6 +132,10 @@ public final class GetTableTableInfo {
     public Optional<String> dataAccessConfigurationId() {
         return Optional.ofNullable(this.dataAccessConfigurationId);
     }
+    /**
+     * @return Table format, e.g. DELTA, CSV, JSON
+     * 
+     */
     public Optional<String> dataSourceFormat() {
         return Optional.ofNullable(this.dataSourceFormat);
     }
@@ -104,9 +160,17 @@ public final class GetTableTableInfo {
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
+    /**
+     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Current owner of the table
+     * 
+     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
@@ -119,6 +183,10 @@ public final class GetTableTableInfo {
     public Optional<GetTableTableInfoRowFilter> rowFilter() {
         return Optional.ofNullable(this.rowFilter);
     }
+    /**
+     * @return Name of parent schema relative to its parent catalog.
+     * 
+     */
     public Optional<String> schemaName() {
         return Optional.ofNullable(this.schemaName);
     }
@@ -137,6 +205,10 @@ public final class GetTableTableInfo {
     public Optional<String> tableId() {
         return Optional.ofNullable(this.tableId);
     }
+    /**
+     * @return Table type, e.g. MANAGED, EXTERNAL, VIEW
+     * 
+     */
     public Optional<String> tableType() {
         return Optional.ofNullable(this.tableType);
     }
@@ -146,9 +218,17 @@ public final class GetTableTableInfo {
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
+    /**
+     * @return View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     * 
+     */
     public Optional<String> viewDefinition() {
         return Optional.ofNullable(this.viewDefinition);
     }
+    /**
+     * @return View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     * 
+     */
     public Optional<GetTableTableInfoViewDependencies> viewDependencies() {
         return Optional.ofNullable(this.viewDependencies);
     }

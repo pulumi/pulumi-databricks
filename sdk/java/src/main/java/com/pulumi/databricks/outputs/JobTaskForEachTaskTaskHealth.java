@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class JobTaskForEachTaskTaskHealth {
+    /**
+     * @return list of rules that are represented as objects with the following attributes:
+     * 
+     */
     private List<JobTaskForEachTaskTaskHealthRule> rules;
 
     private JobTaskForEachTaskTaskHealth() {}
+    /**
+     * @return list of rules that are represented as objects with the following attributes:
+     * 
+     */
     public List<JobTaskForEachTaskTaskHealthRule> rules() {
         return this.rules;
     }

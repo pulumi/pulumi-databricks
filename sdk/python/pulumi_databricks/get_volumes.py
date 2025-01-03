@@ -56,6 +56,9 @@ class GetVolumesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        a list of Volume full names: *`catalog`.`schema`.`volume`*
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -81,7 +84,39 @@ def get_volumes(catalog_name: Optional[str] = None,
                 schema_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumesResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with a workspace-level provider!
+
+    Retrieves a list of Volume ids (full names), that were created by Pulumi or manually.
+
+    ## Plugin Framework Migration
+
+    The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES="get_volumes"`.
+
+    ## Example Usage
+
+    Listing all volumes in a _things_ Schema of a  _sandbox_ databricks_catalog:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_volumes(catalog_name="sandbox",
+        schema_name="things")
+    pulumi.export("allVolumes", this)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Volume to manage volumes within Unity Catalog.
+    * Schema to manage schemas within Unity Catalog.
+    * Catalog to manage catalogs within Unity Catalog.
+
+
+    :param str catalog_name: Name of databricks_catalog
+    :param Sequence[str] ids: a list of Volume full names: *`catalog`.`schema`.`volume`*
+    :param str schema_name: Name of databricks_schema
     """
     __args__ = dict()
     __args__['catalogName'] = catalog_name
@@ -100,7 +135,39 @@ def get_volumes_output(catalog_name: Optional[pulumi.Input[str]] = None,
                        schema_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumesResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with a workspace-level provider!
+
+    Retrieves a list of Volume ids (full names), that were created by Pulumi or manually.
+
+    ## Plugin Framework Migration
+
+    The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES="get_volumes"`.
+
+    ## Example Usage
+
+    Listing all volumes in a _things_ Schema of a  _sandbox_ databricks_catalog:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_volumes(catalog_name="sandbox",
+        schema_name="things")
+    pulumi.export("allVolumes", this)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Volume to manage volumes within Unity Catalog.
+    * Schema to manage schemas within Unity Catalog.
+    * Catalog to manage catalogs within Unity Catalog.
+
+
+    :param str catalog_name: Name of databricks_catalog
+    :param Sequence[str] ids: a list of Volume full names: *`catalog`.`schema`.`volume`*
+    :param str schema_name: Name of databricks_schema
     """
     __args__ = dict()
     __args__['catalogName'] = catalog_name

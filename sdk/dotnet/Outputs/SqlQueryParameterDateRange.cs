@@ -14,6 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class SqlQueryParameterDateRange
     {
         public readonly Outputs.SqlQueryParameterDateRangeRange? Range;
+        /// <summary>
+        /// The default value for this parameter.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

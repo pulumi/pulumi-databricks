@@ -15,25 +15,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationConfig {
+    /**
+     * @return The email configuration of the Notification Destination. It must contain the following:
+     * 
+     */
     private @Nullable NotificationDestinationConfigEmail email;
+    /**
+     * @return The Generic Webhook configuration of the Notification Destination. It must contain the following:
+     * 
+     */
     private @Nullable NotificationDestinationConfigGenericWebhook genericWebhook;
+    /**
+     * @return The Microsoft Teams configuration of the Notification Destination. It must contain the following:
+     * 
+     */
     private @Nullable NotificationDestinationConfigMicrosoftTeams microsoftTeams;
+    /**
+     * @return The PagerDuty configuration of the Notification Destination. It must contain the following:
+     * 
+     */
     private @Nullable NotificationDestinationConfigPagerduty pagerduty;
+    /**
+     * @return The Slack configuration of the Notification Destination. It must contain the following:
+     * 
+     */
     private @Nullable NotificationDestinationConfigSlack slack;
 
     private NotificationDestinationConfig() {}
+    /**
+     * @return The email configuration of the Notification Destination. It must contain the following:
+     * 
+     */
     public Optional<NotificationDestinationConfigEmail> email() {
         return Optional.ofNullable(this.email);
     }
+    /**
+     * @return The Generic Webhook configuration of the Notification Destination. It must contain the following:
+     * 
+     */
     public Optional<NotificationDestinationConfigGenericWebhook> genericWebhook() {
         return Optional.ofNullable(this.genericWebhook);
     }
+    /**
+     * @return The Microsoft Teams configuration of the Notification Destination. It must contain the following:
+     * 
+     */
     public Optional<NotificationDestinationConfigMicrosoftTeams> microsoftTeams() {
         return Optional.ofNullable(this.microsoftTeams);
     }
+    /**
+     * @return The PagerDuty configuration of the Notification Destination. It must contain the following:
+     * 
+     */
     public Optional<NotificationDestinationConfigPagerduty> pagerduty() {
         return Optional.ofNullable(this.pagerduty);
     }
+    /**
+     * @return The Slack configuration of the Notification Destination. It must contain the following:
+     * 
+     */
     public Optional<NotificationDestinationConfigSlack> slack() {
         return Optional.ofNullable(this.slack);
     }

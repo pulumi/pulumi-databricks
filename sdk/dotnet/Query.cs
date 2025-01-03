@@ -9,54 +9,113 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// This resource can be imported using query ID:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/query:Query this &lt;query-id&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/query:Query")]
     public partial class Query : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether to apply a 1000 row limit to the query result.
+        /// </summary>
         [Output("applyAutoLimit")]
         public Output<bool?> ApplyAutoLimit { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the catalog where this query will be executed.
+        /// </summary>
         [Output("catalog")]
         public Output<string?> Catalog { get; private set; } = null!;
 
+        /// <summary>
+        /// The timestamp string indicating when the query was created.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// General description that conveys additional information about this query such as usage notes.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the query.
+        /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// Username of the user who last saved changes to this query.
+        /// </summary>
         [Output("lastModifierUserName")]
         public Output<string> LastModifierUserName { get; private set; } = null!;
 
+        /// <summary>
+        /// The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
+        /// </summary>
         [Output("lifecycleState")]
         public Output<string> LifecycleState { get; private set; } = null!;
 
+        /// <summary>
+        /// Query owner's username.
+        /// </summary>
         [Output("ownerUserName")]
         public Output<string?> OwnerUserName { get; private set; } = null!;
 
+        /// <summary>
+        /// Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+        /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.QueryParameter>> Parameters { get; private set; } = null!;
 
+        /// <summary>
+        /// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
+        /// </summary>
         [Output("parentPath")]
         public Output<string?> ParentPath { get; private set; } = null!;
 
+        /// <summary>
+        /// Text of SQL query.
+        /// </summary>
         [Output("queryText")]
         public Output<string> QueryText { get; private set; } = null!;
 
+        /// <summary>
+        /// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
+        /// </summary>
         [Output("runAsMode")]
         public Output<string?> RunAsMode { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the schema where this query will be executed.
+        /// </summary>
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
 
+        /// <summary>
+        /// Tags that will be added to the query.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// The timestamp string indicating when the query was updated.
+        /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of a SQL warehouse which will be used to execute this query.
+        /// </summary>
         [Output("warehouseId")]
         public Output<string> WarehouseId { get; private set; } = null!;
 
@@ -106,49 +165,87 @@ namespace Pulumi.Databricks
 
     public sealed class QueryArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to apply a 1000 row limit to the query result.
+        /// </summary>
         [Input("applyAutoLimit")]
         public Input<bool>? ApplyAutoLimit { get; set; }
 
+        /// <summary>
+        /// Name of the catalog where this query will be executed.
+        /// </summary>
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
 
+        /// <summary>
+        /// General description that conveys additional information about this query such as usage notes.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Name of the query.
+        /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// Query owner's username.
+        /// </summary>
         [Input("ownerUserName")]
         public Input<string>? OwnerUserName { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.QueryParameterArgs>? _parameters;
+
+        /// <summary>
+        /// Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+        /// </summary>
         public InputList<Inputs.QueryParameterArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.QueryParameterArgs>());
             set => _parameters = value;
         }
 
+        /// <summary>
+        /// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
+        /// </summary>
         [Input("parentPath")]
         public Input<string>? ParentPath { get; set; }
 
+        /// <summary>
+        /// Text of SQL query.
+        /// </summary>
         [Input("queryText", required: true)]
         public Input<string> QueryText { get; set; } = null!;
 
+        /// <summary>
+        /// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
+        /// </summary>
         [Input("runAsMode")]
         public Input<string>? RunAsMode { get; set; }
 
+        /// <summary>
+        /// Name of the schema where this query will be executed.
+        /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags that will be added to the query.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// ID of a SQL warehouse which will be used to execute this query.
+        /// </summary>
         [Input("warehouseId", required: true)]
         public Input<string> WarehouseId { get; set; } = null!;
 
@@ -160,61 +257,111 @@ namespace Pulumi.Databricks
 
     public sealed class QueryState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to apply a 1000 row limit to the query result.
+        /// </summary>
         [Input("applyAutoLimit")]
         public Input<bool>? ApplyAutoLimit { get; set; }
 
+        /// <summary>
+        /// Name of the catalog where this query will be executed.
+        /// </summary>
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
 
+        /// <summary>
+        /// The timestamp string indicating when the query was created.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// General description that conveys additional information about this query such as usage notes.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Name of the query.
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Username of the user who last saved changes to this query.
+        /// </summary>
         [Input("lastModifierUserName")]
         public Input<string>? LastModifierUserName { get; set; }
 
+        /// <summary>
+        /// The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
+        /// </summary>
         [Input("lifecycleState")]
         public Input<string>? LifecycleState { get; set; }
 
+        /// <summary>
+        /// Query owner's username.
+        /// </summary>
         [Input("ownerUserName")]
         public Input<string>? OwnerUserName { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.QueryParameterGetArgs>? _parameters;
+
+        /// <summary>
+        /// Query parameter definition.  Consists of following attributes (one of `*_value` is required):
+        /// </summary>
         public InputList<Inputs.QueryParameterGetArgs> Parameters
         {
             get => _parameters ?? (_parameters = new InputList<Inputs.QueryParameterGetArgs>());
             set => _parameters = value;
         }
 
+        /// <summary>
+        /// The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
+        /// </summary>
         [Input("parentPath")]
         public Input<string>? ParentPath { get; set; }
 
+        /// <summary>
+        /// Text of SQL query.
+        /// </summary>
         [Input("queryText")]
         public Input<string>? QueryText { get; set; }
 
+        /// <summary>
+        /// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
+        /// </summary>
         [Input("runAsMode")]
         public Input<string>? RunAsMode { get; set; }
 
+        /// <summary>
+        /// Name of the schema where this query will be executed.
+        /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags that will be added to the query.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The timestamp string indicating when the query was updated.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 
+        /// <summary>
+        /// ID of a SQL warehouse which will be used to execute this query.
+        /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
 

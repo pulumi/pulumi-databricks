@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class JobHealthRule {
+    /**
+     * @return string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * 
+     */
     private String metric;
+    /**
+     * @return string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * 
+     */
     private String op;
+    /**
+     * @return integer value used to compare to the given metric.
+     * 
+     */
     private Integer value;
 
     private JobHealthRule() {}
+    /**
+     * @return string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * 
+     */
     public String metric() {
         return this.metric;
     }
+    /**
+     * @return string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * 
+     */
     public String op() {
         return this.op;
     }
+    /**
+     * @return integer value used to compare to the given metric.
+     * 
+     */
     public Integer value() {
         return this.value;
     }

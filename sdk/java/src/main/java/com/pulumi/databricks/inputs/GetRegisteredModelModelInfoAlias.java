@@ -15,16 +15,32 @@ public final class GetRegisteredModelModelInfoAlias extends com.pulumi.resources
 
     public static final GetRegisteredModelModelInfoAlias Empty = new GetRegisteredModelModelInfoAlias();
 
+    /**
+     * string with the name of alias
+     * 
+     */
     @Import(name="aliasName")
     private @Nullable String aliasName;
 
+    /**
+     * @return string with the name of alias
+     * 
+     */
     public Optional<String> aliasName() {
         return Optional.ofNullable(this.aliasName);
     }
 
+    /**
+     * associated model version
+     * 
+     */
     @Import(name="versionNum")
     private @Nullable Integer versionNum;
 
+    /**
+     * @return associated model version
+     * 
+     */
     public Optional<Integer> versionNum() {
         return Optional.ofNullable(this.versionNum);
     }
@@ -54,11 +70,23 @@ public final class GetRegisteredModelModelInfoAlias extends com.pulumi.resources
             $ = new GetRegisteredModelModelInfoAlias(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aliasName string with the name of alias
+         * 
+         * @return builder
+         * 
+         */
         public Builder aliasName(@Nullable String aliasName) {
             $.aliasName = aliasName;
             return this;
         }
 
+        /**
+         * @param versionNum associated model version
+         * 
+         * @return builder
+         * 
+         */
         public Builder versionNum(@Nullable Integer versionNum) {
             $.versionNum = versionNum;
             return this;

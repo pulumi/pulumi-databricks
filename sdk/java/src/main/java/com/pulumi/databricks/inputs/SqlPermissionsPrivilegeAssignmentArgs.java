@@ -15,9 +15,17 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
 
     public static final SqlPermissionsPrivilegeAssignmentArgs Empty = new SqlPermissionsPrivilegeAssignmentArgs();
 
+    /**
+     * `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+     * 
+     */
     @Import(name="principal", required=true)
     private Output<String> principal;
 
+    /**
+     * @return `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+     * 
+     */
     public Output<String> principal() {
         return this.principal;
     }
@@ -54,11 +62,23 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
             $ = new SqlPermissionsPrivilegeAssignmentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param principal `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder principal(Output<String> principal) {
             $.principal = principal;
             return this;
         }
 
+        /**
+         * @param principal `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder principal(String principal) {
             return principal(Output.of(principal));
         }

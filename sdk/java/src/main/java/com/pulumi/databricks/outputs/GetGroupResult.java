@@ -14,19 +14,47 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGroupResult {
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
     private String aclPrincipalId;
+    /**
+     * @return True if group members can create clusters
+     * 
+     */
     private @Nullable Boolean allowClusterCreate;
+    /**
+     * @return True if group members can create instance pools
+     * 
+     */
     private @Nullable Boolean allowInstancePoolCreate;
+    /**
+     * @return Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     private List<String> childGroups;
     private @Nullable Boolean databricksSqlAccess;
     private String displayName;
+    /**
+     * @return ID of the group in an external identity provider.
+     * 
+     */
     private String externalId;
+    /**
+     * @return Set of group identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     private List<String> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+     * 
+     */
     private List<String> instanceProfiles;
     /**
      * @deprecated
@@ -36,20 +64,44 @@ public final class GetGroupResult {
     @Deprecated /* Please use `users`, `service_principals`, and `child_groups` instead */
     private List<String> members;
     private @Nullable Boolean recursive;
+    /**
+     * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     private List<String> servicePrincipals;
+    /**
+     * @return Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     private List<String> users;
     private @Nullable Boolean workspaceAccess;
 
     private GetGroupResult() {}
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
     public String aclPrincipalId() {
         return this.aclPrincipalId;
     }
+    /**
+     * @return True if group members can create clusters
+     * 
+     */
     public Optional<Boolean> allowClusterCreate() {
         return Optional.ofNullable(this.allowClusterCreate);
     }
+    /**
+     * @return True if group members can create instance pools
+     * 
+     */
     public Optional<Boolean> allowInstancePoolCreate() {
         return Optional.ofNullable(this.allowInstancePoolCreate);
     }
+    /**
+     * @return Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     public List<String> childGroups() {
         return this.childGroups;
     }
@@ -59,9 +111,17 @@ public final class GetGroupResult {
     public String displayName() {
         return this.displayName;
     }
+    /**
+     * @return ID of the group in an external identity provider.
+     * 
+     */
     public String externalId() {
         return this.externalId;
     }
+    /**
+     * @return Set of group identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     public List<String> groups() {
         return this.groups;
     }
@@ -72,6 +132,10 @@ public final class GetGroupResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
+     * 
+     */
     public List<String> instanceProfiles() {
         return this.instanceProfiles;
     }
@@ -87,9 +151,17 @@ public final class GetGroupResult {
     public Optional<Boolean> recursive() {
         return Optional.ofNullable(this.recursive);
     }
+    /**
+     * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     public List<String> servicePrincipals() {
         return this.servicePrincipals;
     }
+    /**
+     * @return Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
+     * 
+     */
     public List<String> users() {
         return this.users;
     }

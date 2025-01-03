@@ -16,9 +16,17 @@ public final class NotificationDestinationConfigSlackArgs extends com.pulumi.res
 
     public static final NotificationDestinationConfigSlackArgs Empty = new NotificationDestinationConfigSlackArgs();
 
+    /**
+     * The Slack webhook URL.
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return The Slack webhook URL.
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -55,11 +63,23 @@ public final class NotificationDestinationConfigSlackArgs extends com.pulumi.res
             $ = new NotificationDestinationConfigSlackArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param url The Slack webhook URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url The Slack webhook URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

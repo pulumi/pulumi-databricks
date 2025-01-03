@@ -11,6 +11,44 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This resource can only be used with a workspace-level provider!
+//
+// This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetRegisteredModelVersions(ctx, &databricks.GetRegisteredModelVersionsArgs{
+//				FullName: "main.default.my_model",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * RegisteredModel data source to retrieve information about a model within Unity Catalog.
+// * RegisteredModel resource to manage models within Unity Catalog.
+// * ModelServing to serve this model on a Databricks serving endpoint.
+// * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
 func GetRegisteredModelVersions(ctx *pulumi.Context, args *GetRegisteredModelVersionsArgs, opts ...pulumi.InvokeOption) (*GetRegisteredModelVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegisteredModelVersionsResult
@@ -23,15 +61,19 @@ func GetRegisteredModelVersions(ctx *pulumi.Context, args *GetRegisteredModelVer
 
 // A collection of arguments for invoking getRegisteredModelVersions.
 type GetRegisteredModelVersionsArgs struct {
-	FullName      string                                   `pulumi:"fullName"`
+	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+	FullName string `pulumi:"fullName"`
+	// list of objects describing the model versions. Each object consists of following attributes:
 	ModelVersions []GetRegisteredModelVersionsModelVersion `pulumi:"modelVersions"`
 }
 
 // A collection of values returned by getRegisteredModelVersions.
 type GetRegisteredModelVersionsResult struct {
+	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
 	FullName string `pulumi:"fullName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string                                   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// list of objects describing the model versions. Each object consists of following attributes:
 	ModelVersions []GetRegisteredModelVersionsModelVersion `pulumi:"modelVersions"`
 }
 
@@ -46,7 +88,9 @@ func GetRegisteredModelVersionsOutput(ctx *pulumi.Context, args GetRegisteredMod
 
 // A collection of arguments for invoking getRegisteredModelVersions.
 type GetRegisteredModelVersionsOutputArgs struct {
-	FullName      pulumi.StringInput                               `pulumi:"fullName"`
+	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+	FullName pulumi.StringInput `pulumi:"fullName"`
+	// list of objects describing the model versions. Each object consists of following attributes:
 	ModelVersions GetRegisteredModelVersionsModelVersionArrayInput `pulumi:"modelVersions"`
 }
 
@@ -69,6 +113,7 @@ func (o GetRegisteredModelVersionsResultOutput) ToGetRegisteredModelVersionsResu
 	return o
 }
 
+// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
 func (o GetRegisteredModelVersionsResultOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsResult) string { return v.FullName }).(pulumi.StringOutput)
 }
@@ -78,6 +123,7 @@ func (o GetRegisteredModelVersionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// list of objects describing the model versions. Each object consists of following attributes:
 func (o GetRegisteredModelVersionsResultOutput) ModelVersions() GetRegisteredModelVersionsModelVersionArrayOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsResult) []GetRegisteredModelVersionsModelVersion {
 		return v.ModelVersions

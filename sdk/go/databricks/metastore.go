@@ -11,26 +11,94 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This resource can be used with an account or workspace-level provider.
+//
+// A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
+//
+// Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
+//
+// A Unity Catalog metastore can be created without a root location & credential to maintain strict separation of storage across catalogs or environments.
+//
+// ## Example Usage
+//
+// # For AWS
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewMetastore(ctx, "this", &databricks.MetastoreArgs{
+//				Name:         pulumi.String("primary"),
+//				StorageRoot:  pulumi.Sprintf("s3://%v/metastore", metastore.Id),
+//				Owner:        pulumi.String("uc admins"),
+//				Region:       pulumi.String("us-east-1"),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMetastoreAssignment(ctx, "this", &databricks.MetastoreAssignmentArgs{
+//				MetastoreId: this.ID(),
+//				WorkspaceId: pulumi.Any(workspaceId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # For Azure
+//
+// ## Import
+//
+// This resource can be imported by ID:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/metastore:Metastore this <id>
+// ```
 type Metastore struct {
 	pulumi.CustomResourceState
 
-	Cloud                                       pulumi.StringOutput    `pulumi:"cloud"`
-	CreatedAt                                   pulumi.IntOutput       `pulumi:"createdAt"`
-	CreatedBy                                   pulumi.StringOutput    `pulumi:"createdBy"`
-	DefaultDataAccessConfigId                   pulumi.StringPtrOutput `pulumi:"defaultDataAccessConfigId"`
-	DeltaSharingOrganizationName                pulumi.StringPtrOutput `pulumi:"deltaSharingOrganizationName"`
-	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrOutput    `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
-	DeltaSharingScope                           pulumi.StringPtrOutput `pulumi:"deltaSharingScope"`
-	ForceDestroy                                pulumi.BoolPtrOutput   `pulumi:"forceDestroy"`
-	GlobalMetastoreId                           pulumi.StringOutput    `pulumi:"globalMetastoreId"`
-	MetastoreId                                 pulumi.StringOutput    `pulumi:"metastoreId"`
-	Name                                        pulumi.StringOutput    `pulumi:"name"`
-	Owner                                       pulumi.StringOutput    `pulumi:"owner"`
-	Region                                      pulumi.StringOutput    `pulumi:"region"`
-	StorageRoot                                 pulumi.StringPtrOutput `pulumi:"storageRoot"`
-	StorageRootCredentialId                     pulumi.StringPtrOutput `pulumi:"storageRootCredentialId"`
-	UpdatedAt                                   pulumi.IntOutput       `pulumi:"updatedAt"`
-	UpdatedBy                                   pulumi.StringOutput    `pulumi:"updatedBy"`
+	Cloud                     pulumi.StringOutput    `pulumi:"cloud"`
+	CreatedAt                 pulumi.IntOutput       `pulumi:"createdAt"`
+	CreatedBy                 pulumi.StringOutput    `pulumi:"createdBy"`
+	DefaultDataAccessConfigId pulumi.StringPtrOutput `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
+	DeltaSharingOrganizationName pulumi.StringPtrOutput `pulumi:"deltaSharingOrganizationName"`
+	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrOutput `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+	DeltaSharingScope pulumi.StringPtrOutput `pulumi:"deltaSharingScope"`
+	// Destroy metastore regardless of its contents.
+	ForceDestroy      pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
+	GlobalMetastoreId pulumi.StringOutput  `pulumi:"globalMetastoreId"`
+	MetastoreId       pulumi.StringOutput  `pulumi:"metastoreId"`
+	// Name of metastore.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Username/groupname/sp applicationId of the metastore owner.
+	Owner pulumi.StringOutput `pulumi:"owner"`
+	// The region of the metastore
+	Region pulumi.StringOutput `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	StorageRoot             pulumi.StringPtrOutput `pulumi:"storageRoot"`
+	StorageRootCredentialId pulumi.StringPtrOutput `pulumi:"storageRootCredentialId"`
+	UpdatedAt               pulumi.IntOutput       `pulumi:"updatedAt"`
+	UpdatedBy               pulumi.StringOutput    `pulumi:"updatedBy"`
 }
 
 // NewMetastore registers a new resource with the given unique name, arguments, and options.
@@ -63,43 +131,59 @@ func GetMetastore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Metastore resources.
 type metastoreState struct {
-	Cloud                                       *string `pulumi:"cloud"`
-	CreatedAt                                   *int    `pulumi:"createdAt"`
-	CreatedBy                                   *string `pulumi:"createdBy"`
-	DefaultDataAccessConfigId                   *string `pulumi:"defaultDataAccessConfigId"`
-	DeltaSharingOrganizationName                *string `pulumi:"deltaSharingOrganizationName"`
-	DeltaSharingRecipientTokenLifetimeInSeconds *int    `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
-	DeltaSharingScope                           *string `pulumi:"deltaSharingScope"`
-	ForceDestroy                                *bool   `pulumi:"forceDestroy"`
-	GlobalMetastoreId                           *string `pulumi:"globalMetastoreId"`
-	MetastoreId                                 *string `pulumi:"metastoreId"`
-	Name                                        *string `pulumi:"name"`
-	Owner                                       *string `pulumi:"owner"`
-	Region                                      *string `pulumi:"region"`
-	StorageRoot                                 *string `pulumi:"storageRoot"`
-	StorageRootCredentialId                     *string `pulumi:"storageRootCredentialId"`
-	UpdatedAt                                   *int    `pulumi:"updatedAt"`
-	UpdatedBy                                   *string `pulumi:"updatedBy"`
+	Cloud                     *string `pulumi:"cloud"`
+	CreatedAt                 *int    `pulumi:"createdAt"`
+	CreatedBy                 *string `pulumi:"createdBy"`
+	DefaultDataAccessConfigId *string `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
+	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
+	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
+	// Destroy metastore regardless of its contents.
+	ForceDestroy      *bool   `pulumi:"forceDestroy"`
+	GlobalMetastoreId *string `pulumi:"globalMetastoreId"`
+	MetastoreId       *string `pulumi:"metastoreId"`
+	// Name of metastore.
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the metastore owner.
+	Owner *string `pulumi:"owner"`
+	// The region of the metastore
+	Region *string `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	StorageRoot             *string `pulumi:"storageRoot"`
+	StorageRootCredentialId *string `pulumi:"storageRootCredentialId"`
+	UpdatedAt               *int    `pulumi:"updatedAt"`
+	UpdatedBy               *string `pulumi:"updatedBy"`
 }
 
 type MetastoreState struct {
-	Cloud                                       pulumi.StringPtrInput
-	CreatedAt                                   pulumi.IntPtrInput
-	CreatedBy                                   pulumi.StringPtrInput
-	DefaultDataAccessConfigId                   pulumi.StringPtrInput
-	DeltaSharingOrganizationName                pulumi.StringPtrInput
+	Cloud                     pulumi.StringPtrInput
+	CreatedAt                 pulumi.IntPtrInput
+	CreatedBy                 pulumi.StringPtrInput
+	DefaultDataAccessConfigId pulumi.StringPtrInput
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
+	DeltaSharingOrganizationName pulumi.StringPtrInput
+	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
 	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput
-	DeltaSharingScope                           pulumi.StringPtrInput
-	ForceDestroy                                pulumi.BoolPtrInput
-	GlobalMetastoreId                           pulumi.StringPtrInput
-	MetastoreId                                 pulumi.StringPtrInput
-	Name                                        pulumi.StringPtrInput
-	Owner                                       pulumi.StringPtrInput
-	Region                                      pulumi.StringPtrInput
-	StorageRoot                                 pulumi.StringPtrInput
-	StorageRootCredentialId                     pulumi.StringPtrInput
-	UpdatedAt                                   pulumi.IntPtrInput
-	UpdatedBy                                   pulumi.StringPtrInput
+	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+	DeltaSharingScope pulumi.StringPtrInput
+	// Destroy metastore regardless of its contents.
+	ForceDestroy      pulumi.BoolPtrInput
+	GlobalMetastoreId pulumi.StringPtrInput
+	MetastoreId       pulumi.StringPtrInput
+	// Name of metastore.
+	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the metastore owner.
+	Owner pulumi.StringPtrInput
+	// The region of the metastore
+	Region pulumi.StringPtrInput
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	StorageRoot             pulumi.StringPtrInput
+	StorageRootCredentialId pulumi.StringPtrInput
+	UpdatedAt               pulumi.IntPtrInput
+	UpdatedBy               pulumi.StringPtrInput
 }
 
 func (MetastoreState) ElementType() reflect.Type {
@@ -107,44 +191,60 @@ func (MetastoreState) ElementType() reflect.Type {
 }
 
 type metastoreArgs struct {
-	Cloud                                       *string `pulumi:"cloud"`
-	CreatedAt                                   *int    `pulumi:"createdAt"`
-	CreatedBy                                   *string `pulumi:"createdBy"`
-	DefaultDataAccessConfigId                   *string `pulumi:"defaultDataAccessConfigId"`
-	DeltaSharingOrganizationName                *string `pulumi:"deltaSharingOrganizationName"`
-	DeltaSharingRecipientTokenLifetimeInSeconds *int    `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
-	DeltaSharingScope                           *string `pulumi:"deltaSharingScope"`
-	ForceDestroy                                *bool   `pulumi:"forceDestroy"`
-	GlobalMetastoreId                           *string `pulumi:"globalMetastoreId"`
-	MetastoreId                                 *string `pulumi:"metastoreId"`
-	Name                                        *string `pulumi:"name"`
-	Owner                                       *string `pulumi:"owner"`
-	Region                                      *string `pulumi:"region"`
-	StorageRoot                                 *string `pulumi:"storageRoot"`
-	StorageRootCredentialId                     *string `pulumi:"storageRootCredentialId"`
-	UpdatedAt                                   *int    `pulumi:"updatedAt"`
-	UpdatedBy                                   *string `pulumi:"updatedBy"`
+	Cloud                     *string `pulumi:"cloud"`
+	CreatedAt                 *int    `pulumi:"createdAt"`
+	CreatedBy                 *string `pulumi:"createdBy"`
+	DefaultDataAccessConfigId *string `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
+	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
+	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
+	// Destroy metastore regardless of its contents.
+	ForceDestroy      *bool   `pulumi:"forceDestroy"`
+	GlobalMetastoreId *string `pulumi:"globalMetastoreId"`
+	MetastoreId       *string `pulumi:"metastoreId"`
+	// Name of metastore.
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the metastore owner.
+	Owner *string `pulumi:"owner"`
+	// The region of the metastore
+	Region *string `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	StorageRoot             *string `pulumi:"storageRoot"`
+	StorageRootCredentialId *string `pulumi:"storageRootCredentialId"`
+	UpdatedAt               *int    `pulumi:"updatedAt"`
+	UpdatedBy               *string `pulumi:"updatedBy"`
 }
 
 // The set of arguments for constructing a Metastore resource.
 type MetastoreArgs struct {
-	Cloud                                       pulumi.StringPtrInput
-	CreatedAt                                   pulumi.IntPtrInput
-	CreatedBy                                   pulumi.StringPtrInput
-	DefaultDataAccessConfigId                   pulumi.StringPtrInput
-	DeltaSharingOrganizationName                pulumi.StringPtrInput
+	Cloud                     pulumi.StringPtrInput
+	CreatedAt                 pulumi.IntPtrInput
+	CreatedBy                 pulumi.StringPtrInput
+	DefaultDataAccessConfigId pulumi.StringPtrInput
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
+	DeltaSharingOrganizationName pulumi.StringPtrInput
+	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
 	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput
-	DeltaSharingScope                           pulumi.StringPtrInput
-	ForceDestroy                                pulumi.BoolPtrInput
-	GlobalMetastoreId                           pulumi.StringPtrInput
-	MetastoreId                                 pulumi.StringPtrInput
-	Name                                        pulumi.StringPtrInput
-	Owner                                       pulumi.StringPtrInput
-	Region                                      pulumi.StringPtrInput
-	StorageRoot                                 pulumi.StringPtrInput
-	StorageRootCredentialId                     pulumi.StringPtrInput
-	UpdatedAt                                   pulumi.IntPtrInput
-	UpdatedBy                                   pulumi.StringPtrInput
+	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+	DeltaSharingScope pulumi.StringPtrInput
+	// Destroy metastore regardless of its contents.
+	ForceDestroy      pulumi.BoolPtrInput
+	GlobalMetastoreId pulumi.StringPtrInput
+	MetastoreId       pulumi.StringPtrInput
+	// Name of metastore.
+	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the metastore owner.
+	Owner pulumi.StringPtrInput
+	// The region of the metastore
+	Region pulumi.StringPtrInput
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	StorageRoot             pulumi.StringPtrInput
+	StorageRootCredentialId pulumi.StringPtrInput
+	UpdatedAt               pulumi.IntPtrInput
+	UpdatedBy               pulumi.StringPtrInput
 }
 
 func (MetastoreArgs) ElementType() reflect.Type {
@@ -250,18 +350,22 @@ func (o MetastoreOutput) DefaultDataAccessConfigId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringPtrOutput { return v.DefaultDataAccessConfigId }).(pulumi.StringPtrOutput)
 }
 
+// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
 func (o MetastoreOutput) DeltaSharingOrganizationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringPtrOutput { return v.DeltaSharingOrganizationName }).(pulumi.StringPtrOutput)
 }
 
+// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
 func (o MetastoreOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.IntPtrOutput { return v.DeltaSharingRecipientTokenLifetimeInSeconds }).(pulumi.IntPtrOutput)
 }
 
+// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 func (o MetastoreOutput) DeltaSharingScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringPtrOutput { return v.DeltaSharingScope }).(pulumi.StringPtrOutput)
 }
 
+// Destroy metastore regardless of its contents.
 func (o MetastoreOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
@@ -274,18 +378,22 @@ func (o MetastoreOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
+// Name of metastore.
 func (o MetastoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Username/groupname/sp applicationId of the metastore owner.
 func (o MetastoreOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
+// The region of the metastore
 func (o MetastoreOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
 func (o MetastoreOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringPtrOutput { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }

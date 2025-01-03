@@ -11,14 +11,65 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This resource can only be used on a Unity Catalog-enabled workspace!
+//
+// This resource allows you to create [Online Table](https://docs.databricks.com/en/machine-learning/feature-store/online-tables.html) in Databricks.  An online table is a read-only copy of a Delta Table that is stored in row-oriented format optimized for online access. Online tables are fully serverless tables that auto-scale throughput capacity with the request load and provide low latency and high throughput access to data of any scale. Online tables are designed to work with Databricks Model Serving, Feature Serving, and retrieval-augmented generation (RAG) applications where they are used for fast data lookups.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewOnlineTable(ctx, "this", &databricks.OnlineTableArgs{
+//				Name: pulumi.String("main.default.online_table"),
+//				Spec: &databricks.OnlineTableSpecArgs{
+//					SourceTableFullName: pulumi.String("main.default.source_table"),
+//					PrimaryKeyColumns: pulumi.StringArray{
+//						pulumi.String("id"),
+//					},
+//					RunTriggered: &databricks.OnlineTableSpecRunTriggeredArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// The resource can be imported using the name of the Online Table:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/onlineTable:OnlineTable this <endpoint-name>
+// ```
 type OnlineTable struct {
 	pulumi.CustomResourceState
 
-	Name                          pulumi.StringOutput          `pulumi:"name"`
-	Spec                          OnlineTableSpecPtrOutput     `pulumi:"spec"`
-	Statuses                      OnlineTableStatusArrayOutput `pulumi:"statuses"`
-	TableServingUrl               pulumi.StringOutput          `pulumi:"tableServingUrl"`
-	UnityCatalogProvisioningState pulumi.StringOutput          `pulumi:"unityCatalogProvisioningState"`
+	// 3-level name of the Online Table to create.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// object containing specification of the online table:
+	Spec OnlineTableSpecPtrOutput `pulumi:"spec"`
+	// object describing status of the online table:
+	Statuses OnlineTableStatusArrayOutput `pulumi:"statuses"`
+	// Data serving REST API URL for this table.
+	TableServingUrl pulumi.StringOutput `pulumi:"tableServingUrl"`
+	// The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+	UnityCatalogProvisioningState pulumi.StringOutput `pulumi:"unityCatalogProvisioningState"`
 }
 
 // NewOnlineTable registers a new resource with the given unique name, arguments, and options.
@@ -51,18 +102,28 @@ func GetOnlineTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OnlineTable resources.
 type onlineTableState struct {
-	Name                          *string             `pulumi:"name"`
-	Spec                          *OnlineTableSpec    `pulumi:"spec"`
-	Statuses                      []OnlineTableStatus `pulumi:"statuses"`
-	TableServingUrl               *string             `pulumi:"tableServingUrl"`
-	UnityCatalogProvisioningState *string             `pulumi:"unityCatalogProvisioningState"`
+	// 3-level name of the Online Table to create.
+	Name *string `pulumi:"name"`
+	// object containing specification of the online table:
+	Spec *OnlineTableSpec `pulumi:"spec"`
+	// object describing status of the online table:
+	Statuses []OnlineTableStatus `pulumi:"statuses"`
+	// Data serving REST API URL for this table.
+	TableServingUrl *string `pulumi:"tableServingUrl"`
+	// The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+	UnityCatalogProvisioningState *string `pulumi:"unityCatalogProvisioningState"`
 }
 
 type OnlineTableState struct {
-	Name                          pulumi.StringPtrInput
-	Spec                          OnlineTableSpecPtrInput
-	Statuses                      OnlineTableStatusArrayInput
-	TableServingUrl               pulumi.StringPtrInput
+	// 3-level name of the Online Table to create.
+	Name pulumi.StringPtrInput
+	// object containing specification of the online table:
+	Spec OnlineTableSpecPtrInput
+	// object describing status of the online table:
+	Statuses OnlineTableStatusArrayInput
+	// Data serving REST API URL for this table.
+	TableServingUrl pulumi.StringPtrInput
+	// The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
 	UnityCatalogProvisioningState pulumi.StringPtrInput
 }
 
@@ -71,13 +132,17 @@ func (OnlineTableState) ElementType() reflect.Type {
 }
 
 type onlineTableArgs struct {
-	Name *string          `pulumi:"name"`
+	// 3-level name of the Online Table to create.
+	Name *string `pulumi:"name"`
+	// object containing specification of the online table:
 	Spec *OnlineTableSpec `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a OnlineTable resource.
 type OnlineTableArgs struct {
+	// 3-level name of the Online Table to create.
 	Name pulumi.StringPtrInput
+	// object containing specification of the online table:
 	Spec OnlineTableSpecPtrInput
 }
 
@@ -168,22 +233,27 @@ func (o OnlineTableOutput) ToOnlineTableOutputWithContext(ctx context.Context) O
 	return o
 }
 
+// 3-level name of the Online Table to create.
 func (o OnlineTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OnlineTable) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// object containing specification of the online table:
 func (o OnlineTableOutput) Spec() OnlineTableSpecPtrOutput {
 	return o.ApplyT(func(v *OnlineTable) OnlineTableSpecPtrOutput { return v.Spec }).(OnlineTableSpecPtrOutput)
 }
 
+// object describing status of the online table:
 func (o OnlineTableOutput) Statuses() OnlineTableStatusArrayOutput {
 	return o.ApplyT(func(v *OnlineTable) OnlineTableStatusArrayOutput { return v.Statuses }).(OnlineTableStatusArrayOutput)
 }
 
+// Data serving REST API URL for this table.
 func (o OnlineTableOutput) TableServingUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *OnlineTable) pulumi.StringOutput { return v.TableServingUrl }).(pulumi.StringOutput)
 }
 
+// The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
 func (o OnlineTableOutput) UnityCatalogProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *OnlineTable) pulumi.StringOutput { return v.UnityCatalogProvisioningState }).(pulumi.StringOutput)
 }

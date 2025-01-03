@@ -16,9 +16,17 @@ public final class NotificationDestinationConfigEmailArgs extends com.pulumi.res
 
     public static final NotificationDestinationConfigEmailArgs Empty = new NotificationDestinationConfigEmailArgs();
 
+    /**
+     * The list of email addresses to send notifications to.
+     * 
+     */
     @Import(name="addresses")
     private @Nullable Output<List<String>> addresses;
 
+    /**
+     * @return The list of email addresses to send notifications to.
+     * 
+     */
     public Optional<Output<List<String>>> addresses() {
         return Optional.ofNullable(this.addresses);
     }
@@ -47,15 +55,33 @@ public final class NotificationDestinationConfigEmailArgs extends com.pulumi.res
             $ = new NotificationDestinationConfigEmailArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param addresses The list of email addresses to send notifications to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addresses(@Nullable Output<List<String>> addresses) {
             $.addresses = addresses;
             return this;
         }
 
+        /**
+         * @param addresses The list of email addresses to send notifications to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addresses(List<String> addresses) {
             return addresses(Output.of(addresses));
         }
 
+        /**
+         * @param addresses The list of email addresses to send notifications to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addresses(String... addresses) {
             return addresses(List.of(addresses));
         }

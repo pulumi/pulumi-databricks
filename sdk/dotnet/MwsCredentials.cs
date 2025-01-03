@@ -9,24 +9,107 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     // Names of created resources will be prefixed with this value
+    ///     var prefix = config.RequireObject&lt;dynamic&gt;("prefix");
+    ///     var @this = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
+    ///     {
+    ///         ExternalId = databricksAccountId,
+    ///     });
+    /// 
+    ///     var crossAccountRole = new Aws.Iam.Role("cross_account_role", new()
+    ///     {
+    ///         Name = $"{prefix}-crossaccount",
+    ///         AssumeRolePolicy = @this.Apply(@this =&gt; @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json)),
+    ///         Tags = tags,
+    ///     });
+    /// 
+    ///     var thisGetAwsCrossAccountPolicy = Databricks.GetAwsCrossAccountPolicy.Invoke();
+    /// 
+    ///     var thisRolePolicy = new Aws.Iam.RolePolicy("this", new()
+    ///     {
+    ///         Name = $"{prefix}-policy",
+    ///         Role = crossAccountRole.Id,
+    ///         Policy = thisGetAwsCrossAccountPolicy.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
+    ///     });
+    /// 
+    ///     var thisMwsCredentials = new Databricks.MwsCredentials("this", new()
+    ///     {
+    ///         CredentialsName = $"{prefix}-creds",
+    ///         RoleArn = crossAccountRole.Arn,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are used in the same context:
+    /// 
+    /// * Provisioning Databricks on AWS guide.
+    /// * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+    /// * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+    /// * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
+    /// * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+    /// * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by the combination of its identifier and the account id:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/mwsCredentials:MwsCredentials this &lt;account_id&gt;/&lt;credentials_id&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/mwsCredentials:MwsCredentials")]
     public partial class MwsCredentials : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+        /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// (Integer) time of credentials registration
+        /// </summary>
         [Output("creationTime")]
         public Output<int> CreationTime { get; private set; } = null!;
 
+        /// <summary>
+        /// (String) identifier of credentials
+        /// </summary>
         [Output("credentialsId")]
         public Output<string> CredentialsId { get; private set; } = null!;
 
+        /// <summary>
+        /// name of credentials to register
+        /// </summary>
         [Output("credentialsName")]
         public Output<string> CredentialsName { get; private set; } = null!;
 
         [Output("externalId")]
         public Output<string> ExternalId { get; private set; } = null!;
 
+        /// <summary>
+        /// ARN of cross-account role
+        /// </summary>
         [Output("roleArn")]
         public Output<string> RoleArn { get; private set; } = null!;
 
@@ -76,21 +159,36 @@ namespace Pulumi.Databricks
 
     public sealed class MwsCredentialsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// (Integer) time of credentials registration
+        /// </summary>
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
+        /// <summary>
+        /// (String) identifier of credentials
+        /// </summary>
         [Input("credentialsId")]
         public Input<string>? CredentialsId { get; set; }
 
+        /// <summary>
+        /// name of credentials to register
+        /// </summary>
         [Input("credentialsName", required: true)]
         public Input<string> CredentialsName { get; set; } = null!;
 
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
+        /// <summary>
+        /// ARN of cross-account role
+        /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 
@@ -102,21 +200,36 @@ namespace Pulumi.Databricks
 
     public sealed class MwsCredentialsState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// (Integer) time of credentials registration
+        /// </summary>
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
+        /// <summary>
+        /// (String) identifier of credentials
+        /// </summary>
         [Input("credentialsId")]
         public Input<string>? CredentialsId { get; set; }
 
+        /// <summary>
+        /// name of credentials to register
+        /// </summary>
         [Input("credentialsName")]
         public Input<string>? CredentialsName { get; set; }
 
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
+        /// <summary>
+        /// ARN of cross-account role
+        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 

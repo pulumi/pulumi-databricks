@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMwsNetworkConnectivityConfigEgressConfig {
+    /**
+     * @return Array of default rules.
+     * 
+     */
     private @Nullable GetMwsNetworkConnectivityConfigEgressConfigDefaultRules defaultRules;
+    /**
+     * @return Array of target rules.
+     * 
+     */
     private @Nullable GetMwsNetworkConnectivityConfigEgressConfigTargetRules targetRules;
 
     private GetMwsNetworkConnectivityConfigEgressConfig() {}
+    /**
+     * @return Array of default rules.
+     * 
+     */
     public Optional<GetMwsNetworkConnectivityConfigEgressConfigDefaultRules> defaultRules() {
         return Optional.ofNullable(this.defaultRules);
     }
+    /**
+     * @return Array of target rules.
+     * 
+     */
     public Optional<GetMwsNetworkConnectivityConfigEgressConfigTargetRules> targetRules() {
         return Optional.ofNullable(this.targetRules);
     }

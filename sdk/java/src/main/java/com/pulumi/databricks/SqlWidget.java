@@ -17,6 +17,90 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; Please switch to databricks.Dashboard to author new AI/BI dashboards using the latest tooling
+ * 
+ * To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
+ * 
+ * &gt; documentation for this resource is a work in progress.
+ * 
+ * A widget is always tied to a Legacy dashboard. Every dashboard may have one or more widgets.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.SqlWidget;
+ * import com.pulumi.databricks.SqlWidgetArgs;
+ * import com.pulumi.databricks.inputs.SqlWidgetPositionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var d1w1 = new SqlWidget("d1w1", SqlWidgetArgs.builder()
+ *             .dashboardId(d1.id())
+ *             .text("Hello! I'm a **text widget**!")
+ *             .position(SqlWidgetPositionArgs.builder()
+ *                 .sizeX(3)
+ *                 .sizeY(4)
+ *                 .posX(0)
+ *                 .posY(0)
+ *                 .build())
+ *             .build());
+ * 
+ *         var d1w2 = new SqlWidget("d1w2", SqlWidgetArgs.builder()
+ *             .dashboardId(d1.id())
+ *             .visualizationId(q1v1.id())
+ *             .position(SqlWidgetPositionArgs.builder()
+ *                 .sizeX(3)
+ *                 .sizeY(4)
+ *                 .posX(3)
+ *                 .posY(0)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * End to end workspace management guide.
+ * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+ * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace.
+ * * databricks.SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+ * 
+ * ## Import
+ * 
+ * You can import a `databricks_sql_widget` resource with ID like the following:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/sqlWidget:SqlWidget this &lt;dashboard-id&gt;/&lt;widget-id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/sqlWidget:SqlWidget")
 public class SqlWidget extends com.pulumi.resources.CustomResource {
     @Export(name="dashboardId", refs={String.class}, tree="[0]")

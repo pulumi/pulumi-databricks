@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class QualityMonitorCustomMetric {
+    /**
+     * @return [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+     * 
+     */
     private String definition;
+    /**
+     * @return Columns on the monitored table to apply the custom metrics to.
+     * 
+     */
     private List<String> inputColumns;
+    /**
+     * @return Name of the custom metric.
+     * 
+     */
     private String name;
+    /**
+     * @return The output type of the custom metric.
+     * 
+     */
     private String outputDataType;
+    /**
+     * @return The type of the custom metric.
+     * 
+     */
     private String type;
 
     private QualityMonitorCustomMetric() {}
+    /**
+     * @return [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+     * 
+     */
     public String definition() {
         return this.definition;
     }
+    /**
+     * @return Columns on the monitored table to apply the custom metrics to.
+     * 
+     */
     public List<String> inputColumns() {
         return this.inputColumns;
     }
+    /**
+     * @return Name of the custom metric.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The output type of the custom metric.
+     * 
+     */
     public String outputDataType() {
         return this.outputDataType;
     }
+    /**
+     * @return The type of the custom metric.
+     * 
+     */
     public String type() {
         return this.type;
     }

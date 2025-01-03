@@ -14,73 +14,209 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVolumeVolumeInfo {
+    /**
+     * @return the AWS access point to use when accessing s3 bucket for this volume&#39;s external location
+     * 
+     */
     private @Nullable String accessPoint;
+    /**
+     * @return indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+     * 
+     */
     private @Nullable Boolean browseOnly;
+    /**
+     * @return the name of the catalog where the schema and the volume are
+     * 
+     */
     private @Nullable String catalogName;
+    /**
+     * @return the comment attached to the volume
+     * 
+     */
     private @Nullable String comment;
+    /**
+     * @return the Unix timestamp at the volume&#39;s creation
+     * 
+     */
     private @Nullable Integer createdAt;
+    /**
+     * @return the identifier of the user who created the volume
+     * 
+     */
     private @Nullable String createdBy;
+    /**
+     * @return encryption options that apply to clients connecting to cloud storage
+     * 
+     */
     private @Nullable GetVolumeVolumeInfoEncryptionDetails encryptionDetails;
+    /**
+     * @return the three-level (fully qualified) name of the volume
+     * 
+     */
     private @Nullable String fullName;
+    /**
+     * @return the unique identifier of the metastore
+     * 
+     */
     private @Nullable String metastoreId;
+    /**
+     * @return a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return the identifier of the user who owns the volume
+     * 
+     */
     private @Nullable String owner;
+    /**
+     * @return the name of the schema where the volume is
+     * 
+     */
     private @Nullable String schemaName;
+    /**
+     * @return the storage location on the cloud
+     * 
+     */
     private @Nullable String storageLocation;
+    /**
+     * @return the timestamp of the last time changes were made to the volume
+     * 
+     */
     private @Nullable Integer updatedAt;
+    /**
+     * @return the identifier of the user who updated the volume last time
+     * 
+     */
     private @Nullable String updatedBy;
+    /**
+     * @return the unique identifier of the volume
+     * 
+     */
     private @Nullable String volumeId;
+    /**
+     * @return whether the volume is `MANAGED` or `EXTERNAL`
+     * 
+     */
     private @Nullable String volumeType;
 
     private GetVolumeVolumeInfo() {}
+    /**
+     * @return the AWS access point to use when accessing s3 bucket for this volume&#39;s external location
+     * 
+     */
     public Optional<String> accessPoint() {
         return Optional.ofNullable(this.accessPoint);
     }
+    /**
+     * @return indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+     * 
+     */
     public Optional<Boolean> browseOnly() {
         return Optional.ofNullable(this.browseOnly);
     }
+    /**
+     * @return the name of the catalog where the schema and the volume are
+     * 
+     */
     public Optional<String> catalogName() {
         return Optional.ofNullable(this.catalogName);
     }
+    /**
+     * @return the comment attached to the volume
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return the Unix timestamp at the volume&#39;s creation
+     * 
+     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
+    /**
+     * @return the identifier of the user who created the volume
+     * 
+     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
+    /**
+     * @return encryption options that apply to clients connecting to cloud storage
+     * 
+     */
     public Optional<GetVolumeVolumeInfoEncryptionDetails> encryptionDetails() {
         return Optional.ofNullable(this.encryptionDetails);
     }
+    /**
+     * @return the three-level (fully qualified) name of the volume
+     * 
+     */
     public Optional<String> fullName() {
         return Optional.ofNullable(this.fullName);
     }
+    /**
+     * @return the unique identifier of the metastore
+     * 
+     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
+    /**
+     * @return a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return the identifier of the user who owns the volume
+     * 
+     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
+    /**
+     * @return the name of the schema where the volume is
+     * 
+     */
     public Optional<String> schemaName() {
         return Optional.ofNullable(this.schemaName);
     }
+    /**
+     * @return the storage location on the cloud
+     * 
+     */
     public Optional<String> storageLocation() {
         return Optional.ofNullable(this.storageLocation);
     }
+    /**
+     * @return the timestamp of the last time changes were made to the volume
+     * 
+     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
+    /**
+     * @return the identifier of the user who updated the volume last time
+     * 
+     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
+    /**
+     * @return the unique identifier of the volume
+     * 
+     */
     public Optional<String> volumeId() {
         return Optional.ofNullable(this.volumeId);
     }
+    /**
+     * @return whether the volume is `MANAGED` or `EXTERNAL`
+     * 
+     */
     public Optional<String> volumeType() {
         return Optional.ofNullable(this.volumeType);
     }

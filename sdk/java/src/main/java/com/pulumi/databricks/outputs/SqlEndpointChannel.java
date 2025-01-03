@@ -12,12 +12,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SqlEndpointChannel {
     private @Nullable String dbsqlVersion;
+    /**
+     * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * 
+     */
     private @Nullable String name;
 
     private SqlEndpointChannel() {}
     public Optional<String> dbsqlVersion() {
         return Optional.ofNullable(this.dbsqlVersion);
     }
+    /**
+     * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class CredentialDatabricksGcpServiceAccount
     {
+        /// <summary>
+        /// Unique ID of the credential.
+        /// </summary>
         public readonly string? CredentialId;
+        /// <summary>
+        /// The email of the GCP service account created, to be granted access to relevant buckets.
+        /// </summary>
         public readonly string? Email;
         public readonly string? PrivateKeyId;
 

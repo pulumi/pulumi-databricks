@@ -64,16 +64,25 @@ class GetUserResult:
     @property
     @pulumi.getter(name="aclPrincipalId")
     def acl_principal_id(self) -> str:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
+        """
         return pulumi.get(self, "acl_principal_id")
 
     @property
     @pulumi.getter
     def active(self) -> bool:
+        """
+        Whether the user is active.
+        """
         return pulumi.get(self, "active")
 
     @property
     @pulumi.getter
     def alphanumeric(self) -> str:
+        """
+        Alphanumeric representation of user local name. e.g. `mr_foo`.
+        """
         return pulumi.get(self, "alphanumeric")
 
     @property
@@ -84,16 +93,25 @@ class GetUserResult:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        Display name of the user, e.g. `Mr Foo`.
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> str:
+        """
+        ID of the user in an external identity provider.
+        """
         return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter
     def home(self) -> str:
+        """
+        Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+        """
         return pulumi.get(self, "home")
 
     @property
@@ -107,6 +125,9 @@ class GetUserResult:
     @property
     @pulumi.getter
     def repos(self) -> str:
+        """
+        Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+        """
         return pulumi.get(self, "repos")
 
     @property
@@ -117,6 +138,9 @@ class GetUserResult:
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
+        """
+        Name of the user, e.g. `mr.foo@example.com`.
+        """
         return pulumi.get(self, "user_name")
 
 
@@ -143,7 +167,42 @@ def get_user(user_id: Optional[str] = None,
              user_name: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_user.
+
+    ## Example Usage
+
+    Adding user to administrative group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    admins = databricks.get_group(display_name="admins")
+    me = databricks.get_user(user_name="me@example.com")
+    my_member_a = databricks.GroupMember("my_member_a",
+        group_id=admins.id,
+        member_id=me.id)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    - End to end workspace management guide.
+    - get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+    - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+    - Group data to retrieve information about Group members, entitlements and instance profiles.
+    - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+    - GroupMember to attach users and groups as group members.
+    - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+    - User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
+    - UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
+
+
+    :param str user_id: ID of the user.
+    :param str user_name: User name of the user. The user must exist before this resource can be planned.
     """
     __args__ = dict()
     __args__['userId'] = user_id
@@ -167,7 +226,42 @@ def get_user_output(user_id: Optional[pulumi.Input[Optional[str]]] = None,
                     user_name: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_user.
+
+    ## Example Usage
+
+    Adding user to administrative group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    admins = databricks.get_group(display_name="admins")
+    me = databricks.get_user(user_name="me@example.com")
+    my_member_a = databricks.GroupMember("my_member_a",
+        group_id=admins.id,
+        member_id=me.id)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    - End to end workspace management guide.
+    - get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+    - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+    - Group data to retrieve information about Group members, entitlements and instance profiles.
+    - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+    - GroupMember to attach users and groups as group members.
+    - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+    - User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
+    - UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
+
+
+    :param str user_id: ID of the user.
+    :param str user_name: User name of the user. The user must exist before this resource can be planned.
     """
     __args__ = dict()
     __args__['userId'] = user_id

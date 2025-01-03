@@ -13,8 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class QueryParameterQueryBackedValue
     {
+        /// <summary>
+        /// If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
+        /// </summary>
         public readonly Outputs.QueryParameterQueryBackedValueMultiValuesOptions? MultiValuesOptions;
+        /// <summary>
+        /// ID of the query that provides the parameter values.
+        /// </summary>
         public readonly string QueryId;
+        /// <summary>
+        /// List of selected query parameter values.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

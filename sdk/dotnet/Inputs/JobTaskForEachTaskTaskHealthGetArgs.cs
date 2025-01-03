@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("rules", required: true)]
         private InputList<Inputs.JobTaskForEachTaskTaskHealthRuleGetArgs>? _rules;
+
+        /// <summary>
+        /// list of rules that are represented as objects with the following attributes:
+        /// </summary>
         public InputList<Inputs.JobTaskForEachTaskTaskHealthRuleGetArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.JobTaskForEachTaskTaskHealthRuleGetArgs>());

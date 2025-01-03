@@ -14,9 +14,17 @@ public final class AlertConditionOperandArgs extends com.pulumi.resources.Resour
 
     public static final AlertConditionOperandArgs Empty = new AlertConditionOperandArgs();
 
+    /**
+     * Block describing the column from the query result to use for comparison in alert evaluation:
+     * 
+     */
     @Import(name="column", required=true)
     private Output<AlertConditionOperandColumnArgs> column;
 
+    /**
+     * @return Block describing the column from the query result to use for comparison in alert evaluation:
+     * 
+     */
     public Output<AlertConditionOperandColumnArgs> column() {
         return this.column;
     }
@@ -45,11 +53,23 @@ public final class AlertConditionOperandArgs extends com.pulumi.resources.Resour
             $ = new AlertConditionOperandArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param column Block describing the column from the query result to use for comparison in alert evaluation:
+         * 
+         * @return builder
+         * 
+         */
         public Builder column(Output<AlertConditionOperandColumnArgs> column) {
             $.column = column;
             return this;
         }
 
+        /**
+         * @param column Block describing the column from the query result to use for comparison in alert evaluation:
+         * 
+         * @return builder
+         * 
+         */
         public Builder column(AlertConditionOperandColumnArgs column) {
             return column(Output.of(column));
         }

@@ -39,6 +39,7 @@ class MetastoreDataAccessArgs:
                  skip_validation: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a MetastoreDataAccess resource.
+        :param pulumi.Input[bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -157,6 +158,9 @@ class MetastoreDataAccessArgs:
     @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        whether to set this credential as the default for the metastore. In practice, this should always be true.
+        """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
@@ -239,6 +243,7 @@ class _MetastoreDataAccessState:
                  skip_validation: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering MetastoreDataAccess resources.
+        :param pulumi.Input[bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -357,6 +362,9 @@ class _MetastoreDataAccessState:
     @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        whether to set this credential as the default for the metastore. In practice, this should always be true.
+        """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
@@ -441,9 +449,48 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  skip_validation: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a MetastoreDataAccess resource with the given unique name, props, and options.
+        > This resource can be used with an account or workspace-level provider.
+
+        Optionally, each Metastore can have a default StorageCredential defined as `MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
+
+        ## Example Usage
+
+        For AWS
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Metastore("this",
+            name="primary",
+            storage_root=f"s3://{metastore['id']}/metastore",
+            owner="uc admins",
+            region="us-east-1",
+            force_destroy=True)
+        this_metastore_data_access = databricks.MetastoreDataAccess("this",
+            metastore_id=this.id,
+            name=metastore_data_access["name"],
+            aws_iam_role={
+                "role_arn": metastore_data_access["arn"],
+            },
+            is_default=True)
+        ```
+
+        For Azure using managed identity as credential (recommended)
+
+        ## Import
+
+        This resource can be imported by combination of metastore id and the data access name.
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
         """
         ...
     @overload
@@ -452,7 +499,45 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  args: Optional[MetastoreDataAccessArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a MetastoreDataAccess resource with the given unique name, props, and options.
+        > This resource can be used with an account or workspace-level provider.
+
+        Optionally, each Metastore can have a default StorageCredential defined as `MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
+
+        ## Example Usage
+
+        For AWS
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Metastore("this",
+            name="primary",
+            storage_root=f"s3://{metastore['id']}/metastore",
+            owner="uc admins",
+            region="us-east-1",
+            force_destroy=True)
+        this_metastore_data_access = databricks.MetastoreDataAccess("this",
+            metastore_id=this.id,
+            name=metastore_data_access["name"],
+            aws_iam_role={
+                "role_arn": metastore_data_access["arn"],
+            },
+            is_default=True)
+        ```
+
+        For Azure using managed identity as credential (recommended)
+
+        ## Import
+
+        This resource can be imported by combination of metastore id and the data access name.
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param MetastoreDataAccessArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -542,6 +627,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -613,6 +699,9 @@ class MetastoreDataAccess(pulumi.CustomResource):
     @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> pulumi.Output[Optional[bool]]:
+        """
+        whether to set this credential as the default for the metastore. In practice, this should always be true.
+        """
         return pulumi.get(self, "is_default")
 
     @property

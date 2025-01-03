@@ -15,16 +15,32 @@ public final class ModelServingConfigServedEntityExternalModelPalmConfigArgs ext
 
     public static final ModelServingConfigServedEntityExternalModelPalmConfigArgs Empty = new ModelServingConfigServedEntityExternalModelPalmConfigArgs();
 
+    /**
+     * The Databricks secret key reference for a PaLM API key.
+     * 
+     */
     @Import(name="palmApiKey")
     private @Nullable Output<String> palmApiKey;
 
+    /**
+     * @return The Databricks secret key reference for a PaLM API key.
+     * 
+     */
     public Optional<Output<String>> palmApiKey() {
         return Optional.ofNullable(this.palmApiKey);
     }
 
+    /**
+     * The PaLM API key provided as a plaintext string.
+     * 
+     */
     @Import(name="palmApiKeyPlaintext")
     private @Nullable Output<String> palmApiKeyPlaintext;
 
+    /**
+     * @return The PaLM API key provided as a plaintext string.
+     * 
+     */
     public Optional<Output<String>> palmApiKeyPlaintext() {
         return Optional.ofNullable(this.palmApiKeyPlaintext);
     }
@@ -54,20 +70,44 @@ public final class ModelServingConfigServedEntityExternalModelPalmConfigArgs ext
             $ = new ModelServingConfigServedEntityExternalModelPalmConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param palmApiKey The Databricks secret key reference for a PaLM API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder palmApiKey(@Nullable Output<String> palmApiKey) {
             $.palmApiKey = palmApiKey;
             return this;
         }
 
+        /**
+         * @param palmApiKey The Databricks secret key reference for a PaLM API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder palmApiKey(String palmApiKey) {
             return palmApiKey(Output.of(palmApiKey));
         }
 
+        /**
+         * @param palmApiKeyPlaintext The PaLM API key provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder palmApiKeyPlaintext(@Nullable Output<String> palmApiKeyPlaintext) {
             $.palmApiKeyPlaintext = palmApiKeyPlaintext;
             return this;
         }
 
+        /**
+         * @param palmApiKeyPlaintext The PaLM API key provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder palmApiKeyPlaintext(String palmApiKeyPlaintext) {
             return palmApiKeyPlaintext(Output.of(palmApiKeyPlaintext));
         }

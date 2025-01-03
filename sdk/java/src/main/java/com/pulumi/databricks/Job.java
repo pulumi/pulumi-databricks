@@ -43,9 +43,122 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `databricks.Job` resource allows you to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * 
+ * ## Example Usage
+ * 
+ * &gt; In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `task_key` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `task_key` is renamed, you&#39;ll observe a change in the majority of tasks. It&#39;s related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+ * 
+ * It is possible to create [a Databricks job](https://docs.databricks.com/data-engineering/jobs/jobs-user-guide.html) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `task_key`, and additional arguments described below.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Job;
+ * import com.pulumi.databricks.JobArgs;
+ * import com.pulumi.databricks.inputs.JobJobClusterArgs;
+ * import com.pulumi.databricks.inputs.JobJobClusterNewClusterArgs;
+ * import com.pulumi.databricks.inputs.JobTaskArgs;
+ * import com.pulumi.databricks.inputs.JobTaskNewClusterArgs;
+ * import com.pulumi.databricks.inputs.JobTaskNotebookTaskArgs;
+ * import com.pulumi.databricks.inputs.JobTaskSparkJarTaskArgs;
+ * import com.pulumi.databricks.inputs.JobTaskPipelineTaskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Job("this", JobArgs.builder()
+ *             .name("Job with multiple tasks")
+ *             .description("This job executes multiple tasks on a shared job cluster, which will be provisioned as part of execution, and terminated once all tasks are finished.")
+ *             .jobClusters(JobJobClusterArgs.builder()
+ *                 .jobClusterKey("j")
+ *                 .newCluster(JobJobClusterNewClusterArgs.builder()
+ *                     .numWorkers(2)
+ *                     .sparkVersion(latest.id())
+ *                     .nodeTypeId(smallest.id())
+ *                     .build())
+ *                 .build())
+ *             .tasks(            
+ *                 JobTaskArgs.builder()
+ *                     .taskKey("a")
+ *                     .newCluster(JobTaskNewClusterArgs.builder()
+ *                         .numWorkers(1)
+ *                         .sparkVersion(latest.id())
+ *                         .nodeTypeId(smallest.id())
+ *                         .build())
+ *                     .notebookTask(JobTaskNotebookTaskArgs.builder()
+ *                         .notebookPath(thisDatabricksNotebook.path())
+ *                         .build())
+ *                     .build(),
+ *                 JobTaskArgs.builder()
+ *                     .taskKey("b")
+ *                     .dependsOns(JobTaskDependsOnArgs.builder()
+ *                         .taskKey("a")
+ *                         .build())
+ *                     .existingClusterId(shared.id())
+ *                     .sparkJarTask(JobTaskSparkJarTaskArgs.builder()
+ *                         .mainClassName("com.acme.data.Main")
+ *                         .build())
+ *                     .build(),
+ *                 JobTaskArgs.builder()
+ *                     .taskKey("c")
+ *                     .jobClusterKey("j")
+ *                     .notebookTask(JobTaskNotebookTaskArgs.builder()
+ *                         .notebookPath(thisDatabricksNotebook.path())
+ *                         .build())
+ *                     .build(),
+ *                 JobTaskArgs.builder()
+ *                     .taskKey("d")
+ *                     .pipelineTask(JobTaskPipelineTaskArgs.builder()
+ *                         .pipelineId(thisDatabricksPipeline.id())
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Access Control
+ * 
+ * By default, all users can create and modify jobs unless an administrator [enables jobs access control](https://docs.databricks.com/administration-guide/access-control/jobs-acl.html). With jobs access control, individual permissions determine a user’s abilities.
+ * 
+ * * databricks.Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
+ * * databricks.ClusterPolicy can control which kinds of clusters users can create for jobs.
+ * 
+ * ## Import
+ * 
+ * The resource job can be imported using the id of the job
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/job:Job this &lt;job-id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/job:Job")
 public class Job extends com.pulumi.resources.CustomResource {
     /**
+     * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+     * 
      * @deprecated
      * always_running will be replaced by control_run_state in the next major release.
      * 
@@ -54,24 +167,56 @@ public class Job extends com.pulumi.resources.CustomResource {
     @Export(name="alwaysRunning", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> alwaysRunning;
 
+    /**
+     * @return (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+     * 
+     */
     public Output<Optional<Boolean>> alwaysRunning() {
         return Codegen.optional(this.alwaysRunning);
     }
+    /**
+     * The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+     * 
+     */
     @Export(name="budgetPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> budgetPolicyId;
 
+    /**
+     * @return The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+     * 
+     */
     public Output<Optional<String>> budgetPolicyId() {
         return Codegen.optional(this.budgetPolicyId);
     }
+    /**
+     * Configuration block to configure pause status. See continuous Configuration Block.
+     * 
+     */
     @Export(name="continuous", refs={JobContinuous.class}, tree="[0]")
     private Output</* @Nullable */ JobContinuous> continuous;
 
+    /**
+     * @return Configuration block to configure pause status. See continuous Configuration Block.
+     * 
+     */
     public Output<Optional<JobContinuous>> continuous() {
         return Codegen.optional(this.continuous);
     }
+    /**
+     * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+     * 
+     * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+     * 
+     */
     @Export(name="controlRunState", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> controlRunState;
 
+    /**
+     * @return (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+     * 
+     * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+     * 
+     */
     public Output<Optional<Boolean>> controlRunState() {
         return Codegen.optional(this.controlRunState);
     }
@@ -93,9 +238,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobDeployment>> deployment() {
         return Codegen.optional(this.deployment);
     }
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
@@ -105,9 +258,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> editMode() {
         return Codegen.optional(this.editMode);
     }
+    /**
+     * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * 
+     */
     @Export(name="emailNotifications", refs={JobEmailNotifications.class}, tree="[0]")
     private Output</* @Nullable */ JobEmailNotifications> emailNotifications;
 
+    /**
+     * @return (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * 
+     */
     public Output<Optional<JobEmailNotifications>> emailNotifications() {
         return Codegen.optional(this.emailNotifications);
     }
@@ -129,33 +290,73 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<String> format() {
         return this.format;
     }
+    /**
+     * Specifices the a Git repository for task source code. See git_source Configuration Block below.
+     * 
+     */
     @Export(name="gitSource", refs={JobGitSource.class}, tree="[0]")
     private Output</* @Nullable */ JobGitSource> gitSource;
 
+    /**
+     * @return Specifices the a Git repository for task source code. See git_source Configuration Block below.
+     * 
+     */
     public Output<Optional<JobGitSource>> gitSource() {
         return Codegen.optional(this.gitSource);
     }
+    /**
+     * An optional block that specifies the health conditions for the job documented below.
+     * 
+     */
     @Export(name="health", refs={JobHealth.class}, tree="[0]")
     private Output</* @Nullable */ JobHealth> health;
 
+    /**
+     * @return An optional block that specifies the health conditions for the job documented below.
+     * 
+     */
     public Output<Optional<JobHealth>> health() {
         return Codegen.optional(this.health);
     }
+    /**
+     * A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+     * 
+     */
     @Export(name="jobClusters", refs={List.class,JobJobCluster.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobJobCluster>> jobClusters;
 
+    /**
+     * @return A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+     * 
+     */
     public Output<Optional<List<JobJobCluster>>> jobClusters() {
         return Codegen.optional(this.jobClusters);
     }
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+     * 
+     */
     @Export(name="libraries", refs={List.class,JobLibrary.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobLibrary>> libraries;
 
+    /**
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+     * 
+     */
     public Output<Optional<List<JobLibrary>>> libraries() {
         return Codegen.optional(this.libraries);
     }
+    /**
+     * (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
+     * 
+     */
     @Export(name="maxConcurrentRuns", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxConcurrentRuns;
 
+    /**
+     * @return (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
+     * 
+     */
     public Output<Optional<Integer>> maxConcurrentRuns() {
         return Codegen.optional(this.maxConcurrentRuns);
     }
@@ -172,6 +373,8 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxRetries);
     }
     /**
+     * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+     * 
      * @deprecated
      * should be used inside a task block and not inside a job block
      * 
@@ -180,12 +383,24 @@ public class Job extends com.pulumi.resources.CustomResource {
     @Export(name="minRetryIntervalMillis", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minRetryIntervalMillis;
 
+    /**
+     * @return (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+     * 
+     */
     public Output<Optional<Integer>> minRetryIntervalMillis() {
         return Codegen.optional(this.minRetryIntervalMillis);
     }
+    /**
+     * An optional name for the job. The default value is Untitled.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return An optional name for the job. The default value is Untitled.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -207,15 +422,31 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobNotebookTask>> notebookTask() {
         return Codegen.optional(this.notebookTask);
     }
+    /**
+     * An optional block controlling the notification settings on the job level documented below.
+     * 
+     */
     @Export(name="notificationSettings", refs={JobNotificationSettings.class}, tree="[0]")
     private Output</* @Nullable */ JobNotificationSettings> notificationSettings;
 
+    /**
+     * @return An optional block controlling the notification settings on the job level documented below.
+     * 
+     */
     public Output<Optional<JobNotificationSettings>> notificationSettings() {
         return Codegen.optional(this.notificationSettings);
     }
+    /**
+     * Specifices job parameter for the job. See parameter Configuration Block
+     * 
+     */
     @Export(name="parameters", refs={List.class,JobParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobParameter>> parameters;
 
+    /**
+     * @return Specifices job parameter for the job. See parameter Configuration Block
+     * 
+     */
     public Output<Optional<List<JobParameter>>> parameters() {
         return Codegen.optional(this.parameters);
     }
@@ -243,9 +474,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobPythonWheelTask>> pythonWheelTask() {
         return Codegen.optional(this.pythonWheelTask);
     }
+    /**
+     * The queue status for the job. See queue Configuration Block below.
+     * 
+     */
     @Export(name="queue", refs={JobQueue.class}, tree="[0]")
     private Output</* @Nullable */ JobQueue> queue;
 
+    /**
+     * @return The queue status for the job. See queue Configuration Block below.
+     * 
+     */
     public Output<Optional<JobQueue>> queue() {
         return Codegen.optional(this.queue);
     }
@@ -261,9 +500,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> retryOnTimeout() {
         return Codegen.optional(this.retryOnTimeout);
     }
+    /**
+     * The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+     * 
+     */
     @Export(name="runAs", refs={JobRunAs.class}, tree="[0]")
     private Output<JobRunAs> runAs;
 
+    /**
+     * @return The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+     * 
+     */
     public Output<JobRunAs> runAs() {
         return this.runAs;
     }
@@ -279,9 +526,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobRunJobTask>> runJobTask() {
         return Codegen.optional(this.runJobTask);
     }
+    /**
+     * An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+     * 
+     */
     @Export(name="schedule", refs={JobSchedule.class}, tree="[0]")
     private Output</* @Nullable */ JobSchedule> schedule;
 
+    /**
+     * @return An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+     * 
+     */
     public Output<Optional<JobSchedule>> schedule() {
         return Codegen.optional(this.schedule);
     }
@@ -321,39 +576,87 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobSparkSubmitTask>> sparkSubmitTask() {
         return Codegen.optional(this.sparkSubmitTask);
     }
+    /**
+     * An optional map of the tags associated with the job. See tags Configuration Map
+     * 
+     */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
+    /**
+     * @return An optional map of the tags associated with the job. See tags Configuration Map
+     * 
+     */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * A list of task specification that the job will execute. See task Configuration Block below.
+     * 
+     */
     @Export(name="tasks", refs={List.class,JobTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobTask>> tasks;
 
+    /**
+     * @return A list of task specification that the job will execute. See task Configuration Block below.
+     * 
+     */
     public Output<Optional<List<JobTask>>> tasks() {
         return Codegen.optional(this.tasks);
     }
+    /**
+     * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+     * 
+     */
     @Export(name="timeoutSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutSeconds;
 
+    /**
+     * @return (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+     * 
+     */
     public Output<Optional<Integer>> timeoutSeconds() {
         return Codegen.optional(this.timeoutSeconds);
     }
+    /**
+     * The conditions that triggers the job to start. See trigger Configuration Block below.
+     * 
+     */
     @Export(name="trigger", refs={JobTrigger.class}, tree="[0]")
     private Output</* @Nullable */ JobTrigger> trigger;
 
+    /**
+     * @return The conditions that triggers the job to start. See trigger Configuration Block below.
+     * 
+     */
     public Output<Optional<JobTrigger>> trigger() {
         return Codegen.optional(this.trigger);
     }
+    /**
+     * URL of the job on the given workspace
+     * 
+     */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
+    /**
+     * @return URL of the job on the given workspace
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * 
+     */
     @Export(name="webhookNotifications", refs={JobWebhookNotifications.class}, tree="[0]")
     private Output</* @Nullable */ JobWebhookNotifications> webhookNotifications;
 
+    /**
+     * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * 
+     */
     public Output<Optional<JobWebhookNotifications>> webhookNotifications() {
         return Codegen.optional(this.webhookNotifications);
     }

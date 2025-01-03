@@ -39,6 +39,9 @@ class GetServingEndpointsResult:
     @property
     @pulumi.getter
     def endpoints(self) -> Sequence['outputs.GetServingEndpointsEndpointResult']:
+        """
+        List of objects describing the serving endpoints. Each object consists of following attributes:
+        """
         return pulumi.get(self, "endpoints")
 
     @property
@@ -63,7 +66,45 @@ class AwaitableGetServingEndpointsResult(GetServingEndpointsResult):
 def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServingEndpointsResult:
     """
-    Use this data source to access information about an existing resource.
+    > This resource can only be used with a workspace-level provider!
+
+    This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_serving_endpoints()
+    ml_serving_usage = []
+    for range in [{"value": i} for i in range(0, all_databricks_serving_endpoints.endpoints)]:
+        ml_serving_usage.append(databricks.Permissions(f"ml_serving_usage-{range['value']}",
+            serving_endpoint_id=range["value"]["id"],
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_VIEW",
+                },
+                {
+                    "group_name": auto["displayName"],
+                    "permission_level": "CAN_MANAGE",
+                },
+                {
+                    "group_name": eng["displayName"],
+                    "permission_level": "CAN_QUERY",
+                },
+            ]))
+    ```
+
+    ## Related Resources
+
+    The following resources are often used in the same context:
+
+    * Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+
+
+    :param Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']] endpoints: List of objects describing the serving endpoints. Each object consists of following attributes:
     """
     __args__ = dict()
     __args__['endpoints'] = endpoints
@@ -76,7 +117,45 @@ def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpoint
 def get_serving_endpoints_output(endpoints: Optional[pulumi.Input[Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServingEndpointsResult]:
     """
-    Use this data source to access information about an existing resource.
+    > This resource can only be used with a workspace-level provider!
+
+    This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_serving_endpoints()
+    ml_serving_usage = []
+    for range in [{"value": i} for i in range(0, all_databricks_serving_endpoints.endpoints)]:
+        ml_serving_usage.append(databricks.Permissions(f"ml_serving_usage-{range['value']}",
+            serving_endpoint_id=range["value"]["id"],
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_VIEW",
+                },
+                {
+                    "group_name": auto["displayName"],
+                    "permission_level": "CAN_MANAGE",
+                },
+                {
+                    "group_name": eng["displayName"],
+                    "permission_level": "CAN_QUERY",
+                },
+            ]))
+    ```
+
+    ## Related Resources
+
+    The following resources are often used in the same context:
+
+    * Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+
+
+    :param Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']] endpoints: List of objects describing the serving endpoints. Each object consists of following attributes:
     """
     __args__ = dict()
     __args__['endpoints'] = endpoints

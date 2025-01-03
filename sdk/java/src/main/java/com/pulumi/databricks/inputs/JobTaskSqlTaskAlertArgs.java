@@ -19,23 +19,47 @@ public final class JobTaskSqlTaskAlertArgs extends com.pulumi.resources.Resource
 
     public static final JobTaskSqlTaskAlertArgs Empty = new JobTaskSqlTaskAlertArgs();
 
+    /**
+     * (String) identifier of the Databricks Alert (databricks_alert).
+     * 
+     */
     @Import(name="alertId", required=true)
     private Output<String> alertId;
 
+    /**
+     * @return (String) identifier of the Databricks Alert (databricks_alert).
+     * 
+     */
     public Output<String> alertId() {
         return this.alertId;
     }
 
+    /**
+     * flag that specifies if subscriptions are paused or not.
+     * 
+     */
     @Import(name="pauseSubscriptions")
     private @Nullable Output<Boolean> pauseSubscriptions;
 
+    /**
+     * @return flag that specifies if subscriptions are paused or not.
+     * 
+     */
     public Optional<Output<Boolean>> pauseSubscriptions() {
         return Optional.ofNullable(this.pauseSubscriptions);
     }
 
+    /**
+     * a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * 
+     */
     @Import(name="subscriptions")
     private @Nullable Output<List<JobTaskSqlTaskAlertSubscriptionArgs>> subscriptions;
 
+    /**
+     * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * 
+     */
     public Optional<Output<List<JobTaskSqlTaskAlertSubscriptionArgs>>> subscriptions() {
         return Optional.ofNullable(this.subscriptions);
     }
@@ -66,33 +90,75 @@ public final class JobTaskSqlTaskAlertArgs extends com.pulumi.resources.Resource
             $ = new JobTaskSqlTaskAlertArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alertId (String) identifier of the Databricks Alert (databricks_alert).
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertId(Output<String> alertId) {
             $.alertId = alertId;
             return this;
         }
 
+        /**
+         * @param alertId (String) identifier of the Databricks Alert (databricks_alert).
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertId(String alertId) {
             return alertId(Output.of(alertId));
         }
 
+        /**
+         * @param pauseSubscriptions flag that specifies if subscriptions are paused or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pauseSubscriptions(@Nullable Output<Boolean> pauseSubscriptions) {
             $.pauseSubscriptions = pauseSubscriptions;
             return this;
         }
 
+        /**
+         * @param pauseSubscriptions flag that specifies if subscriptions are paused or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pauseSubscriptions(Boolean pauseSubscriptions) {
             return pauseSubscriptions(Output.of(pauseSubscriptions));
         }
 
+        /**
+         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptions(@Nullable Output<List<JobTaskSqlTaskAlertSubscriptionArgs>> subscriptions) {
             $.subscriptions = subscriptions;
             return this;
         }
 
+        /**
+         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptions(List<JobTaskSqlTaskAlertSubscriptionArgs> subscriptions) {
             return subscriptions(Output.of(subscriptions));
         }
 
+        /**
+         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptions(JobTaskSqlTaskAlertSubscriptionArgs... subscriptions) {
             return subscriptions(List.of(subscriptions));
         }

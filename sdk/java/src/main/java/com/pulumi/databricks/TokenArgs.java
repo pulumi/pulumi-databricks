@@ -16,9 +16,17 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TokenArgs Empty = new TokenArgs();
 
+    /**
+     * (String) Comment that will appear on the user’s settings page for this token.
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return (String) Comment that will appear on the user’s settings page for this token.
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
@@ -37,9 +45,17 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.expiryTime);
     }
 
+    /**
+     * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+     * 
+     */
     @Import(name="lifetimeSeconds")
     private @Nullable Output<Integer> lifetimeSeconds;
 
+    /**
+     * @return (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+     * 
+     */
     public Optional<Output<Integer>> lifetimeSeconds() {
         return Optional.ofNullable(this.lifetimeSeconds);
     }
@@ -79,11 +95,23 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
             $ = new TokenArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param comment (String) Comment that will appear on the user’s settings page for this token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment (String) Comment that will appear on the user’s settings page for this token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
@@ -106,11 +134,23 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
             return expiryTime(Output.of(expiryTime));
         }
 
+        /**
+         * @param lifetimeSeconds (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lifetimeSeconds(@Nullable Output<Integer> lifetimeSeconds) {
             $.lifetimeSeconds = lifetimeSeconds;
             return this;
         }
 
+        /**
+         * @param lifetimeSeconds (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lifetimeSeconds(Integer lifetimeSeconds) {
             return lifetimeSeconds(Output.of(lifetimeSeconds));
         }

@@ -15,16 +15,32 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
 
     public static final ServicePrincipalSecretState Empty = new ServicePrincipalSecretState();
 
+    /**
+     * Generated secret for the service principal
+     * 
+     */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
+    /**
+     * @return Generated secret for the service principal
+     * 
+     */
     public Optional<Output<String>> secret() {
         return Optional.ofNullable(this.secret);
     }
 
+    /**
+     * ID of the databricks.ServicePrincipal (not application ID).
+     * 
+     */
     @Import(name="servicePrincipalId")
     private @Nullable Output<String> servicePrincipalId;
 
+    /**
+     * @return ID of the databricks.ServicePrincipal (not application ID).
+     * 
+     */
     public Optional<Output<String>> servicePrincipalId() {
         return Optional.ofNullable(this.servicePrincipalId);
     }
@@ -62,20 +78,44 @@ public final class ServicePrincipalSecretState extends com.pulumi.resources.Reso
             $ = new ServicePrincipalSecretState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param secret Generated secret for the service principal
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param secret Generated secret for the service principal
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
         }
 
+        /**
+         * @param servicePrincipalId ID of the databricks.ServicePrincipal (not application ID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePrincipalId(@Nullable Output<String> servicePrincipalId) {
             $.servicePrincipalId = servicePrincipalId;
             return this;
         }
 
+        /**
+         * @param servicePrincipalId ID of the databricks.ServicePrincipal (not application ID).
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePrincipalId(String servicePrincipalId) {
             return servicePrincipalId(Output.of(servicePrincipalId));
         }

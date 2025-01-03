@@ -28,6 +28,10 @@ public final class GetAwsAssumeRolePolicyResult {
      * 
      */
     private String id;
+    /**
+     * @return AWS IAM Policy JSON document
+     * 
+     */
     private String json;
 
     private GetAwsAssumeRolePolicyResult() {}
@@ -56,6 +60,10 @@ public final class GetAwsAssumeRolePolicyResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return AWS IAM Policy JSON document
+     * 
+     */
     public String json() {
         return this.json;
     }

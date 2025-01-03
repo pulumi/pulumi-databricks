@@ -12,27 +12,48 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetExternalLocationExternalLocationInfoArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ARN of the s3 access point to use with the external location (AWS).
+        /// </summary>
         [Input("accessPoint")]
         public string? AccessPoint { get; set; }
 
         [Input("browseOnly")]
         public bool? BrowseOnly { get; set; }
 
+        /// <summary>
+        /// User-supplied comment.
+        /// </summary>
         [Input("comment")]
         public string? Comment { get; set; }
 
+        /// <summary>
+        /// Time at which this catalog was created, in epoch milliseconds.
+        /// </summary>
         [Input("createdAt")]
         public int? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Username of catalog creator.
+        /// </summary>
         [Input("createdBy")]
         public string? CreatedBy { get; set; }
 
+        /// <summary>
+        /// Unique ID of storage credential.
+        /// </summary>
         [Input("credentialId")]
         public string? CredentialId { get; set; }
 
+        /// <summary>
+        /// Name of the databricks.StorageCredential to use with this external location.
+        /// </summary>
         [Input("credentialName")]
         public string? CredentialName { get; set; }
 
+        /// <summary>
+        /// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        /// </summary>
         [Input("encryptionDetails")]
         public Inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsArgs? EncryptionDetails { get; set; }
 
@@ -42,24 +63,45 @@ namespace Pulumi.Databricks.Inputs
         [Input("isolationMode")]
         public string? IsolationMode { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the parent Metastore.
+        /// </summary>
         [Input("metastoreId")]
         public string? MetastoreId { get; set; }
 
+        /// <summary>
+        /// The name of the external location
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Username/groupname/sp application_id of the external location owner.
+        /// </summary>
         [Input("owner")]
         public string? Owner { get; set; }
 
+        /// <summary>
+        /// Indicates whether the external location is read-only.
+        /// </summary>
         [Input("readOnly")]
         public bool? ReadOnly { get; set; }
 
+        /// <summary>
+        /// Time at which this catalog was last modified, in epoch milliseconds.
+        /// </summary>
         [Input("updatedAt")]
         public int? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Username of user who last modified catalog.
+        /// </summary>
         [Input("updatedBy")]
         public string? UpdatedBy { get; set; }
 
+        /// <summary>
+        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        /// </summary>
         [Input("url")]
         public string? Url { get; set; }
 

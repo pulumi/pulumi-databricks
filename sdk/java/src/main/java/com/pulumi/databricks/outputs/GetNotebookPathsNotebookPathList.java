@@ -12,12 +12,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetNotebookPathsNotebookPathList {
     private @Nullable String language;
+    /**
+     * @return Path to workspace directory
+     * 
+     */
     private @Nullable String path;
 
     private GetNotebookPathsNotebookPathList() {}
     public Optional<String> language() {
         return Optional.ofNullable(this.language);
     }
+    /**
+     * @return Path to workspace directory
+     * 
+     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }

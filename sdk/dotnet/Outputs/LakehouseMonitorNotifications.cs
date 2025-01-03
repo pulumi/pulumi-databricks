@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class LakehouseMonitorNotifications
     {
+        /// <summary>
+        /// who to send notifications to on monitor failure.
+        /// </summary>
         public readonly Outputs.LakehouseMonitorNotificationsOnFailure? OnFailure;
+        /// <summary>
+        /// Who to send notifications to when new data classification tags are detected.
+        /// </summary>
         public readonly Outputs.LakehouseMonitorNotificationsOnNewClassificationTagDetected? OnNewClassificationTagDetected;
 
         [OutputConstructor]

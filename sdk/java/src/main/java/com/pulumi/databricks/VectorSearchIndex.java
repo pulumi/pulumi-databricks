@@ -18,53 +18,184 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; This resource can only be used on a Unity Catalog-enabled workspace!
+ * 
+ * This resource allows you to create [Mosaic AI Vector Search Index](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Index provides the ability to search data in the linked Delta Table.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.VectorSearchIndex;
+ * import com.pulumi.databricks.VectorSearchIndexArgs;
+ * import com.pulumi.databricks.inputs.VectorSearchIndexDeltaSyncIndexSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sync = new VectorSearchIndex("sync", VectorSearchIndexArgs.builder()
+ *             .name("main.default.vector_search_index")
+ *             .endpointName(thisDatabricksVectorSearchEndpoint.name())
+ *             .primaryKey("id")
+ *             .indexType("DELTA_SYNC")
+ *             .deltaSyncIndexSpec(VectorSearchIndexDeltaSyncIndexSpecArgs.builder()
+ *                 .sourceTable("main.default.source_table")
+ *                 .pipelineType("TRIGGERED")
+ *                 .embeddingSourceColumns(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs.builder()
+ *                     .name("text")
+ *                     .embeddingModelEndpointName(this_.name())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * The resource can be imported using the name of the Mosaic AI Vector Search Index
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/vectorSearchIndex:VectorSearchIndex this &lt;index-name&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/vectorSearchIndex:VectorSearchIndex")
 public class VectorSearchIndex extends com.pulumi.resources.CustomResource {
+    /**
+     * Creator of the endpoint.
+     * 
+     */
     @Export(name="creator", refs={String.class}, tree="[0]")
     private Output<String> creator;
 
+    /**
+     * @return Creator of the endpoint.
+     * 
+     */
     public Output<String> creator() {
         return this.creator;
     }
+    /**
+     * Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+     * 
+     */
     @Export(name="deltaSyncIndexSpec", refs={VectorSearchIndexDeltaSyncIndexSpec.class}, tree="[0]")
     private Output</* @Nullable */ VectorSearchIndexDeltaSyncIndexSpec> deltaSyncIndexSpec;
 
+    /**
+     * @return Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`.
+     * 
+     */
     public Output<Optional<VectorSearchIndexDeltaSyncIndexSpec>> deltaSyncIndexSpec() {
         return Codegen.optional(this.deltaSyncIndexSpec);
     }
+    /**
+     * Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+     * 
+     */
     @Export(name="directAccessIndexSpec", refs={VectorSearchIndexDirectAccessIndexSpec.class}, tree="[0]")
     private Output</* @Nullable */ VectorSearchIndexDirectAccessIndexSpec> directAccessIndexSpec;
 
+    /**
+     * @return Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`.
+     * 
+     */
     public Output<Optional<VectorSearchIndexDirectAccessIndexSpec>> directAccessIndexSpec() {
         return Codegen.optional(this.directAccessIndexSpec);
     }
+    /**
+     * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
+     * 
+     */
     @Export(name="endpointName", refs={String.class}, tree="[0]")
     private Output<String> endpointName;
 
+    /**
+     * @return The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
+     * 
+     */
     public Output<String> endpointName() {
         return this.endpointName;
     }
+    /**
+     * Mosaic AI Vector Search index type. Currently supported values are:
+     * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+     * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
+     * 
+     */
     @Export(name="indexType", refs={String.class}, tree="[0]")
     private Output<String> indexType;
 
+    /**
+     * @return Mosaic AI Vector Search index type. Currently supported values are:
+     * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
+     * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
+     * 
+     */
     public Output<String> indexType() {
         return this.indexType;
     }
+    /**
+     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The column name that will be used as a primary key.
+     * 
+     */
     @Export(name="primaryKey", refs={String.class}, tree="[0]")
     private Output<String> primaryKey;
 
+    /**
+     * @return The column name that will be used as a primary key.
+     * 
+     */
     public Output<String> primaryKey() {
         return this.primaryKey;
     }
+    /**
+     * Object describing the current status of the index consisting of the following fields:
+     * 
+     */
     @Export(name="statuses", refs={List.class,VectorSearchIndexStatus.class}, tree="[0,1]")
     private Output<List<VectorSearchIndexStatus>> statuses;
 
+    /**
+     * @return Object describing the current status of the index consisting of the following fields:
+     * 
+     */
     public Output<List<VectorSearchIndexStatus>> statuses() {
         return this.statuses;
     }

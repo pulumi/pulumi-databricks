@@ -27,6 +27,11 @@ class GlobalInitScriptArgs:
                  source: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GlobalInitScript resource.
+        :param pulumi.Input[str] content_base64: The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        :param pulumi.Input[bool] enabled: specifies if the script is enabled for execution, or not
+        :param pulumi.Input[str] name: the name of the script.  It should be unique
+        :param pulumi.Input[int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        :param pulumi.Input[str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         if content_base64 is not None:
             pulumi.set(__self__, "content_base64", content_base64)
@@ -44,6 +49,9 @@ class GlobalInitScriptArgs:
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
@@ -53,6 +61,9 @@ class GlobalInitScriptArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        specifies if the script is enabled for execution, or not
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -71,6 +82,9 @@ class GlobalInitScriptArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        the name of the script.  It should be unique
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -80,6 +94,9 @@ class GlobalInitScriptArgs:
     @property
     @pulumi.getter
     def position(self) -> Optional[pulumi.Input[int]]:
+        """
+        the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        """
         return pulumi.get(self, "position")
 
     @position.setter
@@ -89,6 +106,9 @@ class GlobalInitScriptArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to script's source code on local filesystem. Conflicts with `content_base64`
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -107,6 +127,11 @@ class _GlobalInitScriptState:
                  source: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GlobalInitScript resources.
+        :param pulumi.Input[str] content_base64: The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        :param pulumi.Input[bool] enabled: specifies if the script is enabled for execution, or not
+        :param pulumi.Input[str] name: the name of the script.  It should be unique
+        :param pulumi.Input[int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        :param pulumi.Input[str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         if content_base64 is not None:
             pulumi.set(__self__, "content_base64", content_base64)
@@ -124,6 +149,9 @@ class _GlobalInitScriptState:
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
@@ -133,6 +161,9 @@ class _GlobalInitScriptState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        specifies if the script is enabled for execution, or not
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -151,6 +182,9 @@ class _GlobalInitScriptState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        the name of the script.  It should be unique
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -160,6 +194,9 @@ class _GlobalInitScriptState:
     @property
     @pulumi.getter
     def position(self) -> Optional[pulumi.Input[int]]:
+        """
+        the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        """
         return pulumi.get(self, "position")
 
     @position.setter
@@ -169,6 +206,9 @@ class _GlobalInitScriptState:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to script's source code on local filesystem. Conflicts with `content_base64`
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -189,9 +229,25 @@ class GlobalInitScript(pulumi.CustomResource):
                  source: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a GlobalInitScript resource with the given unique name, props, and options.
+        This resource allows you to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
+
+        ## Import
+
+        The resource global init script can be imported using script ID:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_base64: The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        :param pulumi.Input[bool] enabled: specifies if the script is enabled for execution, or not
+        :param pulumi.Input[str] name: the name of the script.  It should be unique
+        :param pulumi.Input[int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        :param pulumi.Input[str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         ...
     @overload
@@ -200,7 +256,18 @@ class GlobalInitScript(pulumi.CustomResource):
                  args: Optional[GlobalInitScriptArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a GlobalInitScript resource with the given unique name, props, and options.
+        This resource allows you to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
+
+        ## Import
+
+        The resource global init script can be imported using script ID:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param GlobalInitScriptArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -260,6 +327,11 @@ class GlobalInitScript(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_base64: The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        :param pulumi.Input[bool] enabled: specifies if the script is enabled for execution, or not
+        :param pulumi.Input[str] name: the name of the script.  It should be unique
+        :param pulumi.Input[int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        :param pulumi.Input[str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -276,11 +348,17 @@ class GlobalInitScript(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> pulumi.Output[Optional[str]]:
+        """
+        The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        """
         return pulumi.get(self, "content_base64")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        specifies if the script is enabled for execution, or not
+        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -291,15 +369,24 @@ class GlobalInitScript(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        the name of the script.  It should be unique
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def position(self) -> pulumi.Output[int]:
+        """
+        the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        """
         return pulumi.get(self, "position")
 
     @property
     @pulumi.getter
     def source(self) -> pulumi.Output[Optional[str]]:
+        """
+        Path to script's source code on local filesystem. Conflicts with `content_base64`
+        """
         return pulumi.get(self, "source")
 

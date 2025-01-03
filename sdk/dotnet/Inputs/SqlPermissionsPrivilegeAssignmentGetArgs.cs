@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class SqlPermissionsPrivilegeAssignmentGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+        /// </summary>
         [Input("principal", required: true)]
         public Input<string> Principal { get; set; } = null!;
 

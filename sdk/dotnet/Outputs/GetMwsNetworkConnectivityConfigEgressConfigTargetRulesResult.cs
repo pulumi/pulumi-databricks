@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesResult
     {
+        /// <summary>
+        /// Array of private endpoint rule objects.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleResult> AzurePrivateEndpointRules;
 
         [OutputConstructor]

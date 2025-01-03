@@ -19,9 +19,17 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BudgetArgs Empty = new BudgetArgs();
 
+    /**
+     * The ID of the Databricks Account.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
+    /**
+     * @return The ID of the Databricks Account.
+     * 
+     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -33,9 +41,17 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.alertConfigurations);
     }
 
+    /**
+     * The ID of the budget configuration.
+     * 
+     */
     @Import(name="budgetConfigurationId")
     private @Nullable Output<String> budgetConfigurationId;
 
+    /**
+     * @return The ID of the budget configuration.
+     * 
+     */
     public Optional<Output<String>> budgetConfigurationId() {
         return Optional.ofNullable(this.budgetConfigurationId);
     }
@@ -47,9 +63,17 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * Name of the budget in Databricks Account.
+     * 
+     */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
+    /**
+     * @return Name of the budget in Databricks Account.
+     * 
+     */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
     }
@@ -98,11 +122,23 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
             $ = new BudgetArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId The ID of the Databricks Account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId The ID of the Databricks Account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -120,11 +156,23 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
             return alertConfigurations(List.of(alertConfigurations));
         }
 
+        /**
+         * @param budgetConfigurationId The ID of the budget configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder budgetConfigurationId(@Nullable Output<String> budgetConfigurationId) {
             $.budgetConfigurationId = budgetConfigurationId;
             return this;
         }
 
+        /**
+         * @param budgetConfigurationId The ID of the budget configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder budgetConfigurationId(String budgetConfigurationId) {
             return budgetConfigurationId(Output.of(budgetConfigurationId));
         }
@@ -138,11 +186,23 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param displayName Name of the budget in Databricks Account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(@Nullable Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
 
+        /**
+         * @param displayName Name of the budget in Databricks Account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
         }

@@ -16,16 +16,32 @@ public final class GetSchemasPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSchemasPlainArgs Empty = new GetSchemasPlainArgs();
 
+    /**
+     * Name of databricks_catalog
+     * 
+     */
     @Import(name="catalogName", required=true)
     private String catalogName;
 
+    /**
+     * @return Name of databricks_catalog
+     * 
+     */
     public String catalogName() {
         return this.catalogName;
     }
 
+    /**
+     * set of databricks.Schema full names: *`catalog`.`schema`*
+     * 
+     */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
+    /**
+     * @return set of databricks.Schema full names: *`catalog`.`schema`*
+     * 
+     */
     public Optional<List<String>> ids() {
         return Optional.ofNullable(this.ids);
     }
@@ -55,16 +71,34 @@ public final class GetSchemasPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetSchemasPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param catalogName Name of databricks_catalog
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(String catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
+        /**
+         * @param ids set of databricks.Schema full names: *`catalog`.`schema`*
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable List<String> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids set of databricks.Schema full names: *`catalog`.`schema`*
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }

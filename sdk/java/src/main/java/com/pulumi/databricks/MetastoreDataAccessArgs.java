@@ -85,9 +85,17 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.gcpServiceAccountKey);
     }
 
+    /**
+     * whether to set this credential as the default for the metastore. In practice, this should always be true.
+     * 
+     */
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
+    /**
+     * @return whether to set this credential as the default for the metastore. In practice, this should always be true.
+     * 
+     */
     public Optional<Output<Boolean>> isDefault() {
         return Optional.ofNullable(this.isDefault);
     }
@@ -254,11 +262,23 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
             return gcpServiceAccountKey(Output.of(gcpServiceAccountKey));
         }
 
+        /**
+         * @param isDefault whether to set this credential as the default for the metastore. In practice, this should always be true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isDefault(@Nullable Output<Boolean> isDefault) {
             $.isDefault = isDefault;
             return this;
         }
 
+        /**
+         * @param isDefault whether to set this credential as the default for the metastore. In practice, this should always be true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isDefault(Boolean isDefault) {
             return isDefault(Output.of(isDefault));
         }

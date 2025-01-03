@@ -18,9 +18,17 @@ public final class GetRegisteredModelModelInfo extends com.pulumi.resources.Invo
 
     public static final GetRegisteredModelModelInfo Empty = new GetRegisteredModelModelInfo();
 
+    /**
+     * the list of aliases associated with this model. Each item is object consisting of following attributes:
+     * 
+     */
     @Import(name="aliases")
     private @Nullable List<GetRegisteredModelModelInfoAlias> aliases;
 
+    /**
+     * @return the list of aliases associated with this model. Each item is object consisting of following attributes:
+     * 
+     */
     public Optional<List<GetRegisteredModelModelInfoAlias>> aliases() {
         return Optional.ofNullable(this.aliases);
     }
@@ -32,86 +40,182 @@ public final class GetRegisteredModelModelInfo extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.browseOnly);
     }
 
+    /**
+     * The name of the catalog where the schema and the registered model reside.
+     * 
+     */
     @Import(name="catalogName")
     private @Nullable String catalogName;
 
+    /**
+     * @return The name of the catalog where the schema and the registered model reside.
+     * 
+     */
     public Optional<String> catalogName() {
         return Optional.ofNullable(this.catalogName);
     }
 
+    /**
+     * The comment attached to the registered model.
+     * 
+     */
     @Import(name="comment")
     private @Nullable String comment;
 
+    /**
+     * @return The comment attached to the registered model.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * the Unix timestamp at the model&#39;s creation
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Integer createdAt;
 
+    /**
+     * @return the Unix timestamp at the model&#39;s creation
+     * 
+     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * the identifier of the user who created the model
+     * 
+     */
     @Import(name="createdBy")
     private @Nullable String createdBy;
 
+    /**
+     * @return the identifier of the user who created the model
+     * 
+     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
+    /**
+     * The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+     * 
+     */
     @Import(name="fullName")
     private @Nullable String fullName;
 
+    /**
+     * @return The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+     * 
+     */
     public Optional<String> fullName() {
         return Optional.ofNullable(this.fullName);
     }
 
+    /**
+     * the unique identifier of the metastore
+     * 
+     */
     @Import(name="metastoreId")
     private @Nullable String metastoreId;
 
+    /**
+     * @return the unique identifier of the metastore
+     * 
+     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
 
+    /**
+     * The name of the registered model.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return The name of the registered model.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Name of the registered model owner.
+     * 
+     */
     @Import(name="owner")
     private @Nullable String owner;
 
+    /**
+     * @return Name of the registered model owner.
+     * 
+     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * The name of the schema where the registered model resides.
+     * 
+     */
     @Import(name="schemaName")
     private @Nullable String schemaName;
 
+    /**
+     * @return The name of the schema where the registered model resides.
+     * 
+     */
     public Optional<String> schemaName() {
         return Optional.ofNullable(this.schemaName);
     }
 
+    /**
+     * The storage location under which model version data files are stored.
+     * 
+     */
     @Import(name="storageLocation")
     private @Nullable String storageLocation;
 
+    /**
+     * @return The storage location under which model version data files are stored.
+     * 
+     */
     public Optional<String> storageLocation() {
         return Optional.ofNullable(this.storageLocation);
     }
 
+    /**
+     * the timestamp of the last time changes were made to the model
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Integer updatedAt;
 
+    /**
+     * @return the timestamp of the last time changes were made to the model
+     * 
+     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * the identifier of the user who updated the model last time
+     * 
+     */
     @Import(name="updatedBy")
     private @Nullable String updatedBy;
 
+    /**
+     * @return the identifier of the user who updated the model last time
+     * 
+     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
@@ -153,11 +257,23 @@ public final class GetRegisteredModelModelInfo extends com.pulumi.resources.Invo
             $ = new GetRegisteredModelModelInfo(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aliases the list of aliases associated with this model. Each item is object consisting of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder aliases(@Nullable List<GetRegisteredModelModelInfoAlias> aliases) {
             $.aliases = aliases;
             return this;
         }
 
+        /**
+         * @param aliases the list of aliases associated with this model. Each item is object consisting of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder aliases(GetRegisteredModelModelInfoAlias... aliases) {
             return aliases(List.of(aliases));
         }
@@ -167,61 +283,133 @@ public final class GetRegisteredModelModelInfo extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param catalogName The name of the catalog where the schema and the registered model reside.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(@Nullable String catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
+        /**
+         * @param comment The comment attached to the registered model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable String comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param createdAt the Unix timestamp at the model&#39;s creation
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Integer createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdBy the identifier of the user who created the model
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(@Nullable String createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
+        /**
+         * @param fullName The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(@Nullable String fullName) {
             $.fullName = fullName;
             return this;
         }
 
+        /**
+         * @param metastoreId the unique identifier of the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(@Nullable String metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
+        /**
+         * @param name The name of the registered model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param owner Name of the registered model owner.
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(@Nullable String owner) {
             $.owner = owner;
             return this;
         }
 
+        /**
+         * @param schemaName The name of the schema where the registered model resides.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaName(@Nullable String schemaName) {
             $.schemaName = schemaName;
             return this;
         }
 
+        /**
+         * @param storageLocation The storage location under which model version data files are stored.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageLocation(@Nullable String storageLocation) {
             $.storageLocation = storageLocation;
             return this;
         }
 
+        /**
+         * @param updatedAt the timestamp of the last time changes were made to the model
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Integer updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedBy the identifier of the user who updated the model last time
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(@Nullable String updatedBy) {
             $.updatedBy = updatedBy;
             return this;

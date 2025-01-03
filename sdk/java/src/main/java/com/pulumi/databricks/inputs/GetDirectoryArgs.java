@@ -24,23 +24,47 @@ public final class GetDirectoryArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * directory object ID
+     * 
+     */
     @Import(name="objectId")
     private @Nullable Output<Integer> objectId;
 
+    /**
+     * @return directory object ID
+     * 
+     */
     public Optional<Output<Integer>> objectId() {
         return Optional.ofNullable(this.objectId);
     }
 
+    /**
+     * Path to a directory in the workspace
+     * 
+     */
     @Import(name="path", required=true)
     private Output<String> path;
 
+    /**
+     * @return Path to a directory in the workspace
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
 
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
     @Import(name="workspacePath")
     private @Nullable Output<String> workspacePath;
 
+    /**
+     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
     public Optional<Output<String>> workspacePath() {
         return Optional.ofNullable(this.workspacePath);
     }
@@ -81,29 +105,65 @@ public final class GetDirectoryArgs extends com.pulumi.resources.InvokeArgs {
             return id(Output.of(id));
         }
 
+        /**
+         * @param objectId directory object ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectId(@Nullable Output<Integer> objectId) {
             $.objectId = objectId;
             return this;
         }
 
+        /**
+         * @param objectId directory object ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectId(Integer objectId) {
             return objectId(Output.of(objectId));
         }
 
+        /**
+         * @param path Path to a directory in the workspace
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path Path to a directory in the workspace
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
+        /**
+         * @param workspacePath path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspacePath(@Nullable Output<String> workspacePath) {
             $.workspacePath = workspacePath;
             return this;
         }
 
+        /**
+         * @param workspacePath path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+         * 
+         * @return builder
+         * 
+         */
         public Builder workspacePath(String workspacePath) {
             return workspacePath(Output.of(workspacePath));
         }

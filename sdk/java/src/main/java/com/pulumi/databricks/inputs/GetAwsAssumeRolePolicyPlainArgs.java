@@ -16,9 +16,17 @@ public final class GetAwsAssumeRolePolicyPlainArgs extends com.pulumi.resources.
 
     public static final GetAwsAssumeRolePolicyPlainArgs Empty = new GetAwsAssumeRolePolicyPlainArgs();
 
+    /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
     @Import(name="awsPartition")
     private @Nullable String awsPartition;
 
+    /**
+     * @return AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
     public Optional<String> awsPartition() {
         return Optional.ofNullable(this.awsPartition);
     }
@@ -42,16 +50,32 @@ public final class GetAwsAssumeRolePolicyPlainArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.databricksAccountId);
     }
 
+    /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * 
+     */
     @Import(name="externalId", required=true)
     private String externalId;
 
+    /**
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * 
+     */
     public String externalId() {
         return this.externalId;
     }
 
+    /**
+     * Either or not this assume role policy should be created for usage log delivery. Defaults to false.
+     * 
+     */
     @Import(name="forLogDelivery")
     private @Nullable Boolean forLogDelivery;
 
+    /**
+     * @return Either or not this assume role policy should be created for usage log delivery. Defaults to false.
+     * 
+     */
     public Optional<Boolean> forLogDelivery() {
         return Optional.ofNullable(this.forLogDelivery);
     }
@@ -83,6 +107,12 @@ public final class GetAwsAssumeRolePolicyPlainArgs extends com.pulumi.resources.
             $ = new GetAwsAssumeRolePolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsPartition(@Nullable String awsPartition) {
             $.awsPartition = awsPartition;
             return this;
@@ -101,11 +131,23 @@ public final class GetAwsAssumeRolePolicyPlainArgs extends com.pulumi.resources.
             return this;
         }
 
+        /**
+         * @param externalId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalId(String externalId) {
             $.externalId = externalId;
             return this;
         }
 
+        /**
+         * @param forLogDelivery Either or not this assume role policy should be created for usage log delivery. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder forLogDelivery(@Nullable Boolean forLogDelivery) {
             $.forLogDelivery = forLogDelivery;
             return this;

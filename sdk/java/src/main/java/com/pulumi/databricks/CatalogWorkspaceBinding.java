@@ -14,11 +14,82 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; This resource has been deprecated and will be removed soon. Please use the databricks.WorkspaceBinding resource instead.
+ * 
+ * If you use workspaces to isolate user data access, you may want to limit catalog access to specific workspaces in your account, also known as workspace-catalog binding
+ * 
+ * By default, Databricks assigns the catalog to all workspaces attached to the current metastore. By using `databricks.CatalogWorkspaceBinding`, the catalog will be unassigned from all workspaces and only assigned explicitly using this resource.
+ * 
+ * &gt; To use this resource the catalog must have its isolation mode set to `ISOLATED` in the `databricks.Catalog` resource. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration).
+ * 
+ * &gt; If the catalog&#39;s isolation mode was set to `ISOLATED` using Pulumi then the catalog will have been automatically bound to the workspace it was created from.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Catalog;
+ * import com.pulumi.databricks.CatalogArgs;
+ * import com.pulumi.databricks.CatalogWorkspaceBinding;
+ * import com.pulumi.databricks.CatalogWorkspaceBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
+ *             .name("sandbox")
+ *             .isolationMode("ISOLATED")
+ *             .build());
+ * 
+ *         var sandboxCatalogWorkspaceBinding = new CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding", CatalogWorkspaceBindingArgs.builder()
+ *             .securableName(sandbox.name())
+ *             .workspaceId(other.workspaceId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * This resource can be imported by using combination of workspace ID, securable type and name:
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding this &#34;&lt;workspace_id&gt;|&lt;securable_type&gt;|&lt;securable_name&gt;&#34;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding")
 public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource {
+    /**
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
+     * 
+     */
     @Export(name="bindingType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bindingType;
 
+    /**
+     * @return Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
+     * 
+     */
     public Output<Optional<String>> bindingType() {
         return Codegen.optional(this.bindingType);
     }
@@ -34,21 +105,45 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
     public Output<Optional<String>> catalogName() {
         return Codegen.optional(this.catalogName);
     }
+    /**
+     * Name of securable. Change forces creation of a new resource.
+     * 
+     */
     @Export(name="securableName", refs={String.class}, tree="[0]")
     private Output<String> securableName;
 
+    /**
+     * @return Name of securable. Change forces creation of a new resource.
+     * 
+     */
     public Output<String> securableName() {
         return this.securableName;
     }
+    /**
+     * Type of securable. Default to `catalog`. Change forces creation of a new resource.
+     * 
+     */
     @Export(name="securableType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securableType;
 
+    /**
+     * @return Type of securable. Default to `catalog`. Change forces creation of a new resource.
+     * 
+     */
     public Output<Optional<String>> securableType() {
         return Codegen.optional(this.securableType);
     }
+    /**
+     * ID of the workspace. Change forces creation of a new resource.
+     * 
+     */
     @Export(name="workspaceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workspaceId;
 
+    /**
+     * @return ID of the workspace. Change forces creation of a new resource.
+     * 
+     */
     public Output<Optional<String>> workspaceId() {
         return Codegen.optional(this.workspaceId);
     }

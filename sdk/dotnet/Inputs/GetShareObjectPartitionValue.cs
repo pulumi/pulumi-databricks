@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetShareObjectPartitionValueArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the share
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 

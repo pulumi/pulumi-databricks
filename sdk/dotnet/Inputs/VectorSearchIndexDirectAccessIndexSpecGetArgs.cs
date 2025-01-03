@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("embeddingSourceColumns")]
         private InputList<Inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnGetArgs>? _embeddingSourceColumns;
+
+        /// <summary>
+        /// array of objects representing columns that contain the embedding source.  Each entry consists of:
+        /// </summary>
         public InputList<Inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnGetArgs> EmbeddingSourceColumns
         {
             get => _embeddingSourceColumns ?? (_embeddingSourceColumns = new InputList<Inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnGetArgs>());
@@ -28,6 +32,9 @@ namespace Pulumi.Databricks.Inputs
             set => _embeddingVectorColumns = value;
         }
 
+        /// <summary>
+        /// The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+        /// </summary>
         [Input("schemaJson")]
         public Input<string>? SchemaJson { get; set; }
 

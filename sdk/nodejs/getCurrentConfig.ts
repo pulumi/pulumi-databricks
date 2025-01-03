@@ -4,6 +4,57 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
+ *
+ * ## Example Usage
+ *
+ * Create cloud-specific databricks_storage_credential:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * function singleOrNone<T>(elements: pulumi.Input<T>[]): pulumi.Input<T> {
+ *     if (elements.length != 1) {
+ *         throw new Error("singleOrNone expected input list to have a single element");
+ *     }
+ *     return elements[0];
+ * }
+ *
+ * const this = databricks.getCurrentConfig({});
+ * const external = new databricks.StorageCredential("external", {
+ *     awsIamRole: singleOrNone(.map(entry => ({
+ *         roleArn: cloudCredentialId,
+ *     }))),
+ *     azureManagedIdentity: singleOrNone(.map(entry => ({
+ *         accessConnectorId: cloudCredentialId,
+ *     }))),
+ *     databricksGcpServiceAccount: singleOrNone(.map(entry => ({}))),
+ *     name: "storage_cred",
+ *     comment: "Managed by TF",
+ * });
+ * ```
+ *
+ * ## Exported attributes
+ *
+ * Data source exposes the following attributes:
+ *
+ * * `isAccount` - Whether the provider is configured at account-level
+ * * `accountId` - Account Id if provider is configured at account-level
+ * * `host` - Host of the Databricks workspace or account console
+ * * `cloudType` - Cloud type specified in the provider
+ * * `authType` - Auth type used by the provider
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+ */
 export function getCurrentConfig(args?: GetCurrentConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetCurrentConfigResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,6 +92,57 @@ export interface GetCurrentConfigResult {
     readonly id: string;
     readonly isAccount: boolean;
 }
+/**
+ * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
+ *
+ * ## Example Usage
+ *
+ * Create cloud-specific databricks_storage_credential:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * function singleOrNone<T>(elements: pulumi.Input<T>[]): pulumi.Input<T> {
+ *     if (elements.length != 1) {
+ *         throw new Error("singleOrNone expected input list to have a single element");
+ *     }
+ *     return elements[0];
+ * }
+ *
+ * const this = databricks.getCurrentConfig({});
+ * const external = new databricks.StorageCredential("external", {
+ *     awsIamRole: singleOrNone(.map(entry => ({
+ *         roleArn: cloudCredentialId,
+ *     }))),
+ *     azureManagedIdentity: singleOrNone(.map(entry => ({
+ *         accessConnectorId: cloudCredentialId,
+ *     }))),
+ *     databricksGcpServiceAccount: singleOrNone(.map(entry => ({}))),
+ *     name: "storage_cred",
+ *     comment: "Managed by TF",
+ * });
+ * ```
+ *
+ * ## Exported attributes
+ *
+ * Data source exposes the following attributes:
+ *
+ * * `isAccount` - Whether the provider is configured at account-level
+ * * `accountId` - Account Id if provider is configured at account-level
+ * * `host` - Host of the Databricks workspace or account console
+ * * `cloudType` - Cloud type specified in the provider
+ * * `authType` - Auth type used by the provider
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+ */
 export function getCurrentConfigOutput(args?: GetCurrentConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCurrentConfigResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

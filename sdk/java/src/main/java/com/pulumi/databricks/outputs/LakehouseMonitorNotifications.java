@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LakehouseMonitorNotifications {
+    /**
+     * @return who to send notifications to on monitor failure.
+     * 
+     */
     private @Nullable LakehouseMonitorNotificationsOnFailure onFailure;
+    /**
+     * @return Who to send notifications to when new data classification tags are detected.
+     * 
+     */
     private @Nullable LakehouseMonitorNotificationsOnNewClassificationTagDetected onNewClassificationTagDetected;
 
     private LakehouseMonitorNotifications() {}
+    /**
+     * @return who to send notifications to on monitor failure.
+     * 
+     */
     public Optional<LakehouseMonitorNotificationsOnFailure> onFailure() {
         return Optional.ofNullable(this.onFailure);
     }
+    /**
+     * @return Who to send notifications to when new data classification tags are detected.
+     * 
+     */
     public Optional<LakehouseMonitorNotificationsOnNewClassificationTagDetected> onNewClassificationTagDetected() {
         return Optional.ofNullable(this.onNewClassificationTagDetected);
     }

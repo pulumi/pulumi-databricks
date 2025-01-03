@@ -16,30 +16,62 @@ public final class ModelServingConfigAutoCaptureConfigArgs extends com.pulumi.re
 
     public static final ModelServingConfigAutoCaptureConfigArgs Empty = new ModelServingConfigAutoCaptureConfigArgs();
 
+    /**
+     * The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+     * 
+     */
     @Import(name="catalogName")
     private @Nullable Output<String> catalogName;
 
+    /**
+     * @return The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+     * 
+     */
     public Optional<Output<String>> catalogName() {
         return Optional.ofNullable(this.catalogName);
     }
 
+    /**
+     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+     * 
+     */
     @Import(name="schemaName")
     private @Nullable Output<String> schemaName;
 
+    /**
+     * @return The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+     * 
+     */
     public Optional<Output<String>> schemaName() {
         return Optional.ofNullable(this.schemaName);
     }
 
+    /**
+     * The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+     * 
+     */
     @Import(name="tableNamePrefix")
     private @Nullable Output<String> tableNamePrefix;
 
+    /**
+     * @return The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+     * 
+     */
     public Optional<Output<String>> tableNamePrefix() {
         return Optional.ofNullable(this.tableNamePrefix);
     }
@@ -71,38 +103,86 @@ public final class ModelServingConfigAutoCaptureConfigArgs extends com.pulumi.re
             $ = new ModelServingConfigAutoCaptureConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param catalogName The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(@Nullable Output<String> catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
+        /**
+         * @param catalogName The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(String catalogName) {
             return catalogName(Output.of(catalogName));
         }
 
+        /**
+         * @param enabled If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param schemaName The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaName(@Nullable Output<String> schemaName) {
             $.schemaName = schemaName;
             return this;
         }
 
+        /**
+         * @param schemaName The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaName(String schemaName) {
             return schemaName(Output.of(schemaName));
         }
 
+        /**
+         * @param tableNamePrefix The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableNamePrefix(@Nullable Output<String> tableNamePrefix) {
             $.tableNamePrefix = tableNamePrefix;
             return this;
         }
 
+        /**
+         * @param tableNamePrefix The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableNamePrefix(String tableNamePrefix) {
             return tableNamePrefix(Output.of(tableNamePrefix));
         }

@@ -13,10 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class NotificationDestinationConfigGenericWebhook
     {
+        /// <summary>
+        /// The password for basic authentication.
+        /// 
+        /// &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
+        /// </summary>
         public readonly string? Password;
         public readonly bool? PasswordSet;
+        /// <summary>
+        /// The Generic Webhook URL.
+        /// </summary>
         public readonly string? Url;
         public readonly bool? UrlSet;
+        /// <summary>
+        /// The username for basic authentication.
+        /// </summary>
         public readonly string? Username;
         public readonly bool? UsernameSet;
 

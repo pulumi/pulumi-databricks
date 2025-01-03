@@ -21,6 +21,77 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; This resource can be used with an account or workspace-level provider.
+ * 
+ * Optionally, each databricks.Metastore can have a default databricks.StorageCredential defined as `databricks.MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
+ * 
+ * ## Example Usage
+ * 
+ * For AWS
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Metastore;
+ * import com.pulumi.databricks.MetastoreArgs;
+ * import com.pulumi.databricks.MetastoreDataAccess;
+ * import com.pulumi.databricks.MetastoreDataAccessArgs;
+ * import com.pulumi.databricks.inputs.MetastoreDataAccessAwsIamRoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Metastore("this", MetastoreArgs.builder()
+ *             .name("primary")
+ *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+ *             .owner("uc admins")
+ *             .region("us-east-1")
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var thisMetastoreDataAccess = new MetastoreDataAccess("thisMetastoreDataAccess", MetastoreDataAccessArgs.builder()
+ *             .metastoreId(this_.id())
+ *             .name(metastoreDataAccess.name())
+ *             .awsIamRole(MetastoreDataAccessAwsIamRoleArgs.builder()
+ *                 .roleArn(metastoreDataAccess.arn())
+ *                 .build())
+ *             .isDefault(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * For Azure using managed identity as credential (recommended)
+ * 
+ * ## Import
+ * 
+ * This resource can be imported by combination of metastore id and the data access name.
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this &#39;&lt;metastore_id&gt;|&lt;name&gt;&#39;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/metastoreDataAccess:MetastoreDataAccess")
 public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
     @Export(name="awsIamRole", refs={MetastoreDataAccessAwsIamRole.class}, tree="[0]")
@@ -77,9 +148,17 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
     public Output<Optional<MetastoreDataAccessGcpServiceAccountKey>> gcpServiceAccountKey() {
         return Codegen.optional(this.gcpServiceAccountKey);
     }
+    /**
+     * whether to set this credential as the default for the metastore. In practice, this should always be true.
+     * 
+     */
     @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDefault;
 
+    /**
+     * @return whether to set this credential as the default for the metastore. In practice, this should always be true.
+     * 
+     */
     public Output<Optional<Boolean>> isDefault() {
         return Codegen.optional(this.isDefault);
     }

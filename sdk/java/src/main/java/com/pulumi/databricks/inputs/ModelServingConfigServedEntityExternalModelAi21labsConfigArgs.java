@@ -15,16 +15,32 @@ public final class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs
 
     public static final ModelServingConfigServedEntityExternalModelAi21labsConfigArgs Empty = new ModelServingConfigServedEntityExternalModelAi21labsConfigArgs();
 
+    /**
+     * The Databricks secret key reference for an AI21Labs API key.
+     * 
+     */
     @Import(name="ai21labsApiKey")
     private @Nullable Output<String> ai21labsApiKey;
 
+    /**
+     * @return The Databricks secret key reference for an AI21Labs API key.
+     * 
+     */
     public Optional<Output<String>> ai21labsApiKey() {
         return Optional.ofNullable(this.ai21labsApiKey);
     }
 
+    /**
+     * An AI21 Labs API key provided as a plaintext string.
+     * 
+     */
     @Import(name="ai21labsApiKeyPlaintext")
     private @Nullable Output<String> ai21labsApiKeyPlaintext;
 
+    /**
+     * @return An AI21 Labs API key provided as a plaintext string.
+     * 
+     */
     public Optional<Output<String>> ai21labsApiKeyPlaintext() {
         return Optional.ofNullable(this.ai21labsApiKeyPlaintext);
     }
@@ -54,20 +70,44 @@ public final class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs
             $ = new ModelServingConfigServedEntityExternalModelAi21labsConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ai21labsApiKey The Databricks secret key reference for an AI21Labs API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ai21labsApiKey(@Nullable Output<String> ai21labsApiKey) {
             $.ai21labsApiKey = ai21labsApiKey;
             return this;
         }
 
+        /**
+         * @param ai21labsApiKey The Databricks secret key reference for an AI21Labs API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ai21labsApiKey(String ai21labsApiKey) {
             return ai21labsApiKey(Output.of(ai21labsApiKey));
         }
 
+        /**
+         * @param ai21labsApiKeyPlaintext An AI21 Labs API key provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ai21labsApiKeyPlaintext(@Nullable Output<String> ai21labsApiKeyPlaintext) {
             $.ai21labsApiKeyPlaintext = ai21labsApiKeyPlaintext;
             return this;
         }
 
+        /**
+         * @param ai21labsApiKeyPlaintext An AI21 Labs API key provided as a plaintext string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ai21labsApiKeyPlaintext(String ai21labsApiKeyPlaintext) {
             return ai21labsApiKeyPlaintext(Output.of(ai21labsApiKeyPlaintext));
         }

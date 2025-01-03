@@ -11,14 +11,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CredentialDatabricksGcpServiceAccount {
+    /**
+     * @return Unique ID of the credential.
+     * 
+     */
     private @Nullable String credentialId;
+    /**
+     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * 
+     */
     private @Nullable String email;
     private @Nullable String privateKeyId;
 
     private CredentialDatabricksGcpServiceAccount() {}
+    /**
+     * @return Unique ID of the credential.
+     * 
+     */
     public Optional<String> credentialId() {
         return Optional.ofNullable(this.credentialId);
     }
+    /**
+     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * 
+     */
     public Optional<String> email() {
         return Optional.ofNullable(this.email);
     }

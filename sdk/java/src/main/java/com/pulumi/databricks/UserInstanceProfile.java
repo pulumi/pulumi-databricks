@@ -13,17 +13,102 @@ import com.pulumi.databricks.inputs.UserInstanceProfileState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; **Deprecated** Please rewrite with databricks_user_role. This resource will be removed in v0.5.x
+ * 
+ * This resource allows you to attach databricks.InstanceProfile (AWS) to databricks_user.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.InstanceProfile;
+ * import com.pulumi.databricks.InstanceProfileArgs;
+ * import com.pulumi.databricks.User;
+ * import com.pulumi.databricks.UserArgs;
+ * import com.pulumi.databricks.UserInstanceProfile;
+ * import com.pulumi.databricks.UserInstanceProfileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()
+ *             .instanceProfileArn("my_instance_profile_arn")
+ *             .build());
+ * 
+ *         var myUser = new User("myUser", UserArgs.builder()
+ *             .userName("me}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *         var myUserInstanceProfile = new UserInstanceProfile("myUserInstanceProfile", UserInstanceProfileArgs.builder()
+ *             .userId(myUser.id())
+ *             .instanceProfileId(instanceProfile.id())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * End to end workspace management guide.
+ * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+ * * databricks.GroupMember to attach users and groups as group members.
+ * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
+ * * databricks.User data to retrieve information about databricks_user.
+ * 
+ * ## Import
+ * 
+ * !&gt; Importing this resource is not currently supported.
+ * 
+ */
 @ResourceType(type="databricks:index/userInstanceProfile:UserInstanceProfile")
 public class UserInstanceProfile extends com.pulumi.resources.CustomResource {
+    /**
+     * This is the id of the instance profile resource.
+     * 
+     */
     @Export(name="instanceProfileId", refs={String.class}, tree="[0]")
     private Output<String> instanceProfileId;
 
+    /**
+     * @return This is the id of the instance profile resource.
+     * 
+     */
     public Output<String> instanceProfileId() {
         return this.instanceProfileId;
     }
+    /**
+     * This is the id of the user resource.
+     * 
+     */
     @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
+    /**
+     * @return This is the id of the user resource.
+     * 
+     */
     public Output<String> userId() {
         return this.userId;
     }

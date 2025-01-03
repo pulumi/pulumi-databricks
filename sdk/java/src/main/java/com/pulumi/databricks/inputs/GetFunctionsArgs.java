@@ -19,30 +19,62 @@ public final class GetFunctionsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetFunctionsArgs Empty = new GetFunctionsArgs();
 
+    /**
+     * Name of databricks_catalog.
+     * 
+     */
     @Import(name="catalogName", required=true)
     private Output<String> catalogName;
 
+    /**
+     * @return Name of databricks_catalog.
+     * 
+     */
     public Output<String> catalogName() {
         return this.catalogName;
     }
 
+    /**
+     * list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+     * 
+     */
     @Import(name="functions")
     private @Nullable Output<List<GetFunctionsFunctionArgs>> functions;
 
+    /**
+     * @return list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+     * 
+     */
     public Optional<Output<List<GetFunctionsFunctionArgs>>> functions() {
         return Optional.ofNullable(this.functions);
     }
 
+    /**
+     * flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
+     * 
+     */
     @Import(name="includeBrowse")
     private @Nullable Output<Boolean> includeBrowse;
 
+    /**
+     * @return flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
+     * 
+     */
     public Optional<Output<Boolean>> includeBrowse() {
         return Optional.ofNullable(this.includeBrowse);
     }
 
+    /**
+     * Name of databricks_schema.
+     * 
+     */
     @Import(name="schemaName", required=true)
     private Output<String> schemaName;
 
+    /**
+     * @return Name of databricks_schema.
+     * 
+     */
     public Output<String> schemaName() {
         return this.schemaName;
     }
@@ -74,42 +106,96 @@ public final class GetFunctionsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetFunctionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param catalogName Name of databricks_catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(Output<String> catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
+        /**
+         * @param catalogName Name of databricks_catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(String catalogName) {
             return catalogName(Output.of(catalogName));
         }
 
+        /**
+         * @param functions list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+         * 
+         * @return builder
+         * 
+         */
         public Builder functions(@Nullable Output<List<GetFunctionsFunctionArgs>> functions) {
             $.functions = functions;
             return this;
         }
 
+        /**
+         * @param functions list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+         * 
+         * @return builder
+         * 
+         */
         public Builder functions(List<GetFunctionsFunctionArgs> functions) {
             return functions(Output.of(functions));
         }
 
+        /**
+         * @param functions list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+         * 
+         * @return builder
+         * 
+         */
         public Builder functions(GetFunctionsFunctionArgs... functions) {
             return functions(List.of(functions));
         }
 
+        /**
+         * @param includeBrowse flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeBrowse(@Nullable Output<Boolean> includeBrowse) {
             $.includeBrowse = includeBrowse;
             return this;
         }
 
+        /**
+         * @param includeBrowse flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeBrowse(Boolean includeBrowse) {
             return includeBrowse(Output.of(includeBrowse));
         }
 
+        /**
+         * @param schemaName Name of databricks_schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaName(Output<String> schemaName) {
             $.schemaName = schemaName;
             return this;
         }
 
+        /**
+         * @param schemaName Name of databricks_schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaName(String schemaName) {
             return schemaName(Output.of(schemaName));
         }

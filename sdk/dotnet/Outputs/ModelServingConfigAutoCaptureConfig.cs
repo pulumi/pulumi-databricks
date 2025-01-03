@@ -13,9 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigAutoCaptureConfig
     {
+        /// <summary>
+        /// The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+        /// </summary>
         public readonly string? CatalogName;
+        /// <summary>
+        /// If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+        /// </summary>
         public readonly string? SchemaName;
+        /// <summary>
+        /// The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+        /// </summary>
         public readonly string? TableNamePrefix;
 
         [OutputConstructor]

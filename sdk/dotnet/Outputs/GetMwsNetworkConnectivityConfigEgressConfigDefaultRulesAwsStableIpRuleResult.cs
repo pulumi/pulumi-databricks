@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleResult
     {
+        /// <summary>
+        /// The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+        /// </summary>
         public readonly ImmutableArray<string> CidrBlocks;
 
         [OutputConstructor]

@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableResult
     {
+        /// <summary>
+        /// Full name of the dependent table
+        /// </summary>
         public readonly string TableFullName;
 
         [OutputConstructor]

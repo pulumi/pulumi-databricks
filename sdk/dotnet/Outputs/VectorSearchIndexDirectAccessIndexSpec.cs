@@ -13,8 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class VectorSearchIndexDirectAccessIndexSpec
     {
+        /// <summary>
+        /// array of objects representing columns that contain the embedding source.  Each entry consists of:
+        /// </summary>
         public readonly ImmutableArray<Outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn> EmbeddingSourceColumns;
         public readonly ImmutableArray<Outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn> EmbeddingVectorColumns;
+        /// <summary>
+        /// The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+        /// </summary>
         public readonly string? SchemaJson;
 
         [OutputConstructor]

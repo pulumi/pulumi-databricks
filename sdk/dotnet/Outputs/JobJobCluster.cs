@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobJobCluster
     {
+        /// <summary>
+        /// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
+        /// </summary>
         public readonly string JobClusterKey;
+        /// <summary>
+        /// Block with almost the same set of parameters as for databricks.Cluster resource, except following (check the [REST API documentation for full list of supported parameters](https://docs.databricks.com/api/workspace/jobs/create#job_clusters-new_cluster)):
+        /// </summary>
         public readonly Outputs.JobJobClusterNewCluster NewCluster;
 
         [OutputConstructor]

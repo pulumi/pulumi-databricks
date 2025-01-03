@@ -11,6 +11,100 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _authentication is not configured for provider_ errors.
+//
+// Retrieves a list of all Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
+//
+// ## Example Usage
+//
+// Get all Delta Live Tables pipelines:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.GetPipelines(ctx, &databricks.GetPipelinesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allPipelines", all.Ids)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Filter Delta Live Tables pipelines by name (exact match):
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetPipelines(ctx, &databricks.GetPipelinesArgs{
+//				PipelineName: pulumi.StringRef("my_pipeline"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("myPipeline", this.Ids)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Filter Delta Live Tables pipelines by name (wildcard search):
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetPipelines(ctx, &databricks.GetPipelinesArgs{
+//				PipelineName: pulumi.StringRef("%pipeline%"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("wildcardPipelines", this.Ids)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * End to end workspace management guide.
+// * Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+// * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+// * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+// * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
 func GetPipelines(ctx *pulumi.Context, args *GetPipelinesArgs, opts ...pulumi.InvokeOption) (*GetPipelinesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPipelinesResult
@@ -23,14 +117,17 @@ func GetPipelines(ctx *pulumi.Context, args *GetPipelinesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getPipelines.
 type GetPipelinesArgs struct {
-	Ids          []string `pulumi:"ids"`
-	PipelineName *string  `pulumi:"pipelineName"`
+	// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+	Ids []string `pulumi:"ids"`
+	// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+	PipelineName *string `pulumi:"pipelineName"`
 }
 
 // A collection of values returned by getPipelines.
 type GetPipelinesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
 	Ids          []string `pulumi:"ids"`
 	PipelineName *string  `pulumi:"pipelineName"`
 }
@@ -46,8 +143,10 @@ func GetPipelinesOutput(ctx *pulumi.Context, args GetPipelinesOutputArgs, opts .
 
 // A collection of arguments for invoking getPipelines.
 type GetPipelinesOutputArgs struct {
-	Ids          pulumi.StringArrayInput `pulumi:"ids"`
-	PipelineName pulumi.StringPtrInput   `pulumi:"pipelineName"`
+	// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+	PipelineName pulumi.StringPtrInput `pulumi:"pipelineName"`
 }
 
 func (GetPipelinesOutputArgs) ElementType() reflect.Type {
@@ -74,6 +173,7 @@ func (o GetPipelinesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelinesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
 func (o GetPipelinesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPipelinesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

@@ -59,9 +59,17 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
         return Optional.ofNullable(this.groupId);
     }
 
+    /**
+     * Canonical unique identifier of Network Connectivity Config in Databricks Account
+     * 
+     */
     @Import(name="networkConnectivityConfigId")
     private @Nullable Output<String> networkConnectivityConfigId;
 
+    /**
+     * @return Canonical unique identifier of Network Connectivity Config in Databricks Account
+     * 
+     */
     public Optional<Output<String>> networkConnectivityConfigId() {
         return Optional.ofNullable(this.networkConnectivityConfigId);
     }
@@ -174,11 +182,23 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
             return groupId(Output.of(groupId));
         }
 
+        /**
+         * @param networkConnectivityConfigId Canonical unique identifier of Network Connectivity Config in Databricks Account
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkConnectivityConfigId(@Nullable Output<String> networkConnectivityConfigId) {
             $.networkConnectivityConfigId = networkConnectivityConfigId;
             return this;
         }
 
+        /**
+         * @param networkConnectivityConfigId Canonical unique identifier of Network Connectivity Config in Databricks Account
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkConnectivityConfigId(String networkConnectivityConfigId) {
             return networkConnectivityConfigId(Output.of(networkConnectivityConfigId));
         }

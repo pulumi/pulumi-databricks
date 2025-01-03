@@ -17,16 +17,40 @@ namespace Pulumi.Databricks.Outputs
         public readonly int? CreatedAt;
         public readonly string? CreatedBy;
         public readonly string? DefaultDataAccessConfigId;
+        /// <summary>
+        /// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+        /// </summary>
         public readonly string? DeltaSharingOrganizationName;
+        /// <summary>
+        /// Used to set expiration duration in seconds on recipient data access tokens.
+        /// </summary>
         public readonly int? DeltaSharingRecipientTokenLifetimeInSeconds;
+        /// <summary>
+        /// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        /// </summary>
         public readonly string? DeltaSharingScope;
         public readonly bool? ExternalAccessEnabled;
         public readonly string? GlobalMetastoreId;
+        /// <summary>
+        /// ID of the metastore
+        /// </summary>
         public readonly string? MetastoreId;
+        /// <summary>
+        /// Name of the metastore
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Username/groupname/sp application_id of the metastore owner.
+        /// </summary>
         public readonly string? Owner;
         public readonly string? PrivilegeModelVersion;
+        /// <summary>
+        /// Region of the metastore
+        /// </summary>
         public readonly string? Region;
+        /// <summary>
+        /// Path on cloud storage account, where managed `databricks.Table` are stored.
+        /// </summary>
         public readonly string? StorageRoot;
         public readonly string? StorageRootCredentialId;
         public readonly string? StorageRootCredentialName;

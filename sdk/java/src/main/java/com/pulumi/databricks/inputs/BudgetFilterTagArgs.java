@@ -16,16 +16,32 @@ public final class BudgetFilterTagArgs extends com.pulumi.resources.ResourceArgs
 
     public static final BudgetFilterTagArgs Empty = new BudgetFilterTagArgs();
 
+    /**
+     * The key of the tag.
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return The key of the tag.
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * Consists of the following fields:
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<BudgetFilterTagValueArgs> value;
 
+    /**
+     * @return Consists of the following fields:
+     * 
+     */
     public Optional<Output<BudgetFilterTagValueArgs>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -55,20 +71,44 @@ public final class BudgetFilterTagArgs extends com.pulumi.resources.ResourceArgs
             $ = new BudgetFilterTagArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key The key of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key The key of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<BudgetFilterTagValueArgs> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(BudgetFilterTagValueArgs value) {
             return value(Output.of(value));
         }

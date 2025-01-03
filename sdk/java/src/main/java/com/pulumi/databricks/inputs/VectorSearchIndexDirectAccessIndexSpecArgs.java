@@ -18,9 +18,17 @@ public final class VectorSearchIndexDirectAccessIndexSpecArgs extends com.pulumi
 
     public static final VectorSearchIndexDirectAccessIndexSpecArgs Empty = new VectorSearchIndexDirectAccessIndexSpecArgs();
 
+    /**
+     * array of objects representing columns that contain the embedding source.  Each entry consists of:
+     * 
+     */
     @Import(name="embeddingSourceColumns")
     private @Nullable Output<List<VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs>> embeddingSourceColumns;
 
+    /**
+     * @return array of objects representing columns that contain the embedding source.  Each entry consists of:
+     * 
+     */
     public Optional<Output<List<VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs>>> embeddingSourceColumns() {
         return Optional.ofNullable(this.embeddingSourceColumns);
     }
@@ -32,9 +40,17 @@ public final class VectorSearchIndexDirectAccessIndexSpecArgs extends com.pulumi
         return Optional.ofNullable(this.embeddingVectorColumns);
     }
 
+    /**
+     * The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+     * 
+     */
     @Import(name="schemaJson")
     private @Nullable Output<String> schemaJson;
 
+    /**
+     * @return The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+     * 
+     */
     public Optional<Output<String>> schemaJson() {
         return Optional.ofNullable(this.schemaJson);
     }
@@ -65,15 +81,33 @@ public final class VectorSearchIndexDirectAccessIndexSpecArgs extends com.pulumi
             $ = new VectorSearchIndexDirectAccessIndexSpecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param embeddingSourceColumns array of objects representing columns that contain the embedding source.  Each entry consists of:
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingSourceColumns(@Nullable Output<List<VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs>> embeddingSourceColumns) {
             $.embeddingSourceColumns = embeddingSourceColumns;
             return this;
         }
 
+        /**
+         * @param embeddingSourceColumns array of objects representing columns that contain the embedding source.  Each entry consists of:
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingSourceColumns(List<VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs> embeddingSourceColumns) {
             return embeddingSourceColumns(Output.of(embeddingSourceColumns));
         }
 
+        /**
+         * @param embeddingSourceColumns array of objects representing columns that contain the embedding source.  Each entry consists of:
+         * 
+         * @return builder
+         * 
+         */
         public Builder embeddingSourceColumns(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs... embeddingSourceColumns) {
             return embeddingSourceColumns(List.of(embeddingSourceColumns));
         }
@@ -91,11 +125,23 @@ public final class VectorSearchIndexDirectAccessIndexSpecArgs extends com.pulumi
             return embeddingVectorColumns(List.of(embeddingVectorColumns));
         }
 
+        /**
+         * @param schemaJson The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaJson(@Nullable Output<String> schemaJson) {
             $.schemaJson = schemaJson;
             return this;
         }
 
+        /**
+         * @param schemaJson The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaJson(String schemaJson) {
             return schemaJson(Output.of(schemaJson));
         }

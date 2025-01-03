@@ -23,16 +23,32 @@ public final class JobTaskSparkJarTaskArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.jarUri);
     }
 
+    /**
+     * The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
+     * 
+     */
     @Import(name="mainClassName")
     private @Nullable Output<String> mainClassName;
 
+    /**
+     * @return The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
+     * 
+     */
     public Optional<Output<String>> mainClassName() {
         return Optional.ofNullable(this.mainClassName);
     }
 
+    /**
+     * (List) Parameters passed to the main method.
+     * 
+     */
     @Import(name="parameters")
     private @Nullable Output<List<String>> parameters;
 
+    /**
+     * @return (List) Parameters passed to the main method.
+     * 
+     */
     public Optional<Output<List<String>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
@@ -72,24 +88,54 @@ public final class JobTaskSparkJarTaskArgs extends com.pulumi.resources.Resource
             return jarUri(Output.of(jarUri));
         }
 
+        /**
+         * @param mainClassName The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mainClassName(@Nullable Output<String> mainClassName) {
             $.mainClassName = mainClassName;
             return this;
         }
 
+        /**
+         * @param mainClassName The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mainClassName(String mainClassName) {
             return mainClassName(Output.of(mainClassName));
         }
 
+        /**
+         * @param parameters (List) Parameters passed to the main method.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(@Nullable Output<List<String>> parameters) {
             $.parameters = parameters;
             return this;
         }
 
+        /**
+         * @param parameters (List) Parameters passed to the main method.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(List<String> parameters) {
             return parameters(Output.of(parameters));
         }
 
+        /**
+         * @param parameters (List) Parameters passed to the main method.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameters(String... parameters) {
             return parameters(List.of(parameters));
         }

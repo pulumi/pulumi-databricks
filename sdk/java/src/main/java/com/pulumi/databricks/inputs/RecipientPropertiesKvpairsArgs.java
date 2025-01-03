@@ -15,9 +15,17 @@ public final class RecipientPropertiesKvpairsArgs extends com.pulumi.resources.R
 
     public static final RecipientPropertiesKvpairsArgs Empty = new RecipientPropertiesKvpairsArgs();
 
+    /**
+     * a map of string key-value pairs with recipient&#39;s properties.  Properties with name starting with `databricks.` are reserved.
+     * 
+     */
     @Import(name="properties", required=true)
     private Output<Map<String,String>> properties;
 
+    /**
+     * @return a map of string key-value pairs with recipient&#39;s properties.  Properties with name starting with `databricks.` are reserved.
+     * 
+     */
     public Output<Map<String,String>> properties() {
         return this.properties;
     }
@@ -46,11 +54,23 @@ public final class RecipientPropertiesKvpairsArgs extends com.pulumi.resources.R
             $ = new RecipientPropertiesKvpairsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param properties a map of string key-value pairs with recipient&#39;s properties.  Properties with name starting with `databricks.` are reserved.
+         * 
+         * @return builder
+         * 
+         */
         public Builder properties(Output<Map<String,String>> properties) {
             $.properties = properties;
             return this;
         }
 
+        /**
+         * @param properties a map of string key-value pairs with recipient&#39;s properties.  Properties with name starting with `databricks.` are reserved.
+         * 
+         * @return builder
+         * 
+         */
         public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
         }

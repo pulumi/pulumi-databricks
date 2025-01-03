@@ -15,21 +15,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskSqlTaskDashboard {
+    /**
+     * @return string specifying a custom subject of email sent.
+     * 
+     */
     private @Nullable String customSubject;
+    /**
+     * @return (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * 
+     */
     private String dashboardId;
+    /**
+     * @return flag that specifies if subscriptions are paused or not.
+     * 
+     */
     private @Nullable Boolean pauseSubscriptions;
+    /**
+     * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * 
+     */
     private @Nullable List<JobTaskSqlTaskDashboardSubscription> subscriptions;
 
     private JobTaskSqlTaskDashboard() {}
+    /**
+     * @return string specifying a custom subject of email sent.
+     * 
+     */
     public Optional<String> customSubject() {
         return Optional.ofNullable(this.customSubject);
     }
+    /**
+     * @return (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     * 
+     */
     public String dashboardId() {
         return this.dashboardId;
     }
+    /**
+     * @return flag that specifies if subscriptions are paused or not.
+     * 
+     */
     public Optional<Boolean> pauseSubscriptions() {
         return Optional.ofNullable(this.pauseSubscriptions);
     }
+    /**
+     * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * 
+     */
     public List<JobTaskSqlTaskDashboardSubscription> subscriptions() {
         return this.subscriptions == null ? List.of() : this.subscriptions;
     }

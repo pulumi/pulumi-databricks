@@ -16,6 +16,10 @@ public final class GetCatalogsResult {
      * 
      */
     private String id;
+    /**
+     * @return set of databricks.Catalog names
+     * 
+     */
     private List<String> ids;
 
     private GetCatalogsResult() {}
@@ -26,6 +30,10 @@ public final class GetCatalogsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return set of databricks.Catalog names
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }

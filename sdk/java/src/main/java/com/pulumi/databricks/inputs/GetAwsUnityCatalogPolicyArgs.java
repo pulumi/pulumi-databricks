@@ -16,37 +16,77 @@ public final class GetAwsUnityCatalogPolicyArgs extends com.pulumi.resources.Inv
 
     public static final GetAwsUnityCatalogPolicyArgs Empty = new GetAwsUnityCatalogPolicyArgs();
 
+    /**
+     * The Account ID of the current AWS account (not your Databricks account).
+     * 
+     */
     @Import(name="awsAccountId", required=true)
     private Output<String> awsAccountId;
 
+    /**
+     * @return The Account ID of the current AWS account (not your Databricks account).
+     * 
+     */
     public Output<String> awsAccountId() {
         return this.awsAccountId;
     }
 
+    /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
     @Import(name="awsPartition")
     private @Nullable Output<String> awsPartition;
 
+    /**
+     * @return AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
     public Optional<Output<String>> awsPartition() {
         return Optional.ofNullable(this.awsPartition);
     }
 
+    /**
+     * The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+     * 
+     */
     @Import(name="bucketName", required=true)
     private Output<String> bucketName;
 
+    /**
+     * @return The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+     * 
+     */
     public Output<String> bucketName() {
         return this.bucketName;
     }
 
+    /**
+     * If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+     * 
+     */
     @Import(name="kmsName")
     private @Nullable Output<String> kmsName;
 
+    /**
+     * @return If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+     * 
+     */
     public Optional<Output<String>> kmsName() {
         return Optional.ofNullable(this.kmsName);
     }
 
+    /**
+     * The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+     * 
+     */
     @Import(name="roleName", required=true)
     private Output<String> roleName;
 
+    /**
+     * @return The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+     * 
+     */
     public Output<String> roleName() {
         return this.roleName;
     }
@@ -79,47 +119,107 @@ public final class GetAwsUnityCatalogPolicyArgs extends com.pulumi.resources.Inv
             $ = new GetAwsUnityCatalogPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param awsAccountId The Account ID of the current AWS account (not your Databricks account).
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsAccountId(Output<String> awsAccountId) {
             $.awsAccountId = awsAccountId;
             return this;
         }
 
+        /**
+         * @param awsAccountId The Account ID of the current AWS account (not your Databricks account).
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsAccountId(String awsAccountId) {
             return awsAccountId(Output.of(awsAccountId));
         }
 
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsPartition(@Nullable Output<String> awsPartition) {
             $.awsPartition = awsPartition;
             return this;
         }
 
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsPartition(String awsPartition) {
             return awsPartition(Output.of(awsPartition));
         }
 
+        /**
+         * @param bucketName The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucketName(Output<String> bucketName) {
             $.bucketName = bucketName;
             return this;
         }
 
+        /**
+         * @param bucketName The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucketName(String bucketName) {
             return bucketName(Output.of(bucketName));
         }
 
+        /**
+         * @param kmsName If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsName(@Nullable Output<String> kmsName) {
             $.kmsName = kmsName;
             return this;
         }
 
+        /**
+         * @param kmsName If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsName(String kmsName) {
             return kmsName(Output.of(kmsName));
         }
 
+        /**
+         * @param roleName The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleName(Output<String> roleName) {
             $.roleName = roleName;
             return this;
         }
 
+        /**
+         * @param roleName The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleName(String roleName) {
             return roleName(Output.of(roleName));
         }

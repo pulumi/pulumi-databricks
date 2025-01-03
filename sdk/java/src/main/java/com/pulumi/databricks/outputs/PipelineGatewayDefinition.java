@@ -11,25 +11,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PipelineGatewayDefinition {
+    /**
+     * @return Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+     * 
+     */
     private @Nullable String connectionId;
     private @Nullable String connectionName;
+    /**
+     * @return Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
+     * 
+     */
     private @Nullable String gatewayStorageCatalog;
+    /**
+     * @return Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+     * 
+     */
     private @Nullable String gatewayStorageName;
+    /**
+     * @return Required, Immutable. The name of the schema for the gateway pipelines&#39;s storage location.
+     * 
+     */
     private @Nullable String gatewayStorageSchema;
 
     private PipelineGatewayDefinition() {}
+    /**
+     * @return Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+     * 
+     */
     public Optional<String> connectionId() {
         return Optional.ofNullable(this.connectionId);
     }
     public Optional<String> connectionName() {
         return Optional.ofNullable(this.connectionName);
     }
+    /**
+     * @return Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
+     * 
+     */
     public Optional<String> gatewayStorageCatalog() {
         return Optional.ofNullable(this.gatewayStorageCatalog);
     }
+    /**
+     * @return Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Delta Live Tables system will automatically create the storage location under the catalog and schema.
+     * 
+     */
     public Optional<String> gatewayStorageName() {
         return Optional.ofNullable(this.gatewayStorageName);
     }
+    /**
+     * @return Required, Immutable. The name of the schema for the gateway pipelines&#39;s storage location.
+     * 
+     */
     public Optional<String> gatewayStorageSchema() {
         return Optional.ofNullable(this.gatewayStorageSchema);
     }

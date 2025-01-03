@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetRegisteredModelVersionsModelVersionModelVersionDependencyResult
     {
+        /// <summary>
+        /// list of dependencies consisting of following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResult> Dependencies;
 
         [OutputConstructor]

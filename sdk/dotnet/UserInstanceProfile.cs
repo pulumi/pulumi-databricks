@@ -9,12 +9,67 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// &gt; **Deprecated** Please rewrite with databricks_user_role. This resource will be removed in v0.5.x
+    /// 
+    /// This resource allows you to attach databricks.InstanceProfile (AWS) to databricks_user.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instanceProfile = new Databricks.InstanceProfile("instance_profile", new()
+    ///     {
+    ///         InstanceProfileArn = "my_instance_profile_arn",
+    ///     });
+    /// 
+    ///     var myUser = new Databricks.User("my_user", new()
+    ///     {
+    ///         UserName = "me@example.com",
+    ///     });
+    /// 
+    ///     var myUserInstanceProfile = new Databricks.UserInstanceProfile("my_user_instance_profile", new()
+    ///     {
+    ///         UserId = myUser.Id,
+    ///         InstanceProfileId = instanceProfile.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * End to end workspace management guide.
+    /// * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+    /// * databricks.GroupMember to attach users and groups as group members.
+    /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+    /// * databricks.User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to databricks.Group within the workspace.
+    /// * databricks.User data to retrieve information about databricks_user.
+    /// 
+    /// ## Import
+    /// 
+    /// !&gt; Importing this resource is not currently supported.
+    /// </summary>
     [DatabricksResourceType("databricks:index/userInstanceProfile:UserInstanceProfile")]
     public partial class UserInstanceProfile : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// This is the id of the instance profile resource.
+        /// </summary>
         [Output("instanceProfileId")]
         public Output<string> InstanceProfileId { get; private set; } = null!;
 
+        /// <summary>
+        /// This is the id of the user resource.
+        /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
 
@@ -64,9 +119,15 @@ namespace Pulumi.Databricks
 
     public sealed class UserInstanceProfileArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This is the id of the instance profile resource.
+        /// </summary>
         [Input("instanceProfileId", required: true)]
         public Input<string> InstanceProfileId { get; set; } = null!;
 
+        /// <summary>
+        /// This is the id of the user resource.
+        /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
 
@@ -78,9 +139,15 @@ namespace Pulumi.Databricks
 
     public sealed class UserInstanceProfileState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This is the id of the instance profile resource.
+        /// </summary>
         [Input("instanceProfileId")]
         public Input<string>? InstanceProfileId { get; set; }
 
+        /// <summary>
+        /// This is the id of the user resource.
+        /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
 

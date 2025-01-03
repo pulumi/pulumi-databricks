@@ -13,37 +13,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMlflowExperimentResult {
+    /**
+     * @return Location where artifacts for the experiment are stored.
+     * 
+     */
     private String artifactLocation;
+    /**
+     * @return Creation time in unix time stamp.
+     * 
+     */
     private Integer creationTime;
+    /**
+     * @return Unique identifier for the experiment. (same as `id`)
+     * 
+     */
     private String experimentId;
+    /**
+     * @return Unique identifier for the experiment. (same as `experiment_id`)
+     * 
+     */
     private String id;
+    /**
+     * @return Last update time in unix time stamp.
+     * 
+     */
     private Integer lastUpdateTime;
+    /**
+     * @return Current life cycle stage of the experiment: `active` or `deleted`.
+     * 
+     */
     private String lifecycleStage;
+    /**
+     * @return Path to experiment.
+     * 
+     */
     private String name;
+    /**
+     * @return Additional metadata key-value pairs.
+     * 
+     */
     private List<GetMlflowExperimentTag> tags;
 
     private GetMlflowExperimentResult() {}
+    /**
+     * @return Location where artifacts for the experiment are stored.
+     * 
+     */
     public String artifactLocation() {
         return this.artifactLocation;
     }
+    /**
+     * @return Creation time in unix time stamp.
+     * 
+     */
     public Integer creationTime() {
         return this.creationTime;
     }
+    /**
+     * @return Unique identifier for the experiment. (same as `id`)
+     * 
+     */
     public String experimentId() {
         return this.experimentId;
     }
+    /**
+     * @return Unique identifier for the experiment. (same as `experiment_id`)
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Last update time in unix time stamp.
+     * 
+     */
     public Integer lastUpdateTime() {
         return this.lastUpdateTime;
     }
+    /**
+     * @return Current life cycle stage of the experiment: `active` or `deleted`.
+     * 
+     */
     public String lifecycleStage() {
         return this.lifecycleStage;
     }
+    /**
+     * @return Path to experiment.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Additional metadata key-value pairs.
+     * 
+     */
     public List<GetMlflowExperimentTag> tags() {
         return this.tags;
     }

@@ -13,15 +13,45 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleResult
     {
+        /// <summary>
+        /// The current status of this private endpoint.
+        /// </summary>
         public readonly string? ConnectionState;
+        /// <summary>
+        /// Time in epoch milliseconds when this object was created.
+        /// </summary>
         public readonly int? CreationTime;
+        /// <summary>
+        /// Whether this private endpoint is deactivated.
+        /// </summary>
         public readonly bool? Deactivated;
+        /// <summary>
+        /// Time in epoch milliseconds when this object was deactivated.
+        /// </summary>
         public readonly int? DeactivatedAt;
+        /// <summary>
+        /// The name of the Azure private endpoint resource.
+        /// </summary>
         public readonly string? EndpointName;
+        /// <summary>
+        /// The sub-resource type (group ID) of the target resource.
+        /// </summary>
         public readonly string? GroupId;
+        /// <summary>
+        /// The Databricks network connectivity configuration ID.
+        /// </summary>
         public readonly string? NetworkConnectivityConfigId;
+        /// <summary>
+        /// The Azure resource ID of the target resource.
+        /// </summary>
         public readonly string? ResourceId;
+        /// <summary>
+        /// The ID of a private endpoint rule.
+        /// </summary>
         public readonly string? RuleId;
+        /// <summary>
+        /// Time in epoch milliseconds when the network was updated.
+        /// </summary>
         public readonly int? UpdatedTime;
 
         [OutputConstructor]

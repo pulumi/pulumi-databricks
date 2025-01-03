@@ -17,100 +17,276 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCatalogCatalogInfo {
     private @Nullable Boolean browseOnly;
+    /**
+     * @return Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+     * 
+     */
     private @Nullable String catalogType;
+    /**
+     * @return Free-form text description
+     * 
+     */
     private @Nullable String comment;
+    /**
+     * @return The name of the connection to an external data source.
+     * 
+     */
     private @Nullable String connectionName;
+    /**
+     * @return Time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     private @Nullable Integer createdAt;
+    /**
+     * @return Username of catalog creator.
+     * 
+     */
     private @Nullable String createdBy;
+    /**
+     * @return object describing applied predictive optimization flag.
+     * 
+     */
     private @Nullable GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag effectivePredictiveOptimizationFlag;
+    /**
+     * @return Whether predictive optimization should be enabled for this object and objects under it.
+     * 
+     */
     private @Nullable String enablePredictiveOptimization;
+    /**
+     * @return The full name of the catalog. Corresponds with the name field.
+     * 
+     */
     private @Nullable String fullName;
+    /**
+     * @return Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+     * 
+     */
     private @Nullable String isolationMode;
+    /**
+     * @return Unique identifier of parent metastore.
+     * 
+     */
     private @Nullable String metastoreId;
+    /**
+     * @return name of the catalog
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return A map of key-value properties attached to the securable.
+     * 
+     */
     private @Nullable Map<String,String> options;
+    /**
+     * @return Current owner of the catalog
+     * 
+     */
     private @Nullable String owner;
+    /**
+     * @return A map of key-value properties attached to the securable.
+     * 
+     */
     private @Nullable Map<String,String> properties;
+    /**
+     * @return The name of delta sharing provider.
+     * 
+     */
     private @Nullable String providerName;
     private @Nullable GetCatalogCatalogInfoProvisioningInfo provisioningInfo;
+    /**
+     * @return Kind of catalog securable.
+     * 
+     */
     private @Nullable String securableKind;
+    /**
+     * @return Securable type.
+     * 
+     */
     private @Nullable String securableType;
+    /**
+     * @return The name of the share under the share provider.
+     * 
+     */
     private @Nullable String shareName;
+    /**
+     * @return Storage Location URL (full path) for managed tables within catalog.
+     * 
+     */
     private @Nullable String storageLocation;
+    /**
+     * @return Storage root URL for managed tables within catalog.
+     * 
+     */
     private @Nullable String storageRoot;
+    /**
+     * @return Time at which this catalog was last modified, in epoch milliseconds.
+     * 
+     */
     private @Nullable Integer updatedAt;
+    /**
+     * @return Username of user who last modified catalog.
+     * 
+     */
     private @Nullable String updatedBy;
 
     private GetCatalogCatalogInfo() {}
     public Optional<Boolean> browseOnly() {
         return Optional.ofNullable(this.browseOnly);
     }
+    /**
+     * @return Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+     * 
+     */
     public Optional<String> catalogType() {
         return Optional.ofNullable(this.catalogType);
     }
+    /**
+     * @return Free-form text description
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return The name of the connection to an external data source.
+     * 
+     */
     public Optional<String> connectionName() {
         return Optional.ofNullable(this.connectionName);
     }
+    /**
+     * @return Time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
+    /**
+     * @return Username of catalog creator.
+     * 
+     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
+    /**
+     * @return object describing applied predictive optimization flag.
+     * 
+     */
     public Optional<GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag> effectivePredictiveOptimizationFlag() {
         return Optional.ofNullable(this.effectivePredictiveOptimizationFlag);
     }
+    /**
+     * @return Whether predictive optimization should be enabled for this object and objects under it.
+     * 
+     */
     public Optional<String> enablePredictiveOptimization() {
         return Optional.ofNullable(this.enablePredictiveOptimization);
     }
+    /**
+     * @return The full name of the catalog. Corresponds with the name field.
+     * 
+     */
     public Optional<String> fullName() {
         return Optional.ofNullable(this.fullName);
     }
+    /**
+     * @return Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+     * 
+     */
     public Optional<String> isolationMode() {
         return Optional.ofNullable(this.isolationMode);
     }
+    /**
+     * @return Unique identifier of parent metastore.
+     * 
+     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
+    /**
+     * @return name of the catalog
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return A map of key-value properties attached to the securable.
+     * 
+     */
     public Map<String,String> options() {
         return this.options == null ? Map.of() : this.options;
     }
+    /**
+     * @return Current owner of the catalog
+     * 
+     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
+    /**
+     * @return A map of key-value properties attached to the securable.
+     * 
+     */
     public Map<String,String> properties() {
         return this.properties == null ? Map.of() : this.properties;
     }
+    /**
+     * @return The name of delta sharing provider.
+     * 
+     */
     public Optional<String> providerName() {
         return Optional.ofNullable(this.providerName);
     }
     public Optional<GetCatalogCatalogInfoProvisioningInfo> provisioningInfo() {
         return Optional.ofNullable(this.provisioningInfo);
     }
+    /**
+     * @return Kind of catalog securable.
+     * 
+     */
     public Optional<String> securableKind() {
         return Optional.ofNullable(this.securableKind);
     }
+    /**
+     * @return Securable type.
+     * 
+     */
     public Optional<String> securableType() {
         return Optional.ofNullable(this.securableType);
     }
+    /**
+     * @return The name of the share under the share provider.
+     * 
+     */
     public Optional<String> shareName() {
         return Optional.ofNullable(this.shareName);
     }
+    /**
+     * @return Storage Location URL (full path) for managed tables within catalog.
+     * 
+     */
     public Optional<String> storageLocation() {
         return Optional.ofNullable(this.storageLocation);
     }
+    /**
+     * @return Storage root URL for managed tables within catalog.
+     * 
+     */
     public Optional<String> storageRoot() {
         return Optional.ofNullable(this.storageRoot);
     }
+    /**
+     * @return Time at which this catalog was last modified, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
+    /**
+     * @return Username of user who last modified catalog.
+     * 
+     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }

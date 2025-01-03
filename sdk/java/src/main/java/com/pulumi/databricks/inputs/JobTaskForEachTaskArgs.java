@@ -18,23 +18,47 @@ public final class JobTaskForEachTaskArgs extends com.pulumi.resources.ResourceA
 
     public static final JobTaskForEachTaskArgs Empty = new JobTaskForEachTaskArgs();
 
+    /**
+     * Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
+     * 
+     */
     @Import(name="concurrency")
     private @Nullable Output<Integer> concurrency;
 
+    /**
+     * @return Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
+     * 
+     */
     public Optional<Output<Integer>> concurrency() {
         return Optional.ofNullable(this.concurrency);
     }
 
+    /**
+     * (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
+     * 
+     */
     @Import(name="inputs", required=true)
     private Output<String> inputs;
 
+    /**
+     * @return (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
+     * 
+     */
     public Output<String> inputs() {
         return this.inputs;
     }
 
+    /**
+     * Task to run against the `inputs` list.
+     * 
+     */
     @Import(name="task", required=true)
     private Output<JobTaskForEachTaskTaskArgs> task;
 
+    /**
+     * @return Task to run against the `inputs` list.
+     * 
+     */
     public Output<JobTaskForEachTaskTaskArgs> task() {
         return this.task;
     }
@@ -65,29 +89,65 @@ public final class JobTaskForEachTaskArgs extends com.pulumi.resources.ResourceA
             $ = new JobTaskForEachTaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param concurrency Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder concurrency(@Nullable Output<Integer> concurrency) {
             $.concurrency = concurrency;
             return this;
         }
 
+        /**
+         * @param concurrency Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder concurrency(Integer concurrency) {
             return concurrency(Output.of(concurrency));
         }
 
+        /**
+         * @param inputs (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder inputs(Output<String> inputs) {
             $.inputs = inputs;
             return this;
         }
 
+        /**
+         * @param inputs (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder inputs(String inputs) {
             return inputs(Output.of(inputs));
         }
 
+        /**
+         * @param task Task to run against the `inputs` list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder task(Output<JobTaskForEachTaskTaskArgs> task) {
             $.task = task;
             return this;
         }
 
+        /**
+         * @param task Task to run against the `inputs` list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder task(JobTaskForEachTaskTaskArgs task) {
             return task(Output.of(task));
         }

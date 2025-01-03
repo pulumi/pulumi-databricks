@@ -29,6 +29,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly int? MaxConcurrentRuns;
         public readonly int? MaxRetries;
         public readonly int? MinRetryIntervalMillis;
+        /// <summary>
+        /// the job name of databricks.Job if the resource was matched by id.
+        /// </summary>
         public readonly string? Name;
         public readonly Outputs.GetJobJobSettingsSettingsNewClusterResult? NewCluster;
         public readonly Outputs.GetJobJobSettingsSettingsNotebookTaskResult? NotebookTask;

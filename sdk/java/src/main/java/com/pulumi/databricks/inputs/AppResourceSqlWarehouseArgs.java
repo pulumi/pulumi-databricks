@@ -14,16 +14,32 @@ public final class AppResourceSqlWarehouseArgs extends com.pulumi.resources.Reso
 
     public static final AppResourceSqlWarehouseArgs Empty = new AppResourceSqlWarehouseArgs();
 
+    /**
+     * Id of the SQL warehouse to grant permission on.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return Id of the SQL warehouse to grant permission on.
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
 
+    /**
+     * Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
+     * 
+     */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
+    /**
+     * @return Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
+     * 
+     */
     public Output<String> permission() {
         return this.permission;
     }
@@ -53,20 +69,44 @@ public final class AppResourceSqlWarehouseArgs extends com.pulumi.resources.Reso
             $ = new AppResourceSqlWarehouseArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id Id of the SQL warehouse to grant permission on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id Id of the SQL warehouse to grant permission on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
+        /**
+         * @param permission Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }

@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppResourceSqlWarehouse
     {
+        /// <summary>
+        /// Id of the SQL warehouse to grant permission on.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
+        /// </summary>
         public readonly string Permission;
 
         [OutputConstructor]

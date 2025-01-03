@@ -6,6 +6,60 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
+ *
+ * > This documentation covers the Workspace Model Registry. Databricks recommends using Models in Unity Catalog. Models in Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const test = new databricks.MlflowModel("test", {
+ *     name: "My MLflow Model",
+ *     description: "My MLflow model description",
+ *     tags: [
+ *         {
+ *             key: "key1",
+ *             value: "value1",
+ *         },
+ *         {
+ *             key: "key2",
+ *             value: "value2",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Access Control
+ *
+ * * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, *Manage Staging Versions*, *Manage Production Versions*, and *Manage* individual models.
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * databricks.RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+ * * End to end workspace management guide.
+ * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+ * * databricks.Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
+ * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ * * databricks.Notebook data to export a notebook from Databricks Workspace.
+ * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+ *
+ * ## Import
+ *
+ * The model resource can be imported using the name
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
+ * ```
+ */
 export class MlflowModel extends pulumi.CustomResource {
     /**
      * Get an existing MlflowModel resource's state with the given name, ID, and optional extra
@@ -34,9 +88,18 @@ export class MlflowModel extends pulumi.CustomResource {
         return obj['__pulumiType'] === MlflowModel.__pulumiType;
     }
 
+    /**
+     * The description of the MLflow model.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Name of MLflow model. Change of name triggers new resource.
+     */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly registeredModelId!: pulumi.Output<string>;
+    /**
+     * Tags for the MLflow model.
+     */
     public readonly tags!: pulumi.Output<outputs.MlflowModelTag[] | undefined>;
 
     /**
@@ -72,9 +135,18 @@ export class MlflowModel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MlflowModel resources.
  */
 export interface MlflowModelState {
+    /**
+     * The description of the MLflow model.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Name of MLflow model. Change of name triggers new resource.
+     */
     name?: pulumi.Input<string>;
     registeredModelId?: pulumi.Input<string>;
+    /**
+     * Tags for the MLflow model.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.MlflowModelTag>[]>;
 }
 
@@ -82,7 +154,16 @@ export interface MlflowModelState {
  * The set of arguments for constructing a MlflowModel resource.
  */
 export interface MlflowModelArgs {
+    /**
+     * The description of the MLflow model.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Name of MLflow model. Change of name triggers new resource.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Tags for the MLflow model.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.MlflowModelTag>[]>;
 }

@@ -16,30 +16,62 @@ public final class ShareObjectPartitionValueArgs extends com.pulumi.resources.Re
 
     public static final ShareObjectPartitionValueArgs Empty = new ShareObjectPartitionValueArgs();
 
+    /**
+     * The name of the partition column.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The name of the partition column.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * The operator to apply for the value, one of: `EQUAL`, `LIKE`
+     * 
+     */
     @Import(name="op", required=true)
     private Output<String> op;
 
+    /**
+     * @return The operator to apply for the value, one of: `EQUAL`, `LIKE`
+     * 
+     */
     public Output<String> op() {
         return this.op;
     }
 
+    /**
+     * The key of a Delta Sharing recipient&#39;s property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+     * 
+     */
     @Import(name="recipientPropertyKey")
     private @Nullable Output<String> recipientPropertyKey;
 
+    /**
+     * @return The key of a Delta Sharing recipient&#39;s property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+     * 
+     */
     public Optional<Output<String>> recipientPropertyKey() {
         return Optional.ofNullable(this.recipientPropertyKey);
     }
 
+    /**
+     * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -71,38 +103,86 @@ public final class ShareObjectPartitionValueArgs extends com.pulumi.resources.Re
             $ = new ShareObjectPartitionValueArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The name of the partition column.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the partition column.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param op The operator to apply for the value, one of: `EQUAL`, `LIKE`
+         * 
+         * @return builder
+         * 
+         */
         public Builder op(Output<String> op) {
             $.op = op;
             return this;
         }
 
+        /**
+         * @param op The operator to apply for the value, one of: `EQUAL`, `LIKE`
+         * 
+         * @return builder
+         * 
+         */
         public Builder op(String op) {
             return op(Output.of(op));
         }
 
+        /**
+         * @param recipientPropertyKey The key of a Delta Sharing recipient&#39;s property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recipientPropertyKey(@Nullable Output<String> recipientPropertyKey) {
             $.recipientPropertyKey = recipientPropertyKey;
             return this;
         }
 
+        /**
+         * @param recipientPropertyKey The key of a Delta Sharing recipient&#39;s property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recipientPropertyKey(String recipientPropertyKey) {
             return recipientPropertyKey(Output.of(recipientPropertyKey));
         }
 
+        /**
+         * @param value The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

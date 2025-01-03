@@ -45,6 +45,9 @@ class GetSharesResult:
     @property
     @pulumi.getter
     def shares(self) -> Sequence[str]:
+        """
+        list of Share names.
+        """
         return pulumi.get(self, "shares")
 
 
@@ -61,7 +64,30 @@ class AwaitableGetSharesResult(GetSharesResult):
 def get_shares(shares: Optional[Sequence[str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSharesResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves a list of Share name, that were created by Pulumi or manually.
+
+    ## Example Usage
+
+    Getting all existing shares in the metastore
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_shares()
+    pulumi.export("shareName", this.shares)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Share to create Delta Sharing shares.
+    * Recipient to create Delta Sharing recipients.
+    * Grants to manage Delta Sharing permissions.
+
+
+    :param Sequence[str] shares: list of Share names.
     """
     __args__ = dict()
     __args__['shares'] = shares
@@ -74,7 +100,30 @@ def get_shares(shares: Optional[Sequence[str]] = None,
 def get_shares_output(shares: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSharesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves a list of Share name, that were created by Pulumi or manually.
+
+    ## Example Usage
+
+    Getting all existing shares in the metastore
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_shares()
+    pulumi.export("shareName", this.shares)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Share to create Delta Sharing shares.
+    * Recipient to create Delta Sharing recipients.
+    * Grants to manage Delta Sharing permissions.
+
+
+    :param Sequence[str] shares: list of Share names.
     """
     __args__ = dict()
     __args__['shares'] = shares

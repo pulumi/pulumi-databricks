@@ -15,16 +15,42 @@ public final class GetNotificationDestinationsArgs extends com.pulumi.resources.
 
     public static final GetNotificationDestinationsArgs Empty = new GetNotificationDestinationsArgs();
 
+    /**
+     * A **case-insensitive** substring to filter Notification Destinations by their display name.
+     * 
+     */
     @Import(name="displayNameContains")
     private @Nullable Output<String> displayNameContains;
 
+    /**
+     * @return A **case-insensitive** substring to filter Notification Destinations by their display name.
+     * 
+     */
     public Optional<Output<String>> displayNameContains() {
         return Optional.ofNullable(this.displayNameContains);
     }
 
+    /**
+     * The type of the Notification Destination to filter by. Valid values are:
+     * * `EMAIL` - Filters Notification Destinations of type Email.
+     * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
+     * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
+     * * `SLACK` - Filters Notification Destinations of type Slack.
+     * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The type of the Notification Destination to filter by. Valid values are:
+     * * `EMAIL` - Filters Notification Destinations of type Email.
+     * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
+     * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
+     * * `SLACK` - Filters Notification Destinations of type Slack.
+     * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -54,20 +80,54 @@ public final class GetNotificationDestinationsArgs extends com.pulumi.resources.
             $ = new GetNotificationDestinationsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param displayNameContains A **case-insensitive** substring to filter Notification Destinations by their display name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayNameContains(@Nullable Output<String> displayNameContains) {
             $.displayNameContains = displayNameContains;
             return this;
         }
 
+        /**
+         * @param displayNameContains A **case-insensitive** substring to filter Notification Destinations by their display name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayNameContains(String displayNameContains) {
             return displayNameContains(Output.of(displayNameContains));
         }
 
+        /**
+         * @param type The type of the Notification Destination to filter by. Valid values are:
+         * * `EMAIL` - Filters Notification Destinations of type Email.
+         * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
+         * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
+         * * `SLACK` - Filters Notification Destinations of type Slack.
+         * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type of the Notification Destination to filter by. Valid values are:
+         * * `EMAIL` - Filters Notification Destinations of type Email.
+         * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
+         * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
+         * * `SLACK` - Filters Notification Destinations of type Slack.
+         * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

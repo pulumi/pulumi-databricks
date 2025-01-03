@@ -15,16 +15,32 @@ public final class GroupRoleState extends com.pulumi.resources.ResourceArgs {
 
     public static final GroupRoleState Empty = new GroupRoleState();
 
+    /**
+     * This is the id of the group resource.
+     * 
+     */
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
+    /**
+     * @return This is the id of the group resource.
+     * 
+     */
     public Optional<Output<String>> groupId() {
         return Optional.ofNullable(this.groupId);
     }
 
+    /**
+     * Either a role name or the ARN/ID of the instance profile resource.
+     * 
+     */
     @Import(name="role")
     private @Nullable Output<String> role;
 
+    /**
+     * @return Either a role name or the ARN/ID of the instance profile resource.
+     * 
+     */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
@@ -54,20 +70,44 @@ public final class GroupRoleState extends com.pulumi.resources.ResourceArgs {
             $ = new GroupRoleState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param groupId This is the id of the group resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(@Nullable Output<String> groupId) {
             $.groupId = groupId;
             return this;
         }
 
+        /**
+         * @param groupId This is the id of the group resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
         }
 
+        /**
+         * @param role Either a role name or the ARN/ID of the instance profile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(@Nullable Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role Either a role name or the ARN/ID of the instance profile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }

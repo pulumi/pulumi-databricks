@@ -17,30 +17,62 @@ public final class MlflowWebhookHttpUrlSpecArgs extends com.pulumi.resources.Res
 
     public static final MlflowWebhookHttpUrlSpecArgs Empty = new MlflowWebhookHttpUrlSpecArgs();
 
+    /**
+     * Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `&lt;auth type&gt; &lt;credentials&gt;`, e.g. `Bearer &lt;access_token&gt;`. If set to an empty string, no authorization header will be included in the request.
+     * 
+     */
     @Import(name="authorization")
     private @Nullable Output<String> authorization;
 
+    /**
+     * @return Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `&lt;auth type&gt; &lt;credentials&gt;`, e.g. `Bearer &lt;access_token&gt;`. If set to an empty string, no authorization header will be included in the request.
+     * 
+     */
     public Optional<Output<String>> authorization() {
         return Optional.ofNullable(this.authorization);
     }
 
+    /**
+     * Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
+     * 
+     */
     @Import(name="enableSslVerification")
     private @Nullable Output<Boolean> enableSslVerification;
 
+    /**
+     * @return Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
+     * 
+     */
     public Optional<Output<Boolean>> enableSslVerification() {
         return Optional.ofNullable(this.enableSslVerification);
     }
 
+    /**
+     * Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+     * 
+     */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
+    /**
+     * @return Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+     * 
+     */
     public Optional<Output<String>> secret() {
         return Optional.ofNullable(this.secret);
     }
 
+    /**
+     * External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
@@ -72,38 +104,86 @@ public final class MlflowWebhookHttpUrlSpecArgs extends com.pulumi.resources.Res
             $ = new MlflowWebhookHttpUrlSpecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param authorization Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `&lt;auth type&gt; &lt;credentials&gt;`, e.g. `Bearer &lt;access_token&gt;`. If set to an empty string, no authorization header will be included in the request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorization(@Nullable Output<String> authorization) {
             $.authorization = authorization;
             return this;
         }
 
+        /**
+         * @param authorization Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `&lt;auth type&gt; &lt;credentials&gt;`, e.g. `Bearer &lt;access_token&gt;`. If set to an empty string, no authorization header will be included in the request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorization(String authorization) {
             return authorization(Output.of(authorization));
         }
 
+        /**
+         * @param enableSslVerification Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableSslVerification(@Nullable Output<Boolean> enableSslVerification) {
             $.enableSslVerification = enableSslVerification;
             return this;
         }
 
+        /**
+         * @param enableSslVerification Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableSslVerification(Boolean enableSslVerification) {
             return enableSslVerification(Output.of(enableSslVerification));
         }
 
+        /**
+         * @param secret Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param secret Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
         }
 
+        /**
+         * @param url External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

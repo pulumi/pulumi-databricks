@@ -85,6 +85,9 @@ class GetSparkVersionResult:
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -151,7 +154,57 @@ def get_spark_version(beta: Optional[bool] = None,
                       spark_version: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSparkVersionResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along get_node_type data source.
+
+    > **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    with_gpu = databricks.get_node_type(local_disk=True,
+        min_cores=16,
+        gb_per_core=1,
+        min_gpus=1)
+    gpu_ml = databricks.get_spark_version(gpu=True,
+        ml=True)
+    research = databricks.Cluster("research",
+        cluster_name="Research Cluster",
+        spark_version=gpu_ml.id,
+        node_type_id=with_gpu.id,
+        autotermination_minutes=20,
+        autoscale={
+            "min_workers": 1,
+            "max_workers": 50,
+        })
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * End to end workspace management guide.
+    * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+    * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
+    * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+
+
+    :param bool beta: if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+    :param bool genomics: if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+    :param bool gpu: if we should limit the search only to runtimes that support GPUs. Default to `false`.
+    :param bool graviton: if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
+    :param str id: Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+    :param bool latest: if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+    :param bool long_term_support: if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
+    :param bool ml: if we should limit the search only to ML runtimes. Default to `false`.
+    :param bool photon: if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\\"PHOTON\\"` in the cluster configuration instead!*
+    :param str scala: if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+    :param str spark_version: if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
     """
     __args__ = dict()
     __args__['beta'] = beta
@@ -193,7 +246,57 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[bool]]] = None
                              spark_version: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSparkVersionResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along get_node_type data source.
+
+    > **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    with_gpu = databricks.get_node_type(local_disk=True,
+        min_cores=16,
+        gb_per_core=1,
+        min_gpus=1)
+    gpu_ml = databricks.get_spark_version(gpu=True,
+        ml=True)
+    research = databricks.Cluster("research",
+        cluster_name="Research Cluster",
+        spark_version=gpu_ml.id,
+        node_type_id=with_gpu.id,
+        autotermination_minutes=20,
+        autoscale={
+            "min_workers": 1,
+            "max_workers": 50,
+        })
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * End to end workspace management guide.
+    * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+    * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
+    * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+
+
+    :param bool beta: if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+    :param bool genomics: if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+    :param bool gpu: if we should limit the search only to runtimes that support GPUs. Default to `false`.
+    :param bool graviton: if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
+    :param str id: Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+    :param bool latest: if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+    :param bool long_term_support: if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
+    :param bool ml: if we should limit the search only to ML runtimes. Default to `false`.
+    :param bool photon: if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\\"PHOTON\\"` in the cluster configuration instead!*
+    :param str scala: if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+    :param str spark_version: if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
     """
     __args__ = dict()
     __args__['beta'] = beta

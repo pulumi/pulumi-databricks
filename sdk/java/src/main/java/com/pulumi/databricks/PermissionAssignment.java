@@ -14,17 +14,197 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * These resources are invoked in the workspace context.
+ * 
+ * ## Example Usage
+ * 
+ * In workspace context, adding account-level user to a workspace:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetUserArgs;
+ * import com.pulumi.databricks.PermissionAssignment;
+ * import com.pulumi.databricks.PermissionAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         // Use the account provider
+ *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
+ *             .userName("me}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *         var addUser = new PermissionAssignment("addUser", PermissionAssignmentArgs.builder()
+ *             .principalId(me.applyValue(getUserResult -> getUserResult.id()))
+ *             .permissions("USER")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * In workspace context, adding account-level service principal to a workspace:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
+ * import com.pulumi.databricks.PermissionAssignment;
+ * import com.pulumi.databricks.PermissionAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Use the account provider
+ *         final var sp = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+ *             .displayName("Automation-only SP")
+ *             .build());
+ * 
+ *         var addAdminSpn = new PermissionAssignment("addAdminSpn", PermissionAssignmentArgs.builder()
+ *             .principalId(sp.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id()))
+ *             .permissions("ADMIN")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * In workspace context, adding account-level group to a workspace:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetGroupArgs;
+ * import com.pulumi.databricks.PermissionAssignment;
+ * import com.pulumi.databricks.PermissionAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Use the account provider
+ *         final var accountLevel = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+ *             .displayName("example-group")
+ *             .build());
+ * 
+ *         // Use the workspace provider
+ *         var this_ = new PermissionAssignment("this", PermissionAssignmentArgs.builder()
+ *             .principalId(accountLevel.applyValue(getGroupResult -> getGroupResult.id()))
+ *             .permissions("USER")
+ *             .build());
+ * 
+ *         final var workspaceLevel = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+ *             .displayName("example-group")
+ *             .build());
+ * 
+ *         ctx.export("databricksGroupId", workspaceLevel.applyValue(getGroupResult -> getGroupResult.id()));
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are used in the same context:
+ * 
+ * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+ * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+ * * databricks.GroupMember to attach users and groups as group members.
+ * * databricks.MwsPermissionAssignment to manage permission assignment from an account context
+ * 
+ * ## Import
+ * 
+ * The resource `databricks_permission_assignment` can be imported using the principal id
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this principal_id
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/permissionAssignment:PermissionAssignment")
 public class PermissionAssignment extends com.pulumi.resources.CustomResource {
+    /**
+     * The list of workspace permissions to assign to the principal:
+     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
+     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * 
+     */
     @Export(name="permissions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> permissions;
 
+    /**
+     * @return The list of workspace permissions to assign to the principal:
+     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
+     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * 
+     */
     public Output<List<String>> permissions() {
         return this.permissions;
     }
+    /**
+     * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
+     * 
+     */
     @Export(name="principalId", refs={String.class}, tree="[0]")
     private Output<String> principalId;
 
+    /**
+     * @return Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
+     * 
+     */
     public Output<String> principalId() {
         return this.principalId;
     }

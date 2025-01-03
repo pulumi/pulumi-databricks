@@ -13,12 +13,33 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class SqlAlertOptions
     {
+        /// <summary>
+        /// Name of column in the query result to compare in alert evaluation.
+        /// </summary>
         public readonly string Column;
+        /// <summary>
+        /// Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+        /// </summary>
         public readonly string? CustomBody;
+        /// <summary>
+        /// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+        /// </summary>
         public readonly string? CustomSubject;
+        /// <summary>
+        /// State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+        /// </summary>
         public readonly string? EmptyResultState;
+        /// <summary>
+        /// Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+        /// </summary>
         public readonly bool? Muted;
+        /// <summary>
+        /// Operator used to compare in alert evaluation. (Enum: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`, `!=`)
+        /// </summary>
         public readonly string Op;
+        /// <summary>
+        /// Value used to compare in alert evaluation.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

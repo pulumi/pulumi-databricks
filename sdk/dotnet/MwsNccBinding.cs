@@ -9,12 +9,62 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// &gt; Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+    /// 
+    /// &gt; This feature is available for AWS &amp; Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
+    /// 
+    /// Allows you to attach a Network Connectivity Config object to a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/serverless-firewall).
+    /// 
+    /// The NCC and workspace must be in the same region.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var region = config.RequireObject&lt;dynamic&gt;("region");
+    ///     var prefix = config.RequireObject&lt;dynamic&gt;("prefix");
+    ///     var ncc = new Databricks.MwsNetworkConnectivityConfig("ncc", new()
+    ///     {
+    ///         Name = $"ncc-for-{prefix}",
+    ///         Region = region,
+    ///     });
+    /// 
+    ///     var nccBinding = new Databricks.MwsNccBinding("ncc_binding", new()
+    ///     {
+    ///         NetworkConnectivityConfigId = ncc.NetworkConnectivityConfigId,
+    ///         WorkspaceId = databricksWorkspaceId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are used in the context:
+    /// 
+    /// * databricks.MwsWorkspaces to set up Databricks workspaces.
+    /// * databricks.MwsNetworkConnectivityConfig to create Network Connectivity Config objects.
+    /// </summary>
     [DatabricksResourceType("databricks:index/mwsNccBinding:MwsNccBinding")]
     public partial class MwsNccBinding : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Canonical unique identifier of Network Connectivity Config in Databricks Account.
+        /// </summary>
         [Output("networkConnectivityConfigId")]
         public Output<string> NetworkConnectivityConfigId { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
+        /// </summary>
         [Output("workspaceId")]
         public Output<string> WorkspaceId { get; private set; } = null!;
 
@@ -64,9 +114,15 @@ namespace Pulumi.Databricks
 
     public sealed class MwsNccBindingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Canonical unique identifier of Network Connectivity Config in Databricks Account.
+        /// </summary>
         [Input("networkConnectivityConfigId", required: true)]
         public Input<string> NetworkConnectivityConfigId { get; set; } = null!;
 
+        /// <summary>
+        /// Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
+        /// </summary>
         [Input("workspaceId", required: true)]
         public Input<string> WorkspaceId { get; set; } = null!;
 
@@ -78,9 +134,15 @@ namespace Pulumi.Databricks
 
     public sealed class MwsNccBindingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Canonical unique identifier of Network Connectivity Config in Databricks Account.
+        /// </summary>
         [Input("networkConnectivityConfigId")]
         public Input<string>? NetworkConnectivityConfigId { get; set; }
 
+        /// <summary>
+        /// Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
+        /// </summary>
         [Input("workspaceId")]
         public Input<string>? WorkspaceId { get; set; }
 

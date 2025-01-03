@@ -16,72 +16,152 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
 
     public static final GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule Empty = new GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule();
 
+    /**
+     * The current status of this private endpoint.
+     * 
+     */
     @Import(name="connectionState")
     private @Nullable String connectionState;
 
+    /**
+     * @return The current status of this private endpoint.
+     * 
+     */
     public Optional<String> connectionState() {
         return Optional.ofNullable(this.connectionState);
     }
 
+    /**
+     * Time in epoch milliseconds when this object was created.
+     * 
+     */
     @Import(name="creationTime")
     private @Nullable Integer creationTime;
 
+    /**
+     * @return Time in epoch milliseconds when this object was created.
+     * 
+     */
     public Optional<Integer> creationTime() {
         return Optional.ofNullable(this.creationTime);
     }
 
+    /**
+     * Whether this private endpoint is deactivated.
+     * 
+     */
     @Import(name="deactivated")
     private @Nullable Boolean deactivated;
 
+    /**
+     * @return Whether this private endpoint is deactivated.
+     * 
+     */
     public Optional<Boolean> deactivated() {
         return Optional.ofNullable(this.deactivated);
     }
 
+    /**
+     * Time in epoch milliseconds when this object was deactivated.
+     * 
+     */
     @Import(name="deactivatedAt")
     private @Nullable Integer deactivatedAt;
 
+    /**
+     * @return Time in epoch milliseconds when this object was deactivated.
+     * 
+     */
     public Optional<Integer> deactivatedAt() {
         return Optional.ofNullable(this.deactivatedAt);
     }
 
+    /**
+     * The name of the Azure private endpoint resource.
+     * 
+     */
     @Import(name="endpointName")
     private @Nullable String endpointName;
 
+    /**
+     * @return The name of the Azure private endpoint resource.
+     * 
+     */
     public Optional<String> endpointName() {
         return Optional.ofNullable(this.endpointName);
     }
 
+    /**
+     * The sub-resource type (group ID) of the target resource.
+     * 
+     */
     @Import(name="groupId")
     private @Nullable String groupId;
 
+    /**
+     * @return The sub-resource type (group ID) of the target resource.
+     * 
+     */
     public Optional<String> groupId() {
         return Optional.ofNullable(this.groupId);
     }
 
+    /**
+     * The Databricks network connectivity configuration ID.
+     * 
+     */
     @Import(name="networkConnectivityConfigId")
     private @Nullable String networkConnectivityConfigId;
 
+    /**
+     * @return The Databricks network connectivity configuration ID.
+     * 
+     */
     public Optional<String> networkConnectivityConfigId() {
         return Optional.ofNullable(this.networkConnectivityConfigId);
     }
 
+    /**
+     * The Azure resource ID of the target resource.
+     * 
+     */
     @Import(name="resourceId")
     private @Nullable String resourceId;
 
+    /**
+     * @return The Azure resource ID of the target resource.
+     * 
+     */
     public Optional<String> resourceId() {
         return Optional.ofNullable(this.resourceId);
     }
 
+    /**
+     * The ID of a private endpoint rule.
+     * 
+     */
     @Import(name="ruleId")
     private @Nullable String ruleId;
 
+    /**
+     * @return The ID of a private endpoint rule.
+     * 
+     */
     public Optional<String> ruleId() {
         return Optional.ofNullable(this.ruleId);
     }
 
+    /**
+     * Time in epoch milliseconds when the network was updated.
+     * 
+     */
     @Import(name="updatedTime")
     private @Nullable Integer updatedTime;
 
+    /**
+     * @return Time in epoch milliseconds when the network was updated.
+     * 
+     */
     public Optional<Integer> updatedTime() {
         return Optional.ofNullable(this.updatedTime);
     }
@@ -119,51 +199,111 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
             $ = new GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param connectionState The current status of this private endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionState(@Nullable String connectionState) {
             $.connectionState = connectionState;
             return this;
         }
 
+        /**
+         * @param creationTime Time in epoch milliseconds when this object was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder creationTime(@Nullable Integer creationTime) {
             $.creationTime = creationTime;
             return this;
         }
 
+        /**
+         * @param deactivated Whether this private endpoint is deactivated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deactivated(@Nullable Boolean deactivated) {
             $.deactivated = deactivated;
             return this;
         }
 
+        /**
+         * @param deactivatedAt Time in epoch milliseconds when this object was deactivated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deactivatedAt(@Nullable Integer deactivatedAt) {
             $.deactivatedAt = deactivatedAt;
             return this;
         }
 
+        /**
+         * @param endpointName The name of the Azure private endpoint resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointName(@Nullable String endpointName) {
             $.endpointName = endpointName;
             return this;
         }
 
+        /**
+         * @param groupId The sub-resource type (group ID) of the target resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(@Nullable String groupId) {
             $.groupId = groupId;
             return this;
         }
 
+        /**
+         * @param networkConnectivityConfigId The Databricks network connectivity configuration ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkConnectivityConfigId(@Nullable String networkConnectivityConfigId) {
             $.networkConnectivityConfigId = networkConnectivityConfigId;
             return this;
         }
 
+        /**
+         * @param resourceId The Azure resource ID of the target resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceId(@Nullable String resourceId) {
             $.resourceId = resourceId;
             return this;
         }
 
+        /**
+         * @param ruleId The ID of a private endpoint rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ruleId(@Nullable String ruleId) {
             $.ruleId = ruleId;
             return this;
         }
 
+        /**
+         * @param updatedTime Time in epoch milliseconds when the network was updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedTime(@Nullable Integer updatedTime) {
             $.updatedTime = updatedTime;
             return this;

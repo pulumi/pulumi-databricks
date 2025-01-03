@@ -14,6 +14,14 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("alerts")]
         private InputList<string>? _alerts;
+
+        /// <summary>
+        /// non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
+        /// * `on-update-success` - a pipeline update completes successfully.
+        /// * `on-update-failure` - a pipeline update fails with a retryable error.
+        /// * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
+        /// * `on-flow-failure` - a single data flow fails.
+        /// </summary>
         public InputList<string> Alerts
         {
             get => _alerts ?? (_alerts = new InputList<string>());
@@ -22,6 +30,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("emailRecipients")]
         private InputList<string>? _emailRecipients;
+
+        /// <summary>
+        /// non-empty list of emails to notify.
+        /// </summary>
         public InputList<string> EmailRecipients
         {
             get => _emailRecipients ?? (_emailRecipients = new InputList<string>());

@@ -16,23 +16,47 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZonesArgs Empty = new GetZonesArgs();
 
+    /**
+     * This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+     * 
+     */
     @Import(name="defaultZone")
     private @Nullable Output<String> defaultZone;
 
+    /**
+     * @return This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+     * 
+     */
     public Optional<Output<String>> defaultZone() {
         return Optional.ofNullable(this.defaultZone);
     }
 
+    /**
+     * The id for the zone object.
+     * 
+     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
+    /**
+     * @return The id for the zone object.
+     * 
+     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * This is a list of all the zones available for your subnets in your Databricks workspace.
+     * 
+     */
     @Import(name="zones")
     private @Nullable Output<List<String>> zones;
 
+    /**
+     * @return This is a list of all the zones available for your subnets in your Databricks workspace.
+     * 
+     */
     public Optional<Output<List<String>>> zones() {
         return Optional.ofNullable(this.zones);
     }
@@ -63,33 +87,75 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetZonesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param defaultZone This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultZone(@Nullable Output<String> defaultZone) {
             $.defaultZone = defaultZone;
             return this;
         }
 
+        /**
+         * @param defaultZone This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultZone(String defaultZone) {
             return defaultZone(Output.of(defaultZone));
         }
 
+        /**
+         * @param id The id for the zone object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id The id for the zone object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
+        /**
+         * @param zones This is a list of all the zones available for your subnets in your Databricks workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zones(@Nullable Output<List<String>> zones) {
             $.zones = zones;
             return this;
         }
 
+        /**
+         * @param zones This is a list of all the zones available for your subnets in your Databricks workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zones(List<String> zones) {
             return zones(Output.of(zones));
         }
 
+        /**
+         * @param zones This is a list of all the zones available for your subnets in your Databricks workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zones(String... zones) {
             return zones(List.of(zones));
         }

@@ -93,6 +93,9 @@ class GetNodeTypeResult:
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -179,7 +182,67 @@ def get_node_type(category: Optional[str] = None,
                   support_port_forwarding: Optional[bool] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeTypeResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Gets the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
+
+    > **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn't match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    with_gpu = databricks.get_node_type(local_disk=True,
+        min_cores=16,
+        gb_per_core=1,
+        min_gpus=1)
+    gpu_ml = databricks.get_spark_version(gpu=True,
+        ml=True)
+    research = databricks.Cluster("research",
+        cluster_name="Research Cluster",
+        spark_version=gpu_ml.id,
+        node_type_id=with_gpu.id,
+        autotermination_minutes=20,
+        autoscale={
+            "min_workers": 1,
+            "max_workers": 50,
+        })
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * End to end workspace management guide.
+    * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+    * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
+    * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+
+
+    :param str category: Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
+           * `General Purpose` (all clouds)
+           * `General Purpose (HDD)` (Azure)
+           * `Compute Optimized` (all clouds)
+           * `Memory Optimized` (all clouds)
+           * `Memory Optimized (Remote HDD)` (Azure)
+           * `Storage Optimized` (AWS, Azure)
+           * `GPU Accelerated` (AWS, Azure)
+    :param bool fleet: if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
+    :param int gb_per_core: Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
+    :param bool graviton: if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+    :param str id: node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+    :param bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to _false_.
+    :param bool local_disk: Pick only nodes with local storage. Defaults to _false_.
+    :param int local_disk_min_size: Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
+    :param int min_cores: Minimum number of CPU cores available on instance. Defaults to _0_.
+    :param int min_gpus: Minimum number of GPU's attached to instance. Defaults to _0_.
+    :param int min_memory_gb: Minimum amount of memory per node in gigabytes. Defaults to _0_.
+    :param bool photon_driver_capable: Pick only nodes that can run Photon driver. Defaults to _false_.
+    :param bool photon_worker_capable: Pick only nodes that can run Photon workers. Defaults to _false_.
+    :param bool support_port_forwarding: Pick only nodes that support port forwarding. Defaults to _false_.
     """
     __args__ = dict()
     __args__['category'] = category
@@ -230,7 +293,67 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          support_port_forwarding: Optional[pulumi.Input[Optional[bool]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeTypeResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Gets the smallest node type for Cluster that fits search criteria, like amount of RAM or number of cores. [AWS](https://databricks.com/product/aws-pricing/instance-types) or [Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/). Internally data source fetches [node types](https://docs.databricks.com/dev-tools/api/latest/clusters.html#list-node-types) available per cloud, similar to executing `databricks clusters list-node-types`, and filters it to return the smallest possible node with criteria.
+
+    > **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn't match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    with_gpu = databricks.get_node_type(local_disk=True,
+        min_cores=16,
+        gb_per_core=1,
+        min_gpus=1)
+    gpu_ml = databricks.get_spark_version(gpu=True,
+        ml=True)
+    research = databricks.Cluster("research",
+        cluster_name="Research Cluster",
+        spark_version=gpu_ml.id,
+        node_type_id=with_gpu.id,
+        autotermination_minutes=20,
+        autoscale={
+            "min_workers": 1,
+            "max_workers": 50,
+        })
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * End to end workspace management guide.
+    * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+    * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
+    * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+
+
+    :param str category: Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
+           * `General Purpose` (all clouds)
+           * `General Purpose (HDD)` (Azure)
+           * `Compute Optimized` (all clouds)
+           * `Memory Optimized` (all clouds)
+           * `Memory Optimized (Remote HDD)` (Azure)
+           * `Storage Optimized` (AWS, Azure)
+           * `GPU Accelerated` (AWS, Azure)
+    :param bool fleet: if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
+    :param int gb_per_core: Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
+    :param bool graviton: if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+    :param str id: node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
+    :param bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to _false_.
+    :param bool local_disk: Pick only nodes with local storage. Defaults to _false_.
+    :param int local_disk_min_size: Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
+    :param int min_cores: Minimum number of CPU cores available on instance. Defaults to _0_.
+    :param int min_gpus: Minimum number of GPU's attached to instance. Defaults to _0_.
+    :param int min_memory_gb: Minimum amount of memory per node in gigabytes. Defaults to _0_.
+    :param bool photon_driver_capable: Pick only nodes that can run Photon driver. Defaults to _false_.
+    :param bool photon_worker_capable: Pick only nodes that can run Photon workers. Defaults to _false_.
+    :param bool support_port_forwarding: Pick only nodes that support port forwarding. Defaults to _false_.
     """
     __args__ = dict()
     __args__['category'] = category

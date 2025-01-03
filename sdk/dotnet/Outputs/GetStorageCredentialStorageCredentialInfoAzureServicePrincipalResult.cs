@@ -13,8 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetStorageCredentialStorageCredentialInfoAzureServicePrincipalResult
     {
+        /// <summary>
+        /// The application ID of the application registration within the referenced AAD tenant
+        /// </summary>
         public readonly string ApplicationId;
         public readonly string ClientSecret;
+        /// <summary>
+        /// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+        /// </summary>
         public readonly string DirectoryId;
 
         [OutputConstructor]

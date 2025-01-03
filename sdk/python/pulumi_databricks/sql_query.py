@@ -34,6 +34,12 @@ class SqlQueryArgs:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SqlQuery resource.
+        :param pulumi.Input[str] data_source_id: Data source ID of a SQL warehouse
+        :param pulumi.Input[str] query: The text of the query to be run.
+        :param pulumi.Input[str] description: General description that conveys additional information about this query such as usage notes.
+        :param pulumi.Input[str] name: The title of this query that appears in list views, widget headings, and on the query page.
+        :param pulumi.Input[str] parent: The identifier of the workspace folder containing the object.
+        :param pulumi.Input[str] run_as_role: Run as role. Possible values are `viewer`, `owner`.
         """
         pulumi.set(__self__, "data_source_id", data_source_id)
         pulumi.set(__self__, "query", query)
@@ -62,6 +68,9 @@ class SqlQueryArgs:
     @property
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> pulumi.Input[str]:
+        """
+        Data source ID of a SQL warehouse
+        """
         return pulumi.get(self, "data_source_id")
 
     @data_source_id.setter
@@ -71,6 +80,9 @@ class SqlQueryArgs:
     @property
     @pulumi.getter
     def query(self) -> pulumi.Input[str]:
+        """
+        The text of the query to be run.
+        """
         return pulumi.get(self, "query")
 
     @query.setter
@@ -89,6 +101,9 @@ class SqlQueryArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        General description that conveys additional information about this query such as usage notes.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -98,6 +113,9 @@ class SqlQueryArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of this query that appears in list views, widget headings, and on the query page.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -116,6 +134,9 @@ class SqlQueryArgs:
     @property
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the workspace folder containing the object.
+        """
         return pulumi.get(self, "parent")
 
     @parent.setter
@@ -125,6 +146,9 @@ class SqlQueryArgs:
     @property
     @pulumi.getter(name="runAsRole")
     def run_as_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Run as role. Possible values are `viewer`, `owner`.
+        """
         return pulumi.get(self, "run_as_role")
 
     @run_as_role.setter
@@ -176,6 +200,12 @@ class _SqlQueryState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SqlQuery resources.
+        :param pulumi.Input[str] data_source_id: Data source ID of a SQL warehouse
+        :param pulumi.Input[str] description: General description that conveys additional information about this query such as usage notes.
+        :param pulumi.Input[str] name: The title of this query that appears in list views, widget headings, and on the query page.
+        :param pulumi.Input[str] parent: The identifier of the workspace folder containing the object.
+        :param pulumi.Input[str] query: The text of the query to be run.
+        :param pulumi.Input[str] run_as_role: Run as role. Possible values are `viewer`, `owner`.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -215,6 +245,9 @@ class _SqlQueryState:
     @property
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Data source ID of a SQL warehouse
+        """
         return pulumi.get(self, "data_source_id")
 
     @data_source_id.setter
@@ -224,6 +257,9 @@ class _SqlQueryState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        General description that conveys additional information about this query such as usage notes.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -233,6 +269,9 @@ class _SqlQueryState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of this query that appears in list views, widget headings, and on the query page.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -251,6 +290,9 @@ class _SqlQueryState:
     @property
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the workspace folder containing the object.
+        """
         return pulumi.get(self, "parent")
 
     @parent.setter
@@ -260,6 +302,9 @@ class _SqlQueryState:
     @property
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text of the query to be run.
+        """
         return pulumi.get(self, "query")
 
     @query.setter
@@ -269,6 +314,9 @@ class _SqlQueryState:
     @property
     @pulumi.getter(name="runAsRole")
     def run_as_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Run as role. Possible values are `viewer`, `owner`.
+        """
         return pulumi.get(self, "run_as_role")
 
     @run_as_role.setter
@@ -322,9 +370,123 @@ class SqlQuery(pulumi.CustomResource):
                  updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a SqlQuery resource with the given unique name, props, and options.
+        To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
+
+        > documentation for this resource is a work in progress.
+
+        A query may have one or more visualizations.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        shared_dir = databricks.Directory("shared_dir", path="/Shared/Queries")
+        q1 = databricks.SqlQuery("q1",
+            data_source_id=example["dataSourceId"],
+            name="My Query Name",
+            query=\"\"\"                        SELECT {{ p1 }} AS p1
+                                WHERE 1=1
+                                AND p2 in ({{ p2 }})
+                                AND event_date > date '{{ p3 }}'
+        \"\"\",
+            parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
+            run_as_role="viewer",
+            parameters=[
+                {
+                    "name": "p1",
+                    "title": "Title for p1",
+                    "text": {
+                        "value": "default",
+                    },
+                },
+                {
+                    "name": "p2",
+                    "title": "Title for p2",
+                    "enum": {
+                        "options": [
+                            "default",
+                            "foo",
+                            "bar",
+                        ],
+                        "value": "default",
+                        "multiple": {
+                            "prefix": "\\"",
+                            "suffix": "\\"",
+                            "separator": ",",
+                        },
+                    },
+                },
+                {
+                    "name": "p3",
+                    "title": "Title for p3",
+                    "date": {
+                        "value": "2022-01-01",
+                    },
+                },
+            ],
+            tags=[
+                "t1",
+                "t2",
+            ])
+        ```
+
+        Example permission to share query with all users:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        q1 = databricks.Permissions("q1",
+            sql_query_id=q1_databricks_sql_query["id"],
+            access_controls=[
+                {
+                    "group_name": users["displayName"],
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": team["displayName"],
+                    "permission_level": "CAN_EDIT",
+                },
+            ])
+        ```
+
+        ## Troubleshooting
+
+        In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `data_source_id`
+
+        Operations on `SqlQuery` schedules are ⛔️ deprecated. You can create, update or delete a schedule for SQLA and other Databricks resources using the Job resource.
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * End to end workspace management guide.
+        * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
+        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+        * Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
+
+        ## Import
+
+        You can import a `databricks_sql_query` resource with ID like the following:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/sqlQuery:SqlQuery this <query-id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] data_source_id: Data source ID of a SQL warehouse
+        :param pulumi.Input[str] description: General description that conveys additional information about this query such as usage notes.
+        :param pulumi.Input[str] name: The title of this query that appears in list views, widget headings, and on the query page.
+        :param pulumi.Input[str] parent: The identifier of the workspace folder containing the object.
+        :param pulumi.Input[str] query: The text of the query to be run.
+        :param pulumi.Input[str] run_as_role: Run as role. Possible values are `viewer`, `owner`.
         """
         ...
     @overload
@@ -333,7 +495,115 @@ class SqlQuery(pulumi.CustomResource):
                  args: SqlQueryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a SqlQuery resource with the given unique name, props, and options.
+        To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
+
+        > documentation for this resource is a work in progress.
+
+        A query may have one or more visualizations.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        shared_dir = databricks.Directory("shared_dir", path="/Shared/Queries")
+        q1 = databricks.SqlQuery("q1",
+            data_source_id=example["dataSourceId"],
+            name="My Query Name",
+            query=\"\"\"                        SELECT {{ p1 }} AS p1
+                                WHERE 1=1
+                                AND p2 in ({{ p2 }})
+                                AND event_date > date '{{ p3 }}'
+        \"\"\",
+            parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
+            run_as_role="viewer",
+            parameters=[
+                {
+                    "name": "p1",
+                    "title": "Title for p1",
+                    "text": {
+                        "value": "default",
+                    },
+                },
+                {
+                    "name": "p2",
+                    "title": "Title for p2",
+                    "enum": {
+                        "options": [
+                            "default",
+                            "foo",
+                            "bar",
+                        ],
+                        "value": "default",
+                        "multiple": {
+                            "prefix": "\\"",
+                            "suffix": "\\"",
+                            "separator": ",",
+                        },
+                    },
+                },
+                {
+                    "name": "p3",
+                    "title": "Title for p3",
+                    "date": {
+                        "value": "2022-01-01",
+                    },
+                },
+            ],
+            tags=[
+                "t1",
+                "t2",
+            ])
+        ```
+
+        Example permission to share query with all users:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        q1 = databricks.Permissions("q1",
+            sql_query_id=q1_databricks_sql_query["id"],
+            access_controls=[
+                {
+                    "group_name": users["displayName"],
+                    "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": team["displayName"],
+                    "permission_level": "CAN_EDIT",
+                },
+            ])
+        ```
+
+        ## Troubleshooting
+
+        In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `data_source_id`
+
+        Operations on `SqlQuery` schedules are ⛔️ deprecated. You can create, update or delete a schedule for SQLA and other Databricks resources using the Job resource.
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * End to end workspace management guide.
+        * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace.
+        * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+        * Job to schedule Databricks SQL queries (as well as dashboards and alerts) using Databricks Jobs.
+
+        ## Import
+
+        You can import a `databricks_sql_query` resource with ID like the following:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/sqlQuery:SqlQuery this <query-id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param SqlQueryArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -412,6 +682,12 @@ class SqlQuery(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] data_source_id: Data source ID of a SQL warehouse
+        :param pulumi.Input[str] description: General description that conveys additional information about this query such as usage notes.
+        :param pulumi.Input[str] name: The title of this query that appears in list views, widget headings, and on the query page.
+        :param pulumi.Input[str] parent: The identifier of the workspace folder containing the object.
+        :param pulumi.Input[str] query: The text of the query to be run.
+        :param pulumi.Input[str] run_as_role: Run as role. Possible values are `viewer`, `owner`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -438,16 +714,25 @@ class SqlQuery(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> pulumi.Output[str]:
+        """
+        Data source ID of a SQL warehouse
+        """
         return pulumi.get(self, "data_source_id")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        General description that conveys additional information about this query such as usage notes.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The title of this query that appears in list views, widget headings, and on the query page.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -458,16 +743,25 @@ class SqlQuery(pulumi.CustomResource):
     @property
     @pulumi.getter
     def parent(self) -> pulumi.Output[Optional[str]]:
+        """
+        The identifier of the workspace folder containing the object.
+        """
         return pulumi.get(self, "parent")
 
     @property
     @pulumi.getter
     def query(self) -> pulumi.Output[str]:
+        """
+        The text of the query to be run.
+        """
         return pulumi.get(self, "query")
 
     @property
     @pulumi.getter(name="runAsRole")
     def run_as_role(self) -> pulumi.Output[Optional[str]]:
+        """
+        Run as role. Possible values are `viewer`, `owner`.
+        """
         return pulumi.get(self, "run_as_role")
 
     @property

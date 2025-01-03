@@ -20,68 +20,172 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppsApp {
     private GetAppsAppActiveDeployment activeDeployment;
+    /**
+     * @return attribute
+     * 
+     */
     private GetAppsAppAppStatus appStatus;
+    /**
+     * @return attribute
+     * 
+     */
     private GetAppsAppComputeStatus computeStatus;
+    /**
+     * @return The creation time of the app.
+     * 
+     */
     private String createTime;
+    /**
+     * @return The email of the user that created the app.
+     * 
+     */
     private String creator;
+    /**
+     * @return The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+     * 
+     */
     private String defaultSourceCodePath;
+    /**
+     * @return The description of the resource.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return Name of the serving endpoint to grant permission on.
+     * 
+     */
     private String name;
     private GetAppsAppPendingDeployment pendingDeployment;
+    /**
+     * @return A list of resources that the app have access to.
+     * 
+     */
     private @Nullable List<GetAppsAppResource> resources;
     private String servicePrincipalClientId;
+    /**
+     * @return id of the app service principal
+     * 
+     */
     private Integer servicePrincipalId;
+    /**
+     * @return name of the app service principal
+     * 
+     */
     private String servicePrincipalName;
+    /**
+     * @return The update time of the app.
+     * 
+     */
     private String updateTime;
+    /**
+     * @return The email of the user that last updated the app.
+     * 
+     */
     private String updater;
+    /**
+     * @return The URL of the app once it is deployed.
+     * 
+     */
     private String url;
 
     private GetAppsApp() {}
     public GetAppsAppActiveDeployment activeDeployment() {
         return this.activeDeployment;
     }
+    /**
+     * @return attribute
+     * 
+     */
     public GetAppsAppAppStatus appStatus() {
         return this.appStatus;
     }
+    /**
+     * @return attribute
+     * 
+     */
     public GetAppsAppComputeStatus computeStatus() {
         return this.computeStatus;
     }
+    /**
+     * @return The creation time of the app.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return The email of the user that created the app.
+     * 
+     */
     public String creator() {
         return this.creator;
     }
+    /**
+     * @return The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+     * 
+     */
     public String defaultSourceCodePath() {
         return this.defaultSourceCodePath;
     }
+    /**
+     * @return The description of the resource.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Name of the serving endpoint to grant permission on.
+     * 
+     */
     public String name() {
         return this.name;
     }
     public GetAppsAppPendingDeployment pendingDeployment() {
         return this.pendingDeployment;
     }
+    /**
+     * @return A list of resources that the app have access to.
+     * 
+     */
     public List<GetAppsAppResource> resources() {
         return this.resources == null ? List.of() : this.resources;
     }
     public String servicePrincipalClientId() {
         return this.servicePrincipalClientId;
     }
+    /**
+     * @return id of the app service principal
+     * 
+     */
     public Integer servicePrincipalId() {
         return this.servicePrincipalId;
     }
+    /**
+     * @return name of the app service principal
+     * 
+     */
     public String servicePrincipalName() {
         return this.servicePrincipalName;
     }
+    /**
+     * @return The update time of the app.
+     * 
+     */
     public String updateTime() {
         return this.updateTime;
     }
+    /**
+     * @return The email of the user that last updated the app.
+     * 
+     */
     public String updater() {
         return this.updater;
     }
+    /**
+     * @return The URL of the app once it is deployed.
+     * 
+     */
     public String url() {
         return this.url;
     }

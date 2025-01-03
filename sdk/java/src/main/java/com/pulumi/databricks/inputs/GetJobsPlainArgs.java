@@ -15,16 +15,32 @@ public final class GetJobsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobsPlainArgs Empty = new GetJobsPlainArgs();
 
+    /**
+     * map of databricks.Job names to ids
+     * 
+     */
     @Import(name="ids")
     private @Nullable Map<String,String> ids;
 
+    /**
+     * @return map of databricks.Job names to ids
+     * 
+     */
     public Optional<Map<String,String>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * Only return databricks.Job ids that match the given name string (case-insensitive).
+     * 
+     */
     @Import(name="jobNameContains")
     private @Nullable String jobNameContains;
 
+    /**
+     * @return Only return databricks.Job ids that match the given name string (case-insensitive).
+     * 
+     */
     public Optional<String> jobNameContains() {
         return Optional.ofNullable(this.jobNameContains);
     }
@@ -54,11 +70,23 @@ public final class GetJobsPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetJobsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids map of databricks.Job names to ids
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Map<String,String> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param jobNameContains Only return databricks.Job ids that match the given name string (case-insensitive).
+         * 
+         * @return builder
+         * 
+         */
         public Builder jobNameContains(@Nullable String jobNameContains) {
             $.jobNameContains = jobNameContains;
             return this;

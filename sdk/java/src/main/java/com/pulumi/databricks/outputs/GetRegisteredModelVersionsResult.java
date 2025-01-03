@@ -12,15 +12,27 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegisteredModelVersionsResult {
+    /**
+     * @return The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+     * 
+     */
     private String fullName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return list of objects describing the model versions. Each object consists of following attributes:
+     * 
+     */
     private List<GetRegisteredModelVersionsModelVersion> modelVersions;
 
     private GetRegisteredModelVersionsResult() {}
+    /**
+     * @return The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+     * 
+     */
     public String fullName() {
         return this.fullName;
     }
@@ -31,6 +43,10 @@ public final class GetRegisteredModelVersionsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return list of objects describing the model versions. Each object consists of following attributes:
+     * 
+     */
     public List<GetRegisteredModelVersionsModelVersion> modelVersions() {
         return this.modelVersions;
     }

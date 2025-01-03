@@ -14,9 +14,17 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificati
 
     public static final GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs Empty = new GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs();
 
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return the id of databricks.Job if the resource was matched by name.
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
@@ -45,11 +53,23 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificati
             $ = new GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id the id of databricks.Job if the resource was matched by name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id the id of databricks.Job if the resource was matched by name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }

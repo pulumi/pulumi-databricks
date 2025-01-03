@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class QualityMonitorNotificationsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// who to send notifications to on monitor failure.
+        /// </summary>
         [Input("onFailure")]
         public Input<Inputs.QualityMonitorNotificationsOnFailureGetArgs>? OnFailure { get; set; }
 
+        /// <summary>
+        /// Who to send notifications to when new data classification tags are detected.
+        /// </summary>
         [Input("onNewClassificationTagDetected")]
         public Input<Inputs.QualityMonitorNotificationsOnNewClassificationTagDetectedGetArgs>? OnNewClassificationTagDetected { get; set; }
 

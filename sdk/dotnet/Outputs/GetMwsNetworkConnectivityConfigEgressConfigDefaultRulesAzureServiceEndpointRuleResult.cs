@@ -13,8 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleResult
     {
+        /// <summary>
+        /// Array of strings representing the subnet IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Subnets;
+        /// <summary>
+        /// The target region for the service endpoint.
+        /// </summary>
         public readonly string? TargetRegion;
+        /// <summary>
+        /// Array of target services.
+        /// </summary>
         public readonly ImmutableArray<string> TargetServices;
 
         [OutputConstructor]

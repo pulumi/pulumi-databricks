@@ -9,15 +9,165 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// This resource allows you to manage [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification destinations are used to send notifications for query alerts and jobs to destinations outside of Databricks. Only workspace admins can create, update, and delete notification destinations.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// `Email` notification destination:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
+    ///     {
+    ///         DisplayName = "Notification Destination",
+    ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
+    ///         {
+    ///             Email = new Databricks.Inputs.NotificationDestinationConfigEmailArgs
+    ///             {
+    ///                 Addresses = new[]
+    ///                 {
+    ///                     "abc@gmail.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// `Slack` notification destination:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
+    ///     {
+    ///         DisplayName = "Notification Destination",
+    ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
+    ///         {
+    ///             Slack = new Databricks.Inputs.NotificationDestinationConfigSlackArgs
+    ///             {
+    ///                 Url = "https://hooks.slack.com/services/...",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// `PagerDuty` notification destination:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
+    ///     {
+    ///         DisplayName = "Notification Destination",
+    ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
+    ///         {
+    ///             Pagerduty = new Databricks.Inputs.NotificationDestinationConfigPagerdutyArgs
+    ///             {
+    ///                 IntegrationKey = "xxxxxx",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// `Microsoft Teams` notification destination:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
+    ///     {
+    ///         DisplayName = "Notification Destination",
+    ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
+    ///         {
+    ///             MicrosoftTeams = new Databricks.Inputs.NotificationDestinationConfigMicrosoftTeamsArgs
+    ///             {
+    ///                 Url = "https://outlook.office.com/webhook/...",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// `Generic Webhook` notification destination:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
+    ///     {
+    ///         DisplayName = "Notification Destination",
+    ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
+    ///         {
+    ///             GenericWebhook = new Databricks.Inputs.NotificationDestinationConfigGenericWebhookArgs
+    ///             {
+    ///                 Url = "https://example.com/webhook",
+    ///                 Username = "username",
+    ///                 Password = "password",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by notification ID:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/notificationDestination:NotificationDestination this &lt;notification-id&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/notificationDestination:NotificationDestination")]
     public partial class NotificationDestination : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+        /// </summary>
         [Output("config")]
         public Output<Outputs.NotificationDestinationConfig?> Config { get; private set; } = null!;
 
+        /// <summary>
+        /// the type of Notification Destination.
+        /// </summary>
         [Output("destinationType")]
         public Output<string> DestinationType { get; private set; } = null!;
 
+        /// <summary>
+        /// The display name of the Notification Destination.
+        /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
@@ -67,12 +217,21 @@ namespace Pulumi.Databricks
 
     public sealed class NotificationDestinationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+        /// </summary>
         [Input("config")]
         public Input<Inputs.NotificationDestinationConfigArgs>? Config { get; set; }
 
+        /// <summary>
+        /// the type of Notification Destination.
+        /// </summary>
         [Input("destinationType")]
         public Input<string>? DestinationType { get; set; }
 
+        /// <summary>
+        /// The display name of the Notification Destination.
+        /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
@@ -84,12 +243,21 @@ namespace Pulumi.Databricks
 
     public sealed class NotificationDestinationState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+        /// </summary>
         [Input("config")]
         public Input<Inputs.NotificationDestinationConfigGetArgs>? Config { get; set; }
 
+        /// <summary>
+        /// the type of Notification Destination.
+        /// </summary>
         [Input("destinationType")]
         public Input<string>? DestinationType { get; set; }
 
+        /// <summary>
+        /// The display name of the Notification Destination.
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 

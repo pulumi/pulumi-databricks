@@ -12,10 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationConfigPagerduty {
+    /**
+     * @return The PagerDuty integration key.
+     * 
+     */
     private @Nullable String integrationKey;
     private @Nullable Boolean integrationKeySet;
 
     private NotificationDestinationConfigPagerduty() {}
+    /**
+     * @return The PagerDuty integration key.
+     * 
+     */
     public Optional<String> integrationKey() {
         return Optional.ofNullable(this.integrationKey);
     }

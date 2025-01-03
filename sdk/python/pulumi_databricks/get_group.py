@@ -76,21 +76,33 @@ class GetGroupResult:
     @property
     @pulumi.getter(name="aclPrincipalId")
     def acl_principal_id(self) -> str:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+        """
         return pulumi.get(self, "acl_principal_id")
 
     @property
     @pulumi.getter(name="allowClusterCreate")
     def allow_cluster_create(self) -> Optional[bool]:
+        """
+        True if group members can create clusters
+        """
         return pulumi.get(self, "allow_cluster_create")
 
     @property
     @pulumi.getter(name="allowInstancePoolCreate")
     def allow_instance_pool_create(self) -> Optional[bool]:
+        """
+        True if group members can create instance pools
+        """
         return pulumi.get(self, "allow_instance_pool_create")
 
     @property
     @pulumi.getter(name="childGroups")
     def child_groups(self) -> Sequence[str]:
+        """
+        Set of Group identifiers, that can be modified with GroupMember resource.
+        """
         return pulumi.get(self, "child_groups")
 
     @property
@@ -106,11 +118,17 @@ class GetGroupResult:
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> str:
+        """
+        ID of the group in an external identity provider.
+        """
         return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter
     def groups(self) -> Sequence[str]:
+        """
+        Set of group identifiers, that can be modified with GroupMember resource.
+        """
         return pulumi.get(self, "groups")
 
     @property
@@ -124,6 +142,9 @@ class GetGroupResult:
     @property
     @pulumi.getter(name="instanceProfiles")
     def instance_profiles(self) -> Sequence[str]:
+        """
+        Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
+        """
         return pulumi.get(self, "instance_profiles")
 
     @property
@@ -140,11 +161,17 @@ class GetGroupResult:
     @property
     @pulumi.getter(name="servicePrincipals")
     def service_principals(self) -> Sequence[str]:
+        """
+        Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
+        """
         return pulumi.get(self, "service_principals")
 
     @property
     @pulumi.getter
     def users(self) -> Sequence[str]:
+        """
+        Set of User identifiers, that can be modified with GroupMember resource.
+        """
         return pulumi.get(self, "users")
 
     @property
@@ -192,7 +219,48 @@ def get_group(acl_principal_id: Optional[str] = None,
               workspace_access: Optional[bool] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about Group members, entitlements and instance profiles.
+
+    ## Example Usage
+
+    Adding user to administrative group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    admins = databricks.get_group(display_name="admins")
+    me = databricks.User("me", user_name="me@example.com")
+    my_member_a = databricks.GroupMember("my_member_a",
+        group_id=admins.id,
+        member_id=me.id)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * End to end workspace management guide
+    * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+    * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+    * GroupMember to attach users and groups as group members.
+    * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+    * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
+
+
+    :param str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+    :param bool allow_cluster_create: True if group members can create clusters
+    :param bool allow_instance_pool_create: True if group members can create instance pools
+    :param Sequence[str] child_groups: Set of Group identifiers, that can be modified with GroupMember resource.
+    :param str display_name: Display name of the group. The group must exist before this resource can be planned.
+    :param str external_id: ID of the group in an external identity provider.
+    :param Sequence[str] groups: Set of group identifiers, that can be modified with GroupMember resource.
+    :param Sequence[str] instance_profiles: Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
+    :param bool recursive: Collect information for all nested groups. *Defaults to true.*
+    :param Sequence[str] service_principals: Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
+    :param Sequence[str] users: Set of User identifiers, that can be modified with GroupMember resource.
     """
     __args__ = dict()
     __args__['aclPrincipalId'] = acl_principal_id
@@ -244,7 +312,48 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[str]]] = N
                      workspace_access: Optional[pulumi.Input[Optional[bool]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about Group members, entitlements and instance profiles.
+
+    ## Example Usage
+
+    Adding user to administrative group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    admins = databricks.get_group(display_name="admins")
+    me = databricks.User("me", user_name="me@example.com")
+    my_member_a = databricks.GroupMember("my_member_a",
+        group_id=admins.id,
+        member_id=me.id)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * End to end workspace management guide
+    * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+    * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+    * GroupMember to attach users and groups as group members.
+    * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+    * User to [manage users](https://docs.databricks.com/administration-guide/users-groups/users.html), that could be added to Group within the workspace.
+
+
+    :param str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+    :param bool allow_cluster_create: True if group members can create clusters
+    :param bool allow_instance_pool_create: True if group members can create instance pools
+    :param Sequence[str] child_groups: Set of Group identifiers, that can be modified with GroupMember resource.
+    :param str display_name: Display name of the group. The group must exist before this resource can be planned.
+    :param str external_id: ID of the group in an external identity provider.
+    :param Sequence[str] groups: Set of group identifiers, that can be modified with GroupMember resource.
+    :param Sequence[str] instance_profiles: Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
+    :param bool recursive: Collect information for all nested groups. *Defaults to true.*
+    :param Sequence[str] service_principals: Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
+    :param Sequence[str] users: Set of User identifiers, that can be modified with GroupMember resource.
     """
     __args__ = dict()
     __args__['aclPrincipalId'] = acl_principal_id

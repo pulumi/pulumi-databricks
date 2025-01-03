@@ -6,6 +6,33 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+ *
+ * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+ *
+ * ## Import
+ *
+ * This resource can be imported by name:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_app.this
+ *
+ *   id = "<app_name>"
+ *
+ * }
+ *
+ * or using the `terraform` CLI:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/app:App this <app_name>
+ * ```
+ */
 export class App extends pulumi.CustomResource {
     /**
      * Get an existing App resource's state with the given name, ID, and optional extra
@@ -35,20 +62,59 @@ export class App extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly activeDeployment!: pulumi.Output<outputs.AppActiveDeployment>;
+    /**
+     * attribute
+     */
     public /*out*/ readonly appStatus!: pulumi.Output<outputs.AppAppStatus>;
+    /**
+     * attribute
+     */
     public /*out*/ readonly computeStatus!: pulumi.Output<outputs.AppComputeStatus>;
+    /**
+     * The creation time of the app.
+     */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The email of the user that created the app.
+     */
     public /*out*/ readonly creator!: pulumi.Output<string>;
+    /**
+     * The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+     */
     public /*out*/ readonly defaultSourceCodePath!: pulumi.Output<string>;
+    /**
+     * The description of the app.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly pendingDeployment!: pulumi.Output<outputs.AppPendingDeployment>;
+    /**
+     * A list of resources that the app have access to.
+     */
     public readonly resources!: pulumi.Output<outputs.AppResource[] | undefined>;
     public /*out*/ readonly servicePrincipalClientId!: pulumi.Output<string>;
+    /**
+     * id of the app service principal
+     */
     public /*out*/ readonly servicePrincipalId!: pulumi.Output<number>;
+    /**
+     * name of the app service principal
+     */
     public /*out*/ readonly servicePrincipalName!: pulumi.Output<string>;
+    /**
+     * The update time of the app.
+     */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * The email of the user that last updated the app.
+     */
     public /*out*/ readonly updater!: pulumi.Output<string>;
+    /**
+     * The URL of the app once it is deployed.
+     */
     public /*out*/ readonly url!: pulumi.Output<string>;
 
     /**
@@ -109,20 +175,59 @@ export class App extends pulumi.CustomResource {
  */
 export interface AppState {
     activeDeployment?: pulumi.Input<inputs.AppActiveDeployment>;
+    /**
+     * attribute
+     */
     appStatus?: pulumi.Input<inputs.AppAppStatus>;
+    /**
+     * attribute
+     */
     computeStatus?: pulumi.Input<inputs.AppComputeStatus>;
+    /**
+     * The creation time of the app.
+     */
     createTime?: pulumi.Input<string>;
+    /**
+     * The email of the user that created the app.
+     */
     creator?: pulumi.Input<string>;
+    /**
+     * The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+     */
     defaultSourceCodePath?: pulumi.Input<string>;
+    /**
+     * The description of the app.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
     name?: pulumi.Input<string>;
     pendingDeployment?: pulumi.Input<inputs.AppPendingDeployment>;
+    /**
+     * A list of resources that the app have access to.
+     */
     resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[]>;
     servicePrincipalClientId?: pulumi.Input<string>;
+    /**
+     * id of the app service principal
+     */
     servicePrincipalId?: pulumi.Input<number>;
+    /**
+     * name of the app service principal
+     */
     servicePrincipalName?: pulumi.Input<string>;
+    /**
+     * The update time of the app.
+     */
     updateTime?: pulumi.Input<string>;
+    /**
+     * The email of the user that last updated the app.
+     */
     updater?: pulumi.Input<string>;
+    /**
+     * The URL of the app once it is deployed.
+     */
     url?: pulumi.Input<string>;
 }
 
@@ -130,7 +235,16 @@ export interface AppState {
  * The set of arguments for constructing a App resource.
  */
 export interface AppArgs {
+    /**
+     * The description of the app.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * A list of resources that the app have access to.
+     */
     resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[]>;
 }

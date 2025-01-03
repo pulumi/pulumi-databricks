@@ -15,9 +15,17 @@ public final class JobHealthArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobHealthArgs Empty = new JobHealthArgs();
 
+    /**
+     * list of rules that are represented as objects with the following attributes:
+     * 
+     */
     @Import(name="rules", required=true)
     private Output<List<JobHealthRuleArgs>> rules;
 
+    /**
+     * @return list of rules that are represented as objects with the following attributes:
+     * 
+     */
     public Output<List<JobHealthRuleArgs>> rules() {
         return this.rules;
     }
@@ -46,15 +54,33 @@ public final class JobHealthArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobHealthArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param rules list of rules that are represented as objects with the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder rules(Output<List<JobHealthRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
 
+        /**
+         * @param rules list of rules that are represented as objects with the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder rules(List<JobHealthRuleArgs> rules) {
             return rules(Output.of(rules));
         }
 
+        /**
+         * @param rules list of rules that are represented as objects with the following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder rules(JobHealthRuleArgs... rules) {
             return rules(List.of(rules));
         }

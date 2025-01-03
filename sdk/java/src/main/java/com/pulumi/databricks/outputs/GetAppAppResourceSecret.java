@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppAppResourceSecret {
+    /**
+     * @return Key of the secret to grant permission on.
+     * 
+     */
     private String key;
+    /**
+     * @return Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * 
+     */
     private String permission;
+    /**
+     * @return Scope of the secret to grant permission on.
+     * 
+     */
     private String scope;
 
     private GetAppAppResourceSecret() {}
+    /**
+     * @return Key of the secret to grant permission on.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * 
+     */
     public String permission() {
         return this.permission;
     }
+    /**
+     * @return Scope of the secret to grant permission on.
+     * 
+     */
     public String scope() {
         return this.scope;
     }

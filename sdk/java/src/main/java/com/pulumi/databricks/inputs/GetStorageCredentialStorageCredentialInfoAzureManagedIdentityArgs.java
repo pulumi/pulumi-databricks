@@ -16,9 +16,17 @@ public final class GetStorageCredentialStorageCredentialInfoAzureManagedIdentity
 
     public static final GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs Empty = new GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs();
 
+    /**
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+     * 
+     */
     @Import(name="accessConnectorId", required=true)
     private Output<String> accessConnectorId;
 
+    /**
+     * @return The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+     * 
+     */
     public Output<String> accessConnectorId() {
         return this.accessConnectorId;
     }
@@ -30,9 +38,17 @@ public final class GetStorageCredentialStorageCredentialInfoAzureManagedIdentity
         return Optional.ofNullable(this.credentialId);
     }
 
+    /**
+     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+     * 
+     */
     @Import(name="managedIdentityId")
     private @Nullable Output<String> managedIdentityId;
 
+    /**
+     * @return The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+     * 
+     */
     public Optional<Output<String>> managedIdentityId() {
         return Optional.ofNullable(this.managedIdentityId);
     }
@@ -63,11 +79,23 @@ public final class GetStorageCredentialStorageCredentialInfoAzureManagedIdentity
             $ = new GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessConnectorId The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConnectorId(Output<String> accessConnectorId) {
             $.accessConnectorId = accessConnectorId;
             return this;
         }
 
+        /**
+         * @param accessConnectorId The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConnectorId(String accessConnectorId) {
             return accessConnectorId(Output.of(accessConnectorId));
         }
@@ -81,11 +109,23 @@ public final class GetStorageCredentialStorageCredentialInfoAzureManagedIdentity
             return credentialId(Output.of(credentialId));
         }
 
+        /**
+         * @param managedIdentityId The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedIdentityId(@Nullable Output<String> managedIdentityId) {
             $.managedIdentityId = managedIdentityId;
             return this;
         }
 
+        /**
+         * @param managedIdentityId The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedIdentityId(String managedIdentityId) {
             return managedIdentityId(Output.of(managedIdentityId));
         }

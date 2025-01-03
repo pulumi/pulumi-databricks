@@ -45,6 +45,9 @@ class GetMwsWorkspacesResult:
     @property
     @pulumi.getter
     def ids(self) -> Mapping[str, str]:
+        """
+        name-to-id map for all of the workspaces in the account
+        """
         return pulumi.get(self, "ids")
 
 
@@ -61,7 +64,33 @@ class AwaitableGetMwsWorkspacesResult(GetMwsWorkspacesResult):
 def get_mws_workspaces(ids: Optional[Mapping[str, str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsWorkspacesResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Lists all MwsWorkspaces in Databricks Account.
+
+    > **Note** `account_id` provider configuration property is required for this resource to work.
+
+    ## Example Usage
+
+    Listing all workspaces in
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_mws_workspaces()
+    pulumi.export("allMwsWorkspaces", all.ids)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
+    * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurerm_databricks_workspace
+
+
+    :param Mapping[str, str] ids: name-to-id map for all of the workspaces in the account
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -74,7 +103,33 @@ def get_mws_workspaces(ids: Optional[Mapping[str, str]] = None,
 def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsWorkspacesResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Lists all MwsWorkspaces in Databricks Account.
+
+    > **Note** `account_id` provider configuration property is required for this resource to work.
+
+    ## Example Usage
+
+    Listing all workspaces in
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_mws_workspaces()
+    pulumi.export("allMwsWorkspaces", all.ids)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
+    * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurerm_databricks_workspace
+
+
+    :param Mapping[str, str] ids: name-to-id map for all of the workspaces in the account
     """
     __args__ = dict()
     __args__['ids'] = ids

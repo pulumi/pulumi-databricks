@@ -16,9 +16,17 @@ public final class GetMwsCredentialsArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetMwsCredentialsArgs Empty = new GetMwsCredentialsArgs();
 
+    /**
+     * name-to-id map for all of the credentials in the account
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<Map<String,String>> ids;
 
+    /**
+     * @return name-to-id map for all of the credentials in the account
+     * 
+     */
     public Optional<Output<Map<String,String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
@@ -47,11 +55,23 @@ public final class GetMwsCredentialsArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetMwsCredentialsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids name-to-id map for all of the credentials in the account
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<Map<String,String>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids name-to-id map for all of the credentials in the account
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(Map<String,String> ids) {
             return ids(Output.of(ids));
         }

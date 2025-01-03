@@ -18,6 +18,10 @@ public final class GetMwsNetworkConnectivityConfigsResult {
      * 
      */
     private String id;
+    /**
+     * @return List of names of databricks_mws_network_connectivity_config
+     * 
+     */
     private List<String> names;
     private @Nullable String region;
 
@@ -29,6 +33,10 @@ public final class GetMwsNetworkConnectivityConfigsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return List of names of databricks_mws_network_connectivity_config
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

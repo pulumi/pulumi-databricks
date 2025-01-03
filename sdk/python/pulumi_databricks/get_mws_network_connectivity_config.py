@@ -57,16 +57,25 @@ class GetMwsNetworkConnectivityConfigResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The Databricks account ID associated with this network configuration.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> int:
+        """
+        Time in epoch milliseconds when this object was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter(name="egressConfig")
     def egress_config(self) -> 'outputs.GetMwsNetworkConnectivityConfigEgressConfigResult':
+        """
+        Array of egress configuration objects.
+        """
         return pulumi.get(self, "egress_config")
 
     @property
@@ -80,21 +89,33 @@ class GetMwsNetworkConnectivityConfigResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the network connectivity configuration.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkConnectivityConfigId")
     def network_connectivity_config_id(self) -> str:
+        """
+        The Databricks network connectivity configuration ID.
+        """
         return pulumi.get(self, "network_connectivity_config_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The region of the network connectivity configuration.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="updatedTime")
     def updated_time(self) -> int:
+        """
+        Time in epoch milliseconds when the network was updated.
+        """
         return pulumi.get(self, "updated_time")
 
 
@@ -123,7 +144,37 @@ def get_mws_network_connectivity_config(account_id: Optional[str] = None,
                                         updated_time: Optional[int] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsNetworkConnectivityConfigResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with an account-level provider!
+
+    Retrieves information about MwsNetworkConnectivityConfig in Databricks Account.
+
+    ## Example Usage
+
+    Fetching information about a network connectivity configuration in Databricks Account
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_mws_network_connectivity_config(name="ncc")
+    pulumi.export("config", this)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * get_mws_network_connectivity_configs to get names of all network connectivity configurations.
+    * MwsNetworkConnectivityConfig to manage network connectivity configuration.
+
+
+    :param str account_id: The Databricks account ID associated with this network configuration.
+    :param int creation_time: Time in epoch milliseconds when this object was created.
+    :param Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict'] egress_config: Array of egress configuration objects.
+    :param str name: Name of the network connectivity configuration.
+    :param str network_connectivity_config_id: The Databricks network connectivity configuration ID.
+    :param str region: The region of the network connectivity configuration.
+    :param int updated_time: Time in epoch milliseconds when the network was updated.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -154,7 +205,37 @@ def get_mws_network_connectivity_config_output(account_id: Optional[pulumi.Input
                                                updated_time: Optional[pulumi.Input[Optional[int]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsNetworkConnectivityConfigResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This data source can only be used with an account-level provider!
+
+    Retrieves information about MwsNetworkConnectivityConfig in Databricks Account.
+
+    ## Example Usage
+
+    Fetching information about a network connectivity configuration in Databricks Account
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_mws_network_connectivity_config(name="ncc")
+    pulumi.export("config", this)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * get_mws_network_connectivity_configs to get names of all network connectivity configurations.
+    * MwsNetworkConnectivityConfig to manage network connectivity configuration.
+
+
+    :param str account_id: The Databricks account ID associated with this network configuration.
+    :param int creation_time: Time in epoch milliseconds when this object was created.
+    :param Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict'] egress_config: Array of egress configuration objects.
+    :param str name: Name of the network connectivity configuration.
+    :param str network_connectivity_config_id: The Databricks network connectivity configuration ID.
+    :param str region: The region of the network connectivity configuration.
+    :param int updated_time: Time in epoch milliseconds when the network was updated.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

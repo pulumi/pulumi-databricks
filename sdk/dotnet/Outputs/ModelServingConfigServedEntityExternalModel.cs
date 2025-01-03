@@ -13,16 +13,49 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigServedEntityExternalModel
     {
+        /// <summary>
+        /// AI21Labs Config
+        /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelAi21labsConfig? Ai21labsConfig;
+        /// <summary>
+        /// Amazon Bedrock Config
+        /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfig? AmazonBedrockConfig;
+        /// <summary>
+        /// Anthropic Config
+        /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelAnthropicConfig? AnthropicConfig;
+        /// <summary>
+        /// Cohere Config
+        /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelCohereConfig? CohereConfig;
+        /// <summary>
+        /// Databricks Model Serving Config
+        /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig? DatabricksModelServingConfig;
+        /// <summary>
+        /// Google Cloud Vertex AI Config.
+        /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig? GoogleCloudVertexAiConfig;
+        /// <summary>
+        /// The name of the external model.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// OpenAI Config
+        /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelOpenaiConfig? OpenaiConfig;
+        /// <summary>
+        /// PaLM Config
+        /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelPalmConfig? PalmConfig;
+        /// <summary>
+        /// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
+        /// </summary>
         public readonly string Provider;
+        /// <summary>
+        /// The task type of the external model.
+        /// </summary>
         public readonly string Task;
 
         [OutputConstructor]

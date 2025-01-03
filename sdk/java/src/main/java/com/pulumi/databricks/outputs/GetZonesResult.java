@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZonesResult {
+    /**
+     * @return This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+     * 
+     */
     private String defaultZone;
+    /**
+     * @return The id for the zone object.
+     * 
+     */
     private String id;
+    /**
+     * @return This is a list of all the zones available for your subnets in your Databricks workspace.
+     * 
+     */
     private List<String> zones;
 
     private GetZonesResult() {}
+    /**
+     * @return This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+     * 
+     */
     public String defaultZone() {
         return this.defaultZone;
     }
+    /**
+     * @return The id for the zone object.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return This is a list of all the zones available for your subnets in your Databricks workspace.
+     * 
+     */
     public List<String> zones() {
         return this.zones;
     }

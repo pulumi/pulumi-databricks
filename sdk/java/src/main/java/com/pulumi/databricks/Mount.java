@@ -20,6 +20,12 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Import
+ * 
+ * !&gt; Importing this resource is not currently supported.
+ * 
+ */
 @ResourceType(type="databricks:index/mount:Mount")
 public class Mount extends com.pulumi.resources.CustomResource {
     @Export(name="abfs", refs={MountAbfs.class}, tree="[0]")
@@ -76,9 +82,17 @@ public class Mount extends com.pulumi.resources.CustomResource {
     public Output<Optional<MountS3>> s3() {
         return Codegen.optional(this.s3);
     }
+    /**
+     * (String) HDFS-compatible url
+     * 
+     */
     @Export(name="source", refs={String.class}, tree="[0]")
     private Output<String> source;
 
+    /**
+     * @return (String) HDFS-compatible url
+     * 
+     */
     public Output<String> source() {
         return this.source;
     }

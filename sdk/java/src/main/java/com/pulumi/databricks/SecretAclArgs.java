@@ -14,23 +14,47 @@ public final class SecretAclArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SecretAclArgs Empty = new SecretAclArgs();
 
+    /**
+     * `READ`, `WRITE` or `MANAGE`.
+     * 
+     */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
+    /**
+     * @return `READ`, `WRITE` or `MANAGE`.
+     * 
+     */
     public Output<String> permission() {
         return this.permission;
     }
 
+    /**
+     * principal&#39;s identifier. It can be:
+     * 
+     */
     @Import(name="principal", required=true)
     private Output<String> principal;
 
+    /**
+     * @return principal&#39;s identifier. It can be:
+     * 
+     */
     public Output<String> principal() {
         return this.principal;
     }
 
+    /**
+     * name of the scope
+     * 
+     */
     @Import(name="scope", required=true)
     private Output<String> scope;
 
+    /**
+     * @return name of the scope
+     * 
+     */
     public Output<String> scope() {
         return this.scope;
     }
@@ -61,29 +85,65 @@ public final class SecretAclArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SecretAclArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param permission `READ`, `WRITE` or `MANAGE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission `READ`, `WRITE` or `MANAGE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }
 
+        /**
+         * @param principal principal&#39;s identifier. It can be:
+         * 
+         * @return builder
+         * 
+         */
         public Builder principal(Output<String> principal) {
             $.principal = principal;
             return this;
         }
 
+        /**
+         * @param principal principal&#39;s identifier. It can be:
+         * 
+         * @return builder
+         * 
+         */
         public Builder principal(String principal) {
             return principal(Output.of(principal));
         }
 
+        /**
+         * @param scope name of the scope
+         * 
+         * @return builder
+         * 
+         */
         public Builder scope(Output<String> scope) {
             $.scope = scope;
             return this;
         }
 
+        /**
+         * @param scope name of the scope
+         * 
+         * @return builder
+         * 
+         */
         public Builder scope(String scope) {
             return scope(Output.of(scope));
         }

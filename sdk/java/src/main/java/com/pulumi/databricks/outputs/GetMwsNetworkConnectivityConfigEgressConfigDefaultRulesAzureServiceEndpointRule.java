@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+    /**
+     * @return Array of strings representing the subnet IDs.
+     * 
+     */
     private @Nullable List<String> subnets;
+    /**
+     * @return The target region for the service endpoint.
+     * 
+     */
     private @Nullable String targetRegion;
+    /**
+     * @return Array of target services.
+     * 
+     */
     private @Nullable List<String> targetServices;
 
     private GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule() {}
+    /**
+     * @return Array of strings representing the subnet IDs.
+     * 
+     */
     public List<String> subnets() {
         return this.subnets == null ? List.of() : this.subnets;
     }
+    /**
+     * @return The target region for the service endpoint.
+     * 
+     */
     public Optional<String> targetRegion() {
         return Optional.ofNullable(this.targetRegion);
     }
+    /**
+     * @return Array of target services.
+     * 
+     */
     public List<String> targetServices() {
         return this.targetServices == null ? List.of() : this.targetServices;
     }

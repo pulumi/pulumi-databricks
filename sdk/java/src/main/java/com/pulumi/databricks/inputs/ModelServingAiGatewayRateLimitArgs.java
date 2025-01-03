@@ -17,23 +17,47 @@ public final class ModelServingAiGatewayRateLimitArgs extends com.pulumi.resourc
 
     public static final ModelServingAiGatewayRateLimitArgs Empty = new ModelServingAiGatewayRateLimitArgs();
 
+    /**
+     * Used to specify how many calls are allowed for a key within the renewal_period.
+     * 
+     */
     @Import(name="calls", required=true)
     private Output<Integer> calls;
 
+    /**
+     * @return Used to specify how many calls are allowed for a key within the renewal_period.
+     * 
+     */
     public Output<Integer> calls() {
         return this.calls;
     }
 
+    /**
+     * Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+     * 
+     */
     @Import(name="renewalPeriod", required=true)
     private Output<String> renewalPeriod;
 
+    /**
+     * @return Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+     * 
+     */
     public Output<String> renewalPeriod() {
         return this.renewalPeriod;
     }
@@ -64,29 +88,65 @@ public final class ModelServingAiGatewayRateLimitArgs extends com.pulumi.resourc
             $ = new ModelServingAiGatewayRateLimitArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param calls Used to specify how many calls are allowed for a key within the renewal_period.
+         * 
+         * @return builder
+         * 
+         */
         public Builder calls(Output<Integer> calls) {
             $.calls = calls;
             return this;
         }
 
+        /**
+         * @param calls Used to specify how many calls are allowed for a key within the renewal_period.
+         * 
+         * @return builder
+         * 
+         */
         public Builder calls(Integer calls) {
             return calls(Output.of(calls));
         }
 
+        /**
+         * @param key Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param renewalPeriod Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder renewalPeriod(Output<String> renewalPeriod) {
             $.renewalPeriod = renewalPeriod;
             return this;
         }
 
+        /**
+         * @param renewalPeriod Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder renewalPeriod(String renewalPeriod) {
             return renewalPeriod(Output.of(renewalPeriod));
         }

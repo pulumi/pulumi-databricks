@@ -14,6 +14,18 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Import
+ * 
+ * You can import a `databricks_sql_visualization` resource with ID like the following:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/sqlVisualization:SqlVisualization this &lt;query-id&gt;/&lt;visualization-id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/sqlVisualization:SqlVisualization")
 public class SqlVisualization extends com.pulumi.resources.CustomResource {
     @Export(name="description", refs={String.class}, tree="[0]")

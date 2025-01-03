@@ -17,51 +17,107 @@ public final class SqlAlertOptionsArgs extends com.pulumi.resources.ResourceArgs
 
     public static final SqlAlertOptionsArgs Empty = new SqlAlertOptionsArgs();
 
+    /**
+     * Name of column in the query result to compare in alert evaluation.
+     * 
+     */
     @Import(name="column", required=true)
     private Output<String> column;
 
+    /**
+     * @return Name of column in the query result to compare in alert evaluation.
+     * 
+     */
     public Output<String> column() {
         return this.column;
     }
 
+    /**
+     * Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+     * 
+     */
     @Import(name="customBody")
     private @Nullable Output<String> customBody;
 
+    /**
+     * @return Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+     * 
+     */
     public Optional<Output<String>> customBody() {
         return Optional.ofNullable(this.customBody);
     }
 
+    /**
+     * Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+     * 
+     */
     @Import(name="customSubject")
     private @Nullable Output<String> customSubject;
 
+    /**
+     * @return Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+     * 
+     */
     public Optional<Output<String>> customSubject() {
         return Optional.ofNullable(this.customSubject);
     }
 
+    /**
+     * State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+     * 
+     */
     @Import(name="emptyResultState")
     private @Nullable Output<String> emptyResultState;
 
+    /**
+     * @return State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+     * 
+     */
     public Optional<Output<String>> emptyResultState() {
         return Optional.ofNullable(this.emptyResultState);
     }
 
+    /**
+     * Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+     * 
+     */
     @Import(name="muted")
     private @Nullable Output<Boolean> muted;
 
+    /**
+     * @return Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+     * 
+     */
     public Optional<Output<Boolean>> muted() {
         return Optional.ofNullable(this.muted);
     }
 
+    /**
+     * Operator used to compare in alert evaluation. (Enum: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`, `!=`)
+     * 
+     */
     @Import(name="op", required=true)
     private Output<String> op;
 
+    /**
+     * @return Operator used to compare in alert evaluation. (Enum: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`, `!=`)
+     * 
+     */
     public Output<String> op() {
         return this.op;
     }
 
+    /**
+     * Value used to compare in alert evaluation.
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return Value used to compare in alert evaluation.
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -96,65 +152,149 @@ public final class SqlAlertOptionsArgs extends com.pulumi.resources.ResourceArgs
             $ = new SqlAlertOptionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param column Name of column in the query result to compare in alert evaluation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder column(Output<String> column) {
             $.column = column;
             return this;
         }
 
+        /**
+         * @param column Name of column in the query result to compare in alert evaluation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder column(String column) {
             return column(Output.of(column));
         }
 
+        /**
+         * @param customBody Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customBody(@Nullable Output<String> customBody) {
             $.customBody = customBody;
             return this;
         }
 
+        /**
+         * @param customBody Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customBody(String customBody) {
             return customBody(Output.of(customBody));
         }
 
+        /**
+         * @param customSubject Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customSubject(@Nullable Output<String> customSubject) {
             $.customSubject = customSubject;
             return this;
         }
 
+        /**
+         * @param customSubject Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customSubject(String customSubject) {
             return customSubject(Output.of(customSubject));
         }
 
+        /**
+         * @param emptyResultState State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emptyResultState(@Nullable Output<String> emptyResultState) {
             $.emptyResultState = emptyResultState;
             return this;
         }
 
+        /**
+         * @param emptyResultState State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emptyResultState(String emptyResultState) {
             return emptyResultState(Output.of(emptyResultState));
         }
 
+        /**
+         * @param muted Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+         * 
+         * @return builder
+         * 
+         */
         public Builder muted(@Nullable Output<Boolean> muted) {
             $.muted = muted;
             return this;
         }
 
+        /**
+         * @param muted Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
+         * 
+         * @return builder
+         * 
+         */
         public Builder muted(Boolean muted) {
             return muted(Output.of(muted));
         }
 
+        /**
+         * @param op Operator used to compare in alert evaluation. (Enum: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`, `!=`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder op(Output<String> op) {
             $.op = op;
             return this;
         }
 
+        /**
+         * @param op Operator used to compare in alert evaluation. (Enum: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`, `!=`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder op(String op) {
             return op(Output.of(op));
         }
 
+        /**
+         * @param value Value used to compare in alert evaluation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Value used to compare in alert evaluation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

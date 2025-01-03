@@ -11,17 +11,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTaskNotificationSettings {
+    /**
+     * @return (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+     * 
+     */
     private @Nullable Boolean alertOnLastAttempt;
+    /**
+     * @return (Bool) don&#39;t send alert for cancelled runs.
+     * 
+     * The following parameter is only available on task level.
+     * 
+     */
     private @Nullable Boolean noAlertForCanceledRuns;
+    /**
+     * @return (Bool) don&#39;t send alert for skipped runs.
+     * 
+     */
     private @Nullable Boolean noAlertForSkippedRuns;
 
     private JobTaskForEachTaskTaskNotificationSettings() {}
+    /**
+     * @return (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+     * 
+     */
     public Optional<Boolean> alertOnLastAttempt() {
         return Optional.ofNullable(this.alertOnLastAttempt);
     }
+    /**
+     * @return (Bool) don&#39;t send alert for cancelled runs.
+     * 
+     * The following parameter is only available on task level.
+     * 
+     */
     public Optional<Boolean> noAlertForCanceledRuns() {
         return Optional.ofNullable(this.noAlertForCanceledRuns);
     }
+    /**
+     * @return (Bool) don&#39;t send alert for skipped runs.
+     * 
+     */
     public Optional<Boolean> noAlertForSkippedRuns() {
         return Optional.ofNullable(this.noAlertForSkippedRuns);
     }

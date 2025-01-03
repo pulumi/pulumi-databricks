@@ -11,6 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This data source can only be used with a workspace-level provider!
+//
+// Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+//
+// ## Example Usage
+//
+// List all functions defined in a specific schema (`main.default` in this example):
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.GetFunctions(ctx, &databricks.GetFunctionsArgs{
+//				CatalogName: "main",
+//				SchemaName:  "default",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allExternalLocations", all.Functions)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Schema to get information about a single schema
 func GetFunctions(ctx *pulumi.Context, args *GetFunctionsArgs, opts ...pulumi.InvokeOption) (*GetFunctionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFunctionsResult
@@ -23,20 +62,27 @@ func GetFunctions(ctx *pulumi.Context, args *GetFunctionsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getFunctions.
 type GetFunctionsArgs struct {
-	CatalogName   string                 `pulumi:"catalogName"`
-	Functions     []GetFunctionsFunction `pulumi:"functions"`
-	IncludeBrowse *bool                  `pulumi:"includeBrowse"`
-	SchemaName    string                 `pulumi:"schemaName"`
+	// Name of databricks_catalog.
+	CatalogName string `pulumi:"catalogName"`
+	// list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+	Functions []GetFunctionsFunction `pulumi:"functions"`
+	// flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
+	IncludeBrowse *bool `pulumi:"includeBrowse"`
+	// Name of databricks_schema.
+	SchemaName string `pulumi:"schemaName"`
 }
 
 // A collection of values returned by getFunctions.
 type GetFunctionsResult struct {
-	CatalogName string                 `pulumi:"catalogName"`
-	Functions   []GetFunctionsFunction `pulumi:"functions"`
+	// Name of parent catalog.
+	CatalogName string `pulumi:"catalogName"`
+	// list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+	Functions []GetFunctionsFunction `pulumi:"functions"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string `pulumi:"id"`
 	IncludeBrowse *bool  `pulumi:"includeBrowse"`
-	SchemaName    string `pulumi:"schemaName"`
+	// Name of parent schema relative to its parent catalog.
+	SchemaName string `pulumi:"schemaName"`
 }
 
 func GetFunctionsOutput(ctx *pulumi.Context, args GetFunctionsOutputArgs, opts ...pulumi.InvokeOption) GetFunctionsResultOutput {
@@ -50,10 +96,14 @@ func GetFunctionsOutput(ctx *pulumi.Context, args GetFunctionsOutputArgs, opts .
 
 // A collection of arguments for invoking getFunctions.
 type GetFunctionsOutputArgs struct {
-	CatalogName   pulumi.StringInput             `pulumi:"catalogName"`
-	Functions     GetFunctionsFunctionArrayInput `pulumi:"functions"`
-	IncludeBrowse pulumi.BoolPtrInput            `pulumi:"includeBrowse"`
-	SchemaName    pulumi.StringInput             `pulumi:"schemaName"`
+	// Name of databricks_catalog.
+	CatalogName pulumi.StringInput `pulumi:"catalogName"`
+	// list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+	Functions GetFunctionsFunctionArrayInput `pulumi:"functions"`
+	// flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
+	IncludeBrowse pulumi.BoolPtrInput `pulumi:"includeBrowse"`
+	// Name of databricks_schema.
+	SchemaName pulumi.StringInput `pulumi:"schemaName"`
 }
 
 func (GetFunctionsOutputArgs) ElementType() reflect.Type {
@@ -75,10 +125,12 @@ func (o GetFunctionsResultOutput) ToGetFunctionsResultOutputWithContext(ctx cont
 	return o
 }
 
+// Name of parent catalog.
 func (o GetFunctionsResultOutput) CatalogName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionsResult) string { return v.CatalogName }).(pulumi.StringOutput)
 }
 
+// list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
 func (o GetFunctionsResultOutput) Functions() GetFunctionsFunctionArrayOutput {
 	return o.ApplyT(func(v GetFunctionsResult) []GetFunctionsFunction { return v.Functions }).(GetFunctionsFunctionArrayOutput)
 }
@@ -92,6 +144,7 @@ func (o GetFunctionsResultOutput) IncludeBrowse() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetFunctionsResult) *bool { return v.IncludeBrowse }).(pulumi.BoolPtrOutput)
 }
 
+// Name of parent schema relative to its parent catalog.
 func (o GetFunctionsResultOutput) SchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionsResult) string { return v.SchemaName }).(pulumi.StringOutput)
 }

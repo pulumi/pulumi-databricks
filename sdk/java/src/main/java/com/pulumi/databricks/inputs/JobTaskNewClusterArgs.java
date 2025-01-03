@@ -177,9 +177,17 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.kind);
     }
 
+    /**
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+     * 
+     */
     @Import(name="libraries")
     private @Nullable Output<List<JobTaskNewClusterLibraryArgs>> libraries;
 
+    /**
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+     * 
+     */
     public Optional<Output<List<JobTaskNewClusterLibraryArgs>>> libraries() {
         return Optional.ofNullable(this.libraries);
     }
@@ -254,9 +262,17 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.useMlRuntime);
     }
 
+    /**
+     * isn&#39;t supported
+     * 
+     */
     @Import(name="workloadType")
     private @Nullable Output<JobTaskNewClusterWorkloadTypeArgs> workloadType;
 
+    /**
+     * @return isn&#39;t supported
+     * 
+     */
     public Optional<Output<JobTaskNewClusterWorkloadTypeArgs>> workloadType() {
         return Optional.ofNullable(this.workloadType);
     }
@@ -514,15 +530,33 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
             return kind(Output.of(kind));
         }
 
+        /**
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder libraries(@Nullable Output<List<JobTaskNewClusterLibraryArgs>> libraries) {
             $.libraries = libraries;
             return this;
         }
 
+        /**
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder libraries(List<JobTaskNewClusterLibraryArgs> libraries) {
             return libraries(Output.of(libraries));
         }
 
+        /**
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder libraries(JobTaskNewClusterLibraryArgs... libraries) {
             return libraries(List.of(libraries));
         }
@@ -621,11 +655,23 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
             return useMlRuntime(Output.of(useMlRuntime));
         }
 
+        /**
+         * @param workloadType isn&#39;t supported
+         * 
+         * @return builder
+         * 
+         */
         public Builder workloadType(@Nullable Output<JobTaskNewClusterWorkloadTypeArgs> workloadType) {
             $.workloadType = workloadType;
             return this;
         }
 
+        /**
+         * @param workloadType isn&#39;t supported
+         * 
+         * @return builder
+         * 
+         */
         public Builder workloadType(JobTaskNewClusterWorkloadTypeArgs workloadType) {
             return workloadType(Output.of(workloadType));
         }

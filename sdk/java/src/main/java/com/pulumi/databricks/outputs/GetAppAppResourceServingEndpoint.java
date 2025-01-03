@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppAppResourceServingEndpoint {
+    /**
+     * @return The name of the app.
+     * 
+     */
     private String name;
+    /**
+     * @return Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * 
+     */
     private String permission;
 
     private GetAppAppResourceServingEndpoint() {}
+    /**
+     * @return The name of the app.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * 
+     */
     public String permission() {
         return this.permission;
     }

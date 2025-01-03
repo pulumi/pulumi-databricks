@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCatalogResult {
+    /**
+     * @return the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
+     * 
+     */
     private GetCatalogCatalogInfo catalogInfo;
+    /**
+     * @return same as the `name`
+     * 
+     */
     private String id;
+    /**
+     * @return Name of the catalog
+     * 
+     */
     private String name;
 
     private GetCatalogResult() {}
+    /**
+     * @return the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
+     * 
+     */
     public GetCatalogCatalogInfo catalogInfo() {
         return this.catalogInfo;
     }
+    /**
+     * @return same as the `name`
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Name of the catalog
+     * 
+     */
     public String name() {
         return this.name;
     }

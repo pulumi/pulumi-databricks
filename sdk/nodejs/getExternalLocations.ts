@@ -4,6 +4,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** This data source can only be used with a workspace-level provider!
+ *
+ * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+ *
+ * ## Example Usage
+ *
+ * List all external locations in the metastore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getExternalLocations({});
+ * export const allExternalLocations = all.then(all => all.names);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.ExternalLocation to get information about a single external location
+ * * databricks.ExternalLocation to manage external locations within Unity Catalog.
+ */
 export function getExternalLocations(args?: GetExternalLocationsArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalLocationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,6 +40,9 @@ export function getExternalLocations(args?: GetExternalLocationsArgs, opts?: pul
  * A collection of arguments for invoking getExternalLocations.
  */
 export interface GetExternalLocationsArgs {
+    /**
+     * List of names of databricks.ExternalLocation in the metastore
+     */
     names?: string[];
 }
 
@@ -27,8 +54,35 @@ export interface GetExternalLocationsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * List of names of databricks.ExternalLocation in the metastore
+     */
     readonly names: string[];
 }
+/**
+ * > **Note** This data source can only be used with a workspace-level provider!
+ *
+ * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+ *
+ * ## Example Usage
+ *
+ * List all external locations in the metastore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getExternalLocations({});
+ * export const allExternalLocations = all.then(all => all.names);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.ExternalLocation to get information about a single external location
+ * * databricks.ExternalLocation to manage external locations within Unity Catalog.
+ */
 export function getExternalLocationsOutput(args?: GetExternalLocationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExternalLocationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,5 +95,8 @@ export function getExternalLocationsOutput(args?: GetExternalLocationsOutputArgs
  * A collection of arguments for invoking getExternalLocations.
  */
 export interface GetExternalLocationsOutputArgs {
+    /**
+     * List of names of databricks.ExternalLocation in the metastore
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }

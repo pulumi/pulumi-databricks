@@ -28,6 +28,13 @@ class VolumeArgs:
                  storage_location: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Volume resource.
+        :param pulumi.Input[str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
+        :param pulumi.Input[str] comment: Free-form text.
+        :param pulumi.Input[str] name: Name of the Volume
+        :param pulumi.Input[str] owner: Name of the volume owner.
+        :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
         pulumi.set(__self__, "schema_name", schema_name)
@@ -44,6 +51,9 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Input[str]:
+        """
+        Name of parent Catalog. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -53,6 +63,9 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Input[str]:
+        """
+        Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "schema_name")
 
     @schema_name.setter
@@ -62,6 +75,9 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Input[str]:
+        """
+        Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -71,6 +87,9 @@ class VolumeArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Free-form text.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -80,6 +99,9 @@ class VolumeArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Volume
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -89,6 +111,9 @@ class VolumeArgs:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the volume owner.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -98,6 +123,9 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
@@ -118,6 +146,14 @@ class _VolumeState:
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
+        :param pulumi.Input[str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] comment: Free-form text.
+        :param pulumi.Input[str] name: Name of the Volume
+        :param pulumi.Input[str] owner: Name of the volume owner.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        :param pulumi.Input[str] volume_path: base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+        :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
@@ -139,6 +175,9 @@ class _VolumeState:
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of parent Catalog. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -148,6 +187,9 @@ class _VolumeState:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Free-form text.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -157,6 +199,9 @@ class _VolumeState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Volume
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -166,6 +211,9 @@ class _VolumeState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the volume owner.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -175,6 +223,9 @@ class _VolumeState:
     @property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "schema_name")
 
     @schema_name.setter
@@ -184,6 +235,9 @@ class _VolumeState:
     @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
@@ -193,6 +247,9 @@ class _VolumeState:
     @property
     @pulumi.getter(name="volumePath")
     def volume_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+        """
         return pulumi.get(self, "volume_path")
 
     @volume_path.setter
@@ -202,6 +259,9 @@ class _VolumeState:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -223,9 +283,92 @@ class Volume(pulumi.CustomResource):
                  volume_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Volume resource with the given unique name, props, and options.
+        > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+
+        > This resource can only be used with a workspace-level provider!
+
+        Volumes are Unity Catalog objects representing a logical volume of storage in a cloud object storage location. Volumes provide capabilities for accessing, storing, governing, and organizing files. While tables provide governance over tabular datasets, volumes add governance over non-tabular datasets. You can use volumes to store and access files in any format, including structured, semi-structured, and unstructured data.
+
+        A volume resides in the third layer of Unity Catalog’s three-level namespace. Volumes are siblings to tables, views, and other objects organized under a schema in Unity Catalog.
+
+        A volume can be **managed** or **external**.
+
+        A **managed volume** is a Unity Catalog-governed storage volume created within the default storage location of the containing schema. Managed volumes allow the creation of governed storage for working with files without the overhead of external locations and storage credentials. You do not need to specify a location when creating a managed volume, and all file access for data in managed volumes is through paths managed by Unity Catalog.
+
+        An **external volume** is a Unity Catalog-governed storage volume registered against a directory within an external location.
+
+        A volume can be referenced using its identifier: ```<catalogName>.<schemaName>.<volumeName>```, where:
+
+        * ```<catalogName>```: The name of the catalog containing the Volume.
+        * ```<schemaName>```: The name of the schema containing the Volume.
+        * ```<volumeName>```: The name of the Volume. It identifies the volume object.
+
+        The path to access files in volumes uses the following format:
+
+        ```/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>```
+
+        Databricks also supports an optional ```dbfs:/``` scheme, so the following path also works:
+
+        ```dbfs:/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>```
+
+        This resource manages Volumes in Unity Catalog.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        things = databricks.Schema("things",
+            catalog_name=sandbox.name,
+            name="things",
+            comment="this schema is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        external = databricks.StorageCredential("external",
+            name="creds",
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            })
+        some = databricks.ExternalLocation("some",
+            name="external_location",
+            url=f"s3://{external_aws_s3_bucket['id']}/some",
+            credential_name=external.name)
+        this = databricks.Volume("this",
+            name="quickstart_volume",
+            catalog_name=sandbox.name,
+            schema_name=things.name,
+            volume_type="EXTERNAL",
+            storage_location=some.url,
+            comment="this volume is managed by terraform")
+        ```
+
+        ## Import
+
+        This resource can be imported by `full_name` which is the 3-level Volume identifier: `<catalog>.<schema>.<name>`
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] comment: Free-form text.
+        :param pulumi.Input[str] name: Name of the Volume
+        :param pulumi.Input[str] owner: Name of the volume owner.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         ...
     @overload
@@ -234,7 +377,83 @@ class Volume(pulumi.CustomResource):
                  args: VolumeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Volume resource with the given unique name, props, and options.
+        > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+
+        > This resource can only be used with a workspace-level provider!
+
+        Volumes are Unity Catalog objects representing a logical volume of storage in a cloud object storage location. Volumes provide capabilities for accessing, storing, governing, and organizing files. While tables provide governance over tabular datasets, volumes add governance over non-tabular datasets. You can use volumes to store and access files in any format, including structured, semi-structured, and unstructured data.
+
+        A volume resides in the third layer of Unity Catalog’s three-level namespace. Volumes are siblings to tables, views, and other objects organized under a schema in Unity Catalog.
+
+        A volume can be **managed** or **external**.
+
+        A **managed volume** is a Unity Catalog-governed storage volume created within the default storage location of the containing schema. Managed volumes allow the creation of governed storage for working with files without the overhead of external locations and storage credentials. You do not need to specify a location when creating a managed volume, and all file access for data in managed volumes is through paths managed by Unity Catalog.
+
+        An **external volume** is a Unity Catalog-governed storage volume registered against a directory within an external location.
+
+        A volume can be referenced using its identifier: ```<catalogName>.<schemaName>.<volumeName>```, where:
+
+        * ```<catalogName>```: The name of the catalog containing the Volume.
+        * ```<schemaName>```: The name of the schema containing the Volume.
+        * ```<volumeName>```: The name of the Volume. It identifies the volume object.
+
+        The path to access files in volumes uses the following format:
+
+        ```/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>```
+
+        Databricks also supports an optional ```dbfs:/``` scheme, so the following path also works:
+
+        ```dbfs:/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>```
+
+        This resource manages Volumes in Unity Catalog.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        things = databricks.Schema("things",
+            catalog_name=sandbox.name,
+            name="things",
+            comment="this schema is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        external = databricks.StorageCredential("external",
+            name="creds",
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            })
+        some = databricks.ExternalLocation("some",
+            name="external_location",
+            url=f"s3://{external_aws_s3_bucket['id']}/some",
+            credential_name=external.name)
+        this = databricks.Volume("this",
+            name="quickstart_volume",
+            catalog_name=sandbox.name,
+            schema_name=things.name,
+            volume_type="EXTERNAL",
+            storage_location=some.url,
+            comment="this volume is managed by terraform")
+        ```
+
+        ## Import
+
+        This resource can be imported by `full_name` which is the 3-level Volume identifier: `<catalog>.<schema>.<name>`
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param VolumeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -305,6 +524,14 @@ class Volume(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] comment: Free-form text.
+        :param pulumi.Input[str] name: Name of the Volume
+        :param pulumi.Input[str] owner: Name of the volume owner.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        :param pulumi.Input[str] volume_path: base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+        :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -323,40 +550,64 @@ class Volume(pulumi.CustomResource):
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[str]:
+        """
+        Name of parent Catalog. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "catalog_name")
 
     @property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
+        """
+        Free-form text.
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Name of the Volume
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
+        """
+        Name of the volume owner.
+        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Output[str]:
+        """
+        Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "schema_name")
 
     @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> pulumi.Output[Optional[str]]:
+        """
+        Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "storage_location")
 
     @property
     @pulumi.getter(name="volumePath")
     def volume_path(self) -> pulumi.Output[str]:
+        """
+        base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+        """
         return pulumi.get(self, "volume_path")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Output[str]:
+        """
+        Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "volume_type")
 

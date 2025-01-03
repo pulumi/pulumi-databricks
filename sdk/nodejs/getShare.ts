@@ -6,6 +6,31 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Retrieves details about a databricks.Share that were created by Pulumi or manually.
+ *
+ * ## Example Usage
+ *
+ * Getting details of an existing share in the metastore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getShare({
+ *     name: "this",
+ * });
+ * export const createdBy = _this.then(_this => _this.createdBy);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Share to create Delta Sharing shares.
+ * * databricks.Recipient to create Delta Sharing recipients.
+ * * databricks.Grants to manage Delta Sharing permissions.
+ */
 export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -21,9 +46,21 @@ export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getShare.
  */
 export interface GetShareArgs {
+    /**
+     * Time when the share was created.
+     */
     createdAt?: number;
+    /**
+     * The principal that created the share.
+     */
     createdBy?: string;
+    /**
+     * The name of the share
+     */
     name?: string;
+    /**
+     * arrays containing details of each object in the share.
+     */
     objects?: inputs.GetShareObject[];
 }
 
@@ -31,15 +68,52 @@ export interface GetShareArgs {
  * A collection of values returned by getShare.
  */
 export interface GetShareResult {
+    /**
+     * Time when the share was created.
+     */
     readonly createdAt: number;
+    /**
+     * The principal that created the share.
+     */
     readonly createdBy: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Full name of the object being shared.
+     */
     readonly name: string;
+    /**
+     * arrays containing details of each object in the share.
+     */
     readonly objects: outputs.GetShareObject[];
 }
+/**
+ * Retrieves details about a databricks.Share that were created by Pulumi or manually.
+ *
+ * ## Example Usage
+ *
+ * Getting details of an existing share in the metastore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getShare({
+ *     name: "this",
+ * });
+ * export const createdBy = _this.then(_this => _this.createdBy);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Share to create Delta Sharing shares.
+ * * databricks.Recipient to create Delta Sharing recipients.
+ * * databricks.Grants to manage Delta Sharing permissions.
+ */
 export function getShareOutput(args?: GetShareOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetShareResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,8 +129,20 @@ export function getShareOutput(args?: GetShareOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getShare.
  */
 export interface GetShareOutputArgs {
+    /**
+     * Time when the share was created.
+     */
     createdAt?: pulumi.Input<number>;
+    /**
+     * The principal that created the share.
+     */
     createdBy?: pulumi.Input<string>;
+    /**
+     * The name of the share
+     */
     name?: pulumi.Input<string>;
+    /**
+     * arrays containing details of each object in the share.
+     */
     objects?: pulumi.Input<pulumi.Input<inputs.GetShareObjectArgs>[]>;
 }

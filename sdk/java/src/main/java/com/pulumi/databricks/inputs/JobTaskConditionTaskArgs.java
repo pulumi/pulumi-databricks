@@ -14,23 +14,51 @@ public final class JobTaskConditionTaskArgs extends com.pulumi.resources.Resourc
 
     public static final JobTaskConditionTaskArgs Empty = new JobTaskConditionTaskArgs();
 
+    /**
+     * The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+     * 
+     */
     @Import(name="left", required=true)
     private Output<String> left;
 
+    /**
+     * @return The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+     * 
+     */
     public Output<String> left() {
         return this.left;
     }
 
+    /**
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * 
+     * This task does not require a cluster to execute and does not support retries or notifications.
+     * 
+     */
     @Import(name="op", required=true)
     private Output<String> op;
 
+    /**
+     * @return The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * 
+     * This task does not require a cluster to execute and does not support retries or notifications.
+     * 
+     */
     public Output<String> op() {
         return this.op;
     }
 
+    /**
+     * The right operand of the condition task. It could be a string value, job state, or parameter reference.
+     * 
+     */
     @Import(name="right", required=true)
     private Output<String> right;
 
+    /**
+     * @return The right operand of the condition task. It could be a string value, job state, or parameter reference.
+     * 
+     */
     public Output<String> right() {
         return this.right;
     }
@@ -61,29 +89,69 @@ public final class JobTaskConditionTaskArgs extends com.pulumi.resources.Resourc
             $ = new JobTaskConditionTaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param left The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+         * 
+         * @return builder
+         * 
+         */
         public Builder left(Output<String> left) {
             $.left = left;
             return this;
         }
 
+        /**
+         * @param left The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+         * 
+         * @return builder
+         * 
+         */
         public Builder left(String left) {
             return left(Output.of(left));
         }
 
+        /**
+         * @param op The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+         * 
+         * This task does not require a cluster to execute and does not support retries or notifications.
+         * 
+         * @return builder
+         * 
+         */
         public Builder op(Output<String> op) {
             $.op = op;
             return this;
         }
 
+        /**
+         * @param op The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+         * 
+         * This task does not require a cluster to execute and does not support retries or notifications.
+         * 
+         * @return builder
+         * 
+         */
         public Builder op(String op) {
             return op(Output.of(op));
         }
 
+        /**
+         * @param right The right operand of the condition task. It could be a string value, job state, or parameter reference.
+         * 
+         * @return builder
+         * 
+         */
         public Builder right(Output<String> right) {
             $.right = right;
             return this;
         }
 
+        /**
+         * @param right The right operand of the condition task. It could be a string value, job state, or parameter reference.
+         * 
+         * @return builder
+         * 
+         */
         public Builder right(String right) {
             return right(Output.of(right));
         }

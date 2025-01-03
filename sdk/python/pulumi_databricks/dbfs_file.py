@@ -25,6 +25,9 @@ class DbfsFileArgs:
                  source: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DbfsFile resource.
+        :param pulumi.Input[str] path: The path of the file in which you wish to save.
+        :param pulumi.Input[str] content_base64: Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        :param pulumi.Input[str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         pulumi.set(__self__, "path", path)
         if content_base64 is not None:
@@ -37,6 +40,9 @@ class DbfsFileArgs:
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input[str]:
+        """
+        The path of the file in which you wish to save.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -46,6 +52,9 @@ class DbfsFileArgs:
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
@@ -64,6 +73,9 @@ class DbfsFileArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full absolute path to the file. Conflicts with `content_base64`.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -82,6 +94,11 @@ class _DbfsFileState:
                  source: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DbfsFile resources.
+        :param pulumi.Input[str] content_base64: Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        :param pulumi.Input[str] dbfs_path: Path, but with `dbfs:` prefix.
+        :param pulumi.Input[int] file_size: The file size of the file that is being tracked by this resource in bytes.
+        :param pulumi.Input[str] path: The path of the file in which you wish to save.
+        :param pulumi.Input[str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         if content_base64 is not None:
             pulumi.set(__self__, "content_base64", content_base64)
@@ -99,6 +116,9 @@ class _DbfsFileState:
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> Optional[pulumi.Input[str]]:
+        """
+        Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
@@ -108,6 +128,9 @@ class _DbfsFileState:
     @property
     @pulumi.getter(name="dbfsPath")
     def dbfs_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path, but with `dbfs:` prefix.
+        """
         return pulumi.get(self, "dbfs_path")
 
     @dbfs_path.setter
@@ -117,6 +140,9 @@ class _DbfsFileState:
     @property
     @pulumi.getter(name="fileSize")
     def file_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The file size of the file that is being tracked by this resource in bytes.
+        """
         return pulumi.get(self, "file_size")
 
     @file_size.setter
@@ -135,6 +161,9 @@ class _DbfsFileState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of the file in which you wish to save.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -144,6 +173,9 @@ class _DbfsFileState:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full absolute path to the file. Conflicts with `content_base64`.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -162,9 +194,23 @@ class DbfsFile(pulumi.CustomResource):
                  source: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a DbfsFile resource with the given unique name, props, and options.
+        This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for Cluster or databricks_job. You can also use DbfsFile and get_dbfs_file_paths data sources.
+
+        ## Import
+
+        The resource dbfs file can be imported using the path of the file:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_base64: Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        :param pulumi.Input[str] path: The path of the file in which you wish to save.
+        :param pulumi.Input[str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         ...
     @overload
@@ -173,7 +219,18 @@ class DbfsFile(pulumi.CustomResource):
                  args: DbfsFileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a DbfsFile resource with the given unique name, props, and options.
+        This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for Cluster or databricks_job. You can also use DbfsFile and get_dbfs_file_paths data sources.
+
+        ## Import
+
+        The resource dbfs file can be imported using the path of the file:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
+        ```
+
         :param str resource_name: The name of the resource.
         :param DbfsFileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -233,6 +290,11 @@ class DbfsFile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] content_base64: Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        :param pulumi.Input[str] dbfs_path: Path, but with `dbfs:` prefix.
+        :param pulumi.Input[int] file_size: The file size of the file that is being tracked by this resource in bytes.
+        :param pulumi.Input[str] path: The path of the file in which you wish to save.
+        :param pulumi.Input[str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -249,16 +311,25 @@ class DbfsFile(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentBase64")
     def content_base64(self) -> pulumi.Output[Optional[str]]:
+        """
+        Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        """
         return pulumi.get(self, "content_base64")
 
     @property
     @pulumi.getter(name="dbfsPath")
     def dbfs_path(self) -> pulumi.Output[str]:
+        """
+        Path, but with `dbfs:` prefix.
+        """
         return pulumi.get(self, "dbfs_path")
 
     @property
     @pulumi.getter(name="fileSize")
     def file_size(self) -> pulumi.Output[int]:
+        """
+        The file size of the file that is being tracked by this resource in bytes.
+        """
         return pulumi.get(self, "file_size")
 
     @property
@@ -269,10 +340,16 @@ class DbfsFile(pulumi.CustomResource):
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output[str]:
+        """
+        The path of the file in which you wish to save.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def source(self) -> pulumi.Output[Optional[str]]:
+        """
+        The full absolute path to the file. Conflicts with `content_base64`.
+        """
         return pulumi.get(self, "source")
 

@@ -40,23 +40,47 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.browseOnly);
     }
 
+    /**
+     * Name of parent catalog.
+     * 
+     */
     @Import(name="catalogName")
     private @Nullable Output<String> catalogName;
 
+    /**
+     * @return Name of parent catalog.
+     * 
+     */
     public Optional<Output<String>> catalogName() {
         return Optional.ofNullable(this.catalogName);
     }
 
+    /**
+     * Array of ColumnInfo objects of the table&#39;s columns
+     * 
+     */
     @Import(name="columns")
     private @Nullable Output<List<GetTableTableInfoColumnArgs>> columns;
 
+    /**
+     * @return Array of ColumnInfo objects of the table&#39;s columns
+     * 
+     */
     public Optional<Output<List<GetTableTableInfoColumnArgs>>> columns() {
         return Optional.ofNullable(this.columns);
     }
 
+    /**
+     * Free-form text description
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return Free-form text description
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
@@ -82,9 +106,17 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.dataAccessConfigurationId);
     }
 
+    /**
+     * Table format, e.g. DELTA, CSV, JSON
+     * 
+     */
     @Import(name="dataSourceFormat")
     private @Nullable Output<String> dataSourceFormat;
 
+    /**
+     * @return Table format, e.g. DELTA, CSV, JSON
+     * 
+     */
     public Optional<Output<String>> dataSourceFormat() {
         return Optional.ofNullable(this.dataSourceFormat);
     }
@@ -138,16 +170,32 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.metastoreId);
     }
 
+    /**
+     * Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Full name of the databricks_table: _`catalog`.`schema`.`table`_
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Current owner of the table
+     * 
+     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
+    /**
+     * @return Current owner of the table
+     * 
+     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
@@ -173,9 +221,17 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.rowFilter);
     }
 
+    /**
+     * Name of parent schema relative to its parent catalog.
+     * 
+     */
     @Import(name="schemaName")
     private @Nullable Output<String> schemaName;
 
+    /**
+     * @return Name of parent schema relative to its parent catalog.
+     * 
+     */
     public Optional<Output<String>> schemaName() {
         return Optional.ofNullable(this.schemaName);
     }
@@ -215,9 +271,17 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.tableId);
     }
 
+    /**
+     * Table type, e.g. MANAGED, EXTERNAL, VIEW
+     * 
+     */
     @Import(name="tableType")
     private @Nullable Output<String> tableType;
 
+    /**
+     * @return Table type, e.g. MANAGED, EXTERNAL, VIEW
+     * 
+     */
     public Optional<Output<String>> tableType() {
         return Optional.ofNullable(this.tableType);
     }
@@ -236,16 +300,32 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.updatedBy);
     }
 
+    /**
+     * View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     * 
+     */
     @Import(name="viewDefinition")
     private @Nullable Output<String> viewDefinition;
 
+    /**
+     * @return View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     * 
+     */
     public Optional<Output<String>> viewDefinition() {
         return Optional.ofNullable(this.viewDefinition);
     }
 
+    /**
+     * View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     * 
+     */
     @Import(name="viewDependencies")
     private @Nullable Output<GetTableTableInfoViewDependenciesArgs> viewDependencies;
 
+    /**
+     * @return View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     * 
+     */
     public Optional<Output<GetTableTableInfoViewDependenciesArgs>> viewDependencies() {
         return Optional.ofNullable(this.viewDependencies);
     }
@@ -323,33 +403,75 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
             return browseOnly(Output.of(browseOnly));
         }
 
+        /**
+         * @param catalogName Name of parent catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(@Nullable Output<String> catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
+        /**
+         * @param catalogName Name of parent catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(String catalogName) {
             return catalogName(Output.of(catalogName));
         }
 
+        /**
+         * @param columns Array of ColumnInfo objects of the table&#39;s columns
+         * 
+         * @return builder
+         * 
+         */
         public Builder columns(@Nullable Output<List<GetTableTableInfoColumnArgs>> columns) {
             $.columns = columns;
             return this;
         }
 
+        /**
+         * @param columns Array of ColumnInfo objects of the table&#39;s columns
+         * 
+         * @return builder
+         * 
+         */
         public Builder columns(List<GetTableTableInfoColumnArgs> columns) {
             return columns(Output.of(columns));
         }
 
+        /**
+         * @param columns Array of ColumnInfo objects of the table&#39;s columns
+         * 
+         * @return builder
+         * 
+         */
         public Builder columns(GetTableTableInfoColumnArgs... columns) {
             return columns(List.of(columns));
         }
 
+        /**
+         * @param comment Free-form text description
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment Free-form text description
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
@@ -381,11 +503,23 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
             return dataAccessConfigurationId(Output.of(dataAccessConfigurationId));
         }
 
+        /**
+         * @param dataSourceFormat Table format, e.g. DELTA, CSV, JSON
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataSourceFormat(@Nullable Output<String> dataSourceFormat) {
             $.dataSourceFormat = dataSourceFormat;
             return this;
         }
 
+        /**
+         * @param dataSourceFormat Table format, e.g. DELTA, CSV, JSON
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataSourceFormat(String dataSourceFormat) {
             return dataSourceFormat(Output.of(dataSourceFormat));
         }
@@ -453,20 +587,44 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
             return metastoreId(Output.of(metastoreId));
         }
 
+        /**
+         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Full name of the databricks_table: _`catalog`.`schema`.`table`_
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param owner Current owner of the table
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
+        /**
+         * @param owner Current owner of the table
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
@@ -498,11 +656,23 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
             return rowFilter(Output.of(rowFilter));
         }
 
+        /**
+         * @param schemaName Name of parent schema relative to its parent catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaName(@Nullable Output<String> schemaName) {
             $.schemaName = schemaName;
             return this;
         }
 
+        /**
+         * @param schemaName Name of parent schema relative to its parent catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaName(String schemaName) {
             return schemaName(Output.of(schemaName));
         }
@@ -556,11 +726,23 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
             return tableId(Output.of(tableId));
         }
 
+        /**
+         * @param tableType Table type, e.g. MANAGED, EXTERNAL, VIEW
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableType(@Nullable Output<String> tableType) {
             $.tableType = tableType;
             return this;
         }
 
+        /**
+         * @param tableType Table type, e.g. MANAGED, EXTERNAL, VIEW
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableType(String tableType) {
             return tableType(Output.of(tableType));
         }
@@ -583,20 +765,44 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
             return updatedBy(Output.of(updatedBy));
         }
 
+        /**
+         * @param viewDefinition View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewDefinition(@Nullable Output<String> viewDefinition) {
             $.viewDefinition = viewDefinition;
             return this;
         }
 
+        /**
+         * @param viewDefinition View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewDefinition(String viewDefinition) {
             return viewDefinition(Output.of(viewDefinition));
         }
 
+        /**
+         * @param viewDependencies View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewDependencies(@Nullable Output<GetTableTableInfoViewDependenciesArgs> viewDependencies) {
             $.viewDependencies = viewDependencies;
             return this;
         }
 
+        /**
+         * @param viewDependencies View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewDependencies(GetTableTableInfoViewDependenciesArgs viewDependencies) {
             return viewDependencies(Output.of(viewDependencies));
         }

@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("dependencies")]
         private List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs>? _dependencies;
+
+        /// <summary>
+        /// list of dependencies consisting of following attributes:
+        /// </summary>
         public List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs> Dependencies
         {
             get => _dependencies ?? (_dependencies = new List<Inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs>());

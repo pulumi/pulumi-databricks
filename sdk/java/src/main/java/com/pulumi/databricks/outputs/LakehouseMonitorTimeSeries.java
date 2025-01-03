@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class LakehouseMonitorTimeSeries {
+    /**
+     * @return List of granularities to use when aggregating data into time windows based on their timestamp.
+     * 
+     */
     private List<String> granularities;
+    /**
+     * @return Column of the timestamp of predictions
+     * 
+     */
     private String timestampCol;
 
     private LakehouseMonitorTimeSeries() {}
+    /**
+     * @return List of granularities to use when aggregating data into time windows based on their timestamp.
+     * 
+     */
     public List<String> granularities() {
         return this.granularities;
     }
+    /**
+     * @return Column of the timestamp of predictions
+     * 
+     */
     public String timestampCol() {
         return this.timestampCol;
     }

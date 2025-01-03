@@ -12,26 +12,66 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMwsNetworkConnectivityConfigResult {
+    /**
+     * @return The Databricks account ID associated with this network configuration.
+     * 
+     */
     private String accountId;
+    /**
+     * @return Time in epoch milliseconds when this object was created.
+     * 
+     */
     private Integer creationTime;
+    /**
+     * @return Array of egress configuration objects.
+     * 
+     */
     private GetMwsNetworkConnectivityConfigEgressConfig egressConfig;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The name of the network connectivity configuration.
+     * 
+     */
     private String name;
+    /**
+     * @return The Databricks network connectivity configuration ID.
+     * 
+     */
     private String networkConnectivityConfigId;
+    /**
+     * @return The region of the network connectivity configuration.
+     * 
+     */
     private String region;
+    /**
+     * @return Time in epoch milliseconds when the network was updated.
+     * 
+     */
     private Integer updatedTime;
 
     private GetMwsNetworkConnectivityConfigResult() {}
+    /**
+     * @return The Databricks account ID associated with this network configuration.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
+    /**
+     * @return Time in epoch milliseconds when this object was created.
+     * 
+     */
     public Integer creationTime() {
         return this.creationTime;
     }
+    /**
+     * @return Array of egress configuration objects.
+     * 
+     */
     public GetMwsNetworkConnectivityConfigEgressConfig egressConfig() {
         return this.egressConfig;
     }
@@ -42,15 +82,31 @@ public final class GetMwsNetworkConnectivityConfigResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the network connectivity configuration.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The Databricks network connectivity configuration ID.
+     * 
+     */
     public String networkConnectivityConfigId() {
         return this.networkConnectivityConfigId;
     }
+    /**
+     * @return The region of the network connectivity configuration.
+     * 
+     */
     public String region() {
         return this.region;
     }
+    /**
+     * @return Time in epoch milliseconds when the network was updated.
+     * 
+     */
     public Integer updatedTime() {
         return this.updatedTime;
     }

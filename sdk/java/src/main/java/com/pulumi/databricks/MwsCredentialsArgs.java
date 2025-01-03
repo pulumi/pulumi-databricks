@@ -18,6 +18,8 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
     public static final MwsCredentialsArgs Empty = new MwsCredentialsArgs();
 
     /**
+     * **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
+     * 
      * @deprecated
      * `account_id` should be set as part of the Databricks Config, not in the resource.
      * 
@@ -27,6 +29,8 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> accountId;
 
     /**
+     * @return **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
+     * 
      * @deprecated
      * `account_id` should be set as part of the Databricks Config, not in the resource.
      * 
@@ -36,23 +40,47 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * (Integer) time of credentials registration
+     * 
+     */
     @Import(name="creationTime")
     private @Nullable Output<Integer> creationTime;
 
+    /**
+     * @return (Integer) time of credentials registration
+     * 
+     */
     public Optional<Output<Integer>> creationTime() {
         return Optional.ofNullable(this.creationTime);
     }
 
+    /**
+     * (String) identifier of credentials
+     * 
+     */
     @Import(name="credentialsId")
     private @Nullable Output<String> credentialsId;
 
+    /**
+     * @return (String) identifier of credentials
+     * 
+     */
     public Optional<Output<String>> credentialsId() {
         return Optional.ofNullable(this.credentialsId);
     }
 
+    /**
+     * name of credentials to register
+     * 
+     */
     @Import(name="credentialsName", required=true)
     private Output<String> credentialsName;
 
+    /**
+     * @return name of credentials to register
+     * 
+     */
     public Output<String> credentialsName() {
         return this.credentialsName;
     }
@@ -64,9 +92,17 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.externalId);
     }
 
+    /**
+     * ARN of cross-account role
+     * 
+     */
     @Import(name="roleArn", required=true)
     private Output<String> roleArn;
 
+    /**
+     * @return ARN of cross-account role
+     * 
+     */
     public Output<String> roleArn() {
         return this.roleArn;
     }
@@ -101,6 +137,8 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param accountId **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
+         * 
          * @return builder
          * 
          * @deprecated
@@ -114,6 +152,8 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param accountId **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
+         * 
          * @return builder
          * 
          * @deprecated
@@ -125,29 +165,65 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param creationTime (Integer) time of credentials registration
+         * 
+         * @return builder
+         * 
+         */
         public Builder creationTime(@Nullable Output<Integer> creationTime) {
             $.creationTime = creationTime;
             return this;
         }
 
+        /**
+         * @param creationTime (Integer) time of credentials registration
+         * 
+         * @return builder
+         * 
+         */
         public Builder creationTime(Integer creationTime) {
             return creationTime(Output.of(creationTime));
         }
 
+        /**
+         * @param credentialsId (String) identifier of credentials
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialsId(@Nullable Output<String> credentialsId) {
             $.credentialsId = credentialsId;
             return this;
         }
 
+        /**
+         * @param credentialsId (String) identifier of credentials
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialsId(String credentialsId) {
             return credentialsId(Output.of(credentialsId));
         }
 
+        /**
+         * @param credentialsName name of credentials to register
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialsName(Output<String> credentialsName) {
             $.credentialsName = credentialsName;
             return this;
         }
 
+        /**
+         * @param credentialsName name of credentials to register
+         * 
+         * @return builder
+         * 
+         */
         public Builder credentialsName(String credentialsName) {
             return credentialsName(Output.of(credentialsName));
         }
@@ -161,11 +237,23 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
             return externalId(Output.of(externalId));
         }
 
+        /**
+         * @param roleArn ARN of cross-account role
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(Output<String> roleArn) {
             $.roleArn = roleArn;
             return this;
         }
 
+        /**
+         * @param roleArn ARN of cross-account role
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(String roleArn) {
             return roleArn(Output.of(roleArn));
         }

@@ -11,12 +11,120 @@ namespace Pulumi.Databricks
 {
     public static class GetJob
     {
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting the existing cluster id of specific databricks.Job by name or by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetJob.Invoke(new()
+        ///     {
+        ///         JobName = "My job",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["jobNumWorkers"] = @this.Apply(@this =&gt; @this.Apply(getJobResult =&gt; getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getJobs data to get all jobs and their names from a workspace.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// </summary>
         public static Task<GetJobResult> InvokeAsync(GetJobArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("databricks:index/getJob:getJob", args ?? new GetJobArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting the existing cluster id of specific databricks.Job by name or by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetJob.Invoke(new()
+        ///     {
+        ///         JobName = "My job",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["jobNumWorkers"] = @this.Apply(@this =&gt; @this.Apply(getJobResult =&gt; getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getJobs data to get all jobs and their names from a workspace.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// </summary>
         public static Output<GetJobResult> Invoke(GetJobInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetJobResult>("databricks:index/getJob:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting the existing cluster id of specific databricks.Job by name or by id:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetJob.Invoke(new()
+        ///     {
+        ///         JobName = "My job",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["jobNumWorkers"] = @this.Apply(@this =&gt; @this.Apply(getJobResult =&gt; getJobResult.JobSettings?.Settings?.NewCluster?.NumWorkers)),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getJobs data to get all jobs and their names from a workspace.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// </summary>
         public static Output<GetJobResult> Invoke(GetJobInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetJobResult>("databricks:index/getJob:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +132,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetJobArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// the id of databricks.Job if the resource was matched by name.
+        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
@@ -33,9 +144,15 @@ namespace Pulumi.Databricks
         [Input("jobName")]
         public string? JobName { get; set; }
 
+        /// <summary>
+        /// the same fields as in databricks_job.
+        /// </summary>
         [Input("jobSettings")]
         public Inputs.GetJobJobSettingsArgs? JobSettings { get; set; }
 
+        /// <summary>
+        /// the job name of databricks.Job if the resource was matched by id.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -47,6 +164,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetJobInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// the id of databricks.Job if the resource was matched by name.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -56,9 +176,15 @@ namespace Pulumi.Databricks
         [Input("jobName")]
         public Input<string>? JobName { get; set; }
 
+        /// <summary>
+        /// the same fields as in databricks_job.
+        /// </summary>
         [Input("jobSettings")]
         public Input<Inputs.GetJobJobSettingsInputArgs>? JobSettings { get; set; }
 
+        /// <summary>
+        /// the job name of databricks.Job if the resource was matched by id.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -72,10 +198,19 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetJobResult
     {
+        /// <summary>
+        /// the id of databricks.Job if the resource was matched by name.
+        /// </summary>
         public readonly string Id;
         public readonly string JobId;
         public readonly string JobName;
+        /// <summary>
+        /// the same fields as in databricks_job.
+        /// </summary>
         public readonly Outputs.GetJobJobSettingsResult JobSettings;
+        /// <summary>
+        /// the job name of databricks.Job if the resource was matched by id.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

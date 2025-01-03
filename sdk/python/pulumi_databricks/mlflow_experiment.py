@@ -28,6 +28,9 @@ class MlflowExperimentArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MlflowExperiment resource.
+        :param pulumi.Input[str] artifact_location: Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        :param pulumi.Input[str] description: The description of the MLflow experiment.
+        :param pulumi.Input[str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         """
         if artifact_location is not None:
             pulumi.set(__self__, "artifact_location", artifact_location)
@@ -47,6 +50,9 @@ class MlflowExperimentArgs:
     @property
     @pulumi.getter(name="artifactLocation")
     def artifact_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        """
         return pulumi.get(self, "artifact_location")
 
     @artifact_location.setter
@@ -65,6 +71,9 @@ class MlflowExperimentArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the MLflow experiment.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -101,6 +110,9 @@ class MlflowExperimentArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -120,6 +132,9 @@ class _MlflowExperimentState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MlflowExperiment resources.
+        :param pulumi.Input[str] artifact_location: Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        :param pulumi.Input[str] description: The description of the MLflow experiment.
+        :param pulumi.Input[str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         """
         if artifact_location is not None:
             pulumi.set(__self__, "artifact_location", artifact_location)
@@ -139,6 +154,9 @@ class _MlflowExperimentState:
     @property
     @pulumi.getter(name="artifactLocation")
     def artifact_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        """
         return pulumi.get(self, "artifact_location")
 
     @artifact_location.setter
@@ -157,6 +175,9 @@ class _MlflowExperimentState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the MLflow experiment.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -193,6 +214,9 @@ class _MlflowExperimentState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -214,9 +238,52 @@ class MlflowExperiment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a MlflowExperiment resource with the given unique name, props, and options.
+        This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        me = databricks.get_current_user()
+        this = databricks.MlflowExperiment("this",
+            name=f"{me.home}/Sample",
+            artifact_location="dbfs:/tmp/my-experiment",
+            description="My MLflow experiment description")
+        ```
+
+        ## Access Control
+
+        * Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+        * End to end workspace management guide.
+        * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+        * MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
+        * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+        * Notebook data to export a notebook from Databricks Workspace.
+        * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+
+        ## Import
+
+        The experiment resource can be imported using the id of the experiment
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] artifact_location: Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        :param pulumi.Input[str] description: The description of the MLflow experiment.
+        :param pulumi.Input[str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         """
         ...
     @overload
@@ -225,7 +292,47 @@ class MlflowExperiment(pulumi.CustomResource):
                  args: Optional[MlflowExperimentArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a MlflowExperiment resource with the given unique name, props, and options.
+        This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        me = databricks.get_current_user()
+        this = databricks.MlflowExperiment("this",
+            name=f"{me.home}/Sample",
+            artifact_location="dbfs:/tmp/my-experiment",
+            description="My MLflow experiment description")
+        ```
+
+        ## Access Control
+
+        * Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+        * End to end workspace management guide.
+        * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+        * MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
+        * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+        * Notebook data to export a notebook from Databricks Workspace.
+        * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+
+        ## Import
+
+        The experiment resource can be imported using the id of the experiment
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param MlflowExperimentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -288,6 +395,9 @@ class MlflowExperiment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] artifact_location: Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        :param pulumi.Input[str] description: The description of the MLflow experiment.
+        :param pulumi.Input[str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -305,6 +415,9 @@ class MlflowExperiment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="artifactLocation")
     def artifact_location(self) -> pulumi.Output[Optional[str]]:
+        """
+        Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+        """
         return pulumi.get(self, "artifact_location")
 
     @property
@@ -315,6 +428,9 @@ class MlflowExperiment(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the MLflow experiment.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -335,5 +451,8 @@ class MlflowExperiment(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+        """
         return pulumi.get(self, "name")
 

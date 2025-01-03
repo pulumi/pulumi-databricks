@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class BudgetFilterTagValue
     {
+        /// <summary>
+        /// The operator to use for the filter. (Enum: `IN`)
+        /// </summary>
         public readonly string? Operator;
+        /// <summary>
+        /// The values to filter by.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

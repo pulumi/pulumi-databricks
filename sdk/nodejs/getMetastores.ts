@@ -4,6 +4,33 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** This data source can only be used with an account-level provider!
+ *
+ * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
+ *
+ * > **Note** `accountId` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users & service principals with account admin status
+ *
+ * ## Example Usage
+ *
+ * Mapping of name to id of all metastores:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getMetastores({});
+ * export const allMetastores = all.then(all => all.ids);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Metastore to get information about a single metastore.
+ * * databricks.Metastore to manage Metastores within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
+ */
 export function getMetastores(args?: GetMetastoresArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoresResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,6 +43,9 @@ export function getMetastores(args?: GetMetastoresArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getMetastores.
  */
 export interface GetMetastoresArgs {
+    /**
+     * Mapping of name to id of databricks_metastore
+     */
     ids?: {[key: string]: string};
 }
 
@@ -27,8 +57,38 @@ export interface GetMetastoresResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Mapping of name to id of databricks_metastore
+     */
     readonly ids: {[key: string]: string};
 }
+/**
+ * > **Note** This data source can only be used with an account-level provider!
+ *
+ * Retrieves a mapping of name to id of databricks.Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
+ *
+ * > **Note** `accountId` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users & service principals with account admin status
+ *
+ * ## Example Usage
+ *
+ * Mapping of name to id of all metastores:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getMetastores({});
+ * export const allMetastores = all.then(all => all.ids);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Metastore to get information about a single metastore.
+ * * databricks.Metastore to manage Metastores within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
+ */
 export function getMetastoresOutput(args?: GetMetastoresOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetastoresResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,5 +101,8 @@ export function getMetastoresOutput(args?: GetMetastoresOutputArgs, opts?: pulum
  * A collection of arguments for invoking getMetastores.
  */
 export interface GetMetastoresOutputArgs {
+    /**
+     * Mapping of name to id of databricks_metastore
+     */
     ids?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

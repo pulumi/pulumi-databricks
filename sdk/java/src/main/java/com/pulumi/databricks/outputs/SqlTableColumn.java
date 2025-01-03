@@ -13,26 +13,66 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlTableColumn {
+    /**
+     * @return User-supplied free-form text.
+     * 
+     */
     private @Nullable String comment;
+    /**
+     * @return Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     * 
+     */
     private @Nullable String identity;
+    /**
+     * @return User-visible name of column
+     * 
+     */
     private String name;
+    /**
+     * @return Whether field is nullable (Default: `true`)
+     * 
+     */
     private @Nullable Boolean nullable;
+    /**
+     * @return Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+     * 
+     */
     private @Nullable String type;
     private @Nullable String typeJson;
 
     private SqlTableColumn() {}
+    /**
+     * @return User-supplied free-form text.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     * 
+     */
     public Optional<String> identity() {
         return Optional.ofNullable(this.identity);
     }
+    /**
+     * @return User-visible name of column
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Whether field is nullable (Default: `true`)
+     * 
+     */
     public Optional<Boolean> nullable() {
         return Optional.ofNullable(this.nullable);
     }
+    /**
+     * @return Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

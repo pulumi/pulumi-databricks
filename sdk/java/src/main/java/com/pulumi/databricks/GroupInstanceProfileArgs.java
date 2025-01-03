@@ -14,16 +14,32 @@ public final class GroupInstanceProfileArgs extends com.pulumi.resources.Resourc
 
     public static final GroupInstanceProfileArgs Empty = new GroupInstanceProfileArgs();
 
+    /**
+     * This is the id of the group resource.
+     * 
+     */
     @Import(name="groupId", required=true)
     private Output<String> groupId;
 
+    /**
+     * @return This is the id of the group resource.
+     * 
+     */
     public Output<String> groupId() {
         return this.groupId;
     }
 
+    /**
+     * This is the id of the instance profile resource.
+     * 
+     */
     @Import(name="instanceProfileId", required=true)
     private Output<String> instanceProfileId;
 
+    /**
+     * @return This is the id of the instance profile resource.
+     * 
+     */
     public Output<String> instanceProfileId() {
         return this.instanceProfileId;
     }
@@ -53,20 +69,44 @@ public final class GroupInstanceProfileArgs extends com.pulumi.resources.Resourc
             $ = new GroupInstanceProfileArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param groupId This is the id of the group resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(Output<String> groupId) {
             $.groupId = groupId;
             return this;
         }
 
+        /**
+         * @param groupId This is the id of the group resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
         }
 
+        /**
+         * @param instanceProfileId This is the id of the instance profile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceProfileId(Output<String> instanceProfileId) {
             $.instanceProfileId = instanceProfileId;
             return this;
         }
 
+        /**
+         * @param instanceProfileId This is the id of the instance profile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceProfileId(String instanceProfileId) {
             return instanceProfileId(Output.of(instanceProfileId));
         }

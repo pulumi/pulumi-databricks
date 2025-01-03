@@ -17,23 +17,47 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OboTokenArgs Empty = new OboTokenArgs();
 
+    /**
+     * Application ID of databricks.ServicePrincipal to create a PAT token for.
+     * 
+     */
     @Import(name="applicationId", required=true)
     private Output<String> applicationId;
 
+    /**
+     * @return Application ID of databricks.ServicePrincipal to create a PAT token for.
+     * 
+     */
     public Output<String> applicationId() {
         return this.applicationId;
     }
 
+    /**
+     * Comment that describes the purpose of the token.
+     * 
+     */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
+    /**
+     * @return Comment that describes the purpose of the token.
+     * 
+     */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+     * 
+     */
     @Import(name="lifetimeSeconds")
     private @Nullable Output<Integer> lifetimeSeconds;
 
+    /**
+     * @return The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+     * 
+     */
     public Optional<Output<Integer>> lifetimeSeconds() {
         return Optional.ofNullable(this.lifetimeSeconds);
     }
@@ -64,29 +88,65 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
             $ = new OboTokenArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param applicationId Application ID of databricks.ServicePrincipal to create a PAT token for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationId(Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
 
+        /**
+         * @param applicationId Application ID of databricks.ServicePrincipal to create a PAT token for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
         }
 
+        /**
+         * @param comment Comment that describes the purpose of the token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable Output<String> comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param comment Comment that describes the purpose of the token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param lifetimeSeconds The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lifetimeSeconds(@Nullable Output<Integer> lifetimeSeconds) {
             $.lifetimeSeconds = lifetimeSeconds;
             return this;
         }
 
+        /**
+         * @param lifetimeSeconds The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lifetimeSeconds(Integer lifetimeSeconds) {
             return lifetimeSeconds(Output.of(lifetimeSeconds));
         }

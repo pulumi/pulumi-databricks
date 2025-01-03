@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MwsCustomerManagedKeysAwsKeyInfo {
+    /**
+     * @return The AWS KMS key alias.
+     * 
+     */
     private @Nullable String keyAlias;
+    /**
+     * @return The AWS KMS key&#39;s Amazon Resource Name (ARN).
+     * 
+     */
     private String keyArn;
+    /**
+     * @return (Computed) The AWS region in which KMS key is deployed to. This is not required.
+     * 
+     */
     private @Nullable String keyRegion;
 
     private MwsCustomerManagedKeysAwsKeyInfo() {}
+    /**
+     * @return The AWS KMS key alias.
+     * 
+     */
     public Optional<String> keyAlias() {
         return Optional.ofNullable(this.keyAlias);
     }
+    /**
+     * @return The AWS KMS key&#39;s Amazon Resource Name (ARN).
+     * 
+     */
     public String keyArn() {
         return this.keyArn;
     }
+    /**
+     * @return (Computed) The AWS region in which KMS key is deployed to. This is not required.
+     * 
+     */
     public Optional<String> keyRegion() {
         return Optional.ofNullable(this.keyRegion);
     }

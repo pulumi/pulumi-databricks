@@ -57,41 +57,65 @@ class GetMlflowExperimentResult:
     @property
     @pulumi.getter(name="artifactLocation")
     def artifact_location(self) -> str:
+        """
+        Location where artifacts for the experiment are stored.
+        """
         return pulumi.get(self, "artifact_location")
 
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> int:
+        """
+        Creation time in unix time stamp.
+        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter(name="experimentId")
     def experiment_id(self) -> str:
+        """
+        Unique identifier for the experiment. (same as `id`)
+        """
         return pulumi.get(self, "experiment_id")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        Unique identifier for the experiment. (same as `experiment_id`)
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="lastUpdateTime")
     def last_update_time(self) -> int:
+        """
+        Last update time in unix time stamp.
+        """
         return pulumi.get(self, "last_update_time")
 
     @property
     @pulumi.getter(name="lifecycleStage")
     def lifecycle_stage(self) -> str:
+        """
+        Current life cycle stage of the experiment: `active` or `deleted`.
+        """
         return pulumi.get(self, "lifecycle_stage")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Path to experiment.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetMlflowExperimentTagResult']:
+        """
+        Additional metadata key-value pairs.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -121,7 +145,19 @@ def get_mlflow_experiment(artifact_location: Optional[str] = None,
                           tags: Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMlflowExperimentResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves the settings of MlflowExperiment by id or name.
+
+
+    :param str artifact_location: Location where artifacts for the experiment are stored.
+    :param int creation_time: Creation time in unix time stamp.
+    :param str experiment_id: Unique identifier for the experiment.
+    :param str id: Unique identifier for the experiment. (same as `experiment_id`)
+    :param int last_update_time: Last update time in unix time stamp.
+    :param str lifecycle_stage: Current life cycle stage of the experiment: `active` or `deleted`.
+    :param str name: Path to experiment.
+    :param Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']] tags: Additional metadata key-value pairs.
     """
     __args__ = dict()
     __args__['artifactLocation'] = artifact_location
@@ -154,7 +190,19 @@ def get_mlflow_experiment_output(artifact_location: Optional[pulumi.Input[Option
                                  tags: Optional[pulumi.Input[Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowExperimentResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves the settings of MlflowExperiment by id or name.
+
+
+    :param str artifact_location: Location where artifacts for the experiment are stored.
+    :param int creation_time: Creation time in unix time stamp.
+    :param str experiment_id: Unique identifier for the experiment.
+    :param str id: Unique identifier for the experiment. (same as `experiment_id`)
+    :param int last_update_time: Last update time in unix time stamp.
+    :param str lifecycle_stage: Current life cycle stage of the experiment: `active` or `deleted`.
+    :param str name: Path to experiment.
+    :param Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']] tags: Additional metadata key-value pairs.
     """
     __args__ = dict()
     __args__['artifactLocation'] = artifact_location

@@ -14,16 +14,32 @@ public final class GroupMemberArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GroupMemberArgs Empty = new GroupMemberArgs();
 
+    /**
+     * This is the id of the group resource.
+     * 
+     */
     @Import(name="groupId", required=true)
     private Output<String> groupId;
 
+    /**
+     * @return This is the id of the group resource.
+     * 
+     */
     public Output<String> groupId() {
         return this.groupId;
     }
 
+    /**
+     * This is the id of the group, service principal, or user.
+     * 
+     */
     @Import(name="memberId", required=true)
     private Output<String> memberId;
 
+    /**
+     * @return This is the id of the group, service principal, or user.
+     * 
+     */
     public Output<String> memberId() {
         return this.memberId;
     }
@@ -53,20 +69,44 @@ public final class GroupMemberArgs extends com.pulumi.resources.ResourceArgs {
             $ = new GroupMemberArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param groupId This is the id of the group resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(Output<String> groupId) {
             $.groupId = groupId;
             return this;
         }
 
+        /**
+         * @param groupId This is the id of the group resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
         }
 
+        /**
+         * @param memberId This is the id of the group, service principal, or user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memberId(Output<String> memberId) {
             $.memberId = memberId;
             return this;
         }
 
+        /**
+         * @param memberId This is the id of the group, service principal, or user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memberId(String memberId) {
             return memberId(Output.of(memberId));
         }

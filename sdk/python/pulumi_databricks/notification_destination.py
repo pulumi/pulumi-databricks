@@ -26,6 +26,9 @@ class NotificationDestinationArgs:
                  destination_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NotificationDestination resource.
+        :param pulumi.Input[str] display_name: The display name of the Notification Destination.
+        :param pulumi.Input['NotificationDestinationConfigArgs'] config: The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+        :param pulumi.Input[str] destination_type: the type of Notification Destination.
         """
         pulumi.set(__self__, "display_name", display_name)
         if config is not None:
@@ -36,6 +39,9 @@ class NotificationDestinationArgs:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name of the Notification Destination.
+        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -45,6 +51,9 @@ class NotificationDestinationArgs:
     @property
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['NotificationDestinationConfigArgs']]:
+        """
+        The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -54,6 +63,9 @@ class NotificationDestinationArgs:
     @property
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        the type of Notification Destination.
+        """
         return pulumi.get(self, "destination_type")
 
     @destination_type.setter
@@ -69,6 +81,9 @@ class _NotificationDestinationState:
                  display_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NotificationDestination resources.
+        :param pulumi.Input['NotificationDestinationConfigArgs'] config: The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+        :param pulumi.Input[str] destination_type: the type of Notification Destination.
+        :param pulumi.Input[str] display_name: The display name of the Notification Destination.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -80,6 +95,9 @@ class _NotificationDestinationState:
     @property
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['NotificationDestinationConfigArgs']]:
+        """
+        The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+        """
         return pulumi.get(self, "config")
 
     @config.setter
@@ -89,6 +107,9 @@ class _NotificationDestinationState:
     @property
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        the type of Notification Destination.
+        """
         return pulumi.get(self, "destination_type")
 
     @destination_type.setter
@@ -98,6 +119,9 @@ class _NotificationDestinationState:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the Notification Destination.
+        """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -115,9 +139,98 @@ class NotificationDestination(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a NotificationDestination resource with the given unique name, props, and options.
+        This resource allows you to manage [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification destinations are used to send notifications for query alerts and jobs to destinations outside of Databricks. Only workspace admins can create, update, and delete notification destinations.
+
+        ## Example Usage
+
+        `Email` notification destination:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "email": {
+                    "addresses": ["abc@gmail.com"],
+                },
+            })
+        ```
+        `Slack` notification destination:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "slack": {
+                    "url": "https://hooks.slack.com/services/...",
+                },
+            })
+        ```
+        `PagerDuty` notification destination:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "pagerduty": {
+                    "integration_key": "xxxxxx",
+                },
+            })
+        ```
+        `Microsoft Teams` notification destination:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "microsoft_teams": {
+                    "url": "https://outlook.office.com/webhook/...",
+                },
+            })
+        ```
+        `Generic Webhook` notification destination:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "generic_webhook": {
+                    "url": "https://example.com/webhook",
+                    "username": "username",
+                    "password": "password",
+                },
+            })
+        ```
+
+        ## Import
+
+        This resource can be imported by notification ID:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/notificationDestination:NotificationDestination this <notification-id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['NotificationDestinationConfigArgs', 'NotificationDestinationConfigArgsDict']] config: The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+        :param pulumi.Input[str] destination_type: the type of Notification Destination.
+        :param pulumi.Input[str] display_name: The display name of the Notification Destination.
         """
         ...
     @overload
@@ -126,7 +239,93 @@ class NotificationDestination(pulumi.CustomResource):
                  args: NotificationDestinationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NotificationDestination resource with the given unique name, props, and options.
+        This resource allows you to manage [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification destinations are used to send notifications for query alerts and jobs to destinations outside of Databricks. Only workspace admins can create, update, and delete notification destinations.
+
+        ## Example Usage
+
+        `Email` notification destination:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "email": {
+                    "addresses": ["abc@gmail.com"],
+                },
+            })
+        ```
+        `Slack` notification destination:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "slack": {
+                    "url": "https://hooks.slack.com/services/...",
+                },
+            })
+        ```
+        `PagerDuty` notification destination:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "pagerduty": {
+                    "integration_key": "xxxxxx",
+                },
+            })
+        ```
+        `Microsoft Teams` notification destination:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "microsoft_teams": {
+                    "url": "https://outlook.office.com/webhook/...",
+                },
+            })
+        ```
+        `Generic Webhook` notification destination:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ndresource = databricks.NotificationDestination("ndresource",
+            display_name="Notification Destination",
+            config={
+                "generic_webhook": {
+                    "url": "https://example.com/webhook",
+                    "username": "username",
+                    "password": "password",
+                },
+            })
+        ```
+
+        ## Import
+
+        This resource can be imported by notification ID:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/notificationDestination:NotificationDestination this <notification-id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param NotificationDestinationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -179,6 +378,9 @@ class NotificationDestination(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['NotificationDestinationConfigArgs', 'NotificationDestinationConfigArgsDict']] config: The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+        :param pulumi.Input[str] destination_type: the type of Notification Destination.
+        :param pulumi.Input[str] display_name: The display name of the Notification Destination.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -192,15 +394,24 @@ class NotificationDestination(pulumi.CustomResource):
     @property
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional['outputs.NotificationDestinationConfig']]:
+        """
+        The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+        """
         return pulumi.get(self, "config")
 
     @property
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> pulumi.Output[str]:
+        """
+        the type of Notification Destination.
+        """
         return pulumi.get(self, "destination_type")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
+        """
+        The display name of the Notification Destination.
+        """
         return pulumi.get(self, "display_name")
 

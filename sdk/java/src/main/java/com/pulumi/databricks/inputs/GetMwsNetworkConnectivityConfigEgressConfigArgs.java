@@ -16,16 +16,32 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigArgs extends com.p
 
     public static final GetMwsNetworkConnectivityConfigEgressConfigArgs Empty = new GetMwsNetworkConnectivityConfigEgressConfigArgs();
 
+    /**
+     * Array of default rules.
+     * 
+     */
     @Import(name="defaultRules")
     private @Nullable Output<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs> defaultRules;
 
+    /**
+     * @return Array of default rules.
+     * 
+     */
     public Optional<Output<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs>> defaultRules() {
         return Optional.ofNullable(this.defaultRules);
     }
 
+    /**
+     * Array of target rules.
+     * 
+     */
     @Import(name="targetRules")
     private @Nullable Output<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs> targetRules;
 
+    /**
+     * @return Array of target rules.
+     * 
+     */
     public Optional<Output<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs>> targetRules() {
         return Optional.ofNullable(this.targetRules);
     }
@@ -55,20 +71,44 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigArgs extends com.p
             $ = new GetMwsNetworkConnectivityConfigEgressConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param defaultRules Array of default rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultRules(@Nullable Output<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs> defaultRules) {
             $.defaultRules = defaultRules;
             return this;
         }
 
+        /**
+         * @param defaultRules Array of default rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultRules(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs defaultRules) {
             return defaultRules(Output.of(defaultRules));
         }
 
+        /**
+         * @param targetRules Array of target rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetRules(@Nullable Output<GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs> targetRules) {
             $.targetRules = targetRules;
             return this;
         }
 
+        /**
+         * @param targetRules Array of target rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetRules(GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs targetRules) {
             return targetRules(Output.of(targetRules));
         }

@@ -13,9 +13,17 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
 
     public static final GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction Empty = new GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction();
 
+    /**
+     * Full name of the dependent function
+     * 
+     */
     @Import(name="functionFullName", required=true)
     private String functionFullName;
 
+    /**
+     * @return Full name of the dependent function
+     * 
+     */
     public String functionFullName() {
         return this.functionFullName;
     }
@@ -44,6 +52,12 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
             $ = new GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param functionFullName Full name of the dependent function
+         * 
+         * @return builder
+         * 
+         */
         public Builder functionFullName(String functionFullName) {
             $.functionFullName = functionFullName;
             return this;

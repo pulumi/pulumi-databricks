@@ -11,12 +11,120 @@ namespace Pulumi.Databricks
 {
     public static class GetCluster
     {
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Retrieve attributes of each SQL warehouses in a workspace
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetClusters.Invoke();
+        /// 
+        ///     var allGetCluster = ;
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are often used in the same context:
+        /// 
+        /// * End to end workspace management guide.
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+        /// * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+        /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("databricks:index/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Retrieve attributes of each SQL warehouses in a workspace
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetClusters.Invoke();
+        /// 
+        ///     var allGetCluster = ;
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are often used in the same context:
+        /// 
+        /// * End to end workspace management guide.
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+        /// * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+        /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("databricks:index/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Retrieve attributes of each SQL warehouses in a workspace
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetClusters.Invoke();
+        /// 
+        ///     var allGetCluster = ;
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are often used in the same context:
+        /// 
+        /// * End to end workspace management guide.
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+        /// * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+        /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+        /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("databricks:index/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
     }
@@ -24,15 +132,27 @@ namespace Pulumi.Databricks
 
     public sealed class GetClusterArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The id of the cluster
+        /// </summary>
         [Input("clusterId")]
         public string? ClusterId { get; set; }
 
+        /// <summary>
+        /// block, consisting of following fields:
+        /// </summary>
         [Input("clusterInfo")]
         public Inputs.GetClusterClusterInfoArgs? ClusterInfo { get; set; }
 
+        /// <summary>
+        /// The exact name of the cluster to search
+        /// </summary>
         [Input("clusterName")]
         public string? ClusterName { get; set; }
 
+        /// <summary>
+        /// cluster ID
+        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
@@ -44,15 +164,27 @@ namespace Pulumi.Databricks
 
     public sealed class GetClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The id of the cluster
+        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
+        /// <summary>
+        /// block, consisting of following fields:
+        /// </summary>
         [Input("clusterInfo")]
         public Input<Inputs.GetClusterClusterInfoInputArgs>? ClusterInfo { get; set; }
 
+        /// <summary>
+        /// The exact name of the cluster to search
+        /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
 
+        /// <summary>
+        /// cluster ID
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -67,8 +199,17 @@ namespace Pulumi.Databricks
     public sealed class GetClusterResult
     {
         public readonly string ClusterId;
+        /// <summary>
+        /// block, consisting of following fields:
+        /// </summary>
         public readonly Outputs.GetClusterClusterInfoResult ClusterInfo;
+        /// <summary>
+        /// Cluster name, which doesn’t have to be unique.
+        /// </summary>
         public readonly string ClusterName;
+        /// <summary>
+        /// cluster ID
+        /// </summary>
         public readonly string Id;
 
         [OutputConstructor]

@@ -11,6 +11,46 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source can only be used with an account-level provider!
+//
+// Retrieves a mapping of name to id of Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.
+//
+// > **Note** `accountId` provider configuration property is required for this resource to work. Data resource will error in case of metastores with duplicate names. This data source is only available for users & service principals with account admin status
+//
+// ## Example Usage
+//
+// Mapping of name to id of all metastores:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.GetMetastores(ctx, &databricks.GetMetastoresArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allMetastores", all.Ids)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Metastore to get information about a single metastore.
+// * Metastore to manage Metastores within Unity Catalog.
+// * Catalog to manage catalogs within Unity Catalog.
 func GetMetastores(ctx *pulumi.Context, args *GetMetastoresArgs, opts ...pulumi.InvokeOption) (*GetMetastoresResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMetastoresResult
@@ -23,13 +63,15 @@ func GetMetastores(ctx *pulumi.Context, args *GetMetastoresArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getMetastores.
 type GetMetastoresArgs struct {
+	// Mapping of name to id of databricks_metastore
 	Ids map[string]string `pulumi:"ids"`
 }
 
 // A collection of values returned by getMetastores.
 type GetMetastoresResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id  string            `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Mapping of name to id of databricks_metastore
 	Ids map[string]string `pulumi:"ids"`
 }
 
@@ -44,6 +86,7 @@ func GetMetastoresOutput(ctx *pulumi.Context, args GetMetastoresOutputArgs, opts
 
 // A collection of arguments for invoking getMetastores.
 type GetMetastoresOutputArgs struct {
+	// Mapping of name to id of databricks_metastore
 	Ids pulumi.StringMapInput `pulumi:"ids"`
 }
 
@@ -71,6 +114,7 @@ func (o GetMetastoresResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetastoresResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Mapping of name to id of databricks_metastore
 func (o GetMetastoresResultOutput) Ids() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetMetastoresResult) map[string]string { return v.Ids }).(pulumi.StringMapOutput)
 }

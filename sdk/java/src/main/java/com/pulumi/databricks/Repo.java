@@ -15,29 +15,131 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * This resource allows you to manage [Databricks Git folders](https://docs.databricks.com/en/repos/index.html) (formerly known as Databricks Repos).
+ * 
+ * &gt; To create a Git folder from a private repository you need to configure Git token as described in the [documentation](https://docs.databricks.com/en/repos/index.html#configure-your-git-integration-with-databricks).  To set this token you can use databricks.GitCredential resource.
+ * 
+ * ## Example Usage
+ * 
+ * You can declare Pulumi-managed Git folder by specifying `url` attribute of Git repository. In addition to that you may need to specify `git_provider` attribute if Git provider doesn&#39;t belong to cloud Git providers (Github, GitLab, ...).  If `path` attribute isn&#39;t provided, then Git folder will be created in the default location:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Repo;
+ * import com.pulumi.databricks.RepoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var nutterInHome = new Repo("nutterInHome", RepoArgs.builder()
+ *             .url("https://github.com/user/demo.git")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Access Control
+ * 
+ * * databricks.Permissions can control which groups or individual users can access repos.
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * End to end workspace management guide.
+ * * databricks.GitCredential to manage Git credentials.
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.WorkspaceConf to manage workspace configuration for expert usage.
+ * 
+ * ## Import
+ * 
+ * The resource can be imported using the Git folder ID (obtained via UI or using API)
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/repo:Repo this repo_id
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/repo:Repo")
 public class Repo extends com.pulumi.resources.CustomResource {
+    /**
+     * name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn&#39;t specified, then the repository will stay at the previously checked out state.
+     * 
+     */
     @Export(name="branch", refs={String.class}, tree="[0]")
     private Output<String> branch;
 
+    /**
+     * @return name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn&#39;t specified, then the repository will stay at the previously checked out state.
+     * 
+     */
     public Output<String> branch() {
         return this.branch;
     }
+    /**
+     * Hash of the HEAD commit at time of the last executed operation. It won&#39;t change if you manually perform pull operation via UI or API
+     * 
+     */
     @Export(name="commitHash", refs={String.class}, tree="[0]")
     private Output<String> commitHash;
 
+    /**
+     * @return Hash of the HEAD commit at time of the last executed operation. It won&#39;t change if you manually perform pull operation via UI or API
+     * 
+     */
     public Output<String> commitHash() {
         return this.commitHash;
     }
+    /**
+     * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     * 
+     */
     @Export(name="gitProvider", refs={String.class}, tree="[0]")
     private Output<String> gitProvider;
 
+    /**
+     * @return case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     * 
+     */
     public Output<String> gitProvider() {
         return this.gitProvider;
     }
+    /**
+     * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
+     * 
+     */
     @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
+    /**
+     * @return path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
@@ -47,21 +149,45 @@ public class Repo extends com.pulumi.resources.CustomResource {
     public Output<Optional<RepoSparseCheckout>> sparseCheckout() {
         return Codegen.optional(this.sparseCheckout);
     }
+    /**
+     * name of the tag for initial checkout.  Conflicts with `branch`.
+     * 
+     */
     @Export(name="tag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tag;
 
+    /**
+     * @return name of the tag for initial checkout.  Conflicts with `branch`.
+     * 
+     */
     public Output<Optional<String>> tag() {
         return Codegen.optional(this.tag);
     }
+    /**
+     * The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
+     * 
+     */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
+    /**
+     * @return The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
     @Export(name="workspacePath", refs={String.class}, tree="[0]")
     private Output<String> workspacePath;
 
+    /**
+     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
     public Output<String> workspacePath() {
         return this.workspacePath;
     }

@@ -4,6 +4,60 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const rootStorageBucket = new aws.s3.BucketV2("root_storage_bucket", {
+ *     bucket: `${prefix}-rootbucket`,
+ *     acl: "private",
+ * });
+ * const rootVersioning = new aws.s3.BucketVersioningV2("root_versioning", {
+ *     bucket: rootStorageBucket.id,
+ *     versioningConfiguration: {
+ *         status: "Disabled",
+ *     },
+ * });
+ * const _this = new databricks.MwsStorageConfigurations("this", {
+ *     accountId: databricksAccountId,
+ *     storageConfigurationName: `${prefix}-storage`,
+ *     bucketName: rootStorageBucket.bucket,
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * Provisioning Databricks on AWS guide.
+ * * Provisioning Databricks on AWS with Private Link guide.
+ * * databricks.MwsCredentials to configure the cross-account role for creation of new workspaces within AWS.
+ * * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+ * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+ * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+ * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+ *
+ * ## Import
+ *
+ * This resource can be imported by Databricks account ID and storage configuration ID.
+ *
+ * ```sh
+ * $ pulumi import databricks:index/mwsStorageConfigurations:MwsStorageConfigurations this '<account_id>/<storage_configuration_id>'
+ * ```
+ *
+ * ~> This resource does not support updates. If your configuration does not match the existing resource,
+ *
+ *    the next `pulumi up` will cause the resource to be destroyed and recreated. After importing,
+ *
+ *    verify that the configuration matches the existing resource by running `pulumi preview`.
+ */
 export class MwsStorageConfigurations extends pulumi.CustomResource {
     /**
      * Get an existing MwsStorageConfigurations resource's state with the given name, ID, and optional extra
@@ -32,10 +86,22 @@ export class MwsStorageConfigurations extends pulumi.CustomResource {
         return obj['__pulumiType'] === MwsStorageConfigurations.__pulumiType;
     }
 
+    /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     */
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * name of AWS S3 bucket
+     */
     public readonly bucketName!: pulumi.Output<string>;
     public /*out*/ readonly creationTime!: pulumi.Output<number>;
+    /**
+     * (String) id of storage config to be used for `databricksMwsWorkspace` resource.
+     */
     public /*out*/ readonly storageConfigurationId!: pulumi.Output<string>;
+    /**
+     * name under which this storage configuration is stored
+     */
     public readonly storageConfigurationName!: pulumi.Output<string>;
 
     /**
@@ -84,10 +150,22 @@ export class MwsStorageConfigurations extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MwsStorageConfigurations resources.
  */
 export interface MwsStorageConfigurationsState {
+    /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     */
     accountId?: pulumi.Input<string>;
+    /**
+     * name of AWS S3 bucket
+     */
     bucketName?: pulumi.Input<string>;
     creationTime?: pulumi.Input<number>;
+    /**
+     * (String) id of storage config to be used for `databricksMwsWorkspace` resource.
+     */
     storageConfigurationId?: pulumi.Input<string>;
+    /**
+     * name under which this storage configuration is stored
+     */
     storageConfigurationName?: pulumi.Input<string>;
 }
 
@@ -95,7 +173,16 @@ export interface MwsStorageConfigurationsState {
  * The set of arguments for constructing a MwsStorageConfigurations resource.
  */
 export interface MwsStorageConfigurationsArgs {
+    /**
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     */
     accountId: pulumi.Input<string>;
+    /**
+     * name of AWS S3 bucket
+     */
     bucketName: pulumi.Input<string>;
+    /**
+     * name under which this storage configuration is stored
+     */
     storageConfigurationName: pulumi.Input<string>;
 }

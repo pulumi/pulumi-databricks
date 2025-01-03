@@ -15,16 +15,32 @@ public final class GetMwsNetworkConnectivityConfigEgressConfig extends com.pulum
 
     public static final GetMwsNetworkConnectivityConfigEgressConfig Empty = new GetMwsNetworkConnectivityConfigEgressConfig();
 
+    /**
+     * Array of default rules.
+     * 
+     */
     @Import(name="defaultRules")
     private @Nullable GetMwsNetworkConnectivityConfigEgressConfigDefaultRules defaultRules;
 
+    /**
+     * @return Array of default rules.
+     * 
+     */
     public Optional<GetMwsNetworkConnectivityConfigEgressConfigDefaultRules> defaultRules() {
         return Optional.ofNullable(this.defaultRules);
     }
 
+    /**
+     * Array of target rules.
+     * 
+     */
     @Import(name="targetRules")
     private @Nullable GetMwsNetworkConnectivityConfigEgressConfigTargetRules targetRules;
 
+    /**
+     * @return Array of target rules.
+     * 
+     */
     public Optional<GetMwsNetworkConnectivityConfigEgressConfigTargetRules> targetRules() {
         return Optional.ofNullable(this.targetRules);
     }
@@ -54,11 +70,23 @@ public final class GetMwsNetworkConnectivityConfigEgressConfig extends com.pulum
             $ = new GetMwsNetworkConnectivityConfigEgressConfig(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param defaultRules Array of default rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultRules(@Nullable GetMwsNetworkConnectivityConfigEgressConfigDefaultRules defaultRules) {
             $.defaultRules = defaultRules;
             return this;
         }
 
+        /**
+         * @param targetRules Array of target rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetRules(@Nullable GetMwsNetworkConnectivityConfigEgressConfigTargetRules targetRules) {
             $.targetRules = targetRules;
             return this;

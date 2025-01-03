@@ -12,10 +12,68 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to attach a role or InstanceProfile (AWS) to a databricks_service_principal.
+//
+// ## Example Usage
+//
+// # Granting a service principal access to an instance profile
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instance_profile", &databricks.InstanceProfileArgs{
+//				InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			this, err := databricks.NewServicePrincipal(ctx, "this", &databricks.ServicePrincipalArgs{
+//				DisplayName: pulumi.String("My Service Principal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewServicePrincipalRole(ctx, "my_service_principal_instance_profile", &databricks.ServicePrincipalRoleArgs{
+//				ServicePrincipalId: this.ID(),
+//				Role:               instanceProfile.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * End to end workspace management guide.
+// * UserRole to attach role or InstanceProfile (AWS) to databricks_user.
+// * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+// * GroupMember to attach users and groups as group members.
+// * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+//
+// ## Import
+//
+// !> Importing this resource is not currently supported.
 type ServicePrincipalRole struct {
 	pulumi.CustomResourceState
 
-	Role               pulumi.StringOutput `pulumi:"role"`
+	// This is the id of the role or instance profile resource.
+	Role pulumi.StringOutput `pulumi:"role"`
+	// This is the id of the service principal resource.
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 }
 
@@ -55,12 +113,16 @@ func GetServicePrincipalRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipalRole resources.
 type servicePrincipalRoleState struct {
-	Role               *string `pulumi:"role"`
+	// This is the id of the role or instance profile resource.
+	Role *string `pulumi:"role"`
+	// This is the id of the service principal resource.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 }
 
 type ServicePrincipalRoleState struct {
-	Role               pulumi.StringPtrInput
+	// This is the id of the role or instance profile resource.
+	Role pulumi.StringPtrInput
+	// This is the id of the service principal resource.
 	ServicePrincipalId pulumi.StringPtrInput
 }
 
@@ -69,13 +131,17 @@ func (ServicePrincipalRoleState) ElementType() reflect.Type {
 }
 
 type servicePrincipalRoleArgs struct {
-	Role               string `pulumi:"role"`
+	// This is the id of the role or instance profile resource.
+	Role string `pulumi:"role"`
+	// This is the id of the service principal resource.
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 }
 
 // The set of arguments for constructing a ServicePrincipalRole resource.
 type ServicePrincipalRoleArgs struct {
-	Role               pulumi.StringInput
+	// This is the id of the role or instance profile resource.
+	Role pulumi.StringInput
+	// This is the id of the service principal resource.
 	ServicePrincipalId pulumi.StringInput
 }
 
@@ -166,10 +232,12 @@ func (o ServicePrincipalRoleOutput) ToServicePrincipalRoleOutputWithContext(ctx 
 	return o
 }
 
+// This is the id of the role or instance profile resource.
 func (o ServicePrincipalRoleOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalRole) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// This is the id of the service principal resource.
 func (o ServicePrincipalRoleOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalRole) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }

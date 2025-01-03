@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BudgetFilter {
+    /**
+     * @return List of tags to filter by. Consists of the following fields:
+     * 
+     */
     private @Nullable List<BudgetFilterTag> tags;
+    /**
+     * @return Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
+     * 
+     */
     private @Nullable BudgetFilterWorkspaceId workspaceId;
 
     private BudgetFilter() {}
+    /**
+     * @return List of tags to filter by. Consists of the following fields:
+     * 
+     */
     public List<BudgetFilterTag> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
+    /**
+     * @return Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
+     * 
+     */
     public Optional<BudgetFilterWorkspaceId> workspaceId() {
         return Optional.ofNullable(this.workspaceId);
     }

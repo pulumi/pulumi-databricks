@@ -12,12 +12,183 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification destinations are used to send notifications for query alerts and jobs to destinations outside of Databricks. Only workspace admins can create, update, and delete notification destinations.
+//
+// ## Example Usage
+//
+// `Email` notification destination:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewNotificationDestination(ctx, "ndresource", &databricks.NotificationDestinationArgs{
+//				DisplayName: pulumi.String("Notification Destination"),
+//				Config: &databricks.NotificationDestinationConfigArgs{
+//					Email: &databricks.NotificationDestinationConfigEmailArgs{
+//						Addresses: pulumi.StringArray{
+//							pulumi.String("abc@gmail.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// `Slack` notification destination:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewNotificationDestination(ctx, "ndresource", &databricks.NotificationDestinationArgs{
+//				DisplayName: pulumi.String("Notification Destination"),
+//				Config: &databricks.NotificationDestinationConfigArgs{
+//					Slack: &databricks.NotificationDestinationConfigSlackArgs{
+//						Url: pulumi.String("https://hooks.slack.com/services/..."),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// `PagerDuty` notification destination:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewNotificationDestination(ctx, "ndresource", &databricks.NotificationDestinationArgs{
+//				DisplayName: pulumi.String("Notification Destination"),
+//				Config: &databricks.NotificationDestinationConfigArgs{
+//					Pagerduty: &databricks.NotificationDestinationConfigPagerdutyArgs{
+//						IntegrationKey: pulumi.String("xxxxxx"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// `Microsoft Teams` notification destination:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewNotificationDestination(ctx, "ndresource", &databricks.NotificationDestinationArgs{
+//				DisplayName: pulumi.String("Notification Destination"),
+//				Config: &databricks.NotificationDestinationConfigArgs{
+//					MicrosoftTeams: &databricks.NotificationDestinationConfigMicrosoftTeamsArgs{
+//						Url: pulumi.String("https://outlook.office.com/webhook/..."),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// `Generic Webhook` notification destination:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewNotificationDestination(ctx, "ndresource", &databricks.NotificationDestinationArgs{
+//				DisplayName: pulumi.String("Notification Destination"),
+//				Config: &databricks.NotificationDestinationConfigArgs{
+//					GenericWebhook: &databricks.NotificationDestinationConfigGenericWebhookArgs{
+//						Url:      pulumi.String("https://example.com/webhook"),
+//						Username: pulumi.String("username"),
+//						Password: pulumi.String("password"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// This resource can be imported by notification ID:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/notificationDestination:NotificationDestination this <notification-id>
+// ```
 type NotificationDestination struct {
 	pulumi.CustomResourceState
 
-	Config          NotificationDestinationConfigPtrOutput `pulumi:"config"`
-	DestinationType pulumi.StringOutput                    `pulumi:"destinationType"`
-	DisplayName     pulumi.StringOutput                    `pulumi:"displayName"`
+	// The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+	Config NotificationDestinationConfigPtrOutput `pulumi:"config"`
+	// the type of Notification Destination.
+	DestinationType pulumi.StringOutput `pulumi:"destinationType"`
+	// The display name of the Notification Destination.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 }
 
 // NewNotificationDestination registers a new resource with the given unique name, arguments, and options.
@@ -53,15 +224,21 @@ func GetNotificationDestination(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NotificationDestination resources.
 type notificationDestinationState struct {
-	Config          *NotificationDestinationConfig `pulumi:"config"`
-	DestinationType *string                        `pulumi:"destinationType"`
-	DisplayName     *string                        `pulumi:"displayName"`
+	// The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+	Config *NotificationDestinationConfig `pulumi:"config"`
+	// the type of Notification Destination.
+	DestinationType *string `pulumi:"destinationType"`
+	// The display name of the Notification Destination.
+	DisplayName *string `pulumi:"displayName"`
 }
 
 type NotificationDestinationState struct {
-	Config          NotificationDestinationConfigPtrInput
+	// The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+	Config NotificationDestinationConfigPtrInput
+	// the type of Notification Destination.
 	DestinationType pulumi.StringPtrInput
-	DisplayName     pulumi.StringPtrInput
+	// The display name of the Notification Destination.
+	DisplayName pulumi.StringPtrInput
 }
 
 func (NotificationDestinationState) ElementType() reflect.Type {
@@ -69,16 +246,22 @@ func (NotificationDestinationState) ElementType() reflect.Type {
 }
 
 type notificationDestinationArgs struct {
-	Config          *NotificationDestinationConfig `pulumi:"config"`
-	DestinationType *string                        `pulumi:"destinationType"`
-	DisplayName     string                         `pulumi:"displayName"`
+	// The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+	Config *NotificationDestinationConfig `pulumi:"config"`
+	// the type of Notification Destination.
+	DestinationType *string `pulumi:"destinationType"`
+	// The display name of the Notification Destination.
+	DisplayName string `pulumi:"displayName"`
 }
 
 // The set of arguments for constructing a NotificationDestination resource.
 type NotificationDestinationArgs struct {
-	Config          NotificationDestinationConfigPtrInput
+	// The configuration of the Notification Destination. It must contain exactly one of the following blocks:
+	Config NotificationDestinationConfigPtrInput
+	// the type of Notification Destination.
 	DestinationType pulumi.StringPtrInput
-	DisplayName     pulumi.StringInput
+	// The display name of the Notification Destination.
+	DisplayName pulumi.StringInput
 }
 
 func (NotificationDestinationArgs) ElementType() reflect.Type {
@@ -168,14 +351,17 @@ func (o NotificationDestinationOutput) ToNotificationDestinationOutputWithContex
 	return o
 }
 
+// The configuration of the Notification Destination. It must contain exactly one of the following blocks:
 func (o NotificationDestinationOutput) Config() NotificationDestinationConfigPtrOutput {
 	return o.ApplyT(func(v *NotificationDestination) NotificationDestinationConfigPtrOutput { return v.Config }).(NotificationDestinationConfigPtrOutput)
 }
 
+// the type of Notification Destination.
 func (o NotificationDestinationOutput) DestinationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationDestination) pulumi.StringOutput { return v.DestinationType }).(pulumi.StringOutput)
 }
 
+// The display name of the Notification Destination.
 func (o NotificationDestinationOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationDestination) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

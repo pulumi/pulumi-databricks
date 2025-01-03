@@ -17,21 +17,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServingEndpointsEndpoint {
+    /**
+     * @return A block with AI Gateway configuration for the serving endpoint.
+     * 
+     */
     private @Nullable List<GetServingEndpointsEndpointAiGateway> aiGateways;
+    /**
+     * @return The model serving endpoint configuration.
+     * 
+     */
     private @Nullable List<GetServingEndpointsEndpointConfig> configs;
     private @Nullable Integer creationTimestamp;
     private @Nullable String creator;
     private @Nullable String id;
     private @Nullable Integer lastUpdatedTimestamp;
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     private @Nullable String name;
     private @Nullable List<GetServingEndpointsEndpointState> states;
+    /**
+     * @return Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     * 
+     */
     private @Nullable List<GetServingEndpointsEndpointTag> tags;
     private @Nullable String task;
 
     private GetServingEndpointsEndpoint() {}
+    /**
+     * @return A block with AI Gateway configuration for the serving endpoint.
+     * 
+     */
     public List<GetServingEndpointsEndpointAiGateway> aiGateways() {
         return this.aiGateways == null ? List.of() : this.aiGateways;
     }
+    /**
+     * @return The model serving endpoint configuration.
+     * 
+     */
     public List<GetServingEndpointsEndpointConfig> configs() {
         return this.configs == null ? List.of() : this.configs;
     }
@@ -47,12 +71,20 @@ public final class GetServingEndpointsEndpoint {
     public Optional<Integer> lastUpdatedTimestamp() {
         return Optional.ofNullable(this.lastUpdatedTimestamp);
     }
+    /**
+     * @return The name of the model serving endpoint.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     public List<GetServingEndpointsEndpointState> states() {
         return this.states == null ? List.of() : this.states;
     }
+    /**
+     * @return Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     * 
+     */
     public List<GetServingEndpointsEndpointTag> tags() {
         return this.tags == null ? List.of() : this.tags;
     }

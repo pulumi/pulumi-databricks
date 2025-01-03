@@ -13,17 +13,101 @@ import com.pulumi.databricks.inputs.ServicePrincipalRoleState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * This resource allows you to attach a role or databricks.InstanceProfile (AWS) to a databricks_service_principal.
+ * 
+ * ## Example Usage
+ * 
+ * Granting a service principal access to an instance profile
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.InstanceProfile;
+ * import com.pulumi.databricks.InstanceProfileArgs;
+ * import com.pulumi.databricks.ServicePrincipal;
+ * import com.pulumi.databricks.ServicePrincipalArgs;
+ * import com.pulumi.databricks.ServicePrincipalRole;
+ * import com.pulumi.databricks.ServicePrincipalRoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instanceProfile = new InstanceProfile("instanceProfile", InstanceProfileArgs.builder()
+ *             .instanceProfileArn("my_instance_profile_arn")
+ *             .build());
+ * 
+ *         var this_ = new ServicePrincipal("this", ServicePrincipalArgs.builder()
+ *             .displayName("My Service Principal")
+ *             .build());
+ * 
+ *         var myServicePrincipalInstanceProfile = new ServicePrincipalRole("myServicePrincipalInstanceProfile", ServicePrincipalRoleArgs.builder()
+ *             .servicePrincipalId(this_.id())
+ *             .role(instanceProfile.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * End to end workspace management guide.
+ * * databricks.UserRole to attach role or databricks.InstanceProfile (AWS) to databricks_user.
+ * * databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+ * * databricks.GroupMember to attach users and groups as group members.
+ * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * 
+ * ## Import
+ * 
+ * !&gt; Importing this resource is not currently supported.
+ * 
+ */
 @ResourceType(type="databricks:index/servicePrincipalRole:ServicePrincipalRole")
 public class ServicePrincipalRole extends com.pulumi.resources.CustomResource {
+    /**
+     * This is the id of the role or instance profile resource.
+     * 
+     */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
+    /**
+     * @return This is the id of the role or instance profile resource.
+     * 
+     */
     public Output<String> role() {
         return this.role;
     }
+    /**
+     * This is the id of the service principal resource.
+     * 
+     */
     @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
+    /**
+     * @return This is the id of the service principal resource.
+     * 
+     */
     public Output<String> servicePrincipalId() {
         return this.servicePrincipalId;
     }

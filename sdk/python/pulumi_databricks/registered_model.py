@@ -27,6 +27,12 @@ class RegisteredModelArgs:
                  storage_location: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegisteredModel resource.
+        :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] comment: The comment attached to the registered model.
+        :param pulumi.Input[str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] owner: Name of the registered model owner.
+        :param pulumi.Input[str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
         pulumi.set(__self__, "schema_name", schema_name)
@@ -42,6 +48,9 @@ class RegisteredModelArgs:
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Input[str]:
+        """
+        The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -51,6 +60,9 @@ class RegisteredModelArgs:
     @property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Input[str]:
+        """
+        The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "schema_name")
 
     @schema_name.setter
@@ -60,6 +72,9 @@ class RegisteredModelArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The comment attached to the registered model.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -69,6 +84,9 @@ class RegisteredModelArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -78,6 +96,9 @@ class RegisteredModelArgs:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the registered model owner.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -87,6 +108,9 @@ class RegisteredModelArgs:
     @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
@@ -105,6 +129,12 @@ class _RegisteredModelState:
                  storage_location: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegisteredModel resources.
+        :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] comment: The comment attached to the registered model.
+        :param pulumi.Input[str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] owner: Name of the registered model owner.
+        :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
@@ -122,6 +152,9 @@ class _RegisteredModelState:
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -131,6 +164,9 @@ class _RegisteredModelState:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The comment attached to the registered model.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -140,6 +176,9 @@ class _RegisteredModelState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -149,6 +188,9 @@ class _RegisteredModelState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the registered model owner.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -158,6 +200,9 @@ class _RegisteredModelState:
     @property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "schema_name")
 
     @schema_name.setter
@@ -167,6 +212,9 @@ class _RegisteredModelState:
     @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
@@ -187,9 +235,53 @@ class RegisteredModel(pulumi.CustomResource):
                  storage_location: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a RegisteredModel resource with the given unique name, props, and options.
+        > This resource can only be used with a workspace-level provider!
+
+        This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.RegisteredModel("this",
+            name="my_model",
+            catalog_name="main",
+            schema_name="default")
+        ```
+
+        ## Access Control
+
+        * Grants can be used to grant principals `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges.
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * ModelServing to serve this model on a Databricks serving endpoint.
+        * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+        * Schema to manage schemas within Unity Catalog.
+        * Catalog to manage catalogs within Unity Catalog.
+
+        ## Import
+
+        The registered model resource can be imported using the full (3-level) name of the model.
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] comment: The comment attached to the registered model.
+        :param pulumi.Input[str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] owner: Name of the registered model owner.
+        :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
         ...
     @overload
@@ -198,7 +290,45 @@ class RegisteredModel(pulumi.CustomResource):
                  args: RegisteredModelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RegisteredModel resource with the given unique name, props, and options.
+        > This resource can only be used with a workspace-level provider!
+
+        This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.RegisteredModel("this",
+            name="my_model",
+            catalog_name="main",
+            schema_name="default")
+        ```
+
+        ## Access Control
+
+        * Grants can be used to grant principals `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges.
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * ModelServing to serve this model on a Databricks serving endpoint.
+        * MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+        * Schema to manage schemas within Unity Catalog.
+        * Catalog to manage catalogs within Unity Catalog.
+
+        ## Import
+
+        The registered model resource can be imported using the full (3-level) name of the model.
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param RegisteredModelArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -262,6 +392,12 @@ class RegisteredModel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] comment: The comment attached to the registered model.
+        :param pulumi.Input[str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] owner: Name of the registered model owner.
+        :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -278,30 +414,48 @@ class RegisteredModel(pulumi.CustomResource):
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[str]:
+        """
+        The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "catalog_name")
 
     @property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
+        """
+        The comment attached to the registered model.
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
+        """
+        Name of the registered model owner.
+        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Output[str]:
+        """
+        The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "schema_name")
 
     @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> pulumi.Output[str]:
+        """
+        The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "storage_location")
 

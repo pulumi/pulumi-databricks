@@ -14,9 +14,17 @@ public final class QueryParameterTextValueArgs extends com.pulumi.resources.Reso
 
     public static final QueryParameterTextValueArgs Empty = new QueryParameterTextValueArgs();
 
+    /**
+     * actual text value.
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return actual text value.
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -45,11 +53,23 @@ public final class QueryParameterTextValueArgs extends com.pulumi.resources.Reso
             $ = new QueryParameterTextValueArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param value actual text value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value actual text value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

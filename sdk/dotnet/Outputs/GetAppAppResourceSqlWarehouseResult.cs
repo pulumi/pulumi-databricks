@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAppAppResourceSqlWarehouseResult
     {
+        /// <summary>
+        /// Id of the job to grant permission on.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        /// </summary>
         public readonly string Permission;
 
         [OutputConstructor]

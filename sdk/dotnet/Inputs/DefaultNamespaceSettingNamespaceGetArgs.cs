@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class DefaultNamespaceSettingNamespaceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The value for the setting.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

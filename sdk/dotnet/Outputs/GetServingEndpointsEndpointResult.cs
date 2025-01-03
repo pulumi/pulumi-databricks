@@ -13,14 +13,26 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetServingEndpointsEndpointResult
     {
+        /// <summary>
+        /// A block with AI Gateway configuration for the serving endpoint.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointAiGatewayResult> AiGateways;
+        /// <summary>
+        /// The model serving endpoint configuration.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointConfigResult> Configs;
         public readonly int? CreationTimestamp;
         public readonly string? Creator;
         public readonly string? Id;
         public readonly int? LastUpdatedTimestamp;
+        /// <summary>
+        /// The name of the model serving endpoint.
+        /// </summary>
         public readonly string? Name;
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointStateResult> States;
+        /// <summary>
+        /// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointTagResult> Tags;
         public readonly string? Task;
 

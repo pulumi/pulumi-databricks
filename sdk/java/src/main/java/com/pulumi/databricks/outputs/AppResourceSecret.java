@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class AppResourceSecret {
+    /**
+     * @return Key of the secret to grant permission on.
+     * 
+     */
     private String key;
+    /**
+     * @return Permission to grant on the secret scope. For secrets, only one permission is allowed. Permission must be one of: `READ`, `WRITE`, `MANAGE`.
+     * 
+     */
     private String permission;
+    /**
+     * @return Scope of the secret to grant permission on.
+     * 
+     */
     private String scope;
 
     private AppResourceSecret() {}
+    /**
+     * @return Key of the secret to grant permission on.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Permission to grant on the secret scope. For secrets, only one permission is allowed. Permission must be one of: `READ`, `WRITE`, `MANAGE`.
+     * 
+     */
     public String permission() {
         return this.permission;
     }
+    /**
+     * @return Scope of the secret to grant permission on.
+     * 
+     */
     public String scope() {
         return this.scope;
     }

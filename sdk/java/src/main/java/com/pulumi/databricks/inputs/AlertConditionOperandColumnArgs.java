@@ -14,9 +14,17 @@ public final class AlertConditionOperandColumnArgs extends com.pulumi.resources.
 
     public static final AlertConditionOperandColumnArgs Empty = new AlertConditionOperandColumnArgs();
 
+    /**
+     * Name of the column.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Name of the column.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -45,11 +53,23 @@ public final class AlertConditionOperandColumnArgs extends com.pulumi.resources.
             $ = new AlertConditionOperandColumnArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Name of the column.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of the column.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

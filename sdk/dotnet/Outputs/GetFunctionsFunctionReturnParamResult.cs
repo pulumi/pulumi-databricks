@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetFunctionsFunctionReturnParamResult
     {
+        /// <summary>
+        /// The array of definitions of the function's parameters:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFunctionsFunctionReturnParamParameterResult> Parameters;
 
         [OutputConstructor]

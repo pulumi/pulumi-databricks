@@ -11,6 +11,61 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source can only be used with a workspace-level provider!
+//
+// > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+//
+// Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use getTables to retrieve multiple tables in Unity Catalog
+//
+// ## Example Usage
+//
+// Read  on a specific table `main.certified.fct_transactions`:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fctTransactions, err := databricks.LookupTable(ctx, &databricks.LookupTableArgs{
+//				Name: "main.certified.fct_transactions",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "things", &databricks.GrantsArgs{
+//				Table: pulumi.String(fctTransactions.Name),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("sensitive"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("SELECT"),
+//							pulumi.String("MODIFY"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Grant to manage grants within Unity Catalog.
+// * getTables to list all tables within a schema in Unity Catalog.
 func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.InvokeOption) (*LookupTableResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTableResult
@@ -23,15 +78,19 @@ func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getTable.
 type LookupTableArgs struct {
-	Id        *string            `pulumi:"id"`
-	Name      string             `pulumi:"name"`
+	Id *string `pulumi:"id"`
+	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	Name string `pulumi:"name"`
+	// TableInfo object for a Unity Catalog table. This contains the following attributes:
 	TableInfo *GetTableTableInfo `pulumi:"tableInfo"`
 }
 
 // A collection of values returned by getTable.
 type LookupTableResult struct {
-	Id        string            `pulumi:"id"`
-	Name      string            `pulumi:"name"`
+	Id string `pulumi:"id"`
+	// Name of table, relative to parent schema.
+	Name string `pulumi:"name"`
+	// TableInfo object for a Unity Catalog table. This contains the following attributes:
 	TableInfo GetTableTableInfo `pulumi:"tableInfo"`
 }
 
@@ -46,8 +105,10 @@ func LookupTableOutput(ctx *pulumi.Context, args LookupTableOutputArgs, opts ...
 
 // A collection of arguments for invoking getTable.
 type LookupTableOutputArgs struct {
-	Id        pulumi.StringPtrInput     `pulumi:"id"`
-	Name      pulumi.StringInput        `pulumi:"name"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	Name pulumi.StringInput `pulumi:"name"`
+	// TableInfo object for a Unity Catalog table. This contains the following attributes:
 	TableInfo GetTableTableInfoPtrInput `pulumi:"tableInfo"`
 }
 
@@ -74,10 +135,12 @@ func (o LookupTableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of table, relative to parent schema.
 func (o LookupTableResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// TableInfo object for a Unity Catalog table. This contains the following attributes:
 func (o LookupTableResultOutput) TableInfo() GetTableTableInfoOutput {
 	return o.ApplyT(func(v LookupTableResult) GetTableTableInfo { return v.TableInfo }).(GetTableTableInfoOutput)
 }

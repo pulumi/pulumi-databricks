@@ -72,6 +72,9 @@ class GetAwsUnityCatalogAssumeRolePolicyResult:
     @property
     @pulumi.getter
     def json(self) -> str:
+        """
+        AWS IAM Policy JSON document for assume role
+        """
         return pulumi.get(self, "json")
 
     @property
@@ -107,7 +110,39 @@ def get_aws_unity_catalog_assume_role_policy(aws_account_id: Optional[str] = Non
                                              unity_catalog_iam_arn: Optional[str] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsUnityCatalogAssumeRolePolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
+
+    This data source constructs the necessary AWS Unity Catalog assume role policy for you.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_databricks as databricks
+
+    this = databricks.get_aws_unity_catalog_policy(aws_account_id=aws_account_id,
+        bucket_name="databricks-bucket",
+        role_name=f"{prefix}-uc-access",
+        kms_name="arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
+    this_get_aws_unity_catalog_assume_role_policy = databricks.get_aws_unity_catalog_assume_role_policy(aws_account_id=aws_account_id,
+        role_name=f"{prefix}-uc-access",
+        external_id="12345")
+    unity_metastore = aws.iam.Policy("unity_metastore",
+        name=f"{prefix}-unity-catalog-metastore-access-iam-policy",
+        policy=this.json)
+    metastore_data_access = aws.iam.Role("metastore_data_access",
+        name=f"{prefix}-uc-access",
+        assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json,
+        managed_policy_arns=[unity_metastore.arn])
+    ```
+
+
+    :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param str external_id: The storage credential external id.
+    :param str role_name: The name of the AWS IAM role to be created for Unity Catalog.
+    :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id
@@ -133,7 +168,39 @@ def get_aws_unity_catalog_assume_role_policy_output(aws_account_id: Optional[pul
                                                     unity_catalog_iam_arn: Optional[pulumi.Input[Optional[str]]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsUnityCatalogAssumeRolePolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws) in case of any questions.
+
+    This data source constructs the necessary AWS Unity Catalog assume role policy for you.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_databricks as databricks
+
+    this = databricks.get_aws_unity_catalog_policy(aws_account_id=aws_account_id,
+        bucket_name="databricks-bucket",
+        role_name=f"{prefix}-uc-access",
+        kms_name="arn:aws:kms:us-west-2:111122223333:key/databricks-kms")
+    this_get_aws_unity_catalog_assume_role_policy = databricks.get_aws_unity_catalog_assume_role_policy(aws_account_id=aws_account_id,
+        role_name=f"{prefix}-uc-access",
+        external_id="12345")
+    unity_metastore = aws.iam.Policy("unity_metastore",
+        name=f"{prefix}-unity-catalog-metastore-access-iam-policy",
+        policy=this.json)
+    metastore_data_access = aws.iam.Role("metastore_data_access",
+        name=f"{prefix}-uc-access",
+        assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json,
+        managed_policy_arns=[unity_metastore.arn])
+    ```
+
+
+    :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+    :param str external_id: The storage credential external id.
+    :param str role_name: The name of the AWS IAM role to be created for Unity Catalog.
+    :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id

@@ -55,6 +55,9 @@ class GetInstancePoolResult:
     @property
     @pulumi.getter(name="poolInfo")
     def pool_info(self) -> 'outputs.GetInstancePoolPoolInfoResult':
+        """
+        block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
+        """
         return pulumi.get(self, "pool_info")
 
 
@@ -73,7 +76,25 @@ def get_instance_pool(name: Optional[str] = None,
                       pool_info: Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancePoolResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_instance_pool.
+
+    ## Example Usage
+
+    Referring to an instance pool by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    pool = databricks.get_instance_pool(name="All spot")
+    my_cluster = databricks.Cluster("my_cluster", instance_pool_id=pool.id)
+    ```
+
+
+    :param str name: Name of the instance pool. The instance pool must exist before this resource can be planned.
+    :param Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -89,7 +110,25 @@ def get_instance_pool_output(name: Optional[pulumi.Input[str]] = None,
                              pool_info: Optional[pulumi.Input[Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancePoolResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves information about databricks_instance_pool.
+
+    ## Example Usage
+
+    Referring to an instance pool by name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    pool = databricks.get_instance_pool(name="All spot")
+    my_cluster = databricks.Cluster("my_cluster", instance_pool_id=pool.id)
+    ```
+
+
+    :param str name: Name of the instance pool. The instance pool must exist before this resource can be planned.
+    :param Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict'] pool_info: block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
     """
     __args__ = dict()
     __args__['name'] = name

@@ -15,45 +15,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfigServedModel {
+    /**
+     * @return a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+     * 
+     */
     private @Nullable Map<String,String> environmentVars;
+    /**
+     * @return ARN of the instance profile that the served model will use to access AWS resources.
+     * 
+     */
     private @Nullable String instanceProfileArn;
+    /**
+     * @return The maximum tokens per second that the endpoint can scale up to.
+     * 
+     */
     private @Nullable Integer maxProvisionedThroughput;
+    /**
+     * @return The minimum tokens per second that the endpoint can scale down to.
+     * 
+     */
     private @Nullable Integer minProvisionedThroughput;
+    /**
+     * @return The name of the model in Databricks Model Registry to be served.
+     * 
+     */
     private String modelName;
+    /**
+     * @return The version of the model in Databricks Model Registry to be served.
+     * 
+     */
     private String modelVersion;
+    /**
+     * @return The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+     * 
+     */
     private @Nullable Boolean scaleToZeroEnabled;
+    /**
+     * @return The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
+     * 
+     */
     private @Nullable String workloadSize;
+    /**
+     * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
+     * 
+     */
     private @Nullable String workloadType;
 
     private ModelServingConfigServedModel() {}
+    /**
+     * @return a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
+     * 
+     */
     public Map<String,String> environmentVars() {
         return this.environmentVars == null ? Map.of() : this.environmentVars;
     }
+    /**
+     * @return ARN of the instance profile that the served model will use to access AWS resources.
+     * 
+     */
     public Optional<String> instanceProfileArn() {
         return Optional.ofNullable(this.instanceProfileArn);
     }
+    /**
+     * @return The maximum tokens per second that the endpoint can scale up to.
+     * 
+     */
     public Optional<Integer> maxProvisionedThroughput() {
         return Optional.ofNullable(this.maxProvisionedThroughput);
     }
+    /**
+     * @return The minimum tokens per second that the endpoint can scale down to.
+     * 
+     */
     public Optional<Integer> minProvisionedThroughput() {
         return Optional.ofNullable(this.minProvisionedThroughput);
     }
+    /**
+     * @return The name of the model in Databricks Model Registry to be served.
+     * 
+     */
     public String modelName() {
         return this.modelName;
     }
+    /**
+     * @return The version of the model in Databricks Model Registry to be served.
+     * 
+     */
     public String modelVersion() {
         return this.modelVersion;
     }
+    /**
+     * @return The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+     * 
+     */
     public Optional<Boolean> scaleToZeroEnabled() {
         return Optional.ofNullable(this.scaleToZeroEnabled);
     }
+    /**
+     * @return The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
+     * 
+     */
     public Optional<String> workloadSize() {
         return Optional.ofNullable(this.workloadSize);
     }
+    /**
+     * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
+     * 
+     */
     public Optional<String> workloadType() {
         return Optional.ofNullable(this.workloadType);
     }

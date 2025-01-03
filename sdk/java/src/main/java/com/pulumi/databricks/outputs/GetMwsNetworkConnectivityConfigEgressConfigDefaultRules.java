@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRules {
+    /**
+     * @return The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+     * 
+     */
     private @Nullable GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule awsStableIpRule;
+    /**
+     * @return Array of Azure service endpoint rules.
+     * 
+     */
     private @Nullable GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule azureServiceEndpointRule;
 
     private GetMwsNetworkConnectivityConfigEgressConfigDefaultRules() {}
+    /**
+     * @return The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+     * 
+     */
     public Optional<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule> awsStableIpRule() {
         return Optional.ofNullable(this.awsStableIpRule);
     }
+    /**
+     * @return Array of Azure service endpoint rules.
+     * 
+     */
     public Optional<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule> azureServiceEndpointRule() {
         return Optional.ofNullable(this.azureServiceEndpointRule);
     }

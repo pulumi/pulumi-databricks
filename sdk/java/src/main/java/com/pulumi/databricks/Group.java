@@ -15,47 +15,288 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * This resource allows you to manage both [account groups and workspace-local groups](https://docs.databricks.com/administration-guide/users-groups/groups.html). You can use the databricks.GroupMember resource to assign Databricks users, service principals as well as other groups as members of the group. This is useful if you are using an application to sync users &amp; groups with SCIM API.
+ * 
+ * &gt; To assign an account level group to a workspace use databricks_mws_permission_assignment.
+ * 
+ * &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level groups.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level groups.
+ * 
+ * To create account groups in the Databricks account, the provider must be configured accordingly. On AWS deployment with `host = &#34;https://accounts.cloud.databricks.com&#34;` and `account_id = &#34;00000000-0000-0000-0000-000000000000&#34;`. On Azure deployments `host = &#34;https://accounts.azuredatabricks.net&#34;`, `account_id = &#34;00000000-0000-0000-0000-000000000000&#34;` and using AAD tokens as authentication.
+ * 
+ * Recommended to use along with Identity Provider SCIM provisioning to populate users into those groups:
+ * 
+ * * [Azure Active Directory](https://docs.microsoft.com/en-us/azure/databricks/administration-guide/users-groups/scim/aad)
+ * * [Okta](https://docs.databricks.com/administration-guide/users-groups/scim/okta.html)
+ * * [OneLogin](https://docs.databricks.com/administration-guide/users-groups/scim/onelogin.html)
+ * 
+ * ## Example Usage
+ * 
+ * Creating some group
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Group("this", GroupArgs.builder()
+ *             .displayName("Some Group")
+ *             .allowClusterCreate(true)
+ *             .allowInstancePoolCreate(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Adding databricks.User as databricks.GroupMember of some group
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import com.pulumi.databricks.User;
+ * import com.pulumi.databricks.UserArgs;
+ * import com.pulumi.databricks.GroupMember;
+ * import com.pulumi.databricks.GroupMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var this_ = new Group("this", GroupArgs.builder()
+ *             .displayName("Some Group")
+ *             .allowClusterCreate(true)
+ *             .allowInstancePoolCreate(true)
+ *             .build());
+ * 
+ *         var thisUser = new User("thisUser", UserArgs.builder()
+ *             .userName("someone}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *         var vipMember = new GroupMember("vipMember", GroupMemberArgs.builder()
+ *             .groupId(this_.id())
+ *             .memberId(thisUser.id())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Creating group in AWS Databricks account:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Group("this", GroupArgs.builder()
+ *             .displayName("Some Group")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Creating group in Azure Databricks account:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Group("this", GroupArgs.builder()
+ *             .displayName("Some Group")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * You can import a `databricks_group` resource with the name `my_group` like the following:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/group:Group my_group &lt;group_id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/group:Group")
 public class Group extends com.pulumi.resources.CustomResource {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
     @Export(name="aclPrincipalId", refs={String.class}, tree="[0]")
     private Output<String> aclPrincipalId;
 
+    /**
+     * @return identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
+     * 
+     */
     public Output<String> aclPrincipalId() {
         return this.aclPrincipalId;
     }
+    /**
+     * This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+     * 
+     */
     @Export(name="allowClusterCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowClusterCreate;
 
+    /**
+     * @return This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+     * 
+     */
     public Output<Optional<Boolean>> allowClusterCreate() {
         return Codegen.optional(this.allowClusterCreate);
     }
+    /**
+     * This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+     * 
+     */
     @Export(name="allowInstancePoolCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowInstancePoolCreate;
 
+    /**
+     * @return This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+     * 
+     */
     public Output<Optional<Boolean>> allowInstancePoolCreate() {
         return Codegen.optional(this.allowInstancePoolCreate);
     }
+    /**
+     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * 
+     */
     @Export(name="databricksSqlAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> databricksSqlAccess;
 
+    /**
+     * @return This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * 
+     */
     public Output<Optional<Boolean>> databricksSqlAccess() {
         return Codegen.optional(this.databricksSqlAccess);
     }
+    /**
+     * This is the display name for the given group.
+     * 
+     */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
+    /**
+     * @return This is the display name for the given group.
+     * 
+     */
     public Output<String> displayName() {
         return this.displayName;
     }
+    /**
+     * ID of the group in an external identity provider.
+     * 
+     */
     @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalId;
 
+    /**
+     * @return ID of the group in an external identity provider.
+     * 
+     */
     public Output<Optional<String>> externalId() {
         return Codegen.optional(this.externalId);
     }
+    /**
+     * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     * 
+     */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
+    /**
+     * @return Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
+     * 
+     */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
@@ -65,9 +306,17 @@ public class Group extends com.pulumi.resources.CustomResource {
     public Output<String> url() {
         return this.url;
     }
+    /**
+     * This is a field to allow the group to have access to Databricks Workspace.
+     * 
+     */
     @Export(name="workspaceAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> workspaceAccess;
 
+    /**
+     * @return This is a field to allow the group to have access to Databricks Workspace.
+     * 
+     */
     public Output<Optional<Boolean>> workspaceAccess() {
         return Codegen.optional(this.workspaceAccess);
     }

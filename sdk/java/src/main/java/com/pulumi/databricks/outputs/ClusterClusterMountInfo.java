@@ -13,17 +13,137 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterClusterMountInfo {
+    /**
+     * @return path inside the Spark container.
+     * 
+     * For example, you can mount Azure Data Lake Storage container using the following code:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import com.pulumi.databricks.inputs.ClusterClusterMountInfoArgs;
+     * import com.pulumi.databricks.inputs.ClusterClusterMountInfoNetworkFilesystemInfoArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storageAccount = "ewfw3ggwegwg";
+     * 
+     *         final var storageContainer = "test";
+     * 
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
+     *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
+     *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
+     *                     .serverAddress(String.format("%s.blob.core.windows.net", storageAccount))
+     *                     .mountOptions("sec=sys,vers=3,nolock,proto=tcp")
+     *                     .build())
+     *                 .remoteMountDirPath(String.format("%s/%s", storageAccount,storageContainer))
+     *                 .localMountDirPath("/mnt/nfs-test")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     private String localMountDirPath;
+    /**
+     * @return block specifying connection. It consists of:
+     * 
+     */
     private ClusterClusterMountInfoNetworkFilesystemInfo networkFilesystemInfo;
+    /**
+     * @return string specifying path to mount on the remote service.
+     * 
+     */
     private @Nullable String remoteMountDirPath;
 
     private ClusterClusterMountInfo() {}
+    /**
+     * @return path inside the Spark container.
+     * 
+     * For example, you can mount Azure Data Lake Storage container using the following code:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import com.pulumi.databricks.inputs.ClusterClusterMountInfoArgs;
+     * import com.pulumi.databricks.inputs.ClusterClusterMountInfoNetworkFilesystemInfoArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var storageAccount = "ewfw3ggwegwg";
+     * 
+     *         final var storageContainer = "test";
+     * 
+     *         var withNfs = new Cluster("withNfs", ClusterArgs.builder()
+     *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
+     *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
+     *                     .serverAddress(String.format("%s.blob.core.windows.net", storageAccount))
+     *                     .mountOptions("sec=sys,vers=3,nolock,proto=tcp")
+     *                     .build())
+     *                 .remoteMountDirPath(String.format("%s/%s", storageAccount,storageContainer))
+     *                 .localMountDirPath("/mnt/nfs-test")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public String localMountDirPath() {
         return this.localMountDirPath;
     }
+    /**
+     * @return block specifying connection. It consists of:
+     * 
+     */
     public ClusterClusterMountInfoNetworkFilesystemInfo networkFilesystemInfo() {
         return this.networkFilesystemInfo;
     }
+    /**
+     * @return string specifying path to mount on the remote service.
+     * 
+     */
     public Optional<String> remoteMountDirPath() {
         return Optional.ofNullable(this.remoteMountDirPath);
     }

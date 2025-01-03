@@ -4,6 +4,60 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * // Names of created resources will be prefixed with this value
+ * const prefix = config.requireObject("prefix");
+ * const this = databricks.getAwsAssumeRolePolicy({
+ *     externalId: databricksAccountId,
+ * });
+ * const crossAccountRole = new aws.iam.Role("cross_account_role", {
+ *     name: `${prefix}-crossaccount`,
+ *     assumeRolePolicy: _this.then(_this => _this.json),
+ *     tags: tags,
+ * });
+ * const thisGetAwsCrossAccountPolicy = databricks.getAwsCrossAccountPolicy({});
+ * const thisRolePolicy = new aws.iam.RolePolicy("this", {
+ *     name: `${prefix}-policy`,
+ *     role: crossAccountRole.id,
+ *     policy: thisGetAwsCrossAccountPolicy.then(thisGetAwsCrossAccountPolicy => thisGetAwsCrossAccountPolicy.json),
+ * });
+ * const thisMwsCredentials = new databricks.MwsCredentials("this", {
+ *     credentialsName: `${prefix}-creds`,
+ *     roleArn: crossAccountRole.arn,
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * Provisioning Databricks on AWS guide.
+ * * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+ * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+ * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+ * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+ * * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+ *
+ * ## Import
+ *
+ * This resource can be imported by the combination of its identifier and the account id:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/mwsCredentials:MwsCredentials this <account_id>/<credentials_id>
+ * ```
+ */
 export class MwsCredentials extends pulumi.CustomResource {
     /**
      * Get an existing MwsCredentials resource's state with the given name, ID, and optional extra
@@ -33,13 +87,27 @@ export class MwsCredentials extends pulumi.CustomResource {
     }
 
     /**
+     * **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+     *
      * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
+    /**
+     * (Integer) time of credentials registration
+     */
     public readonly creationTime!: pulumi.Output<number>;
+    /**
+     * (String) identifier of credentials
+     */
     public readonly credentialsId!: pulumi.Output<string>;
+    /**
+     * name of credentials to register
+     */
     public readonly credentialsName!: pulumi.Output<string>;
     public readonly externalId!: pulumi.Output<string>;
+    /**
+     * ARN of cross-account role
+     */
     public readonly roleArn!: pulumi.Output<string>;
 
     /**
@@ -86,13 +154,27 @@ export class MwsCredentials extends pulumi.CustomResource {
  */
 export interface MwsCredentialsState {
     /**
+     * **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+     *
      * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * (Integer) time of credentials registration
+     */
     creationTime?: pulumi.Input<number>;
+    /**
+     * (String) identifier of credentials
+     */
     credentialsId?: pulumi.Input<string>;
+    /**
+     * name of credentials to register
+     */
     credentialsName?: pulumi.Input<string>;
     externalId?: pulumi.Input<string>;
+    /**
+     * ARN of cross-account role
+     */
     roleArn?: pulumi.Input<string>;
 }
 
@@ -101,12 +183,26 @@ export interface MwsCredentialsState {
  */
 export interface MwsCredentialsArgs {
     /**
+     * **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
+     *
      * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * (Integer) time of credentials registration
+     */
     creationTime?: pulumi.Input<number>;
+    /**
+     * (String) identifier of credentials
+     */
     credentialsId?: pulumi.Input<string>;
+    /**
+     * name of credentials to register
+     */
     credentialsName: pulumi.Input<string>;
     externalId?: pulumi.Input<string>;
+    /**
+     * ARN of cross-account role
+     */
     roleArn: pulumi.Input<string>;
 }

@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertCondition {
+    /**
+     * @return Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+     * 
+     */
     private @Nullable String emptyResultState;
+    /**
+     * @return Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+     * 
+     */
     private String op;
+    /**
+     * @return Name of the column from the query result to use for comparison in alert evaluation:
+     * 
+     */
     private AlertConditionOperand operand;
+    /**
+     * @return Threshold value used for comparison in alert evaluation:
+     * 
+     */
     private @Nullable AlertConditionThreshold threshold;
 
     private AlertCondition() {}
+    /**
+     * @return Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
+     * 
+     */
     public Optional<String> emptyResultState() {
         return Optional.ofNullable(this.emptyResultState);
     }
+    /**
+     * @return Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
+     * 
+     */
     public String op() {
         return this.op;
     }
+    /**
+     * @return Name of the column from the query result to use for comparison in alert evaluation:
+     * 
+     */
     public AlertConditionOperand operand() {
         return this.operand;
     }
+    /**
+     * @return Threshold value used for comparison in alert evaluation:
+     * 
+     */
     public Optional<AlertConditionThreshold> threshold() {
         return Optional.ofNullable(this.threshold);
     }

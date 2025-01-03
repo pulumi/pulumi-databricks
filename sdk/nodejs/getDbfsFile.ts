@@ -4,6 +4,32 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const report = databricks.getDbfsFile({
+ *     path: "dbfs:/reports/some.csv",
+ *     limitFileSize: true,
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
+ */
 export function getDbfsFile(args: GetDbfsFileArgs, opts?: pulumi.InvokeOptions): Promise<GetDbfsFileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDbfsFile:getDbfsFile", {
@@ -16,7 +42,13 @@ export function getDbfsFile(args: GetDbfsFileArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getDbfsFile.
  */
 export interface GetDbfsFileArgs {
+    /**
+     * Do not load content for files larger than 4MB.
+     */
     limitFileSize: boolean;
+    /**
+     * Path on DBFS for the file from which to get content.
+     */
     path: string;
 }
 
@@ -24,7 +56,13 @@ export interface GetDbfsFileArgs {
  * A collection of values returned by getDbfsFile.
  */
 export interface GetDbfsFileResult {
+    /**
+     * base64-encoded file contents
+     */
     readonly content: string;
+    /**
+     * size of the file in bytes
+     */
     readonly fileSize: number;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -33,6 +71,32 @@ export interface GetDbfsFileResult {
     readonly limitFileSize: boolean;
     readonly path: string;
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const report = databricks.getDbfsFile({
+ *     path: "dbfs:/reports/some.csv",
+ *     limitFileSize: true,
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
+ */
 export function getDbfsFileOutput(args: GetDbfsFileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbfsFileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDbfsFile:getDbfsFile", {
@@ -45,6 +109,12 @@ export function getDbfsFileOutput(args: GetDbfsFileOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getDbfsFile.
  */
 export interface GetDbfsFileOutputArgs {
+    /**
+     * Do not load content for files larger than 4MB.
+     */
     limitFileSize: pulumi.Input<boolean>;
+    /**
+     * Path on DBFS for the file from which to get content.
+     */
     path: pulumi.Input<string>;
 }

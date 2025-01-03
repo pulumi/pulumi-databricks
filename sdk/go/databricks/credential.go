@@ -12,30 +12,196 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This resource can only be used with a workspace-level provider.
+//
+// > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+//
+// A credential represents an authentication and authorization mechanism for accessing services on your cloud tenant. Each credential is subject to Unity Catalog access-control policies that control which users and groups can access the credential.
+//
+// The type of credential to be created is determined by the `purpose` field, which should be either `SERVICE` or `STORAGE`.
+// The caller must be a metastore admin or have the metastore privilege `CREATE_STORAGE_CREDENTIAL` for storage credentials, or `CREATE_SERVICE_CREDENTIAL` for service credentials. The user who creates the credential can delegate ownership to another user or group to manage permissions on it
+//
+// On AWS, the IAM role for a credential requires a trust policy. See [documentation](https://docs.databricks.com/en/connect/unity-catalog/cloud-services/service-credentials.html#step-1-create-an-iam-role) for more details. The data source getAwsUnityCatalogAssumeRolePolicy can be used to create the necessary AWS Unity Catalog assume role policy.
+//
+// ## Example Usage
+//
+// # For AWS
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			external, err := databricks.NewCredential(ctx, "external", &databricks.CredentialArgs{
+//				Name: pulumi.Any(externalDataAccess.Name),
+//				AwsIamRole: &databricks.CredentialAwsIamRoleArgs{
+//					RoleArn: pulumi.Any(externalDataAccess.Arn),
+//				},
+//				Purpose: pulumi.String("SERVICE"),
+//				Comment: pulumi.String("Managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
+//				Credential: external.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("ACCESS"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # For Azure
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			externalMi, err := databricks.NewCredential(ctx, "external_mi", &databricks.CredentialArgs{
+//				Name: pulumi.String("mi_credential"),
+//				AzureManagedIdentity: &databricks.CredentialAzureManagedIdentityArgs{
+//					AccessConnectorId: pulumi.Any(example.Id),
+//				},
+//				Purpose: pulumi.String("SERVICE"),
+//				Comment: pulumi.String("Managed identity credential managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
+//				Credential: externalMi.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("ACCESS"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// For GCP (only applicable when purpose is `STORAGE`)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			externalGcpSa, err := databricks.NewCredential(ctx, "external_gcp_sa", &databricks.CredentialArgs{
+//				Name:                        pulumi.String("gcp_sa_credential"),
+//				DatabricksGcpServiceAccount: &databricks.CredentialDatabricksGcpServiceAccountArgs{},
+//				Purpose:                     pulumi.String("STORAGE"),
+//				Comment:                     pulumi.String("GCP SA credential managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
+//				Credential: externalGcpSa.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("ACCESS"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// This resource can be imported by name:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/credential:Credential this <name>
+// ```
 type Credential struct {
 	pulumi.CustomResourceState
 
-	AwsIamRole                  CredentialAwsIamRolePtrOutput               `pulumi:"awsIamRole"`
-	AzureManagedIdentity        CredentialAzureManagedIdentityPtrOutput     `pulumi:"azureManagedIdentity"`
-	AzureServicePrincipal       CredentialAzureServicePrincipalPtrOutput    `pulumi:"azureServicePrincipal"`
-	Comment                     pulumi.StringPtrOutput                      `pulumi:"comment"`
-	CreatedAt                   pulumi.IntOutput                            `pulumi:"createdAt"`
-	CreatedBy                   pulumi.StringOutput                         `pulumi:"createdBy"`
+	AwsIamRole            CredentialAwsIamRolePtrOutput            `pulumi:"awsIamRole"`
+	AzureManagedIdentity  CredentialAzureManagedIdentityPtrOutput  `pulumi:"azureManagedIdentity"`
+	AzureServicePrincipal CredentialAzureServicePrincipalPtrOutput `pulumi:"azureServicePrincipal"`
+	Comment               pulumi.StringPtrOutput                   `pulumi:"comment"`
+	CreatedAt             pulumi.IntOutput                         `pulumi:"createdAt"`
+	CreatedBy             pulumi.StringOutput                      `pulumi:"createdBy"`
+	// Unique ID of the credential.
 	CredentialId                pulumi.StringOutput                         `pulumi:"credentialId"`
 	DatabricksGcpServiceAccount CredentialDatabricksGcpServiceAccountOutput `pulumi:"databricksGcpServiceAccount"`
-	ForceDestroy                pulumi.BoolPtrOutput                        `pulumi:"forceDestroy"`
-	ForceUpdate                 pulumi.BoolPtrOutput                        `pulumi:"forceUpdate"`
-	FullName                    pulumi.StringOutput                         `pulumi:"fullName"`
-	IsolationMode               pulumi.StringOutput                         `pulumi:"isolationMode"`
-	MetastoreId                 pulumi.StringOutput                         `pulumi:"metastoreId"`
-	Name                        pulumi.StringOutput                         `pulumi:"name"`
-	Owner                       pulumi.StringOutput                         `pulumi:"owner"`
-	Purpose                     pulumi.StringOutput                         `pulumi:"purpose"`
-	ReadOnly                    pulumi.BoolPtrOutput                        `pulumi:"readOnly"`
-	SkipValidation              pulumi.BoolPtrOutput                        `pulumi:"skipValidation"`
-	UpdatedAt                   pulumi.IntOutput                            `pulumi:"updatedAt"`
-	UpdatedBy                   pulumi.StringOutput                         `pulumi:"updatedBy"`
-	UsedForManagedStorage       pulumi.BoolOutput                           `pulumi:"usedForManagedStorage"`
+	// Delete credential regardless of its dependencies.
+	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
+	// Update credential regardless of its dependents.
+	ForceUpdate pulumi.BoolPtrOutput `pulumi:"forceUpdate"`
+	FullName    pulumi.StringOutput  `pulumi:"fullName"`
+	// Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
+	MetastoreId   pulumi.StringOutput `pulumi:"metastoreId"`
+	// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Username/groupname/sp applicationId of the credential owner.
+	Owner pulumi.StringOutput `pulumi:"owner"`
+	// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+	Purpose pulumi.StringOutput `pulumi:"purpose"`
+	// Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
+	// Suppress validation errors if any & force save the credential.
+	SkipValidation        pulumi.BoolPtrOutput `pulumi:"skipValidation"`
+	UpdatedAt             pulumi.IntOutput     `pulumi:"updatedAt"`
+	UpdatedBy             pulumi.StringOutput  `pulumi:"updatedBy"`
+	UsedForManagedStorage pulumi.BoolOutput    `pulumi:"usedForManagedStorage"`
 }
 
 // NewCredential registers a new resource with the given unique name, arguments, and options.
@@ -71,51 +237,73 @@ func GetCredential(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Credential resources.
 type credentialState struct {
-	AwsIamRole                  *CredentialAwsIamRole                  `pulumi:"awsIamRole"`
-	AzureManagedIdentity        *CredentialAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
-	AzureServicePrincipal       *CredentialAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
-	Comment                     *string                                `pulumi:"comment"`
-	CreatedAt                   *int                                   `pulumi:"createdAt"`
-	CreatedBy                   *string                                `pulumi:"createdBy"`
+	AwsIamRole            *CredentialAwsIamRole            `pulumi:"awsIamRole"`
+	AzureManagedIdentity  *CredentialAzureManagedIdentity  `pulumi:"azureManagedIdentity"`
+	AzureServicePrincipal *CredentialAzureServicePrincipal `pulumi:"azureServicePrincipal"`
+	Comment               *string                          `pulumi:"comment"`
+	CreatedAt             *int                             `pulumi:"createdAt"`
+	CreatedBy             *string                          `pulumi:"createdBy"`
+	// Unique ID of the credential.
 	CredentialId                *string                                `pulumi:"credentialId"`
 	DatabricksGcpServiceAccount *CredentialDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
-	ForceDestroy                *bool                                  `pulumi:"forceDestroy"`
-	ForceUpdate                 *bool                                  `pulumi:"forceUpdate"`
-	FullName                    *string                                `pulumi:"fullName"`
-	IsolationMode               *string                                `pulumi:"isolationMode"`
-	MetastoreId                 *string                                `pulumi:"metastoreId"`
-	Name                        *string                                `pulumi:"name"`
-	Owner                       *string                                `pulumi:"owner"`
-	Purpose                     *string                                `pulumi:"purpose"`
-	ReadOnly                    *bool                                  `pulumi:"readOnly"`
-	SkipValidation              *bool                                  `pulumi:"skipValidation"`
-	UpdatedAt                   *int                                   `pulumi:"updatedAt"`
-	UpdatedBy                   *string                                `pulumi:"updatedBy"`
-	UsedForManagedStorage       *bool                                  `pulumi:"usedForManagedStorage"`
+	// Delete credential regardless of its dependencies.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// Update credential regardless of its dependents.
+	ForceUpdate *bool   `pulumi:"forceUpdate"`
+	FullName    *string `pulumi:"fullName"`
+	// Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	IsolationMode *string `pulumi:"isolationMode"`
+	MetastoreId   *string `pulumi:"metastoreId"`
+	// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the credential owner.
+	Owner *string `pulumi:"owner"`
+	// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+	Purpose *string `pulumi:"purpose"`
+	// Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Suppress validation errors if any & force save the credential.
+	SkipValidation        *bool   `pulumi:"skipValidation"`
+	UpdatedAt             *int    `pulumi:"updatedAt"`
+	UpdatedBy             *string `pulumi:"updatedBy"`
+	UsedForManagedStorage *bool   `pulumi:"usedForManagedStorage"`
 }
 
 type CredentialState struct {
-	AwsIamRole                  CredentialAwsIamRolePtrInput
-	AzureManagedIdentity        CredentialAzureManagedIdentityPtrInput
-	AzureServicePrincipal       CredentialAzureServicePrincipalPtrInput
-	Comment                     pulumi.StringPtrInput
-	CreatedAt                   pulumi.IntPtrInput
-	CreatedBy                   pulumi.StringPtrInput
+	AwsIamRole            CredentialAwsIamRolePtrInput
+	AzureManagedIdentity  CredentialAzureManagedIdentityPtrInput
+	AzureServicePrincipal CredentialAzureServicePrincipalPtrInput
+	Comment               pulumi.StringPtrInput
+	CreatedAt             pulumi.IntPtrInput
+	CreatedBy             pulumi.StringPtrInput
+	// Unique ID of the credential.
 	CredentialId                pulumi.StringPtrInput
 	DatabricksGcpServiceAccount CredentialDatabricksGcpServiceAccountPtrInput
-	ForceDestroy                pulumi.BoolPtrInput
-	ForceUpdate                 pulumi.BoolPtrInput
-	FullName                    pulumi.StringPtrInput
-	IsolationMode               pulumi.StringPtrInput
-	MetastoreId                 pulumi.StringPtrInput
-	Name                        pulumi.StringPtrInput
-	Owner                       pulumi.StringPtrInput
-	Purpose                     pulumi.StringPtrInput
-	ReadOnly                    pulumi.BoolPtrInput
-	SkipValidation              pulumi.BoolPtrInput
-	UpdatedAt                   pulumi.IntPtrInput
-	UpdatedBy                   pulumi.StringPtrInput
-	UsedForManagedStorage       pulumi.BoolPtrInput
+	// Delete credential regardless of its dependencies.
+	ForceDestroy pulumi.BoolPtrInput
+	// Update credential regardless of its dependents.
+	ForceUpdate pulumi.BoolPtrInput
+	FullName    pulumi.StringPtrInput
+	// Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	IsolationMode pulumi.StringPtrInput
+	MetastoreId   pulumi.StringPtrInput
+	// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the credential owner.
+	Owner pulumi.StringPtrInput
+	// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+	Purpose pulumi.StringPtrInput
+	// Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+	ReadOnly pulumi.BoolPtrInput
+	// Suppress validation errors if any & force save the credential.
+	SkipValidation        pulumi.BoolPtrInput
+	UpdatedAt             pulumi.IntPtrInput
+	UpdatedBy             pulumi.StringPtrInput
+	UsedForManagedStorage pulumi.BoolPtrInput
 }
 
 func (CredentialState) ElementType() reflect.Type {
@@ -130,19 +318,29 @@ type credentialArgs struct {
 	CreatedAt                   *int                                   `pulumi:"createdAt"`
 	CreatedBy                   *string                                `pulumi:"createdBy"`
 	DatabricksGcpServiceAccount *CredentialDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
-	ForceDestroy                *bool                                  `pulumi:"forceDestroy"`
-	ForceUpdate                 *bool                                  `pulumi:"forceUpdate"`
-	FullName                    *string                                `pulumi:"fullName"`
-	IsolationMode               *string                                `pulumi:"isolationMode"`
-	MetastoreId                 *string                                `pulumi:"metastoreId"`
-	Name                        *string                                `pulumi:"name"`
-	Owner                       *string                                `pulumi:"owner"`
-	Purpose                     string                                 `pulumi:"purpose"`
-	ReadOnly                    *bool                                  `pulumi:"readOnly"`
-	SkipValidation              *bool                                  `pulumi:"skipValidation"`
-	UpdatedAt                   *int                                   `pulumi:"updatedAt"`
-	UpdatedBy                   *string                                `pulumi:"updatedBy"`
-	UsedForManagedStorage       *bool                                  `pulumi:"usedForManagedStorage"`
+	// Delete credential regardless of its dependencies.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// Update credential regardless of its dependents.
+	ForceUpdate *bool   `pulumi:"forceUpdate"`
+	FullName    *string `pulumi:"fullName"`
+	// Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	IsolationMode *string `pulumi:"isolationMode"`
+	MetastoreId   *string `pulumi:"metastoreId"`
+	// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the credential owner.
+	Owner *string `pulumi:"owner"`
+	// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+	Purpose string `pulumi:"purpose"`
+	// Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Suppress validation errors if any & force save the credential.
+	SkipValidation        *bool   `pulumi:"skipValidation"`
+	UpdatedAt             *int    `pulumi:"updatedAt"`
+	UpdatedBy             *string `pulumi:"updatedBy"`
+	UsedForManagedStorage *bool   `pulumi:"usedForManagedStorage"`
 }
 
 // The set of arguments for constructing a Credential resource.
@@ -154,19 +352,29 @@ type CredentialArgs struct {
 	CreatedAt                   pulumi.IntPtrInput
 	CreatedBy                   pulumi.StringPtrInput
 	DatabricksGcpServiceAccount CredentialDatabricksGcpServiceAccountPtrInput
-	ForceDestroy                pulumi.BoolPtrInput
-	ForceUpdate                 pulumi.BoolPtrInput
-	FullName                    pulumi.StringPtrInput
-	IsolationMode               pulumi.StringPtrInput
-	MetastoreId                 pulumi.StringPtrInput
-	Name                        pulumi.StringPtrInput
-	Owner                       pulumi.StringPtrInput
-	Purpose                     pulumi.StringInput
-	ReadOnly                    pulumi.BoolPtrInput
-	SkipValidation              pulumi.BoolPtrInput
-	UpdatedAt                   pulumi.IntPtrInput
-	UpdatedBy                   pulumi.StringPtrInput
-	UsedForManagedStorage       pulumi.BoolPtrInput
+	// Delete credential regardless of its dependencies.
+	ForceDestroy pulumi.BoolPtrInput
+	// Update credential regardless of its dependents.
+	ForceUpdate pulumi.BoolPtrInput
+	FullName    pulumi.StringPtrInput
+	// Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	IsolationMode pulumi.StringPtrInput
+	MetastoreId   pulumi.StringPtrInput
+	// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the credential owner.
+	Owner pulumi.StringPtrInput
+	// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+	Purpose pulumi.StringInput
+	// Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+	ReadOnly pulumi.BoolPtrInput
+	// Suppress validation errors if any & force save the credential.
+	SkipValidation        pulumi.BoolPtrInput
+	UpdatedAt             pulumi.IntPtrInput
+	UpdatedBy             pulumi.StringPtrInput
+	UsedForManagedStorage pulumi.BoolPtrInput
 }
 
 func (CredentialArgs) ElementType() reflect.Type {
@@ -280,6 +488,7 @@ func (o CredentialOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+// Unique ID of the credential.
 func (o CredentialOutput) CredentialId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.CredentialId }).(pulumi.StringOutput)
 }
@@ -288,10 +497,12 @@ func (o CredentialOutput) DatabricksGcpServiceAccount() CredentialDatabricksGcpS
 	return o.ApplyT(func(v *Credential) CredentialDatabricksGcpServiceAccountOutput { return v.DatabricksGcpServiceAccount }).(CredentialDatabricksGcpServiceAccountOutput)
 }
 
+// Delete credential regardless of its dependencies.
 func (o CredentialOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Credential) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
+// Update credential regardless of its dependents.
 func (o CredentialOutput) ForceUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Credential) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
 }
@@ -300,6 +511,9 @@ func (o CredentialOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
 }
 
+// Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+//
+// `awsIamRole` optional configuration block for credential details for AWS:
 func (o CredentialOutput) IsolationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.IsolationMode }).(pulumi.StringOutput)
 }
@@ -308,22 +522,27 @@ func (o CredentialOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
+// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 func (o CredentialOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Username/groupname/sp applicationId of the credential owner.
 func (o CredentialOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
+// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
 func (o CredentialOutput) Purpose() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.Purpose }).(pulumi.StringOutput)
 }
 
+// Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
 func (o CredentialOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Credential) pulumi.BoolPtrOutput { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Suppress validation errors if any & force save the credential.
 func (o CredentialOutput) SkipValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Credential) pulumi.BoolPtrOutput { return v.SkipValidation }).(pulumi.BoolPtrOutput)
 }

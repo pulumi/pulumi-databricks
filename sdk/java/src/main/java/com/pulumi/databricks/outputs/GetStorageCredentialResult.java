@@ -11,17 +11,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetStorageCredentialResult {
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
     private String id;
     private String name;
+    /**
+     * @return array of objects with information about storage credential.
+     * 
+     */
     private GetStorageCredentialStorageCredentialInfo storageCredentialInfo;
 
     private GetStorageCredentialResult() {}
+    /**
+     * @return Unique ID of storage credential.
+     * 
+     */
     public String id() {
         return this.id;
     }
     public String name() {
         return this.name;
     }
+    /**
+     * @return array of objects with information about storage credential.
+     * 
+     */
     public GetStorageCredentialStorageCredentialInfo storageCredentialInfo() {
         return this.storageCredentialInfo;
     }

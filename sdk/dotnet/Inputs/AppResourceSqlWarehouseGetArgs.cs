@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppResourceSqlWarehouseGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Id of the SQL warehouse to grant permission on.
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
+        /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 

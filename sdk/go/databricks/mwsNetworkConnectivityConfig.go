@@ -12,16 +12,80 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > Initialize provider with `alias = "account"`, `host = "https://accounts.azuredatabricks.net"` and use `provider = databricks.account` for all `databricks_mws_*` resources.
+//
+// > **Public Preview** This feature is available for AWS & Azure only, and is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html) in AWS.
+//
+// Allows you to create a Network Connectivity Config that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			region := cfg.RequireObject("region")
+//			prefix := cfg.RequireObject("prefix")
+//			ncc, err := databricks.NewMwsNetworkConnectivityConfig(ctx, "ncc", &databricks.MwsNetworkConnectivityConfigArgs{
+//				Name:   pulumi.Sprintf("ncc-for-%v", prefix),
+//				Region: pulumi.Any(region),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMwsNccBinding(ctx, "ncc_binding", &databricks.MwsNccBindingArgs{
+//				NetworkConnectivityConfigId: ncc.NetworkConnectivityConfigId,
+//				WorkspaceId:                 pulumi.Any(databricksWorkspaceId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the context:
+//
+// * MwsWorkspaces to set up Databricks workspaces.
+// * MwsNccBinding to attach an NCC to a workspace.
+// * MwsNccPrivateEndpointRule to create a private endpoint rule.
+//
+// ## Import
+//
+// This resource can be imported by Databricks account ID and Network Connectivity Config ID.
+//
+// ```sh
+// $ pulumi import databricks:index/mwsNetworkConnectivityConfig:MwsNetworkConnectivityConfig ncc <account_id>/<network_connectivity_config_id>
+// ```
 type MwsNetworkConnectivityConfig struct {
 	pulumi.CustomResourceState
 
-	AccountId                   pulumi.StringOutput                            `pulumi:"accountId"`
-	CreationTime                pulumi.IntOutput                               `pulumi:"creationTime"`
-	EgressConfig                MwsNetworkConnectivityConfigEgressConfigOutput `pulumi:"egressConfig"`
-	Name                        pulumi.StringOutput                            `pulumi:"name"`
-	NetworkConnectivityConfigId pulumi.StringOutput                            `pulumi:"networkConnectivityConfigId"`
-	Region                      pulumi.StringOutput                            `pulumi:"region"`
-	UpdatedTime                 pulumi.IntOutput                               `pulumi:"updatedTime"`
+	AccountId    pulumi.StringOutput                            `pulumi:"accountId"`
+	CreationTime pulumi.IntOutput                               `pulumi:"creationTime"`
+	EgressConfig MwsNetworkConnectivityConfigEgressConfigOutput `pulumi:"egressConfig"`
+	// Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Canonical unique identifier of Network Connectivity Config in Databricks Account
+	NetworkConnectivityConfigId pulumi.StringOutput `pulumi:"networkConnectivityConfigId"`
+	// Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+	Region      pulumi.StringOutput `pulumi:"region"`
+	UpdatedTime pulumi.IntOutput    `pulumi:"updatedTime"`
 }
 
 // NewMwsNetworkConnectivityConfig registers a new resource with the given unique name, arguments, and options.
@@ -57,23 +121,29 @@ func GetMwsNetworkConnectivityConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsNetworkConnectivityConfig resources.
 type mwsNetworkConnectivityConfigState struct {
-	AccountId                   *string                                   `pulumi:"accountId"`
-	CreationTime                *int                                      `pulumi:"creationTime"`
-	EgressConfig                *MwsNetworkConnectivityConfigEgressConfig `pulumi:"egressConfig"`
-	Name                        *string                                   `pulumi:"name"`
-	NetworkConnectivityConfigId *string                                   `pulumi:"networkConnectivityConfigId"`
-	Region                      *string                                   `pulumi:"region"`
-	UpdatedTime                 *int                                      `pulumi:"updatedTime"`
+	AccountId    *string                                   `pulumi:"accountId"`
+	CreationTime *int                                      `pulumi:"creationTime"`
+	EgressConfig *MwsNetworkConnectivityConfigEgressConfig `pulumi:"egressConfig"`
+	// Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+	Name *string `pulumi:"name"`
+	// Canonical unique identifier of Network Connectivity Config in Databricks Account
+	NetworkConnectivityConfigId *string `pulumi:"networkConnectivityConfigId"`
+	// Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+	Region      *string `pulumi:"region"`
+	UpdatedTime *int    `pulumi:"updatedTime"`
 }
 
 type MwsNetworkConnectivityConfigState struct {
-	AccountId                   pulumi.StringPtrInput
-	CreationTime                pulumi.IntPtrInput
-	EgressConfig                MwsNetworkConnectivityConfigEgressConfigPtrInput
-	Name                        pulumi.StringPtrInput
+	AccountId    pulumi.StringPtrInput
+	CreationTime pulumi.IntPtrInput
+	EgressConfig MwsNetworkConnectivityConfigEgressConfigPtrInput
+	// Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+	Name pulumi.StringPtrInput
+	// Canonical unique identifier of Network Connectivity Config in Databricks Account
 	NetworkConnectivityConfigId pulumi.StringPtrInput
-	Region                      pulumi.StringPtrInput
-	UpdatedTime                 pulumi.IntPtrInput
+	// Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+	Region      pulumi.StringPtrInput
+	UpdatedTime pulumi.IntPtrInput
 }
 
 func (MwsNetworkConnectivityConfigState) ElementType() reflect.Type {
@@ -81,24 +151,30 @@ func (MwsNetworkConnectivityConfigState) ElementType() reflect.Type {
 }
 
 type mwsNetworkConnectivityConfigArgs struct {
-	AccountId                   *string                                   `pulumi:"accountId"`
-	CreationTime                *int                                      `pulumi:"creationTime"`
-	EgressConfig                *MwsNetworkConnectivityConfigEgressConfig `pulumi:"egressConfig"`
-	Name                        *string                                   `pulumi:"name"`
-	NetworkConnectivityConfigId *string                                   `pulumi:"networkConnectivityConfigId"`
-	Region                      string                                    `pulumi:"region"`
-	UpdatedTime                 *int                                      `pulumi:"updatedTime"`
+	AccountId    *string                                   `pulumi:"accountId"`
+	CreationTime *int                                      `pulumi:"creationTime"`
+	EgressConfig *MwsNetworkConnectivityConfigEgressConfig `pulumi:"egressConfig"`
+	// Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+	Name *string `pulumi:"name"`
+	// Canonical unique identifier of Network Connectivity Config in Databricks Account
+	NetworkConnectivityConfigId *string `pulumi:"networkConnectivityConfigId"`
+	// Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+	Region      string `pulumi:"region"`
+	UpdatedTime *int   `pulumi:"updatedTime"`
 }
 
 // The set of arguments for constructing a MwsNetworkConnectivityConfig resource.
 type MwsNetworkConnectivityConfigArgs struct {
-	AccountId                   pulumi.StringPtrInput
-	CreationTime                pulumi.IntPtrInput
-	EgressConfig                MwsNetworkConnectivityConfigEgressConfigPtrInput
-	Name                        pulumi.StringPtrInput
+	AccountId    pulumi.StringPtrInput
+	CreationTime pulumi.IntPtrInput
+	EgressConfig MwsNetworkConnectivityConfigEgressConfigPtrInput
+	// Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
+	Name pulumi.StringPtrInput
+	// Canonical unique identifier of Network Connectivity Config in Databricks Account
 	NetworkConnectivityConfigId pulumi.StringPtrInput
-	Region                      pulumi.StringInput
-	UpdatedTime                 pulumi.IntPtrInput
+	// Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
+	Region      pulumi.StringInput
+	UpdatedTime pulumi.IntPtrInput
 }
 
 func (MwsNetworkConnectivityConfigArgs) ElementType() reflect.Type {
@@ -202,14 +278,17 @@ func (o MwsNetworkConnectivityConfigOutput) EgressConfig() MwsNetworkConnectivit
 	}).(MwsNetworkConnectivityConfigEgressConfigOutput)
 }
 
+// Name of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
 func (o MwsNetworkConnectivityConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNetworkConnectivityConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Canonical unique identifier of Network Connectivity Config in Databricks Account
 func (o MwsNetworkConnectivityConfigOutput) NetworkConnectivityConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNetworkConnectivityConfig) pulumi.StringOutput { return v.NetworkConnectivityConfigId }).(pulumi.StringOutput)
 }
 
+// Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
 func (o MwsNetworkConnectivityConfigOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNetworkConnectivityConfig) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

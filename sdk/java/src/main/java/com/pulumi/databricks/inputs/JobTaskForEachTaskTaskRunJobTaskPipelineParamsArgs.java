@@ -15,9 +15,21 @@ public final class JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs extends co
 
     public static final JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs Empty = new JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs();
 
+    /**
+     * (Bool) Specifies if there should be full refresh of the pipeline.
+     * 
+     * &gt; The following configuration blocks are only supported inside a `task` block
+     * 
+     */
     @Import(name="fullRefresh")
     private @Nullable Output<Boolean> fullRefresh;
 
+    /**
+     * @return (Bool) Specifies if there should be full refresh of the pipeline.
+     * 
+     * &gt; The following configuration blocks are only supported inside a `task` block
+     * 
+     */
     public Optional<Output<Boolean>> fullRefresh() {
         return Optional.ofNullable(this.fullRefresh);
     }
@@ -46,11 +58,27 @@ public final class JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs extends co
             $ = new JobTaskForEachTaskTaskRunJobTaskPipelineParamsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fullRefresh (Bool) Specifies if there should be full refresh of the pipeline.
+         * 
+         * &gt; The following configuration blocks are only supported inside a `task` block
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullRefresh(@Nullable Output<Boolean> fullRefresh) {
             $.fullRefresh = fullRefresh;
             return this;
         }
 
+        /**
+         * @param fullRefresh (Bool) Specifies if there should be full refresh of the pipeline.
+         * 
+         * &gt; The following configuration blocks are only supported inside a `task` block
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullRefresh(Boolean fullRefresh) {
             return fullRefresh(Output.of(fullRefresh));
         }

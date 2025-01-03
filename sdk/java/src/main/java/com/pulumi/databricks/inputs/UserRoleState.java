@@ -15,16 +15,32 @@ public final class UserRoleState extends com.pulumi.resources.ResourceArgs {
 
     public static final UserRoleState Empty = new UserRoleState();
 
+    /**
+     * Either a role name or the ARN/ID of the instance profile resource.
+     * 
+     */
     @Import(name="role")
     private @Nullable Output<String> role;
 
+    /**
+     * @return Either a role name or the ARN/ID of the instance profile resource.
+     * 
+     */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
 
+    /**
+     * This is the id of the user resource.
+     * 
+     */
     @Import(name="userId")
     private @Nullable Output<String> userId;
 
+    /**
+     * @return This is the id of the user resource.
+     * 
+     */
     public Optional<Output<String>> userId() {
         return Optional.ofNullable(this.userId);
     }
@@ -54,20 +70,44 @@ public final class UserRoleState extends com.pulumi.resources.ResourceArgs {
             $ = new UserRoleState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param role Either a role name or the ARN/ID of the instance profile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(@Nullable Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role Either a role name or the ARN/ID of the instance profile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }
 
+        /**
+         * @param userId This is the id of the user resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(@Nullable Output<String> userId) {
             $.userId = userId;
             return this;
         }
 
+        /**
+         * @param userId This is the id of the user resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(String userId) {
             return userId(Output.of(userId));
         }

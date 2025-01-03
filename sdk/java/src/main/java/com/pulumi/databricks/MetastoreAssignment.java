@@ -14,23 +14,109 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; This resource can be used with an account or workspace-level provider.
+ * 
+ * A single databricks.Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. You can only create a single metastore for each region in which your organization operates.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Metastore;
+ * import com.pulumi.databricks.MetastoreArgs;
+ * import com.pulumi.databricks.MetastoreAssignment;
+ * import com.pulumi.databricks.MetastoreAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Metastore("this", MetastoreArgs.builder()
+ *             .name("primary")
+ *             .storageRoot(String.format("s3://%s/metastore", metastore.id()))
+ *             .owner("uc admins")
+ *             .region("us-east-1")
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var thisMetastoreAssignment = new MetastoreAssignment("thisMetastoreAssignment", MetastoreAssignmentArgs.builder()
+ *             .metastoreId(this_.id())
+ *             .workspaceId(workspaceId)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * This resource can be imported by combination of workspace id and metastore id:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this &#39;&lt;workspace_id&gt;|&lt;metastore_id&gt;&#39;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/metastoreAssignment:MetastoreAssignment")
 public class MetastoreAssignment extends com.pulumi.resources.CustomResource {
+    /**
+     * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
+     * 
+     */
     @Export(name="defaultCatalogName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultCatalogName;
 
+    /**
+     * @return Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
+     * 
+     */
     public Output<Optional<String>> defaultCatalogName() {
         return Codegen.optional(this.defaultCatalogName);
     }
+    /**
+     * Unique identifier of the parent Metastore
+     * 
+     */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
+    /**
+     * @return Unique identifier of the parent Metastore
+     * 
+     */
     public Output<String> metastoreId() {
         return this.metastoreId;
     }
+    /**
+     * id of the workspace for the assignment
+     * 
+     */
     @Export(name="workspaceId", refs={String.class}, tree="[0]")
     private Output<String> workspaceId;
 
+    /**
+     * @return id of the workspace for the assignment
+     * 
+     */
     public Output<String> workspaceId() {
         return this.workspaceId;
     }

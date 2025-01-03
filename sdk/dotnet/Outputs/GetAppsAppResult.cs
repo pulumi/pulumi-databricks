@@ -14,20 +14,59 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppsAppResult
     {
         public readonly Outputs.GetAppsAppActiveDeploymentResult ActiveDeployment;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppsAppAppStatusResult AppStatus;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppsAppComputeStatusResult ComputeStatus;
+        /// <summary>
+        /// The creation time of the app.
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// The email of the user that created the app.
+        /// </summary>
         public readonly string Creator;
+        /// <summary>
+        /// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        /// </summary>
         public readonly string DefaultSourceCodePath;
+        /// <summary>
+        /// The description of the resource.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Name of the serving endpoint to grant permission on.
+        /// </summary>
         public readonly string Name;
         public readonly Outputs.GetAppsAppPendingDeploymentResult PendingDeployment;
+        /// <summary>
+        /// A list of resources that the app have access to.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppsAppResourceResult> Resources;
         public readonly string ServicePrincipalClientId;
+        /// <summary>
+        /// id of the app service principal
+        /// </summary>
         public readonly int ServicePrincipalId;
+        /// <summary>
+        /// name of the app service principal
+        /// </summary>
         public readonly string ServicePrincipalName;
+        /// <summary>
+        /// The update time of the app.
+        /// </summary>
         public readonly string UpdateTime;
+        /// <summary>
+        /// The email of the user that last updated the app.
+        /// </summary>
         public readonly string Updater;
+        /// <summary>
+        /// The URL of the app once it is deployed.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

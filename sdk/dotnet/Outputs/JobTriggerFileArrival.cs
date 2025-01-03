@@ -13,8 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTriggerFileArrival
     {
+        /// <summary>
+        /// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        /// </summary>
         public readonly int? MinTimeBetweenTriggersSeconds;
+        /// <summary>
+        /// URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
+        /// </summary>
         public readonly string Url;
+        /// <summary>
+        /// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+        /// </summary>
         public readonly int? WaitAfterLastChangeSeconds;
 
         [OutputConstructor]

@@ -11,42 +11,169 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use `Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dltDemo, err := databricks.NewNotebook(ctx, "dlt_demo", nil)
+//			if err != nil {
+//				return err
+//			}
+//			dltDemoRepo, err := databricks.NewRepo(ctx, "dlt_demo", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPipeline(ctx, "this", &databricks.PipelineArgs{
+//				Name:    pulumi.String("Pipeline Name"),
+//				Storage: pulumi.String("/test/first-pipeline"),
+//				Configuration: pulumi.StringMap{
+//					"key1": pulumi.String("value1"),
+//					"key2": pulumi.String("value2"),
+//				},
+//				Clusters: databricks.PipelineClusterArray{
+//					&databricks.PipelineClusterArgs{
+//						Label:      pulumi.String("default"),
+//						NumWorkers: pulumi.Int(2),
+//						CustomTags: pulumi.StringMap{
+//							"cluster_type": pulumi.String("default"),
+//						},
+//					},
+//					&databricks.PipelineClusterArgs{
+//						Label:      pulumi.String("maintenance"),
+//						NumWorkers: pulumi.Int(1),
+//						CustomTags: pulumi.StringMap{
+//							"cluster_type": pulumi.String("maintenance"),
+//						},
+//					},
+//				},
+//				Libraries: databricks.PipelineLibraryArray{
+//					&databricks.PipelineLibraryArgs{
+//						Notebook: &databricks.PipelineLibraryNotebookArgs{
+//							Path: dltDemo.ID(),
+//						},
+//					},
+//					&databricks.PipelineLibraryArgs{
+//						File: &databricks.PipelineLibraryFileArgs{
+//							Path: dltDemoRepo.Path.ApplyT(func(path string) (string, error) {
+//								return fmt.Sprintf("%v/pipeline.sql", path), nil
+//							}).(pulumi.StringOutput),
+//						},
+//					},
+//				},
+//				Continuous: pulumi.Bool(false),
+//				Notifications: databricks.PipelineNotificationArray{
+//					&databricks.PipelineNotificationArgs{
+//						EmailRecipients: pulumi.StringArray{
+//							pulumi.String("user@domain.com"),
+//							pulumi.String("user1@domain.com"),
+//						},
+//						Alerts: pulumi.StringArray{
+//							pulumi.String("on-update-failure"),
+//							pulumi.String("on-update-fatal-failure"),
+//							pulumi.String("on-update-success"),
+//							pulumi.String("on-flow-failure"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * End to end workspace management guide.
+// * getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipeline data.
+// * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+// * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+// * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+//
+// ## Import
+//
+// # The resource job can be imported using the id of the pipeline
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
+// ```
 type Pipeline struct {
 	pulumi.CustomResourceState
 
-	AllowDuplicateNames  pulumi.BoolPtrOutput                 `pulumi:"allowDuplicateNames"`
-	BudgetPolicyId       pulumi.StringPtrOutput               `pulumi:"budgetPolicyId"`
-	Catalog              pulumi.StringPtrOutput               `pulumi:"catalog"`
-	Cause                pulumi.StringOutput                  `pulumi:"cause"`
-	Channel              pulumi.StringPtrOutput               `pulumi:"channel"`
-	ClusterId            pulumi.StringOutput                  `pulumi:"clusterId"`
-	Clusters             PipelineClusterArrayOutput           `pulumi:"clusters"`
-	Configuration        pulumi.StringMapOutput               `pulumi:"configuration"`
-	Continuous           pulumi.BoolPtrOutput                 `pulumi:"continuous"`
-	CreatorUserName      pulumi.StringOutput                  `pulumi:"creatorUserName"`
-	Deployment           PipelineDeploymentPtrOutput          `pulumi:"deployment"`
-	Development          pulumi.BoolPtrOutput                 `pulumi:"development"`
-	Edition              pulumi.StringPtrOutput               `pulumi:"edition"`
-	ExpectedLastModified pulumi.IntPtrOutput                  `pulumi:"expectedLastModified"`
-	Filters              PipelineFiltersPtrOutput             `pulumi:"filters"`
-	GatewayDefinition    PipelineGatewayDefinitionPtrOutput   `pulumi:"gatewayDefinition"`
-	Health               pulumi.StringOutput                  `pulumi:"health"`
-	IngestionDefinition  PipelineIngestionDefinitionPtrOutput `pulumi:"ingestionDefinition"`
-	LastModified         pulumi.IntOutput                     `pulumi:"lastModified"`
-	LatestUpdates        PipelineLatestUpdateArrayOutput      `pulumi:"latestUpdates"`
-	Libraries            PipelineLibraryArrayOutput           `pulumi:"libraries"`
-	Name                 pulumi.StringOutput                  `pulumi:"name"`
-	Notifications        PipelineNotificationArrayOutput      `pulumi:"notifications"`
-	Photon               pulumi.BoolPtrOutput                 `pulumi:"photon"`
-	RestartWindow        PipelineRestartWindowPtrOutput       `pulumi:"restartWindow"`
-	RunAsUserName        pulumi.StringOutput                  `pulumi:"runAsUserName"`
-	Schema               pulumi.StringPtrOutput               `pulumi:"schema"`
-	Serverless           pulumi.BoolPtrOutput                 `pulumi:"serverless"`
-	State                pulumi.StringOutput                  `pulumi:"state"`
-	Storage              pulumi.StringPtrOutput               `pulumi:"storage"`
-	Target               pulumi.StringPtrOutput               `pulumi:"target"`
-	Trigger              PipelineTriggerPtrOutput             `pulumi:"trigger"`
-	Url                  pulumi.StringOutput                  `pulumi:"url"`
+	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+	AllowDuplicateNames pulumi.BoolPtrOutput `pulumi:"allowDuplicateNames"`
+	// optional string specifying ID of the budget policy for this DLT pipeline.
+	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
+	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	Catalog pulumi.StringPtrOutput `pulumi:"catalog"`
+	Cause   pulumi.StringOutput    `pulumi:"cause"`
+	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+	Channel   pulumi.StringPtrOutput `pulumi:"channel"`
+	ClusterId pulumi.StringOutput    `pulumi:"clusterId"`
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+	Clusters PipelineClusterArrayOutput `pulumi:"clusters"`
+	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+	Configuration pulumi.StringMapOutput `pulumi:"configuration"`
+	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
+	Continuous      pulumi.BoolPtrOutput `pulumi:"continuous"`
+	CreatorUserName pulumi.StringOutput  `pulumi:"creatorUserName"`
+	// Deployment type of this pipeline. Supports following attributes:
+	Deployment PipelineDeploymentPtrOutput `pulumi:"deployment"`
+	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+	Development pulumi.BoolPtrOutput `pulumi:"development"`
+	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+	Edition              pulumi.StringPtrOutput `pulumi:"edition"`
+	ExpectedLastModified pulumi.IntPtrOutput    `pulumi:"expectedLastModified"`
+	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+	Filters PipelineFiltersPtrOutput `pulumi:"filters"`
+	// The definition of a gateway pipeline to support CDC. Consists of following attributes:
+	GatewayDefinition   PipelineGatewayDefinitionPtrOutput   `pulumi:"gatewayDefinition"`
+	Health              pulumi.StringOutput                  `pulumi:"health"`
+	IngestionDefinition PipelineIngestionDefinitionPtrOutput `pulumi:"ingestionDefinition"`
+	LastModified        pulumi.IntOutput                     `pulumi:"lastModified"`
+	LatestUpdates       PipelineLatestUpdateArrayOutput      `pulumi:"latestUpdates"`
+	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+	Libraries PipelineLibraryArrayOutput `pulumi:"libraries"`
+	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+	Name          pulumi.StringOutput             `pulumi:"name"`
+	Notifications PipelineNotificationArrayOutput `pulumi:"notifications"`
+	// A flag indicating whether to use Photon engine. The default value is `false`.
+	Photon        pulumi.BoolPtrOutput           `pulumi:"photon"`
+	RestartWindow PipelineRestartWindowPtrOutput `pulumi:"restartWindow"`
+	RunAsUserName pulumi.StringOutput            `pulumi:"runAsUserName"`
+	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	Schema pulumi.StringPtrOutput `pulumi:"schema"`
+	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+	Serverless pulumi.BoolPtrOutput `pulumi:"serverless"`
+	State      pulumi.StringOutput  `pulumi:"state"`
+	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+	Storage pulumi.StringPtrOutput `pulumi:"storage"`
+	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+	Target  pulumi.StringPtrOutput   `pulumi:"target"`
+	Trigger PipelineTriggerPtrOutput `pulumi:"trigger"`
+	// URL of the DLT pipeline on the given workspace.
+	Url pulumi.StringOutput `pulumi:"url"`
 }
 
 // NewPipeline registers a new resource with the given unique name, arguments, and options.
@@ -79,75 +206,115 @@ func GetPipeline(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Pipeline resources.
 type pipelineState struct {
-	AllowDuplicateNames  *bool                        `pulumi:"allowDuplicateNames"`
-	BudgetPolicyId       *string                      `pulumi:"budgetPolicyId"`
-	Catalog              *string                      `pulumi:"catalog"`
-	Cause                *string                      `pulumi:"cause"`
-	Channel              *string                      `pulumi:"channel"`
-	ClusterId            *string                      `pulumi:"clusterId"`
-	Clusters             []PipelineCluster            `pulumi:"clusters"`
-	Configuration        map[string]string            `pulumi:"configuration"`
-	Continuous           *bool                        `pulumi:"continuous"`
-	CreatorUserName      *string                      `pulumi:"creatorUserName"`
-	Deployment           *PipelineDeployment          `pulumi:"deployment"`
-	Development          *bool                        `pulumi:"development"`
-	Edition              *string                      `pulumi:"edition"`
-	ExpectedLastModified *int                         `pulumi:"expectedLastModified"`
-	Filters              *PipelineFilters             `pulumi:"filters"`
-	GatewayDefinition    *PipelineGatewayDefinition   `pulumi:"gatewayDefinition"`
-	Health               *string                      `pulumi:"health"`
-	IngestionDefinition  *PipelineIngestionDefinition `pulumi:"ingestionDefinition"`
-	LastModified         *int                         `pulumi:"lastModified"`
-	LatestUpdates        []PipelineLatestUpdate       `pulumi:"latestUpdates"`
-	Libraries            []PipelineLibrary            `pulumi:"libraries"`
-	Name                 *string                      `pulumi:"name"`
-	Notifications        []PipelineNotification       `pulumi:"notifications"`
-	Photon               *bool                        `pulumi:"photon"`
-	RestartWindow        *PipelineRestartWindow       `pulumi:"restartWindow"`
-	RunAsUserName        *string                      `pulumi:"runAsUserName"`
-	Schema               *string                      `pulumi:"schema"`
-	Serverless           *bool                        `pulumi:"serverless"`
-	State                *string                      `pulumi:"state"`
-	Storage              *string                      `pulumi:"storage"`
-	Target               *string                      `pulumi:"target"`
-	Trigger              *PipelineTrigger             `pulumi:"trigger"`
-	Url                  *string                      `pulumi:"url"`
+	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
+	// optional string specifying ID of the budget policy for this DLT pipeline.
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	Catalog *string `pulumi:"catalog"`
+	Cause   *string `pulumi:"cause"`
+	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+	Channel   *string `pulumi:"channel"`
+	ClusterId *string `pulumi:"clusterId"`
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+	Clusters []PipelineCluster `pulumi:"clusters"`
+	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+	Configuration map[string]string `pulumi:"configuration"`
+	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
+	Continuous      *bool   `pulumi:"continuous"`
+	CreatorUserName *string `pulumi:"creatorUserName"`
+	// Deployment type of this pipeline. Supports following attributes:
+	Deployment *PipelineDeployment `pulumi:"deployment"`
+	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+	Development *bool `pulumi:"development"`
+	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+	Edition              *string `pulumi:"edition"`
+	ExpectedLastModified *int    `pulumi:"expectedLastModified"`
+	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+	Filters *PipelineFilters `pulumi:"filters"`
+	// The definition of a gateway pipeline to support CDC. Consists of following attributes:
+	GatewayDefinition   *PipelineGatewayDefinition   `pulumi:"gatewayDefinition"`
+	Health              *string                      `pulumi:"health"`
+	IngestionDefinition *PipelineIngestionDefinition `pulumi:"ingestionDefinition"`
+	LastModified        *int                         `pulumi:"lastModified"`
+	LatestUpdates       []PipelineLatestUpdate       `pulumi:"latestUpdates"`
+	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+	Libraries []PipelineLibrary `pulumi:"libraries"`
+	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+	Name          *string                `pulumi:"name"`
+	Notifications []PipelineNotification `pulumi:"notifications"`
+	// A flag indicating whether to use Photon engine. The default value is `false`.
+	Photon        *bool                  `pulumi:"photon"`
+	RestartWindow *PipelineRestartWindow `pulumi:"restartWindow"`
+	RunAsUserName *string                `pulumi:"runAsUserName"`
+	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	Schema *string `pulumi:"schema"`
+	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+	Serverless *bool   `pulumi:"serverless"`
+	State      *string `pulumi:"state"`
+	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+	Storage *string `pulumi:"storage"`
+	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+	Target  *string          `pulumi:"target"`
+	Trigger *PipelineTrigger `pulumi:"trigger"`
+	// URL of the DLT pipeline on the given workspace.
+	Url *string `pulumi:"url"`
 }
 
 type PipelineState struct {
-	AllowDuplicateNames  pulumi.BoolPtrInput
-	BudgetPolicyId       pulumi.StringPtrInput
-	Catalog              pulumi.StringPtrInput
-	Cause                pulumi.StringPtrInput
-	Channel              pulumi.StringPtrInput
-	ClusterId            pulumi.StringPtrInput
-	Clusters             PipelineClusterArrayInput
-	Configuration        pulumi.StringMapInput
-	Continuous           pulumi.BoolPtrInput
-	CreatorUserName      pulumi.StringPtrInput
-	Deployment           PipelineDeploymentPtrInput
-	Development          pulumi.BoolPtrInput
+	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+	AllowDuplicateNames pulumi.BoolPtrInput
+	// optional string specifying ID of the budget policy for this DLT pipeline.
+	BudgetPolicyId pulumi.StringPtrInput
+	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	Catalog pulumi.StringPtrInput
+	Cause   pulumi.StringPtrInput
+	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+	Channel   pulumi.StringPtrInput
+	ClusterId pulumi.StringPtrInput
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+	Clusters PipelineClusterArrayInput
+	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+	Configuration pulumi.StringMapInput
+	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
+	Continuous      pulumi.BoolPtrInput
+	CreatorUserName pulumi.StringPtrInput
+	// Deployment type of this pipeline. Supports following attributes:
+	Deployment PipelineDeploymentPtrInput
+	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+	Development pulumi.BoolPtrInput
+	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition              pulumi.StringPtrInput
 	ExpectedLastModified pulumi.IntPtrInput
-	Filters              PipelineFiltersPtrInput
-	GatewayDefinition    PipelineGatewayDefinitionPtrInput
-	Health               pulumi.StringPtrInput
-	IngestionDefinition  PipelineIngestionDefinitionPtrInput
-	LastModified         pulumi.IntPtrInput
-	LatestUpdates        PipelineLatestUpdateArrayInput
-	Libraries            PipelineLibraryArrayInput
-	Name                 pulumi.StringPtrInput
-	Notifications        PipelineNotificationArrayInput
-	Photon               pulumi.BoolPtrInput
-	RestartWindow        PipelineRestartWindowPtrInput
-	RunAsUserName        pulumi.StringPtrInput
-	Schema               pulumi.StringPtrInput
-	Serverless           pulumi.BoolPtrInput
-	State                pulumi.StringPtrInput
-	Storage              pulumi.StringPtrInput
-	Target               pulumi.StringPtrInput
-	Trigger              PipelineTriggerPtrInput
-	Url                  pulumi.StringPtrInput
+	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+	Filters PipelineFiltersPtrInput
+	// The definition of a gateway pipeline to support CDC. Consists of following attributes:
+	GatewayDefinition   PipelineGatewayDefinitionPtrInput
+	Health              pulumi.StringPtrInput
+	IngestionDefinition PipelineIngestionDefinitionPtrInput
+	LastModified        pulumi.IntPtrInput
+	LatestUpdates       PipelineLatestUpdateArrayInput
+	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+	Libraries PipelineLibraryArrayInput
+	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+	Name          pulumi.StringPtrInput
+	Notifications PipelineNotificationArrayInput
+	// A flag indicating whether to use Photon engine. The default value is `false`.
+	Photon        pulumi.BoolPtrInput
+	RestartWindow PipelineRestartWindowPtrInput
+	RunAsUserName pulumi.StringPtrInput
+	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	Schema pulumi.StringPtrInput
+	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+	Serverless pulumi.BoolPtrInput
+	State      pulumi.StringPtrInput
+	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+	Storage pulumi.StringPtrInput
+	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+	Target  pulumi.StringPtrInput
+	Trigger PipelineTriggerPtrInput
+	// URL of the DLT pipeline on the given workspace.
+	Url pulumi.StringPtrInput
 }
 
 func (PipelineState) ElementType() reflect.Type {
@@ -155,76 +322,116 @@ func (PipelineState) ElementType() reflect.Type {
 }
 
 type pipelineArgs struct {
-	AllowDuplicateNames  *bool                        `pulumi:"allowDuplicateNames"`
-	BudgetPolicyId       *string                      `pulumi:"budgetPolicyId"`
-	Catalog              *string                      `pulumi:"catalog"`
-	Cause                *string                      `pulumi:"cause"`
-	Channel              *string                      `pulumi:"channel"`
-	ClusterId            *string                      `pulumi:"clusterId"`
-	Clusters             []PipelineCluster            `pulumi:"clusters"`
-	Configuration        map[string]string            `pulumi:"configuration"`
-	Continuous           *bool                        `pulumi:"continuous"`
-	CreatorUserName      *string                      `pulumi:"creatorUserName"`
-	Deployment           *PipelineDeployment          `pulumi:"deployment"`
-	Development          *bool                        `pulumi:"development"`
-	Edition              *string                      `pulumi:"edition"`
-	ExpectedLastModified *int                         `pulumi:"expectedLastModified"`
-	Filters              *PipelineFilters             `pulumi:"filters"`
-	GatewayDefinition    *PipelineGatewayDefinition   `pulumi:"gatewayDefinition"`
-	Health               *string                      `pulumi:"health"`
-	IngestionDefinition  *PipelineIngestionDefinition `pulumi:"ingestionDefinition"`
-	LastModified         *int                         `pulumi:"lastModified"`
-	LatestUpdates        []PipelineLatestUpdate       `pulumi:"latestUpdates"`
-	Libraries            []PipelineLibrary            `pulumi:"libraries"`
-	Name                 *string                      `pulumi:"name"`
-	Notifications        []PipelineNotification       `pulumi:"notifications"`
-	Photon               *bool                        `pulumi:"photon"`
-	RestartWindow        *PipelineRestartWindow       `pulumi:"restartWindow"`
-	RunAsUserName        *string                      `pulumi:"runAsUserName"`
-	Schema               *string                      `pulumi:"schema"`
-	Serverless           *bool                        `pulumi:"serverless"`
-	State                *string                      `pulumi:"state"`
-	Storage              *string                      `pulumi:"storage"`
-	Target               *string                      `pulumi:"target"`
-	Trigger              *PipelineTrigger             `pulumi:"trigger"`
-	Url                  *string                      `pulumi:"url"`
+	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
+	// optional string specifying ID of the budget policy for this DLT pipeline.
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	Catalog *string `pulumi:"catalog"`
+	Cause   *string `pulumi:"cause"`
+	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+	Channel   *string `pulumi:"channel"`
+	ClusterId *string `pulumi:"clusterId"`
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+	Clusters []PipelineCluster `pulumi:"clusters"`
+	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+	Configuration map[string]string `pulumi:"configuration"`
+	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
+	Continuous      *bool   `pulumi:"continuous"`
+	CreatorUserName *string `pulumi:"creatorUserName"`
+	// Deployment type of this pipeline. Supports following attributes:
+	Deployment *PipelineDeployment `pulumi:"deployment"`
+	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+	Development *bool `pulumi:"development"`
+	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+	Edition              *string `pulumi:"edition"`
+	ExpectedLastModified *int    `pulumi:"expectedLastModified"`
+	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+	Filters *PipelineFilters `pulumi:"filters"`
+	// The definition of a gateway pipeline to support CDC. Consists of following attributes:
+	GatewayDefinition   *PipelineGatewayDefinition   `pulumi:"gatewayDefinition"`
+	Health              *string                      `pulumi:"health"`
+	IngestionDefinition *PipelineIngestionDefinition `pulumi:"ingestionDefinition"`
+	LastModified        *int                         `pulumi:"lastModified"`
+	LatestUpdates       []PipelineLatestUpdate       `pulumi:"latestUpdates"`
+	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+	Libraries []PipelineLibrary `pulumi:"libraries"`
+	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+	Name          *string                `pulumi:"name"`
+	Notifications []PipelineNotification `pulumi:"notifications"`
+	// A flag indicating whether to use Photon engine. The default value is `false`.
+	Photon        *bool                  `pulumi:"photon"`
+	RestartWindow *PipelineRestartWindow `pulumi:"restartWindow"`
+	RunAsUserName *string                `pulumi:"runAsUserName"`
+	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	Schema *string `pulumi:"schema"`
+	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+	Serverless *bool   `pulumi:"serverless"`
+	State      *string `pulumi:"state"`
+	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+	Storage *string `pulumi:"storage"`
+	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+	Target  *string          `pulumi:"target"`
+	Trigger *PipelineTrigger `pulumi:"trigger"`
+	// URL of the DLT pipeline on the given workspace.
+	Url *string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a Pipeline resource.
 type PipelineArgs struct {
-	AllowDuplicateNames  pulumi.BoolPtrInput
-	BudgetPolicyId       pulumi.StringPtrInput
-	Catalog              pulumi.StringPtrInput
-	Cause                pulumi.StringPtrInput
-	Channel              pulumi.StringPtrInput
-	ClusterId            pulumi.StringPtrInput
-	Clusters             PipelineClusterArrayInput
-	Configuration        pulumi.StringMapInput
-	Continuous           pulumi.BoolPtrInput
-	CreatorUserName      pulumi.StringPtrInput
-	Deployment           PipelineDeploymentPtrInput
-	Development          pulumi.BoolPtrInput
+	// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+	AllowDuplicateNames pulumi.BoolPtrInput
+	// optional string specifying ID of the budget policy for this DLT pipeline.
+	BudgetPolicyId pulumi.StringPtrInput
+	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	Catalog pulumi.StringPtrInput
+	Cause   pulumi.StringPtrInput
+	// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+	Channel   pulumi.StringPtrInput
+	ClusterId pulumi.StringPtrInput
+	// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+	Clusters PipelineClusterArrayInput
+	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+	Configuration pulumi.StringMapInput
+	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
+	Continuous      pulumi.BoolPtrInput
+	CreatorUserName pulumi.StringPtrInput
+	// Deployment type of this pipeline. Supports following attributes:
+	Deployment PipelineDeploymentPtrInput
+	// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+	Development pulumi.BoolPtrInput
+	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 	Edition              pulumi.StringPtrInput
 	ExpectedLastModified pulumi.IntPtrInput
-	Filters              PipelineFiltersPtrInput
-	GatewayDefinition    PipelineGatewayDefinitionPtrInput
-	Health               pulumi.StringPtrInput
-	IngestionDefinition  PipelineIngestionDefinitionPtrInput
-	LastModified         pulumi.IntPtrInput
-	LatestUpdates        PipelineLatestUpdateArrayInput
-	Libraries            PipelineLibraryArrayInput
-	Name                 pulumi.StringPtrInput
-	Notifications        PipelineNotificationArrayInput
-	Photon               pulumi.BoolPtrInput
-	RestartWindow        PipelineRestartWindowPtrInput
-	RunAsUserName        pulumi.StringPtrInput
-	Schema               pulumi.StringPtrInput
-	Serverless           pulumi.BoolPtrInput
-	State                pulumi.StringPtrInput
-	Storage              pulumi.StringPtrInput
-	Target               pulumi.StringPtrInput
-	Trigger              PipelineTriggerPtrInput
-	Url                  pulumi.StringPtrInput
+	// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+	Filters PipelineFiltersPtrInput
+	// The definition of a gateway pipeline to support CDC. Consists of following attributes:
+	GatewayDefinition   PipelineGatewayDefinitionPtrInput
+	Health              pulumi.StringPtrInput
+	IngestionDefinition PipelineIngestionDefinitionPtrInput
+	LastModified        pulumi.IntPtrInput
+	LatestUpdates       PipelineLatestUpdateArrayInput
+	// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+	Libraries PipelineLibraryArrayInput
+	// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+	Name          pulumi.StringPtrInput
+	Notifications PipelineNotificationArrayInput
+	// A flag indicating whether to use Photon engine. The default value is `false`.
+	Photon        pulumi.BoolPtrInput
+	RestartWindow PipelineRestartWindowPtrInput
+	RunAsUserName pulumi.StringPtrInput
+	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+	Schema pulumi.StringPtrInput
+	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+	Serverless pulumi.BoolPtrInput
+	State      pulumi.StringPtrInput
+	// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+	Storage pulumi.StringPtrInput
+	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+	Target  pulumi.StringPtrInput
+	Trigger PipelineTriggerPtrInput
+	// URL of the DLT pipeline on the given workspace.
+	Url pulumi.StringPtrInput
 }
 
 func (PipelineArgs) ElementType() reflect.Type {
@@ -314,14 +521,17 @@ func (o PipelineOutput) ToPipelineOutputWithContext(ctx context.Context) Pipelin
 	return o
 }
 
+// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
 func (o PipelineOutput) AllowDuplicateNames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.AllowDuplicateNames }).(pulumi.BoolPtrOutput)
 }
 
+// optional string specifying ID of the budget policy for this DLT pipeline.
 func (o PipelineOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
 func (o PipelineOutput) Catalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Catalog }).(pulumi.StringPtrOutput)
 }
@@ -330,6 +540,7 @@ func (o PipelineOutput) Cause() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Cause }).(pulumi.StringOutput)
 }
 
+// optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
 func (o PipelineOutput) Channel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Channel }).(pulumi.StringPtrOutput)
 }
@@ -338,14 +549,17 @@ func (o PipelineOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
 func (o PipelineOutput) Clusters() PipelineClusterArrayOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineClusterArrayOutput { return v.Clusters }).(PipelineClusterArrayOutput)
 }
 
+// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 func (o PipelineOutput) Configuration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringMapOutput { return v.Configuration }).(pulumi.StringMapOutput)
 }
 
+// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 func (o PipelineOutput) Continuous() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Continuous }).(pulumi.BoolPtrOutput)
 }
@@ -354,14 +568,17 @@ func (o PipelineOutput) CreatorUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.CreatorUserName }).(pulumi.StringOutput)
 }
 
+// Deployment type of this pipeline. Supports following attributes:
 func (o PipelineOutput) Deployment() PipelineDeploymentPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineDeploymentPtrOutput { return v.Deployment }).(PipelineDeploymentPtrOutput)
 }
 
+// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
 func (o PipelineOutput) Development() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Development }).(pulumi.BoolPtrOutput)
 }
 
+// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
 func (o PipelineOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Edition }).(pulumi.StringPtrOutput)
 }
@@ -370,10 +587,12 @@ func (o PipelineOutput) ExpectedLastModified() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.IntPtrOutput { return v.ExpectedLastModified }).(pulumi.IntPtrOutput)
 }
 
+// Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
 func (o PipelineOutput) Filters() PipelineFiltersPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineFiltersPtrOutput { return v.Filters }).(PipelineFiltersPtrOutput)
 }
 
+// The definition of a gateway pipeline to support CDC. Consists of following attributes:
 func (o PipelineOutput) GatewayDefinition() PipelineGatewayDefinitionPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineGatewayDefinitionPtrOutput { return v.GatewayDefinition }).(PipelineGatewayDefinitionPtrOutput)
 }
@@ -394,10 +613,12 @@ func (o PipelineOutput) LatestUpdates() PipelineLatestUpdateArrayOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineLatestUpdateArrayOutput { return v.LatestUpdates }).(PipelineLatestUpdateArrayOutput)
 }
 
+// blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
 func (o PipelineOutput) Libraries() PipelineLibraryArrayOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineLibraryArrayOutput { return v.Libraries }).(PipelineLibraryArrayOutput)
 }
 
+// A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
 func (o PipelineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -406,6 +627,7 @@ func (o PipelineOutput) Notifications() PipelineNotificationArrayOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineNotificationArrayOutput { return v.Notifications }).(PipelineNotificationArrayOutput)
 }
 
+// A flag indicating whether to use Photon engine. The default value is `false`.
 func (o PipelineOutput) Photon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Photon }).(pulumi.BoolPtrOutput)
 }
@@ -418,10 +640,12 @@ func (o PipelineOutput) RunAsUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.RunAsUserName }).(pulumi.StringOutput)
 }
 
+// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 func (o PipelineOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)
 }
 
+// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 func (o PipelineOutput) Serverless() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Serverless }).(pulumi.BoolPtrOutput)
 }
@@ -430,10 +654,12 @@ func (o PipelineOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
+// A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 func (o PipelineOutput) Storage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Storage }).(pulumi.StringPtrOutput)
 }
 
+// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 func (o PipelineOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -442,6 +668,7 @@ func (o PipelineOutput) Trigger() PipelineTriggerPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineTriggerPtrOutput { return v.Trigger }).(PipelineTriggerPtrOutput)
 }
 
+// URL of the DLT pipeline on the given workspace.
 func (o PipelineOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

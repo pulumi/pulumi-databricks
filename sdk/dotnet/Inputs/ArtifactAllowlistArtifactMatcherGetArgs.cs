@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ArtifactAllowlistArtifactMatcherGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The artifact path or maven coordinate.
+        /// </summary>
         [Input("artifact", required: true)]
         public Input<string> Artifact { get; set; } = null!;
 
+        /// <summary>
+        /// The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+        /// </summary>
         [Input("matchType", required: true)]
         public Input<string> MatchType { get; set; } = null!;
 

@@ -9,24 +9,52 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for databricks.Cluster or databricks_job. You can also use databricks.DbfsFile and databricks.getDbfsFilePaths data sources.
+    /// 
+    /// ## Import
+    /// 
+    /// The resource dbfs file can be imported using the path of the file:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/dbfsFile:DbfsFile this &lt;path&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/dbfsFile:DbfsFile")]
     public partial class DbfsFile : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        /// </summary>
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
 
+        /// <summary>
+        /// Path, but with `dbfs:` prefix.
+        /// </summary>
         [Output("dbfsPath")]
         public Output<string> DbfsPath { get; private set; } = null!;
 
+        /// <summary>
+        /// The file size of the file that is being tracked by this resource in bytes.
+        /// </summary>
         [Output("fileSize")]
         public Output<int> FileSize { get; private set; } = null!;
 
         [Output("md5")]
         public Output<string?> Md5 { get; private set; } = null!;
 
+        /// <summary>
+        /// The path of the file in which you wish to save.
+        /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// The full absolute path to the file. Conflicts with `content_base64`.
+        /// </summary>
         [Output("source")]
         public Output<string?> Source { get; private set; } = null!;
 
@@ -76,15 +104,24 @@ namespace Pulumi.Databricks
 
     public sealed class DbfsFileArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
         [Input("md5")]
         public Input<string>? Md5 { get; set; }
 
+        /// <summary>
+        /// The path of the file in which you wish to save.
+        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// The full absolute path to the file. Conflicts with `content_base64`.
+        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
@@ -96,21 +133,36 @@ namespace Pulumi.Databricks
 
     public sealed class DbfsFileState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
+        /// <summary>
+        /// Path, but with `dbfs:` prefix.
+        /// </summary>
         [Input("dbfsPath")]
         public Input<string>? DbfsPath { get; set; }
 
+        /// <summary>
+        /// The file size of the file that is being tracked by this resource in bytes.
+        /// </summary>
         [Input("fileSize")]
         public Input<int>? FileSize { get; set; }
 
         [Input("md5")]
         public Input<string>? Md5 { get; set; }
 
+        /// <summary>
+        /// The path of the file in which you wish to save.
+        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
+        /// <summary>
+        /// The full absolute path to the file. Conflicts with `content_base64`.
+        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 

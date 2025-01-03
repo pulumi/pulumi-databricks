@@ -34,6 +34,9 @@ namespace Pulumi.Databricks.Inputs
             set => _foundationModels = value;
         }
 
+        /// <summary>
+        /// The name of the model serving endpoint.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

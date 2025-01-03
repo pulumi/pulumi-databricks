@@ -16,23 +16,47 @@ public final class DbfsFileState extends com.pulumi.resources.ResourceArgs {
 
     public static final DbfsFileState Empty = new DbfsFileState();
 
+    /**
+     * Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+     * 
+     */
     @Import(name="contentBase64")
     private @Nullable Output<String> contentBase64;
 
+    /**
+     * @return Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+     * 
+     */
     public Optional<Output<String>> contentBase64() {
         return Optional.ofNullable(this.contentBase64);
     }
 
+    /**
+     * Path, but with `dbfs:` prefix.
+     * 
+     */
     @Import(name="dbfsPath")
     private @Nullable Output<String> dbfsPath;
 
+    /**
+     * @return Path, but with `dbfs:` prefix.
+     * 
+     */
     public Optional<Output<String>> dbfsPath() {
         return Optional.ofNullable(this.dbfsPath);
     }
 
+    /**
+     * The file size of the file that is being tracked by this resource in bytes.
+     * 
+     */
     @Import(name="fileSize")
     private @Nullable Output<Integer> fileSize;
 
+    /**
+     * @return The file size of the file that is being tracked by this resource in bytes.
+     * 
+     */
     public Optional<Output<Integer>> fileSize() {
         return Optional.ofNullable(this.fileSize);
     }
@@ -44,16 +68,32 @@ public final class DbfsFileState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.md5);
     }
 
+    /**
+     * The path of the file in which you wish to save.
+     * 
+     */
     @Import(name="path")
     private @Nullable Output<String> path;
 
+    /**
+     * @return The path of the file in which you wish to save.
+     * 
+     */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
     }
 
+    /**
+     * The full absolute path to the file. Conflicts with `content_base64`.
+     * 
+     */
     @Import(name="source")
     private @Nullable Output<String> source;
 
+    /**
+     * @return The full absolute path to the file. Conflicts with `content_base64`.
+     * 
+     */
     public Optional<Output<String>> source() {
         return Optional.ofNullable(this.source);
     }
@@ -87,29 +127,65 @@ public final class DbfsFileState extends com.pulumi.resources.ResourceArgs {
             $ = new DbfsFileState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contentBase64 Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentBase64(@Nullable Output<String> contentBase64) {
             $.contentBase64 = contentBase64;
             return this;
         }
 
+        /**
+         * @param contentBase64 Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentBase64(String contentBase64) {
             return contentBase64(Output.of(contentBase64));
         }
 
+        /**
+         * @param dbfsPath Path, but with `dbfs:` prefix.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbfsPath(@Nullable Output<String> dbfsPath) {
             $.dbfsPath = dbfsPath;
             return this;
         }
 
+        /**
+         * @param dbfsPath Path, but with `dbfs:` prefix.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbfsPath(String dbfsPath) {
             return dbfsPath(Output.of(dbfsPath));
         }
 
+        /**
+         * @param fileSize The file size of the file that is being tracked by this resource in bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileSize(@Nullable Output<Integer> fileSize) {
             $.fileSize = fileSize;
             return this;
         }
 
+        /**
+         * @param fileSize The file size of the file that is being tracked by this resource in bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileSize(Integer fileSize) {
             return fileSize(Output.of(fileSize));
         }
@@ -123,20 +199,44 @@ public final class DbfsFileState extends com.pulumi.resources.ResourceArgs {
             return md5(Output.of(md5));
         }
 
+        /**
+         * @param path The path of the file in which you wish to save.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path The path of the file in which you wish to save.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
+        /**
+         * @param source The full absolute path to the file. Conflicts with `content_base64`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(@Nullable Output<String> source) {
             $.source = source;
             return this;
         }
 
+        /**
+         * @param source The full absolute path to the file. Conflicts with `content_base64`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder source(String source) {
             return source(Output.of(source));
         }

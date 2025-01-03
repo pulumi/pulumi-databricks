@@ -48,6 +48,9 @@ class GetSqlWarehousesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        list of SqlEndpoint ids
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -71,7 +74,43 @@ def get_sql_warehouses(ids: Optional[Sequence[str]] = None,
                        warehouse_name_contains: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSqlWarehousesResult:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves a list of SqlEndpoint ids, that were created by Pulumi or manually.
+
+    ## Example Usage
+
+    Retrieve IDs for all SQL warehouses:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_sql_warehouses()
+    ```
+
+    Retrieve IDs for all clusters having "Shared" in the warehouse name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all_shared = databricks.get_sql_warehouses(warehouse_name_contains="shared")
+    ```
+
+    ## Related Resources
+
+    The following resources are often used in the same context:
+
+    * End to end workspace management guide.
+    * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+    * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+    * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all get_sql_warehouse of workspace.
+    * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+
+
+    :param Sequence[str] ids: list of SqlEndpoint ids
+    :param str warehouse_name_contains: Only return SqlEndpoint ids that match the given name string.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -87,7 +126,43 @@ def get_sql_warehouses_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
                               warehouse_name_contains: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlWarehousesResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+
+    Retrieves a list of SqlEndpoint ids, that were created by Pulumi or manually.
+
+    ## Example Usage
+
+    Retrieve IDs for all SQL warehouses:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_sql_warehouses()
+    ```
+
+    Retrieve IDs for all clusters having "Shared" in the warehouse name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all_shared = databricks.get_sql_warehouses(warehouse_name_contains="shared")
+    ```
+
+    ## Related Resources
+
+    The following resources are often used in the same context:
+
+    * End to end workspace management guide.
+    * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+    * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+    * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all get_sql_warehouse of workspace.
+    * SqlPermissions to manage data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html).
+
+
+    :param Sequence[str] ids: list of SqlEndpoint ids
+    :param str warehouse_name_contains: Only return SqlEndpoint ids that match the given name string.
     """
     __args__ = dict()
     __args__['ids'] = ids

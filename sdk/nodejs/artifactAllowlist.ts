@@ -6,6 +6,45 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * > It is required to define all allowlist for an artifact type in a single resource, otherwise Pulumi cannot guarantee config drift prevention.
+ *
+ * > This resource can only be used with a workspace-level provider!
+ *
+ * In Databricks Runtime 13.3 and above, you can add libraries and init scripts to the allowlist in UC so that users can leverage these artifacts on compute configured with shared access mode.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const initScripts = new databricks.ArtifactAllowlist("init_scripts", {
+ *     artifactType: "INIT_SCRIPT",
+ *     artifactMatchers: [{
+ *         artifact: "/Volumes/inits",
+ *         matchType: "PREFIX_MATCH",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+ *
+ * ## Import
+ *
+ * This resource can be imported by name:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '<metastore_id>|<artifact_type>'
+ * ```
+ */
 export class ArtifactAllowlist extends pulumi.CustomResource {
     /**
      * Get an existing ArtifactAllowlist resource's state with the given name, ID, and optional extra
@@ -35,9 +74,21 @@ export class ArtifactAllowlist extends pulumi.CustomResource {
     }
 
     public readonly artifactMatchers!: pulumi.Output<outputs.ArtifactAllowlistArtifactMatcher[]>;
+    /**
+     * The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
+     */
     public readonly artifactType!: pulumi.Output<string>;
+    /**
+     * Time at which this artifact allowlist was set.
+     */
     public readonly createdAt!: pulumi.Output<number>;
+    /**
+     * Identity that set the artifact allowlist.
+     */
     public readonly createdBy!: pulumi.Output<string>;
+    /**
+     * ID of the parent metastore.
+     */
     public readonly metastoreId!: pulumi.Output<string>;
 
     /**
@@ -82,9 +133,21 @@ export class ArtifactAllowlist extends pulumi.CustomResource {
  */
 export interface ArtifactAllowlistState {
     artifactMatchers?: pulumi.Input<pulumi.Input<inputs.ArtifactAllowlistArtifactMatcher>[]>;
+    /**
+     * The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
+     */
     artifactType?: pulumi.Input<string>;
+    /**
+     * Time at which this artifact allowlist was set.
+     */
     createdAt?: pulumi.Input<number>;
+    /**
+     * Identity that set the artifact allowlist.
+     */
     createdBy?: pulumi.Input<string>;
+    /**
+     * ID of the parent metastore.
+     */
     metastoreId?: pulumi.Input<string>;
 }
 
@@ -93,8 +156,20 @@ export interface ArtifactAllowlistState {
  */
 export interface ArtifactAllowlistArgs {
     artifactMatchers: pulumi.Input<pulumi.Input<inputs.ArtifactAllowlistArtifactMatcher>[]>;
+    /**
+     * The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
+     */
     artifactType: pulumi.Input<string>;
+    /**
+     * Time at which this artifact allowlist was set.
+     */
     createdAt?: pulumi.Input<number>;
+    /**
+     * Identity that set the artifact allowlist.
+     */
     createdBy?: pulumi.Input<string>;
+    /**
+     * ID of the parent metastore.
+     */
     metastoreId?: pulumi.Input<string>;
 }

@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("modelVersion")]
         public string? ModelVersion { get; set; }
 
+        /// <summary>
+        /// The name of the model serving endpoint.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 

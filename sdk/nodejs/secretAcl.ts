@@ -4,6 +4,52 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Create or overwrite the ACL associated with the given principal (user or group) on the specified databricks_secret_scope. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
+ *
+ * ## Example Usage
+ *
+ * This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const ds = new databricks.Group("ds", {displayName: "data-scientists"});
+ * const app = new databricks.SecretScope("app", {name: "app-secret-scope"});
+ * const mySecretAcl = new databricks.SecretAcl("my_secret_acl", {
+ *     principal: ds.displayName,
+ *     permission: "READ",
+ *     scope: app.name,
+ * });
+ * const publishingApi = new databricks.Secret("publishing_api", {
+ *     key: "publishing_api",
+ *     stringValue: example.value,
+ *     scope: app.name,
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+ * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+ * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.SecretScope to create [secret scopes](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ *
+ * ## Import
+ *
+ * The resource secret acl can be imported using `scopeName|||principalName` combination.
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`
+ * ```
+ */
 export class SecretAcl extends pulumi.CustomResource {
     /**
      * Get an existing SecretAcl resource's state with the given name, ID, and optional extra
@@ -32,8 +78,17 @@ export class SecretAcl extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecretAcl.__pulumiType;
     }
 
+    /**
+     * `READ`, `WRITE` or `MANAGE`.
+     */
     public readonly permission!: pulumi.Output<string>;
+    /**
+     * principal's identifier. It can be:
+     */
     public readonly principal!: pulumi.Output<string>;
+    /**
+     * name of the scope
+     */
     public readonly scope!: pulumi.Output<string>;
 
     /**
@@ -76,8 +131,17 @@ export class SecretAcl extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecretAcl resources.
  */
 export interface SecretAclState {
+    /**
+     * `READ`, `WRITE` or `MANAGE`.
+     */
     permission?: pulumi.Input<string>;
+    /**
+     * principal's identifier. It can be:
+     */
     principal?: pulumi.Input<string>;
+    /**
+     * name of the scope
+     */
     scope?: pulumi.Input<string>;
 }
 
@@ -85,7 +149,16 @@ export interface SecretAclState {
  * The set of arguments for constructing a SecretAcl resource.
  */
 export interface SecretAclArgs {
+    /**
+     * `READ`, `WRITE` or `MANAGE`.
+     */
     permission: pulumi.Input<string>;
+    /**
+     * principal's identifier. It can be:
+     */
     principal: pulumi.Input<string>;
+    /**
+     * name of the scope
+     */
     scope: pulumi.Input<string>;
 }

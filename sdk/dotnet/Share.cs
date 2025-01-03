@@ -9,24 +9,167 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// &gt; This resource can only be used with a workspace-level provider!
+    /// 
+    /// In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
+    /// 
+    /// In a Unity Catalog-enabled Databricks workspace, a share is a securable object registered in Unity Catalog. A `databricks.Share` is contained within a databricks_metastore. If you remove a share from your Unity Catalog metastore, all recipients of that share lose the ability to access it.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// &gt; In Pulumi configuration, it is recommended to define objects in alphabetical order of their `name` arguments, so that you get consistent and readable diff. Whenever objects are added or removed, or `name` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `object` blocks as an ordered list. Alternatively, `object` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+    /// 
+    /// Creating a Delta Sharing share and add some existing tables to it
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var things = Databricks.GetTables.Invoke(new()
+    ///     {
+    ///         CatalogName = "sandbox",
+    ///         SchemaName = "things",
+    ///     });
+    /// 
+    ///     var some = new Databricks.Share("some", new()
+    ///     {
+    ///         Objects = ,
+    ///         Name = "my_share",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating a Delta Sharing share and add a schema to it(including all current and future tables).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var schemaShare = new Databricks.Share("schema_share", new()
+    ///     {
+    ///         Name = "schema_share",
+    ///         Objects = new[]
+    ///         {
+    ///             new Databricks.Inputs.ShareObjectArgs
+    ///             {
+    ///                 Name = "catalog_name.schema_name",
+    ///                 DataObjectType = "SCHEMA",
+    ///                 HistoryDataSharingStatus = "ENABLED",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating a Delta Sharing share and share a table with partitions spec and history
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var some = new Databricks.Share("some", new()
+    ///     {
+    ///         Name = "my_share",
+    ///         Objects = new[]
+    ///         {
+    ///             new Databricks.Inputs.ShareObjectArgs
+    ///             {
+    ///                 Name = "my_catalog.my_schema.my_table",
+    ///                 DataObjectType = "TABLE",
+    ///                 HistoryDataSharingStatus = "ENABLED",
+    ///                 Partitions = new[]
+    ///                 {
+    ///                     new Databricks.Inputs.ShareObjectPartitionArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             new Databricks.Inputs.ShareObjectPartitionValueArgs
+    ///                             {
+    ///                                 Name = "year",
+    ///                                 Op = "EQUAL",
+    ///                                 Value = "2009",
+    ///                             },
+    ///                             new Databricks.Inputs.ShareObjectPartitionValueArgs
+    ///                             {
+    ///                                 Name = "month",
+    ///                                 Op = "EQUAL",
+    ///                                 Value = "12",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Databricks.Inputs.ShareObjectPartitionArgs
+    ///                     {
+    ///                         Values = new[]
+    ///                         {
+    ///                             new Databricks.Inputs.ShareObjectPartitionValueArgs
+    ///                             {
+    ///                                 Name = "year",
+    ///                                 Op = "EQUAL",
+    ///                                 Value = "2010",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * databricks.Recipient to create Delta Sharing recipients.
+    /// * databricks.Grants to manage Delta Sharing permissions.
+    /// * databricks.getShares to read existing Delta Sharing shares.
+    /// </summary>
     [DatabricksResourceType("databricks:index/share:Share")]
     public partial class Share : global::Pulumi.CustomResource
     {
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
+        /// <summary>
+        /// Time when the share was created.
+        /// </summary>
         [Output("createdAt")]
         public Output<int> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// The principal that created the share.
+        /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of share. Change forces creation of a new resource.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("objects")]
         public Output<ImmutableArray<Outputs.ShareObject>> Objects { get; private set; } = null!;
 
+        /// <summary>
+        /// User name/group name/sp application_id of the share owner.
+        /// </summary>
         [Output("owner")]
         public Output<string?> Owner { get; private set; } = null!;
 
@@ -91,12 +234,21 @@ namespace Pulumi.Databricks
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// Time when the share was created.
+        /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// The principal that created the share.
+        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// Name of share. Change forces creation of a new resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -108,6 +260,9 @@ namespace Pulumi.Databricks
             set => _objects = value;
         }
 
+        /// <summary>
+        /// User name/group name/sp application_id of the share owner.
+        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
@@ -134,12 +289,21 @@ namespace Pulumi.Databricks
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// Time when the share was created.
+        /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// The principal that created the share.
+        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// Name of share. Change forces creation of a new resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -151,6 +315,9 @@ namespace Pulumi.Databricks
             set => _objects = value;
         }
 
+        /// <summary>
+        /// User name/group name/sp application_id of the share owner.
+        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 

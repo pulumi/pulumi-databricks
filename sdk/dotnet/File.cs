@@ -9,27 +9,145 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// This resource allows uploading and downloading files in databricks_volume.
+    /// 
+    /// Notes:
+    /// 
+    /// * Currently the limit is 5GiB in octet-stream.
+    /// * Currently, only UC volumes are supported. The list of destinations may change.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `source` attribute containing the full path to the file on the local filesystem.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     {
+    ///         MetastoreId = thisDatabricksMetastore.Id,
+    ///         Name = "sandbox",
+    ///         Comment = "this catalog is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
+    /// 
+    ///     var things = new Databricks.Schema("things", new()
+    ///     {
+    ///         CatalogName = sandbox.Name,
+    ///         Name = "things",
+    ///         Comment = "this schema is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "kind", "various" },
+    ///         },
+    ///     });
+    /// 
+    ///     var @this = new Databricks.Volume("this", new()
+    ///     {
+    ///         Name = "quickstart_volume",
+    ///         CatalogName = sandbox.Name,
+    ///         SchemaName = things.Name,
+    ///         VolumeType = "MANAGED",
+    ///         Comment = "this volume is managed by terraform",
+    ///     });
+    /// 
+    ///     var thisFile = new Databricks.File("this", new()
+    ///     {
+    ///         Source = "/full/path/on/local/system",
+    ///         Path = @this.VolumePath.Apply(volumePath =&gt; $"{volumePath}/fileName"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// You can also inline sources through `content_base64`  attribute.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var initScript = new Databricks.File("init_script", new()
+    ///     {
+    ///         ContentBase64 = Std.Base64encode.Invoke(new()
+    ///         {
+    ///             Input = @"#!/bin/bash
+    /// echo ""Hello World""
+    /// ",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Path = $"{@this.VolumePath}/fileName",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * databricks.WorkspaceFile
+    /// * End to end workspace management guide.
+    /// * databricks.Volume to manage [volumes within Unity Catalog](https://docs.databricks.com/en/connect/unity-catalog/volumes.html).
+    /// 
+    /// ## Import
+    /// 
+    /// The resource `databricks_file` can be imported using the path of the file:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/file:File this &lt;path&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/file:File")]
     public partial class File : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Contents in base 64 format. Conflicts with `source`.
+        /// </summary>
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
 
+        /// <summary>
+        /// The file size of the file that is being tracked by this resource in bytes.
+        /// </summary>
         [Output("fileSize")]
         public Output<int> FileSize { get; private set; } = null!;
 
         [Output("md5")]
         public Output<string?> Md5 { get; private set; } = null!;
 
+        /// <summary>
+        /// The last time stamp when the file was modified
+        /// </summary>
         [Output("modificationTime")]
         public Output<string> ModificationTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
         [Output("remoteFileModified")]
         public Output<bool?> RemoteFileModified { get; private set; } = null!;
 
+        /// <summary>
+        /// The full absolute path to the file. Conflicts with `content_base64`.
+        /// </summary>
         [Output("source")]
         public Output<string?> Source { get; private set; } = null!;
 
@@ -79,18 +197,27 @@ namespace Pulumi.Databricks
 
     public sealed class FileArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Contents in base 64 format. Conflicts with `source`.
+        /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
         [Input("md5")]
         public Input<string>? Md5 { get; set; }
 
+        /// <summary>
+        /// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
         [Input("remoteFileModified")]
         public Input<bool>? RemoteFileModified { get; set; }
 
+        /// <summary>
+        /// The full absolute path to the file. Conflicts with `content_base64`.
+        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
@@ -102,24 +229,39 @@ namespace Pulumi.Databricks
 
     public sealed class FileState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Contents in base 64 format. Conflicts with `source`.
+        /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
+        /// <summary>
+        /// The file size of the file that is being tracked by this resource in bytes.
+        /// </summary>
         [Input("fileSize")]
         public Input<int>? FileSize { get; set; }
 
         [Input("md5")]
         public Input<string>? Md5 { get; set; }
 
+        /// <summary>
+        /// The last time stamp when the file was modified
+        /// </summary>
         [Input("modificationTime")]
         public Input<string>? ModificationTime { get; set; }
 
+        /// <summary>
+        /// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
+        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         [Input("remoteFileModified")]
         public Input<bool>? RemoteFileModified { get; set; }
 
+        /// <summary>
+        /// The full absolute path to the file. Conflicts with `content_base64`.
+        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 

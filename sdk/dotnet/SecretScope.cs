@@ -9,18 +9,68 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// Sometimes accessing data requires that you authenticate to external data sources through JDBC. Instead of directly entering your credentials into a notebook, use Databricks secrets to store your credentials and reference them in notebooks and jobs. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.SecretScope("this", new()
+    ///     {
+    ///         Name = "terraform-demo-scope",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * End to end workspace management guide.
+    /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+    /// * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+    /// * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+    /// * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+    /// 
+    /// ## Import
+    /// 
+    /// The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/secretScope:SecretScope object &lt;scopeName&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/secretScope:SecretScope")]
     public partial class SecretScope : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Either `DATABRICKS` or `AZURE_KEYVAULT`
+        /// </summary>
         [Output("backendType")]
         public Output<string> BackendType { get; private set; } = null!;
 
+        /// <summary>
+        /// The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
+        /// </summary>
         [Output("initialManagePrincipal")]
         public Output<string?> InitialManagePrincipal { get; private set; } = null!;
 
         [Output("keyvaultMetadata")]
         public Output<Outputs.SecretScopeKeyvaultMetadata?> KeyvaultMetadata { get; private set; } = null!;
 
+        /// <summary>
+        /// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -70,15 +120,24 @@ namespace Pulumi.Databricks
 
     public sealed class SecretScopeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Either `DATABRICKS` or `AZURE_KEYVAULT`
+        /// </summary>
         [Input("backendType")]
         public Input<string>? BackendType { get; set; }
 
+        /// <summary>
+        /// The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
+        /// </summary>
         [Input("initialManagePrincipal")]
         public Input<string>? InitialManagePrincipal { get; set; }
 
         [Input("keyvaultMetadata")]
         public Input<Inputs.SecretScopeKeyvaultMetadataArgs>? KeyvaultMetadata { get; set; }
 
+        /// <summary>
+        /// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -90,15 +149,24 @@ namespace Pulumi.Databricks
 
     public sealed class SecretScopeState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Either `DATABRICKS` or `AZURE_KEYVAULT`
+        /// </summary>
         [Input("backendType")]
         public Input<string>? BackendType { get; set; }
 
+        /// <summary>
+        /// The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
+        /// </summary>
         [Input("initialManagePrincipal")]
         public Input<string>? InitialManagePrincipal { get; set; }
 
         [Input("keyvaultMetadata")]
         public Input<Inputs.SecretScopeKeyvaultMetadataGetArgs>? KeyvaultMetadata { get; set; }
 
+        /// <summary>
+        /// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

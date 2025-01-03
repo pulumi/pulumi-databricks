@@ -14,17 +14,28 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("subnets")]
         private InputList<string>? _subnets;
+
+        /// <summary>
+        /// Array of strings representing the subnet IDs.
+        /// </summary>
         public InputList<string> Subnets
         {
             get => _subnets ?? (_subnets = new InputList<string>());
             set => _subnets = value;
         }
 
+        /// <summary>
+        /// The target region for the service endpoint.
+        /// </summary>
         [Input("targetRegion")]
         public Input<string>? TargetRegion { get; set; }
 
         [Input("targetServices")]
         private InputList<string>? _targetServices;
+
+        /// <summary>
+        /// Array of target services.
+        /// </summary>
         public InputList<string> TargetServices
         {
             get => _targetServices ?? (_targetServices = new InputList<string>());

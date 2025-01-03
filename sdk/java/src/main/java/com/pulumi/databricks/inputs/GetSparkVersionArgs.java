@@ -16,28 +16,54 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSparkVersionArgs Empty = new GetSparkVersionArgs();
 
+    /**
+     * if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+     * 
+     */
     @Import(name="beta")
     private @Nullable Output<Boolean> beta;
 
+    /**
+     * @return if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> beta() {
         return Optional.ofNullable(this.beta);
     }
 
+    /**
+     * if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+     * 
+     */
     @Import(name="genomics")
     private @Nullable Output<Boolean> genomics;
 
+    /**
+     * @return if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> genomics() {
         return Optional.ofNullable(this.genomics);
     }
 
+    /**
+     * if we should limit the search only to runtimes that support GPUs. Default to `false`.
+     * 
+     */
     @Import(name="gpu")
     private @Nullable Output<Boolean> gpu;
 
+    /**
+     * @return if we should limit the search only to runtimes that support GPUs. Default to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> gpu() {
         return Optional.ofNullable(this.gpu);
     }
 
     /**
+     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
+     * 
      * @deprecated
      * Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
      * 
@@ -47,6 +73,8 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<Boolean> graviton;
 
     /**
+     * @return if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
+     * 
      * @deprecated
      * Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
      * 
@@ -56,35 +84,69 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.graviton);
     }
 
+    /**
+     * Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+     * 
+     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
+    /**
+     * @return Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+     * 
+     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+     * 
+     */
     @Import(name="latest")
     private @Nullable Output<Boolean> latest;
 
+    /**
+     * @return if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+     * 
+     */
     public Optional<Output<Boolean>> latest() {
         return Optional.ofNullable(this.latest);
     }
 
+    /**
+     * if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
+     * 
+     */
     @Import(name="longTermSupport")
     private @Nullable Output<Boolean> longTermSupport;
 
+    /**
+     * @return if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> longTermSupport() {
         return Optional.ofNullable(this.longTermSupport);
     }
 
+    /**
+     * if we should limit the search only to ML runtimes. Default to `false`.
+     * 
+     */
     @Import(name="ml")
     private @Nullable Output<Boolean> ml;
 
+    /**
+     * @return if we should limit the search only to ML runtimes. Default to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> ml() {
         return Optional.ofNullable(this.ml);
     }
 
     /**
+     * if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
+     * 
      * @deprecated
      * Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
      * 
@@ -94,6 +156,8 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<Boolean> photon;
 
     /**
+     * @return if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
+     * 
      * @deprecated
      * Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
      * 
@@ -103,16 +167,32 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.photon);
     }
 
+    /**
+     * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+     * 
+     */
     @Import(name="scala")
     private @Nullable Output<String> scala;
 
+    /**
+     * @return if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+     * 
+     */
     public Optional<Output<String>> scala() {
         return Optional.ofNullable(this.scala);
     }
 
+    /**
+     * if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
+     * 
+     */
     @Import(name="sparkVersion")
     private @Nullable Output<String> sparkVersion;
 
+    /**
+     * @return if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
+     * 
+     */
     public Optional<Output<String>> sparkVersion() {
         return Optional.ofNullable(this.sparkVersion);
     }
@@ -151,34 +231,72 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetSparkVersionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param beta if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder beta(@Nullable Output<Boolean> beta) {
             $.beta = beta;
             return this;
         }
 
+        /**
+         * @param beta if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder beta(Boolean beta) {
             return beta(Output.of(beta));
         }
 
+        /**
+         * @param genomics if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder genomics(@Nullable Output<Boolean> genomics) {
             $.genomics = genomics;
             return this;
         }
 
+        /**
+         * @param genomics if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder genomics(Boolean genomics) {
             return genomics(Output.of(genomics));
         }
 
+        /**
+         * @param gpu if we should limit the search only to runtimes that support GPUs. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpu(@Nullable Output<Boolean> gpu) {
             $.gpu = gpu;
             return this;
         }
 
+        /**
+         * @param gpu if we should limit the search only to runtimes that support GPUs. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpu(Boolean gpu) {
             return gpu(Output.of(gpu));
         }
 
         /**
+         * @param graviton if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
+         * 
          * @return builder
          * 
          * @deprecated
@@ -192,6 +310,8 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param graviton if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
+         * 
          * @return builder
          * 
          * @deprecated
@@ -203,43 +323,93 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
             return graviton(Output.of(graviton));
         }
 
+        /**
+         * @param id Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
+        /**
+         * @param latest if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latest(@Nullable Output<Boolean> latest) {
             $.latest = latest;
             return this;
         }
 
+        /**
+         * @param latest if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latest(Boolean latest) {
             return latest(Output.of(latest));
         }
 
+        /**
+         * @param longTermSupport if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder longTermSupport(@Nullable Output<Boolean> longTermSupport) {
             $.longTermSupport = longTermSupport;
             return this;
         }
 
+        /**
+         * @param longTermSupport if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder longTermSupport(Boolean longTermSupport) {
             return longTermSupport(Output.of(longTermSupport));
         }
 
+        /**
+         * @param ml if we should limit the search only to ML runtimes. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ml(@Nullable Output<Boolean> ml) {
             $.ml = ml;
             return this;
         }
 
+        /**
+         * @param ml if we should limit the search only to ML runtimes. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ml(Boolean ml) {
             return ml(Output.of(ml));
         }
 
         /**
+         * @param photon if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
+         * 
          * @return builder
          * 
          * @deprecated
@@ -253,6 +423,8 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param photon if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
+         * 
          * @return builder
          * 
          * @deprecated
@@ -264,20 +436,44 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
             return photon(Output.of(photon));
         }
 
+        /**
+         * @param scala if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scala(@Nullable Output<String> scala) {
             $.scala = scala;
             return this;
         }
 
+        /**
+         * @param scala if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scala(String scala) {
             return scala(Output.of(scala));
         }
 
+        /**
+         * @param sparkVersion if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sparkVersion(@Nullable Output<String> sparkVersion) {
             $.sparkVersion = sparkVersion;
             return this;
         }
 
+        /**
+         * @param sparkVersion if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sparkVersion(String sparkVersion) {
             return sparkVersion(Output.of(sparkVersion));
         }

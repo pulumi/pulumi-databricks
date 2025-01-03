@@ -17,16 +17,32 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
 
     public static final GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs Empty = new GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs();
 
+    /**
+     * A function that is dependent on a SQL object:
+     * 
+     */
     @Import(name="functions")
     private @Nullable Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs>> functions;
 
+    /**
+     * @return A function that is dependent on a SQL object:
+     * 
+     */
     public Optional<Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs>>> functions() {
         return Optional.ofNullable(this.functions);
     }
 
+    /**
+     * A table that is dependent on a SQL object
+     * 
+     */
     @Import(name="tables")
     private @Nullable Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs>> tables;
 
+    /**
+     * @return A table that is dependent on a SQL object
+     * 
+     */
     public Optional<Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs>>> tables() {
         return Optional.ofNullable(this.tables);
     }
@@ -56,28 +72,64 @@ public final class GetRegisteredModelVersionsModelVersionModelVersionDependencyD
             $ = new GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param functions A function that is dependent on a SQL object:
+         * 
+         * @return builder
+         * 
+         */
         public Builder functions(@Nullable Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs>> functions) {
             $.functions = functions;
             return this;
         }
 
+        /**
+         * @param functions A function that is dependent on a SQL object:
+         * 
+         * @return builder
+         * 
+         */
         public Builder functions(List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs> functions) {
             return functions(Output.of(functions));
         }
 
+        /**
+         * @param functions A function that is dependent on a SQL object:
+         * 
+         * @return builder
+         * 
+         */
         public Builder functions(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs... functions) {
             return functions(List.of(functions));
         }
 
+        /**
+         * @param tables A table that is dependent on a SQL object
+         * 
+         * @return builder
+         * 
+         */
         public Builder tables(@Nullable Output<List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs>> tables) {
             $.tables = tables;
             return this;
         }
 
+        /**
+         * @param tables A table that is dependent on a SQL object
+         * 
+         * @return builder
+         * 
+         */
         public Builder tables(List<GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs> tables) {
             return tables(Output.of(tables));
         }
 
+        /**
+         * @param tables A table that is dependent on a SQL object
+         * 
+         * @return builder
+         * 
+         */
         public Builder tables(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs... tables) {
             return tables(List.of(tables));
         }

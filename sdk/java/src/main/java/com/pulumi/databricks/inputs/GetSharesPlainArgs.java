@@ -15,9 +15,17 @@ public final class GetSharesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSharesPlainArgs Empty = new GetSharesPlainArgs();
 
+    /**
+     * list of databricks.Share names.
+     * 
+     */
     @Import(name="shares")
     private @Nullable List<String> shares;
 
+    /**
+     * @return list of databricks.Share names.
+     * 
+     */
     public Optional<List<String>> shares() {
         return Optional.ofNullable(this.shares);
     }
@@ -46,11 +54,23 @@ public final class GetSharesPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetSharesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param shares list of databricks.Share names.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shares(@Nullable List<String> shares) {
             $.shares = shares;
             return this;
         }
 
+        /**
+         * @param shares list of databricks.Share names.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shares(String... shares) {
             return shares(List.of(shares));
         }

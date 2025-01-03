@@ -14,22 +14,35 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type GetAppApp struct {
-	ActiveDeployment         GetAppAppActiveDeployment  `pulumi:"activeDeployment"`
-	AppStatus                GetAppAppAppStatus         `pulumi:"appStatus"`
-	ComputeStatus            GetAppAppComputeStatus     `pulumi:"computeStatus"`
-	CreateTime               string                     `pulumi:"createTime"`
-	Creator                  string                     `pulumi:"creator"`
-	DefaultSourceCodePath    string                     `pulumi:"defaultSourceCodePath"`
-	Description              *string                    `pulumi:"description"`
-	Name                     string                     `pulumi:"name"`
-	PendingDeployment        GetAppAppPendingDeployment `pulumi:"pendingDeployment"`
-	Resources                []GetAppAppResource        `pulumi:"resources"`
-	ServicePrincipalClientId string                     `pulumi:"servicePrincipalClientId"`
-	ServicePrincipalId       int                        `pulumi:"servicePrincipalId"`
-	ServicePrincipalName     string                     `pulumi:"servicePrincipalName"`
-	UpdateTime               string                     `pulumi:"updateTime"`
-	Updater                  string                     `pulumi:"updater"`
-	Url                      string                     `pulumi:"url"`
+	ActiveDeployment GetAppAppActiveDeployment `pulumi:"activeDeployment"`
+	// attribute
+	AppStatus GetAppAppAppStatus `pulumi:"appStatus"`
+	// attribute
+	ComputeStatus GetAppAppComputeStatus `pulumi:"computeStatus"`
+	// The creation time of the app.
+	CreateTime string `pulumi:"createTime"`
+	// The email of the user that created the app.
+	Creator string `pulumi:"creator"`
+	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+	DefaultSourceCodePath string `pulumi:"defaultSourceCodePath"`
+	// The description of the resource.
+	Description *string `pulumi:"description"`
+	// The name of the app.
+	Name              string                     `pulumi:"name"`
+	PendingDeployment GetAppAppPendingDeployment `pulumi:"pendingDeployment"`
+	// A list of resources that the app have access to.
+	Resources                []GetAppAppResource `pulumi:"resources"`
+	ServicePrincipalClientId string              `pulumi:"servicePrincipalClientId"`
+	// id of the app service principal
+	ServicePrincipalId int `pulumi:"servicePrincipalId"`
+	// name of the app service principal
+	ServicePrincipalName string `pulumi:"servicePrincipalName"`
+	// The update time of the app.
+	UpdateTime string `pulumi:"updateTime"`
+	// The email of the user that last updated the app.
+	Updater string `pulumi:"updater"`
+	// The URL of the app once it is deployed.
+	Url string `pulumi:"url"`
 }
 
 // GetAppAppInput is an input type that accepts GetAppAppArgs and GetAppAppOutput values.
@@ -44,22 +57,35 @@ type GetAppAppInput interface {
 }
 
 type GetAppAppArgs struct {
-	ActiveDeployment         GetAppAppActiveDeploymentInput  `pulumi:"activeDeployment"`
-	AppStatus                GetAppAppAppStatusInput         `pulumi:"appStatus"`
-	ComputeStatus            GetAppAppComputeStatusInput     `pulumi:"computeStatus"`
-	CreateTime               pulumi.StringInput              `pulumi:"createTime"`
-	Creator                  pulumi.StringInput              `pulumi:"creator"`
-	DefaultSourceCodePath    pulumi.StringInput              `pulumi:"defaultSourceCodePath"`
-	Description              pulumi.StringPtrInput           `pulumi:"description"`
-	Name                     pulumi.StringInput              `pulumi:"name"`
-	PendingDeployment        GetAppAppPendingDeploymentInput `pulumi:"pendingDeployment"`
-	Resources                GetAppAppResourceArrayInput     `pulumi:"resources"`
-	ServicePrincipalClientId pulumi.StringInput              `pulumi:"servicePrincipalClientId"`
-	ServicePrincipalId       pulumi.IntInput                 `pulumi:"servicePrincipalId"`
-	ServicePrincipalName     pulumi.StringInput              `pulumi:"servicePrincipalName"`
-	UpdateTime               pulumi.StringInput              `pulumi:"updateTime"`
-	Updater                  pulumi.StringInput              `pulumi:"updater"`
-	Url                      pulumi.StringInput              `pulumi:"url"`
+	ActiveDeployment GetAppAppActiveDeploymentInput `pulumi:"activeDeployment"`
+	// attribute
+	AppStatus GetAppAppAppStatusInput `pulumi:"appStatus"`
+	// attribute
+	ComputeStatus GetAppAppComputeStatusInput `pulumi:"computeStatus"`
+	// The creation time of the app.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The email of the user that created the app.
+	Creator pulumi.StringInput `pulumi:"creator"`
+	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+	DefaultSourceCodePath pulumi.StringInput `pulumi:"defaultSourceCodePath"`
+	// The description of the resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The name of the app.
+	Name              pulumi.StringInput              `pulumi:"name"`
+	PendingDeployment GetAppAppPendingDeploymentInput `pulumi:"pendingDeployment"`
+	// A list of resources that the app have access to.
+	Resources                GetAppAppResourceArrayInput `pulumi:"resources"`
+	ServicePrincipalClientId pulumi.StringInput          `pulumi:"servicePrincipalClientId"`
+	// id of the app service principal
+	ServicePrincipalId pulumi.IntInput `pulumi:"servicePrincipalId"`
+	// name of the app service principal
+	ServicePrincipalName pulumi.StringInput `pulumi:"servicePrincipalName"`
+	// The update time of the app.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// The email of the user that last updated the app.
+	Updater pulumi.StringInput `pulumi:"updater"`
+	// The URL of the app once it is deployed.
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetAppAppArgs) ElementType() reflect.Type {
@@ -92,30 +118,37 @@ func (o GetAppAppOutput) ActiveDeployment() GetAppAppActiveDeploymentOutput {
 	return o.ApplyT(func(v GetAppApp) GetAppAppActiveDeployment { return v.ActiveDeployment }).(GetAppAppActiveDeploymentOutput)
 }
 
+// attribute
 func (o GetAppAppOutput) AppStatus() GetAppAppAppStatusOutput {
 	return o.ApplyT(func(v GetAppApp) GetAppAppAppStatus { return v.AppStatus }).(GetAppAppAppStatusOutput)
 }
 
+// attribute
 func (o GetAppAppOutput) ComputeStatus() GetAppAppComputeStatusOutput {
 	return o.ApplyT(func(v GetAppApp) GetAppAppComputeStatus { return v.ComputeStatus }).(GetAppAppComputeStatusOutput)
 }
 
+// The creation time of the app.
 func (o GetAppAppOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppApp) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The email of the user that created the app.
 func (o GetAppAppOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppApp) string { return v.Creator }).(pulumi.StringOutput)
 }
 
+// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 func (o GetAppAppOutput) DefaultSourceCodePath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppApp) string { return v.DefaultSourceCodePath }).(pulumi.StringOutput)
 }
 
+// The description of the resource.
 func (o GetAppAppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppApp) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The name of the app.
 func (o GetAppAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppApp) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -124,6 +157,7 @@ func (o GetAppAppOutput) PendingDeployment() GetAppAppPendingDeploymentOutput {
 	return o.ApplyT(func(v GetAppApp) GetAppAppPendingDeployment { return v.PendingDeployment }).(GetAppAppPendingDeploymentOutput)
 }
 
+// A list of resources that the app have access to.
 func (o GetAppAppOutput) Resources() GetAppAppResourceArrayOutput {
 	return o.ApplyT(func(v GetAppApp) []GetAppAppResource { return v.Resources }).(GetAppAppResourceArrayOutput)
 }
@@ -132,35 +166,43 @@ func (o GetAppAppOutput) ServicePrincipalClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppApp) string { return v.ServicePrincipalClientId }).(pulumi.StringOutput)
 }
 
+// id of the app service principal
 func (o GetAppAppOutput) ServicePrincipalId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppApp) int { return v.ServicePrincipalId }).(pulumi.IntOutput)
 }
 
+// name of the app service principal
 func (o GetAppAppOutput) ServicePrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppApp) string { return v.ServicePrincipalName }).(pulumi.StringOutput)
 }
 
+// The update time of the app.
 func (o GetAppAppOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppApp) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// The email of the user that last updated the app.
 func (o GetAppAppOutput) Updater() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppApp) string { return v.Updater }).(pulumi.StringOutput)
 }
 
+// The URL of the app once it is deployed.
 func (o GetAppAppOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppApp) string { return v.Url }).(pulumi.StringOutput)
 }
 
 type GetAppAppActiveDeployment struct {
-	CreateTime          string                                       `pulumi:"createTime"`
+	// The creation time of the app.
+	CreateTime string `pulumi:"createTime"`
+	// The email of the user that created the app.
 	Creator             string                                       `pulumi:"creator"`
 	DeploymentArtifacts GetAppAppActiveDeploymentDeploymentArtifacts `pulumi:"deploymentArtifacts"`
 	DeploymentId        *string                                      `pulumi:"deploymentId"`
 	Mode                *string                                      `pulumi:"mode"`
 	SourceCodePath      *string                                      `pulumi:"sourceCodePath"`
 	Status              GetAppAppActiveDeploymentStatus              `pulumi:"status"`
-	UpdateTime          string                                       `pulumi:"updateTime"`
+	// The update time of the app.
+	UpdateTime string `pulumi:"updateTime"`
 }
 
 // GetAppAppActiveDeploymentInput is an input type that accepts GetAppAppActiveDeploymentArgs and GetAppAppActiveDeploymentOutput values.
@@ -175,14 +217,17 @@ type GetAppAppActiveDeploymentInput interface {
 }
 
 type GetAppAppActiveDeploymentArgs struct {
-	CreateTime          pulumi.StringInput                                `pulumi:"createTime"`
+	// The creation time of the app.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The email of the user that created the app.
 	Creator             pulumi.StringInput                                `pulumi:"creator"`
 	DeploymentArtifacts GetAppAppActiveDeploymentDeploymentArtifactsInput `pulumi:"deploymentArtifacts"`
 	DeploymentId        pulumi.StringPtrInput                             `pulumi:"deploymentId"`
 	Mode                pulumi.StringPtrInput                             `pulumi:"mode"`
 	SourceCodePath      pulumi.StringPtrInput                             `pulumi:"sourceCodePath"`
 	Status              GetAppAppActiveDeploymentStatusInput              `pulumi:"status"`
-	UpdateTime          pulumi.StringInput                                `pulumi:"updateTime"`
+	// The update time of the app.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
 
 func (GetAppAppActiveDeploymentArgs) ElementType() reflect.Type {
@@ -211,10 +256,12 @@ func (o GetAppAppActiveDeploymentOutput) ToGetAppAppActiveDeploymentOutputWithCo
 	return o
 }
 
+// The creation time of the app.
 func (o GetAppAppActiveDeploymentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppActiveDeployment) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The email of the user that created the app.
 func (o GetAppAppActiveDeploymentOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppActiveDeployment) string { return v.Creator }).(pulumi.StringOutput)
 }
@@ -241,6 +288,7 @@ func (o GetAppAppActiveDeploymentOutput) Status() GetAppAppActiveDeploymentStatu
 	return o.ApplyT(func(v GetAppAppActiveDeployment) GetAppAppActiveDeploymentStatus { return v.Status }).(GetAppAppActiveDeploymentStatusOutput)
 }
 
+// The update time of the app.
 func (o GetAppAppActiveDeploymentOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppActiveDeployment) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
@@ -295,8 +343,10 @@ func (o GetAppAppActiveDeploymentDeploymentArtifactsOutput) SourceCodePath() pul
 }
 
 type GetAppAppActiveDeploymentStatus struct {
+	// Application status message
 	Message string `pulumi:"message"`
-	State   string `pulumi:"state"`
+	// State of the application.
+	State string `pulumi:"state"`
 }
 
 // GetAppAppActiveDeploymentStatusInput is an input type that accepts GetAppAppActiveDeploymentStatusArgs and GetAppAppActiveDeploymentStatusOutput values.
@@ -311,8 +361,10 @@ type GetAppAppActiveDeploymentStatusInput interface {
 }
 
 type GetAppAppActiveDeploymentStatusArgs struct {
+	// Application status message
 	Message pulumi.StringInput `pulumi:"message"`
-	State   pulumi.StringInput `pulumi:"state"`
+	// State of the application.
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetAppAppActiveDeploymentStatusArgs) ElementType() reflect.Type {
@@ -341,17 +393,21 @@ func (o GetAppAppActiveDeploymentStatusOutput) ToGetAppAppActiveDeploymentStatus
 	return o
 }
 
+// Application status message
 func (o GetAppAppActiveDeploymentStatusOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppActiveDeploymentStatus) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// State of the application.
 func (o GetAppAppActiveDeploymentStatusOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppActiveDeploymentStatus) string { return v.State }).(pulumi.StringOutput)
 }
 
 type GetAppAppAppStatus struct {
+	// Application status message
 	Message string `pulumi:"message"`
-	State   string `pulumi:"state"`
+	// State of the application.
+	State string `pulumi:"state"`
 }
 
 // GetAppAppAppStatusInput is an input type that accepts GetAppAppAppStatusArgs and GetAppAppAppStatusOutput values.
@@ -366,8 +422,10 @@ type GetAppAppAppStatusInput interface {
 }
 
 type GetAppAppAppStatusArgs struct {
+	// Application status message
 	Message pulumi.StringInput `pulumi:"message"`
-	State   pulumi.StringInput `pulumi:"state"`
+	// State of the application.
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetAppAppAppStatusArgs) ElementType() reflect.Type {
@@ -396,17 +454,21 @@ func (o GetAppAppAppStatusOutput) ToGetAppAppAppStatusOutputWithContext(ctx cont
 	return o
 }
 
+// Application status message
 func (o GetAppAppAppStatusOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppAppStatus) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// State of the application.
 func (o GetAppAppAppStatusOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppAppStatus) string { return v.State }).(pulumi.StringOutput)
 }
 
 type GetAppAppComputeStatus struct {
+	// Application status message
 	Message string `pulumi:"message"`
-	State   string `pulumi:"state"`
+	// State of the application.
+	State string `pulumi:"state"`
 }
 
 // GetAppAppComputeStatusInput is an input type that accepts GetAppAppComputeStatusArgs and GetAppAppComputeStatusOutput values.
@@ -421,8 +483,10 @@ type GetAppAppComputeStatusInput interface {
 }
 
 type GetAppAppComputeStatusArgs struct {
+	// Application status message
 	Message pulumi.StringInput `pulumi:"message"`
-	State   pulumi.StringInput `pulumi:"state"`
+	// State of the application.
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetAppAppComputeStatusArgs) ElementType() reflect.Type {
@@ -451,23 +515,28 @@ func (o GetAppAppComputeStatusOutput) ToGetAppAppComputeStatusOutputWithContext(
 	return o
 }
 
+// Application status message
 func (o GetAppAppComputeStatusOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppComputeStatus) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// State of the application.
 func (o GetAppAppComputeStatusOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppComputeStatus) string { return v.State }).(pulumi.StringOutput)
 }
 
 type GetAppAppPendingDeployment struct {
-	CreateTime          string                                        `pulumi:"createTime"`
+	// The creation time of the app.
+	CreateTime string `pulumi:"createTime"`
+	// The email of the user that created the app.
 	Creator             string                                        `pulumi:"creator"`
 	DeploymentArtifacts GetAppAppPendingDeploymentDeploymentArtifacts `pulumi:"deploymentArtifacts"`
 	DeploymentId        *string                                       `pulumi:"deploymentId"`
 	Mode                *string                                       `pulumi:"mode"`
 	SourceCodePath      *string                                       `pulumi:"sourceCodePath"`
 	Status              GetAppAppPendingDeploymentStatus              `pulumi:"status"`
-	UpdateTime          string                                        `pulumi:"updateTime"`
+	// The update time of the app.
+	UpdateTime string `pulumi:"updateTime"`
 }
 
 // GetAppAppPendingDeploymentInput is an input type that accepts GetAppAppPendingDeploymentArgs and GetAppAppPendingDeploymentOutput values.
@@ -482,14 +551,17 @@ type GetAppAppPendingDeploymentInput interface {
 }
 
 type GetAppAppPendingDeploymentArgs struct {
-	CreateTime          pulumi.StringInput                                 `pulumi:"createTime"`
+	// The creation time of the app.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The email of the user that created the app.
 	Creator             pulumi.StringInput                                 `pulumi:"creator"`
 	DeploymentArtifacts GetAppAppPendingDeploymentDeploymentArtifactsInput `pulumi:"deploymentArtifacts"`
 	DeploymentId        pulumi.StringPtrInput                              `pulumi:"deploymentId"`
 	Mode                pulumi.StringPtrInput                              `pulumi:"mode"`
 	SourceCodePath      pulumi.StringPtrInput                              `pulumi:"sourceCodePath"`
 	Status              GetAppAppPendingDeploymentStatusInput              `pulumi:"status"`
-	UpdateTime          pulumi.StringInput                                 `pulumi:"updateTime"`
+	// The update time of the app.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
 
 func (GetAppAppPendingDeploymentArgs) ElementType() reflect.Type {
@@ -518,10 +590,12 @@ func (o GetAppAppPendingDeploymentOutput) ToGetAppAppPendingDeploymentOutputWith
 	return o
 }
 
+// The creation time of the app.
 func (o GetAppAppPendingDeploymentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppPendingDeployment) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The email of the user that created the app.
 func (o GetAppAppPendingDeploymentOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppPendingDeployment) string { return v.Creator }).(pulumi.StringOutput)
 }
@@ -548,6 +622,7 @@ func (o GetAppAppPendingDeploymentOutput) Status() GetAppAppPendingDeploymentSta
 	return o.ApplyT(func(v GetAppAppPendingDeployment) GetAppAppPendingDeploymentStatus { return v.Status }).(GetAppAppPendingDeploymentStatusOutput)
 }
 
+// The update time of the app.
 func (o GetAppAppPendingDeploymentOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppPendingDeployment) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
@@ -602,8 +677,10 @@ func (o GetAppAppPendingDeploymentDeploymentArtifactsOutput) SourceCodePath() pu
 }
 
 type GetAppAppPendingDeploymentStatus struct {
+	// Application status message
 	Message string `pulumi:"message"`
-	State   string `pulumi:"state"`
+	// State of the application.
+	State string `pulumi:"state"`
 }
 
 // GetAppAppPendingDeploymentStatusInput is an input type that accepts GetAppAppPendingDeploymentStatusArgs and GetAppAppPendingDeploymentStatusOutput values.
@@ -618,8 +695,10 @@ type GetAppAppPendingDeploymentStatusInput interface {
 }
 
 type GetAppAppPendingDeploymentStatusArgs struct {
+	// Application status message
 	Message pulumi.StringInput `pulumi:"message"`
-	State   pulumi.StringInput `pulumi:"state"`
+	// State of the application.
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetAppAppPendingDeploymentStatusArgs) ElementType() reflect.Type {
@@ -648,21 +727,29 @@ func (o GetAppAppPendingDeploymentStatusOutput) ToGetAppAppPendingDeploymentStat
 	return o
 }
 
+// Application status message
 func (o GetAppAppPendingDeploymentStatusOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppPendingDeploymentStatus) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// State of the application.
 func (o GetAppAppPendingDeploymentStatusOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppPendingDeploymentStatus) string { return v.State }).(pulumi.StringOutput)
 }
 
 type GetAppAppResource struct {
-	Description     *string                           `pulumi:"description"`
-	Job             *GetAppAppResourceJob             `pulumi:"job"`
-	Name            string                            `pulumi:"name"`
-	Secret          *GetAppAppResourceSecret          `pulumi:"secret"`
+	// The description of the resource.
+	Description *string `pulumi:"description"`
+	// attribute
+	Job *GetAppAppResourceJob `pulumi:"job"`
+	// The name of the app.
+	Name string `pulumi:"name"`
+	// attribute
+	Secret *GetAppAppResourceSecret `pulumi:"secret"`
+	// attribute
 	ServingEndpoint *GetAppAppResourceServingEndpoint `pulumi:"servingEndpoint"`
-	SqlWarehouse    *GetAppAppResourceSqlWarehouse    `pulumi:"sqlWarehouse"`
+	// attribute
+	SqlWarehouse *GetAppAppResourceSqlWarehouse `pulumi:"sqlWarehouse"`
 }
 
 // GetAppAppResourceInput is an input type that accepts GetAppAppResourceArgs and GetAppAppResourceOutput values.
@@ -677,12 +764,18 @@ type GetAppAppResourceInput interface {
 }
 
 type GetAppAppResourceArgs struct {
-	Description     pulumi.StringPtrInput                    `pulumi:"description"`
-	Job             GetAppAppResourceJobPtrInput             `pulumi:"job"`
-	Name            pulumi.StringInput                       `pulumi:"name"`
-	Secret          GetAppAppResourceSecretPtrInput          `pulumi:"secret"`
+	// The description of the resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// attribute
+	Job GetAppAppResourceJobPtrInput `pulumi:"job"`
+	// The name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// attribute
+	Secret GetAppAppResourceSecretPtrInput `pulumi:"secret"`
+	// attribute
 	ServingEndpoint GetAppAppResourceServingEndpointPtrInput `pulumi:"servingEndpoint"`
-	SqlWarehouse    GetAppAppResourceSqlWarehousePtrInput    `pulumi:"sqlWarehouse"`
+	// attribute
+	SqlWarehouse GetAppAppResourceSqlWarehousePtrInput `pulumi:"sqlWarehouse"`
 }
 
 func (GetAppAppResourceArgs) ElementType() reflect.Type {
@@ -736,26 +829,32 @@ func (o GetAppAppResourceOutput) ToGetAppAppResourceOutputWithContext(ctx contex
 	return o
 }
 
+// The description of the resource.
 func (o GetAppAppResourceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppAppResource) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// attribute
 func (o GetAppAppResourceOutput) Job() GetAppAppResourceJobPtrOutput {
 	return o.ApplyT(func(v GetAppAppResource) *GetAppAppResourceJob { return v.Job }).(GetAppAppResourceJobPtrOutput)
 }
 
+// The name of the app.
 func (o GetAppAppResourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppResource) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// attribute
 func (o GetAppAppResourceOutput) Secret() GetAppAppResourceSecretPtrOutput {
 	return o.ApplyT(func(v GetAppAppResource) *GetAppAppResourceSecret { return v.Secret }).(GetAppAppResourceSecretPtrOutput)
 }
 
+// attribute
 func (o GetAppAppResourceOutput) ServingEndpoint() GetAppAppResourceServingEndpointPtrOutput {
 	return o.ApplyT(func(v GetAppAppResource) *GetAppAppResourceServingEndpoint { return v.ServingEndpoint }).(GetAppAppResourceServingEndpointPtrOutput)
 }
 
+// attribute
 func (o GetAppAppResourceOutput) SqlWarehouse() GetAppAppResourceSqlWarehousePtrOutput {
 	return o.ApplyT(func(v GetAppAppResource) *GetAppAppResourceSqlWarehouse { return v.SqlWarehouse }).(GetAppAppResourceSqlWarehousePtrOutput)
 }
@@ -781,7 +880,9 @@ func (o GetAppAppResourceArrayOutput) Index(i pulumi.IntInput) GetAppAppResource
 }
 
 type GetAppAppResourceJob struct {
-	Id         string `pulumi:"id"`
+	// Id of the job to grant permission on.
+	Id string `pulumi:"id"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission string `pulumi:"permission"`
 }
 
@@ -797,7 +898,9 @@ type GetAppAppResourceJobInput interface {
 }
 
 type GetAppAppResourceJobArgs struct {
-	Id         pulumi.StringInput `pulumi:"id"`
+	// Id of the job to grant permission on.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission pulumi.StringInput `pulumi:"permission"`
 }
 
@@ -878,10 +981,12 @@ func (o GetAppAppResourceJobOutput) ToGetAppAppResourceJobPtrOutputWithContext(c
 	}).(GetAppAppResourceJobPtrOutput)
 }
 
+// Id of the job to grant permission on.
 func (o GetAppAppResourceJobOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppResourceJob) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppAppResourceJobOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppResourceJob) string { return v.Permission }).(pulumi.StringOutput)
 }
@@ -910,6 +1015,7 @@ func (o GetAppAppResourceJobPtrOutput) Elem() GetAppAppResourceJobOutput {
 	}).(GetAppAppResourceJobOutput)
 }
 
+// Id of the job to grant permission on.
 func (o GetAppAppResourceJobPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppAppResourceJob) *string {
 		if v == nil {
@@ -919,6 +1025,7 @@ func (o GetAppAppResourceJobPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppAppResourceJobPtrOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppAppResourceJob) *string {
 		if v == nil {
@@ -929,9 +1036,12 @@ func (o GetAppAppResourceJobPtrOutput) Permission() pulumi.StringPtrOutput {
 }
 
 type GetAppAppResourceSecret struct {
-	Key        string `pulumi:"key"`
+	// Key of the secret to grant permission on.
+	Key string `pulumi:"key"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission string `pulumi:"permission"`
-	Scope      string `pulumi:"scope"`
+	// Scope of the secret to grant permission on.
+	Scope string `pulumi:"scope"`
 }
 
 // GetAppAppResourceSecretInput is an input type that accepts GetAppAppResourceSecretArgs and GetAppAppResourceSecretOutput values.
@@ -946,9 +1056,12 @@ type GetAppAppResourceSecretInput interface {
 }
 
 type GetAppAppResourceSecretArgs struct {
-	Key        pulumi.StringInput `pulumi:"key"`
+	// Key of the secret to grant permission on.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission pulumi.StringInput `pulumi:"permission"`
-	Scope      pulumi.StringInput `pulumi:"scope"`
+	// Scope of the secret to grant permission on.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (GetAppAppResourceSecretArgs) ElementType() reflect.Type {
@@ -1028,14 +1141,17 @@ func (o GetAppAppResourceSecretOutput) ToGetAppAppResourceSecretPtrOutputWithCon
 	}).(GetAppAppResourceSecretPtrOutput)
 }
 
+// Key of the secret to grant permission on.
 func (o GetAppAppResourceSecretOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppResourceSecret) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppAppResourceSecretOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppResourceSecret) string { return v.Permission }).(pulumi.StringOutput)
 }
 
+// Scope of the secret to grant permission on.
 func (o GetAppAppResourceSecretOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppResourceSecret) string { return v.Scope }).(pulumi.StringOutput)
 }
@@ -1064,6 +1180,7 @@ func (o GetAppAppResourceSecretPtrOutput) Elem() GetAppAppResourceSecretOutput {
 	}).(GetAppAppResourceSecretOutput)
 }
 
+// Key of the secret to grant permission on.
 func (o GetAppAppResourceSecretPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppAppResourceSecret) *string {
 		if v == nil {
@@ -1073,6 +1190,7 @@ func (o GetAppAppResourceSecretPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppAppResourceSecretPtrOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppAppResourceSecret) *string {
 		if v == nil {
@@ -1082,6 +1200,7 @@ func (o GetAppAppResourceSecretPtrOutput) Permission() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Scope of the secret to grant permission on.
 func (o GetAppAppResourceSecretPtrOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppAppResourceSecret) *string {
 		if v == nil {
@@ -1092,7 +1211,9 @@ func (o GetAppAppResourceSecretPtrOutput) Scope() pulumi.StringPtrOutput {
 }
 
 type GetAppAppResourceServingEndpoint struct {
-	Name       string `pulumi:"name"`
+	// The name of the app.
+	Name string `pulumi:"name"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission string `pulumi:"permission"`
 }
 
@@ -1108,7 +1229,9 @@ type GetAppAppResourceServingEndpointInput interface {
 }
 
 type GetAppAppResourceServingEndpointArgs struct {
-	Name       pulumi.StringInput `pulumi:"name"`
+	// The name of the app.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission pulumi.StringInput `pulumi:"permission"`
 }
 
@@ -1189,10 +1312,12 @@ func (o GetAppAppResourceServingEndpointOutput) ToGetAppAppResourceServingEndpoi
 	}).(GetAppAppResourceServingEndpointPtrOutput)
 }
 
+// The name of the app.
 func (o GetAppAppResourceServingEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppResourceServingEndpoint) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppAppResourceServingEndpointOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppResourceServingEndpoint) string { return v.Permission }).(pulumi.StringOutput)
 }
@@ -1221,6 +1346,7 @@ func (o GetAppAppResourceServingEndpointPtrOutput) Elem() GetAppAppResourceServi
 	}).(GetAppAppResourceServingEndpointOutput)
 }
 
+// The name of the app.
 func (o GetAppAppResourceServingEndpointPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppAppResourceServingEndpoint) *string {
 		if v == nil {
@@ -1230,6 +1356,7 @@ func (o GetAppAppResourceServingEndpointPtrOutput) Name() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppAppResourceServingEndpointPtrOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppAppResourceServingEndpoint) *string {
 		if v == nil {
@@ -1240,7 +1367,9 @@ func (o GetAppAppResourceServingEndpointPtrOutput) Permission() pulumi.StringPtr
 }
 
 type GetAppAppResourceSqlWarehouse struct {
-	Id         string `pulumi:"id"`
+	// Id of the job to grant permission on.
+	Id string `pulumi:"id"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission string `pulumi:"permission"`
 }
 
@@ -1256,7 +1385,9 @@ type GetAppAppResourceSqlWarehouseInput interface {
 }
 
 type GetAppAppResourceSqlWarehouseArgs struct {
-	Id         pulumi.StringInput `pulumi:"id"`
+	// Id of the job to grant permission on.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission pulumi.StringInput `pulumi:"permission"`
 }
 
@@ -1337,10 +1468,12 @@ func (o GetAppAppResourceSqlWarehouseOutput) ToGetAppAppResourceSqlWarehousePtrO
 	}).(GetAppAppResourceSqlWarehousePtrOutput)
 }
 
+// Id of the job to grant permission on.
 func (o GetAppAppResourceSqlWarehouseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppResourceSqlWarehouse) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppAppResourceSqlWarehouseOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppAppResourceSqlWarehouse) string { return v.Permission }).(pulumi.StringOutput)
 }
@@ -1369,6 +1502,7 @@ func (o GetAppAppResourceSqlWarehousePtrOutput) Elem() GetAppAppResourceSqlWareh
 	}).(GetAppAppResourceSqlWarehouseOutput)
 }
 
+// Id of the job to grant permission on.
 func (o GetAppAppResourceSqlWarehousePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppAppResourceSqlWarehouse) *string {
 		if v == nil {
@@ -1378,6 +1512,7 @@ func (o GetAppAppResourceSqlWarehousePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppAppResourceSqlWarehousePtrOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppAppResourceSqlWarehouse) *string {
 		if v == nil {
@@ -1388,22 +1523,35 @@ func (o GetAppAppResourceSqlWarehousePtrOutput) Permission() pulumi.StringPtrOut
 }
 
 type GetAppsApp struct {
-	ActiveDeployment         GetAppsAppActiveDeployment  `pulumi:"activeDeployment"`
-	AppStatus                GetAppsAppAppStatus         `pulumi:"appStatus"`
-	ComputeStatus            GetAppsAppComputeStatus     `pulumi:"computeStatus"`
-	CreateTime               string                      `pulumi:"createTime"`
-	Creator                  string                      `pulumi:"creator"`
-	DefaultSourceCodePath    string                      `pulumi:"defaultSourceCodePath"`
-	Description              *string                     `pulumi:"description"`
-	Name                     string                      `pulumi:"name"`
-	PendingDeployment        GetAppsAppPendingDeployment `pulumi:"pendingDeployment"`
-	Resources                []GetAppsAppResource        `pulumi:"resources"`
-	ServicePrincipalClientId string                      `pulumi:"servicePrincipalClientId"`
-	ServicePrincipalId       int                         `pulumi:"servicePrincipalId"`
-	ServicePrincipalName     string                      `pulumi:"servicePrincipalName"`
-	UpdateTime               string                      `pulumi:"updateTime"`
-	Updater                  string                      `pulumi:"updater"`
-	Url                      string                      `pulumi:"url"`
+	ActiveDeployment GetAppsAppActiveDeployment `pulumi:"activeDeployment"`
+	// attribute
+	AppStatus GetAppsAppAppStatus `pulumi:"appStatus"`
+	// attribute
+	ComputeStatus GetAppsAppComputeStatus `pulumi:"computeStatus"`
+	// The creation time of the app.
+	CreateTime string `pulumi:"createTime"`
+	// The email of the user that created the app.
+	Creator string `pulumi:"creator"`
+	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+	DefaultSourceCodePath string `pulumi:"defaultSourceCodePath"`
+	// The description of the resource.
+	Description *string `pulumi:"description"`
+	// Name of the serving endpoint to grant permission on.
+	Name              string                      `pulumi:"name"`
+	PendingDeployment GetAppsAppPendingDeployment `pulumi:"pendingDeployment"`
+	// A list of resources that the app have access to.
+	Resources                []GetAppsAppResource `pulumi:"resources"`
+	ServicePrincipalClientId string               `pulumi:"servicePrincipalClientId"`
+	// id of the app service principal
+	ServicePrincipalId int `pulumi:"servicePrincipalId"`
+	// name of the app service principal
+	ServicePrincipalName string `pulumi:"servicePrincipalName"`
+	// The update time of the app.
+	UpdateTime string `pulumi:"updateTime"`
+	// The email of the user that last updated the app.
+	Updater string `pulumi:"updater"`
+	// The URL of the app once it is deployed.
+	Url string `pulumi:"url"`
 }
 
 // GetAppsAppInput is an input type that accepts GetAppsAppArgs and GetAppsAppOutput values.
@@ -1418,22 +1566,35 @@ type GetAppsAppInput interface {
 }
 
 type GetAppsAppArgs struct {
-	ActiveDeployment         GetAppsAppActiveDeploymentInput  `pulumi:"activeDeployment"`
-	AppStatus                GetAppsAppAppStatusInput         `pulumi:"appStatus"`
-	ComputeStatus            GetAppsAppComputeStatusInput     `pulumi:"computeStatus"`
-	CreateTime               pulumi.StringInput               `pulumi:"createTime"`
-	Creator                  pulumi.StringInput               `pulumi:"creator"`
-	DefaultSourceCodePath    pulumi.StringInput               `pulumi:"defaultSourceCodePath"`
-	Description              pulumi.StringPtrInput            `pulumi:"description"`
-	Name                     pulumi.StringInput               `pulumi:"name"`
-	PendingDeployment        GetAppsAppPendingDeploymentInput `pulumi:"pendingDeployment"`
-	Resources                GetAppsAppResourceArrayInput     `pulumi:"resources"`
-	ServicePrincipalClientId pulumi.StringInput               `pulumi:"servicePrincipalClientId"`
-	ServicePrincipalId       pulumi.IntInput                  `pulumi:"servicePrincipalId"`
-	ServicePrincipalName     pulumi.StringInput               `pulumi:"servicePrincipalName"`
-	UpdateTime               pulumi.StringInput               `pulumi:"updateTime"`
-	Updater                  pulumi.StringInput               `pulumi:"updater"`
-	Url                      pulumi.StringInput               `pulumi:"url"`
+	ActiveDeployment GetAppsAppActiveDeploymentInput `pulumi:"activeDeployment"`
+	// attribute
+	AppStatus GetAppsAppAppStatusInput `pulumi:"appStatus"`
+	// attribute
+	ComputeStatus GetAppsAppComputeStatusInput `pulumi:"computeStatus"`
+	// The creation time of the app.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The email of the user that created the app.
+	Creator pulumi.StringInput `pulumi:"creator"`
+	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+	DefaultSourceCodePath pulumi.StringInput `pulumi:"defaultSourceCodePath"`
+	// The description of the resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the serving endpoint to grant permission on.
+	Name              pulumi.StringInput               `pulumi:"name"`
+	PendingDeployment GetAppsAppPendingDeploymentInput `pulumi:"pendingDeployment"`
+	// A list of resources that the app have access to.
+	Resources                GetAppsAppResourceArrayInput `pulumi:"resources"`
+	ServicePrincipalClientId pulumi.StringInput           `pulumi:"servicePrincipalClientId"`
+	// id of the app service principal
+	ServicePrincipalId pulumi.IntInput `pulumi:"servicePrincipalId"`
+	// name of the app service principal
+	ServicePrincipalName pulumi.StringInput `pulumi:"servicePrincipalName"`
+	// The update time of the app.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// The email of the user that last updated the app.
+	Updater pulumi.StringInput `pulumi:"updater"`
+	// The URL of the app once it is deployed.
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetAppsAppArgs) ElementType() reflect.Type {
@@ -1491,30 +1652,37 @@ func (o GetAppsAppOutput) ActiveDeployment() GetAppsAppActiveDeploymentOutput {
 	return o.ApplyT(func(v GetAppsApp) GetAppsAppActiveDeployment { return v.ActiveDeployment }).(GetAppsAppActiveDeploymentOutput)
 }
 
+// attribute
 func (o GetAppsAppOutput) AppStatus() GetAppsAppAppStatusOutput {
 	return o.ApplyT(func(v GetAppsApp) GetAppsAppAppStatus { return v.AppStatus }).(GetAppsAppAppStatusOutput)
 }
 
+// attribute
 func (o GetAppsAppOutput) ComputeStatus() GetAppsAppComputeStatusOutput {
 	return o.ApplyT(func(v GetAppsApp) GetAppsAppComputeStatus { return v.ComputeStatus }).(GetAppsAppComputeStatusOutput)
 }
 
+// The creation time of the app.
 func (o GetAppsAppOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsApp) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The email of the user that created the app.
 func (o GetAppsAppOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsApp) string { return v.Creator }).(pulumi.StringOutput)
 }
 
+// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 func (o GetAppsAppOutput) DefaultSourceCodePath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsApp) string { return v.DefaultSourceCodePath }).(pulumi.StringOutput)
 }
 
+// The description of the resource.
 func (o GetAppsAppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppsApp) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Name of the serving endpoint to grant permission on.
 func (o GetAppsAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsApp) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1523,6 +1691,7 @@ func (o GetAppsAppOutput) PendingDeployment() GetAppsAppPendingDeploymentOutput 
 	return o.ApplyT(func(v GetAppsApp) GetAppsAppPendingDeployment { return v.PendingDeployment }).(GetAppsAppPendingDeploymentOutput)
 }
 
+// A list of resources that the app have access to.
 func (o GetAppsAppOutput) Resources() GetAppsAppResourceArrayOutput {
 	return o.ApplyT(func(v GetAppsApp) []GetAppsAppResource { return v.Resources }).(GetAppsAppResourceArrayOutput)
 }
@@ -1531,22 +1700,27 @@ func (o GetAppsAppOutput) ServicePrincipalClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsApp) string { return v.ServicePrincipalClientId }).(pulumi.StringOutput)
 }
 
+// id of the app service principal
 func (o GetAppsAppOutput) ServicePrincipalId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppsApp) int { return v.ServicePrincipalId }).(pulumi.IntOutput)
 }
 
+// name of the app service principal
 func (o GetAppsAppOutput) ServicePrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsApp) string { return v.ServicePrincipalName }).(pulumi.StringOutput)
 }
 
+// The update time of the app.
 func (o GetAppsAppOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsApp) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// The email of the user that last updated the app.
 func (o GetAppsAppOutput) Updater() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsApp) string { return v.Updater }).(pulumi.StringOutput)
 }
 
+// The URL of the app once it is deployed.
 func (o GetAppsAppOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsApp) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -1572,14 +1746,17 @@ func (o GetAppsAppArrayOutput) Index(i pulumi.IntInput) GetAppsAppOutput {
 }
 
 type GetAppsAppActiveDeployment struct {
-	CreateTime          string                                        `pulumi:"createTime"`
+	// The creation time of the app.
+	CreateTime string `pulumi:"createTime"`
+	// The email of the user that created the app.
 	Creator             string                                        `pulumi:"creator"`
 	DeploymentArtifacts GetAppsAppActiveDeploymentDeploymentArtifacts `pulumi:"deploymentArtifacts"`
 	DeploymentId        *string                                       `pulumi:"deploymentId"`
 	Mode                *string                                       `pulumi:"mode"`
 	SourceCodePath      *string                                       `pulumi:"sourceCodePath"`
 	Status              GetAppsAppActiveDeploymentStatus              `pulumi:"status"`
-	UpdateTime          string                                        `pulumi:"updateTime"`
+	// The update time of the app.
+	UpdateTime string `pulumi:"updateTime"`
 }
 
 // GetAppsAppActiveDeploymentInput is an input type that accepts GetAppsAppActiveDeploymentArgs and GetAppsAppActiveDeploymentOutput values.
@@ -1594,14 +1771,17 @@ type GetAppsAppActiveDeploymentInput interface {
 }
 
 type GetAppsAppActiveDeploymentArgs struct {
-	CreateTime          pulumi.StringInput                                 `pulumi:"createTime"`
+	// The creation time of the app.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The email of the user that created the app.
 	Creator             pulumi.StringInput                                 `pulumi:"creator"`
 	DeploymentArtifacts GetAppsAppActiveDeploymentDeploymentArtifactsInput `pulumi:"deploymentArtifacts"`
 	DeploymentId        pulumi.StringPtrInput                              `pulumi:"deploymentId"`
 	Mode                pulumi.StringPtrInput                              `pulumi:"mode"`
 	SourceCodePath      pulumi.StringPtrInput                              `pulumi:"sourceCodePath"`
 	Status              GetAppsAppActiveDeploymentStatusInput              `pulumi:"status"`
-	UpdateTime          pulumi.StringInput                                 `pulumi:"updateTime"`
+	// The update time of the app.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
 
 func (GetAppsAppActiveDeploymentArgs) ElementType() reflect.Type {
@@ -1630,10 +1810,12 @@ func (o GetAppsAppActiveDeploymentOutput) ToGetAppsAppActiveDeploymentOutputWith
 	return o
 }
 
+// The creation time of the app.
 func (o GetAppsAppActiveDeploymentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppActiveDeployment) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The email of the user that created the app.
 func (o GetAppsAppActiveDeploymentOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppActiveDeployment) string { return v.Creator }).(pulumi.StringOutput)
 }
@@ -1660,6 +1842,7 @@ func (o GetAppsAppActiveDeploymentOutput) Status() GetAppsAppActiveDeploymentSta
 	return o.ApplyT(func(v GetAppsAppActiveDeployment) GetAppsAppActiveDeploymentStatus { return v.Status }).(GetAppsAppActiveDeploymentStatusOutput)
 }
 
+// The update time of the app.
 func (o GetAppsAppActiveDeploymentOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppActiveDeployment) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
@@ -1714,8 +1897,10 @@ func (o GetAppsAppActiveDeploymentDeploymentArtifactsOutput) SourceCodePath() pu
 }
 
 type GetAppsAppActiveDeploymentStatus struct {
+	// Application status message
 	Message string `pulumi:"message"`
-	State   string `pulumi:"state"`
+	// State of the application.
+	State string `pulumi:"state"`
 }
 
 // GetAppsAppActiveDeploymentStatusInput is an input type that accepts GetAppsAppActiveDeploymentStatusArgs and GetAppsAppActiveDeploymentStatusOutput values.
@@ -1730,8 +1915,10 @@ type GetAppsAppActiveDeploymentStatusInput interface {
 }
 
 type GetAppsAppActiveDeploymentStatusArgs struct {
+	// Application status message
 	Message pulumi.StringInput `pulumi:"message"`
-	State   pulumi.StringInput `pulumi:"state"`
+	// State of the application.
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetAppsAppActiveDeploymentStatusArgs) ElementType() reflect.Type {
@@ -1760,17 +1947,21 @@ func (o GetAppsAppActiveDeploymentStatusOutput) ToGetAppsAppActiveDeploymentStat
 	return o
 }
 
+// Application status message
 func (o GetAppsAppActiveDeploymentStatusOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppActiveDeploymentStatus) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// State of the application.
 func (o GetAppsAppActiveDeploymentStatusOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppActiveDeploymentStatus) string { return v.State }).(pulumi.StringOutput)
 }
 
 type GetAppsAppAppStatus struct {
+	// Application status message
 	Message string `pulumi:"message"`
-	State   string `pulumi:"state"`
+	// State of the application.
+	State string `pulumi:"state"`
 }
 
 // GetAppsAppAppStatusInput is an input type that accepts GetAppsAppAppStatusArgs and GetAppsAppAppStatusOutput values.
@@ -1785,8 +1976,10 @@ type GetAppsAppAppStatusInput interface {
 }
 
 type GetAppsAppAppStatusArgs struct {
+	// Application status message
 	Message pulumi.StringInput `pulumi:"message"`
-	State   pulumi.StringInput `pulumi:"state"`
+	// State of the application.
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetAppsAppAppStatusArgs) ElementType() reflect.Type {
@@ -1815,17 +2008,21 @@ func (o GetAppsAppAppStatusOutput) ToGetAppsAppAppStatusOutputWithContext(ctx co
 	return o
 }
 
+// Application status message
 func (o GetAppsAppAppStatusOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppAppStatus) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// State of the application.
 func (o GetAppsAppAppStatusOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppAppStatus) string { return v.State }).(pulumi.StringOutput)
 }
 
 type GetAppsAppComputeStatus struct {
+	// Application status message
 	Message string `pulumi:"message"`
-	State   string `pulumi:"state"`
+	// State of the application.
+	State string `pulumi:"state"`
 }
 
 // GetAppsAppComputeStatusInput is an input type that accepts GetAppsAppComputeStatusArgs and GetAppsAppComputeStatusOutput values.
@@ -1840,8 +2037,10 @@ type GetAppsAppComputeStatusInput interface {
 }
 
 type GetAppsAppComputeStatusArgs struct {
+	// Application status message
 	Message pulumi.StringInput `pulumi:"message"`
-	State   pulumi.StringInput `pulumi:"state"`
+	// State of the application.
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetAppsAppComputeStatusArgs) ElementType() reflect.Type {
@@ -1870,23 +2069,28 @@ func (o GetAppsAppComputeStatusOutput) ToGetAppsAppComputeStatusOutputWithContex
 	return o
 }
 
+// Application status message
 func (o GetAppsAppComputeStatusOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppComputeStatus) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// State of the application.
 func (o GetAppsAppComputeStatusOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppComputeStatus) string { return v.State }).(pulumi.StringOutput)
 }
 
 type GetAppsAppPendingDeployment struct {
-	CreateTime          string                                         `pulumi:"createTime"`
+	// The creation time of the app.
+	CreateTime string `pulumi:"createTime"`
+	// The email of the user that created the app.
 	Creator             string                                         `pulumi:"creator"`
 	DeploymentArtifacts GetAppsAppPendingDeploymentDeploymentArtifacts `pulumi:"deploymentArtifacts"`
 	DeploymentId        *string                                        `pulumi:"deploymentId"`
 	Mode                *string                                        `pulumi:"mode"`
 	SourceCodePath      *string                                        `pulumi:"sourceCodePath"`
 	Status              GetAppsAppPendingDeploymentStatus              `pulumi:"status"`
-	UpdateTime          string                                         `pulumi:"updateTime"`
+	// The update time of the app.
+	UpdateTime string `pulumi:"updateTime"`
 }
 
 // GetAppsAppPendingDeploymentInput is an input type that accepts GetAppsAppPendingDeploymentArgs and GetAppsAppPendingDeploymentOutput values.
@@ -1901,14 +2105,17 @@ type GetAppsAppPendingDeploymentInput interface {
 }
 
 type GetAppsAppPendingDeploymentArgs struct {
-	CreateTime          pulumi.StringInput                                  `pulumi:"createTime"`
+	// The creation time of the app.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The email of the user that created the app.
 	Creator             pulumi.StringInput                                  `pulumi:"creator"`
 	DeploymentArtifacts GetAppsAppPendingDeploymentDeploymentArtifactsInput `pulumi:"deploymentArtifacts"`
 	DeploymentId        pulumi.StringPtrInput                               `pulumi:"deploymentId"`
 	Mode                pulumi.StringPtrInput                               `pulumi:"mode"`
 	SourceCodePath      pulumi.StringPtrInput                               `pulumi:"sourceCodePath"`
 	Status              GetAppsAppPendingDeploymentStatusInput              `pulumi:"status"`
-	UpdateTime          pulumi.StringInput                                  `pulumi:"updateTime"`
+	// The update time of the app.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
 
 func (GetAppsAppPendingDeploymentArgs) ElementType() reflect.Type {
@@ -1937,10 +2144,12 @@ func (o GetAppsAppPendingDeploymentOutput) ToGetAppsAppPendingDeploymentOutputWi
 	return o
 }
 
+// The creation time of the app.
 func (o GetAppsAppPendingDeploymentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppPendingDeployment) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The email of the user that created the app.
 func (o GetAppsAppPendingDeploymentOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppPendingDeployment) string { return v.Creator }).(pulumi.StringOutput)
 }
@@ -1967,6 +2176,7 @@ func (o GetAppsAppPendingDeploymentOutput) Status() GetAppsAppPendingDeploymentS
 	return o.ApplyT(func(v GetAppsAppPendingDeployment) GetAppsAppPendingDeploymentStatus { return v.Status }).(GetAppsAppPendingDeploymentStatusOutput)
 }
 
+// The update time of the app.
 func (o GetAppsAppPendingDeploymentOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppPendingDeployment) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
@@ -2021,8 +2231,10 @@ func (o GetAppsAppPendingDeploymentDeploymentArtifactsOutput) SourceCodePath() p
 }
 
 type GetAppsAppPendingDeploymentStatus struct {
+	// Application status message
 	Message string `pulumi:"message"`
-	State   string `pulumi:"state"`
+	// State of the application.
+	State string `pulumi:"state"`
 }
 
 // GetAppsAppPendingDeploymentStatusInput is an input type that accepts GetAppsAppPendingDeploymentStatusArgs and GetAppsAppPendingDeploymentStatusOutput values.
@@ -2037,8 +2249,10 @@ type GetAppsAppPendingDeploymentStatusInput interface {
 }
 
 type GetAppsAppPendingDeploymentStatusArgs struct {
+	// Application status message
 	Message pulumi.StringInput `pulumi:"message"`
-	State   pulumi.StringInput `pulumi:"state"`
+	// State of the application.
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetAppsAppPendingDeploymentStatusArgs) ElementType() reflect.Type {
@@ -2067,21 +2281,29 @@ func (o GetAppsAppPendingDeploymentStatusOutput) ToGetAppsAppPendingDeploymentSt
 	return o
 }
 
+// Application status message
 func (o GetAppsAppPendingDeploymentStatusOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppPendingDeploymentStatus) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// State of the application.
 func (o GetAppsAppPendingDeploymentStatusOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppPendingDeploymentStatus) string { return v.State }).(pulumi.StringOutput)
 }
 
 type GetAppsAppResource struct {
-	Description     *string                            `pulumi:"description"`
-	Job             *GetAppsAppResourceJob             `pulumi:"job"`
-	Name            string                             `pulumi:"name"`
-	Secret          *GetAppsAppResourceSecret          `pulumi:"secret"`
+	// The description of the resource.
+	Description *string `pulumi:"description"`
+	// attribute
+	Job *GetAppsAppResourceJob `pulumi:"job"`
+	// Name of the serving endpoint to grant permission on.
+	Name string `pulumi:"name"`
+	// attribute
+	Secret *GetAppsAppResourceSecret `pulumi:"secret"`
+	// attribute
 	ServingEndpoint *GetAppsAppResourceServingEndpoint `pulumi:"servingEndpoint"`
-	SqlWarehouse    *GetAppsAppResourceSqlWarehouse    `pulumi:"sqlWarehouse"`
+	// attribute
+	SqlWarehouse *GetAppsAppResourceSqlWarehouse `pulumi:"sqlWarehouse"`
 }
 
 // GetAppsAppResourceInput is an input type that accepts GetAppsAppResourceArgs and GetAppsAppResourceOutput values.
@@ -2096,12 +2318,18 @@ type GetAppsAppResourceInput interface {
 }
 
 type GetAppsAppResourceArgs struct {
-	Description     pulumi.StringPtrInput                     `pulumi:"description"`
-	Job             GetAppsAppResourceJobPtrInput             `pulumi:"job"`
-	Name            pulumi.StringInput                        `pulumi:"name"`
-	Secret          GetAppsAppResourceSecretPtrInput          `pulumi:"secret"`
+	// The description of the resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// attribute
+	Job GetAppsAppResourceJobPtrInput `pulumi:"job"`
+	// Name of the serving endpoint to grant permission on.
+	Name pulumi.StringInput `pulumi:"name"`
+	// attribute
+	Secret GetAppsAppResourceSecretPtrInput `pulumi:"secret"`
+	// attribute
 	ServingEndpoint GetAppsAppResourceServingEndpointPtrInput `pulumi:"servingEndpoint"`
-	SqlWarehouse    GetAppsAppResourceSqlWarehousePtrInput    `pulumi:"sqlWarehouse"`
+	// attribute
+	SqlWarehouse GetAppsAppResourceSqlWarehousePtrInput `pulumi:"sqlWarehouse"`
 }
 
 func (GetAppsAppResourceArgs) ElementType() reflect.Type {
@@ -2155,26 +2383,32 @@ func (o GetAppsAppResourceOutput) ToGetAppsAppResourceOutputWithContext(ctx cont
 	return o
 }
 
+// The description of the resource.
 func (o GetAppsAppResourceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppsAppResource) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// attribute
 func (o GetAppsAppResourceOutput) Job() GetAppsAppResourceJobPtrOutput {
 	return o.ApplyT(func(v GetAppsAppResource) *GetAppsAppResourceJob { return v.Job }).(GetAppsAppResourceJobPtrOutput)
 }
 
+// Name of the serving endpoint to grant permission on.
 func (o GetAppsAppResourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppResource) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// attribute
 func (o GetAppsAppResourceOutput) Secret() GetAppsAppResourceSecretPtrOutput {
 	return o.ApplyT(func(v GetAppsAppResource) *GetAppsAppResourceSecret { return v.Secret }).(GetAppsAppResourceSecretPtrOutput)
 }
 
+// attribute
 func (o GetAppsAppResourceOutput) ServingEndpoint() GetAppsAppResourceServingEndpointPtrOutput {
 	return o.ApplyT(func(v GetAppsAppResource) *GetAppsAppResourceServingEndpoint { return v.ServingEndpoint }).(GetAppsAppResourceServingEndpointPtrOutput)
 }
 
+// attribute
 func (o GetAppsAppResourceOutput) SqlWarehouse() GetAppsAppResourceSqlWarehousePtrOutput {
 	return o.ApplyT(func(v GetAppsAppResource) *GetAppsAppResourceSqlWarehouse { return v.SqlWarehouse }).(GetAppsAppResourceSqlWarehousePtrOutput)
 }
@@ -2200,7 +2434,9 @@ func (o GetAppsAppResourceArrayOutput) Index(i pulumi.IntInput) GetAppsAppResour
 }
 
 type GetAppsAppResourceJob struct {
-	Id         string `pulumi:"id"`
+	// Id of the job to grant permission on.
+	Id string `pulumi:"id"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission string `pulumi:"permission"`
 }
 
@@ -2216,7 +2452,9 @@ type GetAppsAppResourceJobInput interface {
 }
 
 type GetAppsAppResourceJobArgs struct {
-	Id         pulumi.StringInput `pulumi:"id"`
+	// Id of the job to grant permission on.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission pulumi.StringInput `pulumi:"permission"`
 }
 
@@ -2297,10 +2535,12 @@ func (o GetAppsAppResourceJobOutput) ToGetAppsAppResourceJobPtrOutputWithContext
 	}).(GetAppsAppResourceJobPtrOutput)
 }
 
+// Id of the job to grant permission on.
 func (o GetAppsAppResourceJobOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppResourceJob) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppsAppResourceJobOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppResourceJob) string { return v.Permission }).(pulumi.StringOutput)
 }
@@ -2329,6 +2569,7 @@ func (o GetAppsAppResourceJobPtrOutput) Elem() GetAppsAppResourceJobOutput {
 	}).(GetAppsAppResourceJobOutput)
 }
 
+// Id of the job to grant permission on.
 func (o GetAppsAppResourceJobPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsAppResourceJob) *string {
 		if v == nil {
@@ -2338,6 +2579,7 @@ func (o GetAppsAppResourceJobPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppsAppResourceJobPtrOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsAppResourceJob) *string {
 		if v == nil {
@@ -2348,9 +2590,12 @@ func (o GetAppsAppResourceJobPtrOutput) Permission() pulumi.StringPtrOutput {
 }
 
 type GetAppsAppResourceSecret struct {
-	Key        string `pulumi:"key"`
+	// Key of the secret to grant permission on.
+	Key string `pulumi:"key"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission string `pulumi:"permission"`
-	Scope      string `pulumi:"scope"`
+	// Scope of the secret to grant permission on.
+	Scope string `pulumi:"scope"`
 }
 
 // GetAppsAppResourceSecretInput is an input type that accepts GetAppsAppResourceSecretArgs and GetAppsAppResourceSecretOutput values.
@@ -2365,9 +2610,12 @@ type GetAppsAppResourceSecretInput interface {
 }
 
 type GetAppsAppResourceSecretArgs struct {
-	Key        pulumi.StringInput `pulumi:"key"`
+	// Key of the secret to grant permission on.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission pulumi.StringInput `pulumi:"permission"`
-	Scope      pulumi.StringInput `pulumi:"scope"`
+	// Scope of the secret to grant permission on.
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (GetAppsAppResourceSecretArgs) ElementType() reflect.Type {
@@ -2447,14 +2695,17 @@ func (o GetAppsAppResourceSecretOutput) ToGetAppsAppResourceSecretPtrOutputWithC
 	}).(GetAppsAppResourceSecretPtrOutput)
 }
 
+// Key of the secret to grant permission on.
 func (o GetAppsAppResourceSecretOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppResourceSecret) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppsAppResourceSecretOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppResourceSecret) string { return v.Permission }).(pulumi.StringOutput)
 }
 
+// Scope of the secret to grant permission on.
 func (o GetAppsAppResourceSecretOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppResourceSecret) string { return v.Scope }).(pulumi.StringOutput)
 }
@@ -2483,6 +2734,7 @@ func (o GetAppsAppResourceSecretPtrOutput) Elem() GetAppsAppResourceSecretOutput
 	}).(GetAppsAppResourceSecretOutput)
 }
 
+// Key of the secret to grant permission on.
 func (o GetAppsAppResourceSecretPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsAppResourceSecret) *string {
 		if v == nil {
@@ -2492,6 +2744,7 @@ func (o GetAppsAppResourceSecretPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppsAppResourceSecretPtrOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsAppResourceSecret) *string {
 		if v == nil {
@@ -2501,6 +2754,7 @@ func (o GetAppsAppResourceSecretPtrOutput) Permission() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Scope of the secret to grant permission on.
 func (o GetAppsAppResourceSecretPtrOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsAppResourceSecret) *string {
 		if v == nil {
@@ -2511,7 +2765,9 @@ func (o GetAppsAppResourceSecretPtrOutput) Scope() pulumi.StringPtrOutput {
 }
 
 type GetAppsAppResourceServingEndpoint struct {
-	Name       string `pulumi:"name"`
+	// Name of the serving endpoint to grant permission on.
+	Name string `pulumi:"name"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission string `pulumi:"permission"`
 }
 
@@ -2527,7 +2783,9 @@ type GetAppsAppResourceServingEndpointInput interface {
 }
 
 type GetAppsAppResourceServingEndpointArgs struct {
-	Name       pulumi.StringInput `pulumi:"name"`
+	// Name of the serving endpoint to grant permission on.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission pulumi.StringInput `pulumi:"permission"`
 }
 
@@ -2608,10 +2866,12 @@ func (o GetAppsAppResourceServingEndpointOutput) ToGetAppsAppResourceServingEndp
 	}).(GetAppsAppResourceServingEndpointPtrOutput)
 }
 
+// Name of the serving endpoint to grant permission on.
 func (o GetAppsAppResourceServingEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppResourceServingEndpoint) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppsAppResourceServingEndpointOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppResourceServingEndpoint) string { return v.Permission }).(pulumi.StringOutput)
 }
@@ -2640,6 +2900,7 @@ func (o GetAppsAppResourceServingEndpointPtrOutput) Elem() GetAppsAppResourceSer
 	}).(GetAppsAppResourceServingEndpointOutput)
 }
 
+// Name of the serving endpoint to grant permission on.
 func (o GetAppsAppResourceServingEndpointPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsAppResourceServingEndpoint) *string {
 		if v == nil {
@@ -2649,6 +2910,7 @@ func (o GetAppsAppResourceServingEndpointPtrOutput) Name() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppsAppResourceServingEndpointPtrOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsAppResourceServingEndpoint) *string {
 		if v == nil {
@@ -2659,7 +2921,9 @@ func (o GetAppsAppResourceServingEndpointPtrOutput) Permission() pulumi.StringPt
 }
 
 type GetAppsAppResourceSqlWarehouse struct {
-	Id         string `pulumi:"id"`
+	// Id of the job to grant permission on.
+	Id string `pulumi:"id"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission string `pulumi:"permission"`
 }
 
@@ -2675,7 +2939,9 @@ type GetAppsAppResourceSqlWarehouseInput interface {
 }
 
 type GetAppsAppResourceSqlWarehouseArgs struct {
-	Id         pulumi.StringInput `pulumi:"id"`
+	// Id of the job to grant permission on.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 	Permission pulumi.StringInput `pulumi:"permission"`
 }
 
@@ -2756,10 +3022,12 @@ func (o GetAppsAppResourceSqlWarehouseOutput) ToGetAppsAppResourceSqlWarehousePt
 	}).(GetAppsAppResourceSqlWarehousePtrOutput)
 }
 
+// Id of the job to grant permission on.
 func (o GetAppsAppResourceSqlWarehouseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppResourceSqlWarehouse) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppsAppResourceSqlWarehouseOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsAppResourceSqlWarehouse) string { return v.Permission }).(pulumi.StringOutput)
 }
@@ -2788,6 +3056,7 @@ func (o GetAppsAppResourceSqlWarehousePtrOutput) Elem() GetAppsAppResourceSqlWar
 	}).(GetAppsAppResourceSqlWarehouseOutput)
 }
 
+// Id of the job to grant permission on.
 func (o GetAppsAppResourceSqlWarehousePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsAppResourceSqlWarehouse) *string {
 		if v == nil {
@@ -2797,6 +3066,7 @@ func (o GetAppsAppResourceSqlWarehousePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
 func (o GetAppsAppResourceSqlWarehousePtrOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetAppsAppResourceSqlWarehouse) *string {
 		if v == nil {
@@ -2807,30 +3077,52 @@ func (o GetAppsAppResourceSqlWarehousePtrOutput) Permission() pulumi.StringPtrOu
 }
 
 type GetCatalogCatalogInfo struct {
-	BrowseOnly                          *bool                                                     `pulumi:"browseOnly"`
-	CatalogType                         *string                                                   `pulumi:"catalogType"`
-	Comment                             *string                                                   `pulumi:"comment"`
-	ConnectionName                      *string                                                   `pulumi:"connectionName"`
-	CreatedAt                           *int                                                      `pulumi:"createdAt"`
-	CreatedBy                           *string                                                   `pulumi:"createdBy"`
+	BrowseOnly *bool `pulumi:"browseOnly"`
+	// Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+	CatalogType *string `pulumi:"catalogType"`
+	// Free-form text description
+	Comment *string `pulumi:"comment"`
+	// The name of the connection to an external data source.
+	ConnectionName *string `pulumi:"connectionName"`
+	// Time at which this catalog was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// Username of catalog creator.
+	CreatedBy *string `pulumi:"createdBy"`
+	// object describing applied predictive optimization flag.
 	EffectivePredictiveOptimizationFlag *GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag `pulumi:"effectivePredictiveOptimizationFlag"`
-	EnablePredictiveOptimization        *string                                                   `pulumi:"enablePredictiveOptimization"`
-	FullName                            *string                                                   `pulumi:"fullName"`
-	IsolationMode                       *string                                                   `pulumi:"isolationMode"`
-	MetastoreId                         *string                                                   `pulumi:"metastoreId"`
-	Name                                *string                                                   `pulumi:"name"`
-	Options                             map[string]string                                         `pulumi:"options"`
-	Owner                               *string                                                   `pulumi:"owner"`
-	Properties                          map[string]string                                         `pulumi:"properties"`
-	ProviderName                        *string                                                   `pulumi:"providerName"`
-	ProvisioningInfo                    *GetCatalogCatalogInfoProvisioningInfo                    `pulumi:"provisioningInfo"`
-	SecurableKind                       *string                                                   `pulumi:"securableKind"`
-	SecurableType                       *string                                                   `pulumi:"securableType"`
-	ShareName                           *string                                                   `pulumi:"shareName"`
-	StorageLocation                     *string                                                   `pulumi:"storageLocation"`
-	StorageRoot                         *string                                                   `pulumi:"storageRoot"`
-	UpdatedAt                           *int                                                      `pulumi:"updatedAt"`
-	UpdatedBy                           *string                                                   `pulumi:"updatedBy"`
+	// Whether predictive optimization should be enabled for this object and objects under it.
+	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
+	// The full name of the catalog. Corresponds with the name field.
+	FullName *string `pulumi:"fullName"`
+	// Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+	IsolationMode *string `pulumi:"isolationMode"`
+	// Unique identifier of parent metastore.
+	MetastoreId *string `pulumi:"metastoreId"`
+	// name of the catalog
+	Name *string `pulumi:"name"`
+	// A map of key-value properties attached to the securable.
+	Options map[string]string `pulumi:"options"`
+	// Current owner of the catalog
+	Owner *string `pulumi:"owner"`
+	// A map of key-value properties attached to the securable.
+	Properties map[string]string `pulumi:"properties"`
+	// The name of delta sharing provider.
+	ProviderName     *string                                `pulumi:"providerName"`
+	ProvisioningInfo *GetCatalogCatalogInfoProvisioningInfo `pulumi:"provisioningInfo"`
+	// Kind of catalog securable.
+	SecurableKind *string `pulumi:"securableKind"`
+	// Securable type.
+	SecurableType *string `pulumi:"securableType"`
+	// The name of the share under the share provider.
+	ShareName *string `pulumi:"shareName"`
+	// Storage Location URL (full path) for managed tables within catalog.
+	StorageLocation *string `pulumi:"storageLocation"`
+	// Storage root URL for managed tables within catalog.
+	StorageRoot *string `pulumi:"storageRoot"`
+	// Time at which this catalog was last modified, in epoch milliseconds.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// Username of user who last modified catalog.
+	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
 // GetCatalogCatalogInfoInput is an input type that accepts GetCatalogCatalogInfoArgs and GetCatalogCatalogInfoOutput values.
@@ -2845,30 +3137,52 @@ type GetCatalogCatalogInfoInput interface {
 }
 
 type GetCatalogCatalogInfoArgs struct {
-	BrowseOnly                          pulumi.BoolPtrInput                                              `pulumi:"browseOnly"`
-	CatalogType                         pulumi.StringPtrInput                                            `pulumi:"catalogType"`
-	Comment                             pulumi.StringPtrInput                                            `pulumi:"comment"`
-	ConnectionName                      pulumi.StringPtrInput                                            `pulumi:"connectionName"`
-	CreatedAt                           pulumi.IntPtrInput                                               `pulumi:"createdAt"`
-	CreatedBy                           pulumi.StringPtrInput                                            `pulumi:"createdBy"`
+	BrowseOnly pulumi.BoolPtrInput `pulumi:"browseOnly"`
+	// Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
+	CatalogType pulumi.StringPtrInput `pulumi:"catalogType"`
+	// Free-form text description
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// The name of the connection to an external data source.
+	ConnectionName pulumi.StringPtrInput `pulumi:"connectionName"`
+	// Time at which this catalog was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// Username of catalog creator.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// object describing applied predictive optimization flag.
 	EffectivePredictiveOptimizationFlag GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrInput `pulumi:"effectivePredictiveOptimizationFlag"`
-	EnablePredictiveOptimization        pulumi.StringPtrInput                                            `pulumi:"enablePredictiveOptimization"`
-	FullName                            pulumi.StringPtrInput                                            `pulumi:"fullName"`
-	IsolationMode                       pulumi.StringPtrInput                                            `pulumi:"isolationMode"`
-	MetastoreId                         pulumi.StringPtrInput                                            `pulumi:"metastoreId"`
-	Name                                pulumi.StringPtrInput                                            `pulumi:"name"`
-	Options                             pulumi.StringMapInput                                            `pulumi:"options"`
-	Owner                               pulumi.StringPtrInput                                            `pulumi:"owner"`
-	Properties                          pulumi.StringMapInput                                            `pulumi:"properties"`
-	ProviderName                        pulumi.StringPtrInput                                            `pulumi:"providerName"`
-	ProvisioningInfo                    GetCatalogCatalogInfoProvisioningInfoPtrInput                    `pulumi:"provisioningInfo"`
-	SecurableKind                       pulumi.StringPtrInput                                            `pulumi:"securableKind"`
-	SecurableType                       pulumi.StringPtrInput                                            `pulumi:"securableType"`
-	ShareName                           pulumi.StringPtrInput                                            `pulumi:"shareName"`
-	StorageLocation                     pulumi.StringPtrInput                                            `pulumi:"storageLocation"`
-	StorageRoot                         pulumi.StringPtrInput                                            `pulumi:"storageRoot"`
-	UpdatedAt                           pulumi.IntPtrInput                                               `pulumi:"updatedAt"`
-	UpdatedBy                           pulumi.StringPtrInput                                            `pulumi:"updatedBy"`
+	// Whether predictive optimization should be enabled for this object and objects under it.
+	EnablePredictiveOptimization pulumi.StringPtrInput `pulumi:"enablePredictiveOptimization"`
+	// The full name of the catalog. Corresponds with the name field.
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
+	IsolationMode pulumi.StringPtrInput `pulumi:"isolationMode"`
+	// Unique identifier of parent metastore.
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// name of the catalog
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A map of key-value properties attached to the securable.
+	Options pulumi.StringMapInput `pulumi:"options"`
+	// Current owner of the catalog
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// A map of key-value properties attached to the securable.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The name of delta sharing provider.
+	ProviderName     pulumi.StringPtrInput                         `pulumi:"providerName"`
+	ProvisioningInfo GetCatalogCatalogInfoProvisioningInfoPtrInput `pulumi:"provisioningInfo"`
+	// Kind of catalog securable.
+	SecurableKind pulumi.StringPtrInput `pulumi:"securableKind"`
+	// Securable type.
+	SecurableType pulumi.StringPtrInput `pulumi:"securableType"`
+	// The name of the share under the share provider.
+	ShareName pulumi.StringPtrInput `pulumi:"shareName"`
+	// Storage Location URL (full path) for managed tables within catalog.
+	StorageLocation pulumi.StringPtrInput `pulumi:"storageLocation"`
+	// Storage root URL for managed tables within catalog.
+	StorageRoot pulumi.StringPtrInput `pulumi:"storageRoot"`
+	// Time at which this catalog was last modified, in epoch milliseconds.
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// Username of user who last modified catalog.
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
 }
 
 func (GetCatalogCatalogInfoArgs) ElementType() reflect.Type {
@@ -2952,64 +3266,79 @@ func (o GetCatalogCatalogInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
 func (o GetCatalogCatalogInfoOutput) CatalogType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.CatalogType }).(pulumi.StringPtrOutput)
 }
 
+// Free-form text description
 func (o GetCatalogCatalogInfoOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// The name of the connection to an external data source.
 func (o GetCatalogCatalogInfoOutput) ConnectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.ConnectionName }).(pulumi.StringPtrOutput)
 }
 
+// Time at which this catalog was created, in epoch milliseconds.
 func (o GetCatalogCatalogInfoOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
 }
 
+// Username of catalog creator.
 func (o GetCatalogCatalogInfoOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// object describing applied predictive optimization flag.
 func (o GetCatalogCatalogInfoOutput) EffectivePredictiveOptimizationFlag() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag {
 		return v.EffectivePredictiveOptimizationFlag
 	}).(GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput)
 }
 
+// Whether predictive optimization should be enabled for this object and objects under it.
 func (o GetCatalogCatalogInfoOutput) EnablePredictiveOptimization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.EnablePredictiveOptimization }).(pulumi.StringPtrOutput)
 }
 
+// The full name of the catalog. Corresponds with the name field.
 func (o GetCatalogCatalogInfoOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.FullName }).(pulumi.StringPtrOutput)
 }
 
+// Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
 func (o GetCatalogCatalogInfoOutput) IsolationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.IsolationMode }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of parent metastore.
 func (o GetCatalogCatalogInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
 
+// name of the catalog
 func (o GetCatalogCatalogInfoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// A map of key-value properties attached to the securable.
 func (o GetCatalogCatalogInfoOutput) Options() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) map[string]string { return v.Options }).(pulumi.StringMapOutput)
 }
 
+// Current owner of the catalog
 func (o GetCatalogCatalogInfoOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// A map of key-value properties attached to the securable.
 func (o GetCatalogCatalogInfoOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// The name of delta sharing provider.
 func (o GetCatalogCatalogInfoOutput) ProviderName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.ProviderName }).(pulumi.StringPtrOutput)
 }
@@ -3018,30 +3347,37 @@ func (o GetCatalogCatalogInfoOutput) ProvisioningInfo() GetCatalogCatalogInfoPro
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *GetCatalogCatalogInfoProvisioningInfo { return v.ProvisioningInfo }).(GetCatalogCatalogInfoProvisioningInfoPtrOutput)
 }
 
+// Kind of catalog securable.
 func (o GetCatalogCatalogInfoOutput) SecurableKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.SecurableKind }).(pulumi.StringPtrOutput)
 }
 
+// Securable type.
 func (o GetCatalogCatalogInfoOutput) SecurableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.SecurableType }).(pulumi.StringPtrOutput)
 }
 
+// The name of the share under the share provider.
 func (o GetCatalogCatalogInfoOutput) ShareName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.ShareName }).(pulumi.StringPtrOutput)
 }
 
+// Storage Location URL (full path) for managed tables within catalog.
 func (o GetCatalogCatalogInfoOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.StorageLocation }).(pulumi.StringPtrOutput)
 }
 
+// Storage root URL for managed tables within catalog.
 func (o GetCatalogCatalogInfoOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }
 
+// Time at which this catalog was last modified, in epoch milliseconds.
 func (o GetCatalogCatalogInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
 }
 
+// Username of user who last modified catalog.
 func (o GetCatalogCatalogInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
 }
@@ -3079,6 +3415,7 @@ func (o GetCatalogCatalogInfoPtrOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
 func (o GetCatalogCatalogInfoPtrOutput) CatalogType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3088,6 +3425,7 @@ func (o GetCatalogCatalogInfoPtrOutput) CatalogType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Free-form text description
 func (o GetCatalogCatalogInfoPtrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3097,6 +3435,7 @@ func (o GetCatalogCatalogInfoPtrOutput) Comment() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the connection to an external data source.
 func (o GetCatalogCatalogInfoPtrOutput) ConnectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3106,6 +3445,7 @@ func (o GetCatalogCatalogInfoPtrOutput) ConnectionName() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Time at which this catalog was created, in epoch milliseconds.
 func (o GetCatalogCatalogInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *int {
 		if v == nil {
@@ -3115,6 +3455,7 @@ func (o GetCatalogCatalogInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Username of catalog creator.
 func (o GetCatalogCatalogInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3124,6 +3465,7 @@ func (o GetCatalogCatalogInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// object describing applied predictive optimization flag.
 func (o GetCatalogCatalogInfoPtrOutput) EffectivePredictiveOptimizationFlag() GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag {
 		if v == nil {
@@ -3133,6 +3475,7 @@ func (o GetCatalogCatalogInfoPtrOutput) EffectivePredictiveOptimizationFlag() Ge
 	}).(GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagPtrOutput)
 }
 
+// Whether predictive optimization should be enabled for this object and objects under it.
 func (o GetCatalogCatalogInfoPtrOutput) EnablePredictiveOptimization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3142,6 +3485,7 @@ func (o GetCatalogCatalogInfoPtrOutput) EnablePredictiveOptimization() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// The full name of the catalog. Corresponds with the name field.
 func (o GetCatalogCatalogInfoPtrOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3151,6 +3495,7 @@ func (o GetCatalogCatalogInfoPtrOutput) FullName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
 func (o GetCatalogCatalogInfoPtrOutput) IsolationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3160,6 +3505,7 @@ func (o GetCatalogCatalogInfoPtrOutput) IsolationMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of parent metastore.
 func (o GetCatalogCatalogInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3169,6 +3515,7 @@ func (o GetCatalogCatalogInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// name of the catalog
 func (o GetCatalogCatalogInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3178,6 +3525,7 @@ func (o GetCatalogCatalogInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A map of key-value properties attached to the securable.
 func (o GetCatalogCatalogInfoPtrOutput) Options() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) map[string]string {
 		if v == nil {
@@ -3187,6 +3535,7 @@ func (o GetCatalogCatalogInfoPtrOutput) Options() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Current owner of the catalog
 func (o GetCatalogCatalogInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3196,6 +3545,7 @@ func (o GetCatalogCatalogInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A map of key-value properties attached to the securable.
 func (o GetCatalogCatalogInfoPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) map[string]string {
 		if v == nil {
@@ -3205,6 +3555,7 @@ func (o GetCatalogCatalogInfoPtrOutput) Properties() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// The name of delta sharing provider.
 func (o GetCatalogCatalogInfoPtrOutput) ProviderName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3223,6 +3574,7 @@ func (o GetCatalogCatalogInfoPtrOutput) ProvisioningInfo() GetCatalogCatalogInfo
 	}).(GetCatalogCatalogInfoProvisioningInfoPtrOutput)
 }
 
+// Kind of catalog securable.
 func (o GetCatalogCatalogInfoPtrOutput) SecurableKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3232,6 +3584,7 @@ func (o GetCatalogCatalogInfoPtrOutput) SecurableKind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Securable type.
 func (o GetCatalogCatalogInfoPtrOutput) SecurableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3241,6 +3594,7 @@ func (o GetCatalogCatalogInfoPtrOutput) SecurableType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the share under the share provider.
 func (o GetCatalogCatalogInfoPtrOutput) ShareName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3250,6 +3604,7 @@ func (o GetCatalogCatalogInfoPtrOutput) ShareName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Storage Location URL (full path) for managed tables within catalog.
 func (o GetCatalogCatalogInfoPtrOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3259,6 +3614,7 @@ func (o GetCatalogCatalogInfoPtrOutput) StorageLocation() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Storage root URL for managed tables within catalog.
 func (o GetCatalogCatalogInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3268,6 +3624,7 @@ func (o GetCatalogCatalogInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Time at which this catalog was last modified, in epoch milliseconds.
 func (o GetCatalogCatalogInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *int {
 		if v == nil {
@@ -3277,6 +3634,7 @@ func (o GetCatalogCatalogInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Username of user who last modified catalog.
 func (o GetCatalogCatalogInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
 		if v == nil {
@@ -3583,54 +3941,72 @@ func (o GetCatalogCatalogInfoProvisioningInfoPtrOutput) State() pulumi.StringPtr
 }
 
 type GetClusterClusterInfo struct {
-	Autoscale                 *GetClusterClusterInfoAutoscale         `pulumi:"autoscale"`
-	AutoterminationMinutes    *int                                    `pulumi:"autoterminationMinutes"`
-	AwsAttributes             *GetClusterClusterInfoAwsAttributes     `pulumi:"awsAttributes"`
-	AzureAttributes           *GetClusterClusterInfoAzureAttributes   `pulumi:"azureAttributes"`
-	ClusterCores              *float64                                `pulumi:"clusterCores"`
-	ClusterId                 *string                                 `pulumi:"clusterId"`
-	ClusterLogConf            *GetClusterClusterInfoClusterLogConf    `pulumi:"clusterLogConf"`
-	ClusterLogStatus          *GetClusterClusterInfoClusterLogStatus  `pulumi:"clusterLogStatus"`
-	ClusterMemoryMb           *int                                    `pulumi:"clusterMemoryMb"`
-	ClusterName               *string                                 `pulumi:"clusterName"`
-	ClusterSource             *string                                 `pulumi:"clusterSource"`
-	CreatorUserName           *string                                 `pulumi:"creatorUserName"`
-	CustomTags                map[string]string                       `pulumi:"customTags"`
-	DataSecurityMode          *string                                 `pulumi:"dataSecurityMode"`
-	DefaultTags               map[string]string                       `pulumi:"defaultTags"`
-	DockerImage               *GetClusterClusterInfoDockerImage       `pulumi:"dockerImage"`
-	Driver                    *GetClusterClusterInfoDriver            `pulumi:"driver"`
-	DriverInstancePoolId      *string                                 `pulumi:"driverInstancePoolId"`
-	DriverNodeTypeId          *string                                 `pulumi:"driverNodeTypeId"`
-	EnableElasticDisk         *bool                                   `pulumi:"enableElasticDisk"`
-	EnableLocalDiskEncryption *bool                                   `pulumi:"enableLocalDiskEncryption"`
-	Executors                 []GetClusterClusterInfoExecutor         `pulumi:"executors"`
-	GcpAttributes             *GetClusterClusterInfoGcpAttributes     `pulumi:"gcpAttributes"`
-	InitScripts               []GetClusterClusterInfoInitScript       `pulumi:"initScripts"`
-	InstancePoolId            *string                                 `pulumi:"instancePoolId"`
-	IsSingleNode              *bool                                   `pulumi:"isSingleNode"`
-	JdbcPort                  *int                                    `pulumi:"jdbcPort"`
-	Kind                      *string                                 `pulumi:"kind"`
-	LastRestartedTime         *int                                    `pulumi:"lastRestartedTime"`
-	LastStateLossTime         *int                                    `pulumi:"lastStateLossTime"`
-	NodeTypeId                *string                                 `pulumi:"nodeTypeId"`
-	NumWorkers                *int                                    `pulumi:"numWorkers"`
-	PolicyId                  *string                                 `pulumi:"policyId"`
-	RuntimeEngine             *string                                 `pulumi:"runtimeEngine"`
-	SingleUserName            *string                                 `pulumi:"singleUserName"`
-	SparkConf                 map[string]string                       `pulumi:"sparkConf"`
-	SparkContextId            *int                                    `pulumi:"sparkContextId"`
-	SparkEnvVars              map[string]string                       `pulumi:"sparkEnvVars"`
-	SparkVersion              *string                                 `pulumi:"sparkVersion"`
-	Spec                      *GetClusterClusterInfoSpec              `pulumi:"spec"`
-	SshPublicKeys             []string                                `pulumi:"sshPublicKeys"`
-	StartTime                 *int                                    `pulumi:"startTime"`
-	State                     *string                                 `pulumi:"state"`
-	StateMessage              *string                                 `pulumi:"stateMessage"`
-	TerminatedTime            *int                                    `pulumi:"terminatedTime"`
-	TerminationReason         *GetClusterClusterInfoTerminationReason `pulumi:"terminationReason"`
-	UseMlRuntime              *bool                                   `pulumi:"useMlRuntime"`
-	WorkloadType              *GetClusterClusterInfoWorkloadType      `pulumi:"workloadType"`
+	Autoscale *GetClusterClusterInfoAutoscale `pulumi:"autoscale"`
+	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
+	AutoterminationMinutes *int                                  `pulumi:"autoterminationMinutes"`
+	AwsAttributes          *GetClusterClusterInfoAwsAttributes   `pulumi:"awsAttributes"`
+	AzureAttributes        *GetClusterClusterInfoAzureAttributes `pulumi:"azureAttributes"`
+	ClusterCores           *float64                              `pulumi:"clusterCores"`
+	// The id of the cluster
+	ClusterId        *string                                `pulumi:"clusterId"`
+	ClusterLogConf   *GetClusterClusterInfoClusterLogConf   `pulumi:"clusterLogConf"`
+	ClusterLogStatus *GetClusterClusterInfoClusterLogStatus `pulumi:"clusterLogStatus"`
+	ClusterMemoryMb  *int                                   `pulumi:"clusterMemoryMb"`
+	// The exact name of the cluster to search
+	ClusterName     *string `pulumi:"clusterName"`
+	ClusterSource   *string `pulumi:"clusterSource"`
+	CreatorUserName *string `pulumi:"creatorUserName"`
+	// Additional tags for cluster resources.
+	CustomTags map[string]string `pulumi:"customTags"`
+	// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+	DataSecurityMode *string                           `pulumi:"dataSecurityMode"`
+	DefaultTags      map[string]string                 `pulumi:"defaultTags"`
+	DockerImage      *GetClusterClusterInfoDockerImage `pulumi:"dockerImage"`
+	Driver           *GetClusterClusterInfoDriver      `pulumi:"driver"`
+	// similar to `instancePoolId`, but for driver node.
+	DriverInstancePoolId *string `pulumi:"driverInstancePoolId"`
+	// The node type of the Spark driver.
+	DriverNodeTypeId *string `pulumi:"driverNodeTypeId"`
+	// Use autoscaling local storage.
+	EnableElasticDisk *bool `pulumi:"enableElasticDisk"`
+	// Enable local disk encryption.
+	EnableLocalDiskEncryption *bool                               `pulumi:"enableLocalDiskEncryption"`
+	Executors                 []GetClusterClusterInfoExecutor     `pulumi:"executors"`
+	GcpAttributes             *GetClusterClusterInfoGcpAttributes `pulumi:"gcpAttributes"`
+	InitScripts               []GetClusterClusterInfoInitScript   `pulumi:"initScripts"`
+	// The pool of idle instances the cluster is attached to.
+	InstancePoolId    *string `pulumi:"instancePoolId"`
+	IsSingleNode      *bool   `pulumi:"isSingleNode"`
+	JdbcPort          *int    `pulumi:"jdbcPort"`
+	Kind              *string `pulumi:"kind"`
+	LastRestartedTime *int    `pulumi:"lastRestartedTime"`
+	LastStateLossTime *int    `pulumi:"lastStateLossTime"`
+	// Any supported getNodeType id.
+	NodeTypeId *string `pulumi:"nodeTypeId"`
+	NumWorkers *int    `pulumi:"numWorkers"`
+	// Identifier of Cluster Policy to validate cluster and preset certain defaults.
+	PolicyId *string `pulumi:"policyId"`
+	// The type of runtime of the cluster
+	RuntimeEngine *string `pulumi:"runtimeEngine"`
+	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	SingleUserName *string `pulumi:"singleUserName"`
+	// Map with key-value pairs to fine-tune Spark clusters.
+	SparkConf      map[string]string `pulumi:"sparkConf"`
+	SparkContextId *int              `pulumi:"sparkContextId"`
+	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+	SparkEnvVars map[string]string `pulumi:"sparkEnvVars"`
+	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+	SparkVersion *string                    `pulumi:"sparkVersion"`
+	Spec         *GetClusterClusterInfoSpec `pulumi:"spec"`
+	// SSH public key contents that will be added to each Spark node in this cluster.
+	SshPublicKeys     []string                                `pulumi:"sshPublicKeys"`
+	StartTime         *int                                    `pulumi:"startTime"`
+	State             *string                                 `pulumi:"state"`
+	StateMessage      *string                                 `pulumi:"stateMessage"`
+	TerminatedTime    *int                                    `pulumi:"terminatedTime"`
+	TerminationReason *GetClusterClusterInfoTerminationReason `pulumi:"terminationReason"`
+	UseMlRuntime      *bool                                   `pulumi:"useMlRuntime"`
+	WorkloadType      *GetClusterClusterInfoWorkloadType      `pulumi:"workloadType"`
 }
 
 // GetClusterClusterInfoInput is an input type that accepts GetClusterClusterInfoArgs and GetClusterClusterInfoOutput values.
@@ -3645,54 +4021,72 @@ type GetClusterClusterInfoInput interface {
 }
 
 type GetClusterClusterInfoArgs struct {
-	Autoscale                 GetClusterClusterInfoAutoscalePtrInput         `pulumi:"autoscale"`
-	AutoterminationMinutes    pulumi.IntPtrInput                             `pulumi:"autoterminationMinutes"`
-	AwsAttributes             GetClusterClusterInfoAwsAttributesPtrInput     `pulumi:"awsAttributes"`
-	AzureAttributes           GetClusterClusterInfoAzureAttributesPtrInput   `pulumi:"azureAttributes"`
-	ClusterCores              pulumi.Float64PtrInput                         `pulumi:"clusterCores"`
-	ClusterId                 pulumi.StringPtrInput                          `pulumi:"clusterId"`
-	ClusterLogConf            GetClusterClusterInfoClusterLogConfPtrInput    `pulumi:"clusterLogConf"`
-	ClusterLogStatus          GetClusterClusterInfoClusterLogStatusPtrInput  `pulumi:"clusterLogStatus"`
-	ClusterMemoryMb           pulumi.IntPtrInput                             `pulumi:"clusterMemoryMb"`
-	ClusterName               pulumi.StringPtrInput                          `pulumi:"clusterName"`
-	ClusterSource             pulumi.StringPtrInput                          `pulumi:"clusterSource"`
-	CreatorUserName           pulumi.StringPtrInput                          `pulumi:"creatorUserName"`
-	CustomTags                pulumi.StringMapInput                          `pulumi:"customTags"`
-	DataSecurityMode          pulumi.StringPtrInput                          `pulumi:"dataSecurityMode"`
-	DefaultTags               pulumi.StringMapInput                          `pulumi:"defaultTags"`
-	DockerImage               GetClusterClusterInfoDockerImagePtrInput       `pulumi:"dockerImage"`
-	Driver                    GetClusterClusterInfoDriverPtrInput            `pulumi:"driver"`
-	DriverInstancePoolId      pulumi.StringPtrInput                          `pulumi:"driverInstancePoolId"`
-	DriverNodeTypeId          pulumi.StringPtrInput                          `pulumi:"driverNodeTypeId"`
-	EnableElasticDisk         pulumi.BoolPtrInput                            `pulumi:"enableElasticDisk"`
-	EnableLocalDiskEncryption pulumi.BoolPtrInput                            `pulumi:"enableLocalDiskEncryption"`
-	Executors                 GetClusterClusterInfoExecutorArrayInput        `pulumi:"executors"`
-	GcpAttributes             GetClusterClusterInfoGcpAttributesPtrInput     `pulumi:"gcpAttributes"`
-	InitScripts               GetClusterClusterInfoInitScriptArrayInput      `pulumi:"initScripts"`
-	InstancePoolId            pulumi.StringPtrInput                          `pulumi:"instancePoolId"`
-	IsSingleNode              pulumi.BoolPtrInput                            `pulumi:"isSingleNode"`
-	JdbcPort                  pulumi.IntPtrInput                             `pulumi:"jdbcPort"`
-	Kind                      pulumi.StringPtrInput                          `pulumi:"kind"`
-	LastRestartedTime         pulumi.IntPtrInput                             `pulumi:"lastRestartedTime"`
-	LastStateLossTime         pulumi.IntPtrInput                             `pulumi:"lastStateLossTime"`
-	NodeTypeId                pulumi.StringPtrInput                          `pulumi:"nodeTypeId"`
-	NumWorkers                pulumi.IntPtrInput                             `pulumi:"numWorkers"`
-	PolicyId                  pulumi.StringPtrInput                          `pulumi:"policyId"`
-	RuntimeEngine             pulumi.StringPtrInput                          `pulumi:"runtimeEngine"`
-	SingleUserName            pulumi.StringPtrInput                          `pulumi:"singleUserName"`
-	SparkConf                 pulumi.StringMapInput                          `pulumi:"sparkConf"`
-	SparkContextId            pulumi.IntPtrInput                             `pulumi:"sparkContextId"`
-	SparkEnvVars              pulumi.StringMapInput                          `pulumi:"sparkEnvVars"`
-	SparkVersion              pulumi.StringPtrInput                          `pulumi:"sparkVersion"`
-	Spec                      GetClusterClusterInfoSpecPtrInput              `pulumi:"spec"`
-	SshPublicKeys             pulumi.StringArrayInput                        `pulumi:"sshPublicKeys"`
-	StartTime                 pulumi.IntPtrInput                             `pulumi:"startTime"`
-	State                     pulumi.StringPtrInput                          `pulumi:"state"`
-	StateMessage              pulumi.StringPtrInput                          `pulumi:"stateMessage"`
-	TerminatedTime            pulumi.IntPtrInput                             `pulumi:"terminatedTime"`
-	TerminationReason         GetClusterClusterInfoTerminationReasonPtrInput `pulumi:"terminationReason"`
-	UseMlRuntime              pulumi.BoolPtrInput                            `pulumi:"useMlRuntime"`
-	WorkloadType              GetClusterClusterInfoWorkloadTypePtrInput      `pulumi:"workloadType"`
+	Autoscale GetClusterClusterInfoAutoscalePtrInput `pulumi:"autoscale"`
+	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
+	AutoterminationMinutes pulumi.IntPtrInput                           `pulumi:"autoterminationMinutes"`
+	AwsAttributes          GetClusterClusterInfoAwsAttributesPtrInput   `pulumi:"awsAttributes"`
+	AzureAttributes        GetClusterClusterInfoAzureAttributesPtrInput `pulumi:"azureAttributes"`
+	ClusterCores           pulumi.Float64PtrInput                       `pulumi:"clusterCores"`
+	// The id of the cluster
+	ClusterId        pulumi.StringPtrInput                         `pulumi:"clusterId"`
+	ClusterLogConf   GetClusterClusterInfoClusterLogConfPtrInput   `pulumi:"clusterLogConf"`
+	ClusterLogStatus GetClusterClusterInfoClusterLogStatusPtrInput `pulumi:"clusterLogStatus"`
+	ClusterMemoryMb  pulumi.IntPtrInput                            `pulumi:"clusterMemoryMb"`
+	// The exact name of the cluster to search
+	ClusterName     pulumi.StringPtrInput `pulumi:"clusterName"`
+	ClusterSource   pulumi.StringPtrInput `pulumi:"clusterSource"`
+	CreatorUserName pulumi.StringPtrInput `pulumi:"creatorUserName"`
+	// Additional tags for cluster resources.
+	CustomTags pulumi.StringMapInput `pulumi:"customTags"`
+	// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+	DataSecurityMode pulumi.StringPtrInput                    `pulumi:"dataSecurityMode"`
+	DefaultTags      pulumi.StringMapInput                    `pulumi:"defaultTags"`
+	DockerImage      GetClusterClusterInfoDockerImagePtrInput `pulumi:"dockerImage"`
+	Driver           GetClusterClusterInfoDriverPtrInput      `pulumi:"driver"`
+	// similar to `instancePoolId`, but for driver node.
+	DriverInstancePoolId pulumi.StringPtrInput `pulumi:"driverInstancePoolId"`
+	// The node type of the Spark driver.
+	DriverNodeTypeId pulumi.StringPtrInput `pulumi:"driverNodeTypeId"`
+	// Use autoscaling local storage.
+	EnableElasticDisk pulumi.BoolPtrInput `pulumi:"enableElasticDisk"`
+	// Enable local disk encryption.
+	EnableLocalDiskEncryption pulumi.BoolPtrInput                        `pulumi:"enableLocalDiskEncryption"`
+	Executors                 GetClusterClusterInfoExecutorArrayInput    `pulumi:"executors"`
+	GcpAttributes             GetClusterClusterInfoGcpAttributesPtrInput `pulumi:"gcpAttributes"`
+	InitScripts               GetClusterClusterInfoInitScriptArrayInput  `pulumi:"initScripts"`
+	// The pool of idle instances the cluster is attached to.
+	InstancePoolId    pulumi.StringPtrInput `pulumi:"instancePoolId"`
+	IsSingleNode      pulumi.BoolPtrInput   `pulumi:"isSingleNode"`
+	JdbcPort          pulumi.IntPtrInput    `pulumi:"jdbcPort"`
+	Kind              pulumi.StringPtrInput `pulumi:"kind"`
+	LastRestartedTime pulumi.IntPtrInput    `pulumi:"lastRestartedTime"`
+	LastStateLossTime pulumi.IntPtrInput    `pulumi:"lastStateLossTime"`
+	// Any supported getNodeType id.
+	NodeTypeId pulumi.StringPtrInput `pulumi:"nodeTypeId"`
+	NumWorkers pulumi.IntPtrInput    `pulumi:"numWorkers"`
+	// Identifier of Cluster Policy to validate cluster and preset certain defaults.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// The type of runtime of the cluster
+	RuntimeEngine pulumi.StringPtrInput `pulumi:"runtimeEngine"`
+	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	SingleUserName pulumi.StringPtrInput `pulumi:"singleUserName"`
+	// Map with key-value pairs to fine-tune Spark clusters.
+	SparkConf      pulumi.StringMapInput `pulumi:"sparkConf"`
+	SparkContextId pulumi.IntPtrInput    `pulumi:"sparkContextId"`
+	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+	SparkEnvVars pulumi.StringMapInput `pulumi:"sparkEnvVars"`
+	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+	SparkVersion pulumi.StringPtrInput             `pulumi:"sparkVersion"`
+	Spec         GetClusterClusterInfoSpecPtrInput `pulumi:"spec"`
+	// SSH public key contents that will be added to each Spark node in this cluster.
+	SshPublicKeys     pulumi.StringArrayInput                        `pulumi:"sshPublicKeys"`
+	StartTime         pulumi.IntPtrInput                             `pulumi:"startTime"`
+	State             pulumi.StringPtrInput                          `pulumi:"state"`
+	StateMessage      pulumi.StringPtrInput                          `pulumi:"stateMessage"`
+	TerminatedTime    pulumi.IntPtrInput                             `pulumi:"terminatedTime"`
+	TerminationReason GetClusterClusterInfoTerminationReasonPtrInput `pulumi:"terminationReason"`
+	UseMlRuntime      pulumi.BoolPtrInput                            `pulumi:"useMlRuntime"`
+	WorkloadType      GetClusterClusterInfoWorkloadTypePtrInput      `pulumi:"workloadType"`
 }
 
 func (GetClusterClusterInfoArgs) ElementType() reflect.Type {
@@ -3776,6 +4170,7 @@ func (o GetClusterClusterInfoOutput) Autoscale() GetClusterClusterInfoAutoscaleP
 	return o.ApplyT(func(v GetClusterClusterInfo) *GetClusterClusterInfoAutoscale { return v.Autoscale }).(GetClusterClusterInfoAutoscalePtrOutput)
 }
 
+// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
 func (o GetClusterClusterInfoOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *int { return v.AutoterminationMinutes }).(pulumi.IntPtrOutput)
 }
@@ -3792,6 +4187,7 @@ func (o GetClusterClusterInfoOutput) ClusterCores() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *float64 { return v.ClusterCores }).(pulumi.Float64PtrOutput)
 }
 
+// The id of the cluster
 func (o GetClusterClusterInfoOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
@@ -3808,6 +4204,7 @@ func (o GetClusterClusterInfoOutput) ClusterMemoryMb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *int { return v.ClusterMemoryMb }).(pulumi.IntPtrOutput)
 }
 
+// The exact name of the cluster to search
 func (o GetClusterClusterInfoOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
@@ -3820,10 +4217,12 @@ func (o GetClusterClusterInfoOutput) CreatorUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.CreatorUserName }).(pulumi.StringPtrOutput)
 }
 
+// Additional tags for cluster resources.
 func (o GetClusterClusterInfoOutput) CustomTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
+// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
 func (o GetClusterClusterInfoOutput) DataSecurityMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.DataSecurityMode }).(pulumi.StringPtrOutput)
 }
@@ -3840,18 +4239,22 @@ func (o GetClusterClusterInfoOutput) Driver() GetClusterClusterInfoDriverPtrOutp
 	return o.ApplyT(func(v GetClusterClusterInfo) *GetClusterClusterInfoDriver { return v.Driver }).(GetClusterClusterInfoDriverPtrOutput)
 }
 
+// similar to `instancePoolId`, but for driver node.
 func (o GetClusterClusterInfoOutput) DriverInstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.DriverInstancePoolId }).(pulumi.StringPtrOutput)
 }
 
+// The node type of the Spark driver.
 func (o GetClusterClusterInfoOutput) DriverNodeTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.DriverNodeTypeId }).(pulumi.StringPtrOutput)
 }
 
+// Use autoscaling local storage.
 func (o GetClusterClusterInfoOutput) EnableElasticDisk() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *bool { return v.EnableElasticDisk }).(pulumi.BoolPtrOutput)
 }
 
+// Enable local disk encryption.
 func (o GetClusterClusterInfoOutput) EnableLocalDiskEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *bool { return v.EnableLocalDiskEncryption }).(pulumi.BoolPtrOutput)
 }
@@ -3868,6 +4271,7 @@ func (o GetClusterClusterInfoOutput) InitScripts() GetClusterClusterInfoInitScri
 	return o.ApplyT(func(v GetClusterClusterInfo) []GetClusterClusterInfoInitScript { return v.InitScripts }).(GetClusterClusterInfoInitScriptArrayOutput)
 }
 
+// The pool of idle instances the cluster is attached to.
 func (o GetClusterClusterInfoOutput) InstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
 }
@@ -3892,6 +4296,7 @@ func (o GetClusterClusterInfoOutput) LastStateLossTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *int { return v.LastStateLossTime }).(pulumi.IntPtrOutput)
 }
 
+// Any supported getNodeType id.
 func (o GetClusterClusterInfoOutput) NodeTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.NodeTypeId }).(pulumi.StringPtrOutput)
 }
@@ -3900,18 +4305,22 @@ func (o GetClusterClusterInfoOutput) NumWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *int { return v.NumWorkers }).(pulumi.IntPtrOutput)
 }
 
+// Identifier of Cluster Policy to validate cluster and preset certain defaults.
 func (o GetClusterClusterInfoOutput) PolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
 }
 
+// The type of runtime of the cluster
 func (o GetClusterClusterInfoOutput) RuntimeEngine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.RuntimeEngine }).(pulumi.StringPtrOutput)
 }
 
+// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 func (o GetClusterClusterInfoOutput) SingleUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.SingleUserName }).(pulumi.StringPtrOutput)
 }
 
+// Map with key-value pairs to fine-tune Spark clusters.
 func (o GetClusterClusterInfoOutput) SparkConf() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
@@ -3920,10 +4329,12 @@ func (o GetClusterClusterInfoOutput) SparkContextId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *int { return v.SparkContextId }).(pulumi.IntPtrOutput)
 }
 
+// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
 func (o GetClusterClusterInfoOutput) SparkEnvVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
+// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
 func (o GetClusterClusterInfoOutput) SparkVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
 }
@@ -3932,6 +4343,7 @@ func (o GetClusterClusterInfoOutput) Spec() GetClusterClusterInfoSpecPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *GetClusterClusterInfoSpec { return v.Spec }).(GetClusterClusterInfoSpecPtrOutput)
 }
 
+// SSH public key contents that will be added to each Spark node in this cluster.
 func (o GetClusterClusterInfoOutput) SshPublicKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) []string { return v.SshPublicKeys }).(pulumi.StringArrayOutput)
 }
@@ -3997,6 +4409,7 @@ func (o GetClusterClusterInfoPtrOutput) Autoscale() GetClusterClusterInfoAutosca
 	}).(GetClusterClusterInfoAutoscalePtrOutput)
 }
 
+// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
 func (o GetClusterClusterInfoPtrOutput) AutoterminationMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *int {
 		if v == nil {
@@ -4033,6 +4446,7 @@ func (o GetClusterClusterInfoPtrOutput) ClusterCores() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// The id of the cluster
 func (o GetClusterClusterInfoPtrOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -4069,6 +4483,7 @@ func (o GetClusterClusterInfoPtrOutput) ClusterMemoryMb() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The exact name of the cluster to search
 func (o GetClusterClusterInfoPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -4096,6 +4511,7 @@ func (o GetClusterClusterInfoPtrOutput) CreatorUserName() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Additional tags for cluster resources.
 func (o GetClusterClusterInfoPtrOutput) CustomTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) map[string]string {
 		if v == nil {
@@ -4105,6 +4521,7 @@ func (o GetClusterClusterInfoPtrOutput) CustomTags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
 func (o GetClusterClusterInfoPtrOutput) DataSecurityMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -4141,6 +4558,7 @@ func (o GetClusterClusterInfoPtrOutput) Driver() GetClusterClusterInfoDriverPtrO
 	}).(GetClusterClusterInfoDriverPtrOutput)
 }
 
+// similar to `instancePoolId`, but for driver node.
 func (o GetClusterClusterInfoPtrOutput) DriverInstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -4150,6 +4568,7 @@ func (o GetClusterClusterInfoPtrOutput) DriverInstancePoolId() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The node type of the Spark driver.
 func (o GetClusterClusterInfoPtrOutput) DriverNodeTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -4159,6 +4578,7 @@ func (o GetClusterClusterInfoPtrOutput) DriverNodeTypeId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Use autoscaling local storage.
 func (o GetClusterClusterInfoPtrOutput) EnableElasticDisk() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *bool {
 		if v == nil {
@@ -4168,6 +4588,7 @@ func (o GetClusterClusterInfoPtrOutput) EnableElasticDisk() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Enable local disk encryption.
 func (o GetClusterClusterInfoPtrOutput) EnableLocalDiskEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *bool {
 		if v == nil {
@@ -4204,6 +4625,7 @@ func (o GetClusterClusterInfoPtrOutput) InitScripts() GetClusterClusterInfoInitS
 	}).(GetClusterClusterInfoInitScriptArrayOutput)
 }
 
+// The pool of idle instances the cluster is attached to.
 func (o GetClusterClusterInfoPtrOutput) InstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -4258,6 +4680,7 @@ func (o GetClusterClusterInfoPtrOutput) LastStateLossTime() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+// Any supported getNodeType id.
 func (o GetClusterClusterInfoPtrOutput) NodeTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -4276,6 +4699,7 @@ func (o GetClusterClusterInfoPtrOutput) NumWorkers() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Identifier of Cluster Policy to validate cluster and preset certain defaults.
 func (o GetClusterClusterInfoPtrOutput) PolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -4285,6 +4709,7 @@ func (o GetClusterClusterInfoPtrOutput) PolicyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The type of runtime of the cluster
 func (o GetClusterClusterInfoPtrOutput) RuntimeEngine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -4294,6 +4719,7 @@ func (o GetClusterClusterInfoPtrOutput) RuntimeEngine() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 func (o GetClusterClusterInfoPtrOutput) SingleUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -4303,6 +4729,7 @@ func (o GetClusterClusterInfoPtrOutput) SingleUserName() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Map with key-value pairs to fine-tune Spark clusters.
 func (o GetClusterClusterInfoPtrOutput) SparkConf() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) map[string]string {
 		if v == nil {
@@ -4321,6 +4748,7 @@ func (o GetClusterClusterInfoPtrOutput) SparkContextId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
 func (o GetClusterClusterInfoPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) map[string]string {
 		if v == nil {
@@ -4330,6 +4758,7 @@ func (o GetClusterClusterInfoPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
 func (o GetClusterClusterInfoPtrOutput) SparkVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -4348,6 +4777,7 @@ func (o GetClusterClusterInfoPtrOutput) Spec() GetClusterClusterInfoSpecPtrOutpu
 	}).(GetClusterClusterInfoSpecPtrOutput)
 }
 
+// SSH public key contents that will be added to each Spark node in this cluster.
 func (o GetClusterClusterInfoPtrOutput) SshPublicKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) []string {
 		if v == nil {
@@ -8097,39 +8527,57 @@ func (o GetClusterClusterInfoInitScriptWorkspacePtrOutput) Destination() pulumi.
 }
 
 type GetClusterClusterInfoSpec struct {
-	ApplyPolicyDefaultValues  *bool                                       `pulumi:"applyPolicyDefaultValues"`
-	Autoscale                 *GetClusterClusterInfoSpecAutoscale         `pulumi:"autoscale"`
-	AwsAttributes             *GetClusterClusterInfoSpecAwsAttributes     `pulumi:"awsAttributes"`
-	AzureAttributes           *GetClusterClusterInfoSpecAzureAttributes   `pulumi:"azureAttributes"`
-	ClusterId                 string                                      `pulumi:"clusterId"`
-	ClusterLogConf            *GetClusterClusterInfoSpecClusterLogConf    `pulumi:"clusterLogConf"`
-	ClusterMountInfos         []GetClusterClusterInfoSpecClusterMountInfo `pulumi:"clusterMountInfos"`
-	ClusterName               *string                                     `pulumi:"clusterName"`
-	CustomTags                map[string]string                           `pulumi:"customTags"`
-	DataSecurityMode          *string                                     `pulumi:"dataSecurityMode"`
-	DockerImage               *GetClusterClusterInfoSpecDockerImage       `pulumi:"dockerImage"`
-	DriverInstancePoolId      string                                      `pulumi:"driverInstancePoolId"`
-	DriverNodeTypeId          string                                      `pulumi:"driverNodeTypeId"`
-	EnableElasticDisk         bool                                        `pulumi:"enableElasticDisk"`
-	EnableLocalDiskEncryption bool                                        `pulumi:"enableLocalDiskEncryption"`
-	GcpAttributes             *GetClusterClusterInfoSpecGcpAttributes     `pulumi:"gcpAttributes"`
-	IdempotencyToken          *string                                     `pulumi:"idempotencyToken"`
-	InitScripts               []GetClusterClusterInfoSpecInitScript       `pulumi:"initScripts"`
-	InstancePoolId            *string                                     `pulumi:"instancePoolId"`
-	IsSingleNode              *bool                                       `pulumi:"isSingleNode"`
-	Kind                      *string                                     `pulumi:"kind"`
-	Libraries                 []GetClusterClusterInfoSpecLibrary          `pulumi:"libraries"`
-	NodeTypeId                string                                      `pulumi:"nodeTypeId"`
-	NumWorkers                *int                                        `pulumi:"numWorkers"`
-	PolicyId                  *string                                     `pulumi:"policyId"`
-	RuntimeEngine             *string                                     `pulumi:"runtimeEngine"`
-	SingleUserName            *string                                     `pulumi:"singleUserName"`
-	SparkConf                 map[string]string                           `pulumi:"sparkConf"`
-	SparkEnvVars              map[string]string                           `pulumi:"sparkEnvVars"`
-	SparkVersion              string                                      `pulumi:"sparkVersion"`
-	SshPublicKeys             []string                                    `pulumi:"sshPublicKeys"`
-	UseMlRuntime              *bool                                       `pulumi:"useMlRuntime"`
-	WorkloadType              *GetClusterClusterInfoSpecWorkloadType      `pulumi:"workloadType"`
+	ApplyPolicyDefaultValues *bool                                     `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                *GetClusterClusterInfoSpecAutoscale       `pulumi:"autoscale"`
+	AwsAttributes            *GetClusterClusterInfoSpecAwsAttributes   `pulumi:"awsAttributes"`
+	AzureAttributes          *GetClusterClusterInfoSpecAzureAttributes `pulumi:"azureAttributes"`
+	// The id of the cluster
+	ClusterId         string                                      `pulumi:"clusterId"`
+	ClusterLogConf    *GetClusterClusterInfoSpecClusterLogConf    `pulumi:"clusterLogConf"`
+	ClusterMountInfos []GetClusterClusterInfoSpecClusterMountInfo `pulumi:"clusterMountInfos"`
+	// The exact name of the cluster to search
+	ClusterName *string `pulumi:"clusterName"`
+	// Additional tags for cluster resources.
+	CustomTags map[string]string `pulumi:"customTags"`
+	// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+	DataSecurityMode *string                               `pulumi:"dataSecurityMode"`
+	DockerImage      *GetClusterClusterInfoSpecDockerImage `pulumi:"dockerImage"`
+	// similar to `instancePoolId`, but for driver node.
+	DriverInstancePoolId string `pulumi:"driverInstancePoolId"`
+	// The node type of the Spark driver.
+	DriverNodeTypeId string `pulumi:"driverNodeTypeId"`
+	// Use autoscaling local storage.
+	EnableElasticDisk bool `pulumi:"enableElasticDisk"`
+	// Enable local disk encryption.
+	EnableLocalDiskEncryption bool                                    `pulumi:"enableLocalDiskEncryption"`
+	GcpAttributes             *GetClusterClusterInfoSpecGcpAttributes `pulumi:"gcpAttributes"`
+	// An optional token to guarantee the idempotency of cluster creation requests.
+	IdempotencyToken *string                               `pulumi:"idempotencyToken"`
+	InitScripts      []GetClusterClusterInfoSpecInitScript `pulumi:"initScripts"`
+	// The pool of idle instances the cluster is attached to.
+	InstancePoolId *string                            `pulumi:"instancePoolId"`
+	IsSingleNode   *bool                              `pulumi:"isSingleNode"`
+	Kind           *string                            `pulumi:"kind"`
+	Libraries      []GetClusterClusterInfoSpecLibrary `pulumi:"libraries"`
+	// Any supported getNodeType id.
+	NodeTypeId string `pulumi:"nodeTypeId"`
+	NumWorkers *int   `pulumi:"numWorkers"`
+	// Identifier of Cluster Policy to validate cluster and preset certain defaults.
+	PolicyId *string `pulumi:"policyId"`
+	// The type of runtime of the cluster
+	RuntimeEngine *string `pulumi:"runtimeEngine"`
+	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	SingleUserName *string `pulumi:"singleUserName"`
+	// Map with key-value pairs to fine-tune Spark clusters.
+	SparkConf map[string]string `pulumi:"sparkConf"`
+	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+	SparkEnvVars map[string]string `pulumi:"sparkEnvVars"`
+	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+	SparkVersion string `pulumi:"sparkVersion"`
+	// SSH public key contents that will be added to each Spark node in this cluster.
+	SshPublicKeys []string                               `pulumi:"sshPublicKeys"`
+	UseMlRuntime  *bool                                  `pulumi:"useMlRuntime"`
+	WorkloadType  *GetClusterClusterInfoSpecWorkloadType `pulumi:"workloadType"`
 }
 
 // GetClusterClusterInfoSpecInput is an input type that accepts GetClusterClusterInfoSpecArgs and GetClusterClusterInfoSpecOutput values.
@@ -8144,39 +8592,57 @@ type GetClusterClusterInfoSpecInput interface {
 }
 
 type GetClusterClusterInfoSpecArgs struct {
-	ApplyPolicyDefaultValues  pulumi.BoolPtrInput                                 `pulumi:"applyPolicyDefaultValues"`
-	Autoscale                 GetClusterClusterInfoSpecAutoscalePtrInput          `pulumi:"autoscale"`
-	AwsAttributes             GetClusterClusterInfoSpecAwsAttributesPtrInput      `pulumi:"awsAttributes"`
-	AzureAttributes           GetClusterClusterInfoSpecAzureAttributesPtrInput    `pulumi:"azureAttributes"`
-	ClusterId                 pulumi.StringInput                                  `pulumi:"clusterId"`
-	ClusterLogConf            GetClusterClusterInfoSpecClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
-	ClusterMountInfos         GetClusterClusterInfoSpecClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
-	ClusterName               pulumi.StringPtrInput                               `pulumi:"clusterName"`
-	CustomTags                pulumi.StringMapInput                               `pulumi:"customTags"`
-	DataSecurityMode          pulumi.StringPtrInput                               `pulumi:"dataSecurityMode"`
-	DockerImage               GetClusterClusterInfoSpecDockerImagePtrInput        `pulumi:"dockerImage"`
-	DriverInstancePoolId      pulumi.StringInput                                  `pulumi:"driverInstancePoolId"`
-	DriverNodeTypeId          pulumi.StringInput                                  `pulumi:"driverNodeTypeId"`
-	EnableElasticDisk         pulumi.BoolInput                                    `pulumi:"enableElasticDisk"`
-	EnableLocalDiskEncryption pulumi.BoolInput                                    `pulumi:"enableLocalDiskEncryption"`
-	GcpAttributes             GetClusterClusterInfoSpecGcpAttributesPtrInput      `pulumi:"gcpAttributes"`
-	IdempotencyToken          pulumi.StringPtrInput                               `pulumi:"idempotencyToken"`
-	InitScripts               GetClusterClusterInfoSpecInitScriptArrayInput       `pulumi:"initScripts"`
-	InstancePoolId            pulumi.StringPtrInput                               `pulumi:"instancePoolId"`
-	IsSingleNode              pulumi.BoolPtrInput                                 `pulumi:"isSingleNode"`
-	Kind                      pulumi.StringPtrInput                               `pulumi:"kind"`
-	Libraries                 GetClusterClusterInfoSpecLibraryArrayInput          `pulumi:"libraries"`
-	NodeTypeId                pulumi.StringInput                                  `pulumi:"nodeTypeId"`
-	NumWorkers                pulumi.IntPtrInput                                  `pulumi:"numWorkers"`
-	PolicyId                  pulumi.StringPtrInput                               `pulumi:"policyId"`
-	RuntimeEngine             pulumi.StringPtrInput                               `pulumi:"runtimeEngine"`
-	SingleUserName            pulumi.StringPtrInput                               `pulumi:"singleUserName"`
-	SparkConf                 pulumi.StringMapInput                               `pulumi:"sparkConf"`
-	SparkEnvVars              pulumi.StringMapInput                               `pulumi:"sparkEnvVars"`
-	SparkVersion              pulumi.StringInput                                  `pulumi:"sparkVersion"`
-	SshPublicKeys             pulumi.StringArrayInput                             `pulumi:"sshPublicKeys"`
-	UseMlRuntime              pulumi.BoolPtrInput                                 `pulumi:"useMlRuntime"`
-	WorkloadType              GetClusterClusterInfoSpecWorkloadTypePtrInput       `pulumi:"workloadType"`
+	ApplyPolicyDefaultValues pulumi.BoolPtrInput                              `pulumi:"applyPolicyDefaultValues"`
+	Autoscale                GetClusterClusterInfoSpecAutoscalePtrInput       `pulumi:"autoscale"`
+	AwsAttributes            GetClusterClusterInfoSpecAwsAttributesPtrInput   `pulumi:"awsAttributes"`
+	AzureAttributes          GetClusterClusterInfoSpecAzureAttributesPtrInput `pulumi:"azureAttributes"`
+	// The id of the cluster
+	ClusterId         pulumi.StringInput                                  `pulumi:"clusterId"`
+	ClusterLogConf    GetClusterClusterInfoSpecClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
+	ClusterMountInfos GetClusterClusterInfoSpecClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
+	// The exact name of the cluster to search
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// Additional tags for cluster resources.
+	CustomTags pulumi.StringMapInput `pulumi:"customTags"`
+	// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
+	DataSecurityMode pulumi.StringPtrInput                        `pulumi:"dataSecurityMode"`
+	DockerImage      GetClusterClusterInfoSpecDockerImagePtrInput `pulumi:"dockerImage"`
+	// similar to `instancePoolId`, but for driver node.
+	DriverInstancePoolId pulumi.StringInput `pulumi:"driverInstancePoolId"`
+	// The node type of the Spark driver.
+	DriverNodeTypeId pulumi.StringInput `pulumi:"driverNodeTypeId"`
+	// Use autoscaling local storage.
+	EnableElasticDisk pulumi.BoolInput `pulumi:"enableElasticDisk"`
+	// Enable local disk encryption.
+	EnableLocalDiskEncryption pulumi.BoolInput                               `pulumi:"enableLocalDiskEncryption"`
+	GcpAttributes             GetClusterClusterInfoSpecGcpAttributesPtrInput `pulumi:"gcpAttributes"`
+	// An optional token to guarantee the idempotency of cluster creation requests.
+	IdempotencyToken pulumi.StringPtrInput                         `pulumi:"idempotencyToken"`
+	InitScripts      GetClusterClusterInfoSpecInitScriptArrayInput `pulumi:"initScripts"`
+	// The pool of idle instances the cluster is attached to.
+	InstancePoolId pulumi.StringPtrInput                      `pulumi:"instancePoolId"`
+	IsSingleNode   pulumi.BoolPtrInput                        `pulumi:"isSingleNode"`
+	Kind           pulumi.StringPtrInput                      `pulumi:"kind"`
+	Libraries      GetClusterClusterInfoSpecLibraryArrayInput `pulumi:"libraries"`
+	// Any supported getNodeType id.
+	NodeTypeId pulumi.StringInput `pulumi:"nodeTypeId"`
+	NumWorkers pulumi.IntPtrInput `pulumi:"numWorkers"`
+	// Identifier of Cluster Policy to validate cluster and preset certain defaults.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// The type of runtime of the cluster
+	RuntimeEngine pulumi.StringPtrInput `pulumi:"runtimeEngine"`
+	// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	SingleUserName pulumi.StringPtrInput `pulumi:"singleUserName"`
+	// Map with key-value pairs to fine-tune Spark clusters.
+	SparkConf pulumi.StringMapInput `pulumi:"sparkConf"`
+	// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
+	SparkEnvVars pulumi.StringMapInput `pulumi:"sparkEnvVars"`
+	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
+	SparkVersion pulumi.StringInput `pulumi:"sparkVersion"`
+	// SSH public key contents that will be added to each Spark node in this cluster.
+	SshPublicKeys pulumi.StringArrayInput                       `pulumi:"sshPublicKeys"`
+	UseMlRuntime  pulumi.BoolPtrInput                           `pulumi:"useMlRuntime"`
+	WorkloadType  GetClusterClusterInfoSpecWorkloadTypePtrInput `pulumi:"workloadType"`
 }
 
 func (GetClusterClusterInfoSpecArgs) ElementType() reflect.Type {
@@ -8272,6 +8738,7 @@ func (o GetClusterClusterInfoSpecOutput) AzureAttributes() GetClusterClusterInfo
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecAzureAttributes { return v.AzureAttributes }).(GetClusterClusterInfoSpecAzureAttributesPtrOutput)
 }
 
+// The id of the cluster
 func (o GetClusterClusterInfoSpecOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -8286,14 +8753,17 @@ func (o GetClusterClusterInfoSpecOutput) ClusterMountInfos() GetClusterClusterIn
 	}).(GetClusterClusterInfoSpecClusterMountInfoArrayOutput)
 }
 
+// The exact name of the cluster to search
 func (o GetClusterClusterInfoSpecOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
+// Additional tags for cluster resources.
 func (o GetClusterClusterInfoSpecOutput) CustomTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) map[string]string { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
+// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
 func (o GetClusterClusterInfoSpecOutput) DataSecurityMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.DataSecurityMode }).(pulumi.StringPtrOutput)
 }
@@ -8302,18 +8772,22 @@ func (o GetClusterClusterInfoSpecOutput) DockerImage() GetClusterClusterInfoSpec
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecDockerImage { return v.DockerImage }).(GetClusterClusterInfoSpecDockerImagePtrOutput)
 }
 
+// similar to `instancePoolId`, but for driver node.
 func (o GetClusterClusterInfoSpecOutput) DriverInstancePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) string { return v.DriverInstancePoolId }).(pulumi.StringOutput)
 }
 
+// The node type of the Spark driver.
 func (o GetClusterClusterInfoSpecOutput) DriverNodeTypeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) string { return v.DriverNodeTypeId }).(pulumi.StringOutput)
 }
 
+// Use autoscaling local storage.
 func (o GetClusterClusterInfoSpecOutput) EnableElasticDisk() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) bool { return v.EnableElasticDisk }).(pulumi.BoolOutput)
 }
 
+// Enable local disk encryption.
 func (o GetClusterClusterInfoSpecOutput) EnableLocalDiskEncryption() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) bool { return v.EnableLocalDiskEncryption }).(pulumi.BoolOutput)
 }
@@ -8322,6 +8796,7 @@ func (o GetClusterClusterInfoSpecOutput) GcpAttributes() GetClusterClusterInfoSp
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecGcpAttributes { return v.GcpAttributes }).(GetClusterClusterInfoSpecGcpAttributesPtrOutput)
 }
 
+// An optional token to guarantee the idempotency of cluster creation requests.
 func (o GetClusterClusterInfoSpecOutput) IdempotencyToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.IdempotencyToken }).(pulumi.StringPtrOutput)
 }
@@ -8330,6 +8805,7 @@ func (o GetClusterClusterInfoSpecOutput) InitScripts() GetClusterClusterInfoSpec
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) []GetClusterClusterInfoSpecInitScript { return v.InitScripts }).(GetClusterClusterInfoSpecInitScriptArrayOutput)
 }
 
+// The pool of idle instances the cluster is attached to.
 func (o GetClusterClusterInfoSpecOutput) InstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
 }
@@ -8346,6 +8822,7 @@ func (o GetClusterClusterInfoSpecOutput) Libraries() GetClusterClusterInfoSpecLi
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) []GetClusterClusterInfoSpecLibrary { return v.Libraries }).(GetClusterClusterInfoSpecLibraryArrayOutput)
 }
 
+// Any supported getNodeType id.
 func (o GetClusterClusterInfoSpecOutput) NodeTypeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) string { return v.NodeTypeId }).(pulumi.StringOutput)
 }
@@ -8354,30 +8831,37 @@ func (o GetClusterClusterInfoSpecOutput) NumWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *int { return v.NumWorkers }).(pulumi.IntPtrOutput)
 }
 
+// Identifier of Cluster Policy to validate cluster and preset certain defaults.
 func (o GetClusterClusterInfoSpecOutput) PolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
 }
 
+// The type of runtime of the cluster
 func (o GetClusterClusterInfoSpecOutput) RuntimeEngine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.RuntimeEngine }).(pulumi.StringPtrOutput)
 }
 
+// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 func (o GetClusterClusterInfoSpecOutput) SingleUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.SingleUserName }).(pulumi.StringPtrOutput)
 }
 
+// Map with key-value pairs to fine-tune Spark clusters.
 func (o GetClusterClusterInfoSpecOutput) SparkConf() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) map[string]string { return v.SparkConf }).(pulumi.StringMapOutput)
 }
 
+// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
 func (o GetClusterClusterInfoSpecOutput) SparkEnvVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) map[string]string { return v.SparkEnvVars }).(pulumi.StringMapOutput)
 }
 
+// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
 func (o GetClusterClusterInfoSpecOutput) SparkVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) string { return v.SparkVersion }).(pulumi.StringOutput)
 }
 
+// SSH public key contents that will be added to each Spark node in this cluster.
 func (o GetClusterClusterInfoSpecOutput) SshPublicKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) []string { return v.SshPublicKeys }).(pulumi.StringArrayOutput)
 }
@@ -8450,6 +8934,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) AzureAttributes() GetClusterClusterI
 	}).(GetClusterClusterInfoSpecAzureAttributesPtrOutput)
 }
 
+// The id of the cluster
 func (o GetClusterClusterInfoSpecPtrOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -8477,6 +8962,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) ClusterMountInfos() GetClusterCluste
 	}).(GetClusterClusterInfoSpecClusterMountInfoArrayOutput)
 }
 
+// The exact name of the cluster to search
 func (o GetClusterClusterInfoSpecPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -8486,6 +8972,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) ClusterName() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Additional tags for cluster resources.
 func (o GetClusterClusterInfoSpecPtrOutput) CustomTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) map[string]string {
 		if v == nil {
@@ -8495,6 +8982,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) CustomTags() pulumi.StringMapOutput 
 	}).(pulumi.StringMapOutput)
 }
 
+// Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
 func (o GetClusterClusterInfoSpecPtrOutput) DataSecurityMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -8513,6 +9001,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) DockerImage() GetClusterClusterInfoS
 	}).(GetClusterClusterInfoSpecDockerImagePtrOutput)
 }
 
+// similar to `instancePoolId`, but for driver node.
 func (o GetClusterClusterInfoSpecPtrOutput) DriverInstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -8522,6 +9011,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) DriverInstancePoolId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// The node type of the Spark driver.
 func (o GetClusterClusterInfoSpecPtrOutput) DriverNodeTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -8531,6 +9021,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) DriverNodeTypeId() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Use autoscaling local storage.
 func (o GetClusterClusterInfoSpecPtrOutput) EnableElasticDisk() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *bool {
 		if v == nil {
@@ -8540,6 +9031,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) EnableElasticDisk() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Enable local disk encryption.
 func (o GetClusterClusterInfoSpecPtrOutput) EnableLocalDiskEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *bool {
 		if v == nil {
@@ -8558,6 +9050,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) GcpAttributes() GetClusterClusterInf
 	}).(GetClusterClusterInfoSpecGcpAttributesPtrOutput)
 }
 
+// An optional token to guarantee the idempotency of cluster creation requests.
 func (o GetClusterClusterInfoSpecPtrOutput) IdempotencyToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -8576,6 +9069,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) InitScripts() GetClusterClusterInfoS
 	}).(GetClusterClusterInfoSpecInitScriptArrayOutput)
 }
 
+// The pool of idle instances the cluster is attached to.
 func (o GetClusterClusterInfoSpecPtrOutput) InstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -8612,6 +9106,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) Libraries() GetClusterClusterInfoSpe
 	}).(GetClusterClusterInfoSpecLibraryArrayOutput)
 }
 
+// Any supported getNodeType id.
 func (o GetClusterClusterInfoSpecPtrOutput) NodeTypeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -8630,6 +9125,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) NumWorkers() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Identifier of Cluster Policy to validate cluster and preset certain defaults.
 func (o GetClusterClusterInfoSpecPtrOutput) PolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -8639,6 +9135,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) PolicyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The type of runtime of the cluster
 func (o GetClusterClusterInfoSpecPtrOutput) RuntimeEngine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -8648,6 +9145,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) RuntimeEngine() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 func (o GetClusterClusterInfoSpecPtrOutput) SingleUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -8657,6 +9155,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) SingleUserName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Map with key-value pairs to fine-tune Spark clusters.
 func (o GetClusterClusterInfoSpecPtrOutput) SparkConf() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) map[string]string {
 		if v == nil {
@@ -8666,6 +9165,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) SparkConf() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
 func (o GetClusterClusterInfoSpecPtrOutput) SparkEnvVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) map[string]string {
 		if v == nil {
@@ -8675,6 +9175,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) SparkEnvVars() pulumi.StringMapOutpu
 	}).(pulumi.StringMapOutput)
 }
 
+// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
 func (o GetClusterClusterInfoSpecPtrOutput) SparkVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -8684,6 +9185,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) SparkVersion() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// SSH public key contents that will be added to each Spark node in this cluster.
 func (o GetClusterClusterInfoSpecPtrOutput) SshPublicKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) []string {
 		if v == nil {
@@ -13111,10 +13613,14 @@ func (o GetClusterClusterInfoWorkloadTypeClientsPtrOutput) Notebooks() pulumi.Bo
 }
 
 type GetClustersFilterBy struct {
+	// List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
 	ClusterSources []string `pulumi:"clusterSources"`
-	ClusterStates  []string `pulumi:"clusterStates"`
-	IsPinned       *bool    `pulumi:"isPinned"`
-	PolicyId       *string  `pulumi:"policyId"`
+	// List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+	ClusterStates []string `pulumi:"clusterStates"`
+	// Whether to filter by pinned clusters.
+	IsPinned *bool `pulumi:"isPinned"`
+	// Filter by ClusterPolicy id.
+	PolicyId *string `pulumi:"policyId"`
 }
 
 // GetClustersFilterByInput is an input type that accepts GetClustersFilterByArgs and GetClustersFilterByOutput values.
@@ -13129,10 +13635,14 @@ type GetClustersFilterByInput interface {
 }
 
 type GetClustersFilterByArgs struct {
+	// List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
 	ClusterSources pulumi.StringArrayInput `pulumi:"clusterSources"`
-	ClusterStates  pulumi.StringArrayInput `pulumi:"clusterStates"`
-	IsPinned       pulumi.BoolPtrInput     `pulumi:"isPinned"`
-	PolicyId       pulumi.StringPtrInput   `pulumi:"policyId"`
+	// List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
+	ClusterStates pulumi.StringArrayInput `pulumi:"clusterStates"`
+	// Whether to filter by pinned clusters.
+	IsPinned pulumi.BoolPtrInput `pulumi:"isPinned"`
+	// Filter by ClusterPolicy id.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
 }
 
 func (GetClustersFilterByArgs) ElementType() reflect.Type {
@@ -13212,18 +13722,22 @@ func (o GetClustersFilterByOutput) ToGetClustersFilterByPtrOutputWithContext(ctx
 	}).(GetClustersFilterByPtrOutput)
 }
 
+// List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
 func (o GetClustersFilterByOutput) ClusterSources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersFilterBy) []string { return v.ClusterSources }).(pulumi.StringArrayOutput)
 }
 
+// List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
 func (o GetClustersFilterByOutput) ClusterStates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersFilterBy) []string { return v.ClusterStates }).(pulumi.StringArrayOutput)
 }
 
+// Whether to filter by pinned clusters.
 func (o GetClustersFilterByOutput) IsPinned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClustersFilterBy) *bool { return v.IsPinned }).(pulumi.BoolPtrOutput)
 }
 
+// Filter by ClusterPolicy id.
 func (o GetClustersFilterByOutput) PolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersFilterBy) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
 }
@@ -13252,6 +13766,7 @@ func (o GetClustersFilterByPtrOutput) Elem() GetClustersFilterByOutput {
 	}).(GetClustersFilterByOutput)
 }
 
+// List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
 func (o GetClustersFilterByPtrOutput) ClusterSources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetClustersFilterBy) []string {
 		if v == nil {
@@ -13261,6 +13776,7 @@ func (o GetClustersFilterByPtrOutput) ClusterSources() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
 func (o GetClustersFilterByPtrOutput) ClusterStates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetClustersFilterBy) []string {
 		if v == nil {
@@ -13270,6 +13786,7 @@ func (o GetClustersFilterByPtrOutput) ClusterStates() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Whether to filter by pinned clusters.
 func (o GetClustersFilterByPtrOutput) IsPinned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetClustersFilterBy) *bool {
 		if v == nil {
@@ -13279,6 +13796,7 @@ func (o GetClustersFilterByPtrOutput) IsPinned() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Filter by ClusterPolicy id.
 func (o GetClustersFilterByPtrOutput) PolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClustersFilterBy) *string {
 		if v == nil {
@@ -13289,25 +13807,42 @@ func (o GetClustersFilterByPtrOutput) PolicyId() pulumi.StringPtrOutput {
 }
 
 type GetCurrentMetastoreMetastoreInfo struct {
-	Cloud                                       *string `pulumi:"cloud"`
-	CreatedAt                                   *int    `pulumi:"createdAt"`
-	CreatedBy                                   *string `pulumi:"createdBy"`
-	DefaultDataAccessConfigId                   *string `pulumi:"defaultDataAccessConfigId"`
-	DeltaSharingOrganizationName                *string `pulumi:"deltaSharingOrganizationName"`
-	DeltaSharingRecipientTokenLifetimeInSeconds *int    `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
-	DeltaSharingScope                           *string `pulumi:"deltaSharingScope"`
-	ExternalAccessEnabled                       *bool   `pulumi:"externalAccessEnabled"`
-	GlobalMetastoreId                           *string `pulumi:"globalMetastoreId"`
-	MetastoreId                                 *string `pulumi:"metastoreId"`
-	Name                                        *string `pulumi:"name"`
-	Owner                                       *string `pulumi:"owner"`
-	PrivilegeModelVersion                       *string `pulumi:"privilegeModelVersion"`
-	Region                                      *string `pulumi:"region"`
-	StorageRoot                                 *string `pulumi:"storageRoot"`
-	StorageRootCredentialId                     *string `pulumi:"storageRootCredentialId"`
-	StorageRootCredentialName                   *string `pulumi:"storageRootCredentialName"`
-	UpdatedAt                                   *int    `pulumi:"updatedAt"`
-	UpdatedBy                                   *string `pulumi:"updatedBy"`
+	Cloud *string `pulumi:"cloud"`
+	// Timestamp (in milliseconds) when the current metastore was created.
+	CreatedAt *int `pulumi:"createdAt"`
+	// the ID of the identity that created the current metastore.
+	CreatedBy *string `pulumi:"createdBy"`
+	// the ID of the default data access configuration.
+	DefaultDataAccessConfigId *string `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
+	// the expiration duration in seconds on recipient data access tokens.
+	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+	DeltaSharingScope     *string `pulumi:"deltaSharingScope"`
+	ExternalAccessEnabled *bool   `pulumi:"externalAccessEnabled"`
+	// Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+	GlobalMetastoreId *string `pulumi:"globalMetastoreId"`
+	// Metastore ID.
+	MetastoreId *string `pulumi:"metastoreId"`
+	// Name of metastore.
+	Name *string `pulumi:"name"`
+	// Username/group name/sp applicationId of the metastore owner.
+	Owner *string `pulumi:"owner"`
+	// the version of the privilege model used by the metastore.
+	PrivilegeModelVersion *string `pulumi:"privilegeModelVersion"`
+	// (Mandatory for account-level) The region of the metastore.
+	Region *string `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored.
+	StorageRoot *string `pulumi:"storageRoot"`
+	// ID of a storage credential used for the `storageRoot`.
+	StorageRootCredentialId *string `pulumi:"storageRootCredentialId"`
+	// Name of a storage credential used for the `storageRoot`.
+	StorageRootCredentialName *string `pulumi:"storageRootCredentialName"`
+	// Timestamp (in milliseconds) when the current metastore was updated.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// the ID of the identity that updated the current metastore.
+	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
 // GetCurrentMetastoreMetastoreInfoInput is an input type that accepts GetCurrentMetastoreMetastoreInfoArgs and GetCurrentMetastoreMetastoreInfoOutput values.
@@ -13322,25 +13857,42 @@ type GetCurrentMetastoreMetastoreInfoInput interface {
 }
 
 type GetCurrentMetastoreMetastoreInfoArgs struct {
-	Cloud                                       pulumi.StringPtrInput `pulumi:"cloud"`
-	CreatedAt                                   pulumi.IntPtrInput    `pulumi:"createdAt"`
-	CreatedBy                                   pulumi.StringPtrInput `pulumi:"createdBy"`
-	DefaultDataAccessConfigId                   pulumi.StringPtrInput `pulumi:"defaultDataAccessConfigId"`
-	DeltaSharingOrganizationName                pulumi.StringPtrInput `pulumi:"deltaSharingOrganizationName"`
-	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput    `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
-	DeltaSharingScope                           pulumi.StringPtrInput `pulumi:"deltaSharingScope"`
-	ExternalAccessEnabled                       pulumi.BoolPtrInput   `pulumi:"externalAccessEnabled"`
-	GlobalMetastoreId                           pulumi.StringPtrInput `pulumi:"globalMetastoreId"`
-	MetastoreId                                 pulumi.StringPtrInput `pulumi:"metastoreId"`
-	Name                                        pulumi.StringPtrInput `pulumi:"name"`
-	Owner                                       pulumi.StringPtrInput `pulumi:"owner"`
-	PrivilegeModelVersion                       pulumi.StringPtrInput `pulumi:"privilegeModelVersion"`
-	Region                                      pulumi.StringPtrInput `pulumi:"region"`
-	StorageRoot                                 pulumi.StringPtrInput `pulumi:"storageRoot"`
-	StorageRootCredentialId                     pulumi.StringPtrInput `pulumi:"storageRootCredentialId"`
-	StorageRootCredentialName                   pulumi.StringPtrInput `pulumi:"storageRootCredentialName"`
-	UpdatedAt                                   pulumi.IntPtrInput    `pulumi:"updatedAt"`
-	UpdatedBy                                   pulumi.StringPtrInput `pulumi:"updatedBy"`
+	Cloud pulumi.StringPtrInput `pulumi:"cloud"`
+	// Timestamp (in milliseconds) when the current metastore was created.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// the ID of the identity that created the current metastore.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// the ID of the default data access configuration.
+	DefaultDataAccessConfigId pulumi.StringPtrInput `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+	DeltaSharingOrganizationName pulumi.StringPtrInput `pulumi:"deltaSharingOrganizationName"`
+	// the expiration duration in seconds on recipient data access tokens.
+	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+	DeltaSharingScope     pulumi.StringPtrInput `pulumi:"deltaSharingScope"`
+	ExternalAccessEnabled pulumi.BoolPtrInput   `pulumi:"externalAccessEnabled"`
+	// Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+	GlobalMetastoreId pulumi.StringPtrInput `pulumi:"globalMetastoreId"`
+	// Metastore ID.
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// Name of metastore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Username/group name/sp applicationId of the metastore owner.
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// the version of the privilege model used by the metastore.
+	PrivilegeModelVersion pulumi.StringPtrInput `pulumi:"privilegeModelVersion"`
+	// (Mandatory for account-level) The region of the metastore.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored.
+	StorageRoot pulumi.StringPtrInput `pulumi:"storageRoot"`
+	// ID of a storage credential used for the `storageRoot`.
+	StorageRootCredentialId pulumi.StringPtrInput `pulumi:"storageRootCredentialId"`
+	// Name of a storage credential used for the `storageRoot`.
+	StorageRootCredentialName pulumi.StringPtrInput `pulumi:"storageRootCredentialName"`
+	// Timestamp (in milliseconds) when the current metastore was updated.
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// the ID of the identity that updated the current metastore.
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
 }
 
 func (GetCurrentMetastoreMetastoreInfoArgs) ElementType() reflect.Type {
@@ -13424,26 +13976,32 @@ func (o GetCurrentMetastoreMetastoreInfoOutput) Cloud() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.Cloud }).(pulumi.StringPtrOutput)
 }
 
+// Timestamp (in milliseconds) when the current metastore was created.
 func (o GetCurrentMetastoreMetastoreInfoOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
 }
 
+// the ID of the identity that created the current metastore.
 func (o GetCurrentMetastoreMetastoreInfoOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// the ID of the default data access configuration.
 func (o GetCurrentMetastoreMetastoreInfoOutput) DefaultDataAccessConfigId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.DefaultDataAccessConfigId }).(pulumi.StringPtrOutput)
 }
 
+// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
 func (o GetCurrentMetastoreMetastoreInfoOutput) DeltaSharingOrganizationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.DeltaSharingOrganizationName }).(pulumi.StringPtrOutput)
 }
 
+// the expiration duration in seconds on recipient data access tokens.
 func (o GetCurrentMetastoreMetastoreInfoOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *int { return v.DeltaSharingRecipientTokenLifetimeInSeconds }).(pulumi.IntPtrOutput)
 }
 
+// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 func (o GetCurrentMetastoreMetastoreInfoOutput) DeltaSharingScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.DeltaSharingScope }).(pulumi.StringPtrOutput)
 }
@@ -13452,46 +14010,57 @@ func (o GetCurrentMetastoreMetastoreInfoOutput) ExternalAccessEnabled() pulumi.B
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *bool { return v.ExternalAccessEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
 func (o GetCurrentMetastoreMetastoreInfoOutput) GlobalMetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.GlobalMetastoreId }).(pulumi.StringPtrOutput)
 }
 
+// Metastore ID.
 func (o GetCurrentMetastoreMetastoreInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
 
+// Name of metastore.
 func (o GetCurrentMetastoreMetastoreInfoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Username/group name/sp applicationId of the metastore owner.
 func (o GetCurrentMetastoreMetastoreInfoOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// the version of the privilege model used by the metastore.
 func (o GetCurrentMetastoreMetastoreInfoOutput) PrivilegeModelVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.PrivilegeModelVersion }).(pulumi.StringPtrOutput)
 }
 
+// (Mandatory for account-level) The region of the metastore.
 func (o GetCurrentMetastoreMetastoreInfoOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Path on cloud storage account, where managed `Table` are stored.
 func (o GetCurrentMetastoreMetastoreInfoOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }
 
+// ID of a storage credential used for the `storageRoot`.
 func (o GetCurrentMetastoreMetastoreInfoOutput) StorageRootCredentialId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.StorageRootCredentialId }).(pulumi.StringPtrOutput)
 }
 
+// Name of a storage credential used for the `storageRoot`.
 func (o GetCurrentMetastoreMetastoreInfoOutput) StorageRootCredentialName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.StorageRootCredentialName }).(pulumi.StringPtrOutput)
 }
 
+// Timestamp (in milliseconds) when the current metastore was updated.
 func (o GetCurrentMetastoreMetastoreInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
 }
 
+// the ID of the identity that updated the current metastore.
 func (o GetCurrentMetastoreMetastoreInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
 }
@@ -13529,6 +14098,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Cloud() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Timestamp (in milliseconds) when the current metastore was created.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *int {
 		if v == nil {
@@ -13538,6 +14108,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) CreatedAt() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// the ID of the identity that created the current metastore.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13547,6 +14118,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) CreatedBy() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// the ID of the default data access configuration.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DefaultDataAccessConfigId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13556,6 +14128,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DefaultDataAccessConfigId() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DeltaSharingOrganizationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13565,6 +14138,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DeltaSharingOrganizationName(
 	}).(pulumi.StringPtrOutput)
 }
 
+// the expiration duration in seconds on recipient data access tokens.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *int {
 		if v == nil {
@@ -13574,6 +14148,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DeltaSharingRecipientTokenLif
 	}).(pulumi.IntPtrOutput)
 }
 
+// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DeltaSharingScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13592,6 +14167,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) ExternalAccessEnabled() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) GlobalMetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13601,6 +14177,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) GlobalMetastoreId() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Metastore ID.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13610,6 +14187,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) MetastoreId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of metastore.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13619,6 +14197,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Name() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username/group name/sp applicationId of the metastore owner.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13628,6 +14207,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Owner() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// the version of the privilege model used by the metastore.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) PrivilegeModelVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13637,6 +14217,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) PrivilegeModelVersion() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Mandatory for account-level) The region of the metastore.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13646,6 +14227,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Region() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Path on cloud storage account, where managed `Table` are stored.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13655,6 +14237,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) StorageRoot() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// ID of a storage credential used for the `storageRoot`.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) StorageRootCredentialId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13664,6 +14247,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) StorageRootCredentialId() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of a storage credential used for the `storageRoot`.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) StorageRootCredentialName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13673,6 +14257,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) StorageRootCredentialName() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// Timestamp (in milliseconds) when the current metastore was updated.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *int {
 		if v == nil {
@@ -13682,6 +14267,7 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// the ID of the identity that updated the current metastore.
 func (o GetCurrentMetastoreMetastoreInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -13692,8 +14278,9 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) UpdatedBy() pulumi.StringPtrO
 }
 
 type GetDbfsFilePathsPathList struct {
-	FileSize *int    `pulumi:"fileSize"`
-	Path     *string `pulumi:"path"`
+	FileSize *int `pulumi:"fileSize"`
+	// Path on DBFS for the file to perform listing
+	Path *string `pulumi:"path"`
 }
 
 // GetDbfsFilePathsPathListInput is an input type that accepts GetDbfsFilePathsPathListArgs and GetDbfsFilePathsPathListOutput values.
@@ -13708,8 +14295,9 @@ type GetDbfsFilePathsPathListInput interface {
 }
 
 type GetDbfsFilePathsPathListArgs struct {
-	FileSize pulumi.IntPtrInput    `pulumi:"fileSize"`
-	Path     pulumi.StringPtrInput `pulumi:"path"`
+	FileSize pulumi.IntPtrInput `pulumi:"fileSize"`
+	// Path on DBFS for the file to perform listing
+	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
 func (GetDbfsFilePathsPathListArgs) ElementType() reflect.Type {
@@ -13767,6 +14355,7 @@ func (o GetDbfsFilePathsPathListOutput) FileSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDbfsFilePathsPathList) *int { return v.FileSize }).(pulumi.IntPtrOutput)
 }
 
+// Path on DBFS for the file to perform listing
 func (o GetDbfsFilePathsPathListOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbfsFilePathsPathList) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -13792,23 +14381,37 @@ func (o GetDbfsFilePathsPathListArrayOutput) Index(i pulumi.IntInput) GetDbfsFil
 }
 
 type GetExternalLocationExternalLocationInfo struct {
-	AccessPoint       *string                                                   `pulumi:"accessPoint"`
-	BrowseOnly        *bool                                                     `pulumi:"browseOnly"`
-	Comment           *string                                                   `pulumi:"comment"`
-	CreatedAt         *int                                                      `pulumi:"createdAt"`
-	CreatedBy         *string                                                   `pulumi:"createdBy"`
-	CredentialId      *string                                                   `pulumi:"credentialId"`
-	CredentialName    *string                                                   `pulumi:"credentialName"`
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint *string `pulumi:"accessPoint"`
+	BrowseOnly  *bool   `pulumi:"browseOnly"`
+	// User-supplied comment.
+	Comment *string `pulumi:"comment"`
+	// Time at which this catalog was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// Username of catalog creator.
+	CreatedBy *string `pulumi:"createdBy"`
+	// Unique ID of storage credential.
+	CredentialId *string `pulumi:"credentialId"`
+	// Name of the StorageCredential to use with this external location.
+	CredentialName *string `pulumi:"credentialName"`
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails *GetExternalLocationExternalLocationInfoEncryptionDetails `pulumi:"encryptionDetails"`
 	Fallback          *bool                                                     `pulumi:"fallback"`
 	IsolationMode     *string                                                   `pulumi:"isolationMode"`
-	MetastoreId       *string                                                   `pulumi:"metastoreId"`
-	Name              *string                                                   `pulumi:"name"`
-	Owner             *string                                                   `pulumi:"owner"`
-	ReadOnly          *bool                                                     `pulumi:"readOnly"`
-	UpdatedAt         *int                                                      `pulumi:"updatedAt"`
-	UpdatedBy         *string                                                   `pulumi:"updatedBy"`
-	Url               *string                                                   `pulumi:"url"`
+	// Unique identifier of the parent Metastore.
+	MetastoreId *string `pulumi:"metastoreId"`
+	// The name of the external location
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the external location owner.
+	Owner *string `pulumi:"owner"`
+	// Indicates whether the external location is read-only.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Time at which this catalog was last modified, in epoch milliseconds.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// Username of user who last modified catalog.
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	Url *string `pulumi:"url"`
 }
 
 // GetExternalLocationExternalLocationInfoInput is an input type that accepts GetExternalLocationExternalLocationInfoArgs and GetExternalLocationExternalLocationInfoOutput values.
@@ -13823,23 +14426,37 @@ type GetExternalLocationExternalLocationInfoInput interface {
 }
 
 type GetExternalLocationExternalLocationInfoArgs struct {
-	AccessPoint       pulumi.StringPtrInput                                            `pulumi:"accessPoint"`
-	BrowseOnly        pulumi.BoolPtrInput                                              `pulumi:"browseOnly"`
-	Comment           pulumi.StringPtrInput                                            `pulumi:"comment"`
-	CreatedAt         pulumi.IntPtrInput                                               `pulumi:"createdAt"`
-	CreatedBy         pulumi.StringPtrInput                                            `pulumi:"createdBy"`
-	CredentialId      pulumi.StringPtrInput                                            `pulumi:"credentialId"`
-	CredentialName    pulumi.StringPtrInput                                            `pulumi:"credentialName"`
+	// The ARN of the s3 access point to use with the external location (AWS).
+	AccessPoint pulumi.StringPtrInput `pulumi:"accessPoint"`
+	BrowseOnly  pulumi.BoolPtrInput   `pulumi:"browseOnly"`
+	// User-supplied comment.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Time at which this catalog was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// Username of catalog creator.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Unique ID of storage credential.
+	CredentialId pulumi.StringPtrInput `pulumi:"credentialId"`
+	// Name of the StorageCredential to use with this external location.
+	CredentialName pulumi.StringPtrInput `pulumi:"credentialName"`
+	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails GetExternalLocationExternalLocationInfoEncryptionDetailsPtrInput `pulumi:"encryptionDetails"`
 	Fallback          pulumi.BoolPtrInput                                              `pulumi:"fallback"`
 	IsolationMode     pulumi.StringPtrInput                                            `pulumi:"isolationMode"`
-	MetastoreId       pulumi.StringPtrInput                                            `pulumi:"metastoreId"`
-	Name              pulumi.StringPtrInput                                            `pulumi:"name"`
-	Owner             pulumi.StringPtrInput                                            `pulumi:"owner"`
-	ReadOnly          pulumi.BoolPtrInput                                              `pulumi:"readOnly"`
-	UpdatedAt         pulumi.IntPtrInput                                               `pulumi:"updatedAt"`
-	UpdatedBy         pulumi.StringPtrInput                                            `pulumi:"updatedBy"`
-	Url               pulumi.StringPtrInput                                            `pulumi:"url"`
+	// Unique identifier of the parent Metastore.
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// The name of the external location
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Username/groupname/sp applicationId of the external location owner.
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// Indicates whether the external location is read-only.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Time at which this catalog was last modified, in epoch milliseconds.
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// Username of user who last modified catalog.
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (GetExternalLocationExternalLocationInfoArgs) ElementType() reflect.Type {
@@ -13919,6 +14536,7 @@ func (o GetExternalLocationExternalLocationInfoOutput) ToGetExternalLocationExte
 	}).(GetExternalLocationExternalLocationInfoPtrOutput)
 }
 
+// The ARN of the s3 access point to use with the external location (AWS).
 func (o GetExternalLocationExternalLocationInfoOutput) AccessPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.AccessPoint }).(pulumi.StringPtrOutput)
 }
@@ -13927,26 +14545,32 @@ func (o GetExternalLocationExternalLocationInfoOutput) BrowseOnly() pulumi.BoolP
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
 }
 
+// User-supplied comment.
 func (o GetExternalLocationExternalLocationInfoOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Time at which this catalog was created, in epoch milliseconds.
 func (o GetExternalLocationExternalLocationInfoOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
 }
 
+// Username of catalog creator.
 func (o GetExternalLocationExternalLocationInfoOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// Unique ID of storage credential.
 func (o GetExternalLocationExternalLocationInfoOutput) CredentialId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
 }
 
+// Name of the StorageCredential to use with this external location.
 func (o GetExternalLocationExternalLocationInfoOutput) CredentialName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.CredentialName }).(pulumi.StringPtrOutput)
 }
 
+// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 func (o GetExternalLocationExternalLocationInfoOutput) EncryptionDetails() GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *GetExternalLocationExternalLocationInfoEncryptionDetails {
 		return v.EncryptionDetails
@@ -13961,30 +14585,37 @@ func (o GetExternalLocationExternalLocationInfoOutput) IsolationMode() pulumi.St
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.IsolationMode }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the parent Metastore.
 func (o GetExternalLocationExternalLocationInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the external location
 func (o GetExternalLocationExternalLocationInfoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Username/groupname/sp applicationId of the external location owner.
 func (o GetExternalLocationExternalLocationInfoOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether the external location is read-only.
 func (o GetExternalLocationExternalLocationInfoOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Time at which this catalog was last modified, in epoch milliseconds.
 func (o GetExternalLocationExternalLocationInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
 }
 
+// Username of user who last modified catalog.
 func (o GetExternalLocationExternalLocationInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
 }
 
+// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
 func (o GetExternalLocationExternalLocationInfoOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExternalLocationExternalLocationInfo) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -14013,6 +14644,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) Elem() GetExternalLoca
 	}).(GetExternalLocationExternalLocationInfoOutput)
 }
 
+// The ARN of the s3 access point to use with the external location (AWS).
 func (o GetExternalLocationExternalLocationInfoPtrOutput) AccessPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
 		if v == nil {
@@ -14031,6 +14663,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) BrowseOnly() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// User-supplied comment.
 func (o GetExternalLocationExternalLocationInfoPtrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
 		if v == nil {
@@ -14040,6 +14673,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) Comment() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Time at which this catalog was created, in epoch milliseconds.
 func (o GetExternalLocationExternalLocationInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *int {
 		if v == nil {
@@ -14049,6 +14683,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) CreatedAt() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
+// Username of catalog creator.
 func (o GetExternalLocationExternalLocationInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
 		if v == nil {
@@ -14058,6 +14693,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) CreatedBy() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Unique ID of storage credential.
 func (o GetExternalLocationExternalLocationInfoPtrOutput) CredentialId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
 		if v == nil {
@@ -14067,6 +14703,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) CredentialId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the StorageCredential to use with this external location.
 func (o GetExternalLocationExternalLocationInfoPtrOutput) CredentialName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
 		if v == nil {
@@ -14076,6 +14713,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) CredentialName() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 func (o GetExternalLocationExternalLocationInfoPtrOutput) EncryptionDetails() GetExternalLocationExternalLocationInfoEncryptionDetailsPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *GetExternalLocationExternalLocationInfoEncryptionDetails {
 		if v == nil {
@@ -14103,6 +14741,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) IsolationMode() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the parent Metastore.
 func (o GetExternalLocationExternalLocationInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
 		if v == nil {
@@ -14112,6 +14751,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) MetastoreId() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the external location
 func (o GetExternalLocationExternalLocationInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
 		if v == nil {
@@ -14121,6 +14761,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) Name() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username/groupname/sp applicationId of the external location owner.
 func (o GetExternalLocationExternalLocationInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
 		if v == nil {
@@ -14130,6 +14771,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) Owner() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether the external location is read-only.
 func (o GetExternalLocationExternalLocationInfoPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *bool {
 		if v == nil {
@@ -14139,6 +14781,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) ReadOnly() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Time at which this catalog was last modified, in epoch milliseconds.
 func (o GetExternalLocationExternalLocationInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *int {
 		if v == nil {
@@ -14148,6 +14791,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) UpdatedAt() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
+// Username of user who last modified catalog.
 func (o GetExternalLocationExternalLocationInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
 		if v == nil {
@@ -14157,6 +14801,7 @@ func (o GetExternalLocationExternalLocationInfoPtrOutput) UpdatedBy() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
 func (o GetExternalLocationExternalLocationInfoPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLocationExternalLocationInfo) *string {
 		if v == nil {
@@ -14454,36 +15099,66 @@ func (o GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDet
 }
 
 type GetFunctionsFunction struct {
-	BrowseOnly          *bool                                   `pulumi:"browseOnly"`
-	CatalogName         *string                                 `pulumi:"catalogName"`
-	Comment             *string                                 `pulumi:"comment"`
-	CreatedAt           *int                                    `pulumi:"createdAt"`
-	CreatedBy           *string                                 `pulumi:"createdBy"`
-	DataType            *string                                 `pulumi:"dataType"`
-	ExternalLanguage    *string                                 `pulumi:"externalLanguage"`
-	ExternalName        *string                                 `pulumi:"externalName"`
-	FullDataType        *string                                 `pulumi:"fullDataType"`
-	FullName            *string                                 `pulumi:"fullName"`
-	FunctionId          *string                                 `pulumi:"functionId"`
-	InputParams         []GetFunctionsFunctionInputParam        `pulumi:"inputParams"`
-	IsDeterministic     *bool                                   `pulumi:"isDeterministic"`
-	IsNullCall          *bool                                   `pulumi:"isNullCall"`
-	MetastoreId         *string                                 `pulumi:"metastoreId"`
-	Name                *string                                 `pulumi:"name"`
-	Owner               *string                                 `pulumi:"owner"`
-	ParameterStyle      *string                                 `pulumi:"parameterStyle"`
-	Properties          *string                                 `pulumi:"properties"`
-	ReturnParams        []GetFunctionsFunctionReturnParam       `pulumi:"returnParams"`
-	RoutineBody         *string                                 `pulumi:"routineBody"`
-	RoutineDefinition   *string                                 `pulumi:"routineDefinition"`
+	// Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
+	BrowseOnly *bool `pulumi:"browseOnly"`
+	// Name of databricks_catalog.
+	CatalogName *string `pulumi:"catalogName"`
+	// User-provided free-form text description.
+	Comment *string `pulumi:"comment"`
+	// Time at which this function was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// Username of function creator.
+	CreatedBy *string `pulumi:"createdBy"`
+	// Scalar function return data type.
+	DataType *string `pulumi:"dataType"`
+	// External function language.
+	ExternalLanguage *string `pulumi:"externalLanguage"`
+	// External function name.
+	ExternalName *string `pulumi:"externalName"`
+	// Pretty printed function data type.
+	FullDataType *string `pulumi:"fullDataType"`
+	// Full name of function, in form of catalog_name.schema_name.function__name
+	FullName *string `pulumi:"fullName"`
+	// Id of Function, relative to parent schema.
+	FunctionId *string `pulumi:"functionId"`
+	// object describing input parameters. Consists of the single attribute:
+	InputParams []GetFunctionsFunctionInputParam `pulumi:"inputParams"`
+	// Boolean flag specifying whether the function is deterministic.
+	IsDeterministic *bool `pulumi:"isDeterministic"`
+	// Boolean flag whether function null call.
+	IsNullCall *bool `pulumi:"isNullCall"`
+	// Unique identifier of parent metastore.
+	MetastoreId *string `pulumi:"metastoreId"`
+	// Name of parameter.
+	Name *string `pulumi:"name"`
+	// Username of current owner of function.
+	Owner *string `pulumi:"owner"`
+	// Function parameter style. `S` is the value for SQL.
+	ParameterStyle *string `pulumi:"parameterStyle"`
+	// JSON-serialized key-value pair map, encoded (escaped) as a string.
+	Properties *string `pulumi:"properties"`
+	// Table function return parameters.  See `inputParams` for description.
+	ReturnParams []GetFunctionsFunctionReturnParam `pulumi:"returnParams"`
+	// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
+	RoutineBody *string `pulumi:"routineBody"`
+	// Function body.
+	RoutineDefinition *string `pulumi:"routineDefinition"`
+	// Function dependencies.
 	RoutineDependencies []GetFunctionsFunctionRoutineDependency `pulumi:"routineDependencies"`
-	SchemaName          *string                                 `pulumi:"schemaName"`
-	SecurityType        *string                                 `pulumi:"securityType"`
-	SpecificName        *string                                 `pulumi:"specificName"`
-	SqlDataAccess       *string                                 `pulumi:"sqlDataAccess"`
-	SqlPath             *string                                 `pulumi:"sqlPath"`
-	UpdatedAt           *int                                    `pulumi:"updatedAt"`
-	UpdatedBy           *string                                 `pulumi:"updatedBy"`
+	// Name of databricks_schema.
+	SchemaName *string `pulumi:"schemaName"`
+	// Function security type. (Enum: `DEFINER`).
+	SecurityType *string `pulumi:"securityType"`
+	// Specific name of the function; Reserved for future use.
+	SpecificName *string `pulumi:"specificName"`
+	// Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+	SqlDataAccess *string `pulumi:"sqlDataAccess"`
+	// List of schemes whose objects can be referenced without qualification.
+	SqlPath *string `pulumi:"sqlPath"`
+	// Time at which this function was created, in epoch milliseconds.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// Username of user who last modified function.
+	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
 // GetFunctionsFunctionInput is an input type that accepts GetFunctionsFunctionArgs and GetFunctionsFunctionOutput values.
@@ -14498,36 +15173,66 @@ type GetFunctionsFunctionInput interface {
 }
 
 type GetFunctionsFunctionArgs struct {
-	BrowseOnly          pulumi.BoolPtrInput                             `pulumi:"browseOnly"`
-	CatalogName         pulumi.StringPtrInput                           `pulumi:"catalogName"`
-	Comment             pulumi.StringPtrInput                           `pulumi:"comment"`
-	CreatedAt           pulumi.IntPtrInput                              `pulumi:"createdAt"`
-	CreatedBy           pulumi.StringPtrInput                           `pulumi:"createdBy"`
-	DataType            pulumi.StringPtrInput                           `pulumi:"dataType"`
-	ExternalLanguage    pulumi.StringPtrInput                           `pulumi:"externalLanguage"`
-	ExternalName        pulumi.StringPtrInput                           `pulumi:"externalName"`
-	FullDataType        pulumi.StringPtrInput                           `pulumi:"fullDataType"`
-	FullName            pulumi.StringPtrInput                           `pulumi:"fullName"`
-	FunctionId          pulumi.StringPtrInput                           `pulumi:"functionId"`
-	InputParams         GetFunctionsFunctionInputParamArrayInput        `pulumi:"inputParams"`
-	IsDeterministic     pulumi.BoolPtrInput                             `pulumi:"isDeterministic"`
-	IsNullCall          pulumi.BoolPtrInput                             `pulumi:"isNullCall"`
-	MetastoreId         pulumi.StringPtrInput                           `pulumi:"metastoreId"`
-	Name                pulumi.StringPtrInput                           `pulumi:"name"`
-	Owner               pulumi.StringPtrInput                           `pulumi:"owner"`
-	ParameterStyle      pulumi.StringPtrInput                           `pulumi:"parameterStyle"`
-	Properties          pulumi.StringPtrInput                           `pulumi:"properties"`
-	ReturnParams        GetFunctionsFunctionReturnParamArrayInput       `pulumi:"returnParams"`
-	RoutineBody         pulumi.StringPtrInput                           `pulumi:"routineBody"`
-	RoutineDefinition   pulumi.StringPtrInput                           `pulumi:"routineDefinition"`
+	// Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
+	BrowseOnly pulumi.BoolPtrInput `pulumi:"browseOnly"`
+	// Name of databricks_catalog.
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// User-provided free-form text description.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Time at which this function was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// Username of function creator.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Scalar function return data type.
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// External function language.
+	ExternalLanguage pulumi.StringPtrInput `pulumi:"externalLanguage"`
+	// External function name.
+	ExternalName pulumi.StringPtrInput `pulumi:"externalName"`
+	// Pretty printed function data type.
+	FullDataType pulumi.StringPtrInput `pulumi:"fullDataType"`
+	// Full name of function, in form of catalog_name.schema_name.function__name
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// Id of Function, relative to parent schema.
+	FunctionId pulumi.StringPtrInput `pulumi:"functionId"`
+	// object describing input parameters. Consists of the single attribute:
+	InputParams GetFunctionsFunctionInputParamArrayInput `pulumi:"inputParams"`
+	// Boolean flag specifying whether the function is deterministic.
+	IsDeterministic pulumi.BoolPtrInput `pulumi:"isDeterministic"`
+	// Boolean flag whether function null call.
+	IsNullCall pulumi.BoolPtrInput `pulumi:"isNullCall"`
+	// Unique identifier of parent metastore.
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// Name of parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Username of current owner of function.
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// Function parameter style. `S` is the value for SQL.
+	ParameterStyle pulumi.StringPtrInput `pulumi:"parameterStyle"`
+	// JSON-serialized key-value pair map, encoded (escaped) as a string.
+	Properties pulumi.StringPtrInput `pulumi:"properties"`
+	// Table function return parameters.  See `inputParams` for description.
+	ReturnParams GetFunctionsFunctionReturnParamArrayInput `pulumi:"returnParams"`
+	// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
+	RoutineBody pulumi.StringPtrInput `pulumi:"routineBody"`
+	// Function body.
+	RoutineDefinition pulumi.StringPtrInput `pulumi:"routineDefinition"`
+	// Function dependencies.
 	RoutineDependencies GetFunctionsFunctionRoutineDependencyArrayInput `pulumi:"routineDependencies"`
-	SchemaName          pulumi.StringPtrInput                           `pulumi:"schemaName"`
-	SecurityType        pulumi.StringPtrInput                           `pulumi:"securityType"`
-	SpecificName        pulumi.StringPtrInput                           `pulumi:"specificName"`
-	SqlDataAccess       pulumi.StringPtrInput                           `pulumi:"sqlDataAccess"`
-	SqlPath             pulumi.StringPtrInput                           `pulumi:"sqlPath"`
-	UpdatedAt           pulumi.IntPtrInput                              `pulumi:"updatedAt"`
-	UpdatedBy           pulumi.StringPtrInput                           `pulumi:"updatedBy"`
+	// Name of databricks_schema.
+	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
+	// Function security type. (Enum: `DEFINER`).
+	SecurityType pulumi.StringPtrInput `pulumi:"securityType"`
+	// Specific name of the function; Reserved for future use.
+	SpecificName pulumi.StringPtrInput `pulumi:"specificName"`
+	// Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+	SqlDataAccess pulumi.StringPtrInput `pulumi:"sqlDataAccess"`
+	// List of schemes whose objects can be referenced without qualification.
+	SqlPath pulumi.StringPtrInput `pulumi:"sqlPath"`
+	// Time at which this function was created, in epoch milliseconds.
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// Username of user who last modified function.
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
 }
 
 func (GetFunctionsFunctionArgs) ElementType() reflect.Type {
@@ -14581,122 +15286,152 @@ func (o GetFunctionsFunctionOutput) ToGetFunctionsFunctionOutputWithContext(ctx 
 	return o
 }
 
+// Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
 func (o GetFunctionsFunctionOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Name of databricks_catalog.
 func (o GetFunctionsFunctionOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
+// User-provided free-form text description.
 func (o GetFunctionsFunctionOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Time at which this function was created, in epoch milliseconds.
 func (o GetFunctionsFunctionOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
 }
 
+// Username of function creator.
 func (o GetFunctionsFunctionOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// Scalar function return data type.
 func (o GetFunctionsFunctionOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.DataType }).(pulumi.StringPtrOutput)
 }
 
+// External function language.
 func (o GetFunctionsFunctionOutput) ExternalLanguage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.ExternalLanguage }).(pulumi.StringPtrOutput)
 }
 
+// External function name.
 func (o GetFunctionsFunctionOutput) ExternalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.ExternalName }).(pulumi.StringPtrOutput)
 }
 
+// Pretty printed function data type.
 func (o GetFunctionsFunctionOutput) FullDataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.FullDataType }).(pulumi.StringPtrOutput)
 }
 
+// Full name of function, in form of catalog_name.schema_name.function__name
 func (o GetFunctionsFunctionOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.FullName }).(pulumi.StringPtrOutput)
 }
 
+// Id of Function, relative to parent schema.
 func (o GetFunctionsFunctionOutput) FunctionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.FunctionId }).(pulumi.StringPtrOutput)
 }
 
+// object describing input parameters. Consists of the single attribute:
 func (o GetFunctionsFunctionOutput) InputParams() GetFunctionsFunctionInputParamArrayOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) []GetFunctionsFunctionInputParam { return v.InputParams }).(GetFunctionsFunctionInputParamArrayOutput)
 }
 
+// Boolean flag specifying whether the function is deterministic.
 func (o GetFunctionsFunctionOutput) IsDeterministic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *bool { return v.IsDeterministic }).(pulumi.BoolPtrOutput)
 }
 
+// Boolean flag whether function null call.
 func (o GetFunctionsFunctionOutput) IsNullCall() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *bool { return v.IsNullCall }).(pulumi.BoolPtrOutput)
 }
 
+// Unique identifier of parent metastore.
 func (o GetFunctionsFunctionOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
 
+// Name of parameter.
 func (o GetFunctionsFunctionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Username of current owner of function.
 func (o GetFunctionsFunctionOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// Function parameter style. `S` is the value for SQL.
 func (o GetFunctionsFunctionOutput) ParameterStyle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.ParameterStyle }).(pulumi.StringPtrOutput)
 }
 
+// JSON-serialized key-value pair map, encoded (escaped) as a string.
 func (o GetFunctionsFunctionOutput) Properties() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.Properties }).(pulumi.StringPtrOutput)
 }
 
+// Table function return parameters.  See `inputParams` for description.
 func (o GetFunctionsFunctionOutput) ReturnParams() GetFunctionsFunctionReturnParamArrayOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) []GetFunctionsFunctionReturnParam { return v.ReturnParams }).(GetFunctionsFunctionReturnParamArrayOutput)
 }
 
+// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
 func (o GetFunctionsFunctionOutput) RoutineBody() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.RoutineBody }).(pulumi.StringPtrOutput)
 }
 
+// Function body.
 func (o GetFunctionsFunctionOutput) RoutineDefinition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.RoutineDefinition }).(pulumi.StringPtrOutput)
 }
 
+// Function dependencies.
 func (o GetFunctionsFunctionOutput) RoutineDependencies() GetFunctionsFunctionRoutineDependencyArrayOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) []GetFunctionsFunctionRoutineDependency { return v.RoutineDependencies }).(GetFunctionsFunctionRoutineDependencyArrayOutput)
 }
 
+// Name of databricks_schema.
 func (o GetFunctionsFunctionOutput) SchemaName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
 }
 
+// Function security type. (Enum: `DEFINER`).
 func (o GetFunctionsFunctionOutput) SecurityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.SecurityType }).(pulumi.StringPtrOutput)
 }
 
+// Specific name of the function; Reserved for future use.
 func (o GetFunctionsFunctionOutput) SpecificName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.SpecificName }).(pulumi.StringPtrOutput)
 }
 
+// Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
 func (o GetFunctionsFunctionOutput) SqlDataAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.SqlDataAccess }).(pulumi.StringPtrOutput)
 }
 
+// List of schemes whose objects can be referenced without qualification.
 func (o GetFunctionsFunctionOutput) SqlPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.SqlPath }).(pulumi.StringPtrOutput)
 }
 
+// Time at which this function was created, in epoch milliseconds.
 func (o GetFunctionsFunctionOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
 }
 
+// Username of user who last modified function.
 func (o GetFunctionsFunctionOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
 }
@@ -14722,6 +15457,7 @@ func (o GetFunctionsFunctionArrayOutput) Index(i pulumi.IntInput) GetFunctionsFu
 }
 
 type GetFunctionsFunctionInputParam struct {
+	// The array of definitions of the function's parameters:
 	Parameters []GetFunctionsFunctionInputParamParameter `pulumi:"parameters"`
 }
 
@@ -14737,6 +15473,7 @@ type GetFunctionsFunctionInputParamInput interface {
 }
 
 type GetFunctionsFunctionInputParamArgs struct {
+	// The array of definitions of the function's parameters:
 	Parameters GetFunctionsFunctionInputParamParameterArrayInput `pulumi:"parameters"`
 }
 
@@ -14791,6 +15528,7 @@ func (o GetFunctionsFunctionInputParamOutput) ToGetFunctionsFunctionInputParamOu
 	return o
 }
 
+// The array of definitions of the function's parameters:
 func (o GetFunctionsFunctionInputParamOutput) Parameters() GetFunctionsFunctionInputParamParameterArrayOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParam) []GetFunctionsFunctionInputParamParameter { return v.Parameters }).(GetFunctionsFunctionInputParamParameterArrayOutput)
 }
@@ -14816,18 +15554,30 @@ func (o GetFunctionsFunctionInputParamArrayOutput) Index(i pulumi.IntInput) GetF
 }
 
 type GetFunctionsFunctionInputParamParameter struct {
-	Comment          *string `pulumi:"comment"`
-	Name             string  `pulumi:"name"`
+	// User-provided free-form text description.
+	Comment *string `pulumi:"comment"`
+	// Name of parameter.
+	Name string `pulumi:"name"`
+	// Default value of the parameter.
 	ParameterDefault *string `pulumi:"parameterDefault"`
-	ParameterMode    *string `pulumi:"parameterMode"`
-	ParameterType    *string `pulumi:"parameterType"`
-	Position         int     `pulumi:"position"`
+	// The mode of the function parameter.
+	ParameterMode *string `pulumi:"parameterMode"`
+	// The type of function parameter (`PARAM` or `COLUMN`).
+	ParameterType *string `pulumi:"parameterType"`
+	// Ordinal position of column (starting at position 0).
+	Position int `pulumi:"position"`
+	// Format of IntervalType.
 	TypeIntervalType *string `pulumi:"typeIntervalType"`
-	TypeJson         *string `pulumi:"typeJson"`
-	TypeName         string  `pulumi:"typeName"`
-	TypePrecision    *int    `pulumi:"typePrecision"`
-	TypeScale        *int    `pulumi:"typeScale"`
-	TypeText         string  `pulumi:"typeText"`
+	// Full data type spec, JSON-serialized.
+	TypeJson *string `pulumi:"typeJson"`
+	// Name of type (INT, STRUCT, MAP, etc.).
+	TypeName string `pulumi:"typeName"`
+	// Digits of precision; required on Create for DecimalTypes.
+	TypePrecision *int `pulumi:"typePrecision"`
+	// Digits to right of decimal; Required on Create for DecimalTypes.
+	TypeScale *int `pulumi:"typeScale"`
+	// Full data type spec, SQL/catalogString text.
+	TypeText string `pulumi:"typeText"`
 }
 
 // GetFunctionsFunctionInputParamParameterInput is an input type that accepts GetFunctionsFunctionInputParamParameterArgs and GetFunctionsFunctionInputParamParameterOutput values.
@@ -14842,18 +15592,30 @@ type GetFunctionsFunctionInputParamParameterInput interface {
 }
 
 type GetFunctionsFunctionInputParamParameterArgs struct {
-	Comment          pulumi.StringPtrInput `pulumi:"comment"`
-	Name             pulumi.StringInput    `pulumi:"name"`
+	// User-provided free-form text description.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Name of parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Default value of the parameter.
 	ParameterDefault pulumi.StringPtrInput `pulumi:"parameterDefault"`
-	ParameterMode    pulumi.StringPtrInput `pulumi:"parameterMode"`
-	ParameterType    pulumi.StringPtrInput `pulumi:"parameterType"`
-	Position         pulumi.IntInput       `pulumi:"position"`
+	// The mode of the function parameter.
+	ParameterMode pulumi.StringPtrInput `pulumi:"parameterMode"`
+	// The type of function parameter (`PARAM` or `COLUMN`).
+	ParameterType pulumi.StringPtrInput `pulumi:"parameterType"`
+	// Ordinal position of column (starting at position 0).
+	Position pulumi.IntInput `pulumi:"position"`
+	// Format of IntervalType.
 	TypeIntervalType pulumi.StringPtrInput `pulumi:"typeIntervalType"`
-	TypeJson         pulumi.StringPtrInput `pulumi:"typeJson"`
-	TypeName         pulumi.StringInput    `pulumi:"typeName"`
-	TypePrecision    pulumi.IntPtrInput    `pulumi:"typePrecision"`
-	TypeScale        pulumi.IntPtrInput    `pulumi:"typeScale"`
-	TypeText         pulumi.StringInput    `pulumi:"typeText"`
+	// Full data type spec, JSON-serialized.
+	TypeJson pulumi.StringPtrInput `pulumi:"typeJson"`
+	// Name of type (INT, STRUCT, MAP, etc.).
+	TypeName pulumi.StringInput `pulumi:"typeName"`
+	// Digits of precision; required on Create for DecimalTypes.
+	TypePrecision pulumi.IntPtrInput `pulumi:"typePrecision"`
+	// Digits to right of decimal; Required on Create for DecimalTypes.
+	TypeScale pulumi.IntPtrInput `pulumi:"typeScale"`
+	// Full data type spec, SQL/catalogString text.
+	TypeText pulumi.StringInput `pulumi:"typeText"`
 }
 
 func (GetFunctionsFunctionInputParamParameterArgs) ElementType() reflect.Type {
@@ -14907,50 +15669,62 @@ func (o GetFunctionsFunctionInputParamParameterOutput) ToGetFunctionsFunctionInp
 	return o
 }
 
+// User-provided free-form text description.
 func (o GetFunctionsFunctionInputParamParameterOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParamParameter) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Name of parameter.
 func (o GetFunctionsFunctionInputParamParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParamParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Default value of the parameter.
 func (o GetFunctionsFunctionInputParamParameterOutput) ParameterDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParamParameter) *string { return v.ParameterDefault }).(pulumi.StringPtrOutput)
 }
 
+// The mode of the function parameter.
 func (o GetFunctionsFunctionInputParamParameterOutput) ParameterMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParamParameter) *string { return v.ParameterMode }).(pulumi.StringPtrOutput)
 }
 
+// The type of function parameter (`PARAM` or `COLUMN`).
 func (o GetFunctionsFunctionInputParamParameterOutput) ParameterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParamParameter) *string { return v.ParameterType }).(pulumi.StringPtrOutput)
 }
 
+// Ordinal position of column (starting at position 0).
 func (o GetFunctionsFunctionInputParamParameterOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParamParameter) int { return v.Position }).(pulumi.IntOutput)
 }
 
+// Format of IntervalType.
 func (o GetFunctionsFunctionInputParamParameterOutput) TypeIntervalType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParamParameter) *string { return v.TypeIntervalType }).(pulumi.StringPtrOutput)
 }
 
+// Full data type spec, JSON-serialized.
 func (o GetFunctionsFunctionInputParamParameterOutput) TypeJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParamParameter) *string { return v.TypeJson }).(pulumi.StringPtrOutput)
 }
 
+// Name of type (INT, STRUCT, MAP, etc.).
 func (o GetFunctionsFunctionInputParamParameterOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParamParameter) string { return v.TypeName }).(pulumi.StringOutput)
 }
 
+// Digits of precision; required on Create for DecimalTypes.
 func (o GetFunctionsFunctionInputParamParameterOutput) TypePrecision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParamParameter) *int { return v.TypePrecision }).(pulumi.IntPtrOutput)
 }
 
+// Digits to right of decimal; Required on Create for DecimalTypes.
 func (o GetFunctionsFunctionInputParamParameterOutput) TypeScale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParamParameter) *int { return v.TypeScale }).(pulumi.IntPtrOutput)
 }
 
+// Full data type spec, SQL/catalogString text.
 func (o GetFunctionsFunctionInputParamParameterOutput) TypeText() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionInputParamParameter) string { return v.TypeText }).(pulumi.StringOutput)
 }
@@ -14976,6 +15750,7 @@ func (o GetFunctionsFunctionInputParamParameterArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetFunctionsFunctionReturnParam struct {
+	// The array of definitions of the function's parameters:
 	Parameters []GetFunctionsFunctionReturnParamParameter `pulumi:"parameters"`
 }
 
@@ -14991,6 +15766,7 @@ type GetFunctionsFunctionReturnParamInput interface {
 }
 
 type GetFunctionsFunctionReturnParamArgs struct {
+	// The array of definitions of the function's parameters:
 	Parameters GetFunctionsFunctionReturnParamParameterArrayInput `pulumi:"parameters"`
 }
 
@@ -15045,6 +15821,7 @@ func (o GetFunctionsFunctionReturnParamOutput) ToGetFunctionsFunctionReturnParam
 	return o
 }
 
+// The array of definitions of the function's parameters:
 func (o GetFunctionsFunctionReturnParamOutput) Parameters() GetFunctionsFunctionReturnParamParameterArrayOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParam) []GetFunctionsFunctionReturnParamParameter {
 		return v.Parameters
@@ -15072,18 +15849,30 @@ func (o GetFunctionsFunctionReturnParamArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetFunctionsFunctionReturnParamParameter struct {
-	Comment          *string `pulumi:"comment"`
-	Name             string  `pulumi:"name"`
+	// User-provided free-form text description.
+	Comment *string `pulumi:"comment"`
+	// Name of parameter.
+	Name string `pulumi:"name"`
+	// Default value of the parameter.
 	ParameterDefault *string `pulumi:"parameterDefault"`
-	ParameterMode    *string `pulumi:"parameterMode"`
-	ParameterType    *string `pulumi:"parameterType"`
-	Position         int     `pulumi:"position"`
+	// The mode of the function parameter.
+	ParameterMode *string `pulumi:"parameterMode"`
+	// The type of function parameter (`PARAM` or `COLUMN`).
+	ParameterType *string `pulumi:"parameterType"`
+	// Ordinal position of column (starting at position 0).
+	Position int `pulumi:"position"`
+	// Format of IntervalType.
 	TypeIntervalType *string `pulumi:"typeIntervalType"`
-	TypeJson         *string `pulumi:"typeJson"`
-	TypeName         string  `pulumi:"typeName"`
-	TypePrecision    *int    `pulumi:"typePrecision"`
-	TypeScale        *int    `pulumi:"typeScale"`
-	TypeText         string  `pulumi:"typeText"`
+	// Full data type spec, JSON-serialized.
+	TypeJson *string `pulumi:"typeJson"`
+	// Name of type (INT, STRUCT, MAP, etc.).
+	TypeName string `pulumi:"typeName"`
+	// Digits of precision; required on Create for DecimalTypes.
+	TypePrecision *int `pulumi:"typePrecision"`
+	// Digits to right of decimal; Required on Create for DecimalTypes.
+	TypeScale *int `pulumi:"typeScale"`
+	// Full data type spec, SQL/catalogString text.
+	TypeText string `pulumi:"typeText"`
 }
 
 // GetFunctionsFunctionReturnParamParameterInput is an input type that accepts GetFunctionsFunctionReturnParamParameterArgs and GetFunctionsFunctionReturnParamParameterOutput values.
@@ -15098,18 +15887,30 @@ type GetFunctionsFunctionReturnParamParameterInput interface {
 }
 
 type GetFunctionsFunctionReturnParamParameterArgs struct {
-	Comment          pulumi.StringPtrInput `pulumi:"comment"`
-	Name             pulumi.StringInput    `pulumi:"name"`
+	// User-provided free-form text description.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Name of parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Default value of the parameter.
 	ParameterDefault pulumi.StringPtrInput `pulumi:"parameterDefault"`
-	ParameterMode    pulumi.StringPtrInput `pulumi:"parameterMode"`
-	ParameterType    pulumi.StringPtrInput `pulumi:"parameterType"`
-	Position         pulumi.IntInput       `pulumi:"position"`
+	// The mode of the function parameter.
+	ParameterMode pulumi.StringPtrInput `pulumi:"parameterMode"`
+	// The type of function parameter (`PARAM` or `COLUMN`).
+	ParameterType pulumi.StringPtrInput `pulumi:"parameterType"`
+	// Ordinal position of column (starting at position 0).
+	Position pulumi.IntInput `pulumi:"position"`
+	// Format of IntervalType.
 	TypeIntervalType pulumi.StringPtrInput `pulumi:"typeIntervalType"`
-	TypeJson         pulumi.StringPtrInput `pulumi:"typeJson"`
-	TypeName         pulumi.StringInput    `pulumi:"typeName"`
-	TypePrecision    pulumi.IntPtrInput    `pulumi:"typePrecision"`
-	TypeScale        pulumi.IntPtrInput    `pulumi:"typeScale"`
-	TypeText         pulumi.StringInput    `pulumi:"typeText"`
+	// Full data type spec, JSON-serialized.
+	TypeJson pulumi.StringPtrInput `pulumi:"typeJson"`
+	// Name of type (INT, STRUCT, MAP, etc.).
+	TypeName pulumi.StringInput `pulumi:"typeName"`
+	// Digits of precision; required on Create for DecimalTypes.
+	TypePrecision pulumi.IntPtrInput `pulumi:"typePrecision"`
+	// Digits to right of decimal; Required on Create for DecimalTypes.
+	TypeScale pulumi.IntPtrInput `pulumi:"typeScale"`
+	// Full data type spec, SQL/catalogString text.
+	TypeText pulumi.StringInput `pulumi:"typeText"`
 }
 
 func (GetFunctionsFunctionReturnParamParameterArgs) ElementType() reflect.Type {
@@ -15163,50 +15964,62 @@ func (o GetFunctionsFunctionReturnParamParameterOutput) ToGetFunctionsFunctionRe
 	return o
 }
 
+// User-provided free-form text description.
 func (o GetFunctionsFunctionReturnParamParameterOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParamParameter) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Name of parameter.
 func (o GetFunctionsFunctionReturnParamParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParamParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Default value of the parameter.
 func (o GetFunctionsFunctionReturnParamParameterOutput) ParameterDefault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParamParameter) *string { return v.ParameterDefault }).(pulumi.StringPtrOutput)
 }
 
+// The mode of the function parameter.
 func (o GetFunctionsFunctionReturnParamParameterOutput) ParameterMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParamParameter) *string { return v.ParameterMode }).(pulumi.StringPtrOutput)
 }
 
+// The type of function parameter (`PARAM` or `COLUMN`).
 func (o GetFunctionsFunctionReturnParamParameterOutput) ParameterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParamParameter) *string { return v.ParameterType }).(pulumi.StringPtrOutput)
 }
 
+// Ordinal position of column (starting at position 0).
 func (o GetFunctionsFunctionReturnParamParameterOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParamParameter) int { return v.Position }).(pulumi.IntOutput)
 }
 
+// Format of IntervalType.
 func (o GetFunctionsFunctionReturnParamParameterOutput) TypeIntervalType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParamParameter) *string { return v.TypeIntervalType }).(pulumi.StringPtrOutput)
 }
 
+// Full data type spec, JSON-serialized.
 func (o GetFunctionsFunctionReturnParamParameterOutput) TypeJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParamParameter) *string { return v.TypeJson }).(pulumi.StringPtrOutput)
 }
 
+// Name of type (INT, STRUCT, MAP, etc.).
 func (o GetFunctionsFunctionReturnParamParameterOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParamParameter) string { return v.TypeName }).(pulumi.StringOutput)
 }
 
+// Digits of precision; required on Create for DecimalTypes.
 func (o GetFunctionsFunctionReturnParamParameterOutput) TypePrecision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParamParameter) *int { return v.TypePrecision }).(pulumi.IntPtrOutput)
 }
 
+// Digits to right of decimal; Required on Create for DecimalTypes.
 func (o GetFunctionsFunctionReturnParamParameterOutput) TypeScale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParamParameter) *int { return v.TypeScale }).(pulumi.IntPtrOutput)
 }
 
+// Full data type spec, SQL/catalogString text.
 func (o GetFunctionsFunctionReturnParamParameterOutput) TypeText() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionsFunctionReturnParamParameter) string { return v.TypeText }).(pulumi.StringOutput)
 }
@@ -17745,9 +18558,13 @@ func (o GetInstancePoolPoolInfoStatsPtrOutput) UsedCount() pulumi.IntPtrOutput {
 }
 
 type GetInstanceProfilesInstanceProfile struct {
-	Arn     string `pulumi:"arn"`
-	IsMeta  bool   `pulumi:"isMeta"`
-	Name    string `pulumi:"name"`
+	// ARN of the instance profile.
+	Arn string `pulumi:"arn"`
+	// Whether the instance profile is a meta instance profile or not.
+	IsMeta bool `pulumi:"isMeta"`
+	// Name of the instance profile.
+	Name string `pulumi:"name"`
+	// ARN of the role attached to the instance profile.
 	RoleArn string `pulumi:"roleArn"`
 }
 
@@ -17763,9 +18580,13 @@ type GetInstanceProfilesInstanceProfileInput interface {
 }
 
 type GetInstanceProfilesInstanceProfileArgs struct {
-	Arn     pulumi.StringInput `pulumi:"arn"`
-	IsMeta  pulumi.BoolInput   `pulumi:"isMeta"`
-	Name    pulumi.StringInput `pulumi:"name"`
+	// ARN of the instance profile.
+	Arn pulumi.StringInput `pulumi:"arn"`
+	// Whether the instance profile is a meta instance profile or not.
+	IsMeta pulumi.BoolInput `pulumi:"isMeta"`
+	// Name of the instance profile.
+	Name pulumi.StringInput `pulumi:"name"`
+	// ARN of the role attached to the instance profile.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
@@ -17820,18 +18641,22 @@ func (o GetInstanceProfilesInstanceProfileOutput) ToGetInstanceProfilesInstanceP
 	return o
 }
 
+// ARN of the instance profile.
 func (o GetInstanceProfilesInstanceProfileOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceProfilesInstanceProfile) string { return v.Arn }).(pulumi.StringOutput)
 }
 
+// Whether the instance profile is a meta instance profile or not.
 func (o GetInstanceProfilesInstanceProfileOutput) IsMeta() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceProfilesInstanceProfile) bool { return v.IsMeta }).(pulumi.BoolOutput)
 }
 
+// Name of the instance profile.
 func (o GetInstanceProfilesInstanceProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceProfilesInstanceProfile) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// ARN of the role attached to the instance profile.
 func (o GetInstanceProfilesInstanceProfileOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceProfilesInstanceProfile) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -18050,42 +18875,43 @@ func (o GetJobJobSettingsPtrOutput) Settings() GetJobJobSettingsSettingsPtrOutpu
 }
 
 type GetJobJobSettingsSettings struct {
-	Continuous             *GetJobJobSettingsSettingsContinuous           `pulumi:"continuous"`
-	DbtTask                *GetJobJobSettingsSettingsDbtTask              `pulumi:"dbtTask"`
-	Deployment             *GetJobJobSettingsSettingsDeployment           `pulumi:"deployment"`
-	Description            *string                                        `pulumi:"description"`
-	EditMode               *string                                        `pulumi:"editMode"`
-	EmailNotifications     *GetJobJobSettingsSettingsEmailNotifications   `pulumi:"emailNotifications"`
-	Environments           []GetJobJobSettingsSettingsEnvironment         `pulumi:"environments"`
-	ExistingClusterId      *string                                        `pulumi:"existingClusterId"`
-	Format                 string                                         `pulumi:"format"`
-	GitSource              *GetJobJobSettingsSettingsGitSource            `pulumi:"gitSource"`
-	Health                 *GetJobJobSettingsSettingsHealth               `pulumi:"health"`
-	JobClusters            []GetJobJobSettingsSettingsJobCluster          `pulumi:"jobClusters"`
-	Libraries              []GetJobJobSettingsSettingsLibrary             `pulumi:"libraries"`
-	MaxConcurrentRuns      *int                                           `pulumi:"maxConcurrentRuns"`
-	MaxRetries             *int                                           `pulumi:"maxRetries"`
-	MinRetryIntervalMillis *int                                           `pulumi:"minRetryIntervalMillis"`
-	Name                   *string                                        `pulumi:"name"`
-	NewCluster             *GetJobJobSettingsSettingsNewCluster           `pulumi:"newCluster"`
-	NotebookTask           *GetJobJobSettingsSettingsNotebookTask         `pulumi:"notebookTask"`
-	NotificationSettings   *GetJobJobSettingsSettingsNotificationSettings `pulumi:"notificationSettings"`
-	Parameters             []GetJobJobSettingsSettingsParameter           `pulumi:"parameters"`
-	PipelineTask           *GetJobJobSettingsSettingsPipelineTask         `pulumi:"pipelineTask"`
-	PythonWheelTask        *GetJobJobSettingsSettingsPythonWheelTask      `pulumi:"pythonWheelTask"`
-	Queue                  *GetJobJobSettingsSettingsQueue                `pulumi:"queue"`
-	RetryOnTimeout         *bool                                          `pulumi:"retryOnTimeout"`
-	RunAs                  GetJobJobSettingsSettingsRunAs                 `pulumi:"runAs"`
-	RunJobTask             *GetJobJobSettingsSettingsRunJobTask           `pulumi:"runJobTask"`
-	Schedule               *GetJobJobSettingsSettingsSchedule             `pulumi:"schedule"`
-	SparkJarTask           *GetJobJobSettingsSettingsSparkJarTask         `pulumi:"sparkJarTask"`
-	SparkPythonTask        *GetJobJobSettingsSettingsSparkPythonTask      `pulumi:"sparkPythonTask"`
-	SparkSubmitTask        *GetJobJobSettingsSettingsSparkSubmitTask      `pulumi:"sparkSubmitTask"`
-	Tags                   map[string]string                              `pulumi:"tags"`
-	Tasks                  []GetJobJobSettingsSettingsTask                `pulumi:"tasks"`
-	TimeoutSeconds         *int                                           `pulumi:"timeoutSeconds"`
-	Trigger                *GetJobJobSettingsSettingsTrigger              `pulumi:"trigger"`
-	WebhookNotifications   *GetJobJobSettingsSettingsWebhookNotifications `pulumi:"webhookNotifications"`
+	Continuous             *GetJobJobSettingsSettingsContinuous         `pulumi:"continuous"`
+	DbtTask                *GetJobJobSettingsSettingsDbtTask            `pulumi:"dbtTask"`
+	Deployment             *GetJobJobSettingsSettingsDeployment         `pulumi:"deployment"`
+	Description            *string                                      `pulumi:"description"`
+	EditMode               *string                                      `pulumi:"editMode"`
+	EmailNotifications     *GetJobJobSettingsSettingsEmailNotifications `pulumi:"emailNotifications"`
+	Environments           []GetJobJobSettingsSettingsEnvironment       `pulumi:"environments"`
+	ExistingClusterId      *string                                      `pulumi:"existingClusterId"`
+	Format                 string                                       `pulumi:"format"`
+	GitSource              *GetJobJobSettingsSettingsGitSource          `pulumi:"gitSource"`
+	Health                 *GetJobJobSettingsSettingsHealth             `pulumi:"health"`
+	JobClusters            []GetJobJobSettingsSettingsJobCluster        `pulumi:"jobClusters"`
+	Libraries              []GetJobJobSettingsSettingsLibrary           `pulumi:"libraries"`
+	MaxConcurrentRuns      *int                                         `pulumi:"maxConcurrentRuns"`
+	MaxRetries             *int                                         `pulumi:"maxRetries"`
+	MinRetryIntervalMillis *int                                         `pulumi:"minRetryIntervalMillis"`
+	// the job name of Job if the resource was matched by id.
+	Name                 *string                                        `pulumi:"name"`
+	NewCluster           *GetJobJobSettingsSettingsNewCluster           `pulumi:"newCluster"`
+	NotebookTask         *GetJobJobSettingsSettingsNotebookTask         `pulumi:"notebookTask"`
+	NotificationSettings *GetJobJobSettingsSettingsNotificationSettings `pulumi:"notificationSettings"`
+	Parameters           []GetJobJobSettingsSettingsParameter           `pulumi:"parameters"`
+	PipelineTask         *GetJobJobSettingsSettingsPipelineTask         `pulumi:"pipelineTask"`
+	PythonWheelTask      *GetJobJobSettingsSettingsPythonWheelTask      `pulumi:"pythonWheelTask"`
+	Queue                *GetJobJobSettingsSettingsQueue                `pulumi:"queue"`
+	RetryOnTimeout       *bool                                          `pulumi:"retryOnTimeout"`
+	RunAs                GetJobJobSettingsSettingsRunAs                 `pulumi:"runAs"`
+	RunJobTask           *GetJobJobSettingsSettingsRunJobTask           `pulumi:"runJobTask"`
+	Schedule             *GetJobJobSettingsSettingsSchedule             `pulumi:"schedule"`
+	SparkJarTask         *GetJobJobSettingsSettingsSparkJarTask         `pulumi:"sparkJarTask"`
+	SparkPythonTask      *GetJobJobSettingsSettingsSparkPythonTask      `pulumi:"sparkPythonTask"`
+	SparkSubmitTask      *GetJobJobSettingsSettingsSparkSubmitTask      `pulumi:"sparkSubmitTask"`
+	Tags                 map[string]string                              `pulumi:"tags"`
+	Tasks                []GetJobJobSettingsSettingsTask                `pulumi:"tasks"`
+	TimeoutSeconds       *int                                           `pulumi:"timeoutSeconds"`
+	Trigger              *GetJobJobSettingsSettingsTrigger              `pulumi:"trigger"`
+	WebhookNotifications *GetJobJobSettingsSettingsWebhookNotifications `pulumi:"webhookNotifications"`
 }
 
 // GetJobJobSettingsSettingsInput is an input type that accepts GetJobJobSettingsSettingsArgs and GetJobJobSettingsSettingsOutput values.
@@ -18100,42 +18926,43 @@ type GetJobJobSettingsSettingsInput interface {
 }
 
 type GetJobJobSettingsSettingsArgs struct {
-	Continuous             GetJobJobSettingsSettingsContinuousPtrInput           `pulumi:"continuous"`
-	DbtTask                GetJobJobSettingsSettingsDbtTaskPtrInput              `pulumi:"dbtTask"`
-	Deployment             GetJobJobSettingsSettingsDeploymentPtrInput           `pulumi:"deployment"`
-	Description            pulumi.StringPtrInput                                 `pulumi:"description"`
-	EditMode               pulumi.StringPtrInput                                 `pulumi:"editMode"`
-	EmailNotifications     GetJobJobSettingsSettingsEmailNotificationsPtrInput   `pulumi:"emailNotifications"`
-	Environments           GetJobJobSettingsSettingsEnvironmentArrayInput        `pulumi:"environments"`
-	ExistingClusterId      pulumi.StringPtrInput                                 `pulumi:"existingClusterId"`
-	Format                 pulumi.StringInput                                    `pulumi:"format"`
-	GitSource              GetJobJobSettingsSettingsGitSourcePtrInput            `pulumi:"gitSource"`
-	Health                 GetJobJobSettingsSettingsHealthPtrInput               `pulumi:"health"`
-	JobClusters            GetJobJobSettingsSettingsJobClusterArrayInput         `pulumi:"jobClusters"`
-	Libraries              GetJobJobSettingsSettingsLibraryArrayInput            `pulumi:"libraries"`
-	MaxConcurrentRuns      pulumi.IntPtrInput                                    `pulumi:"maxConcurrentRuns"`
-	MaxRetries             pulumi.IntPtrInput                                    `pulumi:"maxRetries"`
-	MinRetryIntervalMillis pulumi.IntPtrInput                                    `pulumi:"minRetryIntervalMillis"`
-	Name                   pulumi.StringPtrInput                                 `pulumi:"name"`
-	NewCluster             GetJobJobSettingsSettingsNewClusterPtrInput           `pulumi:"newCluster"`
-	NotebookTask           GetJobJobSettingsSettingsNotebookTaskPtrInput         `pulumi:"notebookTask"`
-	NotificationSettings   GetJobJobSettingsSettingsNotificationSettingsPtrInput `pulumi:"notificationSettings"`
-	Parameters             GetJobJobSettingsSettingsParameterArrayInput          `pulumi:"parameters"`
-	PipelineTask           GetJobJobSettingsSettingsPipelineTaskPtrInput         `pulumi:"pipelineTask"`
-	PythonWheelTask        GetJobJobSettingsSettingsPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
-	Queue                  GetJobJobSettingsSettingsQueuePtrInput                `pulumi:"queue"`
-	RetryOnTimeout         pulumi.BoolPtrInput                                   `pulumi:"retryOnTimeout"`
-	RunAs                  GetJobJobSettingsSettingsRunAsInput                   `pulumi:"runAs"`
-	RunJobTask             GetJobJobSettingsSettingsRunJobTaskPtrInput           `pulumi:"runJobTask"`
-	Schedule               GetJobJobSettingsSettingsSchedulePtrInput             `pulumi:"schedule"`
-	SparkJarTask           GetJobJobSettingsSettingsSparkJarTaskPtrInput         `pulumi:"sparkJarTask"`
-	SparkPythonTask        GetJobJobSettingsSettingsSparkPythonTaskPtrInput      `pulumi:"sparkPythonTask"`
-	SparkSubmitTask        GetJobJobSettingsSettingsSparkSubmitTaskPtrInput      `pulumi:"sparkSubmitTask"`
-	Tags                   pulumi.StringMapInput                                 `pulumi:"tags"`
-	Tasks                  GetJobJobSettingsSettingsTaskArrayInput               `pulumi:"tasks"`
-	TimeoutSeconds         pulumi.IntPtrInput                                    `pulumi:"timeoutSeconds"`
-	Trigger                GetJobJobSettingsSettingsTriggerPtrInput              `pulumi:"trigger"`
-	WebhookNotifications   GetJobJobSettingsSettingsWebhookNotificationsPtrInput `pulumi:"webhookNotifications"`
+	Continuous             GetJobJobSettingsSettingsContinuousPtrInput         `pulumi:"continuous"`
+	DbtTask                GetJobJobSettingsSettingsDbtTaskPtrInput            `pulumi:"dbtTask"`
+	Deployment             GetJobJobSettingsSettingsDeploymentPtrInput         `pulumi:"deployment"`
+	Description            pulumi.StringPtrInput                               `pulumi:"description"`
+	EditMode               pulumi.StringPtrInput                               `pulumi:"editMode"`
+	EmailNotifications     GetJobJobSettingsSettingsEmailNotificationsPtrInput `pulumi:"emailNotifications"`
+	Environments           GetJobJobSettingsSettingsEnvironmentArrayInput      `pulumi:"environments"`
+	ExistingClusterId      pulumi.StringPtrInput                               `pulumi:"existingClusterId"`
+	Format                 pulumi.StringInput                                  `pulumi:"format"`
+	GitSource              GetJobJobSettingsSettingsGitSourcePtrInput          `pulumi:"gitSource"`
+	Health                 GetJobJobSettingsSettingsHealthPtrInput             `pulumi:"health"`
+	JobClusters            GetJobJobSettingsSettingsJobClusterArrayInput       `pulumi:"jobClusters"`
+	Libraries              GetJobJobSettingsSettingsLibraryArrayInput          `pulumi:"libraries"`
+	MaxConcurrentRuns      pulumi.IntPtrInput                                  `pulumi:"maxConcurrentRuns"`
+	MaxRetries             pulumi.IntPtrInput                                  `pulumi:"maxRetries"`
+	MinRetryIntervalMillis pulumi.IntPtrInput                                  `pulumi:"minRetryIntervalMillis"`
+	// the job name of Job if the resource was matched by id.
+	Name                 pulumi.StringPtrInput                                 `pulumi:"name"`
+	NewCluster           GetJobJobSettingsSettingsNewClusterPtrInput           `pulumi:"newCluster"`
+	NotebookTask         GetJobJobSettingsSettingsNotebookTaskPtrInput         `pulumi:"notebookTask"`
+	NotificationSettings GetJobJobSettingsSettingsNotificationSettingsPtrInput `pulumi:"notificationSettings"`
+	Parameters           GetJobJobSettingsSettingsParameterArrayInput          `pulumi:"parameters"`
+	PipelineTask         GetJobJobSettingsSettingsPipelineTaskPtrInput         `pulumi:"pipelineTask"`
+	PythonWheelTask      GetJobJobSettingsSettingsPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
+	Queue                GetJobJobSettingsSettingsQueuePtrInput                `pulumi:"queue"`
+	RetryOnTimeout       pulumi.BoolPtrInput                                   `pulumi:"retryOnTimeout"`
+	RunAs                GetJobJobSettingsSettingsRunAsInput                   `pulumi:"runAs"`
+	RunJobTask           GetJobJobSettingsSettingsRunJobTaskPtrInput           `pulumi:"runJobTask"`
+	Schedule             GetJobJobSettingsSettingsSchedulePtrInput             `pulumi:"schedule"`
+	SparkJarTask         GetJobJobSettingsSettingsSparkJarTaskPtrInput         `pulumi:"sparkJarTask"`
+	SparkPythonTask      GetJobJobSettingsSettingsSparkPythonTaskPtrInput      `pulumi:"sparkPythonTask"`
+	SparkSubmitTask      GetJobJobSettingsSettingsSparkSubmitTaskPtrInput      `pulumi:"sparkSubmitTask"`
+	Tags                 pulumi.StringMapInput                                 `pulumi:"tags"`
+	Tasks                GetJobJobSettingsSettingsTaskArrayInput               `pulumi:"tasks"`
+	TimeoutSeconds       pulumi.IntPtrInput                                    `pulumi:"timeoutSeconds"`
+	Trigger              GetJobJobSettingsSettingsTriggerPtrInput              `pulumi:"trigger"`
+	WebhookNotifications GetJobJobSettingsSettingsWebhookNotificationsPtrInput `pulumi:"webhookNotifications"`
 }
 
 func (GetJobJobSettingsSettingsArgs) ElementType() reflect.Type {
@@ -18281,6 +19108,7 @@ func (o GetJobJobSettingsSettingsOutput) MinRetryIntervalMillis() pulumi.IntPtrO
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *int { return v.MinRetryIntervalMillis }).(pulumi.IntPtrOutput)
 }
 
+// the job name of Job if the resource was matched by id.
 func (o GetJobJobSettingsSettingsOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -18533,6 +19361,7 @@ func (o GetJobJobSettingsSettingsPtrOutput) MinRetryIntervalMillis() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
+// the job name of Job if the resource was matched by id.
 func (o GetJobJobSettingsSettingsPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetJobJobSettingsSettings) *string {
 		if v == nil {
@@ -28501,7 +29330,8 @@ func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) NoAlertForSkippe
 
 type GetJobJobSettingsSettingsParameter struct {
 	Default string `pulumi:"default"`
-	Name    string `pulumi:"name"`
+	// the job name of Job if the resource was matched by id.
+	Name string `pulumi:"name"`
 }
 
 // GetJobJobSettingsSettingsParameterInput is an input type that accepts GetJobJobSettingsSettingsParameterArgs and GetJobJobSettingsSettingsParameterOutput values.
@@ -28517,7 +29347,8 @@ type GetJobJobSettingsSettingsParameterInput interface {
 
 type GetJobJobSettingsSettingsParameterArgs struct {
 	Default pulumi.StringInput `pulumi:"default"`
-	Name    pulumi.StringInput `pulumi:"name"`
+	// the job name of Job if the resource was matched by id.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (GetJobJobSettingsSettingsParameterArgs) ElementType() reflect.Type {
@@ -28575,6 +29406,7 @@ func (o GetJobJobSettingsSettingsParameterOutput) Default() pulumi.StringOutput 
 	return o.ApplyT(func(v GetJobJobSettingsSettingsParameter) string { return v.Default }).(pulumi.StringOutput)
 }
 
+// the job name of Job if the resource was matched by id.
 func (o GetJobJobSettingsSettingsParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -39592,6 +40424,7 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsPtrOutpu
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -39607,6 +40440,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationW
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -39661,6 +40495,7 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurati
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded) string {
 		return v.Id
@@ -39688,6 +40523,7 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurati
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -39703,6 +40539,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureIn
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -39757,6 +40594,7 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailur
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -39782,6 +40620,7 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailur
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -39797,6 +40636,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartInpu
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -39851,6 +40691,7 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartO
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -39876,6 +40717,7 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartA
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -39891,6 +40733,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreaming
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -39945,6 +40788,7 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStream
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded) string {
 		return v.Id
@@ -39972,6 +40816,7 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStream
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -39987,6 +40832,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessIn
 }
 
 type GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -40041,6 +40887,7 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSucces
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -47177,6 +48024,7 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput) OnSuccesses(
 }
 
 type GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -47192,6 +48040,7 @@ type GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThreshold
 }
 
 type GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -47246,6 +48095,7 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresh
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded) string {
 		return v.Id
@@ -47273,6 +48123,7 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresh
 }
 
 type GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -47288,6 +48139,7 @@ type GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -47342,6 +48194,7 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput) ToGetJ
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -47367,6 +48220,7 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput) I
 }
 
 type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -47382,6 +48236,7 @@ type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -47436,6 +48291,7 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput) ToGetJob
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -47461,6 +48317,7 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput) Ind
 }
 
 type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -47476,6 +48333,7 @@ type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded
 }
 
 type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -47530,6 +48388,7 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExcee
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceeded) string {
 		return v.Id
@@ -47557,6 +48416,7 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExcee
 }
 
 type GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -47572,6 +48432,7 @@ type GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -47626,6 +48487,7 @@ func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput) ToGetJ
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -48525,6 +49387,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsPtrOutput) OnSuccesses() Ge
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -48540,6 +49403,7 @@ type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExce
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -48594,6 +49458,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdE
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded) string {
 		return v.Id
@@ -48621,6 +49486,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdE
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnFailure struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -48636,6 +49502,7 @@ type GetJobJobSettingsSettingsWebhookNotificationsOnFailureInput interface {
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -48690,6 +49557,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnFailureOutput) ToGetJobJo
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsWebhookNotificationsOnFailureOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnFailure) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -48715,6 +49583,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnFailureArrayOutput) Index
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnStart struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -48730,6 +49599,7 @@ type GetJobJobSettingsSettingsWebhookNotificationsOnStartInput interface {
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -48784,6 +49654,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnStartOutput) ToGetJobJobS
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsWebhookNotificationsOnStartOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnStart) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -48809,6 +49680,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayOutput) Index(i
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -48824,6 +49696,7 @@ type GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededInpu
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -48878,6 +49751,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededO
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceeded) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -48903,6 +49777,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededA
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnSuccess struct {
+	// the id of Job if the resource was matched by name.
 	Id string `pulumi:"id"`
 }
 
@@ -48918,6 +49793,7 @@ type GetJobJobSettingsSettingsWebhookNotificationsOnSuccessInput interface {
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs struct {
+	// the id of Job if the resource was matched by name.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -48972,6 +49848,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnSuccessOutput) ToGetJobJo
 	return o
 }
 
+// the id of Job if the resource was matched by name.
 func (o GetJobJobSettingsSettingsWebhookNotificationsOnSuccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnSuccess) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -48997,25 +49874,33 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayOutput) Index
 }
 
 type GetMetastoreMetastoreInfo struct {
-	Cloud                                       *string `pulumi:"cloud"`
-	CreatedAt                                   *int    `pulumi:"createdAt"`
-	CreatedBy                                   *string `pulumi:"createdBy"`
-	DefaultDataAccessConfigId                   *string `pulumi:"defaultDataAccessConfigId"`
-	DeltaSharingOrganizationName                *string `pulumi:"deltaSharingOrganizationName"`
-	DeltaSharingRecipientTokenLifetimeInSeconds *int    `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
-	DeltaSharingScope                           *string `pulumi:"deltaSharingScope"`
-	ExternalAccessEnabled                       *bool   `pulumi:"externalAccessEnabled"`
-	GlobalMetastoreId                           *string `pulumi:"globalMetastoreId"`
-	MetastoreId                                 *string `pulumi:"metastoreId"`
-	Name                                        *string `pulumi:"name"`
-	Owner                                       *string `pulumi:"owner"`
-	PrivilegeModelVersion                       *string `pulumi:"privilegeModelVersion"`
-	Region                                      *string `pulumi:"region"`
-	StorageRoot                                 *string `pulumi:"storageRoot"`
-	StorageRootCredentialId                     *string `pulumi:"storageRootCredentialId"`
-	StorageRootCredentialName                   *string `pulumi:"storageRootCredentialName"`
-	UpdatedAt                                   *int    `pulumi:"updatedAt"`
-	UpdatedBy                                   *string `pulumi:"updatedBy"`
+	Cloud                     *string `pulumi:"cloud"`
+	CreatedAt                 *int    `pulumi:"createdAt"`
+	CreatedBy                 *string `pulumi:"createdBy"`
+	DefaultDataAccessConfigId *string `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
+	// Used to set expiration duration in seconds on recipient data access tokens.
+	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+	DeltaSharingScope     *string `pulumi:"deltaSharingScope"`
+	ExternalAccessEnabled *bool   `pulumi:"externalAccessEnabled"`
+	GlobalMetastoreId     *string `pulumi:"globalMetastoreId"`
+	// ID of the metastore
+	MetastoreId *string `pulumi:"metastoreId"`
+	// Name of the metastore
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the metastore owner.
+	Owner                 *string `pulumi:"owner"`
+	PrivilegeModelVersion *string `pulumi:"privilegeModelVersion"`
+	// Region of the metastore
+	Region *string `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored.
+	StorageRoot               *string `pulumi:"storageRoot"`
+	StorageRootCredentialId   *string `pulumi:"storageRootCredentialId"`
+	StorageRootCredentialName *string `pulumi:"storageRootCredentialName"`
+	UpdatedAt                 *int    `pulumi:"updatedAt"`
+	UpdatedBy                 *string `pulumi:"updatedBy"`
 }
 
 // GetMetastoreMetastoreInfoInput is an input type that accepts GetMetastoreMetastoreInfoArgs and GetMetastoreMetastoreInfoOutput values.
@@ -49030,25 +49915,33 @@ type GetMetastoreMetastoreInfoInput interface {
 }
 
 type GetMetastoreMetastoreInfoArgs struct {
-	Cloud                                       pulumi.StringPtrInput `pulumi:"cloud"`
-	CreatedAt                                   pulumi.IntPtrInput    `pulumi:"createdAt"`
-	CreatedBy                                   pulumi.StringPtrInput `pulumi:"createdBy"`
-	DefaultDataAccessConfigId                   pulumi.StringPtrInput `pulumi:"defaultDataAccessConfigId"`
-	DeltaSharingOrganizationName                pulumi.StringPtrInput `pulumi:"deltaSharingOrganizationName"`
-	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput    `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
-	DeltaSharingScope                           pulumi.StringPtrInput `pulumi:"deltaSharingScope"`
-	ExternalAccessEnabled                       pulumi.BoolPtrInput   `pulumi:"externalAccessEnabled"`
-	GlobalMetastoreId                           pulumi.StringPtrInput `pulumi:"globalMetastoreId"`
-	MetastoreId                                 pulumi.StringPtrInput `pulumi:"metastoreId"`
-	Name                                        pulumi.StringPtrInput `pulumi:"name"`
-	Owner                                       pulumi.StringPtrInput `pulumi:"owner"`
-	PrivilegeModelVersion                       pulumi.StringPtrInput `pulumi:"privilegeModelVersion"`
-	Region                                      pulumi.StringPtrInput `pulumi:"region"`
-	StorageRoot                                 pulumi.StringPtrInput `pulumi:"storageRoot"`
-	StorageRootCredentialId                     pulumi.StringPtrInput `pulumi:"storageRootCredentialId"`
-	StorageRootCredentialName                   pulumi.StringPtrInput `pulumi:"storageRootCredentialName"`
-	UpdatedAt                                   pulumi.IntPtrInput    `pulumi:"updatedAt"`
-	UpdatedBy                                   pulumi.StringPtrInput `pulumi:"updatedBy"`
+	Cloud                     pulumi.StringPtrInput `pulumi:"cloud"`
+	CreatedAt                 pulumi.IntPtrInput    `pulumi:"createdAt"`
+	CreatedBy                 pulumi.StringPtrInput `pulumi:"createdBy"`
+	DefaultDataAccessConfigId pulumi.StringPtrInput `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+	DeltaSharingOrganizationName pulumi.StringPtrInput `pulumi:"deltaSharingOrganizationName"`
+	// Used to set expiration duration in seconds on recipient data access tokens.
+	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+	DeltaSharingScope     pulumi.StringPtrInput `pulumi:"deltaSharingScope"`
+	ExternalAccessEnabled pulumi.BoolPtrInput   `pulumi:"externalAccessEnabled"`
+	GlobalMetastoreId     pulumi.StringPtrInput `pulumi:"globalMetastoreId"`
+	// ID of the metastore
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// Name of the metastore
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Username/groupname/sp applicationId of the metastore owner.
+	Owner                 pulumi.StringPtrInput `pulumi:"owner"`
+	PrivilegeModelVersion pulumi.StringPtrInput `pulumi:"privilegeModelVersion"`
+	// Region of the metastore
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored.
+	StorageRoot               pulumi.StringPtrInput `pulumi:"storageRoot"`
+	StorageRootCredentialId   pulumi.StringPtrInput `pulumi:"storageRootCredentialId"`
+	StorageRootCredentialName pulumi.StringPtrInput `pulumi:"storageRootCredentialName"`
+	UpdatedAt                 pulumi.IntPtrInput    `pulumi:"updatedAt"`
+	UpdatedBy                 pulumi.StringPtrInput `pulumi:"updatedBy"`
 }
 
 func (GetMetastoreMetastoreInfoArgs) ElementType() reflect.Type {
@@ -49144,14 +50037,17 @@ func (o GetMetastoreMetastoreInfoOutput) DefaultDataAccessConfigId() pulumi.Stri
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.DefaultDataAccessConfigId }).(pulumi.StringPtrOutput)
 }
 
+// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
 func (o GetMetastoreMetastoreInfoOutput) DeltaSharingOrganizationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.DeltaSharingOrganizationName }).(pulumi.StringPtrOutput)
 }
 
+// Used to set expiration duration in seconds on recipient data access tokens.
 func (o GetMetastoreMetastoreInfoOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *int { return v.DeltaSharingRecipientTokenLifetimeInSeconds }).(pulumi.IntPtrOutput)
 }
 
+// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 func (o GetMetastoreMetastoreInfoOutput) DeltaSharingScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.DeltaSharingScope }).(pulumi.StringPtrOutput)
 }
@@ -49164,14 +50060,17 @@ func (o GetMetastoreMetastoreInfoOutput) GlobalMetastoreId() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.GlobalMetastoreId }).(pulumi.StringPtrOutput)
 }
 
+// ID of the metastore
 func (o GetMetastoreMetastoreInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
 
+// Name of the metastore
 func (o GetMetastoreMetastoreInfoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Username/groupname/sp applicationId of the metastore owner.
 func (o GetMetastoreMetastoreInfoOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
@@ -49180,10 +50079,12 @@ func (o GetMetastoreMetastoreInfoOutput) PrivilegeModelVersion() pulumi.StringPt
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.PrivilegeModelVersion }).(pulumi.StringPtrOutput)
 }
 
+// Region of the metastore
 func (o GetMetastoreMetastoreInfoOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Path on cloud storage account, where managed `Table` are stored.
 func (o GetMetastoreMetastoreInfoOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }
@@ -49264,6 +50165,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) DefaultDataAccessConfigId() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
 func (o GetMetastoreMetastoreInfoPtrOutput) DeltaSharingOrganizationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -49273,6 +50175,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) DeltaSharingOrganizationName() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Used to set expiration duration in seconds on recipient data access tokens.
 func (o GetMetastoreMetastoreInfoPtrOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *int {
 		if v == nil {
@@ -49282,6 +50185,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) DeltaSharingRecipientTokenLifetimeIn
 	}).(pulumi.IntPtrOutput)
 }
 
+// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 func (o GetMetastoreMetastoreInfoPtrOutput) DeltaSharingScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -49309,6 +50213,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) GlobalMetastoreId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// ID of the metastore
 func (o GetMetastoreMetastoreInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -49318,6 +50223,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the metastore
 func (o GetMetastoreMetastoreInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -49327,6 +50233,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username/groupname/sp applicationId of the metastore owner.
 func (o GetMetastoreMetastoreInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -49345,6 +50252,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) PrivilegeModelVersion() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Region of the metastore
 func (o GetMetastoreMetastoreInfoPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -49354,6 +50262,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Path on cloud storage account, where managed `Table` are stored.
 func (o GetMetastoreMetastoreInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -49500,19 +50409,23 @@ func (o GetMlflowExperimentTagArrayOutput) Index(i pulumi.IntInput) GetMlflowExp
 }
 
 type GetMlflowModelLatestVersion struct {
-	CreationTimestamp    *int                             `pulumi:"creationTimestamp"`
-	CurrentStage         *string                          `pulumi:"currentStage"`
-	Description          *string                          `pulumi:"description"`
-	LastUpdatedTimestamp *int                             `pulumi:"lastUpdatedTimestamp"`
-	Name                 *string                          `pulumi:"name"`
-	RunId                *string                          `pulumi:"runId"`
-	RunLink              *string                          `pulumi:"runLink"`
-	Source               *string                          `pulumi:"source"`
-	Status               *string                          `pulumi:"status"`
-	StatusMessage        *string                          `pulumi:"statusMessage"`
-	Tags                 []GetMlflowModelLatestVersionTag `pulumi:"tags"`
-	UserId               *string                          `pulumi:"userId"`
-	Version              *string                          `pulumi:"version"`
+	CreationTimestamp *int    `pulumi:"creationTimestamp"`
+	CurrentStage      *string `pulumi:"currentStage"`
+	// User-specified description for the object.
+	Description          *string `pulumi:"description"`
+	LastUpdatedTimestamp *int    `pulumi:"lastUpdatedTimestamp"`
+	// Name of the registered model.
+	Name          *string `pulumi:"name"`
+	RunId         *string `pulumi:"runId"`
+	RunLink       *string `pulumi:"runLink"`
+	Source        *string `pulumi:"source"`
+	Status        *string `pulumi:"status"`
+	StatusMessage *string `pulumi:"statusMessage"`
+	// Array of tags associated with the model.
+	Tags []GetMlflowModelLatestVersionTag `pulumi:"tags"`
+	// The username of the user that created the object.
+	UserId  *string `pulumi:"userId"`
+	Version *string `pulumi:"version"`
 }
 
 // GetMlflowModelLatestVersionInput is an input type that accepts GetMlflowModelLatestVersionArgs and GetMlflowModelLatestVersionOutput values.
@@ -49527,19 +50440,23 @@ type GetMlflowModelLatestVersionInput interface {
 }
 
 type GetMlflowModelLatestVersionArgs struct {
-	CreationTimestamp    pulumi.IntPtrInput                       `pulumi:"creationTimestamp"`
-	CurrentStage         pulumi.StringPtrInput                    `pulumi:"currentStage"`
-	Description          pulumi.StringPtrInput                    `pulumi:"description"`
-	LastUpdatedTimestamp pulumi.IntPtrInput                       `pulumi:"lastUpdatedTimestamp"`
-	Name                 pulumi.StringPtrInput                    `pulumi:"name"`
-	RunId                pulumi.StringPtrInput                    `pulumi:"runId"`
-	RunLink              pulumi.StringPtrInput                    `pulumi:"runLink"`
-	Source               pulumi.StringPtrInput                    `pulumi:"source"`
-	Status               pulumi.StringPtrInput                    `pulumi:"status"`
-	StatusMessage        pulumi.StringPtrInput                    `pulumi:"statusMessage"`
-	Tags                 GetMlflowModelLatestVersionTagArrayInput `pulumi:"tags"`
-	UserId               pulumi.StringPtrInput                    `pulumi:"userId"`
-	Version              pulumi.StringPtrInput                    `pulumi:"version"`
+	CreationTimestamp pulumi.IntPtrInput    `pulumi:"creationTimestamp"`
+	CurrentStage      pulumi.StringPtrInput `pulumi:"currentStage"`
+	// User-specified description for the object.
+	Description          pulumi.StringPtrInput `pulumi:"description"`
+	LastUpdatedTimestamp pulumi.IntPtrInput    `pulumi:"lastUpdatedTimestamp"`
+	// Name of the registered model.
+	Name          pulumi.StringPtrInput `pulumi:"name"`
+	RunId         pulumi.StringPtrInput `pulumi:"runId"`
+	RunLink       pulumi.StringPtrInput `pulumi:"runLink"`
+	Source        pulumi.StringPtrInput `pulumi:"source"`
+	Status        pulumi.StringPtrInput `pulumi:"status"`
+	StatusMessage pulumi.StringPtrInput `pulumi:"statusMessage"`
+	// Array of tags associated with the model.
+	Tags GetMlflowModelLatestVersionTagArrayInput `pulumi:"tags"`
+	// The username of the user that created the object.
+	UserId  pulumi.StringPtrInput `pulumi:"userId"`
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GetMlflowModelLatestVersionArgs) ElementType() reflect.Type {
@@ -49601,6 +50518,7 @@ func (o GetMlflowModelLatestVersionOutput) CurrentStage() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.CurrentStage }).(pulumi.StringPtrOutput)
 }
 
+// User-specified description for the object.
 func (o GetMlflowModelLatestVersionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -49609,6 +50527,7 @@ func (o GetMlflowModelLatestVersionOutput) LastUpdatedTimestamp() pulumi.IntPtrO
 	return o.ApplyT(func(v GetMlflowModelLatestVersion) *int { return v.LastUpdatedTimestamp }).(pulumi.IntPtrOutput)
 }
 
+// Name of the registered model.
 func (o GetMlflowModelLatestVersionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -49633,10 +50552,12 @@ func (o GetMlflowModelLatestVersionOutput) StatusMessage() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.StatusMessage }).(pulumi.StringPtrOutput)
 }
 
+// Array of tags associated with the model.
 func (o GetMlflowModelLatestVersionOutput) Tags() GetMlflowModelLatestVersionTagArrayOutput {
 	return o.ApplyT(func(v GetMlflowModelLatestVersion) []GetMlflowModelLatestVersionTag { return v.Tags }).(GetMlflowModelLatestVersionTagArrayOutput)
 }
 
+// The username of the user that created the object.
 func (o GetMlflowModelLatestVersionOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.UserId }).(pulumi.StringPtrOutput)
 }
@@ -49866,8 +50787,10 @@ func (o GetMlflowModelTagArrayOutput) Index(i pulumi.IntInput) GetMlflowModelTag
 }
 
 type GetMwsNetworkConnectivityConfigEgressConfig struct {
+	// Array of default rules.
 	DefaultRules *GetMwsNetworkConnectivityConfigEgressConfigDefaultRules `pulumi:"defaultRules"`
-	TargetRules  *GetMwsNetworkConnectivityConfigEgressConfigTargetRules  `pulumi:"targetRules"`
+	// Array of target rules.
+	TargetRules *GetMwsNetworkConnectivityConfigEgressConfigTargetRules `pulumi:"targetRules"`
 }
 
 // GetMwsNetworkConnectivityConfigEgressConfigInput is an input type that accepts GetMwsNetworkConnectivityConfigEgressConfigArgs and GetMwsNetworkConnectivityConfigEgressConfigOutput values.
@@ -49882,8 +50805,10 @@ type GetMwsNetworkConnectivityConfigEgressConfigInput interface {
 }
 
 type GetMwsNetworkConnectivityConfigEgressConfigArgs struct {
+	// Array of default rules.
 	DefaultRules GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrInput `pulumi:"defaultRules"`
-	TargetRules  GetMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput  `pulumi:"targetRules"`
+	// Array of target rules.
+	TargetRules GetMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrInput `pulumi:"targetRules"`
 }
 
 func (GetMwsNetworkConnectivityConfigEgressConfigArgs) ElementType() reflect.Type {
@@ -49963,12 +50888,14 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigOutput) ToGetMwsNetworkConnec
 	}).(GetMwsNetworkConnectivityConfigEgressConfigPtrOutput)
 }
 
+// Array of default rules.
 func (o GetMwsNetworkConnectivityConfigEgressConfigOutput) DefaultRules() GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfig) *GetMwsNetworkConnectivityConfigEgressConfigDefaultRules {
 		return v.DefaultRules
 	}).(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput)
 }
 
+// Array of target rules.
 func (o GetMwsNetworkConnectivityConfigEgressConfigOutput) TargetRules() GetMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfig) *GetMwsNetworkConnectivityConfigEgressConfigTargetRules {
 		return v.TargetRules
@@ -49999,6 +50926,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigPtrOutput) Elem() GetMwsNetwo
 	}).(GetMwsNetworkConnectivityConfigEgressConfigOutput)
 }
 
+// Array of default rules.
 func (o GetMwsNetworkConnectivityConfigEgressConfigPtrOutput) DefaultRules() GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput {
 	return o.ApplyT(func(v *GetMwsNetworkConnectivityConfigEgressConfig) *GetMwsNetworkConnectivityConfigEgressConfigDefaultRules {
 		if v == nil {
@@ -50008,6 +50936,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigPtrOutput) DefaultRules() Get
 	}).(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput)
 }
 
+// Array of target rules.
 func (o GetMwsNetworkConnectivityConfigEgressConfigPtrOutput) TargetRules() GetMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput {
 	return o.ApplyT(func(v *GetMwsNetworkConnectivityConfigEgressConfig) *GetMwsNetworkConnectivityConfigEgressConfigTargetRules {
 		if v == nil {
@@ -50018,7 +50947,9 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigPtrOutput) TargetRules() GetM
 }
 
 type GetMwsNetworkConnectivityConfigEgressConfigDefaultRules struct {
-	AwsStableIpRule          *GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule          `pulumi:"awsStableIpRule"`
+	// The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+	AwsStableIpRule *GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule `pulumi:"awsStableIpRule"`
+	// Array of Azure service endpoint rules.
 	AzureServiceEndpointRule *GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule `pulumi:"azureServiceEndpointRule"`
 }
 
@@ -50034,7 +50965,9 @@ type GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesInput interface {
 }
 
 type GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs struct {
-	AwsStableIpRule          GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput          `pulumi:"awsStableIpRule"`
+	// The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+	AwsStableIpRule GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrInput `pulumi:"awsStableIpRule"`
+	// Array of Azure service endpoint rules.
 	AzureServiceEndpointRule GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrInput `pulumi:"azureServiceEndpointRule"`
 }
 
@@ -50115,12 +51048,14 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) ToGetMwsN
 	}).(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput)
 }
 
+// The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
 func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) AwsStableIpRule() GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigDefaultRules) *GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
 		return v.AwsStableIpRule
 	}).(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput)
 }
 
+// Array of Azure service endpoint rules.
 func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput) AzureServiceEndpointRule() GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigDefaultRules) *GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
 		return v.AzureServiceEndpointRule
@@ -50151,6 +51086,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) Elem()
 	}).(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesOutput)
 }
 
+// The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
 func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) AwsStableIpRule() GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput {
 	return o.ApplyT(func(v *GetMwsNetworkConnectivityConfigEgressConfigDefaultRules) *GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
 		if v == nil {
@@ -50160,6 +51096,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) AwsSta
 	}).(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput)
 }
 
+// Array of Azure service endpoint rules.
 func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) AzureServiceEndpointRule() GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput {
 	return o.ApplyT(func(v *GetMwsNetworkConnectivityConfigEgressConfigDefaultRules) *GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
 		if v == nil {
@@ -50170,6 +51107,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesPtrOutput) AzureS
 }
 
 type GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule struct {
+	// The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
 	CidrBlocks []string `pulumi:"cidrBlocks"`
 }
 
@@ -50185,6 +51123,7 @@ type GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleInput
 }
 
 type GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs struct {
+	// The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
 	CidrBlocks pulumi.StringArrayInput `pulumi:"cidrBlocks"`
 }
 
@@ -50265,6 +51204,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOu
 	}).(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput)
 }
 
+// The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
 func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput) CidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule) []string {
 		return v.CidrBlocks
@@ -50295,6 +51235,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePt
 	}).(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleOutput)
 }
 
+// The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
 func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePtrOutput) CidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule) []string {
 		if v == nil {
@@ -50305,8 +51246,11 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRulePt
 }
 
 type GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule struct {
-	Subnets        []string `pulumi:"subnets"`
-	TargetRegion   *string  `pulumi:"targetRegion"`
+	// Array of strings representing the subnet IDs.
+	Subnets []string `pulumi:"subnets"`
+	// The target region for the service endpoint.
+	TargetRegion *string `pulumi:"targetRegion"`
+	// Array of target services.
 	TargetServices []string `pulumi:"targetServices"`
 }
 
@@ -50322,8 +51266,11 @@ type GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpoint
 }
 
 type GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs struct {
-	Subnets        pulumi.StringArrayInput `pulumi:"subnets"`
-	TargetRegion   pulumi.StringPtrInput   `pulumi:"targetRegion"`
+	// Array of strings representing the subnet IDs.
+	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
+	// The target region for the service endpoint.
+	TargetRegion pulumi.StringPtrInput `pulumi:"targetRegion"`
+	// Array of target services.
 	TargetServices pulumi.StringArrayInput `pulumi:"targetServices"`
 }
 
@@ -50404,18 +51351,21 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpo
 	}).(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput)
 }
 
+// Array of strings representing the subnet IDs.
 func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) []string {
 		return v.Subnets
 	}).(pulumi.StringArrayOutput)
 }
 
+// The target region for the service endpoint.
 func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) TargetRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) *string {
 		return v.TargetRegion
 	}).(pulumi.StringPtrOutput)
 }
 
+// Array of target services.
 func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput) TargetServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) []string {
 		return v.TargetServices
@@ -50446,6 +51396,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpo
 	}).(GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleOutput)
 }
 
+// Array of strings representing the subnet IDs.
 func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) []string {
 		if v == nil {
@@ -50455,6 +51406,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpo
 	}).(pulumi.StringArrayOutput)
 }
 
+// The target region for the service endpoint.
 func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) TargetRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) *string {
 		if v == nil {
@@ -50464,6 +51416,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Array of target services.
 func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRulePtrOutput) TargetServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule) []string {
 		if v == nil {
@@ -50474,6 +51427,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpo
 }
 
 type GetMwsNetworkConnectivityConfigEgressConfigTargetRules struct {
+	// Array of private endpoint rule objects.
 	AzurePrivateEndpointRules []GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule `pulumi:"azurePrivateEndpointRules"`
 }
 
@@ -50489,6 +51443,7 @@ type GetMwsNetworkConnectivityConfigEgressConfigTargetRulesInput interface {
 }
 
 type GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs struct {
+	// Array of private endpoint rule objects.
 	AzurePrivateEndpointRules GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayInput `pulumi:"azurePrivateEndpointRules"`
 }
 
@@ -50569,6 +51524,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) ToGetMwsNe
 	}).(GetMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput)
 }
 
+// Array of private endpoint rule objects.
 func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesOutput) AzurePrivateEndpointRules() GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigTargetRules) []GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
 		return v.AzurePrivateEndpointRules
@@ -50599,6 +51555,7 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) Elem() 
 	}).(GetMwsNetworkConnectivityConfigEgressConfigTargetRulesOutput)
 }
 
+// Array of private endpoint rule objects.
 func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) AzurePrivateEndpointRules() GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArrayOutput {
 	return o.ApplyT(func(v *GetMwsNetworkConnectivityConfigEgressConfigTargetRules) []GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
 		if v == nil {
@@ -50609,16 +51566,26 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesPtrOutput) AzurePr
 }
 
 type GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule struct {
-	ConnectionState             *string `pulumi:"connectionState"`
-	CreationTime                *int    `pulumi:"creationTime"`
-	Deactivated                 *bool   `pulumi:"deactivated"`
-	DeactivatedAt               *int    `pulumi:"deactivatedAt"`
-	EndpointName                *string `pulumi:"endpointName"`
-	GroupId                     *string `pulumi:"groupId"`
+	// The current status of this private endpoint.
+	ConnectionState *string `pulumi:"connectionState"`
+	// Time in epoch milliseconds when this object was created.
+	CreationTime *int `pulumi:"creationTime"`
+	// Whether this private endpoint is deactivated.
+	Deactivated *bool `pulumi:"deactivated"`
+	// Time in epoch milliseconds when this object was deactivated.
+	DeactivatedAt *int `pulumi:"deactivatedAt"`
+	// The name of the Azure private endpoint resource.
+	EndpointName *string `pulumi:"endpointName"`
+	// The sub-resource type (group ID) of the target resource.
+	GroupId *string `pulumi:"groupId"`
+	// The Databricks network connectivity configuration ID.
 	NetworkConnectivityConfigId *string `pulumi:"networkConnectivityConfigId"`
-	ResourceId                  *string `pulumi:"resourceId"`
-	RuleId                      *string `pulumi:"ruleId"`
-	UpdatedTime                 *int    `pulumi:"updatedTime"`
+	// The Azure resource ID of the target resource.
+	ResourceId *string `pulumi:"resourceId"`
+	// The ID of a private endpoint rule.
+	RuleId *string `pulumi:"ruleId"`
+	// Time in epoch milliseconds when the network was updated.
+	UpdatedTime *int `pulumi:"updatedTime"`
 }
 
 // GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleInput is an input type that accepts GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs and GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput values.
@@ -50633,16 +51600,26 @@ type GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointR
 }
 
 type GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs struct {
-	ConnectionState             pulumi.StringPtrInput `pulumi:"connectionState"`
-	CreationTime                pulumi.IntPtrInput    `pulumi:"creationTime"`
-	Deactivated                 pulumi.BoolPtrInput   `pulumi:"deactivated"`
-	DeactivatedAt               pulumi.IntPtrInput    `pulumi:"deactivatedAt"`
-	EndpointName                pulumi.StringPtrInput `pulumi:"endpointName"`
-	GroupId                     pulumi.StringPtrInput `pulumi:"groupId"`
+	// The current status of this private endpoint.
+	ConnectionState pulumi.StringPtrInput `pulumi:"connectionState"`
+	// Time in epoch milliseconds when this object was created.
+	CreationTime pulumi.IntPtrInput `pulumi:"creationTime"`
+	// Whether this private endpoint is deactivated.
+	Deactivated pulumi.BoolPtrInput `pulumi:"deactivated"`
+	// Time in epoch milliseconds when this object was deactivated.
+	DeactivatedAt pulumi.IntPtrInput `pulumi:"deactivatedAt"`
+	// The name of the Azure private endpoint resource.
+	EndpointName pulumi.StringPtrInput `pulumi:"endpointName"`
+	// The sub-resource type (group ID) of the target resource.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// The Databricks network connectivity configuration ID.
 	NetworkConnectivityConfigId pulumi.StringPtrInput `pulumi:"networkConnectivityConfigId"`
-	ResourceId                  pulumi.StringPtrInput `pulumi:"resourceId"`
-	RuleId                      pulumi.StringPtrInput `pulumi:"ruleId"`
-	UpdatedTime                 pulumi.IntPtrInput    `pulumi:"updatedTime"`
+	// The Azure resource ID of the target resource.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// The ID of a private endpoint rule.
+	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
+	// Time in epoch milliseconds when the network was updated.
+	UpdatedTime pulumi.IntPtrInput `pulumi:"updatedTime"`
 }
 
 func (GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs) ElementType() reflect.Type {
@@ -50696,60 +51673,70 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpoi
 	return o
 }
 
+// The current status of this private endpoint.
 func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ConnectionState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
 		return v.ConnectionState
 	}).(pulumi.StringPtrOutput)
 }
 
+// Time in epoch milliseconds when this object was created.
 func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) CreationTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
 		return v.CreationTime
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether this private endpoint is deactivated.
 func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) Deactivated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *bool {
 		return v.Deactivated
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Time in epoch milliseconds when this object was deactivated.
 func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) DeactivatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
 		return v.DeactivatedAt
 	}).(pulumi.IntPtrOutput)
 }
 
+// The name of the Azure private endpoint resource.
 func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) EndpointName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
 		return v.EndpointName
 	}).(pulumi.StringPtrOutput)
 }
 
+// The sub-resource type (group ID) of the target resource.
 func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
 		return v.GroupId
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Databricks network connectivity configuration ID.
 func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) NetworkConnectivityConfigId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
 		return v.NetworkConnectivityConfigId
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Azure resource ID of the target resource.
 func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
 		return v.ResourceId
 	}).(pulumi.StringPtrOutput)
 }
 
+// The ID of a private endpoint rule.
 func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) RuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *string {
 		return v.RuleId
 	}).(pulumi.StringPtrOutput)
 }
 
+// Time in epoch milliseconds when the network was updated.
 func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleOutput) UpdatedTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule) *int {
 		return v.UpdatedTime
@@ -50778,7 +51765,8 @@ func (o GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpoi
 
 type GetNotebookPathsNotebookPathList struct {
 	Language *string `pulumi:"language"`
-	Path     *string `pulumi:"path"`
+	// Path to workspace directory
+	Path *string `pulumi:"path"`
 }
 
 // GetNotebookPathsNotebookPathListInput is an input type that accepts GetNotebookPathsNotebookPathListArgs and GetNotebookPathsNotebookPathListOutput values.
@@ -50794,7 +51782,8 @@ type GetNotebookPathsNotebookPathListInput interface {
 
 type GetNotebookPathsNotebookPathListArgs struct {
 	Language pulumi.StringPtrInput `pulumi:"language"`
-	Path     pulumi.StringPtrInput `pulumi:"path"`
+	// Path to workspace directory
+	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
 func (GetNotebookPathsNotebookPathListArgs) ElementType() reflect.Type {
@@ -50852,6 +51841,7 @@ func (o GetNotebookPathsNotebookPathListOutput) Language() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetNotebookPathsNotebookPathList) *string { return v.Language }).(pulumi.StringPtrOutput)
 }
 
+// Path to workspace directory
 func (o GetNotebookPathsNotebookPathListOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNotebookPathsNotebookPathList) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -50877,9 +51867,12 @@ func (o GetNotebookPathsNotebookPathListArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetNotificationDestinationsNotificationDestination struct {
+	// The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
 	DestinationType *string `pulumi:"destinationType"`
-	DisplayName     *string `pulumi:"displayName"`
-	Id              *string `pulumi:"id"`
+	// The display name of the Notification Destination.
+	DisplayName *string `pulumi:"displayName"`
+	// The unique ID of the Notification Destination.
+	Id *string `pulumi:"id"`
 }
 
 // GetNotificationDestinationsNotificationDestinationInput is an input type that accepts GetNotificationDestinationsNotificationDestinationArgs and GetNotificationDestinationsNotificationDestinationOutput values.
@@ -50894,9 +51887,12 @@ type GetNotificationDestinationsNotificationDestinationInput interface {
 }
 
 type GetNotificationDestinationsNotificationDestinationArgs struct {
+	// The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
 	DestinationType pulumi.StringPtrInput `pulumi:"destinationType"`
-	DisplayName     pulumi.StringPtrInput `pulumi:"displayName"`
-	Id              pulumi.StringPtrInput `pulumi:"id"`
+	// The display name of the Notification Destination.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The unique ID of the Notification Destination.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (GetNotificationDestinationsNotificationDestinationArgs) ElementType() reflect.Type {
@@ -50950,14 +51946,17 @@ func (o GetNotificationDestinationsNotificationDestinationOutput) ToGetNotificat
 	return o
 }
 
+// The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
 func (o GetNotificationDestinationsNotificationDestinationOutput) DestinationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNotificationDestinationsNotificationDestination) *string { return v.DestinationType }).(pulumi.StringPtrOutput)
 }
 
+// The display name of the Notification Destination.
 func (o GetNotificationDestinationsNotificationDestinationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNotificationDestinationsNotificationDestination) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The unique ID of the Notification Destination.
 func (o GetNotificationDestinationsNotificationDestinationOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNotificationDestinationsNotificationDestination) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -50983,20 +51982,33 @@ func (o GetNotificationDestinationsNotificationDestinationArrayOutput) Index(i p
 }
 
 type GetRegisteredModelModelInfo struct {
-	Aliases         []GetRegisteredModelModelInfoAlias `pulumi:"aliases"`
-	BrowseOnly      *bool                              `pulumi:"browseOnly"`
-	CatalogName     *string                            `pulumi:"catalogName"`
-	Comment         *string                            `pulumi:"comment"`
-	CreatedAt       *int                               `pulumi:"createdAt"`
-	CreatedBy       *string                            `pulumi:"createdBy"`
-	FullName        *string                            `pulumi:"fullName"`
-	MetastoreId     *string                            `pulumi:"metastoreId"`
-	Name            *string                            `pulumi:"name"`
-	Owner           *string                            `pulumi:"owner"`
-	SchemaName      *string                            `pulumi:"schemaName"`
-	StorageLocation *string                            `pulumi:"storageLocation"`
-	UpdatedAt       *int                               `pulumi:"updatedAt"`
-	UpdatedBy       *string                            `pulumi:"updatedBy"`
+	// the list of aliases associated with this model. Each item is object consisting of following attributes:
+	Aliases    []GetRegisteredModelModelInfoAlias `pulumi:"aliases"`
+	BrowseOnly *bool                              `pulumi:"browseOnly"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName *string `pulumi:"catalogName"`
+	// The comment attached to the registered model.
+	Comment *string `pulumi:"comment"`
+	// the Unix timestamp at the model's creation
+	CreatedAt *int `pulumi:"createdAt"`
+	// the identifier of the user who created the model
+	CreatedBy *string `pulumi:"createdBy"`
+	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+	FullName *string `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId *string `pulumi:"metastoreId"`
+	// The name of the registered model.
+	Name *string `pulumi:"name"`
+	// Name of the registered model owner.
+	Owner *string `pulumi:"owner"`
+	// The name of the schema where the registered model resides.
+	SchemaName *string `pulumi:"schemaName"`
+	// The storage location under which model version data files are stored.
+	StorageLocation *string `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the model
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// the identifier of the user who updated the model last time
+	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
 // GetRegisteredModelModelInfoInput is an input type that accepts GetRegisteredModelModelInfoArgs and GetRegisteredModelModelInfoOutput values.
@@ -51011,20 +52023,33 @@ type GetRegisteredModelModelInfoInput interface {
 }
 
 type GetRegisteredModelModelInfoArgs struct {
-	Aliases         GetRegisteredModelModelInfoAliasArrayInput `pulumi:"aliases"`
-	BrowseOnly      pulumi.BoolPtrInput                        `pulumi:"browseOnly"`
-	CatalogName     pulumi.StringPtrInput                      `pulumi:"catalogName"`
-	Comment         pulumi.StringPtrInput                      `pulumi:"comment"`
-	CreatedAt       pulumi.IntPtrInput                         `pulumi:"createdAt"`
-	CreatedBy       pulumi.StringPtrInput                      `pulumi:"createdBy"`
-	FullName        pulumi.StringPtrInput                      `pulumi:"fullName"`
-	MetastoreId     pulumi.StringPtrInput                      `pulumi:"metastoreId"`
-	Name            pulumi.StringPtrInput                      `pulumi:"name"`
-	Owner           pulumi.StringPtrInput                      `pulumi:"owner"`
-	SchemaName      pulumi.StringPtrInput                      `pulumi:"schemaName"`
-	StorageLocation pulumi.StringPtrInput                      `pulumi:"storageLocation"`
-	UpdatedAt       pulumi.IntPtrInput                         `pulumi:"updatedAt"`
-	UpdatedBy       pulumi.StringPtrInput                      `pulumi:"updatedBy"`
+	// the list of aliases associated with this model. Each item is object consisting of following attributes:
+	Aliases    GetRegisteredModelModelInfoAliasArrayInput `pulumi:"aliases"`
+	BrowseOnly pulumi.BoolPtrInput                        `pulumi:"browseOnly"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// The comment attached to the registered model.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// the Unix timestamp at the model's creation
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// the identifier of the user who created the model
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// The name of the registered model.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the registered model owner.
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// The name of the schema where the registered model resides.
+	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
+	// The storage location under which model version data files are stored.
+	StorageLocation pulumi.StringPtrInput `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the model
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// the identifier of the user who updated the model last time
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
 }
 
 func (GetRegisteredModelModelInfoArgs) ElementType() reflect.Type {
@@ -51078,6 +52103,7 @@ func (o GetRegisteredModelModelInfoOutput) ToGetRegisteredModelModelInfoOutputWi
 	return o
 }
 
+// the list of aliases associated with this model. Each item is object consisting of following attributes:
 func (o GetRegisteredModelModelInfoOutput) Aliases() GetRegisteredModelModelInfoAliasArrayOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) []GetRegisteredModelModelInfoAlias { return v.Aliases }).(GetRegisteredModelModelInfoAliasArrayOutput)
 }
@@ -51086,50 +52112,62 @@ func (o GetRegisteredModelModelInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the catalog where the schema and the registered model reside.
 func (o GetRegisteredModelModelInfoOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
+// The comment attached to the registered model.
 func (o GetRegisteredModelModelInfoOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// the Unix timestamp at the model's creation
 func (o GetRegisteredModelModelInfoOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
 }
 
+// the identifier of the user who created the model
 func (o GetRegisteredModelModelInfoOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
 func (o GetRegisteredModelModelInfoOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.FullName }).(pulumi.StringPtrOutput)
 }
 
+// the unique identifier of the metastore
 func (o GetRegisteredModelModelInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the registered model.
 func (o GetRegisteredModelModelInfoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Name of the registered model owner.
 func (o GetRegisteredModelModelInfoOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// The name of the schema where the registered model resides.
 func (o GetRegisteredModelModelInfoOutput) SchemaName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
 }
 
+// The storage location under which model version data files are stored.
 func (o GetRegisteredModelModelInfoOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.StorageLocation }).(pulumi.StringPtrOutput)
 }
 
+// the timestamp of the last time changes were made to the model
 func (o GetRegisteredModelModelInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
 }
 
+// the identifier of the user who updated the model last time
 func (o GetRegisteredModelModelInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
 }
@@ -51155,8 +52193,10 @@ func (o GetRegisteredModelModelInfoArrayOutput) Index(i pulumi.IntInput) GetRegi
 }
 
 type GetRegisteredModelModelInfoAlias struct {
-	AliasName  *string `pulumi:"aliasName"`
-	VersionNum *int    `pulumi:"versionNum"`
+	// string with the name of alias
+	AliasName *string `pulumi:"aliasName"`
+	// associated model version
+	VersionNum *int `pulumi:"versionNum"`
 }
 
 // GetRegisteredModelModelInfoAliasInput is an input type that accepts GetRegisteredModelModelInfoAliasArgs and GetRegisteredModelModelInfoAliasOutput values.
@@ -51171,8 +52211,10 @@ type GetRegisteredModelModelInfoAliasInput interface {
 }
 
 type GetRegisteredModelModelInfoAliasArgs struct {
-	AliasName  pulumi.StringPtrInput `pulumi:"aliasName"`
-	VersionNum pulumi.IntPtrInput    `pulumi:"versionNum"`
+	// string with the name of alias
+	AliasName pulumi.StringPtrInput `pulumi:"aliasName"`
+	// associated model version
+	VersionNum pulumi.IntPtrInput `pulumi:"versionNum"`
 }
 
 func (GetRegisteredModelModelInfoAliasArgs) ElementType() reflect.Type {
@@ -51226,10 +52268,12 @@ func (o GetRegisteredModelModelInfoAliasOutput) ToGetRegisteredModelModelInfoAli
 	return o
 }
 
+// string with the name of alias
 func (o GetRegisteredModelModelInfoAliasOutput) AliasName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfoAlias) *string { return v.AliasName }).(pulumi.StringPtrOutput)
 }
 
+// associated model version
 func (o GetRegisteredModelModelInfoAliasOutput) VersionNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelModelInfoAlias) *int { return v.VersionNum }).(pulumi.IntPtrOutput)
 }
@@ -51255,25 +52299,42 @@ func (o GetRegisteredModelModelInfoAliasArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetRegisteredModelVersionsModelVersion struct {
-	Aliases                  []GetRegisteredModelVersionsModelVersionAlias                  `pulumi:"aliases"`
-	BrowseOnly               *bool                                                          `pulumi:"browseOnly"`
-	CatalogName              *string                                                        `pulumi:"catalogName"`
-	Comment                  *string                                                        `pulumi:"comment"`
-	CreatedAt                *int                                                           `pulumi:"createdAt"`
-	CreatedBy                *string                                                        `pulumi:"createdBy"`
-	Id                       *string                                                        `pulumi:"id"`
-	MetastoreId              *string                                                        `pulumi:"metastoreId"`
-	ModelName                *string                                                        `pulumi:"modelName"`
+	// the list of aliases associated with this model. Each item is object consisting of following attributes:
+	Aliases    []GetRegisteredModelVersionsModelVersionAlias `pulumi:"aliases"`
+	BrowseOnly *bool                                         `pulumi:"browseOnly"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName *string `pulumi:"catalogName"`
+	// The comment attached to the registered model.
+	Comment *string `pulumi:"comment"`
+	// the Unix timestamp at the model's creation
+	CreatedAt *int `pulumi:"createdAt"`
+	// the identifier of the user who created the model
+	CreatedBy *string `pulumi:"createdBy"`
+	// The unique identifier of the model version
+	Id *string `pulumi:"id"`
+	// the unique identifier of the metastore
+	MetastoreId *string `pulumi:"metastoreId"`
+	ModelName   *string `pulumi:"modelName"`
+	// block describing model version dependencies, for feature-store packaged models. Consists of following attributes:
 	ModelVersionDependencies []GetRegisteredModelVersionsModelVersionModelVersionDependency `pulumi:"modelVersionDependencies"`
-	RunId                    *string                                                        `pulumi:"runId"`
-	RunWorkspaceId           *int                                                           `pulumi:"runWorkspaceId"`
-	SchemaName               *string                                                        `pulumi:"schemaName"`
-	Source                   *string                                                        `pulumi:"source"`
-	Status                   *string                                                        `pulumi:"status"`
-	StorageLocation          *string                                                        `pulumi:"storageLocation"`
-	UpdatedAt                *int                                                           `pulumi:"updatedAt"`
-	UpdatedBy                *string                                                        `pulumi:"updatedBy"`
-	Version                  *int                                                           `pulumi:"version"`
+	// MLflow run ID used when creating the model version, if `source` was generated by an experiment run stored in an MLflow tracking server
+	RunId *string `pulumi:"runId"`
+	// ID of the Databricks workspace containing the MLflow run that generated this model version, if applicable
+	RunWorkspaceId *int `pulumi:"runWorkspaceId"`
+	// The name of the schema where the registered model resides.
+	SchemaName *string `pulumi:"schemaName"`
+	// URI indicating the location of the source artifacts (files) for the model version.
+	Source *string `pulumi:"source"`
+	// Current status of the model version.
+	Status *string `pulumi:"status"`
+	// The storage location under which model version data files are stored.
+	StorageLocation *string `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the model
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// the identifier of the user who updated the model last time
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Integer model version number, used to reference the model version in API requests.
+	Version *int `pulumi:"version"`
 }
 
 // GetRegisteredModelVersionsModelVersionInput is an input type that accepts GetRegisteredModelVersionsModelVersionArgs and GetRegisteredModelVersionsModelVersionOutput values.
@@ -51288,25 +52349,42 @@ type GetRegisteredModelVersionsModelVersionInput interface {
 }
 
 type GetRegisteredModelVersionsModelVersionArgs struct {
-	Aliases                  GetRegisteredModelVersionsModelVersionAliasArrayInput                  `pulumi:"aliases"`
-	BrowseOnly               pulumi.BoolPtrInput                                                    `pulumi:"browseOnly"`
-	CatalogName              pulumi.StringPtrInput                                                  `pulumi:"catalogName"`
-	Comment                  pulumi.StringPtrInput                                                  `pulumi:"comment"`
-	CreatedAt                pulumi.IntPtrInput                                                     `pulumi:"createdAt"`
-	CreatedBy                pulumi.StringPtrInput                                                  `pulumi:"createdBy"`
-	Id                       pulumi.StringPtrInput                                                  `pulumi:"id"`
-	MetastoreId              pulumi.StringPtrInput                                                  `pulumi:"metastoreId"`
-	ModelName                pulumi.StringPtrInput                                                  `pulumi:"modelName"`
+	// the list of aliases associated with this model. Each item is object consisting of following attributes:
+	Aliases    GetRegisteredModelVersionsModelVersionAliasArrayInput `pulumi:"aliases"`
+	BrowseOnly pulumi.BoolPtrInput                                   `pulumi:"browseOnly"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// The comment attached to the registered model.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// the Unix timestamp at the model's creation
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// the identifier of the user who created the model
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// The unique identifier of the model version
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// the unique identifier of the metastore
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	ModelName   pulumi.StringPtrInput `pulumi:"modelName"`
+	// block describing model version dependencies, for feature-store packaged models. Consists of following attributes:
 	ModelVersionDependencies GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayInput `pulumi:"modelVersionDependencies"`
-	RunId                    pulumi.StringPtrInput                                                  `pulumi:"runId"`
-	RunWorkspaceId           pulumi.IntPtrInput                                                     `pulumi:"runWorkspaceId"`
-	SchemaName               pulumi.StringPtrInput                                                  `pulumi:"schemaName"`
-	Source                   pulumi.StringPtrInput                                                  `pulumi:"source"`
-	Status                   pulumi.StringPtrInput                                                  `pulumi:"status"`
-	StorageLocation          pulumi.StringPtrInput                                                  `pulumi:"storageLocation"`
-	UpdatedAt                pulumi.IntPtrInput                                                     `pulumi:"updatedAt"`
-	UpdatedBy                pulumi.StringPtrInput                                                  `pulumi:"updatedBy"`
-	Version                  pulumi.IntPtrInput                                                     `pulumi:"version"`
+	// MLflow run ID used when creating the model version, if `source` was generated by an experiment run stored in an MLflow tracking server
+	RunId pulumi.StringPtrInput `pulumi:"runId"`
+	// ID of the Databricks workspace containing the MLflow run that generated this model version, if applicable
+	RunWorkspaceId pulumi.IntPtrInput `pulumi:"runWorkspaceId"`
+	// The name of the schema where the registered model resides.
+	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
+	// URI indicating the location of the source artifacts (files) for the model version.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Current status of the model version.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The storage location under which model version data files are stored.
+	StorageLocation pulumi.StringPtrInput `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the model
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// the identifier of the user who updated the model last time
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Integer model version number, used to reference the model version in API requests.
+	Version pulumi.IntPtrInput `pulumi:"version"`
 }
 
 func (GetRegisteredModelVersionsModelVersionArgs) ElementType() reflect.Type {
@@ -51360,6 +52438,7 @@ func (o GetRegisteredModelVersionsModelVersionOutput) ToGetRegisteredModelVersio
 	return o
 }
 
+// the list of aliases associated with this model. Each item is object consisting of following attributes:
 func (o GetRegisteredModelVersionsModelVersionOutput) Aliases() GetRegisteredModelVersionsModelVersionAliasArrayOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) []GetRegisteredModelVersionsModelVersionAlias {
 		return v.Aliases
@@ -51370,26 +52449,32 @@ func (o GetRegisteredModelVersionsModelVersionOutput) BrowseOnly() pulumi.BoolPt
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the catalog where the schema and the registered model reside.
 func (o GetRegisteredModelVersionsModelVersionOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
+// The comment attached to the registered model.
 func (o GetRegisteredModelVersionsModelVersionOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// the Unix timestamp at the model's creation
 func (o GetRegisteredModelVersionsModelVersionOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
 }
 
+// the identifier of the user who created the model
 func (o GetRegisteredModelVersionsModelVersionOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// The unique identifier of the model version
 func (o GetRegisteredModelVersionsModelVersionOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// the unique identifier of the metastore
 func (o GetRegisteredModelVersionsModelVersionOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
@@ -51398,44 +52483,54 @@ func (o GetRegisteredModelVersionsModelVersionOutput) ModelName() pulumi.StringP
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.ModelName }).(pulumi.StringPtrOutput)
 }
 
+// block describing model version dependencies, for feature-store packaged models. Consists of following attributes:
 func (o GetRegisteredModelVersionsModelVersionOutput) ModelVersionDependencies() GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) []GetRegisteredModelVersionsModelVersionModelVersionDependency {
 		return v.ModelVersionDependencies
 	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput)
 }
 
+// MLflow run ID used when creating the model version, if `source` was generated by an experiment run stored in an MLflow tracking server
 func (o GetRegisteredModelVersionsModelVersionOutput) RunId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.RunId }).(pulumi.StringPtrOutput)
 }
 
+// ID of the Databricks workspace containing the MLflow run that generated this model version, if applicable
 func (o GetRegisteredModelVersionsModelVersionOutput) RunWorkspaceId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *int { return v.RunWorkspaceId }).(pulumi.IntPtrOutput)
 }
 
+// The name of the schema where the registered model resides.
 func (o GetRegisteredModelVersionsModelVersionOutput) SchemaName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
 }
 
+// URI indicating the location of the source artifacts (files) for the model version.
 func (o GetRegisteredModelVersionsModelVersionOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// Current status of the model version.
 func (o GetRegisteredModelVersionsModelVersionOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The storage location under which model version data files are stored.
 func (o GetRegisteredModelVersionsModelVersionOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.StorageLocation }).(pulumi.StringPtrOutput)
 }
 
+// the timestamp of the last time changes were made to the model
 func (o GetRegisteredModelVersionsModelVersionOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
 }
 
+// the identifier of the user who updated the model last time
 func (o GetRegisteredModelVersionsModelVersionOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
 }
 
+// Integer model version number, used to reference the model version in API requests.
 func (o GetRegisteredModelVersionsModelVersionOutput) Version() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
@@ -51461,8 +52556,10 @@ func (o GetRegisteredModelVersionsModelVersionArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetRegisteredModelVersionsModelVersionAlias struct {
-	AliasName  *string `pulumi:"aliasName"`
-	VersionNum *int    `pulumi:"versionNum"`
+	// string with the name of alias
+	AliasName *string `pulumi:"aliasName"`
+	// associated model version
+	VersionNum *int `pulumi:"versionNum"`
 }
 
 // GetRegisteredModelVersionsModelVersionAliasInput is an input type that accepts GetRegisteredModelVersionsModelVersionAliasArgs and GetRegisteredModelVersionsModelVersionAliasOutput values.
@@ -51477,8 +52574,10 @@ type GetRegisteredModelVersionsModelVersionAliasInput interface {
 }
 
 type GetRegisteredModelVersionsModelVersionAliasArgs struct {
-	AliasName  pulumi.StringPtrInput `pulumi:"aliasName"`
-	VersionNum pulumi.IntPtrInput    `pulumi:"versionNum"`
+	// string with the name of alias
+	AliasName pulumi.StringPtrInput `pulumi:"aliasName"`
+	// associated model version
+	VersionNum pulumi.IntPtrInput `pulumi:"versionNum"`
 }
 
 func (GetRegisteredModelVersionsModelVersionAliasArgs) ElementType() reflect.Type {
@@ -51532,10 +52631,12 @@ func (o GetRegisteredModelVersionsModelVersionAliasOutput) ToGetRegisteredModelV
 	return o
 }
 
+// string with the name of alias
 func (o GetRegisteredModelVersionsModelVersionAliasOutput) AliasName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionAlias) *string { return v.AliasName }).(pulumi.StringPtrOutput)
 }
 
+// associated model version
 func (o GetRegisteredModelVersionsModelVersionAliasOutput) VersionNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionAlias) *int { return v.VersionNum }).(pulumi.IntPtrOutput)
 }
@@ -51561,6 +52662,7 @@ func (o GetRegisteredModelVersionsModelVersionAliasArrayOutput) Index(i pulumi.I
 }
 
 type GetRegisteredModelVersionsModelVersionModelVersionDependency struct {
+	// list of dependencies consisting of following attributes:
 	Dependencies []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency `pulumi:"dependencies"`
 }
 
@@ -51576,6 +52678,7 @@ type GetRegisteredModelVersionsModelVersionModelVersionDependencyInput interface
 }
 
 type GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs struct {
+	// list of dependencies consisting of following attributes:
 	Dependencies GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayInput `pulumi:"dependencies"`
 }
 
@@ -51630,6 +52733,7 @@ func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput) ToGe
 	return o
 }
 
+// list of dependencies consisting of following attributes:
 func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput) Dependencies() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependency) []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency {
 		return v.Dependencies
@@ -51657,8 +52761,10 @@ func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput)
 }
 
 type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency struct {
+	// A function that is dependent on a SQL object:
 	Functions []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction `pulumi:"functions"`
-	Tables    []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable    `pulumi:"tables"`
+	// A table that is dependent on a SQL object
+	Tables []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable `pulumi:"tables"`
 }
 
 // GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs and GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput values.
@@ -51673,8 +52779,10 @@ type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyInput
 }
 
 type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs struct {
+	// A function that is dependent on a SQL object:
 	Functions GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayInput `pulumi:"functions"`
-	Tables    GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayInput    `pulumi:"tables"`
+	// A table that is dependent on a SQL object
+	Tables GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayInput `pulumi:"tables"`
 }
 
 func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs) ElementType() reflect.Type {
@@ -51728,12 +52836,14 @@ func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOu
 	return o
 }
 
+// A function that is dependent on a SQL object:
 func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput) Functions() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency) []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction {
 		return v.Functions
 	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput)
 }
 
+// A table that is dependent on a SQL object
 func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput) Tables() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency) []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable {
 		return v.Tables
@@ -51761,6 +52871,7 @@ func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyAr
 }
 
 type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction struct {
+	// Full name of the dependent function
 	FunctionFullName string `pulumi:"functionFullName"`
 }
 
@@ -51776,6 +52887,7 @@ type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunct
 }
 
 type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs struct {
+	// Full name of the dependent function
 	FunctionFullName pulumi.StringInput `pulumi:"functionFullName"`
 }
 
@@ -51830,6 +52942,7 @@ func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFu
 	return o
 }
 
+// Full name of the dependent function
 func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput) FunctionFullName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction) string {
 		return v.FunctionFullName
@@ -51857,6 +52970,7 @@ func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFu
 }
 
 type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable struct {
+	// Full name of the dependent table
 	TableFullName string `pulumi:"tableFullName"`
 }
 
@@ -51872,6 +52986,7 @@ type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable
 }
 
 type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs struct {
+	// Full name of the dependent table
 	TableFullName pulumi.StringInput `pulumi:"tableFullName"`
 }
 
@@ -51926,6 +53041,7 @@ func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTa
 	return o
 }
 
+// Full name of the dependent table
 func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput) TableFullName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable) string {
 		return v.TableFullName
@@ -51953,24 +53069,42 @@ func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTa
 }
 
 type GetSchemaSchemaInfo struct {
-	BrowseOnly                          *bool                                                   `pulumi:"browseOnly"`
-	CatalogName                         *string                                                 `pulumi:"catalogName"`
-	CatalogType                         *string                                                 `pulumi:"catalogType"`
-	Comment                             *string                                                 `pulumi:"comment"`
-	CreatedAt                           *int                                                    `pulumi:"createdAt"`
-	CreatedBy                           *string                                                 `pulumi:"createdBy"`
+	// indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+	BrowseOnly *bool `pulumi:"browseOnly"`
+	// the name of the catalog where the schema is.
+	CatalogName *string `pulumi:"catalogName"`
+	// the type of the parent catalog.
+	CatalogType *string `pulumi:"catalogType"`
+	// the comment attached to the volume
+	Comment *string `pulumi:"comment"`
+	// time at which this schema was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// username of schema creator.
+	CreatedBy *string `pulumi:"createdBy"`
+	// information about actual state of predictive optimization.
 	EffectivePredictiveOptimizationFlag *GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag `pulumi:"effectivePredictiveOptimizationFlag"`
-	EnablePredictiveOptimization        *string                                                 `pulumi:"enablePredictiveOptimization"`
-	FullName                            *string                                                 `pulumi:"fullName"`
-	MetastoreId                         *string                                                 `pulumi:"metastoreId"`
-	Name                                *string                                                 `pulumi:"name"`
-	Owner                               *string                                                 `pulumi:"owner"`
-	Properties                          map[string]string                                       `pulumi:"properties"`
-	SchemaId                            *string                                                 `pulumi:"schemaId"`
-	StorageLocation                     *string                                                 `pulumi:"storageLocation"`
-	StorageRoot                         *string                                                 `pulumi:"storageRoot"`
-	UpdatedAt                           *int                                                    `pulumi:"updatedAt"`
-	UpdatedBy                           *string                                                 `pulumi:"updatedBy"`
+	// whether predictive optimization should be enabled for this object and objects under it.
+	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
+	// the two-level (fully qualified) name of the schema
+	FullName *string `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId *string `pulumi:"metastoreId"`
+	// a fully qualified name of databricks_schema: *`catalog`.`schema`*
+	Name *string `pulumi:"name"`
+	// the identifier of the user who owns the schema
+	Owner *string `pulumi:"owner"`
+	// map of properties set on the schema
+	Properties map[string]string `pulumi:"properties"`
+	// the unique identifier of the volume
+	SchemaId *string `pulumi:"schemaId"`
+	// the storage location on the cloud.
+	StorageLocation *string `pulumi:"storageLocation"`
+	// storage root URL for managed tables within schema.
+	StorageRoot *string `pulumi:"storageRoot"`
+	// the timestamp of the last time changes were made to the schema
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// the identifier of the user who updated the schema last time
+	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
 // GetSchemaSchemaInfoInput is an input type that accepts GetSchemaSchemaInfoArgs and GetSchemaSchemaInfoOutput values.
@@ -51985,24 +53119,42 @@ type GetSchemaSchemaInfoInput interface {
 }
 
 type GetSchemaSchemaInfoArgs struct {
-	BrowseOnly                          pulumi.BoolPtrInput                                            `pulumi:"browseOnly"`
-	CatalogName                         pulumi.StringPtrInput                                          `pulumi:"catalogName"`
-	CatalogType                         pulumi.StringPtrInput                                          `pulumi:"catalogType"`
-	Comment                             pulumi.StringPtrInput                                          `pulumi:"comment"`
-	CreatedAt                           pulumi.IntPtrInput                                             `pulumi:"createdAt"`
-	CreatedBy                           pulumi.StringPtrInput                                          `pulumi:"createdBy"`
+	// indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+	BrowseOnly pulumi.BoolPtrInput `pulumi:"browseOnly"`
+	// the name of the catalog where the schema is.
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// the type of the parent catalog.
+	CatalogType pulumi.StringPtrInput `pulumi:"catalogType"`
+	// the comment attached to the volume
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// time at which this schema was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// username of schema creator.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// information about actual state of predictive optimization.
 	EffectivePredictiveOptimizationFlag GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrInput `pulumi:"effectivePredictiveOptimizationFlag"`
-	EnablePredictiveOptimization        pulumi.StringPtrInput                                          `pulumi:"enablePredictiveOptimization"`
-	FullName                            pulumi.StringPtrInput                                          `pulumi:"fullName"`
-	MetastoreId                         pulumi.StringPtrInput                                          `pulumi:"metastoreId"`
-	Name                                pulumi.StringPtrInput                                          `pulumi:"name"`
-	Owner                               pulumi.StringPtrInput                                          `pulumi:"owner"`
-	Properties                          pulumi.StringMapInput                                          `pulumi:"properties"`
-	SchemaId                            pulumi.StringPtrInput                                          `pulumi:"schemaId"`
-	StorageLocation                     pulumi.StringPtrInput                                          `pulumi:"storageLocation"`
-	StorageRoot                         pulumi.StringPtrInput                                          `pulumi:"storageRoot"`
-	UpdatedAt                           pulumi.IntPtrInput                                             `pulumi:"updatedAt"`
-	UpdatedBy                           pulumi.StringPtrInput                                          `pulumi:"updatedBy"`
+	// whether predictive optimization should be enabled for this object and objects under it.
+	EnablePredictiveOptimization pulumi.StringPtrInput `pulumi:"enablePredictiveOptimization"`
+	// the two-level (fully qualified) name of the schema
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// a fully qualified name of databricks_schema: *`catalog`.`schema`*
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// the identifier of the user who owns the schema
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// map of properties set on the schema
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// the unique identifier of the volume
+	SchemaId pulumi.StringPtrInput `pulumi:"schemaId"`
+	// the storage location on the cloud.
+	StorageLocation pulumi.StringPtrInput `pulumi:"storageLocation"`
+	// storage root URL for managed tables within schema.
+	StorageRoot pulumi.StringPtrInput `pulumi:"storageRoot"`
+	// the timestamp of the last time changes were made to the schema
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// the identifier of the user who updated the schema last time
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
 }
 
 func (GetSchemaSchemaInfoArgs) ElementType() reflect.Type {
@@ -52082,76 +53234,94 @@ func (o GetSchemaSchemaInfoOutput) ToGetSchemaSchemaInfoPtrOutputWithContext(ctx
 	}).(GetSchemaSchemaInfoPtrOutput)
 }
 
+// indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
 func (o GetSchemaSchemaInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
 }
 
+// the name of the catalog where the schema is.
 func (o GetSchemaSchemaInfoOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
+// the type of the parent catalog.
 func (o GetSchemaSchemaInfoOutput) CatalogType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.CatalogType }).(pulumi.StringPtrOutput)
 }
 
+// the comment attached to the volume
 func (o GetSchemaSchemaInfoOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// time at which this schema was created, in epoch milliseconds.
 func (o GetSchemaSchemaInfoOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
 }
 
+// username of schema creator.
 func (o GetSchemaSchemaInfoOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// information about actual state of predictive optimization.
 func (o GetSchemaSchemaInfoOutput) EffectivePredictiveOptimizationFlag() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
 		return v.EffectivePredictiveOptimizationFlag
 	}).(GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput)
 }
 
+// whether predictive optimization should be enabled for this object and objects under it.
 func (o GetSchemaSchemaInfoOutput) EnablePredictiveOptimization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.EnablePredictiveOptimization }).(pulumi.StringPtrOutput)
 }
 
+// the two-level (fully qualified) name of the schema
 func (o GetSchemaSchemaInfoOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.FullName }).(pulumi.StringPtrOutput)
 }
 
+// the unique identifier of the metastore
 func (o GetSchemaSchemaInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
 
+// a fully qualified name of databricks_schema: *`catalog`.`schema`*
 func (o GetSchemaSchemaInfoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// the identifier of the user who owns the schema
 func (o GetSchemaSchemaInfoOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// map of properties set on the schema
 func (o GetSchemaSchemaInfoOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// the unique identifier of the volume
 func (o GetSchemaSchemaInfoOutput) SchemaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.SchemaId }).(pulumi.StringPtrOutput)
 }
 
+// the storage location on the cloud.
 func (o GetSchemaSchemaInfoOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.StorageLocation }).(pulumi.StringPtrOutput)
 }
 
+// storage root URL for managed tables within schema.
 func (o GetSchemaSchemaInfoOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }
 
+// the timestamp of the last time changes were made to the schema
 func (o GetSchemaSchemaInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
 }
 
+// the identifier of the user who updated the schema last time
 func (o GetSchemaSchemaInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
 }
@@ -52180,6 +53350,7 @@ func (o GetSchemaSchemaInfoPtrOutput) Elem() GetSchemaSchemaInfoOutput {
 	}).(GetSchemaSchemaInfoOutput)
 }
 
+// indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
 func (o GetSchemaSchemaInfoPtrOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *bool {
 		if v == nil {
@@ -52189,6 +53360,7 @@ func (o GetSchemaSchemaInfoPtrOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// the name of the catalog where the schema is.
 func (o GetSchemaSchemaInfoPtrOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52198,6 +53370,7 @@ func (o GetSchemaSchemaInfoPtrOutput) CatalogName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the type of the parent catalog.
 func (o GetSchemaSchemaInfoPtrOutput) CatalogType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52207,6 +53380,7 @@ func (o GetSchemaSchemaInfoPtrOutput) CatalogType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the comment attached to the volume
 func (o GetSchemaSchemaInfoPtrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52216,6 +53390,7 @@ func (o GetSchemaSchemaInfoPtrOutput) Comment() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// time at which this schema was created, in epoch milliseconds.
 func (o GetSchemaSchemaInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *int {
 		if v == nil {
@@ -52225,6 +53400,7 @@ func (o GetSchemaSchemaInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// username of schema creator.
 func (o GetSchemaSchemaInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52234,6 +53410,7 @@ func (o GetSchemaSchemaInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// information about actual state of predictive optimization.
 func (o GetSchemaSchemaInfoPtrOutput) EffectivePredictiveOptimizationFlag() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
 		if v == nil {
@@ -52243,6 +53420,7 @@ func (o GetSchemaSchemaInfoPtrOutput) EffectivePredictiveOptimizationFlag() GetS
 	}).(GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput)
 }
 
+// whether predictive optimization should be enabled for this object and objects under it.
 func (o GetSchemaSchemaInfoPtrOutput) EnablePredictiveOptimization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52252,6 +53430,7 @@ func (o GetSchemaSchemaInfoPtrOutput) EnablePredictiveOptimization() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// the two-level (fully qualified) name of the schema
 func (o GetSchemaSchemaInfoPtrOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52261,6 +53440,7 @@ func (o GetSchemaSchemaInfoPtrOutput) FullName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the unique identifier of the metastore
 func (o GetSchemaSchemaInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52270,6 +53450,7 @@ func (o GetSchemaSchemaInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// a fully qualified name of databricks_schema: *`catalog`.`schema`*
 func (o GetSchemaSchemaInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52279,6 +53460,7 @@ func (o GetSchemaSchemaInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the identifier of the user who owns the schema
 func (o GetSchemaSchemaInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52288,6 +53470,7 @@ func (o GetSchemaSchemaInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// map of properties set on the schema
 func (o GetSchemaSchemaInfoPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) map[string]string {
 		if v == nil {
@@ -52297,6 +53480,7 @@ func (o GetSchemaSchemaInfoPtrOutput) Properties() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// the unique identifier of the volume
 func (o GetSchemaSchemaInfoPtrOutput) SchemaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52306,6 +53490,7 @@ func (o GetSchemaSchemaInfoPtrOutput) SchemaId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the storage location on the cloud.
 func (o GetSchemaSchemaInfoPtrOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52315,6 +53500,7 @@ func (o GetSchemaSchemaInfoPtrOutput) StorageLocation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// storage root URL for managed tables within schema.
 func (o GetSchemaSchemaInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52324,6 +53510,7 @@ func (o GetSchemaSchemaInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the timestamp of the last time changes were made to the schema
 func (o GetSchemaSchemaInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *int {
 		if v == nil {
@@ -52333,6 +53520,7 @@ func (o GetSchemaSchemaInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// the identifier of the user who updated the schema last time
 func (o GetSchemaSchemaInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
 		if v == nil {
@@ -52506,16 +53694,20 @@ func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput) Value()
 }
 
 type GetServingEndpointsEndpoint struct {
-	AiGateways           []GetServingEndpointsEndpointAiGateway `pulumi:"aiGateways"`
-	Configs              []GetServingEndpointsEndpointConfig    `pulumi:"configs"`
-	CreationTimestamp    *int                                   `pulumi:"creationTimestamp"`
-	Creator              *string                                `pulumi:"creator"`
-	Id                   *string                                `pulumi:"id"`
-	LastUpdatedTimestamp *int                                   `pulumi:"lastUpdatedTimestamp"`
-	Name                 *string                                `pulumi:"name"`
-	States               []GetServingEndpointsEndpointState     `pulumi:"states"`
-	Tags                 []GetServingEndpointsEndpointTag       `pulumi:"tags"`
-	Task                 *string                                `pulumi:"task"`
+	// A block with AI Gateway configuration for the serving endpoint.
+	AiGateways []GetServingEndpointsEndpointAiGateway `pulumi:"aiGateways"`
+	// The model serving endpoint configuration.
+	Configs              []GetServingEndpointsEndpointConfig `pulumi:"configs"`
+	CreationTimestamp    *int                                `pulumi:"creationTimestamp"`
+	Creator              *string                             `pulumi:"creator"`
+	Id                   *string                             `pulumi:"id"`
+	LastUpdatedTimestamp *int                                `pulumi:"lastUpdatedTimestamp"`
+	// The name of the model serving endpoint.
+	Name   *string                            `pulumi:"name"`
+	States []GetServingEndpointsEndpointState `pulumi:"states"`
+	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+	Tags []GetServingEndpointsEndpointTag `pulumi:"tags"`
+	Task *string                          `pulumi:"task"`
 }
 
 // GetServingEndpointsEndpointInput is an input type that accepts GetServingEndpointsEndpointArgs and GetServingEndpointsEndpointOutput values.
@@ -52530,16 +53722,20 @@ type GetServingEndpointsEndpointInput interface {
 }
 
 type GetServingEndpointsEndpointArgs struct {
-	AiGateways           GetServingEndpointsEndpointAiGatewayArrayInput `pulumi:"aiGateways"`
-	Configs              GetServingEndpointsEndpointConfigArrayInput    `pulumi:"configs"`
-	CreationTimestamp    pulumi.IntPtrInput                             `pulumi:"creationTimestamp"`
-	Creator              pulumi.StringPtrInput                          `pulumi:"creator"`
-	Id                   pulumi.StringPtrInput                          `pulumi:"id"`
-	LastUpdatedTimestamp pulumi.IntPtrInput                             `pulumi:"lastUpdatedTimestamp"`
-	Name                 pulumi.StringPtrInput                          `pulumi:"name"`
-	States               GetServingEndpointsEndpointStateArrayInput     `pulumi:"states"`
-	Tags                 GetServingEndpointsEndpointTagArrayInput       `pulumi:"tags"`
-	Task                 pulumi.StringPtrInput                          `pulumi:"task"`
+	// A block with AI Gateway configuration for the serving endpoint.
+	AiGateways GetServingEndpointsEndpointAiGatewayArrayInput `pulumi:"aiGateways"`
+	// The model serving endpoint configuration.
+	Configs              GetServingEndpointsEndpointConfigArrayInput `pulumi:"configs"`
+	CreationTimestamp    pulumi.IntPtrInput                          `pulumi:"creationTimestamp"`
+	Creator              pulumi.StringPtrInput                       `pulumi:"creator"`
+	Id                   pulumi.StringPtrInput                       `pulumi:"id"`
+	LastUpdatedTimestamp pulumi.IntPtrInput                          `pulumi:"lastUpdatedTimestamp"`
+	// The name of the model serving endpoint.
+	Name   pulumi.StringPtrInput                      `pulumi:"name"`
+	States GetServingEndpointsEndpointStateArrayInput `pulumi:"states"`
+	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+	Tags GetServingEndpointsEndpointTagArrayInput `pulumi:"tags"`
+	Task pulumi.StringPtrInput                    `pulumi:"task"`
 }
 
 func (GetServingEndpointsEndpointArgs) ElementType() reflect.Type {
@@ -52593,10 +53789,12 @@ func (o GetServingEndpointsEndpointOutput) ToGetServingEndpointsEndpointOutputWi
 	return o
 }
 
+// A block with AI Gateway configuration for the serving endpoint.
 func (o GetServingEndpointsEndpointOutput) AiGateways() GetServingEndpointsEndpointAiGatewayArrayOutput {
 	return o.ApplyT(func(v GetServingEndpointsEndpoint) []GetServingEndpointsEndpointAiGateway { return v.AiGateways }).(GetServingEndpointsEndpointAiGatewayArrayOutput)
 }
 
+// The model serving endpoint configuration.
 func (o GetServingEndpointsEndpointOutput) Configs() GetServingEndpointsEndpointConfigArrayOutput {
 	return o.ApplyT(func(v GetServingEndpointsEndpoint) []GetServingEndpointsEndpointConfig { return v.Configs }).(GetServingEndpointsEndpointConfigArrayOutput)
 }
@@ -52617,6 +53815,7 @@ func (o GetServingEndpointsEndpointOutput) LastUpdatedTimestamp() pulumi.IntPtrO
 	return o.ApplyT(func(v GetServingEndpointsEndpoint) *int { return v.LastUpdatedTimestamp }).(pulumi.IntPtrOutput)
 }
 
+// The name of the model serving endpoint.
 func (o GetServingEndpointsEndpointOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServingEndpointsEndpoint) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -52625,6 +53824,7 @@ func (o GetServingEndpointsEndpointOutput) States() GetServingEndpointsEndpointS
 	return o.ApplyT(func(v GetServingEndpointsEndpoint) []GetServingEndpointsEndpointState { return v.States }).(GetServingEndpointsEndpointStateArrayOutput)
 }
 
+// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
 func (o GetServingEndpointsEndpointOutput) Tags() GetServingEndpointsEndpointTagArrayOutput {
 	return o.ApplyT(func(v GetServingEndpointsEndpoint) []GetServingEndpointsEndpointTag { return v.Tags }).(GetServingEndpointsEndpointTagArrayOutput)
 }
@@ -52656,8 +53856,9 @@ func (o GetServingEndpointsEndpointArrayOutput) Index(i pulumi.IntInput) GetServ
 type GetServingEndpointsEndpointAiGateway struct {
 	Guardrails            []GetServingEndpointsEndpointAiGatewayGuardrail            `pulumi:"guardrails"`
 	InferenceTableConfigs []GetServingEndpointsEndpointAiGatewayInferenceTableConfig `pulumi:"inferenceTableConfigs"`
-	RateLimits            []GetServingEndpointsEndpointAiGatewayRateLimit            `pulumi:"rateLimits"`
-	UsageTrackingConfigs  []GetServingEndpointsEndpointAiGatewayUsageTrackingConfig  `pulumi:"usageTrackingConfigs"`
+	// A list of rate limit blocks to be applied to the serving endpoint.
+	RateLimits           []GetServingEndpointsEndpointAiGatewayRateLimit           `pulumi:"rateLimits"`
+	UsageTrackingConfigs []GetServingEndpointsEndpointAiGatewayUsageTrackingConfig `pulumi:"usageTrackingConfigs"`
 }
 
 // GetServingEndpointsEndpointAiGatewayInput is an input type that accepts GetServingEndpointsEndpointAiGatewayArgs and GetServingEndpointsEndpointAiGatewayOutput values.
@@ -52674,8 +53875,9 @@ type GetServingEndpointsEndpointAiGatewayInput interface {
 type GetServingEndpointsEndpointAiGatewayArgs struct {
 	Guardrails            GetServingEndpointsEndpointAiGatewayGuardrailArrayInput            `pulumi:"guardrails"`
 	InferenceTableConfigs GetServingEndpointsEndpointAiGatewayInferenceTableConfigArrayInput `pulumi:"inferenceTableConfigs"`
-	RateLimits            GetServingEndpointsEndpointAiGatewayRateLimitArrayInput            `pulumi:"rateLimits"`
-	UsageTrackingConfigs  GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArrayInput  `pulumi:"usageTrackingConfigs"`
+	// A list of rate limit blocks to be applied to the serving endpoint.
+	RateLimits           GetServingEndpointsEndpointAiGatewayRateLimitArrayInput           `pulumi:"rateLimits"`
+	UsageTrackingConfigs GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArrayInput `pulumi:"usageTrackingConfigs"`
 }
 
 func (GetServingEndpointsEndpointAiGatewayArgs) ElementType() reflect.Type {
@@ -52741,6 +53943,7 @@ func (o GetServingEndpointsEndpointAiGatewayOutput) InferenceTableConfigs() GetS
 	}).(GetServingEndpointsEndpointAiGatewayInferenceTableConfigArrayOutput)
 }
 
+// A list of rate limit blocks to be applied to the serving endpoint.
 func (o GetServingEndpointsEndpointAiGatewayOutput) RateLimits() GetServingEndpointsEndpointAiGatewayRateLimitArrayOutput {
 	return o.ApplyT(func(v GetServingEndpointsEndpointAiGateway) []GetServingEndpointsEndpointAiGatewayRateLimit {
 		return v.RateLimits
@@ -53714,7 +54917,8 @@ type GetServingEndpointsEndpointConfigServedEntity struct {
 	EntityVersion    *string                                                        `pulumi:"entityVersion"`
 	ExternalModels   []GetServingEndpointsEndpointConfigServedEntityExternalModel   `pulumi:"externalModels"`
 	FoundationModels []GetServingEndpointsEndpointConfigServedEntityFoundationModel `pulumi:"foundationModels"`
-	Name             *string                                                        `pulumi:"name"`
+	// The name of the model serving endpoint.
+	Name *string `pulumi:"name"`
 }
 
 // GetServingEndpointsEndpointConfigServedEntityInput is an input type that accepts GetServingEndpointsEndpointConfigServedEntityArgs and GetServingEndpointsEndpointConfigServedEntityOutput values.
@@ -53733,7 +54937,8 @@ type GetServingEndpointsEndpointConfigServedEntityArgs struct {
 	EntityVersion    pulumi.StringPtrInput                                                  `pulumi:"entityVersion"`
 	ExternalModels   GetServingEndpointsEndpointConfigServedEntityExternalModelArrayInput   `pulumi:"externalModels"`
 	FoundationModels GetServingEndpointsEndpointConfigServedEntityFoundationModelArrayInput `pulumi:"foundationModels"`
-	Name             pulumi.StringPtrInput                                                  `pulumi:"name"`
+	// The name of the model serving endpoint.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetServingEndpointsEndpointConfigServedEntityArgs) ElementType() reflect.Type {
@@ -53807,6 +55012,7 @@ func (o GetServingEndpointsEndpointConfigServedEntityOutput) FoundationModels() 
 	}).(GetServingEndpointsEndpointConfigServedEntityFoundationModelArrayOutput)
 }
 
+// The name of the model serving endpoint.
 func (o GetServingEndpointsEndpointConfigServedEntityOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedEntity) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -53838,11 +55044,12 @@ type GetServingEndpointsEndpointConfigServedEntityExternalModel struct {
 	CohereConfigs                 []GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig                 `pulumi:"cohereConfigs"`
 	DatabricksModelServingConfigs []GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig `pulumi:"databricksModelServingConfigs"`
 	GoogleCloudVertexAiConfigs    []GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig    `pulumi:"googleCloudVertexAiConfigs"`
-	Name                          string                                                                                   `pulumi:"name"`
-	OpenaiConfigs                 []GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig                 `pulumi:"openaiConfigs"`
-	PalmConfigs                   []GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig                   `pulumi:"palmConfigs"`
-	Provider                      string                                                                                   `pulumi:"provider"`
-	Task                          string                                                                                   `pulumi:"task"`
+	// The name of the model serving endpoint.
+	Name          string                                                                   `pulumi:"name"`
+	OpenaiConfigs []GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig `pulumi:"openaiConfigs"`
+	PalmConfigs   []GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig   `pulumi:"palmConfigs"`
+	Provider      string                                                                   `pulumi:"provider"`
+	Task          string                                                                   `pulumi:"task"`
 }
 
 // GetServingEndpointsEndpointConfigServedEntityExternalModelInput is an input type that accepts GetServingEndpointsEndpointConfigServedEntityExternalModelArgs and GetServingEndpointsEndpointConfigServedEntityExternalModelOutput values.
@@ -53863,11 +55070,12 @@ type GetServingEndpointsEndpointConfigServedEntityExternalModelArgs struct {
 	CohereConfigs                 GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArrayInput                 `pulumi:"cohereConfigs"`
 	DatabricksModelServingConfigs GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArrayInput `pulumi:"databricksModelServingConfigs"`
 	GoogleCloudVertexAiConfigs    GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArrayInput    `pulumi:"googleCloudVertexAiConfigs"`
-	Name                          pulumi.StringInput                                                                               `pulumi:"name"`
-	OpenaiConfigs                 GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArrayInput                 `pulumi:"openaiConfigs"`
-	PalmConfigs                   GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArrayInput                   `pulumi:"palmConfigs"`
-	Provider                      pulumi.StringInput                                                                               `pulumi:"provider"`
-	Task                          pulumi.StringInput                                                                               `pulumi:"task"`
+	// The name of the model serving endpoint.
+	Name          pulumi.StringInput                                                               `pulumi:"name"`
+	OpenaiConfigs GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArrayInput `pulumi:"openaiConfigs"`
+	PalmConfigs   GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArrayInput   `pulumi:"palmConfigs"`
+	Provider      pulumi.StringInput                                                               `pulumi:"provider"`
+	Task          pulumi.StringInput                                                               `pulumi:"task"`
 }
 
 func (GetServingEndpointsEndpointConfigServedEntityExternalModelArgs) ElementType() reflect.Type {
@@ -53957,6 +55165,7 @@ func (o GetServingEndpointsEndpointConfigServedEntityExternalModelOutput) Google
 	}).(GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArrayOutput)
 }
 
+// The name of the model serving endpoint.
 func (o GetServingEndpointsEndpointConfigServedEntityExternalModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedEntityExternalModel) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -54973,7 +56182,8 @@ type GetServingEndpointsEndpointConfigServedEntityFoundationModel struct {
 	Description *string `pulumi:"description"`
 	DisplayName *string `pulumi:"displayName"`
 	Docs        *string `pulumi:"docs"`
-	Name        *string `pulumi:"name"`
+	// The name of the model serving endpoint.
+	Name *string `pulumi:"name"`
 }
 
 // GetServingEndpointsEndpointConfigServedEntityFoundationModelInput is an input type that accepts GetServingEndpointsEndpointConfigServedEntityFoundationModelArgs and GetServingEndpointsEndpointConfigServedEntityFoundationModelOutput values.
@@ -54991,7 +56201,8 @@ type GetServingEndpointsEndpointConfigServedEntityFoundationModelArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	Docs        pulumi.StringPtrInput `pulumi:"docs"`
-	Name        pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the model serving endpoint.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetServingEndpointsEndpointConfigServedEntityFoundationModelArgs) ElementType() reflect.Type {
@@ -55057,6 +56268,7 @@ func (o GetServingEndpointsEndpointConfigServedEntityFoundationModelOutput) Docs
 	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedEntityFoundationModel) *string { return v.Docs }).(pulumi.StringPtrOutput)
 }
 
+// The name of the model serving endpoint.
 func (o GetServingEndpointsEndpointConfigServedEntityFoundationModelOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedEntityFoundationModel) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -55084,7 +56296,8 @@ func (o GetServingEndpointsEndpointConfigServedEntityFoundationModelArrayOutput)
 type GetServingEndpointsEndpointConfigServedModel struct {
 	ModelName    *string `pulumi:"modelName"`
 	ModelVersion *string `pulumi:"modelVersion"`
-	Name         *string `pulumi:"name"`
+	// The name of the model serving endpoint.
+	Name *string `pulumi:"name"`
 }
 
 // GetServingEndpointsEndpointConfigServedModelInput is an input type that accepts GetServingEndpointsEndpointConfigServedModelArgs and GetServingEndpointsEndpointConfigServedModelOutput values.
@@ -55101,7 +56314,8 @@ type GetServingEndpointsEndpointConfigServedModelInput interface {
 type GetServingEndpointsEndpointConfigServedModelArgs struct {
 	ModelName    pulumi.StringPtrInput `pulumi:"modelName"`
 	ModelVersion pulumi.StringPtrInput `pulumi:"modelVersion"`
-	Name         pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the model serving endpoint.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetServingEndpointsEndpointConfigServedModelArgs) ElementType() reflect.Type {
@@ -55163,6 +56377,7 @@ func (o GetServingEndpointsEndpointConfigServedModelOutput) ModelVersion() pulum
 	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedModel) *string { return v.ModelVersion }).(pulumi.StringPtrOutput)
 }
 
+// The name of the model serving endpoint.
 func (o GetServingEndpointsEndpointConfigServedModelOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedModel) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -55388,19 +56603,22 @@ func (o GetServingEndpointsEndpointTagArrayOutput) Index(i pulumi.IntInput) GetS
 }
 
 type GetShareObject struct {
-	AddedAt                  int                       `pulumi:"addedAt"`
-	AddedBy                  string                    `pulumi:"addedBy"`
-	CdfEnabled               *bool                     `pulumi:"cdfEnabled"`
-	Comment                  *string                   `pulumi:"comment"`
-	Content                  *string                   `pulumi:"content"`
-	DataObjectType           string                    `pulumi:"dataObjectType"`
-	HistoryDataSharingStatus *string                   `pulumi:"historyDataSharingStatus"`
-	Name                     string                    `pulumi:"name"`
-	Partitions               []GetShareObjectPartition `pulumi:"partitions"`
-	SharedAs                 *string                   `pulumi:"sharedAs"`
-	StartVersion             *int                      `pulumi:"startVersion"`
-	Status                   string                    `pulumi:"status"`
-	StringSharedAs           *string                   `pulumi:"stringSharedAs"`
+	AddedAt    int    `pulumi:"addedAt"`
+	AddedBy    string `pulumi:"addedBy"`
+	CdfEnabled *bool  `pulumi:"cdfEnabled"`
+	// Description about the object.
+	Comment *string `pulumi:"comment"`
+	Content *string `pulumi:"content"`
+	// Type of the object.
+	DataObjectType           string  `pulumi:"dataObjectType"`
+	HistoryDataSharingStatus *string `pulumi:"historyDataSharingStatus"`
+	// The name of the share
+	Name           string                    `pulumi:"name"`
+	Partitions     []GetShareObjectPartition `pulumi:"partitions"`
+	SharedAs       *string                   `pulumi:"sharedAs"`
+	StartVersion   *int                      `pulumi:"startVersion"`
+	Status         string                    `pulumi:"status"`
+	StringSharedAs *string                   `pulumi:"stringSharedAs"`
 }
 
 // GetShareObjectInput is an input type that accepts GetShareObjectArgs and GetShareObjectOutput values.
@@ -55415,19 +56633,22 @@ type GetShareObjectInput interface {
 }
 
 type GetShareObjectArgs struct {
-	AddedAt                  pulumi.IntInput                   `pulumi:"addedAt"`
-	AddedBy                  pulumi.StringInput                `pulumi:"addedBy"`
-	CdfEnabled               pulumi.BoolPtrInput               `pulumi:"cdfEnabled"`
-	Comment                  pulumi.StringPtrInput             `pulumi:"comment"`
-	Content                  pulumi.StringPtrInput             `pulumi:"content"`
-	DataObjectType           pulumi.StringInput                `pulumi:"dataObjectType"`
-	HistoryDataSharingStatus pulumi.StringPtrInput             `pulumi:"historyDataSharingStatus"`
-	Name                     pulumi.StringInput                `pulumi:"name"`
-	Partitions               GetShareObjectPartitionArrayInput `pulumi:"partitions"`
-	SharedAs                 pulumi.StringPtrInput             `pulumi:"sharedAs"`
-	StartVersion             pulumi.IntPtrInput                `pulumi:"startVersion"`
-	Status                   pulumi.StringInput                `pulumi:"status"`
-	StringSharedAs           pulumi.StringPtrInput             `pulumi:"stringSharedAs"`
+	AddedAt    pulumi.IntInput     `pulumi:"addedAt"`
+	AddedBy    pulumi.StringInput  `pulumi:"addedBy"`
+	CdfEnabled pulumi.BoolPtrInput `pulumi:"cdfEnabled"`
+	// Description about the object.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Type of the object.
+	DataObjectType           pulumi.StringInput    `pulumi:"dataObjectType"`
+	HistoryDataSharingStatus pulumi.StringPtrInput `pulumi:"historyDataSharingStatus"`
+	// The name of the share
+	Name           pulumi.StringInput                `pulumi:"name"`
+	Partitions     GetShareObjectPartitionArrayInput `pulumi:"partitions"`
+	SharedAs       pulumi.StringPtrInput             `pulumi:"sharedAs"`
+	StartVersion   pulumi.IntPtrInput                `pulumi:"startVersion"`
+	Status         pulumi.StringInput                `pulumi:"status"`
+	StringSharedAs pulumi.StringPtrInput             `pulumi:"stringSharedAs"`
 }
 
 func (GetShareObjectArgs) ElementType() reflect.Type {
@@ -55493,6 +56714,7 @@ func (o GetShareObjectOutput) CdfEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetShareObject) *bool { return v.CdfEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Description about the object.
 func (o GetShareObjectOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetShareObject) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
@@ -55501,6 +56723,7 @@ func (o GetShareObjectOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetShareObject) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// Type of the object.
 func (o GetShareObjectOutput) DataObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShareObject) string { return v.DataObjectType }).(pulumi.StringOutput)
 }
@@ -55509,6 +56732,7 @@ func (o GetShareObjectOutput) HistoryDataSharingStatus() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetShareObject) *string { return v.HistoryDataSharingStatus }).(pulumi.StringPtrOutput)
 }
 
+// The name of the share
 func (o GetShareObjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShareObject) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -55648,6 +56872,7 @@ func (o GetShareObjectPartitionArrayOutput) Index(i pulumi.IntInput) GetShareObj
 }
 
 type GetShareObjectPartitionValue struct {
+	// The name of the share
 	Name                 string  `pulumi:"name"`
 	Op                   string  `pulumi:"op"`
 	RecipientPropertyKey *string `pulumi:"recipientPropertyKey"`
@@ -55666,6 +56891,7 @@ type GetShareObjectPartitionValueInput interface {
 }
 
 type GetShareObjectPartitionValueArgs struct {
+	// The name of the share
 	Name                 pulumi.StringInput    `pulumi:"name"`
 	Op                   pulumi.StringInput    `pulumi:"op"`
 	RecipientPropertyKey pulumi.StringPtrInput `pulumi:"recipientPropertyKey"`
@@ -55723,6 +56949,7 @@ func (o GetShareObjectPartitionValueOutput) ToGetShareObjectPartitionValueOutput
 	return o
 }
 
+// The name of the share
 func (o GetShareObjectPartitionValueOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShareObjectPartitionValue) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -55761,7 +56988,8 @@ func (o GetShareObjectPartitionValueArrayOutput) Index(i pulumi.IntInput) GetSha
 
 type GetSqlWarehouseChannel struct {
 	DbsqlVersion *string `pulumi:"dbsqlVersion"`
-	Name         *string `pulumi:"name"`
+	// Name of the SQL warehouse to search (case-sensitive).
+	Name *string `pulumi:"name"`
 }
 
 // GetSqlWarehouseChannelInput is an input type that accepts GetSqlWarehouseChannelArgs and GetSqlWarehouseChannelOutput values.
@@ -55777,7 +57005,8 @@ type GetSqlWarehouseChannelInput interface {
 
 type GetSqlWarehouseChannelArgs struct {
 	DbsqlVersion pulumi.StringPtrInput `pulumi:"dbsqlVersion"`
-	Name         pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the SQL warehouse to search (case-sensitive).
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetSqlWarehouseChannelArgs) ElementType() reflect.Type {
@@ -55861,6 +57090,7 @@ func (o GetSqlWarehouseChannelOutput) DbsqlVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSqlWarehouseChannel) *string { return v.DbsqlVersion }).(pulumi.StringPtrOutput)
 }
 
+// Name of the SQL warehouse to search (case-sensitive).
 func (o GetSqlWarehouseChannelOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSqlWarehouseChannel) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -55898,6 +57128,7 @@ func (o GetSqlWarehouseChannelPtrOutput) DbsqlVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the SQL warehouse to search (case-sensitive).
 func (o GetSqlWarehouseChannelPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSqlWarehouseChannel) *string {
 		if v == nil {
@@ -56675,24 +57906,37 @@ func (o GetSqlWarehouseTagsCustomTagArrayOutput) Index(i pulumi.IntInput) GetSql
 }
 
 type GetStorageCredentialStorageCredentialInfo struct {
-	AwsIamRole                  *GetStorageCredentialStorageCredentialInfoAwsIamRole                  `pulumi:"awsIamRole"`
-	AzureManagedIdentity        *GetStorageCredentialStorageCredentialInfoAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
-	AzureServicePrincipal       *GetStorageCredentialStorageCredentialInfoAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
-	CloudflareApiToken          *GetStorageCredentialStorageCredentialInfoCloudflareApiToken          `pulumi:"cloudflareApiToken"`
-	Comment                     *string                                                               `pulumi:"comment"`
-	CreatedAt                   *int                                                                  `pulumi:"createdAt"`
-	CreatedBy                   *string                                                               `pulumi:"createdBy"`
+	// credential details for AWS:
+	AwsIamRole *GetStorageCredentialStorageCredentialInfoAwsIamRole `pulumi:"awsIamRole"`
+	// managed identity credential details for Azure
+	AzureManagedIdentity *GetStorageCredentialStorageCredentialInfoAzureManagedIdentity `pulumi:"azureManagedIdentity"`
+	// service principal credential details for Azure:
+	AzureServicePrincipal *GetStorageCredentialStorageCredentialInfoAzureServicePrincipal `pulumi:"azureServicePrincipal"`
+	CloudflareApiToken    *GetStorageCredentialStorageCredentialInfoCloudflareApiToken    `pulumi:"cloudflareApiToken"`
+	Comment               *string                                                         `pulumi:"comment"`
+	// Time at which this catalog was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// Username of catalog creator.
+	CreatedBy *string `pulumi:"createdBy"`
+	// credential details for GCP:
 	DatabricksGcpServiceAccount *GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
 	FullName                    *string                                                               `pulumi:"fullName"`
-	Id                          *string                                                               `pulumi:"id"`
-	IsolationMode               *string                                                               `pulumi:"isolationMode"`
-	MetastoreId                 *string                                                               `pulumi:"metastoreId"`
-	Name                        *string                                                               `pulumi:"name"`
-	Owner                       *string                                                               `pulumi:"owner"`
-	ReadOnly                    *bool                                                                 `pulumi:"readOnly"`
-	UpdatedAt                   *int                                                                  `pulumi:"updatedAt"`
-	UpdatedBy                   *string                                                               `pulumi:"updatedBy"`
-	UsedForManagedStorage       *bool                                                                 `pulumi:"usedForManagedStorage"`
+	// Unique ID of storage credential.
+	Id            *string `pulumi:"id"`
+	IsolationMode *string `pulumi:"isolationMode"`
+	// Unique identifier of the parent Metastore.
+	MetastoreId *string `pulumi:"metastoreId"`
+	// The name of the storage credential
+	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the storage credential owner.
+	Owner *string `pulumi:"owner"`
+	// Indicates whether the storage credential is only usable for read operations.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Time at which this catalog was last modified, in epoch milliseconds.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// Username of user who last modified catalog.
+	UpdatedBy             *string `pulumi:"updatedBy"`
+	UsedForManagedStorage *bool   `pulumi:"usedForManagedStorage"`
 }
 
 // GetStorageCredentialStorageCredentialInfoInput is an input type that accepts GetStorageCredentialStorageCredentialInfoArgs and GetStorageCredentialStorageCredentialInfoOutput values.
@@ -56707,24 +57951,37 @@ type GetStorageCredentialStorageCredentialInfoInput interface {
 }
 
 type GetStorageCredentialStorageCredentialInfoArgs struct {
-	AwsIamRole                  GetStorageCredentialStorageCredentialInfoAwsIamRolePtrInput                  `pulumi:"awsIamRole"`
-	AzureManagedIdentity        GetStorageCredentialStorageCredentialInfoAzureManagedIdentityPtrInput        `pulumi:"azureManagedIdentity"`
-	AzureServicePrincipal       GetStorageCredentialStorageCredentialInfoAzureServicePrincipalPtrInput       `pulumi:"azureServicePrincipal"`
-	CloudflareApiToken          GetStorageCredentialStorageCredentialInfoCloudflareApiTokenPtrInput          `pulumi:"cloudflareApiToken"`
-	Comment                     pulumi.StringPtrInput                                                        `pulumi:"comment"`
-	CreatedAt                   pulumi.IntPtrInput                                                           `pulumi:"createdAt"`
-	CreatedBy                   pulumi.StringPtrInput                                                        `pulumi:"createdBy"`
+	// credential details for AWS:
+	AwsIamRole GetStorageCredentialStorageCredentialInfoAwsIamRolePtrInput `pulumi:"awsIamRole"`
+	// managed identity credential details for Azure
+	AzureManagedIdentity GetStorageCredentialStorageCredentialInfoAzureManagedIdentityPtrInput `pulumi:"azureManagedIdentity"`
+	// service principal credential details for Azure:
+	AzureServicePrincipal GetStorageCredentialStorageCredentialInfoAzureServicePrincipalPtrInput `pulumi:"azureServicePrincipal"`
+	CloudflareApiToken    GetStorageCredentialStorageCredentialInfoCloudflareApiTokenPtrInput    `pulumi:"cloudflareApiToken"`
+	Comment               pulumi.StringPtrInput                                                  `pulumi:"comment"`
+	// Time at which this catalog was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// Username of catalog creator.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// credential details for GCP:
 	DatabricksGcpServiceAccount GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrInput `pulumi:"databricksGcpServiceAccount"`
 	FullName                    pulumi.StringPtrInput                                                        `pulumi:"fullName"`
-	Id                          pulumi.StringPtrInput                                                        `pulumi:"id"`
-	IsolationMode               pulumi.StringPtrInput                                                        `pulumi:"isolationMode"`
-	MetastoreId                 pulumi.StringPtrInput                                                        `pulumi:"metastoreId"`
-	Name                        pulumi.StringPtrInput                                                        `pulumi:"name"`
-	Owner                       pulumi.StringPtrInput                                                        `pulumi:"owner"`
-	ReadOnly                    pulumi.BoolPtrInput                                                          `pulumi:"readOnly"`
-	UpdatedAt                   pulumi.IntPtrInput                                                           `pulumi:"updatedAt"`
-	UpdatedBy                   pulumi.StringPtrInput                                                        `pulumi:"updatedBy"`
-	UsedForManagedStorage       pulumi.BoolPtrInput                                                          `pulumi:"usedForManagedStorage"`
+	// Unique ID of storage credential.
+	Id            pulumi.StringPtrInput `pulumi:"id"`
+	IsolationMode pulumi.StringPtrInput `pulumi:"isolationMode"`
+	// Unique identifier of the parent Metastore.
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// The name of the storage credential
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Username/groupname/sp applicationId of the storage credential owner.
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// Indicates whether the storage credential is only usable for read operations.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Time at which this catalog was last modified, in epoch milliseconds.
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// Username of user who last modified catalog.
+	UpdatedBy             pulumi.StringPtrInput `pulumi:"updatedBy"`
+	UsedForManagedStorage pulumi.BoolPtrInput   `pulumi:"usedForManagedStorage"`
 }
 
 func (GetStorageCredentialStorageCredentialInfoArgs) ElementType() reflect.Type {
@@ -56804,18 +58061,21 @@ func (o GetStorageCredentialStorageCredentialInfoOutput) ToGetStorageCredentialS
 	}).(GetStorageCredentialStorageCredentialInfoPtrOutput)
 }
 
+// credential details for AWS:
 func (o GetStorageCredentialStorageCredentialInfoOutput) AwsIamRole() GetStorageCredentialStorageCredentialInfoAwsIamRolePtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *GetStorageCredentialStorageCredentialInfoAwsIamRole {
 		return v.AwsIamRole
 	}).(GetStorageCredentialStorageCredentialInfoAwsIamRolePtrOutput)
 }
 
+// managed identity credential details for Azure
 func (o GetStorageCredentialStorageCredentialInfoOutput) AzureManagedIdentity() GetStorageCredentialStorageCredentialInfoAzureManagedIdentityPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *GetStorageCredentialStorageCredentialInfoAzureManagedIdentity {
 		return v.AzureManagedIdentity
 	}).(GetStorageCredentialStorageCredentialInfoAzureManagedIdentityPtrOutput)
 }
 
+// service principal credential details for Azure:
 func (o GetStorageCredentialStorageCredentialInfoOutput) AzureServicePrincipal() GetStorageCredentialStorageCredentialInfoAzureServicePrincipalPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *GetStorageCredentialStorageCredentialInfoAzureServicePrincipal {
 		return v.AzureServicePrincipal
@@ -56832,14 +58092,17 @@ func (o GetStorageCredentialStorageCredentialInfoOutput) Comment() pulumi.String
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Time at which this catalog was created, in epoch milliseconds.
 func (o GetStorageCredentialStorageCredentialInfoOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
 }
 
+// Username of catalog creator.
 func (o GetStorageCredentialStorageCredentialInfoOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// credential details for GCP:
 func (o GetStorageCredentialStorageCredentialInfoOutput) DatabricksGcpServiceAccount() GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount {
 		return v.DatabricksGcpServiceAccount
@@ -56850,6 +58113,7 @@ func (o GetStorageCredentialStorageCredentialInfoOutput) FullName() pulumi.Strin
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.FullName }).(pulumi.StringPtrOutput)
 }
 
+// Unique ID of storage credential.
 func (o GetStorageCredentialStorageCredentialInfoOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -56858,26 +58122,32 @@ func (o GetStorageCredentialStorageCredentialInfoOutput) IsolationMode() pulumi.
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.IsolationMode }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the parent Metastore.
 func (o GetStorageCredentialStorageCredentialInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the storage credential
 func (o GetStorageCredentialStorageCredentialInfoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Username/groupname/sp applicationId of the storage credential owner.
 func (o GetStorageCredentialStorageCredentialInfoOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether the storage credential is only usable for read operations.
 func (o GetStorageCredentialStorageCredentialInfoOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Time at which this catalog was last modified, in epoch milliseconds.
 func (o GetStorageCredentialStorageCredentialInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
 }
 
+// Username of user who last modified catalog.
 func (o GetStorageCredentialStorageCredentialInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
 }
@@ -56910,6 +58180,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) Elem() GetStorageCre
 	}).(GetStorageCredentialStorageCredentialInfoOutput)
 }
 
+// credential details for AWS:
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) AwsIamRole() GetStorageCredentialStorageCredentialInfoAwsIamRolePtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *GetStorageCredentialStorageCredentialInfoAwsIamRole {
 		if v == nil {
@@ -56919,6 +58190,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) AwsIamRole() GetStor
 	}).(GetStorageCredentialStorageCredentialInfoAwsIamRolePtrOutput)
 }
 
+// managed identity credential details for Azure
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) AzureManagedIdentity() GetStorageCredentialStorageCredentialInfoAzureManagedIdentityPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *GetStorageCredentialStorageCredentialInfoAzureManagedIdentity {
 		if v == nil {
@@ -56928,6 +58200,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) AzureManagedIdentity
 	}).(GetStorageCredentialStorageCredentialInfoAzureManagedIdentityPtrOutput)
 }
 
+// service principal credential details for Azure:
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) AzureServicePrincipal() GetStorageCredentialStorageCredentialInfoAzureServicePrincipalPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *GetStorageCredentialStorageCredentialInfoAzureServicePrincipal {
 		if v == nil {
@@ -56955,6 +58228,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) Comment() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Time at which this catalog was created, in epoch milliseconds.
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *int {
 		if v == nil {
@@ -56964,6 +58238,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) CreatedAt() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
+// Username of catalog creator.
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *string {
 		if v == nil {
@@ -56973,6 +58248,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) CreatedBy() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// credential details for GCP:
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) DatabricksGcpServiceAccount() GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount {
 		if v == nil {
@@ -56991,6 +58267,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) FullName() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Unique ID of storage credential.
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *string {
 		if v == nil {
@@ -57009,6 +58286,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) IsolationMode() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the parent Metastore.
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *string {
 		if v == nil {
@@ -57018,6 +58296,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) MetastoreId() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the storage credential
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *string {
 		if v == nil {
@@ -57027,6 +58306,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) Name() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Username/groupname/sp applicationId of the storage credential owner.
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *string {
 		if v == nil {
@@ -57036,6 +58316,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) Owner() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether the storage credential is only usable for read operations.
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *bool {
 		if v == nil {
@@ -57045,6 +58326,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) ReadOnly() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Time at which this catalog was last modified, in epoch milliseconds.
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *int {
 		if v == nil {
@@ -57054,6 +58336,7 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) UpdatedAt() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
+// Username of user who last modified catalog.
 func (o GetStorageCredentialStorageCredentialInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfo) *string {
 		if v == nil {
@@ -57073,8 +58356,11 @@ func (o GetStorageCredentialStorageCredentialInfoPtrOutput) UsedForManagedStorag
 }
 
 type GetStorageCredentialStorageCredentialInfoAwsIamRole struct {
-	ExternalId         *string `pulumi:"externalId"`
-	RoleArn            string  `pulumi:"roleArn"`
+	// (output only) - The external ID used in role assumption to prevent confused deputy problem.
+	ExternalId *string `pulumi:"externalId"`
+	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+	RoleArn string `pulumi:"roleArn"`
+	// (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
 	UnityCatalogIamArn *string `pulumi:"unityCatalogIamArn"`
 }
 
@@ -57090,8 +58376,11 @@ type GetStorageCredentialStorageCredentialInfoAwsIamRoleInput interface {
 }
 
 type GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs struct {
-	ExternalId         pulumi.StringPtrInput `pulumi:"externalId"`
-	RoleArn            pulumi.StringInput    `pulumi:"roleArn"`
+	// (output only) - The external ID used in role assumption to prevent confused deputy problem.
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
+	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
 	UnityCatalogIamArn pulumi.StringPtrInput `pulumi:"unityCatalogIamArn"`
 }
 
@@ -57172,14 +58461,17 @@ func (o GetStorageCredentialStorageCredentialInfoAwsIamRoleOutput) ToGetStorageC
 	}).(GetStorageCredentialStorageCredentialInfoAwsIamRolePtrOutput)
 }
 
+// (output only) - The external ID used in role assumption to prevent confused deputy problem.
 func (o GetStorageCredentialStorageCredentialInfoAwsIamRoleOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfoAwsIamRole) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
+// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
 func (o GetStorageCredentialStorageCredentialInfoAwsIamRoleOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfoAwsIamRole) string { return v.RoleArn }).(pulumi.StringOutput)
 }
 
+// (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
 func (o GetStorageCredentialStorageCredentialInfoAwsIamRoleOutput) UnityCatalogIamArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfoAwsIamRole) *string { return v.UnityCatalogIamArn }).(pulumi.StringPtrOutput)
 }
@@ -57208,6 +58500,7 @@ func (o GetStorageCredentialStorageCredentialInfoAwsIamRolePtrOutput) Elem() Get
 	}).(GetStorageCredentialStorageCredentialInfoAwsIamRoleOutput)
 }
 
+// (output only) - The external ID used in role assumption to prevent confused deputy problem.
 func (o GetStorageCredentialStorageCredentialInfoAwsIamRolePtrOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfoAwsIamRole) *string {
 		if v == nil {
@@ -57217,6 +58510,7 @@ func (o GetStorageCredentialStorageCredentialInfoAwsIamRolePtrOutput) ExternalId
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
 func (o GetStorageCredentialStorageCredentialInfoAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfoAwsIamRole) *string {
 		if v == nil {
@@ -57226,6 +58520,7 @@ func (o GetStorageCredentialStorageCredentialInfoAwsIamRolePtrOutput) RoleArn() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
 func (o GetStorageCredentialStorageCredentialInfoAwsIamRolePtrOutput) UnityCatalogIamArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfoAwsIamRole) *string {
 		if v == nil {
@@ -57236,8 +58531,10 @@ func (o GetStorageCredentialStorageCredentialInfoAwsIamRolePtrOutput) UnityCatal
 }
 
 type GetStorageCredentialStorageCredentialInfoAzureManagedIdentity struct {
+	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
 	AccessConnectorId string  `pulumi:"accessConnectorId"`
 	CredentialId      *string `pulumi:"credentialId"`
+	// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
 	ManagedIdentityId *string `pulumi:"managedIdentityId"`
 }
 
@@ -57253,8 +58550,10 @@ type GetStorageCredentialStorageCredentialInfoAzureManagedIdentityInput interfac
 }
 
 type GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs struct {
+	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
 	AccessConnectorId pulumi.StringInput    `pulumi:"accessConnectorId"`
 	CredentialId      pulumi.StringPtrInput `pulumi:"credentialId"`
+	// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
 	ManagedIdentityId pulumi.StringPtrInput `pulumi:"managedIdentityId"`
 }
 
@@ -57335,6 +58634,7 @@ func (o GetStorageCredentialStorageCredentialInfoAzureManagedIdentityOutput) ToG
 	}).(GetStorageCredentialStorageCredentialInfoAzureManagedIdentityPtrOutput)
 }
 
+// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
 func (o GetStorageCredentialStorageCredentialInfoAzureManagedIdentityOutput) AccessConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfoAzureManagedIdentity) string {
 		return v.AccessConnectorId
@@ -57345,6 +58645,7 @@ func (o GetStorageCredentialStorageCredentialInfoAzureManagedIdentityOutput) Cre
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfoAzureManagedIdentity) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
 }
 
+// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
 func (o GetStorageCredentialStorageCredentialInfoAzureManagedIdentityOutput) ManagedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfoAzureManagedIdentity) *string {
 		return v.ManagedIdentityId
@@ -57375,6 +58676,7 @@ func (o GetStorageCredentialStorageCredentialInfoAzureManagedIdentityPtrOutput) 
 	}).(GetStorageCredentialStorageCredentialInfoAzureManagedIdentityOutput)
 }
 
+// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
 func (o GetStorageCredentialStorageCredentialInfoAzureManagedIdentityPtrOutput) AccessConnectorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfoAzureManagedIdentity) *string {
 		if v == nil {
@@ -57393,6 +58695,7 @@ func (o GetStorageCredentialStorageCredentialInfoAzureManagedIdentityPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
 func (o GetStorageCredentialStorageCredentialInfoAzureManagedIdentityPtrOutput) ManagedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfoAzureManagedIdentity) *string {
 		if v == nil {
@@ -57403,9 +58706,11 @@ func (o GetStorageCredentialStorageCredentialInfoAzureManagedIdentityPtrOutput) 
 }
 
 type GetStorageCredentialStorageCredentialInfoAzureServicePrincipal struct {
+	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId string `pulumi:"applicationId"`
 	ClientSecret  string `pulumi:"clientSecret"`
-	DirectoryId   string `pulumi:"directoryId"`
+	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+	DirectoryId string `pulumi:"directoryId"`
 }
 
 // GetStorageCredentialStorageCredentialInfoAzureServicePrincipalInput is an input type that accepts GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs and GetStorageCredentialStorageCredentialInfoAzureServicePrincipalOutput values.
@@ -57420,9 +58725,11 @@ type GetStorageCredentialStorageCredentialInfoAzureServicePrincipalInput interfa
 }
 
 type GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs struct {
+	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
 	ClientSecret  pulumi.StringInput `pulumi:"clientSecret"`
-	DirectoryId   pulumi.StringInput `pulumi:"directoryId"`
+	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
 }
 
 func (GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs) ElementType() reflect.Type {
@@ -57502,6 +58809,7 @@ func (o GetStorageCredentialStorageCredentialInfoAzureServicePrincipalOutput) To
 	}).(GetStorageCredentialStorageCredentialInfoAzureServicePrincipalPtrOutput)
 }
 
+// The application ID of the application registration within the referenced AAD tenant
 func (o GetStorageCredentialStorageCredentialInfoAzureServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfoAzureServicePrincipal) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
@@ -57510,6 +58818,7 @@ func (o GetStorageCredentialStorageCredentialInfoAzureServicePrincipalOutput) Cl
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfoAzureServicePrincipal) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
+// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 func (o GetStorageCredentialStorageCredentialInfoAzureServicePrincipalOutput) DirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfoAzureServicePrincipal) string { return v.DirectoryId }).(pulumi.StringOutput)
 }
@@ -57538,6 +58847,7 @@ func (o GetStorageCredentialStorageCredentialInfoAzureServicePrincipalPtrOutput)
 	}).(GetStorageCredentialStorageCredentialInfoAzureServicePrincipalOutput)
 }
 
+// The application ID of the application registration within the referenced AAD tenant
 func (o GetStorageCredentialStorageCredentialInfoAzureServicePrincipalPtrOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfoAzureServicePrincipal) *string {
 		if v == nil {
@@ -57556,6 +58866,7 @@ func (o GetStorageCredentialStorageCredentialInfoAzureServicePrincipalPtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
+// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 func (o GetStorageCredentialStorageCredentialInfoAzureServicePrincipalPtrOutput) DirectoryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfoAzureServicePrincipal) *string {
 		if v == nil {
@@ -57730,7 +59041,8 @@ func (o GetStorageCredentialStorageCredentialInfoCloudflareApiTokenPtrOutput) Se
 
 type GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount struct {
 	CredentialId *string `pulumi:"credentialId"`
-	Email        *string `pulumi:"email"`
+	// The email of the GCP service account created, to be granted access to relevant buckets.
+	Email *string `pulumi:"email"`
 }
 
 // GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountInput is an input type that accepts GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs and GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountOutput values.
@@ -57746,7 +59058,8 @@ type GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountInput i
 
 type GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs struct {
 	CredentialId pulumi.StringPtrInput `pulumi:"credentialId"`
-	Email        pulumi.StringPtrInput `pulumi:"email"`
+	// The email of the GCP service account created, to be granted access to relevant buckets.
+	Email pulumi.StringPtrInput `pulumi:"email"`
 }
 
 func (GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs) ElementType() reflect.Type {
@@ -57832,6 +59145,7 @@ func (o GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// The email of the GCP service account created, to be granted access to relevant buckets.
 func (o GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
@@ -57869,6 +59183,7 @@ func (o GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The email of the GCP service account created, to be granted access to relevant buckets.
 func (o GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount) *string {
 		if v == nil {
@@ -57879,14 +59194,18 @@ func (o GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrO
 }
 
 type GetTableTableInfo struct {
-	AccessPoint                         *string                                               `pulumi:"accessPoint"`
-	BrowseOnly                          *bool                                                 `pulumi:"browseOnly"`
-	CatalogName                         *string                                               `pulumi:"catalogName"`
-	Columns                             []GetTableTableInfoColumn                             `pulumi:"columns"`
-	Comment                             *string                                               `pulumi:"comment"`
-	CreatedAt                           *int                                                  `pulumi:"createdAt"`
-	CreatedBy                           *string                                               `pulumi:"createdBy"`
-	DataAccessConfigurationId           *string                                               `pulumi:"dataAccessConfigurationId"`
+	AccessPoint *string `pulumi:"accessPoint"`
+	BrowseOnly  *bool   `pulumi:"browseOnly"`
+	// Name of parent catalog.
+	CatalogName *string `pulumi:"catalogName"`
+	// Array of ColumnInfo objects of the table's columns
+	Columns []GetTableTableInfoColumn `pulumi:"columns"`
+	// Free-form text description
+	Comment                   *string `pulumi:"comment"`
+	CreatedAt                 *int    `pulumi:"createdAt"`
+	CreatedBy                 *string `pulumi:"createdBy"`
+	DataAccessConfigurationId *string `pulumi:"dataAccessConfigurationId"`
+	// Table format, e.g. DELTA, CSV, JSON
 	DataSourceFormat                    *string                                               `pulumi:"dataSourceFormat"`
 	DeletedAt                           *int                                                  `pulumi:"deletedAt"`
 	DeltaRuntimePropertiesKvpairs       *GetTableTableInfoDeltaRuntimePropertiesKvpairs       `pulumi:"deltaRuntimePropertiesKvpairs"`
@@ -57895,22 +59214,28 @@ type GetTableTableInfo struct {
 	EncryptionDetails                   *GetTableTableInfoEncryptionDetails                   `pulumi:"encryptionDetails"`
 	FullName                            *string                                               `pulumi:"fullName"`
 	MetastoreId                         *string                                               `pulumi:"metastoreId"`
-	Name                                *string                                               `pulumi:"name"`
-	Owner                               *string                                               `pulumi:"owner"`
-	PipelineId                          *string                                               `pulumi:"pipelineId"`
-	Properties                          map[string]string                                     `pulumi:"properties"`
-	RowFilter                           *GetTableTableInfoRowFilter                           `pulumi:"rowFilter"`
-	SchemaName                          *string                                               `pulumi:"schemaName"`
-	SqlPath                             *string                                               `pulumi:"sqlPath"`
-	StorageCredentialName               *string                                               `pulumi:"storageCredentialName"`
-	StorageLocation                     *string                                               `pulumi:"storageLocation"`
-	TableConstraints                    []GetTableTableInfoTableConstraint                    `pulumi:"tableConstraints"`
-	TableId                             *string                                               `pulumi:"tableId"`
-	TableType                           *string                                               `pulumi:"tableType"`
-	UpdatedAt                           *int                                                  `pulumi:"updatedAt"`
-	UpdatedBy                           *string                                               `pulumi:"updatedBy"`
-	ViewDefinition                      *string                                               `pulumi:"viewDefinition"`
-	ViewDependencies                    *GetTableTableInfoViewDependencies                    `pulumi:"viewDependencies"`
+	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	Name *string `pulumi:"name"`
+	// Current owner of the table
+	Owner      *string                     `pulumi:"owner"`
+	PipelineId *string                     `pulumi:"pipelineId"`
+	Properties map[string]string           `pulumi:"properties"`
+	RowFilter  *GetTableTableInfoRowFilter `pulumi:"rowFilter"`
+	// Name of parent schema relative to its parent catalog.
+	SchemaName            *string                            `pulumi:"schemaName"`
+	SqlPath               *string                            `pulumi:"sqlPath"`
+	StorageCredentialName *string                            `pulumi:"storageCredentialName"`
+	StorageLocation       *string                            `pulumi:"storageLocation"`
+	TableConstraints      []GetTableTableInfoTableConstraint `pulumi:"tableConstraints"`
+	TableId               *string                            `pulumi:"tableId"`
+	// Table type, e.g. MANAGED, EXTERNAL, VIEW
+	TableType *string `pulumi:"tableType"`
+	UpdatedAt *int    `pulumi:"updatedAt"`
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+	ViewDefinition *string `pulumi:"viewDefinition"`
+	// View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+	ViewDependencies *GetTableTableInfoViewDependencies `pulumi:"viewDependencies"`
 }
 
 // GetTableTableInfoInput is an input type that accepts GetTableTableInfoArgs and GetTableTableInfoOutput values.
@@ -57925,14 +59250,18 @@ type GetTableTableInfoInput interface {
 }
 
 type GetTableTableInfoArgs struct {
-	AccessPoint                         pulumi.StringPtrInput                                        `pulumi:"accessPoint"`
-	BrowseOnly                          pulumi.BoolPtrInput                                          `pulumi:"browseOnly"`
-	CatalogName                         pulumi.StringPtrInput                                        `pulumi:"catalogName"`
-	Columns                             GetTableTableInfoColumnArrayInput                            `pulumi:"columns"`
-	Comment                             pulumi.StringPtrInput                                        `pulumi:"comment"`
-	CreatedAt                           pulumi.IntPtrInput                                           `pulumi:"createdAt"`
-	CreatedBy                           pulumi.StringPtrInput                                        `pulumi:"createdBy"`
-	DataAccessConfigurationId           pulumi.StringPtrInput                                        `pulumi:"dataAccessConfigurationId"`
+	AccessPoint pulumi.StringPtrInput `pulumi:"accessPoint"`
+	BrowseOnly  pulumi.BoolPtrInput   `pulumi:"browseOnly"`
+	// Name of parent catalog.
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// Array of ColumnInfo objects of the table's columns
+	Columns GetTableTableInfoColumnArrayInput `pulumi:"columns"`
+	// Free-form text description
+	Comment                   pulumi.StringPtrInput `pulumi:"comment"`
+	CreatedAt                 pulumi.IntPtrInput    `pulumi:"createdAt"`
+	CreatedBy                 pulumi.StringPtrInput `pulumi:"createdBy"`
+	DataAccessConfigurationId pulumi.StringPtrInput `pulumi:"dataAccessConfigurationId"`
+	// Table format, e.g. DELTA, CSV, JSON
 	DataSourceFormat                    pulumi.StringPtrInput                                        `pulumi:"dataSourceFormat"`
 	DeletedAt                           pulumi.IntPtrInput                                           `pulumi:"deletedAt"`
 	DeltaRuntimePropertiesKvpairs       GetTableTableInfoDeltaRuntimePropertiesKvpairsPtrInput       `pulumi:"deltaRuntimePropertiesKvpairs"`
@@ -57941,22 +59270,28 @@ type GetTableTableInfoArgs struct {
 	EncryptionDetails                   GetTableTableInfoEncryptionDetailsPtrInput                   `pulumi:"encryptionDetails"`
 	FullName                            pulumi.StringPtrInput                                        `pulumi:"fullName"`
 	MetastoreId                         pulumi.StringPtrInput                                        `pulumi:"metastoreId"`
-	Name                                pulumi.StringPtrInput                                        `pulumi:"name"`
-	Owner                               pulumi.StringPtrInput                                        `pulumi:"owner"`
-	PipelineId                          pulumi.StringPtrInput                                        `pulumi:"pipelineId"`
-	Properties                          pulumi.StringMapInput                                        `pulumi:"properties"`
-	RowFilter                           GetTableTableInfoRowFilterPtrInput                           `pulumi:"rowFilter"`
-	SchemaName                          pulumi.StringPtrInput                                        `pulumi:"schemaName"`
-	SqlPath                             pulumi.StringPtrInput                                        `pulumi:"sqlPath"`
-	StorageCredentialName               pulumi.StringPtrInput                                        `pulumi:"storageCredentialName"`
-	StorageLocation                     pulumi.StringPtrInput                                        `pulumi:"storageLocation"`
-	TableConstraints                    GetTableTableInfoTableConstraintArrayInput                   `pulumi:"tableConstraints"`
-	TableId                             pulumi.StringPtrInput                                        `pulumi:"tableId"`
-	TableType                           pulumi.StringPtrInput                                        `pulumi:"tableType"`
-	UpdatedAt                           pulumi.IntPtrInput                                           `pulumi:"updatedAt"`
-	UpdatedBy                           pulumi.StringPtrInput                                        `pulumi:"updatedBy"`
-	ViewDefinition                      pulumi.StringPtrInput                                        `pulumi:"viewDefinition"`
-	ViewDependencies                    GetTableTableInfoViewDependenciesPtrInput                    `pulumi:"viewDependencies"`
+	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Current owner of the table
+	Owner      pulumi.StringPtrInput              `pulumi:"owner"`
+	PipelineId pulumi.StringPtrInput              `pulumi:"pipelineId"`
+	Properties pulumi.StringMapInput              `pulumi:"properties"`
+	RowFilter  GetTableTableInfoRowFilterPtrInput `pulumi:"rowFilter"`
+	// Name of parent schema relative to its parent catalog.
+	SchemaName            pulumi.StringPtrInput                      `pulumi:"schemaName"`
+	SqlPath               pulumi.StringPtrInput                      `pulumi:"sqlPath"`
+	StorageCredentialName pulumi.StringPtrInput                      `pulumi:"storageCredentialName"`
+	StorageLocation       pulumi.StringPtrInput                      `pulumi:"storageLocation"`
+	TableConstraints      GetTableTableInfoTableConstraintArrayInput `pulumi:"tableConstraints"`
+	TableId               pulumi.StringPtrInput                      `pulumi:"tableId"`
+	// Table type, e.g. MANAGED, EXTERNAL, VIEW
+	TableType pulumi.StringPtrInput `pulumi:"tableType"`
+	UpdatedAt pulumi.IntPtrInput    `pulumi:"updatedAt"`
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+	ViewDefinition pulumi.StringPtrInput `pulumi:"viewDefinition"`
+	// View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+	ViewDependencies GetTableTableInfoViewDependenciesPtrInput `pulumi:"viewDependencies"`
 }
 
 func (GetTableTableInfoArgs) ElementType() reflect.Type {
@@ -58044,14 +59379,17 @@ func (o GetTableTableInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Name of parent catalog.
 func (o GetTableTableInfoOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
+// Array of ColumnInfo objects of the table's columns
 func (o GetTableTableInfoOutput) Columns() GetTableTableInfoColumnArrayOutput {
 	return o.ApplyT(func(v GetTableTableInfo) []GetTableTableInfoColumn { return v.Columns }).(GetTableTableInfoColumnArrayOutput)
 }
 
+// Free-form text description
 func (o GetTableTableInfoOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
@@ -58068,6 +59406,7 @@ func (o GetTableTableInfoOutput) DataAccessConfigurationId() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.DataAccessConfigurationId }).(pulumi.StringPtrOutput)
 }
 
+// Table format, e.g. DELTA, CSV, JSON
 func (o GetTableTableInfoOutput) DataSourceFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.DataSourceFormat }).(pulumi.StringPtrOutput)
 }
@@ -58104,10 +59443,12 @@ func (o GetTableTableInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
 
+// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 func (o GetTableTableInfoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Current owner of the table
 func (o GetTableTableInfoOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
@@ -58124,6 +59465,7 @@ func (o GetTableTableInfoOutput) RowFilter() GetTableTableInfoRowFilterPtrOutput
 	return o.ApplyT(func(v GetTableTableInfo) *GetTableTableInfoRowFilter { return v.RowFilter }).(GetTableTableInfoRowFilterPtrOutput)
 }
 
+// Name of parent schema relative to its parent catalog.
 func (o GetTableTableInfoOutput) SchemaName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
 }
@@ -58148,6 +59490,7 @@ func (o GetTableTableInfoOutput) TableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.TableId }).(pulumi.StringPtrOutput)
 }
 
+// Table type, e.g. MANAGED, EXTERNAL, VIEW
 func (o GetTableTableInfoOutput) TableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.TableType }).(pulumi.StringPtrOutput)
 }
@@ -58160,10 +59503,12 @@ func (o GetTableTableInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
 }
 
+// View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
 func (o GetTableTableInfoOutput) ViewDefinition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *string { return v.ViewDefinition }).(pulumi.StringPtrOutput)
 }
 
+// View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
 func (o GetTableTableInfoOutput) ViewDependencies() GetTableTableInfoViewDependenciesPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfo) *GetTableTableInfoViewDependencies { return v.ViewDependencies }).(GetTableTableInfoViewDependenciesPtrOutput)
 }
@@ -58210,6 +59555,7 @@ func (o GetTableTableInfoPtrOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Name of parent catalog.
 func (o GetTableTableInfoPtrOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfo) *string {
 		if v == nil {
@@ -58219,6 +59565,7 @@ func (o GetTableTableInfoPtrOutput) CatalogName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Array of ColumnInfo objects of the table's columns
 func (o GetTableTableInfoPtrOutput) Columns() GetTableTableInfoColumnArrayOutput {
 	return o.ApplyT(func(v *GetTableTableInfo) []GetTableTableInfoColumn {
 		if v == nil {
@@ -58228,6 +59575,7 @@ func (o GetTableTableInfoPtrOutput) Columns() GetTableTableInfoColumnArrayOutput
 	}).(GetTableTableInfoColumnArrayOutput)
 }
 
+// Free-form text description
 func (o GetTableTableInfoPtrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfo) *string {
 		if v == nil {
@@ -58264,6 +59612,7 @@ func (o GetTableTableInfoPtrOutput) DataAccessConfigurationId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Table format, e.g. DELTA, CSV, JSON
 func (o GetTableTableInfoPtrOutput) DataSourceFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfo) *string {
 		if v == nil {
@@ -58336,6 +59685,7 @@ func (o GetTableTableInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 func (o GetTableTableInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfo) *string {
 		if v == nil {
@@ -58345,6 +59695,7 @@ func (o GetTableTableInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Current owner of the table
 func (o GetTableTableInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfo) *string {
 		if v == nil {
@@ -58381,6 +59732,7 @@ func (o GetTableTableInfoPtrOutput) RowFilter() GetTableTableInfoRowFilterPtrOut
 	}).(GetTableTableInfoRowFilterPtrOutput)
 }
 
+// Name of parent schema relative to its parent catalog.
 func (o GetTableTableInfoPtrOutput) SchemaName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfo) *string {
 		if v == nil {
@@ -58435,6 +59787,7 @@ func (o GetTableTableInfoPtrOutput) TableId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Table type, e.g. MANAGED, EXTERNAL, VIEW
 func (o GetTableTableInfoPtrOutput) TableType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfo) *string {
 		if v == nil {
@@ -58462,6 +59815,7 @@ func (o GetTableTableInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
 func (o GetTableTableInfoPtrOutput) ViewDefinition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfo) *string {
 		if v == nil {
@@ -58471,6 +59825,7 @@ func (o GetTableTableInfoPtrOutput) ViewDefinition() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
 func (o GetTableTableInfoPtrOutput) ViewDependencies() GetTableTableInfoViewDependenciesPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfo) *GetTableTableInfoViewDependencies {
 		if v == nil {
@@ -58481,18 +59836,20 @@ func (o GetTableTableInfoPtrOutput) ViewDependencies() GetTableTableInfoViewDepe
 }
 
 type GetTableTableInfoColumn struct {
-	Comment          *string                      `pulumi:"comment"`
-	Mask             *GetTableTableInfoColumnMask `pulumi:"mask"`
-	Name             *string                      `pulumi:"name"`
-	Nullable         *bool                        `pulumi:"nullable"`
-	PartitionIndex   *int                         `pulumi:"partitionIndex"`
-	Position         *int                         `pulumi:"position"`
-	TypeIntervalType *string                      `pulumi:"typeIntervalType"`
-	TypeJson         *string                      `pulumi:"typeJson"`
-	TypeName         *string                      `pulumi:"typeName"`
-	TypePrecision    *int                         `pulumi:"typePrecision"`
-	TypeScale        *int                         `pulumi:"typeScale"`
-	TypeText         *string                      `pulumi:"typeText"`
+	// Free-form text description
+	Comment *string                      `pulumi:"comment"`
+	Mask    *GetTableTableInfoColumnMask `pulumi:"mask"`
+	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	Name             *string `pulumi:"name"`
+	Nullable         *bool   `pulumi:"nullable"`
+	PartitionIndex   *int    `pulumi:"partitionIndex"`
+	Position         *int    `pulumi:"position"`
+	TypeIntervalType *string `pulumi:"typeIntervalType"`
+	TypeJson         *string `pulumi:"typeJson"`
+	TypeName         *string `pulumi:"typeName"`
+	TypePrecision    *int    `pulumi:"typePrecision"`
+	TypeScale        *int    `pulumi:"typeScale"`
+	TypeText         *string `pulumi:"typeText"`
 }
 
 // GetTableTableInfoColumnInput is an input type that accepts GetTableTableInfoColumnArgs and GetTableTableInfoColumnOutput values.
@@ -58507,18 +59864,20 @@ type GetTableTableInfoColumnInput interface {
 }
 
 type GetTableTableInfoColumnArgs struct {
-	Comment          pulumi.StringPtrInput               `pulumi:"comment"`
-	Mask             GetTableTableInfoColumnMaskPtrInput `pulumi:"mask"`
-	Name             pulumi.StringPtrInput               `pulumi:"name"`
-	Nullable         pulumi.BoolPtrInput                 `pulumi:"nullable"`
-	PartitionIndex   pulumi.IntPtrInput                  `pulumi:"partitionIndex"`
-	Position         pulumi.IntPtrInput                  `pulumi:"position"`
-	TypeIntervalType pulumi.StringPtrInput               `pulumi:"typeIntervalType"`
-	TypeJson         pulumi.StringPtrInput               `pulumi:"typeJson"`
-	TypeName         pulumi.StringPtrInput               `pulumi:"typeName"`
-	TypePrecision    pulumi.IntPtrInput                  `pulumi:"typePrecision"`
-	TypeScale        pulumi.IntPtrInput                  `pulumi:"typeScale"`
-	TypeText         pulumi.StringPtrInput               `pulumi:"typeText"`
+	// Free-form text description
+	Comment pulumi.StringPtrInput               `pulumi:"comment"`
+	Mask    GetTableTableInfoColumnMaskPtrInput `pulumi:"mask"`
+	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	Nullable         pulumi.BoolPtrInput   `pulumi:"nullable"`
+	PartitionIndex   pulumi.IntPtrInput    `pulumi:"partitionIndex"`
+	Position         pulumi.IntPtrInput    `pulumi:"position"`
+	TypeIntervalType pulumi.StringPtrInput `pulumi:"typeIntervalType"`
+	TypeJson         pulumi.StringPtrInput `pulumi:"typeJson"`
+	TypeName         pulumi.StringPtrInput `pulumi:"typeName"`
+	TypePrecision    pulumi.IntPtrInput    `pulumi:"typePrecision"`
+	TypeScale        pulumi.IntPtrInput    `pulumi:"typeScale"`
+	TypeText         pulumi.StringPtrInput `pulumi:"typeText"`
 }
 
 func (GetTableTableInfoColumnArgs) ElementType() reflect.Type {
@@ -58572,6 +59931,7 @@ func (o GetTableTableInfoColumnOutput) ToGetTableTableInfoColumnOutputWithContex
 	return o
 }
 
+// Free-form text description
 func (o GetTableTableInfoColumnOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfoColumn) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
@@ -58580,6 +59940,7 @@ func (o GetTableTableInfoColumnOutput) Mask() GetTableTableInfoColumnMaskPtrOutp
 	return o.ApplyT(func(v GetTableTableInfoColumn) *GetTableTableInfoColumnMask { return v.Mask }).(GetTableTableInfoColumnMaskPtrOutput)
 }
 
+// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 func (o GetTableTableInfoColumnOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTableTableInfoColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -59630,7 +60991,8 @@ func (o GetTableTableInfoTableConstraintArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetTableTableInfoTableConstraintForeignKeyConstraint struct {
-	ChildColumns  []string `pulumi:"childColumns"`
+	ChildColumns []string `pulumi:"childColumns"`
+	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 	Name          string   `pulumi:"name"`
 	ParentColumns []string `pulumi:"parentColumns"`
 	ParentTable   string   `pulumi:"parentTable"`
@@ -59648,7 +61010,8 @@ type GetTableTableInfoTableConstraintForeignKeyConstraintInput interface {
 }
 
 type GetTableTableInfoTableConstraintForeignKeyConstraintArgs struct {
-	ChildColumns  pulumi.StringArrayInput `pulumi:"childColumns"`
+	ChildColumns pulumi.StringArrayInput `pulumi:"childColumns"`
+	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 	Name          pulumi.StringInput      `pulumi:"name"`
 	ParentColumns pulumi.StringArrayInput `pulumi:"parentColumns"`
 	ParentTable   pulumi.StringInput      `pulumi:"parentTable"`
@@ -59735,6 +61098,7 @@ func (o GetTableTableInfoTableConstraintForeignKeyConstraintOutput) ChildColumns
 	return o.ApplyT(func(v GetTableTableInfoTableConstraintForeignKeyConstraint) []string { return v.ChildColumns }).(pulumi.StringArrayOutput)
 }
 
+// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 func (o GetTableTableInfoTableConstraintForeignKeyConstraintOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableTableInfoTableConstraintForeignKeyConstraint) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -59780,6 +61144,7 @@ func (o GetTableTableInfoTableConstraintForeignKeyConstraintPtrOutput) ChildColu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 func (o GetTableTableInfoTableConstraintForeignKeyConstraintPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfoTableConstraintForeignKeyConstraint) *string {
 		if v == nil {
@@ -59808,6 +61173,7 @@ func (o GetTableTableInfoTableConstraintForeignKeyConstraintPtrOutput) ParentTab
 }
 
 type GetTableTableInfoTableConstraintNamedTableConstraint struct {
+	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 	Name string `pulumi:"name"`
 }
 
@@ -59823,6 +61189,7 @@ type GetTableTableInfoTableConstraintNamedTableConstraintInput interface {
 }
 
 type GetTableTableInfoTableConstraintNamedTableConstraintArgs struct {
+	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -59903,6 +61270,7 @@ func (o GetTableTableInfoTableConstraintNamedTableConstraintOutput) ToGetTableTa
 	}).(GetTableTableInfoTableConstraintNamedTableConstraintPtrOutput)
 }
 
+// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 func (o GetTableTableInfoTableConstraintNamedTableConstraintOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableTableInfoTableConstraintNamedTableConstraint) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -59931,6 +61299,7 @@ func (o GetTableTableInfoTableConstraintNamedTableConstraintPtrOutput) Elem() Ge
 	}).(GetTableTableInfoTableConstraintNamedTableConstraintOutput)
 }
 
+// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 func (o GetTableTableInfoTableConstraintNamedTableConstraintPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfoTableConstraintNamedTableConstraint) *string {
 		if v == nil {
@@ -59942,7 +61311,8 @@ func (o GetTableTableInfoTableConstraintNamedTableConstraintPtrOutput) Name() pu
 
 type GetTableTableInfoTableConstraintPrimaryKeyConstraint struct {
 	ChildColumns []string `pulumi:"childColumns"`
-	Name         string   `pulumi:"name"`
+	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	Name string `pulumi:"name"`
 }
 
 // GetTableTableInfoTableConstraintPrimaryKeyConstraintInput is an input type that accepts GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs and GetTableTableInfoTableConstraintPrimaryKeyConstraintOutput values.
@@ -59958,7 +61328,8 @@ type GetTableTableInfoTableConstraintPrimaryKeyConstraintInput interface {
 
 type GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs struct {
 	ChildColumns pulumi.StringArrayInput `pulumi:"childColumns"`
-	Name         pulumi.StringInput      `pulumi:"name"`
+	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs) ElementType() reflect.Type {
@@ -60042,6 +61413,7 @@ func (o GetTableTableInfoTableConstraintPrimaryKeyConstraintOutput) ChildColumns
 	return o.ApplyT(func(v GetTableTableInfoTableConstraintPrimaryKeyConstraint) []string { return v.ChildColumns }).(pulumi.StringArrayOutput)
 }
 
+// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 func (o GetTableTableInfoTableConstraintPrimaryKeyConstraintOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableTableInfoTableConstraintPrimaryKeyConstraint) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -60079,6 +61451,7 @@ func (o GetTableTableInfoTableConstraintPrimaryKeyConstraintPtrOutput) ChildColu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 func (o GetTableTableInfoTableConstraintPrimaryKeyConstraintPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTableTableInfoTableConstraintPrimaryKeyConstraint) *string {
 		if v == nil {
@@ -60594,23 +61967,40 @@ func (o GetTableTableInfoViewDependenciesDependencyTablePtrOutput) TableFullName
 }
 
 type GetVolumeVolumeInfo struct {
-	AccessPoint       *string                               `pulumi:"accessPoint"`
-	BrowseOnly        *bool                                 `pulumi:"browseOnly"`
-	CatalogName       *string                               `pulumi:"catalogName"`
-	Comment           *string                               `pulumi:"comment"`
-	CreatedAt         *int                                  `pulumi:"createdAt"`
-	CreatedBy         *string                               `pulumi:"createdBy"`
+	// the AWS access point to use when accessing s3 bucket for this volume's external location
+	AccessPoint *string `pulumi:"accessPoint"`
+	// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
+	BrowseOnly *bool `pulumi:"browseOnly"`
+	// the name of the catalog where the schema and the volume are
+	CatalogName *string `pulumi:"catalogName"`
+	// the comment attached to the volume
+	Comment *string `pulumi:"comment"`
+	// the Unix timestamp at the volume's creation
+	CreatedAt *int `pulumi:"createdAt"`
+	// the identifier of the user who created the volume
+	CreatedBy *string `pulumi:"createdBy"`
+	// encryption options that apply to clients connecting to cloud storage
 	EncryptionDetails *GetVolumeVolumeInfoEncryptionDetails `pulumi:"encryptionDetails"`
-	FullName          *string                               `pulumi:"fullName"`
-	MetastoreId       *string                               `pulumi:"metastoreId"`
-	Name              *string                               `pulumi:"name"`
-	Owner             *string                               `pulumi:"owner"`
-	SchemaName        *string                               `pulumi:"schemaName"`
-	StorageLocation   *string                               `pulumi:"storageLocation"`
-	UpdatedAt         *int                                  `pulumi:"updatedAt"`
-	UpdatedBy         *string                               `pulumi:"updatedBy"`
-	VolumeId          *string                               `pulumi:"volumeId"`
-	VolumeType        *string                               `pulumi:"volumeType"`
+	// the three-level (fully qualified) name of the volume
+	FullName *string `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId *string `pulumi:"metastoreId"`
+	// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+	Name *string `pulumi:"name"`
+	// the identifier of the user who owns the volume
+	Owner *string `pulumi:"owner"`
+	// the name of the schema where the volume is
+	SchemaName *string `pulumi:"schemaName"`
+	// the storage location on the cloud
+	StorageLocation *string `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the volume
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// the identifier of the user who updated the volume last time
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// the unique identifier of the volume
+	VolumeId *string `pulumi:"volumeId"`
+	// whether the volume is `MANAGED` or `EXTERNAL`
+	VolumeType *string `pulumi:"volumeType"`
 }
 
 // GetVolumeVolumeInfoInput is an input type that accepts GetVolumeVolumeInfoArgs and GetVolumeVolumeInfoOutput values.
@@ -60625,23 +62015,40 @@ type GetVolumeVolumeInfoInput interface {
 }
 
 type GetVolumeVolumeInfoArgs struct {
-	AccessPoint       pulumi.StringPtrInput                        `pulumi:"accessPoint"`
-	BrowseOnly        pulumi.BoolPtrInput                          `pulumi:"browseOnly"`
-	CatalogName       pulumi.StringPtrInput                        `pulumi:"catalogName"`
-	Comment           pulumi.StringPtrInput                        `pulumi:"comment"`
-	CreatedAt         pulumi.IntPtrInput                           `pulumi:"createdAt"`
-	CreatedBy         pulumi.StringPtrInput                        `pulumi:"createdBy"`
+	// the AWS access point to use when accessing s3 bucket for this volume's external location
+	AccessPoint pulumi.StringPtrInput `pulumi:"accessPoint"`
+	// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
+	BrowseOnly pulumi.BoolPtrInput `pulumi:"browseOnly"`
+	// the name of the catalog where the schema and the volume are
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// the comment attached to the volume
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// the Unix timestamp at the volume's creation
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// the identifier of the user who created the volume
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// encryption options that apply to clients connecting to cloud storage
 	EncryptionDetails GetVolumeVolumeInfoEncryptionDetailsPtrInput `pulumi:"encryptionDetails"`
-	FullName          pulumi.StringPtrInput                        `pulumi:"fullName"`
-	MetastoreId       pulumi.StringPtrInput                        `pulumi:"metastoreId"`
-	Name              pulumi.StringPtrInput                        `pulumi:"name"`
-	Owner             pulumi.StringPtrInput                        `pulumi:"owner"`
-	SchemaName        pulumi.StringPtrInput                        `pulumi:"schemaName"`
-	StorageLocation   pulumi.StringPtrInput                        `pulumi:"storageLocation"`
-	UpdatedAt         pulumi.IntPtrInput                           `pulumi:"updatedAt"`
-	UpdatedBy         pulumi.StringPtrInput                        `pulumi:"updatedBy"`
-	VolumeId          pulumi.StringPtrInput                        `pulumi:"volumeId"`
-	VolumeType        pulumi.StringPtrInput                        `pulumi:"volumeType"`
+	// the three-level (fully qualified) name of the volume
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// the identifier of the user who owns the volume
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// the name of the schema where the volume is
+	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
+	// the storage location on the cloud
+	StorageLocation pulumi.StringPtrInput `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the volume
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// the identifier of the user who updated the volume last time
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// the unique identifier of the volume
+	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
+	// whether the volume is `MANAGED` or `EXTERNAL`
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
 }
 
 func (GetVolumeVolumeInfoArgs) ElementType() reflect.Type {
@@ -60721,70 +62128,87 @@ func (o GetVolumeVolumeInfoOutput) ToGetVolumeVolumeInfoPtrOutputWithContext(ctx
 	}).(GetVolumeVolumeInfoPtrOutput)
 }
 
+// the AWS access point to use when accessing s3 bucket for this volume's external location
 func (o GetVolumeVolumeInfoOutput) AccessPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.AccessPoint }).(pulumi.StringPtrOutput)
 }
 
+// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
 func (o GetVolumeVolumeInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
 }
 
+// the name of the catalog where the schema and the volume are
 func (o GetVolumeVolumeInfoOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
+// the comment attached to the volume
 func (o GetVolumeVolumeInfoOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// the Unix timestamp at the volume's creation
 func (o GetVolumeVolumeInfoOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
 }
 
+// the identifier of the user who created the volume
 func (o GetVolumeVolumeInfoOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// encryption options that apply to clients connecting to cloud storage
 func (o GetVolumeVolumeInfoOutput) EncryptionDetails() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *GetVolumeVolumeInfoEncryptionDetails { return v.EncryptionDetails }).(GetVolumeVolumeInfoEncryptionDetailsPtrOutput)
 }
 
+// the three-level (fully qualified) name of the volume
 func (o GetVolumeVolumeInfoOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.FullName }).(pulumi.StringPtrOutput)
 }
 
+// the unique identifier of the metastore
 func (o GetVolumeVolumeInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
 
+// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
 func (o GetVolumeVolumeInfoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// the identifier of the user who owns the volume
 func (o GetVolumeVolumeInfoOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// the name of the schema where the volume is
 func (o GetVolumeVolumeInfoOutput) SchemaName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
 }
 
+// the storage location on the cloud
 func (o GetVolumeVolumeInfoOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.StorageLocation }).(pulumi.StringPtrOutput)
 }
 
+// the timestamp of the last time changes were made to the volume
 func (o GetVolumeVolumeInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
 }
 
+// the identifier of the user who updated the volume last time
 func (o GetVolumeVolumeInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
 }
 
+// the unique identifier of the volume
 func (o GetVolumeVolumeInfoOutput) VolumeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
 }
 
+// whether the volume is `MANAGED` or `EXTERNAL`
 func (o GetVolumeVolumeInfoOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeVolumeInfo) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
 }
@@ -60813,6 +62237,7 @@ func (o GetVolumeVolumeInfoPtrOutput) Elem() GetVolumeVolumeInfoOutput {
 	}).(GetVolumeVolumeInfoOutput)
 }
 
+// the AWS access point to use when accessing s3 bucket for this volume's external location
 func (o GetVolumeVolumeInfoPtrOutput) AccessPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {
@@ -60822,6 +62247,7 @@ func (o GetVolumeVolumeInfoPtrOutput) AccessPoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
 func (o GetVolumeVolumeInfoPtrOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *bool {
 		if v == nil {
@@ -60831,6 +62257,7 @@ func (o GetVolumeVolumeInfoPtrOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// the name of the catalog where the schema and the volume are
 func (o GetVolumeVolumeInfoPtrOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {
@@ -60840,6 +62267,7 @@ func (o GetVolumeVolumeInfoPtrOutput) CatalogName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the comment attached to the volume
 func (o GetVolumeVolumeInfoPtrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {
@@ -60849,6 +62277,7 @@ func (o GetVolumeVolumeInfoPtrOutput) Comment() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the Unix timestamp at the volume's creation
 func (o GetVolumeVolumeInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *int {
 		if v == nil {
@@ -60858,6 +62287,7 @@ func (o GetVolumeVolumeInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// the identifier of the user who created the volume
 func (o GetVolumeVolumeInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {
@@ -60867,6 +62297,7 @@ func (o GetVolumeVolumeInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// encryption options that apply to clients connecting to cloud storage
 func (o GetVolumeVolumeInfoPtrOutput) EncryptionDetails() GetVolumeVolumeInfoEncryptionDetailsPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *GetVolumeVolumeInfoEncryptionDetails {
 		if v == nil {
@@ -60876,6 +62307,7 @@ func (o GetVolumeVolumeInfoPtrOutput) EncryptionDetails() GetVolumeVolumeInfoEnc
 	}).(GetVolumeVolumeInfoEncryptionDetailsPtrOutput)
 }
 
+// the three-level (fully qualified) name of the volume
 func (o GetVolumeVolumeInfoPtrOutput) FullName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {
@@ -60885,6 +62317,7 @@ func (o GetVolumeVolumeInfoPtrOutput) FullName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the unique identifier of the metastore
 func (o GetVolumeVolumeInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {
@@ -60894,6 +62327,7 @@ func (o GetVolumeVolumeInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
 func (o GetVolumeVolumeInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {
@@ -60903,6 +62337,7 @@ func (o GetVolumeVolumeInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the identifier of the user who owns the volume
 func (o GetVolumeVolumeInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {
@@ -60912,6 +62347,7 @@ func (o GetVolumeVolumeInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the name of the schema where the volume is
 func (o GetVolumeVolumeInfoPtrOutput) SchemaName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {
@@ -60921,6 +62357,7 @@ func (o GetVolumeVolumeInfoPtrOutput) SchemaName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the storage location on the cloud
 func (o GetVolumeVolumeInfoPtrOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {
@@ -60930,6 +62367,7 @@ func (o GetVolumeVolumeInfoPtrOutput) StorageLocation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the timestamp of the last time changes were made to the volume
 func (o GetVolumeVolumeInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *int {
 		if v == nil {
@@ -60939,6 +62377,7 @@ func (o GetVolumeVolumeInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// the identifier of the user who updated the volume last time
 func (o GetVolumeVolumeInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {
@@ -60948,6 +62387,7 @@ func (o GetVolumeVolumeInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// the unique identifier of the volume
 func (o GetVolumeVolumeInfoPtrOutput) VolumeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {
@@ -60957,6 +62397,7 @@ func (o GetVolumeVolumeInfoPtrOutput) VolumeId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// whether the volume is `MANAGED` or `EXTERNAL`
 func (o GetVolumeVolumeInfoPtrOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetVolumeVolumeInfo) *string {
 		if v == nil {

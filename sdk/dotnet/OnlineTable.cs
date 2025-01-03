@@ -9,21 +9,78 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// &gt; This resource can only be used on a Unity Catalog-enabled workspace!
+    /// 
+    /// This resource allows you to create [Online Table](https://docs.databricks.com/en/machine-learning/feature-store/online-tables.html) in Databricks.  An online table is a read-only copy of a Delta Table that is stored in row-oriented format optimized for online access. Online tables are fully serverless tables that auto-scale throughput capacity with the request load and provide low latency and high throughput access to data of any scale. Online tables are designed to work with Databricks Model Serving, Feature Serving, and retrieval-augmented generation (RAG) applications where they are used for fast data lookups.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.OnlineTable("this", new()
+    ///     {
+    ///         Name = "main.default.online_table",
+    ///         Spec = new Databricks.Inputs.OnlineTableSpecArgs
+    ///         {
+    ///             SourceTableFullName = "main.default.source_table",
+    ///             PrimaryKeyColumns = new[]
+    ///             {
+    ///                 "id",
+    ///             },
+    ///             RunTriggered = null,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The resource can be imported using the name of the Online Table:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/onlineTable:OnlineTable this &lt;endpoint-name&gt;
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/onlineTable:OnlineTable")]
     public partial class OnlineTable : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// 3-level name of the Online Table to create.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// object containing specification of the online table:
+        /// </summary>
         [Output("spec")]
         public Output<Outputs.OnlineTableSpec?> Spec { get; private set; } = null!;
 
+        /// <summary>
+        /// object describing status of the online table:
+        /// </summary>
         [Output("statuses")]
         public Output<ImmutableArray<Outputs.OnlineTableStatus>> Statuses { get; private set; } = null!;
 
+        /// <summary>
+        /// Data serving REST API URL for this table.
+        /// </summary>
         [Output("tableServingUrl")]
         public Output<string> TableServingUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+        /// </summary>
         [Output("unityCatalogProvisioningState")]
         public Output<string> UnityCatalogProvisioningState { get; private set; } = null!;
 
@@ -73,9 +130,15 @@ namespace Pulumi.Databricks
 
     public sealed class OnlineTableArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// 3-level name of the Online Table to create.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// object containing specification of the online table:
+        /// </summary>
         [Input("spec")]
         public Input<Inputs.OnlineTableSpecArgs>? Spec { get; set; }
 
@@ -87,23 +150,39 @@ namespace Pulumi.Databricks
 
     public sealed class OnlineTableState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// 3-level name of the Online Table to create.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// object containing specification of the online table:
+        /// </summary>
         [Input("spec")]
         public Input<Inputs.OnlineTableSpecGetArgs>? Spec { get; set; }
 
         [Input("statuses")]
         private InputList<Inputs.OnlineTableStatusGetArgs>? _statuses;
+
+        /// <summary>
+        /// object describing status of the online table:
+        /// </summary>
         public InputList<Inputs.OnlineTableStatusGetArgs> Statuses
         {
             get => _statuses ?? (_statuses = new InputList<Inputs.OnlineTableStatusGetArgs>());
             set => _statuses = value;
         }
 
+        /// <summary>
+        /// Data serving REST API URL for this table.
+        /// </summary>
         [Input("tableServingUrl")]
         public Input<string>? TableServingUrl { get; set; }
 
+        /// <summary>
+        /// The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
+        /// </summary>
         [Input("unityCatalogProvisioningState")]
         public Input<string>? UnityCatalogProvisioningState { get; set; }
 

@@ -15,16 +15,32 @@ public final class ServicePrincipalRoleState extends com.pulumi.resources.Resour
 
     public static final ServicePrincipalRoleState Empty = new ServicePrincipalRoleState();
 
+    /**
+     * This is the id of the role or instance profile resource.
+     * 
+     */
     @Import(name="role")
     private @Nullable Output<String> role;
 
+    /**
+     * @return This is the id of the role or instance profile resource.
+     * 
+     */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
 
+    /**
+     * This is the id of the service principal resource.
+     * 
+     */
     @Import(name="servicePrincipalId")
     private @Nullable Output<String> servicePrincipalId;
 
+    /**
+     * @return This is the id of the service principal resource.
+     * 
+     */
     public Optional<Output<String>> servicePrincipalId() {
         return Optional.ofNullable(this.servicePrincipalId);
     }
@@ -54,20 +70,44 @@ public final class ServicePrincipalRoleState extends com.pulumi.resources.Resour
             $ = new ServicePrincipalRoleState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param role This is the id of the role or instance profile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(@Nullable Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role This is the id of the role or instance profile resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }
 
+        /**
+         * @param servicePrincipalId This is the id of the service principal resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePrincipalId(@Nullable Output<String> servicePrincipalId) {
             $.servicePrincipalId = servicePrincipalId;
             return this;
         }
 
+        /**
+         * @param servicePrincipalId This is the id of the service principal resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePrincipalId(String servicePrincipalId) {
             return servicePrincipalId(Output.of(servicePrincipalId));
         }

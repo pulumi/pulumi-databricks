@@ -15,12 +15,24 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? AccessPoint;
         public readonly bool? BrowseOnly;
+        /// <summary>
+        /// Name of parent catalog.
+        /// </summary>
         public readonly string? CatalogName;
+        /// <summary>
+        /// Array of ColumnInfo objects of the table's columns
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTableTableInfoColumnResult> Columns;
+        /// <summary>
+        /// Free-form text description
+        /// </summary>
         public readonly string? Comment;
         public readonly int? CreatedAt;
         public readonly string? CreatedBy;
         public readonly string? DataAccessConfigurationId;
+        /// <summary>
+        /// Table format, e.g. DELTA, CSV, JSON
+        /// </summary>
         public readonly string? DataSourceFormat;
         public readonly int? DeletedAt;
         public readonly Outputs.GetTableTableInfoDeltaRuntimePropertiesKvpairsResult? DeltaRuntimePropertiesKvpairs;
@@ -29,21 +41,39 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetTableTableInfoEncryptionDetailsResult? EncryptionDetails;
         public readonly string? FullName;
         public readonly string? MetastoreId;
+        /// <summary>
+        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Current owner of the table
+        /// </summary>
         public readonly string? Owner;
         public readonly string? PipelineId;
         public readonly ImmutableDictionary<string, string>? Properties;
         public readonly Outputs.GetTableTableInfoRowFilterResult? RowFilter;
+        /// <summary>
+        /// Name of parent schema relative to its parent catalog.
+        /// </summary>
         public readonly string? SchemaName;
         public readonly string? SqlPath;
         public readonly string? StorageCredentialName;
         public readonly string? StorageLocation;
         public readonly ImmutableArray<Outputs.GetTableTableInfoTableConstraintResult> TableConstraints;
         public readonly string? TableId;
+        /// <summary>
+        /// Table type, e.g. MANAGED, EXTERNAL, VIEW
+        /// </summary>
         public readonly string? TableType;
         public readonly int? UpdatedAt;
         public readonly string? UpdatedBy;
+        /// <summary>
+        /// View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+        /// </summary>
         public readonly string? ViewDefinition;
+        /// <summary>
+        /// View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+        /// </summary>
         public readonly Outputs.GetTableTableInfoViewDependenciesResult? ViewDependencies;
 
         [OutputConstructor]

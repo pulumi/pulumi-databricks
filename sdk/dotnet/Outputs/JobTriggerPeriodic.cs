@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTriggerPeriodic
     {
+        /// <summary>
+        /// Specifies the interval at which the job should run. This value is required.
+        /// </summary>
         public readonly int Interval;
+        /// <summary>
+        /// Options are {"DAYS", "HOURS", "WEEKS"}.
+        /// </summary>
         public readonly string Unit;
 
         [OutputConstructor]

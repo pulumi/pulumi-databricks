@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows to export a notebook from Databricks Workspace.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const features = databricks.getNotebook({
+ *     path: "/Production/Features",
+ *     format: "SOURCE",
+ * });
+ * ```
+ */
 export function getNotebook(args: GetNotebookArgs, opts?: pulumi.InvokeOptions): Promise<GetNotebookResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNotebook:getNotebook", {
@@ -19,10 +36,25 @@ export function getNotebook(args: GetNotebookArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getNotebook.
  */
 export interface GetNotebookArgs {
+    /**
+     * Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
+     */
     format: string;
+    /**
+     * notebook language
+     */
     language?: string;
+    /**
+     * notebook object ID
+     */
     objectId?: number;
+    /**
+     * notebook object type
+     */
     objectType?: string;
+    /**
+     * Notebook path on the workspace
+     */
     path: string;
 }
 
@@ -30,18 +62,50 @@ export interface GetNotebookArgs {
  * A collection of values returned by getNotebook.
  */
 export interface GetNotebookResult {
+    /**
+     * notebook content in selected format
+     */
     readonly content: string;
     readonly format: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * notebook language
+     */
     readonly language: string;
+    /**
+     * notebook object ID
+     */
     readonly objectId: number;
+    /**
+     * notebook object type
+     */
     readonly objectType: string;
     readonly path: string;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
     readonly workspacePath: string;
 }
+/**
+ * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+ *
+ * This data source allows to export a notebook from Databricks Workspace.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const features = databricks.getNotebook({
+ *     path: "/Production/Features",
+ *     format: "SOURCE",
+ * });
+ * ```
+ */
 export function getNotebookOutput(args: GetNotebookOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotebookResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getNotebook:getNotebook", {
@@ -57,9 +121,24 @@ export function getNotebookOutput(args: GetNotebookOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getNotebook.
  */
 export interface GetNotebookOutputArgs {
+    /**
+     * Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
+     */
     format: pulumi.Input<string>;
+    /**
+     * notebook language
+     */
     language?: pulumi.Input<string>;
+    /**
+     * notebook object ID
+     */
     objectId?: pulumi.Input<number>;
+    /**
+     * notebook object type
+     */
     objectType?: pulumi.Input<string>;
+    /**
+     * Notebook path on the workspace
+     */
     path: pulumi.Input<string>;
 }

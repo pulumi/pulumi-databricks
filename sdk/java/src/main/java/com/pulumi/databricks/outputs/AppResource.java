@@ -16,29 +16,81 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppResource {
+    /**
+     * @return The description of the resource.
+     * 
+     * Exactly one of the following attributes must be provided:
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable AppResourceJob job;
+    /**
+     * @return The name of the resource.
+     * 
+     */
     private String name;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable AppResourceSecret secret;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable AppResourceServingEndpoint servingEndpoint;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable AppResourceSqlWarehouse sqlWarehouse;
 
     private AppResource() {}
+    /**
+     * @return The description of the resource.
+     * 
+     * Exactly one of the following attributes must be provided:
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<AppResourceJob> job() {
         return Optional.ofNullable(this.job);
     }
+    /**
+     * @return The name of the resource.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<AppResourceSecret> secret() {
         return Optional.ofNullable(this.secret);
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<AppResourceServingEndpoint> servingEndpoint() {
         return Optional.ofNullable(this.servingEndpoint);
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<AppResourceSqlWarehouse> sqlWarehouse() {
         return Optional.ofNullable(this.sqlWarehouse);
     }

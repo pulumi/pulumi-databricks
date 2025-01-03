@@ -24,9 +24,17 @@ public final class DefaultNamespaceSettingArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.etag);
     }
 
+    /**
+     * The configuration details.
+     * 
+     */
     @Import(name="namespace", required=true)
     private Output<DefaultNamespaceSettingNamespaceArgs> namespace;
 
+    /**
+     * @return The configuration details.
+     * 
+     */
     public Output<DefaultNamespaceSettingNamespaceArgs> namespace() {
         return this.namespace;
     }
@@ -73,11 +81,23 @@ public final class DefaultNamespaceSettingArgs extends com.pulumi.resources.Reso
             return etag(Output.of(etag));
         }
 
+        /**
+         * @param namespace The configuration details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(Output<DefaultNamespaceSettingNamespaceArgs> namespace) {
             $.namespace = namespace;
             return this;
         }
 
+        /**
+         * @param namespace The configuration details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(DefaultNamespaceSettingNamespaceArgs namespace) {
             return namespace(Output.of(namespace));
         }

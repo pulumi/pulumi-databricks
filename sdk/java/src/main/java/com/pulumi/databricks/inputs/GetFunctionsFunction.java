@@ -20,212 +20,452 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
 
     public static final GetFunctionsFunction Empty = new GetFunctionsFunction();
 
+    /**
+     * Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
+     * 
+     */
     @Import(name="browseOnly")
     private @Nullable Boolean browseOnly;
 
+    /**
+     * @return Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
+     * 
+     */
     public Optional<Boolean> browseOnly() {
         return Optional.ofNullable(this.browseOnly);
     }
 
+    /**
+     * Name of databricks_catalog.
+     * 
+     */
     @Import(name="catalogName")
     private @Nullable String catalogName;
 
+    /**
+     * @return Name of databricks_catalog.
+     * 
+     */
     public Optional<String> catalogName() {
         return Optional.ofNullable(this.catalogName);
     }
 
+    /**
+     * User-provided free-form text description.
+     * 
+     */
     @Import(name="comment")
     private @Nullable String comment;
 
+    /**
+     * @return User-provided free-form text description.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * Time at which this function was created, in epoch milliseconds.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Integer createdAt;
 
+    /**
+     * @return Time at which this function was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Username of function creator.
+     * 
+     */
     @Import(name="createdBy")
     private @Nullable String createdBy;
 
+    /**
+     * @return Username of function creator.
+     * 
+     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
+    /**
+     * Scalar function return data type.
+     * 
+     */
     @Import(name="dataType")
     private @Nullable String dataType;
 
+    /**
+     * @return Scalar function return data type.
+     * 
+     */
     public Optional<String> dataType() {
         return Optional.ofNullable(this.dataType);
     }
 
+    /**
+     * External function language.
+     * 
+     */
     @Import(name="externalLanguage")
     private @Nullable String externalLanguage;
 
+    /**
+     * @return External function language.
+     * 
+     */
     public Optional<String> externalLanguage() {
         return Optional.ofNullable(this.externalLanguage);
     }
 
+    /**
+     * External function name.
+     * 
+     */
     @Import(name="externalName")
     private @Nullable String externalName;
 
+    /**
+     * @return External function name.
+     * 
+     */
     public Optional<String> externalName() {
         return Optional.ofNullable(this.externalName);
     }
 
+    /**
+     * Pretty printed function data type.
+     * 
+     */
     @Import(name="fullDataType")
     private @Nullable String fullDataType;
 
+    /**
+     * @return Pretty printed function data type.
+     * 
+     */
     public Optional<String> fullDataType() {
         return Optional.ofNullable(this.fullDataType);
     }
 
+    /**
+     * Full name of function, in form of catalog_name.schema_name.function__name
+     * 
+     */
     @Import(name="fullName")
     private @Nullable String fullName;
 
+    /**
+     * @return Full name of function, in form of catalog_name.schema_name.function__name
+     * 
+     */
     public Optional<String> fullName() {
         return Optional.ofNullable(this.fullName);
     }
 
+    /**
+     * Id of Function, relative to parent schema.
+     * 
+     */
     @Import(name="functionId")
     private @Nullable String functionId;
 
+    /**
+     * @return Id of Function, relative to parent schema.
+     * 
+     */
     public Optional<String> functionId() {
         return Optional.ofNullable(this.functionId);
     }
 
+    /**
+     * object describing input parameters. Consists of the single attribute:
+     * 
+     */
     @Import(name="inputParams")
     private @Nullable List<GetFunctionsFunctionInputParam> inputParams;
 
+    /**
+     * @return object describing input parameters. Consists of the single attribute:
+     * 
+     */
     public Optional<List<GetFunctionsFunctionInputParam>> inputParams() {
         return Optional.ofNullable(this.inputParams);
     }
 
+    /**
+     * Boolean flag specifying whether the function is deterministic.
+     * 
+     */
     @Import(name="isDeterministic")
     private @Nullable Boolean isDeterministic;
 
+    /**
+     * @return Boolean flag specifying whether the function is deterministic.
+     * 
+     */
     public Optional<Boolean> isDeterministic() {
         return Optional.ofNullable(this.isDeterministic);
     }
 
+    /**
+     * Boolean flag whether function null call.
+     * 
+     */
     @Import(name="isNullCall")
     private @Nullable Boolean isNullCall;
 
+    /**
+     * @return Boolean flag whether function null call.
+     * 
+     */
     public Optional<Boolean> isNullCall() {
         return Optional.ofNullable(this.isNullCall);
     }
 
+    /**
+     * Unique identifier of parent metastore.
+     * 
+     */
     @Import(name="metastoreId")
     private @Nullable String metastoreId;
 
+    /**
+     * @return Unique identifier of parent metastore.
+     * 
+     */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
 
+    /**
+     * Name of parameter.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return Name of parameter.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Username of current owner of function.
+     * 
+     */
     @Import(name="owner")
     private @Nullable String owner;
 
+    /**
+     * @return Username of current owner of function.
+     * 
+     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * Function parameter style. `S` is the value for SQL.
+     * 
+     */
     @Import(name="parameterStyle")
     private @Nullable String parameterStyle;
 
+    /**
+     * @return Function parameter style. `S` is the value for SQL.
+     * 
+     */
     public Optional<String> parameterStyle() {
         return Optional.ofNullable(this.parameterStyle);
     }
 
+    /**
+     * JSON-serialized key-value pair map, encoded (escaped) as a string.
+     * 
+     */
     @Import(name="properties")
     private @Nullable String properties;
 
+    /**
+     * @return JSON-serialized key-value pair map, encoded (escaped) as a string.
+     * 
+     */
     public Optional<String> properties() {
         return Optional.ofNullable(this.properties);
     }
 
+    /**
+     * Table function return parameters.  See `input_params` for description.
+     * 
+     */
     @Import(name="returnParams")
     private @Nullable List<GetFunctionsFunctionReturnParam> returnParams;
 
+    /**
+     * @return Table function return parameters.  See `input_params` for description.
+     * 
+     */
     public Optional<List<GetFunctionsFunctionReturnParam>> returnParams() {
         return Optional.ofNullable(this.returnParams);
     }
 
+    /**
+     * Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
+     * 
+     */
     @Import(name="routineBody")
     private @Nullable String routineBody;
 
+    /**
+     * @return Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
+     * 
+     */
     public Optional<String> routineBody() {
         return Optional.ofNullable(this.routineBody);
     }
 
+    /**
+     * Function body.
+     * 
+     */
     @Import(name="routineDefinition")
     private @Nullable String routineDefinition;
 
+    /**
+     * @return Function body.
+     * 
+     */
     public Optional<String> routineDefinition() {
         return Optional.ofNullable(this.routineDefinition);
     }
 
+    /**
+     * Function dependencies.
+     * 
+     */
     @Import(name="routineDependencies")
     private @Nullable List<GetFunctionsFunctionRoutineDependency> routineDependencies;
 
+    /**
+     * @return Function dependencies.
+     * 
+     */
     public Optional<List<GetFunctionsFunctionRoutineDependency>> routineDependencies() {
         return Optional.ofNullable(this.routineDependencies);
     }
 
+    /**
+     * Name of databricks_schema.
+     * 
+     */
     @Import(name="schemaName")
     private @Nullable String schemaName;
 
+    /**
+     * @return Name of databricks_schema.
+     * 
+     */
     public Optional<String> schemaName() {
         return Optional.ofNullable(this.schemaName);
     }
 
+    /**
+     * Function security type. (Enum: `DEFINER`).
+     * 
+     */
     @Import(name="securityType")
     private @Nullable String securityType;
 
+    /**
+     * @return Function security type. (Enum: `DEFINER`).
+     * 
+     */
     public Optional<String> securityType() {
         return Optional.ofNullable(this.securityType);
     }
 
+    /**
+     * Specific name of the function; Reserved for future use.
+     * 
+     */
     @Import(name="specificName")
     private @Nullable String specificName;
 
+    /**
+     * @return Specific name of the function; Reserved for future use.
+     * 
+     */
     public Optional<String> specificName() {
         return Optional.ofNullable(this.specificName);
     }
 
+    /**
+     * Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+     * 
+     */
     @Import(name="sqlDataAccess")
     private @Nullable String sqlDataAccess;
 
+    /**
+     * @return Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+     * 
+     */
     public Optional<String> sqlDataAccess() {
         return Optional.ofNullable(this.sqlDataAccess);
     }
 
+    /**
+     * List of schemes whose objects can be referenced without qualification.
+     * 
+     */
     @Import(name="sqlPath")
     private @Nullable String sqlPath;
 
+    /**
+     * @return List of schemes whose objects can be referenced without qualification.
+     * 
+     */
     public Optional<String> sqlPath() {
         return Optional.ofNullable(this.sqlPath);
     }
 
+    /**
+     * Time at which this function was created, in epoch milliseconds.
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Integer updatedAt;
 
+    /**
+     * @return Time at which this function was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * Username of user who last modified function.
+     * 
+     */
     @Import(name="updatedBy")
     private @Nullable String updatedBy;
 
+    /**
+     * @return Username of user who last modified function.
+     * 
+     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
@@ -283,163 +523,361 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
             $ = new GetFunctionsFunction(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param browseOnly Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder browseOnly(@Nullable Boolean browseOnly) {
             $.browseOnly = browseOnly;
             return this;
         }
 
+        /**
+         * @param catalogName Name of databricks_catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogName(@Nullable String catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
+        /**
+         * @param comment User-provided free-form text description.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comment(@Nullable String comment) {
             $.comment = comment;
             return this;
         }
 
+        /**
+         * @param createdAt Time at which this function was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Integer createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdBy Username of function creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(@Nullable String createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
+        /**
+         * @param dataType Scalar function return data type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataType(@Nullable String dataType) {
             $.dataType = dataType;
             return this;
         }
 
+        /**
+         * @param externalLanguage External function language.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalLanguage(@Nullable String externalLanguage) {
             $.externalLanguage = externalLanguage;
             return this;
         }
 
+        /**
+         * @param externalName External function name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalName(@Nullable String externalName) {
             $.externalName = externalName;
             return this;
         }
 
+        /**
+         * @param fullDataType Pretty printed function data type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullDataType(@Nullable String fullDataType) {
             $.fullDataType = fullDataType;
             return this;
         }
 
+        /**
+         * @param fullName Full name of function, in form of catalog_name.schema_name.function__name
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(@Nullable String fullName) {
             $.fullName = fullName;
             return this;
         }
 
+        /**
+         * @param functionId Id of Function, relative to parent schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder functionId(@Nullable String functionId) {
             $.functionId = functionId;
             return this;
         }
 
+        /**
+         * @param inputParams object describing input parameters. Consists of the single attribute:
+         * 
+         * @return builder
+         * 
+         */
         public Builder inputParams(@Nullable List<GetFunctionsFunctionInputParam> inputParams) {
             $.inputParams = inputParams;
             return this;
         }
 
+        /**
+         * @param inputParams object describing input parameters. Consists of the single attribute:
+         * 
+         * @return builder
+         * 
+         */
         public Builder inputParams(GetFunctionsFunctionInputParam... inputParams) {
             return inputParams(List.of(inputParams));
         }
 
+        /**
+         * @param isDeterministic Boolean flag specifying whether the function is deterministic.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isDeterministic(@Nullable Boolean isDeterministic) {
             $.isDeterministic = isDeterministic;
             return this;
         }
 
+        /**
+         * @param isNullCall Boolean flag whether function null call.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isNullCall(@Nullable Boolean isNullCall) {
             $.isNullCall = isNullCall;
             return this;
         }
 
+        /**
+         * @param metastoreId Unique identifier of parent metastore.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(@Nullable String metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
+        /**
+         * @param name Name of parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param owner Username of current owner of function.
+         * 
+         * @return builder
+         * 
+         */
         public Builder owner(@Nullable String owner) {
             $.owner = owner;
             return this;
         }
 
+        /**
+         * @param parameterStyle Function parameter style. `S` is the value for SQL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterStyle(@Nullable String parameterStyle) {
             $.parameterStyle = parameterStyle;
             return this;
         }
 
+        /**
+         * @param properties JSON-serialized key-value pair map, encoded (escaped) as a string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder properties(@Nullable String properties) {
             $.properties = properties;
             return this;
         }
 
+        /**
+         * @param returnParams Table function return parameters.  See `input_params` for description.
+         * 
+         * @return builder
+         * 
+         */
         public Builder returnParams(@Nullable List<GetFunctionsFunctionReturnParam> returnParams) {
             $.returnParams = returnParams;
             return this;
         }
 
+        /**
+         * @param returnParams Table function return parameters.  See `input_params` for description.
+         * 
+         * @return builder
+         * 
+         */
         public Builder returnParams(GetFunctionsFunctionReturnParam... returnParams) {
             return returnParams(List.of(returnParams));
         }
 
+        /**
+         * @param routineBody Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routineBody(@Nullable String routineBody) {
             $.routineBody = routineBody;
             return this;
         }
 
+        /**
+         * @param routineDefinition Function body.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routineDefinition(@Nullable String routineDefinition) {
             $.routineDefinition = routineDefinition;
             return this;
         }
 
+        /**
+         * @param routineDependencies Function dependencies.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routineDependencies(@Nullable List<GetFunctionsFunctionRoutineDependency> routineDependencies) {
             $.routineDependencies = routineDependencies;
             return this;
         }
 
+        /**
+         * @param routineDependencies Function dependencies.
+         * 
+         * @return builder
+         * 
+         */
         public Builder routineDependencies(GetFunctionsFunctionRoutineDependency... routineDependencies) {
             return routineDependencies(List.of(routineDependencies));
         }
 
+        /**
+         * @param schemaName Name of databricks_schema.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaName(@Nullable String schemaName) {
             $.schemaName = schemaName;
             return this;
         }
 
+        /**
+         * @param securityType Function security type. (Enum: `DEFINER`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityType(@Nullable String securityType) {
             $.securityType = securityType;
             return this;
         }
 
+        /**
+         * @param specificName Specific name of the function; Reserved for future use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder specificName(@Nullable String specificName) {
             $.specificName = specificName;
             return this;
         }
 
+        /**
+         * @param sqlDataAccess Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder sqlDataAccess(@Nullable String sqlDataAccess) {
             $.sqlDataAccess = sqlDataAccess;
             return this;
         }
 
+        /**
+         * @param sqlPath List of schemes whose objects can be referenced without qualification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sqlPath(@Nullable String sqlPath) {
             $.sqlPath = sqlPath;
             return this;
         }
 
+        /**
+         * @param updatedAt Time at which this function was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Integer updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedBy Username of user who last modified function.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(@Nullable String updatedBy) {
             $.updatedBy = updatedBy;
             return this;

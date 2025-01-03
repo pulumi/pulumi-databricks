@@ -41,6 +41,9 @@ class GetAppResult:
     @property
     @pulumi.getter
     def app(self) -> 'outputs.GetAppAppResult':
+        """
+        attribute
+        """
         return pulumi.get(self, "app")
 
     @property
@@ -54,6 +57,9 @@ class GetAppResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the serving endpoint to grant permission on.
+        """
         return pulumi.get(self, "name")
 
 
@@ -71,7 +77,33 @@ class AwaitableGetAppResult(GetAppResult):
 def get_app(name: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppResult:
     """
-    Use this data source to access information about an existing resource.
+    > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+
+    [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+
+    This data source allows you to fetch information about a Databricks App.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_app(name="my-custom-app")
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+    * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+    * ModelServing to serve this model on a Databricks serving endpoint.
+    * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+
+
+    :param str name: The name of the app.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -85,7 +117,33 @@ def get_app(name: Optional[str] = None,
 def get_app_output(name: Optional[pulumi.Input[str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppResult]:
     """
-    Use this data source to access information about an existing resource.
+    > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+
+    [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+
+    This data source allows you to fetch information about a Databricks App.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_app(name="my-custom-app")
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+    * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+    * ModelServing to serve this model on a Databricks serving endpoint.
+    * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+    * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+
+
+    :param str name: The name of the app.
     """
     __args__ = dict()
     __args__['name'] = name

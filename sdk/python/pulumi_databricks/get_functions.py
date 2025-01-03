@@ -48,11 +48,17 @@ class GetFunctionsResult:
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> str:
+        """
+        Name of parent catalog.
+        """
         return pulumi.get(self, "catalog_name")
 
     @property
     @pulumi.getter
     def functions(self) -> Sequence['outputs.GetFunctionsFunctionResult']:
+        """
+        list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+        """
         return pulumi.get(self, "functions")
 
     @property
@@ -71,6 +77,9 @@ class GetFunctionsResult:
     @property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> str:
+        """
+        Name of parent schema relative to its parent catalog.
+        """
         return pulumi.get(self, "schema_name")
 
 
@@ -93,7 +102,34 @@ def get_functions(catalog_name: Optional[str] = None,
                   schema_name: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFunctionsResult:
     """
-    Use this data source to access information about an existing resource.
+    > This data source can only be used with a workspace-level provider!
+
+    Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+
+    ## Example Usage
+
+    List all functions defined in a specific schema (`main.default` in this example):
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_functions(catalog_name="main",
+        schema_name="default")
+    pulumi.export("allExternalLocations", all.functions)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Schema to get information about a single schema
+
+
+    :param str catalog_name: Name of databricks_catalog.
+    :param Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict']] functions: list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+    :param bool include_browse: flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
+    :param str schema_name: Name of databricks_schema.
     """
     __args__ = dict()
     __args__['catalogName'] = catalog_name
@@ -115,7 +151,34 @@ def get_functions_output(catalog_name: Optional[pulumi.Input[str]] = None,
                          schema_name: Optional[pulumi.Input[str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFunctionsResult]:
     """
-    Use this data source to access information about an existing resource.
+    > This data source can only be used with a workspace-level provider!
+
+    Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
+
+    ## Example Usage
+
+    List all functions defined in a specific schema (`main.default` in this example):
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_functions(catalog_name="main",
+        schema_name="default")
+    pulumi.export("allExternalLocations", all.functions)
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * Schema to get information about a single schema
+
+
+    :param str catalog_name: Name of databricks_catalog.
+    :param Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict']] functions: list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
+    :param bool include_browse: flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
+    :param str schema_name: Name of databricks_schema.
     """
     __args__ = dict()
     __args__['catalogName'] = catalog_name

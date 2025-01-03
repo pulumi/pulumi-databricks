@@ -13,11 +13,29 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskForEachTaskTaskSqlTask
     {
+        /// <summary>
+        /// block consisting of following fields:
+        /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskSqlTaskAlert? Alert;
+        /// <summary>
+        /// block consisting of following fields:
+        /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskSqlTaskDashboard? Dashboard;
+        /// <summary>
+        /// block consisting of single string fields:
+        /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskSqlTaskFile? File;
+        /// <summary>
+        /// (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Parameters;
+        /// <summary>
+        /// block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
+        /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskSqlTaskQuery? Query;
+        /// <summary>
+        /// ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless &amp; Pro warehouses are supported right now.
+        /// </summary>
         public readonly string WarehouseId;
 
         [OutputConstructor]

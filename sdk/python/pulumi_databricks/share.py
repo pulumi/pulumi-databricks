@@ -33,6 +33,10 @@ class ShareArgs:
                  updated_by: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Share resource.
+        :param pulumi.Input[int] created_at: Time when the share was created.
+        :param pulumi.Input[str] created_by: The principal that created the share.
+        :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: User name/group name/sp application_id of the share owner.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -67,6 +71,9 @@ class ShareArgs:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time when the share was created.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -76,6 +83,9 @@ class ShareArgs:
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        The principal that created the share.
+        """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
@@ -85,6 +95,9 @@ class ShareArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of share. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -103,6 +116,9 @@ class ShareArgs:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name/group name/sp application_id of the share owner.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -161,6 +177,10 @@ class _ShareState:
                  updated_by: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Share resources.
+        :param pulumi.Input[int] created_at: Time when the share was created.
+        :param pulumi.Input[str] created_by: The principal that created the share.
+        :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: User name/group name/sp application_id of the share owner.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -195,6 +215,9 @@ class _ShareState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time when the share was created.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -204,6 +227,9 @@ class _ShareState:
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        The principal that created the share.
+        """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
@@ -213,6 +239,9 @@ class _ShareState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of share. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -231,6 +260,9 @@ class _ShareState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name/group name/sp application_id of the share owner.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -291,9 +323,99 @@ class Share(pulumi.CustomResource):
                  updated_by: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Share resource with the given unique name, props, and options.
+        > This resource can only be used with a workspace-level provider!
+
+        In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
+
+        In a Unity Catalog-enabled Databricks workspace, a share is a securable object registered in Unity Catalog. A `Share` is contained within a databricks_metastore. If you remove a share from your Unity Catalog metastore, all recipients of that share lose the ability to access it.
+
+        ## Example Usage
+
+        > In Pulumi configuration, it is recommended to define objects in alphabetical order of their `name` arguments, so that you get consistent and readable diff. Whenever objects are added or removed, or `name` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `object` blocks as an ordered list. Alternatively, `object` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+
+        Creating a Delta Sharing share and add some existing tables to it
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        things = databricks.get_tables(catalog_name="sandbox",
+            schema_name="things")
+        some = databricks.Share("some",
+            objects=[{
+                "name": entry["value"],
+                "data_object_type": "TABLE",
+            } for entry in [{"key": k, "value": v} for k, v in things.ids]],
+            name="my_share")
+        ```
+
+        Creating a Delta Sharing share and add a schema to it(including all current and future tables).
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        schema_share = databricks.Share("schema_share",
+            name="schema_share",
+            objects=[{
+                "name": "catalog_name.schema_name",
+                "data_object_type": "SCHEMA",
+                "history_data_sharing_status": "ENABLED",
+            }])
+        ```
+
+        Creating a Delta Sharing share and share a table with partitions spec and history
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        some = databricks.Share("some",
+            name="my_share",
+            objects=[{
+                "name": "my_catalog.my_schema.my_table",
+                "data_object_type": "TABLE",
+                "history_data_sharing_status": "ENABLED",
+                "partitions": [
+                    {
+                        "values": [
+                            {
+                                "name": "year",
+                                "op": "EQUAL",
+                                "value": "2009",
+                            },
+                            {
+                                "name": "month",
+                                "op": "EQUAL",
+                                "value": "12",
+                            },
+                        ],
+                    },
+                    {
+                        "values": [{
+                            "name": "year",
+                            "op": "EQUAL",
+                            "value": "2010",
+                        }],
+                    },
+                ],
+            }])
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * Recipient to create Delta Sharing recipients.
+        * Grants to manage Delta Sharing permissions.
+        * get_shares to read existing Delta Sharing shares.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] created_at: Time when the share was created.
+        :param pulumi.Input[str] created_by: The principal that created the share.
+        :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: User name/group name/sp application_id of the share owner.
         """
         ...
     @overload
@@ -302,7 +424,93 @@ class Share(pulumi.CustomResource):
                  args: Optional[ShareArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Share resource with the given unique name, props, and options.
+        > This resource can only be used with a workspace-level provider!
+
+        In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
+
+        In a Unity Catalog-enabled Databricks workspace, a share is a securable object registered in Unity Catalog. A `Share` is contained within a databricks_metastore. If you remove a share from your Unity Catalog metastore, all recipients of that share lose the ability to access it.
+
+        ## Example Usage
+
+        > In Pulumi configuration, it is recommended to define objects in alphabetical order of their `name` arguments, so that you get consistent and readable diff. Whenever objects are added or removed, or `name` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `object` blocks as an ordered list. Alternatively, `object` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+
+        Creating a Delta Sharing share and add some existing tables to it
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        things = databricks.get_tables(catalog_name="sandbox",
+            schema_name="things")
+        some = databricks.Share("some",
+            objects=[{
+                "name": entry["value"],
+                "data_object_type": "TABLE",
+            } for entry in [{"key": k, "value": v} for k, v in things.ids]],
+            name="my_share")
+        ```
+
+        Creating a Delta Sharing share and add a schema to it(including all current and future tables).
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        schema_share = databricks.Share("schema_share",
+            name="schema_share",
+            objects=[{
+                "name": "catalog_name.schema_name",
+                "data_object_type": "SCHEMA",
+                "history_data_sharing_status": "ENABLED",
+            }])
+        ```
+
+        Creating a Delta Sharing share and share a table with partitions spec and history
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        some = databricks.Share("some",
+            name="my_share",
+            objects=[{
+                "name": "my_catalog.my_schema.my_table",
+                "data_object_type": "TABLE",
+                "history_data_sharing_status": "ENABLED",
+                "partitions": [
+                    {
+                        "values": [
+                            {
+                                "name": "year",
+                                "op": "EQUAL",
+                                "value": "2009",
+                            },
+                            {
+                                "name": "month",
+                                "op": "EQUAL",
+                                "value": "12",
+                            },
+                        ],
+                    },
+                    {
+                        "values": [{
+                            "name": "year",
+                            "op": "EQUAL",
+                            "value": "2010",
+                        }],
+                    },
+                ],
+            }])
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * Recipient to create Delta Sharing recipients.
+        * Grants to manage Delta Sharing permissions.
+        * get_shares to read existing Delta Sharing shares.
+
         :param str resource_name: The name of the resource.
         :param ShareArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -374,6 +582,10 @@ class Share(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] created_at: Time when the share was created.
+        :param pulumi.Input[str] created_by: The principal that created the share.
+        :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: User name/group name/sp application_id of the share owner.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -399,16 +611,25 @@ class Share(pulumi.CustomResource):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[int]:
+        """
+        Time when the share was created.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[str]:
+        """
+        The principal that created the share.
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Name of share. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -419,6 +640,9 @@ class Share(pulumi.CustomResource):
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[Optional[str]]:
+        """
+        User name/group name/sp application_id of the share owner.
+        """
         return pulumi.get(self, "owner")
 
     @property

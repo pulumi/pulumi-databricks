@@ -14,12 +14,19 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("tags")]
         private InputList<Inputs.BudgetFilterTagArgs>? _tags;
+
+        /// <summary>
+        /// List of tags to filter by. Consists of the following fields:
+        /// </summary>
         public InputList<Inputs.BudgetFilterTagArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.BudgetFilterTagArgs>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
+        /// </summary>
         [Input("workspaceId")]
         public Input<Inputs.BudgetFilterWorkspaceIdArgs>? WorkspaceId { get; set; }
 

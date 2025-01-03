@@ -15,6 +15,11 @@ namespace Pulumi.Databricks.Inputs
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
+        /// <summary>
+        /// The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+        /// 
+        /// `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over `azure_service_principal`):
+        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 

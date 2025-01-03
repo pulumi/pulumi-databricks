@@ -11,6 +11,51 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source can only be used with a workspace-level provider!
+//
+// Retrieves a list of Volume ids (full names), that were created by Pulumi or manually.
+//
+// ## Plugin Framework Migration
+//
+// The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES="getVolumes"`.
+//
+// ## Example Usage
+//
+// Listing all volumes in a _things_ Schema of a  _sandbox_ databricks_catalog:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetVolumes(ctx, &databricks.GetVolumesArgs{
+//				CatalogName: "sandbox",
+//				SchemaName:  "things",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allVolumes", this)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Volume to manage volumes within Unity Catalog.
+// * Schema to manage schemas within Unity Catalog.
+// * Catalog to manage catalogs within Unity Catalog.
 func GetVolumes(ctx *pulumi.Context, args *GetVolumesArgs, opts ...pulumi.InvokeOption) (*GetVolumesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVolumesResult
@@ -23,16 +68,20 @@ func GetVolumes(ctx *pulumi.Context, args *GetVolumesArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getVolumes.
 type GetVolumesArgs struct {
-	CatalogName string   `pulumi:"catalogName"`
-	Ids         []string `pulumi:"ids"`
-	SchemaName  string   `pulumi:"schemaName"`
+	// Name of databricks_catalog
+	CatalogName string `pulumi:"catalogName"`
+	// a list of Volume full names: *`catalog`.`schema`.`volume`*
+	Ids []string `pulumi:"ids"`
+	// Name of databricks_schema
+	SchemaName string `pulumi:"schemaName"`
 }
 
 // A collection of values returned by getVolumes.
 type GetVolumesResult struct {
 	CatalogName string `pulumi:"catalogName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// a list of Volume full names: *`catalog`.`schema`.`volume`*
 	Ids        []string `pulumi:"ids"`
 	SchemaName string   `pulumi:"schemaName"`
 }
@@ -48,9 +97,12 @@ func GetVolumesOutput(ctx *pulumi.Context, args GetVolumesOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getVolumes.
 type GetVolumesOutputArgs struct {
-	CatalogName pulumi.StringInput      `pulumi:"catalogName"`
-	Ids         pulumi.StringArrayInput `pulumi:"ids"`
-	SchemaName  pulumi.StringInput      `pulumi:"schemaName"`
+	// Name of databricks_catalog
+	CatalogName pulumi.StringInput `pulumi:"catalogName"`
+	// a list of Volume full names: *`catalog`.`schema`.`volume`*
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Name of databricks_schema
+	SchemaName pulumi.StringInput `pulumi:"schemaName"`
 }
 
 func (GetVolumesOutputArgs) ElementType() reflect.Type {
@@ -81,6 +133,7 @@ func (o GetVolumesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// a list of Volume full names: *`catalog`.`schema`.`volume`*
 func (o GetVolumesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVolumesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

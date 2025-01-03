@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+ *
+ * ## Example Usage
+ *
+ * Getting all existing shares in the metastore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getShares({});
+ * export const shareName = _this.then(_this => _this.shares);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Share to create Delta Sharing shares.
+ * * databricks.Recipient to create Delta Sharing recipients.
+ * * databricks.Grants to manage Delta Sharing permissions.
+ */
 export function getShares(args?: GetSharesArgs, opts?: pulumi.InvokeOptions): Promise<GetSharesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,6 +39,9 @@ export function getShares(args?: GetSharesArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getShares.
  */
 export interface GetSharesArgs {
+    /**
+     * list of databricks.Share names.
+     */
     shares?: string[];
 }
 
@@ -27,8 +53,34 @@ export interface GetSharesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * list of databricks.Share names.
+     */
     readonly shares: string[];
 }
+/**
+ * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
+ *
+ * ## Example Usage
+ *
+ * Getting all existing shares in the metastore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getShares({});
+ * export const shareName = _this.then(_this => _this.shares);
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Share to create Delta Sharing shares.
+ * * databricks.Recipient to create Delta Sharing recipients.
+ * * databricks.Grants to manage Delta Sharing permissions.
+ */
 export function getSharesOutput(args?: GetSharesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSharesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,5 +93,8 @@ export function getSharesOutput(args?: GetSharesOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getShares.
  */
 export interface GetSharesOutputArgs {
+    /**
+     * list of databricks.Share names.
+     */
     shares?: pulumi.Input<pulumi.Input<string>[]>;
 }

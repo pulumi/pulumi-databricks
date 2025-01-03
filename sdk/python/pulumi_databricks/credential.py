@@ -43,6 +43,16 @@ class CredentialArgs:
                  used_for_managed_storage: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Credential resource.
+        :param pulumi.Input[str] purpose: Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+        :param pulumi.Input[bool] force_destroy: Delete credential regardless of its dependencies.
+        :param pulumi.Input[bool] force_update: Update credential regardless of its dependents.
+        :param pulumi.Input[str] isolation_mode: Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
+        :param pulumi.Input[str] name: Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the credential owner.
+        :param pulumi.Input[bool] read_only: Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+        :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the credential.
         """
         pulumi.set(__self__, "purpose", purpose)
         if aws_iam_role is not None:
@@ -87,6 +97,9 @@ class CredentialArgs:
     @property
     @pulumi.getter
     def purpose(self) -> pulumi.Input[str]:
+        """
+        Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+        """
         return pulumi.get(self, "purpose")
 
     @purpose.setter
@@ -159,6 +172,9 @@ class CredentialArgs:
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete credential regardless of its dependencies.
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -168,6 +184,9 @@ class CredentialArgs:
     @property
     @pulumi.getter(name="forceUpdate")
     def force_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Update credential regardless of its dependents.
+        """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
@@ -186,6 +205,11 @@ class CredentialArgs:
     @property
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
         return pulumi.get(self, "isolation_mode")
 
     @isolation_mode.setter
@@ -204,6 +228,9 @@ class CredentialArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -213,6 +240,9 @@ class CredentialArgs:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username/groupname/sp application_id of the credential owner.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -222,6 +252,9 @@ class CredentialArgs:
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+        """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
@@ -231,6 +264,9 @@ class CredentialArgs:
     @property
     @pulumi.getter(name="skipValidation")
     def skip_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Suppress validation errors if any & force save the credential.
+        """
         return pulumi.get(self, "skip_validation")
 
     @skip_validation.setter
@@ -291,6 +327,17 @@ class _CredentialState:
                  used_for_managed_storage: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Credential resources.
+        :param pulumi.Input[str] credential_id: Unique ID of the credential.
+        :param pulumi.Input[bool] force_destroy: Delete credential regardless of its dependencies.
+        :param pulumi.Input[bool] force_update: Update credential regardless of its dependents.
+        :param pulumi.Input[str] isolation_mode: Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
+        :param pulumi.Input[str] name: Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the credential owner.
+        :param pulumi.Input[str] purpose: Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+        :param pulumi.Input[bool] read_only: Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+        :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the credential.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -392,6 +439,9 @@ class _CredentialState:
     @property
     @pulumi.getter(name="credentialId")
     def credential_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID of the credential.
+        """
         return pulumi.get(self, "credential_id")
 
     @credential_id.setter
@@ -410,6 +460,9 @@ class _CredentialState:
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete credential regardless of its dependencies.
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -419,6 +472,9 @@ class _CredentialState:
     @property
     @pulumi.getter(name="forceUpdate")
     def force_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Update credential regardless of its dependents.
+        """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
@@ -437,6 +493,11 @@ class _CredentialState:
     @property
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
         return pulumi.get(self, "isolation_mode")
 
     @isolation_mode.setter
@@ -455,6 +516,9 @@ class _CredentialState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -464,6 +528,9 @@ class _CredentialState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username/groupname/sp application_id of the credential owner.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -473,6 +540,9 @@ class _CredentialState:
     @property
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+        """
         return pulumi.get(self, "purpose")
 
     @purpose.setter
@@ -482,6 +552,9 @@ class _CredentialState:
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+        """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
@@ -491,6 +564,9 @@ class _CredentialState:
     @property
     @pulumi.getter(name="skipValidation")
     def skip_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Suppress validation errors if any & force save the credential.
+        """
         return pulumi.get(self, "skip_validation")
 
     @skip_validation.setter
@@ -552,9 +628,102 @@ class Credential(pulumi.CustomResource):
                  used_for_managed_storage: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a Credential resource with the given unique name, props, and options.
+        > This resource can only be used with a workspace-level provider.
+
+        > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+
+        A credential represents an authentication and authorization mechanism for accessing services on your cloud tenant. Each credential is subject to Unity Catalog access-control policies that control which users and groups can access the credential.
+
+        The type of credential to be created is determined by the `purpose` field, which should be either `SERVICE` or `STORAGE`.
+        The caller must be a metastore admin or have the metastore privilege `CREATE_STORAGE_CREDENTIAL` for storage credentials, or `CREATE_SERVICE_CREDENTIAL` for service credentials. The user who creates the credential can delegate ownership to another user or group to manage permissions on it
+
+        On AWS, the IAM role for a credential requires a trust policy. See [documentation](https://docs.databricks.com/en/connect/unity-catalog/cloud-services/service-credentials.html#step-1-create-an-iam-role) for more details. The data source get_aws_unity_catalog_assume_role_policy can be used to create the necessary AWS Unity Catalog assume role policy.
+
+        ## Example Usage
+
+        For AWS
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external = databricks.Credential("external",
+            name=external_data_access["name"],
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            },
+            purpose="SERVICE",
+            comment="Managed by TF")
+        external_creds = databricks.Grants("external_creds",
+            credential=external.id,
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["ACCESS"],
+            }])
+        ```
+
+        For Azure
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external_mi = databricks.Credential("external_mi",
+            name="mi_credential",
+            azure_managed_identity={
+                "access_connector_id": example["id"],
+            },
+            purpose="SERVICE",
+            comment="Managed identity credential managed by TF")
+        external_creds = databricks.Grants("external_creds",
+            credential=external_mi.id,
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["ACCESS"],
+            }])
+        ```
+
+        For GCP (only applicable when purpose is `STORAGE`)
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external_gcp_sa = databricks.Credential("external_gcp_sa",
+            name="gcp_sa_credential",
+            databricks_gcp_service_account={},
+            purpose="STORAGE",
+            comment="GCP SA credential managed by TF")
+        external_creds = databricks.Grants("external_creds",
+            credential=external_gcp_sa.id,
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["ACCESS"],
+            }])
+        ```
+
+        ## Import
+
+        This resource can be imported by name:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/credential:Credential this <name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] force_destroy: Delete credential regardless of its dependencies.
+        :param pulumi.Input[bool] force_update: Update credential regardless of its dependents.
+        :param pulumi.Input[str] isolation_mode: Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
+        :param pulumi.Input[str] name: Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the credential owner.
+        :param pulumi.Input[str] purpose: Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+        :param pulumi.Input[bool] read_only: Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+        :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the credential.
         """
         ...
     @overload
@@ -563,7 +732,90 @@ class Credential(pulumi.CustomResource):
                  args: CredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Credential resource with the given unique name, props, and options.
+        > This resource can only be used with a workspace-level provider.
+
+        > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+
+        A credential represents an authentication and authorization mechanism for accessing services on your cloud tenant. Each credential is subject to Unity Catalog access-control policies that control which users and groups can access the credential.
+
+        The type of credential to be created is determined by the `purpose` field, which should be either `SERVICE` or `STORAGE`.
+        The caller must be a metastore admin or have the metastore privilege `CREATE_STORAGE_CREDENTIAL` for storage credentials, or `CREATE_SERVICE_CREDENTIAL` for service credentials. The user who creates the credential can delegate ownership to another user or group to manage permissions on it
+
+        On AWS, the IAM role for a credential requires a trust policy. See [documentation](https://docs.databricks.com/en/connect/unity-catalog/cloud-services/service-credentials.html#step-1-create-an-iam-role) for more details. The data source get_aws_unity_catalog_assume_role_policy can be used to create the necessary AWS Unity Catalog assume role policy.
+
+        ## Example Usage
+
+        For AWS
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external = databricks.Credential("external",
+            name=external_data_access["name"],
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            },
+            purpose="SERVICE",
+            comment="Managed by TF")
+        external_creds = databricks.Grants("external_creds",
+            credential=external.id,
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["ACCESS"],
+            }])
+        ```
+
+        For Azure
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external_mi = databricks.Credential("external_mi",
+            name="mi_credential",
+            azure_managed_identity={
+                "access_connector_id": example["id"],
+            },
+            purpose="SERVICE",
+            comment="Managed identity credential managed by TF")
+        external_creds = databricks.Grants("external_creds",
+            credential=external_mi.id,
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["ACCESS"],
+            }])
+        ```
+
+        For GCP (only applicable when purpose is `STORAGE`)
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external_gcp_sa = databricks.Credential("external_gcp_sa",
+            name="gcp_sa_credential",
+            databricks_gcp_service_account={},
+            purpose="STORAGE",
+            comment="GCP SA credential managed by TF")
+        external_creds = databricks.Grants("external_creds",
+            credential=external_gcp_sa.id,
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": ["ACCESS"],
+            }])
+        ```
+
+        ## Import
+
+        This resource can be imported by name:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/credential:Credential this <name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param CredentialArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -669,6 +921,17 @@ class Credential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] credential_id: Unique ID of the credential.
+        :param pulumi.Input[bool] force_destroy: Delete credential regardless of its dependencies.
+        :param pulumi.Input[bool] force_update: Update credential regardless of its dependents.
+        :param pulumi.Input[str] isolation_mode: Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
+        :param pulumi.Input[str] name: Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the credential owner.
+        :param pulumi.Input[str] purpose: Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+        :param pulumi.Input[bool] read_only: Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+        :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the credential.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -730,6 +993,9 @@ class Credential(pulumi.CustomResource):
     @property
     @pulumi.getter(name="credentialId")
     def credential_id(self) -> pulumi.Output[str]:
+        """
+        Unique ID of the credential.
+        """
         return pulumi.get(self, "credential_id")
 
     @property
@@ -740,11 +1006,17 @@ class Credential(pulumi.CustomResource):
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Delete credential regardless of its dependencies.
+        """
         return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter(name="forceUpdate")
     def force_update(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Update credential regardless of its dependents.
+        """
         return pulumi.get(self, "force_update")
 
     @property
@@ -755,6 +1027,11 @@ class Credential(pulumi.CustomResource):
     @property
     @pulumi.getter(name="isolationMode")
     def isolation_mode(self) -> pulumi.Output[str]:
+        """
+        Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
         return pulumi.get(self, "isolation_mode")
 
     @property
@@ -765,26 +1042,41 @@ class Credential(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
+        """
+        Username/groupname/sp application_id of the credential owner.
+        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter
     def purpose(self) -> pulumi.Output[str]:
+        """
+        Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
+        """
         return pulumi.get(self, "purpose")
 
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
+        """
         return pulumi.get(self, "read_only")
 
     @property
     @pulumi.getter(name="skipValidation")
     def skip_validation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Suppress validation errors if any & force save the credential.
+        """
         return pulumi.get(self, "skip_validation")
 
     @property

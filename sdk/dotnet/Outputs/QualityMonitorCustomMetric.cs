@@ -13,10 +13,25 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class QualityMonitorCustomMetric
     {
+        /// <summary>
+        /// [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+        /// </summary>
         public readonly string Definition;
+        /// <summary>
+        /// Columns on the monitored table to apply the custom metrics to.
+        /// </summary>
         public readonly ImmutableArray<string> InputColumns;
+        /// <summary>
+        /// Name of the custom metric.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The output type of the custom metric.
+        /// </summary>
         public readonly string OutputDataType;
+        /// <summary>
+        /// The type of the custom metric.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

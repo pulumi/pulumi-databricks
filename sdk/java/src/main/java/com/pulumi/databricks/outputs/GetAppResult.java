@@ -11,15 +11,27 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppResult {
+    /**
+     * @return attribute
+     * 
+     */
     private GetAppApp app;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Name of the serving endpoint to grant permission on.
+     * 
+     */
     private String name;
 
     private GetAppResult() {}
+    /**
+     * @return attribute
+     * 
+     */
     public GetAppApp app() {
         return this.app;
     }
@@ -30,6 +42,10 @@ public final class GetAppResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Name of the serving endpoint to grant permission on.
+     * 
+     */
     public String name() {
         return this.name;
     }

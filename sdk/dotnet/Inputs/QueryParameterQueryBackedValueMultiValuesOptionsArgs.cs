@@ -12,12 +12,21 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class QueryParameterQueryBackedValueMultiValuesOptionsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Character that prefixes each selected parameter value.
+        /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
+        /// <summary>
+        /// Character that separates each selected parameter value. Defaults to a comma.
+        /// </summary>
         [Input("separator")]
         public Input<string>? Separator { get; set; }
 
+        /// <summary>
+        /// Character that suffixes each selected parameter value.
+        /// </summary>
         [Input("suffix")]
         public Input<string>? Suffix { get; set; }
 

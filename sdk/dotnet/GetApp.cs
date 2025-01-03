@@ -11,12 +11,117 @@ namespace Pulumi.Databricks
 {
     public static class GetApp
     {
+        /// <summary>
+        /// &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+        /// 
+        /// [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+        /// 
+        /// This data source allows you to fetch information about a Databricks App.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetApp.Invoke(new()
+        ///     {
+        ///         Name = "my-custom-app",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+        /// * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        /// * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+        /// * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+        /// </summary>
         public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("databricks:index/getApp:getApp", args ?? new GetAppArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+        /// 
+        /// [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+        /// 
+        /// This data source allows you to fetch information about a Databricks App.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetApp.Invoke(new()
+        ///     {
+        ///         Name = "my-custom-app",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+        /// * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        /// * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+        /// * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+        /// </summary>
         public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppResult>("databricks:index/getApp:getApp", args ?? new GetAppInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+        /// 
+        /// [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+        /// 
+        /// This data source allows you to fetch information about a Databricks App.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetApp.Invoke(new()
+        ///     {
+        ///         Name = "my-custom-app",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+        /// * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        /// * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+        /// * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+        /// </summary>
         public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppResult>("databricks:index/getApp:getApp", args ?? new GetAppInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +129,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetAppArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the app.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -35,6 +143,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetAppInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the app.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -48,11 +159,17 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAppResult
     {
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppAppResult App;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Name of the serving endpoint to grant permission on.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

@@ -22,16 +22,32 @@ public final class BudgetAlertConfigurationActionConfigurationArgs extends com.p
         return Optional.ofNullable(this.actionConfigurationId);
     }
 
+    /**
+     * The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+     * 
+     */
     @Import(name="actionType")
     private @Nullable Output<String> actionType;
 
+    /**
+     * @return The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+     * 
+     */
     public Optional<Output<String>> actionType() {
         return Optional.ofNullable(this.actionType);
     }
 
+    /**
+     * The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+     * 
+     */
     @Import(name="target")
     private @Nullable Output<String> target;
 
+    /**
+     * @return The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+     * 
+     */
     public Optional<Output<String>> target() {
         return Optional.ofNullable(this.target);
     }
@@ -71,20 +87,44 @@ public final class BudgetAlertConfigurationActionConfigurationArgs extends com.p
             return actionConfigurationId(Output.of(actionConfigurationId));
         }
 
+        /**
+         * @param actionType The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionType(@Nullable Output<String> actionType) {
             $.actionType = actionType;
             return this;
         }
 
+        /**
+         * @param actionType The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionType(String actionType) {
             return actionType(Output.of(actionType));
         }
 
+        /**
+         * @param target The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder target(@Nullable Output<String> target) {
             $.target = target;
             return this;
         }
 
+        /**
+         * @param target The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder target(String target) {
             return target(Output.of(target));
         }

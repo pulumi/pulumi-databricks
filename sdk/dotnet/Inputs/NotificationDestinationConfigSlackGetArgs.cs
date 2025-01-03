@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("url")]
         private Input<string>? _url;
+
+        /// <summary>
+        /// The Slack webhook URL.
+        /// </summary>
         public Input<string>? Url
         {
             get => _url;

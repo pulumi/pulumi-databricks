@@ -15,9 +15,17 @@ public final class GetShareObjectPartitionValue extends com.pulumi.resources.Inv
 
     public static final GetShareObjectPartitionValue Empty = new GetShareObjectPartitionValue();
 
+    /**
+     * The name of the share
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the share
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -70,6 +78,12 @@ public final class GetShareObjectPartitionValue extends com.pulumi.resources.Inv
             $ = new GetShareObjectPartitionValue(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The name of the share
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

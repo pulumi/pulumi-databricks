@@ -15,11 +15,89 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.MlflowExperiment;
+ * import com.pulumi.databricks.MlflowExperimentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var me = DatabricksFunctions.getCurrentUser();
+ * 
+ *         var this_ = new MlflowExperiment("this", MlflowExperimentArgs.builder()
+ *             .name(String.format("%s/Sample", me.applyValue(getCurrentUserResult -> getCurrentUserResult.home())))
+ *             .artifactLocation("dbfs:/tmp/my-experiment")
+ *             .description("My MLflow experiment description")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Access Control
+ * 
+ * * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * databricks.RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
+ * * End to end workspace management guide.
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+ * * databricks.MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ * * databricks.Notebook data to export a notebook from Databricks Workspace.
+ * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+ * 
+ * ## Import
+ * 
+ * The experiment resource can be imported using the id of the experiment
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this &lt;experiment-id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/mlflowExperiment:MlflowExperiment")
 public class MlflowExperiment extends com.pulumi.resources.CustomResource {
+    /**
+     * Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+     * 
+     */
     @Export(name="artifactLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> artifactLocation;
 
+    /**
+     * @return Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
+     * 
+     */
     public Output<Optional<String>> artifactLocation() {
         return Codegen.optional(this.artifactLocation);
     }
@@ -29,9 +107,17 @@ public class MlflowExperiment extends com.pulumi.resources.CustomResource {
     public Output<Integer> creationTime() {
         return this.creationTime;
     }
+    /**
+     * The description of the MLflow experiment.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return The description of the MLflow experiment.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
@@ -53,9 +139,17 @@ public class MlflowExperiment extends com.pulumi.resources.CustomResource {
     public Output<String> lifecycleStage() {
         return this.lifecycleStage;
     }
+    /**
+     * Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/&lt;some-username&gt;/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/&lt;some-username&gt;/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }

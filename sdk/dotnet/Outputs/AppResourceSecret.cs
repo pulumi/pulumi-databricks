@@ -13,8 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppResourceSecret
     {
+        /// <summary>
+        /// Key of the secret to grant permission on.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// Permission to grant on the secret scope. For secrets, only one permission is allowed. Permission must be one of: `READ`, `WRITE`, `MANAGE`.
+        /// </summary>
         public readonly string Permission;
+        /// <summary>
+        /// Scope of the secret to grant permission on.
+        /// </summary>
         public readonly string Scope;
 
         [OutputConstructor]

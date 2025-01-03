@@ -15,16 +15,32 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRules exten
 
     public static final GetMwsNetworkConnectivityConfigEgressConfigDefaultRules Empty = new GetMwsNetworkConnectivityConfigEgressConfigDefaultRules();
 
+    /**
+     * The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+     * 
+     */
     @Import(name="awsStableIpRule")
     private @Nullable GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule awsStableIpRule;
 
+    /**
+     * @return The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+     * 
+     */
     public Optional<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule> awsStableIpRule() {
         return Optional.ofNullable(this.awsStableIpRule);
     }
 
+    /**
+     * Array of Azure service endpoint rules.
+     * 
+     */
     @Import(name="azureServiceEndpointRule")
     private @Nullable GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule azureServiceEndpointRule;
 
+    /**
+     * @return Array of Azure service endpoint rules.
+     * 
+     */
     public Optional<GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule> azureServiceEndpointRule() {
         return Optional.ofNullable(this.azureServiceEndpointRule);
     }
@@ -54,11 +70,23 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigDefaultRules exten
             $ = new GetMwsNetworkConnectivityConfigEgressConfigDefaultRules(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param awsStableIpRule The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsStableIpRule(@Nullable GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule awsStableIpRule) {
             $.awsStableIpRule = awsStableIpRule;
             return this;
         }
 
+        /**
+         * @param azureServiceEndpointRule Array of Azure service endpoint rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder azureServiceEndpointRule(@Nullable GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule azureServiceEndpointRule) {
             $.azureServiceEndpointRule = azureServiceEndpointRule;
             return this;

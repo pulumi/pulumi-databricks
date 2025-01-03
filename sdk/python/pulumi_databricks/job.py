@@ -62,6 +62,31 @@ class JobArgs:
                  webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None):
         """
         The set of arguments for constructing a Job resource.
+        :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        :param pulumi.Input[str] budget_policy_id: The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        :param pulumi.Input['JobContinuousArgs'] continuous: Configuration block to configure pause status. See continuous Configuration Block.
+        :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+               
+               When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input['JobGitSourceArgs'] git_source: Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
+        :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+        :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
+        :param pulumi.Input['JobNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]] parameters: Specifices job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input['JobQueueArgs'] queue: The queue status for the job. See queue Configuration Block below.
+        :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        :param pulumi.Input['JobScheduleArgs'] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
+        :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+        :param pulumi.Input['JobTriggerArgs'] trigger: The conditions that triggers the job to start. See trigger Configuration Block below.
+        :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         if always_running is not None:
             warnings.warn("""always_running will be replaced by control_run_state in the next major release.""", DeprecationWarning)
@@ -182,6 +207,9 @@ class JobArgs:
     @pulumi.getter(name="alwaysRunning")
     @_utilities.deprecated("""always_running will be replaced by control_run_state in the next major release.""")
     def always_running(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        """
         return pulumi.get(self, "always_running")
 
     @always_running.setter
@@ -191,6 +219,9 @@ class JobArgs:
     @property
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        """
         return pulumi.get(self, "budget_policy_id")
 
     @budget_policy_id.setter
@@ -200,6 +231,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def continuous(self) -> Optional[pulumi.Input['JobContinuousArgs']]:
+        """
+        Configuration block to configure pause status. See continuous Configuration Block.
+        """
         return pulumi.get(self, "continuous")
 
     @continuous.setter
@@ -209,6 +243,11 @@ class JobArgs:
     @property
     @pulumi.getter(name="controlRunState")
     def control_run_state(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+
+        When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        """
         return pulumi.get(self, "control_run_state")
 
     @control_run_state.setter
@@ -237,6 +276,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -255,6 +297,9 @@ class JobArgs:
     @property
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional[pulumi.Input['JobEmailNotificationsArgs']]:
+        """
+        (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        """
         return pulumi.get(self, "email_notifications")
 
     @email_notifications.setter
@@ -291,6 +336,9 @@ class JobArgs:
     @property
     @pulumi.getter(name="gitSource")
     def git_source(self) -> Optional[pulumi.Input['JobGitSourceArgs']]:
+        """
+        Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        """
         return pulumi.get(self, "git_source")
 
     @git_source.setter
@@ -300,6 +348,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def health(self) -> Optional[pulumi.Input['JobHealthArgs']]:
+        """
+        An optional block that specifies the health conditions for the job documented below.
+        """
         return pulumi.get(self, "health")
 
     @health.setter
@@ -309,6 +360,9 @@ class JobArgs:
     @property
     @pulumi.getter(name="jobClusters")
     def job_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]]]:
+        """
+        A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        """
         return pulumi.get(self, "job_clusters")
 
     @job_clusters.setter
@@ -318,6 +372,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]]]:
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        """
         return pulumi.get(self, "libraries")
 
     @libraries.setter
@@ -327,6 +384,9 @@ class JobArgs:
     @property
     @pulumi.getter(name="maxConcurrentRuns")
     def max_concurrent_runs(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
+        """
         return pulumi.get(self, "max_concurrent_runs")
 
     @max_concurrent_runs.setter
@@ -347,6 +407,9 @@ class JobArgs:
     @pulumi.getter(name="minRetryIntervalMillis")
     @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def min_retry_interval_millis(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+        """
         return pulumi.get(self, "min_retry_interval_millis")
 
     @min_retry_interval_millis.setter
@@ -356,6 +419,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional name for the job. The default value is Untitled.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -384,6 +450,9 @@ class JobArgs:
     @property
     @pulumi.getter(name="notificationSettings")
     def notification_settings(self) -> Optional[pulumi.Input['JobNotificationSettingsArgs']]:
+        """
+        An optional block controlling the notification settings on the job level documented below.
+        """
         return pulumi.get(self, "notification_settings")
 
     @notification_settings.setter
@@ -393,6 +462,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]]:
+        """
+        Specifices job parameter for the job. See parameter Configuration Block
+        """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
@@ -422,6 +494,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def queue(self) -> Optional[pulumi.Input['JobQueueArgs']]:
+        """
+        The queue status for the job. See queue Configuration Block below.
+        """
         return pulumi.get(self, "queue")
 
     @queue.setter
@@ -441,6 +516,9 @@ class JobArgs:
     @property
     @pulumi.getter(name="runAs")
     def run_as(self) -> Optional[pulumi.Input['JobRunAsArgs']]:
+        """
+        The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        """
         return pulumi.get(self, "run_as")
 
     @run_as.setter
@@ -460,6 +538,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['JobScheduleArgs']]:
+        """
+        An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+        """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
@@ -499,6 +580,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        An optional map of the tags associated with the job. See tags Configuration Map
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -508,6 +592,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]]:
+        """
+        A list of task specification that the job will execute. See task Configuration Block below.
+        """
         return pulumi.get(self, "tasks")
 
     @tasks.setter
@@ -517,6 +604,9 @@ class JobArgs:
     @property
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+        """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
@@ -526,6 +616,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def trigger(self) -> Optional[pulumi.Input['JobTriggerArgs']]:
+        """
+        The conditions that triggers the job to start. See trigger Configuration Block below.
+        """
         return pulumi.get(self, "trigger")
 
     @trigger.setter
@@ -535,6 +628,9 @@ class JobArgs:
     @property
     @pulumi.getter(name="webhookNotifications")
     def webhook_notifications(self) -> Optional[pulumi.Input['JobWebhookNotificationsArgs']]:
+        """
+        (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        """
         return pulumi.get(self, "webhook_notifications")
 
     @webhook_notifications.setter
@@ -587,6 +683,32 @@ class _JobState:
                  webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None):
         """
         Input properties used for looking up and filtering Job resources.
+        :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        :param pulumi.Input[str] budget_policy_id: The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        :param pulumi.Input['JobContinuousArgs'] continuous: Configuration block to configure pause status. See continuous Configuration Block.
+        :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+               
+               When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input['JobGitSourceArgs'] git_source: Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
+        :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+        :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
+        :param pulumi.Input['JobNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]] parameters: Specifices job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input['JobQueueArgs'] queue: The queue status for the job. See queue Configuration Block below.
+        :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        :param pulumi.Input['JobScheduleArgs'] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
+        :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+        :param pulumi.Input['JobTriggerArgs'] trigger: The conditions that triggers the job to start. See trigger Configuration Block below.
+        :param pulumi.Input[str] url: URL of the job on the given workspace
+        :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         if always_running is not None:
             warnings.warn("""always_running will be replaced by control_run_state in the next major release.""", DeprecationWarning)
@@ -709,6 +831,9 @@ class _JobState:
     @pulumi.getter(name="alwaysRunning")
     @_utilities.deprecated("""always_running will be replaced by control_run_state in the next major release.""")
     def always_running(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        """
         return pulumi.get(self, "always_running")
 
     @always_running.setter
@@ -718,6 +843,9 @@ class _JobState:
     @property
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        """
         return pulumi.get(self, "budget_policy_id")
 
     @budget_policy_id.setter
@@ -727,6 +855,9 @@ class _JobState:
     @property
     @pulumi.getter
     def continuous(self) -> Optional[pulumi.Input['JobContinuousArgs']]:
+        """
+        Configuration block to configure pause status. See continuous Configuration Block.
+        """
         return pulumi.get(self, "continuous")
 
     @continuous.setter
@@ -736,6 +867,11 @@ class _JobState:
     @property
     @pulumi.getter(name="controlRunState")
     def control_run_state(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+
+        When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        """
         return pulumi.get(self, "control_run_state")
 
     @control_run_state.setter
@@ -764,6 +900,9 @@ class _JobState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -782,6 +921,9 @@ class _JobState:
     @property
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional[pulumi.Input['JobEmailNotificationsArgs']]:
+        """
+        (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        """
         return pulumi.get(self, "email_notifications")
 
     @email_notifications.setter
@@ -818,6 +960,9 @@ class _JobState:
     @property
     @pulumi.getter(name="gitSource")
     def git_source(self) -> Optional[pulumi.Input['JobGitSourceArgs']]:
+        """
+        Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        """
         return pulumi.get(self, "git_source")
 
     @git_source.setter
@@ -827,6 +972,9 @@ class _JobState:
     @property
     @pulumi.getter
     def health(self) -> Optional[pulumi.Input['JobHealthArgs']]:
+        """
+        An optional block that specifies the health conditions for the job documented below.
+        """
         return pulumi.get(self, "health")
 
     @health.setter
@@ -836,6 +984,9 @@ class _JobState:
     @property
     @pulumi.getter(name="jobClusters")
     def job_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]]]:
+        """
+        A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        """
         return pulumi.get(self, "job_clusters")
 
     @job_clusters.setter
@@ -845,6 +996,9 @@ class _JobState:
     @property
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]]]:
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        """
         return pulumi.get(self, "libraries")
 
     @libraries.setter
@@ -854,6 +1008,9 @@ class _JobState:
     @property
     @pulumi.getter(name="maxConcurrentRuns")
     def max_concurrent_runs(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
+        """
         return pulumi.get(self, "max_concurrent_runs")
 
     @max_concurrent_runs.setter
@@ -874,6 +1031,9 @@ class _JobState:
     @pulumi.getter(name="minRetryIntervalMillis")
     @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def min_retry_interval_millis(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+        """
         return pulumi.get(self, "min_retry_interval_millis")
 
     @min_retry_interval_millis.setter
@@ -883,6 +1043,9 @@ class _JobState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional name for the job. The default value is Untitled.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -911,6 +1074,9 @@ class _JobState:
     @property
     @pulumi.getter(name="notificationSettings")
     def notification_settings(self) -> Optional[pulumi.Input['JobNotificationSettingsArgs']]:
+        """
+        An optional block controlling the notification settings on the job level documented below.
+        """
         return pulumi.get(self, "notification_settings")
 
     @notification_settings.setter
@@ -920,6 +1086,9 @@ class _JobState:
     @property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]]:
+        """
+        Specifices job parameter for the job. See parameter Configuration Block
+        """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
@@ -949,6 +1118,9 @@ class _JobState:
     @property
     @pulumi.getter
     def queue(self) -> Optional[pulumi.Input['JobQueueArgs']]:
+        """
+        The queue status for the job. See queue Configuration Block below.
+        """
         return pulumi.get(self, "queue")
 
     @queue.setter
@@ -968,6 +1140,9 @@ class _JobState:
     @property
     @pulumi.getter(name="runAs")
     def run_as(self) -> Optional[pulumi.Input['JobRunAsArgs']]:
+        """
+        The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        """
         return pulumi.get(self, "run_as")
 
     @run_as.setter
@@ -987,6 +1162,9 @@ class _JobState:
     @property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['JobScheduleArgs']]:
+        """
+        An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+        """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
@@ -1026,6 +1204,9 @@ class _JobState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        An optional map of the tags associated with the job. See tags Configuration Map
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1035,6 +1216,9 @@ class _JobState:
     @property
     @pulumi.getter
     def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]]:
+        """
+        A list of task specification that the job will execute. See task Configuration Block below.
+        """
         return pulumi.get(self, "tasks")
 
     @tasks.setter
@@ -1044,6 +1228,9 @@ class _JobState:
     @property
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+        """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
@@ -1053,6 +1240,9 @@ class _JobState:
     @property
     @pulumi.getter
     def trigger(self) -> Optional[pulumi.Input['JobTriggerArgs']]:
+        """
+        The conditions that triggers the job to start. See trigger Configuration Block below.
+        """
         return pulumi.get(self, "trigger")
 
     @trigger.setter
@@ -1062,6 +1252,9 @@ class _JobState:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the job on the given workspace
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -1071,6 +1264,9 @@ class _JobState:
     @property
     @pulumi.getter(name="webhookNotifications")
     def webhook_notifications(self) -> Optional[pulumi.Input['JobWebhookNotificationsArgs']]:
+        """
+        (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        """
         return pulumi.get(self, "webhook_notifications")
 
     @webhook_notifications.setter
@@ -1124,9 +1320,111 @@ class Job(pulumi.CustomResource):
                  webhook_notifications: Optional[pulumi.Input[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']]] = None,
                  __props__=None):
         """
-        Create a Job resource with the given unique name, props, and options.
+        The `Job` resource allows you to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+
+        ## Example Usage
+
+        > In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `task_key` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `task_key` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+
+        It is possible to create [a Databricks job](https://docs.databricks.com/data-engineering/jobs/jobs-user-guide.html) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `task_key`, and additional arguments described below.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Job("this",
+            name="Job with multiple tasks",
+            description="This job executes multiple tasks on a shared job cluster, which will be provisioned as part of execution, and terminated once all tasks are finished.",
+            job_clusters=[{
+                "job_cluster_key": "j",
+                "new_cluster": {
+                    "num_workers": 2,
+                    "spark_version": latest["id"],
+                    "node_type_id": smallest["id"],
+                },
+            }],
+            tasks=[
+                {
+                    "task_key": "a",
+                    "new_cluster": {
+                        "num_workers": 1,
+                        "spark_version": latest["id"],
+                        "node_type_id": smallest["id"],
+                    },
+                    "notebook_task": {
+                        "notebook_path": this_databricks_notebook["path"],
+                    },
+                },
+                {
+                    "task_key": "b",
+                    "depends_ons": [{
+                        "task_key": "a",
+                    }],
+                    "existing_cluster_id": shared["id"],
+                    "spark_jar_task": {
+                        "main_class_name": "com.acme.data.Main",
+                    },
+                },
+                {
+                    "task_key": "c",
+                    "job_cluster_key": "j",
+                    "notebook_task": {
+                        "notebook_path": this_databricks_notebook["path"],
+                    },
+                },
+                {
+                    "task_key": "d",
+                    "pipeline_task": {
+                        "pipeline_id": this_databricks_pipeline["id"],
+                    },
+                },
+            ])
+        ```
+
+        ## Access Control
+
+        By default, all users can create and modify jobs unless an administrator [enables jobs access control](https://docs.databricks.com/administration-guide/access-control/jobs-acl.html). With jobs access control, individual permissions determine a user’s abilities.
+
+        * Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
+        * ClusterPolicy can control which kinds of clusters users can create for jobs.
+
+        ## Import
+
+        The resource job can be imported using the id of the job
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/job:Job this <job-id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        :param pulumi.Input[str] budget_policy_id: The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        :param pulumi.Input[Union['JobContinuousArgs', 'JobContinuousArgsDict']] continuous: Configuration block to configure pause status. See continuous Configuration Block.
+        :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+               
+               When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param pulumi.Input[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']] git_source: Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        :param pulumi.Input[Union['JobHealthArgs', 'JobHealthArgsDict']] health: An optional block that specifies the health conditions for the job documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict']]]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
+        :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+        :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
+        :param pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']] notification_settings: An optional block controlling the notification settings on the job level documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]] parameters: Specifices job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']] queue: The queue status for the job. See queue Configuration Block below.
+        :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
+        :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+        :param pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']] trigger: The conditions that triggers the job to start. See trigger Configuration Block below.
+        :param pulumi.Input[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         ...
     @overload
@@ -1135,7 +1433,84 @@ class Job(pulumi.CustomResource):
                  args: Optional[JobArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Job resource with the given unique name, props, and options.
+        The `Job` resource allows you to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+
+        ## Example Usage
+
+        > In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `task_key` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `task_key` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+
+        It is possible to create [a Databricks job](https://docs.databricks.com/data-engineering/jobs/jobs-user-guide.html) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `task_key`, and additional arguments described below.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Job("this",
+            name="Job with multiple tasks",
+            description="This job executes multiple tasks on a shared job cluster, which will be provisioned as part of execution, and terminated once all tasks are finished.",
+            job_clusters=[{
+                "job_cluster_key": "j",
+                "new_cluster": {
+                    "num_workers": 2,
+                    "spark_version": latest["id"],
+                    "node_type_id": smallest["id"],
+                },
+            }],
+            tasks=[
+                {
+                    "task_key": "a",
+                    "new_cluster": {
+                        "num_workers": 1,
+                        "spark_version": latest["id"],
+                        "node_type_id": smallest["id"],
+                    },
+                    "notebook_task": {
+                        "notebook_path": this_databricks_notebook["path"],
+                    },
+                },
+                {
+                    "task_key": "b",
+                    "depends_ons": [{
+                        "task_key": "a",
+                    }],
+                    "existing_cluster_id": shared["id"],
+                    "spark_jar_task": {
+                        "main_class_name": "com.acme.data.Main",
+                    },
+                },
+                {
+                    "task_key": "c",
+                    "job_cluster_key": "j",
+                    "notebook_task": {
+                        "notebook_path": this_databricks_notebook["path"],
+                    },
+                },
+                {
+                    "task_key": "d",
+                    "pipeline_task": {
+                        "pipeline_id": this_databricks_pipeline["id"],
+                    },
+                },
+            ])
+        ```
+
+        ## Access Control
+
+        By default, all users can create and modify jobs unless an administrator [enables jobs access control](https://docs.databricks.com/administration-guide/access-control/jobs-acl.html). With jobs access control, individual permissions determine a user’s abilities.
+
+        * Permissions can control which groups or individual users can *Can View*, *Can Manage Run*, and *Can Manage*.
+        * ClusterPolicy can control which kinds of clusters users can create for jobs.
+
+        ## Import
+
+        The resource job can be imported using the id of the job
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/job:Job this <job-id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1296,6 +1671,32 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] always_running: (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        :param pulumi.Input[str] budget_policy_id: The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        :param pulumi.Input[Union['JobContinuousArgs', 'JobContinuousArgsDict']] continuous: Configuration block to configure pause status. See continuous Configuration Block.
+        :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+               
+               When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param pulumi.Input[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']] git_source: Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        :param pulumi.Input[Union['JobHealthArgs', 'JobHealthArgsDict']] health: An optional block that specifies the health conditions for the job documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobJobClusterArgs', 'JobJobClusterArgsDict']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobLibraryArgs', 'JobLibraryArgsDict']]]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
+        :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+        :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
+        :param pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']] notification_settings: An optional block controlling the notification settings on the job level documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]] parameters: Specifices job parameter for the job. See parameter Configuration Block
+        :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']] queue: The queue status for the job. See queue Configuration Block below.
+        :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: An optional map of the tags associated with the job. See tags Configuration Map
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobTaskArgs', 'JobTaskArgsDict']]]] tasks: A list of task specification that the job will execute. See task Configuration Block below.
+        :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+        :param pulumi.Input[Union['JobTriggerArgs', 'JobTriggerArgsDict']] trigger: The conditions that triggers the job to start. See trigger Configuration Block below.
+        :param pulumi.Input[str] url: URL of the job on the given workspace
+        :param pulumi.Input[Union['JobWebhookNotificationsArgs', 'JobWebhookNotificationsArgsDict']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1347,21 +1748,35 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="alwaysRunning")
     @_utilities.deprecated("""always_running will be replaced by control_run_state in the next major release.""")
     def always_running(self) -> pulumi.Output[Optional[bool]]:
+        """
+        (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        """
         return pulumi.get(self, "always_running")
 
     @property
     @pulumi.getter(name="budgetPolicyId")
     def budget_policy_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the user-specified budget policy to use for this job. If not specified, a default budget policy may be applied when creating or modifying the job.
+        """
         return pulumi.get(self, "budget_policy_id")
 
     @property
     @pulumi.getter
     def continuous(self) -> pulumi.Output[Optional['outputs.JobContinuous']]:
+        """
+        Configuration block to configure pause status. See continuous Configuration Block.
+        """
         return pulumi.get(self, "continuous")
 
     @property
     @pulumi.getter(name="controlRunState")
     def control_run_state(self) -> pulumi.Output[Optional[bool]]:
+        """
+        (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+
+        When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        """
         return pulumi.get(self, "control_run_state")
 
     @property
@@ -1378,6 +1793,9 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -1388,6 +1806,9 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> pulumi.Output[Optional['outputs.JobEmailNotifications']]:
+        """
+        (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        """
         return pulumi.get(self, "email_notifications")
 
     @property
@@ -1408,26 +1829,41 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter(name="gitSource")
     def git_source(self) -> pulumi.Output[Optional['outputs.JobGitSource']]:
+        """
+        Specifices the a Git repository for task source code. See git_source Configuration Block below.
+        """
         return pulumi.get(self, "git_source")
 
     @property
     @pulumi.getter
     def health(self) -> pulumi.Output[Optional['outputs.JobHealth']]:
+        """
+        An optional block that specifies the health conditions for the job documented below.
+        """
         return pulumi.get(self, "health")
 
     @property
     @pulumi.getter(name="jobClusters")
     def job_clusters(self) -> pulumi.Output[Optional[Sequence['outputs.JobJobCluster']]]:
+        """
+        A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
+        """
         return pulumi.get(self, "job_clusters")
 
     @property
     @pulumi.getter
     def libraries(self) -> pulumi.Output[Optional[Sequence['outputs.JobLibrary']]]:
+        """
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        """
         return pulumi.get(self, "libraries")
 
     @property
     @pulumi.getter(name="maxConcurrentRuns")
     def max_concurrent_runs(self) -> pulumi.Output[Optional[int]]:
+        """
+        (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
+        """
         return pulumi.get(self, "max_concurrent_runs")
 
     @property
@@ -1440,11 +1876,17 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="minRetryIntervalMillis")
     @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def min_retry_interval_millis(self) -> pulumi.Output[Optional[int]]:
+        """
+        (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+        """
         return pulumi.get(self, "min_retry_interval_millis")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        An optional name for the job. The default value is Untitled.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -1461,11 +1903,17 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter(name="notificationSettings")
     def notification_settings(self) -> pulumi.Output[Optional['outputs.JobNotificationSettings']]:
+        """
+        An optional block controlling the notification settings on the job level documented below.
+        """
         return pulumi.get(self, "notification_settings")
 
     @property
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Sequence['outputs.JobParameter']]]:
+        """
+        Specifices job parameter for the job. See parameter Configuration Block
+        """
         return pulumi.get(self, "parameters")
 
     @property
@@ -1483,6 +1931,9 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter
     def queue(self) -> pulumi.Output[Optional['outputs.JobQueue']]:
+        """
+        The queue status for the job. See queue Configuration Block below.
+        """
         return pulumi.get(self, "queue")
 
     @property
@@ -1494,6 +1945,9 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter(name="runAs")
     def run_as(self) -> pulumi.Output['outputs.JobRunAs']:
+        """
+        The user or the service prinicipal the job runs as. See run_as Configuration Block below.
+        """
         return pulumi.get(self, "run_as")
 
     @property
@@ -1505,6 +1959,9 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter
     def schedule(self) -> pulumi.Output[Optional['outputs.JobSchedule']]:
+        """
+        An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
+        """
         return pulumi.get(self, "schedule")
 
     @property
@@ -1528,30 +1985,48 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        An optional map of the tags associated with the job. See tags Configuration Map
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def tasks(self) -> pulumi.Output[Optional[Sequence['outputs.JobTask']]]:
+        """
+        A list of task specification that the job will execute. See task Configuration Block below.
+        """
         return pulumi.get(self, "tasks")
 
     @property
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> pulumi.Output[Optional[int]]:
+        """
+        (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+        """
         return pulumi.get(self, "timeout_seconds")
 
     @property
     @pulumi.getter
     def trigger(self) -> pulumi.Output[Optional['outputs.JobTrigger']]:
+        """
+        The conditions that triggers the job to start. See trigger Configuration Block below.
+        """
         return pulumi.get(self, "trigger")
 
     @property
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
+        """
+        URL of the job on the given workspace
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter(name="webhookNotifications")
     def webhook_notifications(self) -> pulumi.Output[Optional['outputs.JobWebhookNotifications']]:
+        """
+        (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        """
         return pulumi.get(self, "webhook_notifications")
 

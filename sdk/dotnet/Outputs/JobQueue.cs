@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobQueue
     {
+        /// <summary>
+        /// If true, enable queueing for the job.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

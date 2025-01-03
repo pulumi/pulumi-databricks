@@ -30,6 +30,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("rateLimits")]
         private List<Inputs.GetServingEndpointsEndpointAiGatewayRateLimitArgs>? _rateLimits;
+
+        /// <summary>
+        /// A list of rate limit blocks to be applied to the serving endpoint.
+        /// </summary>
         public List<Inputs.GetServingEndpointsEndpointAiGatewayRateLimitArgs> RateLimits
         {
             get => _rateLimits ?? (_rateLimits = new List<Inputs.GetServingEndpointsEndpointAiGatewayRateLimitArgs>());

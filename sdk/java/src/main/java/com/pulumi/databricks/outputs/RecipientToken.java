@@ -12,33 +12,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RecipientToken {
+    /**
+     * @return Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+     * 
+     */
     private @Nullable String activationUrl;
+    /**
+     * @return Time at which this recipient was created, in epoch milliseconds.
+     * 
+     */
     private @Nullable Integer createdAt;
+    /**
+     * @return Username of recipient creator.
+     * 
+     */
     private @Nullable String createdBy;
+    /**
+     * @return Expiration timestamp of the token in epoch milliseconds.
+     * 
+     */
     private @Nullable Integer expirationTime;
+    /**
+     * @return Unique ID of the recipient token.
+     * 
+     */
     private @Nullable String id;
+    /**
+     * @return Time at which this recipient was updated, in epoch milliseconds.
+     * 
+     */
     private @Nullable Integer updatedAt;
+    /**
+     * @return Username of recipient Token updater.
+     * 
+     */
     private @Nullable String updatedBy;
 
     private RecipientToken() {}
+    /**
+     * @return Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+     * 
+     */
     public Optional<String> activationUrl() {
         return Optional.ofNullable(this.activationUrl);
     }
+    /**
+     * @return Time at which this recipient was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
+    /**
+     * @return Username of recipient creator.
+     * 
+     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
+    /**
+     * @return Expiration timestamp of the token in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> expirationTime() {
         return Optional.ofNullable(this.expirationTime);
     }
+    /**
+     * @return Unique ID of the recipient token.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Time at which this recipient was updated, in epoch milliseconds.
+     * 
+     */
     public Optional<Integer> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
+    /**
+     * @return Username of recipient Token updater.
+     * 
+     */
     public Optional<String> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }

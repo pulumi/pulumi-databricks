@@ -23,6 +23,8 @@ class GroupInstanceProfileArgs:
                  instance_profile_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a GroupInstanceProfile resource.
+        :param pulumi.Input[str] group_id: This is the id of the group resource.
+        :param pulumi.Input[str] instance_profile_id: This is the id of the instance profile resource.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "instance_profile_id", instance_profile_id)
@@ -30,6 +32,9 @@ class GroupInstanceProfileArgs:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Input[str]:
+        """
+        This is the id of the group resource.
+        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -39,6 +44,9 @@ class GroupInstanceProfileArgs:
     @property
     @pulumi.getter(name="instanceProfileId")
     def instance_profile_id(self) -> pulumi.Input[str]:
+        """
+        This is the id of the instance profile resource.
+        """
         return pulumi.get(self, "instance_profile_id")
 
     @instance_profile_id.setter
@@ -53,6 +61,8 @@ class _GroupInstanceProfileState:
                  instance_profile_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupInstanceProfile resources.
+        :param pulumi.Input[str] group_id: This is the id of the group resource.
+        :param pulumi.Input[str] instance_profile_id: This is the id of the instance profile resource.
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -62,6 +72,9 @@ class _GroupInstanceProfileState:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the id of the group resource.
+        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -71,6 +84,9 @@ class _GroupInstanceProfileState:
     @property
     @pulumi.getter(name="instanceProfileId")
     def instance_profile_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the id of the instance profile resource.
+        """
         return pulumi.get(self, "instance_profile_id")
 
     @instance_profile_id.setter
@@ -87,9 +103,45 @@ class GroupInstanceProfile(pulumi.CustomResource):
                  instance_profile_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a GroupInstanceProfile resource with the given unique name, props, and options.
+        > **Deprecated** Please migrate to databricks_group_role.
+
+        This resource allows you to attach InstanceProfile (AWS) to databricks_group.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
+        my_group = databricks.Group("my_group", display_name="my_group_name")
+        my_group_instance_profile = databricks.GroupInstanceProfile("my_group_instance_profile",
+            group_id=my_group.id,
+            instance_profile_id=instance_profile.id)
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * End to end workspace management guide.
+        * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+        * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
+        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        * Group data to retrieve information about Group members, entitlements and instance profiles.
+        * GroupMember to attach users and groups as group members.
+        * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+        * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
+
+        ## Import
+
+        !> Importing this resource is not currently supported.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] group_id: This is the id of the group resource.
+        :param pulumi.Input[str] instance_profile_id: This is the id of the instance profile resource.
         """
         ...
     @overload
@@ -98,7 +150,41 @@ class GroupInstanceProfile(pulumi.CustomResource):
                  args: GroupInstanceProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a GroupInstanceProfile resource with the given unique name, props, and options.
+        > **Deprecated** Please migrate to databricks_group_role.
+
+        This resource allows you to attach InstanceProfile (AWS) to databricks_group.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
+        my_group = databricks.Group("my_group", display_name="my_group_name")
+        my_group_instance_profile = databricks.GroupInstanceProfile("my_group_instance_profile",
+            group_id=my_group.id,
+            instance_profile_id=instance_profile.id)
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * End to end workspace management guide.
+        * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+        * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
+        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        * Group data to retrieve information about Group members, entitlements and instance profiles.
+        * GroupMember to attach users and groups as group members.
+        * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+        * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+        * UserInstanceProfile to attach InstanceProfile (AWS) to databricks_user.
+
+        ## Import
+
+        !> Importing this resource is not currently supported.
+
         :param str resource_name: The name of the resource.
         :param GroupInstanceProfileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -150,6 +236,8 @@ class GroupInstanceProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] group_id: This is the id of the group resource.
+        :param pulumi.Input[str] instance_profile_id: This is the id of the instance profile resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -162,10 +250,16 @@ class GroupInstanceProfile(pulumi.CustomResource):
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[str]:
+        """
+        This is the id of the group resource.
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="instanceProfileId")
     def instance_profile_id(self) -> pulumi.Output[str]:
+        """
+        This is the id of the instance profile resource.
+        """
         return pulumi.get(self, "instance_profile_id")
 

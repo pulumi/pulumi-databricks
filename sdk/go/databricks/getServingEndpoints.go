@@ -11,6 +11,65 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This resource can only be used with a workspace-level provider!
+//
+// This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetServingEndpoints(ctx, &databricks.GetServingEndpointsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var mlServingUsage []*databricks.Permissions
+//			for index := 0; index < allDatabricksServingEndpoints.Endpoints; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := databricks.NewPermissions(ctx, fmt.Sprintf("ml_serving_usage-%v", key0), &databricks.PermissionsArgs{
+//					ServingEndpointId: pulumi.Any(val0),
+//					AccessControls: databricks.PermissionsAccessControlArray{
+//						&databricks.PermissionsAccessControlArgs{
+//							GroupName:       pulumi.String("users"),
+//							PermissionLevel: pulumi.String("CAN_VIEW"),
+//						},
+//						&databricks.PermissionsAccessControlArgs{
+//							GroupName:       pulumi.Any(auto.DisplayName),
+//							PermissionLevel: pulumi.String("CAN_MANAGE"),
+//						},
+//						&databricks.PermissionsAccessControlArgs{
+//							GroupName:       pulumi.Any(eng.DisplayName),
+//							PermissionLevel: pulumi.String("CAN_QUERY"),
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				mlServingUsage = append(mlServingUsage, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
 func GetServingEndpoints(ctx *pulumi.Context, args *GetServingEndpointsArgs, opts ...pulumi.InvokeOption) (*GetServingEndpointsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServingEndpointsResult
@@ -23,11 +82,13 @@ func GetServingEndpoints(ctx *pulumi.Context, args *GetServingEndpointsArgs, opt
 
 // A collection of arguments for invoking getServingEndpoints.
 type GetServingEndpointsArgs struct {
+	// List of objects describing the serving endpoints. Each object consists of following attributes:
 	Endpoints []GetServingEndpointsEndpoint `pulumi:"endpoints"`
 }
 
 // A collection of values returned by getServingEndpoints.
 type GetServingEndpointsResult struct {
+	// List of objects describing the serving endpoints. Each object consists of following attributes:
 	Endpoints []GetServingEndpointsEndpoint `pulumi:"endpoints"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -44,6 +105,7 @@ func GetServingEndpointsOutput(ctx *pulumi.Context, args GetServingEndpointsOutp
 
 // A collection of arguments for invoking getServingEndpoints.
 type GetServingEndpointsOutputArgs struct {
+	// List of objects describing the serving endpoints. Each object consists of following attributes:
 	Endpoints GetServingEndpointsEndpointArrayInput `pulumi:"endpoints"`
 }
 
@@ -66,6 +128,7 @@ func (o GetServingEndpointsResultOutput) ToGetServingEndpointsResultOutputWithCo
 	return o
 }
 
+// List of objects describing the serving endpoints. Each object consists of following attributes:
 func (o GetServingEndpointsResultOutput) Endpoints() GetServingEndpointsEndpointArrayOutput {
 	return o.ApplyT(func(v GetServingEndpointsResult) []GetServingEndpointsEndpoint { return v.Endpoints }).(GetServingEndpointsEndpointArrayOutput)
 }

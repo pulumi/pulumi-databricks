@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResult
     {
+        /// <summary>
+        /// A function that is dependent on a SQL object:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionResult> Functions;
+        /// <summary>
+        /// A table that is dependent on a SQL object
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableResult> Tables;
 
         [OutputConstructor]

@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class RecipientPropertiesKvpairs
     {
+        /// <summary>
+        /// a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Properties;
 
         [OutputConstructor]

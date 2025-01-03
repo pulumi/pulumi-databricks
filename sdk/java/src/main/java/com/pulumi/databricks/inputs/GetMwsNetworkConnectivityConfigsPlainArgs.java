@@ -15,16 +15,32 @@ public final class GetMwsNetworkConnectivityConfigsPlainArgs extends com.pulumi.
 
     public static final GetMwsNetworkConnectivityConfigsPlainArgs Empty = new GetMwsNetworkConnectivityConfigsPlainArgs();
 
+    /**
+     * List of names of databricks_mws_network_connectivity_config
+     * 
+     */
     @Import(name="names")
     private @Nullable List<String> names;
 
+    /**
+     * @return List of names of databricks_mws_network_connectivity_config
+     * 
+     */
     public Optional<List<String>> names() {
         return Optional.ofNullable(this.names);
     }
 
+    /**
+     * Filter network connectivity configurations by region.
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return Filter network connectivity configurations by region.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -54,15 +70,33 @@ public final class GetMwsNetworkConnectivityConfigsPlainArgs extends com.pulumi.
             $ = new GetMwsNetworkConnectivityConfigsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param names List of names of databricks_mws_network_connectivity_config
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(@Nullable List<String> names) {
             $.names = names;
             return this;
         }
 
+        /**
+         * @param names List of names of databricks_mws_network_connectivity_config
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(String... names) {
             return names(List.of(names));
         }
 
+        /**
+         * @param region Filter network connectivity configurations by region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;

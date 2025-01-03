@@ -11,6 +11,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This data source can only be used with a workspace-level provider!
+//
+// Retrieves a list of ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
+//
+// ## Example Usage
+//
+// # List all external locations in the metastore
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.GetExternalLocations(ctx, &databricks.GetExternalLocationsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allExternalLocations", all.Names)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * ExternalLocation to get information about a single external location
+// * ExternalLocation to manage external locations within Unity Catalog.
 func GetExternalLocations(ctx *pulumi.Context, args *GetExternalLocationsArgs, opts ...pulumi.InvokeOption) (*GetExternalLocationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetExternalLocationsResult
@@ -23,13 +60,15 @@ func GetExternalLocations(ctx *pulumi.Context, args *GetExternalLocationsArgs, o
 
 // A collection of arguments for invoking getExternalLocations.
 type GetExternalLocationsArgs struct {
+	// List of names of ExternalLocation in the metastore
 	Names []string `pulumi:"names"`
 }
 
 // A collection of values returned by getExternalLocations.
 type GetExternalLocationsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id    string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// List of names of ExternalLocation in the metastore
 	Names []string `pulumi:"names"`
 }
 
@@ -44,6 +83,7 @@ func GetExternalLocationsOutput(ctx *pulumi.Context, args GetExternalLocationsOu
 
 // A collection of arguments for invoking getExternalLocations.
 type GetExternalLocationsOutputArgs struct {
+	// List of names of ExternalLocation in the metastore
 	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
@@ -71,6 +111,7 @@ func (o GetExternalLocationsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalLocationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of names of ExternalLocation in the metastore
 func (o GetExternalLocationsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetExternalLocationsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

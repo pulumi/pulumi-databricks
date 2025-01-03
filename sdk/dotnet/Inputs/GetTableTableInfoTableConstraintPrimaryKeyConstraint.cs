@@ -20,6 +20,9 @@ namespace Pulumi.Databricks.Inputs
             set => _childColumns = value;
         }
 
+        /// <summary>
+        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 

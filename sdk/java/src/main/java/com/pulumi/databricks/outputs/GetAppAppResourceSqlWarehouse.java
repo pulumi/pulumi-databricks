@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppAppResourceSqlWarehouse {
+    /**
+     * @return Id of the job to grant permission on.
+     * 
+     */
     private String id;
+    /**
+     * @return Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * 
+     */
     private String permission;
 
     private GetAppAppResourceSqlWarehouse() {}
+    /**
+     * @return Id of the job to grant permission on.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     * 
+     */
     public String permission() {
         return this.permission;
     }

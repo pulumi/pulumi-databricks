@@ -11,6 +11,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+//
+// [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+//
+// This data source allows you to fetch information about a Databricks App.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.LookupApp(ctx, &databricks.LookupAppArgs{
+//				Name: "my-custom-app",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+// * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+// * ModelServing to serve this model on a Databricks serving endpoint.
+// * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+// * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
 func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOption) (*LookupAppResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppResult
@@ -23,14 +64,17 @@ func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getApp.
 type LookupAppArgs struct {
+	// The name of the app.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getApp.
 type LookupAppResult struct {
+	// attribute
 	App GetAppApp `pulumi:"app"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Name of the serving endpoint to grant permission on.
 	Name string `pulumi:"name"`
 }
 
@@ -45,6 +89,7 @@ func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getApp.
 type LookupAppOutputArgs struct {
+	// The name of the app.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -67,6 +112,7 @@ func (o LookupAppResultOutput) ToLookupAppResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// attribute
 func (o LookupAppResultOutput) App() GetAppAppOutput {
 	return o.ApplyT(func(v LookupAppResult) GetAppApp { return v.App }).(GetAppAppOutput)
 }
@@ -76,6 +122,7 @@ func (o LookupAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Name of the serving endpoint to grant permission on.
 func (o LookupAppResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -6,6 +6,88 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const dltDemo = new databricks.Notebook("dlt_demo", {});
+ * const dltDemoRepo = new databricks.Repo("dlt_demo", {});
+ * const _this = new databricks.Pipeline("this", {
+ *     name: "Pipeline Name",
+ *     storage: "/test/first-pipeline",
+ *     configuration: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ *     clusters: [
+ *         {
+ *             label: "default",
+ *             numWorkers: 2,
+ *             customTags: {
+ *                 cluster_type: "default",
+ *             },
+ *         },
+ *         {
+ *             label: "maintenance",
+ *             numWorkers: 1,
+ *             customTags: {
+ *                 cluster_type: "maintenance",
+ *             },
+ *         },
+ *     ],
+ *     libraries: [
+ *         {
+ *             notebook: {
+ *                 path: dltDemo.id,
+ *             },
+ *         },
+ *         {
+ *             file: {
+ *                 path: pulumi.interpolate`${dltDemoRepo.path}/pipeline.sql`,
+ *             },
+ *         },
+ *     ],
+ *     continuous: false,
+ *     notifications: [{
+ *         emailRecipients: [
+ *             "user@domain.com",
+ *             "user1@domain.com",
+ *         ],
+ *         alerts: [
+ *             "on-update-failure",
+ *             "on-update-fatal-failure",
+ *             "on-update-success",
+ *             "on-flow-failure",
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.getPipelines to retrieve [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipeline data.
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ *
+ * ## Import
+ *
+ * The resource job can be imported using the id of the pipeline
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
+ * ```
+ */
 export class Pipeline extends pulumi.CustomResource {
     /**
      * Get an existing Pipeline resource's state with the given name, ID, and optional extra
@@ -34,38 +116,98 @@ export class Pipeline extends pulumi.CustomResource {
         return obj['__pulumiType'] === Pipeline.__pulumiType;
     }
 
+    /**
+     * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+     */
     public readonly allowDuplicateNames!: pulumi.Output<boolean | undefined>;
+    /**
+     * optional string specifying ID of the budget policy for this DLT pipeline.
+     */
     public readonly budgetPolicyId!: pulumi.Output<string | undefined>;
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     */
     public readonly catalog!: pulumi.Output<string | undefined>;
     public readonly cause!: pulumi.Output<string>;
+    /**
+     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+     */
     public readonly channel!: pulumi.Output<string | undefined>;
     public readonly clusterId!: pulumi.Output<string>;
+    /**
+     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     */
     public readonly clusters!: pulumi.Output<outputs.PipelineCluster[] | undefined>;
+    /**
+     * An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+     */
     public readonly configuration!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * A flag indicating whether to run the pipeline continuously. The default value is `false`.
+     */
     public readonly continuous!: pulumi.Output<boolean | undefined>;
     public readonly creatorUserName!: pulumi.Output<string>;
+    /**
+     * Deployment type of this pipeline. Supports following attributes:
+     */
     public readonly deployment!: pulumi.Output<outputs.PipelineDeployment | undefined>;
+    /**
+     * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+     */
     public readonly development!: pulumi.Output<boolean | undefined>;
+    /**
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+     */
     public readonly edition!: pulumi.Output<string | undefined>;
     public readonly expectedLastModified!: pulumi.Output<number | undefined>;
+    /**
+     * Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+     */
     public readonly filters!: pulumi.Output<outputs.PipelineFilters | undefined>;
+    /**
+     * The definition of a gateway pipeline to support CDC. Consists of following attributes:
+     */
     public readonly gatewayDefinition!: pulumi.Output<outputs.PipelineGatewayDefinition | undefined>;
     public readonly health!: pulumi.Output<string>;
     public readonly ingestionDefinition!: pulumi.Output<outputs.PipelineIngestionDefinition | undefined>;
     public readonly lastModified!: pulumi.Output<number>;
     public readonly latestUpdates!: pulumi.Output<outputs.PipelineLatestUpdate[]>;
+    /**
+     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+     */
     public readonly libraries!: pulumi.Output<outputs.PipelineLibrary[] | undefined>;
+    /**
+     * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+     */
     public readonly name!: pulumi.Output<string>;
     public readonly notifications!: pulumi.Output<outputs.PipelineNotification[] | undefined>;
+    /**
+     * A flag indicating whether to use Photon engine. The default value is `false`.
+     */
     public readonly photon!: pulumi.Output<boolean | undefined>;
     public readonly restartWindow!: pulumi.Output<outputs.PipelineRestartWindow | undefined>;
     public readonly runAsUserName!: pulumi.Output<string>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
     public readonly schema!: pulumi.Output<string | undefined>;
+    /**
+     * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     */
     public readonly serverless!: pulumi.Output<boolean | undefined>;
     public readonly state!: pulumi.Output<string>;
+    /**
+     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+     */
     public readonly storage!: pulumi.Output<string | undefined>;
+    /**
+     * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+     */
     public readonly target!: pulumi.Output<string | undefined>;
     public readonly trigger!: pulumi.Output<outputs.PipelineTrigger | undefined>;
+    /**
+     * URL of the DLT pipeline on the given workspace.
+     */
     public readonly url!: pulumi.Output<string>;
 
     /**
@@ -159,38 +301,98 @@ export class Pipeline extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Pipeline resources.
  */
 export interface PipelineState {
+    /**
+     * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+     */
     allowDuplicateNames?: pulumi.Input<boolean>;
+    /**
+     * optional string specifying ID of the budget policy for this DLT pipeline.
+     */
     budgetPolicyId?: pulumi.Input<string>;
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     */
     catalog?: pulumi.Input<string>;
     cause?: pulumi.Input<string>;
+    /**
+     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+     */
     channel?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
+    /**
+     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     */
     clusters?: pulumi.Input<pulumi.Input<inputs.PipelineCluster>[]>;
+    /**
+     * An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+     */
     configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A flag indicating whether to run the pipeline continuously. The default value is `false`.
+     */
     continuous?: pulumi.Input<boolean>;
     creatorUserName?: pulumi.Input<string>;
+    /**
+     * Deployment type of this pipeline. Supports following attributes:
+     */
     deployment?: pulumi.Input<inputs.PipelineDeployment>;
+    /**
+     * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+     */
     development?: pulumi.Input<boolean>;
+    /**
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+     */
     edition?: pulumi.Input<string>;
     expectedLastModified?: pulumi.Input<number>;
+    /**
+     * Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+     */
     filters?: pulumi.Input<inputs.PipelineFilters>;
+    /**
+     * The definition of a gateway pipeline to support CDC. Consists of following attributes:
+     */
     gatewayDefinition?: pulumi.Input<inputs.PipelineGatewayDefinition>;
     health?: pulumi.Input<string>;
     ingestionDefinition?: pulumi.Input<inputs.PipelineIngestionDefinition>;
     lastModified?: pulumi.Input<number>;
     latestUpdates?: pulumi.Input<pulumi.Input<inputs.PipelineLatestUpdate>[]>;
+    /**
+     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+     */
     libraries?: pulumi.Input<pulumi.Input<inputs.PipelineLibrary>[]>;
+    /**
+     * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+     */
     name?: pulumi.Input<string>;
     notifications?: pulumi.Input<pulumi.Input<inputs.PipelineNotification>[]>;
+    /**
+     * A flag indicating whether to use Photon engine. The default value is `false`.
+     */
     photon?: pulumi.Input<boolean>;
     restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
     runAsUserName?: pulumi.Input<string>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
     schema?: pulumi.Input<string>;
+    /**
+     * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     */
     serverless?: pulumi.Input<boolean>;
     state?: pulumi.Input<string>;
+    /**
+     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+     */
     storage?: pulumi.Input<string>;
+    /**
+     * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+     */
     target?: pulumi.Input<string>;
     trigger?: pulumi.Input<inputs.PipelineTrigger>;
+    /**
+     * URL of the DLT pipeline on the given workspace.
+     */
     url?: pulumi.Input<string>;
 }
 
@@ -198,37 +400,97 @@ export interface PipelineState {
  * The set of arguments for constructing a Pipeline resource.
  */
 export interface PipelineArgs {
+    /**
+     * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+     */
     allowDuplicateNames?: pulumi.Input<boolean>;
+    /**
+     * optional string specifying ID of the budget policy for this DLT pipeline.
+     */
     budgetPolicyId?: pulumi.Input<string>;
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     */
     catalog?: pulumi.Input<string>;
     cause?: pulumi.Input<string>;
+    /**
+     * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
+     */
     channel?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
+    /**
+     * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+     */
     clusters?: pulumi.Input<pulumi.Input<inputs.PipelineCluster>[]>;
+    /**
+     * An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
+     */
     configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A flag indicating whether to run the pipeline continuously. The default value is `false`.
+     */
     continuous?: pulumi.Input<boolean>;
     creatorUserName?: pulumi.Input<string>;
+    /**
+     * Deployment type of this pipeline. Supports following attributes:
+     */
     deployment?: pulumi.Input<inputs.PipelineDeployment>;
+    /**
+     * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+     */
     development?: pulumi.Input<boolean>;
+    /**
+     * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+     */
     edition?: pulumi.Input<string>;
     expectedLastModified?: pulumi.Input<number>;
+    /**
+     * Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
+     */
     filters?: pulumi.Input<inputs.PipelineFilters>;
+    /**
+     * The definition of a gateway pipeline to support CDC. Consists of following attributes:
+     */
     gatewayDefinition?: pulumi.Input<inputs.PipelineGatewayDefinition>;
     health?: pulumi.Input<string>;
     ingestionDefinition?: pulumi.Input<inputs.PipelineIngestionDefinition>;
     lastModified?: pulumi.Input<number>;
     latestUpdates?: pulumi.Input<pulumi.Input<inputs.PipelineLatestUpdate>[]>;
+    /**
+     * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` & `file` library types that should have the `path` attribute. *Right now only the `notebook` & `file` types are supported.*
+     */
     libraries?: pulumi.Input<pulumi.Input<inputs.PipelineLibrary>[]>;
+    /**
+     * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
+     */
     name?: pulumi.Input<string>;
     notifications?: pulumi.Input<pulumi.Input<inputs.PipelineNotification>[]>;
+    /**
+     * A flag indicating whether to use Photon engine. The default value is `false`.
+     */
     photon?: pulumi.Input<boolean>;
     restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
     runAsUserName?: pulumi.Input<string>;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
     schema?: pulumi.Input<string>;
+    /**
+     * An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+     */
     serverless?: pulumi.Input<boolean>;
     state?: pulumi.Input<string>;
+    /**
+     * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+     */
     storage?: pulumi.Input<string>;
+    /**
+     * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+     */
     target?: pulumi.Input<string>;
     trigger?: pulumi.Input<inputs.PipelineTrigger>;
+    /**
+     * URL of the DLT pipeline on the given workspace.
+     */
     url?: pulumi.Input<string>;
 }

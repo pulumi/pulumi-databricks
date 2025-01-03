@@ -18,44 +18,92 @@ public final class GetMlflowModelPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetMlflowModelPlainArgs Empty = new GetMlflowModelPlainArgs();
 
+    /**
+     * User-specified description for the object.
+     * 
+     */
     @Import(name="description")
     private @Nullable String description;
 
+    /**
+     * @return User-specified description for the object.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Array of model versions, each the latest version for its stage.
+     * 
+     */
     @Import(name="latestVersions")
     private @Nullable List<GetMlflowModelLatestVersion> latestVersions;
 
+    /**
+     * @return Array of model versions, each the latest version for its stage.
+     * 
+     */
     public Optional<List<GetMlflowModelLatestVersion>> latestVersions() {
         return Optional.ofNullable(this.latestVersions);
     }
 
+    /**
+     * Name of the registered model.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return Name of the registered model.
+     * 
+     */
     public String name() {
         return this.name;
     }
 
+    /**
+     * Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+     * 
+     */
     @Import(name="permissionLevel")
     private @Nullable String permissionLevel;
 
+    /**
+     * @return Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+     * 
+     */
     public Optional<String> permissionLevel() {
         return Optional.ofNullable(this.permissionLevel);
     }
 
+    /**
+     * Array of tags associated with the model.
+     * 
+     */
     @Import(name="tags")
     private @Nullable List<GetMlflowModelTag> tags;
 
+    /**
+     * @return Array of tags associated with the model.
+     * 
+     */
     public Optional<List<GetMlflowModelTag>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The username of the user that created the object.
+     * 
+     */
     @Import(name="userId")
     private @Nullable String userId;
 
+    /**
+     * @return The username of the user that created the object.
+     * 
+     */
     public Optional<String> userId() {
         return Optional.ofNullable(this.userId);
     }
@@ -89,39 +137,87 @@ public final class GetMlflowModelPlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetMlflowModelPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description User-specified description for the object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable String description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param latestVersions Array of model versions, each the latest version for its stage.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latestVersions(@Nullable List<GetMlflowModelLatestVersion> latestVersions) {
             $.latestVersions = latestVersions;
             return this;
         }
 
+        /**
+         * @param latestVersions Array of model versions, each the latest version for its stage.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latestVersions(GetMlflowModelLatestVersion... latestVersions) {
             return latestVersions(List.of(latestVersions));
         }
 
+        /**
+         * @param name Name of the registered model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param permissionLevel Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permissionLevel(@Nullable String permissionLevel) {
             $.permissionLevel = permissionLevel;
             return this;
         }
 
+        /**
+         * @param tags Array of tags associated with the model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable List<GetMlflowModelTag> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags Array of tags associated with the model.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(GetMlflowModelTag... tags) {
             return tags(List.of(tags));
         }
 
+        /**
+         * @param userId The username of the user that created the object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder userId(@Nullable String userId) {
             $.userId = userId;
             return this;

@@ -18,23 +18,47 @@ public final class DirectoryArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DirectoryArgs Empty = new DirectoryArgs();
 
+    /**
+     * Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+     * 
+     */
     @Import(name="deleteRecursive")
     private @Nullable Output<Boolean> deleteRecursive;
 
+    /**
+     * @return Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+     * 
+     */
     public Optional<Output<Boolean>> deleteRecursive() {
         return Optional.ofNullable(this.deleteRecursive);
     }
 
+    /**
+     * Unique identifier for a DIRECTORY
+     * 
+     */
     @Import(name="objectId")
     private @Nullable Output<Integer> objectId;
 
+    /**
+     * @return Unique identifier for a DIRECTORY
+     * 
+     */
     public Optional<Output<Integer>> objectId() {
         return Optional.ofNullable(this.objectId);
     }
 
+    /**
+     * The absolute path of the directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+     * 
+     */
     @Import(name="path", required=true)
     private Output<String> path;
 
+    /**
+     * @return The absolute path of the directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+     * 
+     */
     public Output<String> path() {
         return this.path;
     }
@@ -65,29 +89,65 @@ public final class DirectoryArgs extends com.pulumi.resources.ResourceArgs {
             $ = new DirectoryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deleteRecursive Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteRecursive(@Nullable Output<Boolean> deleteRecursive) {
             $.deleteRecursive = deleteRecursive;
             return this;
         }
 
+        /**
+         * @param deleteRecursive Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteRecursive(Boolean deleteRecursive) {
             return deleteRecursive(Output.of(deleteRecursive));
         }
 
+        /**
+         * @param objectId Unique identifier for a DIRECTORY
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectId(@Nullable Output<Integer> objectId) {
             $.objectId = objectId;
             return this;
         }
 
+        /**
+         * @param objectId Unique identifier for a DIRECTORY
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectId(Integer objectId) {
             return objectId(Output.of(objectId));
         }
 
+        /**
+         * @param path The absolute path of the directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path The absolute path of the directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
