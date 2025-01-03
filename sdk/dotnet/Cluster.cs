@@ -158,6 +158,12 @@ namespace Pulumi.Databricks
         [Output("isPinned")]
         public Output<bool?> IsPinned { get; private set; } = null!;
 
+        [Output("isSingleNode")]
+        public Output<bool?> IsSingleNode { get; private set; } = null!;
+
+        [Output("kind")]
+        public Output<string?> Kind { get; private set; } = null!;
+
         [Output("libraries")]
         public Output<ImmutableArray<Outputs.ClusterLibrary>> Libraries { get; private set; } = null!;
 
@@ -273,6 +279,9 @@ namespace Pulumi.Databricks
 
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
+
+        [Output("useMlRuntime")]
+        public Output<bool?> UseMlRuntime { get; private set; } = null!;
 
         [Output("workloadType")]
         public Output<Outputs.ClusterWorkloadType?> WorkloadType { get; private set; } = null!;
@@ -465,6 +474,12 @@ namespace Pulumi.Databricks
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }
 
+        [Input("isSingleNode")]
+        public Input<bool>? IsSingleNode { get; set; }
+
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
+
         [Input("libraries")]
         private InputList<Inputs.ClusterLibraryArgs>? _libraries;
         public InputList<Inputs.ClusterLibraryArgs> Libraries
@@ -594,6 +609,9 @@ namespace Pulumi.Databricks
             get => _sshPublicKeys ?? (_sshPublicKeys = new InputList<string>());
             set => _sshPublicKeys = value;
         }
+
+        [Input("useMlRuntime")]
+        public Input<bool>? UseMlRuntime { get; set; }
 
         [Input("workloadType")]
         public Input<Inputs.ClusterWorkloadTypeArgs>? WorkloadType { get; set; }
@@ -763,6 +781,12 @@ namespace Pulumi.Databricks
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }
 
+        [Input("isSingleNode")]
+        public Input<bool>? IsSingleNode { get; set; }
+
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
+
         [Input("libraries")]
         private InputList<Inputs.ClusterLibraryGetArgs>? _libraries;
         public InputList<Inputs.ClusterLibraryGetArgs> Libraries
@@ -901,6 +925,9 @@ namespace Pulumi.Databricks
 
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        [Input("useMlRuntime")]
+        public Input<bool>? UseMlRuntime { get; set; }
 
         [Input("workloadType")]
         public Input<Inputs.ClusterWorkloadTypeGetArgs>? WorkloadType { get; set; }

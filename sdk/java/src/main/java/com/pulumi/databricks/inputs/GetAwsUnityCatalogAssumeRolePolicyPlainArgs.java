@@ -31,6 +31,21 @@ public final class GetAwsUnityCatalogAssumeRolePolicyPlainArgs extends com.pulum
     }
 
     /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
+    @Import(name="awsPartition")
+    private @Nullable String awsPartition;
+
+    /**
+     * @return AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
+    public Optional<String> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
+    }
+
+    /**
      * The storage credential external id.
      * 
      */
@@ -61,14 +76,14 @@ public final class GetAwsUnityCatalogAssumeRolePolicyPlainArgs extends com.pulum
     }
 
     /**
-     * The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
+     * The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
      * 
      */
     @Import(name="unityCatalogIamArn")
     private @Nullable String unityCatalogIamArn;
 
     /**
-     * @return The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
+     * @return The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
      * 
      */
     public Optional<String> unityCatalogIamArn() {
@@ -79,6 +94,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyPlainArgs extends com.pulum
 
     private GetAwsUnityCatalogAssumeRolePolicyPlainArgs(GetAwsUnityCatalogAssumeRolePolicyPlainArgs $) {
         this.awsAccountId = $.awsAccountId;
+        this.awsPartition = $.awsPartition;
         this.externalId = $.externalId;
         this.roleName = $.roleName;
         this.unityCatalogIamArn = $.unityCatalogIamArn;
@@ -114,6 +130,17 @@ public final class GetAwsUnityCatalogAssumeRolePolicyPlainArgs extends com.pulum
         }
 
         /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsPartition(@Nullable String awsPartition) {
+            $.awsPartition = awsPartition;
+            return this;
+        }
+
+        /**
          * @param externalId The storage credential external id.
          * 
          * @return builder
@@ -136,7 +163,7 @@ public final class GetAwsUnityCatalogAssumeRolePolicyPlainArgs extends com.pulum
         }
 
         /**
-         * @param unityCatalogIamArn The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
+         * @param unityCatalogIamArn The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
          * 
          * @return builder
          * 

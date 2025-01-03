@@ -85,6 +85,8 @@ public final class GetClusterClusterInfoSpec {
      * 
      */
     private @Nullable String instancePoolId;
+    private @Nullable Boolean isSingleNode;
+    private @Nullable String kind;
     private @Nullable List<GetClusterClusterInfoSpecLibrary> libraries;
     /**
      * @return Any supported databricks.getNodeType id.
@@ -127,6 +129,7 @@ public final class GetClusterClusterInfoSpec {
      * 
      */
     private @Nullable List<String> sshPublicKeys;
+    private @Nullable Boolean useMlRuntime;
     private @Nullable GetClusterClusterInfoSpecWorkloadType workloadType;
 
     private GetClusterClusterInfoSpec() {}
@@ -227,6 +230,12 @@ public final class GetClusterClusterInfoSpec {
     public Optional<String> instancePoolId() {
         return Optional.ofNullable(this.instancePoolId);
     }
+    public Optional<Boolean> isSingleNode() {
+        return Optional.ofNullable(this.isSingleNode);
+    }
+    public Optional<String> kind() {
+        return Optional.ofNullable(this.kind);
+    }
     public List<GetClusterClusterInfoSpecLibrary> libraries() {
         return this.libraries == null ? List.of() : this.libraries;
     }
@@ -289,6 +298,9 @@ public final class GetClusterClusterInfoSpec {
     public List<String> sshPublicKeys() {
         return this.sshPublicKeys == null ? List.of() : this.sshPublicKeys;
     }
+    public Optional<Boolean> useMlRuntime() {
+        return Optional.ofNullable(this.useMlRuntime);
+    }
     public Optional<GetClusterClusterInfoSpecWorkloadType> workloadType() {
         return Optional.ofNullable(this.workloadType);
     }
@@ -321,6 +333,8 @@ public final class GetClusterClusterInfoSpec {
         private @Nullable String idempotencyToken;
         private @Nullable List<GetClusterClusterInfoSpecInitScript> initScripts;
         private @Nullable String instancePoolId;
+        private @Nullable Boolean isSingleNode;
+        private @Nullable String kind;
         private @Nullable List<GetClusterClusterInfoSpecLibrary> libraries;
         private String nodeTypeId;
         private @Nullable Integer numWorkers;
@@ -331,6 +345,7 @@ public final class GetClusterClusterInfoSpec {
         private @Nullable Map<String,String> sparkEnvVars;
         private String sparkVersion;
         private @Nullable List<String> sshPublicKeys;
+        private @Nullable Boolean useMlRuntime;
         private @Nullable GetClusterClusterInfoSpecWorkloadType workloadType;
         public Builder() {}
         public Builder(GetClusterClusterInfoSpec defaults) {
@@ -354,6 +369,8 @@ public final class GetClusterClusterInfoSpec {
     	      this.idempotencyToken = defaults.idempotencyToken;
     	      this.initScripts = defaults.initScripts;
     	      this.instancePoolId = defaults.instancePoolId;
+    	      this.isSingleNode = defaults.isSingleNode;
+    	      this.kind = defaults.kind;
     	      this.libraries = defaults.libraries;
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.numWorkers = defaults.numWorkers;
@@ -364,6 +381,7 @@ public final class GetClusterClusterInfoSpec {
     	      this.sparkEnvVars = defaults.sparkEnvVars;
     	      this.sparkVersion = defaults.sparkVersion;
     	      this.sshPublicKeys = defaults.sshPublicKeys;
+    	      this.useMlRuntime = defaults.useMlRuntime;
     	      this.workloadType = defaults.workloadType;
         }
 
@@ -498,6 +516,18 @@ public final class GetClusterClusterInfoSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder isSingleNode(@Nullable Boolean isSingleNode) {
+
+            this.isSingleNode = isSingleNode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kind(@Nullable String kind) {
+
+            this.kind = kind;
+            return this;
+        }
+        @CustomType.Setter
         public Builder libraries(@Nullable List<GetClusterClusterInfoSpecLibrary> libraries) {
 
             this.libraries = libraries;
@@ -568,6 +598,12 @@ public final class GetClusterClusterInfoSpec {
             return sshPublicKeys(List.of(sshPublicKeys));
         }
         @CustomType.Setter
+        public Builder useMlRuntime(@Nullable Boolean useMlRuntime) {
+
+            this.useMlRuntime = useMlRuntime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workloadType(@Nullable GetClusterClusterInfoSpecWorkloadType workloadType) {
 
             this.workloadType = workloadType;
@@ -594,6 +630,8 @@ public final class GetClusterClusterInfoSpec {
             _resultValue.idempotencyToken = idempotencyToken;
             _resultValue.initScripts = initScripts;
             _resultValue.instancePoolId = instancePoolId;
+            _resultValue.isSingleNode = isSingleNode;
+            _resultValue.kind = kind;
             _resultValue.libraries = libraries;
             _resultValue.nodeTypeId = nodeTypeId;
             _resultValue.numWorkers = numWorkers;
@@ -604,6 +642,7 @@ public final class GetClusterClusterInfoSpec {
             _resultValue.sparkEnvVars = sparkEnvVars;
             _resultValue.sparkVersion = sparkVersion;
             _resultValue.sshPublicKeys = sshPublicKeys;
+            _resultValue.useMlRuntime = useMlRuntime;
             _resultValue.workloadType = workloadType;
             return _resultValue;
         }

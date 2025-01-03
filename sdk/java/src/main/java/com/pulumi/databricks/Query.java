@@ -186,14 +186,14 @@ public class Query extends com.pulumi.resources.CustomResource {
         return this.queryText;
     }
     /**
-     * Sets the &#34;Run as&#34; role for the object.
+     * Sets the &#34;Run as&#34; role for the object.  Should be one of `OWNER`, `VIEWER`.
      * 
      */
     @Export(name="runAsMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> runAsMode;
 
     /**
-     * @return Sets the &#34;Run as&#34; role for the object.
+     * @return Sets the &#34;Run as&#34; role for the object.  Should be one of `OWNER`, `VIEWER`.
      * 
      */
     public Output<Optional<String>> runAsMode() {

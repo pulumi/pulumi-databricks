@@ -62,6 +62,8 @@ namespace Pulumi.Databricks.Outputs
         /// The pool of idle instances the cluster is attached to.
         /// </summary>
         public readonly string? InstancePoolId;
+        public readonly bool? IsSingleNode;
+        public readonly string? Kind;
         public readonly ImmutableArray<Outputs.GetClusterClusterInfoSpecLibraryResult> Libraries;
         /// <summary>
         /// Any supported databricks.getNodeType id.
@@ -96,6 +98,7 @@ namespace Pulumi.Databricks.Outputs
         /// SSH public key contents that will be added to each Spark node in this cluster.
         /// </summary>
         public readonly ImmutableArray<string> SshPublicKeys;
+        public readonly bool? UseMlRuntime;
         public readonly Outputs.GetClusterClusterInfoSpecWorkloadTypeResult? WorkloadType;
 
         [OutputConstructor]
@@ -138,6 +141,10 @@ namespace Pulumi.Databricks.Outputs
 
             string? instancePoolId,
 
+            bool? isSingleNode,
+
+            string? kind,
+
             ImmutableArray<Outputs.GetClusterClusterInfoSpecLibraryResult> libraries,
 
             string nodeTypeId,
@@ -157,6 +164,8 @@ namespace Pulumi.Databricks.Outputs
             string sparkVersion,
 
             ImmutableArray<string> sshPublicKeys,
+
+            bool? useMlRuntime,
 
             Outputs.GetClusterClusterInfoSpecWorkloadTypeResult? workloadType)
         {
@@ -179,6 +188,8 @@ namespace Pulumi.Databricks.Outputs
             IdempotencyToken = idempotencyToken;
             InitScripts = initScripts;
             InstancePoolId = instancePoolId;
+            IsSingleNode = isSingleNode;
+            Kind = kind;
             Libraries = libraries;
             NodeTypeId = nodeTypeId;
             NumWorkers = numWorkers;
@@ -189,6 +200,7 @@ namespace Pulumi.Databricks.Outputs
             SparkEnvVars = sparkEnvVars;
             SparkVersion = sparkVersion;
             SshPublicKeys = sshPublicKeys;
+            UseMlRuntime = useMlRuntime;
             WorkloadType = workloadType;
         }
     }

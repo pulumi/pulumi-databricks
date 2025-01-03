@@ -181,6 +181,12 @@ namespace Pulumi.Databricks
         public string AwsAccountId { get; set; } = null!;
 
         /// <summary>
+        /// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+        /// </summary>
+        [Input("awsPartition")]
+        public string? AwsPartition { get; set; }
+
+        /// <summary>
         /// The storage credential external id.
         /// </summary>
         [Input("externalId", required: true)]
@@ -193,7 +199,7 @@ namespace Pulumi.Databricks
         public string RoleName { get; set; } = null!;
 
         /// <summary>
-        /// The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
+        /// The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
         /// </summary>
         [Input("unityCatalogIamArn")]
         public string? UnityCatalogIamArn { get; set; }
@@ -213,6 +219,12 @@ namespace Pulumi.Databricks
         public Input<string> AwsAccountId { get; set; } = null!;
 
         /// <summary>
+        /// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+        /// </summary>
+        [Input("awsPartition")]
+        public Input<string>? AwsPartition { get; set; }
+
+        /// <summary>
         /// The storage credential external id.
         /// </summary>
         [Input("externalId", required: true)]
@@ -225,7 +237,7 @@ namespace Pulumi.Databricks
         public Input<string> RoleName { get; set; } = null!;
 
         /// <summary>
-        /// The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
+        /// The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
         /// </summary>
         [Input("unityCatalogIamArn")]
         public Input<string>? UnityCatalogIamArn { get; set; }
@@ -241,6 +253,7 @@ namespace Pulumi.Databricks
     public sealed class GetAwsUnityCatalogAssumeRolePolicyResult
     {
         public readonly string AwsAccountId;
+        public readonly string? AwsPartition;
         public readonly string ExternalId;
         public readonly string Id;
         /// <summary>
@@ -254,6 +267,8 @@ namespace Pulumi.Databricks
         private GetAwsUnityCatalogAssumeRolePolicyResult(
             string awsAccountId,
 
+            string? awsPartition,
+
             string externalId,
 
             string id,
@@ -265,6 +280,7 @@ namespace Pulumi.Databricks
             string unityCatalogIamArn)
         {
             AwsAccountId = awsAccountId;
+            AwsPartition = awsPartition;
             ExternalId = externalId;
             Id = id;
             Json = json;

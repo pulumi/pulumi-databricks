@@ -222,7 +222,17 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * !> Importing this resource is not currently supported.
+ * This resource can be imported by Databricks account ID and customer managed key ID.
+ *
+ * ```sh
+ * $ pulumi import databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys this '<account_id>/<customer_managed_key_id>'
+ * ```
+ *
+ * ~> This resource does not support updates. If your configuration does not match the existing resource,
+ *
+ *    the next `pulumi up` will cause the resource to be destroyed and recreated. After importing,
+ *
+ *    verify that the configuration matches the existing resource by running `pulumi preview`.
  */
 export class MwsCustomerManagedKeys extends pulumi.CustomResource {
     /**

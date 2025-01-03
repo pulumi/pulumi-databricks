@@ -68,7 +68,9 @@ namespace Pulumi.Databricks.Outputs
         /// The pool of idle instances the cluster is attached to.
         /// </summary>
         public readonly string? InstancePoolId;
+        public readonly bool? IsSingleNode;
         public readonly int? JdbcPort;
+        public readonly string? Kind;
         public readonly int? LastRestartedTime;
         public readonly int? LastStateLossTime;
         /// <summary>
@@ -111,6 +113,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? StateMessage;
         public readonly int? TerminatedTime;
         public readonly Outputs.GetClusterClusterInfoTerminationReasonResult? TerminationReason;
+        public readonly bool? UseMlRuntime;
         public readonly Outputs.GetClusterClusterInfoWorkloadTypeResult? WorkloadType;
 
         [OutputConstructor]
@@ -165,7 +168,11 @@ namespace Pulumi.Databricks.Outputs
 
             string? instancePoolId,
 
+            bool? isSingleNode,
+
             int? jdbcPort,
+
+            string? kind,
 
             int? lastRestartedTime,
 
@@ -203,6 +210,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetClusterClusterInfoTerminationReasonResult? terminationReason,
 
+            bool? useMlRuntime,
+
             Outputs.GetClusterClusterInfoWorkloadTypeResult? workloadType)
         {
             Autoscale = autoscale;
@@ -230,7 +239,9 @@ namespace Pulumi.Databricks.Outputs
             GcpAttributes = gcpAttributes;
             InitScripts = initScripts;
             InstancePoolId = instancePoolId;
+            IsSingleNode = isSingleNode;
             JdbcPort = jdbcPort;
+            Kind = kind;
             LastRestartedTime = lastRestartedTime;
             LastStateLossTime = lastStateLossTime;
             NodeTypeId = nodeTypeId;
@@ -249,6 +260,7 @@ namespace Pulumi.Databricks.Outputs
             StateMessage = stateMessage;
             TerminatedTime = terminatedTime;
             TerminationReason = terminationReason;
+            UseMlRuntime = useMlRuntime;
             WorkloadType = workloadType;
         }
     }

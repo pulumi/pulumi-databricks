@@ -189,18 +189,6 @@ namespace Pulumi.Databricks
         [Input("displayNameContains")]
         public string? DisplayNameContains { get; set; }
 
-        [Input("notificationDestinations")]
-        private List<Inputs.GetNotificationDestinationsNotificationDestinationArgs>? _notificationDestinations;
-
-        /// <summary>
-        /// A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-        /// </summary>
-        public List<Inputs.GetNotificationDestinationsNotificationDestinationArgs> NotificationDestinations
-        {
-            get => _notificationDestinations ?? (_notificationDestinations = new List<Inputs.GetNotificationDestinationsNotificationDestinationArgs>());
-            set => _notificationDestinations = value;
-        }
-
         /// <summary>
         /// The type of the Notification Destination to filter by. Valid values are: 
         /// * `EMAIL` - Filters Notification Destinations of type Email.
@@ -225,18 +213,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("displayNameContains")]
         public Input<string>? DisplayNameContains { get; set; }
-
-        [Input("notificationDestinations")]
-        private InputList<Inputs.GetNotificationDestinationsNotificationDestinationInputArgs>? _notificationDestinations;
-
-        /// <summary>
-        /// A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-        /// </summary>
-        public InputList<Inputs.GetNotificationDestinationsNotificationDestinationInputArgs> NotificationDestinations
-        {
-            get => _notificationDestinations ?? (_notificationDestinations = new InputList<Inputs.GetNotificationDestinationsNotificationDestinationInputArgs>());
-            set => _notificationDestinations = value;
-        }
 
         /// <summary>
         /// The type of the Notification Destination to filter by. Valid values are: 

@@ -31,10 +31,26 @@ public final class GetJobsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * Only return databricks.Job ids that match the given name string (case-insensitive).
+     * 
+     */
+    @Import(name="jobNameContains")
+    private @Nullable Output<String> jobNameContains;
+
+    /**
+     * @return Only return databricks.Job ids that match the given name string (case-insensitive).
+     * 
+     */
+    public Optional<Output<String>> jobNameContains() {
+        return Optional.ofNullable(this.jobNameContains);
+    }
+
     private GetJobsArgs() {}
 
     private GetJobsArgs(GetJobsArgs $) {
         this.ids = $.ids;
+        this.jobNameContains = $.jobNameContains;
     }
 
     public static Builder builder() {
@@ -74,6 +90,27 @@ public final class GetJobsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder ids(Map<String,String> ids) {
             return ids(Output.of(ids));
+        }
+
+        /**
+         * @param jobNameContains Only return databricks.Job ids that match the given name string (case-insensitive).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jobNameContains(@Nullable Output<String> jobNameContains) {
+            $.jobNameContains = jobNameContains;
+            return this;
+        }
+
+        /**
+         * @param jobNameContains Only return databricks.Job ids that match the given name string (case-insensitive).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jobNameContains(String jobNameContains) {
+            return jobNameContains(Output.of(jobNameContains));
         }
 
         public GetJobsArgs build() {

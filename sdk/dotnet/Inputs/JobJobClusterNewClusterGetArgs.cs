@@ -84,6 +84,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }
 
+        [Input("isSingleNode")]
+        public Input<bool>? IsSingleNode { get; set; }
+
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
+
         [Input("libraries")]
         private InputList<Inputs.JobJobClusterNewClusterLibraryGetArgs>? _libraries;
 
@@ -137,6 +143,9 @@ namespace Pulumi.Databricks.Inputs
             get => _sshPublicKeys ?? (_sshPublicKeys = new InputList<string>());
             set => _sshPublicKeys = value;
         }
+
+        [Input("useMlRuntime")]
+        public Input<bool>? UseMlRuntime { get; set; }
 
         /// <summary>
         /// isn't supported

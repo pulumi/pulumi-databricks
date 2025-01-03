@@ -26,10 +26,13 @@ class GetAwsCrossAccountPolicyResult:
     """
     A collection of values returned by getAwsCrossAccountPolicy.
     """
-    def __init__(__self__, aws_account_id=None, id=None, json=None, pass_roles=None, policy_type=None, region=None, security_group_id=None, vpc_id=None):
+    def __init__(__self__, aws_account_id=None, aws_partition=None, id=None, json=None, pass_roles=None, policy_type=None, region=None, security_group_id=None, vpc_id=None):
         if aws_account_id and not isinstance(aws_account_id, str):
             raise TypeError("Expected argument 'aws_account_id' to be a str")
         pulumi.set(__self__, "aws_account_id", aws_account_id)
+        if aws_partition and not isinstance(aws_partition, str):
+            raise TypeError("Expected argument 'aws_partition' to be a str")
+        pulumi.set(__self__, "aws_partition", aws_partition)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -56,6 +59,11 @@ class GetAwsCrossAccountPolicyResult:
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> Optional[str]:
         return pulumi.get(self, "aws_account_id")
+
+    @property
+    @pulumi.getter(name="awsPartition")
+    def aws_partition(self) -> Optional[str]:
+        return pulumi.get(self, "aws_partition")
 
     @property
     @pulumi.getter
@@ -106,6 +114,7 @@ class AwaitableGetAwsCrossAccountPolicyResult(GetAwsCrossAccountPolicyResult):
             yield self
         return GetAwsCrossAccountPolicyResult(
             aws_account_id=self.aws_account_id,
+            aws_partition=self.aws_partition,
             id=self.id,
             json=self.json,
             pass_roles=self.pass_roles,
@@ -116,6 +125,7 @@ class AwaitableGetAwsCrossAccountPolicyResult(GetAwsCrossAccountPolicyResult):
 
 
 def get_aws_cross_account_policy(aws_account_id: Optional[str] = None,
+                                 aws_partition: Optional[str] = None,
                                  pass_roles: Optional[Sequence[str]] = None,
                                  policy_type: Optional[str] = None,
                                  region: Optional[str] = None,
@@ -149,6 +159,7 @@ def get_aws_cross_account_policy(aws_account_id: Optional[str] = None,
 
 
     :param str aws_account_id: — Your AWS account ID, which is a number.
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
     :param Sequence[str] pass_roles: List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
            The below arguments are only valid for `restricted` policy type
     :param str policy_type: The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
@@ -158,6 +169,7 @@ def get_aws_cross_account_policy(aws_account_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id
+    __args__['awsPartition'] = aws_partition
     __args__['passRoles'] = pass_roles
     __args__['policyType'] = policy_type
     __args__['region'] = region
@@ -168,6 +180,7 @@ def get_aws_cross_account_policy(aws_account_id: Optional[str] = None,
 
     return AwaitableGetAwsCrossAccountPolicyResult(
         aws_account_id=pulumi.get(__ret__, 'aws_account_id'),
+        aws_partition=pulumi.get(__ret__, 'aws_partition'),
         id=pulumi.get(__ret__, 'id'),
         json=pulumi.get(__ret__, 'json'),
         pass_roles=pulumi.get(__ret__, 'pass_roles'),
@@ -176,6 +189,7 @@ def get_aws_cross_account_policy(aws_account_id: Optional[str] = None,
         security_group_id=pulumi.get(__ret__, 'security_group_id'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
 def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                        aws_partition: Optional[pulumi.Input[Optional[str]]] = None,
                                         pass_roles: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                         policy_type: Optional[pulumi.Input[Optional[str]]] = None,
                                         region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -209,6 +223,7 @@ def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Op
 
 
     :param str aws_account_id: — Your AWS account ID, which is a number.
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
     :param Sequence[str] pass_roles: List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
            The below arguments are only valid for `restricted` policy type
     :param str policy_type: The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
@@ -218,6 +233,7 @@ def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Op
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id
+    __args__['awsPartition'] = aws_partition
     __args__['passRoles'] = pass_roles
     __args__['policyType'] = policy_type
     __args__['region'] = region
@@ -227,6 +243,7 @@ def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Op
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy', __args__, opts=opts, typ=GetAwsCrossAccountPolicyResult)
     return __ret__.apply(lambda __response__: GetAwsCrossAccountPolicyResult(
         aws_account_id=pulumi.get(__response__, 'aws_account_id'),
+        aws_partition=pulumi.get(__response__, 'aws_partition'),
         id=pulumi.get(__response__, 'id'),
         json=pulumi.get(__response__, 'json'),
         pass_roles=pulumi.get(__response__, 'pass_roles'),

@@ -36,7 +36,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Metastore grants
     /// 
-    /// You can grant `CREATE_CATALOG`, `CREATE_CONNECTION`, `CREATE_EXTERNAL_LOCATION`, `CREATE_PROVIDER`, `CREATE_RECIPIENT`, `CREATE_SHARE`, `CREATE_STORAGE_CREDENTIAL`, `MANAGE_ALLOWLIST`, `SET_SHARE_PERMISSION`, `USE_MARKETPLACE_ASSETS`, `USE_CONNECTION`, `USE_PROVIDER`, `USE_RECIPIENT` and `USE_SHARE` privileges to databricks.Metastore assigned to the workspace.
+    /// You can grant `CREATE_CATALOG`, `CREATE_CLEAN_ROOM`, `CREATE_CONNECTION`, `CREATE_EXTERNAL_LOCATION`, `CREATE_PROVIDER`, `CREATE_RECIPIENT`, `CREATE_SHARE`, `CREATE_SERVICE_CREDENTIAL`, `CREATE_STORAGE_CREDENTIAL`, `SET_SHARE_PERMISSION`, `USE_MARKETPLACE_ASSETS`, `USE_PROVIDER`, `USE_RECIPIENT`, and `USE_SHARE` privileges to databricks.Metastore assigned to the workspace.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -455,6 +455,48 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ## Service credential grants
+    /// 
+    /// You can grant `ALL_PRIVILEGES`, `ACCESS` and `CREATE_CONNECTION` privileges to databricks.Credential id specified in `credential` attribute:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var external = new Databricks.Credential("external", new()
+    ///     {
+    ///         Name = externalDataAccess.Name,
+    ///         AwsIamRole = new Databricks.Inputs.CredentialAwsIamRoleArgs
+    ///         {
+    ///             RoleArn = externalDataAccess.Arn,
+    ///         },
+    ///         Purpose = "SERVICE",
+    ///         Comment = "Managed by TF",
+    ///     });
+    /// 
+    ///     var externalCreds = new Databricks.Grants("external_creds", new()
+    ///     {
+    ///         Credential = external.Id,
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "Data Engineers",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "CREATE_CONNECTION",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Storage credential grants
     /// 
     /// You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `READ_FILES` and `WRITE_FILES` privileges to databricks.StorageCredential id specified in `storage_credential` attribute:
@@ -674,6 +716,9 @@ namespace Pulumi.Databricks
         [Output("catalog")]
         public Output<string?> Catalog { get; private set; } = null!;
 
+        [Output("credential")]
+        public Output<string?> Credential { get; private set; } = null!;
+
         [Output("externalLocation")]
         public Output<string?> ExternalLocation { get; private set; } = null!;
 
@@ -762,6 +807,9 @@ namespace Pulumi.Databricks
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
 
+        [Input("credential")]
+        public Input<string>? Credential { get; set; }
+
         [Input("externalLocation")]
         public Input<string>? ExternalLocation { get; set; }
 
@@ -816,6 +864,9 @@ namespace Pulumi.Databricks
     {
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
+
+        [Input("credential")]
+        public Input<string>? Credential { get; set; }
 
         [Input("externalLocation")]
         public Input<string>? ExternalLocation { get; set; }

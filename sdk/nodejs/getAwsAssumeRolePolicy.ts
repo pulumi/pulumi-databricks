@@ -55,6 +55,7 @@ import * as utilities from "./utilities";
 export function getAwsAssumeRolePolicy(args: GetAwsAssumeRolePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsAssumeRolePolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", {
+        "awsPartition": args.awsPartition,
         "databricksAccountId": args.databricksAccountId,
         "externalId": args.externalId,
         "forLogDelivery": args.forLogDelivery,
@@ -65,6 +66,13 @@ export function getAwsAssumeRolePolicy(args: GetAwsAssumeRolePolicyArgs, opts?: 
  * A collection of arguments for invoking getAwsAssumeRolePolicy.
  */
 export interface GetAwsAssumeRolePolicyArgs {
+    /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     */
+    awsPartition?: string;
+    /**
+     * @deprecated databricks_account_id will be will be removed in the next major release.
+     */
     databricksAccountId?: string;
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
@@ -80,6 +88,10 @@ export interface GetAwsAssumeRolePolicyArgs {
  * A collection of values returned by getAwsAssumeRolePolicy.
  */
 export interface GetAwsAssumeRolePolicyResult {
+    readonly awsPartition?: string;
+    /**
+     * @deprecated databricks_account_id will be will be removed in the next major release.
+     */
     readonly databricksAccountId?: string;
     readonly externalId: string;
     readonly forLogDelivery?: boolean;
@@ -143,6 +155,7 @@ export interface GetAwsAssumeRolePolicyResult {
 export function getAwsAssumeRolePolicyOutput(args: GetAwsAssumeRolePolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsAssumeRolePolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", {
+        "awsPartition": args.awsPartition,
         "databricksAccountId": args.databricksAccountId,
         "externalId": args.externalId,
         "forLogDelivery": args.forLogDelivery,
@@ -153,6 +166,13 @@ export function getAwsAssumeRolePolicyOutput(args: GetAwsAssumeRolePolicyOutputA
  * A collection of arguments for invoking getAwsAssumeRolePolicy.
  */
 export interface GetAwsAssumeRolePolicyOutputArgs {
+    /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     */
+    awsPartition?: pulumi.Input<string>;
+    /**
+     * @deprecated databricks_account_id will be will be removed in the next major release.
+     */
     databricksAccountId?: pulumi.Input<string>;
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).

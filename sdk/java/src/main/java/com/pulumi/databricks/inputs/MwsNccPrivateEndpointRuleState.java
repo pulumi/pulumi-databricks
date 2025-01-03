@@ -103,14 +103,14 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
     }
 
     /**
-     * The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
+     * The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
     /**
-     * @return The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
+     * @return The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> groupId() {
@@ -326,7 +326,7 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param groupId The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
+         * @param groupId The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class MwsNccPrivateEndpointRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param groupId The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
+         * @param groupId The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
          * 
          * @return builder
          * 

@@ -352,6 +352,20 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.isPinned);
     }
 
+    @Import(name="isSingleNode")
+    private @Nullable Output<Boolean> isSingleNode;
+
+    public Optional<Output<Boolean>> isSingleNode() {
+        return Optional.ofNullable(this.isSingleNode);
+    }
+
+    @Import(name="kind")
+    private @Nullable Output<String> kind;
+
+    public Optional<Output<String>> kind() {
+        return Optional.ofNullable(this.kind);
+    }
+
     @Import(name="libraries")
     private @Nullable Output<List<ClusterLibraryArgs>> libraries;
 
@@ -631,6 +645,13 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sshPublicKeys);
     }
 
+    @Import(name="useMlRuntime")
+    private @Nullable Output<Boolean> useMlRuntime;
+
+    public Optional<Output<Boolean>> useMlRuntime() {
+        return Optional.ofNullable(this.useMlRuntime);
+    }
+
     @Import(name="workloadType")
     private @Nullable Output<ClusterWorkloadTypeArgs> workloadType;
 
@@ -661,6 +682,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.initScripts = $.initScripts;
         this.instancePoolId = $.instancePoolId;
         this.isPinned = $.isPinned;
+        this.isSingleNode = $.isSingleNode;
+        this.kind = $.kind;
         this.libraries = $.libraries;
         this.noWait = $.noWait;
         this.nodeTypeId = $.nodeTypeId;
@@ -672,6 +695,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.sparkEnvVars = $.sparkEnvVars;
         this.sparkVersion = $.sparkVersion;
         this.sshPublicKeys = $.sshPublicKeys;
+        this.useMlRuntime = $.useMlRuntime;
         this.workloadType = $.workloadType;
     }
 
@@ -1111,6 +1135,24 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             return isPinned(Output.of(isPinned));
         }
 
+        public Builder isSingleNode(@Nullable Output<Boolean> isSingleNode) {
+            $.isSingleNode = isSingleNode;
+            return this;
+        }
+
+        public Builder isSingleNode(Boolean isSingleNode) {
+            return isSingleNode(Output.of(isSingleNode));
+        }
+
+        public Builder kind(@Nullable Output<String> kind) {
+            $.kind = kind;
+            return this;
+        }
+
+        public Builder kind(String kind) {
+            return kind(Output.of(kind));
+        }
+
         public Builder libraries(@Nullable Output<List<ClusterLibraryArgs>> libraries) {
             $.libraries = libraries;
             return this;
@@ -1464,6 +1506,15 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
+        }
+
+        public Builder useMlRuntime(@Nullable Output<Boolean> useMlRuntime) {
+            $.useMlRuntime = useMlRuntime;
+            return this;
+        }
+
+        public Builder useMlRuntime(Boolean useMlRuntime) {
+            return useMlRuntime(Output.of(useMlRuntime));
         }
 
         public Builder workloadType(@Nullable Output<ClusterWorkloadTypeArgs> workloadType) {

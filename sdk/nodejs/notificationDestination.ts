@@ -88,6 +88,16 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by notification ID:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/notificationDestination:NotificationDestination this <notification-id>
+ * ```
  */
 export class NotificationDestination extends pulumi.CustomResource {
     /**

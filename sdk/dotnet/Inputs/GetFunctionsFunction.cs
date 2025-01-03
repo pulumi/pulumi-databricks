@@ -78,11 +78,17 @@ namespace Pulumi.Databricks.Inputs
         [Input("functionId")]
         public string? FunctionId { get; set; }
 
+        [Input("inputParams")]
+        private List<Inputs.GetFunctionsFunctionInputParamArgs>? _inputParams;
+
         /// <summary>
         /// object describing input parameters. Consists of the single attribute:
         /// </summary>
-        [Input("inputParams")]
-        public Inputs.GetFunctionsFunctionInputParamsArgs? InputParams { get; set; }
+        public List<Inputs.GetFunctionsFunctionInputParamArgs> InputParams
+        {
+            get => _inputParams ?? (_inputParams = new List<Inputs.GetFunctionsFunctionInputParamArgs>());
+            set => _inputParams = value;
+        }
 
         /// <summary>
         /// Boolean flag specifying whether the function is deterministic.
@@ -126,11 +132,17 @@ namespace Pulumi.Databricks.Inputs
         [Input("properties")]
         public string? Properties { get; set; }
 
+        [Input("returnParams")]
+        private List<Inputs.GetFunctionsFunctionReturnParamArgs>? _returnParams;
+
         /// <summary>
         /// Table function return parameters.  See `input_params` for description.
         /// </summary>
-        [Input("returnParams")]
-        public Inputs.GetFunctionsFunctionReturnParamsArgs? ReturnParams { get; set; }
+        public List<Inputs.GetFunctionsFunctionReturnParamArgs> ReturnParams
+        {
+            get => _returnParams ?? (_returnParams = new List<Inputs.GetFunctionsFunctionReturnParamArgs>());
+            set => _returnParams = value;
+        }
 
         /// <summary>
         /// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
@@ -144,11 +156,17 @@ namespace Pulumi.Databricks.Inputs
         [Input("routineDefinition")]
         public string? RoutineDefinition { get; set; }
 
+        [Input("routineDependencies")]
+        private List<Inputs.GetFunctionsFunctionRoutineDependencyArgs>? _routineDependencies;
+
         /// <summary>
         /// Function dependencies.
         /// </summary>
-        [Input("routineDependencies")]
-        public Inputs.GetFunctionsFunctionRoutineDependenciesArgs? RoutineDependencies { get; set; }
+        public List<Inputs.GetFunctionsFunctionRoutineDependencyArgs> RoutineDependencies
+        {
+            get => _routineDependencies ?? (_routineDependencies = new List<Inputs.GetFunctionsFunctionRoutineDependencyArgs>());
+            set => _routineDependencies = value;
+        }
 
         /// <summary>
         /// Name of databricks_schema.

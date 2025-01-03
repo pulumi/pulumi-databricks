@@ -67,8 +67,11 @@ func GetAwsBucketPolicy(ctx *pulumi.Context, args *GetAwsBucketPolicyArgs, opts 
 
 // A collection of arguments for invoking getAwsBucketPolicy.
 type GetAwsBucketPolicyArgs struct {
+	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	AwsPartition *string `pulumi:"awsPartition"`
 	// AWS S3 Bucket name for which to generate the policy document.
-	Bucket              string  `pulumi:"bucket"`
+	Bucket string `pulumi:"bucket"`
+	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId *string `pulumi:"databricksAccountId"`
 	// Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
 	DatabricksE2AccountId *string `pulumi:"databricksE2AccountId"`
@@ -78,7 +81,9 @@ type GetAwsBucketPolicyArgs struct {
 
 // A collection of values returned by getAwsBucketPolicy.
 type GetAwsBucketPolicyResult struct {
-	Bucket                string  `pulumi:"bucket"`
+	AwsPartition *string `pulumi:"awsPartition"`
+	Bucket       string  `pulumi:"bucket"`
+	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId   *string `pulumi:"databricksAccountId"`
 	DatabricksE2AccountId *string `pulumi:"databricksE2AccountId"`
 	FullAccessRole        *string `pulumi:"fullAccessRole"`
@@ -99,8 +104,11 @@ func GetAwsBucketPolicyOutput(ctx *pulumi.Context, args GetAwsBucketPolicyOutput
 
 // A collection of arguments for invoking getAwsBucketPolicy.
 type GetAwsBucketPolicyOutputArgs struct {
+	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
 	// AWS S3 Bucket name for which to generate the policy document.
-	Bucket              pulumi.StringInput    `pulumi:"bucket"`
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId pulumi.StringPtrInput `pulumi:"databricksAccountId"`
 	// Your Databricks account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
 	DatabricksE2AccountId pulumi.StringPtrInput `pulumi:"databricksE2AccountId"`
@@ -127,10 +135,15 @@ func (o GetAwsBucketPolicyResultOutput) ToGetAwsBucketPolicyResultOutputWithCont
 	return o
 }
 
+func (o GetAwsBucketPolicyResultOutput) AwsPartition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsBucketPolicyResult) *string { return v.AwsPartition }).(pulumi.StringPtrOutput)
+}
+
 func (o GetAwsBucketPolicyResultOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsBucketPolicyResult) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
+// Deprecated: databricks_account_id will be will be removed in the next major release.
 func (o GetAwsBucketPolicyResultOutput) DatabricksAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAwsBucketPolicyResult) *string { return v.DatabricksAccountId }).(pulumi.StringPtrOutput)
 }

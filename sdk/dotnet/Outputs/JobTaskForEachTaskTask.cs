@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskForEachTaskTask
     {
+        public readonly Outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask? CleanRoomsNotebookTask;
         public readonly Outputs.JobTaskForEachTaskTaskConditionTask? ConditionTask;
         public readonly Outputs.JobTaskForEachTaskTaskDbtTask? DbtTask;
         /// <summary>
@@ -101,6 +102,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobTaskForEachTaskTask(
+            Outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask? cleanRoomsNotebookTask,
+
             Outputs.JobTaskForEachTaskTaskConditionTask? conditionTask,
 
             Outputs.JobTaskForEachTaskTaskDbtTask? dbtTask,
@@ -157,6 +160,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskForEachTaskTaskWebhookNotifications? webhookNotifications)
         {
+            CleanRoomsNotebookTask = cleanRoomsNotebookTask;
             ConditionTask = conditionTask;
             DbtTask = dbtTask;
             DependsOns = dependsOns;

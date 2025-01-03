@@ -73,7 +73,7 @@ class GetRegisteredModelResult:
 
     @property
     @pulumi.getter(name="modelInfos")
-    def model_infos(self) -> Optional[Sequence['outputs.GetRegisteredModelModelInfoResult']]:
+    def model_infos(self) -> Sequence['outputs.GetRegisteredModelModelInfoResult']:
         """
         block with information about the model in Unity Catalog:
         """

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskConditionTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDbtTask;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskDependsOn;
@@ -32,6 +33,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTask {
+    private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
     private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
     private @Nullable JobTaskForEachTaskTaskDbtTask dbtTask;
     /**
@@ -137,6 +139,9 @@ public final class JobTaskForEachTaskTask {
     private @Nullable JobTaskForEachTaskTaskWebhookNotifications webhookNotifications;
 
     private JobTaskForEachTaskTask() {}
+    public Optional<JobTaskForEachTaskTaskCleanRoomsNotebookTask> cleanRoomsNotebookTask() {
+        return Optional.ofNullable(this.cleanRoomsNotebookTask);
+    }
     public Optional<JobTaskForEachTaskTaskConditionTask> conditionTask() {
         return Optional.ofNullable(this.conditionTask);
     }
@@ -306,6 +311,7 @@ public final class JobTaskForEachTaskTask {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask;
         private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
         private @Nullable JobTaskForEachTaskTaskDbtTask dbtTask;
         private @Nullable List<JobTaskForEachTaskTaskDependsOn> dependsOns;
@@ -337,6 +343,7 @@ public final class JobTaskForEachTaskTask {
         public Builder() {}
         public Builder(JobTaskForEachTaskTask defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cleanRoomsNotebookTask = defaults.cleanRoomsNotebookTask;
     	      this.conditionTask = defaults.conditionTask;
     	      this.dbtTask = defaults.dbtTask;
     	      this.dependsOns = defaults.dependsOns;
@@ -367,6 +374,12 @@ public final class JobTaskForEachTaskTask {
     	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
+        @CustomType.Setter
+        public Builder cleanRoomsNotebookTask(@Nullable JobTaskForEachTaskTaskCleanRoomsNotebookTask cleanRoomsNotebookTask) {
+
+            this.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
+            return this;
+        }
         @CustomType.Setter
         public Builder conditionTask(@Nullable JobTaskForEachTaskTaskConditionTask conditionTask) {
 
@@ -545,6 +558,7 @@ public final class JobTaskForEachTaskTask {
         }
         public JobTaskForEachTaskTask build() {
             final var _resultValue = new JobTaskForEachTaskTask();
+            _resultValue.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
             _resultValue.conditionTask = conditionTask;
             _resultValue.dbtTask = dbtTask;
             _resultValue.dependsOns = dependsOns;

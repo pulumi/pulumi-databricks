@@ -4,12 +4,13 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetFunctionsFunctionInputParams;
-import com.pulumi.databricks.inputs.GetFunctionsFunctionReturnParams;
-import com.pulumi.databricks.inputs.GetFunctionsFunctionRoutineDependencies;
+import com.pulumi.databricks.inputs.GetFunctionsFunctionInputParam;
+import com.pulumi.databricks.inputs.GetFunctionsFunctionReturnParam;
+import com.pulumi.databricks.inputs.GetFunctionsFunctionRoutineDependency;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -189,13 +190,13 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
      * 
      */
     @Import(name="inputParams")
-    private @Nullable GetFunctionsFunctionInputParams inputParams;
+    private @Nullable List<GetFunctionsFunctionInputParam> inputParams;
 
     /**
      * @return object describing input parameters. Consists of the single attribute:
      * 
      */
-    public Optional<GetFunctionsFunctionInputParams> inputParams() {
+    public Optional<List<GetFunctionsFunctionInputParam>> inputParams() {
         return Optional.ofNullable(this.inputParams);
     }
 
@@ -309,13 +310,13 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
      * 
      */
     @Import(name="returnParams")
-    private @Nullable GetFunctionsFunctionReturnParams returnParams;
+    private @Nullable List<GetFunctionsFunctionReturnParam> returnParams;
 
     /**
      * @return Table function return parameters.  See `input_params` for description.
      * 
      */
-    public Optional<GetFunctionsFunctionReturnParams> returnParams() {
+    public Optional<List<GetFunctionsFunctionReturnParam>> returnParams() {
         return Optional.ofNullable(this.returnParams);
     }
 
@@ -354,13 +355,13 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
      * 
      */
     @Import(name="routineDependencies")
-    private @Nullable GetFunctionsFunctionRoutineDependencies routineDependencies;
+    private @Nullable List<GetFunctionsFunctionRoutineDependency> routineDependencies;
 
     /**
      * @return Function dependencies.
      * 
      */
-    public Optional<GetFunctionsFunctionRoutineDependencies> routineDependencies() {
+    public Optional<List<GetFunctionsFunctionRoutineDependency>> routineDependencies() {
         return Optional.ofNullable(this.routineDependencies);
     }
 
@@ -649,9 +650,19 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder inputParams(@Nullable GetFunctionsFunctionInputParams inputParams) {
+        public Builder inputParams(@Nullable List<GetFunctionsFunctionInputParam> inputParams) {
             $.inputParams = inputParams;
             return this;
+        }
+
+        /**
+         * @param inputParams object describing input parameters. Consists of the single attribute:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inputParams(GetFunctionsFunctionInputParam... inputParams) {
+            return inputParams(List.of(inputParams));
         }
 
         /**
@@ -737,9 +748,19 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder returnParams(@Nullable GetFunctionsFunctionReturnParams returnParams) {
+        public Builder returnParams(@Nullable List<GetFunctionsFunctionReturnParam> returnParams) {
             $.returnParams = returnParams;
             return this;
+        }
+
+        /**
+         * @param returnParams Table function return parameters.  See `input_params` for description.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder returnParams(GetFunctionsFunctionReturnParam... returnParams) {
+            return returnParams(List.of(returnParams));
         }
 
         /**
@@ -770,9 +791,19 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder routineDependencies(@Nullable GetFunctionsFunctionRoutineDependencies routineDependencies) {
+        public Builder routineDependencies(@Nullable List<GetFunctionsFunctionRoutineDependency> routineDependencies) {
             $.routineDependencies = routineDependencies;
             return this;
+        }
+
+        /**
+         * @param routineDependencies Function dependencies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routineDependencies(GetFunctionsFunctionRoutineDependency... routineDependencies) {
+            return routineDependencies(List.of(routineDependencies));
         }
 
         /**

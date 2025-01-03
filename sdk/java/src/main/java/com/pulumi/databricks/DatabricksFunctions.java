@@ -6,6 +6,8 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.databricks.Utilities;
+import com.pulumi.databricks.inputs.GetAppArgs;
+import com.pulumi.databricks.inputs.GetAppPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
 import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
@@ -64,6 +66,10 @@ import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
 import com.pulumi.databricks.inputs.GetMlflowModelsPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
 import com.pulumi.databricks.inputs.GetMwsCredentialsPlainArgs;
+import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
+import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigPlainArgs;
+import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
 import com.pulumi.databricks.inputs.GetMwsWorkspacesPlainArgs;
 import com.pulumi.databricks.inputs.GetNodeTypeArgs;
@@ -78,6 +84,8 @@ import com.pulumi.databricks.inputs.GetPipelinesArgs;
 import com.pulumi.databricks.inputs.GetPipelinesPlainArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelPlainArgs;
+import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
+import com.pulumi.databricks.inputs.GetRegisteredModelVersionsPlainArgs;
 import com.pulumi.databricks.inputs.GetSchemaArgs;
 import com.pulumi.databricks.inputs.GetSchemaPlainArgs;
 import com.pulumi.databricks.inputs.GetSchemasArgs;
@@ -86,6 +94,8 @@ import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalPlainArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalsArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalsPlainArgs;
+import com.pulumi.databricks.inputs.GetServingEndpointsArgs;
+import com.pulumi.databricks.inputs.GetServingEndpointsPlainArgs;
 import com.pulumi.databricks.inputs.GetShareArgs;
 import com.pulumi.databricks.inputs.GetSharePlainArgs;
 import com.pulumi.databricks.inputs.GetSharesArgs;
@@ -114,6 +124,8 @@ import com.pulumi.databricks.inputs.GetVolumesArgs;
 import com.pulumi.databricks.inputs.GetVolumesPlainArgs;
 import com.pulumi.databricks.inputs.GetZonesArgs;
 import com.pulumi.databricks.inputs.GetZonesPlainArgs;
+import com.pulumi.databricks.outputs.GetAppResult;
+import com.pulumi.databricks.outputs.GetAppsResult;
 import com.pulumi.databricks.outputs.GetAwsAssumeRolePolicyResult;
 import com.pulumi.databricks.outputs.GetAwsBucketPolicyResult;
 import com.pulumi.databricks.outputs.GetAwsCrossAccountPolicyResult;
@@ -144,6 +156,8 @@ import com.pulumi.databricks.outputs.GetMlflowExperimentResult;
 import com.pulumi.databricks.outputs.GetMlflowModelResult;
 import com.pulumi.databricks.outputs.GetMlflowModelsResult;
 import com.pulumi.databricks.outputs.GetMwsCredentialsResult;
+import com.pulumi.databricks.outputs.GetMwsNetworkConnectivityConfigResult;
+import com.pulumi.databricks.outputs.GetMwsNetworkConnectivityConfigsResult;
 import com.pulumi.databricks.outputs.GetMwsWorkspacesResult;
 import com.pulumi.databricks.outputs.GetNodeTypeResult;
 import com.pulumi.databricks.outputs.GetNotebookPathsResult;
@@ -151,10 +165,12 @@ import com.pulumi.databricks.outputs.GetNotebookResult;
 import com.pulumi.databricks.outputs.GetNotificationDestinationsResult;
 import com.pulumi.databricks.outputs.GetPipelinesResult;
 import com.pulumi.databricks.outputs.GetRegisteredModelResult;
+import com.pulumi.databricks.outputs.GetRegisteredModelVersionsResult;
 import com.pulumi.databricks.outputs.GetSchemaResult;
 import com.pulumi.databricks.outputs.GetSchemasResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalsResult;
+import com.pulumi.databricks.outputs.GetServingEndpointsResult;
 import com.pulumi.databricks.outputs.GetShareResult;
 import com.pulumi.databricks.outputs.GetSharesResult;
 import com.pulumi.databricks.outputs.GetSparkVersionResult;
@@ -176,6 +192,657 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class DatabricksFunctions {
+    /**
+     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+     * 
+     * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+     * 
+     * This data source allows you to fetch information about a Databricks App.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getApp(GetAppArgs.builder()
+     *             .name("my-custom-app")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+     * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+     * 
+     */
+    public static Output<GetAppResult> getApp(GetAppArgs args) {
+        return getApp(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+     * 
+     * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+     * 
+     * This data source allows you to fetch information about a Databricks App.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getApp(GetAppArgs.builder()
+     *             .name("my-custom-app")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+     * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+     * 
+     */
+    public static CompletableFuture<GetAppResult> getAppPlain(GetAppPlainArgs args) {
+        return getAppPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+     * 
+     * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+     * 
+     * This data source allows you to fetch information about a Databricks App.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getApp(GetAppArgs.builder()
+     *             .name("my-custom-app")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+     * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+     * 
+     */
+    public static Output<GetAppResult> getApp(GetAppArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getApp:getApp", TypeShape.of(GetAppResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+     * 
+     * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+     * 
+     * This data source allows you to fetch information about a Databricks App.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getApp(GetAppArgs.builder()
+     *             .name("my-custom-app")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+     * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+     * 
+     */
+    public static Output<GetAppResult> getApp(GetAppArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getApp:getApp", TypeShape.of(GetAppResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+     * 
+     * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+     * 
+     * This data source allows you to fetch information about a Databricks App.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getApp(GetAppArgs.builder()
+     *             .name("my-custom-app")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+     * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+     * 
+     */
+    public static CompletableFuture<GetAppResult> getAppPlain(GetAppPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getApp:getApp", TypeShape.of(GetAppResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+     * 
+     * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+     * 
+     * This data source allows you to fetch information about all Databricks Apps within a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allApps = DatabricksFunctions.getApps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+     * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+     * 
+     */
+    public static Output<GetAppsResult> getApps() {
+        return getApps(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+     * 
+     * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+     * 
+     * This data source allows you to fetch information about all Databricks Apps within a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allApps = DatabricksFunctions.getApps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+     * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+     * 
+     */
+    public static CompletableFuture<GetAppsResult> getAppsPlain() {
+        return getAppsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+     * 
+     * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+     * 
+     * This data source allows you to fetch information about all Databricks Apps within a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allApps = DatabricksFunctions.getApps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+     * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+     * 
+     */
+    public static Output<GetAppsResult> getApps(InvokeArgs args) {
+        return getApps(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+     * 
+     * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+     * 
+     * This data source allows you to fetch information about all Databricks Apps within a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allApps = DatabricksFunctions.getApps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+     * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+     * 
+     */
+    public static CompletableFuture<GetAppsResult> getAppsPlain(InvokeArgs args) {
+        return getAppsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+     * 
+     * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+     * 
+     * This data source allows you to fetch information about all Databricks Apps within a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allApps = DatabricksFunctions.getApps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+     * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+     * 
+     */
+    public static Output<GetAppsResult> getApps(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+     * 
+     * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+     * 
+     * This data source allows you to fetch information about all Databricks Apps within a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allApps = DatabricksFunctions.getApps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+     * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+     * 
+     */
+    public static Output<GetAppsResult> getApps(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
+     * 
+     * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
+     * 
+     * This data source allows you to fetch information about all Databricks Apps within a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allApps = DatabricksFunctions.getApps();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.App to manage [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html).
+     * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+     * 
+     */
+    public static CompletableFuture<GetAppsResult> getAppsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source constructs necessary AWS STS assume role policy for you.
      * 
@@ -7561,6 +8228,10 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
+     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
+     *             .build());
+     * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
@@ -7667,6 +8338,10 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
+     *             .build());
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
@@ -7775,6 +8450,10 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
+     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
+     *             .build());
+     * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
@@ -7881,6 +8560,10 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
+     *             .build());
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
@@ -7989,6 +8672,10 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
+     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
+     *             .build());
+     * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
@@ -8096,6 +8783,10 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
+     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
+     *             .build());
+     * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
      *             for (var range : KeyedValue.of(getJobsResult.ids()) {
@@ -8202,6 +8893,10 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
+     * 
+     *         final var tests = DatabricksFunctions.getJobs(GetJobsArgs.builder()
+     *             .jobNameContains("test")
+     *             .build());
      * 
      *         final var everyoneCanViewAllJobs = this.applyValue(getJobsResult -> {
      *             final var resources = new ArrayList<Permissions>();
@@ -10490,6 +11185,892 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetMwsCredentialsResult> getMwsCredentialsPlain(GetMwsCredentialsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getMwsCredentials:getMwsCredentials", TypeShape.of(GetMwsCredentialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+     * 
+     * ## Example Usage
+     * 
+     * Fetching information about a network connectivity configuration in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfig(GetMwsNetworkConnectivityConfigArgs.builder()
+     *             .name("ncc")
+     *             .build());
+     * 
+     *         ctx.export("config", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getMwsNetworkConnectivityConfigs to get names of all network connectivity configurations.
+     * * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+     * 
+     */
+    public static Output<GetMwsNetworkConnectivityConfigResult> getMwsNetworkConnectivityConfig(GetMwsNetworkConnectivityConfigArgs args) {
+        return getMwsNetworkConnectivityConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+     * 
+     * ## Example Usage
+     * 
+     * Fetching information about a network connectivity configuration in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfig(GetMwsNetworkConnectivityConfigArgs.builder()
+     *             .name("ncc")
+     *             .build());
+     * 
+     *         ctx.export("config", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getMwsNetworkConnectivityConfigs to get names of all network connectivity configurations.
+     * * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+     * 
+     */
+    public static CompletableFuture<GetMwsNetworkConnectivityConfigResult> getMwsNetworkConnectivityConfigPlain(GetMwsNetworkConnectivityConfigPlainArgs args) {
+        return getMwsNetworkConnectivityConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+     * 
+     * ## Example Usage
+     * 
+     * Fetching information about a network connectivity configuration in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfig(GetMwsNetworkConnectivityConfigArgs.builder()
+     *             .name("ncc")
+     *             .build());
+     * 
+     *         ctx.export("config", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getMwsNetworkConnectivityConfigs to get names of all network connectivity configurations.
+     * * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+     * 
+     */
+    public static Output<GetMwsNetworkConnectivityConfigResult> getMwsNetworkConnectivityConfig(GetMwsNetworkConnectivityConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig", TypeShape.of(GetMwsNetworkConnectivityConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+     * 
+     * ## Example Usage
+     * 
+     * Fetching information about a network connectivity configuration in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfig(GetMwsNetworkConnectivityConfigArgs.builder()
+     *             .name("ncc")
+     *             .build());
+     * 
+     *         ctx.export("config", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getMwsNetworkConnectivityConfigs to get names of all network connectivity configurations.
+     * * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+     * 
+     */
+    public static Output<GetMwsNetworkConnectivityConfigResult> getMwsNetworkConnectivityConfig(GetMwsNetworkConnectivityConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig", TypeShape.of(GetMwsNetworkConnectivityConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * Retrieves information about databricks.MwsNetworkConnectivityConfig in Databricks Account.
+     * 
+     * ## Example Usage
+     * 
+     * Fetching information about a network connectivity configuration in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfig(GetMwsNetworkConnectivityConfigArgs.builder()
+     *             .name("ncc")
+     *             .build());
+     * 
+     *         ctx.export("config", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getMwsNetworkConnectivityConfigs to get names of all network connectivity configurations.
+     * * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+     * 
+     */
+    public static CompletableFuture<GetMwsNetworkConnectivityConfigResult> getMwsNetworkConnectivityConfigPlain(GetMwsNetworkConnectivityConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig", TypeShape.of(GetMwsNetworkConnectivityConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * Lists all databricks.MwsNetworkConnectivityConfig in Databricks Account.
+     * 
+     * ## Example Usage
+     * 
+     * List all network connectivity configurations in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     * 
+     *         ctx.export("all", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * List network connectivity configurations from a specific region in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .region("us-east-1")
+     *             .build());
+     * 
+     *         ctx.export("filtered", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsNetworkConnectivityConfig to get information about a single network connectivity configuration.
+     * * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+     * 
+     */
+    public static Output<GetMwsNetworkConnectivityConfigsResult> getMwsNetworkConnectivityConfigs() {
+        return getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * Lists all databricks.MwsNetworkConnectivityConfig in Databricks Account.
+     * 
+     * ## Example Usage
+     * 
+     * List all network connectivity configurations in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     * 
+     *         ctx.export("all", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * List network connectivity configurations from a specific region in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .region("us-east-1")
+     *             .build());
+     * 
+     *         ctx.export("filtered", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsNetworkConnectivityConfig to get information about a single network connectivity configuration.
+     * * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+     * 
+     */
+    public static CompletableFuture<GetMwsNetworkConnectivityConfigsResult> getMwsNetworkConnectivityConfigsPlain() {
+        return getMwsNetworkConnectivityConfigsPlain(GetMwsNetworkConnectivityConfigsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * Lists all databricks.MwsNetworkConnectivityConfig in Databricks Account.
+     * 
+     * ## Example Usage
+     * 
+     * List all network connectivity configurations in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     * 
+     *         ctx.export("all", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * List network connectivity configurations from a specific region in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .region("us-east-1")
+     *             .build());
+     * 
+     *         ctx.export("filtered", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsNetworkConnectivityConfig to get information about a single network connectivity configuration.
+     * * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+     * 
+     */
+    public static Output<GetMwsNetworkConnectivityConfigsResult> getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs args) {
+        return getMwsNetworkConnectivityConfigs(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * Lists all databricks.MwsNetworkConnectivityConfig in Databricks Account.
+     * 
+     * ## Example Usage
+     * 
+     * List all network connectivity configurations in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     * 
+     *         ctx.export("all", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * List network connectivity configurations from a specific region in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .region("us-east-1")
+     *             .build());
+     * 
+     *         ctx.export("filtered", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsNetworkConnectivityConfig to get information about a single network connectivity configuration.
+     * * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+     * 
+     */
+    public static CompletableFuture<GetMwsNetworkConnectivityConfigsResult> getMwsNetworkConnectivityConfigsPlain(GetMwsNetworkConnectivityConfigsPlainArgs args) {
+        return getMwsNetworkConnectivityConfigsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * Lists all databricks.MwsNetworkConnectivityConfig in Databricks Account.
+     * 
+     * ## Example Usage
+     * 
+     * List all network connectivity configurations in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     * 
+     *         ctx.export("all", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * List network connectivity configurations from a specific region in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .region("us-east-1")
+     *             .build());
+     * 
+     *         ctx.export("filtered", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsNetworkConnectivityConfig to get information about a single network connectivity configuration.
+     * * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+     * 
+     */
+    public static Output<GetMwsNetworkConnectivityConfigsResult> getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMwsNetworkConnectivityConfigs:getMwsNetworkConnectivityConfigs", TypeShape.of(GetMwsNetworkConnectivityConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * Lists all databricks.MwsNetworkConnectivityConfig in Databricks Account.
+     * 
+     * ## Example Usage
+     * 
+     * List all network connectivity configurations in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     * 
+     *         ctx.export("all", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * List network connectivity configurations from a specific region in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .region("us-east-1")
+     *             .build());
+     * 
+     *         ctx.export("filtered", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsNetworkConnectivityConfig to get information about a single network connectivity configuration.
+     * * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+     * 
+     */
+    public static Output<GetMwsNetworkConnectivityConfigsResult> getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMwsNetworkConnectivityConfigs:getMwsNetworkConnectivityConfigs", TypeShape.of(GetMwsNetworkConnectivityConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * Lists all databricks.MwsNetworkConnectivityConfig in Databricks Account.
+     * 
+     * ## Example Usage
+     * 
+     * List all network connectivity configurations in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs();
+     * 
+     *         ctx.export("all", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * List network connectivity configurations from a specific region in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMwsNetworkConnectivityConfigs(GetMwsNetworkConnectivityConfigsArgs.builder()
+     *             .region("us-east-1")
+     *             .build());
+     * 
+     *         ctx.export("filtered", this_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.MwsNetworkConnectivityConfig to get information about a single network connectivity configuration.
+     * * databricks.MwsNetworkConnectivityConfig to manage network connectivity configuration.
+     * 
+     */
+    public static CompletableFuture<GetMwsNetworkConnectivityConfigsResult> getMwsNetworkConnectivityConfigsPlain(GetMwsNetworkConnectivityConfigsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMwsNetworkConnectivityConfigs:getMwsNetworkConnectivityConfigs", TypeShape.of(GetMwsNetworkConnectivityConfigsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -13512,6 +15093,271 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getRegisteredModel:getRegisteredModel", TypeShape.of(GetRegisteredModelResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRegisteredModelVersions(GetRegisteredModelVersionsArgs.builder()
+     *             .fullName("main.default.my_model")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.RegisteredModel data source to retrieve information about a model within Unity Catalog.
+     * * databricks.RegisteredModel resource to manage models within Unity Catalog.
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+     * 
+     */
+    public static Output<GetRegisteredModelVersionsResult> getRegisteredModelVersions(GetRegisteredModelVersionsArgs args) {
+        return getRegisteredModelVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRegisteredModelVersions(GetRegisteredModelVersionsArgs.builder()
+     *             .fullName("main.default.my_model")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.RegisteredModel data source to retrieve information about a model within Unity Catalog.
+     * * databricks.RegisteredModel resource to manage models within Unity Catalog.
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+     * 
+     */
+    public static CompletableFuture<GetRegisteredModelVersionsResult> getRegisteredModelVersionsPlain(GetRegisteredModelVersionsPlainArgs args) {
+        return getRegisteredModelVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRegisteredModelVersions(GetRegisteredModelVersionsArgs.builder()
+     *             .fullName("main.default.my_model")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.RegisteredModel data source to retrieve information about a model within Unity Catalog.
+     * * databricks.RegisteredModel resource to manage models within Unity Catalog.
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+     * 
+     */
+    public static Output<GetRegisteredModelVersionsResult> getRegisteredModelVersions(GetRegisteredModelVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getRegisteredModelVersions:getRegisteredModelVersions", TypeShape.of(GetRegisteredModelVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRegisteredModelVersions(GetRegisteredModelVersionsArgs.builder()
+     *             .fullName("main.default.my_model")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.RegisteredModel data source to retrieve information about a model within Unity Catalog.
+     * * databricks.RegisteredModel resource to manage models within Unity Catalog.
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+     * 
+     */
+    public static Output<GetRegisteredModelVersionsResult> getRegisteredModelVersions(GetRegisteredModelVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getRegisteredModelVersions:getRegisteredModelVersions", TypeShape.of(GetRegisteredModelVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getRegisteredModelVersions(GetRegisteredModelVersionsArgs.builder()
+     *             .fullName("main.default.my_model")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.RegisteredModel data source to retrieve information about a model within Unity Catalog.
+     * * databricks.RegisteredModel resource to manage models within Unity Catalog.
+     * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+     * * databricks.MlflowExperiment to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
+     * 
+     */
+    public static CompletableFuture<GetRegisteredModelVersionsResult> getRegisteredModelVersionsPlain(GetRegisteredModelVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getRegisteredModelVersions:getRegisteredModelVersions", TypeShape.of(GetRegisteredModelVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.
      * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
      * 
@@ -14635,6 +16481,510 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetServicePrincipalsResult> getServicePrincipalsPlain(GetServicePrincipalsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getServicePrincipals:getServicePrincipals", TypeShape.of(GetServicePrincipalsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServingEndpointsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getServingEndpoints();
+     * 
+     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
+     *                 .servingEndpointId(range.value().id())
+     *                 .accessControls(                
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(auto.displayName())
+     *                         .permissionLevel("CAN_MANAGE")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(eng.displayName())
+     *                         .permissionLevel("CAN_QUERY")
+     *                         .build())
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+     * 
+     */
+    public static Output<GetServingEndpointsResult> getServingEndpoints() {
+        return getServingEndpoints(GetServingEndpointsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServingEndpointsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getServingEndpoints();
+     * 
+     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
+     *                 .servingEndpointId(range.value().id())
+     *                 .accessControls(                
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(auto.displayName())
+     *                         .permissionLevel("CAN_MANAGE")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(eng.displayName())
+     *                         .permissionLevel("CAN_QUERY")
+     *                         .build())
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+     * 
+     */
+    public static CompletableFuture<GetServingEndpointsResult> getServingEndpointsPlain() {
+        return getServingEndpointsPlain(GetServingEndpointsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServingEndpointsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getServingEndpoints();
+     * 
+     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
+     *                 .servingEndpointId(range.value().id())
+     *                 .accessControls(                
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(auto.displayName())
+     *                         .permissionLevel("CAN_MANAGE")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(eng.displayName())
+     *                         .permissionLevel("CAN_QUERY")
+     *                         .build())
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+     * 
+     */
+    public static Output<GetServingEndpointsResult> getServingEndpoints(GetServingEndpointsArgs args) {
+        return getServingEndpoints(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServingEndpointsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getServingEndpoints();
+     * 
+     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
+     *                 .servingEndpointId(range.value().id())
+     *                 .accessControls(                
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(auto.displayName())
+     *                         .permissionLevel("CAN_MANAGE")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(eng.displayName())
+     *                         .permissionLevel("CAN_QUERY")
+     *                         .build())
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+     * 
+     */
+    public static CompletableFuture<GetServingEndpointsResult> getServingEndpointsPlain(GetServingEndpointsPlainArgs args) {
+        return getServingEndpointsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServingEndpointsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getServingEndpoints();
+     * 
+     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
+     *                 .servingEndpointId(range.value().id())
+     *                 .accessControls(                
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(auto.displayName())
+     *                         .permissionLevel("CAN_MANAGE")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(eng.displayName())
+     *                         .permissionLevel("CAN_QUERY")
+     *                         .build())
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+     * 
+     */
+    public static Output<GetServingEndpointsResult> getServingEndpoints(GetServingEndpointsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getServingEndpoints:getServingEndpoints", TypeShape.of(GetServingEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServingEndpointsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getServingEndpoints();
+     * 
+     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
+     *                 .servingEndpointId(range.value().id())
+     *                 .accessControls(                
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(auto.displayName())
+     *                         .permissionLevel("CAN_MANAGE")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(eng.displayName())
+     *                         .permissionLevel("CAN_QUERY")
+     *                         .build())
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+     * 
+     */
+    public static Output<GetServingEndpointsResult> getServingEndpoints(GetServingEndpointsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getServingEndpoints:getServingEndpoints", TypeShape.of(GetServingEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; This resource can only be used with a workspace-level provider!
+     * 
+     * This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServingEndpointsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getServingEndpoints();
+     * 
+     *         for (var i = 0; i < allDatabricksServingEndpoints.endpoints(); i++) {
+     *             new Permissions("mlServingUsage-" + i, PermissionsArgs.builder()
+     *                 .servingEndpointId(range.value().id())
+     *                 .accessControls(                
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName("users")
+     *                         .permissionLevel("CAN_VIEW")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(auto.displayName())
+     *                         .permissionLevel("CAN_MANAGE")
+     *                         .build(),
+     *                     PermissionsAccessControlArgs.builder()
+     *                         .groupName(eng.displayName())
+     *                         .permissionLevel("CAN_QUERY")
+     *                         .build())
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
+     * 
+     */
+    public static CompletableFuture<GetServingEndpointsResult> getServingEndpointsPlain(GetServingEndpointsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getServingEndpoints:getServingEndpoints", TypeShape.of(GetServingEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves details about a databricks.Share that were created by Pulumi or manually.

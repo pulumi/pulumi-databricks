@@ -38,7 +38,7 @@ import (
 //
 // ## Metastore grants
 //
-// You can grant `CREATE_CATALOG`, `CREATE_CONNECTION`, `CREATE_EXTERNAL_LOCATION`, `CREATE_PROVIDER`, `CREATE_RECIPIENT`, `CREATE_SHARE`, `CREATE_STORAGE_CREDENTIAL`, `MANAGE_ALLOWLIST`, `SET_SHARE_PERMISSION`, `USE_MARKETPLACE_ASSETS`, `USE_CONNECTION`, `USE_PROVIDER`, `USE_RECIPIENT` and `USE_SHARE` privileges to Metastore assigned to the workspace.
+// You can grant `CREATE_CATALOG`, `CREATE_CLEAN_ROOM`, `CREATE_CONNECTION`, `CREATE_EXTERNAL_LOCATION`, `CREATE_PROVIDER`, `CREATE_RECIPIENT`, `CREATE_SHARE`, `CREATE_SERVICE_CREDENTIAL`, `CREATE_STORAGE_CREDENTIAL`, `SET_SHARE_PERMISSION`, `USE_MARKETPLACE_ASSETS`, `USE_PROVIDER`, `USE_RECIPIENT`, and `USE_SHARE` privileges to Metastore assigned to the workspace.
 //
 // ```go
 // package main
@@ -498,6 +498,53 @@ import (
 //
 // ```
 //
+// ## Service credential grants
+//
+// You can grant `ALL_PRIVILEGES`, `ACCESS` and `CREATE_CONNECTION` privileges to Credential id specified in `credential` attribute:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			external, err := databricks.NewCredential(ctx, "external", &databricks.CredentialArgs{
+//				Name: pulumi.Any(externalDataAccess.Name),
+//				AwsIamRole: &databricks.CredentialAwsIamRoleArgs{
+//					RoleArn: pulumi.Any(externalDataAccess.Arn),
+//				},
+//				Purpose: pulumi.String("SERVICE"),
+//				Comment: pulumi.String("Managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
+//				Credential: external.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_CONNECTION"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Storage credential grants
 //
 // You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `READ_FILES` and `WRITE_FILES` privileges to StorageCredential id specified in `storageCredential` attribute:
@@ -732,6 +779,7 @@ type Grants struct {
 	pulumi.CustomResourceState
 
 	Catalog           pulumi.StringPtrOutput `pulumi:"catalog"`
+	Credential        pulumi.StringPtrOutput `pulumi:"credential"`
 	ExternalLocation  pulumi.StringPtrOutput `pulumi:"externalLocation"`
 	ForeignConnection pulumi.StringPtrOutput `pulumi:"foreignConnection"`
 	Function          pulumi.StringPtrOutput `pulumi:"function"`
@@ -781,6 +829,7 @@ func GetGrants(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Grants resources.
 type grantsState struct {
 	Catalog           *string       `pulumi:"catalog"`
+	Credential        *string       `pulumi:"credential"`
 	ExternalLocation  *string       `pulumi:"externalLocation"`
 	ForeignConnection *string       `pulumi:"foreignConnection"`
 	Function          *string       `pulumi:"function"`
@@ -798,6 +847,7 @@ type grantsState struct {
 
 type GrantsState struct {
 	Catalog           pulumi.StringPtrInput
+	Credential        pulumi.StringPtrInput
 	ExternalLocation  pulumi.StringPtrInput
 	ForeignConnection pulumi.StringPtrInput
 	Function          pulumi.StringPtrInput
@@ -819,6 +869,7 @@ func (GrantsState) ElementType() reflect.Type {
 
 type grantsArgs struct {
 	Catalog           *string       `pulumi:"catalog"`
+	Credential        *string       `pulumi:"credential"`
 	ExternalLocation  *string       `pulumi:"externalLocation"`
 	ForeignConnection *string       `pulumi:"foreignConnection"`
 	Function          *string       `pulumi:"function"`
@@ -837,6 +888,7 @@ type grantsArgs struct {
 // The set of arguments for constructing a Grants resource.
 type GrantsArgs struct {
 	Catalog           pulumi.StringPtrInput
+	Credential        pulumi.StringPtrInput
 	ExternalLocation  pulumi.StringPtrInput
 	ForeignConnection pulumi.StringPtrInput
 	Function          pulumi.StringPtrInput
@@ -941,6 +993,10 @@ func (o GrantsOutput) ToGrantsOutputWithContext(ctx context.Context) GrantsOutpu
 
 func (o GrantsOutput) Catalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Catalog }).(pulumi.StringPtrOutput)
+}
+
+func (o GrantsOutput) Credential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Credential }).(pulumi.StringPtrOutput)
 }
 
 func (o GrantsOutput) ExternalLocation() pulumi.StringPtrOutput {

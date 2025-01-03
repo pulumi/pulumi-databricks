@@ -986,6 +986,59 @@ import (
 //
 // ```
 //
+// ## Mosaic AI Vector Search usage
+//
+// Valid permission levels for VectorSearchEndpoint are: `CAN_USE` and `CAN_MANAGE`.
+//
+// > You need to use the `endpointId` attribute of `VectorSearchEndpoint` as value for `vectorSearchEndpointId`, not the `id`!
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewVectorSearchEndpoint(ctx, "this", &databricks.VectorSearchEndpointArgs{
+//				Name:         pulumi.String("vector-search-test"),
+//				EndpointType: pulumi.String("STANDARD"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Engineering"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissions(ctx, "vector_search_endpoint_usage", &databricks.PermissionsArgs{
+//				VectorSearchEndpointId: this.EndpointId,
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.String("users"),
+//						PermissionLevel: pulumi.String("CAN_USE"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       eng.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_MANAGE"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Passwords usage
 //
 // By default on AWS deployments, all admin users can sign in to Databricks using either SSO or their username and password, and all API users can authenticate to the Databricks REST APIs using their username and password. As an admin, you [can limit](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#optional-configure-password-access-control) admin users’ and API users’ ability to authenticate with their username and password by configuring `CAN_USE` permissions using password access control.
@@ -1391,6 +1444,7 @@ type Permissions struct {
 	pulumi.CustomResourceState
 
 	AccessControls  PermissionsAccessControlArrayOutput `pulumi:"accessControls"`
+	AppName         pulumi.StringPtrOutput              `pulumi:"appName"`
 	Authorization   pulumi.StringPtrOutput              `pulumi:"authorization"`
 	ClusterId       pulumi.StringPtrOutput              `pulumi:"clusterId"`
 	ClusterPolicyId pulumi.StringPtrOutput              `pulumi:"clusterPolicyId"`
@@ -1403,18 +1457,19 @@ type Permissions struct {
 	NotebookId      pulumi.StringPtrOutput              `pulumi:"notebookId"`
 	NotebookPath    pulumi.StringPtrOutput              `pulumi:"notebookPath"`
 	// type of permissions.
-	ObjectType        pulumi.StringOutput    `pulumi:"objectType"`
-	PipelineId        pulumi.StringPtrOutput `pulumi:"pipelineId"`
-	RegisteredModelId pulumi.StringPtrOutput `pulumi:"registeredModelId"`
-	RepoId            pulumi.StringPtrOutput `pulumi:"repoId"`
-	RepoPath          pulumi.StringPtrOutput `pulumi:"repoPath"`
-	ServingEndpointId pulumi.StringPtrOutput `pulumi:"servingEndpointId"`
-	SqlAlertId        pulumi.StringPtrOutput `pulumi:"sqlAlertId"`
-	SqlDashboardId    pulumi.StringPtrOutput `pulumi:"sqlDashboardId"`
-	SqlEndpointId     pulumi.StringPtrOutput `pulumi:"sqlEndpointId"`
-	SqlQueryId        pulumi.StringPtrOutput `pulumi:"sqlQueryId"`
-	WorkspaceFileId   pulumi.StringPtrOutput `pulumi:"workspaceFileId"`
-	WorkspaceFilePath pulumi.StringPtrOutput `pulumi:"workspaceFilePath"`
+	ObjectType             pulumi.StringOutput    `pulumi:"objectType"`
+	PipelineId             pulumi.StringPtrOutput `pulumi:"pipelineId"`
+	RegisteredModelId      pulumi.StringPtrOutput `pulumi:"registeredModelId"`
+	RepoId                 pulumi.StringPtrOutput `pulumi:"repoId"`
+	RepoPath               pulumi.StringPtrOutput `pulumi:"repoPath"`
+	ServingEndpointId      pulumi.StringPtrOutput `pulumi:"servingEndpointId"`
+	SqlAlertId             pulumi.StringPtrOutput `pulumi:"sqlAlertId"`
+	SqlDashboardId         pulumi.StringPtrOutput `pulumi:"sqlDashboardId"`
+	SqlEndpointId          pulumi.StringPtrOutput `pulumi:"sqlEndpointId"`
+	SqlQueryId             pulumi.StringPtrOutput `pulumi:"sqlQueryId"`
+	VectorSearchEndpointId pulumi.StringPtrOutput `pulumi:"vectorSearchEndpointId"`
+	WorkspaceFileId        pulumi.StringPtrOutput `pulumi:"workspaceFileId"`
+	WorkspaceFilePath      pulumi.StringPtrOutput `pulumi:"workspaceFilePath"`
 }
 
 // NewPermissions registers a new resource with the given unique name, arguments, and options.
@@ -1451,6 +1506,7 @@ func GetPermissions(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Permissions resources.
 type permissionsState struct {
 	AccessControls  []PermissionsAccessControl `pulumi:"accessControls"`
+	AppName         *string                    `pulumi:"appName"`
 	Authorization   *string                    `pulumi:"authorization"`
 	ClusterId       *string                    `pulumi:"clusterId"`
 	ClusterPolicyId *string                    `pulumi:"clusterPolicyId"`
@@ -1463,22 +1519,24 @@ type permissionsState struct {
 	NotebookId      *string                    `pulumi:"notebookId"`
 	NotebookPath    *string                    `pulumi:"notebookPath"`
 	// type of permissions.
-	ObjectType        *string `pulumi:"objectType"`
-	PipelineId        *string `pulumi:"pipelineId"`
-	RegisteredModelId *string `pulumi:"registeredModelId"`
-	RepoId            *string `pulumi:"repoId"`
-	RepoPath          *string `pulumi:"repoPath"`
-	ServingEndpointId *string `pulumi:"servingEndpointId"`
-	SqlAlertId        *string `pulumi:"sqlAlertId"`
-	SqlDashboardId    *string `pulumi:"sqlDashboardId"`
-	SqlEndpointId     *string `pulumi:"sqlEndpointId"`
-	SqlQueryId        *string `pulumi:"sqlQueryId"`
-	WorkspaceFileId   *string `pulumi:"workspaceFileId"`
-	WorkspaceFilePath *string `pulumi:"workspaceFilePath"`
+	ObjectType             *string `pulumi:"objectType"`
+	PipelineId             *string `pulumi:"pipelineId"`
+	RegisteredModelId      *string `pulumi:"registeredModelId"`
+	RepoId                 *string `pulumi:"repoId"`
+	RepoPath               *string `pulumi:"repoPath"`
+	ServingEndpointId      *string `pulumi:"servingEndpointId"`
+	SqlAlertId             *string `pulumi:"sqlAlertId"`
+	SqlDashboardId         *string `pulumi:"sqlDashboardId"`
+	SqlEndpointId          *string `pulumi:"sqlEndpointId"`
+	SqlQueryId             *string `pulumi:"sqlQueryId"`
+	VectorSearchEndpointId *string `pulumi:"vectorSearchEndpointId"`
+	WorkspaceFileId        *string `pulumi:"workspaceFileId"`
+	WorkspaceFilePath      *string `pulumi:"workspaceFilePath"`
 }
 
 type PermissionsState struct {
 	AccessControls  PermissionsAccessControlArrayInput
+	AppName         pulumi.StringPtrInput
 	Authorization   pulumi.StringPtrInput
 	ClusterId       pulumi.StringPtrInput
 	ClusterPolicyId pulumi.StringPtrInput
@@ -1491,18 +1549,19 @@ type PermissionsState struct {
 	NotebookId      pulumi.StringPtrInput
 	NotebookPath    pulumi.StringPtrInput
 	// type of permissions.
-	ObjectType        pulumi.StringPtrInput
-	PipelineId        pulumi.StringPtrInput
-	RegisteredModelId pulumi.StringPtrInput
-	RepoId            pulumi.StringPtrInput
-	RepoPath          pulumi.StringPtrInput
-	ServingEndpointId pulumi.StringPtrInput
-	SqlAlertId        pulumi.StringPtrInput
-	SqlDashboardId    pulumi.StringPtrInput
-	SqlEndpointId     pulumi.StringPtrInput
-	SqlQueryId        pulumi.StringPtrInput
-	WorkspaceFileId   pulumi.StringPtrInput
-	WorkspaceFilePath pulumi.StringPtrInput
+	ObjectType             pulumi.StringPtrInput
+	PipelineId             pulumi.StringPtrInput
+	RegisteredModelId      pulumi.StringPtrInput
+	RepoId                 pulumi.StringPtrInput
+	RepoPath               pulumi.StringPtrInput
+	ServingEndpointId      pulumi.StringPtrInput
+	SqlAlertId             pulumi.StringPtrInput
+	SqlDashboardId         pulumi.StringPtrInput
+	SqlEndpointId          pulumi.StringPtrInput
+	SqlQueryId             pulumi.StringPtrInput
+	VectorSearchEndpointId pulumi.StringPtrInput
+	WorkspaceFileId        pulumi.StringPtrInput
+	WorkspaceFilePath      pulumi.StringPtrInput
 }
 
 func (PermissionsState) ElementType() reflect.Type {
@@ -1511,6 +1570,7 @@ func (PermissionsState) ElementType() reflect.Type {
 
 type permissionsArgs struct {
 	AccessControls  []PermissionsAccessControl `pulumi:"accessControls"`
+	AppName         *string                    `pulumi:"appName"`
 	Authorization   *string                    `pulumi:"authorization"`
 	ClusterId       *string                    `pulumi:"clusterId"`
 	ClusterPolicyId *string                    `pulumi:"clusterPolicyId"`
@@ -1523,23 +1583,25 @@ type permissionsArgs struct {
 	NotebookId      *string                    `pulumi:"notebookId"`
 	NotebookPath    *string                    `pulumi:"notebookPath"`
 	// type of permissions.
-	ObjectType        *string `pulumi:"objectType"`
-	PipelineId        *string `pulumi:"pipelineId"`
-	RegisteredModelId *string `pulumi:"registeredModelId"`
-	RepoId            *string `pulumi:"repoId"`
-	RepoPath          *string `pulumi:"repoPath"`
-	ServingEndpointId *string `pulumi:"servingEndpointId"`
-	SqlAlertId        *string `pulumi:"sqlAlertId"`
-	SqlDashboardId    *string `pulumi:"sqlDashboardId"`
-	SqlEndpointId     *string `pulumi:"sqlEndpointId"`
-	SqlQueryId        *string `pulumi:"sqlQueryId"`
-	WorkspaceFileId   *string `pulumi:"workspaceFileId"`
-	WorkspaceFilePath *string `pulumi:"workspaceFilePath"`
+	ObjectType             *string `pulumi:"objectType"`
+	PipelineId             *string `pulumi:"pipelineId"`
+	RegisteredModelId      *string `pulumi:"registeredModelId"`
+	RepoId                 *string `pulumi:"repoId"`
+	RepoPath               *string `pulumi:"repoPath"`
+	ServingEndpointId      *string `pulumi:"servingEndpointId"`
+	SqlAlertId             *string `pulumi:"sqlAlertId"`
+	SqlDashboardId         *string `pulumi:"sqlDashboardId"`
+	SqlEndpointId          *string `pulumi:"sqlEndpointId"`
+	SqlQueryId             *string `pulumi:"sqlQueryId"`
+	VectorSearchEndpointId *string `pulumi:"vectorSearchEndpointId"`
+	WorkspaceFileId        *string `pulumi:"workspaceFileId"`
+	WorkspaceFilePath      *string `pulumi:"workspaceFilePath"`
 }
 
 // The set of arguments for constructing a Permissions resource.
 type PermissionsArgs struct {
 	AccessControls  PermissionsAccessControlArrayInput
+	AppName         pulumi.StringPtrInput
 	Authorization   pulumi.StringPtrInput
 	ClusterId       pulumi.StringPtrInput
 	ClusterPolicyId pulumi.StringPtrInput
@@ -1552,18 +1614,19 @@ type PermissionsArgs struct {
 	NotebookId      pulumi.StringPtrInput
 	NotebookPath    pulumi.StringPtrInput
 	// type of permissions.
-	ObjectType        pulumi.StringPtrInput
-	PipelineId        pulumi.StringPtrInput
-	RegisteredModelId pulumi.StringPtrInput
-	RepoId            pulumi.StringPtrInput
-	RepoPath          pulumi.StringPtrInput
-	ServingEndpointId pulumi.StringPtrInput
-	SqlAlertId        pulumi.StringPtrInput
-	SqlDashboardId    pulumi.StringPtrInput
-	SqlEndpointId     pulumi.StringPtrInput
-	SqlQueryId        pulumi.StringPtrInput
-	WorkspaceFileId   pulumi.StringPtrInput
-	WorkspaceFilePath pulumi.StringPtrInput
+	ObjectType             pulumi.StringPtrInput
+	PipelineId             pulumi.StringPtrInput
+	RegisteredModelId      pulumi.StringPtrInput
+	RepoId                 pulumi.StringPtrInput
+	RepoPath               pulumi.StringPtrInput
+	ServingEndpointId      pulumi.StringPtrInput
+	SqlAlertId             pulumi.StringPtrInput
+	SqlDashboardId         pulumi.StringPtrInput
+	SqlEndpointId          pulumi.StringPtrInput
+	SqlQueryId             pulumi.StringPtrInput
+	VectorSearchEndpointId pulumi.StringPtrInput
+	WorkspaceFileId        pulumi.StringPtrInput
+	WorkspaceFilePath      pulumi.StringPtrInput
 }
 
 func (PermissionsArgs) ElementType() reflect.Type {
@@ -1657,6 +1720,10 @@ func (o PermissionsOutput) AccessControls() PermissionsAccessControlArrayOutput 
 	return o.ApplyT(func(v *Permissions) PermissionsAccessControlArrayOutput { return v.AccessControls }).(PermissionsAccessControlArrayOutput)
 }
 
+func (o PermissionsOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.AppName }).(pulumi.StringPtrOutput)
+}
+
 func (o PermissionsOutput) Authorization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.Authorization }).(pulumi.StringPtrOutput)
 }
@@ -1740,6 +1807,10 @@ func (o PermissionsOutput) SqlEndpointId() pulumi.StringPtrOutput {
 
 func (o PermissionsOutput) SqlQueryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlQueryId }).(pulumi.StringPtrOutput)
+}
+
+func (o PermissionsOutput) VectorSearchEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.VectorSearchEndpointId }).(pulumi.StringPtrOutput)
 }
 
 func (o PermissionsOutput) WorkspaceFileId() pulumi.StringPtrOutput {

@@ -31,7 +31,7 @@ public final class GetRegisteredModelResult {
      * @return block with information about the model in Unity Catalog:
      * 
      */
-    private @Nullable List<GetRegisteredModelModelInfo> modelInfos;
+    private List<GetRegisteredModelModelInfo> modelInfos;
 
     private GetRegisteredModelResult() {}
     /**
@@ -59,7 +59,7 @@ public final class GetRegisteredModelResult {
      * 
      */
     public List<GetRegisteredModelModelInfo> modelInfos() {
-        return this.modelInfos == null ? List.of() : this.modelInfos;
+        return this.modelInfos;
     }
 
     public static Builder builder() {
@@ -75,7 +75,7 @@ public final class GetRegisteredModelResult {
         private String id;
         private @Nullable Boolean includeAliases;
         private @Nullable Boolean includeBrowse;
-        private @Nullable List<GetRegisteredModelModelInfo> modelInfos;
+        private List<GetRegisteredModelModelInfo> modelInfos;
         public Builder() {}
         public Builder(GetRegisteredModelResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -115,8 +115,10 @@ public final class GetRegisteredModelResult {
             return this;
         }
         @CustomType.Setter
-        public Builder modelInfos(@Nullable List<GetRegisteredModelModelInfo> modelInfos) {
-
+        public Builder modelInfos(List<GetRegisteredModelModelInfo> modelInfos) {
+            if (modelInfos == null) {
+              throw new MissingRequiredPropertyException("GetRegisteredModelResult", "modelInfos");
+            }
             this.modelInfos = modelInfos;
             return this;
         }

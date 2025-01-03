@@ -12,8 +12,13 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineRestartWindowGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("daysOfWeek")]
-        public Input<string>? DaysOfWeek { get; set; }
+        [Input("daysOfWeeks")]
+        private InputList<string>? _daysOfWeeks;
+        public InputList<string> DaysOfWeeks
+        {
+            get => _daysOfWeeks ?? (_daysOfWeeks = new InputList<string>());
+            set => _daysOfWeeks = value;
+        }
 
         [Input("startHour", required: true)]
         public Input<int> StartHour { get; set; } = null!;

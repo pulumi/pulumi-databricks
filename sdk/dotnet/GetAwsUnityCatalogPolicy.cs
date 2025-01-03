@@ -181,6 +181,12 @@ namespace Pulumi.Databricks
         public string AwsAccountId { get; set; } = null!;
 
         /// <summary>
+        /// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+        /// </summary>
+        [Input("awsPartition")]
+        public string? AwsPartition { get; set; }
+
+        /// <summary>
         /// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
         /// </summary>
         [Input("bucketName", required: true)]
@@ -213,6 +219,12 @@ namespace Pulumi.Databricks
         public Input<string> AwsAccountId { get; set; } = null!;
 
         /// <summary>
+        /// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+        /// </summary>
+        [Input("awsPartition")]
+        public Input<string>? AwsPartition { get; set; }
+
+        /// <summary>
         /// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
         /// </summary>
         [Input("bucketName", required: true)]
@@ -241,6 +253,7 @@ namespace Pulumi.Databricks
     public sealed class GetAwsUnityCatalogPolicyResult
     {
         public readonly string AwsAccountId;
+        public readonly string? AwsPartition;
         public readonly string BucketName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -257,6 +270,8 @@ namespace Pulumi.Databricks
         private GetAwsUnityCatalogPolicyResult(
             string awsAccountId,
 
+            string? awsPartition,
+
             string bucketName,
 
             string id,
@@ -268,6 +283,7 @@ namespace Pulumi.Databricks
             string roleName)
         {
             AwsAccountId = awsAccountId;
+            AwsPartition = awsPartition;
             BucketName = bucketName;
             Id = id;
             Json = json;

@@ -90,7 +90,7 @@ export class Query extends pulumi.CustomResource {
      */
     public readonly queryText!: pulumi.Output<string>;
     /**
-     * Sets the "Run as" role for the object.
+     * Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
      */
     public readonly runAsMode!: pulumi.Output<string | undefined>;
     /**
@@ -221,7 +221,7 @@ export interface QueryState {
      */
     queryText?: pulumi.Input<string>;
     /**
-     * Sets the "Run as" role for the object.
+     * Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
      */
     runAsMode?: pulumi.Input<string>;
     /**
@@ -279,7 +279,7 @@ export interface QueryArgs {
      */
     queryText: pulumi.Input<string>;
     /**
-     * Sets the "Run as" role for the object.
+     * Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
      */
     runAsMode?: pulumi.Input<string>;
     /**

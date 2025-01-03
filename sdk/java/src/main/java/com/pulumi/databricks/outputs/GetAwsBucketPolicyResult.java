@@ -12,7 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAwsBucketPolicyResult {
+    private @Nullable String awsPartition;
     private String bucket;
+    /**
+     * @deprecated
+     * databricks_account_id will be will be removed in the next major release.
+     * 
+     */
+    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
     private @Nullable String databricksAccountId;
     private @Nullable String databricksE2AccountId;
     private @Nullable String fullAccessRole;
@@ -28,9 +35,18 @@ public final class GetAwsBucketPolicyResult {
     private String json;
 
     private GetAwsBucketPolicyResult() {}
+    public Optional<String> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
+    }
     public String bucket() {
         return this.bucket;
     }
+    /**
+     * @deprecated
+     * databricks_account_id will be will be removed in the next major release.
+     * 
+     */
+    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
     public Optional<String> databricksAccountId() {
         return Optional.ofNullable(this.databricksAccountId);
     }
@@ -64,6 +80,7 @@ public final class GetAwsBucketPolicyResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String awsPartition;
         private String bucket;
         private @Nullable String databricksAccountId;
         private @Nullable String databricksE2AccountId;
@@ -73,6 +90,7 @@ public final class GetAwsBucketPolicyResult {
         public Builder() {}
         public Builder(GetAwsBucketPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.awsPartition = defaults.awsPartition;
     	      this.bucket = defaults.bucket;
     	      this.databricksAccountId = defaults.databricksAccountId;
     	      this.databricksE2AccountId = defaults.databricksE2AccountId;
@@ -81,6 +99,12 @@ public final class GetAwsBucketPolicyResult {
     	      this.json = defaults.json;
         }
 
+        @CustomType.Setter
+        public Builder awsPartition(@Nullable String awsPartition) {
+
+            this.awsPartition = awsPartition;
+            return this;
+        }
         @CustomType.Setter
         public Builder bucket(String bucket) {
             if (bucket == null) {
@@ -125,6 +149,7 @@ public final class GetAwsBucketPolicyResult {
         }
         public GetAwsBucketPolicyResult build() {
             final var _resultValue = new GetAwsBucketPolicyResult();
+            _resultValue.awsPartition = awsPartition;
             _resultValue.bucket = bucket;
             _resultValue.databricksAccountId = databricksAccountId;
             _resultValue.databricksE2AccountId = databricksE2AccountId;

@@ -139,6 +139,16 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by notification ID:
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/notificationDestination:NotificationDestination this &lt;notification-id&gt;
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/notificationDestination:NotificationDestination")]
     public partial class NotificationDestination : global::Pulumi.CustomResource

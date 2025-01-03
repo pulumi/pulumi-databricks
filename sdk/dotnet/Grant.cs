@@ -402,6 +402,42 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ## Service credential grants
+    /// 
+    /// See databricks.Grants Service credential grants for the list of privileges that apply to Service credentials.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var external = new Databricks.Credential("external", new()
+    ///     {
+    ///         Name = externalDataAccess.Name,
+    ///         AwsIamRole = new Databricks.Inputs.CredentialAwsIamRoleArgs
+    ///         {
+    ///             RoleArn = externalDataAccess.Arn,
+    ///         },
+    ///         Purpose = "SERVICE",
+    ///         Comment = "Managed by TF",
+    ///     });
+    /// 
+    ///     var externalCreds = new Databricks.Grant("external_creds", new()
+    ///     {
+    ///         Credential = external.Id,
+    ///         Principal = "Data Engineers",
+    ///         Privileges = new[]
+    ///         {
+    ///             "ACCESS",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Storage credential grants
     /// 
     /// See databricks.Grants Storage credential grants for the list of privileges that apply to Storage credentials.
@@ -603,6 +639,9 @@ namespace Pulumi.Databricks
         [Output("catalog")]
         public Output<string?> Catalog { get; private set; } = null!;
 
+        [Output("credential")]
+        public Output<string?> Credential { get; private set; } = null!;
+
         [Output("externalLocation")]
         public Output<string?> ExternalLocation { get; private set; } = null!;
 
@@ -694,6 +733,9 @@ namespace Pulumi.Databricks
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
 
+        [Input("credential")]
+        public Input<string>? Credential { get; set; }
+
         [Input("externalLocation")]
         public Input<string>? ExternalLocation { get; set; }
 
@@ -751,6 +793,9 @@ namespace Pulumi.Databricks
     {
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
+
+        [Input("credential")]
+        public Input<string>? Credential { get; set; }
 
         [Input("externalLocation")]
         public Input<string>? ExternalLocation { get; set; }

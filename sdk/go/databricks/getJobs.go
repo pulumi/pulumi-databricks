@@ -37,6 +37,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = databricks.GetJobs(ctx, &databricks.GetJobsArgs{
+//				JobNameContains: pulumi.StringRef("test"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			var everyoneCanViewAllJobs []*databricks.Permissions
 //			for key0, val0 := range this.Ids {
 //				__res, err := databricks.NewPermissions(ctx, fmt.Sprintf("everyone_can_view_all_jobs-%v", key0), &databricks.PermissionsArgs{
@@ -105,6 +111,8 @@ func GetJobs(ctx *pulumi.Context, args *GetJobsArgs, opts ...pulumi.InvokeOption
 type GetJobsArgs struct {
 	// map of Job names to ids
 	Ids map[string]string `pulumi:"ids"`
+	// Only return Job ids that match the given name string (case-insensitive).
+	JobNameContains *string `pulumi:"jobNameContains"`
 }
 
 // A collection of values returned by getJobs.
@@ -112,7 +120,8 @@ type GetJobsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// map of Job names to ids
-	Ids map[string]string `pulumi:"ids"`
+	Ids             map[string]string `pulumi:"ids"`
+	JobNameContains *string           `pulumi:"jobNameContains"`
 }
 
 func GetJobsOutput(ctx *pulumi.Context, args GetJobsOutputArgs, opts ...pulumi.InvokeOption) GetJobsResultOutput {
@@ -128,6 +137,8 @@ func GetJobsOutput(ctx *pulumi.Context, args GetJobsOutputArgs, opts ...pulumi.I
 type GetJobsOutputArgs struct {
 	// map of Job names to ids
 	Ids pulumi.StringMapInput `pulumi:"ids"`
+	// Only return Job ids that match the given name string (case-insensitive).
+	JobNameContains pulumi.StringPtrInput `pulumi:"jobNameContains"`
 }
 
 func (GetJobsOutputArgs) ElementType() reflect.Type {
@@ -157,6 +168,10 @@ func (o GetJobsResultOutput) Id() pulumi.StringOutput {
 // map of Job names to ids
 func (o GetJobsResultOutput) Ids() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetJobsResult) map[string]string { return v.Ids }).(pulumi.StringMapOutput)
+}
+
+func (o GetJobsResultOutput) JobNameContains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobsResult) *string { return v.JobNameContains }).(pulumi.StringPtrOutput)
 }
 
 func init() {

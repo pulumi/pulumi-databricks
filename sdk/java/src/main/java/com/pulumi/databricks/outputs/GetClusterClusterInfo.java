@@ -94,7 +94,9 @@ public final class GetClusterClusterInfo {
      * 
      */
     private @Nullable String instancePoolId;
+    private @Nullable Boolean isSingleNode;
     private @Nullable Integer jdbcPort;
+    private @Nullable String kind;
     private @Nullable Integer lastRestartedTime;
     private @Nullable Integer lastStateLossTime;
     /**
@@ -145,6 +147,7 @@ public final class GetClusterClusterInfo {
     private @Nullable String stateMessage;
     private @Nullable Integer terminatedTime;
     private @Nullable GetClusterClusterInfoTerminationReason terminationReason;
+    private @Nullable Boolean useMlRuntime;
     private @Nullable GetClusterClusterInfoWorkloadType workloadType;
 
     private GetClusterClusterInfo() {}
@@ -263,8 +266,14 @@ public final class GetClusterClusterInfo {
     public Optional<String> instancePoolId() {
         return Optional.ofNullable(this.instancePoolId);
     }
+    public Optional<Boolean> isSingleNode() {
+        return Optional.ofNullable(this.isSingleNode);
+    }
     public Optional<Integer> jdbcPort() {
         return Optional.ofNullable(this.jdbcPort);
+    }
+    public Optional<String> kind() {
+        return Optional.ofNullable(this.kind);
     }
     public Optional<Integer> lastRestartedTime() {
         return Optional.ofNullable(this.lastRestartedTime);
@@ -352,6 +361,9 @@ public final class GetClusterClusterInfo {
     public Optional<GetClusterClusterInfoTerminationReason> terminationReason() {
         return Optional.ofNullable(this.terminationReason);
     }
+    public Optional<Boolean> useMlRuntime() {
+        return Optional.ofNullable(this.useMlRuntime);
+    }
     public Optional<GetClusterClusterInfoWorkloadType> workloadType() {
         return Optional.ofNullable(this.workloadType);
     }
@@ -390,7 +402,9 @@ public final class GetClusterClusterInfo {
         private @Nullable GetClusterClusterInfoGcpAttributes gcpAttributes;
         private @Nullable List<GetClusterClusterInfoInitScript> initScripts;
         private @Nullable String instancePoolId;
+        private @Nullable Boolean isSingleNode;
         private @Nullable Integer jdbcPort;
+        private @Nullable String kind;
         private @Nullable Integer lastRestartedTime;
         private @Nullable Integer lastStateLossTime;
         private @Nullable String nodeTypeId;
@@ -409,6 +423,7 @@ public final class GetClusterClusterInfo {
         private @Nullable String stateMessage;
         private @Nullable Integer terminatedTime;
         private @Nullable GetClusterClusterInfoTerminationReason terminationReason;
+        private @Nullable Boolean useMlRuntime;
         private @Nullable GetClusterClusterInfoWorkloadType workloadType;
         public Builder() {}
         public Builder(GetClusterClusterInfo defaults) {
@@ -438,7 +453,9 @@ public final class GetClusterClusterInfo {
     	      this.gcpAttributes = defaults.gcpAttributes;
     	      this.initScripts = defaults.initScripts;
     	      this.instancePoolId = defaults.instancePoolId;
+    	      this.isSingleNode = defaults.isSingleNode;
     	      this.jdbcPort = defaults.jdbcPort;
+    	      this.kind = defaults.kind;
     	      this.lastRestartedTime = defaults.lastRestartedTime;
     	      this.lastStateLossTime = defaults.lastStateLossTime;
     	      this.nodeTypeId = defaults.nodeTypeId;
@@ -457,6 +474,7 @@ public final class GetClusterClusterInfo {
     	      this.stateMessage = defaults.stateMessage;
     	      this.terminatedTime = defaults.terminatedTime;
     	      this.terminationReason = defaults.terminationReason;
+    	      this.useMlRuntime = defaults.useMlRuntime;
     	      this.workloadType = defaults.workloadType;
         }
 
@@ -617,9 +635,21 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder isSingleNode(@Nullable Boolean isSingleNode) {
+
+            this.isSingleNode = isSingleNode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder jdbcPort(@Nullable Integer jdbcPort) {
 
             this.jdbcPort = jdbcPort;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kind(@Nullable String kind) {
+
+            this.kind = kind;
             return this;
         }
         @CustomType.Setter
@@ -734,6 +764,12 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder useMlRuntime(@Nullable Boolean useMlRuntime) {
+
+            this.useMlRuntime = useMlRuntime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workloadType(@Nullable GetClusterClusterInfoWorkloadType workloadType) {
 
             this.workloadType = workloadType;
@@ -766,7 +802,9 @@ public final class GetClusterClusterInfo {
             _resultValue.gcpAttributes = gcpAttributes;
             _resultValue.initScripts = initScripts;
             _resultValue.instancePoolId = instancePoolId;
+            _resultValue.isSingleNode = isSingleNode;
             _resultValue.jdbcPort = jdbcPort;
+            _resultValue.kind = kind;
             _resultValue.lastRestartedTime = lastRestartedTime;
             _resultValue.lastStateLossTime = lastStateLossTime;
             _resultValue.nodeTypeId = nodeTypeId;
@@ -785,6 +823,7 @@ public final class GetClusterClusterInfo {
             _resultValue.stateMessage = stateMessage;
             _resultValue.terminatedTime = terminatedTime;
             _resultValue.terminationReason = terminationReason;
+            _resultValue.useMlRuntime = useMlRuntime;
             _resultValue.workloadType = workloadType;
             return _resultValue;
         }

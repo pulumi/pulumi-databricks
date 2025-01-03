@@ -277,6 +277,29 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Service credential grants
+ *
+ * See databricks.Grants Service credential grants for the list of privileges that apply to Service credentials.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const external = new databricks.Credential("external", {
+ *     name: externalDataAccess.name,
+ *     awsIamRole: {
+ *         roleArn: externalDataAccess.arn,
+ *     },
+ *     purpose: "SERVICE",
+ *     comment: "Managed by TF",
+ * });
+ * const externalCreds = new databricks.Grant("external_creds", {
+ *     credential: external.id,
+ *     principal: "Data Engineers",
+ *     privileges: ["ACCESS"],
+ * });
+ * ```
+ *
  * ## Storage credential grants
  *
  * See databricks.Grants Storage credential grants for the list of privileges that apply to Storage credentials.
@@ -439,6 +462,7 @@ export class Grant extends pulumi.CustomResource {
     }
 
     public readonly catalog!: pulumi.Output<string | undefined>;
+    public readonly credential!: pulumi.Output<string | undefined>;
     public readonly externalLocation!: pulumi.Output<string | undefined>;
     public readonly foreignConnection!: pulumi.Output<string | undefined>;
     public readonly function!: pulumi.Output<string | undefined>;
@@ -468,6 +492,7 @@ export class Grant extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GrantState | undefined;
             resourceInputs["catalog"] = state ? state.catalog : undefined;
+            resourceInputs["credential"] = state ? state.credential : undefined;
             resourceInputs["externalLocation"] = state ? state.externalLocation : undefined;
             resourceInputs["foreignConnection"] = state ? state.foreignConnection : undefined;
             resourceInputs["function"] = state ? state.function : undefined;
@@ -491,6 +516,7 @@ export class Grant extends pulumi.CustomResource {
                 throw new Error("Missing required property 'privileges'");
             }
             resourceInputs["catalog"] = args ? args.catalog : undefined;
+            resourceInputs["credential"] = args ? args.credential : undefined;
             resourceInputs["externalLocation"] = args ? args.externalLocation : undefined;
             resourceInputs["foreignConnection"] = args ? args.foreignConnection : undefined;
             resourceInputs["function"] = args ? args.function : undefined;
@@ -516,6 +542,7 @@ export class Grant extends pulumi.CustomResource {
  */
 export interface GrantState {
     catalog?: pulumi.Input<string>;
+    credential?: pulumi.Input<string>;
     externalLocation?: pulumi.Input<string>;
     foreignConnection?: pulumi.Input<string>;
     function?: pulumi.Input<string>;
@@ -537,6 +564,7 @@ export interface GrantState {
  */
 export interface GrantArgs {
     catalog?: pulumi.Input<string>;
+    credential?: pulumi.Input<string>;
     externalLocation?: pulumi.Input<string>;
     foreignConnection?: pulumi.Input<string>;
     function?: pulumi.Input<string>;

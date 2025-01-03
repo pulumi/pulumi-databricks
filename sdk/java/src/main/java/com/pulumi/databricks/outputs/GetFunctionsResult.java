@@ -24,7 +24,7 @@ public final class GetFunctionsResult {
      * @return list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
      * 
      */
-    private @Nullable List<GetFunctionsFunction> functions;
+    private List<GetFunctionsFunction> functions;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -50,7 +50,7 @@ public final class GetFunctionsResult {
      * 
      */
     public List<GetFunctionsFunction> functions() {
-        return this.functions == null ? List.of() : this.functions;
+        return this.functions;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -80,7 +80,7 @@ public final class GetFunctionsResult {
     @CustomType.Builder
     public static final class Builder {
         private String catalogName;
-        private @Nullable List<GetFunctionsFunction> functions;
+        private List<GetFunctionsFunction> functions;
         private String id;
         private @Nullable Boolean includeBrowse;
         private String schemaName;
@@ -103,8 +103,10 @@ public final class GetFunctionsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder functions(@Nullable List<GetFunctionsFunction> functions) {
-
+        public Builder functions(List<GetFunctionsFunction> functions) {
+            if (functions == null) {
+              throw new MissingRequiredPropertyException("GetFunctionsResult", "functions");
+            }
             this.functions = functions;
             return this;
         }

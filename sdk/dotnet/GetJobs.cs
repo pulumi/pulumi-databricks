@@ -33,6 +33,11 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = await Databricks.GetJobs.InvokeAsync();
         /// 
+        ///     var tests = await Databricks.GetJobs.InvokeAsync(new()
+        ///     {
+        ///         JobNameContains = "test",
+        ///     });
+        /// 
         ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
         ///     foreach (var range in )
         ///     {
@@ -101,6 +106,11 @@ namespace Pulumi.Databricks
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
         ///     var @this = await Databricks.GetJobs.InvokeAsync();
+        /// 
+        ///     var tests = await Databricks.GetJobs.InvokeAsync(new()
+        ///     {
+        ///         JobNameContains = "test",
+        ///     });
         /// 
         ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
         ///     foreach (var range in )
@@ -171,6 +181,11 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = await Databricks.GetJobs.InvokeAsync();
         /// 
+        ///     var tests = await Databricks.GetJobs.InvokeAsync(new()
+        ///     {
+        ///         JobNameContains = "test",
+        ///     });
+        /// 
         ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
         ///     foreach (var range in )
         ///     {
@@ -234,6 +249,12 @@ namespace Pulumi.Databricks
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Only return databricks.Job ids that match the given name string (case-insensitive).
+        /// </summary>
+        [Input("jobNameContains")]
+        public string? JobNameContains { get; set; }
+
         public GetJobsArgs()
         {
         }
@@ -254,6 +275,12 @@ namespace Pulumi.Databricks
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Only return databricks.Job ids that match the given name string (case-insensitive).
+        /// </summary>
+        [Input("jobNameContains")]
+        public Input<string>? JobNameContains { get; set; }
+
         public GetJobsInvokeArgs()
         {
         }
@@ -272,15 +299,19 @@ namespace Pulumi.Databricks
         /// map of databricks.Job names to ids
         /// </summary>
         public readonly ImmutableDictionary<string, string> Ids;
+        public readonly string? JobNameContains;
 
         [OutputConstructor]
         private GetJobsResult(
             string id,
 
-            ImmutableDictionary<string, string> ids)
+            ImmutableDictionary<string, string> ids,
+
+            string? jobNameContains)
         {
             Id = id;
             Ids = ids;
+            JobNameContains = jobNameContains;
         }
     }
 }

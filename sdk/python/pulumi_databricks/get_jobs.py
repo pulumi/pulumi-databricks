@@ -26,13 +26,16 @@ class GetJobsResult:
     """
     A collection of values returned by getJobs.
     """
-    def __init__(__self__, id=None, ids=None):
+    def __init__(__self__, id=None, ids=None, job_name_contains=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, dict):
             raise TypeError("Expected argument 'ids' to be a dict")
         pulumi.set(__self__, "ids", ids)
+        if job_name_contains and not isinstance(job_name_contains, str):
+            raise TypeError("Expected argument 'job_name_contains' to be a str")
+        pulumi.set(__self__, "job_name_contains", job_name_contains)
 
     @property
     @pulumi.getter
@@ -50,6 +53,11 @@ class GetJobsResult:
         """
         return pulumi.get(self, "ids")
 
+    @property
+    @pulumi.getter(name="jobNameContains")
+    def job_name_contains(self) -> Optional[str]:
+        return pulumi.get(self, "job_name_contains")
+
 
 class AwaitableGetJobsResult(GetJobsResult):
     # pylint: disable=using-constant-test
@@ -58,10 +66,12 @@ class AwaitableGetJobsResult(GetJobsResult):
             yield self
         return GetJobsResult(
             id=self.id,
-            ids=self.ids)
+            ids=self.ids,
+            job_name_contains=self.job_name_contains)
 
 
 def get_jobs(ids: Optional[Mapping[str, str]] = None,
+             job_name_contains: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobsResult:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -79,6 +89,7 @@ def get_jobs(ids: Optional[Mapping[str, str]] = None,
     import pulumi_databricks as databricks
 
     this = databricks.get_jobs()
+    tests = databricks.get_jobs(job_name_contains="test")
     everyone_can_view_all_jobs = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
         everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
@@ -107,16 +118,20 @@ def get_jobs(ids: Optional[Mapping[str, str]] = None,
 
 
     :param Mapping[str, str] ids: map of Job names to ids
+    :param str job_name_contains: Only return Job ids that match the given name string (case-insensitive).
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['jobNameContains'] = job_name_contains
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getJobs:getJobs', __args__, opts=opts, typ=GetJobsResult).value
 
     return AwaitableGetJobsResult(
         id=pulumi.get(__ret__, 'id'),
-        ids=pulumi.get(__ret__, 'ids'))
+        ids=pulumi.get(__ret__, 'ids'),
+        job_name_contains=pulumi.get(__ret__, 'job_name_contains'))
 def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                    job_name_contains: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobsResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -134,6 +149,7 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = N
     import pulumi_databricks as databricks
 
     this = databricks.get_jobs()
+    tests = databricks.get_jobs(job_name_contains="test")
     everyone_can_view_all_jobs = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
         everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
@@ -162,11 +178,14 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = N
 
 
     :param Mapping[str, str] ids: map of Job names to ids
+    :param str job_name_contains: Only return Job ids that match the given name string (case-insensitive).
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['jobNameContains'] = job_name_contains
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getJobs:getJobs', __args__, opts=opts, typ=GetJobsResult)
     return __ret__.apply(lambda __response__: GetJobsResult(
         id=pulumi.get(__response__, 'id'),
-        ids=pulumi.get(__response__, 'ids')))
+        ids=pulumi.get(__response__, 'ids'),
+        job_name_contains=pulumi.get(__response__, 'job_name_contains')))

@@ -26,10 +26,13 @@ class GetAwsUnityCatalogPolicyResult:
     """
     A collection of values returned by getAwsUnityCatalogPolicy.
     """
-    def __init__(__self__, aws_account_id=None, bucket_name=None, id=None, json=None, kms_name=None, role_name=None):
+    def __init__(__self__, aws_account_id=None, aws_partition=None, bucket_name=None, id=None, json=None, kms_name=None, role_name=None):
         if aws_account_id and not isinstance(aws_account_id, str):
             raise TypeError("Expected argument 'aws_account_id' to be a str")
         pulumi.set(__self__, "aws_account_id", aws_account_id)
+        if aws_partition and not isinstance(aws_partition, str):
+            raise TypeError("Expected argument 'aws_partition' to be a str")
+        pulumi.set(__self__, "aws_partition", aws_partition)
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -50,6 +53,11 @@ class GetAwsUnityCatalogPolicyResult:
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> str:
         return pulumi.get(self, "aws_account_id")
+
+    @property
+    @pulumi.getter(name="awsPartition")
+    def aws_partition(self) -> Optional[str]:
+        return pulumi.get(self, "aws_partition")
 
     @property
     @pulumi.getter(name="bucketName")
@@ -90,6 +98,7 @@ class AwaitableGetAwsUnityCatalogPolicyResult(GetAwsUnityCatalogPolicyResult):
             yield self
         return GetAwsUnityCatalogPolicyResult(
             aws_account_id=self.aws_account_id,
+            aws_partition=self.aws_partition,
             bucket_name=self.bucket_name,
             id=self.id,
             json=self.json,
@@ -98,6 +107,7 @@ class AwaitableGetAwsUnityCatalogPolicyResult(GetAwsUnityCatalogPolicyResult):
 
 
 def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
+                                 aws_partition: Optional[str] = None,
                                  bucket_name: Optional[str] = None,
                                  kms_name: Optional[str] = None,
                                  role_name: Optional[str] = None,
@@ -132,12 +142,14 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
     :param str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
     :param str kms_name: If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
     :param str role_name: The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id
+    __args__['awsPartition'] = aws_partition
     __args__['bucketName'] = bucket_name
     __args__['kmsName'] = kms_name
     __args__['roleName'] = role_name
@@ -146,12 +158,14 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
 
     return AwaitableGetAwsUnityCatalogPolicyResult(
         aws_account_id=pulumi.get(__ret__, 'aws_account_id'),
+        aws_partition=pulumi.get(__ret__, 'aws_partition'),
         bucket_name=pulumi.get(__ret__, 'bucket_name'),
         id=pulumi.get(__ret__, 'id'),
         json=pulumi.get(__ret__, 'json'),
         kms_name=pulumi.get(__ret__, 'kms_name'),
         role_name=pulumi.get(__ret__, 'role_name'))
 def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[str]] = None,
+                                        aws_partition: Optional[pulumi.Input[Optional[str]]] = None,
                                         bucket_name: Optional[pulumi.Input[str]] = None,
                                         kms_name: Optional[pulumi.Input[Optional[str]]] = None,
                                         role_name: Optional[pulumi.Input[str]] = None,
@@ -186,12 +200,14 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
     :param str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
     :param str kms_name: If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
     :param str role_name: The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id
+    __args__['awsPartition'] = aws_partition
     __args__['bucketName'] = bucket_name
     __args__['kmsName'] = kms_name
     __args__['roleName'] = role_name
@@ -199,6 +215,7 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy', __args__, opts=opts, typ=GetAwsUnityCatalogPolicyResult)
     return __ret__.apply(lambda __response__: GetAwsUnityCatalogPolicyResult(
         aws_account_id=pulumi.get(__response__, 'aws_account_id'),
+        aws_partition=pulumi.get(__response__, 'aws_partition'),
         bucket_name=pulumi.get(__response__, 'bucket_name'),
         id=pulumi.get(__response__, 'id'),
         json=pulumi.get(__response__, 'json'),

@@ -21,6 +21,9 @@ import * as utilities from "./utilities";
  *
  * export = async () => {
  *     const this = await databricks.getJobs({});
+ *     const tests = await databricks.getJobs({
+ *         jobNameContains: "test",
+ *     });
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
  *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
  *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
@@ -55,6 +58,7 @@ export function getJobs(args?: GetJobsArgs, opts?: pulumi.InvokeOptions): Promis
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getJobs:getJobs", {
         "ids": args.ids,
+        "jobNameContains": args.jobNameContains,
     }, opts);
 }
 
@@ -66,6 +70,10 @@ export interface GetJobsArgs {
      * map of databricks.Job names to ids
      */
     ids?: {[key: string]: string};
+    /**
+     * Only return databricks.Job ids that match the given name string (case-insensitive).
+     */
+    jobNameContains?: string;
 }
 
 /**
@@ -80,6 +88,7 @@ export interface GetJobsResult {
      * map of databricks.Job names to ids
      */
     readonly ids: {[key: string]: string};
+    readonly jobNameContains?: string;
 }
 /**
  * > **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -98,6 +107,9 @@ export interface GetJobsResult {
  *
  * export = async () => {
  *     const this = await databricks.getJobs({});
+ *     const tests = await databricks.getJobs({
+ *         jobNameContains: "test",
+ *     });
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
  *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
  *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
@@ -132,6 +144,7 @@ export function getJobsOutput(args?: GetJobsOutputArgs, opts?: pulumi.InvokeOutp
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getJobs:getJobs", {
         "ids": args.ids,
+        "jobNameContains": args.jobNameContains,
     }, opts);
 }
 
@@ -143,4 +156,8 @@ export interface GetJobsOutputArgs {
      * map of databricks.Job names to ids
      */
     ids?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Only return databricks.Job ids that match the given name string (case-insensitive).
+     */
+    jobNameContains?: pulumi.Input<string>;
 }

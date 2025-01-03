@@ -887,6 +887,52 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ## Mosaic AI Vector Search usage
+    /// 
+    /// Valid permission levels for databricks.VectorSearchEndpoint are: `CAN_USE` and `CAN_MANAGE`.
+    /// 
+    /// &gt; You need to use the `endpoint_id` attribute of `databricks.VectorSearchEndpoint` as value for `vector_search_endpoint_id`, not the `id`!
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.VectorSearchEndpoint("this", new()
+    ///     {
+    ///         Name = "vector-search-test",
+    ///         EndpointType = "STANDARD",
+    ///     });
+    /// 
+    ///     var eng = new Databricks.Group("eng", new()
+    ///     {
+    ///         DisplayName = "Engineering",
+    ///     });
+    /// 
+    ///     var vectorSearchEndpointUsage = new Databricks.Permissions("vector_search_endpoint_usage", new()
+    ///     {
+    ///         VectorSearchEndpointId = @this.EndpointId,
+    ///         AccessControls = new[]
+    ///         {
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = "users",
+    ///                 PermissionLevel = "CAN_USE",
+    ///             },
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = eng.DisplayName,
+    ///                 PermissionLevel = "CAN_MANAGE",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Passwords usage
     /// 
     /// By default on AWS deployments, all admin users can sign in to Databricks using either SSO or their username and password, and all API users can authenticate to the Databricks REST APIs using their username and password. As an admin, you [can limit](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#optional-configure-password-access-control) admin users’ and API users’ ability to authenticate with their username and password by configuring `CAN_USE` permissions using password access control.
@@ -1243,6 +1289,9 @@ namespace Pulumi.Databricks
         [Output("accessControls")]
         public Output<ImmutableArray<Outputs.PermissionsAccessControl>> AccessControls { get; private set; } = null!;
 
+        [Output("appName")]
+        public Output<string?> AppName { get; private set; } = null!;
+
         [Output("authorization")]
         public Output<string?> Authorization { get; private set; } = null!;
 
@@ -1309,6 +1358,9 @@ namespace Pulumi.Databricks
         [Output("sqlQueryId")]
         public Output<string?> SqlQueryId { get; private set; } = null!;
 
+        [Output("vectorSearchEndpointId")]
+        public Output<string?> VectorSearchEndpointId { get; private set; } = null!;
+
         [Output("workspaceFileId")]
         public Output<string?> WorkspaceFileId { get; private set; } = null!;
 
@@ -1369,6 +1421,9 @@ namespace Pulumi.Databricks
             set => _accessControls = value;
         }
 
+        [Input("appName")]
+        public Input<string>? AppName { get; set; }
+
         [Input("authorization")]
         public Input<string>? Authorization { get; set; }
 
@@ -1434,6 +1489,9 @@ namespace Pulumi.Databricks
 
         [Input("sqlQueryId")]
         public Input<string>? SqlQueryId { get; set; }
+
+        [Input("vectorSearchEndpointId")]
+        public Input<string>? VectorSearchEndpointId { get; set; }
 
         [Input("workspaceFileId")]
         public Input<string>? WorkspaceFileId { get; set; }
@@ -1457,6 +1515,9 @@ namespace Pulumi.Databricks
             set => _accessControls = value;
         }
 
+        [Input("appName")]
+        public Input<string>? AppName { get; set; }
+
         [Input("authorization")]
         public Input<string>? Authorization { get; set; }
 
@@ -1522,6 +1583,9 @@ namespace Pulumi.Databricks
 
         [Input("sqlQueryId")]
         public Input<string>? SqlQueryId { get; set; }
+
+        [Input("vectorSearchEndpointId")]
+        public Input<string>? VectorSearchEndpointId { get; set; }
 
         [Input("workspaceFileId")]
         public Input<string>? WorkspaceFileId { get; set; }

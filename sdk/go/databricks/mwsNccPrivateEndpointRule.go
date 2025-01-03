@@ -91,7 +91,7 @@ type MwsNccPrivateEndpointRule struct {
 	DeactivatedAt pulumi.IntPtrOutput `pulumi:"deactivatedAt"`
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
-	// The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
+	// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
 	NetworkConnectivityConfigId pulumi.StringOutput `pulumi:"networkConnectivityConfigId"`
@@ -157,7 +157,7 @@ type mwsNccPrivateEndpointRuleState struct {
 	DeactivatedAt *int `pulumi:"deactivatedAt"`
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName *string `pulumi:"endpointName"`
-	// The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
+	// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
 	GroupId *string `pulumi:"groupId"`
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
 	NetworkConnectivityConfigId *string `pulumi:"networkConnectivityConfigId"`
@@ -185,7 +185,7 @@ type MwsNccPrivateEndpointRuleState struct {
 	DeactivatedAt pulumi.IntPtrInput
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName pulumi.StringPtrInput
-	// The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
+	// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
 	GroupId pulumi.StringPtrInput
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
 	NetworkConnectivityConfigId pulumi.StringPtrInput
@@ -217,7 +217,7 @@ type mwsNccPrivateEndpointRuleArgs struct {
 	DeactivatedAt *int `pulumi:"deactivatedAt"`
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName *string `pulumi:"endpointName"`
-	// The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
+	// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
 	GroupId string `pulumi:"groupId"`
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
 	NetworkConnectivityConfigId string `pulumi:"networkConnectivityConfigId"`
@@ -246,7 +246,7 @@ type MwsNccPrivateEndpointRuleArgs struct {
 	DeactivatedAt pulumi.IntPtrInput
 	// The name of the Azure private endpoint resource, e.g. "databricks-088781b3-77fa-4132-b429-1af0d91bc593-pe-3cb31234"
 	EndpointName pulumi.StringPtrInput
-	// The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
+	// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
 	GroupId pulumi.StringInput
 	// Canonical unique identifier of Network Connectivity Config in Databricks Account. Change forces creation of a new resource.
 	NetworkConnectivityConfigId pulumi.StringInput
@@ -375,7 +375,7 @@ func (o MwsNccPrivateEndpointRuleOutput) EndpointName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringOutput { return v.EndpointName }).(pulumi.StringOutput)
 }
 
-// The sub-resource type (group ID) of the target resource. Must be one of `blob`, `dfs`, `sqlServer` or `mysqlServer`. Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for blob and one for dfs. Change forces creation of a new resource.
+// The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource.
 func (o MwsNccPrivateEndpointRuleOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }

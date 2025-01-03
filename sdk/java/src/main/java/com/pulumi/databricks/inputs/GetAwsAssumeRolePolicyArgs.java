@@ -17,9 +17,36 @@ public final class GetAwsAssumeRolePolicyArgs extends com.pulumi.resources.Invok
 
     public static final GetAwsAssumeRolePolicyArgs Empty = new GetAwsAssumeRolePolicyArgs();
 
+    /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
+    @Import(name="awsPartition")
+    private @Nullable Output<String> awsPartition;
+
+    /**
+     * @return AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
+    public Optional<Output<String>> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
+    }
+
+    /**
+     * @deprecated
+     * databricks_account_id will be will be removed in the next major release.
+     * 
+     */
+    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
     @Import(name="databricksAccountId")
     private @Nullable Output<String> databricksAccountId;
 
+    /**
+     * @deprecated
+     * databricks_account_id will be will be removed in the next major release.
+     * 
+     */
+    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
     public Optional<Output<String>> databricksAccountId() {
         return Optional.ofNullable(this.databricksAccountId);
     }
@@ -57,6 +84,7 @@ public final class GetAwsAssumeRolePolicyArgs extends com.pulumi.resources.Invok
     private GetAwsAssumeRolePolicyArgs() {}
 
     private GetAwsAssumeRolePolicyArgs(GetAwsAssumeRolePolicyArgs $) {
+        this.awsPartition = $.awsPartition;
         this.databricksAccountId = $.databricksAccountId;
         this.externalId = $.externalId;
         this.forLogDelivery = $.forLogDelivery;
@@ -80,11 +108,48 @@ public final class GetAwsAssumeRolePolicyArgs extends com.pulumi.resources.Invok
             $ = new GetAwsAssumeRolePolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsPartition(@Nullable Output<String> awsPartition) {
+            $.awsPartition = awsPartition;
+            return this;
+        }
+
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsPartition(String awsPartition) {
+            return awsPartition(Output.of(awsPartition));
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * databricks_account_id will be will be removed in the next major release.
+         * 
+         */
+        @Deprecated /* databricks_account_id will be will be removed in the next major release. */
         public Builder databricksAccountId(@Nullable Output<String> databricksAccountId) {
             $.databricksAccountId = databricksAccountId;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * databricks_account_id will be will be removed in the next major release.
+         * 
+         */
+        @Deprecated /* databricks_account_id will be will be removed in the next major release. */
         public Builder databricksAccountId(String databricksAccountId) {
             return databricksAccountId(Output.of(databricksAccountId));
         }

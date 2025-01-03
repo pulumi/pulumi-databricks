@@ -216,6 +216,12 @@ namespace Pulumi.Databricks
 
     public sealed class GetAwsAssumeRolePolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+        /// </summary>
+        [Input("awsPartition")]
+        public string? AwsPartition { get; set; }
+
         [Input("databricksAccountId")]
         public string? DatabricksAccountId { get; set; }
 
@@ -239,6 +245,12 @@ namespace Pulumi.Databricks
 
     public sealed class GetAwsAssumeRolePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+        /// </summary>
+        [Input("awsPartition")]
+        public Input<string>? AwsPartition { get; set; }
+
         [Input("databricksAccountId")]
         public Input<string>? DatabricksAccountId { get; set; }
 
@@ -264,6 +276,7 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAwsAssumeRolePolicyResult
     {
+        public readonly string? AwsPartition;
         public readonly string? DatabricksAccountId;
         public readonly string ExternalId;
         public readonly bool? ForLogDelivery;
@@ -278,6 +291,8 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetAwsAssumeRolePolicyResult(
+            string? awsPartition,
+
             string? databricksAccountId,
 
             string externalId,
@@ -288,6 +303,7 @@ namespace Pulumi.Databricks
 
             string json)
         {
+            AwsPartition = awsPartition;
             DatabricksAccountId = databricksAccountId;
             ExternalId = externalId;
             ForLogDelivery = forLogDelivery;

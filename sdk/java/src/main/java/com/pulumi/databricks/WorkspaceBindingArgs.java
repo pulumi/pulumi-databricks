@@ -65,14 +65,14 @@ public final class WorkspaceBindingArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
+     * Type of securable. Can be `catalog`, `external_location`, `storage_credential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
      * 
      */
     @Import(name="securableType")
     private @Nullable Output<String> securableType;
 
     /**
-     * @return Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
+     * @return Type of securable. Can be `catalog`, `external_location`, `storage_credential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> securableType() {
@@ -190,7 +190,7 @@ public final class WorkspaceBindingArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param securableType Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
+         * @param securableType Type of securable. Can be `catalog`, `external_location`, `storage_credential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class WorkspaceBindingArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param securableType Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
+         * @param securableType Type of securable. Can be `catalog`, `external_location`, `storage_credential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
          * 
          * @return builder
          * 

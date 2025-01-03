@@ -22,6 +22,7 @@ __all__ = ['PermissionsArgs', 'Permissions']
 class PermissionsArgs:
     def __init__(__self__, *,
                  access_controls: pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]],
+                 app_name: Optional[pulumi.Input[str]] = None,
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -43,6 +44,7 @@ class PermissionsArgs:
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_query_id: Optional[pulumi.Input[str]] = None,
+                 vector_search_endpoint_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_path: Optional[pulumi.Input[str]] = None):
         """
@@ -50,6 +52,8 @@ class PermissionsArgs:
         :param pulumi.Input[str] object_type: type of permissions.
         """
         pulumi.set(__self__, "access_controls", access_controls)
+        if app_name is not None:
+            pulumi.set(__self__, "app_name", app_name)
         if authorization is not None:
             pulumi.set(__self__, "authorization", authorization)
         if cluster_id is not None:
@@ -92,6 +96,8 @@ class PermissionsArgs:
             pulumi.set(__self__, "sql_endpoint_id", sql_endpoint_id)
         if sql_query_id is not None:
             pulumi.set(__self__, "sql_query_id", sql_query_id)
+        if vector_search_endpoint_id is not None:
+            pulumi.set(__self__, "vector_search_endpoint_id", vector_search_endpoint_id)
         if workspace_file_id is not None:
             pulumi.set(__self__, "workspace_file_id", workspace_file_id)
         if workspace_file_path is not None:
@@ -105,6 +111,15 @@ class PermissionsArgs:
     @access_controls.setter
     def access_controls(self, value: pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]):
         pulumi.set(self, "access_controls", value)
+
+    @property
+    @pulumi.getter(name="appName")
+    def app_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "app_name")
+
+    @app_name.setter
+    def app_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_name", value)
 
     @property
     @pulumi.getter
@@ -297,6 +312,15 @@ class PermissionsArgs:
     @sql_query_id.setter
     def sql_query_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sql_query_id", value)
+
+    @property
+    @pulumi.getter(name="vectorSearchEndpointId")
+    def vector_search_endpoint_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vector_search_endpoint_id")
+
+    @vector_search_endpoint_id.setter
+    def vector_search_endpoint_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vector_search_endpoint_id", value)
 
     @property
     @pulumi.getter(name="workspaceFileId")
@@ -321,6 +345,7 @@ class PermissionsArgs:
 class _PermissionsState:
     def __init__(__self__, *,
                  access_controls: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]] = None,
+                 app_name: Optional[pulumi.Input[str]] = None,
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -342,6 +367,7 @@ class _PermissionsState:
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_query_id: Optional[pulumi.Input[str]] = None,
+                 vector_search_endpoint_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_path: Optional[pulumi.Input[str]] = None):
         """
@@ -350,6 +376,8 @@ class _PermissionsState:
         """
         if access_controls is not None:
             pulumi.set(__self__, "access_controls", access_controls)
+        if app_name is not None:
+            pulumi.set(__self__, "app_name", app_name)
         if authorization is not None:
             pulumi.set(__self__, "authorization", authorization)
         if cluster_id is not None:
@@ -392,6 +420,8 @@ class _PermissionsState:
             pulumi.set(__self__, "sql_endpoint_id", sql_endpoint_id)
         if sql_query_id is not None:
             pulumi.set(__self__, "sql_query_id", sql_query_id)
+        if vector_search_endpoint_id is not None:
+            pulumi.set(__self__, "vector_search_endpoint_id", vector_search_endpoint_id)
         if workspace_file_id is not None:
             pulumi.set(__self__, "workspace_file_id", workspace_file_id)
         if workspace_file_path is not None:
@@ -405,6 +435,15 @@ class _PermissionsState:
     @access_controls.setter
     def access_controls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]]):
         pulumi.set(self, "access_controls", value)
+
+    @property
+    @pulumi.getter(name="appName")
+    def app_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "app_name")
+
+    @app_name.setter
+    def app_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_name", value)
 
     @property
     @pulumi.getter
@@ -597,6 +636,15 @@ class _PermissionsState:
     @sql_query_id.setter
     def sql_query_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sql_query_id", value)
+
+    @property
+    @pulumi.getter(name="vectorSearchEndpointId")
+    def vector_search_endpoint_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vector_search_endpoint_id")
+
+    @vector_search_endpoint_id.setter
+    def vector_search_endpoint_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vector_search_endpoint_id", value)
 
     @property
     @pulumi.getter(name="workspaceFileId")
@@ -623,6 +671,7 @@ class Permissions(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
+                 app_name: Optional[pulumi.Input[str]] = None,
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -644,6 +693,7 @@ class Permissions(pulumi.CustomResource):
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_query_id: Optional[pulumi.Input[str]] = None,
+                 vector_search_endpoint_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_path: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1163,6 +1213,34 @@ class Permissions(pulumi.CustomResource):
                 {
                     "group_name": eng.display_name,
                     "permission_level": "CAN_QUERY",
+                },
+            ])
+        ```
+
+        ## Mosaic AI Vector Search usage
+
+        Valid permission levels for VectorSearchEndpoint are: `CAN_USE` and `CAN_MANAGE`.
+
+        > You need to use the `endpoint_id` attribute of `VectorSearchEndpoint` as value for `vector_search_endpoint_id`, not the `id`!
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.VectorSearchEndpoint("this",
+            name="vector-search-test",
+            endpoint_type="STANDARD")
+        eng = databricks.Group("eng", display_name="Engineering")
+        vector_search_endpoint_usage = databricks.Permissions("vector_search_endpoint_usage",
+            vector_search_endpoint_id=this.endpoint_id,
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
                 },
             ])
         ```
@@ -1904,6 +1982,34 @@ class Permissions(pulumi.CustomResource):
             ])
         ```
 
+        ## Mosaic AI Vector Search usage
+
+        Valid permission levels for VectorSearchEndpoint are: `CAN_USE` and `CAN_MANAGE`.
+
+        > You need to use the `endpoint_id` attribute of `VectorSearchEndpoint` as value for `vector_search_endpoint_id`, not the `id`!
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.VectorSearchEndpoint("this",
+            name="vector-search-test",
+            endpoint_type="STANDARD")
+        eng = databricks.Group("eng", display_name="Engineering")
+        vector_search_endpoint_usage = databricks.Permissions("vector_search_endpoint_usage",
+            vector_search_endpoint_id=this.endpoint_id,
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+            ])
+        ```
+
         ## Passwords usage
 
         By default on AWS deployments, all admin users can sign in to Databricks using either SSO or their username and password, and all API users can authenticate to the Databricks REST APIs using their username and password. As an admin, you [can limit](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#optional-configure-password-access-control) admin users’ and API users’ ability to authenticate with their username and password by configuring `CAN_USE` permissions using password access control.
@@ -2127,6 +2233,7 @@ class Permissions(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
+                 app_name: Optional[pulumi.Input[str]] = None,
                  authorization: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -2148,6 +2255,7 @@ class Permissions(pulumi.CustomResource):
                  sql_dashboard_id: Optional[pulumi.Input[str]] = None,
                  sql_endpoint_id: Optional[pulumi.Input[str]] = None,
                  sql_query_id: Optional[pulumi.Input[str]] = None,
+                 vector_search_endpoint_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_id: Optional[pulumi.Input[str]] = None,
                  workspace_file_path: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -2162,6 +2270,7 @@ class Permissions(pulumi.CustomResource):
             if access_controls is None and not opts.urn:
                 raise TypeError("Missing required property 'access_controls'")
             __props__.__dict__["access_controls"] = access_controls
+            __props__.__dict__["app_name"] = app_name
             __props__.__dict__["authorization"] = authorization
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["cluster_policy_id"] = cluster_policy_id
@@ -2183,6 +2292,7 @@ class Permissions(pulumi.CustomResource):
             __props__.__dict__["sql_dashboard_id"] = sql_dashboard_id
             __props__.__dict__["sql_endpoint_id"] = sql_endpoint_id
             __props__.__dict__["sql_query_id"] = sql_query_id
+            __props__.__dict__["vector_search_endpoint_id"] = vector_search_endpoint_id
             __props__.__dict__["workspace_file_id"] = workspace_file_id
             __props__.__dict__["workspace_file_path"] = workspace_file_path
         super(Permissions, __self__).__init__(
@@ -2196,6 +2306,7 @@ class Permissions(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
+            app_name: Optional[pulumi.Input[str]] = None,
             authorization: Optional[pulumi.Input[str]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -2217,6 +2328,7 @@ class Permissions(pulumi.CustomResource):
             sql_dashboard_id: Optional[pulumi.Input[str]] = None,
             sql_endpoint_id: Optional[pulumi.Input[str]] = None,
             sql_query_id: Optional[pulumi.Input[str]] = None,
+            vector_search_endpoint_id: Optional[pulumi.Input[str]] = None,
             workspace_file_id: Optional[pulumi.Input[str]] = None,
             workspace_file_path: Optional[pulumi.Input[str]] = None) -> 'Permissions':
         """
@@ -2233,6 +2345,7 @@ class Permissions(pulumi.CustomResource):
         __props__ = _PermissionsState.__new__(_PermissionsState)
 
         __props__.__dict__["access_controls"] = access_controls
+        __props__.__dict__["app_name"] = app_name
         __props__.__dict__["authorization"] = authorization
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cluster_policy_id"] = cluster_policy_id
@@ -2254,6 +2367,7 @@ class Permissions(pulumi.CustomResource):
         __props__.__dict__["sql_dashboard_id"] = sql_dashboard_id
         __props__.__dict__["sql_endpoint_id"] = sql_endpoint_id
         __props__.__dict__["sql_query_id"] = sql_query_id
+        __props__.__dict__["vector_search_endpoint_id"] = vector_search_endpoint_id
         __props__.__dict__["workspace_file_id"] = workspace_file_id
         __props__.__dict__["workspace_file_path"] = workspace_file_path
         return Permissions(resource_name, opts=opts, __props__=__props__)
@@ -2262,6 +2376,11 @@ class Permissions(pulumi.CustomResource):
     @pulumi.getter(name="accessControls")
     def access_controls(self) -> pulumi.Output[Sequence['outputs.PermissionsAccessControl']]:
         return pulumi.get(self, "access_controls")
+
+    @property
+    @pulumi.getter(name="appName")
+    def app_name(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "app_name")
 
     @property
     @pulumi.getter
@@ -2370,6 +2489,11 @@ class Permissions(pulumi.CustomResource):
     @pulumi.getter(name="sqlQueryId")
     def sql_query_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "sql_query_id")
+
+    @property
+    @pulumi.getter(name="vectorSearchEndpointId")
+    def vector_search_endpoint_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "vector_search_endpoint_id")
 
     @property
     @pulumi.getter(name="workspaceFileId")

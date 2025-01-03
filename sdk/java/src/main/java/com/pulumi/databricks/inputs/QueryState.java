@@ -184,14 +184,14 @@ public final class QueryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sets the &#34;Run as&#34; role for the object.
+     * Sets the &#34;Run as&#34; role for the object.  Should be one of `OWNER`, `VIEWER`.
      * 
      */
     @Import(name="runAsMode")
     private @Nullable Output<String> runAsMode;
 
     /**
-     * @return Sets the &#34;Run as&#34; role for the object.
+     * @return Sets the &#34;Run as&#34; role for the object.  Should be one of `OWNER`, `VIEWER`.
      * 
      */
     public Optional<Output<String>> runAsMode() {
@@ -539,7 +539,7 @@ public final class QueryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runAsMode Sets the &#34;Run as&#34; role for the object.
+         * @param runAsMode Sets the &#34;Run as&#34; role for the object.  Should be one of `OWNER`, `VIEWER`.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class QueryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runAsMode Sets the &#34;Run as&#34; role for the object.
+         * @param runAsMode Sets the &#34;Run as&#34; role for the object.  Should be one of `OWNER`, `VIEWER`.
          * 
          * @return builder
          * 

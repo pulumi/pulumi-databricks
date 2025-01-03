@@ -347,7 +347,17 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * !&gt; Importing this resource is not currently supported.
+ * This resource can be imported by Databricks account ID and customer managed key ID.
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys this &#39;&lt;account_id&gt;/&lt;customer_managed_key_id&gt;&#39;
+ * ```
+ * 
+ * ~&gt; This resource does not support updates. If your configuration does not match the existing resource,
+ * 
+ *    the next `pulumi up` will cause the resource to be destroyed and recreated. After importing,
+ * 
+ *    verify that the configuration matches the existing resource by running `pulumi preview`.
  * 
  */
 @ResourceType(type="databricks:index/mwsCustomerManagedKeys:MwsCustomerManagedKeys")

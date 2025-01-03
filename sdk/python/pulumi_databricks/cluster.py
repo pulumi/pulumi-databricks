@@ -42,6 +42,8 @@ class ClusterArgs:
                  init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterInitScriptArgs']]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  is_pinned: Optional[pulumi.Input[bool]] = None,
+                 is_single_node: Optional[pulumi.Input[bool]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]] = None,
                  no_wait: Optional[pulumi.Input[bool]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
@@ -52,6 +54,7 @@ class ClusterArgs:
                  spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_ml_runtime: Optional[pulumi.Input[bool]] = None,
                  workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
@@ -165,6 +168,10 @@ class ClusterArgs:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
         if is_pinned is not None:
             pulumi.set(__self__, "is_pinned", is_pinned)
+        if is_single_node is not None:
+            pulumi.set(__self__, "is_single_node", is_single_node)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if libraries is not None:
             pulumi.set(__self__, "libraries", libraries)
         if no_wait is not None:
@@ -185,6 +192,8 @@ class ClusterArgs:
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if use_ml_runtime is not None:
+            pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -437,6 +446,24 @@ class ClusterArgs:
         pulumi.set(self, "is_pinned", value)
 
     @property
+    @pulumi.getter(name="isSingleNode")
+    def is_single_node(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_single_node")
+
+    @is_single_node.setter
+    def is_single_node(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_single_node", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]:
         return pulumi.get(self, "libraries")
@@ -580,6 +607,15 @@ class ClusterArgs:
         pulumi.set(self, "ssh_public_keys", value)
 
     @property
+    @pulumi.getter(name="useMlRuntime")
+    def use_ml_runtime(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_ml_runtime")
+
+    @use_ml_runtime.setter
+    def use_ml_runtime(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_ml_runtime", value)
+
+    @property
     @pulumi.getter(name="workloadType")
     def workload_type(self) -> Optional[pulumi.Input['ClusterWorkloadTypeArgs']]:
         return pulumi.get(self, "workload_type")
@@ -614,6 +650,8 @@ class _ClusterState:
                  init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterInitScriptArgs']]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  is_pinned: Optional[pulumi.Input[bool]] = None,
+                 is_single_node: Optional[pulumi.Input[bool]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]] = None,
                  no_wait: Optional[pulumi.Input[bool]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
@@ -627,6 +665,7 @@ class _ClusterState:
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
+                 use_ml_runtime: Optional[pulumi.Input[bool]] = None,
                  workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
@@ -745,6 +784,10 @@ class _ClusterState:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
         if is_pinned is not None:
             pulumi.set(__self__, "is_pinned", is_pinned)
+        if is_single_node is not None:
+            pulumi.set(__self__, "is_single_node", is_single_node)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if libraries is not None:
             pulumi.set(__self__, "libraries", libraries)
         if no_wait is not None:
@@ -771,6 +814,8 @@ class _ClusterState:
             pulumi.set(__self__, "state", state)
         if url is not None:
             pulumi.set(__self__, "url", url)
+        if use_ml_runtime is not None:
+            pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -1032,6 +1077,24 @@ class _ClusterState:
         pulumi.set(self, "is_pinned", value)
 
     @property
+    @pulumi.getter(name="isSingleNode")
+    def is_single_node(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_single_node")
+
+    @is_single_node.setter
+    def is_single_node(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_single_node", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]:
         return pulumi.get(self, "libraries")
@@ -1208,6 +1271,15 @@ class _ClusterState:
         pulumi.set(self, "url", value)
 
     @property
+    @pulumi.getter(name="useMlRuntime")
+    def use_ml_runtime(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_ml_runtime")
+
+    @use_ml_runtime.setter
+    def use_ml_runtime(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_ml_runtime", value)
+
+    @property
     @pulumi.getter(name="workloadType")
     def workload_type(self) -> Optional[pulumi.Input['ClusterWorkloadTypeArgs']]:
         return pulumi.get(self, "workload_type")
@@ -1242,6 +1314,8 @@ class Cluster(pulumi.CustomResource):
                  init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterInitScriptArgs', 'ClusterInitScriptArgsDict']]]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  is_pinned: Optional[pulumi.Input[bool]] = None,
+                 is_single_node: Optional[pulumi.Input[bool]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
                  no_wait: Optional[pulumi.Input[bool]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
@@ -1253,6 +1327,7 @@ class Cluster(pulumi.CustomResource):
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  spark_version: Optional[pulumi.Input[str]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_ml_runtime: Optional[pulumi.Input[bool]] = None,
                  workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
                  __props__=None):
         """
@@ -1389,6 +1464,8 @@ class Cluster(pulumi.CustomResource):
                  init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterInitScriptArgs', 'ClusterInitScriptArgsDict']]]]] = None,
                  instance_pool_id: Optional[pulumi.Input[str]] = None,
                  is_pinned: Optional[pulumi.Input[bool]] = None,
+                 is_single_node: Optional[pulumi.Input[bool]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
                  no_wait: Optional[pulumi.Input[bool]] = None,
                  node_type_id: Optional[pulumi.Input[str]] = None,
@@ -1400,6 +1477,7 @@ class Cluster(pulumi.CustomResource):
                  spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  spark_version: Optional[pulumi.Input[str]] = None,
                  ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_ml_runtime: Optional[pulumi.Input[bool]] = None,
                  workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1430,6 +1508,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["init_scripts"] = init_scripts
             __props__.__dict__["instance_pool_id"] = instance_pool_id
             __props__.__dict__["is_pinned"] = is_pinned
+            __props__.__dict__["is_single_node"] = is_single_node
+            __props__.__dict__["kind"] = kind
             __props__.__dict__["libraries"] = libraries
             __props__.__dict__["no_wait"] = no_wait
             __props__.__dict__["node_type_id"] = node_type_id
@@ -1443,6 +1523,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'spark_version'")
             __props__.__dict__["spark_version"] = spark_version
             __props__.__dict__["ssh_public_keys"] = ssh_public_keys
+            __props__.__dict__["use_ml_runtime"] = use_ml_runtime
             __props__.__dict__["workload_type"] = workload_type
             __props__.__dict__["cluster_id"] = None
             __props__.__dict__["default_tags"] = None
@@ -1480,6 +1561,8 @@ class Cluster(pulumi.CustomResource):
             init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterInitScriptArgs', 'ClusterInitScriptArgsDict']]]]] = None,
             instance_pool_id: Optional[pulumi.Input[str]] = None,
             is_pinned: Optional[pulumi.Input[bool]] = None,
+            is_single_node: Optional[pulumi.Input[bool]] = None,
+            kind: Optional[pulumi.Input[str]] = None,
             libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
             no_wait: Optional[pulumi.Input[bool]] = None,
             node_type_id: Optional[pulumi.Input[str]] = None,
@@ -1493,6 +1576,7 @@ class Cluster(pulumi.CustomResource):
             ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
+            use_ml_runtime: Optional[pulumi.Input[bool]] = None,
             workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -1598,6 +1682,8 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["init_scripts"] = init_scripts
         __props__.__dict__["instance_pool_id"] = instance_pool_id
         __props__.__dict__["is_pinned"] = is_pinned
+        __props__.__dict__["is_single_node"] = is_single_node
+        __props__.__dict__["kind"] = kind
         __props__.__dict__["libraries"] = libraries
         __props__.__dict__["no_wait"] = no_wait
         __props__.__dict__["node_type_id"] = node_type_id
@@ -1611,6 +1697,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["ssh_public_keys"] = ssh_public_keys
         __props__.__dict__["state"] = state
         __props__.__dict__["url"] = url
+        __props__.__dict__["use_ml_runtime"] = use_ml_runtime
         __props__.__dict__["workload_type"] = workload_type
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
@@ -1784,6 +1871,16 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "is_pinned")
 
     @property
+    @pulumi.getter(name="isSingleNode")
+    def is_single_node(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "is_single_node")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "kind")
+
+    @property
     @pulumi.getter
     def libraries(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterLibrary']]]:
         return pulumi.get(self, "libraries")
@@ -1906,6 +2003,11 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="useMlRuntime")
+    def use_ml_runtime(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "use_ml_runtime")
 
     @property
     @pulumi.getter(name="workloadType")

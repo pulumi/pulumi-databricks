@@ -75,7 +75,7 @@ export interface GetFunctionsResult {
     /**
      * list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
      */
-    readonly functions?: outputs.GetFunctionsFunction[];
+    readonly functions: outputs.GetFunctionsFunction[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */

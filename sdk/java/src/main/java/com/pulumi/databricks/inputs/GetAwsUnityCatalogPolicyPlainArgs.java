@@ -31,6 +31,21 @@ public final class GetAwsUnityCatalogPolicyPlainArgs extends com.pulumi.resource
     }
 
     /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
+    @Import(name="awsPartition")
+    private @Nullable String awsPartition;
+
+    /**
+     * @return AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
+    public Optional<String> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
+    }
+
+    /**
      * The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
      * 
      */
@@ -79,6 +94,7 @@ public final class GetAwsUnityCatalogPolicyPlainArgs extends com.pulumi.resource
 
     private GetAwsUnityCatalogPolicyPlainArgs(GetAwsUnityCatalogPolicyPlainArgs $) {
         this.awsAccountId = $.awsAccountId;
+        this.awsPartition = $.awsPartition;
         this.bucketName = $.bucketName;
         this.kmsName = $.kmsName;
         this.roleName = $.roleName;
@@ -110,6 +126,17 @@ public final class GetAwsUnityCatalogPolicyPlainArgs extends com.pulumi.resource
          */
         public Builder awsAccountId(String awsAccountId) {
             $.awsAccountId = awsAccountId;
+            return this;
+        }
+
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsPartition(@Nullable String awsPartition) {
+            $.awsPartition = awsPartition;
             return this;
         }
 

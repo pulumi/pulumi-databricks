@@ -44,7 +44,7 @@ class QueryArgs:
         :param pulumi.Input[str] owner_user_name: Query owner's username.
         :param pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]] parameters: Query parameter definition.  Consists of following attributes (one of `*_value` is required):
         :param pulumi.Input[str] parent_path: The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
-        :param pulumi.Input[str] run_as_mode: Sets the "Run as" role for the object.
+        :param pulumi.Input[str] run_as_mode: Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         :param pulumi.Input[str] schema: Name of the schema where this query will be executed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags that will be added to the query.
         """
@@ -182,7 +182,7 @@ class QueryArgs:
     @pulumi.getter(name="runAsMode")
     def run_as_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Sets the "Run as" role for the object.
+        Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         """
         return pulumi.get(self, "run_as_mode")
 
@@ -247,7 +247,7 @@ class _QueryState:
         :param pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]] parameters: Query parameter definition.  Consists of following attributes (one of `*_value` is required):
         :param pulumi.Input[str] parent_path: The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
         :param pulumi.Input[str] query_text: Text of SQL query.
-        :param pulumi.Input[str] run_as_mode: Sets the "Run as" role for the object.
+        :param pulumi.Input[str] run_as_mode: Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         :param pulumi.Input[str] schema: Name of the schema where this query will be executed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags that will be added to the query.
         :param pulumi.Input[str] update_time: The timestamp string indicating when the query was updated.
@@ -422,7 +422,7 @@ class _QueryState:
     @pulumi.getter(name="runAsMode")
     def run_as_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Sets the "Run as" role for the object.
+        Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         """
         return pulumi.get(self, "run_as_mode")
 
@@ -518,7 +518,7 @@ class Query(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]] parameters: Query parameter definition.  Consists of following attributes (one of `*_value` is required):
         :param pulumi.Input[str] parent_path: The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
         :param pulumi.Input[str] query_text: Text of SQL query.
-        :param pulumi.Input[str] run_as_mode: Sets the "Run as" role for the object.
+        :param pulumi.Input[str] run_as_mode: Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         :param pulumi.Input[str] schema: Name of the schema where this query will be executed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags that will be added to the query.
         :param pulumi.Input[str] warehouse_id: ID of a SQL warehouse which will be used to execute this query.
@@ -642,7 +642,7 @@ class Query(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]] parameters: Query parameter definition.  Consists of following attributes (one of `*_value` is required):
         :param pulumi.Input[str] parent_path: The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
         :param pulumi.Input[str] query_text: Text of SQL query.
-        :param pulumi.Input[str] run_as_mode: Sets the "Run as" role for the object.
+        :param pulumi.Input[str] run_as_mode: Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         :param pulumi.Input[str] schema: Name of the schema where this query will be executed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags that will be added to the query.
         :param pulumi.Input[str] update_time: The timestamp string indicating when the query was updated.
@@ -762,7 +762,7 @@ class Query(pulumi.CustomResource):
     @pulumi.getter(name="runAsMode")
     def run_as_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        Sets the "Run as" role for the object.
+        Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         """
         return pulumi.get(self, "run_as_mode")
 

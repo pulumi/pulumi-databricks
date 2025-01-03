@@ -520,7 +520,17 @@ class MwsNetworks(pulumi.CustomResource):
 
         ## Import
 
-        !> Importing this resource is not currently supported.
+        This resource can be imported by Databricks account ID and network ID.
+
+        ```sh
+        $ pulumi import databricks:index/mwsNetworks:MwsNetworks this '<account_id>/<network_id>'
+        ```
+
+        ~> This resource does not support updates. If your configuration does not match the existing resource,
+
+           the next `pulumi up` will cause the resource to be destroyed and recreated. After importing,
+
+           verify that the configuration matches the existing resource by running `pulumi preview`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -643,7 +653,17 @@ class MwsNetworks(pulumi.CustomResource):
 
         ## Import
 
-        !> Importing this resource is not currently supported.
+        This resource can be imported by Databricks account ID and network ID.
+
+        ```sh
+        $ pulumi import databricks:index/mwsNetworks:MwsNetworks this '<account_id>/<network_id>'
+        ```
+
+        ~> This resource does not support updates. If your configuration does not match the existing resource,
+
+           the next `pulumi up` will cause the resource to be destroyed and recreated. After importing,
+
+           verify that the configuration matches the existing resource by running `pulumi preview`.
 
         :param str resource_name: The name of the resource.
         :param MwsNetworksArgs args: The arguments to use to populate this resource's properties.

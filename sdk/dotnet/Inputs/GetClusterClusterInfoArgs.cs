@@ -138,8 +138,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }
 
+        [Input("isSingleNode")]
+        public Input<bool>? IsSingleNode { get; set; }
+
         [Input("jdbcPort")]
         public Input<int>? JdbcPort { get; set; }
+
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
 
         [Input("lastRestartedTime")]
         public Input<int>? LastRestartedTime { get; set; }
@@ -236,6 +242,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("terminationReason")]
         public Input<Inputs.GetClusterClusterInfoTerminationReasonInputArgs>? TerminationReason { get; set; }
+
+        [Input("useMlRuntime")]
+        public Input<bool>? UseMlRuntime { get; set; }
 
         [Input("workloadType")]
         public Input<Inputs.GetClusterClusterInfoWorkloadTypeInputArgs>? WorkloadType { get; set; }

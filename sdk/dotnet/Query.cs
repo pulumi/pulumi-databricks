@@ -90,7 +90,7 @@ namespace Pulumi.Databricks
         public Output<string> QueryText { get; private set; } = null!;
 
         /// <summary>
-        /// Sets the "Run as" role for the object.
+        /// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         /// </summary>
         [Output("runAsMode")]
         public Output<string?> RunAsMode { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.Databricks
         public Input<string> QueryText { get; set; } = null!;
 
         /// <summary>
-        /// Sets the "Run as" role for the object.
+        /// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         /// </summary>
         [Input("runAsMode")]
         public Input<string>? RunAsMode { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.Databricks
         public Input<string>? QueryText { get; set; }
 
         /// <summary>
-        /// Sets the "Run as" role for the object.
+        /// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         /// </summary>
         [Input("runAsMode")]
         public Input<string>? RunAsMode { get; set; }

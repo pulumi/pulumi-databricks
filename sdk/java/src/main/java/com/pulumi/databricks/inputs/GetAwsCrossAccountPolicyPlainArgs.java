@@ -31,6 +31,21 @@ public final class GetAwsCrossAccountPolicyPlainArgs extends com.pulumi.resource
     }
 
     /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
+    @Import(name="awsPartition")
+    private @Nullable String awsPartition;
+
+    /**
+     * @return AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
+    public Optional<String> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
+    }
+
+    /**
      * List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
      * The below arguments are only valid for `restricted` policy type
      * 
@@ -111,6 +126,7 @@ public final class GetAwsCrossAccountPolicyPlainArgs extends com.pulumi.resource
 
     private GetAwsCrossAccountPolicyPlainArgs(GetAwsCrossAccountPolicyPlainArgs $) {
         this.awsAccountId = $.awsAccountId;
+        this.awsPartition = $.awsPartition;
         this.passRoles = $.passRoles;
         this.policyType = $.policyType;
         this.region = $.region;
@@ -144,6 +160,17 @@ public final class GetAwsCrossAccountPolicyPlainArgs extends com.pulumi.resource
          */
         public Builder awsAccountId(@Nullable String awsAccountId) {
             $.awsAccountId = awsAccountId;
+            return this;
+        }
+
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsPartition(@Nullable String awsPartition) {
+            $.awsPartition = awsPartition;
             return this;
         }
 

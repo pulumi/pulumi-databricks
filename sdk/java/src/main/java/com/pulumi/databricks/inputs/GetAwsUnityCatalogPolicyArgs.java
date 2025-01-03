@@ -32,6 +32,21 @@ public final class GetAwsUnityCatalogPolicyArgs extends com.pulumi.resources.Inv
     }
 
     /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
+    @Import(name="awsPartition")
+    private @Nullable Output<String> awsPartition;
+
+    /**
+     * @return AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
+    public Optional<Output<String>> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
+    }
+
+    /**
      * The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
      * 
      */
@@ -80,6 +95,7 @@ public final class GetAwsUnityCatalogPolicyArgs extends com.pulumi.resources.Inv
 
     private GetAwsUnityCatalogPolicyArgs(GetAwsUnityCatalogPolicyArgs $) {
         this.awsAccountId = $.awsAccountId;
+        this.awsPartition = $.awsPartition;
         this.bucketName = $.bucketName;
         this.kmsName = $.kmsName;
         this.roleName = $.roleName;
@@ -122,6 +138,27 @@ public final class GetAwsUnityCatalogPolicyArgs extends com.pulumi.resources.Inv
          */
         public Builder awsAccountId(String awsAccountId) {
             return awsAccountId(Output.of(awsAccountId));
+        }
+
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsPartition(@Nullable Output<String> awsPartition) {
+            $.awsPartition = awsPartition;
+            return this;
+        }
+
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsPartition(String awsPartition) {
+            return awsPartition(Output.of(awsPartition));
         }
 
         /**

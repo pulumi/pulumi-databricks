@@ -344,7 +344,11 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
 
         ## Import
 
-        !> Importing this resource is not currently supported.
+        This resource can be imported by Databricks account ID and private access settings ID.
+
+        ```sh
+        $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this '<account_id>/<private_access_settings_id>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -438,7 +442,11 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
 
         ## Import
 
-        !> Importing this resource is not currently supported.
+        This resource can be imported by Databricks account ID and private access settings ID.
+
+        ```sh
+        $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this '<account_id>/<private_access_settings_id>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param MwsPrivateAccessSettingsArgs args: The arguments to use to populate this resource's properties.

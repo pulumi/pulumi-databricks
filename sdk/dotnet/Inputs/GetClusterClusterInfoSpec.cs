@@ -115,6 +115,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("instancePoolId")]
         public string? InstancePoolId { get; set; }
 
+        [Input("isSingleNode")]
+        public bool? IsSingleNode { get; set; }
+
+        [Input("kind")]
+        public string? Kind { get; set; }
+
         [Input("libraries")]
         private List<Inputs.GetClusterClusterInfoSpecLibraryArgs>? _libraries;
         public List<Inputs.GetClusterClusterInfoSpecLibraryArgs> Libraries
@@ -191,6 +197,9 @@ namespace Pulumi.Databricks.Inputs
             get => _sshPublicKeys ?? (_sshPublicKeys = new List<string>());
             set => _sshPublicKeys = value;
         }
+
+        [Input("useMlRuntime")]
+        public bool? UseMlRuntime { get; set; }
 
         [Input("workloadType")]
         public Inputs.GetClusterClusterInfoSpecWorkloadTypeArgs? WorkloadType { get; set; }

@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAwsCrossAccountPolicyResult {
     private @Nullable String awsAccountId;
+    private @Nullable String awsPartition;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -33,6 +34,9 @@ public final class GetAwsCrossAccountPolicyResult {
     private GetAwsCrossAccountPolicyResult() {}
     public Optional<String> awsAccountId() {
         return Optional.ofNullable(this.awsAccountId);
+    }
+    public Optional<String> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -74,6 +78,7 @@ public final class GetAwsCrossAccountPolicyResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String awsAccountId;
+        private @Nullable String awsPartition;
         private String id;
         private String json;
         private @Nullable List<String> passRoles;
@@ -85,6 +90,7 @@ public final class GetAwsCrossAccountPolicyResult {
         public Builder(GetAwsCrossAccountPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsAccountId = defaults.awsAccountId;
+    	      this.awsPartition = defaults.awsPartition;
     	      this.id = defaults.id;
     	      this.json = defaults.json;
     	      this.passRoles = defaults.passRoles;
@@ -98,6 +104,12 @@ public final class GetAwsCrossAccountPolicyResult {
         public Builder awsAccountId(@Nullable String awsAccountId) {
 
             this.awsAccountId = awsAccountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder awsPartition(@Nullable String awsPartition) {
+
+            this.awsPartition = awsPartition;
             return this;
         }
         @CustomType.Setter
@@ -152,6 +164,7 @@ public final class GetAwsCrossAccountPolicyResult {
         public GetAwsCrossAccountPolicyResult build() {
             final var _resultValue = new GetAwsCrossAccountPolicyResult();
             _resultValue.awsAccountId = awsAccountId;
+            _resultValue.awsPartition = awsPartition;
             _resultValue.id = id;
             _resultValue.json = json;
             _resultValue.passRoles = passRoles;

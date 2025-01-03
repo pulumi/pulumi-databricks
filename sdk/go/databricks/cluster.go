@@ -91,8 +91,10 @@ type Cluster struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId pulumi.StringPtrOutput `pulumi:"instancePoolId"`
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
-	IsPinned  pulumi.BoolPtrOutput      `pulumi:"isPinned"`
-	Libraries ClusterLibraryArrayOutput `pulumi:"libraries"`
+	IsPinned     pulumi.BoolPtrOutput      `pulumi:"isPinned"`
+	IsSingleNode pulumi.BoolPtrOutput      `pulumi:"isSingleNode"`
+	Kind         pulumi.StringPtrOutput    `pulumi:"kind"`
+	Libraries    ClusterLibraryArrayOutput `pulumi:"libraries"`
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -165,6 +167,7 @@ type Cluster struct {
 	// (string) State of the cluster.
 	State        pulumi.StringOutput          `pulumi:"state"`
 	Url          pulumi.StringOutput          `pulumi:"url"`
+	UseMlRuntime pulumi.BoolPtrOutput         `pulumi:"useMlRuntime"`
 	WorkloadType ClusterWorkloadTypePtrOutput `pulumi:"workloadType"`
 }
 
@@ -268,8 +271,10 @@ type clusterState struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId *string `pulumi:"instancePoolId"`
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
-	IsPinned  *bool            `pulumi:"isPinned"`
-	Libraries []ClusterLibrary `pulumi:"libraries"`
+	IsPinned     *bool            `pulumi:"isPinned"`
+	IsSingleNode *bool            `pulumi:"isSingleNode"`
+	Kind         *string          `pulumi:"kind"`
+	Libraries    []ClusterLibrary `pulumi:"libraries"`
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -342,6 +347,7 @@ type clusterState struct {
 	// (string) State of the cluster.
 	State        *string              `pulumi:"state"`
 	Url          *string              `pulumi:"url"`
+	UseMlRuntime *bool                `pulumi:"useMlRuntime"`
 	WorkloadType *ClusterWorkloadType `pulumi:"workloadType"`
 }
 
@@ -413,8 +419,10 @@ type ClusterState struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId pulumi.StringPtrInput
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
-	IsPinned  pulumi.BoolPtrInput
-	Libraries ClusterLibraryArrayInput
+	IsPinned     pulumi.BoolPtrInput
+	IsSingleNode pulumi.BoolPtrInput
+	Kind         pulumi.StringPtrInput
+	Libraries    ClusterLibraryArrayInput
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -487,6 +495,7 @@ type ClusterState struct {
 	// (string) State of the cluster.
 	State        pulumi.StringPtrInput
 	Url          pulumi.StringPtrInput
+	UseMlRuntime pulumi.BoolPtrInput
 	WorkloadType ClusterWorkloadTypePtrInput
 }
 
@@ -559,8 +568,10 @@ type clusterArgs struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId *string `pulumi:"instancePoolId"`
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
-	IsPinned  *bool            `pulumi:"isPinned"`
-	Libraries []ClusterLibrary `pulumi:"libraries"`
+	IsPinned     *bool            `pulumi:"isPinned"`
+	IsSingleNode *bool            `pulumi:"isSingleNode"`
+	Kind         *string          `pulumi:"kind"`
+	Libraries    []ClusterLibrary `pulumi:"libraries"`
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -630,6 +641,7 @@ type clusterArgs struct {
 	SparkVersion string `pulumi:"sparkVersion"`
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys []string             `pulumi:"sshPublicKeys"`
+	UseMlRuntime  *bool                `pulumi:"useMlRuntime"`
 	WorkloadType  *ClusterWorkloadType `pulumi:"workloadType"`
 }
 
@@ -699,8 +711,10 @@ type ClusterArgs struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId pulumi.StringPtrInput
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
-	IsPinned  pulumi.BoolPtrInput
-	Libraries ClusterLibraryArrayInput
+	IsPinned     pulumi.BoolPtrInput
+	IsSingleNode pulumi.BoolPtrInput
+	Kind         pulumi.StringPtrInput
+	Libraries    ClusterLibraryArrayInput
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -770,6 +784,7 @@ type ClusterArgs struct {
 	SparkVersion pulumi.StringInput
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys pulumi.StringArrayInput
+	UseMlRuntime  pulumi.BoolPtrInput
 	WorkloadType  ClusterWorkloadTypePtrInput
 }
 
@@ -997,6 +1012,14 @@ func (o ClusterOutput) IsPinned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.IsPinned }).(pulumi.BoolPtrOutput)
 }
 
+func (o ClusterOutput) IsSingleNode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.IsSingleNode }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
 func (o ClusterOutput) Libraries() ClusterLibraryArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterLibraryArrayOutput { return v.Libraries }).(ClusterLibraryArrayOutput)
 }
@@ -1110,6 +1133,10 @@ func (o ClusterOutput) State() pulumi.StringOutput {
 
 func (o ClusterOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) UseMlRuntime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.UseMlRuntime }).(pulumi.BoolPtrOutput)
 }
 
 func (o ClusterOutput) WorkloadType() ClusterWorkloadTypePtrOutput {

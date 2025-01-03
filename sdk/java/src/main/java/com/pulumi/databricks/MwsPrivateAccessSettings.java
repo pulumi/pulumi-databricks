@@ -175,7 +175,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * !&gt; Importing this resource is not currently supported.
+ * This resource can be imported by Databricks account ID and private access settings ID.
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this &#39;&lt;account_id&gt;/&lt;private_access_settings_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings")

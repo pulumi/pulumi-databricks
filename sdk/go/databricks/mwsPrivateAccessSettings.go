@@ -140,7 +140,11 @@ import (
 //
 // ## Import
 //
-// !> Importing this resource is not currently supported.
+// This resource can be imported by Databricks account ID and private access settings ID.
+//
+// ```sh
+// $ pulumi import databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings this '<account_id>/<private_access_settings_id>'
+// ```
 type MwsPrivateAccessSettings struct {
 	pulumi.CustomResourceState
 

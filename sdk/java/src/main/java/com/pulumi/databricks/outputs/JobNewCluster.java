@@ -45,6 +45,8 @@ public final class JobNewCluster {
     private @Nullable String idempotencyToken;
     private @Nullable List<JobNewClusterInitScript> initScripts;
     private @Nullable String instancePoolId;
+    private @Nullable Boolean isSingleNode;
+    private @Nullable String kind;
     /**
      * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      * 
@@ -59,6 +61,7 @@ public final class JobNewCluster {
     private @Nullable Map<String,String> sparkEnvVars;
     private String sparkVersion;
     private @Nullable List<String> sshPublicKeys;
+    private @Nullable Boolean useMlRuntime;
     /**
      * @return isn&#39;t supported
      * 
@@ -123,6 +126,12 @@ public final class JobNewCluster {
     public Optional<String> instancePoolId() {
         return Optional.ofNullable(this.instancePoolId);
     }
+    public Optional<Boolean> isSingleNode() {
+        return Optional.ofNullable(this.isSingleNode);
+    }
+    public Optional<String> kind() {
+        return Optional.ofNullable(this.kind);
+    }
     /**
      * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      * 
@@ -156,6 +165,9 @@ public final class JobNewCluster {
     }
     public List<String> sshPublicKeys() {
         return this.sshPublicKeys == null ? List.of() : this.sshPublicKeys;
+    }
+    public Optional<Boolean> useMlRuntime() {
+        return Optional.ofNullable(this.useMlRuntime);
     }
     /**
      * @return isn&#39;t supported
@@ -193,6 +205,8 @@ public final class JobNewCluster {
         private @Nullable String idempotencyToken;
         private @Nullable List<JobNewClusterInitScript> initScripts;
         private @Nullable String instancePoolId;
+        private @Nullable Boolean isSingleNode;
+        private @Nullable String kind;
         private @Nullable List<JobNewClusterLibrary> libraries;
         private @Nullable String nodeTypeId;
         private @Nullable Integer numWorkers;
@@ -203,6 +217,7 @@ public final class JobNewCluster {
         private @Nullable Map<String,String> sparkEnvVars;
         private String sparkVersion;
         private @Nullable List<String> sshPublicKeys;
+        private @Nullable Boolean useMlRuntime;
         private @Nullable JobNewClusterWorkloadType workloadType;
         public Builder() {}
         public Builder(JobNewCluster defaults) {
@@ -226,6 +241,8 @@ public final class JobNewCluster {
     	      this.idempotencyToken = defaults.idempotencyToken;
     	      this.initScripts = defaults.initScripts;
     	      this.instancePoolId = defaults.instancePoolId;
+    	      this.isSingleNode = defaults.isSingleNode;
+    	      this.kind = defaults.kind;
     	      this.libraries = defaults.libraries;
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.numWorkers = defaults.numWorkers;
@@ -236,6 +253,7 @@ public final class JobNewCluster {
     	      this.sparkEnvVars = defaults.sparkEnvVars;
     	      this.sparkVersion = defaults.sparkVersion;
     	      this.sshPublicKeys = defaults.sshPublicKeys;
+    	      this.useMlRuntime = defaults.useMlRuntime;
     	      this.workloadType = defaults.workloadType;
         }
 
@@ -360,6 +378,18 @@ public final class JobNewCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder isSingleNode(@Nullable Boolean isSingleNode) {
+
+            this.isSingleNode = isSingleNode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kind(@Nullable String kind) {
+
+            this.kind = kind;
+            return this;
+        }
+        @CustomType.Setter
         public Builder libraries(@Nullable List<JobNewClusterLibrary> libraries) {
 
             this.libraries = libraries;
@@ -428,6 +458,12 @@ public final class JobNewCluster {
             return sshPublicKeys(List.of(sshPublicKeys));
         }
         @CustomType.Setter
+        public Builder useMlRuntime(@Nullable Boolean useMlRuntime) {
+
+            this.useMlRuntime = useMlRuntime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workloadType(@Nullable JobNewClusterWorkloadType workloadType) {
 
             this.workloadType = workloadType;
@@ -454,6 +490,8 @@ public final class JobNewCluster {
             _resultValue.idempotencyToken = idempotencyToken;
             _resultValue.initScripts = initScripts;
             _resultValue.instancePoolId = instancePoolId;
+            _resultValue.isSingleNode = isSingleNode;
+            _resultValue.kind = kind;
             _resultValue.libraries = libraries;
             _resultValue.nodeTypeId = nodeTypeId;
             _resultValue.numWorkers = numWorkers;
@@ -464,6 +502,7 @@ public final class JobNewCluster {
             _resultValue.sparkEnvVars = sparkEnvVars;
             _resultValue.sparkVersion = sparkVersion;
             _resultValue.sshPublicKeys = sshPublicKeys;
+            _resultValue.useMlRuntime = useMlRuntime;
             _resultValue.workloadType = workloadType;
             return _resultValue;
         }

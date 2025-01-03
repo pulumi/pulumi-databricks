@@ -22,6 +22,7 @@ class GrantArgs:
                  principal: pulumi.Input[str],
                  privileges: pulumi.Input[Sequence[pulumi.Input[str]]],
                  catalog: Optional[pulumi.Input[str]] = None,
+                 credential: Optional[pulumi.Input[str]] = None,
                  external_location: Optional[pulumi.Input[str]] = None,
                  foreign_connection: Optional[pulumi.Input[str]] = None,
                  function: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,8 @@ class GrantArgs:
         pulumi.set(__self__, "privileges", privileges)
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
+        if credential is not None:
+            pulumi.set(__self__, "credential", credential)
         if external_location is not None:
             pulumi.set(__self__, "external_location", external_location)
         if foreign_connection is not None:
@@ -92,6 +95,15 @@ class GrantArgs:
     @catalog.setter
     def catalog(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "catalog", value)
+
+    @property
+    @pulumi.getter
+    def credential(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "credential")
+
+    @credential.setter
+    def credential(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credential", value)
 
     @property
     @pulumi.getter(name="externalLocation")
@@ -206,6 +218,7 @@ class GrantArgs:
 class _GrantState:
     def __init__(__self__, *,
                  catalog: Optional[pulumi.Input[str]] = None,
+                 credential: Optional[pulumi.Input[str]] = None,
                  external_location: Optional[pulumi.Input[str]] = None,
                  foreign_connection: Optional[pulumi.Input[str]] = None,
                  function: Optional[pulumi.Input[str]] = None,
@@ -225,6 +238,8 @@ class _GrantState:
         """
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
+        if credential is not None:
+            pulumi.set(__self__, "credential", credential)
         if external_location is not None:
             pulumi.set(__self__, "external_location", external_location)
         if foreign_connection is not None:
@@ -262,6 +277,15 @@ class _GrantState:
     @catalog.setter
     def catalog(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "catalog", value)
+
+    @property
+    @pulumi.getter
+    def credential(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "credential")
+
+    @credential.setter
+    def credential(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credential", value)
 
     @property
     @pulumi.getter(name="externalLocation")
@@ -396,6 +420,7 @@ class Grant(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
+                 credential: Optional[pulumi.Input[str]] = None,
                  external_location: Optional[pulumi.Input[str]] = None,
                  foreign_connection: Optional[pulumi.Input[str]] = None,
                  function: Optional[pulumi.Input[str]] = None,
@@ -653,6 +678,27 @@ class Grant(pulumi.CustomResource):
             function="main.reporting.udf",
             principal="Data Analysts",
             privileges=["EXECUTE"])
+        ```
+
+        ## Service credential grants
+
+        See Grants Service credential grants for the list of privileges that apply to Service credentials.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external = databricks.Credential("external",
+            name=external_data_access["name"],
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            },
+            purpose="SERVICE",
+            comment="Managed by TF")
+        external_creds = databricks.Grant("external_creds",
+            credential=external.id,
+            principal="Data Engineers",
+            privileges=["ACCESS"])
         ```
 
         ## Storage credential grants
@@ -1031,6 +1077,27 @@ class Grant(pulumi.CustomResource):
             privileges=["EXECUTE"])
         ```
 
+        ## Service credential grants
+
+        See Grants Service credential grants for the list of privileges that apply to Service credentials.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external = databricks.Credential("external",
+            name=external_data_access["name"],
+            aws_iam_role={
+                "role_arn": external_data_access["arn"],
+            },
+            purpose="SERVICE",
+            comment="Managed by TF")
+        external_creds = databricks.Grant("external_creds",
+            credential=external.id,
+            principal="Data Engineers",
+            privileges=["ACCESS"])
+        ```
+
         ## Storage credential grants
 
         See Grants Storage credential grants for the list of privileges that apply to Storage credentials.
@@ -1170,6 +1237,7 @@ class Grant(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog: Optional[pulumi.Input[str]] = None,
+                 credential: Optional[pulumi.Input[str]] = None,
                  external_location: Optional[pulumi.Input[str]] = None,
                  foreign_connection: Optional[pulumi.Input[str]] = None,
                  function: Optional[pulumi.Input[str]] = None,
@@ -1194,6 +1262,7 @@ class Grant(pulumi.CustomResource):
             __props__ = GrantArgs.__new__(GrantArgs)
 
             __props__.__dict__["catalog"] = catalog
+            __props__.__dict__["credential"] = credential
             __props__.__dict__["external_location"] = external_location
             __props__.__dict__["foreign_connection"] = foreign_connection
             __props__.__dict__["function"] = function
@@ -1223,6 +1292,7 @@ class Grant(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             catalog: Optional[pulumi.Input[str]] = None,
+            credential: Optional[pulumi.Input[str]] = None,
             external_location: Optional[pulumi.Input[str]] = None,
             foreign_connection: Optional[pulumi.Input[str]] = None,
             function: Optional[pulumi.Input[str]] = None,
@@ -1250,6 +1320,7 @@ class Grant(pulumi.CustomResource):
         __props__ = _GrantState.__new__(_GrantState)
 
         __props__.__dict__["catalog"] = catalog
+        __props__.__dict__["credential"] = credential
         __props__.__dict__["external_location"] = external_location
         __props__.__dict__["foreign_connection"] = foreign_connection
         __props__.__dict__["function"] = function
@@ -1270,6 +1341,11 @@ class Grant(pulumi.CustomResource):
     @pulumi.getter
     def catalog(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "catalog")
+
+    @property
+    @pulumi.getter
+    def credential(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "credential")
 
     @property
     @pulumi.getter(name="externalLocation")

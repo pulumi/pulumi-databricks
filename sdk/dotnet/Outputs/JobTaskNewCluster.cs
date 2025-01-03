@@ -32,6 +32,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? IdempotencyToken;
         public readonly ImmutableArray<Outputs.JobTaskNewClusterInitScript> InitScripts;
         public readonly string? InstancePoolId;
+        public readonly bool? IsSingleNode;
+        public readonly string? Kind;
         /// <summary>
         /// (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
         /// </summary>
@@ -45,6 +47,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableDictionary<string, string>? SparkEnvVars;
         public readonly string SparkVersion;
         public readonly ImmutableArray<string> SshPublicKeys;
+        public readonly bool? UseMlRuntime;
         /// <summary>
         /// isn't supported
         /// </summary>
@@ -90,6 +93,10 @@ namespace Pulumi.Databricks.Outputs
 
             string? instancePoolId,
 
+            bool? isSingleNode,
+
+            string? kind,
+
             ImmutableArray<Outputs.JobTaskNewClusterLibrary> libraries,
 
             string? nodeTypeId,
@@ -109,6 +116,8 @@ namespace Pulumi.Databricks.Outputs
             string sparkVersion,
 
             ImmutableArray<string> sshPublicKeys,
+
+            bool? useMlRuntime,
 
             Outputs.JobTaskNewClusterWorkloadType? workloadType)
         {
@@ -131,6 +140,8 @@ namespace Pulumi.Databricks.Outputs
             IdempotencyToken = idempotencyToken;
             InitScripts = initScripts;
             InstancePoolId = instancePoolId;
+            IsSingleNode = isSingleNode;
+            Kind = kind;
             Libraries = libraries;
             NodeTypeId = nodeTypeId;
             NumWorkers = numWorkers;
@@ -141,6 +152,7 @@ namespace Pulumi.Databricks.Outputs
             SparkEnvVars = sparkEnvVars;
             SparkVersion = sparkVersion;
             SshPublicKeys = sshPublicKeys;
+            UseMlRuntime = useMlRuntime;
             WorkloadType = workloadType;
         }
     }

@@ -123,6 +123,12 @@ namespace Pulumi.Databricks
         [Input("awsAccountId")]
         public string? AwsAccountId { get; set; }
 
+        /// <summary>
+        /// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+        /// </summary>
+        [Input("awsPartition")]
+        public string? AwsPartition { get; set; }
+
         [Input("passRoles")]
         private List<string>? _passRoles;
 
@@ -174,6 +180,12 @@ namespace Pulumi.Databricks
         [Input("awsAccountId")]
         public Input<string>? AwsAccountId { get; set; }
 
+        /// <summary>
+        /// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+        /// </summary>
+        [Input("awsPartition")]
+        public Input<string>? AwsPartition { get; set; }
+
         [Input("passRoles")]
         private InputList<string>? _passRoles;
 
@@ -222,6 +234,7 @@ namespace Pulumi.Databricks
     public sealed class GetAwsCrossAccountPolicyResult
     {
         public readonly string? AwsAccountId;
+        public readonly string? AwsPartition;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -240,6 +253,8 @@ namespace Pulumi.Databricks
         private GetAwsCrossAccountPolicyResult(
             string? awsAccountId,
 
+            string? awsPartition,
+
             string id,
 
             string json,
@@ -255,6 +270,7 @@ namespace Pulumi.Databricks
             string? vpcId)
         {
             AwsAccountId = awsAccountId;
+            AwsPartition = awsPartition;
             Id = id;
             Json = json;
             PassRoles = passRoles;

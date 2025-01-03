@@ -288,11 +288,25 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.instancePoolId);
     }
 
+    @Import(name="isSingleNode")
+    private @Nullable Output<Boolean> isSingleNode;
+
+    public Optional<Output<Boolean>> isSingleNode() {
+        return Optional.ofNullable(this.isSingleNode);
+    }
+
     @Import(name="jdbcPort")
     private @Nullable Output<Integer> jdbcPort;
 
     public Optional<Output<Integer>> jdbcPort() {
         return Optional.ofNullable(this.jdbcPort);
+    }
+
+    @Import(name="kind")
+    private @Nullable Output<String> kind;
+
+    public Optional<Output<String>> kind() {
+        return Optional.ofNullable(this.kind);
     }
 
     @Import(name="lastRestartedTime")
@@ -485,6 +499,13 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.terminationReason);
     }
 
+    @Import(name="useMlRuntime")
+    private @Nullable Output<Boolean> useMlRuntime;
+
+    public Optional<Output<Boolean>> useMlRuntime() {
+        return Optional.ofNullable(this.useMlRuntime);
+    }
+
     @Import(name="workloadType")
     private @Nullable Output<GetClusterClusterInfoWorkloadTypeArgs> workloadType;
 
@@ -520,7 +541,9 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         this.gcpAttributes = $.gcpAttributes;
         this.initScripts = $.initScripts;
         this.instancePoolId = $.instancePoolId;
+        this.isSingleNode = $.isSingleNode;
         this.jdbcPort = $.jdbcPort;
+        this.kind = $.kind;
         this.lastRestartedTime = $.lastRestartedTime;
         this.lastStateLossTime = $.lastStateLossTime;
         this.nodeTypeId = $.nodeTypeId;
@@ -539,6 +562,7 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
         this.stateMessage = $.stateMessage;
         this.terminatedTime = $.terminatedTime;
         this.terminationReason = $.terminationReason;
+        this.useMlRuntime = $.useMlRuntime;
         this.workloadType = $.workloadType;
     }
 
@@ -913,6 +937,15 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
             return instancePoolId(Output.of(instancePoolId));
         }
 
+        public Builder isSingleNode(@Nullable Output<Boolean> isSingleNode) {
+            $.isSingleNode = isSingleNode;
+            return this;
+        }
+
+        public Builder isSingleNode(Boolean isSingleNode) {
+            return isSingleNode(Output.of(isSingleNode));
+        }
+
         public Builder jdbcPort(@Nullable Output<Integer> jdbcPort) {
             $.jdbcPort = jdbcPort;
             return this;
@@ -920,6 +953,15 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
 
         public Builder jdbcPort(Integer jdbcPort) {
             return jdbcPort(Output.of(jdbcPort));
+        }
+
+        public Builder kind(@Nullable Output<String> kind) {
+            $.kind = kind;
+            return this;
+        }
+
+        public Builder kind(String kind) {
+            return kind(Output.of(kind));
         }
 
         public Builder lastRestartedTime(@Nullable Output<Integer> lastRestartedTime) {
@@ -1188,6 +1230,15 @@ public final class GetClusterClusterInfoArgs extends com.pulumi.resources.Resour
 
         public Builder terminationReason(GetClusterClusterInfoTerminationReasonArgs terminationReason) {
             return terminationReason(Output.of(terminationReason));
+        }
+
+        public Builder useMlRuntime(@Nullable Output<Boolean> useMlRuntime) {
+            $.useMlRuntime = useMlRuntime;
+            return this;
+        }
+
+        public Builder useMlRuntime(Boolean useMlRuntime) {
+            return useMlRuntime(Output.of(useMlRuntime));
         }
 
         public Builder workloadType(@Nullable Output<GetClusterClusterInfoWorkloadTypeArgs> workloadType) {

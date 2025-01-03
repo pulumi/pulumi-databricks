@@ -163,6 +163,20 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.instancePoolId);
     }
 
+    @Import(name="isSingleNode")
+    private @Nullable Output<Boolean> isSingleNode;
+
+    public Optional<Output<Boolean>> isSingleNode() {
+        return Optional.ofNullable(this.isSingleNode);
+    }
+
+    @Import(name="kind")
+    private @Nullable Output<String> kind;
+
+    public Optional<Output<String>> kind() {
+        return Optional.ofNullable(this.kind);
+    }
+
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      * 
@@ -241,6 +255,13 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.sshPublicKeys);
     }
 
+    @Import(name="useMlRuntime")
+    private @Nullable Output<Boolean> useMlRuntime;
+
+    public Optional<Output<Boolean>> useMlRuntime() {
+        return Optional.ofNullable(this.useMlRuntime);
+    }
+
     /**
      * isn&#39;t supported
      * 
@@ -278,6 +299,8 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         this.idempotencyToken = $.idempotencyToken;
         this.initScripts = $.initScripts;
         this.instancePoolId = $.instancePoolId;
+        this.isSingleNode = $.isSingleNode;
+        this.kind = $.kind;
         this.libraries = $.libraries;
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
@@ -288,6 +311,7 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
         this.sparkEnvVars = $.sparkEnvVars;
         this.sparkVersion = $.sparkVersion;
         this.sshPublicKeys = $.sshPublicKeys;
+        this.useMlRuntime = $.useMlRuntime;
         this.workloadType = $.workloadType;
     }
 
@@ -488,6 +512,24 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
             return instancePoolId(Output.of(instancePoolId));
         }
 
+        public Builder isSingleNode(@Nullable Output<Boolean> isSingleNode) {
+            $.isSingleNode = isSingleNode;
+            return this;
+        }
+
+        public Builder isSingleNode(Boolean isSingleNode) {
+            return isSingleNode(Output.of(isSingleNode));
+        }
+
+        public Builder kind(@Nullable Output<String> kind) {
+            $.kind = kind;
+            return this;
+        }
+
+        public Builder kind(String kind) {
+            return kind(Output.of(kind));
+        }
+
         /**
          * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
          * 
@@ -602,6 +644,15 @@ public final class JobTaskNewClusterArgs extends com.pulumi.resources.ResourceAr
 
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
+        }
+
+        public Builder useMlRuntime(@Nullable Output<Boolean> useMlRuntime) {
+            $.useMlRuntime = useMlRuntime;
+            return this;
+        }
+
+        public Builder useMlRuntime(Boolean useMlRuntime) {
+            return useMlRuntime(Output.of(useMlRuntime));
         }
 
         /**

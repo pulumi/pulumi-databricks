@@ -78,11 +78,17 @@ namespace Pulumi.Databricks.Inputs
         [Input("functionId")]
         public Input<string>? FunctionId { get; set; }
 
+        [Input("inputParams")]
+        private InputList<Inputs.GetFunctionsFunctionInputParamInputArgs>? _inputParams;
+
         /// <summary>
         /// object describing input parameters. Consists of the single attribute:
         /// </summary>
-        [Input("inputParams")]
-        public Input<Inputs.GetFunctionsFunctionInputParamsInputArgs>? InputParams { get; set; }
+        public InputList<Inputs.GetFunctionsFunctionInputParamInputArgs> InputParams
+        {
+            get => _inputParams ?? (_inputParams = new InputList<Inputs.GetFunctionsFunctionInputParamInputArgs>());
+            set => _inputParams = value;
+        }
 
         /// <summary>
         /// Boolean flag specifying whether the function is deterministic.
@@ -126,11 +132,17 @@ namespace Pulumi.Databricks.Inputs
         [Input("properties")]
         public Input<string>? Properties { get; set; }
 
+        [Input("returnParams")]
+        private InputList<Inputs.GetFunctionsFunctionReturnParamInputArgs>? _returnParams;
+
         /// <summary>
         /// Table function return parameters.  See `input_params` for description.
         /// </summary>
-        [Input("returnParams")]
-        public Input<Inputs.GetFunctionsFunctionReturnParamsInputArgs>? ReturnParams { get; set; }
+        public InputList<Inputs.GetFunctionsFunctionReturnParamInputArgs> ReturnParams
+        {
+            get => _returnParams ?? (_returnParams = new InputList<Inputs.GetFunctionsFunctionReturnParamInputArgs>());
+            set => _returnParams = value;
+        }
 
         /// <summary>
         /// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
@@ -144,11 +156,17 @@ namespace Pulumi.Databricks.Inputs
         [Input("routineDefinition")]
         public Input<string>? RoutineDefinition { get; set; }
 
+        [Input("routineDependencies")]
+        private InputList<Inputs.GetFunctionsFunctionRoutineDependencyInputArgs>? _routineDependencies;
+
         /// <summary>
         /// Function dependencies.
         /// </summary>
-        [Input("routineDependencies")]
-        public Input<Inputs.GetFunctionsFunctionRoutineDependenciesInputArgs>? RoutineDependencies { get; set; }
+        public InputList<Inputs.GetFunctionsFunctionRoutineDependencyInputArgs> RoutineDependencies
+        {
+            get => _routineDependencies ?? (_routineDependencies = new InputList<Inputs.GetFunctionsFunctionRoutineDependencyInputArgs>());
+            set => _routineDependencies = value;
+        }
 
         /// <summary>
         /// Name of databricks_schema.

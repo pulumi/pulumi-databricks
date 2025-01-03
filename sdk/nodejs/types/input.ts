@@ -78,6 +78,175 @@ export interface AlertConditionThresholdValue {
     stringValue?: pulumi.Input<string>;
 }
 
+export interface AppActiveDeployment {
+    /**
+     * The creation time of the app.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The email of the user that created the app.
+     */
+    creator?: pulumi.Input<string>;
+    deploymentArtifacts?: pulumi.Input<inputs.AppActiveDeploymentDeploymentArtifacts>;
+    deploymentId?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
+    sourceCodePath?: pulumi.Input<string>;
+    status?: pulumi.Input<inputs.AppActiveDeploymentStatus>;
+    /**
+     * The update time of the app.
+     */
+    updateTime?: pulumi.Input<string>;
+}
+
+export interface AppActiveDeploymentDeploymentArtifacts {
+    sourceCodePath?: pulumi.Input<string>;
+}
+
+export interface AppActiveDeploymentStatus {
+    /**
+     * Application status message
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * State of the application.
+     */
+    state?: pulumi.Input<string>;
+}
+
+export interface AppAppStatus {
+    /**
+     * Application status message
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * State of the application.
+     */
+    state?: pulumi.Input<string>;
+}
+
+export interface AppComputeStatus {
+    /**
+     * Application status message
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * State of the application.
+     */
+    state?: pulumi.Input<string>;
+}
+
+export interface AppPendingDeployment {
+    /**
+     * The creation time of the app.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The email of the user that created the app.
+     */
+    creator?: pulumi.Input<string>;
+    deploymentArtifacts?: pulumi.Input<inputs.AppPendingDeploymentDeploymentArtifacts>;
+    deploymentId?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
+    sourceCodePath?: pulumi.Input<string>;
+    status?: pulumi.Input<inputs.AppPendingDeploymentStatus>;
+    /**
+     * The update time of the app.
+     */
+    updateTime?: pulumi.Input<string>;
+}
+
+export interface AppPendingDeploymentDeploymentArtifacts {
+    sourceCodePath?: pulumi.Input<string>;
+}
+
+export interface AppPendingDeploymentStatus {
+    /**
+     * Application status message
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * State of the application.
+     */
+    state?: pulumi.Input<string>;
+}
+
+export interface AppResource {
+    /**
+     * The description of the resource.
+     *
+     * Exactly one of the following attributes must be provided:
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * attribute
+     */
+    job?: pulumi.Input<inputs.AppResourceJob>;
+    /**
+     * The name of the resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * attribute
+     */
+    secret?: pulumi.Input<inputs.AppResourceSecret>;
+    /**
+     * attribute
+     */
+    servingEndpoint?: pulumi.Input<inputs.AppResourceServingEndpoint>;
+    /**
+     * attribute
+     */
+    sqlWarehouse?: pulumi.Input<inputs.AppResourceSqlWarehouse>;
+}
+
+export interface AppResourceJob {
+    /**
+     * Id of the job to grant permission on.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     */
+    permission: pulumi.Input<string>;
+}
+
+export interface AppResourceSecret {
+    /**
+     * Key of the secret to grant permission on.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Permission to grant on the secret scope. For secrets, only one permission is allowed. Permission must be one of: `READ`, `WRITE`, `MANAGE`.
+     */
+    permission: pulumi.Input<string>;
+    /**
+     * Scope of the secret to grant permission on.
+     */
+    scope: pulumi.Input<string>;
+}
+
+export interface AppResourceServingEndpoint {
+    /**
+     * Name of the serving endpoint to grant permission on.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Permission to grant on the serving endpoint. Supported permissions are: `CAN_MANAGE`, `CAN_QUERY`, `CAN_VIEW`.
+     */
+    permission: pulumi.Input<string>;
+}
+
+export interface AppResourceSqlWarehouse {
+    /**
+     * Id of the SQL warehouse to grant permission on.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
+     */
+    permission: pulumi.Input<string>;
+}
+
 export interface ArtifactAllowlistArtifactMatcher {
     /**
      * The artifact path or maven coordinate.
@@ -626,6 +795,63 @@ export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProf
     isEnabled: pulumi.Input<boolean>;
 }
 
+export interface CredentialAwsIamRole {
+    externalId?: pulumi.Input<string>;
+    /**
+     * The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     *
+     * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over `azureServicePrincipal`):
+     */
+    roleArn?: pulumi.Input<string>;
+    unityCatalogIamArn?: pulumi.Input<string>;
+}
+
+export interface CredentialAzureManagedIdentity {
+    /**
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+     */
+    accessConnectorId: pulumi.Input<string>;
+    /**
+     * Unique ID of the credential.
+     */
+    credentialId?: pulumi.Input<string>;
+    /**
+     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+     *
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure. Only applicable when purpose is `STORAGE` (Legacy):
+     */
+    managedIdentityId?: pulumi.Input<string>;
+}
+
+export interface CredentialAzureServicePrincipal {
+    /**
+     * The application ID of the application registration within the referenced AAD tenant
+     */
+    applicationId: pulumi.Input<string>;
+    /**
+     * The client secret generated for the above app ID in AAD. **This field is redacted on output**
+     *
+     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+     */
+    clientSecret: pulumi.Input<string>;
+    /**
+     * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+     */
+    directoryId: pulumi.Input<string>;
+}
+
+export interface CredentialDatabricksGcpServiceAccount {
+    /**
+     * Unique ID of the credential.
+     */
+    credentialId?: pulumi.Input<string>;
+    /**
+     * The email of the GCP service account created, to be granted access to relevant buckets.
+     */
+    email?: pulumi.Input<string>;
+    privateKeyId?: pulumi.Input<string>;
+}
+
 export interface CustomAppIntegrationTokenAccessPolicy {
     /**
      * access token time to live (TTL) in minutes.
@@ -919,7 +1145,9 @@ export interface GetClusterClusterInfo {
      * The pool of idle instances the cluster is attached to.
      */
     instancePoolId?: string;
+    isSingleNode?: boolean;
     jdbcPort?: number;
+    kind?: string;
     lastRestartedTime?: number;
     lastStateLossTime?: number;
     /**
@@ -962,6 +1190,7 @@ export interface GetClusterClusterInfo {
     stateMessage?: string;
     terminatedTime?: number;
     terminationReason?: inputs.GetClusterClusterInfoTerminationReason;
+    useMlRuntime?: boolean;
     workloadType?: inputs.GetClusterClusterInfoWorkloadType;
 }
 
@@ -1021,7 +1250,9 @@ export interface GetClusterClusterInfoArgs {
      * The pool of idle instances the cluster is attached to.
      */
     instancePoolId?: pulumi.Input<string>;
+    isSingleNode?: pulumi.Input<boolean>;
     jdbcPort?: pulumi.Input<number>;
+    kind?: pulumi.Input<string>;
     lastRestartedTime?: pulumi.Input<number>;
     lastStateLossTime?: pulumi.Input<number>;
     /**
@@ -1064,6 +1295,7 @@ export interface GetClusterClusterInfoArgs {
     stateMessage?: pulumi.Input<string>;
     terminatedTime?: pulumi.Input<number>;
     terminationReason?: pulumi.Input<inputs.GetClusterClusterInfoTerminationReasonArgs>;
+    useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.GetClusterClusterInfoWorkloadTypeArgs>;
 }
 
@@ -1407,6 +1639,8 @@ export interface GetClusterClusterInfoSpec {
      * The pool of idle instances the cluster is attached to.
      */
     instancePoolId?: string;
+    isSingleNode?: boolean;
+    kind?: string;
     libraries?: inputs.GetClusterClusterInfoSpecLibrary[];
     /**
      * Any supported databricks.getNodeType id.
@@ -1441,6 +1675,7 @@ export interface GetClusterClusterInfoSpec {
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
     sshPublicKeys?: string[];
+    useMlRuntime?: boolean;
     workloadType?: inputs.GetClusterClusterInfoSpecWorkloadType;
 }
 
@@ -1494,6 +1729,8 @@ export interface GetClusterClusterInfoSpecArgs {
      * The pool of idle instances the cluster is attached to.
      */
     instancePoolId?: pulumi.Input<string>;
+    isSingleNode?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     libraries?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryArgs>[]>;
     /**
      * Any supported databricks.getNodeType id.
@@ -1528,6 +1765,7 @@ export interface GetClusterClusterInfoSpecArgs {
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.GetClusterClusterInfoSpecWorkloadTypeArgs>;
 }
 
@@ -2257,7 +2495,7 @@ export interface GetFunctionsFunction {
     /**
      * object describing input parameters. Consists of the single attribute:
      */
-    inputParams?: inputs.GetFunctionsFunctionInputParams;
+    inputParams?: inputs.GetFunctionsFunctionInputParam[];
     /**
      * Boolean flag specifying whether the function is deterministic.
      */
@@ -2289,7 +2527,7 @@ export interface GetFunctionsFunction {
     /**
      * Table function return parameters.  See `inputParams` for description.
      */
-    returnParams?: inputs.GetFunctionsFunctionReturnParams;
+    returnParams?: inputs.GetFunctionsFunctionReturnParam[];
     /**
      * Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
      */
@@ -2301,7 +2539,7 @@ export interface GetFunctionsFunction {
     /**
      * Function dependencies.
      */
-    routineDependencies?: inputs.GetFunctionsFunctionRoutineDependencies;
+    routineDependencies?: inputs.GetFunctionsFunctionRoutineDependency[];
     /**
      * Name of databricks_schema.
      */
@@ -2380,7 +2618,7 @@ export interface GetFunctionsFunctionArgs {
     /**
      * object describing input parameters. Consists of the single attribute:
      */
-    inputParams?: pulumi.Input<inputs.GetFunctionsFunctionInputParamsArgs>;
+    inputParams?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionInputParamArgs>[]>;
     /**
      * Boolean flag specifying whether the function is deterministic.
      */
@@ -2412,7 +2650,7 @@ export interface GetFunctionsFunctionArgs {
     /**
      * Table function return parameters.  See `inputParams` for description.
      */
-    returnParams?: pulumi.Input<inputs.GetFunctionsFunctionReturnParamsArgs>;
+    returnParams?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionReturnParamArgs>[]>;
     /**
      * Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
      */
@@ -2424,7 +2662,7 @@ export interface GetFunctionsFunctionArgs {
     /**
      * Function dependencies.
      */
-    routineDependencies?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesArgs>;
+    routineDependencies?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependencyArgs>[]>;
     /**
      * Name of databricks_schema.
      */
@@ -2455,21 +2693,21 @@ export interface GetFunctionsFunctionArgs {
     updatedBy?: pulumi.Input<string>;
 }
 
-export interface GetFunctionsFunctionInputParams {
+export interface GetFunctionsFunctionInputParam {
     /**
      * The array of definitions of the function's parameters:
      */
-    parameters?: inputs.GetFunctionsFunctionInputParamsParameter[];
+    parameters?: inputs.GetFunctionsFunctionInputParamParameter[];
 }
 
-export interface GetFunctionsFunctionInputParamsArgs {
+export interface GetFunctionsFunctionInputParamArgs {
     /**
      * The array of definitions of the function's parameters:
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionInputParamsParameterArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionInputParamParameterArgs>[]>;
 }
 
-export interface GetFunctionsFunctionInputParamsParameter {
+export interface GetFunctionsFunctionInputParamParameter {
     /**
      * User-provided free-form text description.
      */
@@ -2520,7 +2758,7 @@ export interface GetFunctionsFunctionInputParamsParameter {
     typeText: string;
 }
 
-export interface GetFunctionsFunctionInputParamsParameterArgs {
+export interface GetFunctionsFunctionInputParamParameterArgs {
     /**
      * User-provided free-form text description.
      */
@@ -2571,21 +2809,21 @@ export interface GetFunctionsFunctionInputParamsParameterArgs {
     typeText: pulumi.Input<string>;
 }
 
-export interface GetFunctionsFunctionReturnParams {
+export interface GetFunctionsFunctionReturnParam {
     /**
      * The array of definitions of the function's parameters:
      */
-    parameters?: inputs.GetFunctionsFunctionReturnParamsParameter[];
+    parameters?: inputs.GetFunctionsFunctionReturnParamParameter[];
 }
 
-export interface GetFunctionsFunctionReturnParamsArgs {
+export interface GetFunctionsFunctionReturnParamArgs {
     /**
      * The array of definitions of the function's parameters:
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionReturnParamsParameterArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionReturnParamParameterArgs>[]>;
 }
 
-export interface GetFunctionsFunctionReturnParamsParameter {
+export interface GetFunctionsFunctionReturnParamParameter {
     /**
      * User-provided free-form text description.
      */
@@ -2636,7 +2874,7 @@ export interface GetFunctionsFunctionReturnParamsParameter {
     typeText: string;
 }
 
-export interface GetFunctionsFunctionReturnParamsParameterArgs {
+export interface GetFunctionsFunctionReturnParamParameterArgs {
     /**
      * User-provided free-form text description.
      */
@@ -2687,37 +2925,37 @@ export interface GetFunctionsFunctionReturnParamsParameterArgs {
     typeText: pulumi.Input<string>;
 }
 
-export interface GetFunctionsFunctionRoutineDependencies {
-    dependencies?: inputs.GetFunctionsFunctionRoutineDependenciesDependency[];
+export interface GetFunctionsFunctionRoutineDependency {
+    dependencies?: inputs.GetFunctionsFunctionRoutineDependencyDependency[];
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesArgs {
-    dependencies?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyArgs>[]>;
+export interface GetFunctionsFunctionRoutineDependencyArgs {
+    dependencies?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependencyDependencyArgs>[]>;
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependency {
-    function?: inputs.GetFunctionsFunctionRoutineDependenciesDependencyFunction;
-    table?: inputs.GetFunctionsFunctionRoutineDependenciesDependencyTable;
+export interface GetFunctionsFunctionRoutineDependencyDependency {
+    functions?: inputs.GetFunctionsFunctionRoutineDependencyDependencyFunction[];
+    tables?: inputs.GetFunctionsFunctionRoutineDependencyDependencyTable[];
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependencyArgs {
-    function?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs>;
-    table?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyTableArgs>;
+export interface GetFunctionsFunctionRoutineDependencyDependencyArgs {
+    functions?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionArgs>[]>;
+    tables?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependencyDependencyTableArgs>[]>;
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependencyFunction {
+export interface GetFunctionsFunctionRoutineDependencyDependencyFunction {
     functionFullName: string;
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs {
+export interface GetFunctionsFunctionRoutineDependencyDependencyFunctionArgs {
     functionFullName: pulumi.Input<string>;
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependencyTable {
+export interface GetFunctionsFunctionRoutineDependencyDependencyTable {
     tableFullName: string;
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependencyTableArgs {
+export interface GetFunctionsFunctionRoutineDependencyDependencyTableArgs {
     tableFullName: pulumi.Input<string>;
 }
 
@@ -5845,34 +6083,192 @@ export interface GetMlflowModelTagArgs {
     value?: pulumi.Input<string>;
 }
 
-export interface GetNotificationDestinationsNotificationDestination {
+export interface GetMwsNetworkConnectivityConfigEgressConfig {
     /**
-     * The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+     * Array of default rules.
      */
-    destinationType?: string;
+    defaultRules?: inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRules;
     /**
-     * The display name of the Notification Destination.
+     * Array of target rules.
      */
-    displayName?: string;
-    /**
-     * The unique ID of the Notification Destination.
-     */
-    id?: string;
+    targetRules?: inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRules;
 }
 
-export interface GetNotificationDestinationsNotificationDestinationArgs {
+export interface GetMwsNetworkConnectivityConfigEgressConfigArgs {
     /**
-     * The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+     * Array of default rules.
      */
-    destinationType?: pulumi.Input<string>;
+    defaultRules?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs>;
     /**
-     * The display name of the Notification Destination.
+     * Array of target rules.
      */
-    displayName?: pulumi.Input<string>;
+    targetRules?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs>;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRules {
     /**
-     * The unique ID of the Notification Destination.
+     * The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
      */
-    id?: pulumi.Input<string>;
+    awsStableIpRule?: inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule;
+    /**
+     * Array of Azure service endpoint rules.
+     */
+    azureServiceEndpointRule?: inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs {
+    /**
+     * The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+     */
+    awsStableIpRule?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs>;
+    /**
+     * Array of Azure service endpoint rules.
+     */
+    azureServiceEndpointRule?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs>;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+    /**
+     * The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+     */
+    cidrBlocks?: string[];
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs {
+    /**
+     * The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+     */
+    cidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+    /**
+     * Array of strings representing the subnet IDs.
+     */
+    subnets?: string[];
+    /**
+     * The target region for the service endpoint.
+     */
+    targetRegion?: string;
+    /**
+     * Array of target services.
+     */
+    targetServices?: string[];
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs {
+    /**
+     * Array of strings representing the subnet IDs.
+     */
+    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The target region for the service endpoint.
+     */
+    targetRegion?: pulumi.Input<string>;
+    /**
+     * Array of target services.
+     */
+    targetServices?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRules {
+    /**
+     * Array of private endpoint rule objects.
+     */
+    azurePrivateEndpointRules?: inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule[];
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs {
+    /**
+     * Array of private endpoint rule objects.
+     */
+    azurePrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>[]>;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
+    /**
+     * The current status of this private endpoint.
+     */
+    connectionState?: string;
+    /**
+     * Time in epoch milliseconds when this object was created.
+     */
+    creationTime?: number;
+    /**
+     * Whether this private endpoint is deactivated.
+     */
+    deactivated?: boolean;
+    /**
+     * Time in epoch milliseconds when this object was deactivated.
+     */
+    deactivatedAt?: number;
+    /**
+     * The name of the Azure private endpoint resource.
+     */
+    endpointName?: string;
+    /**
+     * The sub-resource type (group ID) of the target resource.
+     */
+    groupId?: string;
+    /**
+     * The Databricks network connectivity configuration ID.
+     */
+    networkConnectivityConfigId?: string;
+    /**
+     * The Azure resource ID of the target resource.
+     */
+    resourceId?: string;
+    /**
+     * The ID of a private endpoint rule.
+     */
+    ruleId?: string;
+    /**
+     * Time in epoch milliseconds when the network was updated.
+     */
+    updatedTime?: number;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs {
+    /**
+     * The current status of this private endpoint.
+     */
+    connectionState?: pulumi.Input<string>;
+    /**
+     * Time in epoch milliseconds when this object was created.
+     */
+    creationTime?: pulumi.Input<number>;
+    /**
+     * Whether this private endpoint is deactivated.
+     */
+    deactivated?: pulumi.Input<boolean>;
+    /**
+     * Time in epoch milliseconds when this object was deactivated.
+     */
+    deactivatedAt?: pulumi.Input<number>;
+    /**
+     * The name of the Azure private endpoint resource.
+     */
+    endpointName?: pulumi.Input<string>;
+    /**
+     * The sub-resource type (group ID) of the target resource.
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * The Databricks network connectivity configuration ID.
+     */
+    networkConnectivityConfigId?: pulumi.Input<string>;
+    /**
+     * The Azure resource ID of the target resource.
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
+     * The ID of a private endpoint rule.
+     */
+    ruleId?: pulumi.Input<string>;
+    /**
+     * Time in epoch milliseconds when the network was updated.
+     */
+    updatedTime?: pulumi.Input<number>;
 }
 
 export interface GetRegisteredModelModelInfo {
@@ -6007,6 +6403,238 @@ export interface GetRegisteredModelModelInfoAliasArgs {
      * associated model version
      */
     versionNum?: pulumi.Input<number>;
+}
+
+export interface GetRegisteredModelVersionsModelVersion {
+    /**
+     * the list of aliases associated with this model. Each item is object consisting of following attributes:
+     */
+    aliases?: inputs.GetRegisteredModelVersionsModelVersionAlias[];
+    browseOnly?: boolean;
+    /**
+     * The name of the catalog where the schema and the registered model reside.
+     */
+    catalogName?: string;
+    /**
+     * The comment attached to the registered model.
+     */
+    comment?: string;
+    /**
+     * the Unix timestamp at the model's creation
+     */
+    createdAt?: number;
+    /**
+     * the identifier of the user who created the model
+     */
+    createdBy?: string;
+    /**
+     * The unique identifier of the model version
+     */
+    id?: string;
+    /**
+     * the unique identifier of the metastore
+     */
+    metastoreId?: string;
+    modelName?: string;
+    /**
+     * block describing model version dependencies, for feature-store packaged models. Consists of following attributes:
+     */
+    modelVersionDependencies?: inputs.GetRegisteredModelVersionsModelVersionModelVersionDependency[];
+    /**
+     * MLflow run ID used when creating the model version, if `source` was generated by an experiment run stored in an MLflow tracking server
+     */
+    runId?: string;
+    /**
+     * ID of the Databricks workspace containing the MLflow run that generated this model version, if applicable
+     */
+    runWorkspaceId?: number;
+    /**
+     * The name of the schema where the registered model resides.
+     */
+    schemaName?: string;
+    /**
+     * URI indicating the location of the source artifacts (files) for the model version.
+     */
+    source?: string;
+    /**
+     * Current status of the model version.
+     */
+    status?: string;
+    /**
+     * The storage location under which model version data files are stored.
+     */
+    storageLocation?: string;
+    /**
+     * the timestamp of the last time changes were made to the model
+     */
+    updatedAt?: number;
+    /**
+     * the identifier of the user who updated the model last time
+     */
+    updatedBy?: string;
+    /**
+     * Integer model version number, used to reference the model version in API requests.
+     */
+    version?: number;
+}
+
+export interface GetRegisteredModelVersionsModelVersionArgs {
+    /**
+     * the list of aliases associated with this model. Each item is object consisting of following attributes:
+     */
+    aliases?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionAliasArgs>[]>;
+    browseOnly?: pulumi.Input<boolean>;
+    /**
+     * The name of the catalog where the schema and the registered model reside.
+     */
+    catalogName?: pulumi.Input<string>;
+    /**
+     * The comment attached to the registered model.
+     */
+    comment?: pulumi.Input<string>;
+    /**
+     * the Unix timestamp at the model's creation
+     */
+    createdAt?: pulumi.Input<number>;
+    /**
+     * the identifier of the user who created the model
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the model version
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * the unique identifier of the metastore
+     */
+    metastoreId?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string>;
+    /**
+     * block describing model version dependencies, for feature-store packaged models. Consists of following attributes:
+     */
+    modelVersionDependencies?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs>[]>;
+    /**
+     * MLflow run ID used when creating the model version, if `source` was generated by an experiment run stored in an MLflow tracking server
+     */
+    runId?: pulumi.Input<string>;
+    /**
+     * ID of the Databricks workspace containing the MLflow run that generated this model version, if applicable
+     */
+    runWorkspaceId?: pulumi.Input<number>;
+    /**
+     * The name of the schema where the registered model resides.
+     */
+    schemaName?: pulumi.Input<string>;
+    /**
+     * URI indicating the location of the source artifacts (files) for the model version.
+     */
+    source?: pulumi.Input<string>;
+    /**
+     * Current status of the model version.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The storage location under which model version data files are stored.
+     */
+    storageLocation?: pulumi.Input<string>;
+    /**
+     * the timestamp of the last time changes were made to the model
+     */
+    updatedAt?: pulumi.Input<number>;
+    /**
+     * the identifier of the user who updated the model last time
+     */
+    updatedBy?: pulumi.Input<string>;
+    /**
+     * Integer model version number, used to reference the model version in API requests.
+     */
+    version?: pulumi.Input<number>;
+}
+
+export interface GetRegisteredModelVersionsModelVersionAlias {
+    /**
+     * string with the name of alias
+     */
+    aliasName?: string;
+    /**
+     * associated model version
+     */
+    versionNum?: number;
+}
+
+export interface GetRegisteredModelVersionsModelVersionAliasArgs {
+    /**
+     * string with the name of alias
+     */
+    aliasName?: pulumi.Input<string>;
+    /**
+     * associated model version
+     */
+    versionNum?: pulumi.Input<number>;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependency {
+    /**
+     * list of dependencies consisting of following attributes:
+     */
+    dependencies?: inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency[];
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs {
+    /**
+     * list of dependencies consisting of following attributes:
+     */
+    dependencies?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs>[]>;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency {
+    /**
+     * A function that is dependent on a SQL object:
+     */
+    functions?: inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction[];
+    /**
+     * A table that is dependent on a SQL object
+     */
+    tables?: inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable[];
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs {
+    /**
+     * A function that is dependent on a SQL object:
+     */
+    functions?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs>[]>;
+    /**
+     * A table that is dependent on a SQL object
+     */
+    tables?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs>[]>;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction {
+    /**
+     * Full name of the dependent function
+     */
+    functionFullName: string;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs {
+    /**
+     * Full name of the dependent function
+     */
+    functionFullName: pulumi.Input<string>;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable {
+    /**
+     * Full name of the dependent table
+     */
+    tableFullName: string;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs {
+    /**
+     * Full name of the dependent table
+     */
+    tableFullName: pulumi.Input<string>;
 }
 
 export interface GetSchemaSchemaInfo {
@@ -6169,6 +6797,402 @@ export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs {
     inheritedFromName?: pulumi.Input<string>;
     inheritedFromType?: pulumi.Input<string>;
     value: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpoint {
+    /**
+     * A block with AI Gateway configuration for the serving endpoint.
+     */
+    aiGateways?: inputs.GetServingEndpointsEndpointAiGateway[];
+    /**
+     * The model serving endpoint configuration.
+     */
+    configs?: inputs.GetServingEndpointsEndpointConfig[];
+    creationTimestamp?: number;
+    creator?: string;
+    id?: string;
+    lastUpdatedTimestamp?: number;
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: string;
+    states?: inputs.GetServingEndpointsEndpointState[];
+    /**
+     * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     */
+    tags?: inputs.GetServingEndpointsEndpointTag[];
+    task?: string;
+}
+
+export interface GetServingEndpointsEndpointArgs {
+    /**
+     * A block with AI Gateway configuration for the serving endpoint.
+     */
+    aiGateways?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayArgs>[]>;
+    /**
+     * The model serving endpoint configuration.
+     */
+    configs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigArgs>[]>;
+    creationTimestamp?: pulumi.Input<number>;
+    creator?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    lastUpdatedTimestamp?: pulumi.Input<number>;
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: pulumi.Input<string>;
+    states?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointStateArgs>[]>;
+    /**
+     * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointTagArgs>[]>;
+    task?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointAiGateway {
+    guardrails?: inputs.GetServingEndpointsEndpointAiGatewayGuardrail[];
+    inferenceTableConfigs?: inputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfig[];
+    /**
+     * A list of rate limit blocks to be applied to the serving endpoint.
+     */
+    rateLimits?: inputs.GetServingEndpointsEndpointAiGatewayRateLimit[];
+    usageTrackingConfigs?: inputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfig[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayArgs {
+    guardrails?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailArgs>[]>;
+    inferenceTableConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgs>[]>;
+    /**
+     * A list of rate limit blocks to be applied to the serving endpoint.
+     */
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayRateLimitArgs>[]>;
+    usageTrackingConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArgs>[]>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrail {
+    inputProperties?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputProperty[];
+    outputs?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutput[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailArgs {
+    inputProperties?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs>[]>;
+    outputs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputArgs>[]>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputProperty {
+    invalidKeywords?: string[];
+    piis?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii[];
+    safety?: boolean;
+    validTopics?: string[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs {
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
+    piis?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs>[]>;
+    safety?: pulumi.Input<boolean>;
+    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii {
+    behavior: string;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs {
+    behavior: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailOutput {
+    invalidKeywords?: string[];
+    piis?: inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputPii[];
+    safety?: boolean;
+    validTopics?: string[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputArgs {
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
+    piis?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs>[]>;
+    safety?: pulumi.Input<boolean>;
+    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputPii {
+    behavior: string;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs {
+    behavior: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayInferenceTableConfig {
+    catalogName?: string;
+    enabled?: boolean;
+    schemaName?: string;
+    tableNamePrefix?: string;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgs {
+    catalogName?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    schemaName?: pulumi.Input<string>;
+    tableNamePrefix?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayRateLimit {
+    calls: number;
+    key?: string;
+    renewalPeriod: string;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayRateLimitArgs {
+    calls: pulumi.Input<number>;
+    key?: pulumi.Input<string>;
+    renewalPeriod: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayUsageTrackingConfig {
+    enabled?: boolean;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArgs {
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface GetServingEndpointsEndpointConfig {
+    servedEntities?: inputs.GetServingEndpointsEndpointConfigServedEntity[];
+    servedModels?: inputs.GetServingEndpointsEndpointConfigServedModel[];
+}
+
+export interface GetServingEndpointsEndpointConfigArgs {
+    servedEntities?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityArgs>[]>;
+    servedModels?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedModelArgs>[]>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntity {
+    entityName?: string;
+    entityVersion?: string;
+    externalModels?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModel[];
+    foundationModels?: inputs.GetServingEndpointsEndpointConfigServedEntityFoundationModel[];
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityArgs {
+    entityName?: pulumi.Input<string>;
+    entityVersion?: pulumi.Input<string>;
+    externalModels?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelArgs>[]>;
+    foundationModels?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityFoundationModelArgs>[]>;
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModel {
+    ai21labsConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig[];
+    amazonBedrockConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig[];
+    anthropicConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig[];
+    cohereConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig[];
+    databricksModelServingConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig[];
+    googleCloudVertexAiConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig[];
+    /**
+     * The name of the model serving endpoint.
+     */
+    name: string;
+    openaiConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig[];
+    palmConfigs?: inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig[];
+    provider: string;
+    task: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelArgs {
+    ai21labsConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigArgs>[]>;
+    amazonBedrockConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs>[]>;
+    anthropicConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs>[]>;
+    cohereConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs>[]>;
+    databricksModelServingConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs>[]>;
+    googleCloudVertexAiConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs>[]>;
+    /**
+     * The name of the model serving endpoint.
+     */
+    name: pulumi.Input<string>;
+    openaiConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArgs>[]>;
+    palmConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArgs>[]>;
+    provider: pulumi.Input<string>;
+    task: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig {
+    ai21labsApiKey?: string;
+    ai21labsApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigArgs {
+    ai21labsApiKey?: pulumi.Input<string>;
+    ai21labsApiKeyPlaintext?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig {
+    awsAccessKeyId?: string;
+    awsAccessKeyIdPlaintext?: string;
+    awsRegion: string;
+    awsSecretAccessKey?: string;
+    awsSecretAccessKeyPlaintext?: string;
+    bedrockProvider: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs {
+    awsAccessKeyId?: pulumi.Input<string>;
+    awsAccessKeyIdPlaintext?: pulumi.Input<string>;
+    awsRegion: pulumi.Input<string>;
+    awsSecretAccessKey?: pulumi.Input<string>;
+    awsSecretAccessKeyPlaintext?: pulumi.Input<string>;
+    bedrockProvider: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig {
+    anthropicApiKey?: string;
+    anthropicApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs {
+    anthropicApiKey?: pulumi.Input<string>;
+    anthropicApiKeyPlaintext?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig {
+    cohereApiBase?: string;
+    cohereApiKey?: string;
+    cohereApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs {
+    cohereApiBase?: pulumi.Input<string>;
+    cohereApiKey?: pulumi.Input<string>;
+    cohereApiKeyPlaintext?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig {
+    databricksApiToken?: string;
+    databricksApiTokenPlaintext?: string;
+    databricksWorkspaceUrl: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs {
+    databricksApiToken?: pulumi.Input<string>;
+    databricksApiTokenPlaintext?: pulumi.Input<string>;
+    databricksWorkspaceUrl: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
+    privateKey?: string;
+    privateKeyPlaintext?: string;
+    projectId?: string;
+    region?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs {
+    privateKey?: pulumi.Input<string>;
+    privateKeyPlaintext?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig {
+    microsoftEntraClientId?: string;
+    microsoftEntraClientSecret?: string;
+    microsoftEntraClientSecretPlaintext?: string;
+    microsoftEntraTenantId?: string;
+    openaiApiBase?: string;
+    openaiApiKey?: string;
+    openaiApiKeyPlaintext?: string;
+    openaiApiType?: string;
+    openaiApiVersion?: string;
+    openaiDeploymentName?: string;
+    openaiOrganization?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArgs {
+    microsoftEntraClientId?: pulumi.Input<string>;
+    microsoftEntraClientSecret?: pulumi.Input<string>;
+    microsoftEntraClientSecretPlaintext?: pulumi.Input<string>;
+    microsoftEntraTenantId?: pulumi.Input<string>;
+    openaiApiBase?: pulumi.Input<string>;
+    openaiApiKey?: pulumi.Input<string>;
+    openaiApiKeyPlaintext?: pulumi.Input<string>;
+    openaiApiType?: pulumi.Input<string>;
+    openaiApiVersion?: pulumi.Input<string>;
+    openaiDeploymentName?: pulumi.Input<string>;
+    openaiOrganization?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig {
+    palmApiKey?: string;
+    palmApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArgs {
+    palmApiKey?: pulumi.Input<string>;
+    palmApiKeyPlaintext?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityFoundationModel {
+    description?: string;
+    displayName?: string;
+    docs?: string;
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityFoundationModelArgs {
+    description?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
+    docs?: pulumi.Input<string>;
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointConfigServedModel {
+    modelName?: string;
+    modelVersion?: string;
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedModelArgs {
+    modelName?: pulumi.Input<string>;
+    modelVersion?: pulumi.Input<string>;
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointState {
+    configUpdate?: string;
+    ready?: string;
+}
+
+export interface GetServingEndpointsEndpointStateArgs {
+    configUpdate?: pulumi.Input<string>;
+    ready?: pulumi.Input<string>;
+}
+
+export interface GetServingEndpointsEndpointTag {
+    key: string;
+    value?: string;
+}
+
+export interface GetServingEndpointsEndpointTagArgs {
+    key: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface GetShareObject {
@@ -7340,6 +8364,8 @@ export interface JobJobClusterNewCluster {
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
+    isSingleNode?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
@@ -7353,6 +8379,7 @@ export interface JobJobClusterNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    useMlRuntime?: pulumi.Input<boolean>;
     /**
      * isn't supported
      */
@@ -7572,6 +8599,8 @@ export interface JobNewCluster {
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
+    isSingleNode?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
@@ -7585,6 +8614,7 @@ export interface JobNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    useMlRuntime?: pulumi.Input<boolean>;
     /**
      * isn't supported
      */
@@ -7925,6 +8955,7 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
+    cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskCleanRoomsNotebookTask>;
     conditionTask?: pulumi.Input<inputs.JobTaskConditionTask>;
     dbtTask?: pulumi.Input<inputs.JobTaskDbtTask>;
     /**
@@ -8011,6 +9042,13 @@ export interface JobTask {
      * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: pulumi.Input<inputs.JobTaskWebhookNotifications>;
+}
+
+export interface JobTaskCleanRoomsNotebookTask {
+    cleanRoomName: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    notebookBaseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    notebookName: pulumi.Input<string>;
 }
 
 export interface JobTaskConditionTask {
@@ -8120,6 +9158,7 @@ export interface JobTaskForEachTask {
 }
 
 export interface JobTaskForEachTaskTask {
+    cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask>;
     conditionTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskConditionTask>;
     dbtTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtTask>;
     /**
@@ -8205,6 +9244,13 @@ export interface JobTaskForEachTaskTask {
      * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotifications>;
+}
+
+export interface JobTaskForEachTaskTaskCleanRoomsNotebookTask {
+    cleanRoomName: pulumi.Input<string>;
+    etag?: pulumi.Input<string>;
+    notebookBaseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    notebookName: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskConditionTask {
@@ -8366,6 +9412,8 @@ export interface JobTaskForEachTaskTaskNewCluster {
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
+    isSingleNode?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
@@ -8379,6 +9427,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    useMlRuntime?: pulumi.Input<boolean>;
     /**
      * isn't supported
      */
@@ -8947,6 +9996,8 @@ export interface JobTaskNewCluster {
     idempotencyToken?: pulumi.Input<string>;
     initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterInitScript>[]>;
     instancePoolId?: pulumi.Input<string>;
+    isSingleNode?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
@@ -8960,6 +10011,7 @@ export interface JobTaskNewCluster {
     sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     sparkVersion: pulumi.Input<string>;
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    useMlRuntime?: pulumi.Input<boolean>;
     /**
      * isn't supported
      */
@@ -10991,7 +12043,7 @@ export interface PipelineNotification {
 }
 
 export interface PipelineRestartWindow {
-    daysOfWeek?: pulumi.Input<string>;
+    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
     startHour: pulumi.Input<number>;
     timeZoneId?: pulumi.Input<string>;
 }

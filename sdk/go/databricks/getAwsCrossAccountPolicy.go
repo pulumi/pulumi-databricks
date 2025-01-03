@@ -63,6 +63,8 @@ func GetAwsCrossAccountPolicy(ctx *pulumi.Context, args *GetAwsCrossAccountPolic
 type GetAwsCrossAccountPolicyArgs struct {
 	// — Your AWS account ID, which is a number.
 	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	AwsPartition *string `pulumi:"awsPartition"`
 	// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
 	// The below arguments are only valid for `restricted` policy type
 	PassRoles []string `pulumi:"passRoles"`
@@ -79,6 +81,7 @@ type GetAwsCrossAccountPolicyArgs struct {
 // A collection of values returned by getAwsCrossAccountPolicy.
 type GetAwsCrossAccountPolicyResult struct {
 	AwsAccountId *string `pulumi:"awsAccountId"`
+	AwsPartition *string `pulumi:"awsPartition"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// AWS IAM Policy JSON document
@@ -103,6 +106,8 @@ func GetAwsCrossAccountPolicyOutput(ctx *pulumi.Context, args GetAwsCrossAccount
 type GetAwsCrossAccountPolicyOutputArgs struct {
 	// — Your AWS account ID, which is a number.
 	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
+	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
 	// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
 	// The below arguments are only valid for `restricted` policy type
 	PassRoles pulumi.StringArrayInput `pulumi:"passRoles"`
@@ -137,6 +142,10 @@ func (o GetAwsCrossAccountPolicyResultOutput) ToGetAwsCrossAccountPolicyResultOu
 
 func (o GetAwsCrossAccountPolicyResultOutput) AwsAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAwsCrossAccountPolicyResult) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAwsCrossAccountPolicyResultOutput) AwsPartition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsCrossAccountPolicyResult) *string { return v.AwsPartition }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  * 
  * ## Metastore grants
  * 
- * You can grant `CREATE_CATALOG`, `CREATE_CONNECTION`, `CREATE_EXTERNAL_LOCATION`, `CREATE_PROVIDER`, `CREATE_RECIPIENT`, `CREATE_SHARE`, `CREATE_STORAGE_CREDENTIAL`, `MANAGE_ALLOWLIST`, `SET_SHARE_PERMISSION`, `USE_MARKETPLACE_ASSETS`, `USE_CONNECTION`, `USE_PROVIDER`, `USE_RECIPIENT` and `USE_SHARE` privileges to databricks.Metastore assigned to the workspace.
+ * You can grant `CREATE_CATALOG`, `CREATE_CLEAN_ROOM`, `CREATE_CONNECTION`, `CREATE_EXTERNAL_LOCATION`, `CREATE_PROVIDER`, `CREATE_RECIPIENT`, `CREATE_SHARE`, `CREATE_SERVICE_CREDENTIAL`, `CREATE_STORAGE_CREDENTIAL`, `SET_SHARE_PERMISSION`, `USE_MARKETPLACE_ASSETS`, `USE_PROVIDER`, `USE_RECIPIENT`, and `USE_SHARE` privileges to databricks.Metastore assigned to the workspace.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -574,6 +574,60 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Service credential grants
+ * 
+ * You can grant `ALL_PRIVILEGES`, `ACCESS` and `CREATE_CONNECTION` privileges to databricks.Credential id specified in `credential` attribute:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Credential;
+ * import com.pulumi.databricks.CredentialArgs;
+ * import com.pulumi.databricks.inputs.CredentialAwsIamRoleArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var external = new Credential("external", CredentialArgs.builder()
+ *             .name(externalDataAccess.name())
+ *             .awsIamRole(CredentialAwsIamRoleArgs.builder()
+ *                 .roleArn(externalDataAccess.arn())
+ *                 .build())
+ *             .purpose("SERVICE")
+ *             .comment("Managed by TF")
+ *             .build());
+ * 
+ *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
+ *             .credential(external.id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("Data Engineers")
+ *                 .privileges("CREATE_CONNECTION")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Storage credential grants
  * 
  * You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `READ_FILES` and `WRITE_FILES` privileges to databricks.StorageCredential id specified in `storage_credential` attribute:
@@ -834,6 +888,12 @@ public class Grants extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> catalog() {
         return Codegen.optional(this.catalog);
+    }
+    @Export(name="credential", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> credential;
+
+    public Output<Optional<String>> credential() {
+        return Codegen.optional(this.credential);
     }
     @Export(name="externalLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalLocation;

@@ -50,6 +50,15 @@
                     }
                 }
             },
+            "databricks_app": {
+                "current": "databricks:index/app:App",
+                "majorVersion": 1,
+                "fields": {
+                    "resources": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_artifact_allowlist": {
                 "current": "databricks:index/artifactAllowlist:ArtifactAllowlist",
                 "majorVersion": 1,
@@ -320,6 +329,24 @@
             "databricks_connection": {
                 "current": "databricks:index/connection:Connection",
                 "majorVersion": 1
+            },
+            "databricks_credential": {
+                "current": "databricks:index/credential:Credential",
+                "majorVersion": 1,
+                "fields": {
+                    "aws_iam_role": {
+                        "maxItemsOne": true
+                    },
+                    "azure_managed_identity": {
+                        "maxItemsOne": true
+                    },
+                    "azure_service_principal": {
+                        "maxItemsOne": true
+                    },
+                    "databricks_gcp_service_account": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_custom_app_integration": {
                 "current": "databricks:index/customAppIntegration:CustomAppIntegration",
@@ -932,6 +959,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "clean_rooms_notebook_task": {
+                                    "maxItemsOne": true
+                                },
                                 "condition_task": {
                                     "maxItemsOne": true
                                 },
@@ -978,6 +1008,9 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "clean_rooms_notebook_task": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "condition_task": {
                                                             "maxItemsOne": true
                                                         },
@@ -2474,7 +2507,14 @@
                         }
                     },
                     "restart_window": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "days_of_week": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "trigger": {
                         "maxItemsOne": true,
@@ -3067,6 +3107,35 @@
             }
         },
         "datasources": {
+            "databricks_app": {
+                "current": "databricks:index/getApp:getApp",
+                "majorVersion": 1,
+                "fields": {
+                    "app": {
+                        "fields": {
+                            "resources": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_apps": {
+                "current": "databricks:index/getApps:getApps",
+                "majorVersion": 1,
+                "fields": {
+                    "app": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_aws_assume_role_policy": {
                 "current": "databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy",
                 "majorVersion": 1
@@ -4648,6 +4717,68 @@
                 "current": "databricks:index/getMwsCredentials:getMwsCredentials",
                 "majorVersion": 1
             },
+            "databricks_mws_network_connectivity_config": {
+                "current": "databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig",
+                "majorVersion": 1,
+                "fields": {
+                    "egress_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "default_rules": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "aws_stable_ip_rule": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cidr_blocks": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "azure_service_endpoint_rule": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "subnets": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "target_services": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "target_rules": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "azure_private_endpoint_rules": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_mws_network_connectivity_configs": {
+                "current": "databricks:index/getMwsNetworkConnectivityConfigs:getMwsNetworkConnectivityConfigs",
+                "majorVersion": 1,
+                "fields": {
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_mws_workspaces": {
                 "current": "databricks:index/getMwsWorkspaces:getMwsWorkspaces",
                 "majorVersion": 1
@@ -4703,6 +4834,42 @@
                     }
                 }
             },
+            "databricks_registered_model_versions": {
+                "current": "databricks:index/getRegisteredModelVersions:getRegisteredModelVersions",
+                "majorVersion": 1,
+                "fields": {
+                    "model_versions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "aliases": {
+                                    "maxItemsOne": false
+                                },
+                                "model_version_dependencies": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "dependencies": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "function": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "table": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_schema": {
                 "current": "databricks:index/getSchema:getSchema",
                 "majorVersion": 1,
@@ -4738,6 +4905,131 @@
                 "fields": {
                     "application_ids": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_serving_endpoints": {
+                "current": "databricks:index/getServingEndpoints:getServingEndpoints",
+                "majorVersion": 1,
+                "fields": {
+                    "endpoints": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ai_gateway": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "guardrails": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "input_properties": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "invalid_keywords": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "pii": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "valid_topics": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "output": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "invalid_keywords": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "pii": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "valid_topics": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "inference_table_config": {
+                                                "maxItemsOne": false
+                                            },
+                                            "rate_limits": {
+                                                "maxItemsOne": false
+                                            },
+                                            "usage_tracking_config": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "served_entities": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "external_model": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "ai21labs_config": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "amazon_bedrock_config": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "anthropic_config": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "cohere_config": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "databricks_model_serving_config": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "google_cloud_vertex_ai_config": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "openai_config": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "palm_config": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "foundation_model": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "served_models": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "state": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -5041,6 +5333,17 @@
                     "odbc_params": true
                 }
             }
+        },
+        "datasources": {
+            "databricks_functions": {
+                "maxItemsOneOverrides": {
+                    "functions.$.input_params": true,
+                    "functions.$.return_params": true,
+                    "functions.$.routine_dependencies": true,
+                    "functions.$.routine_dependencies.$.dependencies.$.function": true,
+                    "functions.$.routine_dependencies.$.dependencies.$.table": true
+                }
+            }
         }
     },
     "ids": {
@@ -5057,6 +5360,7 @@
         "resources": {
             "databricks:index/accessControlRuleSet:AccessControlRuleSet": 0,
             "databricks:index/alert:Alert": 0,
+            "databricks:index/app:App": 1,
             "databricks:index/artifactAllowlist:ArtifactAllowlist": 0,
             "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting": 0,
             "databricks:index/budget:Budget": 0,
@@ -5066,6 +5370,7 @@
             "databricks:index/clusterPolicy:ClusterPolicy": 0,
             "databricks:index/complianceSecurityProfileWorkspaceSetting:ComplianceSecurityProfileWorkspaceSetting": 0,
             "databricks:index/connection:Connection": 0,
+            "databricks:index/credential:Credential": 0,
             "databricks:index/customAppIntegration:CustomAppIntegration": 0,
             "databricks:index/dashboard:Dashboard": 0,
             "databricks:index/dbfsFile:DbfsFile": 0,
@@ -5155,6 +5460,8 @@
             "databricks:index/workspaceFile:WorkspaceFile": 0
         },
         "functions": {
+            "databricks:index/getApp:getApp": 1,
+            "databricks:index/getApps:getApps": 1,
             "databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy": 0,
             "databricks:index/getAwsBucketPolicy:getAwsBucketPolicy": 0,
             "databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy": 0,
@@ -5185,6 +5492,8 @@
             "databricks:index/getMlflowModel:getMlflowModel": 0,
             "databricks:index/getMlflowModels:getMlflowModels": 0,
             "databricks:index/getMwsCredentials:getMwsCredentials": 0,
+            "databricks:index/getMwsNetworkConnectivityConfig:getMwsNetworkConnectivityConfig": 0,
+            "databricks:index/getMwsNetworkConnectivityConfigs:getMwsNetworkConnectivityConfigs": 0,
             "databricks:index/getMwsWorkspaces:getMwsWorkspaces": 0,
             "databricks:index/getNodeType:getNodeType": 0,
             "databricks:index/getNotebook:getNotebook": 0,
@@ -5192,10 +5501,12 @@
             "databricks:index/getNotificationDestinations:getNotificationDestinations": 1,
             "databricks:index/getPipelines:getPipelines": 0,
             "databricks:index/getRegisteredModel:getRegisteredModel": 1,
+            "databricks:index/getRegisteredModelVersions:getRegisteredModelVersions": 1,
             "databricks:index/getSchema:getSchema": 0,
             "databricks:index/getSchemas:getSchemas": 0,
             "databricks:index/getServicePrincipal:getServicePrincipal": 0,
             "databricks:index/getServicePrincipals:getServicePrincipals": 0,
+            "databricks:index/getServingEndpoints:getServingEndpoints": 1,
             "databricks:index/getShare:getShare": 0,
             "databricks:index/getShares:getShares": 0,
             "databricks:index/getSparkVersion:getSparkVersion": 0,

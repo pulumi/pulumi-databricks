@@ -24,6 +24,13 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.accessControls);
     }
 
+    @Import(name="appName")
+    private @Nullable Output<String> appName;
+
+    public Optional<Output<String>> appName() {
+        return Optional.ofNullable(this.appName);
+    }
+
     @Import(name="authorization")
     private @Nullable Output<String> authorization;
 
@@ -179,6 +186,13 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sqlQueryId);
     }
 
+    @Import(name="vectorSearchEndpointId")
+    private @Nullable Output<String> vectorSearchEndpointId;
+
+    public Optional<Output<String>> vectorSearchEndpointId() {
+        return Optional.ofNullable(this.vectorSearchEndpointId);
+    }
+
     @Import(name="workspaceFileId")
     private @Nullable Output<String> workspaceFileId;
 
@@ -197,6 +211,7 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
 
     private PermissionsState(PermissionsState $) {
         this.accessControls = $.accessControls;
+        this.appName = $.appName;
         this.authorization = $.authorization;
         this.clusterId = $.clusterId;
         this.clusterPolicyId = $.clusterPolicyId;
@@ -218,6 +233,7 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         this.sqlDashboardId = $.sqlDashboardId;
         this.sqlEndpointId = $.sqlEndpointId;
         this.sqlQueryId = $.sqlQueryId;
+        this.vectorSearchEndpointId = $.vectorSearchEndpointId;
         this.workspaceFileId = $.workspaceFileId;
         this.workspaceFilePath = $.workspaceFilePath;
     }
@@ -251,6 +267,15 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
 
         public Builder accessControls(PermissionsAccessControlArgs... accessControls) {
             return accessControls(List.of(accessControls));
+        }
+
+        public Builder appName(@Nullable Output<String> appName) {
+            $.appName = appName;
+            return this;
+        }
+
+        public Builder appName(String appName) {
+            return appName(Output.of(appName));
         }
 
         public Builder authorization(@Nullable Output<String> authorization) {
@@ -452,6 +477,15 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
 
         public Builder sqlQueryId(String sqlQueryId) {
             return sqlQueryId(Output.of(sqlQueryId));
+        }
+
+        public Builder vectorSearchEndpointId(@Nullable Output<String> vectorSearchEndpointId) {
+            $.vectorSearchEndpointId = vectorSearchEndpointId;
+            return this;
+        }
+
+        public Builder vectorSearchEndpointId(String vectorSearchEndpointId) {
+            return vectorSearchEndpointId(Output.of(vectorSearchEndpointId));
         }
 
         public Builder workspaceFileId(@Nullable Output<String> workspaceFileId) {

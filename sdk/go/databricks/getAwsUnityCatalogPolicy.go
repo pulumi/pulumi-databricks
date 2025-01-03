@@ -85,6 +85,8 @@ func GetAwsUnityCatalogPolicy(ctx *pulumi.Context, args *GetAwsUnityCatalogPolic
 type GetAwsUnityCatalogPolicyArgs struct {
 	// The Account ID of the current AWS account (not your Databricks account).
 	AwsAccountId string `pulumi:"awsAccountId"`
+	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	AwsPartition *string `pulumi:"awsPartition"`
 	// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
 	BucketName string `pulumi:"bucketName"`
 	// If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
@@ -95,8 +97,9 @@ type GetAwsUnityCatalogPolicyArgs struct {
 
 // A collection of values returned by getAwsUnityCatalogPolicy.
 type GetAwsUnityCatalogPolicyResult struct {
-	AwsAccountId string `pulumi:"awsAccountId"`
-	BucketName   string `pulumi:"bucketName"`
+	AwsAccountId string  `pulumi:"awsAccountId"`
+	AwsPartition *string `pulumi:"awsPartition"`
+	BucketName   string  `pulumi:"bucketName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// AWS IAM Policy JSON document
@@ -118,6 +121,8 @@ func GetAwsUnityCatalogPolicyOutput(ctx *pulumi.Context, args GetAwsUnityCatalog
 type GetAwsUnityCatalogPolicyOutputArgs struct {
 	// The Account ID of the current AWS account (not your Databricks account).
 	AwsAccountId pulumi.StringInput `pulumi:"awsAccountId"`
+	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
 	// The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
@@ -147,6 +152,10 @@ func (o GetAwsUnityCatalogPolicyResultOutput) ToGetAwsUnityCatalogPolicyResultOu
 
 func (o GetAwsUnityCatalogPolicyResultOutput) AwsAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsUnityCatalogPolicyResult) string { return v.AwsAccountId }).(pulumi.StringOutput)
+}
+
+func (o GetAwsUnityCatalogPolicyResultOutput) AwsPartition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsUnityCatalogPolicyResult) *string { return v.AwsPartition }).(pulumi.StringPtrOutput)
 }
 
 func (o GetAwsUnityCatalogPolicyResultOutput) BucketName() pulumi.StringOutput {

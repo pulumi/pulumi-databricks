@@ -17,6 +17,21 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
     public static final GetAwsBucketPolicyArgs Empty = new GetAwsBucketPolicyArgs();
 
     /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
+    @Import(name="awsPartition")
+    private @Nullable Output<String> awsPartition;
+
+    /**
+     * @return AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     * 
+     */
+    public Optional<Output<String>> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
+    }
+
+    /**
      * AWS S3 Bucket name for which to generate the policy document.
      * 
      */
@@ -31,9 +46,21 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
         return this.bucket;
     }
 
+    /**
+     * @deprecated
+     * databricks_account_id will be will be removed in the next major release.
+     * 
+     */
+    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
     @Import(name="databricksAccountId")
     private @Nullable Output<String> databricksAccountId;
 
+    /**
+     * @deprecated
+     * databricks_account_id will be will be removed in the next major release.
+     * 
+     */
+    @Deprecated /* databricks_account_id will be will be removed in the next major release. */
     public Optional<Output<String>> databricksAccountId() {
         return Optional.ofNullable(this.databricksAccountId);
     }
@@ -71,6 +98,7 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
     private GetAwsBucketPolicyArgs() {}
 
     private GetAwsBucketPolicyArgs(GetAwsBucketPolicyArgs $) {
+        this.awsPartition = $.awsPartition;
         this.bucket = $.bucket;
         this.databricksAccountId = $.databricksAccountId;
         this.databricksE2AccountId = $.databricksE2AccountId;
@@ -96,6 +124,27 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsPartition(@Nullable Output<String> awsPartition) {
+            $.awsPartition = awsPartition;
+            return this;
+        }
+
+        /**
+         * @param awsPartition AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsPartition(String awsPartition) {
+            return awsPartition(Output.of(awsPartition));
+        }
+
+        /**
          * @param bucket AWS S3 Bucket name for which to generate the policy document.
          * 
          * @return builder
@@ -116,11 +165,27 @@ public final class GetAwsBucketPolicyArgs extends com.pulumi.resources.InvokeArg
             return bucket(Output.of(bucket));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * databricks_account_id will be will be removed in the next major release.
+         * 
+         */
+        @Deprecated /* databricks_account_id will be will be removed in the next major release. */
         public Builder databricksAccountId(@Nullable Output<String> databricksAccountId) {
             $.databricksAccountId = databricksAccountId;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * databricks_account_id will be will be removed in the next major release.
+         * 
+         */
+        @Deprecated /* databricks_account_id will be will be removed in the next major release. */
         public Builder databricksAccountId(String databricksAccountId) {
             return databricksAccountId(Output.of(databricksAccountId));
         }

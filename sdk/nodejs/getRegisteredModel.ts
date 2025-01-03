@@ -79,7 +79,7 @@ export interface GetRegisteredModelResult {
     /**
      * block with information about the model in Unity Catalog:
      */
-    readonly modelInfos?: outputs.GetRegisteredModelModelInfo[];
+    readonly modelInfos: outputs.GetRegisteredModelModelInfo[];
 }
 /**
  * > This resource can only be used with a workspace-level provider!

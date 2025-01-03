@@ -26,10 +26,13 @@ class GetAwsUnityCatalogAssumeRolePolicyResult:
     """
     A collection of values returned by getAwsUnityCatalogAssumeRolePolicy.
     """
-    def __init__(__self__, aws_account_id=None, external_id=None, id=None, json=None, role_name=None, unity_catalog_iam_arn=None):
+    def __init__(__self__, aws_account_id=None, aws_partition=None, external_id=None, id=None, json=None, role_name=None, unity_catalog_iam_arn=None):
         if aws_account_id and not isinstance(aws_account_id, str):
             raise TypeError("Expected argument 'aws_account_id' to be a str")
         pulumi.set(__self__, "aws_account_id", aws_account_id)
+        if aws_partition and not isinstance(aws_partition, str):
+            raise TypeError("Expected argument 'aws_partition' to be a str")
+        pulumi.set(__self__, "aws_partition", aws_partition)
         if external_id and not isinstance(external_id, str):
             raise TypeError("Expected argument 'external_id' to be a str")
         pulumi.set(__self__, "external_id", external_id)
@@ -50,6 +53,11 @@ class GetAwsUnityCatalogAssumeRolePolicyResult:
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> str:
         return pulumi.get(self, "aws_account_id")
+
+    @property
+    @pulumi.getter(name="awsPartition")
+    def aws_partition(self) -> Optional[str]:
+        return pulumi.get(self, "aws_partition")
 
     @property
     @pulumi.getter(name="externalId")
@@ -87,6 +95,7 @@ class AwaitableGetAwsUnityCatalogAssumeRolePolicyResult(GetAwsUnityCatalogAssume
             yield self
         return GetAwsUnityCatalogAssumeRolePolicyResult(
             aws_account_id=self.aws_account_id,
+            aws_partition=self.aws_partition,
             external_id=self.external_id,
             id=self.id,
             json=self.json,
@@ -95,6 +104,7 @@ class AwaitableGetAwsUnityCatalogAssumeRolePolicyResult(GetAwsUnityCatalogAssume
 
 
 def get_aws_unity_catalog_assume_role_policy(aws_account_id: Optional[str] = None,
+                                             aws_partition: Optional[str] = None,
                                              external_id: Optional[str] = None,
                                              role_name: Optional[str] = None,
                                              unity_catalog_iam_arn: Optional[str] = None,
@@ -129,12 +139,14 @@ def get_aws_unity_catalog_assume_role_policy(aws_account_id: Optional[str] = Non
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
     :param str external_id: The storage credential external id.
     :param str role_name: The name of the AWS IAM role to be created for Unity Catalog.
-    :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
+    :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id
+    __args__['awsPartition'] = aws_partition
     __args__['externalId'] = external_id
     __args__['roleName'] = role_name
     __args__['unityCatalogIamArn'] = unity_catalog_iam_arn
@@ -143,12 +155,14 @@ def get_aws_unity_catalog_assume_role_policy(aws_account_id: Optional[str] = Non
 
     return AwaitableGetAwsUnityCatalogAssumeRolePolicyResult(
         aws_account_id=pulumi.get(__ret__, 'aws_account_id'),
+        aws_partition=pulumi.get(__ret__, 'aws_partition'),
         external_id=pulumi.get(__ret__, 'external_id'),
         id=pulumi.get(__ret__, 'id'),
         json=pulumi.get(__ret__, 'json'),
         role_name=pulumi.get(__ret__, 'role_name'),
         unity_catalog_iam_arn=pulumi.get(__ret__, 'unity_catalog_iam_arn'))
 def get_aws_unity_catalog_assume_role_policy_output(aws_account_id: Optional[pulumi.Input[str]] = None,
+                                                    aws_partition: Optional[pulumi.Input[Optional[str]]] = None,
                                                     external_id: Optional[pulumi.Input[str]] = None,
                                                     role_name: Optional[pulumi.Input[str]] = None,
                                                     unity_catalog_iam_arn: Optional[pulumi.Input[Optional[str]]] = None,
@@ -183,12 +197,14 @@ def get_aws_unity_catalog_assume_role_policy_output(aws_account_id: Optional[pul
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
     :param str external_id: The storage credential external id.
     :param str role_name: The name of the AWS IAM role to be created for Unity Catalog.
-    :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
+    :param str unity_catalog_iam_arn: The Databricks Unity Catalog IAM Role ARN. Defaults to `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL` on standard AWS partition selection and `arn:aws-us-gov:iam::044793339203:role/unity-catalog-prod-UCMasterRole-1QRFA8SGY15OJ` on GovCloud partition selection
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id
+    __args__['awsPartition'] = aws_partition
     __args__['externalId'] = external_id
     __args__['roleName'] = role_name
     __args__['unityCatalogIamArn'] = unity_catalog_iam_arn
@@ -196,6 +212,7 @@ def get_aws_unity_catalog_assume_role_policy_output(aws_account_id: Optional[pul
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsUnityCatalogAssumeRolePolicy:getAwsUnityCatalogAssumeRolePolicy', __args__, opts=opts, typ=GetAwsUnityCatalogAssumeRolePolicyResult)
     return __ret__.apply(lambda __response__: GetAwsUnityCatalogAssumeRolePolicyResult(
         aws_account_id=pulumi.get(__response__, 'aws_account_id'),
+        aws_partition=pulumi.get(__response__, 'aws_partition'),
         external_id=pulumi.get(__response__, 'external_id'),
         id=pulumi.get(__response__, 'id'),
         json=pulumi.get(__response__, 'json'),

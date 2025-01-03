@@ -26,7 +26,10 @@ class GetAwsAssumeRolePolicyResult:
     """
     A collection of values returned by getAwsAssumeRolePolicy.
     """
-    def __init__(__self__, databricks_account_id=None, external_id=None, for_log_delivery=None, id=None, json=None):
+    def __init__(__self__, aws_partition=None, databricks_account_id=None, external_id=None, for_log_delivery=None, id=None, json=None):
+        if aws_partition and not isinstance(aws_partition, str):
+            raise TypeError("Expected argument 'aws_partition' to be a str")
+        pulumi.set(__self__, "aws_partition", aws_partition)
         if databricks_account_id and not isinstance(databricks_account_id, str):
             raise TypeError("Expected argument 'databricks_account_id' to be a str")
         pulumi.set(__self__, "databricks_account_id", databricks_account_id)
@@ -44,7 +47,13 @@ class GetAwsAssumeRolePolicyResult:
         pulumi.set(__self__, "json", json)
 
     @property
+    @pulumi.getter(name="awsPartition")
+    def aws_partition(self) -> Optional[str]:
+        return pulumi.get(self, "aws_partition")
+
+    @property
     @pulumi.getter(name="databricksAccountId")
+    @_utilities.deprecated("""databricks_account_id will be will be removed in the next major release.""")
     def databricks_account_id(self) -> Optional[str]:
         return pulumi.get(self, "databricks_account_id")
 
@@ -81,6 +90,7 @@ class AwaitableGetAwsAssumeRolePolicyResult(GetAwsAssumeRolePolicyResult):
         if False:
             yield self
         return GetAwsAssumeRolePolicyResult(
+            aws_partition=self.aws_partition,
             databricks_account_id=self.databricks_account_id,
             external_id=self.external_id,
             for_log_delivery=self.for_log_delivery,
@@ -88,7 +98,8 @@ class AwaitableGetAwsAssumeRolePolicyResult(GetAwsAssumeRolePolicyResult):
             json=self.json)
 
 
-def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
+def get_aws_assume_role_policy(aws_partition: Optional[str] = None,
+                               databricks_account_id: Optional[str] = None,
                                external_id: Optional[str] = None,
                                for_log_delivery: Optional[bool] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsAssumeRolePolicyResult:
@@ -135,10 +146,12 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
     * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
 
 
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
     :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
     :param bool for_log_delivery: Either or not this assume role policy should be created for usage log delivery. Defaults to false.
     """
     __args__ = dict()
+    __args__['awsPartition'] = aws_partition
     __args__['databricksAccountId'] = databricks_account_id
     __args__['externalId'] = external_id
     __args__['forLogDelivery'] = for_log_delivery
@@ -146,12 +159,14 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy', __args__, opts=opts, typ=GetAwsAssumeRolePolicyResult).value
 
     return AwaitableGetAwsAssumeRolePolicyResult(
+        aws_partition=pulumi.get(__ret__, 'aws_partition'),
         databricks_account_id=pulumi.get(__ret__, 'databricks_account_id'),
         external_id=pulumi.get(__ret__, 'external_id'),
         for_log_delivery=pulumi.get(__ret__, 'for_log_delivery'),
         id=pulumi.get(__ret__, 'id'),
         json=pulumi.get(__ret__, 'json'))
-def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Input[Optional[str]]] = None,
+def get_aws_assume_role_policy_output(aws_partition: Optional[pulumi.Input[Optional[str]]] = None,
+                                      databricks_account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                       external_id: Optional[pulumi.Input[str]] = None,
                                       for_log_delivery: Optional[pulumi.Input[Optional[bool]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsAssumeRolePolicyResult]:
@@ -198,16 +213,19 @@ def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Inp
     * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
 
 
+    :param str aws_partition: AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
     :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
     :param bool for_log_delivery: Either or not this assume role policy should be created for usage log delivery. Defaults to false.
     """
     __args__ = dict()
+    __args__['awsPartition'] = aws_partition
     __args__['databricksAccountId'] = databricks_account_id
     __args__['externalId'] = external_id
     __args__['forLogDelivery'] = for_log_delivery
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy', __args__, opts=opts, typ=GetAwsAssumeRolePolicyResult)
     return __ret__.apply(lambda __response__: GetAwsAssumeRolePolicyResult(
+        aws_partition=pulumi.get(__response__, 'aws_partition'),
         databricks_account_id=pulumi.get(__response__, 'databricks_account_id'),
         external_id=pulumi.get(__response__, 'external_id'),
         for_log_delivery=pulumi.get(__response__, 'for_log_delivery'),

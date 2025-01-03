@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobTaskCleanRoomsNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskConditionTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDependsOnArgs;
@@ -36,6 +37,13 @@ import javax.annotation.Nullable;
 public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTaskArgs Empty = new JobTaskArgs();
+
+    @Import(name="cleanRoomsNotebookTask")
+    private @Nullable Output<JobTaskCleanRoomsNotebookTaskArgs> cleanRoomsNotebookTask;
+
+    public Optional<Output<JobTaskCleanRoomsNotebookTaskArgs>> cleanRoomsNotebookTask() {
+        return Optional.ofNullable(this.cleanRoomsNotebookTask);
+    }
 
     @Import(name="conditionTask")
     private @Nullable Output<JobTaskConditionTaskArgs> conditionTask;
@@ -393,6 +401,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     private JobTaskArgs() {}
 
     private JobTaskArgs(JobTaskArgs $) {
+        this.cleanRoomsNotebookTask = $.cleanRoomsNotebookTask;
         this.conditionTask = $.conditionTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
@@ -440,6 +449,15 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(JobTaskArgs defaults) {
             $ = new JobTaskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder cleanRoomsNotebookTask(@Nullable Output<JobTaskCleanRoomsNotebookTaskArgs> cleanRoomsNotebookTask) {
+            $.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
+            return this;
+        }
+
+        public Builder cleanRoomsNotebookTask(JobTaskCleanRoomsNotebookTaskArgs cleanRoomsNotebookTask) {
+            return cleanRoomsNotebookTask(Output.of(cleanRoomsNotebookTask));
         }
 
         public Builder conditionTask(@Nullable Output<JobTaskConditionTaskArgs> conditionTask) {

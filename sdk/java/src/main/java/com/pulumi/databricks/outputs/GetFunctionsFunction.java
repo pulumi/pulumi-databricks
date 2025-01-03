@@ -4,12 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.databricks.outputs.GetFunctionsFunctionInputParams;
-import com.pulumi.databricks.outputs.GetFunctionsFunctionReturnParams;
-import com.pulumi.databricks.outputs.GetFunctionsFunctionRoutineDependencies;
+import com.pulumi.databricks.outputs.GetFunctionsFunctionInputParam;
+import com.pulumi.databricks.outputs.GetFunctionsFunctionReturnParam;
+import com.pulumi.databricks.outputs.GetFunctionsFunctionRoutineDependency;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -75,7 +76,7 @@ public final class GetFunctionsFunction {
      * @return object describing input parameters. Consists of the single attribute:
      * 
      */
-    private @Nullable GetFunctionsFunctionInputParams inputParams;
+    private @Nullable List<GetFunctionsFunctionInputParam> inputParams;
     /**
      * @return Boolean flag specifying whether the function is deterministic.
      * 
@@ -115,7 +116,7 @@ public final class GetFunctionsFunction {
      * @return Table function return parameters.  See `input_params` for description.
      * 
      */
-    private @Nullable GetFunctionsFunctionReturnParams returnParams;
+    private @Nullable List<GetFunctionsFunctionReturnParam> returnParams;
     /**
      * @return Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
      * 
@@ -130,7 +131,7 @@ public final class GetFunctionsFunction {
      * @return Function dependencies.
      * 
      */
-    private @Nullable GetFunctionsFunctionRoutineDependencies routineDependencies;
+    private @Nullable List<GetFunctionsFunctionRoutineDependency> routineDependencies;
     /**
      * @return Name of databricks_schema.
      * 
@@ -249,8 +250,8 @@ public final class GetFunctionsFunction {
      * @return object describing input parameters. Consists of the single attribute:
      * 
      */
-    public Optional<GetFunctionsFunctionInputParams> inputParams() {
-        return Optional.ofNullable(this.inputParams);
+    public List<GetFunctionsFunctionInputParam> inputParams() {
+        return this.inputParams == null ? List.of() : this.inputParams;
     }
     /**
      * @return Boolean flag specifying whether the function is deterministic.
@@ -305,8 +306,8 @@ public final class GetFunctionsFunction {
      * @return Table function return parameters.  See `input_params` for description.
      * 
      */
-    public Optional<GetFunctionsFunctionReturnParams> returnParams() {
-        return Optional.ofNullable(this.returnParams);
+    public List<GetFunctionsFunctionReturnParam> returnParams() {
+        return this.returnParams == null ? List.of() : this.returnParams;
     }
     /**
      * @return Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
@@ -326,8 +327,8 @@ public final class GetFunctionsFunction {
      * @return Function dependencies.
      * 
      */
-    public Optional<GetFunctionsFunctionRoutineDependencies> routineDependencies() {
-        return Optional.ofNullable(this.routineDependencies);
+    public List<GetFunctionsFunctionRoutineDependency> routineDependencies() {
+        return this.routineDependencies == null ? List.of() : this.routineDependencies;
     }
     /**
      * @return Name of databricks_schema.
@@ -399,7 +400,7 @@ public final class GetFunctionsFunction {
         private @Nullable String fullDataType;
         private @Nullable String fullName;
         private @Nullable String functionId;
-        private @Nullable GetFunctionsFunctionInputParams inputParams;
+        private @Nullable List<GetFunctionsFunctionInputParam> inputParams;
         private @Nullable Boolean isDeterministic;
         private @Nullable Boolean isNullCall;
         private @Nullable String metastoreId;
@@ -407,10 +408,10 @@ public final class GetFunctionsFunction {
         private @Nullable String owner;
         private @Nullable String parameterStyle;
         private @Nullable String properties;
-        private @Nullable GetFunctionsFunctionReturnParams returnParams;
+        private @Nullable List<GetFunctionsFunctionReturnParam> returnParams;
         private @Nullable String routineBody;
         private @Nullable String routineDefinition;
-        private @Nullable GetFunctionsFunctionRoutineDependencies routineDependencies;
+        private @Nullable List<GetFunctionsFunctionRoutineDependency> routineDependencies;
         private @Nullable String schemaName;
         private @Nullable String securityType;
         private @Nullable String specificName;
@@ -520,10 +521,13 @@ public final class GetFunctionsFunction {
             return this;
         }
         @CustomType.Setter
-        public Builder inputParams(@Nullable GetFunctionsFunctionInputParams inputParams) {
+        public Builder inputParams(@Nullable List<GetFunctionsFunctionInputParam> inputParams) {
 
             this.inputParams = inputParams;
             return this;
+        }
+        public Builder inputParams(GetFunctionsFunctionInputParam... inputParams) {
+            return inputParams(List.of(inputParams));
         }
         @CustomType.Setter
         public Builder isDeterministic(@Nullable Boolean isDeterministic) {
@@ -568,10 +572,13 @@ public final class GetFunctionsFunction {
             return this;
         }
         @CustomType.Setter
-        public Builder returnParams(@Nullable GetFunctionsFunctionReturnParams returnParams) {
+        public Builder returnParams(@Nullable List<GetFunctionsFunctionReturnParam> returnParams) {
 
             this.returnParams = returnParams;
             return this;
+        }
+        public Builder returnParams(GetFunctionsFunctionReturnParam... returnParams) {
+            return returnParams(List.of(returnParams));
         }
         @CustomType.Setter
         public Builder routineBody(@Nullable String routineBody) {
@@ -586,10 +593,13 @@ public final class GetFunctionsFunction {
             return this;
         }
         @CustomType.Setter
-        public Builder routineDependencies(@Nullable GetFunctionsFunctionRoutineDependencies routineDependencies) {
+        public Builder routineDependencies(@Nullable List<GetFunctionsFunctionRoutineDependency> routineDependencies) {
 
             this.routineDependencies = routineDependencies;
             return this;
+        }
+        public Builder routineDependencies(GetFunctionsFunctionRoutineDependency... routineDependencies) {
+            return routineDependencies(List.of(routineDependencies));
         }
         @CustomType.Setter
         public Builder schemaName(@Nullable String schemaName) {

@@ -562,6 +562,36 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Mosaic AI Vector Search usage
+ *
+ * Valid permission levels for databricks.VectorSearchEndpoint are: `CAN_USE` and `CAN_MANAGE`.
+ *
+ * > You need to use the `endpointId` attribute of `databricks.VectorSearchEndpoint` as value for `vectorSearchEndpointId`, not the `id`!
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.VectorSearchEndpoint("this", {
+ *     name: "vector-search-test",
+ *     endpointType: "STANDARD",
+ * });
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const vectorSearchEndpointUsage = new databricks.Permissions("vector_search_endpoint_usage", {
+ *     vectorSearchEndpointId: _this.endpointId,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_USE",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Passwords usage
  *
  * By default on AWS deployments, all admin users can sign in to Databricks using either SSO or their username and password, and all API users can authenticate to the Databricks REST APIs using their username and password. As an admin, you [can limit](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#optional-configure-password-access-control) admin users’ and API users’ ability to authenticate with their username and password by configuring `CAN_USE` permissions using password access control.
@@ -806,6 +836,7 @@ export class Permissions extends pulumi.CustomResource {
     }
 
     public readonly accessControls!: pulumi.Output<outputs.PermissionsAccessControl[]>;
+    public readonly appName!: pulumi.Output<string | undefined>;
     public readonly authorization!: pulumi.Output<string | undefined>;
     public readonly clusterId!: pulumi.Output<string | undefined>;
     public readonly clusterPolicyId!: pulumi.Output<string | undefined>;
@@ -830,6 +861,7 @@ export class Permissions extends pulumi.CustomResource {
     public readonly sqlDashboardId!: pulumi.Output<string | undefined>;
     public readonly sqlEndpointId!: pulumi.Output<string | undefined>;
     public readonly sqlQueryId!: pulumi.Output<string | undefined>;
+    public readonly vectorSearchEndpointId!: pulumi.Output<string | undefined>;
     public readonly workspaceFileId!: pulumi.Output<string | undefined>;
     public readonly workspaceFilePath!: pulumi.Output<string | undefined>;
 
@@ -847,6 +879,7 @@ export class Permissions extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PermissionsState | undefined;
             resourceInputs["accessControls"] = state ? state.accessControls : undefined;
+            resourceInputs["appName"] = state ? state.appName : undefined;
             resourceInputs["authorization"] = state ? state.authorization : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["clusterPolicyId"] = state ? state.clusterPolicyId : undefined;
@@ -868,6 +901,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["sqlDashboardId"] = state ? state.sqlDashboardId : undefined;
             resourceInputs["sqlEndpointId"] = state ? state.sqlEndpointId : undefined;
             resourceInputs["sqlQueryId"] = state ? state.sqlQueryId : undefined;
+            resourceInputs["vectorSearchEndpointId"] = state ? state.vectorSearchEndpointId : undefined;
             resourceInputs["workspaceFileId"] = state ? state.workspaceFileId : undefined;
             resourceInputs["workspaceFilePath"] = state ? state.workspaceFilePath : undefined;
         } else {
@@ -876,6 +910,7 @@ export class Permissions extends pulumi.CustomResource {
                 throw new Error("Missing required property 'accessControls'");
             }
             resourceInputs["accessControls"] = args ? args.accessControls : undefined;
+            resourceInputs["appName"] = args ? args.appName : undefined;
             resourceInputs["authorization"] = args ? args.authorization : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["clusterPolicyId"] = args ? args.clusterPolicyId : undefined;
@@ -897,6 +932,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["sqlDashboardId"] = args ? args.sqlDashboardId : undefined;
             resourceInputs["sqlEndpointId"] = args ? args.sqlEndpointId : undefined;
             resourceInputs["sqlQueryId"] = args ? args.sqlQueryId : undefined;
+            resourceInputs["vectorSearchEndpointId"] = args ? args.vectorSearchEndpointId : undefined;
             resourceInputs["workspaceFileId"] = args ? args.workspaceFileId : undefined;
             resourceInputs["workspaceFilePath"] = args ? args.workspaceFilePath : undefined;
         }
@@ -910,6 +946,7 @@ export class Permissions extends pulumi.CustomResource {
  */
 export interface PermissionsState {
     accessControls?: pulumi.Input<pulumi.Input<inputs.PermissionsAccessControl>[]>;
+    appName?: pulumi.Input<string>;
     authorization?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     clusterPolicyId?: pulumi.Input<string>;
@@ -934,6 +971,7 @@ export interface PermissionsState {
     sqlDashboardId?: pulumi.Input<string>;
     sqlEndpointId?: pulumi.Input<string>;
     sqlQueryId?: pulumi.Input<string>;
+    vectorSearchEndpointId?: pulumi.Input<string>;
     workspaceFileId?: pulumi.Input<string>;
     workspaceFilePath?: pulumi.Input<string>;
 }
@@ -943,6 +981,7 @@ export interface PermissionsState {
  */
 export interface PermissionsArgs {
     accessControls: pulumi.Input<pulumi.Input<inputs.PermissionsAccessControl>[]>;
+    appName?: pulumi.Input<string>;
     authorization?: pulumi.Input<string>;
     clusterId?: pulumi.Input<string>;
     clusterPolicyId?: pulumi.Input<string>;
@@ -967,6 +1006,7 @@ export interface PermissionsArgs {
     sqlDashboardId?: pulumi.Input<string>;
     sqlEndpointId?: pulumi.Input<string>;
     sqlQueryId?: pulumi.Input<string>;
+    vectorSearchEndpointId?: pulumi.Input<string>;
     workspaceFileId?: pulumi.Input<string>;
     workspaceFilePath?: pulumi.Input<string>;
 }

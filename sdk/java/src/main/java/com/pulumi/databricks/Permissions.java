@@ -1031,6 +1031,68 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Mosaic AI Vector Search usage
+ * 
+ * Valid permission levels for databricks.VectorSearchEndpoint are: `CAN_USE` and `CAN_MANAGE`.
+ * 
+ * &gt; You need to use the `endpoint_id` attribute of `databricks.VectorSearchEndpoint` as value for `vector_search_endpoint_id`, not the `id`!
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.VectorSearchEndpoint;
+ * import com.pulumi.databricks.VectorSearchEndpointArgs;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import com.pulumi.databricks.Permissions;
+ * import com.pulumi.databricks.PermissionsArgs;
+ * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new VectorSearchEndpoint("this", VectorSearchEndpointArgs.builder()
+ *             .name("vector-search-test")
+ *             .endpointType("STANDARD")
+ *             .build());
+ * 
+ *         var eng = new Group("eng", GroupArgs.builder()
+ *             .displayName("Engineering")
+ *             .build());
+ * 
+ *         var vectorSearchEndpointUsage = new Permissions("vectorSearchEndpointUsage", PermissionsArgs.builder()
+ *             .vectorSearchEndpointId(this_.endpointId())
+ *             .accessControls(            
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName("users")
+ *                     .permissionLevel("CAN_USE")
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(eng.displayName())
+ *                     .permissionLevel("CAN_MANAGE")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Passwords usage
  * 
  * By default on AWS deployments, all admin users can sign in to Databricks using either SSO or their username and password, and all API users can authenticate to the Databricks REST APIs using their username and password. As an admin, you [can limit](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#optional-configure-password-access-control) admin users’ and API users’ ability to authenticate with their username and password by configuring `CAN_USE` permissions using password access control.
@@ -1488,6 +1550,12 @@ public class Permissions extends com.pulumi.resources.CustomResource {
     public Output<List<PermissionsAccessControl>> accessControls() {
         return this.accessControls;
     }
+    @Export(name="appName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> appName;
+
+    public Output<Optional<String>> appName() {
+        return Codegen.optional(this.appName);
+    }
     @Export(name="authorization", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authorization;
 
@@ -1621,6 +1689,12 @@ public class Permissions extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> sqlQueryId() {
         return Codegen.optional(this.sqlQueryId);
+    }
+    @Export(name="vectorSearchEndpointId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vectorSearchEndpointId;
+
+    public Output<Optional<String>> vectorSearchEndpointId() {
+        return Codegen.optional(this.vectorSearchEndpointId);
     }
     @Export(name="workspaceFileId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workspaceFileId;

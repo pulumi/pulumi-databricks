@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .access_control_rule_set import *
 from .alert import *
+from .app import *
 from .artifact_allowlist import *
 from .automatic_cluster_update_workspace_setting import *
 from .budget import *
@@ -16,6 +17,7 @@ from .cluster import *
 from .cluster_policy import *
 from .compliance_security_profile_workspace_setting import *
 from .connection import *
+from .credential import *
 from .custom_app_integration import *
 from .dashboard import *
 from .dbfs_file import *
@@ -25,6 +27,8 @@ from .enhanced_security_monitoring_workspace_setting import *
 from .entitlements import *
 from .external_location import *
 from .file import *
+from .get_app import *
+from .get_apps import *
 from .get_aws_assume_role_policy import *
 from .get_aws_bucket_policy import *
 from .get_aws_cross_account_policy import *
@@ -55,6 +59,8 @@ from .get_mlflow_experiment import *
 from .get_mlflow_model import *
 from .get_mlflow_models import *
 from .get_mws_credentials import *
+from .get_mws_network_connectivity_config import *
+from .get_mws_network_connectivity_configs import *
 from .get_mws_workspaces import *
 from .get_node_type import *
 from .get_notebook import *
@@ -62,10 +68,12 @@ from .get_notebook_paths import *
 from .get_notification_destinations import *
 from .get_pipelines import *
 from .get_registered_model import *
+from .get_registered_model_versions import *
 from .get_schema import *
 from .get_schemas import *
 from .get_service_principal import *
 from .get_service_principals import *
+from .get_serving_endpoints import *
 from .get_share import *
 from .get_shares import *
 from .get_spark_version import *
@@ -190,6 +198,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/app",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/app:App": "App"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/artifactAllowlist",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -258,6 +274,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/connection:Connection": "Connection"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/credential",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/credential:Credential": "Credential"
   }
  },
  {

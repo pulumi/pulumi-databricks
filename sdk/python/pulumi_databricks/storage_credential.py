@@ -511,6 +511,8 @@ class StorageCredential(pulumi.CustomResource):
         - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
         - ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
 
+        On AWS, the IAM role for a storage credential requires a trust policy. See [documentation](https://docs.databricks.com/en/connect/unity-catalog/cloud-storage/storage-credentials.html#step-1-create-an-iam-role) for more details. The data source get_aws_unity_catalog_assume_role_policy can be used to create the necessary AWS Unity Catalog assume role policy.
+
         ## Example Usage
 
         For AWS
@@ -546,7 +548,7 @@ class StorageCredential(pulumi.CustomResource):
             },
             comment="Managed identity credential managed by TF")
         external_creds = databricks.Grants("external_creds",
-            storage_credential=external["id"],
+            storage_credential=external_mi.id,
             grants=[{
                 "principal": "Data Engineers",
                 "privileges": ["CREATE_EXTERNAL_TABLE"],
@@ -607,6 +609,8 @@ class StorageCredential(pulumi.CustomResource):
         - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
         - ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
 
+        On AWS, the IAM role for a storage credential requires a trust policy. See [documentation](https://docs.databricks.com/en/connect/unity-catalog/cloud-storage/storage-credentials.html#step-1-create-an-iam-role) for more details. The data source get_aws_unity_catalog_assume_role_policy can be used to create the necessary AWS Unity Catalog assume role policy.
+
         ## Example Usage
 
         For AWS
@@ -642,7 +646,7 @@ class StorageCredential(pulumi.CustomResource):
             },
             comment="Managed identity credential managed by TF")
         external_creds = databricks.Grants("external_creds",
-            storage_credential=external["id"],
+            storage_credential=external_mi.id,
             grants=[{
                 "principal": "Data Engineers",
                 "privileges": ["CREATE_EXTERNAL_TABLE"],

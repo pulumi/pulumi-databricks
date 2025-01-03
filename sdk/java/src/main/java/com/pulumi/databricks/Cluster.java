@@ -364,6 +364,18 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> isPinned() {
         return Codegen.optional(this.isPinned);
     }
+    @Export(name="isSingleNode", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isSingleNode;
+
+    public Output<Optional<Boolean>> isSingleNode() {
+        return Codegen.optional(this.isSingleNode);
+    }
+    @Export(name="kind", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kind;
+
+    public Output<Optional<String>> kind() {
+        return Codegen.optional(this.kind);
+    }
     @Export(name="libraries", refs={List.class,ClusterLibrary.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterLibrary>> libraries;
 
@@ -651,6 +663,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     public Output<String> url() {
         return this.url;
+    }
+    @Export(name="useMlRuntime", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> useMlRuntime;
+
+    public Output<Optional<Boolean>> useMlRuntime() {
+        return Codegen.optional(this.useMlRuntime);
     }
     @Export(name="workloadType", refs={ClusterWorkloadType.class}, tree="[0]")
     private Output</* @Nullable */ ClusterWorkloadType> workloadType;

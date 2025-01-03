@@ -228,6 +228,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * This resource can be imported by notification ID:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/notificationDestination:NotificationDestination this &lt;notification-id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="databricks:index/notificationDestination:NotificationDestination")
 public class NotificationDestination extends com.pulumi.resources.CustomResource {

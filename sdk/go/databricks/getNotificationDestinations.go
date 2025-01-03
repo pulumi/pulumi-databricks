@@ -83,8 +83,6 @@ func GetNotificationDestinations(ctx *pulumi.Context, args *GetNotificationDesti
 type GetNotificationDestinationsArgs struct {
 	// A **case-insensitive** substring to filter Notification Destinations by their display name.
 	DisplayNameContains *string `pulumi:"displayNameContains"`
-	// A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-	NotificationDestinations []GetNotificationDestinationsNotificationDestination `pulumi:"notificationDestinations"`
 	// The type of the Notification Destination to filter by. Valid values are:
 	// * `EMAIL` - Filters Notification Destinations of type Email.
 	// * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
@@ -117,8 +115,6 @@ func GetNotificationDestinationsOutput(ctx *pulumi.Context, args GetNotification
 type GetNotificationDestinationsOutputArgs struct {
 	// A **case-insensitive** substring to filter Notification Destinations by their display name.
 	DisplayNameContains pulumi.StringPtrInput `pulumi:"displayNameContains"`
-	// A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-	NotificationDestinations GetNotificationDestinationsNotificationDestinationArrayInput `pulumi:"notificationDestinations"`
 	// The type of the Notification Destination to filter by. Valid values are:
 	// * `EMAIL` - Filters Notification Destinations of type Email.
 	// * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.

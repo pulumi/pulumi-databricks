@@ -170,6 +170,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// This resource can be imported by notification ID:
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/notificationDestination:NotificationDestination this <notification-id>
+// ```
 type NotificationDestination struct {
 	pulumi.CustomResourceState
 

@@ -15,6 +15,11 @@ export type Alert = import("./alert").Alert;
 export const Alert: typeof import("./alert").Alert = null as any;
 utilities.lazyLoad(exports, ["Alert"], () => require("./alert"));
 
+export { AppArgs, AppState } from "./app";
+export type App = import("./app").App;
+export const App: typeof import("./app").App = null as any;
+utilities.lazyLoad(exports, ["App"], () => require("./app"));
+
 export { ArtifactAllowlistArgs, ArtifactAllowlistState } from "./artifactAllowlist";
 export type ArtifactAllowlist = import("./artifactAllowlist").ArtifactAllowlist;
 export const ArtifactAllowlist: typeof import("./artifactAllowlist").ArtifactAllowlist = null as any;
@@ -60,6 +65,11 @@ export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
+export { CredentialArgs, CredentialState } from "./credential";
+export type Credential = import("./credential").Credential;
+export const Credential: typeof import("./credential").Credential = null as any;
+utilities.lazyLoad(exports, ["Credential"], () => require("./credential"));
+
 export { CustomAppIntegrationArgs, CustomAppIntegrationState } from "./customAppIntegration";
 export type CustomAppIntegration = import("./customAppIntegration").CustomAppIntegration;
 export const CustomAppIntegration: typeof import("./customAppIntegration").CustomAppIntegration = null as any;
@@ -104,6 +114,16 @@ export { FileArgs, FileState } from "./file";
 export type File = import("./file").File;
 export const File: typeof import("./file").File = null as any;
 utilities.lazyLoad(exports, ["File"], () => require("./file"));
+
+export { GetAppArgs, GetAppResult, GetAppOutputArgs } from "./getApp";
+export const getApp: typeof import("./getApp").getApp = null as any;
+export const getAppOutput: typeof import("./getApp").getAppOutput = null as any;
+utilities.lazyLoad(exports, ["getApp","getAppOutput"], () => require("./getApp"));
+
+export { GetAppsResult } from "./getApps";
+export const getApps: typeof import("./getApps").getApps = null as any;
+export const getAppsOutput: typeof import("./getApps").getAppsOutput = null as any;
+utilities.lazyLoad(exports, ["getApps","getAppsOutput"], () => require("./getApps"));
 
 export { GetAwsAssumeRolePolicyArgs, GetAwsAssumeRolePolicyResult, GetAwsAssumeRolePolicyOutputArgs } from "./getAwsAssumeRolePolicy";
 export const getAwsAssumeRolePolicy: typeof import("./getAwsAssumeRolePolicy").getAwsAssumeRolePolicy = null as any;
@@ -255,6 +275,16 @@ export const getMwsCredentials: typeof import("./getMwsCredentials").getMwsCrede
 export const getMwsCredentialsOutput: typeof import("./getMwsCredentials").getMwsCredentialsOutput = null as any;
 utilities.lazyLoad(exports, ["getMwsCredentials","getMwsCredentialsOutput"], () => require("./getMwsCredentials"));
 
+export { GetMwsNetworkConnectivityConfigArgs, GetMwsNetworkConnectivityConfigResult, GetMwsNetworkConnectivityConfigOutputArgs } from "./getMwsNetworkConnectivityConfig";
+export const getMwsNetworkConnectivityConfig: typeof import("./getMwsNetworkConnectivityConfig").getMwsNetworkConnectivityConfig = null as any;
+export const getMwsNetworkConnectivityConfigOutput: typeof import("./getMwsNetworkConnectivityConfig").getMwsNetworkConnectivityConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getMwsNetworkConnectivityConfig","getMwsNetworkConnectivityConfigOutput"], () => require("./getMwsNetworkConnectivityConfig"));
+
+export { GetMwsNetworkConnectivityConfigsArgs, GetMwsNetworkConnectivityConfigsResult, GetMwsNetworkConnectivityConfigsOutputArgs } from "./getMwsNetworkConnectivityConfigs";
+export const getMwsNetworkConnectivityConfigs: typeof import("./getMwsNetworkConnectivityConfigs").getMwsNetworkConnectivityConfigs = null as any;
+export const getMwsNetworkConnectivityConfigsOutput: typeof import("./getMwsNetworkConnectivityConfigs").getMwsNetworkConnectivityConfigsOutput = null as any;
+utilities.lazyLoad(exports, ["getMwsNetworkConnectivityConfigs","getMwsNetworkConnectivityConfigsOutput"], () => require("./getMwsNetworkConnectivityConfigs"));
+
 export { GetMwsWorkspacesArgs, GetMwsWorkspacesResult, GetMwsWorkspacesOutputArgs } from "./getMwsWorkspaces";
 export const getMwsWorkspaces: typeof import("./getMwsWorkspaces").getMwsWorkspaces = null as any;
 export const getMwsWorkspacesOutput: typeof import("./getMwsWorkspaces").getMwsWorkspacesOutput = null as any;
@@ -290,6 +320,11 @@ export const getRegisteredModel: typeof import("./getRegisteredModel").getRegist
 export const getRegisteredModelOutput: typeof import("./getRegisteredModel").getRegisteredModelOutput = null as any;
 utilities.lazyLoad(exports, ["getRegisteredModel","getRegisteredModelOutput"], () => require("./getRegisteredModel"));
 
+export { GetRegisteredModelVersionsArgs, GetRegisteredModelVersionsResult, GetRegisteredModelVersionsOutputArgs } from "./getRegisteredModelVersions";
+export const getRegisteredModelVersions: typeof import("./getRegisteredModelVersions").getRegisteredModelVersions = null as any;
+export const getRegisteredModelVersionsOutput: typeof import("./getRegisteredModelVersions").getRegisteredModelVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getRegisteredModelVersions","getRegisteredModelVersionsOutput"], () => require("./getRegisteredModelVersions"));
+
 export { GetSchemaArgs, GetSchemaResult, GetSchemaOutputArgs } from "./getSchema";
 export const getSchema: typeof import("./getSchema").getSchema = null as any;
 export const getSchemaOutput: typeof import("./getSchema").getSchemaOutput = null as any;
@@ -309,6 +344,11 @@ export { GetServicePrincipalsArgs, GetServicePrincipalsResult, GetServicePrincip
 export const getServicePrincipals: typeof import("./getServicePrincipals").getServicePrincipals = null as any;
 export const getServicePrincipalsOutput: typeof import("./getServicePrincipals").getServicePrincipalsOutput = null as any;
 utilities.lazyLoad(exports, ["getServicePrincipals","getServicePrincipalsOutput"], () => require("./getServicePrincipals"));
+
+export { GetServingEndpointsArgs, GetServingEndpointsResult, GetServingEndpointsOutputArgs } from "./getServingEndpoints";
+export const getServingEndpoints: typeof import("./getServingEndpoints").getServingEndpoints = null as any;
+export const getServingEndpointsOutput: typeof import("./getServingEndpoints").getServingEndpointsOutput = null as any;
+utilities.lazyLoad(exports, ["getServingEndpoints","getServingEndpointsOutput"], () => require("./getServingEndpoints"));
 
 export { GetShareArgs, GetShareResult, GetShareOutputArgs } from "./getShare";
 export const getShare: typeof import("./getShare").getShare = null as any;
@@ -793,6 +833,8 @@ const _module = {
                 return new AccessControlRuleSet(name, <any>undefined, { urn })
             case "databricks:index/alert:Alert":
                 return new Alert(name, <any>undefined, { urn })
+            case "databricks:index/app:App":
+                return new App(name, <any>undefined, { urn })
             case "databricks:index/artifactAllowlist:ArtifactAllowlist":
                 return new ArtifactAllowlist(name, <any>undefined, { urn })
             case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
@@ -811,6 +853,8 @@ const _module = {
                 return new ComplianceSecurityProfileWorkspaceSetting(name, <any>undefined, { urn })
             case "databricks:index/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "databricks:index/credential:Credential":
+                return new Credential(name, <any>undefined, { urn })
             case "databricks:index/customAppIntegration:CustomAppIntegration":
                 return new CustomAppIntegration(name, <any>undefined, { urn })
             case "databricks:index/dashboard:Dashboard":
@@ -992,6 +1036,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("databricks", "index/accessControlRuleSet", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/alert", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/app", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/artifactAllowlist", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/automaticClusterUpdateWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/budget", _module)
@@ -1001,6 +1046,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/clusterPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/complianceSecurityProfileWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/connection", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/credential", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/customAppIntegration", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dbfsFile", _module)

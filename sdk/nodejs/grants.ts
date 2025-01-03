@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  *
  * ## Metastore grants
  *
- * You can grant `CREATE_CATALOG`, `CREATE_CONNECTION`, `CREATE_EXTERNAL_LOCATION`, `CREATE_PROVIDER`, `CREATE_RECIPIENT`, `CREATE_SHARE`, `CREATE_STORAGE_CREDENTIAL`, `MANAGE_ALLOWLIST`, `SET_SHARE_PERMISSION`, `USE_MARKETPLACE_ASSETS`, `USE_CONNECTION`, `USE_PROVIDER`, `USE_RECIPIENT` and `USE_SHARE` privileges to databricks.Metastore assigned to the workspace.
+ * You can grant `CREATE_CATALOG`, `CREATE_CLEAN_ROOM`, `CREATE_CONNECTION`, `CREATE_EXTERNAL_LOCATION`, `CREATE_PROVIDER`, `CREATE_RECIPIENT`, `CREATE_SHARE`, `CREATE_SERVICE_CREDENTIAL`, `CREATE_STORAGE_CREDENTIAL`, `SET_SHARE_PERMISSION`, `USE_MARKETPLACE_ASSETS`, `USE_PROVIDER`, `USE_RECIPIENT`, and `USE_SHARE` privileges to databricks.Metastore assigned to the workspace.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -308,6 +308,31 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Service credential grants
+ *
+ * You can grant `ALL_PRIVILEGES`, `ACCESS` and `CREATE_CONNECTION` privileges to databricks.Credential id specified in `credential` attribute:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const external = new databricks.Credential("external", {
+ *     name: externalDataAccess.name,
+ *     awsIamRole: {
+ *         roleArn: externalDataAccess.arn,
+ *     },
+ *     purpose: "SERVICE",
+ *     comment: "Managed by TF",
+ * });
+ * const externalCreds = new databricks.Grants("external_creds", {
+ *     credential: external.id,
+ *     grants: [{
+ *         principal: "Data Engineers",
+ *         privileges: ["CREATE_CONNECTION"],
+ *     }],
+ * });
+ * ```
+ *
  * ## Storage credential grants
  *
  * You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `READ_FILES` and `WRITE_FILES` privileges to databricks.StorageCredential id specified in `storageCredential` attribute:
@@ -477,6 +502,7 @@ export class Grants extends pulumi.CustomResource {
     }
 
     public readonly catalog!: pulumi.Output<string | undefined>;
+    public readonly credential!: pulumi.Output<string | undefined>;
     public readonly externalLocation!: pulumi.Output<string | undefined>;
     public readonly foreignConnection!: pulumi.Output<string | undefined>;
     public readonly function!: pulumi.Output<string | undefined>;
@@ -505,6 +531,7 @@ export class Grants extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GrantsState | undefined;
             resourceInputs["catalog"] = state ? state.catalog : undefined;
+            resourceInputs["credential"] = state ? state.credential : undefined;
             resourceInputs["externalLocation"] = state ? state.externalLocation : undefined;
             resourceInputs["foreignConnection"] = state ? state.foreignConnection : undefined;
             resourceInputs["function"] = state ? state.function : undefined;
@@ -524,6 +551,7 @@ export class Grants extends pulumi.CustomResource {
                 throw new Error("Missing required property 'grants'");
             }
             resourceInputs["catalog"] = args ? args.catalog : undefined;
+            resourceInputs["credential"] = args ? args.credential : undefined;
             resourceInputs["externalLocation"] = args ? args.externalLocation : undefined;
             resourceInputs["foreignConnection"] = args ? args.foreignConnection : undefined;
             resourceInputs["function"] = args ? args.function : undefined;
@@ -548,6 +576,7 @@ export class Grants extends pulumi.CustomResource {
  */
 export interface GrantsState {
     catalog?: pulumi.Input<string>;
+    credential?: pulumi.Input<string>;
     externalLocation?: pulumi.Input<string>;
     foreignConnection?: pulumi.Input<string>;
     function?: pulumi.Input<string>;
@@ -568,6 +597,7 @@ export interface GrantsState {
  */
 export interface GrantsArgs {
     catalog?: pulumi.Input<string>;
+    credential?: pulumi.Input<string>;
     externalLocation?: pulumi.Input<string>;
     foreignConnection?: pulumi.Input<string>;
     function?: pulumi.Input<string>;

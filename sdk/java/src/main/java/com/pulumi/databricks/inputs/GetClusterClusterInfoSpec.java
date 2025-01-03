@@ -242,6 +242,20 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.instancePoolId);
     }
 
+    @Import(name="isSingleNode")
+    private @Nullable Boolean isSingleNode;
+
+    public Optional<Boolean> isSingleNode() {
+        return Optional.ofNullable(this.isSingleNode);
+    }
+
+    @Import(name="kind")
+    private @Nullable String kind;
+
+    public Optional<String> kind() {
+        return Optional.ofNullable(this.kind);
+    }
+
     @Import(name="libraries")
     private @Nullable List<GetClusterClusterInfoSpecLibrary> libraries;
 
@@ -376,6 +390,13 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.sshPublicKeys);
     }
 
+    @Import(name="useMlRuntime")
+    private @Nullable Boolean useMlRuntime;
+
+    public Optional<Boolean> useMlRuntime() {
+        return Optional.ofNullable(this.useMlRuntime);
+    }
+
     @Import(name="workloadType")
     private @Nullable GetClusterClusterInfoSpecWorkloadType workloadType;
 
@@ -405,6 +426,8 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         this.idempotencyToken = $.idempotencyToken;
         this.initScripts = $.initScripts;
         this.instancePoolId = $.instancePoolId;
+        this.isSingleNode = $.isSingleNode;
+        this.kind = $.kind;
         this.libraries = $.libraries;
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
@@ -415,6 +438,7 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         this.sparkEnvVars = $.sparkEnvVars;
         this.sparkVersion = $.sparkVersion;
         this.sshPublicKeys = $.sshPublicKeys;
+        this.useMlRuntime = $.useMlRuntime;
         this.workloadType = $.workloadType;
     }
 
@@ -599,6 +623,16 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
             return this;
         }
 
+        public Builder isSingleNode(@Nullable Boolean isSingleNode) {
+            $.isSingleNode = isSingleNode;
+            return this;
+        }
+
+        public Builder kind(@Nullable String kind) {
+            $.kind = kind;
+            return this;
+        }
+
         public Builder libraries(@Nullable List<GetClusterClusterInfoSpecLibrary> libraries) {
             $.libraries = libraries;
             return this;
@@ -709,6 +743,11 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
          */
         public Builder sshPublicKeys(String... sshPublicKeys) {
             return sshPublicKeys(List.of(sshPublicKeys));
+        }
+
+        public Builder useMlRuntime(@Nullable Boolean useMlRuntime) {
+            $.useMlRuntime = useMlRuntime;
+            return this;
         }
 
         public Builder workloadType(@Nullable GetClusterClusterInfoSpecWorkloadType workloadType) {

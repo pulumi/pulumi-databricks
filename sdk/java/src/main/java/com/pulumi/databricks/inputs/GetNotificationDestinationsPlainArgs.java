@@ -4,9 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetNotificationDestinationsNotificationDestination;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,21 +27,6 @@ public final class GetNotificationDestinationsPlainArgs extends com.pulumi.resou
      */
     public Optional<String> displayNameContains() {
         return Optional.ofNullable(this.displayNameContains);
-    }
-
-    /**
-     * A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-     * 
-     */
-    @Import(name="notificationDestinations")
-    private @Nullable List<GetNotificationDestinationsNotificationDestination> notificationDestinations;
-
-    /**
-     * @return A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-     * 
-     */
-    public Optional<List<GetNotificationDestinationsNotificationDestination>> notificationDestinations() {
-        return Optional.ofNullable(this.notificationDestinations);
     }
 
     /**
@@ -75,7 +58,6 @@ public final class GetNotificationDestinationsPlainArgs extends com.pulumi.resou
 
     private GetNotificationDestinationsPlainArgs(GetNotificationDestinationsPlainArgs $) {
         this.displayNameContains = $.displayNameContains;
-        this.notificationDestinations = $.notificationDestinations;
         this.type = $.type;
     }
 
@@ -106,27 +88,6 @@ public final class GetNotificationDestinationsPlainArgs extends com.pulumi.resou
         public Builder displayNameContains(@Nullable String displayNameContains) {
             $.displayNameContains = displayNameContains;
             return this;
-        }
-
-        /**
-         * @param notificationDestinations A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
-        public Builder notificationDestinations(@Nullable List<GetNotificationDestinationsNotificationDestination> notificationDestinations) {
-            $.notificationDestinations = notificationDestinations;
-            return this;
-        }
-
-        /**
-         * @param notificationDestinations A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-         * 
-         * @return builder
-         * 
-         */
-        public Builder notificationDestinations(GetNotificationDestinationsNotificationDestination... notificationDestinations) {
-            return notificationDestinations(List.of(notificationDestinations));
         }
 
         /**

@@ -133,6 +133,12 @@ namespace Pulumi.Databricks
     public sealed class GetAwsBucketPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+        /// </summary>
+        [Input("awsPartition")]
+        public string? AwsPartition { get; set; }
+
+        /// <summary>
         /// AWS S3 Bucket name for which to generate the policy document.
         /// </summary>
         [Input("bucket", required: true)]
@@ -161,6 +167,12 @@ namespace Pulumi.Databricks
 
     public sealed class GetAwsBucketPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+        /// </summary>
+        [Input("awsPartition")]
+        public Input<string>? AwsPartition { get; set; }
+
         /// <summary>
         /// AWS S3 Bucket name for which to generate the policy document.
         /// </summary>
@@ -192,6 +204,7 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAwsBucketPolicyResult
     {
+        public readonly string? AwsPartition;
         public readonly string Bucket;
         public readonly string? DatabricksAccountId;
         public readonly string? DatabricksE2AccountId;
@@ -207,6 +220,8 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetAwsBucketPolicyResult(
+            string? awsPartition,
+
             string bucket,
 
             string? databricksAccountId,
@@ -219,6 +234,7 @@ namespace Pulumi.Databricks
 
             string json)
         {
+            AwsPartition = awsPartition;
             Bucket = bucket;
             DatabricksAccountId = databricksAccountId;
             DatabricksE2AccountId = databricksE2AccountId;

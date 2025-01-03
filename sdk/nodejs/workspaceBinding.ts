@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * By default, Databricks assigns the securable to all workspaces attached to the current metastore. By using `databricks.WorkspaceBinding`, the securable will be unassigned from all workspaces and only assigned explicitly using this resource.
  *
- * > To use this resource the securable must have its isolation mode set to `ISOLATED` (for databricks_catalog) or `ISOLATION_MODE_ISOLATED` (for  (for databricks.ExternalLocation or databricks_storage_credential) for the `isolationMode` attribute. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration), [this guide](https://docs.databricks.com/en/connect/unity-catalog/external-locations.html#workspace-binding) or [this guide](https://docs.databricks.com/en/connect/unity-catalog/storage-credentials.html#optional-assign-a-storage-credential-to-specific-workspaces).
+ * > To use this resource the securable must have its isolation mode set to `ISOLATED` (for databricks_catalog) or `ISOLATION_MODE_ISOLATED` (for  (for databricks_external_location, databricks.StorageCredential or databricks_credential) for the `isolationMode` attribute. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration), [this guide](https://docs.databricks.com/en/connect/unity-catalog/external-locations.html#workspace-binding) or [this guide](https://docs.databricks.com/en/connect/unity-catalog/storage-credentials.html#optional-assign-a-storage-credential-to-specific-workspaces).
  *
  * > If the securable's isolation mode was set to `ISOLATED` using Pulumi then the securable will have been automatically bound to the workspace it was created from.
  *
@@ -80,7 +80,7 @@ export class WorkspaceBinding extends pulumi.CustomResource {
      */
     public readonly securableName!: pulumi.Output<string>;
     /**
-     * Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
+     * Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
      */
     public readonly securableType!: pulumi.Output<string | undefined>;
     /**
@@ -136,7 +136,7 @@ export interface WorkspaceBindingState {
      */
     securableName?: pulumi.Input<string>;
     /**
-     * Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
+     * Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
      */
     securableType?: pulumi.Input<string>;
     /**
@@ -162,7 +162,7 @@ export interface WorkspaceBindingArgs {
      */
     securableName?: pulumi.Input<string>;
     /**
-     * Type of securable. Can be `catalog`, `external-location` or `storage-credential`. Default to `catalog`. Change forces creation of a new resource.
+     * Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
      */
     securableType?: pulumi.Input<string>;
     /**

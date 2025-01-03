@@ -22,6 +22,19 @@ __all__ = [
     'AlertConditionOperandColumn',
     'AlertConditionThreshold',
     'AlertConditionThresholdValue',
+    'AppActiveDeployment',
+    'AppActiveDeploymentDeploymentArtifacts',
+    'AppActiveDeploymentStatus',
+    'AppAppStatus',
+    'AppComputeStatus',
+    'AppPendingDeployment',
+    'AppPendingDeploymentDeploymentArtifacts',
+    'AppPendingDeploymentStatus',
+    'AppResource',
+    'AppResourceJob',
+    'AppResourceSecret',
+    'AppResourceServingEndpoint',
+    'AppResourceSqlWarehouse',
     'ArtifactAllowlistArtifactMatcher',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace',
     'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails',
@@ -65,6 +78,10 @@ __all__ = [
     'ClusterWorkloadType',
     'ClusterWorkloadTypeClients',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace',
+    'CredentialAwsIamRole',
+    'CredentialAzureManagedIdentity',
+    'CredentialAzureServicePrincipal',
+    'CredentialDatabricksGcpServiceAccount',
     'CustomAppIntegrationTokenAccessPolicy',
     'DefaultNamespaceSettingNamespace',
     'EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace',
@@ -165,12 +182,14 @@ __all__ = [
     'JobSparkPythonTask',
     'JobSparkSubmitTask',
     'JobTask',
+    'JobTaskCleanRoomsNotebookTask',
     'JobTaskConditionTask',
     'JobTaskDbtTask',
     'JobTaskDependsOn',
     'JobTaskEmailNotifications',
     'JobTaskForEachTask',
     'JobTaskForEachTaskTask',
+    'JobTaskForEachTaskTaskCleanRoomsNotebookTask',
     'JobTaskForEachTaskTaskConditionTask',
     'JobTaskForEachTaskTaskDbtTask',
     'JobTaskForEachTaskTaskDependsOn',
@@ -497,6 +516,34 @@ __all__ = [
     'VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn',
     'VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn',
     'VectorSearchIndexStatus',
+    'GetAppAppResult',
+    'GetAppAppActiveDeploymentResult',
+    'GetAppAppActiveDeploymentDeploymentArtifactsResult',
+    'GetAppAppActiveDeploymentStatusResult',
+    'GetAppAppAppStatusResult',
+    'GetAppAppComputeStatusResult',
+    'GetAppAppPendingDeploymentResult',
+    'GetAppAppPendingDeploymentDeploymentArtifactsResult',
+    'GetAppAppPendingDeploymentStatusResult',
+    'GetAppAppResourceResult',
+    'GetAppAppResourceJobResult',
+    'GetAppAppResourceSecretResult',
+    'GetAppAppResourceServingEndpointResult',
+    'GetAppAppResourceSqlWarehouseResult',
+    'GetAppsAppResult',
+    'GetAppsAppActiveDeploymentResult',
+    'GetAppsAppActiveDeploymentDeploymentArtifactsResult',
+    'GetAppsAppActiveDeploymentStatusResult',
+    'GetAppsAppAppStatusResult',
+    'GetAppsAppComputeStatusResult',
+    'GetAppsAppPendingDeploymentResult',
+    'GetAppsAppPendingDeploymentDeploymentArtifactsResult',
+    'GetAppsAppPendingDeploymentStatusResult',
+    'GetAppsAppResourceResult',
+    'GetAppsAppResourceJobResult',
+    'GetAppsAppResourceSecretResult',
+    'GetAppsAppResourceServingEndpointResult',
+    'GetAppsAppResourceSqlWarehouseResult',
     'GetCatalogCatalogInfoResult',
     'GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagResult',
     'GetCatalogCatalogInfoProvisioningInfoResult',
@@ -561,14 +608,14 @@ __all__ = [
     'GetExternalLocationExternalLocationInfoEncryptionDetailsResult',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsResult',
     'GetFunctionsFunctionResult',
-    'GetFunctionsFunctionInputParamsResult',
-    'GetFunctionsFunctionInputParamsParameterResult',
-    'GetFunctionsFunctionReturnParamsResult',
-    'GetFunctionsFunctionReturnParamsParameterResult',
-    'GetFunctionsFunctionRoutineDependenciesResult',
-    'GetFunctionsFunctionRoutineDependenciesDependencyResult',
-    'GetFunctionsFunctionRoutineDependenciesDependencyFunctionResult',
-    'GetFunctionsFunctionRoutineDependenciesDependencyTableResult',
+    'GetFunctionsFunctionInputParamResult',
+    'GetFunctionsFunctionInputParamParameterResult',
+    'GetFunctionsFunctionReturnParamResult',
+    'GetFunctionsFunctionReturnParamParameterResult',
+    'GetFunctionsFunctionRoutineDependencyResult',
+    'GetFunctionsFunctionRoutineDependencyDependencyResult',
+    'GetFunctionsFunctionRoutineDependencyDependencyFunctionResult',
+    'GetFunctionsFunctionRoutineDependencyDependencyTableResult',
     'GetInstancePoolPoolInfoResult',
     'GetInstancePoolPoolInfoAwsAttributesResult',
     'GetInstancePoolPoolInfoAzureAttributesResult',
@@ -780,12 +827,49 @@ __all__ = [
     'GetMlflowModelLatestVersionResult',
     'GetMlflowModelLatestVersionTagResult',
     'GetMlflowModelTagResult',
+    'GetMwsNetworkConnectivityConfigEgressConfigResult',
+    'GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesResult',
+    'GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleResult',
+    'GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleResult',
+    'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesResult',
+    'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleResult',
     'GetNotebookPathsNotebookPathListResult',
     'GetNotificationDestinationsNotificationDestinationResult',
     'GetRegisteredModelModelInfoResult',
     'GetRegisteredModelModelInfoAliasResult',
+    'GetRegisteredModelVersionsModelVersionResult',
+    'GetRegisteredModelVersionsModelVersionAliasResult',
+    'GetRegisteredModelVersionsModelVersionModelVersionDependencyResult',
+    'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResult',
+    'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionResult',
+    'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableResult',
     'GetSchemaSchemaInfoResult',
     'GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagResult',
+    'GetServingEndpointsEndpointResult',
+    'GetServingEndpointsEndpointAiGatewayResult',
+    'GetServingEndpointsEndpointAiGatewayGuardrailResult',
+    'GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyResult',
+    'GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiResult',
+    'GetServingEndpointsEndpointAiGatewayGuardrailOutputResult',
+    'GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiResult',
+    'GetServingEndpointsEndpointAiGatewayInferenceTableConfigResult',
+    'GetServingEndpointsEndpointAiGatewayRateLimitResult',
+    'GetServingEndpointsEndpointAiGatewayUsageTrackingConfigResult',
+    'GetServingEndpointsEndpointConfigResult',
+    'GetServingEndpointsEndpointConfigServedEntityResult',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelResult',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigResult',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigResult',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigResult',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigResult',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigResult',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigResult',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigResult',
+    'GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigResult',
+    'GetServingEndpointsEndpointConfigServedEntityFoundationModelResult',
+    'GetServingEndpointsEndpointConfigServedModelResult',
+    'GetServingEndpointsEndpointStateResult',
+    'GetServingEndpointsEndpointTagResult',
     'GetShareObjectResult',
     'GetShareObjectPartitionResult',
     'GetShareObjectPartitionValueResult',
@@ -1052,6 +1136,634 @@ class AlertConditionThresholdValue(dict):
         string value to compare against string results.
         """
         return pulumi.get(self, "string_value")
+
+
+@pulumi.output_type
+class AppActiveDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "deploymentArtifacts":
+            suggest = "deployment_artifacts"
+        elif key == "deploymentId":
+            suggest = "deployment_id"
+        elif key == "sourceCodePath":
+            suggest = "source_code_path"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppActiveDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppActiveDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppActiveDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: Optional[str] = None,
+                 creator: Optional[str] = None,
+                 deployment_artifacts: Optional['outputs.AppActiveDeploymentDeploymentArtifacts'] = None,
+                 deployment_id: Optional[str] = None,
+                 mode: Optional[str] = None,
+                 source_code_path: Optional[str] = None,
+                 status: Optional['outputs.AppActiveDeploymentStatus'] = None,
+                 update_time: Optional[str] = None):
+        """
+        :param str create_time: The creation time of the app.
+        :param str creator: The email of the user that created the app.
+        :param str update_time: The update time of the app.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if creator is not None:
+            pulumi.set(__self__, "creator", creator)
+        if deployment_artifacts is not None:
+            pulumi.set(__self__, "deployment_artifacts", deployment_artifacts)
+        if deployment_id is not None:
+            pulumi.set(__self__, "deployment_id", deployment_id)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[str]:
+        """
+        The creation time of the app.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> Optional[str]:
+        """
+        The email of the user that created the app.
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="deploymentArtifacts")
+    def deployment_artifacts(self) -> Optional['outputs.AppActiveDeploymentDeploymentArtifacts']:
+        return pulumi.get(self, "deployment_artifacts")
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> Optional[str]:
+        return pulumi.get(self, "deployment_id")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> Optional[str]:
+        return pulumi.get(self, "source_code_path")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional['outputs.AppActiveDeploymentStatus']:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[str]:
+        """
+        The update time of the app.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class AppActiveDeploymentDeploymentArtifacts(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceCodePath":
+            suggest = "source_code_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppActiveDeploymentDeploymentArtifacts. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppActiveDeploymentDeploymentArtifacts.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppActiveDeploymentDeploymentArtifacts.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_code_path: Optional[str] = None):
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
+
+    @property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> Optional[str]:
+        return pulumi.get(self, "source_code_path")
+
+
+@pulumi.output_type
+class AppActiveDeploymentStatus(dict):
+    def __init__(__self__, *,
+                 message: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str message: Application status message
+        :param str state: State of the application.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        Application status message
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        State of the application.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class AppAppStatus(dict):
+    def __init__(__self__, *,
+                 message: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str message: Application status message
+        :param str state: State of the application.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        Application status message
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        State of the application.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class AppComputeStatus(dict):
+    def __init__(__self__, *,
+                 message: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str message: Application status message
+        :param str state: State of the application.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        Application status message
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        State of the application.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class AppPendingDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "deploymentArtifacts":
+            suggest = "deployment_artifacts"
+        elif key == "deploymentId":
+            suggest = "deployment_id"
+        elif key == "sourceCodePath":
+            suggest = "source_code_path"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppPendingDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppPendingDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppPendingDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: Optional[str] = None,
+                 creator: Optional[str] = None,
+                 deployment_artifacts: Optional['outputs.AppPendingDeploymentDeploymentArtifacts'] = None,
+                 deployment_id: Optional[str] = None,
+                 mode: Optional[str] = None,
+                 source_code_path: Optional[str] = None,
+                 status: Optional['outputs.AppPendingDeploymentStatus'] = None,
+                 update_time: Optional[str] = None):
+        """
+        :param str create_time: The creation time of the app.
+        :param str creator: The email of the user that created the app.
+        :param str update_time: The update time of the app.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if creator is not None:
+            pulumi.set(__self__, "creator", creator)
+        if deployment_artifacts is not None:
+            pulumi.set(__self__, "deployment_artifacts", deployment_artifacts)
+        if deployment_id is not None:
+            pulumi.set(__self__, "deployment_id", deployment_id)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[str]:
+        """
+        The creation time of the app.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> Optional[str]:
+        """
+        The email of the user that created the app.
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="deploymentArtifacts")
+    def deployment_artifacts(self) -> Optional['outputs.AppPendingDeploymentDeploymentArtifacts']:
+        return pulumi.get(self, "deployment_artifacts")
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> Optional[str]:
+        return pulumi.get(self, "deployment_id")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> Optional[str]:
+        return pulumi.get(self, "source_code_path")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional['outputs.AppPendingDeploymentStatus']:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[str]:
+        """
+        The update time of the app.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class AppPendingDeploymentDeploymentArtifacts(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceCodePath":
+            suggest = "source_code_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppPendingDeploymentDeploymentArtifacts. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppPendingDeploymentDeploymentArtifacts.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppPendingDeploymentDeploymentArtifacts.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_code_path: Optional[str] = None):
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
+
+    @property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> Optional[str]:
+        return pulumi.get(self, "source_code_path")
+
+
+@pulumi.output_type
+class AppPendingDeploymentStatus(dict):
+    def __init__(__self__, *,
+                 message: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str message: Application status message
+        :param str state: State of the application.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        Application status message
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        State of the application.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class AppResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "servingEndpoint":
+            suggest = "serving_endpoint"
+        elif key == "sqlWarehouse":
+            suggest = "sql_warehouse"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 description: Optional[str] = None,
+                 job: Optional['outputs.AppResourceJob'] = None,
+                 secret: Optional['outputs.AppResourceSecret'] = None,
+                 serving_endpoint: Optional['outputs.AppResourceServingEndpoint'] = None,
+                 sql_warehouse: Optional['outputs.AppResourceSqlWarehouse'] = None):
+        """
+        :param str name: The name of the resource.
+        :param str description: The description of the resource.
+               
+               Exactly one of the following attributes must be provided:
+        :param 'AppResourceJobArgs' job: attribute
+        :param 'AppResourceSecretArgs' secret: attribute
+        :param 'AppResourceServingEndpointArgs' serving_endpoint: attribute
+        :param 'AppResourceSqlWarehouseArgs' sql_warehouse: attribute
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if job is not None:
+            pulumi.set(__self__, "job", job)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if serving_endpoint is not None:
+            pulumi.set(__self__, "serving_endpoint", serving_endpoint)
+        if sql_warehouse is not None:
+            pulumi.set(__self__, "sql_warehouse", sql_warehouse)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the resource.
+
+        Exactly one of the following attributes must be provided:
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def job(self) -> Optional['outputs.AppResourceJob']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "job")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional['outputs.AppResourceSecret']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="servingEndpoint")
+    def serving_endpoint(self) -> Optional['outputs.AppResourceServingEndpoint']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "serving_endpoint")
+
+    @property
+    @pulumi.getter(name="sqlWarehouse")
+    def sql_warehouse(self) -> Optional['outputs.AppResourceSqlWarehouse']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "sql_warehouse")
+
+
+@pulumi.output_type
+class AppResourceJob(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 permission: str):
+        """
+        :param str id: Id of the job to grant permission on.
+        :param str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the job to grant permission on.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class AppResourceSecret(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 permission: str,
+                 scope: str):
+        """
+        :param str key: Key of the secret to grant permission on.
+        :param str permission: Permission to grant on the secret scope. For secrets, only one permission is allowed. Permission must be one of: `READ`, `WRITE`, `MANAGE`.
+        :param str scope: Scope of the secret to grant permission on.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key of the secret to grant permission on.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permission to grant on the secret scope. For secrets, only one permission is allowed. Permission must be one of: `READ`, `WRITE`, `MANAGE`.
+        """
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        Scope of the secret to grant permission on.
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class AppResourceServingEndpoint(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 permission: str):
+        """
+        :param str name: Name of the serving endpoint to grant permission on.
+        :param str permission: Permission to grant on the serving endpoint. Supported permissions are: `CAN_MANAGE`, `CAN_QUERY`, `CAN_VIEW`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the serving endpoint to grant permission on.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permission to grant on the serving endpoint. Supported permissions are: `CAN_MANAGE`, `CAN_QUERY`, `CAN_VIEW`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class AppResourceSqlWarehouse(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 permission: str):
+        """
+        :param str id: Id of the SQL warehouse to grant permission on.
+        :param str permission: Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the SQL warehouse to grant permission on.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
+        """
+        return pulumi.get(self, "permission")
 
 
 @pulumi.output_type
@@ -3149,6 +3861,256 @@ class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspac
 
 
 @pulumi.output_type
+class CredentialAwsIamRole(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalId":
+            suggest = "external_id"
+        elif key == "roleArn":
+            suggest = "role_arn"
+        elif key == "unityCatalogIamArn":
+            suggest = "unity_catalog_iam_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CredentialAwsIamRole. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CredentialAwsIamRole.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CredentialAwsIamRole.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 external_id: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 unity_catalog_iam_arn: Optional[str] = None):
+        """
+        :param str role_arn: The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+               
+               `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over `azure_service_principal`):
+        """
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if unity_catalog_iam_arn is not None:
+            pulumi.set(__self__, "unity_catalog_iam_arn", unity_catalog_iam_arn)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+
+        `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over `azure_service_principal`):
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="unityCatalogIamArn")
+    def unity_catalog_iam_arn(self) -> Optional[str]:
+        return pulumi.get(self, "unity_catalog_iam_arn")
+
+
+@pulumi.output_type
+class CredentialAzureManagedIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessConnectorId":
+            suggest = "access_connector_id"
+        elif key == "credentialId":
+            suggest = "credential_id"
+        elif key == "managedIdentityId":
+            suggest = "managed_identity_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CredentialAzureManagedIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CredentialAzureManagedIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CredentialAzureManagedIdentity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_connector_id: str,
+                 credential_id: Optional[str] = None,
+                 managed_identity_id: Optional[str] = None):
+        """
+        :param str access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+        :param str credential_id: Unique ID of the credential.
+        :param str managed_identity_id: The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+               
+               `azure_service_principal` optional configuration block to use service principal as credential details for Azure. Only applicable when purpose is `STORAGE` (Legacy):
+        """
+        pulumi.set(__self__, "access_connector_id", access_connector_id)
+        if credential_id is not None:
+            pulumi.set(__self__, "credential_id", credential_id)
+        if managed_identity_id is not None:
+            pulumi.set(__self__, "managed_identity_id", managed_identity_id)
+
+    @property
+    @pulumi.getter(name="accessConnectorId")
+    def access_connector_id(self) -> str:
+        """
+        The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+        """
+        return pulumi.get(self, "access_connector_id")
+
+    @property
+    @pulumi.getter(name="credentialId")
+    def credential_id(self) -> Optional[str]:
+        """
+        Unique ID of the credential.
+        """
+        return pulumi.get(self, "credential_id")
+
+    @property
+    @pulumi.getter(name="managedIdentityId")
+    def managed_identity_id(self) -> Optional[str]:
+        """
+        The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+
+        `azure_service_principal` optional configuration block to use service principal as credential details for Azure. Only applicable when purpose is `STORAGE` (Legacy):
+        """
+        return pulumi.get(self, "managed_identity_id")
+
+
+@pulumi.output_type
+class CredentialAzureServicePrincipal(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationId":
+            suggest = "application_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "directoryId":
+            suggest = "directory_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CredentialAzureServicePrincipal. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CredentialAzureServicePrincipal.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CredentialAzureServicePrincipal.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 application_id: str,
+                 client_secret: str,
+                 directory_id: str):
+        """
+        :param str application_id: The application ID of the application registration within the referenced AAD tenant
+        :param str client_secret: The client secret generated for the above app ID in AAD. **This field is redacted on output**
+               
+               `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+        :param str directory_id: The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+        """
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "directory_id", directory_id)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> str:
+        """
+        The application ID of the application registration within the referenced AAD tenant
+        """
+        return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> str:
+        """
+        The client secret generated for the above app ID in AAD. **This field is redacted on output**
+
+        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="directoryId")
+    def directory_id(self) -> str:
+        """
+        The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+        """
+        return pulumi.get(self, "directory_id")
+
+
+@pulumi.output_type
+class CredentialDatabricksGcpServiceAccount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "credentialId":
+            suggest = "credential_id"
+        elif key == "privateKeyId":
+            suggest = "private_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CredentialDatabricksGcpServiceAccount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CredentialDatabricksGcpServiceAccount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CredentialDatabricksGcpServiceAccount.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 credential_id: Optional[str] = None,
+                 email: Optional[str] = None,
+                 private_key_id: Optional[str] = None):
+        """
+        :param str credential_id: Unique ID of the credential.
+        :param str email: The email of the GCP service account created, to be granted access to relevant buckets.
+        """
+        if credential_id is not None:
+            pulumi.set(__self__, "credential_id", credential_id)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+
+    @property
+    @pulumi.getter(name="credentialId")
+    def credential_id(self) -> Optional[str]:
+        """
+        Unique ID of the credential.
+        """
+        return pulumi.get(self, "credential_id")
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
+        """
+        The email of the GCP service account created, to be granted access to relevant buckets.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "private_key_id")
+
+
+@pulumi.output_type
 class CustomAppIntegrationTokenAccessPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4579,6 +5541,8 @@ class JobJobClusterNewCluster(dict):
             suggest = "init_scripts"
         elif key == "instancePoolId":
             suggest = "instance_pool_id"
+        elif key == "isSingleNode":
+            suggest = "is_single_node"
         elif key == "nodeTypeId":
             suggest = "node_type_id"
         elif key == "numWorkers":
@@ -4595,6 +5559,8 @@ class JobJobClusterNewCluster(dict):
             suggest = "spark_env_vars"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
+        elif key == "useMlRuntime":
+            suggest = "use_ml_runtime"
         elif key == "workloadType":
             suggest = "workload_type"
 
@@ -4630,6 +5596,8 @@ class JobJobClusterNewCluster(dict):
                  idempotency_token: Optional[str] = None,
                  init_scripts: Optional[Sequence['outputs.JobJobClusterNewClusterInitScript']] = None,
                  instance_pool_id: Optional[str] = None,
+                 is_single_node: Optional[bool] = None,
+                 kind: Optional[str] = None,
                  libraries: Optional[Sequence['outputs.JobJobClusterNewClusterLibrary']] = None,
                  node_type_id: Optional[str] = None,
                  num_workers: Optional[int] = None,
@@ -4639,6 +5607,7 @@ class JobJobClusterNewCluster(dict):
                  spark_conf: Optional[Mapping[str, str]] = None,
                  spark_env_vars: Optional[Mapping[str, str]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
+                 use_ml_runtime: Optional[bool] = None,
                  workload_type: Optional['outputs.JobJobClusterNewClusterWorkloadType'] = None):
         """
         :param Sequence['JobJobClusterNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -4683,6 +5652,10 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if is_single_node is not None:
+            pulumi.set(__self__, "is_single_node", is_single_node)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if libraries is not None:
             pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
@@ -4701,6 +5674,8 @@ class JobJobClusterNewCluster(dict):
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if use_ml_runtime is not None:
+            pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -4805,6 +5780,16 @@ class JobJobClusterNewCluster(dict):
         return pulumi.get(self, "instance_pool_id")
 
     @property
+    @pulumi.getter(name="isSingleNode")
+    def is_single_node(self) -> Optional[bool]:
+        return pulumi.get(self, "is_single_node")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+    @property
     @pulumi.getter
     def libraries(self) -> Optional[Sequence['outputs.JobJobClusterNewClusterLibrary']]:
         """
@@ -4851,6 +5836,11 @@ class JobJobClusterNewCluster(dict):
     @pulumi.getter(name="sshPublicKeys")
     def ssh_public_keys(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ssh_public_keys")
+
+    @property
+    @pulumi.getter(name="useMlRuntime")
+    def use_ml_runtime(self) -> Optional[bool]:
+        return pulumi.get(self, "use_ml_runtime")
 
     @property
     @pulumi.getter(name="workloadType")
@@ -6017,6 +7007,8 @@ class JobNewCluster(dict):
             suggest = "init_scripts"
         elif key == "instancePoolId":
             suggest = "instance_pool_id"
+        elif key == "isSingleNode":
+            suggest = "is_single_node"
         elif key == "nodeTypeId":
             suggest = "node_type_id"
         elif key == "numWorkers":
@@ -6033,6 +7025,8 @@ class JobNewCluster(dict):
             suggest = "spark_env_vars"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
+        elif key == "useMlRuntime":
+            suggest = "use_ml_runtime"
         elif key == "workloadType":
             suggest = "workload_type"
 
@@ -6068,6 +7062,8 @@ class JobNewCluster(dict):
                  idempotency_token: Optional[str] = None,
                  init_scripts: Optional[Sequence['outputs.JobNewClusterInitScript']] = None,
                  instance_pool_id: Optional[str] = None,
+                 is_single_node: Optional[bool] = None,
+                 kind: Optional[str] = None,
                  libraries: Optional[Sequence['outputs.JobNewClusterLibrary']] = None,
                  node_type_id: Optional[str] = None,
                  num_workers: Optional[int] = None,
@@ -6077,6 +7073,7 @@ class JobNewCluster(dict):
                  spark_conf: Optional[Mapping[str, str]] = None,
                  spark_env_vars: Optional[Mapping[str, str]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
+                 use_ml_runtime: Optional[bool] = None,
                  workload_type: Optional['outputs.JobNewClusterWorkloadType'] = None):
         """
         :param Sequence['JobNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -6121,6 +7118,10 @@ class JobNewCluster(dict):
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if is_single_node is not None:
+            pulumi.set(__self__, "is_single_node", is_single_node)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if libraries is not None:
             pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
@@ -6139,6 +7140,8 @@ class JobNewCluster(dict):
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if use_ml_runtime is not None:
+            pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -6243,6 +7246,16 @@ class JobNewCluster(dict):
         return pulumi.get(self, "instance_pool_id")
 
     @property
+    @pulumi.getter(name="isSingleNode")
+    def is_single_node(self) -> Optional[bool]:
+        return pulumi.get(self, "is_single_node")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+    @property
     @pulumi.getter
     def libraries(self) -> Optional[Sequence['outputs.JobNewClusterLibrary']]:
         """
@@ -6289,6 +7302,11 @@ class JobNewCluster(dict):
     @pulumi.getter(name="sshPublicKeys")
     def ssh_public_keys(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ssh_public_keys")
+
+    @property
+    @pulumi.getter(name="useMlRuntime")
+    def use_ml_runtime(self) -> Optional[bool]:
+        return pulumi.get(self, "use_ml_runtime")
 
     @property
     @pulumi.getter(name="workloadType")
@@ -7918,6 +8936,8 @@ class JobTask(dict):
         suggest = None
         if key == "taskKey":
             suggest = "task_key"
+        elif key == "cleanRoomsNotebookTask":
+            suggest = "clean_rooms_notebook_task"
         elif key == "conditionTask":
             suggest = "condition_task"
         elif key == "dbtTask":
@@ -7982,6 +9002,7 @@ class JobTask(dict):
 
     def __init__(__self__, *,
                  task_key: str,
+                 clean_rooms_notebook_task: Optional['outputs.JobTaskCleanRoomsNotebookTask'] = None,
                  condition_task: Optional['outputs.JobTaskConditionTask'] = None,
                  dbt_task: Optional['outputs.JobTaskDbtTask'] = None,
                  depends_ons: Optional[Sequence['outputs.JobTaskDependsOn']] = None,
@@ -8034,6 +9055,8 @@ class JobTask(dict):
                > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         pulumi.set(__self__, "task_key", task_key)
+        if clean_rooms_notebook_task is not None:
+            pulumi.set(__self__, "clean_rooms_notebook_task", clean_rooms_notebook_task)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
         if dbt_task is not None:
@@ -8099,6 +9122,11 @@ class JobTask(dict):
         * `*_task` - (Required) one of the specific task blocks described below:
         """
         return pulumi.get(self, "task_key")
+
+    @property
+    @pulumi.getter(name="cleanRoomsNotebookTask")
+    def clean_rooms_notebook_task(self) -> Optional['outputs.JobTaskCleanRoomsNotebookTask']:
+        return pulumi.get(self, "clean_rooms_notebook_task")
 
     @property
     @pulumi.getter(name="conditionTask")
@@ -8292,6 +9320,62 @@ class JobTask(dict):
         > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "webhook_notifications")
+
+
+@pulumi.output_type
+class JobTaskCleanRoomsNotebookTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cleanRoomName":
+            suggest = "clean_room_name"
+        elif key == "notebookName":
+            suggest = "notebook_name"
+        elif key == "notebookBaseParameters":
+            suggest = "notebook_base_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskCleanRoomsNotebookTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskCleanRoomsNotebookTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskCleanRoomsNotebookTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 clean_room_name: str,
+                 notebook_name: str,
+                 etag: Optional[str] = None,
+                 notebook_base_parameters: Optional[Mapping[str, str]] = None):
+        pulumi.set(__self__, "clean_room_name", clean_room_name)
+        pulumi.set(__self__, "notebook_name", notebook_name)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if notebook_base_parameters is not None:
+            pulumi.set(__self__, "notebook_base_parameters", notebook_base_parameters)
+
+    @property
+    @pulumi.getter(name="cleanRoomName")
+    def clean_room_name(self) -> str:
+        return pulumi.get(self, "clean_room_name")
+
+    @property
+    @pulumi.getter(name="notebookName")
+    def notebook_name(self) -> str:
+        return pulumi.get(self, "notebook_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[str]:
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="notebookBaseParameters")
+    def notebook_base_parameters(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "notebook_base_parameters")
 
 
 @pulumi.output_type
@@ -8662,6 +9746,8 @@ class JobTaskForEachTaskTask(dict):
         suggest = None
         if key == "taskKey":
             suggest = "task_key"
+        elif key == "cleanRoomsNotebookTask":
+            suggest = "clean_rooms_notebook_task"
         elif key == "conditionTask":
             suggest = "condition_task"
         elif key == "dbtTask":
@@ -8724,6 +9810,7 @@ class JobTaskForEachTaskTask(dict):
 
     def __init__(__self__, *,
                  task_key: str,
+                 clean_rooms_notebook_task: Optional['outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask'] = None,
                  condition_task: Optional['outputs.JobTaskForEachTaskTaskConditionTask'] = None,
                  dbt_task: Optional['outputs.JobTaskForEachTaskTaskDbtTask'] = None,
                  depends_ons: Optional[Sequence['outputs.JobTaskForEachTaskTaskDependsOn']] = None,
@@ -8775,6 +9862,8 @@ class JobTaskForEachTaskTask(dict):
                > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         pulumi.set(__self__, "task_key", task_key)
+        if clean_rooms_notebook_task is not None:
+            pulumi.set(__self__, "clean_rooms_notebook_task", clean_rooms_notebook_task)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
         if dbt_task is not None:
@@ -8838,6 +9927,11 @@ class JobTaskForEachTaskTask(dict):
         * `*_task` - (Required) one of the specific task blocks described below:
         """
         return pulumi.get(self, "task_key")
+
+    @property
+    @pulumi.getter(name="cleanRoomsNotebookTask")
+    def clean_rooms_notebook_task(self) -> Optional['outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask']:
+        return pulumi.get(self, "clean_rooms_notebook_task")
 
     @property
     @pulumi.getter(name="conditionTask")
@@ -9026,6 +10120,62 @@ class JobTaskForEachTaskTask(dict):
         > If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
         """
         return pulumi.get(self, "webhook_notifications")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskCleanRoomsNotebookTask(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cleanRoomName":
+            suggest = "clean_room_name"
+        elif key == "notebookName":
+            suggest = "notebook_name"
+        elif key == "notebookBaseParameters":
+            suggest = "notebook_base_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskCleanRoomsNotebookTask. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskForEachTaskTaskCleanRoomsNotebookTask.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskForEachTaskTaskCleanRoomsNotebookTask.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 clean_room_name: str,
+                 notebook_name: str,
+                 etag: Optional[str] = None,
+                 notebook_base_parameters: Optional[Mapping[str, str]] = None):
+        pulumi.set(__self__, "clean_room_name", clean_room_name)
+        pulumi.set(__self__, "notebook_name", notebook_name)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if notebook_base_parameters is not None:
+            pulumi.set(__self__, "notebook_base_parameters", notebook_base_parameters)
+
+    @property
+    @pulumi.getter(name="cleanRoomName")
+    def clean_room_name(self) -> str:
+        return pulumi.get(self, "clean_room_name")
+
+    @property
+    @pulumi.getter(name="notebookName")
+    def notebook_name(self) -> str:
+        return pulumi.get(self, "notebook_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[str]:
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="notebookBaseParameters")
+    def notebook_base_parameters(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "notebook_base_parameters")
 
 
 @pulumi.output_type
@@ -9578,6 +10728,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             suggest = "init_scripts"
         elif key == "instancePoolId":
             suggest = "instance_pool_id"
+        elif key == "isSingleNode":
+            suggest = "is_single_node"
         elif key == "nodeTypeId":
             suggest = "node_type_id"
         elif key == "numWorkers":
@@ -9594,6 +10746,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             suggest = "spark_env_vars"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
+        elif key == "useMlRuntime":
+            suggest = "use_ml_runtime"
         elif key == "workloadType":
             suggest = "workload_type"
 
@@ -9629,6 +10783,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
                  idempotency_token: Optional[str] = None,
                  init_scripts: Optional[Sequence['outputs.JobTaskForEachTaskTaskNewClusterInitScript']] = None,
                  instance_pool_id: Optional[str] = None,
+                 is_single_node: Optional[bool] = None,
+                 kind: Optional[str] = None,
                  libraries: Optional[Sequence['outputs.JobTaskForEachTaskTaskNewClusterLibrary']] = None,
                  node_type_id: Optional[str] = None,
                  num_workers: Optional[int] = None,
@@ -9638,6 +10794,7 @@ class JobTaskForEachTaskTaskNewCluster(dict):
                  spark_conf: Optional[Mapping[str, str]] = None,
                  spark_env_vars: Optional[Mapping[str, str]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
+                 use_ml_runtime: Optional[bool] = None,
                  workload_type: Optional['outputs.JobTaskForEachTaskTaskNewClusterWorkloadType'] = None):
         """
         :param Sequence['JobTaskForEachTaskTaskNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -9682,6 +10839,10 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if is_single_node is not None:
+            pulumi.set(__self__, "is_single_node", is_single_node)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if libraries is not None:
             pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
@@ -9700,6 +10861,8 @@ class JobTaskForEachTaskTaskNewCluster(dict):
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if use_ml_runtime is not None:
+            pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -9804,6 +10967,16 @@ class JobTaskForEachTaskTaskNewCluster(dict):
         return pulumi.get(self, "instance_pool_id")
 
     @property
+    @pulumi.getter(name="isSingleNode")
+    def is_single_node(self) -> Optional[bool]:
+        return pulumi.get(self, "is_single_node")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+    @property
     @pulumi.getter
     def libraries(self) -> Optional[Sequence['outputs.JobTaskForEachTaskTaskNewClusterLibrary']]:
         """
@@ -9850,6 +11023,11 @@ class JobTaskForEachTaskTaskNewCluster(dict):
     @pulumi.getter(name="sshPublicKeys")
     def ssh_public_keys(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ssh_public_keys")
+
+    @property
+    @pulumi.getter(name="useMlRuntime")
+    def use_ml_runtime(self) -> Optional[bool]:
+        return pulumi.get(self, "use_ml_runtime")
 
     @property
     @pulumi.getter(name="workloadType")
@@ -12309,6 +13487,8 @@ class JobTaskNewCluster(dict):
             suggest = "init_scripts"
         elif key == "instancePoolId":
             suggest = "instance_pool_id"
+        elif key == "isSingleNode":
+            suggest = "is_single_node"
         elif key == "nodeTypeId":
             suggest = "node_type_id"
         elif key == "numWorkers":
@@ -12325,6 +13505,8 @@ class JobTaskNewCluster(dict):
             suggest = "spark_env_vars"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
+        elif key == "useMlRuntime":
+            suggest = "use_ml_runtime"
         elif key == "workloadType":
             suggest = "workload_type"
 
@@ -12360,6 +13542,8 @@ class JobTaskNewCluster(dict):
                  idempotency_token: Optional[str] = None,
                  init_scripts: Optional[Sequence['outputs.JobTaskNewClusterInitScript']] = None,
                  instance_pool_id: Optional[str] = None,
+                 is_single_node: Optional[bool] = None,
+                 kind: Optional[str] = None,
                  libraries: Optional[Sequence['outputs.JobTaskNewClusterLibrary']] = None,
                  node_type_id: Optional[str] = None,
                  num_workers: Optional[int] = None,
@@ -12369,6 +13553,7 @@ class JobTaskNewCluster(dict):
                  spark_conf: Optional[Mapping[str, str]] = None,
                  spark_env_vars: Optional[Mapping[str, str]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
+                 use_ml_runtime: Optional[bool] = None,
                  workload_type: Optional['outputs.JobTaskNewClusterWorkloadType'] = None):
         """
         :param Sequence['JobTaskNewClusterLibraryArgs'] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
@@ -12413,6 +13598,10 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if is_single_node is not None:
+            pulumi.set(__self__, "is_single_node", is_single_node)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if libraries is not None:
             pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
@@ -12431,6 +13620,8 @@ class JobTaskNewCluster(dict):
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if use_ml_runtime is not None:
+            pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -12535,6 +13726,16 @@ class JobTaskNewCluster(dict):
         return pulumi.get(self, "instance_pool_id")
 
     @property
+    @pulumi.getter(name="isSingleNode")
+    def is_single_node(self) -> Optional[bool]:
+        return pulumi.get(self, "is_single_node")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+    @property
     @pulumi.getter
     def libraries(self) -> Optional[Sequence['outputs.JobTaskNewClusterLibrary']]:
         """
@@ -12581,6 +13782,11 @@ class JobTaskNewCluster(dict):
     @pulumi.getter(name="sshPublicKeys")
     def ssh_public_keys(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ssh_public_keys")
+
+    @property
+    @pulumi.getter(name="useMlRuntime")
+    def use_ml_runtime(self) -> Optional[bool]:
+        return pulumi.get(self, "use_ml_runtime")
 
     @property
     @pulumi.getter(name="workloadType")
@@ -22226,8 +23432,8 @@ class PipelineRestartWindow(dict):
         suggest = None
         if key == "startHour":
             suggest = "start_hour"
-        elif key == "daysOfWeek":
-            suggest = "days_of_week"
+        elif key == "daysOfWeeks":
+            suggest = "days_of_weeks"
         elif key == "timeZoneId":
             suggest = "time_zone_id"
 
@@ -22244,11 +23450,11 @@ class PipelineRestartWindow(dict):
 
     def __init__(__self__, *,
                  start_hour: int,
-                 days_of_week: Optional[str] = None,
+                 days_of_weeks: Optional[Sequence[str]] = None,
                  time_zone_id: Optional[str] = None):
         pulumi.set(__self__, "start_hour", start_hour)
-        if days_of_week is not None:
-            pulumi.set(__self__, "days_of_week", days_of_week)
+        if days_of_weeks is not None:
+            pulumi.set(__self__, "days_of_weeks", days_of_weeks)
         if time_zone_id is not None:
             pulumi.set(__self__, "time_zone_id", time_zone_id)
 
@@ -22258,9 +23464,9 @@ class PipelineRestartWindow(dict):
         return pulumi.get(self, "start_hour")
 
     @property
-    @pulumi.getter(name="daysOfWeek")
-    def days_of_week(self) -> Optional[str]:
-        return pulumi.get(self, "days_of_week")
+    @pulumi.getter(name="daysOfWeeks")
+    def days_of_weeks(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "days_of_weeks")
 
     @property
     @pulumi.getter(name="timeZoneId")
@@ -26012,6 +27218,1358 @@ class VectorSearchIndexStatus(dict):
 
 
 @pulumi.output_type
+class GetAppAppResult(dict):
+    def __init__(__self__, *,
+                 active_deployment: 'outputs.GetAppAppActiveDeploymentResult',
+                 app_status: 'outputs.GetAppAppAppStatusResult',
+                 compute_status: 'outputs.GetAppAppComputeStatusResult',
+                 create_time: str,
+                 creator: str,
+                 default_source_code_path: str,
+                 name: str,
+                 pending_deployment: 'outputs.GetAppAppPendingDeploymentResult',
+                 service_principal_client_id: str,
+                 service_principal_id: int,
+                 service_principal_name: str,
+                 update_time: str,
+                 updater: str,
+                 url: str,
+                 description: Optional[str] = None,
+                 resources: Optional[Sequence['outputs.GetAppAppResourceResult']] = None):
+        """
+        :param 'GetAppAppAppStatusArgs' app_status: attribute
+        :param 'GetAppAppComputeStatusArgs' compute_status: attribute
+        :param str create_time: The creation time of the app.
+        :param str creator: The email of the user that created the app.
+        :param str default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        :param str name: The name of the app.
+        :param int service_principal_id: id of the app service principal
+        :param str service_principal_name: name of the app service principal
+        :param str update_time: The update time of the app.
+        :param str updater: The email of the user that last updated the app.
+        :param str url: The URL of the app once it is deployed.
+        :param str description: The description of the resource.
+        :param Sequence['GetAppAppResourceArgs'] resources: A list of resources that the app have access to.
+        """
+        pulumi.set(__self__, "active_deployment", active_deployment)
+        pulumi.set(__self__, "app_status", app_status)
+        pulumi.set(__self__, "compute_status", compute_status)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "creator", creator)
+        pulumi.set(__self__, "default_source_code_path", default_source_code_path)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "pending_deployment", pending_deployment)
+        pulumi.set(__self__, "service_principal_client_id", service_principal_client_id)
+        pulumi.set(__self__, "service_principal_id", service_principal_id)
+        pulumi.set(__self__, "service_principal_name", service_principal_name)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "updater", updater)
+        pulumi.set(__self__, "url", url)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="activeDeployment")
+    def active_deployment(self) -> 'outputs.GetAppAppActiveDeploymentResult':
+        return pulumi.get(self, "active_deployment")
+
+    @property
+    @pulumi.getter(name="appStatus")
+    def app_status(self) -> 'outputs.GetAppAppAppStatusResult':
+        """
+        attribute
+        """
+        return pulumi.get(self, "app_status")
+
+    @property
+    @pulumi.getter(name="computeStatus")
+    def compute_status(self) -> 'outputs.GetAppAppComputeStatusResult':
+        """
+        attribute
+        """
+        return pulumi.get(self, "compute_status")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the app.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> str:
+        """
+        The email of the user that created the app.
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="defaultSourceCodePath")
+    def default_source_code_path(self) -> str:
+        """
+        The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        """
+        return pulumi.get(self, "default_source_code_path")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the app.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pendingDeployment")
+    def pending_deployment(self) -> 'outputs.GetAppAppPendingDeploymentResult':
+        return pulumi.get(self, "pending_deployment")
+
+    @property
+    @pulumi.getter(name="servicePrincipalClientId")
+    def service_principal_client_id(self) -> str:
+        return pulumi.get(self, "service_principal_client_id")
+
+    @property
+    @pulumi.getter(name="servicePrincipalId")
+    def service_principal_id(self) -> int:
+        """
+        id of the app service principal
+        """
+        return pulumi.get(self, "service_principal_id")
+
+    @property
+    @pulumi.getter(name="servicePrincipalName")
+    def service_principal_name(self) -> str:
+        """
+        name of the app service principal
+        """
+        return pulumi.get(self, "service_principal_name")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The update time of the app.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter
+    def updater(self) -> str:
+        """
+        The email of the user that last updated the app.
+        """
+        return pulumi.get(self, "updater")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The URL of the app once it is deployed.
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence['outputs.GetAppAppResourceResult']]:
+        """
+        A list of resources that the app have access to.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class GetAppAppActiveDeploymentResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 creator: str,
+                 deployment_artifacts: 'outputs.GetAppAppActiveDeploymentDeploymentArtifactsResult',
+                 status: 'outputs.GetAppAppActiveDeploymentStatusResult',
+                 update_time: str,
+                 deployment_id: Optional[str] = None,
+                 mode: Optional[str] = None,
+                 source_code_path: Optional[str] = None):
+        """
+        :param str create_time: The creation time of the app.
+        :param str creator: The email of the user that created the app.
+        :param str update_time: The update time of the app.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "creator", creator)
+        pulumi.set(__self__, "deployment_artifacts", deployment_artifacts)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "update_time", update_time)
+        if deployment_id is not None:
+            pulumi.set(__self__, "deployment_id", deployment_id)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the app.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> str:
+        """
+        The email of the user that created the app.
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="deploymentArtifacts")
+    def deployment_artifacts(self) -> 'outputs.GetAppAppActiveDeploymentDeploymentArtifactsResult':
+        return pulumi.get(self, "deployment_artifacts")
+
+    @property
+    @pulumi.getter
+    def status(self) -> 'outputs.GetAppAppActiveDeploymentStatusResult':
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The update time of the app.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> Optional[str]:
+        return pulumi.get(self, "deployment_id")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> Optional[str]:
+        return pulumi.get(self, "source_code_path")
+
+
+@pulumi.output_type
+class GetAppAppActiveDeploymentDeploymentArtifactsResult(dict):
+    def __init__(__self__, *,
+                 source_code_path: Optional[str] = None):
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
+
+    @property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> Optional[str]:
+        return pulumi.get(self, "source_code_path")
+
+
+@pulumi.output_type
+class GetAppAppActiveDeploymentStatusResult(dict):
+    def __init__(__self__, *,
+                 message: str,
+                 state: str):
+        """
+        :param str message: Application status message
+        :param str state: State of the application.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Application status message
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the application.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetAppAppAppStatusResult(dict):
+    def __init__(__self__, *,
+                 message: str,
+                 state: str):
+        """
+        :param str message: Application status message
+        :param str state: State of the application.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Application status message
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the application.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetAppAppComputeStatusResult(dict):
+    def __init__(__self__, *,
+                 message: str,
+                 state: str):
+        """
+        :param str message: Application status message
+        :param str state: State of the application.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Application status message
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the application.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetAppAppPendingDeploymentResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 creator: str,
+                 deployment_artifacts: 'outputs.GetAppAppPendingDeploymentDeploymentArtifactsResult',
+                 status: 'outputs.GetAppAppPendingDeploymentStatusResult',
+                 update_time: str,
+                 deployment_id: Optional[str] = None,
+                 mode: Optional[str] = None,
+                 source_code_path: Optional[str] = None):
+        """
+        :param str create_time: The creation time of the app.
+        :param str creator: The email of the user that created the app.
+        :param str update_time: The update time of the app.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "creator", creator)
+        pulumi.set(__self__, "deployment_artifacts", deployment_artifacts)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "update_time", update_time)
+        if deployment_id is not None:
+            pulumi.set(__self__, "deployment_id", deployment_id)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the app.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> str:
+        """
+        The email of the user that created the app.
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="deploymentArtifacts")
+    def deployment_artifacts(self) -> 'outputs.GetAppAppPendingDeploymentDeploymentArtifactsResult':
+        return pulumi.get(self, "deployment_artifacts")
+
+    @property
+    @pulumi.getter
+    def status(self) -> 'outputs.GetAppAppPendingDeploymentStatusResult':
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The update time of the app.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> Optional[str]:
+        return pulumi.get(self, "deployment_id")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> Optional[str]:
+        return pulumi.get(self, "source_code_path")
+
+
+@pulumi.output_type
+class GetAppAppPendingDeploymentDeploymentArtifactsResult(dict):
+    def __init__(__self__, *,
+                 source_code_path: Optional[str] = None):
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
+
+    @property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> Optional[str]:
+        return pulumi.get(self, "source_code_path")
+
+
+@pulumi.output_type
+class GetAppAppPendingDeploymentStatusResult(dict):
+    def __init__(__self__, *,
+                 message: str,
+                 state: str):
+        """
+        :param str message: Application status message
+        :param str state: State of the application.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Application status message
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the application.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetAppAppResourceResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 description: Optional[str] = None,
+                 job: Optional['outputs.GetAppAppResourceJobResult'] = None,
+                 secret: Optional['outputs.GetAppAppResourceSecretResult'] = None,
+                 serving_endpoint: Optional['outputs.GetAppAppResourceServingEndpointResult'] = None,
+                 sql_warehouse: Optional['outputs.GetAppAppResourceSqlWarehouseResult'] = None):
+        """
+        :param str name: The name of the app.
+        :param str description: The description of the resource.
+        :param 'GetAppAppResourceJobArgs' job: attribute
+        :param 'GetAppAppResourceSecretArgs' secret: attribute
+        :param 'GetAppAppResourceServingEndpointArgs' serving_endpoint: attribute
+        :param 'GetAppAppResourceSqlWarehouseArgs' sql_warehouse: attribute
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if job is not None:
+            pulumi.set(__self__, "job", job)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if serving_endpoint is not None:
+            pulumi.set(__self__, "serving_endpoint", serving_endpoint)
+        if sql_warehouse is not None:
+            pulumi.set(__self__, "sql_warehouse", sql_warehouse)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the app.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def job(self) -> Optional['outputs.GetAppAppResourceJobResult']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "job")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional['outputs.GetAppAppResourceSecretResult']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="servingEndpoint")
+    def serving_endpoint(self) -> Optional['outputs.GetAppAppResourceServingEndpointResult']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "serving_endpoint")
+
+    @property
+    @pulumi.getter(name="sqlWarehouse")
+    def sql_warehouse(self) -> Optional['outputs.GetAppAppResourceSqlWarehouseResult']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "sql_warehouse")
+
+
+@pulumi.output_type
+class GetAppAppResourceJobResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 permission: str):
+        """
+        :param str id: Id of the job to grant permission on.
+        :param str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the job to grant permission on.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class GetAppAppResourceSecretResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 permission: str,
+                 scope: str):
+        """
+        :param str key: Key of the secret to grant permission on.
+        :param str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        :param str scope: Scope of the secret to grant permission on.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key of the secret to grant permission on.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        Scope of the secret to grant permission on.
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class GetAppAppResourceServingEndpointResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 permission: str):
+        """
+        :param str name: The name of the app.
+        :param str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the app.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class GetAppAppResourceSqlWarehouseResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 permission: str):
+        """
+        :param str id: Id of the job to grant permission on.
+        :param str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the job to grant permission on.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class GetAppsAppResult(dict):
+    def __init__(__self__, *,
+                 active_deployment: 'outputs.GetAppsAppActiveDeploymentResult',
+                 app_status: 'outputs.GetAppsAppAppStatusResult',
+                 compute_status: 'outputs.GetAppsAppComputeStatusResult',
+                 create_time: str,
+                 creator: str,
+                 default_source_code_path: str,
+                 name: str,
+                 pending_deployment: 'outputs.GetAppsAppPendingDeploymentResult',
+                 service_principal_client_id: str,
+                 service_principal_id: int,
+                 service_principal_name: str,
+                 update_time: str,
+                 updater: str,
+                 url: str,
+                 description: Optional[str] = None,
+                 resources: Optional[Sequence['outputs.GetAppsAppResourceResult']] = None):
+        """
+        :param 'GetAppsAppAppStatusArgs' app_status: attribute
+        :param 'GetAppsAppComputeStatusArgs' compute_status: attribute
+        :param str create_time: The creation time of the app.
+        :param str creator: The email of the user that created the app.
+        :param str default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        :param str name: Name of the serving endpoint to grant permission on.
+        :param int service_principal_id: id of the app service principal
+        :param str service_principal_name: name of the app service principal
+        :param str update_time: The update time of the app.
+        :param str updater: The email of the user that last updated the app.
+        :param str url: The URL of the app once it is deployed.
+        :param str description: The description of the resource.
+        :param Sequence['GetAppsAppResourceArgs'] resources: A list of resources that the app have access to.
+        """
+        pulumi.set(__self__, "active_deployment", active_deployment)
+        pulumi.set(__self__, "app_status", app_status)
+        pulumi.set(__self__, "compute_status", compute_status)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "creator", creator)
+        pulumi.set(__self__, "default_source_code_path", default_source_code_path)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "pending_deployment", pending_deployment)
+        pulumi.set(__self__, "service_principal_client_id", service_principal_client_id)
+        pulumi.set(__self__, "service_principal_id", service_principal_id)
+        pulumi.set(__self__, "service_principal_name", service_principal_name)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "updater", updater)
+        pulumi.set(__self__, "url", url)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="activeDeployment")
+    def active_deployment(self) -> 'outputs.GetAppsAppActiveDeploymentResult':
+        return pulumi.get(self, "active_deployment")
+
+    @property
+    @pulumi.getter(name="appStatus")
+    def app_status(self) -> 'outputs.GetAppsAppAppStatusResult':
+        """
+        attribute
+        """
+        return pulumi.get(self, "app_status")
+
+    @property
+    @pulumi.getter(name="computeStatus")
+    def compute_status(self) -> 'outputs.GetAppsAppComputeStatusResult':
+        """
+        attribute
+        """
+        return pulumi.get(self, "compute_status")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the app.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> str:
+        """
+        The email of the user that created the app.
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="defaultSourceCodePath")
+    def default_source_code_path(self) -> str:
+        """
+        The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        """
+        return pulumi.get(self, "default_source_code_path")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the serving endpoint to grant permission on.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pendingDeployment")
+    def pending_deployment(self) -> 'outputs.GetAppsAppPendingDeploymentResult':
+        return pulumi.get(self, "pending_deployment")
+
+    @property
+    @pulumi.getter(name="servicePrincipalClientId")
+    def service_principal_client_id(self) -> str:
+        return pulumi.get(self, "service_principal_client_id")
+
+    @property
+    @pulumi.getter(name="servicePrincipalId")
+    def service_principal_id(self) -> int:
+        """
+        id of the app service principal
+        """
+        return pulumi.get(self, "service_principal_id")
+
+    @property
+    @pulumi.getter(name="servicePrincipalName")
+    def service_principal_name(self) -> str:
+        """
+        name of the app service principal
+        """
+        return pulumi.get(self, "service_principal_name")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The update time of the app.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter
+    def updater(self) -> str:
+        """
+        The email of the user that last updated the app.
+        """
+        return pulumi.get(self, "updater")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The URL of the app once it is deployed.
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence['outputs.GetAppsAppResourceResult']]:
+        """
+        A list of resources that the app have access to.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class GetAppsAppActiveDeploymentResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 creator: str,
+                 deployment_artifacts: 'outputs.GetAppsAppActiveDeploymentDeploymentArtifactsResult',
+                 status: 'outputs.GetAppsAppActiveDeploymentStatusResult',
+                 update_time: str,
+                 deployment_id: Optional[str] = None,
+                 mode: Optional[str] = None,
+                 source_code_path: Optional[str] = None):
+        """
+        :param str create_time: The creation time of the app.
+        :param str creator: The email of the user that created the app.
+        :param str update_time: The update time of the app.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "creator", creator)
+        pulumi.set(__self__, "deployment_artifacts", deployment_artifacts)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "update_time", update_time)
+        if deployment_id is not None:
+            pulumi.set(__self__, "deployment_id", deployment_id)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the app.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> str:
+        """
+        The email of the user that created the app.
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="deploymentArtifacts")
+    def deployment_artifacts(self) -> 'outputs.GetAppsAppActiveDeploymentDeploymentArtifactsResult':
+        return pulumi.get(self, "deployment_artifacts")
+
+    @property
+    @pulumi.getter
+    def status(self) -> 'outputs.GetAppsAppActiveDeploymentStatusResult':
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The update time of the app.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> Optional[str]:
+        return pulumi.get(self, "deployment_id")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> Optional[str]:
+        return pulumi.get(self, "source_code_path")
+
+
+@pulumi.output_type
+class GetAppsAppActiveDeploymentDeploymentArtifactsResult(dict):
+    def __init__(__self__, *,
+                 source_code_path: Optional[str] = None):
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
+
+    @property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> Optional[str]:
+        return pulumi.get(self, "source_code_path")
+
+
+@pulumi.output_type
+class GetAppsAppActiveDeploymentStatusResult(dict):
+    def __init__(__self__, *,
+                 message: str,
+                 state: str):
+        """
+        :param str message: Application status message
+        :param str state: State of the application.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Application status message
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the application.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetAppsAppAppStatusResult(dict):
+    def __init__(__self__, *,
+                 message: str,
+                 state: str):
+        """
+        :param str message: Application status message
+        :param str state: State of the application.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Application status message
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the application.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetAppsAppComputeStatusResult(dict):
+    def __init__(__self__, *,
+                 message: str,
+                 state: str):
+        """
+        :param str message: Application status message
+        :param str state: State of the application.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Application status message
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the application.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetAppsAppPendingDeploymentResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 creator: str,
+                 deployment_artifacts: 'outputs.GetAppsAppPendingDeploymentDeploymentArtifactsResult',
+                 status: 'outputs.GetAppsAppPendingDeploymentStatusResult',
+                 update_time: str,
+                 deployment_id: Optional[str] = None,
+                 mode: Optional[str] = None,
+                 source_code_path: Optional[str] = None):
+        """
+        :param str create_time: The creation time of the app.
+        :param str creator: The email of the user that created the app.
+        :param str update_time: The update time of the app.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "creator", creator)
+        pulumi.set(__self__, "deployment_artifacts", deployment_artifacts)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "update_time", update_time)
+        if deployment_id is not None:
+            pulumi.set(__self__, "deployment_id", deployment_id)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the app.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> str:
+        """
+        The email of the user that created the app.
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="deploymentArtifacts")
+    def deployment_artifacts(self) -> 'outputs.GetAppsAppPendingDeploymentDeploymentArtifactsResult':
+        return pulumi.get(self, "deployment_artifacts")
+
+    @property
+    @pulumi.getter
+    def status(self) -> 'outputs.GetAppsAppPendingDeploymentStatusResult':
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The update time of the app.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> Optional[str]:
+        return pulumi.get(self, "deployment_id")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> Optional[str]:
+        return pulumi.get(self, "source_code_path")
+
+
+@pulumi.output_type
+class GetAppsAppPendingDeploymentDeploymentArtifactsResult(dict):
+    def __init__(__self__, *,
+                 source_code_path: Optional[str] = None):
+        if source_code_path is not None:
+            pulumi.set(__self__, "source_code_path", source_code_path)
+
+    @property
+    @pulumi.getter(name="sourceCodePath")
+    def source_code_path(self) -> Optional[str]:
+        return pulumi.get(self, "source_code_path")
+
+
+@pulumi.output_type
+class GetAppsAppPendingDeploymentStatusResult(dict):
+    def __init__(__self__, *,
+                 message: str,
+                 state: str):
+        """
+        :param str message: Application status message
+        :param str state: State of the application.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Application status message
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the application.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetAppsAppResourceResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 description: Optional[str] = None,
+                 job: Optional['outputs.GetAppsAppResourceJobResult'] = None,
+                 secret: Optional['outputs.GetAppsAppResourceSecretResult'] = None,
+                 serving_endpoint: Optional['outputs.GetAppsAppResourceServingEndpointResult'] = None,
+                 sql_warehouse: Optional['outputs.GetAppsAppResourceSqlWarehouseResult'] = None):
+        """
+        :param str name: Name of the serving endpoint to grant permission on.
+        :param str description: The description of the resource.
+        :param 'GetAppsAppResourceJobArgs' job: attribute
+        :param 'GetAppsAppResourceSecretArgs' secret: attribute
+        :param 'GetAppsAppResourceServingEndpointArgs' serving_endpoint: attribute
+        :param 'GetAppsAppResourceSqlWarehouseArgs' sql_warehouse: attribute
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if job is not None:
+            pulumi.set(__self__, "job", job)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if serving_endpoint is not None:
+            pulumi.set(__self__, "serving_endpoint", serving_endpoint)
+        if sql_warehouse is not None:
+            pulumi.set(__self__, "sql_warehouse", sql_warehouse)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the serving endpoint to grant permission on.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def job(self) -> Optional['outputs.GetAppsAppResourceJobResult']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "job")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional['outputs.GetAppsAppResourceSecretResult']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="servingEndpoint")
+    def serving_endpoint(self) -> Optional['outputs.GetAppsAppResourceServingEndpointResult']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "serving_endpoint")
+
+    @property
+    @pulumi.getter(name="sqlWarehouse")
+    def sql_warehouse(self) -> Optional['outputs.GetAppsAppResourceSqlWarehouseResult']:
+        """
+        attribute
+        """
+        return pulumi.get(self, "sql_warehouse")
+
+
+@pulumi.output_type
+class GetAppsAppResourceJobResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 permission: str):
+        """
+        :param str id: Id of the job to grant permission on.
+        :param str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the job to grant permission on.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class GetAppsAppResourceSecretResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 permission: str,
+                 scope: str):
+        """
+        :param str key: Key of the secret to grant permission on.
+        :param str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        :param str scope: Scope of the secret to grant permission on.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key of the secret to grant permission on.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        Scope of the secret to grant permission on.
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class GetAppsAppResourceServingEndpointResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 permission: str):
+        """
+        :param str name: Name of the serving endpoint to grant permission on.
+        :param str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the serving endpoint to grant permission on.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class GetAppsAppResourceSqlWarehouseResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 permission: str):
+        """
+        :param str id: Id of the job to grant permission on.
+        :param str permission: Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the job to grant permission on.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
 class GetCatalogCatalogInfoResult(dict):
     def __init__(__self__, *,
                  browse_only: Optional[bool] = None,
@@ -26367,7 +28925,9 @@ class GetClusterClusterInfoResult(dict):
                  gcp_attributes: Optional['outputs.GetClusterClusterInfoGcpAttributesResult'] = None,
                  init_scripts: Optional[Sequence['outputs.GetClusterClusterInfoInitScriptResult']] = None,
                  instance_pool_id: Optional[str] = None,
+                 is_single_node: Optional[bool] = None,
                  jdbc_port: Optional[int] = None,
+                 kind: Optional[str] = None,
                  last_restarted_time: Optional[int] = None,
                  last_state_loss_time: Optional[int] = None,
                  node_type_id: Optional[str] = None,
@@ -26386,6 +28946,7 @@ class GetClusterClusterInfoResult(dict):
                  state_message: Optional[str] = None,
                  terminated_time: Optional[int] = None,
                  termination_reason: Optional['outputs.GetClusterClusterInfoTerminationReasonResult'] = None,
+                 use_ml_runtime: Optional[bool] = None,
                  workload_type: Optional['outputs.GetClusterClusterInfoWorkloadTypeResult'] = None):
         """
         :param int autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
@@ -26457,8 +29018,12 @@ class GetClusterClusterInfoResult(dict):
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if is_single_node is not None:
+            pulumi.set(__self__, "is_single_node", is_single_node)
         if jdbc_port is not None:
             pulumi.set(__self__, "jdbc_port", jdbc_port)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if last_restarted_time is not None:
             pulumi.set(__self__, "last_restarted_time", last_restarted_time)
         if last_state_loss_time is not None:
@@ -26495,6 +29060,8 @@ class GetClusterClusterInfoResult(dict):
             pulumi.set(__self__, "terminated_time", terminated_time)
         if termination_reason is not None:
             pulumi.set(__self__, "termination_reason", termination_reason)
+        if use_ml_runtime is not None:
+            pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -26654,9 +29221,19 @@ class GetClusterClusterInfoResult(dict):
         return pulumi.get(self, "instance_pool_id")
 
     @property
+    @pulumi.getter(name="isSingleNode")
+    def is_single_node(self) -> Optional[bool]:
+        return pulumi.get(self, "is_single_node")
+
+    @property
     @pulumi.getter(name="jdbcPort")
     def jdbc_port(self) -> Optional[int]:
         return pulumi.get(self, "jdbc_port")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
 
     @property
     @pulumi.getter(name="lastRestartedTime")
@@ -26771,6 +29348,11 @@ class GetClusterClusterInfoResult(dict):
     @pulumi.getter(name="terminationReason")
     def termination_reason(self) -> Optional['outputs.GetClusterClusterInfoTerminationReasonResult']:
         return pulumi.get(self, "termination_reason")
+
+    @property
+    @pulumi.getter(name="useMlRuntime")
+    def use_ml_runtime(self) -> Optional[bool]:
+        return pulumi.get(self, "use_ml_runtime")
 
     @property
     @pulumi.getter(name="workloadType")
@@ -27516,6 +30098,8 @@ class GetClusterClusterInfoSpecResult(dict):
                  idempotency_token: Optional[str] = None,
                  init_scripts: Optional[Sequence['outputs.GetClusterClusterInfoSpecInitScriptResult']] = None,
                  instance_pool_id: Optional[str] = None,
+                 is_single_node: Optional[bool] = None,
+                 kind: Optional[str] = None,
                  libraries: Optional[Sequence['outputs.GetClusterClusterInfoSpecLibraryResult']] = None,
                  num_workers: Optional[int] = None,
                  policy_id: Optional[str] = None,
@@ -27524,6 +30108,7 @@ class GetClusterClusterInfoSpecResult(dict):
                  spark_conf: Optional[Mapping[str, str]] = None,
                  spark_env_vars: Optional[Mapping[str, str]] = None,
                  ssh_public_keys: Optional[Sequence[str]] = None,
+                 use_ml_runtime: Optional[bool] = None,
                  workload_type: Optional['outputs.GetClusterClusterInfoSpecWorkloadTypeResult'] = None):
         """
         :param str cluster_id: The id of the cluster
@@ -27580,6 +30165,10 @@ class GetClusterClusterInfoSpecResult(dict):
             pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+        if is_single_node is not None:
+            pulumi.set(__self__, "is_single_node", is_single_node)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if libraries is not None:
             pulumi.set(__self__, "libraries", libraries)
         if num_workers is not None:
@@ -27596,6 +30185,8 @@ class GetClusterClusterInfoSpecResult(dict):
             pulumi.set(__self__, "spark_env_vars", spark_env_vars)
         if ssh_public_keys is not None:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
+        if use_ml_runtime is not None:
+            pulumi.set(__self__, "use_ml_runtime", use_ml_runtime)
         if workload_type is not None:
             pulumi.set(__self__, "workload_type", workload_type)
 
@@ -27741,6 +30332,16 @@ class GetClusterClusterInfoSpecResult(dict):
         return pulumi.get(self, "instance_pool_id")
 
     @property
+    @pulumi.getter(name="isSingleNode")
+    def is_single_node(self) -> Optional[bool]:
+        return pulumi.get(self, "is_single_node")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+    @property
     @pulumi.getter
     def libraries(self) -> Optional[Sequence['outputs.GetClusterClusterInfoSpecLibraryResult']]:
         return pulumi.get(self, "libraries")
@@ -27797,6 +30398,11 @@ class GetClusterClusterInfoSpecResult(dict):
         SSH public key contents that will be added to each Spark node in this cluster.
         """
         return pulumi.get(self, "ssh_public_keys")
+
+    @property
+    @pulumi.getter(name="useMlRuntime")
+    def use_ml_runtime(self) -> Optional[bool]:
+        return pulumi.get(self, "use_ml_runtime")
 
     @property
     @pulumi.getter(name="workloadType")
@@ -29174,7 +31780,7 @@ class GetFunctionsFunctionResult(dict):
                  full_data_type: Optional[str] = None,
                  full_name: Optional[str] = None,
                  function_id: Optional[str] = None,
-                 input_params: Optional['outputs.GetFunctionsFunctionInputParamsResult'] = None,
+                 input_params: Optional[Sequence['outputs.GetFunctionsFunctionInputParamResult']] = None,
                  is_deterministic: Optional[bool] = None,
                  is_null_call: Optional[bool] = None,
                  metastore_id: Optional[str] = None,
@@ -29182,10 +31788,10 @@ class GetFunctionsFunctionResult(dict):
                  owner: Optional[str] = None,
                  parameter_style: Optional[str] = None,
                  properties: Optional[str] = None,
-                 return_params: Optional['outputs.GetFunctionsFunctionReturnParamsResult'] = None,
+                 return_params: Optional[Sequence['outputs.GetFunctionsFunctionReturnParamResult']] = None,
                  routine_body: Optional[str] = None,
                  routine_definition: Optional[str] = None,
-                 routine_dependencies: Optional['outputs.GetFunctionsFunctionRoutineDependenciesResult'] = None,
+                 routine_dependencies: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyResult']] = None,
                  schema_name: Optional[str] = None,
                  security_type: Optional[str] = None,
                  specific_name: Optional[str] = None,
@@ -29205,7 +31811,7 @@ class GetFunctionsFunctionResult(dict):
         :param str full_data_type: Pretty printed function data type.
         :param str full_name: Full name of function, in form of catalog_name.schema_name.function__name
         :param str function_id: Id of Function, relative to parent schema.
-        :param 'GetFunctionsFunctionInputParamsArgs' input_params: object describing input parameters. Consists of the single attribute:
+        :param Sequence['GetFunctionsFunctionInputParamArgs'] input_params: object describing input parameters. Consists of the single attribute:
         :param bool is_deterministic: Boolean flag specifying whether the function is deterministic.
         :param bool is_null_call: Boolean flag whether function null call.
         :param str metastore_id: Unique identifier of parent metastore.
@@ -29213,10 +31819,10 @@ class GetFunctionsFunctionResult(dict):
         :param str owner: Username of current owner of function.
         :param str parameter_style: Function parameter style. `S` is the value for SQL.
         :param str properties: JSON-serialized key-value pair map, encoded (escaped) as a string.
-        :param 'GetFunctionsFunctionReturnParamsArgs' return_params: Table function return parameters.  See `input_params` for description.
+        :param Sequence['GetFunctionsFunctionReturnParamArgs'] return_params: Table function return parameters.  See `input_params` for description.
         :param str routine_body: Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
         :param str routine_definition: Function body.
-        :param 'GetFunctionsFunctionRoutineDependenciesArgs' routine_dependencies: Function dependencies.
+        :param Sequence['GetFunctionsFunctionRoutineDependencyArgs'] routine_dependencies: Function dependencies.
         :param str schema_name: Name of databricks_schema.
         :param str security_type: Function security type. (Enum: `DEFINER`).
         :param str specific_name: Specific name of the function; Reserved for future use.
@@ -29376,7 +31982,7 @@ class GetFunctionsFunctionResult(dict):
 
     @property
     @pulumi.getter(name="inputParams")
-    def input_params(self) -> Optional['outputs.GetFunctionsFunctionInputParamsResult']:
+    def input_params(self) -> Optional[Sequence['outputs.GetFunctionsFunctionInputParamResult']]:
         """
         object describing input parameters. Consists of the single attribute:
         """
@@ -29440,7 +32046,7 @@ class GetFunctionsFunctionResult(dict):
 
     @property
     @pulumi.getter(name="returnParams")
-    def return_params(self) -> Optional['outputs.GetFunctionsFunctionReturnParamsResult']:
+    def return_params(self) -> Optional[Sequence['outputs.GetFunctionsFunctionReturnParamResult']]:
         """
         Table function return parameters.  See `input_params` for description.
         """
@@ -29464,7 +32070,7 @@ class GetFunctionsFunctionResult(dict):
 
     @property
     @pulumi.getter(name="routineDependencies")
-    def routine_dependencies(self) -> Optional['outputs.GetFunctionsFunctionRoutineDependenciesResult']:
+    def routine_dependencies(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyResult']]:
         """
         Function dependencies.
         """
@@ -29528,18 +32134,18 @@ class GetFunctionsFunctionResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionsFunctionInputParamsResult(dict):
+class GetFunctionsFunctionInputParamResult(dict):
     def __init__(__self__, *,
-                 parameters: Optional[Sequence['outputs.GetFunctionsFunctionInputParamsParameterResult']] = None):
+                 parameters: Optional[Sequence['outputs.GetFunctionsFunctionInputParamParameterResult']] = None):
         """
-        :param Sequence['GetFunctionsFunctionInputParamsParameterArgs'] parameters: The array of definitions of the function's parameters:
+        :param Sequence['GetFunctionsFunctionInputParamParameterArgs'] parameters: The array of definitions of the function's parameters:
         """
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[Sequence['outputs.GetFunctionsFunctionInputParamsParameterResult']]:
+    def parameters(self) -> Optional[Sequence['outputs.GetFunctionsFunctionInputParamParameterResult']]:
         """
         The array of definitions of the function's parameters:
         """
@@ -29547,7 +32153,7 @@ class GetFunctionsFunctionInputParamsResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionsFunctionInputParamsParameterResult(dict):
+class GetFunctionsFunctionInputParamParameterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  position: int,
@@ -29694,18 +32300,18 @@ class GetFunctionsFunctionInputParamsParameterResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionsFunctionReturnParamsResult(dict):
+class GetFunctionsFunctionReturnParamResult(dict):
     def __init__(__self__, *,
-                 parameters: Optional[Sequence['outputs.GetFunctionsFunctionReturnParamsParameterResult']] = None):
+                 parameters: Optional[Sequence['outputs.GetFunctionsFunctionReturnParamParameterResult']] = None):
         """
-        :param Sequence['GetFunctionsFunctionReturnParamsParameterArgs'] parameters: The array of definitions of the function's parameters:
+        :param Sequence['GetFunctionsFunctionReturnParamParameterArgs'] parameters: The array of definitions of the function's parameters:
         """
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[Sequence['outputs.GetFunctionsFunctionReturnParamsParameterResult']]:
+    def parameters(self) -> Optional[Sequence['outputs.GetFunctionsFunctionReturnParamParameterResult']]:
         """
         The array of definitions of the function's parameters:
         """
@@ -29713,7 +32319,7 @@ class GetFunctionsFunctionReturnParamsResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionsFunctionReturnParamsParameterResult(dict):
+class GetFunctionsFunctionReturnParamParameterResult(dict):
     def __init__(__self__, *,
                  name: str,
                  position: int,
@@ -29860,41 +32466,41 @@ class GetFunctionsFunctionReturnParamsParameterResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionsFunctionRoutineDependenciesResult(dict):
+class GetFunctionsFunctionRoutineDependencyResult(dict):
     def __init__(__self__, *,
-                 dependencies: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependenciesDependencyResult']] = None):
+                 dependencies: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyResult']] = None):
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
 
     @property
     @pulumi.getter
-    def dependencies(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependenciesDependencyResult']]:
+    def dependencies(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyResult']]:
         return pulumi.get(self, "dependencies")
 
 
 @pulumi.output_type
-class GetFunctionsFunctionRoutineDependenciesDependencyResult(dict):
+class GetFunctionsFunctionRoutineDependencyDependencyResult(dict):
     def __init__(__self__, *,
-                 function: Optional['outputs.GetFunctionsFunctionRoutineDependenciesDependencyFunctionResult'] = None,
-                 table: Optional['outputs.GetFunctionsFunctionRoutineDependenciesDependencyTableResult'] = None):
-        if function is not None:
-            pulumi.set(__self__, "function", function)
-        if table is not None:
-            pulumi.set(__self__, "table", table)
+                 functions: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionResult']] = None,
+                 tables: Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyTableResult']] = None):
+        if functions is not None:
+            pulumi.set(__self__, "functions", functions)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
 
     @property
     @pulumi.getter
-    def function(self) -> Optional['outputs.GetFunctionsFunctionRoutineDependenciesDependencyFunctionResult']:
-        return pulumi.get(self, "function")
+    def functions(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyFunctionResult']]:
+        return pulumi.get(self, "functions")
 
     @property
     @pulumi.getter
-    def table(self) -> Optional['outputs.GetFunctionsFunctionRoutineDependenciesDependencyTableResult']:
-        return pulumi.get(self, "table")
+    def tables(self) -> Optional[Sequence['outputs.GetFunctionsFunctionRoutineDependencyDependencyTableResult']]:
+        return pulumi.get(self, "tables")
 
 
 @pulumi.output_type
-class GetFunctionsFunctionRoutineDependenciesDependencyFunctionResult(dict):
+class GetFunctionsFunctionRoutineDependencyDependencyFunctionResult(dict):
     def __init__(__self__, *,
                  function_full_name: str):
         pulumi.set(__self__, "function_full_name", function_full_name)
@@ -29906,7 +32512,7 @@ class GetFunctionsFunctionRoutineDependenciesDependencyFunctionResult(dict):
 
 
 @pulumi.output_type
-class GetFunctionsFunctionRoutineDependenciesDependencyTableResult(dict):
+class GetFunctionsFunctionRoutineDependencyDependencyTableResult(dict):
     def __init__(__self__, *,
                  table_full_name: str):
         pulumi.set(__self__, "table_full_name", table_full_name)
@@ -37579,6 +40185,276 @@ class GetMlflowModelTagResult(dict):
 
 
 @pulumi.output_type
+class GetMwsNetworkConnectivityConfigEgressConfigResult(dict):
+    def __init__(__self__, *,
+                 default_rules: Optional['outputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesResult'] = None,
+                 target_rules: Optional['outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesResult'] = None):
+        """
+        :param 'GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs' default_rules: Array of default rules.
+        :param 'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs' target_rules: Array of target rules.
+        """
+        if default_rules is not None:
+            pulumi.set(__self__, "default_rules", default_rules)
+        if target_rules is not None:
+            pulumi.set(__self__, "target_rules", target_rules)
+
+    @property
+    @pulumi.getter(name="defaultRules")
+    def default_rules(self) -> Optional['outputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesResult']:
+        """
+        Array of default rules.
+        """
+        return pulumi.get(self, "default_rules")
+
+    @property
+    @pulumi.getter(name="targetRules")
+    def target_rules(self) -> Optional['outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesResult']:
+        """
+        Array of target rules.
+        """
+        return pulumi.get(self, "target_rules")
+
+
+@pulumi.output_type
+class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesResult(dict):
+    def __init__(__self__, *,
+                 aws_stable_ip_rule: Optional['outputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleResult'] = None,
+                 azure_service_endpoint_rule: Optional['outputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleResult'] = None):
+        """
+        :param 'GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs' aws_stable_ip_rule: The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+        :param 'GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs' azure_service_endpoint_rule: Array of Azure service endpoint rules.
+        """
+        if aws_stable_ip_rule is not None:
+            pulumi.set(__self__, "aws_stable_ip_rule", aws_stable_ip_rule)
+        if azure_service_endpoint_rule is not None:
+            pulumi.set(__self__, "azure_service_endpoint_rule", azure_service_endpoint_rule)
+
+    @property
+    @pulumi.getter(name="awsStableIpRule")
+    def aws_stable_ip_rule(self) -> Optional['outputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleResult']:
+        """
+        The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+        """
+        return pulumi.get(self, "aws_stable_ip_rule")
+
+    @property
+    @pulumi.getter(name="azureServiceEndpointRule")
+    def azure_service_endpoint_rule(self) -> Optional['outputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleResult']:
+        """
+        Array of Azure service endpoint rules.
+        """
+        return pulumi.get(self, "azure_service_endpoint_rule")
+
+
+@pulumi.output_type
+class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleResult(dict):
+    def __init__(__self__, *,
+                 cidr_blocks: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] cidr_blocks: The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+        """
+        if cidr_blocks is not None:
+            pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+
+    @property
+    @pulumi.getter(name="cidrBlocks")
+    def cidr_blocks(self) -> Optional[Sequence[str]]:
+        """
+        The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+        """
+        return pulumi.get(self, "cidr_blocks")
+
+
+@pulumi.output_type
+class GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleResult(dict):
+    def __init__(__self__, *,
+                 subnets: Optional[Sequence[str]] = None,
+                 target_region: Optional[str] = None,
+                 target_services: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] subnets: Array of strings representing the subnet IDs.
+        :param str target_region: The target region for the service endpoint.
+        :param Sequence[str] target_services: Array of target services.
+        """
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
+        if target_region is not None:
+            pulumi.set(__self__, "target_region", target_region)
+        if target_services is not None:
+            pulumi.set(__self__, "target_services", target_services)
+
+    @property
+    @pulumi.getter
+    def subnets(self) -> Optional[Sequence[str]]:
+        """
+        Array of strings representing the subnet IDs.
+        """
+        return pulumi.get(self, "subnets")
+
+    @property
+    @pulumi.getter(name="targetRegion")
+    def target_region(self) -> Optional[str]:
+        """
+        The target region for the service endpoint.
+        """
+        return pulumi.get(self, "target_region")
+
+    @property
+    @pulumi.getter(name="targetServices")
+    def target_services(self) -> Optional[Sequence[str]]:
+        """
+        Array of target services.
+        """
+        return pulumi.get(self, "target_services")
+
+
+@pulumi.output_type
+class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesResult(dict):
+    def __init__(__self__, *,
+                 azure_private_endpoint_rules: Optional[Sequence['outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleResult']] = None):
+        """
+        :param Sequence['GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs'] azure_private_endpoint_rules: Array of private endpoint rule objects.
+        """
+        if azure_private_endpoint_rules is not None:
+            pulumi.set(__self__, "azure_private_endpoint_rules", azure_private_endpoint_rules)
+
+    @property
+    @pulumi.getter(name="azurePrivateEndpointRules")
+    def azure_private_endpoint_rules(self) -> Optional[Sequence['outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleResult']]:
+        """
+        Array of private endpoint rule objects.
+        """
+        return pulumi.get(self, "azure_private_endpoint_rules")
+
+
+@pulumi.output_type
+class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleResult(dict):
+    def __init__(__self__, *,
+                 connection_state: Optional[str] = None,
+                 creation_time: Optional[int] = None,
+                 deactivated: Optional[bool] = None,
+                 deactivated_at: Optional[int] = None,
+                 endpoint_name: Optional[str] = None,
+                 group_id: Optional[str] = None,
+                 network_connectivity_config_id: Optional[str] = None,
+                 resource_id: Optional[str] = None,
+                 rule_id: Optional[str] = None,
+                 updated_time: Optional[int] = None):
+        """
+        :param str connection_state: The current status of this private endpoint.
+        :param int creation_time: Time in epoch milliseconds when this object was created.
+        :param bool deactivated: Whether this private endpoint is deactivated.
+        :param int deactivated_at: Time in epoch milliseconds when this object was deactivated.
+        :param str endpoint_name: The name of the Azure private endpoint resource.
+        :param str group_id: The sub-resource type (group ID) of the target resource.
+        :param str network_connectivity_config_id: The Databricks network connectivity configuration ID.
+        :param str resource_id: The Azure resource ID of the target resource.
+        :param str rule_id: The ID of a private endpoint rule.
+        :param int updated_time: Time in epoch milliseconds when the network was updated.
+        """
+        if connection_state is not None:
+            pulumi.set(__self__, "connection_state", connection_state)
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if deactivated is not None:
+            pulumi.set(__self__, "deactivated", deactivated)
+        if deactivated_at is not None:
+            pulumi.set(__self__, "deactivated_at", deactivated_at)
+        if endpoint_name is not None:
+            pulumi.set(__self__, "endpoint_name", endpoint_name)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if network_connectivity_config_id is not None:
+            pulumi.set(__self__, "network_connectivity_config_id", network_connectivity_config_id)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if rule_id is not None:
+            pulumi.set(__self__, "rule_id", rule_id)
+        if updated_time is not None:
+            pulumi.set(__self__, "updated_time", updated_time)
+
+    @property
+    @pulumi.getter(name="connectionState")
+    def connection_state(self) -> Optional[str]:
+        """
+        The current status of this private endpoint.
+        """
+        return pulumi.get(self, "connection_state")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[int]:
+        """
+        Time in epoch milliseconds when this object was created.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def deactivated(self) -> Optional[bool]:
+        """
+        Whether this private endpoint is deactivated.
+        """
+        return pulumi.get(self, "deactivated")
+
+    @property
+    @pulumi.getter(name="deactivatedAt")
+    def deactivated_at(self) -> Optional[int]:
+        """
+        Time in epoch milliseconds when this object was deactivated.
+        """
+        return pulumi.get(self, "deactivated_at")
+
+    @property
+    @pulumi.getter(name="endpointName")
+    def endpoint_name(self) -> Optional[str]:
+        """
+        The name of the Azure private endpoint resource.
+        """
+        return pulumi.get(self, "endpoint_name")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[str]:
+        """
+        The sub-resource type (group ID) of the target resource.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="networkConnectivityConfigId")
+    def network_connectivity_config_id(self) -> Optional[str]:
+        """
+        The Databricks network connectivity configuration ID.
+        """
+        return pulumi.get(self, "network_connectivity_config_id")
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[str]:
+        """
+        The Azure resource ID of the target resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> Optional[str]:
+        """
+        The ID of a private endpoint rule.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @property
+    @pulumi.getter(name="updatedTime")
+    def updated_time(self) -> Optional[int]:
+        """
+        Time in epoch milliseconds when the network was updated.
+        """
+        return pulumi.get(self, "updated_time")
+
+
+@pulumi.output_type
 class GetNotebookPathsNotebookPathListResult(dict):
     def __init__(__self__, *,
                  language: Optional[str] = None,
@@ -37851,6 +40727,350 @@ class GetRegisteredModelModelInfoAliasResult(dict):
 
 
 @pulumi.output_type
+class GetRegisteredModelVersionsModelVersionResult(dict):
+    def __init__(__self__, *,
+                 aliases: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionAliasResult']] = None,
+                 browse_only: Optional[bool] = None,
+                 catalog_name: Optional[str] = None,
+                 comment: Optional[str] = None,
+                 created_at: Optional[int] = None,
+                 created_by: Optional[str] = None,
+                 id: Optional[str] = None,
+                 metastore_id: Optional[str] = None,
+                 model_name: Optional[str] = None,
+                 model_version_dependencies: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyResult']] = None,
+                 run_id: Optional[str] = None,
+                 run_workspace_id: Optional[int] = None,
+                 schema_name: Optional[str] = None,
+                 source: Optional[str] = None,
+                 status: Optional[str] = None,
+                 storage_location: Optional[str] = None,
+                 updated_at: Optional[int] = None,
+                 updated_by: Optional[str] = None,
+                 version: Optional[int] = None):
+        """
+        :param Sequence['GetRegisteredModelVersionsModelVersionAliasArgs'] aliases: the list of aliases associated with this model. Each item is object consisting of following attributes:
+        :param str catalog_name: The name of the catalog where the schema and the registered model reside.
+        :param str comment: The comment attached to the registered model.
+        :param int created_at: the Unix timestamp at the model's creation
+        :param str created_by: the identifier of the user who created the model
+        :param str id: The unique identifier of the model version
+        :param str metastore_id: the unique identifier of the metastore
+        :param Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs'] model_version_dependencies: block describing model version dependencies, for feature-store packaged models. Consists of following attributes:
+        :param str run_id: MLflow run ID used when creating the model version, if `source` was generated by an experiment run stored in an MLflow tracking server
+        :param int run_workspace_id: ID of the Databricks workspace containing the MLflow run that generated this model version, if applicable
+        :param str schema_name: The name of the schema where the registered model resides.
+        :param str source: URI indicating the location of the source artifacts (files) for the model version.
+        :param str status: Current status of the model version.
+        :param str storage_location: The storage location under which model version data files are stored.
+        :param int updated_at: the timestamp of the last time changes were made to the model
+        :param str updated_by: the identifier of the user who updated the model last time
+        :param int version: Integer model version number, used to reference the model version in API requests.
+        """
+        if aliases is not None:
+            pulumi.set(__self__, "aliases", aliases)
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
+        if model_name is not None:
+            pulumi.set(__self__, "model_name", model_name)
+        if model_version_dependencies is not None:
+            pulumi.set(__self__, "model_version_dependencies", model_version_dependencies)
+        if run_id is not None:
+            pulumi.set(__self__, "run_id", run_id)
+        if run_workspace_id is not None:
+            pulumi.set(__self__, "run_workspace_id", run_workspace_id)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if storage_location is not None:
+            pulumi.set(__self__, "storage_location", storage_location)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def aliases(self) -> Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionAliasResult']]:
+        """
+        the list of aliases associated with this model. Each item is object consisting of following attributes:
+        """
+        return pulumi.get(self, "aliases")
+
+    @property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[bool]:
+        return pulumi.get(self, "browse_only")
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[str]:
+        """
+        The name of the catalog where the schema and the registered model reside.
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        The comment attached to the registered model.
+        """
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[int]:
+        """
+        the Unix timestamp at the model's creation
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        the identifier of the user who created the model
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The unique identifier of the model version
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[str]:
+        """
+        the unique identifier of the metastore
+        """
+        return pulumi.get(self, "metastore_id")
+
+    @property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> Optional[str]:
+        return pulumi.get(self, "model_name")
+
+    @property
+    @pulumi.getter(name="modelVersionDependencies")
+    def model_version_dependencies(self) -> Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyResult']]:
+        """
+        block describing model version dependencies, for feature-store packaged models. Consists of following attributes:
+        """
+        return pulumi.get(self, "model_version_dependencies")
+
+    @property
+    @pulumi.getter(name="runId")
+    def run_id(self) -> Optional[str]:
+        """
+        MLflow run ID used when creating the model version, if `source` was generated by an experiment run stored in an MLflow tracking server
+        """
+        return pulumi.get(self, "run_id")
+
+    @property
+    @pulumi.getter(name="runWorkspaceId")
+    def run_workspace_id(self) -> Optional[int]:
+        """
+        ID of the Databricks workspace containing the MLflow run that generated this model version, if applicable
+        """
+        return pulumi.get(self, "run_workspace_id")
+
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[str]:
+        """
+        The name of the schema where the registered model resides.
+        """
+        return pulumi.get(self, "schema_name")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        """
+        URI indicating the location of the source artifacts (files) for the model version.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Current status of the model version.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> Optional[str]:
+        """
+        The storage location under which model version data files are stored.
+        """
+        return pulumi.get(self, "storage_location")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[int]:
+        """
+        the timestamp of the last time changes were made to the model
+        """
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        the identifier of the user who updated the model last time
+        """
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[int]:
+        """
+        Integer model version number, used to reference the model version in API requests.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetRegisteredModelVersionsModelVersionAliasResult(dict):
+    def __init__(__self__, *,
+                 alias_name: Optional[str] = None,
+                 version_num: Optional[int] = None):
+        """
+        :param str alias_name: string with the name of alias
+        :param int version_num: associated model version
+        """
+        if alias_name is not None:
+            pulumi.set(__self__, "alias_name", alias_name)
+        if version_num is not None:
+            pulumi.set(__self__, "version_num", version_num)
+
+    @property
+    @pulumi.getter(name="aliasName")
+    def alias_name(self) -> Optional[str]:
+        """
+        string with the name of alias
+        """
+        return pulumi.get(self, "alias_name")
+
+    @property
+    @pulumi.getter(name="versionNum")
+    def version_num(self) -> Optional[int]:
+        """
+        associated model version
+        """
+        return pulumi.get(self, "version_num")
+
+
+@pulumi.output_type
+class GetRegisteredModelVersionsModelVersionModelVersionDependencyResult(dict):
+    def __init__(__self__, *,
+                 dependencies: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResult']] = None):
+        """
+        :param Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs'] dependencies: list of dependencies consisting of following attributes:
+        """
+        if dependencies is not None:
+            pulumi.set(__self__, "dependencies", dependencies)
+
+    @property
+    @pulumi.getter
+    def dependencies(self) -> Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResult']]:
+        """
+        list of dependencies consisting of following attributes:
+        """
+        return pulumi.get(self, "dependencies")
+
+
+@pulumi.output_type
+class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyResult(dict):
+    def __init__(__self__, *,
+                 functions: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionResult']] = None,
+                 tables: Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableResult']] = None):
+        """
+        :param Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs'] functions: A function that is dependent on a SQL object:
+        :param Sequence['GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs'] tables: A table that is dependent on a SQL object
+        """
+        if functions is not None:
+            pulumi.set(__self__, "functions", functions)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter
+    def functions(self) -> Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionResult']]:
+        """
+        A function that is dependent on a SQL object:
+        """
+        return pulumi.get(self, "functions")
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableResult']]:
+        """
+        A table that is dependent on a SQL object
+        """
+        return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionResult(dict):
+    def __init__(__self__, *,
+                 function_full_name: str):
+        """
+        :param str function_full_name: Full name of the dependent function
+        """
+        pulumi.set(__self__, "function_full_name", function_full_name)
+
+    @property
+    @pulumi.getter(name="functionFullName")
+    def function_full_name(self) -> str:
+        """
+        Full name of the dependent function
+        """
+        return pulumi.get(self, "function_full_name")
+
+
+@pulumi.output_type
+class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableResult(dict):
+    def __init__(__self__, *,
+                 table_full_name: str):
+        """
+        :param str table_full_name: Full name of the dependent table
+        """
+        pulumi.set(__self__, "table_full_name", table_full_name)
+
+    @property
+    @pulumi.getter(name="tableFullName")
+    def table_full_name(self) -> str:
+        """
+        Full name of the dependent table
+        """
+        return pulumi.get(self, "table_full_name")
+
+
+@pulumi.output_type
 class GetSchemaSchemaInfoResult(dict):
     def __init__(__self__, *,
                  browse_only: Optional[bool] = None,
@@ -38099,6 +41319,936 @@ class GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagResult(dict):
     @pulumi.getter(name="inheritedFromType")
     def inherited_from_type(self) -> Optional[str]:
         return pulumi.get(self, "inherited_from_type")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointResult(dict):
+    def __init__(__self__, *,
+                 ai_gateways: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayResult']] = None,
+                 configs: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigResult']] = None,
+                 creation_timestamp: Optional[int] = None,
+                 creator: Optional[str] = None,
+                 id: Optional[str] = None,
+                 last_updated_timestamp: Optional[int] = None,
+                 name: Optional[str] = None,
+                 states: Optional[Sequence['outputs.GetServingEndpointsEndpointStateResult']] = None,
+                 tags: Optional[Sequence['outputs.GetServingEndpointsEndpointTagResult']] = None,
+                 task: Optional[str] = None):
+        """
+        :param Sequence['GetServingEndpointsEndpointAiGatewayArgs'] ai_gateways: A block with AI Gateway configuration for the serving endpoint.
+        :param Sequence['GetServingEndpointsEndpointConfigArgs'] configs: The model serving endpoint configuration.
+        :param str name: The name of the model serving endpoint.
+        :param Sequence['GetServingEndpointsEndpointTagArgs'] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        """
+        if ai_gateways is not None:
+            pulumi.set(__self__, "ai_gateways", ai_gateways)
+        if configs is not None:
+            pulumi.set(__self__, "configs", configs)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if creator is not None:
+            pulumi.set(__self__, "creator", creator)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if last_updated_timestamp is not None:
+            pulumi.set(__self__, "last_updated_timestamp", last_updated_timestamp)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if states is not None:
+            pulumi.set(__self__, "states", states)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if task is not None:
+            pulumi.set(__self__, "task", task)
+
+    @property
+    @pulumi.getter(name="aiGateways")
+    def ai_gateways(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayResult']]:
+        """
+        A block with AI Gateway configuration for the serving endpoint.
+        """
+        return pulumi.get(self, "ai_gateways")
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigResult']]:
+        """
+        The model serving endpoint configuration.
+        """
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[int]:
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> Optional[str]:
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastUpdatedTimestamp")
+    def last_updated_timestamp(self) -> Optional[int]:
+        return pulumi.get(self, "last_updated_timestamp")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the model serving endpoint.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def states(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointStateResult']]:
+        return pulumi.get(self, "states")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointTagResult']]:
+        """
+        Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def task(self) -> Optional[str]:
+        return pulumi.get(self, "task")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointAiGatewayResult(dict):
+    def __init__(__self__, *,
+                 guardrails: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailResult']] = None,
+                 inference_table_configs: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfigResult']] = None,
+                 rate_limits: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayRateLimitResult']] = None,
+                 usage_tracking_configs: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfigResult']] = None):
+        """
+        :param Sequence['GetServingEndpointsEndpointAiGatewayRateLimitArgs'] rate_limits: A list of rate limit blocks to be applied to the serving endpoint.
+        """
+        if guardrails is not None:
+            pulumi.set(__self__, "guardrails", guardrails)
+        if inference_table_configs is not None:
+            pulumi.set(__self__, "inference_table_configs", inference_table_configs)
+        if rate_limits is not None:
+            pulumi.set(__self__, "rate_limits", rate_limits)
+        if usage_tracking_configs is not None:
+            pulumi.set(__self__, "usage_tracking_configs", usage_tracking_configs)
+
+    @property
+    @pulumi.getter
+    def guardrails(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailResult']]:
+        return pulumi.get(self, "guardrails")
+
+    @property
+    @pulumi.getter(name="inferenceTableConfigs")
+    def inference_table_configs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfigResult']]:
+        return pulumi.get(self, "inference_table_configs")
+
+    @property
+    @pulumi.getter(name="rateLimits")
+    def rate_limits(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayRateLimitResult']]:
+        """
+        A list of rate limit blocks to be applied to the serving endpoint.
+        """
+        return pulumi.get(self, "rate_limits")
+
+    @property
+    @pulumi.getter(name="usageTrackingConfigs")
+    def usage_tracking_configs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfigResult']]:
+        return pulumi.get(self, "usage_tracking_configs")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointAiGatewayGuardrailResult(dict):
+    def __init__(__self__, *,
+                 input_properties: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyResult']] = None,
+                 outputs: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputResult']] = None):
+        if input_properties is not None:
+            pulumi.set(__self__, "input_properties", input_properties)
+        if outputs is not None:
+            pulumi.set(__self__, "outputs", outputs)
+
+    @property
+    @pulumi.getter(name="inputProperties")
+    def input_properties(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyResult']]:
+        return pulumi.get(self, "input_properties")
+
+    @property
+    @pulumi.getter
+    def outputs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputResult']]:
+        return pulumi.get(self, "outputs")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyResult(dict):
+    def __init__(__self__, *,
+                 invalid_keywords: Optional[Sequence[str]] = None,
+                 piis: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiResult']] = None,
+                 safety: Optional[bool] = None,
+                 valid_topics: Optional[Sequence[str]] = None):
+        if invalid_keywords is not None:
+            pulumi.set(__self__, "invalid_keywords", invalid_keywords)
+        if piis is not None:
+            pulumi.set(__self__, "piis", piis)
+        if safety is not None:
+            pulumi.set(__self__, "safety", safety)
+        if valid_topics is not None:
+            pulumi.set(__self__, "valid_topics", valid_topics)
+
+    @property
+    @pulumi.getter(name="invalidKeywords")
+    def invalid_keywords(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "invalid_keywords")
+
+    @property
+    @pulumi.getter
+    def piis(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiResult']]:
+        return pulumi.get(self, "piis")
+
+    @property
+    @pulumi.getter
+    def safety(self) -> Optional[bool]:
+        return pulumi.get(self, "safety")
+
+    @property
+    @pulumi.getter(name="validTopics")
+    def valid_topics(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "valid_topics")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiResult(dict):
+    def __init__(__self__, *,
+                 behavior: str):
+        pulumi.set(__self__, "behavior", behavior)
+
+    @property
+    @pulumi.getter
+    def behavior(self) -> str:
+        return pulumi.get(self, "behavior")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointAiGatewayGuardrailOutputResult(dict):
+    def __init__(__self__, *,
+                 invalid_keywords: Optional[Sequence[str]] = None,
+                 piis: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiResult']] = None,
+                 safety: Optional[bool] = None,
+                 valid_topics: Optional[Sequence[str]] = None):
+        if invalid_keywords is not None:
+            pulumi.set(__self__, "invalid_keywords", invalid_keywords)
+        if piis is not None:
+            pulumi.set(__self__, "piis", piis)
+        if safety is not None:
+            pulumi.set(__self__, "safety", safety)
+        if valid_topics is not None:
+            pulumi.set(__self__, "valid_topics", valid_topics)
+
+    @property
+    @pulumi.getter(name="invalidKeywords")
+    def invalid_keywords(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "invalid_keywords")
+
+    @property
+    @pulumi.getter
+    def piis(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiResult']]:
+        return pulumi.get(self, "piis")
+
+    @property
+    @pulumi.getter
+    def safety(self) -> Optional[bool]:
+        return pulumi.get(self, "safety")
+
+    @property
+    @pulumi.getter(name="validTopics")
+    def valid_topics(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "valid_topics")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiResult(dict):
+    def __init__(__self__, *,
+                 behavior: str):
+        pulumi.set(__self__, "behavior", behavior)
+
+    @property
+    @pulumi.getter
+    def behavior(self) -> str:
+        return pulumi.get(self, "behavior")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointAiGatewayInferenceTableConfigResult(dict):
+    def __init__(__self__, *,
+                 catalog_name: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 schema_name: Optional[str] = None,
+                 table_name_prefix: Optional[str] = None):
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
+        if table_name_prefix is not None:
+            pulumi.set(__self__, "table_name_prefix", table_name_prefix)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[str]:
+        return pulumi.get(self, "catalog_name")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[str]:
+        return pulumi.get(self, "schema_name")
+
+    @property
+    @pulumi.getter(name="tableNamePrefix")
+    def table_name_prefix(self) -> Optional[str]:
+        return pulumi.get(self, "table_name_prefix")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointAiGatewayRateLimitResult(dict):
+    def __init__(__self__, *,
+                 calls: int,
+                 renewal_period: str,
+                 key: Optional[str] = None):
+        pulumi.set(__self__, "calls", calls)
+        pulumi.set(__self__, "renewal_period", renewal_period)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def calls(self) -> int:
+        return pulumi.get(self, "calls")
+
+    @property
+    @pulumi.getter(name="renewalPeriod")
+    def renewal_period(self) -> str:
+        return pulumi.get(self, "renewal_period")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointAiGatewayUsageTrackingConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigResult(dict):
+    def __init__(__self__, *,
+                 served_entities: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityResult']] = None,
+                 served_models: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedModelResult']] = None):
+        if served_entities is not None:
+            pulumi.set(__self__, "served_entities", served_entities)
+        if served_models is not None:
+            pulumi.set(__self__, "served_models", served_models)
+
+    @property
+    @pulumi.getter(name="servedEntities")
+    def served_entities(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityResult']]:
+        return pulumi.get(self, "served_entities")
+
+    @property
+    @pulumi.getter(name="servedModels")
+    def served_models(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedModelResult']]:
+        return pulumi.get(self, "served_models")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigServedEntityResult(dict):
+    def __init__(__self__, *,
+                 entity_name: Optional[str] = None,
+                 entity_version: Optional[str] = None,
+                 external_models: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelResult']] = None,
+                 foundation_models: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityFoundationModelResult']] = None,
+                 name: Optional[str] = None):
+        """
+        :param str name: The name of the model serving endpoint.
+        """
+        if entity_name is not None:
+            pulumi.set(__self__, "entity_name", entity_name)
+        if entity_version is not None:
+            pulumi.set(__self__, "entity_version", entity_version)
+        if external_models is not None:
+            pulumi.set(__self__, "external_models", external_models)
+        if foundation_models is not None:
+            pulumi.set(__self__, "foundation_models", foundation_models)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="entityName")
+    def entity_name(self) -> Optional[str]:
+        return pulumi.get(self, "entity_name")
+
+    @property
+    @pulumi.getter(name="entityVersion")
+    def entity_version(self) -> Optional[str]:
+        return pulumi.get(self, "entity_version")
+
+    @property
+    @pulumi.getter(name="externalModels")
+    def external_models(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelResult']]:
+        return pulumi.get(self, "external_models")
+
+    @property
+    @pulumi.getter(name="foundationModels")
+    def foundation_models(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityFoundationModelResult']]:
+        return pulumi.get(self, "foundation_models")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the model serving endpoint.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigServedEntityExternalModelResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 provider: str,
+                 task: str,
+                 ai21labs_configs: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigResult']] = None,
+                 amazon_bedrock_configs: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigResult']] = None,
+                 anthropic_configs: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigResult']] = None,
+                 cohere_configs: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigResult']] = None,
+                 databricks_model_serving_configs: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigResult']] = None,
+                 google_cloud_vertex_ai_configs: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigResult']] = None,
+                 openai_configs: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigResult']] = None,
+                 palm_configs: Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigResult']] = None):
+        """
+        :param str name: The name of the model serving endpoint.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "provider", provider)
+        pulumi.set(__self__, "task", task)
+        if ai21labs_configs is not None:
+            pulumi.set(__self__, "ai21labs_configs", ai21labs_configs)
+        if amazon_bedrock_configs is not None:
+            pulumi.set(__self__, "amazon_bedrock_configs", amazon_bedrock_configs)
+        if anthropic_configs is not None:
+            pulumi.set(__self__, "anthropic_configs", anthropic_configs)
+        if cohere_configs is not None:
+            pulumi.set(__self__, "cohere_configs", cohere_configs)
+        if databricks_model_serving_configs is not None:
+            pulumi.set(__self__, "databricks_model_serving_configs", databricks_model_serving_configs)
+        if google_cloud_vertex_ai_configs is not None:
+            pulumi.set(__self__, "google_cloud_vertex_ai_configs", google_cloud_vertex_ai_configs)
+        if openai_configs is not None:
+            pulumi.set(__self__, "openai_configs", openai_configs)
+        if palm_configs is not None:
+            pulumi.set(__self__, "palm_configs", palm_configs)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the model serving endpoint.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> str:
+        return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter
+    def task(self) -> str:
+        return pulumi.get(self, "task")
+
+    @property
+    @pulumi.getter(name="ai21labsConfigs")
+    def ai21labs_configs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigResult']]:
+        return pulumi.get(self, "ai21labs_configs")
+
+    @property
+    @pulumi.getter(name="amazonBedrockConfigs")
+    def amazon_bedrock_configs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigResult']]:
+        return pulumi.get(self, "amazon_bedrock_configs")
+
+    @property
+    @pulumi.getter(name="anthropicConfigs")
+    def anthropic_configs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigResult']]:
+        return pulumi.get(self, "anthropic_configs")
+
+    @property
+    @pulumi.getter(name="cohereConfigs")
+    def cohere_configs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigResult']]:
+        return pulumi.get(self, "cohere_configs")
+
+    @property
+    @pulumi.getter(name="databricksModelServingConfigs")
+    def databricks_model_serving_configs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigResult']]:
+        return pulumi.get(self, "databricks_model_serving_configs")
+
+    @property
+    @pulumi.getter(name="googleCloudVertexAiConfigs")
+    def google_cloud_vertex_ai_configs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigResult']]:
+        return pulumi.get(self, "google_cloud_vertex_ai_configs")
+
+    @property
+    @pulumi.getter(name="openaiConfigs")
+    def openai_configs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigResult']]:
+        return pulumi.get(self, "openai_configs")
+
+    @property
+    @pulumi.getter(name="palmConfigs")
+    def palm_configs(self) -> Optional[Sequence['outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigResult']]:
+        return pulumi.get(self, "palm_configs")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigResult(dict):
+    def __init__(__self__, *,
+                 ai21labs_api_key: Optional[str] = None,
+                 ai21labs_api_key_plaintext: Optional[str] = None):
+        if ai21labs_api_key is not None:
+            pulumi.set(__self__, "ai21labs_api_key", ai21labs_api_key)
+        if ai21labs_api_key_plaintext is not None:
+            pulumi.set(__self__, "ai21labs_api_key_plaintext", ai21labs_api_key_plaintext)
+
+    @property
+    @pulumi.getter(name="ai21labsApiKey")
+    def ai21labs_api_key(self) -> Optional[str]:
+        return pulumi.get(self, "ai21labs_api_key")
+
+    @property
+    @pulumi.getter(name="ai21labsApiKeyPlaintext")
+    def ai21labs_api_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "ai21labs_api_key_plaintext")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigResult(dict):
+    def __init__(__self__, *,
+                 aws_region: str,
+                 bedrock_provider: str,
+                 aws_access_key_id: Optional[str] = None,
+                 aws_access_key_id_plaintext: Optional[str] = None,
+                 aws_secret_access_key: Optional[str] = None,
+                 aws_secret_access_key_plaintext: Optional[str] = None):
+        pulumi.set(__self__, "aws_region", aws_region)
+        pulumi.set(__self__, "bedrock_provider", bedrock_provider)
+        if aws_access_key_id is not None:
+            pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
+        if aws_access_key_id_plaintext is not None:
+            pulumi.set(__self__, "aws_access_key_id_plaintext", aws_access_key_id_plaintext)
+        if aws_secret_access_key is not None:
+            pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        if aws_secret_access_key_plaintext is not None:
+            pulumi.set(__self__, "aws_secret_access_key_plaintext", aws_secret_access_key_plaintext)
+
+    @property
+    @pulumi.getter(name="awsRegion")
+    def aws_region(self) -> str:
+        return pulumi.get(self, "aws_region")
+
+    @property
+    @pulumi.getter(name="bedrockProvider")
+    def bedrock_provider(self) -> str:
+        return pulumi.get(self, "bedrock_provider")
+
+    @property
+    @pulumi.getter(name="awsAccessKeyId")
+    def aws_access_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "aws_access_key_id")
+
+    @property
+    @pulumi.getter(name="awsAccessKeyIdPlaintext")
+    def aws_access_key_id_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "aws_access_key_id_plaintext")
+
+    @property
+    @pulumi.getter(name="awsSecretAccessKey")
+    def aws_secret_access_key(self) -> Optional[str]:
+        return pulumi.get(self, "aws_secret_access_key")
+
+    @property
+    @pulumi.getter(name="awsSecretAccessKeyPlaintext")
+    def aws_secret_access_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "aws_secret_access_key_plaintext")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigResult(dict):
+    def __init__(__self__, *,
+                 anthropic_api_key: Optional[str] = None,
+                 anthropic_api_key_plaintext: Optional[str] = None):
+        if anthropic_api_key is not None:
+            pulumi.set(__self__, "anthropic_api_key", anthropic_api_key)
+        if anthropic_api_key_plaintext is not None:
+            pulumi.set(__self__, "anthropic_api_key_plaintext", anthropic_api_key_plaintext)
+
+    @property
+    @pulumi.getter(name="anthropicApiKey")
+    def anthropic_api_key(self) -> Optional[str]:
+        return pulumi.get(self, "anthropic_api_key")
+
+    @property
+    @pulumi.getter(name="anthropicApiKeyPlaintext")
+    def anthropic_api_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "anthropic_api_key_plaintext")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigResult(dict):
+    def __init__(__self__, *,
+                 cohere_api_base: Optional[str] = None,
+                 cohere_api_key: Optional[str] = None,
+                 cohere_api_key_plaintext: Optional[str] = None):
+        if cohere_api_base is not None:
+            pulumi.set(__self__, "cohere_api_base", cohere_api_base)
+        if cohere_api_key is not None:
+            pulumi.set(__self__, "cohere_api_key", cohere_api_key)
+        if cohere_api_key_plaintext is not None:
+            pulumi.set(__self__, "cohere_api_key_plaintext", cohere_api_key_plaintext)
+
+    @property
+    @pulumi.getter(name="cohereApiBase")
+    def cohere_api_base(self) -> Optional[str]:
+        return pulumi.get(self, "cohere_api_base")
+
+    @property
+    @pulumi.getter(name="cohereApiKey")
+    def cohere_api_key(self) -> Optional[str]:
+        return pulumi.get(self, "cohere_api_key")
+
+    @property
+    @pulumi.getter(name="cohereApiKeyPlaintext")
+    def cohere_api_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "cohere_api_key_plaintext")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigResult(dict):
+    def __init__(__self__, *,
+                 databricks_workspace_url: str,
+                 databricks_api_token: Optional[str] = None,
+                 databricks_api_token_plaintext: Optional[str] = None):
+        pulumi.set(__self__, "databricks_workspace_url", databricks_workspace_url)
+        if databricks_api_token is not None:
+            pulumi.set(__self__, "databricks_api_token", databricks_api_token)
+        if databricks_api_token_plaintext is not None:
+            pulumi.set(__self__, "databricks_api_token_plaintext", databricks_api_token_plaintext)
+
+    @property
+    @pulumi.getter(name="databricksWorkspaceUrl")
+    def databricks_workspace_url(self) -> str:
+        return pulumi.get(self, "databricks_workspace_url")
+
+    @property
+    @pulumi.getter(name="databricksApiToken")
+    def databricks_api_token(self) -> Optional[str]:
+        return pulumi.get(self, "databricks_api_token")
+
+    @property
+    @pulumi.getter(name="databricksApiTokenPlaintext")
+    def databricks_api_token_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "databricks_api_token_plaintext")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigResult(dict):
+    def __init__(__self__, *,
+                 private_key: Optional[str] = None,
+                 private_key_plaintext: Optional[str] = None,
+                 project_id: Optional[str] = None,
+                 region: Optional[str] = None):
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_plaintext is not None:
+            pulumi.set(__self__, "private_key_plaintext", private_key_plaintext)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="privateKeyPlaintext")
+    def private_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "private_key_plaintext")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigResult(dict):
+    def __init__(__self__, *,
+                 microsoft_entra_client_id: Optional[str] = None,
+                 microsoft_entra_client_secret: Optional[str] = None,
+                 microsoft_entra_client_secret_plaintext: Optional[str] = None,
+                 microsoft_entra_tenant_id: Optional[str] = None,
+                 openai_api_base: Optional[str] = None,
+                 openai_api_key: Optional[str] = None,
+                 openai_api_key_plaintext: Optional[str] = None,
+                 openai_api_type: Optional[str] = None,
+                 openai_api_version: Optional[str] = None,
+                 openai_deployment_name: Optional[str] = None,
+                 openai_organization: Optional[str] = None):
+        if microsoft_entra_client_id is not None:
+            pulumi.set(__self__, "microsoft_entra_client_id", microsoft_entra_client_id)
+        if microsoft_entra_client_secret is not None:
+            pulumi.set(__self__, "microsoft_entra_client_secret", microsoft_entra_client_secret)
+        if microsoft_entra_client_secret_plaintext is not None:
+            pulumi.set(__self__, "microsoft_entra_client_secret_plaintext", microsoft_entra_client_secret_plaintext)
+        if microsoft_entra_tenant_id is not None:
+            pulumi.set(__self__, "microsoft_entra_tenant_id", microsoft_entra_tenant_id)
+        if openai_api_base is not None:
+            pulumi.set(__self__, "openai_api_base", openai_api_base)
+        if openai_api_key is not None:
+            pulumi.set(__self__, "openai_api_key", openai_api_key)
+        if openai_api_key_plaintext is not None:
+            pulumi.set(__self__, "openai_api_key_plaintext", openai_api_key_plaintext)
+        if openai_api_type is not None:
+            pulumi.set(__self__, "openai_api_type", openai_api_type)
+        if openai_api_version is not None:
+            pulumi.set(__self__, "openai_api_version", openai_api_version)
+        if openai_deployment_name is not None:
+            pulumi.set(__self__, "openai_deployment_name", openai_deployment_name)
+        if openai_organization is not None:
+            pulumi.set(__self__, "openai_organization", openai_organization)
+
+    @property
+    @pulumi.getter(name="microsoftEntraClientId")
+    def microsoft_entra_client_id(self) -> Optional[str]:
+        return pulumi.get(self, "microsoft_entra_client_id")
+
+    @property
+    @pulumi.getter(name="microsoftEntraClientSecret")
+    def microsoft_entra_client_secret(self) -> Optional[str]:
+        return pulumi.get(self, "microsoft_entra_client_secret")
+
+    @property
+    @pulumi.getter(name="microsoftEntraClientSecretPlaintext")
+    def microsoft_entra_client_secret_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "microsoft_entra_client_secret_plaintext")
+
+    @property
+    @pulumi.getter(name="microsoftEntraTenantId")
+    def microsoft_entra_tenant_id(self) -> Optional[str]:
+        return pulumi.get(self, "microsoft_entra_tenant_id")
+
+    @property
+    @pulumi.getter(name="openaiApiBase")
+    def openai_api_base(self) -> Optional[str]:
+        return pulumi.get(self, "openai_api_base")
+
+    @property
+    @pulumi.getter(name="openaiApiKey")
+    def openai_api_key(self) -> Optional[str]:
+        return pulumi.get(self, "openai_api_key")
+
+    @property
+    @pulumi.getter(name="openaiApiKeyPlaintext")
+    def openai_api_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "openai_api_key_plaintext")
+
+    @property
+    @pulumi.getter(name="openaiApiType")
+    def openai_api_type(self) -> Optional[str]:
+        return pulumi.get(self, "openai_api_type")
+
+    @property
+    @pulumi.getter(name="openaiApiVersion")
+    def openai_api_version(self) -> Optional[str]:
+        return pulumi.get(self, "openai_api_version")
+
+    @property
+    @pulumi.getter(name="openaiDeploymentName")
+    def openai_deployment_name(self) -> Optional[str]:
+        return pulumi.get(self, "openai_deployment_name")
+
+    @property
+    @pulumi.getter(name="openaiOrganization")
+    def openai_organization(self) -> Optional[str]:
+        return pulumi.get(self, "openai_organization")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigResult(dict):
+    def __init__(__self__, *,
+                 palm_api_key: Optional[str] = None,
+                 palm_api_key_plaintext: Optional[str] = None):
+        if palm_api_key is not None:
+            pulumi.set(__self__, "palm_api_key", palm_api_key)
+        if palm_api_key_plaintext is not None:
+            pulumi.set(__self__, "palm_api_key_plaintext", palm_api_key_plaintext)
+
+    @property
+    @pulumi.getter(name="palmApiKey")
+    def palm_api_key(self) -> Optional[str]:
+        return pulumi.get(self, "palm_api_key")
+
+    @property
+    @pulumi.getter(name="palmApiKeyPlaintext")
+    def palm_api_key_plaintext(self) -> Optional[str]:
+        return pulumi.get(self, "palm_api_key_plaintext")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigServedEntityFoundationModelResult(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 display_name: Optional[str] = None,
+                 docs: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str name: The name of the model serving endpoint.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if docs is not None:
+            pulumi.set(__self__, "docs", docs)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def docs(self) -> Optional[str]:
+        return pulumi.get(self, "docs")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the model serving endpoint.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointConfigServedModelResult(dict):
+    def __init__(__self__, *,
+                 model_name: Optional[str] = None,
+                 model_version: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str name: The name of the model serving endpoint.
+        """
+        if model_name is not None:
+            pulumi.set(__self__, "model_name", model_name)
+        if model_version is not None:
+            pulumi.set(__self__, "model_version", model_version)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> Optional[str]:
+        return pulumi.get(self, "model_name")
+
+    @property
+    @pulumi.getter(name="modelVersion")
+    def model_version(self) -> Optional[str]:
+        return pulumi.get(self, "model_version")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the model serving endpoint.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointStateResult(dict):
+    def __init__(__self__, *,
+                 config_update: Optional[str] = None,
+                 ready: Optional[str] = None):
+        if config_update is not None:
+            pulumi.set(__self__, "config_update", config_update)
+        if ready is not None:
+            pulumi.set(__self__, "ready", ready)
+
+    @property
+    @pulumi.getter(name="configUpdate")
+    def config_update(self) -> Optional[str]:
+        return pulumi.get(self, "config_update")
+
+    @property
+    @pulumi.getter
+    def ready(self) -> Optional[str]:
+        return pulumi.get(self, "ready")
+
+
+@pulumi.output_type
+class GetServingEndpointsEndpointTagResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

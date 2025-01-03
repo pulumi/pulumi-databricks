@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * - `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
  * - databricks.ExternalLocation are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
  * 
+ * On AWS, the IAM role for a storage credential requires a trust policy. See [documentation](https://docs.databricks.com/en/connect/unity-catalog/cloud-storage/storage-credentials.html#step-1-create-an-iam-role) for more details. The data source databricks.getAwsUnityCatalogAssumeRolePolicy can be used to create the necessary AWS Unity Catalog assume role policy.
+ * 
  * ## Example Usage
  * 
  * For AWS
@@ -120,7 +122,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var externalCreds = new Grants("externalCreds", GrantsArgs.builder()
- *             .storageCredential(external.id())
+ *             .storageCredential(externalMi.id())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal("Data Engineers")
  *                 .privileges("CREATE_EXTERNAL_TABLE")

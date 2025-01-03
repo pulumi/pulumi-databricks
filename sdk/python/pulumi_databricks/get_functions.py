@@ -55,7 +55,7 @@ class GetFunctionsResult:
 
     @property
     @pulumi.getter
-    def functions(self) -> Optional[Sequence['outputs.GetFunctionsFunctionResult']]:
+    def functions(self) -> Sequence['outputs.GetFunctionsFunctionResult']:
         """
         list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
         """

@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAwsUnityCatalogPolicyResult {
     private String awsAccountId;
+    private @Nullable String awsPartition;
     private String bucketName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -30,6 +31,9 @@ public final class GetAwsUnityCatalogPolicyResult {
     private GetAwsUnityCatalogPolicyResult() {}
     public String awsAccountId() {
         return this.awsAccountId;
+    }
+    public Optional<String> awsPartition() {
+        return Optional.ofNullable(this.awsPartition);
     }
     public String bucketName() {
         return this.bucketName;
@@ -65,6 +69,7 @@ public final class GetAwsUnityCatalogPolicyResult {
     @CustomType.Builder
     public static final class Builder {
         private String awsAccountId;
+        private @Nullable String awsPartition;
         private String bucketName;
         private String id;
         private String json;
@@ -74,6 +79,7 @@ public final class GetAwsUnityCatalogPolicyResult {
         public Builder(GetAwsUnityCatalogPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsAccountId = defaults.awsAccountId;
+    	      this.awsPartition = defaults.awsPartition;
     	      this.bucketName = defaults.bucketName;
     	      this.id = defaults.id;
     	      this.json = defaults.json;
@@ -87,6 +93,12 @@ public final class GetAwsUnityCatalogPolicyResult {
               throw new MissingRequiredPropertyException("GetAwsUnityCatalogPolicyResult", "awsAccountId");
             }
             this.awsAccountId = awsAccountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder awsPartition(@Nullable String awsPartition) {
+
+            this.awsPartition = awsPartition;
             return this;
         }
         @CustomType.Setter
@@ -130,6 +142,7 @@ public final class GetAwsUnityCatalogPolicyResult {
         public GetAwsUnityCatalogPolicyResult build() {
             final var _resultValue = new GetAwsUnityCatalogPolicyResult();
             _resultValue.awsAccountId = awsAccountId;
+            _resultValue.awsPartition = awsPartition;
             _resultValue.bucketName = bucketName;
             _resultValue.id = id;
             _resultValue.json = json;

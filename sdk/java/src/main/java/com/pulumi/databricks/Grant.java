@@ -545,6 +545,57 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Service credential grants
+ * 
+ * See databricks.Grants Service credential grants for the list of privileges that apply to Service credentials.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Credential;
+ * import com.pulumi.databricks.CredentialArgs;
+ * import com.pulumi.databricks.inputs.CredentialAwsIamRoleArgs;
+ * import com.pulumi.databricks.Grant;
+ * import com.pulumi.databricks.GrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var external = new Credential("external", CredentialArgs.builder()
+ *             .name(externalDataAccess.name())
+ *             .awsIamRole(CredentialAwsIamRoleArgs.builder()
+ *                 .roleArn(externalDataAccess.arn())
+ *                 .build())
+ *             .purpose("SERVICE")
+ *             .comment("Managed by TF")
+ *             .build());
+ * 
+ *         var externalCreds = new Grant("externalCreds", GrantArgs.builder()
+ *             .credential(external.id())
+ *             .principal("Data Engineers")
+ *             .privileges("ACCESS")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Storage credential grants
  * 
  * See databricks.Grants Storage credential grants for the list of privileges that apply to Storage credentials.
@@ -798,6 +849,12 @@ public class Grant extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> catalog() {
         return Codegen.optional(this.catalog);
+    }
+    @Export(name="credential", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> credential;
+
+    public Output<Optional<String>> credential() {
+        return Codegen.optional(this.credential);
     }
     @Export(name="externalLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalLocation;

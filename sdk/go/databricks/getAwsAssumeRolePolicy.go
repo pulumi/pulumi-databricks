@@ -102,6 +102,9 @@ func GetAwsAssumeRolePolicy(ctx *pulumi.Context, args *GetAwsAssumeRolePolicyArg
 
 // A collection of arguments for invoking getAwsAssumeRolePolicy.
 type GetAwsAssumeRolePolicyArgs struct {
+	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	AwsPartition *string `pulumi:"awsPartition"`
+	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId *string `pulumi:"databricksAccountId"`
 	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	ExternalId string `pulumi:"externalId"`
@@ -111,6 +114,8 @@ type GetAwsAssumeRolePolicyArgs struct {
 
 // A collection of values returned by getAwsAssumeRolePolicy.
 type GetAwsAssumeRolePolicyResult struct {
+	AwsPartition *string `pulumi:"awsPartition"`
+	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId *string `pulumi:"databricksAccountId"`
 	ExternalId          string  `pulumi:"externalId"`
 	ForLogDelivery      *bool   `pulumi:"forLogDelivery"`
@@ -131,6 +136,9 @@ func GetAwsAssumeRolePolicyOutput(ctx *pulumi.Context, args GetAwsAssumeRolePoli
 
 // A collection of arguments for invoking getAwsAssumeRolePolicy.
 type GetAwsAssumeRolePolicyOutputArgs struct {
+	// AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+	AwsPartition pulumi.StringPtrInput `pulumi:"awsPartition"`
+	// Deprecated: databricks_account_id will be will be removed in the next major release.
 	DatabricksAccountId pulumi.StringPtrInput `pulumi:"databricksAccountId"`
 	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	ExternalId pulumi.StringInput `pulumi:"externalId"`
@@ -157,6 +165,11 @@ func (o GetAwsAssumeRolePolicyResultOutput) ToGetAwsAssumeRolePolicyResultOutput
 	return o
 }
 
+func (o GetAwsAssumeRolePolicyResultOutput) AwsPartition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsAssumeRolePolicyResult) *string { return v.AwsPartition }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: databricks_account_id will be will be removed in the next major release.
 func (o GetAwsAssumeRolePolicyResultOutput) DatabricksAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAwsAssumeRolePolicyResult) *string { return v.DatabricksAccountId }).(pulumi.StringPtrOutput)
 }

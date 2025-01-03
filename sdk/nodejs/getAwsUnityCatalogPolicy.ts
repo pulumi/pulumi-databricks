@@ -42,6 +42,7 @@ export function getAwsUnityCatalogPolicy(args: GetAwsUnityCatalogPolicyArgs, opt
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", {
         "awsAccountId": args.awsAccountId,
+        "awsPartition": args.awsPartition,
         "bucketName": args.bucketName,
         "kmsName": args.kmsName,
         "roleName": args.roleName,
@@ -56,6 +57,10 @@ export interface GetAwsUnityCatalogPolicyArgs {
      * The Account ID of the current AWS account (not your Databricks account).
      */
     awsAccountId: string;
+    /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     */
+    awsPartition?: string;
     /**
      * The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
      */
@@ -75,6 +80,7 @@ export interface GetAwsUnityCatalogPolicyArgs {
  */
 export interface GetAwsUnityCatalogPolicyResult {
     readonly awsAccountId: string;
+    readonly awsPartition?: string;
     readonly bucketName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -125,6 +131,7 @@ export function getAwsUnityCatalogPolicyOutput(args: GetAwsUnityCatalogPolicyOut
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", {
         "awsAccountId": args.awsAccountId,
+        "awsPartition": args.awsPartition,
         "bucketName": args.bucketName,
         "kmsName": args.kmsName,
         "roleName": args.roleName,
@@ -139,6 +146,10 @@ export interface GetAwsUnityCatalogPolicyOutputArgs {
      * The Account ID of the current AWS account (not your Databricks account).
      */
     awsAccountId: pulumi.Input<string>;
+    /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     */
+    awsPartition?: pulumi.Input<string>;
     /**
      * The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
      */

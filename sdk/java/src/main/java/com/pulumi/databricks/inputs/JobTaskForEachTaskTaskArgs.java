@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskConditionTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskDependsOnArgs;
@@ -35,6 +36,13 @@ import javax.annotation.Nullable;
 public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTaskForEachTaskTaskArgs Empty = new JobTaskForEachTaskTaskArgs();
+
+    @Import(name="cleanRoomsNotebookTask")
+    private @Nullable Output<JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs> cleanRoomsNotebookTask;
+
+    public Optional<Output<JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs>> cleanRoomsNotebookTask() {
+        return Optional.ofNullable(this.cleanRoomsNotebookTask);
+    }
 
     @Import(name="conditionTask")
     private @Nullable Output<JobTaskForEachTaskTaskConditionTaskArgs> conditionTask;
@@ -385,6 +393,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
     private JobTaskForEachTaskTaskArgs() {}
 
     private JobTaskForEachTaskTaskArgs(JobTaskForEachTaskTaskArgs $) {
+        this.cleanRoomsNotebookTask = $.cleanRoomsNotebookTask;
         this.conditionTask = $.conditionTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
@@ -431,6 +440,15 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
 
         public Builder(JobTaskForEachTaskTaskArgs defaults) {
             $ = new JobTaskForEachTaskTaskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder cleanRoomsNotebookTask(@Nullable Output<JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs> cleanRoomsNotebookTask) {
+            $.cleanRoomsNotebookTask = cleanRoomsNotebookTask;
+            return this;
+        }
+
+        public Builder cleanRoomsNotebookTask(JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs cleanRoomsNotebookTask) {
+            return cleanRoomsNotebookTask(Output.of(cleanRoomsNotebookTask));
         }
 
         public Builder conditionTask(@Nullable Output<JobTaskForEachTaskTaskConditionTaskArgs> conditionTask) {

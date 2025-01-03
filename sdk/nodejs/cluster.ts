@@ -127,6 +127,8 @@ export class Cluster extends pulumi.CustomResource {
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
      */
     public readonly isPinned!: pulumi.Output<boolean | undefined>;
+    public readonly isSingleNode!: pulumi.Output<boolean | undefined>;
+    public readonly kind!: pulumi.Output<string | undefined>;
     public readonly libraries!: pulumi.Output<outputs.ClusterLibrary[] | undefined>;
     /**
      * If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
@@ -204,6 +206,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     public /*out*/ readonly url!: pulumi.Output<string>;
+    public readonly useMlRuntime!: pulumi.Output<boolean | undefined>;
     public readonly workloadType!: pulumi.Output<outputs.ClusterWorkloadType | undefined>;
 
     /**
@@ -241,6 +244,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["initScripts"] = state ? state.initScripts : undefined;
             resourceInputs["instancePoolId"] = state ? state.instancePoolId : undefined;
             resourceInputs["isPinned"] = state ? state.isPinned : undefined;
+            resourceInputs["isSingleNode"] = state ? state.isSingleNode : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["libraries"] = state ? state.libraries : undefined;
             resourceInputs["noWait"] = state ? state.noWait : undefined;
             resourceInputs["nodeTypeId"] = state ? state.nodeTypeId : undefined;
@@ -254,6 +259,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["sshPublicKeys"] = state ? state.sshPublicKeys : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["useMlRuntime"] = state ? state.useMlRuntime : undefined;
             resourceInputs["workloadType"] = state ? state.workloadType : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
@@ -280,6 +286,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["initScripts"] = args ? args.initScripts : undefined;
             resourceInputs["instancePoolId"] = args ? args.instancePoolId : undefined;
             resourceInputs["isPinned"] = args ? args.isPinned : undefined;
+            resourceInputs["isSingleNode"] = args ? args.isSingleNode : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["libraries"] = args ? args.libraries : undefined;
             resourceInputs["noWait"] = args ? args.noWait : undefined;
             resourceInputs["nodeTypeId"] = args ? args.nodeTypeId : undefined;
@@ -291,6 +299,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["sparkEnvVars"] = args ? args.sparkEnvVars : undefined;
             resourceInputs["sparkVersion"] = args ? args.sparkVersion : undefined;
             resourceInputs["sshPublicKeys"] = args ? args.sshPublicKeys : undefined;
+            resourceInputs["useMlRuntime"] = args ? args.useMlRuntime : undefined;
             resourceInputs["workloadType"] = args ? args.workloadType : undefined;
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["defaultTags"] = undefined /*out*/;
@@ -388,6 +397,8 @@ export interface ClusterState {
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
      */
     isPinned?: pulumi.Input<boolean>;
+    isSingleNode?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     libraries?: pulumi.Input<pulumi.Input<inputs.ClusterLibrary>[]>;
     /**
      * If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
@@ -465,6 +476,7 @@ export interface ClusterState {
      */
     state?: pulumi.Input<string>;
     url?: pulumi.Input<string>;
+    useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.ClusterWorkloadType>;
 }
 
@@ -549,6 +561,8 @@ export interface ClusterArgs {
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
      */
     isPinned?: pulumi.Input<boolean>;
+    isSingleNode?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     libraries?: pulumi.Input<pulumi.Input<inputs.ClusterLibrary>[]>;
     /**
      * If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
@@ -621,5 +635,6 @@ export interface ClusterArgs {
      * SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
      */
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.ClusterWorkloadType>;
 }

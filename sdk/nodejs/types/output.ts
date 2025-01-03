@@ -78,6 +78,175 @@ export interface AlertConditionThresholdValue {
     stringValue?: string;
 }
 
+export interface AppActiveDeployment {
+    /**
+     * The creation time of the app.
+     */
+    createTime: string;
+    /**
+     * The email of the user that created the app.
+     */
+    creator: string;
+    deploymentArtifacts: outputs.AppActiveDeploymentDeploymentArtifacts;
+    deploymentId?: string;
+    mode?: string;
+    sourceCodePath?: string;
+    status: outputs.AppActiveDeploymentStatus;
+    /**
+     * The update time of the app.
+     */
+    updateTime: string;
+}
+
+export interface AppActiveDeploymentDeploymentArtifacts {
+    sourceCodePath?: string;
+}
+
+export interface AppActiveDeploymentStatus {
+    /**
+     * Application status message
+     */
+    message: string;
+    /**
+     * State of the application.
+     */
+    state: string;
+}
+
+export interface AppAppStatus {
+    /**
+     * Application status message
+     */
+    message: string;
+    /**
+     * State of the application.
+     */
+    state: string;
+}
+
+export interface AppComputeStatus {
+    /**
+     * Application status message
+     */
+    message: string;
+    /**
+     * State of the application.
+     */
+    state: string;
+}
+
+export interface AppPendingDeployment {
+    /**
+     * The creation time of the app.
+     */
+    createTime: string;
+    /**
+     * The email of the user that created the app.
+     */
+    creator: string;
+    deploymentArtifacts: outputs.AppPendingDeploymentDeploymentArtifacts;
+    deploymentId?: string;
+    mode?: string;
+    sourceCodePath?: string;
+    status: outputs.AppPendingDeploymentStatus;
+    /**
+     * The update time of the app.
+     */
+    updateTime: string;
+}
+
+export interface AppPendingDeploymentDeploymentArtifacts {
+    sourceCodePath?: string;
+}
+
+export interface AppPendingDeploymentStatus {
+    /**
+     * Application status message
+     */
+    message: string;
+    /**
+     * State of the application.
+     */
+    state: string;
+}
+
+export interface AppResource {
+    /**
+     * The description of the resource.
+     *
+     * Exactly one of the following attributes must be provided:
+     */
+    description?: string;
+    /**
+     * attribute
+     */
+    job?: outputs.AppResourceJob;
+    /**
+     * The name of the resource.
+     */
+    name: string;
+    /**
+     * attribute
+     */
+    secret?: outputs.AppResourceSecret;
+    /**
+     * attribute
+     */
+    servingEndpoint?: outputs.AppResourceServingEndpoint;
+    /**
+     * attribute
+     */
+    sqlWarehouse?: outputs.AppResourceSqlWarehouse;
+}
+
+export interface AppResourceJob {
+    /**
+     * Id of the job to grant permission on.
+     */
+    id: string;
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     */
+    permission: string;
+}
+
+export interface AppResourceSecret {
+    /**
+     * Key of the secret to grant permission on.
+     */
+    key: string;
+    /**
+     * Permission to grant on the secret scope. For secrets, only one permission is allowed. Permission must be one of: `READ`, `WRITE`, `MANAGE`.
+     */
+    permission: string;
+    /**
+     * Scope of the secret to grant permission on.
+     */
+    scope: string;
+}
+
+export interface AppResourceServingEndpoint {
+    /**
+     * Name of the serving endpoint to grant permission on.
+     */
+    name: string;
+    /**
+     * Permission to grant on the serving endpoint. Supported permissions are: `CAN_MANAGE`, `CAN_QUERY`, `CAN_VIEW`.
+     */
+    permission: string;
+}
+
+export interface AppResourceSqlWarehouse {
+    /**
+     * Id of the SQL warehouse to grant permission on.
+     */
+    id: string;
+    /**
+     * Permission to grant on the SQL warehouse. Supported permissions are: `CAN_MANAGE`, `CAN_USE`, `IS_OWNER`.
+     */
+    permission: string;
+}
+
 export interface ArtifactAllowlistArtifactMatcher {
     /**
      * The artifact path or maven coordinate.
@@ -626,6 +795,63 @@ export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProf
     isEnabled: boolean;
 }
 
+export interface CredentialAwsIamRole {
+    externalId: string;
+    /**
+     * The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     *
+     * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over `azureServicePrincipal`):
+     */
+    roleArn?: string;
+    unityCatalogIamArn: string;
+}
+
+export interface CredentialAzureManagedIdentity {
+    /**
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+     */
+    accessConnectorId: string;
+    /**
+     * Unique ID of the credential.
+     */
+    credentialId: string;
+    /**
+     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+     *
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure. Only applicable when purpose is `STORAGE` (Legacy):
+     */
+    managedIdentityId?: string;
+}
+
+export interface CredentialAzureServicePrincipal {
+    /**
+     * The application ID of the application registration within the referenced AAD tenant
+     */
+    applicationId: string;
+    /**
+     * The client secret generated for the above app ID in AAD. **This field is redacted on output**
+     *
+     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+     */
+    clientSecret: string;
+    /**
+     * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+     */
+    directoryId: string;
+}
+
+export interface CredentialDatabricksGcpServiceAccount {
+    /**
+     * Unique ID of the credential.
+     */
+    credentialId: string;
+    /**
+     * The email of the GCP service account created, to be granted access to relevant buckets.
+     */
+    email: string;
+    privateKeyId: string;
+}
+
 export interface CustomAppIntegrationTokenAccessPolicy {
     /**
      * access token time to live (TTL) in minutes.
@@ -655,6 +881,456 @@ export interface ExternalLocationEncryptionDetails {
 export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
     algorithm?: string;
     awsKmsKeyArn?: string;
+}
+
+export interface GetAppApp {
+    activeDeployment: outputs.GetAppAppActiveDeployment;
+    /**
+     * attribute
+     */
+    appStatus: outputs.GetAppAppAppStatus;
+    /**
+     * attribute
+     */
+    computeStatus: outputs.GetAppAppComputeStatus;
+    /**
+     * The creation time of the app.
+     */
+    createTime: string;
+    /**
+     * The email of the user that created the app.
+     */
+    creator: string;
+    /**
+     * The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+     */
+    defaultSourceCodePath: string;
+    /**
+     * The description of the resource.
+     */
+    description?: string;
+    /**
+     * The name of the app.
+     */
+    name: string;
+    pendingDeployment: outputs.GetAppAppPendingDeployment;
+    /**
+     * A list of resources that the app have access to.
+     */
+    resources?: outputs.GetAppAppResource[];
+    servicePrincipalClientId: string;
+    /**
+     * id of the app service principal
+     */
+    servicePrincipalId: number;
+    /**
+     * name of the app service principal
+     */
+    servicePrincipalName: string;
+    /**
+     * The update time of the app.
+     */
+    updateTime: string;
+    /**
+     * The email of the user that last updated the app.
+     */
+    updater: string;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: string;
+}
+
+export interface GetAppAppActiveDeployment {
+    /**
+     * The creation time of the app.
+     */
+    createTime: string;
+    /**
+     * The email of the user that created the app.
+     */
+    creator: string;
+    deploymentArtifacts: outputs.GetAppAppActiveDeploymentDeploymentArtifacts;
+    deploymentId?: string;
+    mode?: string;
+    sourceCodePath?: string;
+    status: outputs.GetAppAppActiveDeploymentStatus;
+    /**
+     * The update time of the app.
+     */
+    updateTime: string;
+}
+
+export interface GetAppAppActiveDeploymentDeploymentArtifacts {
+    sourceCodePath?: string;
+}
+
+export interface GetAppAppActiveDeploymentStatus {
+    /**
+     * Application status message
+     */
+    message: string;
+    /**
+     * State of the application.
+     */
+    state: string;
+}
+
+export interface GetAppAppAppStatus {
+    /**
+     * Application status message
+     */
+    message: string;
+    /**
+     * State of the application.
+     */
+    state: string;
+}
+
+export interface GetAppAppComputeStatus {
+    /**
+     * Application status message
+     */
+    message: string;
+    /**
+     * State of the application.
+     */
+    state: string;
+}
+
+export interface GetAppAppPendingDeployment {
+    /**
+     * The creation time of the app.
+     */
+    createTime: string;
+    /**
+     * The email of the user that created the app.
+     */
+    creator: string;
+    deploymentArtifacts: outputs.GetAppAppPendingDeploymentDeploymentArtifacts;
+    deploymentId?: string;
+    mode?: string;
+    sourceCodePath?: string;
+    status: outputs.GetAppAppPendingDeploymentStatus;
+    /**
+     * The update time of the app.
+     */
+    updateTime: string;
+}
+
+export interface GetAppAppPendingDeploymentDeploymentArtifacts {
+    sourceCodePath?: string;
+}
+
+export interface GetAppAppPendingDeploymentStatus {
+    /**
+     * Application status message
+     */
+    message: string;
+    /**
+     * State of the application.
+     */
+    state: string;
+}
+
+export interface GetAppAppResource {
+    /**
+     * The description of the resource.
+     */
+    description?: string;
+    /**
+     * attribute
+     */
+    job?: outputs.GetAppAppResourceJob;
+    /**
+     * The name of the app.
+     */
+    name: string;
+    /**
+     * attribute
+     */
+    secret?: outputs.GetAppAppResourceSecret;
+    /**
+     * attribute
+     */
+    servingEndpoint?: outputs.GetAppAppResourceServingEndpoint;
+    /**
+     * attribute
+     */
+    sqlWarehouse?: outputs.GetAppAppResourceSqlWarehouse;
+}
+
+export interface GetAppAppResourceJob {
+    /**
+     * Id of the job to grant permission on.
+     */
+    id: string;
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     */
+    permission: string;
+}
+
+export interface GetAppAppResourceSecret {
+    /**
+     * Key of the secret to grant permission on.
+     */
+    key: string;
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     */
+    permission: string;
+    /**
+     * Scope of the secret to grant permission on.
+     */
+    scope: string;
+}
+
+export interface GetAppAppResourceServingEndpoint {
+    /**
+     * The name of the app.
+     */
+    name: string;
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     */
+    permission: string;
+}
+
+export interface GetAppAppResourceSqlWarehouse {
+    /**
+     * Id of the job to grant permission on.
+     */
+    id: string;
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     */
+    permission: string;
+}
+
+export interface GetAppsApp {
+    activeDeployment: outputs.GetAppsAppActiveDeployment;
+    /**
+     * attribute
+     */
+    appStatus: outputs.GetAppsAppAppStatus;
+    /**
+     * attribute
+     */
+    computeStatus: outputs.GetAppsAppComputeStatus;
+    /**
+     * The creation time of the app.
+     */
+    createTime: string;
+    /**
+     * The email of the user that created the app.
+     */
+    creator: string;
+    /**
+     * The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+     */
+    defaultSourceCodePath: string;
+    /**
+     * The description of the resource.
+     */
+    description?: string;
+    /**
+     * Name of the serving endpoint to grant permission on.
+     */
+    name: string;
+    pendingDeployment: outputs.GetAppsAppPendingDeployment;
+    /**
+     * A list of resources that the app have access to.
+     */
+    resources?: outputs.GetAppsAppResource[];
+    servicePrincipalClientId: string;
+    /**
+     * id of the app service principal
+     */
+    servicePrincipalId: number;
+    /**
+     * name of the app service principal
+     */
+    servicePrincipalName: string;
+    /**
+     * The update time of the app.
+     */
+    updateTime: string;
+    /**
+     * The email of the user that last updated the app.
+     */
+    updater: string;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: string;
+}
+
+export interface GetAppsAppActiveDeployment {
+    /**
+     * The creation time of the app.
+     */
+    createTime: string;
+    /**
+     * The email of the user that created the app.
+     */
+    creator: string;
+    deploymentArtifacts: outputs.GetAppsAppActiveDeploymentDeploymentArtifacts;
+    deploymentId?: string;
+    mode?: string;
+    sourceCodePath?: string;
+    status: outputs.GetAppsAppActiveDeploymentStatus;
+    /**
+     * The update time of the app.
+     */
+    updateTime: string;
+}
+
+export interface GetAppsAppActiveDeploymentDeploymentArtifacts {
+    sourceCodePath?: string;
+}
+
+export interface GetAppsAppActiveDeploymentStatus {
+    /**
+     * Application status message
+     */
+    message: string;
+    /**
+     * State of the application.
+     */
+    state: string;
+}
+
+export interface GetAppsAppAppStatus {
+    /**
+     * Application status message
+     */
+    message: string;
+    /**
+     * State of the application.
+     */
+    state: string;
+}
+
+export interface GetAppsAppComputeStatus {
+    /**
+     * Application status message
+     */
+    message: string;
+    /**
+     * State of the application.
+     */
+    state: string;
+}
+
+export interface GetAppsAppPendingDeployment {
+    /**
+     * The creation time of the app.
+     */
+    createTime: string;
+    /**
+     * The email of the user that created the app.
+     */
+    creator: string;
+    deploymentArtifacts: outputs.GetAppsAppPendingDeploymentDeploymentArtifacts;
+    deploymentId?: string;
+    mode?: string;
+    sourceCodePath?: string;
+    status: outputs.GetAppsAppPendingDeploymentStatus;
+    /**
+     * The update time of the app.
+     */
+    updateTime: string;
+}
+
+export interface GetAppsAppPendingDeploymentDeploymentArtifacts {
+    sourceCodePath?: string;
+}
+
+export interface GetAppsAppPendingDeploymentStatus {
+    /**
+     * Application status message
+     */
+    message: string;
+    /**
+     * State of the application.
+     */
+    state: string;
+}
+
+export interface GetAppsAppResource {
+    /**
+     * The description of the resource.
+     */
+    description?: string;
+    /**
+     * attribute
+     */
+    job?: outputs.GetAppsAppResourceJob;
+    /**
+     * Name of the serving endpoint to grant permission on.
+     */
+    name: string;
+    /**
+     * attribute
+     */
+    secret?: outputs.GetAppsAppResourceSecret;
+    /**
+     * attribute
+     */
+    servingEndpoint?: outputs.GetAppsAppResourceServingEndpoint;
+    /**
+     * attribute
+     */
+    sqlWarehouse?: outputs.GetAppsAppResourceSqlWarehouse;
+}
+
+export interface GetAppsAppResourceJob {
+    /**
+     * Id of the job to grant permission on.
+     */
+    id: string;
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     */
+    permission: string;
+}
+
+export interface GetAppsAppResourceSecret {
+    /**
+     * Key of the secret to grant permission on.
+     */
+    key: string;
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     */
+    permission: string;
+    /**
+     * Scope of the secret to grant permission on.
+     */
+    scope: string;
+}
+
+export interface GetAppsAppResourceServingEndpoint {
+    /**
+     * Name of the serving endpoint to grant permission on.
+     */
+    name: string;
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     */
+    permission: string;
+}
+
+export interface GetAppsAppResourceSqlWarehouse {
+    /**
+     * Id of the job to grant permission on.
+     */
+    id: string;
+    /**
+     * Permissions to grant on the Job. Supported permissions are: `CAN_MANAGE`, `IS_OWNER`, `CAN_MANAGE_RUN`, `CAN_VIEW`.
+     */
+    permission: string;
 }
 
 export interface GetCatalogCatalogInfo {
@@ -816,7 +1492,9 @@ export interface GetClusterClusterInfo {
      * The pool of idle instances the cluster is attached to.
      */
     instancePoolId?: string;
+    isSingleNode?: boolean;
     jdbcPort?: number;
+    kind?: string;
     lastRestartedTime?: number;
     lastStateLossTime?: number;
     /**
@@ -859,6 +1537,7 @@ export interface GetClusterClusterInfo {
     stateMessage?: string;
     terminatedTime?: number;
     terminationReason?: outputs.GetClusterClusterInfoTerminationReason;
+    useMlRuntime?: boolean;
     workloadType?: outputs.GetClusterClusterInfoWorkloadType;
 }
 
@@ -1057,6 +1736,8 @@ export interface GetClusterClusterInfoSpec {
      * The pool of idle instances the cluster is attached to.
      */
     instancePoolId?: string;
+    isSingleNode?: boolean;
+    kind?: string;
     libraries?: outputs.GetClusterClusterInfoSpecLibrary[];
     /**
      * Any supported databricks.getNodeType id.
@@ -1091,6 +1772,7 @@ export interface GetClusterClusterInfoSpec {
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
     sshPublicKeys?: string[];
+    useMlRuntime?: boolean;
     workloadType?: outputs.GetClusterClusterInfoSpecWorkloadType;
 }
 
@@ -1489,7 +2171,7 @@ export interface GetFunctionsFunction {
     /**
      * object describing input parameters. Consists of the single attribute:
      */
-    inputParams?: outputs.GetFunctionsFunctionInputParams;
+    inputParams?: outputs.GetFunctionsFunctionInputParam[];
     /**
      * Boolean flag specifying whether the function is deterministic.
      */
@@ -1521,7 +2203,7 @@ export interface GetFunctionsFunction {
     /**
      * Table function return parameters.  See `inputParams` for description.
      */
-    returnParams?: outputs.GetFunctionsFunctionReturnParams;
+    returnParams?: outputs.GetFunctionsFunctionReturnParam[];
     /**
      * Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
      */
@@ -1533,7 +2215,7 @@ export interface GetFunctionsFunction {
     /**
      * Function dependencies.
      */
-    routineDependencies?: outputs.GetFunctionsFunctionRoutineDependencies;
+    routineDependencies?: outputs.GetFunctionsFunctionRoutineDependency[];
     /**
      * Name of databricks_schema.
      */
@@ -1564,14 +2246,14 @@ export interface GetFunctionsFunction {
     updatedBy?: string;
 }
 
-export interface GetFunctionsFunctionInputParams {
+export interface GetFunctionsFunctionInputParam {
     /**
      * The array of definitions of the function's parameters:
      */
-    parameters?: outputs.GetFunctionsFunctionInputParamsParameter[];
+    parameters?: outputs.GetFunctionsFunctionInputParamParameter[];
 }
 
-export interface GetFunctionsFunctionInputParamsParameter {
+export interface GetFunctionsFunctionInputParamParameter {
     /**
      * User-provided free-form text description.
      */
@@ -1622,14 +2304,14 @@ export interface GetFunctionsFunctionInputParamsParameter {
     typeText: string;
 }
 
-export interface GetFunctionsFunctionReturnParams {
+export interface GetFunctionsFunctionReturnParam {
     /**
      * The array of definitions of the function's parameters:
      */
-    parameters?: outputs.GetFunctionsFunctionReturnParamsParameter[];
+    parameters?: outputs.GetFunctionsFunctionReturnParamParameter[];
 }
 
-export interface GetFunctionsFunctionReturnParamsParameter {
+export interface GetFunctionsFunctionReturnParamParameter {
     /**
      * User-provided free-form text description.
      */
@@ -1680,20 +2362,20 @@ export interface GetFunctionsFunctionReturnParamsParameter {
     typeText: string;
 }
 
-export interface GetFunctionsFunctionRoutineDependencies {
-    dependencies?: outputs.GetFunctionsFunctionRoutineDependenciesDependency[];
+export interface GetFunctionsFunctionRoutineDependency {
+    dependencies?: outputs.GetFunctionsFunctionRoutineDependencyDependency[];
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependency {
-    function?: outputs.GetFunctionsFunctionRoutineDependenciesDependencyFunction;
-    table?: outputs.GetFunctionsFunctionRoutineDependenciesDependencyTable;
+export interface GetFunctionsFunctionRoutineDependencyDependency {
+    functions?: outputs.GetFunctionsFunctionRoutineDependencyDependencyFunction[];
+    tables?: outputs.GetFunctionsFunctionRoutineDependencyDependencyTable[];
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependencyFunction {
+export interface GetFunctionsFunctionRoutineDependencyDependencyFunction {
     functionFullName: string;
 }
 
-export interface GetFunctionsFunctionRoutineDependenciesDependencyTable {
+export interface GetFunctionsFunctionRoutineDependencyDependencyTable {
     tableFullName: string;
 }
 
@@ -3259,6 +3941,100 @@ export interface GetMlflowModelTag {
     value?: string;
 }
 
+export interface GetMwsNetworkConnectivityConfigEgressConfig {
+    /**
+     * Array of default rules.
+     */
+    defaultRules?: outputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRules;
+    /**
+     * Array of target rules.
+     */
+    targetRules?: outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRules;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRules {
+    /**
+     * The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
+     */
+    awsStableIpRule?: outputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule;
+    /**
+     * Array of Azure service endpoint rules.
+     */
+    azureServiceEndpointRule?: outputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule;
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
+    /**
+     * The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
+     */
+    cidrBlocks?: string[];
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
+    /**
+     * Array of strings representing the subnet IDs.
+     */
+    subnets?: string[];
+    /**
+     * The target region for the service endpoint.
+     */
+    targetRegion?: string;
+    /**
+     * Array of target services.
+     */
+    targetServices?: string[];
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRules {
+    /**
+     * Array of private endpoint rule objects.
+     */
+    azurePrivateEndpointRules?: outputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule[];
+}
+
+export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
+    /**
+     * The current status of this private endpoint.
+     */
+    connectionState?: string;
+    /**
+     * Time in epoch milliseconds when this object was created.
+     */
+    creationTime?: number;
+    /**
+     * Whether this private endpoint is deactivated.
+     */
+    deactivated?: boolean;
+    /**
+     * Time in epoch milliseconds when this object was deactivated.
+     */
+    deactivatedAt?: number;
+    /**
+     * The name of the Azure private endpoint resource.
+     */
+    endpointName?: string;
+    /**
+     * The sub-resource type (group ID) of the target resource.
+     */
+    groupId?: string;
+    /**
+     * The Databricks network connectivity configuration ID.
+     */
+    networkConnectivityConfigId?: string;
+    /**
+     * The Azure resource ID of the target resource.
+     */
+    resourceId?: string;
+    /**
+     * The ID of a private endpoint rule.
+     */
+    ruleId?: string;
+    /**
+     * Time in epoch milliseconds when the network was updated.
+     */
+    updatedTime?: number;
+}
+
 export interface GetNotebookPathsNotebookPathList {
     language?: string;
     /**
@@ -3349,6 +4125,122 @@ export interface GetRegisteredModelModelInfoAlias {
     versionNum?: number;
 }
 
+export interface GetRegisteredModelVersionsModelVersion {
+    /**
+     * the list of aliases associated with this model. Each item is object consisting of following attributes:
+     */
+    aliases?: outputs.GetRegisteredModelVersionsModelVersionAlias[];
+    browseOnly?: boolean;
+    /**
+     * The name of the catalog where the schema and the registered model reside.
+     */
+    catalogName?: string;
+    /**
+     * The comment attached to the registered model.
+     */
+    comment?: string;
+    /**
+     * the Unix timestamp at the model's creation
+     */
+    createdAt?: number;
+    /**
+     * the identifier of the user who created the model
+     */
+    createdBy?: string;
+    /**
+     * The unique identifier of the model version
+     */
+    id?: string;
+    /**
+     * the unique identifier of the metastore
+     */
+    metastoreId?: string;
+    modelName?: string;
+    /**
+     * block describing model version dependencies, for feature-store packaged models. Consists of following attributes:
+     */
+    modelVersionDependencies?: outputs.GetRegisteredModelVersionsModelVersionModelVersionDependency[];
+    /**
+     * MLflow run ID used when creating the model version, if `source` was generated by an experiment run stored in an MLflow tracking server
+     */
+    runId?: string;
+    /**
+     * ID of the Databricks workspace containing the MLflow run that generated this model version, if applicable
+     */
+    runWorkspaceId?: number;
+    /**
+     * The name of the schema where the registered model resides.
+     */
+    schemaName?: string;
+    /**
+     * URI indicating the location of the source artifacts (files) for the model version.
+     */
+    source?: string;
+    /**
+     * Current status of the model version.
+     */
+    status?: string;
+    /**
+     * The storage location under which model version data files are stored.
+     */
+    storageLocation?: string;
+    /**
+     * the timestamp of the last time changes were made to the model
+     */
+    updatedAt?: number;
+    /**
+     * the identifier of the user who updated the model last time
+     */
+    updatedBy?: string;
+    /**
+     * Integer model version number, used to reference the model version in API requests.
+     */
+    version?: number;
+}
+
+export interface GetRegisteredModelVersionsModelVersionAlias {
+    /**
+     * string with the name of alias
+     */
+    aliasName?: string;
+    /**
+     * associated model version
+     */
+    versionNum?: number;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependency {
+    /**
+     * list of dependencies consisting of following attributes:
+     */
+    dependencies?: outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency[];
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency {
+    /**
+     * A function that is dependent on a SQL object:
+     */
+    functions?: outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction[];
+    /**
+     * A table that is dependent on a SQL object
+     */
+    tables?: outputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable[];
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction {
+    /**
+     * Full name of the dependent function
+     */
+    functionFullName: string;
+}
+
+export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable {
+    /**
+     * Full name of the dependent table
+     */
+    tableFullName: string;
+}
+
 export interface GetSchemaSchemaInfo {
     /**
      * indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
@@ -3428,6 +4320,204 @@ export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
     inheritedFromName?: string;
     inheritedFromType?: string;
     value: string;
+}
+
+export interface GetServingEndpointsEndpoint {
+    /**
+     * A block with AI Gateway configuration for the serving endpoint.
+     */
+    aiGateways?: outputs.GetServingEndpointsEndpointAiGateway[];
+    /**
+     * The model serving endpoint configuration.
+     */
+    configs?: outputs.GetServingEndpointsEndpointConfig[];
+    creationTimestamp?: number;
+    creator?: string;
+    id?: string;
+    lastUpdatedTimestamp?: number;
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: string;
+    states?: outputs.GetServingEndpointsEndpointState[];
+    /**
+     * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     */
+    tags?: outputs.GetServingEndpointsEndpointTag[];
+    task?: string;
+}
+
+export interface GetServingEndpointsEndpointAiGateway {
+    guardrails?: outputs.GetServingEndpointsEndpointAiGatewayGuardrail[];
+    inferenceTableConfigs?: outputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfig[];
+    /**
+     * A list of rate limit blocks to be applied to the serving endpoint.
+     */
+    rateLimits?: outputs.GetServingEndpointsEndpointAiGatewayRateLimit[];
+    usageTrackingConfigs?: outputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfig[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrail {
+    inputProperties?: outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputProperty[];
+    outputs?: outputs.GetServingEndpointsEndpointAiGatewayGuardrailOutput[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputProperty {
+    invalidKeywords?: string[];
+    piis?: outputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii[];
+    safety?: boolean;
+    validTopics?: string[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii {
+    behavior: string;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailOutput {
+    invalidKeywords?: string[];
+    piis?: outputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputPii[];
+    safety?: boolean;
+    validTopics?: string[];
+}
+
+export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputPii {
+    behavior: string;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayInferenceTableConfig {
+    catalogName?: string;
+    enabled?: boolean;
+    schemaName?: string;
+    tableNamePrefix?: string;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayRateLimit {
+    calls: number;
+    key?: string;
+    renewalPeriod: string;
+}
+
+export interface GetServingEndpointsEndpointAiGatewayUsageTrackingConfig {
+    enabled?: boolean;
+}
+
+export interface GetServingEndpointsEndpointConfig {
+    servedEntities?: outputs.GetServingEndpointsEndpointConfigServedEntity[];
+    servedModels?: outputs.GetServingEndpointsEndpointConfigServedModel[];
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntity {
+    entityName?: string;
+    entityVersion?: string;
+    externalModels?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModel[];
+    foundationModels?: outputs.GetServingEndpointsEndpointConfigServedEntityFoundationModel[];
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModel {
+    ai21labsConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig[];
+    amazonBedrockConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig[];
+    anthropicConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig[];
+    cohereConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig[];
+    databricksModelServingConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig[];
+    googleCloudVertexAiConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig[];
+    /**
+     * The name of the model serving endpoint.
+     */
+    name: string;
+    openaiConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig[];
+    palmConfigs?: outputs.GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig[];
+    provider: string;
+    task: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfig {
+    ai21labsApiKey?: string;
+    ai21labsApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig {
+    awsAccessKeyId?: string;
+    awsAccessKeyIdPlaintext?: string;
+    awsRegion: string;
+    awsSecretAccessKey?: string;
+    awsSecretAccessKeyPlaintext?: string;
+    bedrockProvider: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig {
+    anthropicApiKey?: string;
+    anthropicApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig {
+    cohereApiBase?: string;
+    cohereApiKey?: string;
+    cohereApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig {
+    databricksApiToken?: string;
+    databricksApiTokenPlaintext?: string;
+    databricksWorkspaceUrl: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
+    privateKey?: string;
+    privateKeyPlaintext?: string;
+    projectId?: string;
+    region?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig {
+    microsoftEntraClientId?: string;
+    microsoftEntraClientSecret?: string;
+    microsoftEntraClientSecretPlaintext?: string;
+    microsoftEntraTenantId?: string;
+    openaiApiBase?: string;
+    openaiApiKey?: string;
+    openaiApiKeyPlaintext?: string;
+    openaiApiType?: string;
+    openaiApiVersion?: string;
+    openaiDeploymentName?: string;
+    openaiOrganization?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig {
+    palmApiKey?: string;
+    palmApiKeyPlaintext?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedEntityFoundationModel {
+    description?: string;
+    displayName?: string;
+    docs?: string;
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: string;
+}
+
+export interface GetServingEndpointsEndpointConfigServedModel {
+    modelName?: string;
+    modelVersion?: string;
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: string;
+}
+
+export interface GetServingEndpointsEndpointState {
+    configUpdate?: string;
+    ready?: string;
+}
+
+export interface GetServingEndpointsEndpointTag {
+    key: string;
+    value?: string;
 }
 
 export interface GetShareObject {
@@ -4166,6 +5256,8 @@ export interface JobJobClusterNewCluster {
     idempotencyToken?: string;
     initScripts?: outputs.JobJobClusterNewClusterInitScript[];
     instancePoolId?: string;
+    isSingleNode?: boolean;
+    kind?: string;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
@@ -4179,6 +5271,7 @@ export interface JobJobClusterNewCluster {
     sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
+    useMlRuntime?: boolean;
     /**
      * isn't supported
      */
@@ -4398,6 +5491,8 @@ export interface JobNewCluster {
     idempotencyToken?: string;
     initScripts?: outputs.JobNewClusterInitScript[];
     instancePoolId?: string;
+    isSingleNode?: boolean;
+    kind?: string;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
@@ -4411,6 +5506,7 @@ export interface JobNewCluster {
     sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
+    useMlRuntime?: boolean;
     /**
      * isn't supported
      */
@@ -4751,6 +5847,7 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
+    cleanRoomsNotebookTask?: outputs.JobTaskCleanRoomsNotebookTask;
     conditionTask?: outputs.JobTaskConditionTask;
     dbtTask?: outputs.JobTaskDbtTask;
     /**
@@ -4837,6 +5934,13 @@ export interface JobTask {
      * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: outputs.JobTaskWebhookNotifications;
+}
+
+export interface JobTaskCleanRoomsNotebookTask {
+    cleanRoomName: string;
+    etag?: string;
+    notebookBaseParameters?: {[key: string]: string};
+    notebookName: string;
 }
 
 export interface JobTaskConditionTask {
@@ -4946,6 +6050,7 @@ export interface JobTaskForEachTask {
 }
 
 export interface JobTaskForEachTaskTask {
+    cleanRoomsNotebookTask?: outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
     conditionTask?: outputs.JobTaskForEachTaskTaskConditionTask;
     dbtTask?: outputs.JobTaskForEachTaskTaskDbtTask;
     /**
@@ -5031,6 +6136,13 @@ export interface JobTaskForEachTaskTask {
      * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
     webhookNotifications?: outputs.JobTaskForEachTaskTaskWebhookNotifications;
+}
+
+export interface JobTaskForEachTaskTaskCleanRoomsNotebookTask {
+    cleanRoomName: string;
+    etag?: string;
+    notebookBaseParameters?: {[key: string]: string};
+    notebookName: string;
 }
 
 export interface JobTaskForEachTaskTaskConditionTask {
@@ -5192,6 +6304,8 @@ export interface JobTaskForEachTaskTaskNewCluster {
     idempotencyToken?: string;
     initScripts?: outputs.JobTaskForEachTaskTaskNewClusterInitScript[];
     instancePoolId?: string;
+    isSingleNode?: boolean;
+    kind?: string;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
@@ -5205,6 +6319,7 @@ export interface JobTaskForEachTaskTaskNewCluster {
     sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
+    useMlRuntime?: boolean;
     /**
      * isn't supported
      */
@@ -5773,6 +6888,8 @@ export interface JobTaskNewCluster {
     idempotencyToken?: string;
     initScripts?: outputs.JobTaskNewClusterInitScript[];
     instancePoolId?: string;
+    isSingleNode?: boolean;
+    kind?: string;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
@@ -5786,6 +6903,7 @@ export interface JobTaskNewCluster {
     sparkEnvVars?: {[key: string]: string};
     sparkVersion: string;
     sshPublicKeys?: string[];
+    useMlRuntime?: boolean;
     /**
      * isn't supported
      */
@@ -7817,7 +8935,7 @@ export interface PipelineNotification {
 }
 
 export interface PipelineRestartWindow {
-    daysOfWeek?: string;
+    daysOfWeeks?: string[];
     startHour: number;
     timeZoneId?: string;
 }

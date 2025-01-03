@@ -34,6 +34,7 @@ export function getAwsCrossAccountPolicy(args?: GetAwsCrossAccountPolicyArgs, op
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", {
         "awsAccountId": args.awsAccountId,
+        "awsPartition": args.awsPartition,
         "passRoles": args.passRoles,
         "policyType": args.policyType,
         "region": args.region,
@@ -50,6 +51,10 @@ export interface GetAwsCrossAccountPolicyArgs {
      * — Your AWS account ID, which is a number.
      */
     awsAccountId?: string;
+    /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     */
+    awsPartition?: string;
     /**
      * List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
      * The below arguments are only valid for `restricted` policy type
@@ -78,6 +83,7 @@ export interface GetAwsCrossAccountPolicyArgs {
  */
 export interface GetAwsCrossAccountPolicyResult {
     readonly awsAccountId?: string;
+    readonly awsPartition?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -122,6 +128,7 @@ export function getAwsCrossAccountPolicyOutput(args?: GetAwsCrossAccountPolicyOu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", {
         "awsAccountId": args.awsAccountId,
+        "awsPartition": args.awsPartition,
         "passRoles": args.passRoles,
         "policyType": args.policyType,
         "region": args.region,
@@ -138,6 +145,10 @@ export interface GetAwsCrossAccountPolicyOutputArgs {
      * — Your AWS account ID, which is a number.
      */
     awsAccountId?: pulumi.Input<string>;
+    /**
+     * AWS partition. The options are `aws` or `aws-us-gov`. Defaults to `aws`
+     */
+    awsPartition?: pulumi.Input<string>;
     /**
      * List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
      * The below arguments are only valid for `restricted` policy type

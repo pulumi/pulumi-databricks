@@ -46,7 +46,7 @@ type Query struct {
 	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
 	// Text of SQL query.
 	QueryText pulumi.StringOutput `pulumi:"queryText"`
-	// Sets the "Run as" role for the object.
+	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
 	RunAsMode pulumi.StringPtrOutput `pulumi:"runAsMode"`
 	// Name of the schema where this query will be executed.
 	Schema pulumi.StringPtrOutput `pulumi:"schema"`
@@ -119,7 +119,7 @@ type queryState struct {
 	ParentPath *string `pulumi:"parentPath"`
 	// Text of SQL query.
 	QueryText *string `pulumi:"queryText"`
-	// Sets the "Run as" role for the object.
+	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
 	RunAsMode *string `pulumi:"runAsMode"`
 	// Name of the schema where this query will be executed.
 	Schema *string `pulumi:"schema"`
@@ -154,7 +154,7 @@ type QueryState struct {
 	ParentPath pulumi.StringPtrInput
 	// Text of SQL query.
 	QueryText pulumi.StringPtrInput
-	// Sets the "Run as" role for the object.
+	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
 	RunAsMode pulumi.StringPtrInput
 	// Name of the schema where this query will be executed.
 	Schema pulumi.StringPtrInput
@@ -187,7 +187,7 @@ type queryArgs struct {
 	ParentPath *string `pulumi:"parentPath"`
 	// Text of SQL query.
 	QueryText string `pulumi:"queryText"`
-	// Sets the "Run as" role for the object.
+	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
 	RunAsMode *string `pulumi:"runAsMode"`
 	// Name of the schema where this query will be executed.
 	Schema *string `pulumi:"schema"`
@@ -215,7 +215,7 @@ type QueryArgs struct {
 	ParentPath pulumi.StringPtrInput
 	// Text of SQL query.
 	QueryText pulumi.StringInput
-	// Sets the "Run as" role for the object.
+	// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
 	RunAsMode pulumi.StringPtrInput
 	// Name of the schema where this query will be executed.
 	Schema pulumi.StringPtrInput
@@ -367,7 +367,7 @@ func (o QueryOutput) QueryText() pulumi.StringOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.QueryText }).(pulumi.StringOutput)
 }
 
-// Sets the "Run as" role for the object.
+// Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
 func (o QueryOutput) RunAsMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Query) pulumi.StringPtrOutput { return v.RunAsMode }).(pulumi.StringPtrOutput)
 }

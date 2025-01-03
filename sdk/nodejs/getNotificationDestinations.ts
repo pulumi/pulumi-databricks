@@ -45,7 +45,6 @@ export function getNotificationDestinations(args?: GetNotificationDestinationsAr
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNotificationDestinations:getNotificationDestinations", {
         "displayNameContains": args.displayNameContains,
-        "notificationDestinations": args.notificationDestinations,
         "type": args.type,
     }, opts);
 }
@@ -58,10 +57,6 @@ export interface GetNotificationDestinationsArgs {
      * A **case-insensitive** substring to filter Notification Destinations by their display name.
      */
     displayNameContains?: string;
-    /**
-     * A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-     */
-    notificationDestinations?: inputs.GetNotificationDestinationsNotificationDestination[];
     /**
      * The type of the Notification Destination to filter by. Valid values are: 
      * * `EMAIL` - Filters Notification Destinations of type Email.
@@ -85,7 +80,7 @@ export interface GetNotificationDestinationsResult {
     /**
      * A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
      */
-    readonly notificationDestinations?: outputs.GetNotificationDestinationsNotificationDestination[];
+    readonly notificationDestinations: outputs.GetNotificationDestinationsNotificationDestination[];
     readonly type?: string;
 }
 /**
@@ -127,7 +122,6 @@ export function getNotificationDestinationsOutput(args?: GetNotificationDestinat
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getNotificationDestinations:getNotificationDestinations", {
         "displayNameContains": args.displayNameContains,
-        "notificationDestinations": args.notificationDestinations,
         "type": args.type,
     }, opts);
 }
@@ -140,10 +134,6 @@ export interface GetNotificationDestinationsOutputArgs {
      * A **case-insensitive** substring to filter Notification Destinations by their display name.
      */
     displayNameContains?: pulumi.Input<string>;
-    /**
-     * A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
-     */
-    notificationDestinations?: pulumi.Input<pulumi.Input<inputs.GetNotificationDestinationsNotificationDestinationArgs>[]>;
     /**
      * The type of the Notification Destination to filter by. Valid values are: 
      * * `EMAIL` - Filters Notification Destinations of type Email.
