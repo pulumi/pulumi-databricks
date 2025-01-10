@@ -175,7 +175,7 @@ func Provider() tfbridge.ProviderInfo {
 					"id": {Name: "libraryId"},
 				},
 				ComputeID: tfbridge.DelegateIDField(
-					"libraryID",
+					"libraryId",
 					"databricks",
 					"https://github.com/pulumi/pulumi-databricks",
 				),
