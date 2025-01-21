@@ -13,9 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskForEachTaskTaskCleanRoomsNotebookTask
     {
+        /// <summary>
+        /// The clean room that the notebook belongs to.
+        /// </summary>
         public readonly string CleanRoomName;
+        /// <summary>
+        /// Checksum to validate the freshness of the notebook resource.
+        /// </summary>
         public readonly string? Etag;
+        /// <summary>
+        /// Base parameters to be used for the clean room notebook job.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? NotebookBaseParameters;
+        /// <summary>
+        /// Name of the notebook being run.
+        /// </summary>
         public readonly string NotebookName;
 
         [OutputConstructor]

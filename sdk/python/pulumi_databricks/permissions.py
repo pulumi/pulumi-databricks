@@ -1442,7 +1442,7 @@ class Permissions(pulumi.CustomResource):
 
         ## Data Access with Unity Catalog
 
-        Initially in Unity Catalog all users have no access to data, which has to be later assigned through Grants resource.
+        Initially in Unity Catalog all users have no access to data, which has to be later assigned through Grants or Grant resource.
 
         ## Import
 
@@ -2207,7 +2207,7 @@ class Permissions(pulumi.CustomResource):
 
         ## Data Access with Unity Catalog
 
-        Initially in Unity Catalog all users have no access to data, which has to be later assigned through Grants resource.
+        Initially in Unity Catalog all users have no access to data, which has to be later assigned through Grants or Grant resource.
 
         ## Import
 

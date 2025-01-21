@@ -96,7 +96,10 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> CustomTags { get; private set; } = null!;
 
         /// <summary>
-        /// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+        /// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+        /// * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+        /// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+        /// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
         /// </summary>
         [Output("dataSecurityMode")]
         public Output<string?> DataSecurityMode { get; private set; } = null!;
@@ -158,9 +161,15 @@ namespace Pulumi.Databricks
         [Output("isPinned")]
         public Output<bool?> IsPinned { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        /// </summary>
         [Output("isSingleNode")]
         public Output<bool?> IsSingleNode { get; private set; } = null!;
 
+        /// <summary>
+        /// The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+        /// </summary>
         [Output("kind")]
         public Output<string?> Kind { get; private set; } = null!;
 
@@ -240,7 +249,7 @@ namespace Pulumi.Databricks
         public Output<string?> RuntimeEngine { get; private set; } = null!;
 
         /// <summary>
-        /// The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        /// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         /// </summary>
         [Output("singleUserName")]
         public Output<string?> SingleUserName { get; private set; } = null!;
@@ -280,6 +289,9 @@ namespace Pulumi.Databricks
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
+        /// <summary>
+        /// Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+        /// </summary>
         [Output("useMlRuntime")]
         public Output<bool?> UseMlRuntime { get; private set; } = null!;
 
@@ -413,7 +425,10 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+        /// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+        /// * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+        /// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+        /// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
         /// </summary>
         [Input("dataSecurityMode")]
         public Input<string>? DataSecurityMode { get; set; }
@@ -474,9 +489,15 @@ namespace Pulumi.Databricks
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }
 
+        /// <summary>
+        /// When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        /// </summary>
         [Input("isSingleNode")]
         public Input<bool>? IsSingleNode { get; set; }
 
+        /// <summary>
+        /// The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+        /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
@@ -561,7 +582,7 @@ namespace Pulumi.Databricks
         public Input<string>? RuntimeEngine { get; set; }
 
         /// <summary>
-        /// The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        /// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         /// </summary>
         [Input("singleUserName")]
         public Input<string>? SingleUserName { get; set; }
@@ -610,6 +631,9 @@ namespace Pulumi.Databricks
             set => _sshPublicKeys = value;
         }
 
+        /// <summary>
+        /// Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+        /// </summary>
         [Input("useMlRuntime")]
         public Input<bool>? UseMlRuntime { get; set; }
 
@@ -708,7 +732,10 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+        /// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+        /// * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+        /// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+        /// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
         /// </summary>
         [Input("dataSecurityMode")]
         public Input<string>? DataSecurityMode { get; set; }
@@ -781,9 +808,15 @@ namespace Pulumi.Databricks
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }
 
+        /// <summary>
+        /// When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        /// </summary>
         [Input("isSingleNode")]
         public Input<bool>? IsSingleNode { get; set; }
 
+        /// <summary>
+        /// The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+        /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
@@ -868,7 +901,7 @@ namespace Pulumi.Databricks
         public Input<string>? RuntimeEngine { get; set; }
 
         /// <summary>
-        /// The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        /// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         /// </summary>
         [Input("singleUserName")]
         public Input<string>? SingleUserName { get; set; }
@@ -926,6 +959,9 @@ namespace Pulumi.Databricks
         [Input("url")]
         public Input<string>? Url { get; set; }
 
+        /// <summary>
+        /// Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+        /// </summary>
         [Input("useMlRuntime")]
         public Input<bool>? UseMlRuntime { get; set; }
 

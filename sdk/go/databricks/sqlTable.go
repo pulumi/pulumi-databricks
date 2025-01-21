@@ -12,11 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables / views.
+// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables/views.
 //
-// A `SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table or a view.
+// A `SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table, or a view.
 //
 // This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
+//
+// > This resource doesn't handle complex cases of schema evolution due to the limitations of Pulumi itself.  If you need to implement schema evolution it's recommended to use specialized tools, such as, [Luquibase](https://medium.com/dbsql-sme-engineering/advanced-schema-management-on-databricks-with-liquibase-1900e9f7b9c0) and [Flyway](https://medium.com/dbsql-sme-engineering/databricks-schema-management-with-flyway-527c4a9f5d67).
 //
 // ## Use an Identity Column
 //
@@ -95,34 +97,34 @@ import (
 type SqlTable struct {
 	pulumi.CustomResourceState
 
-	// Name of parent catalog. Change forces creation of a new resource.
+	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
 	ClusterId   pulumi.StringOutput `pulumi:"clusterId"`
 	// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
 	ClusterKeys pulumi.StringArrayOutput  `pulumi:"clusterKeys"`
 	Columns     SqlTableColumnArrayOutput `pulumi:"columns"`
-	// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+	// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
 	DataSourceFormat    pulumi.StringPtrOutput `pulumi:"dataSourceFormat"`
 	EffectiveProperties pulumi.StringMapOutput `pulumi:"effectiveProperties"`
-	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+	// Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Map of user defined table options. Change forces creation of a new resource.
 	Options pulumi.StringMapOutput `pulumi:"options"`
-	// Username/groupname/sp applicationId of the schema owner.
+	// User name/group name/sp applicationId of the schema owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
+	// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
 	Partitions pulumi.StringArrayOutput `pulumi:"partitions"`
-	// Map of table properties.
+	// A map of table properties.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
-	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+	// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
 	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
-	// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
 	StorageCredentialName pulumi.StringPtrOutput `pulumi:"storageCredentialName"`
 	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation pulumi.StringPtrOutput `pulumi:"storageLocation"`
-	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
 	TableType pulumi.StringOutput `pulumi:"tableType"`
 	// SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
 	ViewDefinition pulumi.StringPtrOutput `pulumi:"viewDefinition"`
@@ -169,34 +171,34 @@ func GetSqlTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlTable resources.
 type sqlTableState struct {
-	// Name of parent catalog. Change forces creation of a new resource.
+	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName *string `pulumi:"catalogName"`
 	ClusterId   *string `pulumi:"clusterId"`
 	// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
 	ClusterKeys []string         `pulumi:"clusterKeys"`
 	Columns     []SqlTableColumn `pulumi:"columns"`
-	// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+	// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
 	Comment *string `pulumi:"comment"`
-	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
 	DataSourceFormat    *string           `pulumi:"dataSourceFormat"`
 	EffectiveProperties map[string]string `pulumi:"effectiveProperties"`
-	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+	// Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Map of user defined table options. Change forces creation of a new resource.
 	Options map[string]string `pulumi:"options"`
-	// Username/groupname/sp applicationId of the schema owner.
+	// User name/group name/sp applicationId of the schema owner.
 	Owner *string `pulumi:"owner"`
-	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
+	// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
 	Partitions []string `pulumi:"partitions"`
-	// Map of table properties.
+	// A map of table properties.
 	Properties map[string]string `pulumi:"properties"`
-	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+	// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
 	SchemaName *string `pulumi:"schemaName"`
-	// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
 	StorageCredentialName *string `pulumi:"storageCredentialName"`
 	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation *string `pulumi:"storageLocation"`
-	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
 	TableType *string `pulumi:"tableType"`
 	// SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
 	ViewDefinition *string `pulumi:"viewDefinition"`
@@ -205,34 +207,34 @@ type sqlTableState struct {
 }
 
 type SqlTableState struct {
-	// Name of parent catalog. Change forces creation of a new resource.
+	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName pulumi.StringPtrInput
 	ClusterId   pulumi.StringPtrInput
 	// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
 	ClusterKeys pulumi.StringArrayInput
 	Columns     SqlTableColumnArrayInput
-	// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+	// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
 	Comment pulumi.StringPtrInput
-	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
 	DataSourceFormat    pulumi.StringPtrInput
 	EffectiveProperties pulumi.StringMapInput
-	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+	// Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Map of user defined table options. Change forces creation of a new resource.
 	Options pulumi.StringMapInput
-	// Username/groupname/sp applicationId of the schema owner.
+	// User name/group name/sp applicationId of the schema owner.
 	Owner pulumi.StringPtrInput
-	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
+	// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
 	Partitions pulumi.StringArrayInput
-	// Map of table properties.
+	// A map of table properties.
 	Properties pulumi.StringMapInput
-	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+	// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
 	SchemaName pulumi.StringPtrInput
-	// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
 	StorageCredentialName pulumi.StringPtrInput
 	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation pulumi.StringPtrInput
-	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
 	TableType pulumi.StringPtrInput
 	// SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
 	ViewDefinition pulumi.StringPtrInput
@@ -245,33 +247,33 @@ func (SqlTableState) ElementType() reflect.Type {
 }
 
 type sqlTableArgs struct {
-	// Name of parent catalog. Change forces creation of a new resource.
+	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName string  `pulumi:"catalogName"`
 	ClusterId   *string `pulumi:"clusterId"`
 	// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
 	ClusterKeys []string         `pulumi:"clusterKeys"`
 	Columns     []SqlTableColumn `pulumi:"columns"`
-	// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+	// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
 	Comment *string `pulumi:"comment"`
-	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
 	DataSourceFormat *string `pulumi:"dataSourceFormat"`
-	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+	// Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Map of user defined table options. Change forces creation of a new resource.
 	Options map[string]string `pulumi:"options"`
-	// Username/groupname/sp applicationId of the schema owner.
+	// User name/group name/sp applicationId of the schema owner.
 	Owner *string `pulumi:"owner"`
-	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
+	// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
 	Partitions []string `pulumi:"partitions"`
-	// Map of table properties.
+	// A map of table properties.
 	Properties map[string]string `pulumi:"properties"`
-	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+	// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
 	SchemaName string `pulumi:"schemaName"`
-	// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
 	StorageCredentialName *string `pulumi:"storageCredentialName"`
 	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation *string `pulumi:"storageLocation"`
-	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
 	TableType string `pulumi:"tableType"`
 	// SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
 	ViewDefinition *string `pulumi:"viewDefinition"`
@@ -281,33 +283,33 @@ type sqlTableArgs struct {
 
 // The set of arguments for constructing a SqlTable resource.
 type SqlTableArgs struct {
-	// Name of parent catalog. Change forces creation of a new resource.
+	// Name of parent catalog. Change forces the creation of a new resource.
 	CatalogName pulumi.StringInput
 	ClusterId   pulumi.StringPtrInput
 	// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
 	ClusterKeys pulumi.StringArrayInput
 	Columns     SqlTableColumnArrayInput
-	// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+	// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
 	Comment pulumi.StringPtrInput
-	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+	// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
 	DataSourceFormat pulumi.StringPtrInput
-	// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+	// Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Map of user defined table options. Change forces creation of a new resource.
 	Options pulumi.StringMapInput
-	// Username/groupname/sp applicationId of the schema owner.
+	// User name/group name/sp applicationId of the schema owner.
 	Owner pulumi.StringPtrInput
-	// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
+	// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
 	Partitions pulumi.StringArrayInput
-	// Map of table properties.
+	// A map of table properties.
 	Properties pulumi.StringMapInput
-	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+	// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
 	SchemaName pulumi.StringInput
-	// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
 	StorageCredentialName pulumi.StringPtrInput
 	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation pulumi.StringPtrInput
-	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
 	TableType pulumi.StringInput
 	// SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
 	ViewDefinition pulumi.StringPtrInput
@@ -402,7 +404,7 @@ func (o SqlTableOutput) ToSqlTableOutputWithContext(ctx context.Context) SqlTabl
 	return o
 }
 
-// Name of parent catalog. Change forces creation of a new resource.
+// Name of parent catalog. Change forces the creation of a new resource.
 func (o SqlTableOutput) CatalogName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringOutput { return v.CatalogName }).(pulumi.StringOutput)
 }
@@ -420,12 +422,12 @@ func (o SqlTableOutput) Columns() SqlTableColumnArrayOutput {
 	return o.ApplyT(func(v *SqlTable) SqlTableColumnArrayOutput { return v.Columns }).(SqlTableColumnArrayOutput)
 }
 
-// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
 func (o SqlTableOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
 func (o SqlTableOutput) DataSourceFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringPtrOutput { return v.DataSourceFormat }).(pulumi.StringPtrOutput)
 }
@@ -434,7 +436,7 @@ func (o SqlTableOutput) EffectiveProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringMapOutput { return v.EffectiveProperties }).(pulumi.StringMapOutput)
 }
 
-// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+// Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
 func (o SqlTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -444,27 +446,27 @@ func (o SqlTableOutput) Options() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringMapOutput { return v.Options }).(pulumi.StringMapOutput)
 }
 
-// Username/groupname/sp applicationId of the schema owner.
+// User name/group name/sp applicationId of the schema owner.
 func (o SqlTableOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
+// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
 func (o SqlTableOutput) Partitions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringArrayOutput { return v.Partitions }).(pulumi.StringArrayOutput)
 }
 
-// Map of table properties.
+// A map of table properties.
 func (o SqlTableOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }
 
-// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
 func (o SqlTableOutput) SchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringOutput { return v.SchemaName }).(pulumi.StringOutput)
 }
 
-// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
 func (o SqlTableOutput) StorageCredentialName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringPtrOutput { return v.StorageCredentialName }).(pulumi.StringPtrOutput)
 }
@@ -474,7 +476,7 @@ func (o SqlTableOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringPtrOutput { return v.StorageLocation }).(pulumi.StringPtrOutput)
 }
 
-// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
 func (o SqlTableOutput) TableType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringOutput { return v.TableType }).(pulumi.StringOutput)
 }

@@ -797,7 +797,7 @@ import * as utilities from "./utilities";
  *
  * ## Data Access with Unity Catalog
  *
- * Initially in Unity Catalog all users have no access to data, which has to be later assigned through databricks.Grants resource.
+ * Initially in Unity Catalog all users have no access to data, which has to be later assigned through databricks.Grants or databricks.Grant resource.
  *
  * ## Import
  *

@@ -19,7 +19,7 @@ public final class SqlTableColumn {
      */
     private @Nullable String comment;
     /**
-     * @return Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     * @return Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
      * 
      */
     private @Nullable String identity;
@@ -49,7 +49,7 @@ public final class SqlTableColumn {
         return Optional.ofNullable(this.comment);
     }
     /**
-     * @return Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     * @return Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
      * 
      */
     public Optional<String> identity() {

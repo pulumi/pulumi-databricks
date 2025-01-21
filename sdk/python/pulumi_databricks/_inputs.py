@@ -12705,9 +12705,21 @@ class JobTaskArgs:
 if not MYPY:
     class JobTaskCleanRoomsNotebookTaskArgsDict(TypedDict):
         clean_room_name: pulumi.Input[str]
+        """
+        The clean room that the notebook belongs to.
+        """
         notebook_name: pulumi.Input[str]
+        """
+        Name of the notebook being run.
+        """
         etag: NotRequired[pulumi.Input[str]]
+        """
+        Checksum to validate the freshness of the notebook resource.
+        """
         notebook_base_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Base parameters to be used for the clean room notebook job.
+        """
 elif False:
     JobTaskCleanRoomsNotebookTaskArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -12718,6 +12730,12 @@ class JobTaskCleanRoomsNotebookTaskArgs:
                  notebook_name: pulumi.Input[str],
                  etag: Optional[pulumi.Input[str]] = None,
                  notebook_base_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] clean_room_name: The clean room that the notebook belongs to.
+        :param pulumi.Input[str] notebook_name: Name of the notebook being run.
+        :param pulumi.Input[str] etag: Checksum to validate the freshness of the notebook resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] notebook_base_parameters: Base parameters to be used for the clean room notebook job.
+        """
         pulumi.set(__self__, "clean_room_name", clean_room_name)
         pulumi.set(__self__, "notebook_name", notebook_name)
         if etag is not None:
@@ -12728,6 +12746,9 @@ class JobTaskCleanRoomsNotebookTaskArgs:
     @property
     @pulumi.getter(name="cleanRoomName")
     def clean_room_name(self) -> pulumi.Input[str]:
+        """
+        The clean room that the notebook belongs to.
+        """
         return pulumi.get(self, "clean_room_name")
 
     @clean_room_name.setter
@@ -12737,6 +12758,9 @@ class JobTaskCleanRoomsNotebookTaskArgs:
     @property
     @pulumi.getter(name="notebookName")
     def notebook_name(self) -> pulumi.Input[str]:
+        """
+        Name of the notebook being run.
+        """
         return pulumi.get(self, "notebook_name")
 
     @notebook_name.setter
@@ -12746,6 +12770,9 @@ class JobTaskCleanRoomsNotebookTaskArgs:
     @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Checksum to validate the freshness of the notebook resource.
+        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -12755,6 +12782,9 @@ class JobTaskCleanRoomsNotebookTaskArgs:
     @property
     @pulumi.getter(name="notebookBaseParameters")
     def notebook_base_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Base parameters to be used for the clean room notebook job.
+        """
         return pulumi.get(self, "notebook_base_parameters")
 
     @notebook_base_parameters.setter
@@ -13784,9 +13814,21 @@ class JobTaskForEachTaskTaskArgs:
 if not MYPY:
     class JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgsDict(TypedDict):
         clean_room_name: pulumi.Input[str]
+        """
+        The clean room that the notebook belongs to.
+        """
         notebook_name: pulumi.Input[str]
+        """
+        Name of the notebook being run.
+        """
         etag: NotRequired[pulumi.Input[str]]
+        """
+        Checksum to validate the freshness of the notebook resource.
+        """
         notebook_base_parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Base parameters to be used for the clean room notebook job.
+        """
 elif False:
     JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -13797,6 +13839,12 @@ class JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs:
                  notebook_name: pulumi.Input[str],
                  etag: Optional[pulumi.Input[str]] = None,
                  notebook_base_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] clean_room_name: The clean room that the notebook belongs to.
+        :param pulumi.Input[str] notebook_name: Name of the notebook being run.
+        :param pulumi.Input[str] etag: Checksum to validate the freshness of the notebook resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] notebook_base_parameters: Base parameters to be used for the clean room notebook job.
+        """
         pulumi.set(__self__, "clean_room_name", clean_room_name)
         pulumi.set(__self__, "notebook_name", notebook_name)
         if etag is not None:
@@ -13807,6 +13855,9 @@ class JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs:
     @property
     @pulumi.getter(name="cleanRoomName")
     def clean_room_name(self) -> pulumi.Input[str]:
+        """
+        The clean room that the notebook belongs to.
+        """
         return pulumi.get(self, "clean_room_name")
 
     @clean_room_name.setter
@@ -13816,6 +13867,9 @@ class JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs:
     @property
     @pulumi.getter(name="notebookName")
     def notebook_name(self) -> pulumi.Input[str]:
+        """
+        Name of the notebook being run.
+        """
         return pulumi.get(self, "notebook_name")
 
     @notebook_name.setter
@@ -13825,6 +13879,9 @@ class JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs:
     @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Checksum to validate the freshness of the notebook resource.
+        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -13834,6 +13891,9 @@ class JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs:
     @property
     @pulumi.getter(name="notebookBaseParameters")
     def notebook_base_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Base parameters to be used for the clean room notebook job.
+        """
         return pulumi.get(self, "notebook_base_parameters")
 
     @notebook_base_parameters.setter
@@ -32114,11 +32174,11 @@ if not MYPY:
     class ShareObjectArgsDict(TypedDict):
         data_object_type: pulumi.Input[str]
         """
-        Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
         """
         name: pulumi.Input[str]
         """
-        Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
+        Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
         """
         added_at: NotRequired[pulumi.Input[int]]
         added_by: NotRequired[pulumi.Input[str]]
@@ -32171,8 +32231,8 @@ class ShareObjectArgs:
                  status: Optional[pulumi.Input[str]] = None,
                  string_shared_as: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] data_object_type: Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
-        :param pulumi.Input[str] name: Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
+        :param pulumi.Input[str] data_object_type: Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        :param pulumi.Input[str] name: Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
         :param pulumi.Input[bool] cdf_enabled: Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
         :param pulumi.Input[str] comment: Description about the object.
         :param pulumi.Input[str] history_data_sharing_status: Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
@@ -32211,7 +32271,7 @@ class ShareObjectArgs:
     @pulumi.getter(name="dataObjectType")
     def data_object_type(self) -> pulumi.Input[str]:
         """
-        Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
         """
         return pulumi.get(self, "data_object_type")
 
@@ -32223,7 +32283,7 @@ class ShareObjectArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
+        Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
         """
         return pulumi.get(self, "name")
 
@@ -33980,7 +34040,7 @@ if not MYPY:
         """
         identity: NotRequired[pulumi.Input[str]]
         """
-        Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+        Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
         """
         nullable: NotRequired[pulumi.Input[bool]]
         """
@@ -34006,7 +34066,7 @@ class SqlTableColumnArgs:
         """
         :param pulumi.Input[str] name: User-visible name of column
         :param pulumi.Input[str] comment: User-supplied free-form text.
-        :param pulumi.Input[str] identity: Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+        :param pulumi.Input[str] identity: Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
         :param pulumi.Input[bool] nullable: Whether field is nullable (Default: `true`)
         :param pulumi.Input[str] type: Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
         """
@@ -34050,7 +34110,7 @@ class SqlTableColumnArgs:
     @pulumi.getter
     def identity(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+        Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
         """
         return pulumi.get(self, "identity")
 

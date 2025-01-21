@@ -10,11 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables / views.
+    /// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables/views.
     /// 
-    /// A `databricks.SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table or a view.
+    /// A `databricks.SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table, or a view.
     /// 
     /// This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
+    /// 
+    /// &gt; This resource doesn't handle complex cases of schema evolution due to the limitations of Pulumi itself.  If you need to implement schema evolution it's recommended to use specialized tools, such as, [Luquibase](https://medium.com/dbsql-sme-engineering/advanced-schema-management-on-databricks-with-liquibase-1900e9f7b9c0) and [Flyway](https://medium.com/dbsql-sme-engineering/databricks-schema-management-with-flyway-527c4a9f5d67).
     /// 
     /// ## Use an Identity Column
     /// 
@@ -90,7 +92,7 @@ namespace Pulumi.Databricks
     public partial class SqlTable : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Name of parent catalog. Change forces creation of a new resource.
+        /// Name of parent catalog. Change forces the creation of a new resource.
         /// </summary>
         [Output("catalogName")]
         public Output<string> CatalogName { get; private set; } = null!;
@@ -108,13 +110,13 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.SqlTableColumn>> Columns { get; private set; } = null!;
 
         /// <summary>
-        /// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+        /// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        /// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         /// </summary>
         [Output("dataSourceFormat")]
         public Output<string?> DataSourceFormat { get; private set; } = null!;
@@ -123,7 +125,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>> EffectiveProperties { get; private set; } = null!;
 
         /// <summary>
-        /// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        /// Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -135,31 +137,31 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
 
         /// <summary>
-        /// Username/groupname/sp application_id of the schema owner.
+        /// User name/group name/sp application_id of the schema owner.
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         /// </summary>
         [Output("partitions")]
         public Output<ImmutableArray<string>> Partitions { get; private set; } = null!;
 
         /// <summary>
-        /// Map of table properties.
+        /// A map of table properties.
         /// </summary>
         [Output("properties")]
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         /// <summary>
-        /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        /// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         /// </summary>
         [Output("schemaName")]
         public Output<string> SchemaName { get; private set; } = null!;
 
         /// <summary>
-        /// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        /// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         /// </summary>
         [Output("storageCredentialName")]
         public Output<string?> StorageCredentialName { get; private set; } = null!;
@@ -171,7 +173,7 @@ namespace Pulumi.Databricks
         public Output<string?> StorageLocation { get; private set; } = null!;
 
         /// <summary>
-        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
         /// </summary>
         [Output("tableType")]
         public Output<string> TableType { get; private set; } = null!;
@@ -235,7 +237,7 @@ namespace Pulumi.Databricks
     public sealed class SqlTableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of parent catalog. Change forces creation of a new resource.
+        /// Name of parent catalog. Change forces the creation of a new resource.
         /// </summary>
         [Input("catalogName", required: true)]
         public Input<string> CatalogName { get; set; } = null!;
@@ -264,19 +266,19 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+        /// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        /// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         /// </summary>
         [Input("dataSourceFormat")]
         public Input<string>? DataSourceFormat { get; set; }
 
         /// <summary>
-        /// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        /// Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -294,7 +296,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the schema owner.
+        /// User name/group name/sp application_id of the schema owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -303,7 +305,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _partitions;
 
         /// <summary>
-        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         /// </summary>
         public InputList<string> Partitions
         {
@@ -315,7 +317,7 @@ namespace Pulumi.Databricks
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Map of table properties.
+        /// A map of table properties.
         /// </summary>
         public InputMap<string> Properties
         {
@@ -324,13 +326,13 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        /// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         /// </summary>
         [Input("schemaName", required: true)]
         public Input<string> SchemaName { get; set; } = null!;
 
         /// <summary>
-        /// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        /// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         /// </summary>
         [Input("storageCredentialName")]
         public Input<string>? StorageCredentialName { get; set; }
@@ -342,7 +344,7 @@ namespace Pulumi.Databricks
         public Input<string>? StorageLocation { get; set; }
 
         /// <summary>
-        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
         /// </summary>
         [Input("tableType", required: true)]
         public Input<string> TableType { get; set; } = null!;
@@ -368,7 +370,7 @@ namespace Pulumi.Databricks
     public sealed class SqlTableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of parent catalog. Change forces creation of a new resource.
+        /// Name of parent catalog. Change forces the creation of a new resource.
         /// </summary>
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
@@ -397,13 +399,13 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+        /// User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        /// External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         /// </summary>
         [Input("dataSourceFormat")]
         public Input<string>? DataSourceFormat { get; set; }
@@ -417,7 +419,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        /// Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -435,7 +437,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the schema owner.
+        /// User name/group name/sp application_id of the schema owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -444,7 +446,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _partitions;
 
         /// <summary>
-        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         /// </summary>
         public InputList<string> Partitions
         {
@@ -456,7 +458,7 @@ namespace Pulumi.Databricks
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Map of table properties.
+        /// A map of table properties.
         /// </summary>
         public InputMap<string> Properties
         {
@@ -465,13 +467,13 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        /// Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         /// </summary>
         [Input("schemaName")]
         public Input<string>? SchemaName { get; set; }
 
         /// <summary>
-        /// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        /// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         /// </summary>
         [Input("storageCredentialName")]
         public Input<string>? StorageCredentialName { get; set; }
@@ -483,7 +485,7 @@ namespace Pulumi.Databricks
         public Input<string>? StorageLocation { get; set; }
 
         /// <summary>
-        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        /// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
         /// </summary>
         [Input("tableType")]
         public Input<string>? TableType { get; set; }

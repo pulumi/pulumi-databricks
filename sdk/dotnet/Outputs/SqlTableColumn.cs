@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Comment;
         /// <summary>
-        /// Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+        /// Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
         /// </summary>
         public readonly string? Identity;
         /// <summary>

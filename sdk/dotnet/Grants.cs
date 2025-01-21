@@ -77,7 +77,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Catalog grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_CONNECTION`, `CREATE_SCHEMA`, `USE_CATALOG` privileges to databricks.Catalog specified in the `catalog` attribute. You can also grant `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME`, `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` and `USE_SCHEMA` at the catalog level to apply them to the pertinent current and future securable objects within the catalog:
+    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_CONNECTION`, `CREATE_SCHEMA`, `MANAGE`, and `USE_CATALOG` privileges to databricks.Catalog specified in the `catalog` attribute. You can also grant `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME`, `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` and `USE_SCHEMA` at the catalog level to apply them to the pertinent current and future securable objects within the catalog:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +143,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Schema grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME` and `USE_SCHEMA` privileges to _`catalog.schema`_ specified in the `schema` attribute. You can also grant `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` at the schema level to apply them to the pertinent current and future securable objects within the schema:
+    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME`, `MANAGE` and `USE_SCHEMA` privileges to _`catalog.schema`_ specified in the `schema` attribute. You can also grant `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` at the schema level to apply them to the pertinent current and future securable objects within the schema:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -186,7 +186,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Table grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `SELECT` and `MODIFY` privileges to _`catalog.schema.table`_ specified in the `table` attribute.
+    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `MANAGE`, `SELECT` and `MODIFY` privileges to _`catalog.schema.table`_ specified in the `table` attribute.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -266,7 +266,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## View grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG` and `SELECT` privileges to _`catalog.schema.view`_ specified in `table` attribute.
+    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `MANAGE` and `SELECT` privileges to _`catalog.schema.view`_ specified in `table` attribute.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -337,7 +337,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Volume grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `READ_VOLUME` and `WRITE_VOLUME` privileges to _`catalog.schema.volume`_ specified in the `volume` attribute.
+    /// You can grant `ALL_PRIVILEGES`, `MANAGE`, `READ_VOLUME` and `WRITE_VOLUME` privileges to _`catalog.schema.volume`_ specified in the `volume` attribute.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -378,7 +378,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Registered model grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges to _`catalog.schema.model`_ specified in the `model` attribute.
+    /// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, and `MANAGE` privileges to _`catalog.schema.model`_ specified in the `model` attribute.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -418,7 +418,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Function grants
     /// 
-    /// You can grant `ALL_PRIVILEGES` and `EXECUTE` privileges to _`catalog.schema.function`_ specified in the `function` attribute.
+    /// You can grant `ALL_PRIVILEGES`, `EXECUTE`, and `MANAGE` privileges to _`catalog.schema.function`_ specified in the `function` attribute.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -457,7 +457,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Service credential grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `ACCESS` and `CREATE_CONNECTION` privileges to databricks.Credential id specified in `credential` attribute:
+    /// You can grant `ALL_PRIVILEGES`, `ACCESS`, `CREATE_CONNECTION`, and `MANAGE` privileges to databricks.Credential id specified in `credential` attribute:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -499,7 +499,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Storage credential grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `READ_FILES` and `WRITE_FILES` privileges to databricks.StorageCredential id specified in `storage_credential` attribute:
+    /// You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `MANAGE`, `READ_FILES` and `WRITE_FILES` privileges to databricks.StorageCredential id specified in `storage_credential` attribute:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -540,7 +540,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## External location grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_TABLE`, `CREATE_MANAGED_STORAGE`, `CREATE EXTERNAL VOLUME`, `READ_FILES` and `WRITE_FILES` privileges to databricks.ExternalLocation id specified in `external_location` attribute:
+    /// You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_TABLE`, `CREATE_MANAGED_STORAGE`, `CREATE EXTERNAL VOLUME`, `MANAGE`, `READ_FILES` and `WRITE_FILES` privileges to databricks.ExternalLocation id specified in `external_location` attribute:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -607,7 +607,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Connection grants
     /// 
-    /// You can grant `ALL_PRIVILEGES`, `USE_CONNECTION` and `CREATE_FOREIGN_CATALOG` to databricks.Connection specified in `foreign_connection` attribute:
+    /// You can grant `ALL_PRIVILEGES`, `MANAGE`, `USE_CONNECTION` and `CREATE_FOREIGN_CATALOG` to databricks.Connection specified in `foreign_connection` attribute:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

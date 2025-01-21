@@ -89,7 +89,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly customTags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+     * Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+     * * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+     * * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+     * * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
      */
     public readonly dataSecurityMode!: pulumi.Output<string | undefined>;
     /**
@@ -127,7 +130,13 @@ export class Cluster extends pulumi.CustomResource {
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
      */
     public readonly isPinned!: pulumi.Output<boolean | undefined>;
+    /**
+     * When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
+     */
     public readonly isSingleNode!: pulumi.Output<boolean | undefined>;
+    /**
+     * The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+     */
     public readonly kind!: pulumi.Output<string | undefined>;
     public readonly libraries!: pulumi.Output<outputs.ClusterLibrary[] | undefined>;
     /**
@@ -180,7 +189,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly runtimeEngine!: pulumi.Output<string | undefined>;
     /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     * The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
     public readonly singleUserName!: pulumi.Output<string | undefined>;
     /**
@@ -206,6 +215,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     public /*out*/ readonly url!: pulumi.Output<string>;
+    /**
+     * Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
+     */
     public readonly useMlRuntime!: pulumi.Output<boolean | undefined>;
     public readonly workloadType!: pulumi.Output<outputs.ClusterWorkloadType | undefined>;
 
@@ -359,7 +371,10 @@ export interface ClusterState {
      */
     customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+     * Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+     * * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+     * * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+     * * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
      */
     dataSecurityMode?: pulumi.Input<string>;
     /**
@@ -397,7 +412,13 @@ export interface ClusterState {
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
      */
     isPinned?: pulumi.Input<boolean>;
+    /**
+     * When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
+     */
     isSingleNode?: pulumi.Input<boolean>;
+    /**
+     * The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+     */
     kind?: pulumi.Input<string>;
     libraries?: pulumi.Input<pulumi.Input<inputs.ClusterLibrary>[]>;
     /**
@@ -450,7 +471,7 @@ export interface ClusterState {
      */
     runtimeEngine?: pulumi.Input<string>;
     /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     * The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
     singleUserName?: pulumi.Input<string>;
     /**
@@ -476,6 +497,9 @@ export interface ClusterState {
      */
     state?: pulumi.Input<string>;
     url?: pulumi.Input<string>;
+    /**
+     * Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
+     */
     useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.ClusterWorkloadType>;
 }
@@ -527,7 +551,10 @@ export interface ClusterArgs {
      */
     customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+     * Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+     * * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+     * * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+     * * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
      */
     dataSecurityMode?: pulumi.Input<string>;
     dockerImage?: pulumi.Input<inputs.ClusterDockerImage>;
@@ -561,7 +588,13 @@ export interface ClusterArgs {
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
      */
     isPinned?: pulumi.Input<boolean>;
+    /**
+     * When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
+     */
     isSingleNode?: pulumi.Input<boolean>;
+    /**
+     * The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+     */
     kind?: pulumi.Input<string>;
     libraries?: pulumi.Input<pulumi.Input<inputs.ClusterLibrary>[]>;
     /**
@@ -614,7 +647,7 @@ export interface ClusterArgs {
      */
     runtimeEngine?: pulumi.Input<string>;
     /**
-     * The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     * The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
     singleUserName?: pulumi.Input<string>;
     /**
@@ -635,6 +668,9 @@ export interface ClusterArgs {
      * SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
      */
     sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
+     */
     useMlRuntime?: pulumi.Input<boolean>;
     workloadType?: pulumi.Input<inputs.ClusterWorkloadType>;
 }

@@ -9045,9 +9045,21 @@ export interface JobTask {
 }
 
 export interface JobTaskCleanRoomsNotebookTask {
+    /**
+     * The clean room that the notebook belongs to.
+     */
     cleanRoomName: pulumi.Input<string>;
+    /**
+     * Checksum to validate the freshness of the notebook resource.
+     */
     etag?: pulumi.Input<string>;
+    /**
+     * Base parameters to be used for the clean room notebook job.
+     */
     notebookBaseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the notebook being run.
+     */
     notebookName: pulumi.Input<string>;
 }
 
@@ -9247,9 +9259,21 @@ export interface JobTaskForEachTaskTask {
 }
 
 export interface JobTaskForEachTaskTaskCleanRoomsNotebookTask {
+    /**
+     * The clean room that the notebook belongs to.
+     */
     cleanRoomName: pulumi.Input<string>;
+    /**
+     * Checksum to validate the freshness of the notebook resource.
+     */
     etag?: pulumi.Input<string>;
+    /**
+     * Base parameters to be used for the clean room notebook job.
+     */
     notebookBaseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Name of the notebook being run.
+     */
     notebookName: pulumi.Input<string>;
 }
 
@@ -12397,7 +12421,7 @@ export interface ShareObject {
     comment?: pulumi.Input<string>;
     content?: pulumi.Input<string>;
     /**
-     * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+     * Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
      */
     dataObjectType: pulumi.Input<string>;
     /**
@@ -12407,7 +12431,7 @@ export interface ShareObject {
      */
     historyDataSharingStatus?: pulumi.Input<string>;
     /**
-     * Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
+     * Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
      */
     name: pulumi.Input<string>;
     partitions?: pulumi.Input<pulumi.Input<inputs.ShareObjectPartition>[]>;
@@ -12692,7 +12716,7 @@ export interface SqlTableColumn {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     * Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
      */
     identity?: pulumi.Input<string>;
     /**

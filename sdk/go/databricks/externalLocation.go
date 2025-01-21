@@ -93,12 +93,21 @@ type ExternalLocation struct {
 
 	// The ARN of the s3 access point to use with the external location (AWS).
 	AccessPoint pulumi.StringPtrOutput `pulumi:"accessPoint"`
+	BrowseOnly  pulumi.BoolOutput      `pulumi:"browseOnly"`
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// Time at which this external location was created, in epoch milliseconds.
+	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
+	// Username of external location creator.
+	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
+	// Unique ID of the location's storage credential.
+	CredentialId pulumi.StringOutput `pulumi:"credentialId"`
 	// Name of the StorageCredential to use with this external location.
 	CredentialName pulumi.StringOutput `pulumi:"credentialName"`
 	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrOutput `pulumi:"encryptionDetails"`
+	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+	Fallback pulumi.BoolPtrOutput `pulumi:"fallback"`
 	// Destroy external location regardless of its dependents.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Update external location regardless of its dependents.
@@ -114,6 +123,10 @@ type ExternalLocation struct {
 	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
+	// Time at which external location this was last modified, in epoch milliseconds.
+	UpdatedAt pulumi.IntOutput `pulumi:"updatedAt"`
+	// Username of user who last modified the external location.
+	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
 	Url pulumi.StringOutput `pulumi:"url"`
 }
@@ -156,12 +169,21 @@ func GetExternalLocation(ctx *pulumi.Context,
 type externalLocationState struct {
 	// The ARN of the s3 access point to use with the external location (AWS).
 	AccessPoint *string `pulumi:"accessPoint"`
+	BrowseOnly  *bool   `pulumi:"browseOnly"`
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
+	// Time at which this external location was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// Username of external location creator.
+	CreatedBy *string `pulumi:"createdBy"`
+	// Unique ID of the location's storage credential.
+	CredentialId *string `pulumi:"credentialId"`
 	// Name of the StorageCredential to use with this external location.
 	CredentialName *string `pulumi:"credentialName"`
 	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails *ExternalLocationEncryptionDetails `pulumi:"encryptionDetails"`
+	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+	Fallback *bool `pulumi:"fallback"`
 	// Destroy external location regardless of its dependents.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Update external location regardless of its dependents.
@@ -177,6 +199,10 @@ type externalLocationState struct {
 	ReadOnly *bool `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation *bool `pulumi:"skipValidation"`
+	// Time at which external location this was last modified, in epoch milliseconds.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// Username of user who last modified the external location.
+	UpdatedBy *string `pulumi:"updatedBy"`
 	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
 	Url *string `pulumi:"url"`
 }
@@ -184,12 +210,21 @@ type externalLocationState struct {
 type ExternalLocationState struct {
 	// The ARN of the s3 access point to use with the external location (AWS).
 	AccessPoint pulumi.StringPtrInput
+	BrowseOnly  pulumi.BoolPtrInput
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
+	// Time at which this external location was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput
+	// Username of external location creator.
+	CreatedBy pulumi.StringPtrInput
+	// Unique ID of the location's storage credential.
+	CredentialId pulumi.StringPtrInput
 	// Name of the StorageCredential to use with this external location.
 	CredentialName pulumi.StringPtrInput
 	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrInput
+	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+	Fallback pulumi.BoolPtrInput
 	// Destroy external location regardless of its dependents.
 	ForceDestroy pulumi.BoolPtrInput
 	// Update external location regardless of its dependents.
@@ -205,6 +240,10 @@ type ExternalLocationState struct {
 	ReadOnly pulumi.BoolPtrInput
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrInput
+	// Time at which external location this was last modified, in epoch milliseconds.
+	UpdatedAt pulumi.IntPtrInput
+	// Username of user who last modified the external location.
+	UpdatedBy pulumi.StringPtrInput
 	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
 	Url pulumi.StringPtrInput
 }
@@ -222,6 +261,8 @@ type externalLocationArgs struct {
 	CredentialName string `pulumi:"credentialName"`
 	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails *ExternalLocationEncryptionDetails `pulumi:"encryptionDetails"`
+	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+	Fallback *bool `pulumi:"fallback"`
 	// Destroy external location regardless of its dependents.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Update external location regardless of its dependents.
@@ -251,6 +292,8 @@ type ExternalLocationArgs struct {
 	CredentialName pulumi.StringInput
 	// The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 	EncryptionDetails ExternalLocationEncryptionDetailsPtrInput
+	// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+	Fallback pulumi.BoolPtrInput
 	// Destroy external location regardless of its dependents.
 	ForceDestroy pulumi.BoolPtrInput
 	// Update external location regardless of its dependents.
@@ -362,9 +405,28 @@ func (o ExternalLocationOutput) AccessPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringPtrOutput { return v.AccessPoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ExternalLocationOutput) BrowseOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolOutput { return v.BrowseOnly }).(pulumi.BoolOutput)
+}
+
 // User-supplied free-form text.
 func (o ExternalLocationOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Time at which this external location was created, in epoch milliseconds.
+func (o ExternalLocationOutput) CreatedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.IntOutput { return v.CreatedAt }).(pulumi.IntOutput)
+}
+
+// Username of external location creator.
+func (o ExternalLocationOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Unique ID of the location's storage credential.
+func (o ExternalLocationOutput) CredentialId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.CredentialId }).(pulumi.StringOutput)
 }
 
 // Name of the StorageCredential to use with this external location.
@@ -375,6 +437,11 @@ func (o ExternalLocationOutput) CredentialName() pulumi.StringOutput {
 // The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
 func (o ExternalLocationOutput) EncryptionDetails() ExternalLocationEncryptionDetailsPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) ExternalLocationEncryptionDetailsPtrOutput { return v.EncryptionDetails }).(ExternalLocationEncryptionDetailsPtrOutput)
+}
+
+// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+func (o ExternalLocationOutput) Fallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.Fallback }).(pulumi.BoolPtrOutput)
 }
 
 // Destroy external location regardless of its dependents.
@@ -414,6 +481,16 @@ func (o ExternalLocationOutput) ReadOnly() pulumi.BoolPtrOutput {
 // Suppress validation errors if any & force save the external location
 func (o ExternalLocationOutput) SkipValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.BoolPtrOutput { return v.SkipValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Time at which external location this was last modified, in epoch milliseconds.
+func (o ExternalLocationOutput) UpdatedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.IntOutput { return v.UpdatedAt }).(pulumi.IntOutput)
+}
+
+// Username of user who last modified the external location.
+func (o ExternalLocationOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
 // Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
