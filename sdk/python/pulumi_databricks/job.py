@@ -69,6 +69,7 @@ class JobArgs:
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param pulumi.Input[str] edit_mode: If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
         :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input['JobGitSourceArgs'] git_source: Specifices the a Git repository for task source code. See git_source Configuration Block below.
         :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job documented below.
@@ -288,6 +289,9 @@ class JobArgs:
     @property
     @pulumi.getter(name="editMode")
     def edit_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
+        """
         return pulumi.get(self, "edit_mode")
 
     @edit_mode.setter
@@ -690,6 +694,7 @@ class _JobState:
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param pulumi.Input[str] edit_mode: If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
         :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input['JobGitSourceArgs'] git_source: Specifices the a Git repository for task source code. See git_source Configuration Block below.
         :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job documented below.
@@ -912,6 +917,9 @@ class _JobState:
     @property
     @pulumi.getter(name="editMode")
     def edit_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
+        """
         return pulumi.get(self, "edit_mode")
 
     @edit_mode.setter
@@ -1407,6 +1415,7 @@ class Job(pulumi.CustomResource):
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param pulumi.Input[str] edit_mode: If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
         :param pulumi.Input[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']] git_source: Specifices the a Git repository for task source code. See git_source Configuration Block below.
         :param pulumi.Input[Union['JobHealthArgs', 'JobHealthArgsDict']] health: An optional block that specifies the health conditions for the job documented below.
@@ -1678,6 +1687,7 @@ class Job(pulumi.CustomResource):
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param pulumi.Input[str] edit_mode: If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
         :param pulumi.Input[Union['JobEmailNotificationsArgs', 'JobEmailNotificationsArgsDict']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input[Union['JobGitSourceArgs', 'JobGitSourceArgsDict']] git_source: Specifices the a Git repository for task source code. See git_source Configuration Block below.
         :param pulumi.Input[Union['JobHealthArgs', 'JobHealthArgsDict']] health: An optional block that specifies the health conditions for the job documented below.
@@ -1801,6 +1811,9 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter(name="editMode")
     def edit_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
+        """
         return pulumi.get(self, "edit_mode")
 
     @property

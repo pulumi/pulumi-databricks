@@ -143,6 +143,9 @@ export class Job extends pulumi.CustomResource {
      * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
+     */
     public readonly editMode!: pulumi.Output<string | undefined>;
     /**
      * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -397,6 +400,9 @@ export interface JobState {
      * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
      */
     description?: pulumi.Input<string>;
+    /**
+     * If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
+     */
     editMode?: pulumi.Input<string>;
     /**
      * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
@@ -551,6 +557,9 @@ export interface JobArgs {
      * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
      */
     description?: pulumi.Input<string>;
+    /**
+     * If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
+     */
     editMode?: pulumi.Input<string>;
     /**
      * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.

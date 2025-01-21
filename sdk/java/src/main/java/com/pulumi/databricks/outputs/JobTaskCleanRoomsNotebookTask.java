@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskCleanRoomsNotebookTask {
+    /**
+     * @return The clean room that the notebook belongs to.
+     * 
+     */
     private String cleanRoomName;
+    /**
+     * @return Checksum to validate the freshness of the notebook resource.
+     * 
+     */
     private @Nullable String etag;
+    /**
+     * @return Base parameters to be used for the clean room notebook job.
+     * 
+     */
     private @Nullable Map<String,String> notebookBaseParameters;
+    /**
+     * @return Name of the notebook being run.
+     * 
+     */
     private String notebookName;
 
     private JobTaskCleanRoomsNotebookTask() {}
+    /**
+     * @return The clean room that the notebook belongs to.
+     * 
+     */
     public String cleanRoomName() {
         return this.cleanRoomName;
     }
+    /**
+     * @return Checksum to validate the freshness of the notebook resource.
+     * 
+     */
     public Optional<String> etag() {
         return Optional.ofNullable(this.etag);
     }
+    /**
+     * @return Base parameters to be used for the clean room notebook job.
+     * 
+     */
     public Map<String,String> notebookBaseParameters() {
         return this.notebookBaseParameters == null ? Map.of() : this.notebookBaseParameters;
     }
+    /**
+     * @return Name of the notebook being run.
+     * 
+     */
     public String notebookName() {
         return this.notebookName;
     }

@@ -30,7 +30,7 @@ public final class ShareObject {
     private @Nullable String comment;
     private @Nullable String content;
     /**
-     * @return Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+     * @return Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
      * 
      */
     private String dataObjectType;
@@ -42,7 +42,7 @@ public final class ShareObject {
      */
     private @Nullable String historyDataSharingStatus;
     /**
-     * @return Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
+     * @return Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
      * 
      */
     private String name;
@@ -89,7 +89,7 @@ public final class ShareObject {
         return Optional.ofNullable(this.content);
     }
     /**
-     * @return Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+     * @return Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
      * 
      */
     public String dataObjectType() {
@@ -105,7 +105,7 @@ public final class ShareObject {
         return Optional.ofNullable(this.historyDataSharingStatus);
     }
     /**
-     * @return Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
+     * @return Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
      * 
      */
     public String name() {

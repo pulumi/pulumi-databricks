@@ -18,11 +18,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables / views.
+ * Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables/views.
  * 
- * A `databricks.SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table or a view.
+ * A `databricks.SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table, or a view.
  * 
  * This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
+ * 
+ * &gt; This resource doesn&#39;t handle complex cases of schema evolution due to the limitations of Pulumi itself.  If you need to implement schema evolution it&#39;s recommended to use specialized tools, such as, [Luquibase](https://medium.com/dbsql-sme-engineering/advanced-schema-management-on-databricks-with-liquibase-1900e9f7b9c0) and [Flyway](https://medium.com/dbsql-sme-engineering/databricks-schema-management-with-flyway-527c4a9f5d67).
  * 
  * ## Use an Identity Column
  * 
@@ -108,14 +110,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/sqlTable:SqlTable")
 public class SqlTable extends com.pulumi.resources.CustomResource {
     /**
-     * Name of parent catalog. Change forces creation of a new resource.
+     * Name of parent catalog. Change forces the creation of a new resource.
      * 
      */
     @Export(name="catalogName", refs={String.class}, tree="[0]")
     private Output<String> catalogName;
 
     /**
-     * @return Name of parent catalog. Change forces creation of a new resource.
+     * @return Name of parent catalog. Change forces the creation of a new resource.
      * 
      */
     public Output<String> catalogName() {
@@ -148,28 +150,28 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return this.columns;
     }
     /**
-     * User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+     * User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+     * @return User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+     * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
      * 
      */
     @Export(name="dataSourceFormat", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataSourceFormat;
 
     /**
-     * @return External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+     * @return External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
      * 
      */
     public Output<Optional<String>> dataSourceFormat() {
@@ -182,14 +184,14 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return this.effectiveProperties;
     }
     /**
-     * Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+     * Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+     * @return Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
      * 
      */
     public Output<String> name() {
@@ -210,70 +212,70 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.options);
     }
     /**
-     * Username/groupname/sp application_id of the schema owner.
+     * User name/group name/sp application_id of the schema owner.
      * 
      */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the schema owner.
+     * @return User name/group name/sp application_id of the schema owner.
      * 
      */
     public Output<String> owner() {
         return this.owner;
     }
     /**
-     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
      * 
      */
     @Export(name="partitions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> partitions;
 
     /**
-     * @return a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+     * @return a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
      * 
      */
     public Output<Optional<List<String>>> partitions() {
         return Codegen.optional(this.partitions);
     }
     /**
-     * Map of table properties.
+     * A map of table properties.
      * 
      */
     @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> properties;
 
     /**
-     * @return Map of table properties.
+     * @return A map of table properties.
      * 
      */
     public Output<Optional<Map<String,String>>> properties() {
         return Codegen.optional(this.properties);
     }
     /**
-     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+     * Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
      * 
      */
     @Export(name="schemaName", refs={String.class}, tree="[0]")
     private Output<String> schemaName;
 
     /**
-     * @return Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+     * @return Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
      * 
      */
     public Output<String> schemaName() {
         return this.schemaName;
     }
     /**
-     * For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+     * For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
      * 
      */
     @Export(name="storageCredentialName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageCredentialName;
 
     /**
-     * @return For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+     * @return For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
      * 
      */
     public Output<Optional<String>> storageCredentialName() {
@@ -294,14 +296,14 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.storageLocation);
     }
     /**
-     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
      * 
      */
     @Export(name="tableType", refs={String.class}, tree="[0]")
     private Output<String> tableType;
 
     /**
-     * @return Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+     * @return Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
      * 
      */
     public Output<String> tableType() {

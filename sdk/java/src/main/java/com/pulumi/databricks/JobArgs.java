@@ -157,9 +157,17 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * If `&#34;UI_LOCKED&#34;`, the user interface for the job will be locked. If `&#34;EDITABLE&#34;` (the default), the user interface will be editable.
+     * 
+     */
     @Import(name="editMode")
     private @Nullable Output<String> editMode;
 
+    /**
+     * @return If `&#34;UI_LOCKED&#34;`, the user interface for the job will be locked. If `&#34;EDITABLE&#34;` (the default), the user interface will be editable.
+     * 
+     */
     public Optional<Output<String>> editMode() {
         return Optional.ofNullable(this.editMode);
     }
@@ -854,11 +862,23 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param editMode If `&#34;UI_LOCKED&#34;`, the user interface for the job will be locked. If `&#34;EDITABLE&#34;` (the default), the user interface will be editable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder editMode(@Nullable Output<String> editMode) {
             $.editMode = editMode;
             return this;
         }
 
+        /**
+         * @param editMode If `&#34;UI_LOCKED&#34;`, the user interface for the job will be locked. If `&#34;EDITABLE&#34;` (the default), the user interface will be editable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder editMode(String editMode) {
             return editMode(Output.of(editMode));
         }

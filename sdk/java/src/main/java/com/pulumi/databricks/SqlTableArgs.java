@@ -20,14 +20,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     public static final SqlTableArgs Empty = new SqlTableArgs();
 
     /**
-     * Name of parent catalog. Change forces creation of a new resource.
+     * Name of parent catalog. Change forces the creation of a new resource.
      * 
      */
     @Import(name="catalogName", required=true)
     private Output<String> catalogName;
 
     /**
-     * @return Name of parent catalog. Change forces creation of a new resource.
+     * @return Name of parent catalog. Change forces the creation of a new resource.
      * 
      */
     public Output<String> catalogName() {
@@ -64,14 +64,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+     * User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+     * @return User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -79,14 +79,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+     * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
      * 
      */
     @Import(name="dataSourceFormat")
     private @Nullable Output<String> dataSourceFormat;
 
     /**
-     * @return External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+     * @return External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
      * 
      */
     public Optional<Output<String>> dataSourceFormat() {
@@ -94,14 +94,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+     * Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+     * @return Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -124,14 +124,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username/groupname/sp application_id of the schema owner.
+     * User name/group name/sp application_id of the schema owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the schema owner.
+     * @return User name/group name/sp application_id of the schema owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -139,14 +139,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
      * 
      */
     @Import(name="partitions")
     private @Nullable Output<List<String>> partitions;
 
     /**
-     * @return a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+     * @return a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<List<String>>> partitions() {
@@ -154,14 +154,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map of table properties.
+     * A map of table properties.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return Map of table properties.
+     * @return A map of table properties.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -169,14 +169,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+     * Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
      * 
      */
     @Import(name="schemaName", required=true)
     private Output<String> schemaName;
 
     /**
-     * @return Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+     * @return Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
      * 
      */
     public Output<String> schemaName() {
@@ -184,14 +184,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+     * For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
      * 
      */
     @Import(name="storageCredentialName")
     private @Nullable Output<String> storageCredentialName;
 
     /**
-     * @return For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+     * @return For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
      * 
      */
     public Optional<Output<String>> storageCredentialName() {
@@ -214,14 +214,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
      * 
      */
     @Import(name="tableType", required=true)
     private Output<String> tableType;
 
     /**
-     * @return Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+     * @return Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
      * 
      */
     public Output<String> tableType() {
@@ -299,7 +299,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param catalogName Name of parent catalog. Change forces creation of a new resource.
+         * @param catalogName Name of parent catalog. Change forces the creation of a new resource.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param catalogName Name of parent catalog. Change forces creation of a new resource.
+         * @param catalogName Name of parent catalog. Change forces the creation of a new resource.
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+         * @param comment User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+         * @param comment User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataSourceFormat External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+         * @param dataSourceFormat External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataSourceFormat External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+         * @param dataSourceFormat External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+         * @param name Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+         * @param name Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the schema owner.
+         * @param owner User name/group name/sp application_id of the schema owner.
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the schema owner.
+         * @param owner User name/group name/sp application_id of the schema owner.
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -499,7 +499,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -509,7 +509,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties Map of table properties.
+         * @param properties A map of table properties.
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties Map of table properties.
+         * @param properties A map of table properties.
          * 
          * @return builder
          * 
@@ -530,7 +530,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaName Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+         * @param schemaName Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaName Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+         * @param schemaName Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
          * 
          * @return builder
          * 
@@ -551,7 +551,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageCredentialName For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+         * @param storageCredentialName For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageCredentialName For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+         * @param storageCredentialName For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
          * 
          * @return builder
          * 

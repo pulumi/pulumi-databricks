@@ -40,18 +40,18 @@ class SqlTableArgs:
                  warehouse_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SqlTable resource.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces the creation of a new resource.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
+        :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_keys: a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
-        :param pulumi.Input[str] comment: User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
-        :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
-        :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        :param pulumi.Input[str] comment: User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
+        :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of user defined table options. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Map of table properties.
-        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: User name/group name/sp application_id of the schema owner.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A map of table properties.
+        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
         :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         :param pulumi.Input[str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
@@ -92,7 +92,7 @@ class SqlTableArgs:
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Input[str]:
         """
-        Name of parent catalog. Change forces creation of a new resource.
+        Name of parent catalog. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
@@ -104,7 +104,7 @@ class SqlTableArgs:
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Input[str]:
         """
-        Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "schema_name")
 
@@ -116,7 +116,7 @@ class SqlTableArgs:
     @pulumi.getter(name="tableType")
     def table_type(self) -> pulumi.Input[str]:
         """
-        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "table_type")
 
@@ -158,7 +158,7 @@ class SqlTableArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+        User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         """
         return pulumi.get(self, "comment")
 
@@ -170,7 +170,7 @@ class SqlTableArgs:
     @pulumi.getter(name="dataSourceFormat")
     def data_source_format(self) -> Optional[pulumi.Input[str]]:
         """
-        External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         """
         return pulumi.get(self, "data_source_format")
 
@@ -182,7 +182,7 @@ class SqlTableArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -206,7 +206,7 @@ class SqlTableArgs:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
-        Username/groupname/sp application_id of the schema owner.
+        User name/group name/sp application_id of the schema owner.
         """
         return pulumi.get(self, "owner")
 
@@ -218,7 +218,7 @@ class SqlTableArgs:
     @pulumi.getter
     def partitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "partitions")
 
@@ -230,7 +230,7 @@ class SqlTableArgs:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of table properties.
+        A map of table properties.
         """
         return pulumi.get(self, "properties")
 
@@ -242,7 +242,7 @@ class SqlTableArgs:
     @pulumi.getter(name="storageCredentialName")
     def storage_credential_name(self) -> Optional[pulumi.Input[str]]:
         """
-        For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "storage_credential_name")
 
@@ -310,19 +310,19 @@ class _SqlTableState:
                  warehouse_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SqlTable resources.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces the creation of a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_keys: a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
-        :param pulumi.Input[str] comment: User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
-        :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
-        :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        :param pulumi.Input[str] comment: User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
+        :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of user defined table options. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Map of table properties.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: User name/group name/sp application_id of the schema owner.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A map of table properties.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
+        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
-        :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
         :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         :param pulumi.Input[str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
@@ -367,7 +367,7 @@ class _SqlTableState:
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of parent catalog. Change forces creation of a new resource.
+        Name of parent catalog. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
@@ -409,7 +409,7 @@ class _SqlTableState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
-        User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+        User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         """
         return pulumi.get(self, "comment")
 
@@ -421,7 +421,7 @@ class _SqlTableState:
     @pulumi.getter(name="dataSourceFormat")
     def data_source_format(self) -> Optional[pulumi.Input[str]]:
         """
-        External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         """
         return pulumi.get(self, "data_source_format")
 
@@ -442,7 +442,7 @@ class _SqlTableState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -466,7 +466,7 @@ class _SqlTableState:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
-        Username/groupname/sp application_id of the schema owner.
+        User name/group name/sp application_id of the schema owner.
         """
         return pulumi.get(self, "owner")
 
@@ -478,7 +478,7 @@ class _SqlTableState:
     @pulumi.getter
     def partitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "partitions")
 
@@ -490,7 +490,7 @@ class _SqlTableState:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of table properties.
+        A map of table properties.
         """
         return pulumi.get(self, "properties")
 
@@ -502,7 +502,7 @@ class _SqlTableState:
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "schema_name")
 
@@ -514,7 +514,7 @@ class _SqlTableState:
     @pulumi.getter(name="storageCredentialName")
     def storage_credential_name(self) -> Optional[pulumi.Input[str]]:
         """
-        For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "storage_credential_name")
 
@@ -538,7 +538,7 @@ class _SqlTableState:
     @pulumi.getter(name="tableType")
     def table_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "table_type")
 
@@ -595,11 +595,13 @@ class SqlTable(pulumi.CustomResource):
                  warehouse_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables / views.
+        Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables/views.
 
-        A `SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table or a view.
+        A `SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table, or a view.
 
         This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
+
+        > This resource doesn't handle complex cases of schema evolution due to the limitations of Pulumi itself.  If you need to implement schema evolution it's recommended to use specialized tools, such as, [Luquibase](https://medium.com/dbsql-sme-engineering/advanced-schema-management-on-databricks-with-liquibase-1900e9f7b9c0) and [Flyway](https://medium.com/dbsql-sme-engineering/databricks-schema-management-with-flyway-527c4a9f5d67).
 
         ## Use an Identity Column
 
@@ -654,19 +656,19 @@ class SqlTable(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces the creation of a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_keys: a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
-        :param pulumi.Input[str] comment: User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
-        :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
-        :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        :param pulumi.Input[str] comment: User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
+        :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of user defined table options. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Map of table properties.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: User name/group name/sp application_id of the schema owner.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A map of table properties.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
+        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
-        :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
         :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         :param pulumi.Input[str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
@@ -677,11 +679,13 @@ class SqlTable(pulumi.CustomResource):
                  args: SqlTableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables / views.
+        Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables/views.
 
-        A `SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table or a view.
+        A `SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table, or a view.
 
         This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
+
+        > This resource doesn't handle complex cases of schema evolution due to the limitations of Pulumi itself.  If you need to implement schema evolution it's recommended to use specialized tools, such as, [Luquibase](https://medium.com/dbsql-sme-engineering/advanced-schema-management-on-databricks-with-liquibase-1900e9f7b9c0) and [Flyway](https://medium.com/dbsql-sme-engineering/databricks-schema-management-with-flyway-527c4a9f5d67).
 
         ## Use an Identity Column
 
@@ -834,19 +838,19 @@ class SqlTable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces the creation of a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_keys: a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
-        :param pulumi.Input[str] comment: User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
-        :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
-        :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        :param pulumi.Input[str] comment: User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
+        :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of user defined table options. Change forces creation of a new resource.
-        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Map of table properties.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: User name/group name/sp application_id of the schema owner.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A map of table properties.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
+        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
-        :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
         :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         :param pulumi.Input[str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
@@ -878,7 +882,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[str]:
         """
-        Name of parent catalog. Change forces creation of a new resource.
+        Name of parent catalog. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
@@ -904,7 +908,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         """
-        User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
+        User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         """
         return pulumi.get(self, "comment")
 
@@ -912,7 +916,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter(name="dataSourceFormat")
     def data_source_format(self) -> pulumi.Output[Optional[str]]:
         """
-        External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
+        External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         """
         return pulumi.get(self, "data_source_format")
 
@@ -925,7 +929,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of table relative to parent catalog and schema. Change forces creation of a new resource.
+        Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -941,7 +945,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
         """
-        Username/groupname/sp application_id of the schema owner.
+        User name/group name/sp application_id of the schema owner.
         """
         return pulumi.get(self, "owner")
 
@@ -949,7 +953,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter
     def partitions(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+        a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "partitions")
 
@@ -957,7 +961,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter
     def properties(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Map of table properties.
+        A map of table properties.
         """
         return pulumi.get(self, "properties")
 
@@ -965,7 +969,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Output[str]:
         """
-        Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "schema_name")
 
@@ -973,7 +977,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter(name="storageCredentialName")
     def storage_credential_name(self) -> pulumi.Output[Optional[str]]:
         """
-        For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
+        For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "storage_credential_name")
 
@@ -989,7 +993,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter(name="tableType")
     def table_type(self) -> pulumi.Output[str]:
         """
-        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, or `VIEW`. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "table_type")
 

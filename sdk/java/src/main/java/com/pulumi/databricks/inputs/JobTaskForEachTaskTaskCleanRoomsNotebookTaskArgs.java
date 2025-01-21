@@ -17,30 +17,62 @@ public final class JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs extends com.
 
     public static final JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs Empty = new JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs();
 
+    /**
+     * The clean room that the notebook belongs to.
+     * 
+     */
     @Import(name="cleanRoomName", required=true)
     private Output<String> cleanRoomName;
 
+    /**
+     * @return The clean room that the notebook belongs to.
+     * 
+     */
     public Output<String> cleanRoomName() {
         return this.cleanRoomName;
     }
 
+    /**
+     * Checksum to validate the freshness of the notebook resource.
+     * 
+     */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
+    /**
+     * @return Checksum to validate the freshness of the notebook resource.
+     * 
+     */
     public Optional<Output<String>> etag() {
         return Optional.ofNullable(this.etag);
     }
 
+    /**
+     * Base parameters to be used for the clean room notebook job.
+     * 
+     */
     @Import(name="notebookBaseParameters")
     private @Nullable Output<Map<String,String>> notebookBaseParameters;
 
+    /**
+     * @return Base parameters to be used for the clean room notebook job.
+     * 
+     */
     public Optional<Output<Map<String,String>>> notebookBaseParameters() {
         return Optional.ofNullable(this.notebookBaseParameters);
     }
 
+    /**
+     * Name of the notebook being run.
+     * 
+     */
     @Import(name="notebookName", required=true)
     private Output<String> notebookName;
 
+    /**
+     * @return Name of the notebook being run.
+     * 
+     */
     public Output<String> notebookName() {
         return this.notebookName;
     }
@@ -72,38 +104,86 @@ public final class JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs extends com.
             $ = new JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cleanRoomName The clean room that the notebook belongs to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cleanRoomName(Output<String> cleanRoomName) {
             $.cleanRoomName = cleanRoomName;
             return this;
         }
 
+        /**
+         * @param cleanRoomName The clean room that the notebook belongs to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cleanRoomName(String cleanRoomName) {
             return cleanRoomName(Output.of(cleanRoomName));
         }
 
+        /**
+         * @param etag Checksum to validate the freshness of the notebook resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder etag(@Nullable Output<String> etag) {
             $.etag = etag;
             return this;
         }
 
+        /**
+         * @param etag Checksum to validate the freshness of the notebook resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder etag(String etag) {
             return etag(Output.of(etag));
         }
 
+        /**
+         * @param notebookBaseParameters Base parameters to be used for the clean room notebook job.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notebookBaseParameters(@Nullable Output<Map<String,String>> notebookBaseParameters) {
             $.notebookBaseParameters = notebookBaseParameters;
             return this;
         }
 
+        /**
+         * @param notebookBaseParameters Base parameters to be used for the clean room notebook job.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notebookBaseParameters(Map<String,String> notebookBaseParameters) {
             return notebookBaseParameters(Output.of(notebookBaseParameters));
         }
 
+        /**
+         * @param notebookName Name of the notebook being run.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notebookName(Output<String> notebookName) {
             $.notebookName = notebookName;
             return this;
         }
 
+        /**
+         * @param notebookName Name of the notebook being run.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notebookName(String notebookName) {
             return notebookName(Output.of(notebookName));
         }

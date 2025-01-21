@@ -82,7 +82,7 @@ import (
 //
 // ## Catalog grants
 //
-// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_CONNECTION`, `CREATE_SCHEMA`, `USE_CATALOG` privileges to Catalog specified in the `catalog` attribute. You can also grant `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME`, `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` and `USE_SCHEMA` at the catalog level to apply them to the pertinent current and future securable objects within the catalog:
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_CONNECTION`, `CREATE_SCHEMA`, `MANAGE`, and `USE_CATALOG` privileges to Catalog specified in the `catalog` attribute. You can also grant `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME`, `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` and `USE_SCHEMA` at the catalog level to apply them to the pertinent current and future securable objects within the catalog:
 //
 // ```go
 // package main
@@ -149,7 +149,7 @@ import (
 //
 // ## Schema grants
 //
-// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME` and `USE_SCHEMA` privileges to _`catalog.schema`_ specified in the `schema` attribute. You can also grant `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` at the schema level to apply them to the pertinent current and future securable objects within the schema:
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `CREATE_FUNCTION`, `CREATE_TABLE`, `CREATE_VOLUME`, `MANAGE` and `USE_SCHEMA` privileges to _`catalog.schema`_ specified in the `schema` attribute. You can also grant `EXECUTE`, `MODIFY`, `REFRESH`, `SELECT`, `READ_VOLUME`, `WRITE_VOLUME` at the schema level to apply them to the pertinent current and future securable objects within the schema:
 //
 // ```go
 // package main
@@ -197,7 +197,7 @@ import (
 //
 // ## Table grants
 //
-// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `SELECT` and `MODIFY` privileges to _`catalog.schema.table`_ specified in the `table` attribute.
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `MANAGE`, `SELECT` and `MODIFY` privileges to _`catalog.schema.table`_ specified in the `table` attribute.
 //
 // ```go
 // package main
@@ -286,7 +286,7 @@ import (
 //
 // ## View grants
 //
-// You can grant `ALL_PRIVILEGES`, `APPLY_TAG` and `SELECT` privileges to _`catalog.schema.view`_ specified in `table` attribute.
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `MANAGE` and `SELECT` privileges to _`catalog.schema.view`_ specified in `table` attribute.
 //
 // ```go
 // package main
@@ -368,7 +368,7 @@ import (
 //
 // ## Volume grants
 //
-// You can grant `ALL_PRIVILEGES`, `READ_VOLUME` and `WRITE_VOLUME` privileges to _`catalog.schema.volume`_ specified in the `volume` attribute.
+// You can grant `ALL_PRIVILEGES`, `MANAGE`, `READ_VOLUME` and `WRITE_VOLUME` privileges to _`catalog.schema.volume`_ specified in the `volume` attribute.
 //
 // ```go
 // package main
@@ -415,7 +415,7 @@ import (
 //
 // ## Registered model grants
 //
-// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges to _`catalog.schema.model`_ specified in the `model` attribute.
+// You can grant `ALL_PRIVILEGES`, `APPLY_TAG`, `EXECUTE`, and `MANAGE` privileges to _`catalog.schema.model`_ specified in the `model` attribute.
 //
 // ```go
 // package main
@@ -458,7 +458,7 @@ import (
 //
 // ## Function grants
 //
-// You can grant `ALL_PRIVILEGES` and `EXECUTE` privileges to _`catalog.schema.function`_ specified in the `function` attribute.
+// You can grant `ALL_PRIVILEGES`, `EXECUTE`, and `MANAGE` privileges to _`catalog.schema.function`_ specified in the `function` attribute.
 //
 // ```go
 // package main
@@ -500,7 +500,7 @@ import (
 //
 // ## Service credential grants
 //
-// You can grant `ALL_PRIVILEGES`, `ACCESS` and `CREATE_CONNECTION` privileges to Credential id specified in `credential` attribute:
+// You can grant `ALL_PRIVILEGES`, `ACCESS`, `CREATE_CONNECTION`, and `MANAGE` privileges to Credential id specified in `credential` attribute:
 //
 // ```go
 // package main
@@ -547,7 +547,7 @@ import (
 //
 // ## Storage credential grants
 //
-// You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `READ_FILES` and `WRITE_FILES` privileges to StorageCredential id specified in `storageCredential` attribute:
+// You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `MANAGE`, `READ_FILES` and `WRITE_FILES` privileges to StorageCredential id specified in `storageCredential` attribute:
 //
 // ```go
 // package main
@@ -593,7 +593,7 @@ import (
 //
 // ## External location grants
 //
-// You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_TABLE`, `CREATE_MANAGED_STORAGE`, `CREATE EXTERNAL VOLUME`, `READ_FILES` and `WRITE_FILES` privileges to ExternalLocation id specified in `externalLocation` attribute:
+// You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_TABLE`, `CREATE_MANAGED_STORAGE`, `CREATE EXTERNAL VOLUME`, `MANAGE`, `READ_FILES` and `WRITE_FILES` privileges to ExternalLocation id specified in `externalLocation` attribute:
 //
 // ```go
 // package main
@@ -662,7 +662,7 @@ import (
 //
 // ## Connection grants
 //
-// You can grant `ALL_PRIVILEGES`, `USE_CONNECTION` and `CREATE_FOREIGN_CATALOG` to Connection specified in `foreignConnection` attribute:
+// You can grant `ALL_PRIVILEGES`, `MANAGE`, `USE_CONNECTION` and `CREATE_FOREIGN_CATALOG` to Connection specified in `foreignConnection` attribute:
 //
 // ```go
 // package main

@@ -88,11 +88,32 @@ namespace Pulumi.Databricks
         [Output("accessPoint")]
         public Output<string?> AccessPoint { get; private set; } = null!;
 
+        [Output("browseOnly")]
+        public Output<bool> BrowseOnly { get; private set; } = null!;
+
         /// <summary>
         /// User-supplied free-form text.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
+
+        /// <summary>
+        /// Time at which this external location was created, in epoch milliseconds.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<int> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Username of external location creator.
+        /// </summary>
+        [Output("createdBy")]
+        public Output<string> CreatedBy { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique ID of the location's storage credential.
+        /// </summary>
+        [Output("credentialId")]
+        public Output<string> CredentialId { get; private set; } = null!;
 
         /// <summary>
         /// Name of the databricks.StorageCredential to use with this external location.
@@ -105,6 +126,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("encryptionDetails")]
         public Output<Outputs.ExternalLocationEncryptionDetails?> EncryptionDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+        /// </summary>
+        [Output("fallback")]
+        public Output<bool?> Fallback { get; private set; } = null!;
 
         /// <summary>
         /// Destroy external location regardless of its dependents.
@@ -150,6 +177,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("skipValidation")]
         public Output<bool?> SkipValidation { get; private set; } = null!;
+
+        /// <summary>
+        /// Time at which external location this was last modified, in epoch milliseconds.
+        /// </summary>
+        [Output("updatedAt")]
+        public Output<int> UpdatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Username of user who last modified the external location.
+        /// </summary>
+        [Output("updatedBy")]
+        public Output<string> UpdatedBy { get; private set; } = null!;
 
         /// <summary>
         /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
@@ -228,6 +267,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.ExternalLocationEncryptionDetailsArgs>? EncryptionDetails { get; set; }
 
         /// <summary>
+        /// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+        /// </summary>
+        [Input("fallback")]
+        public Input<bool>? Fallback { get; set; }
+
+        /// <summary>
         /// Destroy external location regardless of its dependents.
         /// </summary>
         [Input("forceDestroy")]
@@ -292,11 +337,32 @@ namespace Pulumi.Databricks
         [Input("accessPoint")]
         public Input<string>? AccessPoint { get; set; }
 
+        [Input("browseOnly")]
+        public Input<bool>? BrowseOnly { get; set; }
+
         /// <summary>
         /// User-supplied free-form text.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
+
+        /// <summary>
+        /// Time at which this external location was created, in epoch milliseconds.
+        /// </summary>
+        [Input("createdAt")]
+        public Input<int>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Username of external location creator.
+        /// </summary>
+        [Input("createdBy")]
+        public Input<string>? CreatedBy { get; set; }
+
+        /// <summary>
+        /// Unique ID of the location's storage credential.
+        /// </summary>
+        [Input("credentialId")]
+        public Input<string>? CredentialId { get; set; }
 
         /// <summary>
         /// Name of the databricks.StorageCredential to use with this external location.
@@ -309,6 +375,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("encryptionDetails")]
         public Input<Inputs.ExternalLocationEncryptionDetailsGetArgs>? EncryptionDetails { get; set; }
+
+        /// <summary>
+        /// Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+        /// </summary>
+        [Input("fallback")]
+        public Input<bool>? Fallback { get; set; }
 
         /// <summary>
         /// Destroy external location regardless of its dependents.
@@ -354,6 +426,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("skipValidation")]
         public Input<bool>? SkipValidation { get; set; }
+
+        /// <summary>
+        /// Time at which external location this was last modified, in epoch milliseconds.
+        /// </summary>
+        [Input("updatedAt")]
+        public Input<int>? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Username of user who last modified the external location.
+        /// </summary>
+        [Input("updatedBy")]
+        public Input<string>? UpdatedBy { get; set; }
 
         /// <summary>
         /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).

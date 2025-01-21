@@ -26,6 +26,7 @@ class ExternalLocationArgs:
                  access_point: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  encryption_details: Optional[pulumi.Input['ExternalLocationEncryptionDetailsArgs']] = None,
+                 fallback: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,7 @@ class ExternalLocationArgs:
         :param pulumi.Input[str] access_point: The ARN of the s3 access point to use with the external location (AWS).
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input['ExternalLocationEncryptionDetailsArgs'] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        :param pulumi.Input[bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[bool] force_update: Update external location regardless of its dependents.
         :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
@@ -57,6 +59,8 @@ class ExternalLocationArgs:
             pulumi.set(__self__, "comment", comment)
         if encryption_details is not None:
             pulumi.set(__self__, "encryption_details", encryption_details)
+        if fallback is not None:
+            pulumi.set(__self__, "fallback", fallback)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if force_update is not None:
@@ -133,6 +137,18 @@ class ExternalLocationArgs:
     @encryption_details.setter
     def encryption_details(self, value: Optional[pulumi.Input['ExternalLocationEncryptionDetailsArgs']]):
         pulumi.set(self, "encryption_details", value)
+
+    @property
+    @pulumi.getter
+    def fallback(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+        """
+        return pulumi.get(self, "fallback")
+
+    @fallback.setter
+    def fallback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fallback", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -232,9 +248,14 @@ class ExternalLocationArgs:
 class _ExternalLocationState:
     def __init__(__self__, *,
                  access_point: Optional[pulumi.Input[str]] = None,
+                 browse_only: Optional[pulumi.Input[bool]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 created_at: Optional[pulumi.Input[int]] = None,
+                 created_by: Optional[pulumi.Input[str]] = None,
+                 credential_id: Optional[pulumi.Input[str]] = None,
                  credential_name: Optional[pulumi.Input[str]] = None,
                  encryption_details: Optional[pulumi.Input['ExternalLocationEncryptionDetailsArgs']] = None,
+                 fallback: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
@@ -243,13 +264,19 @@ class _ExternalLocationState:
                  owner: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
+                 updated_at: Optional[pulumi.Input[int]] = None,
+                 updated_by: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ExternalLocation resources.
         :param pulumi.Input[str] access_point: The ARN of the s3 access point to use with the external location (AWS).
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[int] created_at: Time at which this external location was created, in epoch milliseconds.
+        :param pulumi.Input[str] created_by: Username of external location creator.
+        :param pulumi.Input[str] credential_id: Unique ID of the location's storage credential.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this external location.
         :param pulumi.Input['ExternalLocationEncryptionDetailsArgs'] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        :param pulumi.Input[bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[bool] force_update: Update external location regardless of its dependents.
         :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
@@ -257,16 +284,28 @@ class _ExternalLocationState:
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external location owner.
         :param pulumi.Input[bool] read_only: Indicates whether the external location is read-only.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
+        :param pulumi.Input[int] updated_at: Time at which external location this was last modified, in epoch milliseconds.
+        :param pulumi.Input[str] updated_by: Username of user who last modified the external location.
         :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
         if access_point is not None:
             pulumi.set(__self__, "access_point", access_point)
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if credential_id is not None:
+            pulumi.set(__self__, "credential_id", credential_id)
         if credential_name is not None:
             pulumi.set(__self__, "credential_name", credential_name)
         if encryption_details is not None:
             pulumi.set(__self__, "encryption_details", encryption_details)
+        if fallback is not None:
+            pulumi.set(__self__, "fallback", fallback)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if force_update is not None:
@@ -283,6 +322,10 @@ class _ExternalLocationState:
             pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
             pulumi.set(__self__, "skip_validation", skip_validation)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
         if url is not None:
             pulumi.set(__self__, "url", url)
 
@@ -299,6 +342,15 @@ class _ExternalLocationState:
         pulumi.set(self, "access_point", value)
 
     @property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "browse_only")
+
+    @browse_only.setter
+    def browse_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "browse_only", value)
+
+    @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
@@ -309,6 +361,42 @@ class _ExternalLocationState:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time at which this external location was created, in epoch milliseconds.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username of external location creator.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="credentialId")
+    def credential_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID of the location's storage credential.
+        """
+        return pulumi.get(self, "credential_id")
+
+    @credential_id.setter
+    def credential_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credential_id", value)
 
     @property
     @pulumi.getter(name="credentialName")
@@ -333,6 +421,18 @@ class _ExternalLocationState:
     @encryption_details.setter
     def encryption_details(self, value: Optional[pulumi.Input['ExternalLocationEncryptionDetailsArgs']]):
         pulumi.set(self, "encryption_details", value)
+
+    @property
+    @pulumi.getter
+    def fallback(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+        """
+        return pulumi.get(self, "fallback")
+
+    @fallback.setter
+    def fallback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fallback", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -428,6 +528,30 @@ class _ExternalLocationState:
         pulumi.set(self, "skip_validation", value)
 
     @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time at which external location this was last modified, in epoch milliseconds.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username of user who last modified the external location.
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated_by", value)
+
+    @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
@@ -449,6 +573,7 @@ class ExternalLocation(pulumi.CustomResource):
                  comment: Optional[pulumi.Input[str]] = None,
                  credential_name: Optional[pulumi.Input[str]] = None,
                  encryption_details: Optional[pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']]] = None,
+                 fallback: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
@@ -515,6 +640,7 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this external location.
         :param pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        :param pulumi.Input[bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[bool] force_update: Update external location regardless of its dependents.
         :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
@@ -599,6 +725,7 @@ class ExternalLocation(pulumi.CustomResource):
                  comment: Optional[pulumi.Input[str]] = None,
                  credential_name: Optional[pulumi.Input[str]] = None,
                  encryption_details: Optional[pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']]] = None,
+                 fallback: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
@@ -623,6 +750,7 @@ class ExternalLocation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'credential_name'")
             __props__.__dict__["credential_name"] = credential_name
             __props__.__dict__["encryption_details"] = encryption_details
+            __props__.__dict__["fallback"] = fallback
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["force_update"] = force_update
             __props__.__dict__["isolation_mode"] = isolation_mode
@@ -634,6 +762,12 @@ class ExternalLocation(pulumi.CustomResource):
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
+            __props__.__dict__["browse_only"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["created_by"] = None
+            __props__.__dict__["credential_id"] = None
+            __props__.__dict__["updated_at"] = None
+            __props__.__dict__["updated_by"] = None
         super(ExternalLocation, __self__).__init__(
             'databricks:index/externalLocation:ExternalLocation',
             resource_name,
@@ -645,9 +779,14 @@ class ExternalLocation(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_point: Optional[pulumi.Input[str]] = None,
+            browse_only: Optional[pulumi.Input[bool]] = None,
             comment: Optional[pulumi.Input[str]] = None,
+            created_at: Optional[pulumi.Input[int]] = None,
+            created_by: Optional[pulumi.Input[str]] = None,
+            credential_id: Optional[pulumi.Input[str]] = None,
             credential_name: Optional[pulumi.Input[str]] = None,
             encryption_details: Optional[pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']]] = None,
+            fallback: Optional[pulumi.Input[bool]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             force_update: Optional[pulumi.Input[bool]] = None,
             isolation_mode: Optional[pulumi.Input[str]] = None,
@@ -656,6 +795,8 @@ class ExternalLocation(pulumi.CustomResource):
             owner: Optional[pulumi.Input[str]] = None,
             read_only: Optional[pulumi.Input[bool]] = None,
             skip_validation: Optional[pulumi.Input[bool]] = None,
+            updated_at: Optional[pulumi.Input[int]] = None,
+            updated_by: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'ExternalLocation':
         """
         Get an existing ExternalLocation resource's state with the given name, id, and optional extra
@@ -666,8 +807,12 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_point: The ARN of the s3 access point to use with the external location (AWS).
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[int] created_at: Time at which this external location was created, in epoch milliseconds.
+        :param pulumi.Input[str] created_by: Username of external location creator.
+        :param pulumi.Input[str] credential_id: Unique ID of the location's storage credential.
         :param pulumi.Input[str] credential_name: Name of the StorageCredential to use with this external location.
         :param pulumi.Input[Union['ExternalLocationEncryptionDetailsArgs', 'ExternalLocationEncryptionDetailsArgsDict']] encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        :param pulumi.Input[bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
         :param pulumi.Input[bool] force_destroy: Destroy external location regardless of its dependents.
         :param pulumi.Input[bool] force_update: Update external location regardless of its dependents.
         :param pulumi.Input[str] isolation_mode: Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
@@ -675,6 +820,8 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the external location owner.
         :param pulumi.Input[bool] read_only: Indicates whether the external location is read-only.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
+        :param pulumi.Input[int] updated_at: Time at which external location this was last modified, in epoch milliseconds.
+        :param pulumi.Input[str] updated_by: Username of user who last modified the external location.
         :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -682,9 +829,14 @@ class ExternalLocation(pulumi.CustomResource):
         __props__ = _ExternalLocationState.__new__(_ExternalLocationState)
 
         __props__.__dict__["access_point"] = access_point
+        __props__.__dict__["browse_only"] = browse_only
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["created_by"] = created_by
+        __props__.__dict__["credential_id"] = credential_id
         __props__.__dict__["credential_name"] = credential_name
         __props__.__dict__["encryption_details"] = encryption_details
+        __props__.__dict__["fallback"] = fallback
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["force_update"] = force_update
         __props__.__dict__["isolation_mode"] = isolation_mode
@@ -693,6 +845,8 @@ class ExternalLocation(pulumi.CustomResource):
         __props__.__dict__["owner"] = owner
         __props__.__dict__["read_only"] = read_only
         __props__.__dict__["skip_validation"] = skip_validation
+        __props__.__dict__["updated_at"] = updated_at
+        __props__.__dict__["updated_by"] = updated_by
         __props__.__dict__["url"] = url
         return ExternalLocation(resource_name, opts=opts, __props__=__props__)
 
@@ -705,12 +859,41 @@ class ExternalLocation(pulumi.CustomResource):
         return pulumi.get(self, "access_point")
 
     @property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "browse_only")
+
+    @property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
         """
         User-supplied free-form text.
         """
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[int]:
+        """
+        Time at which this external location was created, in epoch milliseconds.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> pulumi.Output[str]:
+        """
+        Username of external location creator.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="credentialId")
+    def credential_id(self) -> pulumi.Output[str]:
+        """
+        Unique ID of the location's storage credential.
+        """
+        return pulumi.get(self, "credential_id")
 
     @property
     @pulumi.getter(name="credentialName")
@@ -727,6 +910,14 @@ class ExternalLocation(pulumi.CustomResource):
         The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
         """
         return pulumi.get(self, "encryption_details")
+
+    @property
+    @pulumi.getter
+    def fallback(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+        """
+        return pulumi.get(self, "fallback")
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -788,6 +979,22 @@ class ExternalLocation(pulumi.CustomResource):
         Suppress validation errors if any & force save the external location
         """
         return pulumi.get(self, "skip_validation")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[int]:
+        """
+        Time at which external location this was last modified, in epoch milliseconds.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> pulumi.Output[str]:
+        """
+        Username of user who last modified the external location.
+        """
+        return pulumi.get(self, "updated_by")
 
     @property
     @pulumi.getter

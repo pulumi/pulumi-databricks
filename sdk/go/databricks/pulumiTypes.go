@@ -27340,10 +27340,14 @@ func (o JobTaskArrayOutput) Index(i pulumi.IntInput) JobTaskOutput {
 }
 
 type JobTaskCleanRoomsNotebookTask struct {
-	CleanRoomName          string            `pulumi:"cleanRoomName"`
-	Etag                   *string           `pulumi:"etag"`
+	// The clean room that the notebook belongs to.
+	CleanRoomName string `pulumi:"cleanRoomName"`
+	// Checksum to validate the freshness of the notebook resource.
+	Etag *string `pulumi:"etag"`
+	// Base parameters to be used for the clean room notebook job.
 	NotebookBaseParameters map[string]string `pulumi:"notebookBaseParameters"`
-	NotebookName           string            `pulumi:"notebookName"`
+	// Name of the notebook being run.
+	NotebookName string `pulumi:"notebookName"`
 }
 
 // JobTaskCleanRoomsNotebookTaskInput is an input type that accepts JobTaskCleanRoomsNotebookTaskArgs and JobTaskCleanRoomsNotebookTaskOutput values.
@@ -27358,10 +27362,14 @@ type JobTaskCleanRoomsNotebookTaskInput interface {
 }
 
 type JobTaskCleanRoomsNotebookTaskArgs struct {
-	CleanRoomName          pulumi.StringInput    `pulumi:"cleanRoomName"`
-	Etag                   pulumi.StringPtrInput `pulumi:"etag"`
+	// The clean room that the notebook belongs to.
+	CleanRoomName pulumi.StringInput `pulumi:"cleanRoomName"`
+	// Checksum to validate the freshness of the notebook resource.
+	Etag pulumi.StringPtrInput `pulumi:"etag"`
+	// Base parameters to be used for the clean room notebook job.
 	NotebookBaseParameters pulumi.StringMapInput `pulumi:"notebookBaseParameters"`
-	NotebookName           pulumi.StringInput    `pulumi:"notebookName"`
+	// Name of the notebook being run.
+	NotebookName pulumi.StringInput `pulumi:"notebookName"`
 }
 
 func (JobTaskCleanRoomsNotebookTaskArgs) ElementType() reflect.Type {
@@ -27441,18 +27449,22 @@ func (o JobTaskCleanRoomsNotebookTaskOutput) ToJobTaskCleanRoomsNotebookTaskPtrO
 	}).(JobTaskCleanRoomsNotebookTaskPtrOutput)
 }
 
+// The clean room that the notebook belongs to.
 func (o JobTaskCleanRoomsNotebookTaskOutput) CleanRoomName() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskCleanRoomsNotebookTask) string { return v.CleanRoomName }).(pulumi.StringOutput)
 }
 
+// Checksum to validate the freshness of the notebook resource.
 func (o JobTaskCleanRoomsNotebookTaskOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskCleanRoomsNotebookTask) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Base parameters to be used for the clean room notebook job.
 func (o JobTaskCleanRoomsNotebookTaskOutput) NotebookBaseParameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobTaskCleanRoomsNotebookTask) map[string]string { return v.NotebookBaseParameters }).(pulumi.StringMapOutput)
 }
 
+// Name of the notebook being run.
 func (o JobTaskCleanRoomsNotebookTaskOutput) NotebookName() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskCleanRoomsNotebookTask) string { return v.NotebookName }).(pulumi.StringOutput)
 }
@@ -27481,6 +27493,7 @@ func (o JobTaskCleanRoomsNotebookTaskPtrOutput) Elem() JobTaskCleanRoomsNotebook
 	}).(JobTaskCleanRoomsNotebookTaskOutput)
 }
 
+// The clean room that the notebook belongs to.
 func (o JobTaskCleanRoomsNotebookTaskPtrOutput) CleanRoomName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskCleanRoomsNotebookTask) *string {
 		if v == nil {
@@ -27490,6 +27503,7 @@ func (o JobTaskCleanRoomsNotebookTaskPtrOutput) CleanRoomName() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Checksum to validate the freshness of the notebook resource.
 func (o JobTaskCleanRoomsNotebookTaskPtrOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskCleanRoomsNotebookTask) *string {
 		if v == nil {
@@ -27499,6 +27513,7 @@ func (o JobTaskCleanRoomsNotebookTaskPtrOutput) Etag() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Base parameters to be used for the clean room notebook job.
 func (o JobTaskCleanRoomsNotebookTaskPtrOutput) NotebookBaseParameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobTaskCleanRoomsNotebookTask) map[string]string {
 		if v == nil {
@@ -27508,6 +27523,7 @@ func (o JobTaskCleanRoomsNotebookTaskPtrOutput) NotebookBaseParameters() pulumi.
 	}).(pulumi.StringMapOutput)
 }
 
+// Name of the notebook being run.
 func (o JobTaskCleanRoomsNotebookTaskPtrOutput) NotebookName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskCleanRoomsNotebookTask) *string {
 		if v == nil {
@@ -29134,10 +29150,14 @@ func (o JobTaskForEachTaskTaskPtrOutput) WebhookNotifications() JobTaskForEachTa
 }
 
 type JobTaskForEachTaskTaskCleanRoomsNotebookTask struct {
-	CleanRoomName          string            `pulumi:"cleanRoomName"`
-	Etag                   *string           `pulumi:"etag"`
+	// The clean room that the notebook belongs to.
+	CleanRoomName string `pulumi:"cleanRoomName"`
+	// Checksum to validate the freshness of the notebook resource.
+	Etag *string `pulumi:"etag"`
+	// Base parameters to be used for the clean room notebook job.
 	NotebookBaseParameters map[string]string `pulumi:"notebookBaseParameters"`
-	NotebookName           string            `pulumi:"notebookName"`
+	// Name of the notebook being run.
+	NotebookName string `pulumi:"notebookName"`
 }
 
 // JobTaskForEachTaskTaskCleanRoomsNotebookTaskInput is an input type that accepts JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs and JobTaskForEachTaskTaskCleanRoomsNotebookTaskOutput values.
@@ -29152,10 +29172,14 @@ type JobTaskForEachTaskTaskCleanRoomsNotebookTaskInput interface {
 }
 
 type JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs struct {
-	CleanRoomName          pulumi.StringInput    `pulumi:"cleanRoomName"`
-	Etag                   pulumi.StringPtrInput `pulumi:"etag"`
+	// The clean room that the notebook belongs to.
+	CleanRoomName pulumi.StringInput `pulumi:"cleanRoomName"`
+	// Checksum to validate the freshness of the notebook resource.
+	Etag pulumi.StringPtrInput `pulumi:"etag"`
+	// Base parameters to be used for the clean room notebook job.
 	NotebookBaseParameters pulumi.StringMapInput `pulumi:"notebookBaseParameters"`
-	NotebookName           pulumi.StringInput    `pulumi:"notebookName"`
+	// Name of the notebook being run.
+	NotebookName pulumi.StringInput `pulumi:"notebookName"`
 }
 
 func (JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs) ElementType() reflect.Type {
@@ -29235,20 +29259,24 @@ func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskOutput) ToJobTaskForEachTask
 	}).(JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrOutput)
 }
 
+// The clean room that the notebook belongs to.
 func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskOutput) CleanRoomName() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskCleanRoomsNotebookTask) string { return v.CleanRoomName }).(pulumi.StringOutput)
 }
 
+// Checksum to validate the freshness of the notebook resource.
 func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskCleanRoomsNotebookTask) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// Base parameters to be used for the clean room notebook job.
 func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskOutput) NotebookBaseParameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskCleanRoomsNotebookTask) map[string]string {
 		return v.NotebookBaseParameters
 	}).(pulumi.StringMapOutput)
 }
 
+// Name of the notebook being run.
 func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskOutput) NotebookName() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskCleanRoomsNotebookTask) string { return v.NotebookName }).(pulumi.StringOutput)
 }
@@ -29277,6 +29305,7 @@ func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrOutput) Elem() JobTaskFor
 	}).(JobTaskForEachTaskTaskCleanRoomsNotebookTaskOutput)
 }
 
+// The clean room that the notebook belongs to.
 func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrOutput) CleanRoomName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskCleanRoomsNotebookTask) *string {
 		if v == nil {
@@ -29286,6 +29315,7 @@ func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrOutput) CleanRoomName() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// Checksum to validate the freshness of the notebook resource.
 func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskCleanRoomsNotebookTask) *string {
 		if v == nil {
@@ -29295,6 +29325,7 @@ func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrOutput) Etag() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Base parameters to be used for the clean room notebook job.
 func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrOutput) NotebookBaseParameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskCleanRoomsNotebookTask) map[string]string {
 		if v == nil {
@@ -29304,6 +29335,7 @@ func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrOutput) NotebookBaseParam
 	}).(pulumi.StringMapOutput)
 }
 
+// Name of the notebook being run.
 func (o JobTaskForEachTaskTaskCleanRoomsNotebookTaskPtrOutput) NotebookName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskCleanRoomsNotebookTask) *string {
 		if v == nil {
@@ -75004,13 +75036,13 @@ type ShareObject struct {
 	// Description about the object.
 	Comment *string `pulumi:"comment"`
 	Content *string `pulumi:"content"`
-	// Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+	// Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
 	DataObjectType string `pulumi:"dataObjectType"`
 	// Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
 	//
 	// To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
 	HistoryDataSharingStatus *string `pulumi:"historyDataSharingStatus"`
-	// Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
+	// Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
 	Name       string                 `pulumi:"name"`
 	Partitions []ShareObjectPartition `pulumi:"partitions"`
 	// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
@@ -75041,13 +75073,13 @@ type ShareObjectArgs struct {
 	// Description about the object.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	Content pulumi.StringPtrInput `pulumi:"content"`
-	// Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+	// Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
 	DataObjectType pulumi.StringInput `pulumi:"dataObjectType"`
 	// Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
 	//
 	// To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
 	HistoryDataSharingStatus pulumi.StringPtrInput `pulumi:"historyDataSharingStatus"`
-	// Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
+	// Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
 	Name       pulumi.StringInput             `pulumi:"name"`
 	Partitions ShareObjectPartitionArrayInput `pulumi:"partitions"`
 	// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
@@ -75132,7 +75164,7 @@ func (o ShareObjectOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShareObject) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
-// Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+// Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
 func (o ShareObjectOutput) DataObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v ShareObject) string { return v.DataObjectType }).(pulumi.StringOutput)
 }
@@ -75144,7 +75176,7 @@ func (o ShareObjectOutput) HistoryDataSharingStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShareObject) *string { return v.HistoryDataSharingStatus }).(pulumi.StringPtrOutput)
 }
 
-// Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
+// Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
 func (o ShareObjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ShareObject) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -79719,7 +79751,7 @@ func (o SqlQueryScheduleWeeklyPtrOutput) UntilDate() pulumi.StringPtrOutput {
 type SqlTableColumn struct {
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
-	// Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+	// Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
 	Identity *string `pulumi:"identity"`
 	// User-visible name of column
 	Name string `pulumi:"name"`
@@ -79744,7 +79776,7 @@ type SqlTableColumnInput interface {
 type SqlTableColumnArgs struct {
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	// Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+	// Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
 	Identity pulumi.StringPtrInput `pulumi:"identity"`
 	// User-visible name of column
 	Name pulumi.StringInput `pulumi:"name"`
@@ -79811,7 +79843,7 @@ func (o SqlTableColumnOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlTableColumn) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+// Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
 func (o SqlTableColumnOutput) Identity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlTableColumn) *string { return v.Identity }).(pulumi.StringPtrOutput)
 }

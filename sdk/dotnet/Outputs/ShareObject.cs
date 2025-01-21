@@ -25,7 +25,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Comment;
         public readonly string? Content;
         /// <summary>
-        /// Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        /// Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
         /// </summary>
         public readonly string DataObjectType;
         /// <summary>
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? HistoryDataSharingStatus;
         /// <summary>
-        /// Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
+        /// Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
         /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<Outputs.ShareObjectPartition> Partitions;

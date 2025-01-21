@@ -91,10 +91,23 @@ export class ExternalLocation extends pulumi.CustomResource {
      * The ARN of the s3 access point to use with the external location (AWS).
      */
     public readonly accessPoint!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly browseOnly!: pulumi.Output<boolean>;
     /**
      * User-supplied free-form text.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
+    /**
+     * Time at which this external location was created, in epoch milliseconds.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<number>;
+    /**
+     * Username of external location creator.
+     */
+    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    /**
+     * Unique ID of the location's storage credential.
+     */
+    public /*out*/ readonly credentialId!: pulumi.Output<string>;
     /**
      * Name of the databricks.StorageCredential to use with this external location.
      */
@@ -103,6 +116,10 @@ export class ExternalLocation extends pulumi.CustomResource {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     public readonly encryptionDetails!: pulumi.Output<outputs.ExternalLocationEncryptionDetails | undefined>;
+    /**
+     * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+     */
+    public readonly fallback!: pulumi.Output<boolean | undefined>;
     /**
      * Destroy external location regardless of its dependents.
      */
@@ -133,6 +150,14 @@ export class ExternalLocation extends pulumi.CustomResource {
      */
     public readonly skipValidation!: pulumi.Output<boolean | undefined>;
     /**
+     * Time at which external location this was last modified, in epoch milliseconds.
+     */
+    public /*out*/ readonly updatedAt!: pulumi.Output<number>;
+    /**
+     * Username of user who last modified the external location.
+     */
+    public /*out*/ readonly updatedBy!: pulumi.Output<string>;
+    /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      */
     public readonly url!: pulumi.Output<string>;
@@ -151,9 +176,14 @@ export class ExternalLocation extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ExternalLocationState | undefined;
             resourceInputs["accessPoint"] = state ? state.accessPoint : undefined;
+            resourceInputs["browseOnly"] = state ? state.browseOnly : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
+            resourceInputs["credentialId"] = state ? state.credentialId : undefined;
             resourceInputs["credentialName"] = state ? state.credentialName : undefined;
             resourceInputs["encryptionDetails"] = state ? state.encryptionDetails : undefined;
+            resourceInputs["fallback"] = state ? state.fallback : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             resourceInputs["isolationMode"] = state ? state.isolationMode : undefined;
@@ -162,6 +192,8 @@ export class ExternalLocation extends pulumi.CustomResource {
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["readOnly"] = state ? state.readOnly : undefined;
             resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as ExternalLocationArgs | undefined;
@@ -175,6 +207,7 @@ export class ExternalLocation extends pulumi.CustomResource {
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["credentialName"] = args ? args.credentialName : undefined;
             resourceInputs["encryptionDetails"] = args ? args.encryptionDetails : undefined;
+            resourceInputs["fallback"] = args ? args.fallback : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             resourceInputs["isolationMode"] = args ? args.isolationMode : undefined;
@@ -184,6 +217,12 @@ export class ExternalLocation extends pulumi.CustomResource {
             resourceInputs["readOnly"] = args ? args.readOnly : undefined;
             resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["browseOnly"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["createdBy"] = undefined /*out*/;
+            resourceInputs["credentialId"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["updatedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ExternalLocation.__pulumiType, name, resourceInputs, opts);
@@ -198,10 +237,23 @@ export interface ExternalLocationState {
      * The ARN of the s3 access point to use with the external location (AWS).
      */
     accessPoint?: pulumi.Input<string>;
+    browseOnly?: pulumi.Input<boolean>;
     /**
      * User-supplied free-form text.
      */
     comment?: pulumi.Input<string>;
+    /**
+     * Time at which this external location was created, in epoch milliseconds.
+     */
+    createdAt?: pulumi.Input<number>;
+    /**
+     * Username of external location creator.
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * Unique ID of the location's storage credential.
+     */
+    credentialId?: pulumi.Input<string>;
     /**
      * Name of the databricks.StorageCredential to use with this external location.
      */
@@ -210,6 +262,10 @@ export interface ExternalLocationState {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetails>;
+    /**
+     * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+     */
+    fallback?: pulumi.Input<boolean>;
     /**
      * Destroy external location regardless of its dependents.
      */
@@ -240,6 +296,14 @@ export interface ExternalLocationState {
      */
     skipValidation?: pulumi.Input<boolean>;
     /**
+     * Time at which external location this was last modified, in epoch milliseconds.
+     */
+    updatedAt?: pulumi.Input<number>;
+    /**
+     * Username of user who last modified the external location.
+     */
+    updatedBy?: pulumi.Input<string>;
+    /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      */
     url?: pulumi.Input<string>;
@@ -265,6 +329,10 @@ export interface ExternalLocationArgs {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      */
     encryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetails>;
+    /**
+     * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+     */
+    fallback?: pulumi.Input<boolean>;
     /**
      * Destroy external location regardless of its dependents.
      */

@@ -156,6 +156,9 @@ namespace Pulumi.Databricks
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
+        /// </summary>
         [Output("editMode")]
         public Output<string?> EditMode { get; private set; } = null!;
 
@@ -396,6 +399,9 @@ namespace Pulumi.Databricks
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
+        /// </summary>
         [Input("editMode")]
         public Input<string>? EditMode { get; set; }
 
@@ -627,6 +633,9 @@ namespace Pulumi.Databricks
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// If `"UI_LOCKED"`, the user interface for the job will be locked. If `"EDITABLE"` (the default), the user interface will be editable.
+        /// </summary>
         [Input("editMode")]
         public Input<string>? EditMode { get; set; }
 

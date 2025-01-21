@@ -71,7 +71,10 @@ type Cluster struct {
 	// }
 	// ```
 	CustomTags pulumi.StringMapOutput `pulumi:"customTags"`
-	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+	// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+	// * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+	// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+	// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
 	DataSecurityMode pulumi.StringPtrOutput `pulumi:"dataSecurityMode"`
 	// (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
 	DefaultTags pulumi.StringMapOutput      `pulumi:"defaultTags"`
@@ -91,10 +94,12 @@ type Cluster struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId pulumi.StringPtrOutput `pulumi:"instancePoolId"`
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
-	IsPinned     pulumi.BoolPtrOutput      `pulumi:"isPinned"`
-	IsSingleNode pulumi.BoolPtrOutput      `pulumi:"isSingleNode"`
-	Kind         pulumi.StringPtrOutput    `pulumi:"kind"`
-	Libraries    ClusterLibraryArrayOutput `pulumi:"libraries"`
+	IsPinned pulumi.BoolPtrOutput `pulumi:"isPinned"`
+	// When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
+	IsSingleNode pulumi.BoolPtrOutput `pulumi:"isSingleNode"`
+	// The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+	Kind      pulumi.StringPtrOutput    `pulumi:"kind"`
+	Libraries ClusterLibraryArrayOutput `pulumi:"libraries"`
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -152,7 +157,7 @@ type Cluster struct {
 	PolicyId pulumi.StringPtrOutput `pulumi:"policyId"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrOutput `pulumi:"runtimeEngine"`
-	// The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName pulumi.StringPtrOutput `pulumi:"singleUserName"`
 	// should have following items:
 	// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
@@ -165,8 +170,9 @@ type Cluster struct {
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys pulumi.StringArrayOutput `pulumi:"sshPublicKeys"`
 	// (string) State of the cluster.
-	State        pulumi.StringOutput          `pulumi:"state"`
-	Url          pulumi.StringOutput          `pulumi:"url"`
+	State pulumi.StringOutput `pulumi:"state"`
+	Url   pulumi.StringOutput `pulumi:"url"`
+	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
 	UseMlRuntime pulumi.BoolPtrOutput         `pulumi:"useMlRuntime"`
 	WorkloadType ClusterWorkloadTypePtrOutput `pulumi:"workloadType"`
 }
@@ -251,7 +257,10 @@ type clusterState struct {
 	// }
 	// ```
 	CustomTags map[string]string `pulumi:"customTags"`
-	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+	// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+	// * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+	// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+	// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
 	DataSecurityMode *string `pulumi:"dataSecurityMode"`
 	// (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
 	DefaultTags map[string]string   `pulumi:"defaultTags"`
@@ -271,10 +280,12 @@ type clusterState struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId *string `pulumi:"instancePoolId"`
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
-	IsPinned     *bool            `pulumi:"isPinned"`
-	IsSingleNode *bool            `pulumi:"isSingleNode"`
-	Kind         *string          `pulumi:"kind"`
-	Libraries    []ClusterLibrary `pulumi:"libraries"`
+	IsPinned *bool `pulumi:"isPinned"`
+	// When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
+	IsSingleNode *bool `pulumi:"isSingleNode"`
+	// The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+	Kind      *string          `pulumi:"kind"`
+	Libraries []ClusterLibrary `pulumi:"libraries"`
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -332,7 +343,7 @@ type clusterState struct {
 	PolicyId *string `pulumi:"policyId"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine *string `pulumi:"runtimeEngine"`
-	// The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName *string `pulumi:"singleUserName"`
 	// should have following items:
 	// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
@@ -345,8 +356,9 @@ type clusterState struct {
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys []string `pulumi:"sshPublicKeys"`
 	// (string) State of the cluster.
-	State        *string              `pulumi:"state"`
-	Url          *string              `pulumi:"url"`
+	State *string `pulumi:"state"`
+	Url   *string `pulumi:"url"`
+	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
 	UseMlRuntime *bool                `pulumi:"useMlRuntime"`
 	WorkloadType *ClusterWorkloadType `pulumi:"workloadType"`
 }
@@ -399,7 +411,10 @@ type ClusterState struct {
 	// }
 	// ```
 	CustomTags pulumi.StringMapInput
-	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+	// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+	// * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+	// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+	// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
 	DataSecurityMode pulumi.StringPtrInput
 	// (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
 	DefaultTags pulumi.StringMapInput
@@ -419,10 +434,12 @@ type ClusterState struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId pulumi.StringPtrInput
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
-	IsPinned     pulumi.BoolPtrInput
+	IsPinned pulumi.BoolPtrInput
+	// When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
 	IsSingleNode pulumi.BoolPtrInput
-	Kind         pulumi.StringPtrInput
-	Libraries    ClusterLibraryArrayInput
+	// The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+	Kind      pulumi.StringPtrInput
+	Libraries ClusterLibraryArrayInput
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -480,7 +497,7 @@ type ClusterState struct {
 	PolicyId pulumi.StringPtrInput
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrInput
-	// The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName pulumi.StringPtrInput
 	// should have following items:
 	// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
@@ -493,8 +510,9 @@ type ClusterState struct {
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys pulumi.StringArrayInput
 	// (string) State of the cluster.
-	State        pulumi.StringPtrInput
-	Url          pulumi.StringPtrInput
+	State pulumi.StringPtrInput
+	Url   pulumi.StringPtrInput
+	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
 	UseMlRuntime pulumi.BoolPtrInput
 	WorkloadType ClusterWorkloadTypePtrInput
 }
@@ -550,7 +568,10 @@ type clusterArgs struct {
 	// }
 	// ```
 	CustomTags map[string]string `pulumi:"customTags"`
-	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+	// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+	// * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+	// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+	// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
 	DataSecurityMode *string             `pulumi:"dataSecurityMode"`
 	DockerImage      *ClusterDockerImage `pulumi:"dockerImage"`
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
@@ -568,10 +589,12 @@ type clusterArgs struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId *string `pulumi:"instancePoolId"`
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
-	IsPinned     *bool            `pulumi:"isPinned"`
-	IsSingleNode *bool            `pulumi:"isSingleNode"`
-	Kind         *string          `pulumi:"kind"`
-	Libraries    []ClusterLibrary `pulumi:"libraries"`
+	IsPinned *bool `pulumi:"isPinned"`
+	// When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
+	IsSingleNode *bool `pulumi:"isSingleNode"`
+	// The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+	Kind      *string          `pulumi:"kind"`
+	Libraries []ClusterLibrary `pulumi:"libraries"`
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -629,7 +652,7 @@ type clusterArgs struct {
 	PolicyId *string `pulumi:"policyId"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine *string `pulumi:"runtimeEngine"`
-	// The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName *string `pulumi:"singleUserName"`
 	// should have following items:
 	// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
@@ -640,9 +663,10 @@ type clusterArgs struct {
 	// [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported getSparkVersion id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
 	SparkVersion string `pulumi:"sparkVersion"`
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
-	SshPublicKeys []string             `pulumi:"sshPublicKeys"`
-	UseMlRuntime  *bool                `pulumi:"useMlRuntime"`
-	WorkloadType  *ClusterWorkloadType `pulumi:"workloadType"`
+	SshPublicKeys []string `pulumi:"sshPublicKeys"`
+	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
+	UseMlRuntime *bool                `pulumi:"useMlRuntime"`
+	WorkloadType *ClusterWorkloadType `pulumi:"workloadType"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -693,7 +717,10 @@ type ClusterArgs struct {
 	// }
 	// ```
 	CustomTags pulumi.StringMapInput
-	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+	// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+	// * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+	// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+	// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
 	DataSecurityMode pulumi.StringPtrInput
 	DockerImage      ClusterDockerImagePtrInput
 	// similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
@@ -711,10 +738,12 @@ type ClusterArgs struct {
 	// To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
 	InstancePoolId pulumi.StringPtrInput
 	// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
-	IsPinned     pulumi.BoolPtrInput
+	IsPinned pulumi.BoolPtrInput
+	// When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
 	IsSingleNode pulumi.BoolPtrInput
-	Kind         pulumi.StringPtrInput
-	Libraries    ClusterLibraryArrayInput
+	// The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+	Kind      pulumi.StringPtrInput
+	Libraries ClusterLibraryArrayInput
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -772,7 +801,7 @@ type ClusterArgs struct {
 	PolicyId pulumi.StringPtrInput
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrInput
-	// The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 	SingleUserName pulumi.StringPtrInput
 	// should have following items:
 	// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
@@ -784,8 +813,9 @@ type ClusterArgs struct {
 	SparkVersion pulumi.StringInput
 	// SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
 	SshPublicKeys pulumi.StringArrayInput
-	UseMlRuntime  pulumi.BoolPtrInput
-	WorkloadType  ClusterWorkloadTypePtrInput
+	// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
+	UseMlRuntime pulumi.BoolPtrInput
+	WorkloadType ClusterWorkloadTypePtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -955,7 +985,10 @@ func (o ClusterOutput) CustomTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.CustomTags }).(pulumi.StringMapOutput)
 }
 
-// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+// * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
 func (o ClusterOutput) DataSecurityMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DataSecurityMode }).(pulumi.StringPtrOutput)
 }
@@ -1012,10 +1045,12 @@ func (o ClusterOutput) IsPinned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.IsPinned }).(pulumi.BoolPtrOutput)
 }
 
+// When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
 func (o ClusterOutput) IsSingleNode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.IsSingleNode }).(pulumi.BoolPtrOutput)
 }
 
+// The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
 func (o ClusterOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -1099,7 +1134,7 @@ func (o ClusterOutput) RuntimeEngine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.RuntimeEngine }).(pulumi.StringPtrOutput)
 }
 
-// The optional user name of the user to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
 func (o ClusterOutput) SingleUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SingleUserName }).(pulumi.StringPtrOutput)
 }
@@ -1135,6 +1170,7 @@ func (o ClusterOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
+// Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
 func (o ClusterOutput) UseMlRuntime() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.UseMlRuntime }).(pulumi.BoolPtrOutput)
 }

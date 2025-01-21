@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+        /// Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
         /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }

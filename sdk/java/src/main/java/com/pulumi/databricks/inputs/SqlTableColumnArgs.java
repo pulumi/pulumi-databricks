@@ -33,14 +33,14 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     * Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
      * 
      */
     @Import(name="identity")
     private @Nullable Output<String> identity;
 
     /**
-     * @return Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     * @return Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
      * 
      */
     public Optional<Output<String>> identity() {
@@ -150,7 +150,7 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param identity Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+         * @param identity Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class SqlTableColumnArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param identity Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+         * @param identity Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
          * 
          * @return builder
          * 

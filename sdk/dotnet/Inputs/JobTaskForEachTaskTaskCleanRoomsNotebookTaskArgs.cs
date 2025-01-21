@@ -12,20 +12,33 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskCleanRoomsNotebookTaskArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The clean room that the notebook belongs to.
+        /// </summary>
         [Input("cleanRoomName", required: true)]
         public Input<string> CleanRoomName { get; set; } = null!;
 
+        /// <summary>
+        /// Checksum to validate the freshness of the notebook resource.
+        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
         [Input("notebookBaseParameters")]
         private InputMap<string>? _notebookBaseParameters;
+
+        /// <summary>
+        /// Base parameters to be used for the clean room notebook job.
+        /// </summary>
         public InputMap<string> NotebookBaseParameters
         {
             get => _notebookBaseParameters ?? (_notebookBaseParameters = new InputMap<string>());
             set => _notebookBaseParameters = value;
         }
 
+        /// <summary>
+        /// Name of the notebook being run.
+        /// </summary>
         [Input("notebookName", required: true)]
         public Input<string> NotebookName { get; set; } = null!;
 

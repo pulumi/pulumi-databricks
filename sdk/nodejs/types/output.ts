@@ -5937,9 +5937,21 @@ export interface JobTask {
 }
 
 export interface JobTaskCleanRoomsNotebookTask {
+    /**
+     * The clean room that the notebook belongs to.
+     */
     cleanRoomName: string;
+    /**
+     * Checksum to validate the freshness of the notebook resource.
+     */
     etag?: string;
+    /**
+     * Base parameters to be used for the clean room notebook job.
+     */
     notebookBaseParameters?: {[key: string]: string};
+    /**
+     * Name of the notebook being run.
+     */
     notebookName: string;
 }
 
@@ -6139,9 +6151,21 @@ export interface JobTaskForEachTaskTask {
 }
 
 export interface JobTaskForEachTaskTaskCleanRoomsNotebookTask {
+    /**
+     * The clean room that the notebook belongs to.
+     */
     cleanRoomName: string;
+    /**
+     * Checksum to validate the freshness of the notebook resource.
+     */
     etag?: string;
+    /**
+     * Base parameters to be used for the clean room notebook job.
+     */
     notebookBaseParameters?: {[key: string]: string};
+    /**
+     * Name of the notebook being run.
+     */
     notebookName: string;
 }
 
@@ -9289,7 +9313,7 @@ export interface ShareObject {
     comment?: string;
     content?: string;
     /**
-     * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+     * Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
      */
     dataObjectType: string;
     /**
@@ -9299,7 +9323,7 @@ export interface ShareObject {
      */
     historyDataSharingStatus?: string;
     /**
-     * Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
+     * Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
      */
     name: string;
     partitions?: outputs.ShareObjectPartition[];
@@ -9584,7 +9608,7 @@ export interface SqlTableColumn {
      */
     comment?: string;
     /**
-     * Whether field is an identity column. Can be `default`, `always` or unset. It is unset by default.
+     * Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
      */
     identity?: string;
     /**

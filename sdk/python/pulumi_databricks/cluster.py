@@ -83,7 +83,10 @@ class ClusterArgs:
                        "ResourceClass": "Serverless",
                    })
                ```
-        :param pulumi.Input[str] data_security_mode: Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+        :param pulumi.Input[str] data_security_mode: Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+               * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+               * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+               * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
         :param pulumi.Input[str] driver_instance_pool_id: similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         :param pulumi.Input[str] driver_node_type_id: The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
         :param pulumi.Input[bool] enable_elastic_disk: If you don’t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster’s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance’s local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
@@ -91,6 +94,8 @@ class ClusterArgs:
         :param pulumi.Input[str] idempotency_token: An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         :param pulumi.Input[str] instance_pool_id: To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         :param pulumi.Input[bool] is_pinned: boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        :param pulumi.Input[bool] is_single_node: When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        :param pulumi.Input[str] kind: The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
         :param pulumi.Input[bool] no_wait: If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
                
                The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -120,12 +125,13 @@ class ClusterArgs:
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
-        :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        :param pulumi.Input[str] single_user_name: The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_conf: should have following items:
                * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
                * `spark.databricks.cluster.profile` set to `serverless`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
+        :param pulumi.Input[bool] use_ml_runtime: Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
         """
         pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
@@ -326,7 +332,10 @@ class ClusterArgs:
     @pulumi.getter(name="dataSecurityMode")
     def data_security_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+        Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+        * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+        * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+        * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
         """
         return pulumi.get(self, "data_security_mode")
 
@@ -448,6 +457,9 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="isSingleNode")
     def is_single_node(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        """
         return pulumi.get(self, "is_single_node")
 
     @is_single_node.setter
@@ -457,6 +469,9 @@ class ClusterArgs:
     @property
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+        """
         return pulumi.get(self, "kind")
 
     @kind.setter
@@ -560,7 +575,7 @@ class ClusterArgs:
     @pulumi.getter(name="singleUserName")
     def single_user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         """
         return pulumi.get(self, "single_user_name")
 
@@ -609,6 +624,9 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="useMlRuntime")
     def use_ml_runtime(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+        """
         return pulumi.get(self, "use_ml_runtime")
 
     @use_ml_runtime.setter
@@ -693,7 +711,10 @@ class _ClusterState:
                        "ResourceClass": "Serverless",
                    })
                ```
-        :param pulumi.Input[str] data_security_mode: Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+        :param pulumi.Input[str] data_security_mode: Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+               * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+               * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+               * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] default_tags: (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
         :param pulumi.Input[str] driver_instance_pool_id: similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         :param pulumi.Input[str] driver_node_type_id: The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
@@ -702,6 +723,8 @@ class _ClusterState:
         :param pulumi.Input[str] idempotency_token: An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         :param pulumi.Input[str] instance_pool_id: To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         :param pulumi.Input[bool] is_pinned: boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        :param pulumi.Input[bool] is_single_node: When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        :param pulumi.Input[str] kind: The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
         :param pulumi.Input[bool] no_wait: If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
                
                The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -731,7 +754,7 @@ class _ClusterState:
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
-        :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        :param pulumi.Input[str] single_user_name: The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_conf: should have following items:
                * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
                * `spark.databricks.cluster.profile` set to `serverless`
@@ -739,6 +762,7 @@ class _ClusterState:
         :param pulumi.Input[str] spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
         :param pulumi.Input[str] state: (string) State of the cluster.
+        :param pulumi.Input[bool] use_ml_runtime: Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
         """
         if apply_policy_default_values is not None:
             pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
@@ -945,7 +969,10 @@ class _ClusterState:
     @pulumi.getter(name="dataSecurityMode")
     def data_security_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+        Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+        * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+        * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+        * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
         """
         return pulumi.get(self, "data_security_mode")
 
@@ -1079,6 +1106,9 @@ class _ClusterState:
     @property
     @pulumi.getter(name="isSingleNode")
     def is_single_node(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        """
         return pulumi.get(self, "is_single_node")
 
     @is_single_node.setter
@@ -1088,6 +1118,9 @@ class _ClusterState:
     @property
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+        """
         return pulumi.get(self, "kind")
 
     @kind.setter
@@ -1191,7 +1224,7 @@ class _ClusterState:
     @pulumi.getter(name="singleUserName")
     def single_user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         """
         return pulumi.get(self, "single_user_name")
 
@@ -1273,6 +1306,9 @@ class _ClusterState:
     @property
     @pulumi.getter(name="useMlRuntime")
     def use_ml_runtime(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+        """
         return pulumi.get(self, "use_ml_runtime")
 
     @use_ml_runtime.setter
@@ -1367,7 +1403,10 @@ class Cluster(pulumi.CustomResource):
                        "ResourceClass": "Serverless",
                    })
                ```
-        :param pulumi.Input[str] data_security_mode: Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+        :param pulumi.Input[str] data_security_mode: Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+               * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+               * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+               * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
         :param pulumi.Input[str] driver_instance_pool_id: similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         :param pulumi.Input[str] driver_node_type_id: The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
         :param pulumi.Input[bool] enable_elastic_disk: If you don’t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster’s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance’s local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
@@ -1375,6 +1414,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] idempotency_token: An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         :param pulumi.Input[str] instance_pool_id: To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         :param pulumi.Input[bool] is_pinned: boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        :param pulumi.Input[bool] is_single_node: When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        :param pulumi.Input[str] kind: The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
         :param pulumi.Input[bool] no_wait: If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
                
                The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -1404,13 +1445,14 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
-        :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        :param pulumi.Input[str] single_user_name: The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_conf: should have following items:
                * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
                * `spark.databricks.cluster.profile` set to `serverless`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param pulumi.Input[str] spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
+        :param pulumi.Input[bool] use_ml_runtime: Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
         """
         ...
     @overload
@@ -1609,7 +1651,10 @@ class Cluster(pulumi.CustomResource):
                        "ResourceClass": "Serverless",
                    })
                ```
-        :param pulumi.Input[str] data_security_mode: Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+        :param pulumi.Input[str] data_security_mode: Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+               * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+               * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+               * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] default_tags: (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
         :param pulumi.Input[str] driver_instance_pool_id: similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         :param pulumi.Input[str] driver_node_type_id: The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
@@ -1618,6 +1663,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] idempotency_token: An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         :param pulumi.Input[str] instance_pool_id: To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster’s request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         :param pulumi.Input[bool] is_pinned: boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        :param pulumi.Input[bool] is_single_node: When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        :param pulumi.Input[str] kind: The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
         :param pulumi.Input[bool] no_wait: If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
                
                The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
@@ -1647,7 +1694,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
-        :param pulumi.Input[str] single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        :param pulumi.Input[str] single_user_name: The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] spark_conf: should have following items:
                * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
                * `spark.databricks.cluster.profile` set to `serverless`
@@ -1655,6 +1702,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
         :param pulumi.Input[str] state: (string) State of the cluster.
+        :param pulumi.Input[bool] use_ml_runtime: Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1787,7 +1835,10 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="dataSecurityMode")
     def data_security_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
+        Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+        * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
+        * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
+        * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
         """
         return pulumi.get(self, "data_security_mode")
 
@@ -1873,11 +1924,17 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="isSingleNode")
     def is_single_node(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        """
         return pulumi.get(self, "is_single_node")
 
     @property
     @pulumi.getter
     def kind(self) -> pulumi.Output[Optional[str]]:
+        """
+        The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
+        """
         return pulumi.get(self, "kind")
 
     @property
@@ -1953,7 +2010,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="singleUserName")
     def single_user_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The optional user name of the user to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         """
         return pulumi.get(self, "single_user_name")
 
@@ -2007,6 +2064,9 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="useMlRuntime")
     def use_ml_runtime(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+        """
         return pulumi.get(self, "use_ml_runtime")
 
     @property

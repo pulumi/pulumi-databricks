@@ -79,6 +79,21 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+     * 
+     */
+    @Import(name="fallback")
+    private @Nullable Output<Boolean> fallback;
+
+    /**
+     * @return Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+     * 
+     */
+    public Optional<Output<Boolean>> fallback() {
+        return Optional.ofNullable(this.fallback);
+    }
+
+    /**
      * Destroy external location regardless of its dependents.
      * 
      */
@@ -212,6 +227,7 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
         this.comment = $.comment;
         this.credentialName = $.credentialName;
         this.encryptionDetails = $.encryptionDetails;
+        this.fallback = $.fallback;
         this.forceDestroy = $.forceDestroy;
         this.forceUpdate = $.forceUpdate;
         this.isolationMode = $.isolationMode;
@@ -323,6 +339,27 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder encryptionDetails(ExternalLocationEncryptionDetailsArgs encryptionDetails) {
             return encryptionDetails(Output.of(encryptionDetails));
+        }
+
+        /**
+         * @param fallback Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fallback(@Nullable Output<Boolean> fallback) {
+            $.fallback = fallback;
+            return this;
+        }
+
+        /**
+         * @param fallback Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fallback(Boolean fallback) {
+            return fallback(Output.of(fallback));
         }
 
         /**

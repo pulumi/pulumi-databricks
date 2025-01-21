@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ExternalLocationState;
 import com.pulumi.databricks.outputs.ExternalLocationEncryptionDetails;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -117,6 +118,12 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> accessPoint() {
         return Codegen.optional(this.accessPoint);
     }
+    @Export(name="browseOnly", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> browseOnly;
+
+    public Output<Boolean> browseOnly() {
+        return this.browseOnly;
+    }
     /**
      * User-supplied free-form text.
      * 
@@ -130,6 +137,48 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
+    }
+    /**
+     * Time at which this external location was created, in epoch milliseconds.
+     * 
+     */
+    @Export(name="createdAt", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createdAt;
+
+    /**
+     * @return Time at which this external location was created, in epoch milliseconds.
+     * 
+     */
+    public Output<Integer> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * Username of external location creator.
+     * 
+     */
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
+    private Output<String> createdBy;
+
+    /**
+     * @return Username of external location creator.
+     * 
+     */
+    public Output<String> createdBy() {
+        return this.createdBy;
+    }
+    /**
+     * Unique ID of the location&#39;s storage credential.
+     * 
+     */
+    @Export(name="credentialId", refs={String.class}, tree="[0]")
+    private Output<String> credentialId;
+
+    /**
+     * @return Unique ID of the location&#39;s storage credential.
+     * 
+     */
+    public Output<String> credentialId() {
+        return this.credentialId;
     }
     /**
      * Name of the databricks.StorageCredential to use with this external location.
@@ -158,6 +207,20 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ExternalLocationEncryptionDetails>> encryptionDetails() {
         return Codegen.optional(this.encryptionDetails);
+    }
+    /**
+     * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+     * 
+     */
+    @Export(name="fallback", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> fallback;
+
+    /**
+     * @return Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+     * 
+     */
+    public Output<Optional<Boolean>> fallback() {
+        return Codegen.optional(this.fallback);
     }
     /**
      * Destroy external location regardless of its dependents.
@@ -262,6 +325,34 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> skipValidation() {
         return Codegen.optional(this.skipValidation);
+    }
+    /**
+     * Time at which external location this was last modified, in epoch milliseconds.
+     * 
+     */
+    @Export(name="updatedAt", refs={Integer.class}, tree="[0]")
+    private Output<Integer> updatedAt;
+
+    /**
+     * @return Time at which external location this was last modified, in epoch milliseconds.
+     * 
+     */
+    public Output<Integer> updatedAt() {
+        return this.updatedAt;
+    }
+    /**
+     * Username of user who last modified the external location.
+     * 
+     */
+    @Export(name="updatedBy", refs={String.class}, tree="[0]")
+    private Output<String> updatedBy;
+
+    /**
+     * @return Username of user who last modified the external location.
+     * 
+     */
+    public Output<String> updatedBy() {
+        return this.updatedBy;
     }
     /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).

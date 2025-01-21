@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ExternalLocationEncryptionDetailsArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,6 +33,13 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.accessPoint);
     }
 
+    @Import(name="browseOnly")
+    private @Nullable Output<Boolean> browseOnly;
+
+    public Optional<Output<Boolean>> browseOnly() {
+        return Optional.ofNullable(this.browseOnly);
+    }
+
     /**
      * User-supplied free-form text.
      * 
@@ -45,6 +53,51 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
+    }
+
+    /**
+     * Time at which this external location was created, in epoch milliseconds.
+     * 
+     */
+    @Import(name="createdAt")
+    private @Nullable Output<Integer> createdAt;
+
+    /**
+     * @return Time at which this external location was created, in epoch milliseconds.
+     * 
+     */
+    public Optional<Output<Integer>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * Username of external location creator.
+     * 
+     */
+    @Import(name="createdBy")
+    private @Nullable Output<String> createdBy;
+
+    /**
+     * @return Username of external location creator.
+     * 
+     */
+    public Optional<Output<String>> createdBy() {
+        return Optional.ofNullable(this.createdBy);
+    }
+
+    /**
+     * Unique ID of the location&#39;s storage credential.
+     * 
+     */
+    @Import(name="credentialId")
+    private @Nullable Output<String> credentialId;
+
+    /**
+     * @return Unique ID of the location&#39;s storage credential.
+     * 
+     */
+    public Optional<Output<String>> credentialId() {
+        return Optional.ofNullable(this.credentialId);
     }
 
     /**
@@ -75,6 +128,21 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<ExternalLocationEncryptionDetailsArgs>> encryptionDetails() {
         return Optional.ofNullable(this.encryptionDetails);
+    }
+
+    /**
+     * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+     * 
+     */
+    @Import(name="fallback")
+    private @Nullable Output<Boolean> fallback;
+
+    /**
+     * @return Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+     * 
+     */
+    public Optional<Output<Boolean>> fallback() {
+        return Optional.ofNullable(this.fallback);
     }
 
     /**
@@ -190,6 +258,36 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Time at which external location this was last modified, in epoch milliseconds.
+     * 
+     */
+    @Import(name="updatedAt")
+    private @Nullable Output<Integer> updatedAt;
+
+    /**
+     * @return Time at which external location this was last modified, in epoch milliseconds.
+     * 
+     */
+    public Optional<Output<Integer>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
+    /**
+     * Username of user who last modified the external location.
+     * 
+     */
+    @Import(name="updatedBy")
+    private @Nullable Output<String> updatedBy;
+
+    /**
+     * @return Username of user who last modified the external location.
+     * 
+     */
+    public Optional<Output<String>> updatedBy() {
+        return Optional.ofNullable(this.updatedBy);
+    }
+
+    /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      * 
      */
@@ -208,9 +306,14 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
 
     private ExternalLocationState(ExternalLocationState $) {
         this.accessPoint = $.accessPoint;
+        this.browseOnly = $.browseOnly;
         this.comment = $.comment;
+        this.createdAt = $.createdAt;
+        this.createdBy = $.createdBy;
+        this.credentialId = $.credentialId;
         this.credentialName = $.credentialName;
         this.encryptionDetails = $.encryptionDetails;
+        this.fallback = $.fallback;
         this.forceDestroy = $.forceDestroy;
         this.forceUpdate = $.forceUpdate;
         this.isolationMode = $.isolationMode;
@@ -219,6 +322,8 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         this.owner = $.owner;
         this.readOnly = $.readOnly;
         this.skipValidation = $.skipValidation;
+        this.updatedAt = $.updatedAt;
+        this.updatedBy = $.updatedBy;
         this.url = $.url;
     }
 
@@ -261,6 +366,15 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
             return accessPoint(Output.of(accessPoint));
         }
 
+        public Builder browseOnly(@Nullable Output<Boolean> browseOnly) {
+            $.browseOnly = browseOnly;
+            return this;
+        }
+
+        public Builder browseOnly(Boolean browseOnly) {
+            return browseOnly(Output.of(browseOnly));
+        }
+
         /**
          * @param comment User-supplied free-form text.
          * 
@@ -280,6 +394,69 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
          */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
+        }
+
+        /**
+         * @param createdAt Time at which this external location was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(@Nullable Output<Integer> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        /**
+         * @param createdAt Time at which this external location was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(Integer createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param createdBy Username of external location creator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdBy(@Nullable Output<String> createdBy) {
+            $.createdBy = createdBy;
+            return this;
+        }
+
+        /**
+         * @param createdBy Username of external location creator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdBy(String createdBy) {
+            return createdBy(Output.of(createdBy));
+        }
+
+        /**
+         * @param credentialId Unique ID of the location&#39;s storage credential.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialId(@Nullable Output<String> credentialId) {
+            $.credentialId = credentialId;
+            return this;
+        }
+
+        /**
+         * @param credentialId Unique ID of the location&#39;s storage credential.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialId(String credentialId) {
+            return credentialId(Output.of(credentialId));
         }
 
         /**
@@ -322,6 +499,27 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
          */
         public Builder encryptionDetails(ExternalLocationEncryptionDetailsArgs encryptionDetails) {
             return encryptionDetails(Output.of(encryptionDetails));
+        }
+
+        /**
+         * @param fallback Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fallback(@Nullable Output<Boolean> fallback) {
+            $.fallback = fallback;
+            return this;
+        }
+
+        /**
+         * @param fallback Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fallback(Boolean fallback) {
+            return fallback(Output.of(fallback));
         }
 
         /**
@@ -478,6 +676,48 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
          */
         public Builder skipValidation(Boolean skipValidation) {
             return skipValidation(Output.of(skipValidation));
+        }
+
+        /**
+         * @param updatedAt Time at which external location this was last modified, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedAt(@Nullable Output<Integer> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        /**
+         * @param updatedAt Time at which external location this was last modified, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedAt(Integer updatedAt) {
+            return updatedAt(Output.of(updatedAt));
+        }
+
+        /**
+         * @param updatedBy Username of user who last modified the external location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedBy(@Nullable Output<String> updatedBy) {
+            $.updatedBy = updatedBy;
+            return this;
+        }
+
+        /**
+         * @param updatedBy Username of user who last modified the external location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedBy(String updatedBy) {
+            return updatedBy(Output.of(updatedBy));
         }
 
         /**
