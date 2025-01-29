@@ -33,6 +33,9 @@ namespace Pulumi.Databricks.Inputs
             set => _parameters = value;
         }
 
+        [Input("runAsRepl")]
+        public Input<bool>? RunAsRepl { get; set; }
+
         public JobTaskSparkJarTaskGetArgs()
         {
         }

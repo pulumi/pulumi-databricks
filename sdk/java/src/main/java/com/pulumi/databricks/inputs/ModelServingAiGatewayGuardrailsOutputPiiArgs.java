@@ -5,9 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ModelServingAiGatewayGuardrailsOutputPiiArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,15 +19,15 @@ public final class ModelServingAiGatewayGuardrailsOutputPiiArgs extends com.pulu
      * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
      * 
      */
-    @Import(name="behavior", required=true)
-    private Output<String> behavior;
+    @Import(name="behavior")
+    private @Nullable Output<String> behavior;
 
     /**
      * @return a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
      * 
      */
-    public Output<String> behavior() {
-        return this.behavior;
+    public Optional<Output<String>> behavior() {
+        return Optional.ofNullable(this.behavior);
     }
 
     private ModelServingAiGatewayGuardrailsOutputPiiArgs() {}
@@ -59,7 +60,7 @@ public final class ModelServingAiGatewayGuardrailsOutputPiiArgs extends com.pulu
          * @return builder
          * 
          */
-        public Builder behavior(Output<String> behavior) {
+        public Builder behavior(@Nullable Output<String> behavior) {
             $.behavior = behavior;
             return this;
         }
@@ -75,9 +76,6 @@ public final class ModelServingAiGatewayGuardrailsOutputPiiArgs extends com.pulu
         }
 
         public ModelServingAiGatewayGuardrailsOutputPiiArgs build() {
-            if ($.behavior == null) {
-                throw new MissingRequiredPropertyException("ModelServingAiGatewayGuardrailsOutputPiiArgs", "behavior");
-            }
             return $;
         }
     }

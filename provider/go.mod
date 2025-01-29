@@ -7,7 +7,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 replace github.com/databricks/terraform-provider-databricks => ../upstream
 
 require (
-	github.com/databricks/databricks-sdk-go v0.55.0
+	github.com/databricks/databricks-sdk-go v0.56.1
 	github.com/databricks/terraform-provider-databricks v1.58.0
 	github.com/pulumi/providertest v0.1.3
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.102.0
@@ -99,7 +99,6 @@ require (
 	github.com/hashicorp/terraform-plugin-framework-validators v0.16.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.26.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
-	github.com/hashicorp/terraform-plugin-mux v0.18.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.35.0 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.11.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.4 // indirect
@@ -182,7 +181,7 @@ require (
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
 	github.com/yuin/goldmark v1.7.4 // indirect
-	github.com/zclconf/go-cty v1.16.1 // indirect
+	github.com/zclconf/go-cty v1.16.2 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.49.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.49.0 // indirect

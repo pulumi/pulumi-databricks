@@ -54,6 +54,7 @@ type App struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name              pulumi.StringOutput        `pulumi:"name"`
+	NoCompute         pulumi.BoolPtrOutput       `pulumi:"noCompute"`
 	PendingDeployment AppPendingDeploymentOutput `pulumi:"pendingDeployment"`
 	// A list of resources that the app have access to.
 	Resources                AppResourceArrayOutput `pulumi:"resources"`
@@ -115,6 +116,7 @@ type appState struct {
 	Description *string `pulumi:"description"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name              *string               `pulumi:"name"`
+	NoCompute         *bool                 `pulumi:"noCompute"`
 	PendingDeployment *AppPendingDeployment `pulumi:"pendingDeployment"`
 	// A list of resources that the app have access to.
 	Resources                []AppResource `pulumi:"resources"`
@@ -147,6 +149,7 @@ type AppState struct {
 	Description pulumi.StringPtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name              pulumi.StringPtrInput
+	NoCompute         pulumi.BoolPtrInput
 	PendingDeployment AppPendingDeploymentPtrInput
 	// A list of resources that the app have access to.
 	Resources                AppResourceArrayInput
@@ -171,7 +174,8 @@ type appArgs struct {
 	// The description of the app.
 	Description *string `pulumi:"description"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
-	Name *string `pulumi:"name"`
+	Name      *string `pulumi:"name"`
+	NoCompute *bool   `pulumi:"noCompute"`
 	// A list of resources that the app have access to.
 	Resources []AppResource `pulumi:"resources"`
 }
@@ -181,7 +185,8 @@ type AppArgs struct {
 	// The description of the app.
 	Description pulumi.StringPtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
-	Name pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
+	NoCompute pulumi.BoolPtrInput
 	// A list of resources that the app have access to.
 	Resources AppResourceArrayInput
 }
@@ -310,6 +315,10 @@ func (o AppOutput) Description() pulumi.StringPtrOutput {
 // The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 func (o AppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o AppOutput) NoCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.BoolPtrOutput { return v.NoCompute }).(pulumi.BoolPtrOutput)
 }
 
 func (o AppOutput) PendingDeployment() AppPendingDeploymentOutput {

@@ -15,6 +15,7 @@ import com.pulumi.databricks.outputs.AppAppStatus;
 import com.pulumi.databricks.outputs.AppComputeStatus;
 import com.pulumi.databricks.outputs.AppPendingDeployment;
 import com.pulumi.databricks.outputs.AppResource;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -217,6 +218,12 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    @Export(name="noCompute", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> noCompute;
+
+    public Output<Optional<Boolean>> noCompute() {
+        return Codegen.optional(this.noCompute);
     }
     @Export(name="pendingDeployment", refs={AppPendingDeployment.class}, tree="[0]")
     private Output<AppPendingDeployment> pendingDeployment;

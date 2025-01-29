@@ -133,14 +133,14 @@ public class Token extends com.pulumi.resources.CustomResource {
         return this.expiryTime;
     }
     /**
-     * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+     * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      * 
      */
     @Export(name="lifetimeSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> lifetimeSeconds;
 
     /**
-     * @return (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+     * @return (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      * 
      */
     public Output<Optional<Integer>> lifetimeSeconds() {

@@ -61,8 +61,7 @@ class AwaitableGetMwsWorkspacesResult(GetMwsWorkspacesResult):
             ids=self.ids)
 
 
-def get_mws_workspaces(ids: Optional[Mapping[str, str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsWorkspacesResult:
+def get_mws_workspaces(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMwsWorkspacesResult:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -88,20 +87,15 @@ def get_mws_workspaces(ids: Optional[Mapping[str, str]] = None,
 
     * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
     * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurerm_databricks_workspace
-
-
-    :param Mapping[str, str] ids: name-to-id map for all of the workspaces in the account
     """
     __args__ = dict()
-    __args__['ids'] = ids
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getMwsWorkspaces:getMwsWorkspaces', __args__, opts=opts, typ=GetMwsWorkspacesResult).value
 
     return AwaitableGetMwsWorkspacesResult(
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'))
-def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsWorkspacesResult]:
+def get_mws_workspaces_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsWorkspacesResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
@@ -127,12 +121,8 @@ def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, s
 
     * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
     * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurerm_databricks_workspace
-
-
-    :param Mapping[str, str] ids: name-to-id map for all of the workspaces in the account
     """
     __args__ = dict()
-    __args__['ids'] = ids
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMwsWorkspaces:getMwsWorkspaces', __args__, opts=opts, typ=GetMwsWorkspacesResult)
     return __ret__.apply(lambda __response__: GetMwsWorkspacesResult(

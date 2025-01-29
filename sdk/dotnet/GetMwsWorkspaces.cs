@@ -46,8 +46,8 @@ namespace Pulumi.Databricks
         /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
         /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
         /// </summary>
-        public static Task<GetMwsWorkspacesResult> InvokeAsync(GetMwsWorkspacesArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args ?? new GetMwsWorkspacesArgs(), options.WithDefaults());
+        public static Task<GetMwsWorkspacesResult> InvokeAsync(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -84,8 +84,8 @@ namespace Pulumi.Databricks
         /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
         /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
         /// </summary>
-        public static Output<GetMwsWorkspacesResult> Invoke(GetMwsWorkspacesInvokeArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args ?? new GetMwsWorkspacesInvokeArgs(), options.WithDefaults());
+        public static Output<GetMwsWorkspacesResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -122,49 +122,8 @@ namespace Pulumi.Databricks
         /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
         /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
         /// </summary>
-        public static Output<GetMwsWorkspacesResult> Invoke(GetMwsWorkspacesInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args ?? new GetMwsWorkspacesInvokeArgs(), options.WithDefaults());
-    }
-
-
-    public sealed class GetMwsWorkspacesArgs : global::Pulumi.InvokeArgs
-    {
-        [Input("ids")]
-        private Dictionary<string, string>? _ids;
-
-        /// <summary>
-        /// name-to-id map for all of the workspaces in the account
-        /// </summary>
-        public Dictionary<string, string> Ids
-        {
-            get => _ids ?? (_ids = new Dictionary<string, string>());
-            set => _ids = value;
-        }
-
-        public GetMwsWorkspacesArgs()
-        {
-        }
-        public static new GetMwsWorkspacesArgs Empty => new GetMwsWorkspacesArgs();
-    }
-
-    public sealed class GetMwsWorkspacesInvokeArgs : global::Pulumi.InvokeArgs
-    {
-        [Input("ids")]
-        private InputMap<string>? _ids;
-
-        /// <summary>
-        /// name-to-id map for all of the workspaces in the account
-        /// </summary>
-        public InputMap<string> Ids
-        {
-            get => _ids ?? (_ids = new InputMap<string>());
-            set => _ids = value;
-        }
-
-        public GetMwsWorkspacesInvokeArgs()
-        {
-        }
-        public static new GetMwsWorkspacesInvokeArgs Empty => new GetMwsWorkspacesInvokeArgs();
+        public static Output<GetMwsWorkspacesResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

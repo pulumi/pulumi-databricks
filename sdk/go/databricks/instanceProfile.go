@@ -162,7 +162,7 @@ import (
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"aws_attributes.instance_profile_arn": map[string]interface{}{
 //					"type":  "fixed",
-//					"value": shared.Arn,
+//					"value": shared.Id,
 //				},
 //			})
 //			if err != nil {
@@ -199,7 +199,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			this, err := databricks.NewInstanceProfile(ctx, "this", &databricks.InstanceProfileArgs{
-//				InstanceProfileArn: pulumi.Any(shared.Arn),
+//				InstanceProfileArn: pulumi.Any(shared.Id),
 //			})
 //			if err != nil {
 //				return err

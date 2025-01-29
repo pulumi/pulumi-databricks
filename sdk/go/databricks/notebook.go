@@ -28,9 +28,9 @@ type Notebook struct {
 
 	// The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
 	ContentBase64 pulumi.StringPtrOutput `pulumi:"contentBase64"`
-	Format        pulumi.StringPtrOutput `pulumi:"format"`
+	Format        pulumi.StringOutput    `pulumi:"format"`
 	// One of `SCALA`, `PYTHON`, `SQL`, `R`.
-	Language pulumi.StringPtrOutput `pulumi:"language"`
+	Language pulumi.StringOutput    `pulumi:"language"`
 	Md5      pulumi.StringPtrOutput `pulumi:"md5"`
 	// Unique identifier for a NOTEBOOK
 	ObjectId pulumi.IntOutput `pulumi:"objectId"`
@@ -251,13 +251,13 @@ func (o NotebookOutput) ContentBase64() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Notebook) pulumi.StringPtrOutput { return v.ContentBase64 }).(pulumi.StringPtrOutput)
 }
 
-func (o NotebookOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Notebook) pulumi.StringPtrOutput { return v.Format }).(pulumi.StringPtrOutput)
+func (o NotebookOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notebook) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
 }
 
 // One of `SCALA`, `PYTHON`, `SQL`, `R`.
-func (o NotebookOutput) Language() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Notebook) pulumi.StringPtrOutput { return v.Language }).(pulumi.StringPtrOutput)
+func (o NotebookOutput) Language() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notebook) pulumi.StringOutput { return v.Language }).(pulumi.StringOutput)
 }
 
 func (o NotebookOutput) Md5() pulumi.StringPtrOutput {

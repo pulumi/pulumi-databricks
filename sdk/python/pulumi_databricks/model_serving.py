@@ -21,24 +21,25 @@ __all__ = ['ModelServingArgs', 'ModelServing']
 @pulumi.input_type
 class ModelServingArgs:
     def __init__(__self__, *,
-                 config: pulumi.Input['ModelServingConfigArgs'],
                  ai_gateway: Optional[pulumi.Input['ModelServingAiGatewayArgs']] = None,
+                 config: Optional[pulumi.Input['ModelServingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
                  route_optimized: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None):
         """
         The set of arguments for constructing a ModelServing resource.
-        :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration.
         :param pulumi.Input['ModelServingAiGatewayArgs'] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
+        :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
-        pulumi.set(__self__, "config", config)
         if ai_gateway is not None:
             pulumi.set(__self__, "ai_gateway", ai_gateway)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if rate_limits is not None:
@@ -47,18 +48,6 @@ class ModelServingArgs:
             pulumi.set(__self__, "route_optimized", route_optimized)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter
-    def config(self) -> pulumi.Input['ModelServingConfigArgs']:
-        """
-        The model serving endpoint configuration.
-        """
-        return pulumi.get(self, "config")
-
-    @config.setter
-    def config(self, value: pulumi.Input['ModelServingConfigArgs']):
-        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter(name="aiGateway")
@@ -71,6 +60,18 @@ class ModelServingArgs:
     @ai_gateway.setter
     def ai_gateway(self, value: Optional[pulumi.Input['ModelServingAiGatewayArgs']]):
         pulumi.set(self, "ai_gateway", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['ModelServingConfigArgs']]:
+        """
+        The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['ModelServingConfigArgs']]):
+        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter
@@ -134,7 +135,7 @@ class _ModelServingState:
         """
         Input properties used for looking up and filtering ModelServing resources.
         :param pulumi.Input['ModelServingAiGatewayArgs'] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-        :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration.
+        :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
@@ -172,7 +173,7 @@ class _ModelServingState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['ModelServingConfigArgs']]:
         """
-        The model serving endpoint configuration.
+        The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
         """
         return pulumi.get(self, "config")
 
@@ -327,7 +328,7 @@ class ModelServing(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-        :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']] config: The model serving endpoint configuration.
+        :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']] config: The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
@@ -337,7 +338,7 @@ class ModelServing(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ModelServingArgs,
+                 args: Optional[ModelServingArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
@@ -441,8 +442,6 @@ class ModelServing(pulumi.CustomResource):
             __props__ = ModelServingArgs.__new__(ModelServingArgs)
 
             __props__.__dict__["ai_gateway"] = ai_gateway
-            if config is None and not opts.urn:
-                raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             __props__.__dict__["name"] = name
             __props__.__dict__["rate_limits"] = rate_limits
@@ -474,7 +473,7 @@ class ModelServing(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ModelServingAiGatewayArgs', 'ModelServingAiGatewayArgsDict']] ai_gateway: A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
-        :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']] config: The model serving endpoint configuration.
+        :param pulumi.Input[Union['ModelServingConfigArgs', 'ModelServingConfigArgsDict']] config: The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]] rate_limits: A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
         :param pulumi.Input[bool] route_optimized: A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
@@ -504,9 +503,9 @@ class ModelServing(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output['outputs.ModelServingConfig']:
+    def config(self) -> pulumi.Output[Optional['outputs.ModelServingConfig']]:
         """
-        The model serving endpoint configuration.
+        The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
         """
         return pulumi.get(self, "config")
 

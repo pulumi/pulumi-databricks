@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,8 +14,8 @@ import javax.annotation.Nullable;
 public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
     private @Nullable String privateKey;
     private @Nullable String privateKeyPlaintext;
-    private @Nullable String projectId;
-    private @Nullable String region;
+    private String projectId;
+    private String region;
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig() {}
     public Optional<String> privateKey() {
@@ -23,11 +24,11 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
     public Optional<String> privateKeyPlaintext() {
         return Optional.ofNullable(this.privateKeyPlaintext);
     }
-    public Optional<String> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public String projectId() {
+        return this.projectId;
     }
-    public Optional<String> region() {
-        return Optional.ofNullable(this.region);
+    public String region() {
+        return this.region;
     }
 
     public static Builder builder() {
@@ -41,8 +42,8 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
     public static final class Builder {
         private @Nullable String privateKey;
         private @Nullable String privateKeyPlaintext;
-        private @Nullable String projectId;
-        private @Nullable String region;
+        private String projectId;
+        private String region;
         public Builder() {}
         public Builder(GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,14 +66,18 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
             return this;
         }
         @CustomType.Setter
-        public Builder projectId(@Nullable String projectId) {
-
+        public Builder projectId(String projectId) {
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig", "projectId");
+            }
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
-        public Builder region(@Nullable String region) {
-
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig", "region");
+            }
             this.region = region;
             return this;
         }

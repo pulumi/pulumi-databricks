@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiInputArgs : global::Pulumi.ResourceArgs
     {
-        [Input("behavior", required: true)]
-        public Input<string> Behavior { get; set; } = null!;
+        [Input("behavior")]
+        public Input<string>? Behavior { get; set; }
 
         public GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiInputArgs()
         {

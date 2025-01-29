@@ -16925,6 +16925,7 @@ if not MYPY:
         """
         (List) Parameters passed to the main method.
         """
+        run_as_repl: NotRequired[pulumi.Input[bool]]
 elif False:
     JobTaskForEachTaskTaskSparkJarTaskArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -16933,7 +16934,8 @@ class JobTaskForEachTaskTaskSparkJarTaskArgs:
     def __init__(__self__, *,
                  jar_uri: Optional[pulumi.Input[str]] = None,
                  main_class_name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 run_as_repl: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] main_class_name: The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] parameters: (List) Parameters passed to the main method.
@@ -16944,6 +16946,8 @@ class JobTaskForEachTaskTaskSparkJarTaskArgs:
             pulumi.set(__self__, "main_class_name", main_class_name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if run_as_repl is not None:
+            pulumi.set(__self__, "run_as_repl", run_as_repl)
 
     @property
     @pulumi.getter(name="jarUri")
@@ -16977,6 +16981,15 @@ class JobTaskForEachTaskTaskSparkJarTaskArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="runAsRepl")
+    def run_as_repl(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "run_as_repl")
+
+    @run_as_repl.setter
+    def run_as_repl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_as_repl", value)
 
 
 if not MYPY:
@@ -20543,6 +20556,7 @@ if not MYPY:
         """
         (List) Parameters passed to the main method.
         """
+        run_as_repl: NotRequired[pulumi.Input[bool]]
 elif False:
     JobTaskSparkJarTaskArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -20551,7 +20565,8 @@ class JobTaskSparkJarTaskArgs:
     def __init__(__self__, *,
                  jar_uri: Optional[pulumi.Input[str]] = None,
                  main_class_name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 run_as_repl: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] main_class_name: The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] parameters: (List) Parameters passed to the main method.
@@ -20562,6 +20577,8 @@ class JobTaskSparkJarTaskArgs:
             pulumi.set(__self__, "main_class_name", main_class_name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if run_as_repl is not None:
+            pulumi.set(__self__, "run_as_repl", run_as_repl)
 
     @property
     @pulumi.getter(name="jarUri")
@@ -20595,6 +20612,15 @@ class JobTaskSparkJarTaskArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="runAsRepl")
+    def run_as_repl(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "run_as_repl")
+
+    @run_as_repl.setter
+    def run_as_repl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_as_repl", value)
 
 
 if not MYPY:
@@ -23539,7 +23565,7 @@ class ModelServingAiGatewayGuardrailsInputArgs:
 
 if not MYPY:
     class ModelServingAiGatewayGuardrailsInputPiiArgsDict(TypedDict):
-        behavior: pulumi.Input[str]
+        behavior: NotRequired[pulumi.Input[str]]
         """
         a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
         """
@@ -23549,22 +23575,23 @@ elif False:
 @pulumi.input_type
 class ModelServingAiGatewayGuardrailsInputPiiArgs:
     def __init__(__self__, *,
-                 behavior: pulumi.Input[str]):
+                 behavior: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] behavior: a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
         """
-        pulumi.set(__self__, "behavior", behavior)
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
 
     @property
     @pulumi.getter
-    def behavior(self) -> pulumi.Input[str]:
+    def behavior(self) -> Optional[pulumi.Input[str]]:
         """
         a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
         """
         return pulumi.get(self, "behavior")
 
     @behavior.setter
-    def behavior(self, value: pulumi.Input[str]):
+    def behavior(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "behavior", value)
 
 
@@ -23662,7 +23689,7 @@ class ModelServingAiGatewayGuardrailsOutputArgs:
 
 if not MYPY:
     class ModelServingAiGatewayGuardrailsOutputPiiArgsDict(TypedDict):
-        behavior: pulumi.Input[str]
+        behavior: NotRequired[pulumi.Input[str]]
         """
         a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
         """
@@ -23672,22 +23699,23 @@ elif False:
 @pulumi.input_type
 class ModelServingAiGatewayGuardrailsOutputPiiArgs:
     def __init__(__self__, *,
-                 behavior: pulumi.Input[str]):
+                 behavior: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] behavior: a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
         """
-        pulumi.set(__self__, "behavior", behavior)
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
 
     @property
     @pulumi.getter
-    def behavior(self) -> pulumi.Input[str]:
+    def behavior(self) -> Optional[pulumi.Input[str]]:
         """
         a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
         """
         return pulumi.get(self, "behavior")
 
     @behavior.setter
-    def behavior(self, value: pulumi.Input[str]):
+    def behavior(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "behavior", value)
 
 
@@ -24897,6 +24925,14 @@ class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArg
 
 if not MYPY:
     class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgsDict(TypedDict):
+        project_id: pulumi.Input[str]
+        """
+        This is the Google Cloud project id that the service account is associated with.
+        """
+        region: pulumi.Input[str]
+        """
+        This is the region for the Google Cloud Vertex AI Service.
+        """
         private_key: NotRequired[pulumi.Input[str]]
         """
         The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
@@ -24905,38 +24941,52 @@ if not MYPY:
         """
         The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
         """
-        project_id: NotRequired[pulumi.Input[str]]
-        """
-        This is the Google Cloud project id that the service account is associated with.
-        """
-        region: NotRequired[pulumi.Input[str]]
-        """
-        This is the region for the Google Cloud Vertex AI Service.
-        """
 elif False:
     ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs:
     def __init__(__self__, *,
+                 project_id: pulumi.Input[str],
+                 region: pulumi.Input[str],
                  private_key: Optional[pulumi.Input[str]] = None,
-                 private_key_plaintext: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 private_key_plaintext: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] private_key: The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-        :param pulumi.Input[str] private_key_plaintext: The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
         :param pulumi.Input[str] project_id: This is the Google Cloud project id that the service account is associated with.
         :param pulumi.Input[str] region: This is the region for the Google Cloud Vertex AI Service.
+        :param pulumi.Input[str] private_key: The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
+        :param pulumi.Input[str] private_key_plaintext: The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
         """
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "region", region)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if private_key_plaintext is not None:
             pulumi.set(__self__, "private_key_plaintext", private_key_plaintext)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        This is the Google Cloud project id that the service account is associated with.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        This is the region for the Google Cloud Vertex AI Service.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="privateKey")
@@ -24961,30 +25011,6 @@ class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs:
     @private_key_plaintext.setter
     def private_key_plaintext(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "private_key_plaintext", value)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        This is the Google Cloud project id that the service account is associated with.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
-
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        This is the region for the Google Cloud Vertex AI Service.
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "region", value)
 
 
 if not MYPY:
@@ -57060,23 +57086,24 @@ class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs:
 
 if not MYPY:
     class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgsDict(TypedDict):
-        behavior: str
+        behavior: NotRequired[str]
 elif False:
     GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs:
     def __init__(__self__, *,
-                 behavior: str):
-        pulumi.set(__self__, "behavior", behavior)
+                 behavior: Optional[str] = None):
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
 
     @property
     @pulumi.getter
-    def behavior(self) -> str:
+    def behavior(self) -> Optional[str]:
         return pulumi.get(self, "behavior")
 
     @behavior.setter
-    def behavior(self, value: str):
+    def behavior(self, value: Optional[str]):
         pulumi.set(self, "behavior", value)
 
 
@@ -57144,23 +57171,24 @@ class GetServingEndpointsEndpointAiGatewayGuardrailOutputArgs:
 
 if not MYPY:
     class GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgsDict(TypedDict):
-        behavior: str
+        behavior: NotRequired[str]
 elif False:
     GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs:
     def __init__(__self__, *,
-                 behavior: str):
-        pulumi.set(__self__, "behavior", behavior)
+                 behavior: Optional[str] = None):
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
 
     @property
     @pulumi.getter
-    def behavior(self) -> str:
+    def behavior(self) -> Optional[str]:
         return pulumi.get(self, "behavior")
 
     @behavior.setter
-    def behavior(self, value: str):
+    def behavior(self, value: Optional[str]):
         pulumi.set(self, "behavior", value)
 
 
@@ -57832,28 +57860,44 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelS
 
 if not MYPY:
     class GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgsDict(TypedDict):
+        project_id: str
+        region: str
         private_key: NotRequired[str]
         private_key_plaintext: NotRequired[str]
-        project_id: NotRequired[str]
-        region: NotRequired[str]
 elif False:
     GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs:
     def __init__(__self__, *,
+                 project_id: str,
+                 region: str,
                  private_key: Optional[str] = None,
-                 private_key_plaintext: Optional[str] = None,
-                 project_id: Optional[str] = None,
-                 region: Optional[str] = None):
+                 private_key_plaintext: Optional[str] = None):
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "region", region)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if private_key_plaintext is not None:
             pulumi.set(__self__, "private_key_plaintext", private_key_plaintext)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: str):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: str):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="privateKey")
@@ -57872,24 +57916,6 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVerte
     @private_key_plaintext.setter
     def private_key_plaintext(self, value: Optional[str]):
         pulumi.set(self, "private_key_plaintext", value)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[str]:
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: Optional[str]):
-        pulumi.set(self, "project_id", value)
-
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[str]:
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[str]):
-        pulumi.set(self, "region", value)
 
 
 if not MYPY:

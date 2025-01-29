@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiResult
     {
-        public readonly string Behavior;
+        public readonly string? Behavior;
 
         [OutputConstructor]
-        private GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiResult(string behavior)
+        private GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiResult(string? behavior)
         {
             Behavior = behavior;
         }

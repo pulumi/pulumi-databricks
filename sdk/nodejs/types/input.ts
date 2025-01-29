@@ -6894,11 +6894,11 @@ export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs 
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii {
-    behavior: string;
+    behavior?: string;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs {
-    behavior: pulumi.Input<string>;
+    behavior?: pulumi.Input<string>;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailOutput {
@@ -6916,11 +6916,11 @@ export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputArgs {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputPii {
-    behavior: string;
+    behavior?: string;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs {
-    behavior: pulumi.Input<string>;
+    behavior?: pulumi.Input<string>;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayInferenceTableConfig {
@@ -7088,15 +7088,15 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatab
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
     privateKey?: string;
     privateKeyPlaintext?: string;
-    projectId?: string;
-    region?: string;
+    projectId: string;
+    region: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs {
     privateKey?: pulumi.Input<string>;
     privateKeyPlaintext?: pulumi.Input<string>;
-    projectId?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
+    region: pulumi.Input<string>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig {
@@ -9731,6 +9731,7 @@ export interface JobTaskForEachTaskTaskSparkJarTask {
      * (List) Parameters passed to the main method.
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    runAsRepl?: pulumi.Input<boolean>;
 }
 
 export interface JobTaskForEachTaskTaskSparkPythonTask {
@@ -10315,6 +10316,7 @@ export interface JobTaskSparkJarTask {
      * (List) Parameters passed to the main method.
      */
     parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    runAsRepl?: pulumi.Input<boolean>;
 }
 
 export interface JobTaskSparkPythonTask {
@@ -10913,7 +10915,7 @@ export interface ModelServingAiGatewayGuardrailsInputPii {
     /**
      * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
      */
-    behavior: pulumi.Input<string>;
+    behavior?: pulumi.Input<string>;
 }
 
 export interface ModelServingAiGatewayGuardrailsOutput {
@@ -10939,7 +10941,7 @@ export interface ModelServingAiGatewayGuardrailsOutputPii {
     /**
      * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
      */
-    behavior: pulumi.Input<string>;
+    behavior?: pulumi.Input<string>;
 }
 
 export interface ModelServingAiGatewayInferenceTableConfig {
@@ -11202,11 +11204,11 @@ export interface ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiC
     /**
      * This is the Google Cloud project id that the service account is associated with.
      */
-    projectId?: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
     /**
      * This is the region for the Google Cloud Vertex AI Service.
      */
-    region?: pulumi.Input<string>;
+    region: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {

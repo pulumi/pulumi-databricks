@@ -37,14 +37,14 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The model serving endpoint configuration.
+     * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
      * 
      */
     @Import(name="config")
     private @Nullable Output<ModelServingConfigArgs> config;
 
     /**
-     * @return The model serving endpoint configuration.
+     * @return The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
      * 
      */
     public Optional<Output<ModelServingConfigArgs>> config() {
@@ -178,7 +178,7 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config The model serving endpoint configuration.
+         * @param config The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config The model serving endpoint configuration.
+         * @param config The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
          * 
          * @return builder
          * 

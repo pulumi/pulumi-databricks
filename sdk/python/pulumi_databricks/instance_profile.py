@@ -244,7 +244,7 @@ class InstanceProfile(pulumi.CustomResource):
             definition=json.dumps({
                 "aws_attributes.instance_profile_arn": {
                     "type": "fixed",
-                    "value": shared["arn"],
+                    "value": shared["id"],
                 },
             }))
         ```
@@ -257,7 +257,7 @@ class InstanceProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.InstanceProfile("this", instance_profile_arn=shared["arn"])
+        this = databricks.InstanceProfile("this", instance_profile_arn=shared["id"])
         users = databricks.get_group(display_name="users")
         all = databricks.GroupInstanceProfile("all",
             group_id=users.id,
@@ -397,7 +397,7 @@ class InstanceProfile(pulumi.CustomResource):
             definition=json.dumps({
                 "aws_attributes.instance_profile_arn": {
                     "type": "fixed",
-                    "value": shared["arn"],
+                    "value": shared["id"],
                 },
             }))
         ```
@@ -410,7 +410,7 @@ class InstanceProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.InstanceProfile("this", instance_profile_arn=shared["arn"])
+        this = databricks.InstanceProfile("this", instance_profile_arn=shared["id"])
         users = databricks.get_group(display_name="users")
         all = databricks.GroupInstanceProfile("all",
             group_id=users.id,

@@ -36771,6 +36771,7 @@ type JobTaskForEachTaskTaskSparkJarTask struct {
 	MainClassName *string `pulumi:"mainClassName"`
 	// (List) Parameters passed to the main method.
 	Parameters []string `pulumi:"parameters"`
+	RunAsRepl  *bool    `pulumi:"runAsRepl"`
 }
 
 // JobTaskForEachTaskTaskSparkJarTaskInput is an input type that accepts JobTaskForEachTaskTaskSparkJarTaskArgs and JobTaskForEachTaskTaskSparkJarTaskOutput values.
@@ -36790,6 +36791,7 @@ type JobTaskForEachTaskTaskSparkJarTaskArgs struct {
 	MainClassName pulumi.StringPtrInput `pulumi:"mainClassName"`
 	// (List) Parameters passed to the main method.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
+	RunAsRepl  pulumi.BoolPtrInput     `pulumi:"runAsRepl"`
 }
 
 func (JobTaskForEachTaskTaskSparkJarTaskArgs) ElementType() reflect.Type {
@@ -36883,6 +36885,10 @@ func (o JobTaskForEachTaskTaskSparkJarTaskOutput) Parameters() pulumi.StringArra
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSparkJarTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
 
+func (o JobTaskForEachTaskTaskSparkJarTaskOutput) RunAsRepl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskForEachTaskTaskSparkJarTask) *bool { return v.RunAsRepl }).(pulumi.BoolPtrOutput)
+}
+
 type JobTaskForEachTaskTaskSparkJarTaskPtrOutput struct{ *pulumi.OutputState }
 
 func (JobTaskForEachTaskTaskSparkJarTaskPtrOutput) ElementType() reflect.Type {
@@ -36934,6 +36940,15 @@ func (o JobTaskForEachTaskTaskSparkJarTaskPtrOutput) Parameters() pulumi.StringA
 		}
 		return v.Parameters
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskForEachTaskTaskSparkJarTaskPtrOutput) RunAsRepl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskForEachTaskTaskSparkJarTask) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunAsRepl
+	}).(pulumi.BoolPtrOutput)
 }
 
 type JobTaskForEachTaskTaskSparkPythonTask struct {
@@ -45894,6 +45909,7 @@ type JobTaskSparkJarTask struct {
 	MainClassName *string `pulumi:"mainClassName"`
 	// (List) Parameters passed to the main method.
 	Parameters []string `pulumi:"parameters"`
+	RunAsRepl  *bool    `pulumi:"runAsRepl"`
 }
 
 // JobTaskSparkJarTaskInput is an input type that accepts JobTaskSparkJarTaskArgs and JobTaskSparkJarTaskOutput values.
@@ -45913,6 +45929,7 @@ type JobTaskSparkJarTaskArgs struct {
 	MainClassName pulumi.StringPtrInput `pulumi:"mainClassName"`
 	// (List) Parameters passed to the main method.
 	Parameters pulumi.StringArrayInput `pulumi:"parameters"`
+	RunAsRepl  pulumi.BoolPtrInput     `pulumi:"runAsRepl"`
 }
 
 func (JobTaskSparkJarTaskArgs) ElementType() reflect.Type {
@@ -46006,6 +46023,10 @@ func (o JobTaskSparkJarTaskOutput) Parameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskSparkJarTask) []string { return v.Parameters }).(pulumi.StringArrayOutput)
 }
 
+func (o JobTaskSparkJarTaskOutput) RunAsRepl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTaskSparkJarTask) *bool { return v.RunAsRepl }).(pulumi.BoolPtrOutput)
+}
+
 type JobTaskSparkJarTaskPtrOutput struct{ *pulumi.OutputState }
 
 func (JobTaskSparkJarTaskPtrOutput) ElementType() reflect.Type {
@@ -46057,6 +46078,15 @@ func (o JobTaskSparkJarTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 		}
 		return v.Parameters
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o JobTaskSparkJarTaskPtrOutput) RunAsRepl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTaskSparkJarTask) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunAsRepl
+	}).(pulumi.BoolPtrOutput)
 }
 
 type JobTaskSparkPythonTask struct {
@@ -53888,7 +53918,7 @@ func (o ModelServingAiGatewayGuardrailsInputTypePtrOutput) ValidTopics() pulumi.
 
 type ModelServingAiGatewayGuardrailsInputPii struct {
 	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-	Behavior string `pulumi:"behavior"`
+	Behavior *string `pulumi:"behavior"`
 }
 
 // ModelServingAiGatewayGuardrailsInputPiiInput is an input type that accepts ModelServingAiGatewayGuardrailsInputPiiArgs and ModelServingAiGatewayGuardrailsInputPiiOutput values.
@@ -53904,7 +53934,7 @@ type ModelServingAiGatewayGuardrailsInputPiiInput interface {
 
 type ModelServingAiGatewayGuardrailsInputPiiArgs struct {
 	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-	Behavior pulumi.StringInput `pulumi:"behavior"`
+	Behavior pulumi.StringPtrInput `pulumi:"behavior"`
 }
 
 func (ModelServingAiGatewayGuardrailsInputPiiArgs) ElementType() reflect.Type {
@@ -53985,8 +54015,8 @@ func (o ModelServingAiGatewayGuardrailsInputPiiOutput) ToModelServingAiGatewayGu
 }
 
 // a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-func (o ModelServingAiGatewayGuardrailsInputPiiOutput) Behavior() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsInputPii) string { return v.Behavior }).(pulumi.StringOutput)
+func (o ModelServingAiGatewayGuardrailsInputPiiOutput) Behavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsInputPii) *string { return v.Behavior }).(pulumi.StringPtrOutput)
 }
 
 type ModelServingAiGatewayGuardrailsInputPiiPtrOutput struct{ *pulumi.OutputState }
@@ -54019,7 +54049,7 @@ func (o ModelServingAiGatewayGuardrailsInputPiiPtrOutput) Behavior() pulumi.Stri
 		if v == nil {
 			return nil
 		}
-		return &v.Behavior
+		return v.Behavior
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -54221,7 +54251,7 @@ func (o ModelServingAiGatewayGuardrailsOutputTypePtrOutput) ValidTopics() pulumi
 
 type ModelServingAiGatewayGuardrailsOutputPii struct {
 	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-	Behavior string `pulumi:"behavior"`
+	Behavior *string `pulumi:"behavior"`
 }
 
 // ModelServingAiGatewayGuardrailsOutputPiiInput is an input type that accepts ModelServingAiGatewayGuardrailsOutputPiiArgs and ModelServingAiGatewayGuardrailsOutputPiiOutput values.
@@ -54237,7 +54267,7 @@ type ModelServingAiGatewayGuardrailsOutputPiiInput interface {
 
 type ModelServingAiGatewayGuardrailsOutputPiiArgs struct {
 	// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-	Behavior pulumi.StringInput `pulumi:"behavior"`
+	Behavior pulumi.StringPtrInput `pulumi:"behavior"`
 }
 
 func (ModelServingAiGatewayGuardrailsOutputPiiArgs) ElementType() reflect.Type {
@@ -54318,8 +54348,8 @@ func (o ModelServingAiGatewayGuardrailsOutputPiiOutput) ToModelServingAiGatewayG
 }
 
 // a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
-func (o ModelServingAiGatewayGuardrailsOutputPiiOutput) Behavior() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsOutputPii) string { return v.Behavior }).(pulumi.StringOutput)
+func (o ModelServingAiGatewayGuardrailsOutputPiiOutput) Behavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingAiGatewayGuardrailsOutputPii) *string { return v.Behavior }).(pulumi.StringPtrOutput)
 }
 
 type ModelServingAiGatewayGuardrailsOutputPiiPtrOutput struct{ *pulumi.OutputState }
@@ -54352,7 +54382,7 @@ func (o ModelServingAiGatewayGuardrailsOutputPiiPtrOutput) Behavior() pulumi.Str
 		if v == nil {
 			return nil
 		}
-		return &v.Behavior
+		return v.Behavior
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -56644,9 +56674,9 @@ type ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig struct
 	// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
 	PrivateKeyPlaintext *string `pulumi:"privateKeyPlaintext"`
 	// This is the Google Cloud project id that the service account is associated with.
-	ProjectId *string `pulumi:"projectId"`
+	ProjectId string `pulumi:"projectId"`
 	// This is the region for the Google Cloud Vertex AI Service.
-	Region *string `pulumi:"region"`
+	Region string `pulumi:"region"`
 }
 
 // ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigInput is an input type that accepts ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs and ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput values.
@@ -56666,9 +56696,9 @@ type ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs st
 	// The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
 	PrivateKeyPlaintext pulumi.StringPtrInput `pulumi:"privateKeyPlaintext"`
 	// This is the Google Cloud project id that the service account is associated with.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// This is the region for the Google Cloud Vertex AI Service.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Region pulumi.StringInput `pulumi:"region"`
 }
 
 func (ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs) ElementType() reflect.Type {
@@ -56763,15 +56793,15 @@ func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutp
 }
 
 // This is the Google Cloud project id that the service account is associated with.
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
+func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) string {
 		return v.ProjectId
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
 // This is the region for the Google Cloud Vertex AI Service.
-func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig) string { return v.Region }).(pulumi.StringOutput)
 }
 
 type ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrOutput struct{ *pulumi.OutputState }
@@ -56824,7 +56854,7 @@ func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrO
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return &v.ProjectId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -56834,7 +56864,7 @@ func (o ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigPtrO
 		if v == nil {
 			return nil
 		}
-		return v.Region
+		return &v.Region
 	}).(pulumi.StringPtrOutput)
 }
 

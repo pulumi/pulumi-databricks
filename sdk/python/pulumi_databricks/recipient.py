@@ -24,6 +24,7 @@ class RecipientArgs:
                  authentication_type: pulumi.Input[str],
                  comment: Optional[pulumi.Input[str]] = None,
                  data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
+                 expiration_time: Optional[pulumi.Input[int]] = None,
                  ip_access_list: Optional[pulumi.Input['RecipientIpAccessListArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -35,6 +36,7 @@ class RecipientArgs:
         :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
         :param pulumi.Input[str] comment: Description about the recipient.
         :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
+        :param pulumi.Input[int] expiration_time: Expiration timestamp of the token in epoch milliseconds.
         :param pulumi.Input['RecipientIpAccessListArgs'] ip_access_list: Recipient IP access list.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the recipient owner.
@@ -47,6 +49,8 @@ class RecipientArgs:
             pulumi.set(__self__, "comment", comment)
         if data_recipient_global_metastore_id is not None:
             pulumi.set(__self__, "data_recipient_global_metastore_id", data_recipient_global_metastore_id)
+        if expiration_time is not None:
+            pulumi.set(__self__, "expiration_time", expiration_time)
         if ip_access_list is not None:
             pulumi.set(__self__, "ip_access_list", ip_access_list)
         if name is not None:
@@ -95,6 +99,18 @@ class RecipientArgs:
     @data_recipient_global_metastore_id.setter
     def data_recipient_global_metastore_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "data_recipient_global_metastore_id", value)
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Expiration timestamp of the token in epoch milliseconds.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @expiration_time.setter
+    def expiration_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expiration_time", value)
 
     @property
     @pulumi.getter(name="ipAccessList")
@@ -180,6 +196,7 @@ class _RecipientState:
                  created_at: Optional[pulumi.Input[int]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
+                 expiration_time: Optional[pulumi.Input[int]] = None,
                  ip_access_list: Optional[pulumi.Input['RecipientIpAccessListArgs']] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -199,6 +216,7 @@ class _RecipientState:
         :param pulumi.Input[int] created_at: Time at which this recipient was created, in epoch milliseconds.
         :param pulumi.Input[str] created_by: Username of recipient creator.
         :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
+        :param pulumi.Input[int] expiration_time: Expiration timestamp of the token in epoch milliseconds.
         :param pulumi.Input['RecipientIpAccessListArgs'] ip_access_list: Recipient IP access list.
         :param pulumi.Input[str] metastore_id: Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
@@ -226,6 +244,8 @@ class _RecipientState:
             pulumi.set(__self__, "created_by", created_by)
         if data_recipient_global_metastore_id is not None:
             pulumi.set(__self__, "data_recipient_global_metastore_id", data_recipient_global_metastore_id)
+        if expiration_time is not None:
+            pulumi.set(__self__, "expiration_time", expiration_time)
         if ip_access_list is not None:
             pulumi.set(__self__, "ip_access_list", ip_access_list)
         if metastore_id is not None:
@@ -339,6 +359,18 @@ class _RecipientState:
     @data_recipient_global_metastore_id.setter
     def data_recipient_global_metastore_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "data_recipient_global_metastore_id", value)
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Expiration timestamp of the token in epoch milliseconds.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @expiration_time.setter
+    def expiration_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expiration_time", value)
 
     @property
     @pulumi.getter(name="ipAccessList")
@@ -469,6 +501,7 @@ class Recipient(pulumi.CustomResource):
                  authentication_type: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
+                 expiration_time: Optional[pulumi.Input[int]] = None,
                  ip_access_list: Optional[pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -516,6 +549,7 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
         :param pulumi.Input[str] comment: Description about the recipient.
         :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
+        :param pulumi.Input[int] expiration_time: Expiration timestamp of the token in epoch milliseconds.
         :param pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']] ip_access_list: Recipient IP access list.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the recipient owner.
@@ -582,6 +616,7 @@ class Recipient(pulumi.CustomResource):
                  authentication_type: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
+                 expiration_time: Optional[pulumi.Input[int]] = None,
                  ip_access_list: Optional[pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
@@ -602,6 +637,7 @@ class Recipient(pulumi.CustomResource):
             __props__.__dict__["authentication_type"] = authentication_type
             __props__.__dict__["comment"] = comment
             __props__.__dict__["data_recipient_global_metastore_id"] = data_recipient_global_metastore_id
+            __props__.__dict__["expiration_time"] = expiration_time
             __props__.__dict__["ip_access_list"] = ip_access_list
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
@@ -637,6 +673,7 @@ class Recipient(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[int]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
+            expiration_time: Optional[pulumi.Input[int]] = None,
             ip_access_list: Optional[pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -661,6 +698,7 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.Input[int] created_at: Time at which this recipient was created, in epoch milliseconds.
         :param pulumi.Input[str] created_by: Username of recipient creator.
         :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
+        :param pulumi.Input[int] expiration_time: Expiration timestamp of the token in epoch milliseconds.
         :param pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']] ip_access_list: Recipient IP access list.
         :param pulumi.Input[str] metastore_id: Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
@@ -684,6 +722,7 @@ class Recipient(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["data_recipient_global_metastore_id"] = data_recipient_global_metastore_id
+        __props__.__dict__["expiration_time"] = expiration_time
         __props__.__dict__["ip_access_list"] = ip_access_list
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
@@ -756,6 +795,14 @@ class Recipient(pulumi.CustomResource):
         Required when `authentication_type` is `DATABRICKS`.
         """
         return pulumi.get(self, "data_recipient_global_metastore_id")
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> pulumi.Output[Optional[int]]:
+        """
+        Expiration timestamp of the token in epoch milliseconds.
+        """
+        return pulumi.get(self, "expiration_time")
 
     @property
     @pulumi.getter(name="ipAccessList")

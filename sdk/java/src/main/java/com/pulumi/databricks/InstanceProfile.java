@@ -171,7 +171,7 @@ import javax.annotation.Nullable;
  *                 jsonObject(
  *                     jsonProperty("aws_attributes.instance_profile_arn", jsonObject(
  *                         jsonProperty("type", "fixed"),
- *                         jsonProperty("value", shared.arn())
+ *                         jsonProperty("value", shared.id())
  *                     ))
  *                 )))
  *             .build());
@@ -214,7 +214,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new InstanceProfile("this", InstanceProfileArgs.builder()
- *             .instanceProfileArn(shared.arn())
+ *             .instanceProfileArn(shared.id())
  *             .build());
  * 
  *         final var users = DatabricksFunctions.getGroup(GetGroupArgs.builder()

@@ -27,7 +27,7 @@ class TokenArgs:
         """
         The set of arguments for constructing a Token resource.
         :param pulumi.Input[str] comment: (String) Comment that will appear on the user’s settings page for this token.
-        :param pulumi.Input[int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        :param pulumi.Input[int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -74,7 +74,7 @@ class TokenArgs:
     @pulumi.getter(name="lifetimeSeconds")
     def lifetime_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         """
         return pulumi.get(self, "lifetime_seconds")
 
@@ -104,7 +104,7 @@ class _TokenState:
         """
         Input properties used for looking up and filtering Token resources.
         :param pulumi.Input[str] comment: (String) Comment that will appear on the user’s settings page for this token.
-        :param pulumi.Input[int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        :param pulumi.Input[int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         :param pulumi.Input[str] token_value: **Sensitive** value of the newly-created token.
         """
         if comment is not None:
@@ -154,7 +154,7 @@ class _TokenState:
     @pulumi.getter(name="lifetimeSeconds")
     def lifetime_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         """
         return pulumi.get(self, "lifetime_seconds")
 
@@ -231,7 +231,7 @@ class Token(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: (String) Comment that will appear on the user’s settings page for this token.
-        :param pulumi.Input[int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        :param pulumi.Input[int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         """
         ...
     @overload
@@ -333,7 +333,7 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: (String) Comment that will appear on the user’s settings page for this token.
-        :param pulumi.Input[int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        :param pulumi.Input[int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         :param pulumi.Input[str] token_value: **Sensitive** value of the newly-created token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -370,7 +370,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter(name="lifetimeSeconds")
     def lifetime_seconds(self) -> pulumi.Output[Optional[int]]:
         """
-        (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         """
         return pulumi.get(self, "lifetime_seconds")
 

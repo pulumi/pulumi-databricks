@@ -89,7 +89,7 @@ import * as utilities from "./utilities";
  *     definition: JSON.stringify({
  *         "aws_attributes.instance_profile_arn": {
  *             type: "fixed",
- *             value: shared.arn,
+ *             value: shared.id,
  *         },
  *     }),
  * });
@@ -103,7 +103,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.InstanceProfile("this", {instanceProfileArn: shared.arn});
+ * const _this = new databricks.InstanceProfile("this", {instanceProfileArn: shared.id});
  * const users = databricks.getGroup({
  *     displayName: "users",
  * });

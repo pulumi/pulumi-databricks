@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -53,12 +54,20 @@ public final class JobTaskForEachTaskTaskSparkJarTaskArgs extends com.pulumi.res
         return Optional.ofNullable(this.parameters);
     }
 
+    @Import(name="runAsRepl")
+    private @Nullable Output<Boolean> runAsRepl;
+
+    public Optional<Output<Boolean>> runAsRepl() {
+        return Optional.ofNullable(this.runAsRepl);
+    }
+
     private JobTaskForEachTaskTaskSparkJarTaskArgs() {}
 
     private JobTaskForEachTaskTaskSparkJarTaskArgs(JobTaskForEachTaskTaskSparkJarTaskArgs $) {
         this.jarUri = $.jarUri;
         this.mainClassName = $.mainClassName;
         this.parameters = $.parameters;
+        this.runAsRepl = $.runAsRepl;
     }
 
     public static Builder builder() {
@@ -138,6 +147,15 @@ public final class JobTaskForEachTaskTaskSparkJarTaskArgs extends com.pulumi.res
          */
         public Builder parameters(String... parameters) {
             return parameters(List.of(parameters));
+        }
+
+        public Builder runAsRepl(@Nullable Output<Boolean> runAsRepl) {
+            $.runAsRepl = runAsRepl;
+            return this;
+        }
+
+        public Builder runAsRepl(Boolean runAsRepl) {
+            return runAsRepl(Output.of(runAsRepl));
         }
 
         public JobTaskForEachTaskTaskSparkJarTaskArgs build() {

@@ -24,11 +24,11 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// This is the Google Cloud project id that the service account is associated with.
         /// </summary>
-        public readonly string? ProjectId;
+        public readonly string ProjectId;
         /// <summary>
         /// This is the region for the Google Cloud Vertex AI Service.
         /// </summary>
-        public readonly string? Region;
+        public readonly string Region;
 
         [OutputConstructor]
         private ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig(
@@ -36,9 +36,9 @@ namespace Pulumi.Databricks.Outputs
 
             string? privateKeyPlaintext,
 
-            string? projectId,
+            string projectId,
 
-            string? region)
+            string region)
         {
             PrivateKey = privateKey;
             PrivateKeyPlaintext = privateKeyPlaintext;

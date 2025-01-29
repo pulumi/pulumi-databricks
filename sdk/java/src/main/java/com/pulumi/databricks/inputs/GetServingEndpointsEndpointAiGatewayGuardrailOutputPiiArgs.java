@@ -5,20 +5,21 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs Empty = new GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs();
 
-    @Import(name="behavior", required=true)
-    private Output<String> behavior;
+    @Import(name="behavior")
+    private @Nullable Output<String> behavior;
 
-    public Output<String> behavior() {
-        return this.behavior;
+    public Optional<Output<String>> behavior() {
+        return Optional.ofNullable(this.behavior);
     }
 
     private GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs() {}
@@ -45,7 +46,7 @@ public final class GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs ex
             $ = new GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder behavior(Output<String> behavior) {
+        public Builder behavior(@Nullable Output<String> behavior) {
             $.behavior = behavior;
             return this;
         }
@@ -55,9 +56,6 @@ public final class GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs ex
         }
 
         public GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs build() {
-            if ($.behavior == null) {
-                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs", "behavior");
-            }
             return $;
         }
     }
