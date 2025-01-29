@@ -81,7 +81,7 @@ namespace Pulumi.Databricks
         public Output<int> ExpiryTime { get; private set; } = null!;
 
         /// <summary>
-        /// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        /// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         /// </summary>
         [Output("lifetimeSeconds")]
         public Output<int?> LifetimeSeconds { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Databricks
         public Input<int>? ExpiryTime { get; set; }
 
         /// <summary>
-        /// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        /// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         /// </summary>
         [Input("lifetimeSeconds")]
         public Input<int>? LifetimeSeconds { get; set; }
@@ -187,7 +187,7 @@ namespace Pulumi.Databricks
         public Input<int>? ExpiryTime { get; set; }
 
         /// <summary>
-        /// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+        /// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         /// </summary>
         [Input("lifetimeSeconds")]
         public Input<int>? LifetimeSeconds { get; set; }

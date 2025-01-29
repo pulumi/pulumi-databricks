@@ -27,14 +27,14 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// This is the Google Cloud project id that the service account is associated with.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
         /// This is the region for the Google Cloud Vertex AI Service.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         public ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs()
         {

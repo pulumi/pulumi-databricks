@@ -101,6 +101,10 @@ export class Recipient extends pulumi.CustomResource {
      */
     public readonly dataRecipientGlobalMetastoreId!: pulumi.Output<string | undefined>;
     /**
+     * Expiration timestamp of the token in epoch milliseconds.
+     */
+    public readonly expirationTime!: pulumi.Output<number | undefined>;
+    /**
      * Recipient IP access list.
      */
     public readonly ipAccessList!: pulumi.Output<outputs.RecipientIpAccessList | undefined>;
@@ -162,6 +166,7 @@ export class Recipient extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
             resourceInputs["dataRecipientGlobalMetastoreId"] = state ? state.dataRecipientGlobalMetastoreId : undefined;
+            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
             resourceInputs["ipAccessList"] = state ? state.ipAccessList : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -180,6 +185,7 @@ export class Recipient extends pulumi.CustomResource {
             resourceInputs["authenticationType"] = args ? args.authenticationType : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["dataRecipientGlobalMetastoreId"] = args ? args.dataRecipientGlobalMetastoreId : undefined;
+            resourceInputs["expirationTime"] = args ? args.expirationTime : undefined;
             resourceInputs["ipAccessList"] = args ? args.ipAccessList : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
@@ -236,6 +242,10 @@ export interface RecipientState {
      * Required when `authenticationType` is `DATABRICKS`.
      */
     dataRecipientGlobalMetastoreId?: pulumi.Input<string>;
+    /**
+     * Expiration timestamp of the token in epoch milliseconds.
+     */
+    expirationTime?: pulumi.Input<number>;
     /**
      * Recipient IP access list.
      */
@@ -294,6 +304,10 @@ export interface RecipientArgs {
      * Required when `authenticationType` is `DATABRICKS`.
      */
     dataRecipientGlobalMetastoreId?: pulumi.Input<string>;
+    /**
+     * Expiration timestamp of the token in epoch milliseconds.
+     */
+    expirationTime?: pulumi.Input<number>;
     /**
      * Recipient IP access list.
      */

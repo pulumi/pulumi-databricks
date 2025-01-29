@@ -4370,7 +4370,7 @@ export interface GetServingEndpointsEndpointAiGatewayGuardrailInputProperty {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii {
-    behavior: string;
+    behavior?: string;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailOutput {
@@ -4381,7 +4381,7 @@ export interface GetServingEndpointsEndpointAiGatewayGuardrailOutput {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputPii {
-    behavior: string;
+    behavior?: string;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayInferenceTableConfig {
@@ -4468,8 +4468,8 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatab
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig {
     privateKey?: string;
     privateKeyPlaintext?: string;
-    projectId?: string;
-    region?: string;
+    projectId: string;
+    region: string;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfig {
@@ -6623,6 +6623,7 @@ export interface JobTaskForEachTaskTaskSparkJarTask {
      * (List) Parameters passed to the main method.
      */
     parameters?: string[];
+    runAsRepl?: boolean;
 }
 
 export interface JobTaskForEachTaskTaskSparkPythonTask {
@@ -7207,6 +7208,7 @@ export interface JobTaskSparkJarTask {
      * (List) Parameters passed to the main method.
      */
     parameters?: string[];
+    runAsRepl?: boolean;
 }
 
 export interface JobTaskSparkPythonTask {
@@ -7805,7 +7807,7 @@ export interface ModelServingAiGatewayGuardrailsInputPii {
     /**
      * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
      */
-    behavior: string;
+    behavior?: string;
 }
 
 export interface ModelServingAiGatewayGuardrailsOutput {
@@ -7831,7 +7833,7 @@ export interface ModelServingAiGatewayGuardrailsOutputPii {
     /**
      * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
      */
-    behavior: string;
+    behavior?: string;
 }
 
 export interface ModelServingAiGatewayInferenceTableConfig {
@@ -8094,11 +8096,11 @@ export interface ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiC
     /**
      * This is the Google Cloud project id that the service account is associated with.
      */
-    projectId?: string;
+    projectId: string;
     /**
      * This is the region for the Google Cloud Vertex AI Service.
      */
-    region?: string;
+    region: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {

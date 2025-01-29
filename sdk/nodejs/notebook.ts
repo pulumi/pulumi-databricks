@@ -49,11 +49,11 @@ export class Notebook extends pulumi.CustomResource {
      * The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
      */
     public readonly contentBase64!: pulumi.Output<string | undefined>;
-    public readonly format!: pulumi.Output<string | undefined>;
+    public readonly format!: pulumi.Output<string>;
     /**
      * One of `SCALA`, `PYTHON`, `SQL`, `R`.
      */
-    public readonly language!: pulumi.Output<string | undefined>;
+    public readonly language!: pulumi.Output<string>;
     public readonly md5!: pulumi.Output<string | undefined>;
     /**
      * Unique identifier for a NOTEBOOK

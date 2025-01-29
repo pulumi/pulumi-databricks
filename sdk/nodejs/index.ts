@@ -285,7 +285,7 @@ export const getMwsNetworkConnectivityConfigs: typeof import("./getMwsNetworkCon
 export const getMwsNetworkConnectivityConfigsOutput: typeof import("./getMwsNetworkConnectivityConfigs").getMwsNetworkConnectivityConfigsOutput = null as any;
 utilities.lazyLoad(exports, ["getMwsNetworkConnectivityConfigs","getMwsNetworkConnectivityConfigsOutput"], () => require("./getMwsNetworkConnectivityConfigs"));
 
-export { GetMwsWorkspacesArgs, GetMwsWorkspacesResult, GetMwsWorkspacesOutputArgs } from "./getMwsWorkspaces";
+export { GetMwsWorkspacesResult } from "./getMwsWorkspaces";
 export const getMwsWorkspaces: typeof import("./getMwsWorkspaces").getMwsWorkspaces = null as any;
 export const getMwsWorkspacesOutput: typeof import("./getMwsWorkspaces").getMwsWorkspacesOutput = null as any;
 utilities.lazyLoad(exports, ["getMwsWorkspaces","getMwsWorkspacesOutput"], () => require("./getMwsWorkspaces"));

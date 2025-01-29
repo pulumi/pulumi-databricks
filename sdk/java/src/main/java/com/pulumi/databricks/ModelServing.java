@@ -134,18 +134,18 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aiGateway);
     }
     /**
-     * The model serving endpoint configuration.
+     * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
      * 
      */
     @Export(name="config", refs={ModelServingConfig.class}, tree="[0]")
-    private Output<ModelServingConfig> config;
+    private Output</* @Nullable */ ModelServingConfig> config;
 
     /**
-     * @return The model serving endpoint configuration.
+     * @return The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
      * 
      */
-    public Output<ModelServingConfig> config() {
-        return this.config;
+    public Output<Optional<ModelServingConfig>> config() {
+        return Codegen.optional(this.config);
     }
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
@@ -230,7 +230,7 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ModelServing(java.lang.String name, ModelServingArgs args) {
+    public ModelServing(java.lang.String name, @Nullable ModelServingArgs args) {
         this(name, args, null);
     }
     /**
@@ -239,7 +239,7 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ModelServing(java.lang.String name, ModelServingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ModelServing(java.lang.String name, @Nullable ModelServingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/modelServing:ModelServing", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -247,7 +247,7 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
         super("databricks:index/modelServing:ModelServing", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ModelServingArgs makeArgs(ModelServingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ModelServingArgs makeArgs(@Nullable ModelServingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

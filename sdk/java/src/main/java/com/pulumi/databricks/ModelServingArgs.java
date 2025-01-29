@@ -9,7 +9,6 @@ import com.pulumi.databricks.inputs.ModelServingAiGatewayArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingRateLimitArgs;
 import com.pulumi.databricks.inputs.ModelServingTagArgs;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -38,18 +37,18 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The model serving endpoint configuration.
+     * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
      * 
      */
-    @Import(name="config", required=true)
-    private Output<ModelServingConfigArgs> config;
+    @Import(name="config")
+    private @Nullable Output<ModelServingConfigArgs> config;
 
     /**
-     * @return The model serving endpoint configuration.
+     * @return The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
      * 
      */
-    public Output<ModelServingConfigArgs> config() {
-        return this.config;
+    public Optional<Output<ModelServingConfigArgs>> config() {
+        return Optional.ofNullable(this.config);
     }
 
     /**
@@ -163,18 +162,18 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config The model serving endpoint configuration.
+         * @param config The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
          * 
          * @return builder
          * 
          */
-        public Builder config(Output<ModelServingConfigArgs> config) {
+        public Builder config(@Nullable Output<ModelServingConfigArgs> config) {
             $.config = config;
             return this;
         }
 
         /**
-         * @param config The model serving endpoint configuration.
+         * @param config The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
          * 
          * @return builder
          * 
@@ -288,9 +287,6 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ModelServingArgs build() {
-            if ($.config == null) {
-                throw new MissingRequiredPropertyException("ModelServingArgs", "config");
-            }
             return $;
         }
     }

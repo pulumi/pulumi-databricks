@@ -88,6 +88,8 @@ type Recipient struct {
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// Required when `authenticationType` is `DATABRICKS`.
 	DataRecipientGlobalMetastoreId pulumi.StringPtrOutput `pulumi:"dataRecipientGlobalMetastoreId"`
+	// Expiration timestamp of the token in epoch milliseconds.
+	ExpirationTime pulumi.IntPtrOutput `pulumi:"expirationTime"`
 	// Recipient IP access list.
 	IpAccessList RecipientIpAccessListPtrOutput `pulumi:"ipAccessList"`
 	// Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
@@ -165,6 +167,8 @@ type recipientState struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// Required when `authenticationType` is `DATABRICKS`.
 	DataRecipientGlobalMetastoreId *string `pulumi:"dataRecipientGlobalMetastoreId"`
+	// Expiration timestamp of the token in epoch milliseconds.
+	ExpirationTime *int `pulumi:"expirationTime"`
 	// Recipient IP access list.
 	IpAccessList *RecipientIpAccessList `pulumi:"ipAccessList"`
 	// Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
@@ -203,6 +207,8 @@ type RecipientState struct {
 	CreatedBy pulumi.StringPtrInput
 	// Required when `authenticationType` is `DATABRICKS`.
 	DataRecipientGlobalMetastoreId pulumi.StringPtrInput
+	// Expiration timestamp of the token in epoch milliseconds.
+	ExpirationTime pulumi.IntPtrInput
 	// Recipient IP access list.
 	IpAccessList RecipientIpAccessListPtrInput
 	// Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
@@ -236,6 +242,8 @@ type recipientArgs struct {
 	Comment *string `pulumi:"comment"`
 	// Required when `authenticationType` is `DATABRICKS`.
 	DataRecipientGlobalMetastoreId *string `pulumi:"dataRecipientGlobalMetastoreId"`
+	// Expiration timestamp of the token in epoch milliseconds.
+	ExpirationTime *int `pulumi:"expirationTime"`
 	// Recipient IP access list.
 	IpAccessList *RecipientIpAccessList `pulumi:"ipAccessList"`
 	// Name of recipient. Change forces creation of a new resource.
@@ -258,6 +266,8 @@ type RecipientArgs struct {
 	Comment pulumi.StringPtrInput
 	// Required when `authenticationType` is `DATABRICKS`.
 	DataRecipientGlobalMetastoreId pulumi.StringPtrInput
+	// Expiration timestamp of the token in epoch milliseconds.
+	ExpirationTime pulumi.IntPtrInput
 	// Recipient IP access list.
 	IpAccessList RecipientIpAccessListPtrInput
 	// Name of recipient. Change forces creation of a new resource.
@@ -396,6 +406,11 @@ func (o RecipientOutput) CreatedBy() pulumi.StringOutput {
 // Required when `authenticationType` is `DATABRICKS`.
 func (o RecipientOutput) DataRecipientGlobalMetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Recipient) pulumi.StringPtrOutput { return v.DataRecipientGlobalMetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// Expiration timestamp of the token in epoch milliseconds.
+func (o RecipientOutput) ExpirationTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Recipient) pulumi.IntPtrOutput { return v.ExpirationTime }).(pulumi.IntPtrOutput)
 }
 
 // Recipient IP access list.

@@ -54195,7 +54195,7 @@ func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput) I
 }
 
 type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii struct {
-	Behavior string `pulumi:"behavior"`
+	Behavior *string `pulumi:"behavior"`
 }
 
 // GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiInput is an input type that accepts GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs and GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput values.
@@ -54210,7 +54210,7 @@ type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiInput interfac
 }
 
 type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs struct {
-	Behavior pulumi.StringInput `pulumi:"behavior"`
+	Behavior pulumi.StringPtrInput `pulumi:"behavior"`
 }
 
 func (GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs) ElementType() reflect.Type {
@@ -54264,8 +54264,8 @@ func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput) ToG
 	return o
 }
 
-func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput) Behavior() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii) string { return v.Behavior }).(pulumi.StringOutput)
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput) Behavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii) *string { return v.Behavior }).(pulumi.StringPtrOutput)
 }
 
 type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput struct{ *pulumi.OutputState }
@@ -54403,7 +54403,7 @@ func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput) Inde
 }
 
 type GetServingEndpointsEndpointAiGatewayGuardrailOutputPii struct {
-	Behavior string `pulumi:"behavior"`
+	Behavior *string `pulumi:"behavior"`
 }
 
 // GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiInput is an input type that accepts GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs and GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiOutput values.
@@ -54418,7 +54418,7 @@ type GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiInput interface {
 }
 
 type GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs struct {
-	Behavior pulumi.StringInput `pulumi:"behavior"`
+	Behavior pulumi.StringPtrInput `pulumi:"behavior"`
 }
 
 func (GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs) ElementType() reflect.Type {
@@ -54472,8 +54472,8 @@ func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiOutput) ToGetServi
 	return o
 }
 
-func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiOutput) Behavior() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailOutputPii) string { return v.Behavior }).(pulumi.StringOutput)
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiOutput) Behavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailOutputPii) *string { return v.Behavior }).(pulumi.StringPtrOutput)
 }
 
 type GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArrayOutput struct{ *pulumi.OutputState }
@@ -55781,8 +55781,8 @@ func (o GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksMode
 type GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig struct {
 	PrivateKey          *string `pulumi:"privateKey"`
 	PrivateKeyPlaintext *string `pulumi:"privateKeyPlaintext"`
-	ProjectId           *string `pulumi:"projectId"`
-	Region              *string `pulumi:"region"`
+	ProjectId           string  `pulumi:"projectId"`
+	Region              string  `pulumi:"region"`
 }
 
 // GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigInput is an input type that accepts GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs and GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput values.
@@ -55799,8 +55799,8 @@ type GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertex
 type GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs struct {
 	PrivateKey          pulumi.StringPtrInput `pulumi:"privateKey"`
 	PrivateKeyPlaintext pulumi.StringPtrInput `pulumi:"privateKeyPlaintext"`
-	ProjectId           pulumi.StringPtrInput `pulumi:"projectId"`
-	Region              pulumi.StringPtrInput `pulumi:"region"`
+	ProjectId           pulumi.StringInput    `pulumi:"projectId"`
+	Region              pulumi.StringInput    `pulumi:"region"`
 }
 
 func (GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs) ElementType() reflect.Type {
@@ -55866,16 +55866,16 @@ func (o GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVer
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
+func (o GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig) string {
 		return v.ProjectId
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
-func (o GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig) *string {
+func (o GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfig) string {
 		return v.Region
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
 type GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArrayOutput struct{ *pulumi.OutputState }

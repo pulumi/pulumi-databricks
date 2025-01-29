@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -23,6 +24,7 @@ public final class JobTaskSparkJarTask {
      * 
      */
     private @Nullable List<String> parameters;
+    private @Nullable Boolean runAsRepl;
 
     private JobTaskSparkJarTask() {}
     public Optional<String> jarUri() {
@@ -42,6 +44,9 @@ public final class JobTaskSparkJarTask {
     public List<String> parameters() {
         return this.parameters == null ? List.of() : this.parameters;
     }
+    public Optional<Boolean> runAsRepl() {
+        return Optional.ofNullable(this.runAsRepl);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -55,12 +60,14 @@ public final class JobTaskSparkJarTask {
         private @Nullable String jarUri;
         private @Nullable String mainClassName;
         private @Nullable List<String> parameters;
+        private @Nullable Boolean runAsRepl;
         public Builder() {}
         public Builder(JobTaskSparkJarTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jarUri = defaults.jarUri;
     	      this.mainClassName = defaults.mainClassName;
     	      this.parameters = defaults.parameters;
+    	      this.runAsRepl = defaults.runAsRepl;
         }
 
         @CustomType.Setter
@@ -84,11 +91,18 @@ public final class JobTaskSparkJarTask {
         public Builder parameters(String... parameters) {
             return parameters(List.of(parameters));
         }
+        @CustomType.Setter
+        public Builder runAsRepl(@Nullable Boolean runAsRepl) {
+
+            this.runAsRepl = runAsRepl;
+            return this;
+        }
         public JobTaskSparkJarTask build() {
             final var _resultValue = new JobTaskSparkJarTask();
             _resultValue.jarUri = jarUri;
             _resultValue.mainClassName = mainClassName;
             _resultValue.parameters = parameters;
+            _resultValue.runAsRepl = runAsRepl;
             return _resultValue;
         }
     }

@@ -154,7 +154,7 @@ namespace Pulumi.Databricks
     ///             ["aws_attributes.instance_profile_arn"] = new Dictionary&lt;string, object?&gt;
     ///             {
     ///                 ["type"] = "fixed",
-    ///                 ["value"] = shared.Arn,
+    ///                 ["value"] = shared.Id,
     ///             },
     ///         }),
     ///     });
@@ -176,7 +176,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.InstanceProfile("this", new()
     ///     {
-    ///         InstanceProfileArn = shared.Arn,
+    ///         InstanceProfileArn = shared.Id,
     ///     });
     /// 
     ///     var users = Databricks.GetGroup.Invoke(new()

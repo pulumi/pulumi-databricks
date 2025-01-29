@@ -16,10 +16,10 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
         /// </summary>
-        public readonly string Behavior;
+        public readonly string? Behavior;
 
         [OutputConstructor]
-        private ModelServingAiGatewayGuardrailsInputPii(string behavior)
+        private ModelServingAiGatewayGuardrailsInputPii(string? behavior)
         {
             Behavior = behavior;
         }

@@ -84,6 +84,9 @@ namespace Pulumi.Databricks
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("noCompute")]
+        public Output<bool?> NoCompute { get; private set; } = null!;
+
         [Output("pendingDeployment")]
         public Output<Outputs.AppPendingDeployment> PendingDeployment { get; private set; } = null!;
 
@@ -184,6 +187,9 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("noCompute")]
+        public Input<bool>? NoCompute { get; set; }
+
         [Input("resources")]
         private InputList<Inputs.AppResourceArgs>? _resources;
 
@@ -248,6 +254,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("noCompute")]
+        public Input<bool>? NoCompute { get; set; }
 
         [Input("pendingDeployment")]
         public Input<Inputs.AppPendingDeploymentGetArgs>? PendingDeployment { get; set; }

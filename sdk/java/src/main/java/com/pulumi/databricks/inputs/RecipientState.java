@@ -134,6 +134,21 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Expiration timestamp of the token in epoch milliseconds.
+     * 
+     */
+    @Import(name="expirationTime")
+    private @Nullable Output<Integer> expirationTime;
+
+    /**
+     * @return Expiration timestamp of the token in epoch milliseconds.
+     * 
+     */
+    public Optional<Output<Integer>> expirationTime() {
+        return Optional.ofNullable(this.expirationTime);
+    }
+
+    /**
      * Recipient IP access list.
      * 
      */
@@ -294,6 +309,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
         this.dataRecipientGlobalMetastoreId = $.dataRecipientGlobalMetastoreId;
+        this.expirationTime = $.expirationTime;
         this.ipAccessList = $.ipAccessList;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -478,6 +494,27 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataRecipientGlobalMetastoreId(String dataRecipientGlobalMetastoreId) {
             return dataRecipientGlobalMetastoreId(Output.of(dataRecipientGlobalMetastoreId));
+        }
+
+        /**
+         * @param expirationTime Expiration timestamp of the token in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationTime(@Nullable Output<Integer> expirationTime) {
+            $.expirationTime = expirationTime;
+            return this;
+        }
+
+        /**
+         * @param expirationTime Expiration timestamp of the token in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationTime(Integer expirationTime) {
+            return expirationTime(Output.of(expirationTime));
         }
 
         /**

@@ -32,13 +32,13 @@ namespace Pulumi.Databricks
         public Output<string?> ContentBase64 { get; private set; } = null!;
 
         [Output("format")]
-        public Output<string?> Format { get; private set; } = null!;
+        public Output<string> Format { get; private set; } = null!;
 
         /// <summary>
         /// One of `SCALA`, `PYTHON`, `SQL`, `R`.
         /// </summary>
         [Output("language")]
-        public Output<string?> Language { get; private set; } = null!;
+        public Output<string> Language { get; private set; } = null!;
 
         [Output("md5")]
         public Output<string?> Md5 { get; private set; } = null!;

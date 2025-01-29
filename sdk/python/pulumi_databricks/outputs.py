@@ -12508,6 +12508,8 @@ class JobTaskForEachTaskTaskSparkJarTask(dict):
             suggest = "jar_uri"
         elif key == "mainClassName":
             suggest = "main_class_name"
+        elif key == "runAsRepl":
+            suggest = "run_as_repl"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskSparkJarTask. Access the value via the '{suggest}' property getter instead.")
@@ -12523,7 +12525,8 @@ class JobTaskForEachTaskTaskSparkJarTask(dict):
     def __init__(__self__, *,
                  jar_uri: Optional[str] = None,
                  main_class_name: Optional[str] = None,
-                 parameters: Optional[Sequence[str]] = None):
+                 parameters: Optional[Sequence[str]] = None,
+                 run_as_repl: Optional[bool] = None):
         """
         :param str main_class_name: The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
         :param Sequence[str] parameters: (List) Parameters passed to the main method.
@@ -12534,6 +12537,8 @@ class JobTaskForEachTaskTaskSparkJarTask(dict):
             pulumi.set(__self__, "main_class_name", main_class_name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if run_as_repl is not None:
+            pulumi.set(__self__, "run_as_repl", run_as_repl)
 
     @property
     @pulumi.getter(name="jarUri")
@@ -12555,6 +12560,11 @@ class JobTaskForEachTaskTaskSparkJarTask(dict):
         (List) Parameters passed to the main method.
         """
         return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter(name="runAsRepl")
+    def run_as_repl(self) -> Optional[bool]:
+        return pulumi.get(self, "run_as_repl")
 
 
 @pulumi.output_type
@@ -15267,6 +15277,8 @@ class JobTaskSparkJarTask(dict):
             suggest = "jar_uri"
         elif key == "mainClassName":
             suggest = "main_class_name"
+        elif key == "runAsRepl":
+            suggest = "run_as_repl"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTaskSparkJarTask. Access the value via the '{suggest}' property getter instead.")
@@ -15282,7 +15294,8 @@ class JobTaskSparkJarTask(dict):
     def __init__(__self__, *,
                  jar_uri: Optional[str] = None,
                  main_class_name: Optional[str] = None,
-                 parameters: Optional[Sequence[str]] = None):
+                 parameters: Optional[Sequence[str]] = None,
+                 run_as_repl: Optional[bool] = None):
         """
         :param str main_class_name: The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
         :param Sequence[str] parameters: (List) Parameters passed to the main method.
@@ -15293,6 +15306,8 @@ class JobTaskSparkJarTask(dict):
             pulumi.set(__self__, "main_class_name", main_class_name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if run_as_repl is not None:
+            pulumi.set(__self__, "run_as_repl", run_as_repl)
 
     @property
     @pulumi.getter(name="jarUri")
@@ -15314,6 +15329,11 @@ class JobTaskSparkJarTask(dict):
         (List) Parameters passed to the main method.
         """
         return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter(name="runAsRepl")
+    def run_as_repl(self) -> Optional[bool]:
+        return pulumi.get(self, "run_as_repl")
 
 
 @pulumi.output_type
@@ -17655,15 +17675,16 @@ class ModelServingAiGatewayGuardrailsInput(dict):
 @pulumi.output_type
 class ModelServingAiGatewayGuardrailsInputPii(dict):
     def __init__(__self__, *,
-                 behavior: str):
+                 behavior: Optional[str] = None):
         """
         :param str behavior: a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
         """
-        pulumi.set(__self__, "behavior", behavior)
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
 
     @property
     @pulumi.getter
-    def behavior(self) -> str:
+    def behavior(self) -> Optional[str]:
         """
         a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
         """
@@ -17747,15 +17768,16 @@ class ModelServingAiGatewayGuardrailsOutput(dict):
 @pulumi.output_type
 class ModelServingAiGatewayGuardrailsOutputPii(dict):
     def __init__(__self__, *,
-                 behavior: str):
+                 behavior: Optional[str] = None):
         """
         :param str behavior: a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
         """
-        pulumi.set(__self__, "behavior", behavior)
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
 
     @property
     @pulumi.getter
-    def behavior(self) -> str:
+    def behavior(self) -> Optional[str]:
         """
         a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
         """
@@ -18737,12 +18759,12 @@ class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig(dict)
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "privateKey":
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "privateKey":
             suggest = "private_key"
         elif key == "privateKeyPlaintext":
             suggest = "private_key_plaintext"
-        elif key == "projectId":
-            suggest = "project_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig. Access the value via the '{suggest}' property getter instead.")
@@ -18756,24 +18778,38 @@ class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig(dict)
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 project_id: str,
+                 region: str,
                  private_key: Optional[str] = None,
-                 private_key_plaintext: Optional[str] = None,
-                 project_id: Optional[str] = None,
-                 region: Optional[str] = None):
+                 private_key_plaintext: Optional[str] = None):
         """
-        :param str private_key: The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
-        :param str private_key_plaintext: The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
         :param str project_id: This is the Google Cloud project id that the service account is associated with.
         :param str region: This is the region for the Google Cloud Vertex AI Service.
+        :param str private_key: The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
+        :param str private_key_plaintext: The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
         """
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "region", region)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if private_key_plaintext is not None:
             pulumi.set(__self__, "private_key_plaintext", private_key_plaintext)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        This is the Google Cloud project id that the service account is associated with.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        This is the region for the Google Cloud Vertex AI Service.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="privateKey")
@@ -18790,22 +18826,6 @@ class ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig(dict)
         The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
         """
         return pulumi.get(self, "private_key_plaintext")
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[str]:
-        """
-        This is the Google Cloud project id that the service account is associated with.
-        """
-        return pulumi.get(self, "project_id")
-
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[str]:
-        """
-        This is the region for the Google Cloud Vertex AI Service.
-        """
-        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -41564,12 +41584,13 @@ class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyResult(dict):
 @pulumi.output_type
 class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiResult(dict):
     def __init__(__self__, *,
-                 behavior: str):
-        pulumi.set(__self__, "behavior", behavior)
+                 behavior: Optional[str] = None):
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
 
     @property
     @pulumi.getter
-    def behavior(self) -> str:
+    def behavior(self) -> Optional[str]:
         return pulumi.get(self, "behavior")
 
 
@@ -41613,12 +41634,13 @@ class GetServingEndpointsEndpointAiGatewayGuardrailOutputResult(dict):
 @pulumi.output_type
 class GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiResult(dict):
     def __init__(__self__, *,
-                 behavior: str):
-        pulumi.set(__self__, "behavior", behavior)
+                 behavior: Optional[str] = None):
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
 
     @property
     @pulumi.getter
-    def behavior(self) -> str:
+    def behavior(self) -> Optional[str]:
         return pulumi.get(self, "behavior")
 
 
@@ -42020,18 +42042,26 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelS
 @pulumi.output_type
 class GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigResult(dict):
     def __init__(__self__, *,
+                 project_id: str,
+                 region: str,
                  private_key: Optional[str] = None,
-                 private_key_plaintext: Optional[str] = None,
-                 project_id: Optional[str] = None,
-                 region: Optional[str] = None):
+                 private_key_plaintext: Optional[str] = None):
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "region", region)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if private_key_plaintext is not None:
             pulumi.set(__self__, "private_key_plaintext", private_key_plaintext)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="privateKey")
@@ -42042,16 +42072,6 @@ class GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVerte
     @pulumi.getter(name="privateKeyPlaintext")
     def private_key_plaintext(self) -> Optional[str]:
         return pulumi.get(self, "private_key_plaintext")
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[str]:
-        return pulumi.get(self, "project_id")
-
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[str]:
-        return pulumi.get(self, "region")
 
 
 @pulumi.output_type

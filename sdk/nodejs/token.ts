@@ -74,7 +74,7 @@ export class Token extends pulumi.CustomResource {
     public readonly creationTime!: pulumi.Output<number>;
     public readonly expiryTime!: pulumi.Output<number>;
     /**
-     * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+     * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      */
     public readonly lifetimeSeconds!: pulumi.Output<number | undefined>;
     public readonly tokenId!: pulumi.Output<string>;
@@ -129,7 +129,7 @@ export interface TokenState {
     creationTime?: pulumi.Input<number>;
     expiryTime?: pulumi.Input<number>;
     /**
-     * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+     * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      */
     lifetimeSeconds?: pulumi.Input<number>;
     tokenId?: pulumi.Input<string>;
@@ -150,7 +150,7 @@ export interface TokenArgs {
     creationTime?: pulumi.Input<number>;
     expiryTime?: pulumi.Input<number>;
     /**
-     * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+     * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      */
     lifetimeSeconds?: pulumi.Input<number>;
     tokenId?: pulumi.Input<string>;

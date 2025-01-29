@@ -22,6 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// (List) Parameters passed to the main method.
         /// </summary>
         public readonly ImmutableArray<string> Parameters;
+        public readonly bool? RunAsRepl;
 
         [OutputConstructor]
         private JobTaskForEachTaskTaskSparkJarTask(
@@ -29,11 +30,14 @@ namespace Pulumi.Databricks.Outputs
 
             string? mainClassName,
 
-            ImmutableArray<string> parameters)
+            ImmutableArray<string> parameters,
+
+            bool? runAsRepl)
         {
             JarUri = jarUri;
             MainClassName = mainClassName;
             Parameters = parameters;
+            RunAsRepl = runAsRepl;
         }
     }
 }

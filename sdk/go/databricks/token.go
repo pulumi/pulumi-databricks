@@ -90,7 +90,7 @@ type Token struct {
 	Comment      pulumi.StringPtrOutput `pulumi:"comment"`
 	CreationTime pulumi.IntOutput       `pulumi:"creationTime"`
 	ExpiryTime   pulumi.IntOutput       `pulumi:"expiryTime"`
-	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
 	LifetimeSeconds pulumi.IntPtrOutput `pulumi:"lifetimeSeconds"`
 	TokenId         pulumi.StringOutput `pulumi:"tokenId"`
 	// **Sensitive** value of the newly-created token.
@@ -135,7 +135,7 @@ type tokenState struct {
 	Comment      *string `pulumi:"comment"`
 	CreationTime *int    `pulumi:"creationTime"`
 	ExpiryTime   *int    `pulumi:"expiryTime"`
-	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
 	LifetimeSeconds *int    `pulumi:"lifetimeSeconds"`
 	TokenId         *string `pulumi:"tokenId"`
 	// **Sensitive** value of the newly-created token.
@@ -147,7 +147,7 @@ type TokenState struct {
 	Comment      pulumi.StringPtrInput
 	CreationTime pulumi.IntPtrInput
 	ExpiryTime   pulumi.IntPtrInput
-	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
 	LifetimeSeconds pulumi.IntPtrInput
 	TokenId         pulumi.StringPtrInput
 	// **Sensitive** value of the newly-created token.
@@ -163,7 +163,7 @@ type tokenArgs struct {
 	Comment      *string `pulumi:"comment"`
 	CreationTime *int    `pulumi:"creationTime"`
 	ExpiryTime   *int    `pulumi:"expiryTime"`
-	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
 	LifetimeSeconds *int    `pulumi:"lifetimeSeconds"`
 	TokenId         *string `pulumi:"tokenId"`
 }
@@ -174,7 +174,7 @@ type TokenArgs struct {
 	Comment      pulumi.StringPtrInput
 	CreationTime pulumi.IntPtrInput
 	ExpiryTime   pulumi.IntPtrInput
-	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
 	LifetimeSeconds pulumi.IntPtrInput
 	TokenId         pulumi.StringPtrInput
 }
@@ -279,7 +279,7 @@ func (o TokenOutput) ExpiryTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Token) pulumi.IntOutput { return v.ExpiryTime }).(pulumi.IntOutput)
 }
 
-// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
 func (o TokenOutput) LifetimeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.IntPtrOutput { return v.LifetimeSeconds }).(pulumi.IntPtrOutput)
 }

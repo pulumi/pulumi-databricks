@@ -106,6 +106,12 @@ namespace Pulumi.Databricks
         public Output<string?> DataRecipientGlobalMetastoreId { get; private set; } = null!;
 
         /// <summary>
+        /// Expiration timestamp of the token in epoch milliseconds.
+        /// </summary>
+        [Output("expirationTime")]
+        public Output<int?> ExpirationTime { get; private set; } = null!;
+
+        /// <summary>
         /// Recipient IP access list.
         /// </summary>
         [Output("ipAccessList")]
@@ -234,6 +240,12 @@ namespace Pulumi.Databricks
         public Input<string>? DataRecipientGlobalMetastoreId { get; set; }
 
         /// <summary>
+        /// Expiration timestamp of the token in epoch milliseconds.
+        /// </summary>
+        [Input("expirationTime")]
+        public Input<int>? ExpirationTime { get; set; }
+
+        /// <summary>
         /// Recipient IP access list.
         /// </summary>
         [Input("ipAccessList")]
@@ -337,6 +349,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("dataRecipientGlobalMetastoreId")]
         public Input<string>? DataRecipientGlobalMetastoreId { get; set; }
+
+        /// <summary>
+        /// Expiration timestamp of the token in epoch milliseconds.
+        /// </summary>
+        [Input("expirationTime")]
+        public Input<int>? ExpirationTime { get; set; }
 
         /// <summary>
         /// Recipient IP access list.

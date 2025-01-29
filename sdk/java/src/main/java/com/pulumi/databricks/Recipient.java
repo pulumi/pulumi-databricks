@@ -194,6 +194,20 @@ public class Recipient extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataRecipientGlobalMetastoreId);
     }
     /**
+     * Expiration timestamp of the token in epoch milliseconds.
+     * 
+     */
+    @Export(name="expirationTime", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> expirationTime;
+
+    /**
+     * @return Expiration timestamp of the token in epoch milliseconds.
+     * 
+     */
+    public Output<Optional<Integer>> expirationTime() {
+        return Codegen.optional(this.expirationTime);
+    }
+    /**
      * Recipient IP access list.
      * 
      */

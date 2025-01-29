@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -102,8 +101,8 @@ type ModelServing struct {
 
 	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 	AiGateway ModelServingAiGatewayPtrOutput `pulumi:"aiGateway"`
-	// The model serving endpoint configuration.
-	Config ModelServingConfigOutput `pulumi:"config"`
+	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+	Config ModelServingConfigPtrOutput `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
@@ -120,12 +119,9 @@ type ModelServing struct {
 func NewModelServing(ctx *pulumi.Context,
 	name string, args *ModelServingArgs, opts ...pulumi.ResourceOption) (*ModelServing, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ModelServingArgs{}
 	}
 
-	if args.Config == nil {
-		return nil, errors.New("invalid value for required argument 'Config'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ModelServing
 	err := ctx.RegisterResource("databricks:index/modelServing:ModelServing", name, args, &resource, opts...)
@@ -151,7 +147,7 @@ func GetModelServing(ctx *pulumi.Context,
 type modelServingState struct {
 	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 	AiGateway *ModelServingAiGateway `pulumi:"aiGateway"`
-	// The model serving endpoint configuration.
+	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
 	Config *ModelServingConfig `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name *string `pulumi:"name"`
@@ -168,7 +164,7 @@ type modelServingState struct {
 type ModelServingState struct {
 	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 	AiGateway ModelServingAiGatewayPtrInput
-	// The model serving endpoint configuration.
+	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
 	Config ModelServingConfigPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringPtrInput
@@ -189,8 +185,8 @@ func (ModelServingState) ElementType() reflect.Type {
 type modelServingArgs struct {
 	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 	AiGateway *ModelServingAiGateway `pulumi:"aiGateway"`
-	// The model serving endpoint configuration.
-	Config ModelServingConfig `pulumi:"config"`
+	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+	Config *ModelServingConfig `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name *string `pulumi:"name"`
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
@@ -205,8 +201,8 @@ type modelServingArgs struct {
 type ModelServingArgs struct {
 	// A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
 	AiGateway ModelServingAiGatewayPtrInput
-	// The model serving endpoint configuration.
-	Config ModelServingConfigInput
+	// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+	Config ModelServingConfigPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
 	Name pulumi.StringPtrInput
 	// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
@@ -309,9 +305,9 @@ func (o ModelServingOutput) AiGateway() ModelServingAiGatewayPtrOutput {
 	return o.ApplyT(func(v *ModelServing) ModelServingAiGatewayPtrOutput { return v.AiGateway }).(ModelServingAiGatewayPtrOutput)
 }
 
-// The model serving endpoint configuration.
-func (o ModelServingOutput) Config() ModelServingConfigOutput {
-	return o.ApplyT(func(v *ModelServing) ModelServingConfigOutput { return v.Config }).(ModelServingConfigOutput)
+// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+func (o ModelServingOutput) Config() ModelServingConfigPtrOutput {
+	return o.ApplyT(func(v *ModelServing) ModelServingConfigPtrOutput { return v.Config }).(ModelServingConfigPtrOutput)
 }
 
 // The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.

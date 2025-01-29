@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,18 +30,18 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
         return Optional.ofNullable(this.privateKeyPlaintext);
     }
 
-    @Import(name="projectId")
-    private @Nullable Output<String> projectId;
+    @Import(name="projectId", required=true)
+    private Output<String> projectId;
 
-    public Optional<Output<String>> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public Output<String> projectId() {
+        return this.projectId;
     }
 
-    @Import(name="region")
-    private @Nullable Output<String> region;
+    @Import(name="region", required=true)
+    private Output<String> region;
 
-    public Optional<Output<String>> region() {
-        return Optional.ofNullable(this.region);
+    public Output<String> region() {
+        return this.region;
     }
 
     private GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs() {}
@@ -88,7 +89,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
             return privateKeyPlaintext(Output.of(privateKeyPlaintext));
         }
 
-        public Builder projectId(@Nullable Output<String> projectId) {
+        public Builder projectId(Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
@@ -97,7 +98,7 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
             return projectId(Output.of(projectId));
         }
 
-        public Builder region(@Nullable Output<String> region) {
+        public Builder region(Output<String> region) {
             $.region = region;
             return this;
         }
@@ -107,6 +108,12 @@ public final class GetServingEndpointsEndpointConfigServedEntityExternalModelGoo
         }
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs build() {
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs", "projectId");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs", "region");
+            }
             return $;
         }
     }

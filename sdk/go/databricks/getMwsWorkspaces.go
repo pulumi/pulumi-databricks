@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := databricks.LookupMwsWorkspaces(ctx, &databricks.LookupMwsWorkspacesArgs{}, nil)
+//			all, err := databricks.LookupMwsWorkspaces(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -50,20 +50,14 @@ import (
 //
 // * MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
 // * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurermDatabricksWorkspace
-func LookupMwsWorkspaces(ctx *pulumi.Context, args *LookupMwsWorkspacesArgs, opts ...pulumi.InvokeOption) (*LookupMwsWorkspacesResult, error) {
+func LookupMwsWorkspaces(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupMwsWorkspacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMwsWorkspacesResult
-	err := ctx.Invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", nil, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
-}
-
-// A collection of arguments for invoking getMwsWorkspaces.
-type LookupMwsWorkspacesArgs struct {
-	// name-to-id map for all of the workspaces in the account
-	Ids map[string]string `pulumi:"ids"`
 }
 
 // A collection of values returned by getMwsWorkspaces.
@@ -74,23 +68,11 @@ type LookupMwsWorkspacesResult struct {
 	Ids map[string]string `pulumi:"ids"`
 }
 
-func LookupMwsWorkspacesOutput(ctx *pulumi.Context, args LookupMwsWorkspacesOutputArgs, opts ...pulumi.InvokeOption) LookupMwsWorkspacesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMwsWorkspacesResultOutput, error) {
-			args := v.(LookupMwsWorkspacesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("databricks:index/getMwsWorkspaces:getMwsWorkspaces", args, LookupMwsWorkspacesResultOutput{}, options).(LookupMwsWorkspacesResultOutput), nil
-		}).(LookupMwsWorkspacesResultOutput)
-}
-
-// A collection of arguments for invoking getMwsWorkspaces.
-type LookupMwsWorkspacesOutputArgs struct {
-	// name-to-id map for all of the workspaces in the account
-	Ids pulumi.StringMapInput `pulumi:"ids"`
-}
-
-func (LookupMwsWorkspacesOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupMwsWorkspacesArgs)(nil)).Elem()
+func LookupMwsWorkspacesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupMwsWorkspacesResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (LookupMwsWorkspacesResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("databricks:index/getMwsWorkspaces:getMwsWorkspaces", nil, LookupMwsWorkspacesResultOutput{}, options).(LookupMwsWorkspacesResultOutput), nil
+	}).(LookupMwsWorkspacesResultOutput)
 }
 
 // A collection of values returned by getMwsWorkspaces.

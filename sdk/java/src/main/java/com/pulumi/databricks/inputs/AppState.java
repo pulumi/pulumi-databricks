@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.AppAppStatusArgs;
 import com.pulumi.databricks.inputs.AppComputeStatusArgs;
 import com.pulumi.databricks.inputs.AppPendingDeploymentArgs;
 import com.pulumi.databricks.inputs.AppResourceArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -134,6 +135,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="noCompute")
+    private @Nullable Output<Boolean> noCompute;
+
+    public Optional<Output<Boolean>> noCompute() {
+        return Optional.ofNullable(this.noCompute);
+    }
+
     @Import(name="pendingDeployment")
     private @Nullable Output<AppPendingDeploymentArgs> pendingDeployment;
 
@@ -249,6 +257,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.defaultSourceCodePath = $.defaultSourceCodePath;
         this.description = $.description;
         this.name = $.name;
+        this.noCompute = $.noCompute;
         this.pendingDeployment = $.pendingDeployment;
         this.resources = $.resources;
         this.servicePrincipalClientId = $.servicePrincipalClientId;
@@ -431,6 +440,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder noCompute(@Nullable Output<Boolean> noCompute) {
+            $.noCompute = noCompute;
+            return this;
+        }
+
+        public Builder noCompute(Boolean noCompute) {
+            return noCompute(Output.of(noCompute));
         }
 
         public Builder pendingDeployment(@Nullable Output<AppPendingDeploymentArgs> pendingDeployment) {

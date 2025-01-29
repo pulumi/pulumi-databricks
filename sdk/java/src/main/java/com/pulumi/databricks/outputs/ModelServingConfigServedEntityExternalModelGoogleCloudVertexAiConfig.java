@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -25,12 +26,12 @@ public final class ModelServingConfigServedEntityExternalModelGoogleCloudVertexA
      * @return This is the Google Cloud project id that the service account is associated with.
      * 
      */
-    private @Nullable String projectId;
+    private String projectId;
     /**
      * @return This is the region for the Google Cloud Vertex AI Service.
      * 
      */
-    private @Nullable String region;
+    private String region;
 
     private ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig() {}
     /**
@@ -51,15 +52,15 @@ public final class ModelServingConfigServedEntityExternalModelGoogleCloudVertexA
      * @return This is the Google Cloud project id that the service account is associated with.
      * 
      */
-    public Optional<String> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public String projectId() {
+        return this.projectId;
     }
     /**
      * @return This is the region for the Google Cloud Vertex AI Service.
      * 
      */
-    public Optional<String> region() {
-        return Optional.ofNullable(this.region);
+    public String region() {
+        return this.region;
     }
 
     public static Builder builder() {
@@ -73,8 +74,8 @@ public final class ModelServingConfigServedEntityExternalModelGoogleCloudVertexA
     public static final class Builder {
         private @Nullable String privateKey;
         private @Nullable String privateKeyPlaintext;
-        private @Nullable String projectId;
-        private @Nullable String region;
+        private String projectId;
+        private String region;
         public Builder() {}
         public Builder(ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -97,14 +98,18 @@ public final class ModelServingConfigServedEntityExternalModelGoogleCloudVertexA
             return this;
         }
         @CustomType.Setter
-        public Builder projectId(@Nullable String projectId) {
-
+        public Builder projectId(String projectId) {
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig", "projectId");
+            }
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
-        public Builder region(@Nullable String region) {
-
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig", "region");
+            }
             this.region = region;
             return this;
         }

@@ -46,14 +46,14 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+     * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      * 
      */
     @Import(name="lifetimeSeconds")
     private @Nullable Output<Integer> lifetimeSeconds;
 
     /**
-     * @return (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+     * @return (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      * 
      */
     public Optional<Output<Integer>> lifetimeSeconds() {
@@ -135,7 +135,7 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifetimeSeconds (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+         * @param lifetimeSeconds (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifetimeSeconds (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
+         * @param lifetimeSeconds (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
          * 
          * @return builder
          * 

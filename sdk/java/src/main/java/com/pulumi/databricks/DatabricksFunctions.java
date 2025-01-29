@@ -70,8 +70,6 @@ import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
 import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
 import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsPlainArgs;
-import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
-import com.pulumi.databricks.inputs.GetMwsWorkspacesPlainArgs;
 import com.pulumi.databricks.inputs.GetNodeTypeArgs;
 import com.pulumi.databricks.inputs.GetNodeTypePlainArgs;
 import com.pulumi.databricks.inputs.GetNotebookArgs;
@@ -12092,7 +12090,6 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -12124,7 +12121,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces() {
-        return getMwsWorkspaces(GetMwsWorkspacesArgs.Empty, InvokeOptions.Empty);
+        return getMwsWorkspaces(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -12146,7 +12143,6 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -12178,7 +12174,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain() {
-        return getMwsWorkspacesPlain(GetMwsWorkspacesPlainArgs.Empty, InvokeOptions.Empty);
+        return getMwsWorkspacesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -12200,7 +12196,6 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -12231,7 +12226,7 @@ public final class DatabricksFunctions {
      * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
      * 
      */
-    public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(GetMwsWorkspacesArgs args) {
+    public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(InvokeArgs args) {
         return getMwsWorkspaces(args, InvokeOptions.Empty);
     }
     /**
@@ -12254,7 +12249,6 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -12285,7 +12279,7 @@ public final class DatabricksFunctions {
      * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
      * 
      */
-    public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(GetMwsWorkspacesPlainArgs args) {
+    public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(InvokeArgs args) {
         return getMwsWorkspacesPlain(args, InvokeOptions.Empty);
     }
     /**
@@ -12308,7 +12302,6 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -12339,7 +12332,7 @@ public final class DatabricksFunctions {
      * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
      * 
      */
-    public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(GetMwsWorkspacesArgs args, InvokeOptions options) {
+    public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", TypeShape.of(GetMwsWorkspacesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -12362,7 +12355,6 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -12393,7 +12385,7 @@ public final class DatabricksFunctions {
      * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
      * 
      */
-    public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(GetMwsWorkspacesArgs args, InvokeOutputOptions options) {
+    public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", TypeShape.of(GetMwsWorkspacesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -12416,7 +12408,6 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -12447,7 +12438,7 @@ public final class DatabricksFunctions {
      * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
      * 
      */
-    public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(GetMwsWorkspacesPlainArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getMwsWorkspaces:getMwsWorkspaces", TypeShape.of(GetMwsWorkspacesResult.class), args, Utilities.withVersion(options));
     }
     /**

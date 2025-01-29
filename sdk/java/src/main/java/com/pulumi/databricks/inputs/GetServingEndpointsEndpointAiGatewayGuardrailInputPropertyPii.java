@@ -4,20 +4,21 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii extends com.pulumi.resources.InvokeArgs {
 
     public static final GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii Empty = new GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii();
 
-    @Import(name="behavior", required=true)
-    private String behavior;
+    @Import(name="behavior")
+    private @Nullable String behavior;
 
-    public String behavior() {
-        return this.behavior;
+    public Optional<String> behavior() {
+        return Optional.ofNullable(this.behavior);
     }
 
     private GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii() {}
@@ -44,15 +45,12 @@ public final class GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii
             $ = new GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii(Objects.requireNonNull(defaults));
         }
 
-        public Builder behavior(String behavior) {
+        public Builder behavior(@Nullable String behavior) {
             $.behavior = behavior;
             return this;
         }
 
         public GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii build() {
-            if ($.behavior == null) {
-                throw new MissingRequiredPropertyException("GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii", "behavior");
-            }
             return $;
         }
     }

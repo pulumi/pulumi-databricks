@@ -111,9 +111,9 @@ export class ModelServing extends pulumi.CustomResource {
      */
     public readonly aiGateway!: pulumi.Output<outputs.ModelServingAiGateway | undefined>;
     /**
-     * The model serving endpoint configuration.
+     * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
      */
-    public readonly config!: pulumi.Output<outputs.ModelServingConfig>;
+    public readonly config!: pulumi.Output<outputs.ModelServingConfig | undefined>;
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
@@ -142,7 +142,7 @@ export class ModelServing extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ModelServingArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ModelServingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ModelServingArgs | ModelServingState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -157,9 +157,6 @@ export class ModelServing extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ModelServingArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'config'");
-            }
             resourceInputs["aiGateway"] = args ? args.aiGateway : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -182,7 +179,7 @@ export interface ModelServingState {
      */
     aiGateway?: pulumi.Input<inputs.ModelServingAiGateway>;
     /**
-     * The model serving endpoint configuration.
+     * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
      */
     config?: pulumi.Input<inputs.ModelServingConfig>;
     /**
@@ -216,9 +213,9 @@ export interface ModelServingArgs {
      */
     aiGateway?: pulumi.Input<inputs.ModelServingAiGateway>;
     /**
-     * The model serving endpoint configuration.
+     * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
      */
-    config: pulumi.Input<inputs.ModelServingConfig>;
+    config?: pulumi.Input<inputs.ModelServingConfig>;
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */

@@ -30,22 +30,10 @@ import * as utilities from "./utilities";
  * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
  * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
  */
-export function getMwsWorkspaces(args?: GetMwsWorkspacesArgs, opts?: pulumi.InvokeOptions): Promise<GetMwsWorkspacesResult> {
-    args = args || {};
+export function getMwsWorkspaces(opts?: pulumi.InvokeOptions): Promise<GetMwsWorkspacesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMwsWorkspaces:getMwsWorkspaces", {
-        "ids": args.ids,
     }, opts);
-}
-
-/**
- * A collection of arguments for invoking getMwsWorkspaces.
- */
-export interface GetMwsWorkspacesArgs {
-    /**
-     * name-to-id map for all of the workspaces in the account
-     */
-    ids?: {[key: string]: string};
 }
 
 /**
@@ -87,20 +75,8 @@ export interface GetMwsWorkspacesResult {
  * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
  * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
  */
-export function getMwsWorkspacesOutput(args?: GetMwsWorkspacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMwsWorkspacesResult> {
-    args = args || {};
+export function getMwsWorkspacesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMwsWorkspacesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMwsWorkspaces:getMwsWorkspaces", {
-        "ids": args.ids,
     }, opts);
-}
-
-/**
- * A collection of arguments for invoking getMwsWorkspaces.
- */
-export interface GetMwsWorkspacesOutputArgs {
-    /**
-     * name-to-id map for all of the workspaces in the account
-     */
-    ids?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

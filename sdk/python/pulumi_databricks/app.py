@@ -23,6 +23,7 @@ class AppArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 no_compute: Optional[pulumi.Input[bool]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]] = None):
         """
         The set of arguments for constructing a App resource.
@@ -34,6 +35,8 @@ class AppArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if no_compute is not None:
+            pulumi.set(__self__, "no_compute", no_compute)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
 
@@ -62,6 +65,15 @@ class AppArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="noCompute")
+    def no_compute(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "no_compute")
+
+    @no_compute.setter
+    def no_compute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_compute", value)
+
+    @property
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]]:
         """
@@ -85,6 +97,7 @@ class _AppState:
                  default_source_code_path: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 no_compute: Optional[pulumi.Input[bool]] = None,
                  pending_deployment: Optional[pulumi.Input['AppPendingDeploymentArgs']] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]] = None,
                  service_principal_client_id: Optional[pulumi.Input[str]] = None,
@@ -125,6 +138,8 @@ class _AppState:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if no_compute is not None:
+            pulumi.set(__self__, "no_compute", no_compute)
         if pending_deployment is not None:
             pulumi.set(__self__, "pending_deployment", pending_deployment)
         if resources is not None:
@@ -236,6 +251,15 @@ class _AppState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="noCompute")
+    def no_compute(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "no_compute")
+
+    @no_compute.setter
+    def no_compute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_compute", value)
+
+    @property
     @pulumi.getter(name="pendingDeployment")
     def pending_deployment(self) -> Optional[pulumi.Input['AppPendingDeploymentArgs']]:
         return pulumi.get(self, "pending_deployment")
@@ -333,6 +357,7 @@ class App(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 no_compute: Optional[pulumi.Input[bool]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
                  __props__=None):
         """
@@ -418,6 +443,7 @@ class App(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 no_compute: Optional[pulumi.Input[bool]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -430,6 +456,7 @@ class App(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            __props__.__dict__["no_compute"] = no_compute
             __props__.__dict__["resources"] = resources
             __props__.__dict__["active_deployment"] = None
             __props__.__dict__["app_status"] = None
@@ -462,6 +489,7 @@ class App(pulumi.CustomResource):
             default_source_code_path: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            no_compute: Optional[pulumi.Input[bool]] = None,
             pending_deployment: Optional[pulumi.Input[Union['AppPendingDeploymentArgs', 'AppPendingDeploymentArgsDict']]] = None,
             resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
             service_principal_client_id: Optional[pulumi.Input[str]] = None,
@@ -503,6 +531,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["default_source_code_path"] = default_source_code_path
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
+        __props__.__dict__["no_compute"] = no_compute
         __props__.__dict__["pending_deployment"] = pending_deployment
         __props__.__dict__["resources"] = resources
         __props__.__dict__["service_principal_client_id"] = service_principal_client_id
@@ -573,6 +602,11 @@ class App(pulumi.CustomResource):
         The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="noCompute")
+    def no_compute(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "no_compute")
 
     @property
     @pulumi.getter(name="pendingDeployment")

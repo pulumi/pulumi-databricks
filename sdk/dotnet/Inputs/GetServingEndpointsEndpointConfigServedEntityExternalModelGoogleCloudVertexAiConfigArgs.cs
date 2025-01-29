@@ -18,11 +18,11 @@ namespace Pulumi.Databricks.Inputs
         [Input("privateKeyPlaintext")]
         public Input<string>? PrivateKeyPlaintext { get; set; }
 
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
 
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         public GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigInputArgs()
         {

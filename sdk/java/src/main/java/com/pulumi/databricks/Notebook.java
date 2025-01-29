@@ -46,24 +46,24 @@ public class Notebook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.contentBase64);
     }
     @Export(name="format", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> format;
+    private Output<String> format;
 
-    public Output<Optional<String>> format() {
-        return Codegen.optional(this.format);
+    public Output<String> format() {
+        return this.format;
     }
     /**
      * One of `SCALA`, `PYTHON`, `SQL`, `R`.
      * 
      */
     @Export(name="language", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> language;
+    private Output<String> language;
 
     /**
      * @return One of `SCALA`, `PYTHON`, `SQL`, `R`.
      * 
      */
-    public Output<Optional<String>> language() {
-        return Codegen.optional(this.language);
+    public Output<String> language() {
+        return this.language;
     }
     @Export(name="md5", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> md5;

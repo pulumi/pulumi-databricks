@@ -90,6 +90,7 @@ export class App extends pulumi.CustomResource {
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly noCompute!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly pendingDeployment!: pulumi.Output<outputs.AppPendingDeployment>;
     /**
      * A list of resources that the app have access to.
@@ -138,6 +139,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["defaultSourceCodePath"] = state ? state.defaultSourceCodePath : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["noCompute"] = state ? state.noCompute : undefined;
             resourceInputs["pendingDeployment"] = state ? state.pendingDeployment : undefined;
             resourceInputs["resources"] = state ? state.resources : undefined;
             resourceInputs["servicePrincipalClientId"] = state ? state.servicePrincipalClientId : undefined;
@@ -150,6 +152,7 @@ export class App extends pulumi.CustomResource {
             const args = argsOrState as AppArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["noCompute"] = args ? args.noCompute : undefined;
             resourceInputs["resources"] = args ? args.resources : undefined;
             resourceInputs["activeDeployment"] = undefined /*out*/;
             resourceInputs["appStatus"] = undefined /*out*/;
@@ -203,6 +206,7 @@ export interface AppState {
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
     name?: pulumi.Input<string>;
+    noCompute?: pulumi.Input<boolean>;
     pendingDeployment?: pulumi.Input<inputs.AppPendingDeployment>;
     /**
      * A list of resources that the app have access to.
@@ -243,6 +247,7 @@ export interface AppArgs {
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
     name?: pulumi.Input<string>;
+    noCompute?: pulumi.Input<boolean>;
     /**
      * A list of resources that the app have access to.
      */

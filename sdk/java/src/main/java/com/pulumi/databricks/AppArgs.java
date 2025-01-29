@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AppResourceArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,6 +48,13 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="noCompute")
+    private @Nullable Output<Boolean> noCompute;
+
+    public Optional<Output<Boolean>> noCompute() {
+        return Optional.ofNullable(this.noCompute);
+    }
+
     /**
      * A list of resources that the app have access to.
      * 
@@ -67,6 +75,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     private AppArgs(AppArgs $) {
         this.description = $.description;
         this.name = $.name;
+        this.noCompute = $.noCompute;
         this.resources = $.resources;
     }
 
@@ -128,6 +137,15 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder noCompute(@Nullable Output<Boolean> noCompute) {
+            $.noCompute = noCompute;
+            return this;
+        }
+
+        public Builder noCompute(Boolean noCompute) {
+            return noCompute(Output.of(noCompute));
         }
 
         /**

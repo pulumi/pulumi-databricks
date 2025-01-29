@@ -462,12 +462,12 @@ class Notebook(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def format(self) -> pulumi.Output[Optional[str]]:
+    def format(self) -> pulumi.Output[str]:
         return pulumi.get(self, "format")
 
     @property
     @pulumi.getter
-    def language(self) -> pulumi.Output[Optional[str]]:
+    def language(self) -> pulumi.Output[str]:
         """
         One of `SCALA`, `PYTHON`, `SQL`, `R`.
         """

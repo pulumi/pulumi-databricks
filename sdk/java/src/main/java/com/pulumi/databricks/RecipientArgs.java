@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.RecipientIpAccessListArgs;
 import com.pulumi.databricks.inputs.RecipientPropertiesKvpairsArgs;
 import com.pulumi.databricks.inputs.RecipientTokenArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -63,6 +64,21 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> dataRecipientGlobalMetastoreId() {
         return Optional.ofNullable(this.dataRecipientGlobalMetastoreId);
+    }
+
+    /**
+     * Expiration timestamp of the token in epoch milliseconds.
+     * 
+     */
+    @Import(name="expirationTime")
+    private @Nullable Output<Integer> expirationTime;
+
+    /**
+     * @return Expiration timestamp of the token in epoch milliseconds.
+     * 
+     */
+    public Optional<Output<Integer>> expirationTime() {
+        return Optional.ofNullable(this.expirationTime);
     }
 
     /**
@@ -161,6 +177,7 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
         this.authenticationType = $.authenticationType;
         this.comment = $.comment;
         this.dataRecipientGlobalMetastoreId = $.dataRecipientGlobalMetastoreId;
+        this.expirationTime = $.expirationTime;
         this.ipAccessList = $.ipAccessList;
         this.name = $.name;
         this.owner = $.owner;
@@ -248,6 +265,27 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataRecipientGlobalMetastoreId(String dataRecipientGlobalMetastoreId) {
             return dataRecipientGlobalMetastoreId(Output.of(dataRecipientGlobalMetastoreId));
+        }
+
+        /**
+         * @param expirationTime Expiration timestamp of the token in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationTime(@Nullable Output<Integer> expirationTime) {
+            $.expirationTime = expirationTime;
+            return this;
+        }
+
+        /**
+         * @param expirationTime Expiration timestamp of the token in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expirationTime(Integer expirationTime) {
+            return expirationTime(Output.of(expirationTime));
         }
 
         /**
