@@ -66,7 +66,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * For GCP (only applicable when purpose is `STORAGE`)
+ * For GCP
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -75,7 +75,7 @@ import * as utilities from "./utilities";
  * const externalGcpSa = new databricks.Credential("external_gcp_sa", {
  *     name: "gcp_sa_credential",
  *     databricksGcpServiceAccount: {},
- *     purpose: "STORAGE",
+ *     purpose: "SERVICE",
  *     comment: "GCP SA credential managed by TF",
  * });
  * const externalCreds = new databricks.Grants("external_creds", {

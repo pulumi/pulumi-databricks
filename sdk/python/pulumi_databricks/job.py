@@ -45,6 +45,7 @@ class JobArgs:
                  notebook_task: Optional[pulumi.Input['JobNotebookTaskArgs']] = None,
                  notification_settings: Optional[pulumi.Input['JobNotificationSettingsArgs']] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]] = None,
+                 performance_target: Optional[pulumi.Input[str]] = None,
                  pipeline_task: Optional[pulumi.Input['JobPipelineTaskArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
                  queue: Optional[pulumi.Input['JobQueueArgs']] = None,
@@ -152,6 +153,8 @@ class JobArgs:
             pulumi.set(__self__, "notification_settings", notification_settings)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if performance_target is not None:
+            pulumi.set(__self__, "performance_target", performance_target)
         if pipeline_task is not None:
             warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
             pulumi.log.warn("""pipeline_task is deprecated: should be used inside a task block and not inside a job block""")
@@ -476,6 +479,15 @@ class JobArgs:
         pulumi.set(self, "parameters", value)
 
     @property
+    @pulumi.getter(name="performanceTarget")
+    def performance_target(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "performance_target")
+
+    @performance_target.setter
+    def performance_target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_target", value)
+
+    @property
     @pulumi.getter(name="pipelineTask")
     @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def pipeline_task(self) -> Optional[pulumi.Input['JobPipelineTaskArgs']]:
@@ -669,6 +681,7 @@ class _JobState:
                  notebook_task: Optional[pulumi.Input['JobNotebookTaskArgs']] = None,
                  notification_settings: Optional[pulumi.Input['JobNotificationSettingsArgs']] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]] = None,
+                 performance_target: Optional[pulumi.Input[str]] = None,
                  pipeline_task: Optional[pulumi.Input['JobPipelineTaskArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
                  queue: Optional[pulumi.Input['JobQueueArgs']] = None,
@@ -778,6 +791,8 @@ class _JobState:
             pulumi.set(__self__, "notification_settings", notification_settings)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if performance_target is not None:
+            pulumi.set(__self__, "performance_target", performance_target)
         if pipeline_task is not None:
             warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
             pulumi.log.warn("""pipeline_task is deprecated: should be used inside a task block and not inside a job block""")
@@ -1104,6 +1119,15 @@ class _JobState:
         pulumi.set(self, "parameters", value)
 
     @property
+    @pulumi.getter(name="performanceTarget")
+    def performance_target(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "performance_target")
+
+    @performance_target.setter
+    def performance_target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_target", value)
+
+    @property
     @pulumi.getter(name="pipelineTask")
     @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def pipeline_task(self) -> Optional[pulumi.Input['JobPipelineTaskArgs']]:
@@ -1311,6 +1335,7 @@ class Job(pulumi.CustomResource):
                  notebook_task: Optional[pulumi.Input[Union['JobNotebookTaskArgs', 'JobNotebookTaskArgsDict']]] = None,
                  notification_settings: Optional[pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]]] = None,
+                 performance_target: Optional[pulumi.Input[str]] = None,
                  pipeline_task: Optional[pulumi.Input[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict']]] = None,
                  python_wheel_task: Optional[pulumi.Input[Union['JobPythonWheelTaskArgs', 'JobPythonWheelTaskArgsDict']]] = None,
                  queue: Optional[pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']]] = None,
@@ -1559,6 +1584,7 @@ class Job(pulumi.CustomResource):
                  notebook_task: Optional[pulumi.Input[Union['JobNotebookTaskArgs', 'JobNotebookTaskArgsDict']]] = None,
                  notification_settings: Optional[pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]]] = None,
+                 performance_target: Optional[pulumi.Input[str]] = None,
                  pipeline_task: Optional[pulumi.Input[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict']]] = None,
                  python_wheel_task: Optional[pulumi.Input[Union['JobPythonWheelTaskArgs', 'JobPythonWheelTaskArgsDict']]] = None,
                  queue: Optional[pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']]] = None,
@@ -1607,6 +1633,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["notebook_task"] = notebook_task
             __props__.__dict__["notification_settings"] = notification_settings
             __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["performance_target"] = performance_target
             __props__.__dict__["pipeline_task"] = pipeline_task
             __props__.__dict__["python_wheel_task"] = python_wheel_task
             __props__.__dict__["queue"] = queue
@@ -1657,6 +1684,7 @@ class Job(pulumi.CustomResource):
             notebook_task: Optional[pulumi.Input[Union['JobNotebookTaskArgs', 'JobNotebookTaskArgsDict']]] = None,
             notification_settings: Optional[pulumi.Input[Union['JobNotificationSettingsArgs', 'JobNotificationSettingsArgsDict']]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]]] = None,
+            performance_target: Optional[pulumi.Input[str]] = None,
             pipeline_task: Optional[pulumi.Input[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict']]] = None,
             python_wheel_task: Optional[pulumi.Input[Union['JobPythonWheelTaskArgs', 'JobPythonWheelTaskArgsDict']]] = None,
             queue: Optional[pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']]] = None,
@@ -1736,6 +1764,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["notebook_task"] = notebook_task
         __props__.__dict__["notification_settings"] = notification_settings
         __props__.__dict__["parameters"] = parameters
+        __props__.__dict__["performance_target"] = performance_target
         __props__.__dict__["pipeline_task"] = pipeline_task
         __props__.__dict__["python_wheel_task"] = python_wheel_task
         __props__.__dict__["queue"] = queue
@@ -1928,6 +1957,11 @@ class Job(pulumi.CustomResource):
         Specifices job parameter for the job. See parameter Configuration Block
         """
         return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter(name="performanceTarget")
+    def performance_target(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "performance_target")
 
     @property
     @pulumi.getter(name="pipelineTask")

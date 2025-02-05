@@ -76,10 +76,6 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? ProviderName;
         public readonly Outputs.GetCatalogCatalogInfoProvisioningInfoResult? ProvisioningInfo;
         /// <summary>
-        /// Kind of catalog securable.
-        /// </summary>
-        public readonly string? SecurableKind;
-        /// <summary>
         /// Securable type.
         /// </summary>
         public readonly string? SecurableType;
@@ -140,8 +136,6 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetCatalogCatalogInfoProvisioningInfoResult? provisioningInfo,
 
-            string? securableKind,
-
             string? securableType,
 
             string? shareName,
@@ -171,7 +165,6 @@ namespace Pulumi.Databricks.Outputs
             Properties = properties;
             ProviderName = providerName;
             ProvisioningInfo = provisioningInfo;
-            SecurableKind = securableKind;
             SecurableType = securableType;
             ShareName = shareName;
             StorageLocation = storageLocation;

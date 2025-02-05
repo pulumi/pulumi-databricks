@@ -260,21 +260,6 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Kind of catalog securable.
-     * 
-     */
-    @Import(name="securableKind")
-    private @Nullable Output<String> securableKind;
-
-    /**
-     * @return Kind of catalog securable.
-     * 
-     */
-    public Optional<Output<String>> securableKind() {
-        return Optional.ofNullable(this.securableKind);
-    }
-
-    /**
      * Securable type.
      * 
      */
@@ -384,7 +369,6 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
         this.properties = $.properties;
         this.providerName = $.providerName;
         this.provisioningInfo = $.provisioningInfo;
-        this.securableKind = $.securableKind;
         this.securableType = $.securableType;
         this.shareName = $.shareName;
         this.storageLocation = $.storageLocation;
@@ -742,27 +726,6 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
 
         public Builder provisioningInfo(GetCatalogCatalogInfoProvisioningInfoArgs provisioningInfo) {
             return provisioningInfo(Output.of(provisioningInfo));
-        }
-
-        /**
-         * @param securableKind Kind of catalog securable.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder securableKind(@Nullable Output<String> securableKind) {
-            $.securableKind = securableKind;
-            return this;
-        }
-
-        /**
-         * @param securableKind Kind of catalog securable.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder securableKind(String securableKind) {
-            return securableKind(Output.of(securableKind));
         }
 
         /**

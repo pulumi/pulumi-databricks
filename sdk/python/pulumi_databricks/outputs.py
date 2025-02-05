@@ -17,6 +17,8 @@ from . import outputs
 
 __all__ = [
     'AccessControlRuleSetGrantRule',
+    'AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy',
+    'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains',
     'AlertCondition',
     'AlertConditionOperand',
     'AlertConditionOperandColumn',
@@ -439,6 +441,7 @@ __all__ = [
     'PipelineLibraryNotebook',
     'PipelineNotification',
     'PipelineRestartWindow',
+    'PipelineRunAs',
     'PipelineTrigger',
     'PipelineTriggerCron',
     'PipelineTriggerManual',
@@ -948,6 +951,76 @@ class AccessControlRuleSetGrantRule(dict):
         * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `ServicePrincipal` resource).
         """
         return pulumi.get(self, "principals")
+
+
+@pulumi.output_type
+class AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessPolicyType":
+            suggest = "access_policy_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_policy_type: str):
+        """
+        :param str access_policy_type: Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
+        """
+        pulumi.set(__self__, "access_policy_type", access_policy_type)
+
+    @property
+    @pulumi.getter(name="accessPolicyType")
+    def access_policy_type(self) -> str:
+        """
+        Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
+        """
+        return pulumi.get(self, "access_policy_type")
+
+
+@pulumi.output_type
+class AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approvedDomains":
+            suggest = "approved_domains"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approved_domains: Sequence[str]):
+        """
+        :param Sequence[str] approved_domains: the list of approved domains. To allow all subdomains for a given domain, use a wildcard symbol (`*`) before the domain name, i.e., `*.databricks.com` will allow to embed into any site under the `databricks.com`.
+        """
+        pulumi.set(__self__, "approved_domains", approved_domains)
+
+    @property
+    @pulumi.getter(name="approvedDomains")
+    def approved_domains(self) -> Sequence[str]:
+        """
+        the list of approved domains. To allow all subdomains for a given domain, use a wildcard symbol (`*`) before the domain name, i.e., `*.databricks.com` will allow to embed into any site under the `databricks.com`.
+        """
+        return pulumi.get(self, "approved_domains")
 
 
 @pulumi.output_type
@@ -4018,7 +4091,7 @@ class CredentialAzureServicePrincipal(dict):
         :param str application_id: The application ID of the application registration within the referenced AAD tenant
         :param str client_secret: The client secret generated for the above app ID in AAD. **This field is redacted on output**
                
-               `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+               `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         :param str directory_id: The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
         """
         pulumi.set(__self__, "application_id", application_id)
@@ -4039,7 +4112,7 @@ class CredentialAzureServicePrincipal(dict):
         """
         The client secret generated for the above app ID in AAD. **This field is redacted on output**
 
-        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         """
         return pulumi.get(self, "client_secret")
 
@@ -23531,6 +23604,46 @@ class PipelineRestartWindow(dict):
 
 
 @pulumi.output_type
+class PipelineRunAs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "servicePrincipalName":
+            suggest = "service_principal_name"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineRunAs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineRunAs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineRunAs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_principal_name: Optional[str] = None,
+                 user_name: Optional[str] = None):
+        if service_principal_name is not None:
+            pulumi.set(__self__, "service_principal_name", service_principal_name)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="servicePrincipalName")
+    def service_principal_name(self) -> Optional[str]:
+        return pulumi.get(self, "service_principal_name")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[str]:
+        return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
 class PipelineTrigger(dict):
     def __init__(__self__, *,
                  cron: Optional['outputs.PipelineTriggerCron'] = None,
@@ -28645,7 +28758,6 @@ class GetCatalogCatalogInfoResult(dict):
                  properties: Optional[Mapping[str, str]] = None,
                  provider_name: Optional[str] = None,
                  provisioning_info: Optional['outputs.GetCatalogCatalogInfoProvisioningInfoResult'] = None,
-                 securable_kind: Optional[str] = None,
                  securable_type: Optional[str] = None,
                  share_name: Optional[str] = None,
                  storage_location: Optional[str] = None,
@@ -28668,7 +28780,6 @@ class GetCatalogCatalogInfoResult(dict):
         :param str owner: Current owner of the catalog
         :param Mapping[str, str] properties: A map of key-value properties attached to the securable.
         :param str provider_name: The name of delta sharing provider.
-        :param str securable_kind: Kind of catalog securable.
         :param str securable_type: Securable type.
         :param str share_name: The name of the share under the share provider.
         :param str storage_location: Storage Location URL (full path) for managed tables within catalog.
@@ -28710,8 +28821,6 @@ class GetCatalogCatalogInfoResult(dict):
             pulumi.set(__self__, "provider_name", provider_name)
         if provisioning_info is not None:
             pulumi.set(__self__, "provisioning_info", provisioning_info)
-        if securable_kind is not None:
-            pulumi.set(__self__, "securable_kind", securable_kind)
         if securable_type is not None:
             pulumi.set(__self__, "securable_type", securable_type)
         if share_name is not None:
@@ -28854,14 +28963,6 @@ class GetCatalogCatalogInfoResult(dict):
     @pulumi.getter(name="provisioningInfo")
     def provisioning_info(self) -> Optional['outputs.GetCatalogCatalogInfoProvisioningInfoResult']:
         return pulumi.get(self, "provisioning_info")
-
-    @property
-    @pulumi.getter(name="securableKind")
-    def securable_kind(self) -> Optional[str]:
-        """
-        Kind of catalog securable.
-        """
-        return pulumi.get(self, "securable_kind")
 
     @property
     @pulumi.getter(name="securableType")

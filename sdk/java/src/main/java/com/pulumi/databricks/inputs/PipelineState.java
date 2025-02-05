@@ -14,6 +14,7 @@ import com.pulumi.databricks.inputs.PipelineLatestUpdateArgs;
 import com.pulumi.databricks.inputs.PipelineLibraryArgs;
 import com.pulumi.databricks.inputs.PipelineNotificationArgs;
 import com.pulumi.databricks.inputs.PipelineRestartWindowArgs;
+import com.pulumi.databricks.inputs.PipelineRunAsArgs;
 import com.pulumi.databricks.inputs.PipelineTriggerArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -324,6 +325,13 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.restartWindow);
     }
 
+    @Import(name="runAs")
+    private @Nullable Output<PipelineRunAsArgs> runAs;
+
+    public Optional<Output<PipelineRunAsArgs>> runAs() {
+        return Optional.ofNullable(this.runAs);
+    }
+
     @Import(name="runAsUserName")
     private @Nullable Output<String> runAsUserName;
 
@@ -448,6 +456,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         this.notifications = $.notifications;
         this.photon = $.photon;
         this.restartWindow = $.restartWindow;
+        this.runAs = $.runAs;
         this.runAsUserName = $.runAsUserName;
         this.schema = $.schema;
         this.serverless = $.serverless;
@@ -907,6 +916,15 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
         public Builder restartWindow(PipelineRestartWindowArgs restartWindow) {
             return restartWindow(Output.of(restartWindow));
+        }
+
+        public Builder runAs(@Nullable Output<PipelineRunAsArgs> runAs) {
+            $.runAs = runAs;
+            return this;
+        }
+
+        public Builder runAs(PipelineRunAsArgs runAs) {
+            return runAs(Output.of(runAs));
         }
 
         public Builder runAsUserName(@Nullable Output<String> runAsUserName) {

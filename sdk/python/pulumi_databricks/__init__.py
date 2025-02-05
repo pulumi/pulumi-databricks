@@ -6,6 +6,8 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .access_control_rule_set import *
+from .aibi_dashboard_embedding_access_policy_setting import *
+from .aibi_dashboard_embedding_approved_domains_setting import *
 from .alert import *
 from .app import *
 from .artifact_allowlist import *
@@ -186,6 +188,22 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/accessControlRuleSet:AccessControlRuleSet": "AccessControlRuleSet"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/aibiDashboardEmbeddingAccessPolicySetting",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting": "AibiDashboardEmbeddingAccessPolicySetting"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/aibiDashboardEmbeddingApprovedDomainsSetting",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting": "AibiDashboardEmbeddingApprovedDomainsSetting"
   }
  },
  {

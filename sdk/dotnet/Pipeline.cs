@@ -240,6 +240,9 @@ namespace Pulumi.Databricks
         [Output("restartWindow")]
         public Output<Outputs.PipelineRestartWindow?> RestartWindow { get; private set; } = null!;
 
+        [Output("runAs")]
+        public Output<Outputs.PipelineRunAs> RunAs { get; private set; } = null!;
+
         [Output("runAsUserName")]
         public Output<string> RunAsUserName { get; private set; } = null!;
 
@@ -473,8 +476,8 @@ namespace Pulumi.Databricks
         [Input("restartWindow")]
         public Input<Inputs.PipelineRestartWindowArgs>? RestartWindow { get; set; }
 
-        [Input("runAsUserName")]
-        public Input<string>? RunAsUserName { get; set; }
+        [Input("runAs")]
+        public Input<Inputs.PipelineRunAsArgs>? RunAs { get; set; }
 
         /// <summary>
         /// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
@@ -667,6 +670,9 @@ namespace Pulumi.Databricks
 
         [Input("restartWindow")]
         public Input<Inputs.PipelineRestartWindowGetArgs>? RestartWindow { get; set; }
+
+        [Input("runAs")]
+        public Input<Inputs.PipelineRunAsGetArgs>? RunAs { get; set; }
 
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }

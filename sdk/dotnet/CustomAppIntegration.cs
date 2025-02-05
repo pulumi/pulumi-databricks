@@ -116,6 +116,9 @@ namespace Pulumi.Databricks
         [Output("tokenAccessPolicy")]
         public Output<Outputs.CustomAppIntegrationTokenAccessPolicy?> TokenAccessPolicy { get; private set; } = null!;
 
+        [Output("userAuthorizedScopes")]
+        public Output<ImmutableArray<string>> UserAuthorizedScopes { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a CustomAppIntegration resource with the given unique name, arguments, and options.
@@ -242,6 +245,14 @@ namespace Pulumi.Databricks
         [Input("tokenAccessPolicy")]
         public Input<Inputs.CustomAppIntegrationTokenAccessPolicyArgs>? TokenAccessPolicy { get; set; }
 
+        [Input("userAuthorizedScopes")]
+        private InputList<string>? _userAuthorizedScopes;
+        public InputList<string> UserAuthorizedScopes
+        {
+            get => _userAuthorizedScopes ?? (_userAuthorizedScopes = new InputList<string>());
+            set => _userAuthorizedScopes = value;
+        }
+
         public CustomAppIntegrationArgs()
         {
         }
@@ -325,6 +336,14 @@ namespace Pulumi.Databricks
 
         [Input("tokenAccessPolicy")]
         public Input<Inputs.CustomAppIntegrationTokenAccessPolicyGetArgs>? TokenAccessPolicy { get; set; }
+
+        [Input("userAuthorizedScopes")]
+        private InputList<string>? _userAuthorizedScopes;
+        public InputList<string> UserAuthorizedScopes
+        {
+            get => _userAuthorizedScopes ?? (_userAuthorizedScopes = new InputList<string>());
+            set => _userAuthorizedScopes = value;
+        }
 
         public CustomAppIntegrationState()
         {

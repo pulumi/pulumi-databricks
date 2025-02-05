@@ -94,11 +94,6 @@ public final class GetCatalogCatalogInfo {
     private @Nullable String providerName;
     private @Nullable GetCatalogCatalogInfoProvisioningInfo provisioningInfo;
     /**
-     * @return Kind of catalog securable.
-     * 
-     */
-    private @Nullable String securableKind;
-    /**
      * @return Securable type.
      * 
      */
@@ -242,13 +237,6 @@ public final class GetCatalogCatalogInfo {
         return Optional.ofNullable(this.provisioningInfo);
     }
     /**
-     * @return Kind of catalog securable.
-     * 
-     */
-    public Optional<String> securableKind() {
-        return Optional.ofNullable(this.securableKind);
-    }
-    /**
      * @return Securable type.
      * 
      */
@@ -317,7 +305,6 @@ public final class GetCatalogCatalogInfo {
         private @Nullable Map<String,String> properties;
         private @Nullable String providerName;
         private @Nullable GetCatalogCatalogInfoProvisioningInfo provisioningInfo;
-        private @Nullable String securableKind;
         private @Nullable String securableType;
         private @Nullable String shareName;
         private @Nullable String storageLocation;
@@ -344,7 +331,6 @@ public final class GetCatalogCatalogInfo {
     	      this.properties = defaults.properties;
     	      this.providerName = defaults.providerName;
     	      this.provisioningInfo = defaults.provisioningInfo;
-    	      this.securableKind = defaults.securableKind;
     	      this.securableType = defaults.securableType;
     	      this.shareName = defaults.shareName;
     	      this.storageLocation = defaults.storageLocation;
@@ -456,12 +442,6 @@ public final class GetCatalogCatalogInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder securableKind(@Nullable String securableKind) {
-
-            this.securableKind = securableKind;
-            return this;
-        }
-        @CustomType.Setter
         public Builder securableType(@Nullable String securableType) {
 
             this.securableType = securableType;
@@ -516,7 +496,6 @@ public final class GetCatalogCatalogInfo {
             _resultValue.properties = properties;
             _resultValue.providerName = providerName;
             _resultValue.provisioningInfo = provisioningInfo;
-            _resultValue.securableKind = securableKind;
             _resultValue.securableType = securableType;
             _resultValue.shareName = shareName;
             _resultValue.storageLocation = storageLocation;

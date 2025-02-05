@@ -14,6 +14,8 @@
     },
     "files": [
         "accessControlRuleSet.ts",
+        "aibiDashboardEmbeddingAccessPolicySetting.ts",
+        "aibiDashboardEmbeddingApprovedDomainsSetting.ts",
         "alert.ts",
         "app.ts",
         "artifactAllowlist.ts",

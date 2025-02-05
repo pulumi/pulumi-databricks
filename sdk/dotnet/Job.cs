@@ -240,6 +240,9 @@ namespace Pulumi.Databricks
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.JobParameter>> Parameters { get; private set; } = null!;
 
+        [Output("performanceTarget")]
+        public Output<string?> PerformanceTarget { get; private set; } = null!;
+
         [Output("pipelineTask")]
         public Output<Outputs.JobPipelineTask?> PipelineTask { get; private set; } = null!;
 
@@ -506,6 +509,9 @@ namespace Pulumi.Databricks
             set => _parameters = value;
         }
 
+        [Input("performanceTarget")]
+        public Input<string>? PerformanceTarget { get; set; }
+
         [Input("pipelineTask")]
         public Input<Inputs.JobPipelineTaskArgs>? PipelineTask { get; set; }
 
@@ -739,6 +745,9 @@ namespace Pulumi.Databricks
             get => _parameters ?? (_parameters = new InputList<Inputs.JobParameterGetArgs>());
             set => _parameters = value;
         }
+
+        [Input("performanceTarget")]
+        public Input<string>? PerformanceTarget { get; set; }
 
         [Input("pipelineTask")]
         public Input<Inputs.JobPipelineTaskGetArgs>? PipelineTask { get; set; }

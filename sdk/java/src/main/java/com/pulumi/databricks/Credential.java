@@ -138,7 +138,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * For GCP (only applicable when purpose is `STORAGE`)
+ * For GCP
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -170,7 +170,7 @@ import javax.annotation.Nullable;
  *         var externalGcpSa = new Credential("externalGcpSa", CredentialArgs.builder()
  *             .name("gcp_sa_credential")
  *             .databricksGcpServiceAccount()
- *             .purpose("STORAGE")
+ *             .purpose("SERVICE")
  *             .comment("GCP SA credential managed by TF")
  *             .build());
  * 

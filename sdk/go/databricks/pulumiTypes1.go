@@ -13,6 +13,338 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn struct {
+	EmbeddingModelEndpointName *string `pulumi:"embeddingModelEndpointName"`
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	Name *string `pulumi:"name"`
+}
+
+// VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput is an input type that accepts VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs and VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput values.
+// You can construct a concrete instance of `VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput` via:
+//
+//	VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs{...}
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput
+	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutputWithContext(context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput
+}
+
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs struct {
+	EmbeddingModelEndpointName pulumi.StringPtrInput `pulumi:"embeddingModelEndpointName"`
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn)(nil)).Elem()
+}
+
+func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput {
+	return i.ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput)
+}
+
+// VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput is an input type that accepts VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray and VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput values.
+// You can construct a concrete instance of `VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput` via:
+//
+//	VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray{ VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs{...} }
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput
+	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutputWithContext(context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput
+}
+
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray []VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput
+
+func (VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn)(nil)).Elem()
+}
+
+func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput {
+	return i.ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput)
+}
+
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn)(nil)).Elem()
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput {
+	return o
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput {
+	return o
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) EmbeddingModelEndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn) *string {
+		return v.EmbeddingModelEndpointName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn)(nil)).Elem()
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput {
+	return o
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput {
+	return o
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput) Index(i pulumi.IntInput) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+		return vs[0].([]VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn)[vs[1].(int)]
+	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput)
+}
+
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn struct {
+	EmbeddingDimension *int `pulumi:"embeddingDimension"`
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	Name *string `pulumi:"name"`
+}
+
+// VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput is an input type that accepts VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs and VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput values.
+// You can construct a concrete instance of `VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput` via:
+//
+//	VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs{...}
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput
+	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutputWithContext(context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput
+}
+
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs struct {
+	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn)(nil)).Elem()
+}
+
+func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput {
+	return i.ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput)
+}
+
+// VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput is an input type that accepts VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray and VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput values.
+// You can construct a concrete instance of `VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput` via:
+//
+//	VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray{ VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs{...} }
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput
+	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutputWithContext(context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput
+}
+
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput
+
+func (VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn)(nil)).Elem()
+}
+
+func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
+	return i.ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput)
+}
+
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn)(nil)).Elem()
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput {
+	return o
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput {
+	return o
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) EmbeddingDimension() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
+}
+
+// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn)(nil)).Elem()
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
+	return o
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
+	return o
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput) Index(i pulumi.IntInput) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+		return vs[0].([]VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn)[vs[1].(int)]
+	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput)
+}
+
+type VectorSearchIndexStatus struct {
+	// Index API Url to be used to perform operations on the index
+	IndexUrl *string `pulumi:"indexUrl"`
+	// Number of rows indexed
+	IndexedRowCount *int `pulumi:"indexedRowCount"`
+	// Message associated with the index status
+	Message *string `pulumi:"message"`
+	// Whether the index is ready for search
+	Ready *bool `pulumi:"ready"`
+}
+
+// VectorSearchIndexStatusInput is an input type that accepts VectorSearchIndexStatusArgs and VectorSearchIndexStatusOutput values.
+// You can construct a concrete instance of `VectorSearchIndexStatusInput` via:
+//
+//	VectorSearchIndexStatusArgs{...}
+type VectorSearchIndexStatusInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexStatusOutput() VectorSearchIndexStatusOutput
+	ToVectorSearchIndexStatusOutputWithContext(context.Context) VectorSearchIndexStatusOutput
+}
+
+type VectorSearchIndexStatusArgs struct {
+	// Index API Url to be used to perform operations on the index
+	IndexUrl pulumi.StringPtrInput `pulumi:"indexUrl"`
+	// Number of rows indexed
+	IndexedRowCount pulumi.IntPtrInput `pulumi:"indexedRowCount"`
+	// Message associated with the index status
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Whether the index is ready for search
+	Ready pulumi.BoolPtrInput `pulumi:"ready"`
+}
+
+func (VectorSearchIndexStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexStatus)(nil)).Elem()
+}
+
+func (i VectorSearchIndexStatusArgs) ToVectorSearchIndexStatusOutput() VectorSearchIndexStatusOutput {
+	return i.ToVectorSearchIndexStatusOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexStatusArgs) ToVectorSearchIndexStatusOutputWithContext(ctx context.Context) VectorSearchIndexStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexStatusOutput)
+}
+
+// VectorSearchIndexStatusArrayInput is an input type that accepts VectorSearchIndexStatusArray and VectorSearchIndexStatusArrayOutput values.
+// You can construct a concrete instance of `VectorSearchIndexStatusArrayInput` via:
+//
+//	VectorSearchIndexStatusArray{ VectorSearchIndexStatusArgs{...} }
+type VectorSearchIndexStatusArrayInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexStatusArrayOutput() VectorSearchIndexStatusArrayOutput
+	ToVectorSearchIndexStatusArrayOutputWithContext(context.Context) VectorSearchIndexStatusArrayOutput
+}
+
+type VectorSearchIndexStatusArray []VectorSearchIndexStatusInput
+
+func (VectorSearchIndexStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VectorSearchIndexStatus)(nil)).Elem()
+}
+
+func (i VectorSearchIndexStatusArray) ToVectorSearchIndexStatusArrayOutput() VectorSearchIndexStatusArrayOutput {
+	return i.ToVectorSearchIndexStatusArrayOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexStatusArray) ToVectorSearchIndexStatusArrayOutputWithContext(ctx context.Context) VectorSearchIndexStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexStatusArrayOutput)
+}
+
+type VectorSearchIndexStatusOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexStatus)(nil)).Elem()
+}
+
+func (o VectorSearchIndexStatusOutput) ToVectorSearchIndexStatusOutput() VectorSearchIndexStatusOutput {
+	return o
+}
+
+func (o VectorSearchIndexStatusOutput) ToVectorSearchIndexStatusOutputWithContext(ctx context.Context) VectorSearchIndexStatusOutput {
+	return o
+}
+
+// Index API Url to be used to perform operations on the index
+func (o VectorSearchIndexStatusOutput) IndexUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexStatus) *string { return v.IndexUrl }).(pulumi.StringPtrOutput)
+}
+
+// Number of rows indexed
+func (o VectorSearchIndexStatusOutput) IndexedRowCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexStatus) *int { return v.IndexedRowCount }).(pulumi.IntPtrOutput)
+}
+
+// Message associated with the index status
+func (o VectorSearchIndexStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Whether the index is ready for search
+func (o VectorSearchIndexStatusOutput) Ready() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexStatus) *bool { return v.Ready }).(pulumi.BoolPtrOutput)
+}
+
+type VectorSearchIndexStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VectorSearchIndexStatus)(nil)).Elem()
+}
+
+func (o VectorSearchIndexStatusArrayOutput) ToVectorSearchIndexStatusArrayOutput() VectorSearchIndexStatusArrayOutput {
+	return o
+}
+
+func (o VectorSearchIndexStatusArrayOutput) ToVectorSearchIndexStatusArrayOutputWithContext(ctx context.Context) VectorSearchIndexStatusArrayOutput {
+	return o
+}
+
+func (o VectorSearchIndexStatusArrayOutput) Index(i pulumi.IntInput) VectorSearchIndexStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VectorSearchIndexStatus {
+		return vs[0].([]VectorSearchIndexStatus)[vs[1].(int)]
+	}).(VectorSearchIndexStatusOutput)
+}
+
 type GetAppApp struct {
 	ActiveDeployment GetAppAppActiveDeployment `pulumi:"activeDeployment"`
 	// attribute
@@ -3109,8 +3441,6 @@ type GetCatalogCatalogInfo struct {
 	// The name of delta sharing provider.
 	ProviderName     *string                                `pulumi:"providerName"`
 	ProvisioningInfo *GetCatalogCatalogInfoProvisioningInfo `pulumi:"provisioningInfo"`
-	// Kind of catalog securable.
-	SecurableKind *string `pulumi:"securableKind"`
 	// Securable type.
 	SecurableType *string `pulumi:"securableType"`
 	// The name of the share under the share provider.
@@ -3169,8 +3499,6 @@ type GetCatalogCatalogInfoArgs struct {
 	// The name of delta sharing provider.
 	ProviderName     pulumi.StringPtrInput                         `pulumi:"providerName"`
 	ProvisioningInfo GetCatalogCatalogInfoProvisioningInfoPtrInput `pulumi:"provisioningInfo"`
-	// Kind of catalog securable.
-	SecurableKind pulumi.StringPtrInput `pulumi:"securableKind"`
 	// Securable type.
 	SecurableType pulumi.StringPtrInput `pulumi:"securableType"`
 	// The name of the share under the share provider.
@@ -3345,11 +3673,6 @@ func (o GetCatalogCatalogInfoOutput) ProviderName() pulumi.StringPtrOutput {
 
 func (o GetCatalogCatalogInfoOutput) ProvisioningInfo() GetCatalogCatalogInfoProvisioningInfoPtrOutput {
 	return o.ApplyT(func(v GetCatalogCatalogInfo) *GetCatalogCatalogInfoProvisioningInfo { return v.ProvisioningInfo }).(GetCatalogCatalogInfoProvisioningInfoPtrOutput)
-}
-
-// Kind of catalog securable.
-func (o GetCatalogCatalogInfoOutput) SecurableKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetCatalogCatalogInfo) *string { return v.SecurableKind }).(pulumi.StringPtrOutput)
 }
 
 // Securable type.
@@ -3572,16 +3895,6 @@ func (o GetCatalogCatalogInfoPtrOutput) ProvisioningInfo() GetCatalogCatalogInfo
 		}
 		return v.ProvisioningInfo
 	}).(GetCatalogCatalogInfoProvisioningInfoPtrOutput)
-}
-
-// Kind of catalog securable.
-func (o GetCatalogCatalogInfoPtrOutput) SecurableKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetCatalogCatalogInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecurableKind
-	}).(pulumi.StringPtrOutput)
 }
 
 // Securable type.
@@ -62691,6 +63004,12 @@ func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKm
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexStatusInput)(nil)).Elem(), VectorSearchIndexStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexStatusArrayInput)(nil)).Elem(), VectorSearchIndexStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppAppInput)(nil)).Elem(), GetAppAppArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppAppActiveDeploymentInput)(nil)).Elem(), GetAppAppActiveDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppAppActiveDeploymentDeploymentArtifactsInput)(nil)).Elem(), GetAppAppActiveDeploymentDeploymentArtifactsArgs{})
@@ -63444,6 +63763,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexStatusOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetAppAppOutput{})
 	pulumi.RegisterOutputType(GetAppAppActiveDeploymentOutput{})
 	pulumi.RegisterOutputType(GetAppAppActiveDeploymentDeploymentArtifactsOutput{})

@@ -10,6 +10,16 @@ export type AccessControlRuleSet = import("./accessControlRuleSet").AccessContro
 export const AccessControlRuleSet: typeof import("./accessControlRuleSet").AccessControlRuleSet = null as any;
 utilities.lazyLoad(exports, ["AccessControlRuleSet"], () => require("./accessControlRuleSet"));
 
+export { AibiDashboardEmbeddingAccessPolicySettingArgs, AibiDashboardEmbeddingAccessPolicySettingState } from "./aibiDashboardEmbeddingAccessPolicySetting";
+export type AibiDashboardEmbeddingAccessPolicySetting = import("./aibiDashboardEmbeddingAccessPolicySetting").AibiDashboardEmbeddingAccessPolicySetting;
+export const AibiDashboardEmbeddingAccessPolicySetting: typeof import("./aibiDashboardEmbeddingAccessPolicySetting").AibiDashboardEmbeddingAccessPolicySetting = null as any;
+utilities.lazyLoad(exports, ["AibiDashboardEmbeddingAccessPolicySetting"], () => require("./aibiDashboardEmbeddingAccessPolicySetting"));
+
+export { AibiDashboardEmbeddingApprovedDomainsSettingArgs, AibiDashboardEmbeddingApprovedDomainsSettingState } from "./aibiDashboardEmbeddingApprovedDomainsSetting";
+export type AibiDashboardEmbeddingApprovedDomainsSetting = import("./aibiDashboardEmbeddingApprovedDomainsSetting").AibiDashboardEmbeddingApprovedDomainsSetting;
+export const AibiDashboardEmbeddingApprovedDomainsSetting: typeof import("./aibiDashboardEmbeddingApprovedDomainsSetting").AibiDashboardEmbeddingApprovedDomainsSetting = null as any;
+utilities.lazyLoad(exports, ["AibiDashboardEmbeddingApprovedDomainsSetting"], () => require("./aibiDashboardEmbeddingApprovedDomainsSetting"));
+
 export { AlertArgs, AlertState } from "./alert";
 export type Alert = import("./alert").Alert;
 export const Alert: typeof import("./alert").Alert = null as any;
@@ -831,6 +841,10 @@ const _module = {
         switch (type) {
             case "databricks:index/accessControlRuleSet:AccessControlRuleSet":
                 return new AccessControlRuleSet(name, <any>undefined, { urn })
+            case "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting":
+                return new AibiDashboardEmbeddingAccessPolicySetting(name, <any>undefined, { urn })
+            case "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting":
+                return new AibiDashboardEmbeddingApprovedDomainsSetting(name, <any>undefined, { urn })
             case "databricks:index/alert:Alert":
                 return new Alert(name, <any>undefined, { urn })
             case "databricks:index/app:App":
@@ -1035,6 +1049,8 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("databricks", "index/accessControlRuleSet", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingAccessPolicySetting", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingApprovedDomainsSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/alert", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/app", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/artifactAllowlist", _module)

@@ -159,7 +159,8 @@ type Job struct {
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobNotificationSettingsPtrOutput `pulumi:"notificationSettings"`
 	// Specifices job parameter for the job. See parameter Configuration Block
-	Parameters JobParameterArrayOutput `pulumi:"parameters"`
+	Parameters        JobParameterArrayOutput `pulumi:"parameters"`
+	PerformanceTarget pulumi.StringPtrOutput  `pulumi:"performanceTarget"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask JobPipelineTaskPtrOutput `pulumi:"pipelineTask"`
 	// Deprecated: should be used inside a task block and not inside a job block
@@ -272,7 +273,8 @@ type jobState struct {
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
 	// Specifices job parameter for the job. See parameter Configuration Block
-	Parameters []JobParameter `pulumi:"parameters"`
+	Parameters        []JobParameter `pulumi:"parameters"`
+	PerformanceTarget *string        `pulumi:"performanceTarget"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask *JobPipelineTask `pulumi:"pipelineTask"`
 	// Deprecated: should be used inside a task block and not inside a job block
@@ -356,7 +358,8 @@ type JobState struct {
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobNotificationSettingsPtrInput
 	// Specifices job parameter for the job. See parameter Configuration Block
-	Parameters JobParameterArrayInput
+	Parameters        JobParameterArrayInput
+	PerformanceTarget pulumi.StringPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask JobPipelineTaskPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
@@ -444,7 +447,8 @@ type jobArgs struct {
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings *JobNotificationSettings `pulumi:"notificationSettings"`
 	// Specifices job parameter for the job. See parameter Configuration Block
-	Parameters []JobParameter `pulumi:"parameters"`
+	Parameters        []JobParameter `pulumi:"parameters"`
+	PerformanceTarget *string        `pulumi:"performanceTarget"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask *JobPipelineTask `pulumi:"pipelineTask"`
 	// Deprecated: should be used inside a task block and not inside a job block
@@ -527,7 +531,8 @@ type JobArgs struct {
 	// An optional block controlling the notification settings on the job level documented below.
 	NotificationSettings JobNotificationSettingsPtrInput
 	// Specifices job parameter for the job. See parameter Configuration Block
-	Parameters JobParameterArrayInput
+	Parameters        JobParameterArrayInput
+	PerformanceTarget pulumi.StringPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask JobPipelineTaskPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
@@ -766,6 +771,10 @@ func (o JobOutput) NotificationSettings() JobNotificationSettingsPtrOutput {
 // Specifices job parameter for the job. See parameter Configuration Block
 func (o JobOutput) Parameters() JobParameterArrayOutput {
 	return o.ApplyT(func(v *Job) JobParameterArrayOutput { return v.Parameters }).(JobParameterArrayOutput)
+}
+
+func (o JobOutput) PerformanceTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.PerformanceTarget }).(pulumi.StringPtrOutput)
 }
 
 // Deprecated: should be used inside a task block and not inside a job block

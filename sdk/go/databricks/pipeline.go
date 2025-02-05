@@ -161,6 +161,7 @@ type Pipeline struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        pulumi.BoolPtrOutput           `pulumi:"photon"`
 	RestartWindow PipelineRestartWindowPtrOutput `pulumi:"restartWindow"`
+	RunAs         PipelineRunAsOutput            `pulumi:"runAs"`
 	RunAsUserName pulumi.StringOutput            `pulumi:"runAsUserName"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrOutput `pulumi:"schema"`
@@ -246,6 +247,7 @@ type pipelineState struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        *bool                  `pulumi:"photon"`
 	RestartWindow *PipelineRestartWindow `pulumi:"restartWindow"`
+	RunAs         *PipelineRunAs         `pulumi:"runAs"`
 	RunAsUserName *string                `pulumi:"runAsUserName"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema *string `pulumi:"schema"`
@@ -302,6 +304,7 @@ type PipelineState struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        pulumi.BoolPtrInput
 	RestartWindow PipelineRestartWindowPtrInput
+	RunAs         PipelineRunAsPtrInput
 	RunAsUserName pulumi.StringPtrInput
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrInput
@@ -362,7 +365,7 @@ type pipelineArgs struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        *bool                  `pulumi:"photon"`
 	RestartWindow *PipelineRestartWindow `pulumi:"restartWindow"`
-	RunAsUserName *string                `pulumi:"runAsUserName"`
+	RunAs         *PipelineRunAs         `pulumi:"runAs"`
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema *string `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
@@ -419,7 +422,7 @@ type PipelineArgs struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon        pulumi.BoolPtrInput
 	RestartWindow PipelineRestartWindowPtrInput
-	RunAsUserName pulumi.StringPtrInput
+	RunAs         PipelineRunAsPtrInput
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrInput
 	// An optional flag indicating if serverless compute should be used for this DLT pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
@@ -634,6 +637,10 @@ func (o PipelineOutput) Photon() pulumi.BoolPtrOutput {
 
 func (o PipelineOutput) RestartWindow() PipelineRestartWindowPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineRestartWindowPtrOutput { return v.RestartWindow }).(PipelineRestartWindowPtrOutput)
+}
+
+func (o PipelineOutput) RunAs() PipelineRunAsOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineRunAsOutput { return v.RunAs }).(PipelineRunAsOutput)
 }
 
 func (o PipelineOutput) RunAsUserName() pulumi.StringOutput {

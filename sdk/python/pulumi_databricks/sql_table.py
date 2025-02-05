@@ -595,55 +595,6 @@ class SqlTable(pulumi.CustomResource):
                  warehouse_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables/views.
-
-        A `SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table, or a view.
-
-        This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
-
-        > This resource doesn't handle complex cases of schema evolution due to the limitations of Pulumi itself.  If you need to implement schema evolution it's recommended to use specialized tools, such as, [Luquibase](https://medium.com/dbsql-sme-engineering/advanced-schema-management-on-databricks-with-liquibase-1900e9f7b9c0) and [Flyway](https://medium.com/dbsql-sme-engineering/databricks-schema-management-with-flyway-527c4a9f5d67).
-
-        ## Use an Identity Column
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        sandbox = databricks.Catalog("sandbox",
-            name="sandbox",
-            comment="this catalog is managed by terraform",
-            properties={
-                "purpose": "testing",
-            })
-        things = databricks.Schema("things",
-            catalog_name=sandbox.id,
-            name="things",
-            comment="this database is managed by terraform",
-            properties={
-                "kind": "various",
-            })
-        thing = databricks.SqlTable("thing",
-            name="quickstart_table",
-            catalog_name=sandbox.name,
-            schema_name=things.name,
-            table_type="MANAGED",
-            data_source_format="DELTA",
-            storage_location="",
-            columns=[
-                {
-                    "name": "id",
-                    "type": "bigint",
-                    "identity": "default",
-                },
-                {
-                    "name": "name",
-                    "type": "string",
-                    "comment": "name of thing",
-                },
-            ],
-            comment="this table is managed by terraform")
-        ```
-
         ## Import
 
         This resource can be imported by its full name:
@@ -679,55 +630,6 @@ class SqlTable(pulumi.CustomResource):
                  args: SqlTableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables/views.
-
-        A `SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table, or a view.
-
-        This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
-
-        > This resource doesn't handle complex cases of schema evolution due to the limitations of Pulumi itself.  If you need to implement schema evolution it's recommended to use specialized tools, such as, [Luquibase](https://medium.com/dbsql-sme-engineering/advanced-schema-management-on-databricks-with-liquibase-1900e9f7b9c0) and [Flyway](https://medium.com/dbsql-sme-engineering/databricks-schema-management-with-flyway-527c4a9f5d67).
-
-        ## Use an Identity Column
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        sandbox = databricks.Catalog("sandbox",
-            name="sandbox",
-            comment="this catalog is managed by terraform",
-            properties={
-                "purpose": "testing",
-            })
-        things = databricks.Schema("things",
-            catalog_name=sandbox.id,
-            name="things",
-            comment="this database is managed by terraform",
-            properties={
-                "kind": "various",
-            })
-        thing = databricks.SqlTable("thing",
-            name="quickstart_table",
-            catalog_name=sandbox.name,
-            schema_name=things.name,
-            table_type="MANAGED",
-            data_source_format="DELTA",
-            storage_location="",
-            columns=[
-                {
-                    "name": "id",
-                    "type": "bigint",
-                    "identity": "default",
-                },
-                {
-                    "name": "name",
-                    "type": "string",
-                    "comment": "name of thing",
-                },
-            ],
-            comment="this table is managed by terraform")
-        ```
-
         ## Import
 
         This resource can be imported by its full name:

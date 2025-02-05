@@ -103,7 +103,7 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// For GCP (only applicable when purpose is `STORAGE`)
+    /// For GCP
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -117,7 +117,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         Name = "gcp_sa_credential",
     ///         DatabricksGcpServiceAccount = null,
-    ///         Purpose = "STORAGE",
+    ///         Purpose = "SERVICE",
     ///         Comment = "GCP SA credential managed by TF",
     ///     });
     /// 

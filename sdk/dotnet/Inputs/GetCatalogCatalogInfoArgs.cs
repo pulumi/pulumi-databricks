@@ -121,12 +121,6 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.GetCatalogCatalogInfoProvisioningInfoInputArgs>? ProvisioningInfo { get; set; }
 
         /// <summary>
-        /// Kind of catalog securable.
-        /// </summary>
-        [Input("securableKind")]
-        public Input<string>? SecurableKind { get; set; }
-
-        /// <summary>
         /// Securable type.
         /// </summary>
         [Input("securableType")]

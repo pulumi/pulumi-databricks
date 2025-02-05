@@ -14,6 +14,7 @@ import com.pulumi.databricks.inputs.PipelineLatestUpdateArgs;
 import com.pulumi.databricks.inputs.PipelineLibraryArgs;
 import com.pulumi.databricks.inputs.PipelineNotificationArgs;
 import com.pulumi.databricks.inputs.PipelineRestartWindowArgs;
+import com.pulumi.databricks.inputs.PipelineRunAsArgs;
 import com.pulumi.databricks.inputs.PipelineTriggerArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -324,11 +325,11 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.restartWindow);
     }
 
-    @Import(name="runAsUserName")
-    private @Nullable Output<String> runAsUserName;
+    @Import(name="runAs")
+    private @Nullable Output<PipelineRunAsArgs> runAs;
 
-    public Optional<Output<String>> runAsUserName() {
-        return Optional.ofNullable(this.runAsUserName);
+    public Optional<Output<PipelineRunAsArgs>> runAs() {
+        return Optional.ofNullable(this.runAs);
     }
 
     /**
@@ -448,7 +449,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         this.notifications = $.notifications;
         this.photon = $.photon;
         this.restartWindow = $.restartWindow;
-        this.runAsUserName = $.runAsUserName;
+        this.runAs = $.runAs;
         this.schema = $.schema;
         this.serverless = $.serverless;
         this.state = $.state;
@@ -909,13 +910,13 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
             return restartWindow(Output.of(restartWindow));
         }
 
-        public Builder runAsUserName(@Nullable Output<String> runAsUserName) {
-            $.runAsUserName = runAsUserName;
+        public Builder runAs(@Nullable Output<PipelineRunAsArgs> runAs) {
+            $.runAs = runAs;
             return this;
         }
 
-        public Builder runAsUserName(String runAsUserName) {
-            return runAsUserName(Output.of(runAsUserName));
+        public Builder runAs(PipelineRunAsArgs runAs) {
+            return runAs(Output.of(runAs));
         }
 
         /**

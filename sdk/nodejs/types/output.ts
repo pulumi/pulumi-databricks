@@ -23,6 +23,20 @@ export interface AccessControlRuleSetGrantRule {
     role: string;
 }
 
+export interface AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy {
+    /**
+     * Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
+     */
+    accessPolicyType: string;
+}
+
+export interface AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains {
+    /**
+     * the list of approved domains. To allow all subdomains for a given domain, use a wildcard symbol (`*`) before the domain name, i.e., `*.databricks.com` will allow to embed into any site under the `databricks.com`.
+     */
+    approvedDomains: string[];
+}
+
 export interface AlertCondition {
     /**
      * Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
@@ -831,7 +845,7 @@ export interface CredentialAzureServicePrincipal {
     /**
      * The client secret generated for the above app ID in AAD. **This field is redacted on output**
      *
-     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
      */
     clientSecret: string;
     /**
@@ -1396,10 +1410,6 @@ export interface GetCatalogCatalogInfo {
      */
     providerName?: string;
     provisioningInfo?: outputs.GetCatalogCatalogInfoProvisioningInfo;
-    /**
-     * Kind of catalog securable.
-     */
-    securableKind?: string;
     /**
      * Securable type.
      */
@@ -7208,7 +7218,7 @@ export interface JobTaskSparkJarTask {
      * (List) Parameters passed to the main method.
      */
     parameters?: string[];
-    runAsRepl?: boolean;
+    runAsRepl: boolean;
 }
 
 export interface JobTaskSparkPythonTask {
@@ -8964,6 +8974,11 @@ export interface PipelineRestartWindow {
     daysOfWeeks?: string[];
     startHour: number;
     timeZoneId?: string;
+}
+
+export interface PipelineRunAs {
+    servicePrincipalName?: string;
+    userName?: string;
 }
 
 export interface PipelineTrigger {

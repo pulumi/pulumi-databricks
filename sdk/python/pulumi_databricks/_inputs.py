@@ -17,6 +17,10 @@ from . import _utilities
 __all__ = [
     'AccessControlRuleSetGrantRuleArgs',
     'AccessControlRuleSetGrantRuleArgsDict',
+    'AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs',
+    'AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgsDict',
+    'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs',
+    'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict',
     'AlertConditionArgs',
     'AlertConditionArgsDict',
     'AlertConditionOperandArgs',
@@ -861,6 +865,8 @@ __all__ = [
     'PipelineNotificationArgsDict',
     'PipelineRestartWindowArgs',
     'PipelineRestartWindowArgsDict',
+    'PipelineRunAsArgs',
+    'PipelineRunAsArgsDict',
     'PipelineTriggerArgs',
     'PipelineTriggerArgsDict',
     'PipelineTriggerCronArgs',
@@ -1803,6 +1809,68 @@ class AccessControlRuleSetGrantRuleArgs:
     @principals.setter
     def principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "principals", value)
+
+
+if not MYPY:
+    class AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgsDict(TypedDict):
+        access_policy_type: pulumi.Input[str]
+        """
+        Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
+        """
+elif False:
+    AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs:
+    def __init__(__self__, *,
+                 access_policy_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] access_policy_type: Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
+        """
+        pulumi.set(__self__, "access_policy_type", access_policy_type)
+
+    @property
+    @pulumi.getter(name="accessPolicyType")
+    def access_policy_type(self) -> pulumi.Input[str]:
+        """
+        Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
+        """
+        return pulumi.get(self, "access_policy_type")
+
+    @access_policy_type.setter
+    def access_policy_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_policy_type", value)
+
+
+if not MYPY:
+    class AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict(TypedDict):
+        approved_domains: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        the list of approved domains. To allow all subdomains for a given domain, use a wildcard symbol (`*`) before the domain name, i.e., `*.databricks.com` will allow to embed into any site under the `databricks.com`.
+        """
+elif False:
+    AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs:
+    def __init__(__self__, *,
+                 approved_domains: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] approved_domains: the list of approved domains. To allow all subdomains for a given domain, use a wildcard symbol (`*`) before the domain name, i.e., `*.databricks.com` will allow to embed into any site under the `databricks.com`.
+        """
+        pulumi.set(__self__, "approved_domains", approved_domains)
+
+    @property
+    @pulumi.getter(name="approvedDomains")
+    def approved_domains(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        the list of approved domains. To allow all subdomains for a given domain, use a wildcard symbol (`*`) before the domain name, i.e., `*.databricks.com` will allow to embed into any site under the `databricks.com`.
+        """
+        return pulumi.get(self, "approved_domains")
+
+    @approved_domains.setter
+    def approved_domains(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "approved_domains", value)
 
 
 if not MYPY:
@@ -5934,7 +6002,7 @@ if not MYPY:
         """
         The client secret generated for the above app ID in AAD. **This field is redacted on output**
 
-        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         """
         directory_id: pulumi.Input[str]
         """
@@ -5953,7 +6021,7 @@ class CredentialAzureServicePrincipalArgs:
         :param pulumi.Input[str] application_id: The application ID of the application registration within the referenced AAD tenant
         :param pulumi.Input[str] client_secret: The client secret generated for the above app ID in AAD. **This field is redacted on output**
                
-               `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+               `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         :param pulumi.Input[str] directory_id: The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
         """
         pulumi.set(__self__, "application_id", application_id)
@@ -5978,7 +6046,7 @@ class CredentialAzureServicePrincipalArgs:
         """
         The client secret generated for the above app ID in AAD. **This field is redacted on output**
 
-        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         """
         return pulumi.get(self, "client_secret")
 
@@ -30562,6 +30630,42 @@ class PipelineRestartWindowArgs:
 
 
 if not MYPY:
+    class PipelineRunAsArgsDict(TypedDict):
+        service_principal_name: NotRequired[pulumi.Input[str]]
+        user_name: NotRequired[pulumi.Input[str]]
+elif False:
+    PipelineRunAsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineRunAsArgs:
+    def __init__(__self__, *,
+                 service_principal_name: Optional[pulumi.Input[str]] = None,
+                 user_name: Optional[pulumi.Input[str]] = None):
+        if service_principal_name is not None:
+            pulumi.set(__self__, "service_principal_name", service_principal_name)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter(name="servicePrincipalName")
+    def service_principal_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_principal_name")
+
+    @service_principal_name.setter
+    def service_principal_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_principal_name", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_name", value)
+
+
+if not MYPY:
     class PipelineTriggerArgsDict(TypedDict):
         cron: NotRequired[pulumi.Input['PipelineTriggerCronArgsDict']]
         manual: NotRequired[pulumi.Input['PipelineTriggerManualArgsDict']]
@@ -35452,10 +35556,6 @@ if not MYPY:
         The name of delta sharing provider.
         """
         provisioning_info: NotRequired['GetCatalogCatalogInfoProvisioningInfoArgsDict']
-        securable_kind: NotRequired[str]
-        """
-        Kind of catalog securable.
-        """
         securable_type: NotRequired[str]
         """
         Securable type.
@@ -35503,7 +35603,6 @@ class GetCatalogCatalogInfoArgs:
                  properties: Optional[Mapping[str, str]] = None,
                  provider_name: Optional[str] = None,
                  provisioning_info: Optional['GetCatalogCatalogInfoProvisioningInfoArgs'] = None,
-                 securable_kind: Optional[str] = None,
                  securable_type: Optional[str] = None,
                  share_name: Optional[str] = None,
                  storage_location: Optional[str] = None,
@@ -35526,7 +35625,6 @@ class GetCatalogCatalogInfoArgs:
         :param str owner: Current owner of the catalog
         :param Mapping[str, str] properties: A map of key-value properties attached to the securable.
         :param str provider_name: The name of delta sharing provider.
-        :param str securable_kind: Kind of catalog securable.
         :param str securable_type: Securable type.
         :param str share_name: The name of the share under the share provider.
         :param str storage_location: Storage Location URL (full path) for managed tables within catalog.
@@ -35568,8 +35666,6 @@ class GetCatalogCatalogInfoArgs:
             pulumi.set(__self__, "provider_name", provider_name)
         if provisioning_info is not None:
             pulumi.set(__self__, "provisioning_info", provisioning_info)
-        if securable_kind is not None:
-            pulumi.set(__self__, "securable_kind", securable_kind)
         if securable_type is not None:
             pulumi.set(__self__, "securable_type", securable_type)
         if share_name is not None:
@@ -35780,18 +35876,6 @@ class GetCatalogCatalogInfoArgs:
     @provisioning_info.setter
     def provisioning_info(self, value: Optional['GetCatalogCatalogInfoProvisioningInfoArgs']):
         pulumi.set(self, "provisioning_info", value)
-
-    @property
-    @pulumi.getter(name="securableKind")
-    def securable_kind(self) -> Optional[str]:
-        """
-        Kind of catalog securable.
-        """
-        return pulumi.get(self, "securable_kind")
-
-    @securable_kind.setter
-    def securable_kind(self, value: Optional[str]):
-        pulumi.set(self, "securable_kind", value)
 
     @property
     @pulumi.getter(name="securableType")

@@ -23,6 +23,20 @@ export interface AccessControlRuleSetGrantRule {
     role: pulumi.Input<string>;
 }
 
+export interface AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy {
+    /**
+     * Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
+     */
+    accessPolicyType: pulumi.Input<string>;
+}
+
+export interface AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains {
+    /**
+     * the list of approved domains. To allow all subdomains for a given domain, use a wildcard symbol (`*`) before the domain name, i.e., `*.databricks.com` will allow to embed into any site under the `databricks.com`.
+     */
+    approvedDomains: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface AlertCondition {
     /**
      * Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
@@ -831,7 +845,7 @@ export interface CredentialAzureServicePrincipal {
     /**
      * The client secret generated for the above app ID in AAD. **This field is redacted on output**
      *
-     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
      */
     clientSecret: pulumi.Input<string>;
     /**
@@ -947,10 +961,6 @@ export interface GetCatalogCatalogInfo {
     providerName?: string;
     provisioningInfo?: inputs.GetCatalogCatalogInfoProvisioningInfo;
     /**
-     * Kind of catalog securable.
-     */
-    securableKind?: string;
-    /**
      * Securable type.
      */
     securableType?: string;
@@ -1039,10 +1049,6 @@ export interface GetCatalogCatalogInfoArgs {
      */
     providerName?: pulumi.Input<string>;
     provisioningInfo?: pulumi.Input<inputs.GetCatalogCatalogInfoProvisioningInfoArgs>;
-    /**
-     * Kind of catalog securable.
-     */
-    securableKind?: pulumi.Input<string>;
     /**
      * Securable type.
      */
@@ -12072,6 +12078,11 @@ export interface PipelineRestartWindow {
     daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
     startHour: pulumi.Input<number>;
     timeZoneId?: pulumi.Input<string>;
+}
+
+export interface PipelineRunAs {
+    servicePrincipalName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
 }
 
 export interface PipelineTrigger {
