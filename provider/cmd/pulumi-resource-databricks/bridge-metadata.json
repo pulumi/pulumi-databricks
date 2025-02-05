@@ -17,6 +17,31 @@
                     }
                 }
             },
+            "databricks_aibi_dashboard_embedding_access_policy_setting": {
+                "current": "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting",
+                "majorVersion": 1,
+                "fields": {
+                    "aibi_dashboard_embedding_access_policy": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "databricks_aibi_dashboard_embedding_approved_domains_setting": {
+                "current": "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting",
+                "majorVersion": 1,
+                "fields": {
+                    "aibi_dashboard_embedding_approved_domains": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "approved_domains": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_alert": {
                 "current": "databricks:index/alert:Alert",
                 "majorVersion": 1,
@@ -360,6 +385,9 @@
                     },
                     "token_access_policy": {
                         "maxItemsOne": true
+                    },
+                    "user_authorized_scopes": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2515,6 +2543,9 @@
                                 }
                             }
                         }
+                    },
+                    "run_as": {
+                        "maxItemsOne": true
                     },
                     "trigger": {
                         "maxItemsOne": true,
@@ -5359,6 +5390,8 @@
     "mux": {
         "resources": {
             "databricks:index/accessControlRuleSet:AccessControlRuleSet": 0,
+            "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting": 0,
+            "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting": 0,
             "databricks:index/alert:Alert": 0,
             "databricks:index/app:App": 1,
             "databricks:index/artifactAllowlist:ArtifactAllowlist": 0,
