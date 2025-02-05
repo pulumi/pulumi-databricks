@@ -396,6 +396,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parameters);
     }
 
+    @Import(name="performanceTarget")
+    private @Nullable Output<String> performanceTarget;
+
+    public Optional<Output<String>> performanceTarget() {
+        return Optional.ofNullable(this.performanceTarget);
+    }
+
     /**
      * @deprecated
      * should be used inside a task block and not inside a job block
@@ -691,6 +698,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.notebookTask = $.notebookTask;
         this.notificationSettings = $.notificationSettings;
         this.parameters = $.parameters;
+        this.performanceTarget = $.performanceTarget;
         this.pipelineTask = $.pipelineTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.queue = $.queue;
@@ -1235,6 +1243,15 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parameters(JobParameterArgs... parameters) {
             return parameters(List.of(parameters));
+        }
+
+        public Builder performanceTarget(@Nullable Output<String> performanceTarget) {
+            $.performanceTarget = performanceTarget;
+            return this;
+        }
+
+        public Builder performanceTarget(String performanceTarget) {
+            return performanceTarget(Output.of(performanceTarget));
         }
 
         /**

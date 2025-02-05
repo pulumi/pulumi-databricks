@@ -458,6 +458,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<JobParameter>>> parameters() {
         return Codegen.optional(this.parameters);
     }
+    @Export(name="performanceTarget", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> performanceTarget;
+
+    public Output<Optional<String>> performanceTarget() {
+        return Codegen.optional(this.performanceTarget);
+    }
     /**
      * @deprecated
      * should be used inside a task block and not inside a job block

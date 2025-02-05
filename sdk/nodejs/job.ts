@@ -201,6 +201,7 @@ export class Job extends pulumi.CustomResource {
      * Specifices job parameter for the job. See parameter Configuration Block
      */
     public readonly parameters!: pulumi.Output<outputs.JobParameter[] | undefined>;
+    public readonly performanceTarget!: pulumi.Output<string | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
@@ -303,6 +304,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["notebookTask"] = state ? state.notebookTask : undefined;
             resourceInputs["notificationSettings"] = state ? state.notificationSettings : undefined;
             resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["performanceTarget"] = state ? state.performanceTarget : undefined;
             resourceInputs["pipelineTask"] = state ? state.pipelineTask : undefined;
             resourceInputs["pythonWheelTask"] = state ? state.pythonWheelTask : undefined;
             resourceInputs["queue"] = state ? state.queue : undefined;
@@ -345,6 +347,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["notebookTask"] = args ? args.notebookTask : undefined;
             resourceInputs["notificationSettings"] = args ? args.notificationSettings : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["performanceTarget"] = args ? args.performanceTarget : undefined;
             resourceInputs["pipelineTask"] = args ? args.pipelineTask : undefined;
             resourceInputs["pythonWheelTask"] = args ? args.pythonWheelTask : undefined;
             resourceInputs["queue"] = args ? args.queue : undefined;
@@ -458,6 +461,7 @@ export interface JobState {
      * Specifices job parameter for the job. See parameter Configuration Block
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
+    performanceTarget?: pulumi.Input<string>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
@@ -615,6 +619,7 @@ export interface JobArgs {
      * Specifices job parameter for the job. See parameter Configuration Block
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
+    performanceTarget?: pulumi.Input<string>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */

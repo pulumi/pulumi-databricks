@@ -83,8 +83,9 @@ type CustomAppIntegration struct {
 	// List of OAuth redirect urls.
 	RedirectUrls pulumi.StringArrayOutput `pulumi:"redirectUrls"`
 	// OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offlineAccess`, `openid`, `profile`, `email`.
-	Scopes            pulumi.StringArrayOutput                       `pulumi:"scopes"`
-	TokenAccessPolicy CustomAppIntegrationTokenAccessPolicyPtrOutput `pulumi:"tokenAccessPolicy"`
+	Scopes               pulumi.StringArrayOutput                       `pulumi:"scopes"`
+	TokenAccessPolicy    CustomAppIntegrationTokenAccessPolicyPtrOutput `pulumi:"tokenAccessPolicy"`
+	UserAuthorizedScopes pulumi.StringArrayOutput                       `pulumi:"userAuthorizedScopes"`
 }
 
 // NewCustomAppIntegration registers a new resource with the given unique name, arguments, and options.
@@ -140,8 +141,9 @@ type customAppIntegrationState struct {
 	// List of OAuth redirect urls.
 	RedirectUrls []string `pulumi:"redirectUrls"`
 	// OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offlineAccess`, `openid`, `profile`, `email`.
-	Scopes            []string                               `pulumi:"scopes"`
-	TokenAccessPolicy *CustomAppIntegrationTokenAccessPolicy `pulumi:"tokenAccessPolicy"`
+	Scopes               []string                               `pulumi:"scopes"`
+	TokenAccessPolicy    *CustomAppIntegrationTokenAccessPolicy `pulumi:"tokenAccessPolicy"`
+	UserAuthorizedScopes []string                               `pulumi:"userAuthorizedScopes"`
 }
 
 type CustomAppIntegrationState struct {
@@ -161,8 +163,9 @@ type CustomAppIntegrationState struct {
 	// List of OAuth redirect urls.
 	RedirectUrls pulumi.StringArrayInput
 	// OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offlineAccess`, `openid`, `profile`, `email`.
-	Scopes            pulumi.StringArrayInput
-	TokenAccessPolicy CustomAppIntegrationTokenAccessPolicyPtrInput
+	Scopes               pulumi.StringArrayInput
+	TokenAccessPolicy    CustomAppIntegrationTokenAccessPolicyPtrInput
+	UserAuthorizedScopes pulumi.StringArrayInput
 }
 
 func (CustomAppIntegrationState) ElementType() reflect.Type {
@@ -186,8 +189,9 @@ type customAppIntegrationArgs struct {
 	// List of OAuth redirect urls.
 	RedirectUrls []string `pulumi:"redirectUrls"`
 	// OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offlineAccess`, `openid`, `profile`, `email`.
-	Scopes            []string                               `pulumi:"scopes"`
-	TokenAccessPolicy *CustomAppIntegrationTokenAccessPolicy `pulumi:"tokenAccessPolicy"`
+	Scopes               []string                               `pulumi:"scopes"`
+	TokenAccessPolicy    *CustomAppIntegrationTokenAccessPolicy `pulumi:"tokenAccessPolicy"`
+	UserAuthorizedScopes []string                               `pulumi:"userAuthorizedScopes"`
 }
 
 // The set of arguments for constructing a CustomAppIntegration resource.
@@ -208,8 +212,9 @@ type CustomAppIntegrationArgs struct {
 	// List of OAuth redirect urls.
 	RedirectUrls pulumi.StringArrayInput
 	// OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offlineAccess`, `openid`, `profile`, `email`.
-	Scopes            pulumi.StringArrayInput
-	TokenAccessPolicy CustomAppIntegrationTokenAccessPolicyPtrInput
+	Scopes               pulumi.StringArrayInput
+	TokenAccessPolicy    CustomAppIntegrationTokenAccessPolicyPtrInput
+	UserAuthorizedScopes pulumi.StringArrayInput
 }
 
 func (CustomAppIntegrationArgs) ElementType() reflect.Type {
@@ -350,6 +355,10 @@ func (o CustomAppIntegrationOutput) TokenAccessPolicy() CustomAppIntegrationToke
 	return o.ApplyT(func(v *CustomAppIntegration) CustomAppIntegrationTokenAccessPolicyPtrOutput {
 		return v.TokenAccessPolicy
 	}).(CustomAppIntegrationTokenAccessPolicyPtrOutput)
+}
+
+func (o CustomAppIntegrationOutput) UserAuthorizedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomAppIntegration) pulumi.StringArrayOutput { return v.UserAuthorizedScopes }).(pulumi.StringArrayOutput)
 }
 
 type CustomAppIntegrationArrayOutput struct{ *pulumi.OutputState }

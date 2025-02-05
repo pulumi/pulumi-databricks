@@ -106,10 +106,10 @@ namespace Pulumi.Databricks
         public Output<Outputs.ModelServingAiGateway?> AiGateway { get; private set; } = null!;
 
         /// <summary>
-        /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+        /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
         /// </summary>
         [Output("config")]
-        public Output<Outputs.ModelServingConfig?> Config { get; private set; } = null!;
+        public Output<Outputs.ModelServingConfig> Config { get; private set; } = null!;
 
         /// <summary>
         /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
@@ -194,7 +194,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.ModelServingAiGatewayArgs>? AiGateway { get; set; }
 
         /// <summary>
-        /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+        /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
         /// </summary>
         [Input("config")]
         public Input<Inputs.ModelServingConfigArgs>? Config { get; set; }
@@ -250,7 +250,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.ModelServingAiGatewayGetArgs>? AiGateway { get; set; }
 
         /// <summary>
-        /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+        /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
         /// </summary>
         [Input("config")]
         public Input<Inputs.ModelServingConfigGetArgs>? Config { get; set; }

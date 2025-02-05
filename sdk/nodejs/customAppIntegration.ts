@@ -102,6 +102,7 @@ export class CustomAppIntegration extends pulumi.CustomResource {
      */
     public readonly scopes!: pulumi.Output<string[] | undefined>;
     public readonly tokenAccessPolicy!: pulumi.Output<outputs.CustomAppIntegrationTokenAccessPolicy | undefined>;
+    public readonly userAuthorizedScopes!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a CustomAppIntegration resource with the given unique name, arguments, and options.
@@ -127,6 +128,7 @@ export class CustomAppIntegration extends pulumi.CustomResource {
             resourceInputs["redirectUrls"] = state ? state.redirectUrls : undefined;
             resourceInputs["scopes"] = state ? state.scopes : undefined;
             resourceInputs["tokenAccessPolicy"] = state ? state.tokenAccessPolicy : undefined;
+            resourceInputs["userAuthorizedScopes"] = state ? state.userAuthorizedScopes : undefined;
         } else {
             const args = argsOrState as CustomAppIntegrationArgs | undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
@@ -140,6 +142,7 @@ export class CustomAppIntegration extends pulumi.CustomResource {
             resourceInputs["redirectUrls"] = args ? args.redirectUrls : undefined;
             resourceInputs["scopes"] = args ? args.scopes : undefined;
             resourceInputs["tokenAccessPolicy"] = args ? args.tokenAccessPolicy : undefined;
+            resourceInputs["userAuthorizedScopes"] = args ? args.userAuthorizedScopes : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["clientSecret"] };
@@ -184,6 +187,7 @@ export interface CustomAppIntegrationState {
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     tokenAccessPolicy?: pulumi.Input<inputs.CustomAppIntegrationTokenAccessPolicy>;
+    userAuthorizedScopes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -222,4 +226,5 @@ export interface CustomAppIntegrationArgs {
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     tokenAccessPolicy?: pulumi.Input<inputs.CustomAppIntegrationTokenAccessPolicy>;
+    userAuthorizedScopes?: pulumi.Input<pulumi.Input<string>[]>;
 }

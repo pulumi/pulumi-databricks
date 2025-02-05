@@ -115,7 +115,7 @@ import (
 //
 // ```
 //
-// For GCP (only applicable when purpose is `STORAGE`)
+// # For GCP
 //
 // ```go
 // package main
@@ -132,7 +132,7 @@ import (
 //			externalGcpSa, err := databricks.NewCredential(ctx, "external_gcp_sa", &databricks.CredentialArgs{
 //				Name:                        pulumi.String("gcp_sa_credential"),
 //				DatabricksGcpServiceAccount: &databricks.CredentialDatabricksGcpServiceAccountArgs{},
-//				Purpose:                     pulumi.String("STORAGE"),
+//				Purpose:                     pulumi.String("SERVICE"),
 //				Comment:                     pulumi.String("GCP SA credential managed by TF"),
 //			})
 //			if err != nil {

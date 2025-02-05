@@ -683,7 +683,7 @@ class Credential(pulumi.CustomResource):
             }])
         ```
 
-        For GCP (only applicable when purpose is `STORAGE`)
+        For GCP
 
         ```python
         import pulumi
@@ -692,7 +692,7 @@ class Credential(pulumi.CustomResource):
         external_gcp_sa = databricks.Credential("external_gcp_sa",
             name="gcp_sa_credential",
             databricks_gcp_service_account={},
-            purpose="STORAGE",
+            purpose="SERVICE",
             comment="GCP SA credential managed by TF")
         external_creds = databricks.Grants("external_creds",
             credential=external_gcp_sa.id,
@@ -787,7 +787,7 @@ class Credential(pulumi.CustomResource):
             }])
         ```
 
-        For GCP (only applicable when purpose is `STORAGE`)
+        For GCP
 
         ```python
         import pulumi
@@ -796,7 +796,7 @@ class Credential(pulumi.CustomResource):
         external_gcp_sa = databricks.Credential("external_gcp_sa",
             name="gcp_sa_credential",
             databricks_gcp_service_account={},
-            purpose="STORAGE",
+            purpose="SERVICE",
             comment="GCP SA credential managed by TF")
         external_creds = databricks.Grants("external_creds",
             credential=external_gcp_sa.id,

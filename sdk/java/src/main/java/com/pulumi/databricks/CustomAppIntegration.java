@@ -204,6 +204,12 @@ public class CustomAppIntegration extends com.pulumi.resources.CustomResource {
     public Output<Optional<CustomAppIntegrationTokenAccessPolicy>> tokenAccessPolicy() {
         return Codegen.optional(this.tokenAccessPolicy);
     }
+    @Export(name="userAuthorizedScopes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> userAuthorizedScopes;
+
+    public Output<Optional<List<String>>> userAuthorizedScopes() {
+        return Codegen.optional(this.userAuthorizedScopes);
+    }
 
     /**
      *

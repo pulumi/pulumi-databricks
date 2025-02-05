@@ -134,18 +134,18 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aiGateway);
     }
     /**
-     * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+     * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      * 
      */
     @Export(name="config", refs={ModelServingConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ModelServingConfig> config;
+    private Output<ModelServingConfig> config;
 
     /**
-     * @return The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+     * @return The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      * 
      */
-    public Output<Optional<ModelServingConfig>> config() {
-        return Codegen.optional(this.config);
+    public Output<ModelServingConfig> config() {
+        return this.config;
     }
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.

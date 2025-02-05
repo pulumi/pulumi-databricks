@@ -19,6 +19,7 @@ import com.pulumi.databricks.outputs.PipelineLatestUpdate;
 import com.pulumi.databricks.outputs.PipelineLibrary;
 import com.pulumi.databricks.outputs.PipelineNotification;
 import com.pulumi.databricks.outputs.PipelineRestartWindow;
+import com.pulumi.databricks.outputs.PipelineRunAs;
 import com.pulumi.databricks.outputs.PipelineTrigger;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -407,6 +408,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<PipelineRestartWindow>> restartWindow() {
         return Codegen.optional(this.restartWindow);
+    }
+    @Export(name="runAs", refs={PipelineRunAs.class}, tree="[0]")
+    private Output<PipelineRunAs> runAs;
+
+    public Output<PipelineRunAs> runAs() {
+        return this.runAs;
     }
     @Export(name="runAsUserName", refs={String.class}, tree="[0]")
     private Output<String> runAsUserName;

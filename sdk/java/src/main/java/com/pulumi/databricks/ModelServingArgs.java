@@ -37,14 +37,14 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+     * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      * 
      */
     @Import(name="config")
     private @Nullable Output<ModelServingConfigArgs> config;
 
     /**
-     * @return The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+     * @return The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      * 
      */
     public Optional<Output<ModelServingConfigArgs>> config() {
@@ -162,7 +162,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+         * @param config The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, the endpoint will be recreated.
+         * @param config The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
          * 
          * @return builder
          * 

@@ -152,6 +152,13 @@ public final class CustomAppIntegrationArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.tokenAccessPolicy);
     }
 
+    @Import(name="userAuthorizedScopes")
+    private @Nullable Output<List<String>> userAuthorizedScopes;
+
+    public Optional<Output<List<String>>> userAuthorizedScopes() {
+        return Optional.ofNullable(this.userAuthorizedScopes);
+    }
+
     private CustomAppIntegrationArgs() {}
 
     private CustomAppIntegrationArgs(CustomAppIntegrationArgs $) {
@@ -166,6 +173,7 @@ public final class CustomAppIntegrationArgs extends com.pulumi.resources.Resourc
         this.redirectUrls = $.redirectUrls;
         this.scopes = $.scopes;
         this.tokenAccessPolicy = $.tokenAccessPolicy;
+        this.userAuthorizedScopes = $.userAuthorizedScopes;
     }
 
     public static Builder builder() {
@@ -387,6 +395,19 @@ public final class CustomAppIntegrationArgs extends com.pulumi.resources.Resourc
 
         public Builder tokenAccessPolicy(CustomAppIntegrationTokenAccessPolicyArgs tokenAccessPolicy) {
             return tokenAccessPolicy(Output.of(tokenAccessPolicy));
+        }
+
+        public Builder userAuthorizedScopes(@Nullable Output<List<String>> userAuthorizedScopes) {
+            $.userAuthorizedScopes = userAuthorizedScopes;
+            return this;
+        }
+
+        public Builder userAuthorizedScopes(List<String> userAuthorizedScopes) {
+            return userAuthorizedScopes(Output.of(userAuthorizedScopes));
+        }
+
+        public Builder userAuthorizedScopes(String... userAuthorizedScopes) {
+            return userAuthorizedScopes(List.of(userAuthorizedScopes));
         }
 
         public CustomAppIntegrationArgs build() {

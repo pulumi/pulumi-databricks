@@ -46,7 +46,7 @@ class PipelineArgs:
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  restart_window: Optional[pulumi.Input['PipelineRestartWindowArgs']] = None,
-                 run_as_user_name: Optional[pulumi.Input[str]] = None,
+                 run_as: Optional[pulumi.Input['PipelineRunAsArgs']] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -127,8 +127,8 @@ class PipelineArgs:
             pulumi.set(__self__, "photon", photon)
         if restart_window is not None:
             pulumi.set(__self__, "restart_window", restart_window)
-        if run_as_user_name is not None:
-            pulumi.set(__self__, "run_as_user_name", run_as_user_name)
+        if run_as is not None:
+            pulumi.set(__self__, "run_as", run_as)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if serverless is not None:
@@ -415,13 +415,13 @@ class PipelineArgs:
         pulumi.set(self, "restart_window", value)
 
     @property
-    @pulumi.getter(name="runAsUserName")
-    def run_as_user_name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "run_as_user_name")
+    @pulumi.getter(name="runAs")
+    def run_as(self) -> Optional[pulumi.Input['PipelineRunAsArgs']]:
+        return pulumi.get(self, "run_as")
 
-    @run_as_user_name.setter
-    def run_as_user_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "run_as_user_name", value)
+    @run_as.setter
+    def run_as(self, value: Optional[pulumi.Input['PipelineRunAsArgs']]):
+        pulumi.set(self, "run_as", value)
 
     @property
     @pulumi.getter
@@ -530,6 +530,7 @@ class _PipelineState:
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  restart_window: Optional[pulumi.Input['PipelineRestartWindowArgs']] = None,
+                 run_as: Optional[pulumi.Input['PipelineRunAsArgs']] = None,
                  run_as_user_name: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
@@ -611,6 +612,8 @@ class _PipelineState:
             pulumi.set(__self__, "photon", photon)
         if restart_window is not None:
             pulumi.set(__self__, "restart_window", restart_window)
+        if run_as is not None:
+            pulumi.set(__self__, "run_as", run_as)
         if run_as_user_name is not None:
             pulumi.set(__self__, "run_as_user_name", run_as_user_name)
         if schema is not None:
@@ -897,6 +900,15 @@ class _PipelineState:
     @restart_window.setter
     def restart_window(self, value: Optional[pulumi.Input['PipelineRestartWindowArgs']]):
         pulumi.set(self, "restart_window", value)
+
+    @property
+    @pulumi.getter(name="runAs")
+    def run_as(self) -> Optional[pulumi.Input['PipelineRunAsArgs']]:
+        return pulumi.get(self, "run_as")
+
+    @run_as.setter
+    def run_as(self, value: Optional[pulumi.Input['PipelineRunAsArgs']]):
+        pulumi.set(self, "run_as", value)
 
     @property
     @pulumi.getter(name="runAsUserName")
@@ -1016,7 +1028,7 @@ class Pipeline(pulumi.CustomResource):
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  restart_window: Optional[pulumi.Input[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
-                 run_as_user_name: Optional[pulumi.Input[str]] = None,
+                 run_as: Optional[pulumi.Input[Union['PipelineRunAsArgs', 'PipelineRunAsArgsDict']]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -1256,7 +1268,7 @@ class Pipeline(pulumi.CustomResource):
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
                  photon: Optional[pulumi.Input[bool]] = None,
                  restart_window: Optional[pulumi.Input[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
-                 run_as_user_name: Optional[pulumi.Input[str]] = None,
+                 run_as: Optional[pulumi.Input[Union['PipelineRunAsArgs', 'PipelineRunAsArgsDict']]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  serverless: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -1298,7 +1310,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["notifications"] = notifications
             __props__.__dict__["photon"] = photon
             __props__.__dict__["restart_window"] = restart_window
-            __props__.__dict__["run_as_user_name"] = run_as_user_name
+            __props__.__dict__["run_as"] = run_as
             __props__.__dict__["schema"] = schema
             __props__.__dict__["serverless"] = serverless
             __props__.__dict__["state"] = state
@@ -1306,6 +1318,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["target"] = target
             __props__.__dict__["trigger"] = trigger
             __props__.__dict__["url"] = url
+            __props__.__dict__["run_as_user_name"] = None
         super(Pipeline, __self__).__init__(
             'databricks:index/pipeline:Pipeline',
             resource_name,
@@ -1341,6 +1354,7 @@ class Pipeline(pulumi.CustomResource):
             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
             photon: Optional[pulumi.Input[bool]] = None,
             restart_window: Optional[pulumi.Input[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
+            run_as: Optional[pulumi.Input[Union['PipelineRunAsArgs', 'PipelineRunAsArgsDict']]] = None,
             run_as_user_name: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             serverless: Optional[pulumi.Input[bool]] = None,
@@ -1406,6 +1420,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["photon"] = photon
         __props__.__dict__["restart_window"] = restart_window
+        __props__.__dict__["run_as"] = run_as
         __props__.__dict__["run_as_user_name"] = run_as_user_name
         __props__.__dict__["schema"] = schema
         __props__.__dict__["serverless"] = serverless
@@ -1585,6 +1600,11 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter(name="restartWindow")
     def restart_window(self) -> pulumi.Output[Optional['outputs.PipelineRestartWindow']]:
         return pulumi.get(self, "restart_window")
+
+    @property
+    @pulumi.getter(name="runAs")
+    def run_as(self) -> pulumi.Output['outputs.PipelineRunAs']:
+        return pulumi.get(self, "run_as")
 
     @property
     @pulumi.getter(name="runAsUserName")

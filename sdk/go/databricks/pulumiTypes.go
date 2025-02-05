@@ -140,6 +140,284 @@ func (o AccessControlRuleSetGrantRuleArrayOutput) Index(i pulumi.IntInput) Acces
 	}).(AccessControlRuleSetGrantRuleOutput)
 }
 
+type AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy struct {
+	// Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
+	AccessPolicyType string `pulumi:"accessPolicyType"`
+}
+
+// AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyInput is an input type that accepts AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs and AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput values.
+// You can construct a concrete instance of `AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyInput` via:
+//
+//	AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs{...}
+type AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyInput interface {
+	pulumi.Input
+
+	ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput() AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput
+	ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutputWithContext(context.Context) AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput
+}
+
+type AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs struct {
+	// Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
+	AccessPolicyType pulumi.StringInput `pulumi:"accessPolicyType"`
+}
+
+func (AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy)(nil)).Elem()
+}
+
+func (i AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs) ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput() AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput {
+	return i.ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutputWithContext(context.Background())
+}
+
+func (i AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs) ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutputWithContext(ctx context.Context) AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput)
+}
+
+func (i AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs) ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput() AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput {
+	return i.ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs) ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutputWithContext(ctx context.Context) AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput).ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutputWithContext(ctx)
+}
+
+// AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrInput is an input type that accepts AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs, AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtr and AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput values.
+// You can construct a concrete instance of `AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrInput` via:
+//
+//	        AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput() AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput
+	ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutputWithContext(context.Context) AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput
+}
+
+type aibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrType AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs
+
+func AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtr(v *AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs) AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrInput {
+	return (*aibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrType)(v)
+}
+
+func (*aibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy)(nil)).Elem()
+}
+
+func (i *aibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrType) ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput() AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput {
+	return i.ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *aibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrType) ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutputWithContext(ctx context.Context) AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput)
+}
+
+type AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput struct{ *pulumi.OutputState }
+
+func (AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy)(nil)).Elem()
+}
+
+func (o AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput) ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput() AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput {
+	return o
+}
+
+func (o AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput) ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutputWithContext(ctx context.Context) AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput {
+	return o
+}
+
+func (o AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput) ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput() AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput {
+	return o.ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput) ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutputWithContext(ctx context.Context) AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy) *AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy {
+		return &v
+	}).(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput)
+}
+
+// Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
+func (o AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput) AccessPolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy) string {
+		return v.AccessPolicyType
+	}).(pulumi.StringOutput)
+}
+
+type AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy)(nil)).Elem()
+}
+
+func (o AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput) ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput() AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput {
+	return o
+}
+
+func (o AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput) ToAibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutputWithContext(ctx context.Context) AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput {
+	return o
+}
+
+func (o AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput) Elem() AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput {
+	return o.ApplyT(func(v *AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy) AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy
+		return ret
+	}).(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput)
+}
+
+// Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
+func (o AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput) AccessPolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessPolicyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains struct {
+	// the list of approved domains. To allow all subdomains for a given domain, use a wildcard symbol (`*`) before the domain name, i.e., `*.databricks.com` will allow to embed into any site under the `databricks.com`.
+	ApprovedDomains []string `pulumi:"approvedDomains"`
+}
+
+// AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsInput is an input type that accepts AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs and AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput values.
+// You can construct a concrete instance of `AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsInput` via:
+//
+//	AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs{...}
+type AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsInput interface {
+	pulumi.Input
+
+	ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput() AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput
+	ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutputWithContext(context.Context) AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput
+}
+
+type AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs struct {
+	// the list of approved domains. To allow all subdomains for a given domain, use a wildcard symbol (`*`) before the domain name, i.e., `*.databricks.com` will allow to embed into any site under the `databricks.com`.
+	ApprovedDomains pulumi.StringArrayInput `pulumi:"approvedDomains"`
+}
+
+func (AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains)(nil)).Elem()
+}
+
+func (i AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs) ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput() AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput {
+	return i.ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutputWithContext(context.Background())
+}
+
+func (i AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs) ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutputWithContext(ctx context.Context) AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput)
+}
+
+func (i AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs) ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput() AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput {
+	return i.ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (i AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs) ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutputWithContext(ctx context.Context) AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput).ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutputWithContext(ctx)
+}
+
+// AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrInput is an input type that accepts AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs, AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtr and AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput values.
+// You can construct a concrete instance of `AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrInput` via:
+//
+//	        AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrInput interface {
+	pulumi.Input
+
+	ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput() AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput
+	ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutputWithContext(context.Context) AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput
+}
+
+type aibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrType AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs
+
+func AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtr(v *AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs) AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrInput {
+	return (*aibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrType)(v)
+}
+
+func (*aibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains)(nil)).Elem()
+}
+
+func (i *aibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrType) ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput() AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput {
+	return i.ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (i *aibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrType) ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutputWithContext(ctx context.Context) AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput)
+}
+
+type AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput struct{ *pulumi.OutputState }
+
+func (AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains)(nil)).Elem()
+}
+
+func (o AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput) ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput() AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput {
+	return o
+}
+
+func (o AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput) ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutputWithContext(ctx context.Context) AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput {
+	return o
+}
+
+func (o AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput) ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput() AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput {
+	return o.ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutputWithContext(context.Background())
+}
+
+func (o AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput) ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutputWithContext(ctx context.Context) AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains) *AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains {
+		return &v
+	}).(AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput)
+}
+
+// the list of approved domains. To allow all subdomains for a given domain, use a wildcard symbol (`*`) before the domain name, i.e., `*.databricks.com` will allow to embed into any site under the `databricks.com`.
+func (o AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput) ApprovedDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains) []string {
+		return v.ApprovedDomains
+	}).(pulumi.StringArrayOutput)
+}
+
+type AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput struct{ *pulumi.OutputState }
+
+func (AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains)(nil)).Elem()
+}
+
+func (o AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput) ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput() AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput {
+	return o
+}
+
+func (o AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput) ToAibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutputWithContext(ctx context.Context) AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput {
+	return o
+}
+
+func (o AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput) Elem() AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput {
+	return o.ApplyT(func(v *AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains) AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains {
+		if v != nil {
+			return *v
+		}
+		var ret AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains
+		return ret
+	}).(AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput)
+}
+
+// the list of approved domains. To allow all subdomains for a given domain, use a wildcard symbol (`*`) before the domain name, i.e., `*.databricks.com` will allow to embed into any site under the `databricks.com`.
+func (o AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput) ApprovedDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ApprovedDomains
+	}).(pulumi.StringArrayOutput)
+}
+
 type AlertCondition struct {
 	// Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
 	EmptyResultState *string `pulumi:"emptyResultState"`
@@ -10717,7 +10995,7 @@ type CredentialAzureServicePrincipal struct {
 	ApplicationId string `pulumi:"applicationId"`
 	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
 	//
-	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 	ClientSecret string `pulumi:"clientSecret"`
 	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 	DirectoryId string `pulumi:"directoryId"`
@@ -10739,7 +11017,7 @@ type CredentialAzureServicePrincipalArgs struct {
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
 	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
 	//
-	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
 	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
@@ -10829,7 +11107,7 @@ func (o CredentialAzureServicePrincipalOutput) ApplicationId() pulumi.StringOutp
 
 // The client secret generated for the above app ID in AAD. **This field is redacted on output**
 //
-// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 func (o CredentialAzureServicePrincipalOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v CredentialAzureServicePrincipal) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
@@ -10875,7 +11153,7 @@ func (o CredentialAzureServicePrincipalPtrOutput) ApplicationId() pulumi.StringP
 
 // The client secret generated for the above app ID in AAD. **This field is redacted on output**
 //
-// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 func (o CredentialAzureServicePrincipalPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CredentialAzureServicePrincipal) *string {
 		if v == nil {
@@ -70738,6 +71016,154 @@ func (o PipelineRestartWindowPtrOutput) TimeZoneId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PipelineRunAs struct {
+	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
+	UserName             *string `pulumi:"userName"`
+}
+
+// PipelineRunAsInput is an input type that accepts PipelineRunAsArgs and PipelineRunAsOutput values.
+// You can construct a concrete instance of `PipelineRunAsInput` via:
+//
+//	PipelineRunAsArgs{...}
+type PipelineRunAsInput interface {
+	pulumi.Input
+
+	ToPipelineRunAsOutput() PipelineRunAsOutput
+	ToPipelineRunAsOutputWithContext(context.Context) PipelineRunAsOutput
+}
+
+type PipelineRunAsArgs struct {
+	ServicePrincipalName pulumi.StringPtrInput `pulumi:"servicePrincipalName"`
+	UserName             pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (PipelineRunAsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineRunAs)(nil)).Elem()
+}
+
+func (i PipelineRunAsArgs) ToPipelineRunAsOutput() PipelineRunAsOutput {
+	return i.ToPipelineRunAsOutputWithContext(context.Background())
+}
+
+func (i PipelineRunAsArgs) ToPipelineRunAsOutputWithContext(ctx context.Context) PipelineRunAsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineRunAsOutput)
+}
+
+func (i PipelineRunAsArgs) ToPipelineRunAsPtrOutput() PipelineRunAsPtrOutput {
+	return i.ToPipelineRunAsPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineRunAsArgs) ToPipelineRunAsPtrOutputWithContext(ctx context.Context) PipelineRunAsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineRunAsOutput).ToPipelineRunAsPtrOutputWithContext(ctx)
+}
+
+// PipelineRunAsPtrInput is an input type that accepts PipelineRunAsArgs, PipelineRunAsPtr and PipelineRunAsPtrOutput values.
+// You can construct a concrete instance of `PipelineRunAsPtrInput` via:
+//
+//	        PipelineRunAsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineRunAsPtrInput interface {
+	pulumi.Input
+
+	ToPipelineRunAsPtrOutput() PipelineRunAsPtrOutput
+	ToPipelineRunAsPtrOutputWithContext(context.Context) PipelineRunAsPtrOutput
+}
+
+type pipelineRunAsPtrType PipelineRunAsArgs
+
+func PipelineRunAsPtr(v *PipelineRunAsArgs) PipelineRunAsPtrInput {
+	return (*pipelineRunAsPtrType)(v)
+}
+
+func (*pipelineRunAsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineRunAs)(nil)).Elem()
+}
+
+func (i *pipelineRunAsPtrType) ToPipelineRunAsPtrOutput() PipelineRunAsPtrOutput {
+	return i.ToPipelineRunAsPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineRunAsPtrType) ToPipelineRunAsPtrOutputWithContext(ctx context.Context) PipelineRunAsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineRunAsPtrOutput)
+}
+
+type PipelineRunAsOutput struct{ *pulumi.OutputState }
+
+func (PipelineRunAsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineRunAs)(nil)).Elem()
+}
+
+func (o PipelineRunAsOutput) ToPipelineRunAsOutput() PipelineRunAsOutput {
+	return o
+}
+
+func (o PipelineRunAsOutput) ToPipelineRunAsOutputWithContext(ctx context.Context) PipelineRunAsOutput {
+	return o
+}
+
+func (o PipelineRunAsOutput) ToPipelineRunAsPtrOutput() PipelineRunAsPtrOutput {
+	return o.ToPipelineRunAsPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineRunAsOutput) ToPipelineRunAsPtrOutputWithContext(ctx context.Context) PipelineRunAsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineRunAs) *PipelineRunAs {
+		return &v
+	}).(PipelineRunAsPtrOutput)
+}
+
+func (o PipelineRunAsOutput) ServicePrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineRunAs) *string { return v.ServicePrincipalName }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineRunAsOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineRunAs) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type PipelineRunAsPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineRunAsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineRunAs)(nil)).Elem()
+}
+
+func (o PipelineRunAsPtrOutput) ToPipelineRunAsPtrOutput() PipelineRunAsPtrOutput {
+	return o
+}
+
+func (o PipelineRunAsPtrOutput) ToPipelineRunAsPtrOutputWithContext(ctx context.Context) PipelineRunAsPtrOutput {
+	return o
+}
+
+func (o PipelineRunAsPtrOutput) Elem() PipelineRunAsOutput {
+	return o.ApplyT(func(v *PipelineRunAs) PipelineRunAs {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineRunAs
+		return ret
+	}).(PipelineRunAsOutput)
+}
+
+func (o PipelineRunAsPtrOutput) ServicePrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineRunAs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePrincipalName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineRunAsPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineRunAs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
 type PipelineTrigger struct {
 	Cron   *PipelineTriggerCron   `pulumi:"cron"`
 	Manual *PipelineTriggerManual `pulumi:"manual"`
@@ -82160,341 +82586,13 @@ func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) SchemaJson() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn struct {
-	EmbeddingModelEndpointName *string `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-	Name *string `pulumi:"name"`
-}
-
-// VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput is an input type that accepts VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs and VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput values.
-// You can construct a concrete instance of `VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput` via:
-//
-//	VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs{...}
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput interface {
-	pulumi.Input
-
-	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput
-	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutputWithContext(context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput
-}
-
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs struct {
-	EmbeddingModelEndpointName pulumi.StringPtrInput `pulumi:"embeddingModelEndpointName"`
-	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-	Name pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn)(nil)).Elem()
-}
-
-func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput {
-	return i.ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutputWithContext(context.Background())
-}
-
-func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput)
-}
-
-// VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput is an input type that accepts VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray and VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput values.
-// You can construct a concrete instance of `VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput` via:
-//
-//	VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray{ VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs{...} }
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput interface {
-	pulumi.Input
-
-	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput
-	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutputWithContext(context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput
-}
-
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray []VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput
-
-func (VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn)(nil)).Elem()
-}
-
-func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput {
-	return i.ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutputWithContext(context.Background())
-}
-
-func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput)
-}
-
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput struct{ *pulumi.OutputState }
-
-func (VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn)(nil)).Elem()
-}
-
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput {
-	return o
-}
-
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput {
-	return o
-}
-
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) EmbeddingModelEndpointName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn) *string {
-		return v.EmbeddingModelEndpointName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput struct{ *pulumi.OutputState }
-
-func (VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn)(nil)).Elem()
-}
-
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput {
-	return o
-}
-
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput {
-	return o
-}
-
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput) Index(i pulumi.IntInput) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
-		return vs[0].([]VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn)[vs[1].(int)]
-	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput)
-}
-
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn struct {
-	EmbeddingDimension *int `pulumi:"embeddingDimension"`
-	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-	Name *string `pulumi:"name"`
-}
-
-// VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput is an input type that accepts VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs and VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput values.
-// You can construct a concrete instance of `VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput` via:
-//
-//	VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs{...}
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput interface {
-	pulumi.Input
-
-	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput
-	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutputWithContext(context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput
-}
-
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs struct {
-	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
-	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-	Name pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn)(nil)).Elem()
-}
-
-func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput {
-	return i.ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutputWithContext(context.Background())
-}
-
-func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput)
-}
-
-// VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput is an input type that accepts VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray and VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput values.
-// You can construct a concrete instance of `VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput` via:
-//
-//	VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray{ VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs{...} }
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput interface {
-	pulumi.Input
-
-	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput
-	ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutputWithContext(context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput
-}
-
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput
-
-func (VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn)(nil)).Elem()
-}
-
-func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
-	return i.ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutputWithContext(context.Background())
-}
-
-func (i VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput)
-}
-
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput struct{ *pulumi.OutputState }
-
-func (VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn)(nil)).Elem()
-}
-
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput {
-	return o
-}
-
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput {
-	return o
-}
-
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) EmbeddingDimension() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
-}
-
-// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput struct{ *pulumi.OutputState }
-
-func (VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn)(nil)).Elem()
-}
-
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
-	return o
-}
-
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput) ToVectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
-	return o
-}
-
-func (o VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput) Index(i pulumi.IntInput) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
-		return vs[0].([]VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn)[vs[1].(int)]
-	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput)
-}
-
-type VectorSearchIndexStatus struct {
-	// Index API Url to be used to perform operations on the index
-	IndexUrl *string `pulumi:"indexUrl"`
-	// Number of rows indexed
-	IndexedRowCount *int `pulumi:"indexedRowCount"`
-	// Message associated with the index status
-	Message *string `pulumi:"message"`
-	// Whether the index is ready for search
-	Ready *bool `pulumi:"ready"`
-}
-
-// VectorSearchIndexStatusInput is an input type that accepts VectorSearchIndexStatusArgs and VectorSearchIndexStatusOutput values.
-// You can construct a concrete instance of `VectorSearchIndexStatusInput` via:
-//
-//	VectorSearchIndexStatusArgs{...}
-type VectorSearchIndexStatusInput interface {
-	pulumi.Input
-
-	ToVectorSearchIndexStatusOutput() VectorSearchIndexStatusOutput
-	ToVectorSearchIndexStatusOutputWithContext(context.Context) VectorSearchIndexStatusOutput
-}
-
-type VectorSearchIndexStatusArgs struct {
-	// Index API Url to be used to perform operations on the index
-	IndexUrl pulumi.StringPtrInput `pulumi:"indexUrl"`
-	// Number of rows indexed
-	IndexedRowCount pulumi.IntPtrInput `pulumi:"indexedRowCount"`
-	// Message associated with the index status
-	Message pulumi.StringPtrInput `pulumi:"message"`
-	// Whether the index is ready for search
-	Ready pulumi.BoolPtrInput `pulumi:"ready"`
-}
-
-func (VectorSearchIndexStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VectorSearchIndexStatus)(nil)).Elem()
-}
-
-func (i VectorSearchIndexStatusArgs) ToVectorSearchIndexStatusOutput() VectorSearchIndexStatusOutput {
-	return i.ToVectorSearchIndexStatusOutputWithContext(context.Background())
-}
-
-func (i VectorSearchIndexStatusArgs) ToVectorSearchIndexStatusOutputWithContext(ctx context.Context) VectorSearchIndexStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexStatusOutput)
-}
-
-// VectorSearchIndexStatusArrayInput is an input type that accepts VectorSearchIndexStatusArray and VectorSearchIndexStatusArrayOutput values.
-// You can construct a concrete instance of `VectorSearchIndexStatusArrayInput` via:
-//
-//	VectorSearchIndexStatusArray{ VectorSearchIndexStatusArgs{...} }
-type VectorSearchIndexStatusArrayInput interface {
-	pulumi.Input
-
-	ToVectorSearchIndexStatusArrayOutput() VectorSearchIndexStatusArrayOutput
-	ToVectorSearchIndexStatusArrayOutputWithContext(context.Context) VectorSearchIndexStatusArrayOutput
-}
-
-type VectorSearchIndexStatusArray []VectorSearchIndexStatusInput
-
-func (VectorSearchIndexStatusArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VectorSearchIndexStatus)(nil)).Elem()
-}
-
-func (i VectorSearchIndexStatusArray) ToVectorSearchIndexStatusArrayOutput() VectorSearchIndexStatusArrayOutput {
-	return i.ToVectorSearchIndexStatusArrayOutputWithContext(context.Background())
-}
-
-func (i VectorSearchIndexStatusArray) ToVectorSearchIndexStatusArrayOutputWithContext(ctx context.Context) VectorSearchIndexStatusArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexStatusArrayOutput)
-}
-
-type VectorSearchIndexStatusOutput struct{ *pulumi.OutputState }
-
-func (VectorSearchIndexStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VectorSearchIndexStatus)(nil)).Elem()
-}
-
-func (o VectorSearchIndexStatusOutput) ToVectorSearchIndexStatusOutput() VectorSearchIndexStatusOutput {
-	return o
-}
-
-func (o VectorSearchIndexStatusOutput) ToVectorSearchIndexStatusOutputWithContext(ctx context.Context) VectorSearchIndexStatusOutput {
-	return o
-}
-
-// Index API Url to be used to perform operations on the index
-func (o VectorSearchIndexStatusOutput) IndexUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VectorSearchIndexStatus) *string { return v.IndexUrl }).(pulumi.StringPtrOutput)
-}
-
-// Number of rows indexed
-func (o VectorSearchIndexStatusOutput) IndexedRowCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VectorSearchIndexStatus) *int { return v.IndexedRowCount }).(pulumi.IntPtrOutput)
-}
-
-// Message associated with the index status
-func (o VectorSearchIndexStatusOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VectorSearchIndexStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-// Whether the index is ready for search
-func (o VectorSearchIndexStatusOutput) Ready() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VectorSearchIndexStatus) *bool { return v.Ready }).(pulumi.BoolPtrOutput)
-}
-
-type VectorSearchIndexStatusArrayOutput struct{ *pulumi.OutputState }
-
-func (VectorSearchIndexStatusArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VectorSearchIndexStatus)(nil)).Elem()
-}
-
-func (o VectorSearchIndexStatusArrayOutput) ToVectorSearchIndexStatusArrayOutput() VectorSearchIndexStatusArrayOutput {
-	return o
-}
-
-func (o VectorSearchIndexStatusArrayOutput) ToVectorSearchIndexStatusArrayOutputWithContext(ctx context.Context) VectorSearchIndexStatusArrayOutput {
-	return o
-}
-
-func (o VectorSearchIndexStatusArrayOutput) Index(i pulumi.IntInput) VectorSearchIndexStatusOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VectorSearchIndexStatus {
-		return vs[0].([]VectorSearchIndexStatus)[vs[1].(int)]
-	}).(VectorSearchIndexStatusOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyInput)(nil)).Elem(), AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrInput)(nil)).Elem(), AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsInput)(nil)).Elem(), AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrInput)(nil)).Elem(), AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConditionInput)(nil)).Elem(), AlertConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConditionPtrInput)(nil)).Elem(), AlertConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConditionOperandInput)(nil)).Elem(), AlertConditionOperandArgs{})
@@ -83333,6 +83431,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineNotificationArrayInput)(nil)).Elem(), PipelineNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineRestartWindowInput)(nil)).Elem(), PipelineRestartWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineRestartWindowPtrInput)(nil)).Elem(), PipelineRestartWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineRunAsInput)(nil)).Elem(), PipelineRunAsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineRunAsPtrInput)(nil)).Elem(), PipelineRunAsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineTriggerInput)(nil)).Elem(), PipelineTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineTriggerPtrInput)(nil)).Elem(), PipelineTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineTriggerCronInput)(nil)).Elem(), PipelineTriggerCronArgs{})
@@ -83481,14 +83581,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayInput)(nil)).Elem(), VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecPtrInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexStatusInput)(nil)).Elem(), VectorSearchIndexStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexStatusArrayInput)(nil)).Elem(), VectorSearchIndexStatusArray{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
+	pulumi.RegisterOutputType(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput{})
+	pulumi.RegisterOutputType(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput{})
+	pulumi.RegisterOutputType(AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsPtrOutput{})
 	pulumi.RegisterOutputType(AlertConditionOutput{})
 	pulumi.RegisterOutputType(AlertConditionPtrOutput{})
 	pulumi.RegisterOutputType(AlertConditionOperandOutput{})
@@ -84327,6 +84425,8 @@ func init() {
 	pulumi.RegisterOutputType(PipelineNotificationArrayOutput{})
 	pulumi.RegisterOutputType(PipelineRestartWindowOutput{})
 	pulumi.RegisterOutputType(PipelineRestartWindowPtrOutput{})
+	pulumi.RegisterOutputType(PipelineRunAsOutput{})
+	pulumi.RegisterOutputType(PipelineRunAsPtrOutput{})
 	pulumi.RegisterOutputType(PipelineTriggerOutput{})
 	pulumi.RegisterOutputType(PipelineTriggerPtrOutput{})
 	pulumi.RegisterOutputType(PipelineTriggerCronOutput{})
@@ -84475,10 +84575,4 @@ func init() {
 	pulumi.RegisterOutputType(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput{})
 	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecOutput{})
 	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecPtrOutput{})
-	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput{})
-	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput{})
-	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput{})
-	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput{})
-	pulumi.RegisterOutputType(VectorSearchIndexStatusOutput{})
-	pulumi.RegisterOutputType(VectorSearchIndexStatusArrayOutput{})
 }

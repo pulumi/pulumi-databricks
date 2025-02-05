@@ -32,7 +32,7 @@ public final class CredentialAzureServicePrincipalArgs extends com.pulumi.resour
     /**
      * The client secret generated for the above app ID in AAD. **This field is redacted on output**
      * 
-     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
      * 
      */
     @Import(name="clientSecret", required=true)
@@ -41,7 +41,7 @@ public final class CredentialAzureServicePrincipalArgs extends com.pulumi.resour
     /**
      * @return The client secret generated for the above app ID in AAD. **This field is redacted on output**
      * 
-     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
      * 
      */
     public Output<String> clientSecret() {
@@ -113,7 +113,7 @@ public final class CredentialAzureServicePrincipalArgs extends com.pulumi.resour
         /**
          * @param clientSecret The client secret generated for the above app ID in AAD. **This field is redacted on output**
          * 
-         * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+         * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class CredentialAzureServicePrincipalArgs extends com.pulumi.resour
         /**
          * @param clientSecret The client secret generated for the above app ID in AAD. **This field is redacted on output**
          * 
-         * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account.  Only applicable when purpose is `STORAGE`:
+         * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
          * 
          * @return builder
          * 

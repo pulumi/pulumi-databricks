@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "databricks:index/accessControlRuleSet:AccessControlRuleSet":
 		r = &AccessControlRuleSet{}
+	case "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting":
+		r = &AibiDashboardEmbeddingAccessPolicySetting{}
+	case "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting":
+		r = &AibiDashboardEmbeddingApprovedDomainsSetting{}
 	case "databricks:index/alert:Alert":
 		r = &Alert{}
 	case "databricks:index/app:App":
@@ -255,6 +259,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/accessControlRuleSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/aibiDashboardEmbeddingAccessPolicySetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/aibiDashboardEmbeddingApprovedDomainsSetting",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
