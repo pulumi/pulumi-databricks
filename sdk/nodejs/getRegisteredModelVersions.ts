@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getRegisteredModelVersions({
+ * const _this = databricks.getRegisteredModelVersions({
  *     fullName: "main.default.my_model",
  * });
  * ```
@@ -81,7 +81,7 @@ export interface GetRegisteredModelVersionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getRegisteredModelVersions({
+ * const _this = databricks.getRegisteredModelVersions({
  *     fullName: "main.default.my_model",
  * });
  * ```

@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getPipelines({
+ * const _this = databricks.getPipelines({
  *     pipelineName: "my_pipeline",
  * });
  * export const myPipeline = _this.then(_this => _this.ids);
@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getPipelines({
+ * const _this = databricks.getPipelines({
  *     pipelineName: "%pipeline%",
  * });
  * export const wildcardPipelines = _this.then(_this => _this.ids);
@@ -115,7 +115,7 @@ export interface GetPipelinesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getPipelines({
+ * const _this = databricks.getPipelines({
  *     pipelineName: "my_pipeline",
  * });
  * export const myPipeline = _this.then(_this => _this.ids);
@@ -127,7 +127,7 @@ export interface GetPipelinesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getPipelines({
+ * const _this = databricks.getPipelines({
  *     pipelineName: "%pipeline%",
  * });
  * export const wildcardPipelines = _this.then(_this => _this.ids);

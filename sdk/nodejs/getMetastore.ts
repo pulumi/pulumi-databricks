@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  *     owner: unityAdminGroup,
  *     forceDestroy: true,
  * });
- * const this = databricks.getMetastoreOutput({
+ * const _this = databricks.getMetastoreOutput({
  *     metastoreId: thisMetastore.id,
  * });
  * export const someMetastore = _this.apply(_this => _this.metastoreInfo);
@@ -129,7 +129,7 @@ export interface GetMetastoreResult {
  *     owner: unityAdminGroup,
  *     forceDestroy: true,
  * });
- * const this = databricks.getMetastoreOutput({
+ * const _this = databricks.getMetastoreOutput({
  *     metastoreId: thisMetastore.id,
  * });
  * export const someMetastore = _this.apply(_this => _this.metastoreInfo);

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as aws from "@pulumi/aws";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getAwsUnityCatalogPolicy({
+ * const _this = databricks.getAwsUnityCatalogPolicy({
  *     awsAccountId: awsAccountId,
  *     bucketName: "databricks-bucket",
  *     roleName: `${prefix}-uc-access`,
@@ -102,7 +102,7 @@ export interface GetAwsUnityCatalogAssumeRolePolicyResult {
  * import * as aws from "@pulumi/aws";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getAwsUnityCatalogPolicy({
+ * const _this = databricks.getAwsUnityCatalogPolicy({
  *     awsAccountId: awsAccountId,
  *     bucketName: "databricks-bucket",
  *     roleName: `${prefix}-uc-access`,

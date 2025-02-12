@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getCurrentMetastore({});
+ * const _this = databricks.getCurrentMetastore({});
  * export const someMetastore = _this.then(_this => _this.metastoreInfo);
  * ```
  *
@@ -85,7 +85,7 @@ export interface GetCurrentMetastoreResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getCurrentMetastore({});
+ * const _this = databricks.getCurrentMetastore({});
  * export const someMetastore = _this.then(_this => _this.metastoreInfo);
  * ```
  *

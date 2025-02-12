@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
- * const this = databricks.getAwsCrossAccountPolicy({});
+ * const _this = databricks.getAwsCrossAccountPolicy({});
  * const crossAccountPolicy = new aws.iam.Policy("cross_account_policy", {
  *     name: `${prefix}-crossaccount-iam-policy`,
  *     policy: _this.then(_this => _this.json),
@@ -119,7 +119,7 @@ export interface GetAwsAssumeRolePolicyResult {
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
- * const this = databricks.getAwsCrossAccountPolicy({});
+ * const _this = databricks.getAwsCrossAccountPolicy({});
  * const crossAccountPolicy = new aws.iam.Policy("cross_account_policy", {
  *     name: `${prefix}-crossaccount-iam-policy`,
  *     policy: _this.then(_this => _this.json),

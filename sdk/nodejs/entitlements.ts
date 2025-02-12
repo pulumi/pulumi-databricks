@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getServicePrincipal({
+ * const _this = databricks.getServicePrincipal({
  *     applicationId: "11111111-2222-3333-4444-555666777888",
  * });
  * const thisEntitlements = new databricks.Entitlements("this", {

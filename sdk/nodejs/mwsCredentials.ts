@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * const databricksAccountId = config.requireObject("databricksAccountId");
  * // Names of created resources will be prefixed with this value
  * const prefix = config.requireObject("prefix");
- * const this = databricks.getAwsAssumeRolePolicy({
+ * const _this = databricks.getAwsAssumeRolePolicy({
  *     externalId: databricksAccountId,
  * });
  * const crossAccountRole = new aws.iam.Role("cross_account_role", {

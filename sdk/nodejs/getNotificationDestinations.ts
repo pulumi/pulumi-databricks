@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Lists all notification desitnations
- * const this = databricks.getNotificationDestinations({});
+ * const _this = databricks.getNotificationDestinations({});
  * // List destinations of specific type and name
  * const filteredNotification = databricks.getNotificationDestinations({
  *     displayNameContains: "Destination",
@@ -109,7 +109,7 @@ export interface GetNotificationDestinationsResult {
  *     },
  * });
  * // Lists all notification desitnations
- * const this = databricks.getNotificationDestinations({});
+ * const _this = databricks.getNotificationDestinations({});
  * // List destinations of specific type and name
  * const filteredNotification = databricks.getNotificationDestinations({
  *     displayNameContains: "Destination",

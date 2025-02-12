@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getApp({
+ * const _this = databricks.getApp({
  *     name: "my-custom-app",
  * });
  * ```
@@ -81,7 +81,7 @@ export interface GetAppResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getApp({
+ * const _this = databricks.getApp({
  *     name: "my-custom-app",
  * });
  * ```
