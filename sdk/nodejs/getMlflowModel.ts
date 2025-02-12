@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
- * const this = databricks.getMlflowModel({
+ * const _this = databricks.getMlflowModel({
  *     name: "My MLflow Model",
  * });
  * export const model = _this;
@@ -41,7 +41,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getMlflowModel({
+ * const _this = databricks.getMlflowModel({
  *     name: "My MLflow Model with multiple versions",
  * });
  * const thisModelServing = new databricks.ModelServing("this", {
@@ -158,7 +158,7 @@ export interface GetMlflowModelResult {
  *         },
  *     ],
  * });
- * const this = databricks.getMlflowModel({
+ * const _this = databricks.getMlflowModel({
  *     name: "My MLflow Model",
  * });
  * export const model = _this;
@@ -168,7 +168,7 @@ export interface GetMlflowModelResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getMlflowModel({
+ * const _this = databricks.getMlflowModel({
  *     name: "My MLflow Model with multiple versions",
  * });
  * const thisModelServing = new databricks.ModelServing("this", {

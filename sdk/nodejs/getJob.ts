@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getJob({
+ * const _this = databricks.getJob({
  *     jobName: "My job",
  * });
  * export const jobNumWorkers = _this.then(_this => _this.jobSettings?.settings?.newCluster?.numWorkers);
@@ -96,7 +96,7 @@ export interface GetJobResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getJob({
+ * const _this = databricks.getJob({
  *     jobName: "My job",
  * });
  * export const jobNumWorkers = _this.then(_this => _this.jobSettings?.settings?.newCluster?.numWorkers);

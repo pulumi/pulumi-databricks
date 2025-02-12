@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getMwsNetworkConnectivityConfig({
+ * const _this = databricks.getMwsNetworkConnectivityConfig({
  *     name: "ncc",
  * });
  * export const config = _this;
@@ -129,7 +129,7 @@ export interface GetMwsNetworkConnectivityConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getMwsNetworkConnectivityConfig({
+ * const _this = databricks.getMwsNetworkConnectivityConfig({
  *     name: "ncc",
  * });
  * export const config = _this;

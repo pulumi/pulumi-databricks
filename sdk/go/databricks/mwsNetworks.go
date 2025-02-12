@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = google.NewComputeSubnetwork(ctx, "network-with-private-secondary-ip-ranges", &google.ComputeSubnetworkArgs{
+//			network_with_private_secondary_ip_ranges, err := google.NewComputeSubnetwork(ctx, "network-with-private-secondary-ip-ranges", &google.ComputeSubnetworkArgs{
 //				Name:        fmt.Sprintf("test-dbx-%v", suffix.Result),
 //				IpCidrRange: "10.0.0.0/16",
 //				Region:      "us-central1",

@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     return elements[0];
  * }
  *
- * const this = databricks.getCurrentConfig({});
+ * const _this = databricks.getCurrentConfig({});
  * const external = new databricks.StorageCredential("external", {
  *     awsIamRole: singleOrNone(.map(entry => ({
  *         roleArn: cloudCredentialId,
@@ -110,7 +110,7 @@ export interface GetCurrentConfigResult {
  *     return elements[0];
  * }
  *
- * const this = databricks.getCurrentConfig({});
+ * const _this = databricks.getCurrentConfig({});
  * const external = new databricks.StorageCredential("external", {
  *     awsIamRole: singleOrNone(.map(entry => ({
  *         roleArn: cloudCredentialId,

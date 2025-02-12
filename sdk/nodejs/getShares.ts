@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getShares({});
+ * const _this = databricks.getShares({});
  * export const shareName = _this.then(_this => _this.shares);
  * ```
  *
@@ -69,7 +69,7 @@ export interface GetSharesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getShares({});
+ * const _this = databricks.getShares({});
  * export const shareName = _this.then(_this => _this.shares);
  * ```
  *

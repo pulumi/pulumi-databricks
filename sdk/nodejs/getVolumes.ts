@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getVolumes({
+ * const _this = databricks.getVolumes({
  *     catalogName: "sandbox",
  *     schemaName: "things",
  * });
@@ -95,7 +95,7 @@ export interface GetVolumesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getVolumes({
+ * const _this = databricks.getVolumes({
  *     catalogName: "sandbox",
  *     schemaName: "things",
  * });

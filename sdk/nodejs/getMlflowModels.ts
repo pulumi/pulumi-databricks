@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getMlflowModels({});
+ * const _this = databricks.getMlflowModels({});
  * export const model = _this;
  * ```
  */
@@ -61,7 +61,7 @@ export interface GetMlflowModelsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getMlflowModels({});
+ * const _this = databricks.getMlflowModels({});
  * export const model = _this;
  * ```
  */

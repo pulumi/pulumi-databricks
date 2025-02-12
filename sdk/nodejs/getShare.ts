@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getShare({
+ * const _this = databricks.getShare({
  *     name: "this",
  * });
  * export const createdBy = _this.then(_this => _this.createdBy);
@@ -100,7 +100,7 @@ export interface GetShareResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getShare({
+ * const _this = databricks.getShare({
  *     name: "this",
  * });
  * export const createdBy = _this.then(_this => _this.createdBy);
