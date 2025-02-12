@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getAwsCrossAccountPolicy({});
+ * const _this = databricks.getAwsCrossAccountPolicy({});
  * ```
  *
  * ## Related Resources
@@ -111,7 +111,7 @@ export interface GetAwsCrossAccountPolicyResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getAwsCrossAccountPolicy({});
+ * const _this = databricks.getAwsCrossAccountPolicy({});
  * ```
  *
  * ## Related Resources

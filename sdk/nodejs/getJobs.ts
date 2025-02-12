@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * export = async () => {
- *     const this = await databricks.getJobs({});
+ *     const _this = await databricks.getJobs({});
  *     const tests = await databricks.getJobs({
  *         jobNameContains: "test",
  *     });
@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getJobs({});
+ * const _this = databricks.getJobs({});
  * export const x = _this.then(_this => `ID of `x` job is ${_this.ids?.x}`);
  * ```
  *
@@ -106,7 +106,7 @@ export interface GetJobsResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * export = async () => {
- *     const this = await databricks.getJobs({});
+ *     const _this = await databricks.getJobs({});
  *     const tests = await databricks.getJobs({
  *         jobNameContains: "test",
  *     });
@@ -129,7 +129,7 @@ export interface GetJobsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getJobs({});
+ * const _this = databricks.getJobs({});
  * export const x = _this.then(_this => `ID of `x` job is ${_this.ids?.x}`);
  * ```
  *

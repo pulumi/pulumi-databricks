@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *     bucket: "<unique_bucket_name>",
  *     forceDestroy: true,
  * });
- * const this = databricks.getAwsBucketPolicyOutput({
+ * const _this = databricks.getAwsBucketPolicyOutput({
  *     bucket: thisBucketV2.bucket,
  * });
  * const thisBucketPolicy = new aws.s3.BucketPolicy("this", {
@@ -101,7 +101,7 @@ export interface GetAwsBucketPolicyResult {
  *     bucket: "<unique_bucket_name>",
  *     forceDestroy: true,
  * });
- * const this = databricks.getAwsBucketPolicyOutput({
+ * const _this = databricks.getAwsBucketPolicyOutput({
  *     bucket: thisBucketV2.bucket,
  * });
  * const thisBucketPolicy = new aws.s3.BucketPolicy("this", {

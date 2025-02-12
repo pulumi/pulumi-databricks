@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getMwsNetworkConnectivityConfigs({});
+ * const _this = databricks.getMwsNetworkConnectivityConfigs({});
  * export const all = _this;
  * ```
  *
@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getMwsNetworkConnectivityConfigs({
+ * const _this = databricks.getMwsNetworkConnectivityConfigs({
  *     region: "us-east-1",
  * });
  * export const filtered = _this;
@@ -90,7 +90,7 @@ export interface GetMwsNetworkConnectivityConfigsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getMwsNetworkConnectivityConfigs({});
+ * const _this = databricks.getMwsNetworkConnectivityConfigs({});
  * export const all = _this;
  * ```
  *
@@ -100,7 +100,7 @@ export interface GetMwsNetworkConnectivityConfigsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getMwsNetworkConnectivityConfigs({
+ * const _this = databricks.getMwsNetworkConnectivityConfigs({
  *     region: "us-east-1",
  * });
  * export const filtered = _this;

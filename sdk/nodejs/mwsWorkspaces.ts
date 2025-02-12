@@ -81,7 +81,7 @@ import * as utilities from "./utilities";
  *     length: 6,
  * });
  * const prefix = `dltp${naming.result}`;
- * const this = databricks.getAwsAssumeRolePolicy({
+ * const _this = databricks.getAwsAssumeRolePolicy({
  *     externalId: databricksAccountId,
  * });
  * const crossAccountRole = new aws.iam.Role("cross_account_role", {

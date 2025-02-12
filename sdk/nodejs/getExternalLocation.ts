@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getExternalLocation({
+ * const _this = databricks.getExternalLocation({
  *     name: "this",
  * });
  * export const createdBy = _this.then(_this => _this.externalLocationInfo?.createdBy);
@@ -86,7 +86,7 @@ export interface GetExternalLocationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getExternalLocation({
+ * const _this = databricks.getExternalLocation({
  *     name: "this",
  * });
  * export const createdBy = _this.then(_this => _this.externalLocationInfo?.createdBy);

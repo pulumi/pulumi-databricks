@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     catalogName: "sandbox",
  *     schemaName: "things",
  * });
- * const this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getVolume({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getVolume({
  *     name: __value,
  * }) })));
  * ```
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getVolume({
+ * const _this = databricks.getVolume({
  *     name: "catalog.schema.volume",
  * });
  * ```
@@ -106,7 +106,7 @@ export interface GetVolumeResult {
  *     catalogName: "sandbox",
  *     schemaName: "things",
  * });
- * const this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getVolume({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getVolume({
  *     name: __value,
  * }) })));
  * ```
@@ -117,7 +117,7 @@ export interface GetVolumeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const this = databricks.getVolume({
+ * const _this = databricks.getVolume({
  *     name: "catalog.schema.volume",
  * });
  * ```
