@@ -213,6 +213,9 @@
                                 },
                                 "s3": {
                                     "maxItemsOne": true
+                                },
+                                "volumes": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -676,6 +679,9 @@
                                                         },
                                                         "s3": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "volumes": {
+                                                            "maxItemsOne": true
                                                         }
                                                     }
                                                 }
@@ -824,6 +830,9 @@
                                                 "maxItemsOne": true
                                             },
                                             "s3": {
+                                                "maxItemsOne": true
+                                            },
+                                            "volumes": {
                                                 "maxItemsOne": true
                                             }
                                         }
@@ -1139,6 +1148,9 @@
                                                                                 },
                                                                                 "s3": {
                                                                                     "maxItemsOne": true
+                                                                                },
+                                                                                "volumes": {
+                                                                                    "maxItemsOne": true
                                                                                 }
                                                                             }
                                                                         }
@@ -1426,6 +1438,9 @@
                                                             "maxItemsOne": true
                                                         },
                                                         "s3": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "volumes": {
                                                             "maxItemsOne": true
                                                         }
                                                     }
@@ -2348,6 +2363,9 @@
                                             },
                                             "s3": {
                                                 "maxItemsOne": true
+                                            },
+                                            "volumes": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -3253,6 +3271,9 @@
                                             },
                                             "s3": {
                                                 "maxItemsOne": true
+                                            },
+                                            "volumes": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -3349,6 +3370,9 @@
                                                             "maxItemsOne": true
                                                         },
                                                         "s3": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "volumes": {
                                                             "maxItemsOne": true
                                                         }
                                                     }
