@@ -15,15 +15,19 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.GetClusterClusterInfoClusterLogConfDbfsResult? Dbfs;
         public readonly Outputs.GetClusterClusterInfoClusterLogConfS3Result? S3;
+        public readonly Outputs.GetClusterClusterInfoClusterLogConfVolumesResult? Volumes;
 
         [OutputConstructor]
         private GetClusterClusterInfoClusterLogConfResult(
             Outputs.GetClusterClusterInfoClusterLogConfDbfsResult? dbfs,
 
-            Outputs.GetClusterClusterInfoClusterLogConfS3Result? s3)
+            Outputs.GetClusterClusterInfoClusterLogConfS3Result? s3,
+
+            Outputs.GetClusterClusterInfoClusterLogConfVolumesResult? volumes)
         {
             Dbfs = dbfs;
             S3 = s3;
+            Volumes = volumes;
         }
     }
 }

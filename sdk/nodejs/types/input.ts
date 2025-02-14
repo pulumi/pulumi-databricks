@@ -489,6 +489,7 @@ export interface ClusterAzureAttributesLogAnalyticsInfo {
 export interface ClusterClusterLogConf {
     dbfs?: pulumi.Input<inputs.ClusterClusterLogConfDbfs>;
     s3?: pulumi.Input<inputs.ClusterClusterLogConfS3>;
+    volumes?: pulumi.Input<inputs.ClusterClusterLogConfVolumes>;
 }
 
 export interface ClusterClusterLogConfDbfs {
@@ -527,6 +528,13 @@ export interface ClusterClusterLogConfS3 {
      * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
      */
     region?: pulumi.Input<string>;
+}
+
+export interface ClusterClusterLogConfVolumes {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
+    destination: pulumi.Input<string>;
 }
 
 export interface ClusterClusterMountInfo {
@@ -1368,11 +1376,13 @@ export interface GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs {
 export interface GetClusterClusterInfoClusterLogConf {
     dbfs?: inputs.GetClusterClusterInfoClusterLogConfDbfs;
     s3?: inputs.GetClusterClusterInfoClusterLogConfS3;
+    volumes?: inputs.GetClusterClusterInfoClusterLogConfVolumes;
 }
 
 export interface GetClusterClusterInfoClusterLogConfArgs {
     dbfs?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfDbfsArgs>;
     s3?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfS3Args>;
+    volumes?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfVolumesArgs>;
 }
 
 export interface GetClusterClusterInfoClusterLogConfDbfs {
@@ -1401,6 +1411,14 @@ export interface GetClusterClusterInfoClusterLogConfS3Args {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoClusterLogConfVolumes {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoClusterLogConfVolumesArgs {
+    destination: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoClusterLogStatus {
@@ -1838,11 +1856,13 @@ export interface GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs {
 export interface GetClusterClusterInfoSpecClusterLogConf {
     dbfs?: inputs.GetClusterClusterInfoSpecClusterLogConfDbfs;
     s3?: inputs.GetClusterClusterInfoSpecClusterLogConfS3;
+    volumes?: inputs.GetClusterClusterInfoSpecClusterLogConfVolumes;
 }
 
 export interface GetClusterClusterInfoSpecClusterLogConfArgs {
     dbfs?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfDbfsArgs>;
     s3?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfS3Args>;
+    volumes?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfVolumesArgs>;
 }
 
 export interface GetClusterClusterInfoSpecClusterLogConfDbfs {
@@ -1871,6 +1891,14 @@ export interface GetClusterClusterInfoSpecClusterLogConfS3Args {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecClusterLogConfVolumes {
+    destination: string;
+}
+
+export interface GetClusterClusterInfoSpecClusterLogConfVolumesArgs {
+    destination: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoSpecClusterMountInfo {
@@ -8425,6 +8453,7 @@ export interface JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo {
 export interface JobJobClusterNewClusterClusterLogConf {
     dbfs?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConfDbfs>;
     s3?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConfS3>;
+    volumes?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConfVolumes>;
 }
 
 export interface JobJobClusterNewClusterClusterLogConfDbfs {
@@ -8439,6 +8468,10 @@ export interface JobJobClusterNewClusterClusterLogConfS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface JobJobClusterNewClusterClusterLogConfVolumes {
+    destination: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterClusterMountInfo {
@@ -8660,6 +8693,7 @@ export interface JobNewClusterAzureAttributesLogAnalyticsInfo {
 export interface JobNewClusterClusterLogConf {
     dbfs?: pulumi.Input<inputs.JobNewClusterClusterLogConfDbfs>;
     s3?: pulumi.Input<inputs.JobNewClusterClusterLogConfS3>;
+    volumes?: pulumi.Input<inputs.JobNewClusterClusterLogConfVolumes>;
 }
 
 export interface JobNewClusterClusterLogConfDbfs {
@@ -8674,6 +8708,10 @@ export interface JobNewClusterClusterLogConfS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface JobNewClusterClusterLogConfVolumes {
+    destination: pulumi.Input<string>;
 }
 
 export interface JobNewClusterClusterMountInfo {
@@ -9497,6 +9535,7 @@ export interface JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo
 export interface JobTaskForEachTaskTaskNewClusterClusterLogConf {
     dbfs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs>;
     s3?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfS3>;
+    volumes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs {
@@ -9511,6 +9550,10 @@ export interface JobTaskForEachTaskTaskNewClusterClusterLogConfS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes {
+    destination: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterMountInfo {
@@ -10082,6 +10125,7 @@ export interface JobTaskNewClusterAzureAttributesLogAnalyticsInfo {
 export interface JobTaskNewClusterClusterLogConf {
     dbfs?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConfDbfs>;
     s3?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConfS3>;
+    volumes?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConfVolumes>;
 }
 
 export interface JobTaskNewClusterClusterLogConfDbfs {
@@ -10096,6 +10140,10 @@ export interface JobTaskNewClusterClusterLogConfS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterClusterLogConfVolumes {
+    destination: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterClusterMountInfo {
@@ -11846,6 +11894,7 @@ export interface PipelineClusterAzureAttributesLogAnalyticsInfo {
 export interface PipelineClusterClusterLogConf {
     dbfs?: pulumi.Input<inputs.PipelineClusterClusterLogConfDbfs>;
     s3?: pulumi.Input<inputs.PipelineClusterClusterLogConfS3>;
+    volumes?: pulumi.Input<inputs.PipelineClusterClusterLogConfVolumes>;
 }
 
 export interface PipelineClusterClusterLogConfDbfs {
@@ -11860,6 +11909,10 @@ export interface PipelineClusterClusterLogConfS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface PipelineClusterClusterLogConfVolumes {
+    destination: pulumi.Input<string>;
 }
 
 export interface PipelineClusterGcpAttributes {

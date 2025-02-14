@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoClusterLogConfDbfs;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoClusterLogConfS3;
+import com.pulumi.databricks.outputs.GetClusterClusterInfoClusterLogConfVolumes;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 public final class GetClusterClusterInfoClusterLogConf {
     private @Nullable GetClusterClusterInfoClusterLogConfDbfs dbfs;
     private @Nullable GetClusterClusterInfoClusterLogConfS3 s3;
+    private @Nullable GetClusterClusterInfoClusterLogConfVolumes volumes;
 
     private GetClusterClusterInfoClusterLogConf() {}
     public Optional<GetClusterClusterInfoClusterLogConfDbfs> dbfs() {
@@ -21,6 +23,9 @@ public final class GetClusterClusterInfoClusterLogConf {
     }
     public Optional<GetClusterClusterInfoClusterLogConfS3> s3() {
         return Optional.ofNullable(this.s3);
+    }
+    public Optional<GetClusterClusterInfoClusterLogConfVolumes> volumes() {
+        return Optional.ofNullable(this.volumes);
     }
 
     public static Builder builder() {
@@ -34,11 +39,13 @@ public final class GetClusterClusterInfoClusterLogConf {
     public static final class Builder {
         private @Nullable GetClusterClusterInfoClusterLogConfDbfs dbfs;
         private @Nullable GetClusterClusterInfoClusterLogConfS3 s3;
+        private @Nullable GetClusterClusterInfoClusterLogConfVolumes volumes;
         public Builder() {}
         public Builder(GetClusterClusterInfoClusterLogConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
     	      this.s3 = defaults.s3;
+    	      this.volumes = defaults.volumes;
         }
 
         @CustomType.Setter
@@ -53,10 +60,17 @@ public final class GetClusterClusterInfoClusterLogConf {
             this.s3 = s3;
             return this;
         }
+        @CustomType.Setter
+        public Builder volumes(@Nullable GetClusterClusterInfoClusterLogConfVolumes volumes) {
+
+            this.volumes = volumes;
+            return this;
+        }
         public GetClusterClusterInfoClusterLogConf build() {
             final var _resultValue = new GetClusterClusterInfoClusterLogConf();
             _resultValue.dbfs = dbfs;
             _resultValue.s3 = s3;
+            _resultValue.volumes = volumes;
             return _resultValue;
         }
     }

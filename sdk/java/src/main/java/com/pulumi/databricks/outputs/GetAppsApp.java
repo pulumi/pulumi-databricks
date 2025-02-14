@@ -51,6 +51,11 @@ public final class GetAppsApp {
      */
     private @Nullable String description;
     /**
+     * @return Id of the job to grant permission on.
+     * 
+     */
+    private String id;
+    /**
      * @return Name of the serving endpoint to grant permission on.
      * 
      */
@@ -135,6 +140,13 @@ public final class GetAppsApp {
         return Optional.ofNullable(this.description);
     }
     /**
+     * @return Id of the job to grant permission on.
+     * 
+     */
+    public String id() {
+        return this.id;
+    }
+    /**
      * @return Name of the serving endpoint to grant permission on.
      * 
      */
@@ -206,6 +218,7 @@ public final class GetAppsApp {
         private String creator;
         private String defaultSourceCodePath;
         private @Nullable String description;
+        private String id;
         private String name;
         private GetAppsAppPendingDeployment pendingDeployment;
         private @Nullable List<GetAppsAppResource> resources;
@@ -225,6 +238,7 @@ public final class GetAppsApp {
     	      this.creator = defaults.creator;
     	      this.defaultSourceCodePath = defaults.defaultSourceCodePath;
     	      this.description = defaults.description;
+    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.pendingDeployment = defaults.pendingDeployment;
     	      this.resources = defaults.resources;
@@ -288,6 +302,14 @@ public final class GetAppsApp {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -372,6 +394,7 @@ public final class GetAppsApp {
             _resultValue.creator = creator;
             _resultValue.defaultSourceCodePath = defaultSourceCodePath;
             _resultValue.description = description;
+            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.pendingDeployment = pendingDeployment;
             _resultValue.resources = resources;

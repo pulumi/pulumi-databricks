@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("s3")]
         public Input<Inputs.GetClusterClusterInfoClusterLogConfS3InputArgs>? S3 { get; set; }
 
+        [Input("volumes")]
+        public Input<Inputs.GetClusterClusterInfoClusterLogConfVolumesInputArgs>? Volumes { get; set; }
+
         public GetClusterClusterInfoClusterLogConfInputArgs()
         {
         }

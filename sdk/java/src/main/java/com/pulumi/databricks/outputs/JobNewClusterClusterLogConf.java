@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobNewClusterClusterLogConfDbfs;
 import com.pulumi.databricks.outputs.JobNewClusterClusterLogConfS3;
+import com.pulumi.databricks.outputs.JobNewClusterClusterLogConfVolumes;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 public final class JobNewClusterClusterLogConf {
     private @Nullable JobNewClusterClusterLogConfDbfs dbfs;
     private @Nullable JobNewClusterClusterLogConfS3 s3;
+    private @Nullable JobNewClusterClusterLogConfVolumes volumes;
 
     private JobNewClusterClusterLogConf() {}
     public Optional<JobNewClusterClusterLogConfDbfs> dbfs() {
@@ -21,6 +23,9 @@ public final class JobNewClusterClusterLogConf {
     }
     public Optional<JobNewClusterClusterLogConfS3> s3() {
         return Optional.ofNullable(this.s3);
+    }
+    public Optional<JobNewClusterClusterLogConfVolumes> volumes() {
+        return Optional.ofNullable(this.volumes);
     }
 
     public static Builder builder() {
@@ -34,11 +39,13 @@ public final class JobNewClusterClusterLogConf {
     public static final class Builder {
         private @Nullable JobNewClusterClusterLogConfDbfs dbfs;
         private @Nullable JobNewClusterClusterLogConfS3 s3;
+        private @Nullable JobNewClusterClusterLogConfVolumes volumes;
         public Builder() {}
         public Builder(JobNewClusterClusterLogConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
     	      this.s3 = defaults.s3;
+    	      this.volumes = defaults.volumes;
         }
 
         @CustomType.Setter
@@ -53,10 +60,17 @@ public final class JobNewClusterClusterLogConf {
             this.s3 = s3;
             return this;
         }
+        @CustomType.Setter
+        public Builder volumes(@Nullable JobNewClusterClusterLogConfVolumes volumes) {
+
+            this.volumes = volumes;
+            return this;
+        }
         public JobNewClusterClusterLogConf build() {
             final var _resultValue = new JobNewClusterClusterLogConf();
             _resultValue.dbfs = dbfs;
             _resultValue.s3 = s3;
+            _resultValue.volumes = volumes;
             return _resultValue;
         }
     }

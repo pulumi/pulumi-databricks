@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PipelineClusterClusterLogConfDbfs;
 import com.pulumi.databricks.outputs.PipelineClusterClusterLogConfS3;
+import com.pulumi.databricks.outputs.PipelineClusterClusterLogConfVolumes;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 public final class PipelineClusterClusterLogConf {
     private @Nullable PipelineClusterClusterLogConfDbfs dbfs;
     private @Nullable PipelineClusterClusterLogConfS3 s3;
+    private @Nullable PipelineClusterClusterLogConfVolumes volumes;
 
     private PipelineClusterClusterLogConf() {}
     public Optional<PipelineClusterClusterLogConfDbfs> dbfs() {
@@ -21,6 +23,9 @@ public final class PipelineClusterClusterLogConf {
     }
     public Optional<PipelineClusterClusterLogConfS3> s3() {
         return Optional.ofNullable(this.s3);
+    }
+    public Optional<PipelineClusterClusterLogConfVolumes> volumes() {
+        return Optional.ofNullable(this.volumes);
     }
 
     public static Builder builder() {
@@ -34,11 +39,13 @@ public final class PipelineClusterClusterLogConf {
     public static final class Builder {
         private @Nullable PipelineClusterClusterLogConfDbfs dbfs;
         private @Nullable PipelineClusterClusterLogConfS3 s3;
+        private @Nullable PipelineClusterClusterLogConfVolumes volumes;
         public Builder() {}
         public Builder(PipelineClusterClusterLogConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
     	      this.s3 = defaults.s3;
+    	      this.volumes = defaults.volumes;
         }
 
         @CustomType.Setter
@@ -53,10 +60,17 @@ public final class PipelineClusterClusterLogConf {
             this.s3 = s3;
             return this;
         }
+        @CustomType.Setter
+        public Builder volumes(@Nullable PipelineClusterClusterLogConfVolumes volumes) {
+
+            this.volumes = volumes;
+            return this;
+        }
         public PipelineClusterClusterLogConf build() {
             final var _resultValue = new PipelineClusterClusterLogConf();
             _resultValue.dbfs = dbfs;
             _resultValue.s3 = s3;
+            _resultValue.volumes = volumes;
             return _resultValue;
         }
     }

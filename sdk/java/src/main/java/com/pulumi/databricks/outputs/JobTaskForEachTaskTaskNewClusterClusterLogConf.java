@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfS3;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 public final class JobTaskForEachTaskTaskNewClusterClusterLogConf {
     private @Nullable JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs dbfs;
     private @Nullable JobTaskForEachTaskTaskNewClusterClusterLogConfS3 s3;
+    private @Nullable JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes volumes;
 
     private JobTaskForEachTaskTaskNewClusterClusterLogConf() {}
     public Optional<JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs> dbfs() {
@@ -21,6 +23,9 @@ public final class JobTaskForEachTaskTaskNewClusterClusterLogConf {
     }
     public Optional<JobTaskForEachTaskTaskNewClusterClusterLogConfS3> s3() {
         return Optional.ofNullable(this.s3);
+    }
+    public Optional<JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes> volumes() {
+        return Optional.ofNullable(this.volumes);
     }
 
     public static Builder builder() {
@@ -34,11 +39,13 @@ public final class JobTaskForEachTaskTaskNewClusterClusterLogConf {
     public static final class Builder {
         private @Nullable JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs dbfs;
         private @Nullable JobTaskForEachTaskTaskNewClusterClusterLogConfS3 s3;
+        private @Nullable JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes volumes;
         public Builder() {}
         public Builder(JobTaskForEachTaskTaskNewClusterClusterLogConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
     	      this.s3 = defaults.s3;
+    	      this.volumes = defaults.volumes;
         }
 
         @CustomType.Setter
@@ -53,10 +60,17 @@ public final class JobTaskForEachTaskTaskNewClusterClusterLogConf {
             this.s3 = s3;
             return this;
         }
+        @CustomType.Setter
+        public Builder volumes(@Nullable JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes volumes) {
+
+            this.volumes = volumes;
+            return this;
+        }
         public JobTaskForEachTaskTaskNewClusterClusterLogConf build() {
             final var _resultValue = new JobTaskForEachTaskTaskNewClusterClusterLogConf();
             _resultValue.dbfs = dbfs;
             _resultValue.s3 = s3;
+            _resultValue.volumes = volumes;
             return _resultValue;
         }
     }

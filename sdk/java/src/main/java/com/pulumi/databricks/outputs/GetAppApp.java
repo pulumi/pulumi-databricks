@@ -51,6 +51,11 @@ public final class GetAppApp {
      */
     private @Nullable String description;
     /**
+     * @return Id of the job to grant permission on.
+     * 
+     */
+    private String id;
+    /**
      * @return The name of the app.
      * 
      */
@@ -135,6 +140,13 @@ public final class GetAppApp {
         return Optional.ofNullable(this.description);
     }
     /**
+     * @return Id of the job to grant permission on.
+     * 
+     */
+    public String id() {
+        return this.id;
+    }
+    /**
      * @return The name of the app.
      * 
      */
@@ -206,6 +218,7 @@ public final class GetAppApp {
         private String creator;
         private String defaultSourceCodePath;
         private @Nullable String description;
+        private String id;
         private String name;
         private GetAppAppPendingDeployment pendingDeployment;
         private @Nullable List<GetAppAppResource> resources;
@@ -225,6 +238,7 @@ public final class GetAppApp {
     	      this.creator = defaults.creator;
     	      this.defaultSourceCodePath = defaults.defaultSourceCodePath;
     	      this.description = defaults.description;
+    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.pendingDeployment = defaults.pendingDeployment;
     	      this.resources = defaults.resources;
@@ -288,6 +302,14 @@ public final class GetAppApp {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppApp", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -372,6 +394,7 @@ public final class GetAppApp {
             _resultValue.creator = creator;
             _resultValue.defaultSourceCodePath = defaultSourceCodePath;
             _resultValue.description = description;
+            _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.pendingDeployment = pendingDeployment;
             _resultValue.resources = resources;
