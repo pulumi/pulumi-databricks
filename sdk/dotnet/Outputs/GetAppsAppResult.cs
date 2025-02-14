@@ -39,6 +39,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
+        /// Id of the job to grant permission on.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Name of the serving endpoint to grant permission on.
         /// </summary>
         public readonly string Name;
@@ -85,6 +89,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? description,
 
+            string id,
+
             string name,
 
             Outputs.GetAppsAppPendingDeploymentResult pendingDeployment,
@@ -110,6 +116,7 @@ namespace Pulumi.Databricks.Outputs
             Creator = creator;
             DefaultSourceCodePath = defaultSourceCodePath;
             Description = description;
+            Id = id;
             Name = name;
             PendingDeployment = pendingDeployment;
             Resources = resources;

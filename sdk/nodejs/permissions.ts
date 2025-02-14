@@ -783,6 +783,30 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Databricks Apps usage
+ *
+ * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const appUsage = new databricks.Permissions("app_usage", {
+ *     appName: "myapp",
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_USE",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Instance Profiles
  *
  * Instance Profiles are not managed by General Permissions API and therefore databricks.GroupInstanceProfile and databricks.UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.

@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobJobClusterNewClusterClusterLogConfDbfs;
 import com.pulumi.databricks.outputs.JobJobClusterNewClusterClusterLogConfS3;
+import com.pulumi.databricks.outputs.JobJobClusterNewClusterClusterLogConfVolumes;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 public final class JobJobClusterNewClusterClusterLogConf {
     private @Nullable JobJobClusterNewClusterClusterLogConfDbfs dbfs;
     private @Nullable JobJobClusterNewClusterClusterLogConfS3 s3;
+    private @Nullable JobJobClusterNewClusterClusterLogConfVolumes volumes;
 
     private JobJobClusterNewClusterClusterLogConf() {}
     public Optional<JobJobClusterNewClusterClusterLogConfDbfs> dbfs() {
@@ -21,6 +23,9 @@ public final class JobJobClusterNewClusterClusterLogConf {
     }
     public Optional<JobJobClusterNewClusterClusterLogConfS3> s3() {
         return Optional.ofNullable(this.s3);
+    }
+    public Optional<JobJobClusterNewClusterClusterLogConfVolumes> volumes() {
+        return Optional.ofNullable(this.volumes);
     }
 
     public static Builder builder() {
@@ -34,11 +39,13 @@ public final class JobJobClusterNewClusterClusterLogConf {
     public static final class Builder {
         private @Nullable JobJobClusterNewClusterClusterLogConfDbfs dbfs;
         private @Nullable JobJobClusterNewClusterClusterLogConfS3 s3;
+        private @Nullable JobJobClusterNewClusterClusterLogConfVolumes volumes;
         public Builder() {}
         public Builder(JobJobClusterNewClusterClusterLogConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbfs = defaults.dbfs;
     	      this.s3 = defaults.s3;
+    	      this.volumes = defaults.volumes;
         }
 
         @CustomType.Setter
@@ -53,10 +60,17 @@ public final class JobJobClusterNewClusterClusterLogConf {
             this.s3 = s3;
             return this;
         }
+        @CustomType.Setter
+        public Builder volumes(@Nullable JobJobClusterNewClusterClusterLogConfVolumes volumes) {
+
+            this.volumes = volumes;
+            return this;
+        }
         public JobJobClusterNewClusterClusterLogConf build() {
             final var _resultValue = new JobJobClusterNewClusterClusterLogConf();
             _resultValue.dbfs = dbfs;
             _resultValue.s3 = s3;
+            _resultValue.volumes = volumes;
             return _resultValue;
         }
     }

@@ -15,15 +15,19 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.JobNewClusterClusterLogConfDbfs? Dbfs;
         public readonly Outputs.JobNewClusterClusterLogConfS3? S3;
+        public readonly Outputs.JobNewClusterClusterLogConfVolumes? Volumes;
 
         [OutputConstructor]
         private JobNewClusterClusterLogConf(
             Outputs.JobNewClusterClusterLogConfDbfs? dbfs,
 
-            Outputs.JobNewClusterClusterLogConfS3? s3)
+            Outputs.JobNewClusterClusterLogConfS3? s3,
+
+            Outputs.JobNewClusterClusterLogConfVolumes? volumes)
         {
             Dbfs = dbfs;
             S3 = s3;
+            Volumes = volumes;
         }
     }
 }

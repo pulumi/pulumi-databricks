@@ -1428,6 +1428,29 @@ class Permissions(pulumi.CustomResource):
             ])
         ```
 
+        ## Databricks Apps usage
+
+        [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        eng = databricks.Group("eng", display_name="Engineering")
+        app_usage = databricks.Permissions("app_usage",
+            app_name="myapp",
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+            ])
+        ```
+
         ## Instance Profiles
 
         Instance Profiles are not managed by General Permissions API and therefore GroupInstanceProfile and UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
@@ -2185,6 +2208,29 @@ class Permissions(pulumi.CustomResource):
                 {
                     "group_name": auto.display_name,
                     "permission_level": "CAN_RUN",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+            ])
+        ```
+
+        ## Databricks Apps usage
+
+        [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        eng = databricks.Group("eng", display_name="Engineering")
+        app_usage = databricks.Permissions("app_usage",
+            app_name="myapp",
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_USE",
                 },
                 {
                     "group_name": eng.display_name,

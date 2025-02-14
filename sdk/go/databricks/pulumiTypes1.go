@@ -13,6 +13,885 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type TableColumn struct {
+	Comment          *string `pulumi:"comment"`
+	Name             string  `pulumi:"name"`
+	Nullable         *bool   `pulumi:"nullable"`
+	PartitionIndex   *int    `pulumi:"partitionIndex"`
+	Position         int     `pulumi:"position"`
+	TypeIntervalType *string `pulumi:"typeIntervalType"`
+	TypeJson         *string `pulumi:"typeJson"`
+	TypeName         string  `pulumi:"typeName"`
+	TypePrecision    *int    `pulumi:"typePrecision"`
+	TypeScale        *int    `pulumi:"typeScale"`
+	TypeText         string  `pulumi:"typeText"`
+}
+
+// TableColumnInput is an input type that accepts TableColumnArgs and TableColumnOutput values.
+// You can construct a concrete instance of `TableColumnInput` via:
+//
+//	TableColumnArgs{...}
+type TableColumnInput interface {
+	pulumi.Input
+
+	ToTableColumnOutput() TableColumnOutput
+	ToTableColumnOutputWithContext(context.Context) TableColumnOutput
+}
+
+type TableColumnArgs struct {
+	Comment          pulumi.StringPtrInput `pulumi:"comment"`
+	Name             pulumi.StringInput    `pulumi:"name"`
+	Nullable         pulumi.BoolPtrInput   `pulumi:"nullable"`
+	PartitionIndex   pulumi.IntPtrInput    `pulumi:"partitionIndex"`
+	Position         pulumi.IntInput       `pulumi:"position"`
+	TypeIntervalType pulumi.StringPtrInput `pulumi:"typeIntervalType"`
+	TypeJson         pulumi.StringPtrInput `pulumi:"typeJson"`
+	TypeName         pulumi.StringInput    `pulumi:"typeName"`
+	TypePrecision    pulumi.IntPtrInput    `pulumi:"typePrecision"`
+	TypeScale        pulumi.IntPtrInput    `pulumi:"typeScale"`
+	TypeText         pulumi.StringInput    `pulumi:"typeText"`
+}
+
+func (TableColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableColumn)(nil)).Elem()
+}
+
+func (i TableColumnArgs) ToTableColumnOutput() TableColumnOutput {
+	return i.ToTableColumnOutputWithContext(context.Background())
+}
+
+func (i TableColumnArgs) ToTableColumnOutputWithContext(ctx context.Context) TableColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableColumnOutput)
+}
+
+// TableColumnArrayInput is an input type that accepts TableColumnArray and TableColumnArrayOutput values.
+// You can construct a concrete instance of `TableColumnArrayInput` via:
+//
+//	TableColumnArray{ TableColumnArgs{...} }
+type TableColumnArrayInput interface {
+	pulumi.Input
+
+	ToTableColumnArrayOutput() TableColumnArrayOutput
+	ToTableColumnArrayOutputWithContext(context.Context) TableColumnArrayOutput
+}
+
+type TableColumnArray []TableColumnInput
+
+func (TableColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableColumn)(nil)).Elem()
+}
+
+func (i TableColumnArray) ToTableColumnArrayOutput() TableColumnArrayOutput {
+	return i.ToTableColumnArrayOutputWithContext(context.Background())
+}
+
+func (i TableColumnArray) ToTableColumnArrayOutputWithContext(ctx context.Context) TableColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableColumnArrayOutput)
+}
+
+type TableColumnOutput struct{ *pulumi.OutputState }
+
+func (TableColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableColumn)(nil)).Elem()
+}
+
+func (o TableColumnOutput) ToTableColumnOutput() TableColumnOutput {
+	return o
+}
+
+func (o TableColumnOutput) ToTableColumnOutputWithContext(ctx context.Context) TableColumnOutput {
+	return o
+}
+
+func (o TableColumnOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableColumn) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o TableColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TableColumn) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o TableColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableColumn) *bool { return v.Nullable }).(pulumi.BoolPtrOutput)
+}
+
+func (o TableColumnOutput) PartitionIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableColumn) *int { return v.PartitionIndex }).(pulumi.IntPtrOutput)
+}
+
+func (o TableColumnOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v TableColumn) int { return v.Position }).(pulumi.IntOutput)
+}
+
+func (o TableColumnOutput) TypeIntervalType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableColumn) *string { return v.TypeIntervalType }).(pulumi.StringPtrOutput)
+}
+
+func (o TableColumnOutput) TypeJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableColumn) *string { return v.TypeJson }).(pulumi.StringPtrOutput)
+}
+
+func (o TableColumnOutput) TypeName() pulumi.StringOutput {
+	return o.ApplyT(func(v TableColumn) string { return v.TypeName }).(pulumi.StringOutput)
+}
+
+func (o TableColumnOutput) TypePrecision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableColumn) *int { return v.TypePrecision }).(pulumi.IntPtrOutput)
+}
+
+func (o TableColumnOutput) TypeScale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableColumn) *int { return v.TypeScale }).(pulumi.IntPtrOutput)
+}
+
+func (o TableColumnOutput) TypeText() pulumi.StringOutput {
+	return o.ApplyT(func(v TableColumn) string { return v.TypeText }).(pulumi.StringOutput)
+}
+
+type TableColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (TableColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableColumn)(nil)).Elem()
+}
+
+func (o TableColumnArrayOutput) ToTableColumnArrayOutput() TableColumnArrayOutput {
+	return o
+}
+
+func (o TableColumnArrayOutput) ToTableColumnArrayOutputWithContext(ctx context.Context) TableColumnArrayOutput {
+	return o
+}
+
+func (o TableColumnArrayOutput) Index(i pulumi.IntInput) TableColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableColumn {
+		return vs[0].([]TableColumn)[vs[1].(int)]
+	}).(TableColumnOutput)
+}
+
+type VectorSearchEndpointEndpointStatus struct {
+	// Additional status message.
+	Message *string `pulumi:"message"`
+	// Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+	State *string `pulumi:"state"`
+}
+
+// VectorSearchEndpointEndpointStatusInput is an input type that accepts VectorSearchEndpointEndpointStatusArgs and VectorSearchEndpointEndpointStatusOutput values.
+// You can construct a concrete instance of `VectorSearchEndpointEndpointStatusInput` via:
+//
+//	VectorSearchEndpointEndpointStatusArgs{...}
+type VectorSearchEndpointEndpointStatusInput interface {
+	pulumi.Input
+
+	ToVectorSearchEndpointEndpointStatusOutput() VectorSearchEndpointEndpointStatusOutput
+	ToVectorSearchEndpointEndpointStatusOutputWithContext(context.Context) VectorSearchEndpointEndpointStatusOutput
+}
+
+type VectorSearchEndpointEndpointStatusArgs struct {
+	// Additional status message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (VectorSearchEndpointEndpointStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchEndpointEndpointStatus)(nil)).Elem()
+}
+
+func (i VectorSearchEndpointEndpointStatusArgs) ToVectorSearchEndpointEndpointStatusOutput() VectorSearchEndpointEndpointStatusOutput {
+	return i.ToVectorSearchEndpointEndpointStatusOutputWithContext(context.Background())
+}
+
+func (i VectorSearchEndpointEndpointStatusArgs) ToVectorSearchEndpointEndpointStatusOutputWithContext(ctx context.Context) VectorSearchEndpointEndpointStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchEndpointEndpointStatusOutput)
+}
+
+// VectorSearchEndpointEndpointStatusArrayInput is an input type that accepts VectorSearchEndpointEndpointStatusArray and VectorSearchEndpointEndpointStatusArrayOutput values.
+// You can construct a concrete instance of `VectorSearchEndpointEndpointStatusArrayInput` via:
+//
+//	VectorSearchEndpointEndpointStatusArray{ VectorSearchEndpointEndpointStatusArgs{...} }
+type VectorSearchEndpointEndpointStatusArrayInput interface {
+	pulumi.Input
+
+	ToVectorSearchEndpointEndpointStatusArrayOutput() VectorSearchEndpointEndpointStatusArrayOutput
+	ToVectorSearchEndpointEndpointStatusArrayOutputWithContext(context.Context) VectorSearchEndpointEndpointStatusArrayOutput
+}
+
+type VectorSearchEndpointEndpointStatusArray []VectorSearchEndpointEndpointStatusInput
+
+func (VectorSearchEndpointEndpointStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VectorSearchEndpointEndpointStatus)(nil)).Elem()
+}
+
+func (i VectorSearchEndpointEndpointStatusArray) ToVectorSearchEndpointEndpointStatusArrayOutput() VectorSearchEndpointEndpointStatusArrayOutput {
+	return i.ToVectorSearchEndpointEndpointStatusArrayOutputWithContext(context.Background())
+}
+
+func (i VectorSearchEndpointEndpointStatusArray) ToVectorSearchEndpointEndpointStatusArrayOutputWithContext(ctx context.Context) VectorSearchEndpointEndpointStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchEndpointEndpointStatusArrayOutput)
+}
+
+type VectorSearchEndpointEndpointStatusOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchEndpointEndpointStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchEndpointEndpointStatus)(nil)).Elem()
+}
+
+func (o VectorSearchEndpointEndpointStatusOutput) ToVectorSearchEndpointEndpointStatusOutput() VectorSearchEndpointEndpointStatusOutput {
+	return o
+}
+
+func (o VectorSearchEndpointEndpointStatusOutput) ToVectorSearchEndpointEndpointStatusOutputWithContext(ctx context.Context) VectorSearchEndpointEndpointStatusOutput {
+	return o
+}
+
+// Additional status message.
+func (o VectorSearchEndpointEndpointStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchEndpointEndpointStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
+func (o VectorSearchEndpointEndpointStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchEndpointEndpointStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type VectorSearchEndpointEndpointStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchEndpointEndpointStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VectorSearchEndpointEndpointStatus)(nil)).Elem()
+}
+
+func (o VectorSearchEndpointEndpointStatusArrayOutput) ToVectorSearchEndpointEndpointStatusArrayOutput() VectorSearchEndpointEndpointStatusArrayOutput {
+	return o
+}
+
+func (o VectorSearchEndpointEndpointStatusArrayOutput) ToVectorSearchEndpointEndpointStatusArrayOutputWithContext(ctx context.Context) VectorSearchEndpointEndpointStatusArrayOutput {
+	return o
+}
+
+func (o VectorSearchEndpointEndpointStatusArrayOutput) Index(i pulumi.IntInput) VectorSearchEndpointEndpointStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VectorSearchEndpointEndpointStatus {
+		return vs[0].([]VectorSearchEndpointEndpointStatus)[vs[1].(int)]
+	}).(VectorSearchEndpointEndpointStatusOutput)
+}
+
+type VectorSearchIndexDeltaSyncIndexSpec struct {
+	// array of objects representing columns that contain the embedding source.  Each entry consists of:
+	EmbeddingSourceColumns  []VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn `pulumi:"embeddingSourceColumns"`
+	EmbeddingVectorColumns  []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn `pulumi:"embeddingVectorColumns"`
+	EmbeddingWritebackTable *string                                                    `pulumi:"embeddingWritebackTable"`
+	// ID of the associated Delta Live Table pipeline.
+	PipelineId *string `pulumi:"pipelineId"`
+	// Pipeline execution mode. Possible values are:
+	// * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+	// * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+	PipelineType *string `pulumi:"pipelineType"`
+	// The name of the source table.
+	SourceTable *string `pulumi:"sourceTable"`
+}
+
+// VectorSearchIndexDeltaSyncIndexSpecInput is an input type that accepts VectorSearchIndexDeltaSyncIndexSpecArgs and VectorSearchIndexDeltaSyncIndexSpecOutput values.
+// You can construct a concrete instance of `VectorSearchIndexDeltaSyncIndexSpecInput` via:
+//
+//	VectorSearchIndexDeltaSyncIndexSpecArgs{...}
+type VectorSearchIndexDeltaSyncIndexSpecInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexDeltaSyncIndexSpecOutput() VectorSearchIndexDeltaSyncIndexSpecOutput
+	ToVectorSearchIndexDeltaSyncIndexSpecOutputWithContext(context.Context) VectorSearchIndexDeltaSyncIndexSpecOutput
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecArgs struct {
+	// array of objects representing columns that contain the embedding source.  Each entry consists of:
+	EmbeddingSourceColumns  VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayInput `pulumi:"embeddingSourceColumns"`
+	EmbeddingVectorColumns  VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayInput `pulumi:"embeddingVectorColumns"`
+	EmbeddingWritebackTable pulumi.StringPtrInput                                              `pulumi:"embeddingWritebackTable"`
+	// ID of the associated Delta Live Table pipeline.
+	PipelineId pulumi.StringPtrInput `pulumi:"pipelineId"`
+	// Pipeline execution mode. Possible values are:
+	// * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+	// * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+	PipelineType pulumi.StringPtrInput `pulumi:"pipelineType"`
+	// The name of the source table.
+	SourceTable pulumi.StringPtrInput `pulumi:"sourceTable"`
+}
+
+func (VectorSearchIndexDeltaSyncIndexSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpec)(nil)).Elem()
+}
+
+func (i VectorSearchIndexDeltaSyncIndexSpecArgs) ToVectorSearchIndexDeltaSyncIndexSpecOutput() VectorSearchIndexDeltaSyncIndexSpecOutput {
+	return i.ToVectorSearchIndexDeltaSyncIndexSpecOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexDeltaSyncIndexSpecArgs) ToVectorSearchIndexDeltaSyncIndexSpecOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDeltaSyncIndexSpecOutput)
+}
+
+func (i VectorSearchIndexDeltaSyncIndexSpecArgs) ToVectorSearchIndexDeltaSyncIndexSpecPtrOutput() VectorSearchIndexDeltaSyncIndexSpecPtrOutput {
+	return i.ToVectorSearchIndexDeltaSyncIndexSpecPtrOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexDeltaSyncIndexSpecArgs) ToVectorSearchIndexDeltaSyncIndexSpecPtrOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDeltaSyncIndexSpecOutput).ToVectorSearchIndexDeltaSyncIndexSpecPtrOutputWithContext(ctx)
+}
+
+// VectorSearchIndexDeltaSyncIndexSpecPtrInput is an input type that accepts VectorSearchIndexDeltaSyncIndexSpecArgs, VectorSearchIndexDeltaSyncIndexSpecPtr and VectorSearchIndexDeltaSyncIndexSpecPtrOutput values.
+// You can construct a concrete instance of `VectorSearchIndexDeltaSyncIndexSpecPtrInput` via:
+//
+//	        VectorSearchIndexDeltaSyncIndexSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type VectorSearchIndexDeltaSyncIndexSpecPtrInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexDeltaSyncIndexSpecPtrOutput() VectorSearchIndexDeltaSyncIndexSpecPtrOutput
+	ToVectorSearchIndexDeltaSyncIndexSpecPtrOutputWithContext(context.Context) VectorSearchIndexDeltaSyncIndexSpecPtrOutput
+}
+
+type vectorSearchIndexDeltaSyncIndexSpecPtrType VectorSearchIndexDeltaSyncIndexSpecArgs
+
+func VectorSearchIndexDeltaSyncIndexSpecPtr(v *VectorSearchIndexDeltaSyncIndexSpecArgs) VectorSearchIndexDeltaSyncIndexSpecPtrInput {
+	return (*vectorSearchIndexDeltaSyncIndexSpecPtrType)(v)
+}
+
+func (*vectorSearchIndexDeltaSyncIndexSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VectorSearchIndexDeltaSyncIndexSpec)(nil)).Elem()
+}
+
+func (i *vectorSearchIndexDeltaSyncIndexSpecPtrType) ToVectorSearchIndexDeltaSyncIndexSpecPtrOutput() VectorSearchIndexDeltaSyncIndexSpecPtrOutput {
+	return i.ToVectorSearchIndexDeltaSyncIndexSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *vectorSearchIndexDeltaSyncIndexSpecPtrType) ToVectorSearchIndexDeltaSyncIndexSpecPtrOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDeltaSyncIndexSpecPtrOutput)
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexDeltaSyncIndexSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpec)(nil)).Elem()
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecOutput) ToVectorSearchIndexDeltaSyncIndexSpecOutput() VectorSearchIndexDeltaSyncIndexSpecOutput {
+	return o
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecOutput) ToVectorSearchIndexDeltaSyncIndexSpecOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecOutput {
+	return o
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecOutput) ToVectorSearchIndexDeltaSyncIndexSpecPtrOutput() VectorSearchIndexDeltaSyncIndexSpecPtrOutput {
+	return o.ToVectorSearchIndexDeltaSyncIndexSpecPtrOutputWithContext(context.Background())
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecOutput) ToVectorSearchIndexDeltaSyncIndexSpecPtrOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VectorSearchIndexDeltaSyncIndexSpec) *VectorSearchIndexDeltaSyncIndexSpec {
+		return &v
+	}).(VectorSearchIndexDeltaSyncIndexSpecPtrOutput)
+}
+
+// array of objects representing columns that contain the embedding source.  Each entry consists of:
+func (o VectorSearchIndexDeltaSyncIndexSpecOutput) EmbeddingSourceColumns() VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput {
+	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpec) []VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+		return v.EmbeddingSourceColumns
+	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput)
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecOutput) EmbeddingVectorColumns() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput {
+	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpec) []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+		return v.EmbeddingVectorColumns
+	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput)
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecOutput) EmbeddingWritebackTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpec) *string { return v.EmbeddingWritebackTable }).(pulumi.StringPtrOutput)
+}
+
+// ID of the associated Delta Live Table pipeline.
+func (o VectorSearchIndexDeltaSyncIndexSpecOutput) PipelineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpec) *string { return v.PipelineId }).(pulumi.StringPtrOutput)
+}
+
+// Pipeline execution mode. Possible values are:
+// * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+// * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+func (o VectorSearchIndexDeltaSyncIndexSpecOutput) PipelineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpec) *string { return v.PipelineType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the source table.
+func (o VectorSearchIndexDeltaSyncIndexSpecOutput) SourceTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpec) *string { return v.SourceTable }).(pulumi.StringPtrOutput)
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexDeltaSyncIndexSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VectorSearchIndexDeltaSyncIndexSpec)(nil)).Elem()
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) ToVectorSearchIndexDeltaSyncIndexSpecPtrOutput() VectorSearchIndexDeltaSyncIndexSpecPtrOutput {
+	return o
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) ToVectorSearchIndexDeltaSyncIndexSpecPtrOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecPtrOutput {
+	return o
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) Elem() VectorSearchIndexDeltaSyncIndexSpecOutput {
+	return o.ApplyT(func(v *VectorSearchIndexDeltaSyncIndexSpec) VectorSearchIndexDeltaSyncIndexSpec {
+		if v != nil {
+			return *v
+		}
+		var ret VectorSearchIndexDeltaSyncIndexSpec
+		return ret
+	}).(VectorSearchIndexDeltaSyncIndexSpecOutput)
+}
+
+// array of objects representing columns that contain the embedding source.  Each entry consists of:
+func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) EmbeddingSourceColumns() VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput {
+	return o.ApplyT(func(v *VectorSearchIndexDeltaSyncIndexSpec) []VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+		if v == nil {
+			return nil
+		}
+		return v.EmbeddingSourceColumns
+	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput)
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) EmbeddingVectorColumns() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput {
+	return o.ApplyT(func(v *VectorSearchIndexDeltaSyncIndexSpec) []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+		if v == nil {
+			return nil
+		}
+		return v.EmbeddingVectorColumns
+	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput)
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) EmbeddingWritebackTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VectorSearchIndexDeltaSyncIndexSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmbeddingWritebackTable
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the associated Delta Live Table pipeline.
+func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) PipelineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VectorSearchIndexDeltaSyncIndexSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pipeline execution mode. Possible values are:
+// * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
+// * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
+func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) PipelineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VectorSearchIndexDeltaSyncIndexSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the source table.
+func (o VectorSearchIndexDeltaSyncIndexSpecPtrOutput) SourceTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VectorSearchIndexDeltaSyncIndexSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceTable
+	}).(pulumi.StringPtrOutput)
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn struct {
+	EmbeddingModelEndpointName *string `pulumi:"embeddingModelEndpointName"`
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	Name *string `pulumi:"name"`
+}
+
+// VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnInput is an input type that accepts VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs and VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput values.
+// You can construct a concrete instance of `VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnInput` via:
+//
+//	VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs{...}
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput() VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput
+	ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutputWithContext(context.Context) VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs struct {
+	EmbeddingModelEndpointName pulumi.StringPtrInput `pulumi:"embeddingModelEndpointName"`
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn)(nil)).Elem()
+}
+
+func (i VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput() VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput {
+	return i.ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput)
+}
+
+// VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayInput is an input type that accepts VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArray and VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput values.
+// You can construct a concrete instance of `VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayInput` via:
+//
+//	VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArray{ VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs{...} }
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput() VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput
+	ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutputWithContext(context.Context) VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArray []VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnInput
+
+func (VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn)(nil)).Elem()
+}
+
+func (i VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArray) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput() VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput {
+	return i.ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArray) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput)
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn)(nil)).Elem()
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput() VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput {
+	return o
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput {
+	return o
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) EmbeddingModelEndpointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn) *string {
+		return v.EmbeddingModelEndpointName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn)(nil)).Elem()
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput() VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput {
+	return o
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput {
+	return o
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput) Index(i pulumi.IntInput) VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+		return vs[0].([]VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn)[vs[1].(int)]
+	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput)
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn struct {
+	EmbeddingDimension *int `pulumi:"embeddingDimension"`
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	Name *string `pulumi:"name"`
+}
+
+// VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnInput is an input type that accepts VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs and VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput values.
+// You can construct a concrete instance of `VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnInput` via:
+//
+//	VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs{...}
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput
+	ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutputWithContext(context.Context) VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs struct {
+	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
+	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn)(nil)).Elem()
+}
+
+func (i VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput {
+	return i.ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput)
+}
+
+// VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayInput is an input type that accepts VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArray and VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput values.
+// You can construct a concrete instance of `VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayInput` via:
+//
+//	VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArray{ VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs{...} }
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput
+	ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutputWithContext(context.Context) VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArray []VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnInput
+
+func (VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn)(nil)).Elem()
+}
+
+func (i VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArray) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput {
+	return i.ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArray) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput)
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn)(nil)).Elem()
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput {
+	return o
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput {
+	return o
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) EmbeddingDimension() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
+}
+
+// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn)(nil)).Elem()
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput() VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput {
+	return o
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput) ToVectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutputWithContext(ctx context.Context) VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput {
+	return o
+}
+
+func (o VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput) Index(i pulumi.IntInput) VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+		return vs[0].([]VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn)[vs[1].(int)]
+	}).(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput)
+}
+
+type VectorSearchIndexDirectAccessIndexSpec struct {
+	// array of objects representing columns that contain the embedding source.  Each entry consists of:
+	EmbeddingSourceColumns []VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn `pulumi:"embeddingSourceColumns"`
+	EmbeddingVectorColumns []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn `pulumi:"embeddingVectorColumns"`
+	// The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+	SchemaJson *string `pulumi:"schemaJson"`
+}
+
+// VectorSearchIndexDirectAccessIndexSpecInput is an input type that accepts VectorSearchIndexDirectAccessIndexSpecArgs and VectorSearchIndexDirectAccessIndexSpecOutput values.
+// You can construct a concrete instance of `VectorSearchIndexDirectAccessIndexSpecInput` via:
+//
+//	VectorSearchIndexDirectAccessIndexSpecArgs{...}
+type VectorSearchIndexDirectAccessIndexSpecInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexDirectAccessIndexSpecOutput() VectorSearchIndexDirectAccessIndexSpecOutput
+	ToVectorSearchIndexDirectAccessIndexSpecOutputWithContext(context.Context) VectorSearchIndexDirectAccessIndexSpecOutput
+}
+
+type VectorSearchIndexDirectAccessIndexSpecArgs struct {
+	// array of objects representing columns that contain the embedding source.  Each entry consists of:
+	EmbeddingSourceColumns VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput `pulumi:"embeddingSourceColumns"`
+	EmbeddingVectorColumns VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayInput `pulumi:"embeddingVectorColumns"`
+	// The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+	SchemaJson pulumi.StringPtrInput `pulumi:"schemaJson"`
+}
+
+func (VectorSearchIndexDirectAccessIndexSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpec)(nil)).Elem()
+}
+
+func (i VectorSearchIndexDirectAccessIndexSpecArgs) ToVectorSearchIndexDirectAccessIndexSpecOutput() VectorSearchIndexDirectAccessIndexSpecOutput {
+	return i.ToVectorSearchIndexDirectAccessIndexSpecOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexDirectAccessIndexSpecArgs) ToVectorSearchIndexDirectAccessIndexSpecOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDirectAccessIndexSpecOutput)
+}
+
+func (i VectorSearchIndexDirectAccessIndexSpecArgs) ToVectorSearchIndexDirectAccessIndexSpecPtrOutput() VectorSearchIndexDirectAccessIndexSpecPtrOutput {
+	return i.ToVectorSearchIndexDirectAccessIndexSpecPtrOutputWithContext(context.Background())
+}
+
+func (i VectorSearchIndexDirectAccessIndexSpecArgs) ToVectorSearchIndexDirectAccessIndexSpecPtrOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDirectAccessIndexSpecOutput).ToVectorSearchIndexDirectAccessIndexSpecPtrOutputWithContext(ctx)
+}
+
+// VectorSearchIndexDirectAccessIndexSpecPtrInput is an input type that accepts VectorSearchIndexDirectAccessIndexSpecArgs, VectorSearchIndexDirectAccessIndexSpecPtr and VectorSearchIndexDirectAccessIndexSpecPtrOutput values.
+// You can construct a concrete instance of `VectorSearchIndexDirectAccessIndexSpecPtrInput` via:
+//
+//	        VectorSearchIndexDirectAccessIndexSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type VectorSearchIndexDirectAccessIndexSpecPtrInput interface {
+	pulumi.Input
+
+	ToVectorSearchIndexDirectAccessIndexSpecPtrOutput() VectorSearchIndexDirectAccessIndexSpecPtrOutput
+	ToVectorSearchIndexDirectAccessIndexSpecPtrOutputWithContext(context.Context) VectorSearchIndexDirectAccessIndexSpecPtrOutput
+}
+
+type vectorSearchIndexDirectAccessIndexSpecPtrType VectorSearchIndexDirectAccessIndexSpecArgs
+
+func VectorSearchIndexDirectAccessIndexSpecPtr(v *VectorSearchIndexDirectAccessIndexSpecArgs) VectorSearchIndexDirectAccessIndexSpecPtrInput {
+	return (*vectorSearchIndexDirectAccessIndexSpecPtrType)(v)
+}
+
+func (*vectorSearchIndexDirectAccessIndexSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VectorSearchIndexDirectAccessIndexSpec)(nil)).Elem()
+}
+
+func (i *vectorSearchIndexDirectAccessIndexSpecPtrType) ToVectorSearchIndexDirectAccessIndexSpecPtrOutput() VectorSearchIndexDirectAccessIndexSpecPtrOutput {
+	return i.ToVectorSearchIndexDirectAccessIndexSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *vectorSearchIndexDirectAccessIndexSpecPtrType) ToVectorSearchIndexDirectAccessIndexSpecPtrOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VectorSearchIndexDirectAccessIndexSpecPtrOutput)
+}
+
+type VectorSearchIndexDirectAccessIndexSpecOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexDirectAccessIndexSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpec)(nil)).Elem()
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecOutput) ToVectorSearchIndexDirectAccessIndexSpecOutput() VectorSearchIndexDirectAccessIndexSpecOutput {
+	return o
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecOutput) ToVectorSearchIndexDirectAccessIndexSpecOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecOutput {
+	return o
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecOutput) ToVectorSearchIndexDirectAccessIndexSpecPtrOutput() VectorSearchIndexDirectAccessIndexSpecPtrOutput {
+	return o.ToVectorSearchIndexDirectAccessIndexSpecPtrOutputWithContext(context.Background())
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecOutput) ToVectorSearchIndexDirectAccessIndexSpecPtrOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VectorSearchIndexDirectAccessIndexSpec) *VectorSearchIndexDirectAccessIndexSpec {
+		return &v
+	}).(VectorSearchIndexDirectAccessIndexSpecPtrOutput)
+}
+
+// array of objects representing columns that contain the embedding source.  Each entry consists of:
+func (o VectorSearchIndexDirectAccessIndexSpecOutput) EmbeddingSourceColumns() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput {
+	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpec) []VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+		return v.EmbeddingSourceColumns
+	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput)
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecOutput) EmbeddingVectorColumns() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
+	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpec) []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+		return v.EmbeddingVectorColumns
+	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput)
+}
+
+// The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+func (o VectorSearchIndexDirectAccessIndexSpecOutput) SchemaJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VectorSearchIndexDirectAccessIndexSpec) *string { return v.SchemaJson }).(pulumi.StringPtrOutput)
+}
+
+type VectorSearchIndexDirectAccessIndexSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (VectorSearchIndexDirectAccessIndexSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VectorSearchIndexDirectAccessIndexSpec)(nil)).Elem()
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) ToVectorSearchIndexDirectAccessIndexSpecPtrOutput() VectorSearchIndexDirectAccessIndexSpecPtrOutput {
+	return o
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) ToVectorSearchIndexDirectAccessIndexSpecPtrOutputWithContext(ctx context.Context) VectorSearchIndexDirectAccessIndexSpecPtrOutput {
+	return o
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) Elem() VectorSearchIndexDirectAccessIndexSpecOutput {
+	return o.ApplyT(func(v *VectorSearchIndexDirectAccessIndexSpec) VectorSearchIndexDirectAccessIndexSpec {
+		if v != nil {
+			return *v
+		}
+		var ret VectorSearchIndexDirectAccessIndexSpec
+		return ret
+	}).(VectorSearchIndexDirectAccessIndexSpecOutput)
+}
+
+// array of objects representing columns that contain the embedding source.  Each entry consists of:
+func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) EmbeddingSourceColumns() VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput {
+	return o.ApplyT(func(v *VectorSearchIndexDirectAccessIndexSpec) []VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+		if v == nil {
+			return nil
+		}
+		return v.EmbeddingSourceColumns
+	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput)
+}
+
+func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) EmbeddingVectorColumns() VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput {
+	return o.ApplyT(func(v *VectorSearchIndexDirectAccessIndexSpec) []VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+		if v == nil {
+			return nil
+		}
+		return v.EmbeddingVectorColumns
+	}).(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArrayOutput)
+}
+
+// The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+func (o VectorSearchIndexDirectAccessIndexSpecPtrOutput) SchemaJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VectorSearchIndexDirectAccessIndexSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaJson
+	}).(pulumi.StringPtrOutput)
+}
+
 type VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn struct {
 	EmbeddingModelEndpointName *string `pulumi:"embeddingModelEndpointName"`
 	// Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
@@ -359,6 +1238,8 @@ type GetAppApp struct {
 	DefaultSourceCodePath string `pulumi:"defaultSourceCodePath"`
 	// The description of the resource.
 	Description *string `pulumi:"description"`
+	// Id of the job to grant permission on.
+	Id string `pulumi:"id"`
 	// The name of the app.
 	Name              string                     `pulumi:"name"`
 	PendingDeployment GetAppAppPendingDeployment `pulumi:"pendingDeployment"`
@@ -402,6 +1283,8 @@ type GetAppAppArgs struct {
 	DefaultSourceCodePath pulumi.StringInput `pulumi:"defaultSourceCodePath"`
 	// The description of the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Id of the job to grant permission on.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the app.
 	Name              pulumi.StringInput              `pulumi:"name"`
 	PendingDeployment GetAppAppPendingDeploymentInput `pulumi:"pendingDeployment"`
@@ -478,6 +1361,11 @@ func (o GetAppAppOutput) DefaultSourceCodePath() pulumi.StringOutput {
 // The description of the resource.
 func (o GetAppAppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppApp) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Id of the job to grant permission on.
+func (o GetAppAppOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppApp) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the app.
@@ -1868,6 +2756,8 @@ type GetAppsApp struct {
 	DefaultSourceCodePath string `pulumi:"defaultSourceCodePath"`
 	// The description of the resource.
 	Description *string `pulumi:"description"`
+	// Id of the job to grant permission on.
+	Id string `pulumi:"id"`
 	// Name of the serving endpoint to grant permission on.
 	Name              string                      `pulumi:"name"`
 	PendingDeployment GetAppsAppPendingDeployment `pulumi:"pendingDeployment"`
@@ -1911,6 +2801,8 @@ type GetAppsAppArgs struct {
 	DefaultSourceCodePath pulumi.StringInput `pulumi:"defaultSourceCodePath"`
 	// The description of the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Id of the job to grant permission on.
+	Id pulumi.StringInput `pulumi:"id"`
 	// Name of the serving endpoint to grant permission on.
 	Name              pulumi.StringInput               `pulumi:"name"`
 	PendingDeployment GetAppsAppPendingDeploymentInput `pulumi:"pendingDeployment"`
@@ -2012,6 +2904,11 @@ func (o GetAppsAppOutput) DefaultSourceCodePath() pulumi.StringOutput {
 // The description of the resource.
 func (o GetAppsAppOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppsApp) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Id of the job to grant permission on.
+func (o GetAppsAppOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppsApp) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the serving endpoint to grant permission on.
@@ -5908,8 +6805,9 @@ func (o GetClusterClusterInfoAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyt
 }
 
 type GetClusterClusterInfoClusterLogConf struct {
-	Dbfs *GetClusterClusterInfoClusterLogConfDbfs `pulumi:"dbfs"`
-	S3   *GetClusterClusterInfoClusterLogConfS3   `pulumi:"s3"`
+	Dbfs    *GetClusterClusterInfoClusterLogConfDbfs    `pulumi:"dbfs"`
+	S3      *GetClusterClusterInfoClusterLogConfS3      `pulumi:"s3"`
+	Volumes *GetClusterClusterInfoClusterLogConfVolumes `pulumi:"volumes"`
 }
 
 // GetClusterClusterInfoClusterLogConfInput is an input type that accepts GetClusterClusterInfoClusterLogConfArgs and GetClusterClusterInfoClusterLogConfOutput values.
@@ -5924,8 +6822,9 @@ type GetClusterClusterInfoClusterLogConfInput interface {
 }
 
 type GetClusterClusterInfoClusterLogConfArgs struct {
-	Dbfs GetClusterClusterInfoClusterLogConfDbfsPtrInput `pulumi:"dbfs"`
-	S3   GetClusterClusterInfoClusterLogConfS3PtrInput   `pulumi:"s3"`
+	Dbfs    GetClusterClusterInfoClusterLogConfDbfsPtrInput    `pulumi:"dbfs"`
+	S3      GetClusterClusterInfoClusterLogConfS3PtrInput      `pulumi:"s3"`
+	Volumes GetClusterClusterInfoClusterLogConfVolumesPtrInput `pulumi:"volumes"`
 }
 
 func (GetClusterClusterInfoClusterLogConfArgs) ElementType() reflect.Type {
@@ -6013,6 +6912,12 @@ func (o GetClusterClusterInfoClusterLogConfOutput) S3() GetClusterClusterInfoClu
 	return o.ApplyT(func(v GetClusterClusterInfoClusterLogConf) *GetClusterClusterInfoClusterLogConfS3 { return v.S3 }).(GetClusterClusterInfoClusterLogConfS3PtrOutput)
 }
 
+func (o GetClusterClusterInfoClusterLogConfOutput) Volumes() GetClusterClusterInfoClusterLogConfVolumesPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoClusterLogConf) *GetClusterClusterInfoClusterLogConfVolumes {
+		return v.Volumes
+	}).(GetClusterClusterInfoClusterLogConfVolumesPtrOutput)
+}
+
 type GetClusterClusterInfoClusterLogConfPtrOutput struct{ *pulumi.OutputState }
 
 func (GetClusterClusterInfoClusterLogConfPtrOutput) ElementType() reflect.Type {
@@ -6053,6 +6958,15 @@ func (o GetClusterClusterInfoClusterLogConfPtrOutput) S3() GetClusterClusterInfo
 		}
 		return v.S3
 	}).(GetClusterClusterInfoClusterLogConfS3PtrOutput)
+}
+
+func (o GetClusterClusterInfoClusterLogConfPtrOutput) Volumes() GetClusterClusterInfoClusterLogConfVolumesPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoClusterLogConf) *GetClusterClusterInfoClusterLogConfVolumes {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(GetClusterClusterInfoClusterLogConfVolumesPtrOutput)
 }
 
 type GetClusterClusterInfoClusterLogConfDbfs struct {
@@ -6408,6 +7322,139 @@ func (o GetClusterClusterInfoClusterLogConfS3PtrOutput) Region() pulumi.StringPt
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoClusterLogConfVolumes struct {
+	Destination string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoClusterLogConfVolumesInput is an input type that accepts GetClusterClusterInfoClusterLogConfVolumesArgs and GetClusterClusterInfoClusterLogConfVolumesOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoClusterLogConfVolumesInput` via:
+//
+//	GetClusterClusterInfoClusterLogConfVolumesArgs{...}
+type GetClusterClusterInfoClusterLogConfVolumesInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoClusterLogConfVolumesOutput() GetClusterClusterInfoClusterLogConfVolumesOutput
+	ToGetClusterClusterInfoClusterLogConfVolumesOutputWithContext(context.Context) GetClusterClusterInfoClusterLogConfVolumesOutput
+}
+
+type GetClusterClusterInfoClusterLogConfVolumesArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoClusterLogConfVolumesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoClusterLogConfVolumes)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoClusterLogConfVolumesArgs) ToGetClusterClusterInfoClusterLogConfVolumesOutput() GetClusterClusterInfoClusterLogConfVolumesOutput {
+	return i.ToGetClusterClusterInfoClusterLogConfVolumesOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoClusterLogConfVolumesArgs) ToGetClusterClusterInfoClusterLogConfVolumesOutputWithContext(ctx context.Context) GetClusterClusterInfoClusterLogConfVolumesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoClusterLogConfVolumesOutput)
+}
+
+func (i GetClusterClusterInfoClusterLogConfVolumesArgs) ToGetClusterClusterInfoClusterLogConfVolumesPtrOutput() GetClusterClusterInfoClusterLogConfVolumesPtrOutput {
+	return i.ToGetClusterClusterInfoClusterLogConfVolumesPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoClusterLogConfVolumesArgs) ToGetClusterClusterInfoClusterLogConfVolumesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoClusterLogConfVolumesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoClusterLogConfVolumesOutput).ToGetClusterClusterInfoClusterLogConfVolumesPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoClusterLogConfVolumesPtrInput is an input type that accepts GetClusterClusterInfoClusterLogConfVolumesArgs, GetClusterClusterInfoClusterLogConfVolumesPtr and GetClusterClusterInfoClusterLogConfVolumesPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoClusterLogConfVolumesPtrInput` via:
+//
+//	        GetClusterClusterInfoClusterLogConfVolumesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoClusterLogConfVolumesPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoClusterLogConfVolumesPtrOutput() GetClusterClusterInfoClusterLogConfVolumesPtrOutput
+	ToGetClusterClusterInfoClusterLogConfVolumesPtrOutputWithContext(context.Context) GetClusterClusterInfoClusterLogConfVolumesPtrOutput
+}
+
+type getClusterClusterInfoClusterLogConfVolumesPtrType GetClusterClusterInfoClusterLogConfVolumesArgs
+
+func GetClusterClusterInfoClusterLogConfVolumesPtr(v *GetClusterClusterInfoClusterLogConfVolumesArgs) GetClusterClusterInfoClusterLogConfVolumesPtrInput {
+	return (*getClusterClusterInfoClusterLogConfVolumesPtrType)(v)
+}
+
+func (*getClusterClusterInfoClusterLogConfVolumesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoClusterLogConfVolumes)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoClusterLogConfVolumesPtrType) ToGetClusterClusterInfoClusterLogConfVolumesPtrOutput() GetClusterClusterInfoClusterLogConfVolumesPtrOutput {
+	return i.ToGetClusterClusterInfoClusterLogConfVolumesPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoClusterLogConfVolumesPtrType) ToGetClusterClusterInfoClusterLogConfVolumesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoClusterLogConfVolumesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoClusterLogConfVolumesPtrOutput)
+}
+
+type GetClusterClusterInfoClusterLogConfVolumesOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoClusterLogConfVolumesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoClusterLogConfVolumes)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoClusterLogConfVolumesOutput) ToGetClusterClusterInfoClusterLogConfVolumesOutput() GetClusterClusterInfoClusterLogConfVolumesOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoClusterLogConfVolumesOutput) ToGetClusterClusterInfoClusterLogConfVolumesOutputWithContext(ctx context.Context) GetClusterClusterInfoClusterLogConfVolumesOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoClusterLogConfVolumesOutput) ToGetClusterClusterInfoClusterLogConfVolumesPtrOutput() GetClusterClusterInfoClusterLogConfVolumesPtrOutput {
+	return o.ToGetClusterClusterInfoClusterLogConfVolumesPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoClusterLogConfVolumesOutput) ToGetClusterClusterInfoClusterLogConfVolumesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoClusterLogConfVolumesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoClusterLogConfVolumes) *GetClusterClusterInfoClusterLogConfVolumes {
+		return &v
+	}).(GetClusterClusterInfoClusterLogConfVolumesPtrOutput)
+}
+
+func (o GetClusterClusterInfoClusterLogConfVolumesOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoClusterLogConfVolumes) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterInfoClusterLogConfVolumesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoClusterLogConfVolumesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoClusterLogConfVolumes)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoClusterLogConfVolumesPtrOutput) ToGetClusterClusterInfoClusterLogConfVolumesPtrOutput() GetClusterClusterInfoClusterLogConfVolumesPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoClusterLogConfVolumesPtrOutput) ToGetClusterClusterInfoClusterLogConfVolumesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoClusterLogConfVolumesPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoClusterLogConfVolumesPtrOutput) Elem() GetClusterClusterInfoClusterLogConfVolumesOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoClusterLogConfVolumes) GetClusterClusterInfoClusterLogConfVolumes {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoClusterLogConfVolumes
+		return ret
+	}).(GetClusterClusterInfoClusterLogConfVolumesOutput)
+}
+
+func (o GetClusterClusterInfoClusterLogConfVolumesPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoClusterLogConfVolumes) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10275,8 +11322,9 @@ func (o GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoPtrOutput) LogAn
 }
 
 type GetClusterClusterInfoSpecClusterLogConf struct {
-	Dbfs *GetClusterClusterInfoSpecClusterLogConfDbfs `pulumi:"dbfs"`
-	S3   *GetClusterClusterInfoSpecClusterLogConfS3   `pulumi:"s3"`
+	Dbfs    *GetClusterClusterInfoSpecClusterLogConfDbfs    `pulumi:"dbfs"`
+	S3      *GetClusterClusterInfoSpecClusterLogConfS3      `pulumi:"s3"`
+	Volumes *GetClusterClusterInfoSpecClusterLogConfVolumes `pulumi:"volumes"`
 }
 
 // GetClusterClusterInfoSpecClusterLogConfInput is an input type that accepts GetClusterClusterInfoSpecClusterLogConfArgs and GetClusterClusterInfoSpecClusterLogConfOutput values.
@@ -10291,8 +11339,9 @@ type GetClusterClusterInfoSpecClusterLogConfInput interface {
 }
 
 type GetClusterClusterInfoSpecClusterLogConfArgs struct {
-	Dbfs GetClusterClusterInfoSpecClusterLogConfDbfsPtrInput `pulumi:"dbfs"`
-	S3   GetClusterClusterInfoSpecClusterLogConfS3PtrInput   `pulumi:"s3"`
+	Dbfs    GetClusterClusterInfoSpecClusterLogConfDbfsPtrInput    `pulumi:"dbfs"`
+	S3      GetClusterClusterInfoSpecClusterLogConfS3PtrInput      `pulumi:"s3"`
+	Volumes GetClusterClusterInfoSpecClusterLogConfVolumesPtrInput `pulumi:"volumes"`
 }
 
 func (GetClusterClusterInfoSpecClusterLogConfArgs) ElementType() reflect.Type {
@@ -10384,6 +11433,12 @@ func (o GetClusterClusterInfoSpecClusterLogConfOutput) S3() GetClusterClusterInf
 	}).(GetClusterClusterInfoSpecClusterLogConfS3PtrOutput)
 }
 
+func (o GetClusterClusterInfoSpecClusterLogConfOutput) Volumes() GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterLogConf) *GetClusterClusterInfoSpecClusterLogConfVolumes {
+		return v.Volumes
+	}).(GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput)
+}
+
 type GetClusterClusterInfoSpecClusterLogConfPtrOutput struct{ *pulumi.OutputState }
 
 func (GetClusterClusterInfoSpecClusterLogConfPtrOutput) ElementType() reflect.Type {
@@ -10424,6 +11479,15 @@ func (o GetClusterClusterInfoSpecClusterLogConfPtrOutput) S3() GetClusterCluster
 		}
 		return v.S3
 	}).(GetClusterClusterInfoSpecClusterLogConfS3PtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfPtrOutput) Volumes() GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConf) *GetClusterClusterInfoSpecClusterLogConfVolumes {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput)
 }
 
 type GetClusterClusterInfoSpecClusterLogConfDbfs struct {
@@ -10779,6 +11843,139 @@ func (o GetClusterClusterInfoSpecClusterLogConfS3PtrOutput) Region() pulumi.Stri
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetClusterClusterInfoSpecClusterLogConfVolumes struct {
+	Destination string `pulumi:"destination"`
+}
+
+// GetClusterClusterInfoSpecClusterLogConfVolumesInput is an input type that accepts GetClusterClusterInfoSpecClusterLogConfVolumesArgs and GetClusterClusterInfoSpecClusterLogConfVolumesOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecClusterLogConfVolumesInput` via:
+//
+//	GetClusterClusterInfoSpecClusterLogConfVolumesArgs{...}
+type GetClusterClusterInfoSpecClusterLogConfVolumesInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecClusterLogConfVolumesOutput() GetClusterClusterInfoSpecClusterLogConfVolumesOutput
+	ToGetClusterClusterInfoSpecClusterLogConfVolumesOutputWithContext(context.Context) GetClusterClusterInfoSpecClusterLogConfVolumesOutput
+}
+
+type GetClusterClusterInfoSpecClusterLogConfVolumesArgs struct {
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (GetClusterClusterInfoSpecClusterLogConfVolumesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfVolumes)(nil)).Elem()
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfVolumesArgs) ToGetClusterClusterInfoSpecClusterLogConfVolumesOutput() GetClusterClusterInfoSpecClusterLogConfVolumesOutput {
+	return i.ToGetClusterClusterInfoSpecClusterLogConfVolumesOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfVolumesArgs) ToGetClusterClusterInfoSpecClusterLogConfVolumesOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfVolumesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterLogConfVolumesOutput)
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfVolumesArgs) ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput() GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput {
+	return i.ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterInfoSpecClusterLogConfVolumesArgs) ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterLogConfVolumesOutput).ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutputWithContext(ctx)
+}
+
+// GetClusterClusterInfoSpecClusterLogConfVolumesPtrInput is an input type that accepts GetClusterClusterInfoSpecClusterLogConfVolumesArgs, GetClusterClusterInfoSpecClusterLogConfVolumesPtr and GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput values.
+// You can construct a concrete instance of `GetClusterClusterInfoSpecClusterLogConfVolumesPtrInput` via:
+//
+//	        GetClusterClusterInfoSpecClusterLogConfVolumesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetClusterClusterInfoSpecClusterLogConfVolumesPtrInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput() GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput
+	ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutputWithContext(context.Context) GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput
+}
+
+type getClusterClusterInfoSpecClusterLogConfVolumesPtrType GetClusterClusterInfoSpecClusterLogConfVolumesArgs
+
+func GetClusterClusterInfoSpecClusterLogConfVolumesPtr(v *GetClusterClusterInfoSpecClusterLogConfVolumesArgs) GetClusterClusterInfoSpecClusterLogConfVolumesPtrInput {
+	return (*getClusterClusterInfoSpecClusterLogConfVolumesPtrType)(v)
+}
+
+func (*getClusterClusterInfoSpecClusterLogConfVolumesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecClusterLogConfVolumes)(nil)).Elem()
+}
+
+func (i *getClusterClusterInfoSpecClusterLogConfVolumesPtrType) ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput() GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput {
+	return i.ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutputWithContext(context.Background())
+}
+
+func (i *getClusterClusterInfoSpecClusterLogConfVolumesPtrType) ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput)
+}
+
+type GetClusterClusterInfoSpecClusterLogConfVolumesOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecClusterLogConfVolumesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfVolumes)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfVolumesOutput) ToGetClusterClusterInfoSpecClusterLogConfVolumesOutput() GetClusterClusterInfoSpecClusterLogConfVolumesOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfVolumesOutput) ToGetClusterClusterInfoSpecClusterLogConfVolumesOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfVolumesOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfVolumesOutput) ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput() GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput {
+	return o.ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutputWithContext(context.Background())
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfVolumesOutput) ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetClusterClusterInfoSpecClusterLogConfVolumes) *GetClusterClusterInfoSpecClusterLogConfVolumes {
+		return &v
+	}).(GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfVolumesOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoSpecClusterLogConfVolumes) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetClusterClusterInfoSpecClusterLogConfVolumes)(nil)).Elem()
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput) ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput() GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput) ToGetClusterClusterInfoSpecClusterLogConfVolumesPtrOutputWithContext(ctx context.Context) GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput {
+	return o
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput) Elem() GetClusterClusterInfoSpecClusterLogConfVolumesOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConfVolumes) GetClusterClusterInfoSpecClusterLogConfVolumes {
+		if v != nil {
+			return *v
+		}
+		var ret GetClusterClusterInfoSpecClusterLogConfVolumes
+		return ret
+	}).(GetClusterClusterInfoSpecClusterLogConfVolumesOutput)
+}
+
+func (o GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetClusterClusterInfoSpecClusterLogConfVolumes) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -63004,6 +64201,18 @@ func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKm
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnInput)(nil)).Elem(), TableColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnArrayInput)(nil)).Elem(), TableColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchEndpointEndpointStatusInput)(nil)).Elem(), VectorSearchEndpointEndpointStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchEndpointEndpointStatusArrayInput)(nil)).Elem(), VectorSearchEndpointEndpointStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecInput)(nil)).Elem(), VectorSearchIndexDeltaSyncIndexSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecPtrInput)(nil)).Elem(), VectorSearchIndexDeltaSyncIndexSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnInput)(nil)).Elem(), VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayInput)(nil)).Elem(), VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnInput)(nil)).Elem(), VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayInput)(nil)).Elem(), VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecPtrInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnInput)(nil)).Elem(), VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs{})
@@ -63071,6 +64280,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoClusterLogConfDbfsPtrInput)(nil)).Elem(), GetClusterClusterInfoClusterLogConfDbfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoClusterLogConfS3Input)(nil)).Elem(), GetClusterClusterInfoClusterLogConfS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoClusterLogConfS3PtrInput)(nil)).Elem(), GetClusterClusterInfoClusterLogConfS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoClusterLogConfVolumesInput)(nil)).Elem(), GetClusterClusterInfoClusterLogConfVolumesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoClusterLogConfVolumesPtrInput)(nil)).Elem(), GetClusterClusterInfoClusterLogConfVolumesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoClusterLogStatusInput)(nil)).Elem(), GetClusterClusterInfoClusterLogStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoClusterLogStatusPtrInput)(nil)).Elem(), GetClusterClusterInfoClusterLogStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoDockerImageInput)(nil)).Elem(), GetClusterClusterInfoDockerImageArgs{})
@@ -63119,6 +64330,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfDbfsPtrInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterLogConfDbfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfS3Input)(nil)).Elem(), GetClusterClusterInfoSpecClusterLogConfS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfS3PtrInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterLogConfS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfVolumesInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterLogConfVolumesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterLogConfVolumesPtrInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterLogConfVolumesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterMountInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoArrayInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterMountInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoInput)(nil)).Elem(), GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs{})
@@ -63763,6 +64976,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterOutputType(TableColumnOutput{})
+	pulumi.RegisterOutputType(TableColumnArrayOutput{})
+	pulumi.RegisterOutputType(VectorSearchEndpointEndpointStatusOutput{})
+	pulumi.RegisterOutputType(VectorSearchEndpointEndpointStatusArrayOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexDeltaSyncIndexSpecOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexDeltaSyncIndexSpecPtrOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArrayOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArrayOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecOutput{})
+	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecPtrOutput{})
 	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnOutput{})
 	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArrayOutput{})
 	pulumi.RegisterOutputType(VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnOutput{})
@@ -63830,6 +65055,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterInfoClusterLogConfDbfsPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoClusterLogConfS3Output{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoClusterLogConfS3PtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoClusterLogConfVolumesOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoClusterLogConfVolumesPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoClusterLogStatusOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoClusterLogStatusPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoDockerImageOutput{})
@@ -63878,6 +65105,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterLogConfDbfsPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterLogConfS3Output{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterLogConfS3PtrOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterLogConfVolumesOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterLogConfVolumesPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterMountInfoOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterMountInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoOutput{})

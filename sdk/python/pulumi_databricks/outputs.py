@@ -56,6 +56,7 @@ __all__ = [
     'ClusterClusterLogConf',
     'ClusterClusterLogConfDbfs',
     'ClusterClusterLogConfS3',
+    'ClusterClusterLogConfVolumes',
     'ClusterClusterMountInfo',
     'ClusterClusterMountInfoNetworkFilesystemInfo',
     'ClusterDockerImage',
@@ -121,6 +122,7 @@ __all__ = [
     'JobJobClusterNewClusterClusterLogConf',
     'JobJobClusterNewClusterClusterLogConfDbfs',
     'JobJobClusterNewClusterClusterLogConfS3',
+    'JobJobClusterNewClusterClusterLogConfVolumes',
     'JobJobClusterNewClusterClusterMountInfo',
     'JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo',
     'JobJobClusterNewClusterDockerImage',
@@ -152,6 +154,7 @@ __all__ = [
     'JobNewClusterClusterLogConf',
     'JobNewClusterClusterLogConfDbfs',
     'JobNewClusterClusterLogConfS3',
+    'JobNewClusterClusterLogConfVolumes',
     'JobNewClusterClusterMountInfo',
     'JobNewClusterClusterMountInfoNetworkFilesystemInfo',
     'JobNewClusterDockerImage',
@@ -210,6 +213,7 @@ __all__ = [
     'JobTaskForEachTaskTaskNewClusterClusterLogConf',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfS3',
+    'JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes',
     'JobTaskForEachTaskTaskNewClusterClusterMountInfo',
     'JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo',
     'JobTaskForEachTaskTaskNewClusterDockerImage',
@@ -265,6 +269,7 @@ __all__ = [
     'JobTaskNewClusterClusterLogConf',
     'JobTaskNewClusterClusterLogConfDbfs',
     'JobTaskNewClusterClusterLogConfS3',
+    'JobTaskNewClusterClusterLogConfVolumes',
     'JobTaskNewClusterClusterMountInfo',
     'JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo',
     'JobTaskNewClusterDockerImage',
@@ -413,6 +418,7 @@ __all__ = [
     'PipelineClusterClusterLogConf',
     'PipelineClusterClusterLogConfDbfs',
     'PipelineClusterClusterLogConfS3',
+    'PipelineClusterClusterLogConfVolumes',
     'PipelineClusterGcpAttributes',
     'PipelineClusterInitScript',
     'PipelineClusterInitScriptAbfss',
@@ -558,6 +564,7 @@ __all__ = [
     'GetClusterClusterInfoClusterLogConfResult',
     'GetClusterClusterInfoClusterLogConfDbfsResult',
     'GetClusterClusterInfoClusterLogConfS3Result',
+    'GetClusterClusterInfoClusterLogConfVolumesResult',
     'GetClusterClusterInfoClusterLogStatusResult',
     'GetClusterClusterInfoDockerImageResult',
     'GetClusterClusterInfoDockerImageBasicAuthResult',
@@ -582,6 +589,7 @@ __all__ = [
     'GetClusterClusterInfoSpecClusterLogConfResult',
     'GetClusterClusterInfoSpecClusterLogConfDbfsResult',
     'GetClusterClusterInfoSpecClusterLogConfS3Result',
+    'GetClusterClusterInfoSpecClusterLogConfVolumesResult',
     'GetClusterClusterInfoSpecClusterMountInfoResult',
     'GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoResult',
     'GetClusterClusterInfoSpecDockerImageResult',
@@ -2778,11 +2786,14 @@ class ClusterAzureAttributesLogAnalyticsInfo(dict):
 class ClusterClusterLogConf(dict):
     def __init__(__self__, *,
                  dbfs: Optional['outputs.ClusterClusterLogConfDbfs'] = None,
-                 s3: Optional['outputs.ClusterClusterLogConfS3'] = None):
+                 s3: Optional['outputs.ClusterClusterLogConfS3'] = None,
+                 volumes: Optional['outputs.ClusterClusterLogConfVolumes'] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -2793,6 +2804,11 @@ class ClusterClusterLogConf(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.ClusterClusterLogConfS3']:
         return pulumi.get(self, "s3")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['outputs.ClusterClusterLogConfVolumes']:
+        return pulumi.get(self, "volumes")
 
 
 @pulumi.output_type
@@ -2924,6 +2940,24 @@ class ClusterClusterLogConfS3(dict):
         S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class ClusterClusterLogConfVolumes(dict):
+    def __init__(__self__, *,
+                 destination: str):
+        """
+        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -6184,11 +6218,14 @@ class JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo(dict):
 class JobJobClusterNewClusterClusterLogConf(dict):
     def __init__(__self__, *,
                  dbfs: Optional['outputs.JobJobClusterNewClusterClusterLogConfDbfs'] = None,
-                 s3: Optional['outputs.JobJobClusterNewClusterClusterLogConfS3'] = None):
+                 s3: Optional['outputs.JobJobClusterNewClusterClusterLogConfS3'] = None,
+                 volumes: Optional['outputs.JobJobClusterNewClusterClusterLogConfVolumes'] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -6199,6 +6236,11 @@ class JobJobClusterNewClusterClusterLogConf(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.JobJobClusterNewClusterClusterLogConfS3']:
         return pulumi.get(self, "s3")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['outputs.JobJobClusterNewClusterClusterLogConfVolumes']:
+        return pulumi.get(self, "volumes")
 
 
 @pulumi.output_type
@@ -6294,6 +6336,18 @@ class JobJobClusterNewClusterClusterLogConfS3(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class JobJobClusterNewClusterClusterLogConfVolumes(dict):
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -7650,11 +7704,14 @@ class JobNewClusterAzureAttributesLogAnalyticsInfo(dict):
 class JobNewClusterClusterLogConf(dict):
     def __init__(__self__, *,
                  dbfs: Optional['outputs.JobNewClusterClusterLogConfDbfs'] = None,
-                 s3: Optional['outputs.JobNewClusterClusterLogConfS3'] = None):
+                 s3: Optional['outputs.JobNewClusterClusterLogConfS3'] = None,
+                 volumes: Optional['outputs.JobNewClusterClusterLogConfVolumes'] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -7665,6 +7722,11 @@ class JobNewClusterClusterLogConf(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.JobNewClusterClusterLogConfS3']:
         return pulumi.get(self, "s3")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['outputs.JobNewClusterClusterLogConfVolumes']:
+        return pulumi.get(self, "volumes")
 
 
 @pulumi.output_type
@@ -7760,6 +7822,18 @@ class JobNewClusterClusterLogConfS3(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class JobNewClusterClusterLogConfVolumes(dict):
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -11407,11 +11481,14 @@ class JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo(dict):
 class JobTaskForEachTaskTaskNewClusterClusterLogConf(dict):
     def __init__(__self__, *,
                  dbfs: Optional['outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs'] = None,
-                 s3: Optional['outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfS3'] = None):
+                 s3: Optional['outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfS3'] = None,
+                 volumes: Optional['outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes'] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -11422,6 +11499,11 @@ class JobTaskForEachTaskTaskNewClusterClusterLogConf(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfS3']:
         return pulumi.get(self, "s3")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes']:
+        return pulumi.get(self, "volumes")
 
 
 @pulumi.output_type
@@ -11517,6 +11599,18 @@ class JobTaskForEachTaskTaskNewClusterClusterLogConfS3(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes(dict):
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -14176,11 +14270,14 @@ class JobTaskNewClusterAzureAttributesLogAnalyticsInfo(dict):
 class JobTaskNewClusterClusterLogConf(dict):
     def __init__(__self__, *,
                  dbfs: Optional['outputs.JobTaskNewClusterClusterLogConfDbfs'] = None,
-                 s3: Optional['outputs.JobTaskNewClusterClusterLogConfS3'] = None):
+                 s3: Optional['outputs.JobTaskNewClusterClusterLogConfS3'] = None,
+                 volumes: Optional['outputs.JobTaskNewClusterClusterLogConfVolumes'] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -14191,6 +14288,11 @@ class JobTaskNewClusterClusterLogConf(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.JobTaskNewClusterClusterLogConfS3']:
         return pulumi.get(self, "s3")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['outputs.JobTaskNewClusterClusterLogConfVolumes']:
+        return pulumi.get(self, "volumes")
 
 
 @pulumi.output_type
@@ -14286,6 +14388,18 @@ class JobTaskNewClusterClusterLogConfS3(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class JobTaskNewClusterClusterLogConfVolumes(dict):
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -22233,11 +22347,14 @@ class PipelineClusterAzureAttributesLogAnalyticsInfo(dict):
 class PipelineClusterClusterLogConf(dict):
     def __init__(__self__, *,
                  dbfs: Optional['outputs.PipelineClusterClusterLogConfDbfs'] = None,
-                 s3: Optional['outputs.PipelineClusterClusterLogConfS3'] = None):
+                 s3: Optional['outputs.PipelineClusterClusterLogConfS3'] = None,
+                 volumes: Optional['outputs.PipelineClusterClusterLogConfVolumes'] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -22248,6 +22365,11 @@ class PipelineClusterClusterLogConf(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.PipelineClusterClusterLogConfS3']:
         return pulumi.get(self, "s3")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['outputs.PipelineClusterClusterLogConfVolumes']:
+        return pulumi.get(self, "volumes")
 
 
 @pulumi.output_type
@@ -22343,6 +22465,18 @@ class PipelineClusterClusterLogConfS3(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class PipelineClusterClusterLogConfVolumes(dict):
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -27395,6 +27529,7 @@ class GetAppAppResult(dict):
                  create_time: str,
                  creator: str,
                  default_source_code_path: str,
+                 id: str,
                  name: str,
                  pending_deployment: 'outputs.GetAppAppPendingDeploymentResult',
                  service_principal_client_id: str,
@@ -27411,6 +27546,7 @@ class GetAppAppResult(dict):
         :param str create_time: The creation time of the app.
         :param str creator: The email of the user that created the app.
         :param str default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        :param str id: Id of the job to grant permission on.
         :param str name: The name of the app.
         :param int service_principal_id: id of the app service principal
         :param str service_principal_name: name of the app service principal
@@ -27426,6 +27562,7 @@ class GetAppAppResult(dict):
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "default_source_code_path", default_source_code_path)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pending_deployment", pending_deployment)
         pulumi.set(__self__, "service_principal_client_id", service_principal_client_id)
@@ -27483,6 +27620,14 @@ class GetAppAppResult(dict):
         The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         """
         return pulumi.get(self, "default_source_code_path")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the job to grant permission on.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -28071,6 +28216,7 @@ class GetAppsAppResult(dict):
                  create_time: str,
                  creator: str,
                  default_source_code_path: str,
+                 id: str,
                  name: str,
                  pending_deployment: 'outputs.GetAppsAppPendingDeploymentResult',
                  service_principal_client_id: str,
@@ -28087,6 +28233,7 @@ class GetAppsAppResult(dict):
         :param str create_time: The creation time of the app.
         :param str creator: The email of the user that created the app.
         :param str default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
+        :param str id: Id of the job to grant permission on.
         :param str name: Name of the serving endpoint to grant permission on.
         :param int service_principal_id: id of the app service principal
         :param str service_principal_name: name of the app service principal
@@ -28102,6 +28249,7 @@ class GetAppsAppResult(dict):
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "default_source_code_path", default_source_code_path)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pending_deployment", pending_deployment)
         pulumi.set(__self__, "service_principal_client_id", service_principal_client_id)
@@ -28159,6 +28307,14 @@ class GetAppsAppResult(dict):
         The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         """
         return pulumi.get(self, "default_source_code_path")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the job to grant permission on.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -29685,11 +29841,14 @@ class GetClusterClusterInfoAzureAttributesLogAnalyticsInfoResult(dict):
 class GetClusterClusterInfoClusterLogConfResult(dict):
     def __init__(__self__, *,
                  dbfs: Optional['outputs.GetClusterClusterInfoClusterLogConfDbfsResult'] = None,
-                 s3: Optional['outputs.GetClusterClusterInfoClusterLogConfS3Result'] = None):
+                 s3: Optional['outputs.GetClusterClusterInfoClusterLogConfS3Result'] = None,
+                 volumes: Optional['outputs.GetClusterClusterInfoClusterLogConfVolumesResult'] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -29700,6 +29859,11 @@ class GetClusterClusterInfoClusterLogConfResult(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.GetClusterClusterInfoClusterLogConfS3Result']:
         return pulumi.get(self, "s3")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['outputs.GetClusterClusterInfoClusterLogConfVolumesResult']:
+        return pulumi.get(self, "volumes")
 
 
 @pulumi.output_type
@@ -29772,6 +29936,18 @@ class GetClusterClusterInfoClusterLogConfS3Result(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetClusterClusterInfoClusterLogConfVolumesResult(dict):
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type
@@ -30735,11 +30911,14 @@ class GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoResult(dict):
 class GetClusterClusterInfoSpecClusterLogConfResult(dict):
     def __init__(__self__, *,
                  dbfs: Optional['outputs.GetClusterClusterInfoSpecClusterLogConfDbfsResult'] = None,
-                 s3: Optional['outputs.GetClusterClusterInfoSpecClusterLogConfS3Result'] = None):
+                 s3: Optional['outputs.GetClusterClusterInfoSpecClusterLogConfS3Result'] = None,
+                 volumes: Optional['outputs.GetClusterClusterInfoSpecClusterLogConfVolumesResult'] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -30750,6 +30929,11 @@ class GetClusterClusterInfoSpecClusterLogConfResult(dict):
     @pulumi.getter
     def s3(self) -> Optional['outputs.GetClusterClusterInfoSpecClusterLogConfS3Result']:
         return pulumi.get(self, "s3")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['outputs.GetClusterClusterInfoSpecClusterLogConfVolumesResult']:
+        return pulumi.get(self, "volumes")
 
 
 @pulumi.output_type
@@ -30822,6 +31006,18 @@ class GetClusterClusterInfoSpecClusterLogConfS3Result(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetClusterClusterInfoSpecClusterLogConfVolumesResult(dict):
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type

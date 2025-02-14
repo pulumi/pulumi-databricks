@@ -95,6 +95,8 @@ __all__ = [
     'ClusterClusterLogConfDbfsArgsDict',
     'ClusterClusterLogConfS3Args',
     'ClusterClusterLogConfS3ArgsDict',
+    'ClusterClusterLogConfVolumesArgs',
+    'ClusterClusterLogConfVolumesArgsDict',
     'ClusterClusterMountInfoArgs',
     'ClusterClusterMountInfoArgsDict',
     'ClusterClusterMountInfoNetworkFilesystemInfoArgs',
@@ -225,6 +227,8 @@ __all__ = [
     'JobJobClusterNewClusterClusterLogConfDbfsArgsDict',
     'JobJobClusterNewClusterClusterLogConfS3Args',
     'JobJobClusterNewClusterClusterLogConfS3ArgsDict',
+    'JobJobClusterNewClusterClusterLogConfVolumesArgs',
+    'JobJobClusterNewClusterClusterLogConfVolumesArgsDict',
     'JobJobClusterNewClusterClusterMountInfoArgs',
     'JobJobClusterNewClusterClusterMountInfoArgsDict',
     'JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgs',
@@ -287,6 +291,8 @@ __all__ = [
     'JobNewClusterClusterLogConfDbfsArgsDict',
     'JobNewClusterClusterLogConfS3Args',
     'JobNewClusterClusterLogConfS3ArgsDict',
+    'JobNewClusterClusterLogConfVolumesArgs',
+    'JobNewClusterClusterLogConfVolumesArgsDict',
     'JobNewClusterClusterMountInfoArgs',
     'JobNewClusterClusterMountInfoArgsDict',
     'JobNewClusterClusterMountInfoNetworkFilesystemInfoArgs',
@@ -403,6 +409,8 @@ __all__ = [
     'JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgsDict',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfS3Args',
     'JobTaskForEachTaskTaskNewClusterClusterLogConfS3ArgsDict',
+    'JobTaskForEachTaskTaskNewClusterClusterLogConfVolumesArgs',
+    'JobTaskForEachTaskTaskNewClusterClusterLogConfVolumesArgsDict',
     'JobTaskForEachTaskTaskNewClusterClusterMountInfoArgs',
     'JobTaskForEachTaskTaskNewClusterClusterMountInfoArgsDict',
     'JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs',
@@ -513,6 +521,8 @@ __all__ = [
     'JobTaskNewClusterClusterLogConfDbfsArgsDict',
     'JobTaskNewClusterClusterLogConfS3Args',
     'JobTaskNewClusterClusterLogConfS3ArgsDict',
+    'JobTaskNewClusterClusterLogConfVolumesArgs',
+    'JobTaskNewClusterClusterLogConfVolumesArgsDict',
     'JobTaskNewClusterClusterMountInfoArgs',
     'JobTaskNewClusterClusterMountInfoArgsDict',
     'JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs',
@@ -809,6 +819,8 @@ __all__ = [
     'PipelineClusterClusterLogConfDbfsArgsDict',
     'PipelineClusterClusterLogConfS3Args',
     'PipelineClusterClusterLogConfS3ArgsDict',
+    'PipelineClusterClusterLogConfVolumesArgs',
+    'PipelineClusterClusterLogConfVolumesArgsDict',
     'PipelineClusterGcpAttributesArgs',
     'PipelineClusterGcpAttributesArgsDict',
     'PipelineClusterInitScriptArgs',
@@ -1043,6 +1055,8 @@ __all__ = [
     'GetClusterClusterInfoClusterLogConfDbfsArgsDict',
     'GetClusterClusterInfoClusterLogConfS3Args',
     'GetClusterClusterInfoClusterLogConfS3ArgsDict',
+    'GetClusterClusterInfoClusterLogConfVolumesArgs',
+    'GetClusterClusterInfoClusterLogConfVolumesArgsDict',
     'GetClusterClusterInfoClusterLogStatusArgs',
     'GetClusterClusterInfoClusterLogStatusArgsDict',
     'GetClusterClusterInfoDockerImageArgs',
@@ -1091,6 +1105,8 @@ __all__ = [
     'GetClusterClusterInfoSpecClusterLogConfDbfsArgsDict',
     'GetClusterClusterInfoSpecClusterLogConfS3Args',
     'GetClusterClusterInfoSpecClusterLogConfS3ArgsDict',
+    'GetClusterClusterInfoSpecClusterLogConfVolumesArgs',
+    'GetClusterClusterInfoSpecClusterLogConfVolumesArgsDict',
     'GetClusterClusterInfoSpecClusterMountInfoArgs',
     'GetClusterClusterInfoSpecClusterMountInfoArgsDict',
     'GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs',
@@ -4155,6 +4171,7 @@ if not MYPY:
     class ClusterClusterLogConfArgsDict(TypedDict):
         dbfs: NotRequired[pulumi.Input['ClusterClusterLogConfDbfsArgsDict']]
         s3: NotRequired[pulumi.Input['ClusterClusterLogConfS3ArgsDict']]
+        volumes: NotRequired[pulumi.Input['ClusterClusterLogConfVolumesArgsDict']]
 elif False:
     ClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4162,11 +4179,14 @@ elif False:
 class ClusterClusterLogConfArgs:
     def __init__(__self__, *,
                  dbfs: Optional[pulumi.Input['ClusterClusterLogConfDbfsArgs']] = None,
-                 s3: Optional[pulumi.Input['ClusterClusterLogConfS3Args']] = None):
+                 s3: Optional[pulumi.Input['ClusterClusterLogConfS3Args']] = None,
+                 volumes: Optional[pulumi.Input['ClusterClusterLogConfVolumesArgs']] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -4185,6 +4205,15 @@ class ClusterClusterLogConfArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['ClusterClusterLogConfS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input['ClusterClusterLogConfVolumesArgs']]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input['ClusterClusterLogConfVolumesArgs']]):
+        pulumi.set(self, "volumes", value)
 
 
 if not MYPY:
@@ -4367,6 +4396,37 @@ class ClusterClusterLogConfS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class ClusterClusterLogConfVolumesArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+elif False:
+    ClusterClusterLogConfVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterClusterLogConfVolumesArgs:
+    def __init__(__self__, *,
+                 destination: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input[str]:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination", value)
 
 
 if not MYPY:
@@ -8474,6 +8534,7 @@ if not MYPY:
     class JobJobClusterNewClusterClusterLogConfArgsDict(TypedDict):
         dbfs: NotRequired[pulumi.Input['JobJobClusterNewClusterClusterLogConfDbfsArgsDict']]
         s3: NotRequired[pulumi.Input['JobJobClusterNewClusterClusterLogConfS3ArgsDict']]
+        volumes: NotRequired[pulumi.Input['JobJobClusterNewClusterClusterLogConfVolumesArgsDict']]
 elif False:
     JobJobClusterNewClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -8481,11 +8542,14 @@ elif False:
 class JobJobClusterNewClusterClusterLogConfArgs:
     def __init__(__self__, *,
                  dbfs: Optional[pulumi.Input['JobJobClusterNewClusterClusterLogConfDbfsArgs']] = None,
-                 s3: Optional[pulumi.Input['JobJobClusterNewClusterClusterLogConfS3Args']] = None):
+                 s3: Optional[pulumi.Input['JobJobClusterNewClusterClusterLogConfS3Args']] = None,
+                 volumes: Optional[pulumi.Input['JobJobClusterNewClusterClusterLogConfVolumesArgs']] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -8504,6 +8568,15 @@ class JobJobClusterNewClusterClusterLogConfArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['JobJobClusterNewClusterClusterLogConfS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input['JobJobClusterNewClusterClusterLogConfVolumesArgs']]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input['JobJobClusterNewClusterClusterLogConfVolumesArgs']]):
+        pulumi.set(self, "volumes", value)
 
 
 if not MYPY:
@@ -8626,6 +8699,28 @@ class JobJobClusterNewClusterClusterLogConfS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class JobJobClusterNewClusterClusterLogConfVolumesArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobJobClusterNewClusterClusterLogConfVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobJobClusterNewClusterClusterLogConfVolumesArgs:
+    def __init__(__self__, *,
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination", value)
 
 
 if not MYPY:
@@ -10450,6 +10545,7 @@ if not MYPY:
     class JobNewClusterClusterLogConfArgsDict(TypedDict):
         dbfs: NotRequired[pulumi.Input['JobNewClusterClusterLogConfDbfsArgsDict']]
         s3: NotRequired[pulumi.Input['JobNewClusterClusterLogConfS3ArgsDict']]
+        volumes: NotRequired[pulumi.Input['JobNewClusterClusterLogConfVolumesArgsDict']]
 elif False:
     JobNewClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -10457,11 +10553,14 @@ elif False:
 class JobNewClusterClusterLogConfArgs:
     def __init__(__self__, *,
                  dbfs: Optional[pulumi.Input['JobNewClusterClusterLogConfDbfsArgs']] = None,
-                 s3: Optional[pulumi.Input['JobNewClusterClusterLogConfS3Args']] = None):
+                 s3: Optional[pulumi.Input['JobNewClusterClusterLogConfS3Args']] = None,
+                 volumes: Optional[pulumi.Input['JobNewClusterClusterLogConfVolumesArgs']] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -10480,6 +10579,15 @@ class JobNewClusterClusterLogConfArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['JobNewClusterClusterLogConfS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input['JobNewClusterClusterLogConfVolumesArgs']]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input['JobNewClusterClusterLogConfVolumesArgs']]):
+        pulumi.set(self, "volumes", value)
 
 
 if not MYPY:
@@ -10602,6 +10710,28 @@ class JobNewClusterClusterLogConfS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class JobNewClusterClusterLogConfVolumesArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobNewClusterClusterLogConfVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobNewClusterClusterLogConfVolumesArgs:
+    def __init__(__self__, *,
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination", value)
 
 
 if not MYPY:
@@ -15446,6 +15576,7 @@ if not MYPY:
     class JobTaskForEachTaskTaskNewClusterClusterLogConfArgsDict(TypedDict):
         dbfs: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgsDict']]
         s3: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfS3ArgsDict']]
+        volumes: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfVolumesArgsDict']]
 elif False:
     JobTaskForEachTaskTaskNewClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -15453,11 +15584,14 @@ elif False:
 class JobTaskForEachTaskTaskNewClusterClusterLogConfArgs:
     def __init__(__self__, *,
                  dbfs: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs']] = None,
-                 s3: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfS3Args']] = None):
+                 s3: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfS3Args']] = None,
+                 volumes: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfVolumesArgs']] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -15476,6 +15610,15 @@ class JobTaskForEachTaskTaskNewClusterClusterLogConfArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfVolumesArgs']]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterClusterLogConfVolumesArgs']]):
+        pulumi.set(self, "volumes", value)
 
 
 if not MYPY:
@@ -15598,6 +15741,28 @@ class JobTaskForEachTaskTaskNewClusterClusterLogConfS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterClusterLogConfVolumesArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskForEachTaskTaskNewClusterClusterLogConfVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskNewClusterClusterLogConfVolumesArgs:
+    def __init__(__self__, *,
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination", value)
 
 
 if not MYPY:
@@ -19077,6 +19242,7 @@ if not MYPY:
     class JobTaskNewClusterClusterLogConfArgsDict(TypedDict):
         dbfs: NotRequired[pulumi.Input['JobTaskNewClusterClusterLogConfDbfsArgsDict']]
         s3: NotRequired[pulumi.Input['JobTaskNewClusterClusterLogConfS3ArgsDict']]
+        volumes: NotRequired[pulumi.Input['JobTaskNewClusterClusterLogConfVolumesArgsDict']]
 elif False:
     JobTaskNewClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -19084,11 +19250,14 @@ elif False:
 class JobTaskNewClusterClusterLogConfArgs:
     def __init__(__self__, *,
                  dbfs: Optional[pulumi.Input['JobTaskNewClusterClusterLogConfDbfsArgs']] = None,
-                 s3: Optional[pulumi.Input['JobTaskNewClusterClusterLogConfS3Args']] = None):
+                 s3: Optional[pulumi.Input['JobTaskNewClusterClusterLogConfS3Args']] = None,
+                 volumes: Optional[pulumi.Input['JobTaskNewClusterClusterLogConfVolumesArgs']] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -19107,6 +19276,15 @@ class JobTaskNewClusterClusterLogConfArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['JobTaskNewClusterClusterLogConfS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input['JobTaskNewClusterClusterLogConfVolumesArgs']]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input['JobTaskNewClusterClusterLogConfVolumesArgs']]):
+        pulumi.set(self, "volumes", value)
 
 
 if not MYPY:
@@ -19229,6 +19407,28 @@ class JobTaskNewClusterClusterLogConfS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class JobTaskNewClusterClusterLogConfVolumesArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    JobTaskNewClusterClusterLogConfVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskNewClusterClusterLogConfVolumesArgs:
+    def __init__(__self__, *,
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination", value)
 
 
 if not MYPY:
@@ -28914,6 +29114,7 @@ if not MYPY:
     class PipelineClusterClusterLogConfArgsDict(TypedDict):
         dbfs: NotRequired[pulumi.Input['PipelineClusterClusterLogConfDbfsArgsDict']]
         s3: NotRequired[pulumi.Input['PipelineClusterClusterLogConfS3ArgsDict']]
+        volumes: NotRequired[pulumi.Input['PipelineClusterClusterLogConfVolumesArgsDict']]
 elif False:
     PipelineClusterClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -28921,11 +29122,14 @@ elif False:
 class PipelineClusterClusterLogConfArgs:
     def __init__(__self__, *,
                  dbfs: Optional[pulumi.Input['PipelineClusterClusterLogConfDbfsArgs']] = None,
-                 s3: Optional[pulumi.Input['PipelineClusterClusterLogConfS3Args']] = None):
+                 s3: Optional[pulumi.Input['PipelineClusterClusterLogConfS3Args']] = None,
+                 volumes: Optional[pulumi.Input['PipelineClusterClusterLogConfVolumesArgs']] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -28944,6 +29148,15 @@ class PipelineClusterClusterLogConfArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['PipelineClusterClusterLogConfS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input['PipelineClusterClusterLogConfVolumesArgs']]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input['PipelineClusterClusterLogConfVolumesArgs']]):
+        pulumi.set(self, "volumes", value)
 
 
 if not MYPY:
@@ -29066,6 +29279,28 @@ class PipelineClusterClusterLogConfS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class PipelineClusterClusterLogConfVolumesArgsDict(TypedDict):
+        destination: pulumi.Input[str]
+elif False:
+    PipelineClusterClusterLogConfVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineClusterClusterLogConfVolumesArgs:
+    def __init__(__self__, *,
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination", value)
 
 
 if not MYPY:
@@ -37061,6 +37296,7 @@ if not MYPY:
     class GetClusterClusterInfoClusterLogConfArgsDict(TypedDict):
         dbfs: NotRequired['GetClusterClusterInfoClusterLogConfDbfsArgsDict']
         s3: NotRequired['GetClusterClusterInfoClusterLogConfS3ArgsDict']
+        volumes: NotRequired['GetClusterClusterInfoClusterLogConfVolumesArgsDict']
 elif False:
     GetClusterClusterInfoClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -37068,11 +37304,14 @@ elif False:
 class GetClusterClusterInfoClusterLogConfArgs:
     def __init__(__self__, *,
                  dbfs: Optional['GetClusterClusterInfoClusterLogConfDbfsArgs'] = None,
-                 s3: Optional['GetClusterClusterInfoClusterLogConfS3Args'] = None):
+                 s3: Optional['GetClusterClusterInfoClusterLogConfS3Args'] = None,
+                 volumes: Optional['GetClusterClusterInfoClusterLogConfVolumesArgs'] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -37091,6 +37330,15 @@ class GetClusterClusterInfoClusterLogConfArgs:
     @s3.setter
     def s3(self, value: Optional['GetClusterClusterInfoClusterLogConfS3Args']):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['GetClusterClusterInfoClusterLogConfVolumesArgs']:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional['GetClusterClusterInfoClusterLogConfVolumesArgs']):
+        pulumi.set(self, "volumes", value)
 
 
 if not MYPY:
@@ -37213,6 +37461,28 @@ class GetClusterClusterInfoClusterLogConfS3Args:
     @region.setter
     def region(self, value: Optional[str]):
         pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class GetClusterClusterInfoClusterLogConfVolumesArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoClusterLogConfVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetClusterClusterInfoClusterLogConfVolumesArgs:
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: str):
+        pulumi.set(self, "destination", value)
 
 
 if not MYPY:
@@ -38830,6 +39100,7 @@ if not MYPY:
     class GetClusterClusterInfoSpecClusterLogConfArgsDict(TypedDict):
         dbfs: NotRequired['GetClusterClusterInfoSpecClusterLogConfDbfsArgsDict']
         s3: NotRequired['GetClusterClusterInfoSpecClusterLogConfS3ArgsDict']
+        volumes: NotRequired['GetClusterClusterInfoSpecClusterLogConfVolumesArgsDict']
 elif False:
     GetClusterClusterInfoSpecClusterLogConfArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -38837,11 +39108,14 @@ elif False:
 class GetClusterClusterInfoSpecClusterLogConfArgs:
     def __init__(__self__, *,
                  dbfs: Optional['GetClusterClusterInfoSpecClusterLogConfDbfsArgs'] = None,
-                 s3: Optional['GetClusterClusterInfoSpecClusterLogConfS3Args'] = None):
+                 s3: Optional['GetClusterClusterInfoSpecClusterLogConfS3Args'] = None,
+                 volumes: Optional['GetClusterClusterInfoSpecClusterLogConfVolumesArgs'] = None):
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter
@@ -38860,6 +39134,15 @@ class GetClusterClusterInfoSpecClusterLogConfArgs:
     @s3.setter
     def s3(self, value: Optional['GetClusterClusterInfoSpecClusterLogConfS3Args']):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['GetClusterClusterInfoSpecClusterLogConfVolumesArgs']:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional['GetClusterClusterInfoSpecClusterLogConfVolumesArgs']):
+        pulumi.set(self, "volumes", value)
 
 
 if not MYPY:
@@ -38982,6 +39265,28 @@ class GetClusterClusterInfoSpecClusterLogConfS3Args:
     @region.setter
     def region(self, value: Optional[str]):
         pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class GetClusterClusterInfoSpecClusterLogConfVolumesArgsDict(TypedDict):
+        destination: str
+elif False:
+    GetClusterClusterInfoSpecClusterLogConfVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecClusterLogConfVolumesArgs:
+    def __init__(__self__, *,
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: str):
+        pulumi.set(self, "destination", value)
 
 
 if not MYPY:

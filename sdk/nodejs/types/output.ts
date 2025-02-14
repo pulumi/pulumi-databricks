@@ -489,6 +489,7 @@ export interface ClusterAzureAttributesLogAnalyticsInfo {
 export interface ClusterClusterLogConf {
     dbfs?: outputs.ClusterClusterLogConfDbfs;
     s3?: outputs.ClusterClusterLogConfS3;
+    volumes?: outputs.ClusterClusterLogConfVolumes;
 }
 
 export interface ClusterClusterLogConfDbfs {
@@ -527,6 +528,13 @@ export interface ClusterClusterLogConfS3 {
      * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
      */
     region?: string;
+}
+
+export interface ClusterClusterLogConfVolumes {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
+    destination: string;
 }
 
 export interface ClusterClusterMountInfo {
@@ -924,6 +932,10 @@ export interface GetAppApp {
      */
     description?: string;
     /**
+     * Id of the job to grant permission on.
+     */
+    id: string;
+    /**
      * The name of the app.
      */
     name: string;
@@ -1148,6 +1160,10 @@ export interface GetAppsApp {
      * The description of the resource.
      */
     description?: string;
+    /**
+     * Id of the job to grant permission on.
+     */
+    id: string;
     /**
      * Name of the serving endpoint to grant permission on.
      */
@@ -1584,6 +1600,7 @@ export interface GetClusterClusterInfoAzureAttributesLogAnalyticsInfo {
 export interface GetClusterClusterInfoClusterLogConf {
     dbfs?: outputs.GetClusterClusterInfoClusterLogConfDbfs;
     s3?: outputs.GetClusterClusterInfoClusterLogConfS3;
+    volumes?: outputs.GetClusterClusterInfoClusterLogConfVolumes;
 }
 
 export interface GetClusterClusterInfoClusterLogConfDbfs {
@@ -1598,6 +1615,10 @@ export interface GetClusterClusterInfoClusterLogConfS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface GetClusterClusterInfoClusterLogConfVolumes {
+    destination: string;
 }
 
 export interface GetClusterClusterInfoClusterLogStatus {
@@ -1819,6 +1840,7 @@ export interface GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo {
 export interface GetClusterClusterInfoSpecClusterLogConf {
     dbfs?: outputs.GetClusterClusterInfoSpecClusterLogConfDbfs;
     s3?: outputs.GetClusterClusterInfoSpecClusterLogConfS3;
+    volumes?: outputs.GetClusterClusterInfoSpecClusterLogConfVolumes;
 }
 
 export interface GetClusterClusterInfoSpecClusterLogConfDbfs {
@@ -1833,6 +1855,10 @@ export interface GetClusterClusterInfoSpecClusterLogConfS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface GetClusterClusterInfoSpecClusterLogConfVolumes {
+    destination: string;
 }
 
 export interface GetClusterClusterInfoSpecClusterMountInfo {
@@ -5321,6 +5347,7 @@ export interface JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo {
 export interface JobJobClusterNewClusterClusterLogConf {
     dbfs?: outputs.JobJobClusterNewClusterClusterLogConfDbfs;
     s3?: outputs.JobJobClusterNewClusterClusterLogConfS3;
+    volumes?: outputs.JobJobClusterNewClusterClusterLogConfVolumes;
 }
 
 export interface JobJobClusterNewClusterClusterLogConfDbfs {
@@ -5335,6 +5362,10 @@ export interface JobJobClusterNewClusterClusterLogConfS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface JobJobClusterNewClusterClusterLogConfVolumes {
+    destination: string;
 }
 
 export interface JobJobClusterNewClusterClusterMountInfo {
@@ -5556,6 +5587,7 @@ export interface JobNewClusterAzureAttributesLogAnalyticsInfo {
 export interface JobNewClusterClusterLogConf {
     dbfs?: outputs.JobNewClusterClusterLogConfDbfs;
     s3?: outputs.JobNewClusterClusterLogConfS3;
+    volumes?: outputs.JobNewClusterClusterLogConfVolumes;
 }
 
 export interface JobNewClusterClusterLogConfDbfs {
@@ -5570,6 +5602,10 @@ export interface JobNewClusterClusterLogConfS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface JobNewClusterClusterLogConfVolumes {
+    destination: string;
 }
 
 export interface JobNewClusterClusterMountInfo {
@@ -6393,6 +6429,7 @@ export interface JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo
 export interface JobTaskForEachTaskTaskNewClusterClusterLogConf {
     dbfs?: outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs;
     s3?: outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfS3;
+    volumes?: outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs {
@@ -6407,6 +6444,10 @@ export interface JobTaskForEachTaskTaskNewClusterClusterLogConfS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes {
+    destination: string;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterMountInfo {
@@ -6978,6 +7019,7 @@ export interface JobTaskNewClusterAzureAttributesLogAnalyticsInfo {
 export interface JobTaskNewClusterClusterLogConf {
     dbfs?: outputs.JobTaskNewClusterClusterLogConfDbfs;
     s3?: outputs.JobTaskNewClusterClusterLogConfS3;
+    volumes?: outputs.JobTaskNewClusterClusterLogConfVolumes;
 }
 
 export interface JobTaskNewClusterClusterLogConfDbfs {
@@ -6992,6 +7034,10 @@ export interface JobTaskNewClusterClusterLogConfS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface JobTaskNewClusterClusterLogConfVolumes {
+    destination: string;
 }
 
 export interface JobTaskNewClusterClusterMountInfo {
@@ -8742,6 +8788,7 @@ export interface PipelineClusterAzureAttributesLogAnalyticsInfo {
 export interface PipelineClusterClusterLogConf {
     dbfs?: outputs.PipelineClusterClusterLogConfDbfs;
     s3?: outputs.PipelineClusterClusterLogConfS3;
+    volumes?: outputs.PipelineClusterClusterLogConfVolumes;
 }
 
 export interface PipelineClusterClusterLogConfDbfs {
@@ -8756,6 +8803,10 @@ export interface PipelineClusterClusterLogConfS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface PipelineClusterClusterLogConfVolumes {
+    destination: string;
 }
 
 export interface PipelineClusterGcpAttributes {

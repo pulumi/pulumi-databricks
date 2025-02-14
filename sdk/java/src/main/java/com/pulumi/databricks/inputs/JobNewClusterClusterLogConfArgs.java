@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobNewClusterClusterLogConfDbfsArgs;
 import com.pulumi.databricks.inputs.JobNewClusterClusterLogConfS3Args;
+import com.pulumi.databricks.inputs.JobNewClusterClusterLogConfVolumesArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,11 +31,19 @@ public final class JobNewClusterClusterLogConfArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.s3);
     }
 
+    @Import(name="volumes")
+    private @Nullable Output<JobNewClusterClusterLogConfVolumesArgs> volumes;
+
+    public Optional<Output<JobNewClusterClusterLogConfVolumesArgs>> volumes() {
+        return Optional.ofNullable(this.volumes);
+    }
+
     private JobNewClusterClusterLogConfArgs() {}
 
     private JobNewClusterClusterLogConfArgs(JobNewClusterClusterLogConfArgs $) {
         this.dbfs = $.dbfs;
         this.s3 = $.s3;
+        this.volumes = $.volumes;
     }
 
     public static Builder builder() {
@@ -71,6 +80,15 @@ public final class JobNewClusterClusterLogConfArgs extends com.pulumi.resources.
 
         public Builder s3(JobNewClusterClusterLogConfS3Args s3) {
             return s3(Output.of(s3));
+        }
+
+        public Builder volumes(@Nullable Output<JobNewClusterClusterLogConfVolumesArgs> volumes) {
+            $.volumes = volumes;
+            return this;
+        }
+
+        public Builder volumes(JobNewClusterClusterLogConfVolumesArgs volumes) {
+            return volumes(Output.of(volumes));
         }
 
         public JobNewClusterClusterLogConfArgs build() {

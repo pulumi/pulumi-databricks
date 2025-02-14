@@ -1417,6 +1417,50 @@ import (
 //
 // ```
 //
+// ## Databricks Apps usage
+//
+// [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) have two possible permissions: `CAN_USE` and `CAN_MANAGE`:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Engineering"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissions(ctx, "app_usage", &databricks.PermissionsArgs{
+//				AppName: pulumi.String("myapp"),
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.String("users"),
+//						PermissionLevel: pulumi.String("CAN_USE"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       eng.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_MANAGE"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Instance Profiles
 //
 // Instance Profiles are not managed by General Permissions API and therefore GroupInstanceProfile and UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
