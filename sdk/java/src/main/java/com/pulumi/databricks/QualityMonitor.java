@@ -399,14 +399,14 @@ public class QualityMonitor extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.schedule);
     }
     /**
-     * Whether to skip creating a default dashboard summarizing data quality metrics.
+     * Whether to skip creating a default dashboard summarizing data quality metrics.  (Can&#39;t be updated after creation).
      * 
      */
     @Export(name="skipBuiltinDashboard", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipBuiltinDashboard;
 
     /**
-     * @return Whether to skip creating a default dashboard summarizing data quality metrics.
+     * @return Whether to skip creating a default dashboard summarizing data quality metrics.  (Can&#39;t be updated after creation).
      * 
      */
     public Output<Optional<Boolean>> skipBuiltinDashboard() {
@@ -483,14 +483,14 @@ public class QualityMonitor extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeSeries);
     }
     /**
-     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can&#39;t be updated after creation)
      * 
      */
     @Export(name="warehouseId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> warehouseId;
 
     /**
-     * @return Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+     * @return Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can&#39;t be updated after creation)
      * 
      */
     public Output<Optional<String>> warehouseId() {

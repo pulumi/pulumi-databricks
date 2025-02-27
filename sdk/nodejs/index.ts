@@ -200,6 +200,11 @@ export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = 
 export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;
 utilities.lazyLoad(exports, ["getCurrentUser","getCurrentUserOutput"], () => require("./getCurrentUser"));
 
+export { GetDashboardsArgs, GetDashboardsResult, GetDashboardsOutputArgs } from "./getDashboards";
+export const getDashboards: typeof import("./getDashboards").getDashboards = null as any;
+export const getDashboardsOutput: typeof import("./getDashboards").getDashboardsOutput = null as any;
+utilities.lazyLoad(exports, ["getDashboards","getDashboardsOutput"], () => require("./getDashboards"));
+
 export { GetDbfsFileArgs, GetDbfsFileResult, GetDbfsFileOutputArgs } from "./getDbfsFile";
 export const getDbfsFile: typeof import("./getDbfsFile").getDbfsFile = null as any;
 export const getDbfsFileOutput: typeof import("./getDbfsFile").getDbfsFileOutput = null as any;

@@ -145,6 +145,8 @@ __all__ = [
     'ClusterWorkloadTypeClientsArgsDict',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgsDict',
+    'ConnectionProvisioningInfoArgs',
+    'ConnectionProvisioningInfoArgsDict',
     'CredentialAwsIamRoleArgs',
     'CredentialAwsIamRoleArgsDict',
     'CredentialAzureManagedIdentityArgs',
@@ -5909,6 +5911,29 @@ class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspac
     @is_enabled.setter
     def is_enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "is_enabled", value)
+
+
+if not MYPY:
+    class ConnectionProvisioningInfoArgsDict(TypedDict):
+        state: NotRequired[pulumi.Input[str]]
+elif False:
+    ConnectionProvisioningInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionProvisioningInfoArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[str]] = None):
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 if not MYPY:
@@ -36268,14 +36293,14 @@ if not MYPY:
         cluster_cores: NotRequired[float]
         cluster_id: NotRequired[str]
         """
-        The id of the cluster
+        The id of the cluster.
         """
         cluster_log_conf: NotRequired['GetClusterClusterInfoClusterLogConfArgsDict']
         cluster_log_status: NotRequired['GetClusterClusterInfoClusterLogStatusArgsDict']
         cluster_memory_mb: NotRequired[int]
         cluster_name: NotRequired[str]
         """
-        The exact name of the cluster to search
+        The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         """
         cluster_source: NotRequired[str]
         creator_user_name: NotRequired[str]
@@ -36416,8 +36441,8 @@ class GetClusterClusterInfoArgs:
                  workload_type: Optional['GetClusterClusterInfoWorkloadTypeArgs'] = None):
         """
         :param int autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
-        :param str cluster_id: The id of the cluster
-        :param str cluster_name: The exact name of the cluster to search
+        :param str cluster_id: The id of the cluster.
+        :param str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         :param Mapping[str, str] custom_tags: Additional tags for cluster resources.
         :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         :param str driver_instance_pool_id: similar to `instance_pool_id`, but for driver node.
@@ -36583,7 +36608,7 @@ class GetClusterClusterInfoArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[str]:
         """
-        The id of the cluster
+        The id of the cluster.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -36622,7 +36647,7 @@ class GetClusterClusterInfoArgs:
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[str]:
         """
-        The exact name of the cluster to search
+        The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -38266,7 +38291,7 @@ if not MYPY:
     class GetClusterClusterInfoSpecArgsDict(TypedDict):
         cluster_id: str
         """
-        The id of the cluster
+        The id of the cluster.
         """
         driver_instance_pool_id: str
         """
@@ -38300,7 +38325,7 @@ if not MYPY:
         cluster_mount_infos: NotRequired[Sequence['GetClusterClusterInfoSpecClusterMountInfoArgsDict']]
         cluster_name: NotRequired[str]
         """
-        The exact name of the cluster to search
+        The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         """
         custom_tags: NotRequired[Mapping[str, str]]
         """
@@ -38391,14 +38416,14 @@ class GetClusterClusterInfoSpecArgs:
                  use_ml_runtime: Optional[bool] = None,
                  workload_type: Optional['GetClusterClusterInfoSpecWorkloadTypeArgs'] = None):
         """
-        :param str cluster_id: The id of the cluster
+        :param str cluster_id: The id of the cluster.
         :param str driver_instance_pool_id: similar to `instance_pool_id`, but for driver node.
         :param str driver_node_type_id: The node type of the Spark driver.
         :param bool enable_elastic_disk: Use autoscaling local storage.
         :param bool enable_local_disk_encryption: Enable local disk encryption.
         :param str node_type_id: Any supported get_node_type id.
         :param str spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-        :param str cluster_name: The exact name of the cluster to search
+        :param str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         :param Mapping[str, str] custom_tags: Additional tags for cluster resources.
         :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         :param str idempotency_token: An optional token to guarantee the idempotency of cluster creation requests.
@@ -38474,7 +38499,7 @@ class GetClusterClusterInfoSpecArgs:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
         """
-        The id of the cluster
+        The id of the cluster.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -38612,7 +38637,7 @@ class GetClusterClusterInfoSpecArgs:
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[str]:
         """
-        The exact name of the cluster to search
+        The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         """
         return pulumi.get(self, "cluster_name")
 

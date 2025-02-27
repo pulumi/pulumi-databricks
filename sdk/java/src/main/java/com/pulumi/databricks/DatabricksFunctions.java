@@ -32,6 +32,8 @@ import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
 import com.pulumi.databricks.inputs.GetCurrentConfigPlainArgs;
 import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
 import com.pulumi.databricks.inputs.GetCurrentMetastorePlainArgs;
+import com.pulumi.databricks.inputs.GetDashboardsArgs;
+import com.pulumi.databricks.inputs.GetDashboardsPlainArgs;
 import com.pulumi.databricks.inputs.GetDbfsFileArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePathsPlainArgs;
@@ -137,6 +139,7 @@ import com.pulumi.databricks.outputs.GetClustersResult;
 import com.pulumi.databricks.outputs.GetCurrentConfigResult;
 import com.pulumi.databricks.outputs.GetCurrentMetastoreResult;
 import com.pulumi.databricks.outputs.GetCurrentUserResult;
+import com.pulumi.databricks.outputs.GetDashboardsResult;
 import com.pulumi.databricks.outputs.GetDbfsFilePathsResult;
 import com.pulumi.databricks.outputs.GetDbfsFileResult;
 import com.pulumi.databricks.outputs.GetDirectoryResult;
@@ -3352,18 +3355,6 @@ public final class DatabricksFunctions {
      * &lt;!--Start PulumiCodeChooser --&gt;
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ## Related Resources
-     * 
-     * The following resources are often used in the same context:
-     * 
-     * * End to end workspace management guide.
-     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-     * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
-     * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-     * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
-     * 
      */
     public static Output<GetClusterResult> getCluster() {
         return getCluster(GetClusterArgs.Empty, InvokeOptions.Empty);
@@ -3379,18 +3370,6 @@ public final class DatabricksFunctions {
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are often used in the same context:
-     * 
-     * * End to end workspace management guide.
-     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-     * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
-     * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-     * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain() {
@@ -3408,18 +3387,6 @@ public final class DatabricksFunctions {
      * &lt;!--Start PulumiCodeChooser --&gt;
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ## Related Resources
-     * 
-     * The following resources are often used in the same context:
-     * 
-     * * End to end workspace management guide.
-     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-     * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
-     * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-     * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
-     * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args) {
         return getCluster(args, InvokeOptions.Empty);
@@ -3435,18 +3402,6 @@ public final class DatabricksFunctions {
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are often used in the same context:
-     * 
-     * * End to end workspace management guide.
-     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-     * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
-     * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-     * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args) {
@@ -3464,18 +3419,6 @@ public final class DatabricksFunctions {
      * &lt;!--Start PulumiCodeChooser --&gt;
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ## Related Resources
-     * 
-     * The following resources are often used in the same context:
-     * 
-     * * End to end workspace management guide.
-     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-     * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
-     * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-     * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
-     * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
@@ -3492,18 +3435,6 @@ public final class DatabricksFunctions {
      * &lt;!--Start PulumiCodeChooser --&gt;
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ## Related Resources
-     * 
-     * The following resources are often used in the same context:
-     * 
-     * * End to end workspace management guide.
-     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-     * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
-     * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-     * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
-     * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
@@ -3519,18 +3450,6 @@ public final class DatabricksFunctions {
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are often used in the same context:
-     * 
-     * * End to end workspace management guide.
-     * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
-     * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
-     * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
-     * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
-     * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
-     * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args, InvokeOptions options) {
@@ -3975,6 +3894,64 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * ### Filtering clusters
+     * 
+     * Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allRunningClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterStates("RUNNING")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allClustersWithPolicy = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .policyId("1234-5678-9012")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allApiClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterSources("API")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allPinnedClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .isPinned(true)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4058,6 +4035,64 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()
      *             .clusterNameContains("shared")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Filtering clusters
+     * 
+     * Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allRunningClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterStates("RUNNING")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allClustersWithPolicy = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .policyId("1234-5678-9012")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allApiClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterSources("API")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allPinnedClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .isPinned(true)
+     *                 .build())
      *             .build());
      * 
      *     }
@@ -4157,6 +4192,64 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * ### Filtering clusters
+     * 
+     * Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allRunningClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterStates("RUNNING")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allClustersWithPolicy = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .policyId("1234-5678-9012")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allApiClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterSources("API")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allPinnedClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .isPinned(true)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4240,6 +4333,64 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()
      *             .clusterNameContains("shared")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Filtering clusters
+     * 
+     * Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allRunningClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterStates("RUNNING")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allClustersWithPolicy = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .policyId("1234-5678-9012")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allApiClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterSources("API")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allPinnedClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .isPinned(true)
+     *                 .build())
      *             .build());
      * 
      *     }
@@ -4339,6 +4490,64 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * ### Filtering clusters
+     * 
+     * Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allRunningClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterStates("RUNNING")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allClustersWithPolicy = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .policyId("1234-5678-9012")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allApiClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterSources("API")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allPinnedClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .isPinned(true)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4430,6 +4639,64 @@ public final class DatabricksFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
+     * ### Filtering clusters
+     * 
+     * Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allRunningClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterStates("RUNNING")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allClustersWithPolicy = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .policyId("1234-5678-9012")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allApiClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterSources("API")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allPinnedClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .isPinned(true)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4513,6 +4780,64 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var allShared = DatabricksFunctions.getClusters(GetClustersArgs.builder()
      *             .clusterNameContains("shared")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Filtering clusters
+     * 
+     * Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allRunningClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterStates("RUNNING")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allClustersWithPolicy = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .policyId("1234-5678-9012")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allApiClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .clusterSources("API")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var allPinnedClusters = DatabricksFunctions.getClusters(GetClustersArgs.builder()
+     *             .filterBy(GetClustersFilterByArgs.builder()
+     *                 .isPinned(true)
+     *                 .build())
      *             .build());
      * 
      *     }
@@ -5222,6 +5547,90 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getCurrentUser:getCurrentUser", TypeShape.of(GetCurrentUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDashboardsResult> getDashboards() {
+        return getDashboards(GetDashboardsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDashboardsResult> getDashboardsPlain() {
+        return getDashboardsPlain(GetDashboardsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDashboardsResult> getDashboards(GetDashboardsArgs args) {
+        return getDashboards(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDashboardsResult> getDashboardsPlain(GetDashboardsPlainArgs args) {
+        return getDashboardsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDashboardsResult> getDashboards(GetDashboardsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDashboardsResult> getDashboards(GetDashboardsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDashboardsResult> getDashboardsPlain(GetDashboardsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks.MwsWorkspaces or azurerm_databricks_workspace, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.

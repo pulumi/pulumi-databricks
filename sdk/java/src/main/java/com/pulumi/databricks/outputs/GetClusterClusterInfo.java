@@ -39,7 +39,7 @@ public final class GetClusterClusterInfo {
     private @Nullable GetClusterClusterInfoAzureAttributes azureAttributes;
     private @Nullable Double clusterCores;
     /**
-     * @return The id of the cluster
+     * @return The id of the cluster.
      * 
      */
     private @Nullable String clusterId;
@@ -47,7 +47,7 @@ public final class GetClusterClusterInfo {
     private @Nullable GetClusterClusterInfoClusterLogStatus clusterLogStatus;
     private @Nullable Integer clusterMemoryMb;
     /**
-     * @return The exact name of the cluster to search
+     * @return The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      * 
      */
     private @Nullable String clusterName;
@@ -171,7 +171,7 @@ public final class GetClusterClusterInfo {
         return Optional.ofNullable(this.clusterCores);
     }
     /**
-     * @return The id of the cluster
+     * @return The id of the cluster.
      * 
      */
     public Optional<String> clusterId() {
@@ -187,7 +187,7 @@ public final class GetClusterClusterInfo {
         return Optional.ofNullable(this.clusterMemoryMb);
     }
     /**
-     * @return The exact name of the cluster to search
+     * @return The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      * 
      */
     public Optional<String> clusterName() {

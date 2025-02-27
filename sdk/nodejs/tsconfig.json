@@ -54,6 +54,7 @@
         "getCurrentConfig.ts",
         "getCurrentMetastore.ts",
         "getCurrentUser.ts",
+        "getDashboards.ts",
         "getDbfsFile.ts",
         "getDbfsFilePaths.ts",
         "getDirectory.ts",

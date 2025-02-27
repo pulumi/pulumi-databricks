@@ -18,13 +18,13 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetClusterClusterInfoSpecAwsAttributesResult? AwsAttributes;
         public readonly Outputs.GetClusterClusterInfoSpecAzureAttributesResult? AzureAttributes;
         /// <summary>
-        /// The id of the cluster
+        /// The id of the cluster.
         /// </summary>
         public readonly string ClusterId;
         public readonly Outputs.GetClusterClusterInfoSpecClusterLogConfResult? ClusterLogConf;
         public readonly ImmutableArray<Outputs.GetClusterClusterInfoSpecClusterMountInfoResult> ClusterMountInfos;
         /// <summary>
-        /// The exact name of the cluster to search
+        /// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         /// </summary>
         public readonly string? ClusterName;
         /// <summary>

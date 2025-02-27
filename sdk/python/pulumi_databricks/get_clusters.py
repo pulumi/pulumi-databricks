@@ -108,6 +108,28 @@ def get_clusters(cluster_name_contains: Optional[str] = None,
     all_shared = databricks.get_clusters(cluster_name_contains="shared")
     ```
 
+    ### Filtering clusters
+
+    Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all_running_clusters = databricks.get_clusters(filter_by={
+        "cluster_states": ["RUNNING"],
+    })
+    all_clusters_with_policy = databricks.get_clusters(filter_by={
+        "policy_id": "1234-5678-9012",
+    })
+    all_api_clusters = databricks.get_clusters(filter_by={
+        "cluster_sources": ["API"],
+    })
+    all_pinned_clusters = databricks.get_clusters(filter_by={
+        "is_pinned": True,
+    })
+    ```
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -166,6 +188,28 @@ def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[st
     import pulumi_databricks as databricks
 
     all_shared = databricks.get_clusters(cluster_name_contains="shared")
+    ```
+
+    ### Filtering clusters
+
+    Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all_running_clusters = databricks.get_clusters(filter_by={
+        "cluster_states": ["RUNNING"],
+    })
+    all_clusters_with_policy = databricks.get_clusters(filter_by={
+        "policy_id": "1234-5678-9012",
+    })
+    all_api_clusters = databricks.get_clusters(filter_by={
+        "cluster_sources": ["API"],
+    })
+    all_pinned_clusters = databricks.get_clusters(filter_by={
+        "is_pinned": True,
+    })
     ```
 
     ## Related Resources

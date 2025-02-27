@@ -31,6 +31,9 @@ class MetastoreAssignmentArgs:
         pulumi.set(__self__, "metastore_id", metastore_id)
         pulumi.set(__self__, "workspace_id", workspace_id)
         if default_catalog_name is not None:
+            warnings.warn("""Use DefaultNamespaceSetting resource instead""", DeprecationWarning)
+            pulumi.log.warn("""default_catalog_name is deprecated: Use DefaultNamespaceSetting resource instead""")
+        if default_catalog_name is not None:
             pulumi.set(__self__, "default_catalog_name", default_catalog_name)
 
     @property
@@ -59,6 +62,7 @@ class MetastoreAssignmentArgs:
 
     @property
     @pulumi.getter(name="defaultCatalogName")
+    @_utilities.deprecated("""Use DefaultNamespaceSetting resource instead""")
     def default_catalog_name(self) -> Optional[pulumi.Input[str]]:
         """
         Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
@@ -83,6 +87,9 @@ class _MetastoreAssignmentState:
         :param pulumi.Input[str] workspace_id: id of the workspace for the assignment
         """
         if default_catalog_name is not None:
+            warnings.warn("""Use DefaultNamespaceSetting resource instead""", DeprecationWarning)
+            pulumi.log.warn("""default_catalog_name is deprecated: Use DefaultNamespaceSetting resource instead""")
+        if default_catalog_name is not None:
             pulumi.set(__self__, "default_catalog_name", default_catalog_name)
         if metastore_id is not None:
             pulumi.set(__self__, "metastore_id", metastore_id)
@@ -91,6 +98,7 @@ class _MetastoreAssignmentState:
 
     @property
     @pulumi.getter(name="defaultCatalogName")
+    @_utilities.deprecated("""Use DefaultNamespaceSetting resource instead""")
     def default_catalog_name(self) -> Optional[pulumi.Input[str]]:
         """
         Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
@@ -280,7 +288,8 @@ class MetastoreAssignment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultCatalogName")
-    def default_catalog_name(self) -> pulumi.Output[Optional[str]]:
+    @_utilities.deprecated("""Use DefaultNamespaceSetting resource instead""")
+    def default_catalog_name(self) -> pulumi.Output[str]:
         """
         Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
         """
