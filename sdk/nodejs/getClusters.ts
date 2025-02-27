@@ -33,6 +33,36 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Filtering clusters
+ *
+ * Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const allRunningClusters = databricks.getClusters({
+ *     filterBy: {
+ *         clusterStates: ["RUNNING"],
+ *     },
+ * });
+ * const allClustersWithPolicy = databricks.getClusters({
+ *     filterBy: {
+ *         policyId: "1234-5678-9012",
+ *     },
+ * });
+ * const allApiClusters = databricks.getClusters({
+ *     filterBy: {
+ *         clusterSources: ["API"],
+ *     },
+ * });
+ * const allPinnedClusters = databricks.getClusters({
+ *     filterBy: {
+ *         isPinned: true,
+ *     },
+ * });
+ * ```
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -111,6 +141,36 @@ export interface GetClustersResult {
  *
  * const allShared = databricks.getClusters({
  *     clusterNameContains: "shared",
+ * });
+ * ```
+ *
+ * ### Filtering clusters
+ *
+ * Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const allRunningClusters = databricks.getClusters({
+ *     filterBy: {
+ *         clusterStates: ["RUNNING"],
+ *     },
+ * });
+ * const allClustersWithPolicy = databricks.getClusters({
+ *     filterBy: {
+ *         policyId: "1234-5678-9012",
+ *     },
+ * });
+ * const allApiClusters = databricks.getClusters({
+ *     filterBy: {
+ *         clusterSources: ["API"],
+ *     },
+ * });
+ * const allPinnedClusters = databricks.getClusters({
+ *     filterBy: {
+ *         isPinned: true,
+ *     },
  * });
  * ```
  *

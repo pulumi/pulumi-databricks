@@ -817,6 +817,10 @@ export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProf
     isEnabled: pulumi.Input<boolean>;
 }
 
+export interface ConnectionProvisioningInfo {
+    state?: pulumi.Input<string>;
+}
+
 export interface CredentialAwsIamRole {
     externalId?: pulumi.Input<string>;
     /**
@@ -1113,14 +1117,14 @@ export interface GetClusterClusterInfo {
     azureAttributes?: inputs.GetClusterClusterInfoAzureAttributes;
     clusterCores?: number;
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId?: string;
     clusterLogConf?: inputs.GetClusterClusterInfoClusterLogConf;
     clusterLogStatus?: inputs.GetClusterClusterInfoClusterLogStatus;
     clusterMemoryMb?: number;
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: string;
     clusterSource?: string;
@@ -1218,14 +1222,14 @@ export interface GetClusterClusterInfoArgs {
     azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAzureAttributesArgs>;
     clusterCores?: pulumi.Input<number>;
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfArgs>;
     clusterLogStatus?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogStatusArgs>;
     clusterMemoryMb?: pulumi.Input<number>;
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: pulumi.Input<string>;
     clusterSource?: pulumi.Input<string>;
@@ -1619,13 +1623,13 @@ export interface GetClusterClusterInfoSpec {
     awsAttributes?: inputs.GetClusterClusterInfoSpecAwsAttributes;
     azureAttributes?: inputs.GetClusterClusterInfoSpecAzureAttributes;
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId?: string;
     clusterLogConf?: inputs.GetClusterClusterInfoSpecClusterLogConf;
     clusterMountInfos?: inputs.GetClusterClusterInfoSpecClusterMountInfo[];
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: string;
     /**
@@ -1709,13 +1713,13 @@ export interface GetClusterClusterInfoSpecArgs {
     awsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecAwsAttributesArgs>;
     azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecAzureAttributesArgs>;
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfArgs>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecClusterMountInfoArgs>[]>;
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: pulumi.Input<string>;
     /**

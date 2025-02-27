@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * This resource can be imported by its full name:
+ * This resource can be imported by its full name.
  * 
  * bash
  * 
@@ -134,28 +134,28 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.options);
     }
     /**
-     * User name/group name/sp application_id of the schema owner.
+     * User name/group name/sp application_id of the table owner.
      * 
      */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
-     * @return User name/group name/sp application_id of the schema owner.
+     * @return User name/group name/sp application_id of the table owner.
      * 
      */
     public Output<String> owner() {
         return this.owner;
     }
     /**
-     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
      * 
      */
     @Export(name="partitions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> partitions;
 
     /**
-     * @return a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+     * @return a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
      * 
      */
     public Output<Optional<List<String>>> partitions() {

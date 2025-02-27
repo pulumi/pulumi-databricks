@@ -58,14 +58,14 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The id of the cluster
+     * The id of the cluster.
      * 
      */
     @Import(name="clusterId", required=true)
     private String clusterId;
 
     /**
-     * @return The id of the cluster
+     * @return The id of the cluster.
      * 
      */
     public String clusterId() {
@@ -87,14 +87,14 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      * 
      */
     @Import(name="clusterName")
     private @Nullable String clusterName;
 
     /**
-     * @return The exact name of the cluster to search
+     * @return The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      * 
      */
     public Optional<String> clusterName() {
@@ -481,7 +481,7 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param clusterId The id of the cluster
+         * @param clusterId The id of the cluster.
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param clusterName The exact name of the cluster to search
+         * @param clusterName The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
          * 
          * @return builder
          * 

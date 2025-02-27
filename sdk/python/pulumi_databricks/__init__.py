@@ -44,6 +44,7 @@ from .get_clusters import *
 from .get_current_config import *
 from .get_current_metastore import *
 from .get_current_user import *
+from .get_dashboards import *
 from .get_dbfs_file import *
 from .get_dbfs_file_paths import *
 from .get_directory import *

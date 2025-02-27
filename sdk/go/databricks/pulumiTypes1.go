@@ -13,6 +13,181 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type StorageCredentialGcpServiceAccountKey struct {
+	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+	Email        string `pulumi:"email"`
+	PrivateKey   string `pulumi:"privateKey"`
+	PrivateKeyId string `pulumi:"privateKeyId"`
+}
+
+// StorageCredentialGcpServiceAccountKeyInput is an input type that accepts StorageCredentialGcpServiceAccountKeyArgs and StorageCredentialGcpServiceAccountKeyOutput values.
+// You can construct a concrete instance of `StorageCredentialGcpServiceAccountKeyInput` via:
+//
+//	StorageCredentialGcpServiceAccountKeyArgs{...}
+type StorageCredentialGcpServiceAccountKeyInput interface {
+	pulumi.Input
+
+	ToStorageCredentialGcpServiceAccountKeyOutput() StorageCredentialGcpServiceAccountKeyOutput
+	ToStorageCredentialGcpServiceAccountKeyOutputWithContext(context.Context) StorageCredentialGcpServiceAccountKeyOutput
+}
+
+type StorageCredentialGcpServiceAccountKeyArgs struct {
+	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+	Email        pulumi.StringInput `pulumi:"email"`
+	PrivateKey   pulumi.StringInput `pulumi:"privateKey"`
+	PrivateKeyId pulumi.StringInput `pulumi:"privateKeyId"`
+}
+
+func (StorageCredentialGcpServiceAccountKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialGcpServiceAccountKey)(nil)).Elem()
+}
+
+func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyOutput() StorageCredentialGcpServiceAccountKeyOutput {
+	return i.ToStorageCredentialGcpServiceAccountKeyOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialGcpServiceAccountKeyOutput)
+}
+
+func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return i.ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialGcpServiceAccountKeyOutput).ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx)
+}
+
+// StorageCredentialGcpServiceAccountKeyPtrInput is an input type that accepts StorageCredentialGcpServiceAccountKeyArgs, StorageCredentialGcpServiceAccountKeyPtr and StorageCredentialGcpServiceAccountKeyPtrOutput values.
+// You can construct a concrete instance of `StorageCredentialGcpServiceAccountKeyPtrInput` via:
+//
+//	        StorageCredentialGcpServiceAccountKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageCredentialGcpServiceAccountKeyPtrInput interface {
+	pulumi.Input
+
+	ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput
+	ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput
+}
+
+type storageCredentialGcpServiceAccountKeyPtrType StorageCredentialGcpServiceAccountKeyArgs
+
+func StorageCredentialGcpServiceAccountKeyPtr(v *StorageCredentialGcpServiceAccountKeyArgs) StorageCredentialGcpServiceAccountKeyPtrInput {
+	return (*storageCredentialGcpServiceAccountKeyPtrType)(v)
+}
+
+func (*storageCredentialGcpServiceAccountKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialGcpServiceAccountKey)(nil)).Elem()
+}
+
+func (i *storageCredentialGcpServiceAccountKeyPtrType) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return i.ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *storageCredentialGcpServiceAccountKeyPtrType) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialGcpServiceAccountKeyPtrOutput)
+}
+
+type StorageCredentialGcpServiceAccountKeyOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialGcpServiceAccountKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageCredentialGcpServiceAccountKey)(nil)).Elem()
+}
+
+func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyOutput() StorageCredentialGcpServiceAccountKeyOutput {
+	return o
+}
+
+func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyOutput {
+	return o
+}
+
+func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return o.ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialGcpServiceAccountKey) *StorageCredentialGcpServiceAccountKey {
+		return &v
+	}).(StorageCredentialGcpServiceAccountKeyPtrOutput)
+}
+
+// The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+func (o StorageCredentialGcpServiceAccountKeyOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.Email }).(pulumi.StringOutput)
+}
+
+func (o StorageCredentialGcpServiceAccountKeyOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+func (o StorageCredentialGcpServiceAccountKeyOutput) PrivateKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.PrivateKeyId }).(pulumi.StringOutput)
+}
+
+type StorageCredentialGcpServiceAccountKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageCredentialGcpServiceAccountKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageCredentialGcpServiceAccountKey)(nil)).Elem()
+}
+
+func (o StorageCredentialGcpServiceAccountKeyPtrOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return o
+}
+
+func (o StorageCredentialGcpServiceAccountKeyPtrOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
+	return o
+}
+
+func (o StorageCredentialGcpServiceAccountKeyPtrOutput) Elem() StorageCredentialGcpServiceAccountKeyOutput {
+	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) StorageCredentialGcpServiceAccountKey {
+		if v != nil {
+			return *v
+		}
+		var ret StorageCredentialGcpServiceAccountKey
+		return ret
+	}).(StorageCredentialGcpServiceAccountKeyOutput)
+}
+
+// The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
+func (o StorageCredentialGcpServiceAccountKeyPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StorageCredentialGcpServiceAccountKeyPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StorageCredentialGcpServiceAccountKeyPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
 type TableColumn struct {
 	Comment          *string `pulumi:"comment"`
 	Name             string  `pulumi:"name"`
@@ -5157,12 +5332,12 @@ type GetClusterClusterInfo struct {
 	AwsAttributes          *GetClusterClusterInfoAwsAttributes   `pulumi:"awsAttributes"`
 	AzureAttributes        *GetClusterClusterInfoAzureAttributes `pulumi:"azureAttributes"`
 	ClusterCores           *float64                              `pulumi:"clusterCores"`
-	// The id of the cluster
+	// The id of the cluster.
 	ClusterId        *string                                `pulumi:"clusterId"`
 	ClusterLogConf   *GetClusterClusterInfoClusterLogConf   `pulumi:"clusterLogConf"`
 	ClusterLogStatus *GetClusterClusterInfoClusterLogStatus `pulumi:"clusterLogStatus"`
 	ClusterMemoryMb  *int                                   `pulumi:"clusterMemoryMb"`
-	// The exact name of the cluster to search
+	// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 	ClusterName     *string `pulumi:"clusterName"`
 	ClusterSource   *string `pulumi:"clusterSource"`
 	CreatorUserName *string `pulumi:"creatorUserName"`
@@ -5237,12 +5412,12 @@ type GetClusterClusterInfoArgs struct {
 	AwsAttributes          GetClusterClusterInfoAwsAttributesPtrInput   `pulumi:"awsAttributes"`
 	AzureAttributes        GetClusterClusterInfoAzureAttributesPtrInput `pulumi:"azureAttributes"`
 	ClusterCores           pulumi.Float64PtrInput                       `pulumi:"clusterCores"`
-	// The id of the cluster
+	// The id of the cluster.
 	ClusterId        pulumi.StringPtrInput                         `pulumi:"clusterId"`
 	ClusterLogConf   GetClusterClusterInfoClusterLogConfPtrInput   `pulumi:"clusterLogConf"`
 	ClusterLogStatus GetClusterClusterInfoClusterLogStatusPtrInput `pulumi:"clusterLogStatus"`
 	ClusterMemoryMb  pulumi.IntPtrInput                            `pulumi:"clusterMemoryMb"`
-	// The exact name of the cluster to search
+	// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 	ClusterName     pulumi.StringPtrInput `pulumi:"clusterName"`
 	ClusterSource   pulumi.StringPtrInput `pulumi:"clusterSource"`
 	CreatorUserName pulumi.StringPtrInput `pulumi:"creatorUserName"`
@@ -5397,7 +5572,7 @@ func (o GetClusterClusterInfoOutput) ClusterCores() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *float64 { return v.ClusterCores }).(pulumi.Float64PtrOutput)
 }
 
-// The id of the cluster
+// The id of the cluster.
 func (o GetClusterClusterInfoOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
@@ -5414,7 +5589,7 @@ func (o GetClusterClusterInfoOutput) ClusterMemoryMb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *int { return v.ClusterMemoryMb }).(pulumi.IntPtrOutput)
 }
 
-// The exact name of the cluster to search
+// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 func (o GetClusterClusterInfoOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
@@ -5656,7 +5831,7 @@ func (o GetClusterClusterInfoPtrOutput) ClusterCores() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The id of the cluster
+// The id of the cluster.
 func (o GetClusterClusterInfoPtrOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -5693,7 +5868,7 @@ func (o GetClusterClusterInfoPtrOutput) ClusterMemoryMb() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The exact name of the cluster to search
+// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 func (o GetClusterClusterInfoPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfo) *string {
 		if v == nil {
@@ -9891,11 +10066,11 @@ type GetClusterClusterInfoSpec struct {
 	Autoscale                *GetClusterClusterInfoSpecAutoscale       `pulumi:"autoscale"`
 	AwsAttributes            *GetClusterClusterInfoSpecAwsAttributes   `pulumi:"awsAttributes"`
 	AzureAttributes          *GetClusterClusterInfoSpecAzureAttributes `pulumi:"azureAttributes"`
-	// The id of the cluster
+	// The id of the cluster.
 	ClusterId         string                                      `pulumi:"clusterId"`
 	ClusterLogConf    *GetClusterClusterInfoSpecClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos []GetClusterClusterInfoSpecClusterMountInfo `pulumi:"clusterMountInfos"`
-	// The exact name of the cluster to search
+	// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 	ClusterName *string `pulumi:"clusterName"`
 	// Additional tags for cluster resources.
 	CustomTags map[string]string `pulumi:"customTags"`
@@ -9956,11 +10131,11 @@ type GetClusterClusterInfoSpecArgs struct {
 	Autoscale                GetClusterClusterInfoSpecAutoscalePtrInput       `pulumi:"autoscale"`
 	AwsAttributes            GetClusterClusterInfoSpecAwsAttributesPtrInput   `pulumi:"awsAttributes"`
 	AzureAttributes          GetClusterClusterInfoSpecAzureAttributesPtrInput `pulumi:"azureAttributes"`
-	// The id of the cluster
+	// The id of the cluster.
 	ClusterId         pulumi.StringInput                                  `pulumi:"clusterId"`
 	ClusterLogConf    GetClusterClusterInfoSpecClusterLogConfPtrInput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos GetClusterClusterInfoSpecClusterMountInfoArrayInput `pulumi:"clusterMountInfos"`
-	// The exact name of the cluster to search
+	// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// Additional tags for cluster resources.
 	CustomTags pulumi.StringMapInput `pulumi:"customTags"`
@@ -10098,7 +10273,7 @@ func (o GetClusterClusterInfoSpecOutput) AzureAttributes() GetClusterClusterInfo
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *GetClusterClusterInfoSpecAzureAttributes { return v.AzureAttributes }).(GetClusterClusterInfoSpecAzureAttributesPtrOutput)
 }
 
-// The id of the cluster
+// The id of the cluster.
 func (o GetClusterClusterInfoSpecOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -10113,7 +10288,7 @@ func (o GetClusterClusterInfoSpecOutput) ClusterMountInfos() GetClusterClusterIn
 	}).(GetClusterClusterInfoSpecClusterMountInfoArrayOutput)
 }
 
-// The exact name of the cluster to search
+// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 func (o GetClusterClusterInfoSpecOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfoSpec) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
@@ -10294,7 +10469,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) AzureAttributes() GetClusterClusterI
 	}).(GetClusterClusterInfoSpecAzureAttributesPtrOutput)
 }
 
-// The id of the cluster
+// The id of the cluster.
 func (o GetClusterClusterInfoSpecPtrOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -10322,7 +10497,7 @@ func (o GetClusterClusterInfoSpecPtrOutput) ClusterMountInfos() GetClusterCluste
 	}).(GetClusterClusterInfoSpecClusterMountInfoArrayOutput)
 }
 
-// The exact name of the cluster to search
+// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 func (o GetClusterClusterInfoSpecPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetClusterClusterInfoSpec) *string {
 		if v == nil {
@@ -15785,6 +15960,163 @@ func (o GetCurrentMetastoreMetastoreInfoPtrOutput) UpdatedBy() pulumi.StringPtrO
 		}
 		return v.UpdatedBy
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetDashboardsDashboard struct {
+	// The timestamp of when the dashboard was created.
+	CreateTime string `pulumi:"createTime"`
+	// The unique ID of the dashboard.
+	DashboardId string `pulumi:"dashboardId"`
+	// The display name of the dashboard.
+	DisplayName         *string `pulumi:"displayName"`
+	Etag                string  `pulumi:"etag"`
+	LifecycleState      string  `pulumi:"lifecycleState"`
+	ParentPath          string  `pulumi:"parentPath"`
+	Path                string  `pulumi:"path"`
+	SerializedDashboard *string `pulumi:"serializedDashboard"`
+	UpdateTime          string  `pulumi:"updateTime"`
+	WarehouseId         *string `pulumi:"warehouseId"`
+}
+
+// GetDashboardsDashboardInput is an input type that accepts GetDashboardsDashboardArgs and GetDashboardsDashboardOutput values.
+// You can construct a concrete instance of `GetDashboardsDashboardInput` via:
+//
+//	GetDashboardsDashboardArgs{...}
+type GetDashboardsDashboardInput interface {
+	pulumi.Input
+
+	ToGetDashboardsDashboardOutput() GetDashboardsDashboardOutput
+	ToGetDashboardsDashboardOutputWithContext(context.Context) GetDashboardsDashboardOutput
+}
+
+type GetDashboardsDashboardArgs struct {
+	// The timestamp of when the dashboard was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The unique ID of the dashboard.
+	DashboardId pulumi.StringInput `pulumi:"dashboardId"`
+	// The display name of the dashboard.
+	DisplayName         pulumi.StringPtrInput `pulumi:"displayName"`
+	Etag                pulumi.StringInput    `pulumi:"etag"`
+	LifecycleState      pulumi.StringInput    `pulumi:"lifecycleState"`
+	ParentPath          pulumi.StringInput    `pulumi:"parentPath"`
+	Path                pulumi.StringInput    `pulumi:"path"`
+	SerializedDashboard pulumi.StringPtrInput `pulumi:"serializedDashboard"`
+	UpdateTime          pulumi.StringInput    `pulumi:"updateTime"`
+	WarehouseId         pulumi.StringPtrInput `pulumi:"warehouseId"`
+}
+
+func (GetDashboardsDashboardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDashboardsDashboard)(nil)).Elem()
+}
+
+func (i GetDashboardsDashboardArgs) ToGetDashboardsDashboardOutput() GetDashboardsDashboardOutput {
+	return i.ToGetDashboardsDashboardOutputWithContext(context.Background())
+}
+
+func (i GetDashboardsDashboardArgs) ToGetDashboardsDashboardOutputWithContext(ctx context.Context) GetDashboardsDashboardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDashboardsDashboardOutput)
+}
+
+// GetDashboardsDashboardArrayInput is an input type that accepts GetDashboardsDashboardArray and GetDashboardsDashboardArrayOutput values.
+// You can construct a concrete instance of `GetDashboardsDashboardArrayInput` via:
+//
+//	GetDashboardsDashboardArray{ GetDashboardsDashboardArgs{...} }
+type GetDashboardsDashboardArrayInput interface {
+	pulumi.Input
+
+	ToGetDashboardsDashboardArrayOutput() GetDashboardsDashboardArrayOutput
+	ToGetDashboardsDashboardArrayOutputWithContext(context.Context) GetDashboardsDashboardArrayOutput
+}
+
+type GetDashboardsDashboardArray []GetDashboardsDashboardInput
+
+func (GetDashboardsDashboardArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDashboardsDashboard)(nil)).Elem()
+}
+
+func (i GetDashboardsDashboardArray) ToGetDashboardsDashboardArrayOutput() GetDashboardsDashboardArrayOutput {
+	return i.ToGetDashboardsDashboardArrayOutputWithContext(context.Background())
+}
+
+func (i GetDashboardsDashboardArray) ToGetDashboardsDashboardArrayOutputWithContext(ctx context.Context) GetDashboardsDashboardArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDashboardsDashboardArrayOutput)
+}
+
+type GetDashboardsDashboardOutput struct{ *pulumi.OutputState }
+
+func (GetDashboardsDashboardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDashboardsDashboard)(nil)).Elem()
+}
+
+func (o GetDashboardsDashboardOutput) ToGetDashboardsDashboardOutput() GetDashboardsDashboardOutput {
+	return o
+}
+
+func (o GetDashboardsDashboardOutput) ToGetDashboardsDashboardOutputWithContext(ctx context.Context) GetDashboardsDashboardOutput {
+	return o
+}
+
+// The timestamp of when the dashboard was created.
+func (o GetDashboardsDashboardOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The unique ID of the dashboard.
+func (o GetDashboardsDashboardOutput) DashboardId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.DashboardId }).(pulumi.StringOutput)
+}
+
+// The display name of the dashboard.
+func (o GetDashboardsDashboardOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDashboardsDashboardOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+func (o GetDashboardsDashboardOutput) LifecycleState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.LifecycleState }).(pulumi.StringOutput)
+}
+
+func (o GetDashboardsDashboardOutput) ParentPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.ParentPath }).(pulumi.StringOutput)
+}
+
+func (o GetDashboardsDashboardOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetDashboardsDashboardOutput) SerializedDashboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) *string { return v.SerializedDashboard }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDashboardsDashboardOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func (o GetDashboardsDashboardOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDashboardsDashboard) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+type GetDashboardsDashboardArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDashboardsDashboardArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDashboardsDashboard)(nil)).Elem()
+}
+
+func (o GetDashboardsDashboardArrayOutput) ToGetDashboardsDashboardArrayOutput() GetDashboardsDashboardArrayOutput {
+	return o
+}
+
+func (o GetDashboardsDashboardArrayOutput) ToGetDashboardsDashboardArrayOutputWithContext(ctx context.Context) GetDashboardsDashboardArrayOutput {
+	return o
+}
+
+func (o GetDashboardsDashboardArrayOutput) Index(i pulumi.IntInput) GetDashboardsDashboardOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDashboardsDashboard {
+		return vs[0].([]GetDashboardsDashboard)[vs[1].(int)]
+	}).(GetDashboardsDashboardOutput)
 }
 
 type GetDbfsFilePathsPathList struct {
@@ -64201,6 +64533,8 @@ func (o GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrOutput) AwsKm
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialGcpServiceAccountKeyInput)(nil)).Elem(), StorageCredentialGcpServiceAccountKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialGcpServiceAccountKeyPtrInput)(nil)).Elem(), StorageCredentialGcpServiceAccountKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnInput)(nil)).Elem(), TableColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnArrayInput)(nil)).Elem(), TableColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VectorSearchEndpointEndpointStatusInput)(nil)).Elem(), VectorSearchEndpointEndpointStatusArgs{})
@@ -64379,6 +64713,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersFilterByPtrInput)(nil)).Elem(), GetClustersFilterByArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCurrentMetastoreMetastoreInfoInput)(nil)).Elem(), GetCurrentMetastoreMetastoreInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCurrentMetastoreMetastoreInfoPtrInput)(nil)).Elem(), GetCurrentMetastoreMetastoreInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDashboardsDashboardInput)(nil)).Elem(), GetDashboardsDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDashboardsDashboardArrayInput)(nil)).Elem(), GetDashboardsDashboardArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbfsFilePathsPathListInput)(nil)).Elem(), GetDbfsFilePathsPathListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbfsFilePathsPathListArrayInput)(nil)).Elem(), GetDbfsFilePathsPathListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalLocationExternalLocationInfoInput)(nil)).Elem(), GetExternalLocationExternalLocationInfoArgs{})
@@ -64976,6 +65312,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsPtrInput)(nil)).Elem(), GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs{})
+	pulumi.RegisterOutputType(StorageCredentialGcpServiceAccountKeyOutput{})
+	pulumi.RegisterOutputType(StorageCredentialGcpServiceAccountKeyPtrOutput{})
 	pulumi.RegisterOutputType(TableColumnOutput{})
 	pulumi.RegisterOutputType(TableColumnArrayOutput{})
 	pulumi.RegisterOutputType(VectorSearchEndpointEndpointStatusOutput{})
@@ -65154,6 +65492,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClustersFilterByPtrOutput{})
 	pulumi.RegisterOutputType(GetCurrentMetastoreMetastoreInfoOutput{})
 	pulumi.RegisterOutputType(GetCurrentMetastoreMetastoreInfoPtrOutput{})
+	pulumi.RegisterOutputType(GetDashboardsDashboardOutput{})
+	pulumi.RegisterOutputType(GetDashboardsDashboardArrayOutput{})
 	pulumi.RegisterOutputType(GetDbfsFilePathsPathListOutput{})
 	pulumi.RegisterOutputType(GetDbfsFilePathsPathListArrayOutput{})
 	pulumi.RegisterOutputType(GetExternalLocationExternalLocationInfoOutput{})

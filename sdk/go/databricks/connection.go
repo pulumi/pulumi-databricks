@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -113,6 +112,37 @@ import (
 //
 // ```
 //
+// # Create a connection to builtin Hive Metastore
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewConnection(ctx, "this", &databricks.ConnectionArgs{
+//				Name:           pulumi.String("hms-builtin"),
+//				ConnectionType: pulumi.String("HIVE_METASTORE"),
+//				Comment:        pulumi.String("This is a connection to builtin HMS"),
+//				Options: pulumi.StringMap{
+//					"builtin": pulumi.String("true"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by `id`:
@@ -127,9 +157,20 @@ type Connection struct {
 
 	// Free-form text.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-	ConnectionType pulumi.StringOutput `pulumi:"connectionType"`
-	MetastoreId    pulumi.StringOutput `pulumi:"metastoreId"`
+	// Unique ID of the connection.
+	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
+	// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+	ConnectionType pulumi.StringPtrOutput `pulumi:"connectionType"`
+	// Time at which this connection was created, in epoch milliseconds.
+	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
+	// Username of connection creator.
+	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
+	// The type of credential for this connection.
+	CredentialType pulumi.StringOutput `pulumi:"credentialType"`
+	// Full name of connection.
+	FullName pulumi.StringOutput `pulumi:"fullName"`
+	// Unique ID of the UC metastore for this connection.
+	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of the Connection.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
@@ -138,22 +179,25 @@ type Connection struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Free-form connection properties.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
-	ReadOnly   pulumi.BoolOutput      `pulumi:"readOnly"`
+	// Object with the status of an asynchronously provisioned resource.
+	ProvisioningInfos ConnectionProvisioningInfoArrayOutput `pulumi:"provisioningInfos"`
+	ReadOnly          pulumi.BoolOutput                     `pulumi:"readOnly"`
+	SecurableType     pulumi.StringOutput                   `pulumi:"securableType"`
+	// Time at which connection this was last modified, in epoch milliseconds.
+	UpdatedAt pulumi.IntOutput `pulumi:"updatedAt"`
+	// Username of user who last modified the connection.
+	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
+	// URL of the remote data source, extracted from options.
+	Url pulumi.StringOutput `pulumi:"url"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
 func NewConnection(ctx *pulumi.Context,
 	name string, args *ConnectionArgs, opts ...pulumi.ResourceOption) (*Connection, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ConnectionArgs{}
 	}
 
-	if args.ConnectionType == nil {
-		return nil, errors.New("invalid value for required argument 'ConnectionType'")
-	}
-	if args.Options == nil {
-		return nil, errors.New("invalid value for required argument 'Options'")
-	}
 	if args.Options != nil {
 		args.Options = pulumi.ToSecret(args.Options).(pulumi.StringMapInput)
 	}
@@ -186,9 +230,20 @@ func GetConnection(ctx *pulumi.Context,
 type connectionState struct {
 	// Free-form text.
 	Comment *string `pulumi:"comment"`
-	// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+	// Unique ID of the connection.
+	ConnectionId *string `pulumi:"connectionId"`
+	// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
 	ConnectionType *string `pulumi:"connectionType"`
-	MetastoreId    *string `pulumi:"metastoreId"`
+	// Time at which this connection was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// Username of connection creator.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of credential for this connection.
+	CredentialType *string `pulumi:"credentialType"`
+	// Full name of connection.
+	FullName *string `pulumi:"fullName"`
+	// Unique ID of the UC metastore for this connection.
+	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of the Connection.
 	Name *string `pulumi:"name"`
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
@@ -197,15 +252,35 @@ type connectionState struct {
 	Owner *string `pulumi:"owner"`
 	// Free-form connection properties.
 	Properties map[string]string `pulumi:"properties"`
-	ReadOnly   *bool             `pulumi:"readOnly"`
+	// Object with the status of an asynchronously provisioned resource.
+	ProvisioningInfos []ConnectionProvisioningInfo `pulumi:"provisioningInfos"`
+	ReadOnly          *bool                        `pulumi:"readOnly"`
+	SecurableType     *string                      `pulumi:"securableType"`
+	// Time at which connection this was last modified, in epoch milliseconds.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// Username of user who last modified the connection.
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// URL of the remote data source, extracted from options.
+	Url *string `pulumi:"url"`
 }
 
 type ConnectionState struct {
 	// Free-form text.
 	Comment pulumi.StringPtrInput
-	// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+	// Unique ID of the connection.
+	ConnectionId pulumi.StringPtrInput
+	// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
 	ConnectionType pulumi.StringPtrInput
-	MetastoreId    pulumi.StringPtrInput
+	// Time at which this connection was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput
+	// Username of connection creator.
+	CreatedBy pulumi.StringPtrInput
+	// The type of credential for this connection.
+	CredentialType pulumi.StringPtrInput
+	// Full name of connection.
+	FullName pulumi.StringPtrInput
+	// Unique ID of the UC metastore for this connection.
+	MetastoreId pulumi.StringPtrInput
 	// Name of the Connection.
 	Name pulumi.StringPtrInput
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
@@ -214,7 +289,16 @@ type ConnectionState struct {
 	Owner pulumi.StringPtrInput
 	// Free-form connection properties.
 	Properties pulumi.StringMapInput
-	ReadOnly   pulumi.BoolPtrInput
+	// Object with the status of an asynchronously provisioned resource.
+	ProvisioningInfos ConnectionProvisioningInfoArrayInput
+	ReadOnly          pulumi.BoolPtrInput
+	SecurableType     pulumi.StringPtrInput
+	// Time at which connection this was last modified, in epoch milliseconds.
+	UpdatedAt pulumi.IntPtrInput
+	// Username of user who last modified the connection.
+	UpdatedBy pulumi.StringPtrInput
+	// URL of the remote data source, extracted from options.
+	Url pulumi.StringPtrInput
 }
 
 func (ConnectionState) ElementType() reflect.Type {
@@ -224,9 +308,8 @@ func (ConnectionState) ElementType() reflect.Type {
 type connectionArgs struct {
 	// Free-form text.
 	Comment *string `pulumi:"comment"`
-	// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-	ConnectionType string  `pulumi:"connectionType"`
-	MetastoreId    *string `pulumi:"metastoreId"`
+	// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+	ConnectionType *string `pulumi:"connectionType"`
 	// Name of the Connection.
 	Name *string `pulumi:"name"`
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
@@ -242,9 +325,8 @@ type connectionArgs struct {
 type ConnectionArgs struct {
 	// Free-form text.
 	Comment pulumi.StringPtrInput
-	// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-	ConnectionType pulumi.StringInput
-	MetastoreId    pulumi.StringPtrInput
+	// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+	ConnectionType pulumi.StringPtrInput
 	// Name of the Connection.
 	Name pulumi.StringPtrInput
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
@@ -348,11 +430,37 @@ func (o ConnectionOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-func (o ConnectionOutput) ConnectionType() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionType }).(pulumi.StringOutput)
+// Unique ID of the connection.
+func (o ConnectionOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
+// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+func (o ConnectionOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
+// Time at which this connection was created, in epoch milliseconds.
+func (o ConnectionOutput) CreatedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v *Connection) pulumi.IntOutput { return v.CreatedAt }).(pulumi.IntOutput)
+}
+
+// Username of connection creator.
+func (o ConnectionOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The type of credential for this connection.
+func (o ConnectionOutput) CredentialType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CredentialType }).(pulumi.StringOutput)
+}
+
+// Full name of connection.
+func (o ConnectionOutput) FullName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
+}
+
+// Unique ID of the UC metastore for this connection.
 func (o ConnectionOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
@@ -377,8 +485,32 @@ func (o ConnectionOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// Object with the status of an asynchronously provisioned resource.
+func (o ConnectionOutput) ProvisioningInfos() ConnectionProvisioningInfoArrayOutput {
+	return o.ApplyT(func(v *Connection) ConnectionProvisioningInfoArrayOutput { return v.ProvisioningInfos }).(ConnectionProvisioningInfoArrayOutput)
+}
+
 func (o ConnectionOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+func (o ConnectionOutput) SecurableType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.SecurableType }).(pulumi.StringOutput)
+}
+
+// Time at which connection this was last modified, in epoch milliseconds.
+func (o ConnectionOutput) UpdatedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v *Connection) pulumi.IntOutput { return v.UpdatedAt }).(pulumi.IntOutput)
+}
+
+// Username of user who last modified the connection.
+func (o ConnectionOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// URL of the remote data source, extracted from options.
+func (o ConnectionOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
 type ConnectionArrayOutput struct{ *pulumi.OutputState }

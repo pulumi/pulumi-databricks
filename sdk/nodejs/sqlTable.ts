@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * This resource can be imported by its full name:
+ * This resource can be imported by its full name.
  *
  * bash
  *
@@ -73,11 +73,11 @@ export class SqlTable extends pulumi.CustomResource {
      */
     public readonly options!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * User name/group name/sp applicationId of the schema owner.
+     * User name/group name/sp applicationId of the table owner.
      */
     public readonly owner!: pulumi.Output<string>;
     /**
-     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
+     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
      */
     public readonly partitions!: pulumi.Output<string[] | undefined>;
     /**
@@ -207,11 +207,11 @@ export interface SqlTableState {
      */
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * User name/group name/sp applicationId of the schema owner.
+     * User name/group name/sp applicationId of the table owner.
      */
     owner?: pulumi.Input<string>;
     /**
-     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
+     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
      */
     partitions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -275,11 +275,11 @@ export interface SqlTableArgs {
      */
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * User name/group name/sp applicationId of the schema owner.
+     * User name/group name/sp applicationId of the table owner.
      */
     owner?: pulumi.Input<string>;
     /**
-     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`. Change forces creation of a new resource.
+     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
      */
     partitions?: pulumi.Input<pulumi.Input<string>[]>;
     /**

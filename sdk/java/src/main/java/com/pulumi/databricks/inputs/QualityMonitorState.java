@@ -229,14 +229,14 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether to skip creating a default dashboard summarizing data quality metrics.
+     * Whether to skip creating a default dashboard summarizing data quality metrics.  (Can&#39;t be updated after creation).
      * 
      */
     @Import(name="skipBuiltinDashboard")
     private @Nullable Output<Boolean> skipBuiltinDashboard;
 
     /**
-     * @return Whether to skip creating a default dashboard summarizing data quality metrics.
+     * @return Whether to skip creating a default dashboard summarizing data quality metrics.  (Can&#39;t be updated after creation).
      * 
      */
     public Optional<Output<Boolean>> skipBuiltinDashboard() {
@@ -319,14 +319,14 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can&#39;t be updated after creation)
      * 
      */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
     /**
-     * @return Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+     * @return Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can&#39;t be updated after creation)
      * 
      */
     public Optional<Output<String>> warehouseId() {
@@ -672,7 +672,7 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param skipBuiltinDashboard Whether to skip creating a default dashboard summarizing data quality metrics.
+         * @param skipBuiltinDashboard Whether to skip creating a default dashboard summarizing data quality metrics.  (Can&#39;t be updated after creation).
          * 
          * @return builder
          * 
@@ -683,7 +683,7 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param skipBuiltinDashboard Whether to skip creating a default dashboard summarizing data quality metrics.
+         * @param skipBuiltinDashboard Whether to skip creating a default dashboard summarizing data quality metrics.  (Can&#39;t be updated after creation).
          * 
          * @return builder
          * 
@@ -808,7 +808,7 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param warehouseId Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+         * @param warehouseId Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can&#39;t be updated after creation)
          * 
          * @return builder
          * 
@@ -819,7 +819,7 @@ public final class QualityMonitorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param warehouseId Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+         * @param warehouseId Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can&#39;t be updated after creation)
          * 
          * @return builder
          * 

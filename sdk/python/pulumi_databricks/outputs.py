@@ -81,6 +81,7 @@ __all__ = [
     'ClusterWorkloadType',
     'ClusterWorkloadTypeClients',
     'ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace',
+    'ConnectionProvisioningInfo',
     'CredentialAwsIamRole',
     'CredentialAzureManagedIdentity',
     'CredentialAzureServicePrincipal',
@@ -614,6 +615,7 @@ __all__ = [
     'GetClusterClusterInfoWorkloadTypeClientsResult',
     'GetClustersFilterByResult',
     'GetCurrentMetastoreMetastoreInfoResult',
+    'GetDashboardsDashboardResult',
     'GetDbfsFilePathsPathListResult',
     'GetExternalLocationExternalLocationInfoResult',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsResult',
@@ -3965,6 +3967,19 @@ class ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspac
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         return pulumi.get(self, "is_enabled")
+
+
+@pulumi.output_type
+class ConnectionProvisioningInfo(dict):
+    def __init__(__self__, *,
+                 state: Optional[str] = None):
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -29263,8 +29278,8 @@ class GetClusterClusterInfoResult(dict):
                  workload_type: Optional['outputs.GetClusterClusterInfoWorkloadTypeResult'] = None):
         """
         :param int autotermination_minutes: Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
-        :param str cluster_id: The id of the cluster
-        :param str cluster_name: The exact name of the cluster to search
+        :param str cluster_id: The id of the cluster.
+        :param str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         :param Mapping[str, str] custom_tags: Additional tags for cluster resources.
         :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         :param str driver_instance_pool_id: similar to `instance_pool_id`, but for driver node.
@@ -29410,7 +29425,7 @@ class GetClusterClusterInfoResult(dict):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[str]:
         """
-        The id of the cluster
+        The id of the cluster.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -29433,7 +29448,7 @@ class GetClusterClusterInfoResult(dict):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[str]:
         """
-        The exact name of the cluster to search
+        The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -30444,14 +30459,14 @@ class GetClusterClusterInfoSpecResult(dict):
                  use_ml_runtime: Optional[bool] = None,
                  workload_type: Optional['outputs.GetClusterClusterInfoSpecWorkloadTypeResult'] = None):
         """
-        :param str cluster_id: The id of the cluster
+        :param str cluster_id: The id of the cluster.
         :param str driver_instance_pool_id: similar to `instance_pool_id`, but for driver node.
         :param str driver_node_type_id: The node type of the Spark driver.
         :param bool enable_elastic_disk: Use autoscaling local storage.
         :param bool enable_local_disk_encryption: Enable local disk encryption.
         :param str node_type_id: Any supported get_node_type id.
         :param str spark_version: [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
-        :param str cluster_name: The exact name of the cluster to search
+        :param str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         :param Mapping[str, str] custom_tags: Additional tags for cluster resources.
         :param str data_security_mode: Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
         :param str idempotency_token: An optional token to guarantee the idempotency of cluster creation requests.
@@ -30527,7 +30542,7 @@ class GetClusterClusterInfoSpecResult(dict):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
         """
-        The id of the cluster
+        The id of the cluster.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -30613,7 +30628,7 @@ class GetClusterClusterInfoSpecResult(dict):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[str]:
         """
-        The exact name of the cluster to search
+        The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -31857,6 +31872,98 @@ class GetCurrentMetastoreMetastoreInfoResult(dict):
         the ID of the identity that updated the current metastore.
         """
         return pulumi.get(self, "updated_by")
+
+
+@pulumi.output_type
+class GetDashboardsDashboardResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 dashboard_id: str,
+                 etag: str,
+                 lifecycle_state: str,
+                 parent_path: str,
+                 path: str,
+                 update_time: str,
+                 display_name: Optional[str] = None,
+                 serialized_dashboard: Optional[str] = None,
+                 warehouse_id: Optional[str] = None):
+        """
+        :param str create_time: The timestamp of when the dashboard was created.
+        :param str dashboard_id: The unique ID of the dashboard.
+        :param str display_name: The display name of the dashboard.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "dashboard_id", dashboard_id)
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+        pulumi.set(__self__, "parent_path", parent_path)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "update_time", update_time)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if serialized_dashboard is not None:
+            pulumi.set(__self__, "serialized_dashboard", serialized_dashboard)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The timestamp of when the dashboard was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> str:
+        """
+        The unique ID of the dashboard.
+        """
+        return pulumi.get(self, "dashboard_id")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> str:
+        return pulumi.get(self, "lifecycle_state")
+
+    @property
+    @pulumi.getter(name="parentPath")
+    def parent_path(self) -> str:
+        return pulumi.get(self, "parent_path")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        The display name of the dashboard.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="serializedDashboard")
+    def serialized_dashboard(self) -> Optional[str]:
+        return pulumi.get(self, "serialized_dashboard")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[str]:
+        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type

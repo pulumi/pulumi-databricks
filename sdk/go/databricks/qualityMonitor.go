@@ -210,7 +210,7 @@ type QualityMonitor struct {
 	ProfileMetricsTableName pulumi.StringOutput `pulumi:"profileMetricsTableName"`
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule QualityMonitorSchedulePtrOutput `pulumi:"schedule"`
-	// Whether to skip creating a default dashboard summarizing data quality metrics.
+	// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
 	SkipBuiltinDashboard pulumi.BoolPtrOutput `pulumi:"skipBuiltinDashboard"`
 	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
 	SlicingExprs pulumi.StringArrayOutput `pulumi:"slicingExprs"`
@@ -222,7 +222,7 @@ type QualityMonitor struct {
 	TableName pulumi.StringOutput `pulumi:"tableName"`
 	// Configuration for monitoring timeseries tables.
 	TimeSeries QualityMonitorTimeSeriesPtrOutput `pulumi:"timeSeries"`
-	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
 	WarehouseId pulumi.StringPtrOutput `pulumi:"warehouseId"`
 }
 
@@ -293,7 +293,7 @@ type qualityMonitorState struct {
 	ProfileMetricsTableName *string `pulumi:"profileMetricsTableName"`
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule *QualityMonitorSchedule `pulumi:"schedule"`
-	// Whether to skip creating a default dashboard summarizing data quality metrics.
+	// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
 	SkipBuiltinDashboard *bool `pulumi:"skipBuiltinDashboard"`
 	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
 	SlicingExprs []string `pulumi:"slicingExprs"`
@@ -305,7 +305,7 @@ type qualityMonitorState struct {
 	TableName *string `pulumi:"tableName"`
 	// Configuration for monitoring timeseries tables.
 	TimeSeries *QualityMonitorTimeSeries `pulumi:"timeSeries"`
-	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
 	WarehouseId *string `pulumi:"warehouseId"`
 }
 
@@ -338,7 +338,7 @@ type QualityMonitorState struct {
 	ProfileMetricsTableName pulumi.StringPtrInput
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule QualityMonitorSchedulePtrInput
-	// Whether to skip creating a default dashboard summarizing data quality metrics.
+	// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
 	SkipBuiltinDashboard pulumi.BoolPtrInput
 	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
 	SlicingExprs pulumi.StringArrayInput
@@ -350,7 +350,7 @@ type QualityMonitorState struct {
 	TableName pulumi.StringPtrInput
 	// Configuration for monitoring timeseries tables.
 	TimeSeries QualityMonitorTimeSeriesPtrInput
-	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
 	WarehouseId pulumi.StringPtrInput
 }
 
@@ -379,7 +379,7 @@ type qualityMonitorArgs struct {
 	OutputSchemaName string `pulumi:"outputSchemaName"`
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule *QualityMonitorSchedule `pulumi:"schedule"`
-	// Whether to skip creating a default dashboard summarizing data quality metrics.
+	// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
 	SkipBuiltinDashboard *bool `pulumi:"skipBuiltinDashboard"`
 	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
 	SlicingExprs []string `pulumi:"slicingExprs"`
@@ -389,7 +389,7 @@ type qualityMonitorArgs struct {
 	TableName string `pulumi:"tableName"`
 	// Configuration for monitoring timeseries tables.
 	TimeSeries *QualityMonitorTimeSeries `pulumi:"timeSeries"`
-	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
 	WarehouseId *string `pulumi:"warehouseId"`
 }
 
@@ -415,7 +415,7 @@ type QualityMonitorArgs struct {
 	OutputSchemaName pulumi.StringInput
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule QualityMonitorSchedulePtrInput
-	// Whether to skip creating a default dashboard summarizing data quality metrics.
+	// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
 	SkipBuiltinDashboard pulumi.BoolPtrInput
 	// List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
 	SlicingExprs pulumi.StringArrayInput
@@ -425,7 +425,7 @@ type QualityMonitorArgs struct {
 	TableName pulumi.StringInput
 	// Configuration for monitoring timeseries tables.
 	TimeSeries QualityMonitorTimeSeriesPtrInput
-	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+	// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
 	WarehouseId pulumi.StringPtrInput
 }
 
@@ -588,7 +588,7 @@ func (o QualityMonitorOutput) Schedule() QualityMonitorSchedulePtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) QualityMonitorSchedulePtrOutput { return v.Schedule }).(QualityMonitorSchedulePtrOutput)
 }
 
-// Whether to skip creating a default dashboard summarizing data quality metrics.
+// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
 func (o QualityMonitorOutput) SkipBuiltinDashboard() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.BoolPtrOutput { return v.SkipBuiltinDashboard }).(pulumi.BoolPtrOutput)
 }
@@ -618,7 +618,7 @@ func (o QualityMonitorOutput) TimeSeries() QualityMonitorTimeSeriesPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) QualityMonitorTimeSeriesPtrOutput { return v.TimeSeries }).(QualityMonitorTimeSeriesPtrOutput)
 }
 
-// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+// Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
 func (o QualityMonitorOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringPtrOutput { return v.WarehouseId }).(pulumi.StringPtrOutput)
 }

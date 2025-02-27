@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
         /// Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
         /// </summary>
         [Output("defaultCatalogName")]
-        public Output<string?> DefaultCatalogName { get; private set; } = null!;
+        public Output<string> DefaultCatalogName { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the parent Metastore
