@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<double>? ClusterCores { get; set; }
 
         /// <summary>
-        /// The id of the cluster
+        /// The id of the cluster.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? ClusterMemoryMb { get; set; }
 
         /// <summary>
-        /// The exact name of the cluster to search
+        /// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }

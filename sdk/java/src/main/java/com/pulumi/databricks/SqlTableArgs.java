@@ -124,14 +124,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User name/group name/sp application_id of the schema owner.
+     * User name/group name/sp application_id of the table owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return User name/group name/sp application_id of the schema owner.
+     * @return User name/group name/sp application_id of the table owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -139,14 +139,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
      * 
      */
     @Import(name="partitions")
     private @Nullable Output<List<String>> partitions;
 
     /**
-     * @return a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+     * @return a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
      * 
      */
     public Optional<Output<List<String>>> partitions() {
@@ -457,7 +457,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner User name/group name/sp application_id of the schema owner.
+         * @param owner User name/group name/sp application_id of the table owner.
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner User name/group name/sp application_id of the schema owner.
+         * @param owner User name/group name/sp application_id of the table owner.
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
          * 
          * @return builder
          * 
@@ -499,7 +499,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`. Change forces creation of a new resource.
+         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
          * 
          * @return builder
          * 

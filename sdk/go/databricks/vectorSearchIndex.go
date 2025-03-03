@@ -69,9 +69,9 @@ type VectorSearchIndex struct {
 
 	// Creator of the endpoint.
 	Creator pulumi.StringOutput `pulumi:"creator"`
-	// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`.
+	// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
 	DeltaSyncIndexSpec VectorSearchIndexDeltaSyncIndexSpecPtrOutput `pulumi:"deltaSyncIndexSpec"`
-	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`.
+	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 	DirectAccessIndexSpec VectorSearchIndexDirectAccessIndexSpecPtrOutput `pulumi:"directAccessIndexSpec"`
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
@@ -128,9 +128,9 @@ func GetVectorSearchIndex(ctx *pulumi.Context,
 type vectorSearchIndexState struct {
 	// Creator of the endpoint.
 	Creator *string `pulumi:"creator"`
-	// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`.
+	// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
 	DeltaSyncIndexSpec *VectorSearchIndexDeltaSyncIndexSpec `pulumi:"deltaSyncIndexSpec"`
-	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`.
+	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 	DirectAccessIndexSpec *VectorSearchIndexDirectAccessIndexSpec `pulumi:"directAccessIndexSpec"`
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName *string `pulumi:"endpointName"`
@@ -149,9 +149,9 @@ type vectorSearchIndexState struct {
 type VectorSearchIndexState struct {
 	// Creator of the endpoint.
 	Creator pulumi.StringPtrInput
-	// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`.
+	// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
 	DeltaSyncIndexSpec VectorSearchIndexDeltaSyncIndexSpecPtrInput
-	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`.
+	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 	DirectAccessIndexSpec VectorSearchIndexDirectAccessIndexSpecPtrInput
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName pulumi.StringPtrInput
@@ -172,9 +172,9 @@ func (VectorSearchIndexState) ElementType() reflect.Type {
 }
 
 type vectorSearchIndexArgs struct {
-	// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`.
+	// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
 	DeltaSyncIndexSpec *VectorSearchIndexDeltaSyncIndexSpec `pulumi:"deltaSyncIndexSpec"`
-	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`.
+	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 	DirectAccessIndexSpec *VectorSearchIndexDirectAccessIndexSpec `pulumi:"directAccessIndexSpec"`
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName string `pulumi:"endpointName"`
@@ -190,9 +190,9 @@ type vectorSearchIndexArgs struct {
 
 // The set of arguments for constructing a VectorSearchIndex resource.
 type VectorSearchIndexArgs struct {
-	// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`.
+	// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
 	DeltaSyncIndexSpec VectorSearchIndexDeltaSyncIndexSpecPtrInput
-	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`.
+	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 	DirectAccessIndexSpec VectorSearchIndexDirectAccessIndexSpecPtrInput
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName pulumi.StringInput
@@ -298,12 +298,12 @@ func (o VectorSearchIndexOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchIndex) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
 
-// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`.
+// Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
 func (o VectorSearchIndexOutput) DeltaSyncIndexSpec() VectorSearchIndexDeltaSyncIndexSpecPtrOutput {
 	return o.ApplyT(func(v *VectorSearchIndex) VectorSearchIndexDeltaSyncIndexSpecPtrOutput { return v.DeltaSyncIndexSpec }).(VectorSearchIndexDeltaSyncIndexSpecPtrOutput)
 }
 
-// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`.
+// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 func (o VectorSearchIndexOutput) DirectAccessIndexSpec() VectorSearchIndexDirectAccessIndexSpecPtrOutput {
 	return o.ApplyT(func(v *VectorSearchIndex) VectorSearchIndexDirectAccessIndexSpecPtrOutput {
 		return v.DirectAccessIndexSpec

@@ -51,6 +51,59 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// 
+        /// ### Filtering clusters
+        /// 
+        /// Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var allRunningClusters = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             ClusterStates = new[]
+        ///             {
+        ///                 "RUNNING",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var allClustersWithPolicy = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             PolicyId = "1234-5678-9012",
+        ///         },
+        ///     });
+        /// 
+        ///     var allApiClusters = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             ClusterSources = new[]
+        ///             {
+        ///                 "API",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var allPinnedClusters = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             IsPinned = true,
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:
@@ -106,6 +159,59 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// 
+        /// ### Filtering clusters
+        /// 
+        /// Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var allRunningClusters = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             ClusterStates = new[]
+        ///             {
+        ///                 "RUNNING",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var allClustersWithPolicy = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             PolicyId = "1234-5678-9012",
+        ///         },
+        ///     });
+        /// 
+        ///     var allApiClusters = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             ClusterSources = new[]
+        ///             {
+        ///                 "API",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var allPinnedClusters = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             IsPinned = true,
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:
@@ -156,6 +262,59 @@ namespace Pulumi.Databricks
         ///     var allShared = Databricks.GetClusters.Invoke(new()
         ///     {
         ///         ClusterNameContains = "shared",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Filtering clusters
+        /// 
+        /// Listing clusters can be slow for workspaces containing many clusters. Use filters to limit the number of clusters returned for better performance. You can filter clusters by state, source, policy, or pinned status:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var allRunningClusters = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             ClusterStates = new[]
+        ///             {
+        ///                 "RUNNING",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var allClustersWithPolicy = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             PolicyId = "1234-5678-9012",
+        ///         },
+        ///     });
+        /// 
+        ///     var allApiClusters = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             ClusterSources = new[]
+        ///             {
+        ///                 "API",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var allPinnedClusters = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             IsPinned = true,
+        ///         },
         ///     });
         /// 
         /// });

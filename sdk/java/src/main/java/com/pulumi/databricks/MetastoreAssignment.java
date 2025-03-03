@@ -11,7 +11,6 @@ import com.pulumi.databricks.MetastoreAssignmentArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MetastoreAssignmentState;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -81,16 +80,20 @@ public class MetastoreAssignment extends com.pulumi.resources.CustomResource {
     /**
      * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      * 
+     * @deprecated
+     * Use databricks.DefaultNamespaceSetting resource instead
+     * 
      */
+    @Deprecated /* Use databricks.DefaultNamespaceSetting resource instead */
     @Export(name="defaultCatalogName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> defaultCatalogName;
+    private Output<String> defaultCatalogName;
 
     /**
      * @return Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      * 
      */
-    public Output<Optional<String>> defaultCatalogName() {
-        return Codegen.optional(this.defaultCatalogName);
+    public Output<String> defaultCatalogName() {
+        return this.defaultCatalogName;
     }
     /**
      * Unique identifier of the parent Metastore

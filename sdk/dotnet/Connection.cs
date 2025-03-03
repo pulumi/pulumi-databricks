@@ -97,6 +97,30 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// Create a connection to builtin Hive Metastore
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.Connection("this", new()
+    ///     {
+    ///         Name = "hms-builtin",
+    ///         ConnectionType = "HIVE_METASTORE",
+    ///         Comment = "This is a connection to builtin HMS",
+    ///         Options = 
+    ///         {
+    ///             { "builtin", "true" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by `id`:
@@ -117,11 +141,44 @@ namespace Pulumi.Databricks
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        /// Unique ID of the connection.
+        /// </summary>
+        [Output("connectionId")]
+        public Output<string> ConnectionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         /// </summary>
         [Output("connectionType")]
-        public Output<string> ConnectionType { get; private set; } = null!;
+        public Output<string?> ConnectionType { get; private set; } = null!;
 
+        /// <summary>
+        /// Time at which this connection was created, in epoch milliseconds.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<int> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Username of connection creator.
+        /// </summary>
+        [Output("createdBy")]
+        public Output<string> CreatedBy { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of credential for this connection.
+        /// </summary>
+        [Output("credentialType")]
+        public Output<string> CredentialType { get; private set; } = null!;
+
+        /// <summary>
+        /// Full name of connection.
+        /// </summary>
+        [Output("fullName")]
+        public Output<string> FullName { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique ID of the UC metastore for this connection.
+        /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
@@ -135,7 +192,7 @@ namespace Pulumi.Databricks
         /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         /// </summary>
         [Output("options")]
-        public Output<ImmutableDictionary<string, string>> Options { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
 
         /// <summary>
         /// Name of the connection owner.
@@ -149,8 +206,35 @@ namespace Pulumi.Databricks
         [Output("properties")]
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
+        /// <summary>
+        /// Object with the status of an asynchronously provisioned resource.
+        /// </summary>
+        [Output("provisioningInfos")]
+        public Output<ImmutableArray<Outputs.ConnectionProvisioningInfo>> ProvisioningInfos { get; private set; } = null!;
+
         [Output("readOnly")]
         public Output<bool> ReadOnly { get; private set; } = null!;
+
+        [Output("securableType")]
+        public Output<string> SecurableType { get; private set; } = null!;
+
+        /// <summary>
+        /// Time at which connection this was last modified, in epoch milliseconds.
+        /// </summary>
+        [Output("updatedAt")]
+        public Output<int> UpdatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Username of user who last modified the connection.
+        /// </summary>
+        [Output("updatedBy")]
+        public Output<string> UpdatedBy { get; private set; } = null!;
+
+        /// <summary>
+        /// URL of the remote data source, extracted from options.
+        /// </summary>
+        [Output("url")]
+        public Output<string> Url { get; private set; } = null!;
 
 
         /// <summary>
@@ -160,7 +244,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Connection(string name, ConnectionArgs args, CustomResourceOptions? options = null)
+        public Connection(string name, ConnectionArgs? args = null, CustomResourceOptions? options = null)
             : base("databricks:index/connection:Connection", name, args ?? new ConnectionArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -209,13 +293,10 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        /// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         /// </summary>
-        [Input("connectionType", required: true)]
-        public Input<string> ConnectionType { get; set; } = null!;
-
-        [Input("metastoreId")]
-        public Input<string>? MetastoreId { get; set; }
+        [Input("connectionType")]
+        public Input<string>? ConnectionType { get; set; }
 
         /// <summary>
         /// Name of the Connection.
@@ -223,7 +304,7 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("options", required: true)]
+        [Input("options")]
         private InputMap<string>? _options;
 
         /// <summary>
@@ -275,11 +356,44 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        /// Unique ID of the connection.
+        /// </summary>
+        [Input("connectionId")]
+        public Input<string>? ConnectionId { get; set; }
+
+        /// <summary>
+        /// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER`, `SALESFORCE`, `HIVE_METASTORE`, `GLUE`, `TERADATA`, `ORACLE` or `DATABRICKS` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         /// </summary>
         [Input("connectionType")]
         public Input<string>? ConnectionType { get; set; }
 
+        /// <summary>
+        /// Time at which this connection was created, in epoch milliseconds.
+        /// </summary>
+        [Input("createdAt")]
+        public Input<int>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Username of connection creator.
+        /// </summary>
+        [Input("createdBy")]
+        public Input<string>? CreatedBy { get; set; }
+
+        /// <summary>
+        /// The type of credential for this connection.
+        /// </summary>
+        [Input("credentialType")]
+        public Input<string>? CredentialType { get; set; }
+
+        /// <summary>
+        /// Full name of connection.
+        /// </summary>
+        [Input("fullName")]
+        public Input<string>? FullName { get; set; }
+
+        /// <summary>
+        /// Unique ID of the UC metastore for this connection.
+        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
@@ -323,8 +437,41 @@ namespace Pulumi.Databricks
             set => _properties = value;
         }
 
+        [Input("provisioningInfos")]
+        private InputList<Inputs.ConnectionProvisioningInfoGetArgs>? _provisioningInfos;
+
+        /// <summary>
+        /// Object with the status of an asynchronously provisioned resource.
+        /// </summary>
+        public InputList<Inputs.ConnectionProvisioningInfoGetArgs> ProvisioningInfos
+        {
+            get => _provisioningInfos ?? (_provisioningInfos = new InputList<Inputs.ConnectionProvisioningInfoGetArgs>());
+            set => _provisioningInfos = value;
+        }
+
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
+
+        [Input("securableType")]
+        public Input<string>? SecurableType { get; set; }
+
+        /// <summary>
+        /// Time at which connection this was last modified, in epoch milliseconds.
+        /// </summary>
+        [Input("updatedAt")]
+        public Input<int>? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Username of user who last modified the connection.
+        /// </summary>
+        [Input("updatedBy")]
+        public Input<string>? UpdatedBy { get; set; }
+
+        /// <summary>
+        /// URL of the remote data source, extracted from options.
+        /// </summary>
+        [Input("url")]
+        public Input<string>? Url { get; set; }
 
         public ConnectionState()
         {

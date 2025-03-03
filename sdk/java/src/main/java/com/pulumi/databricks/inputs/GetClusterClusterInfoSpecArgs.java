@@ -59,14 +59,14 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The id of the cluster
+     * The id of the cluster.
      * 
      */
     @Import(name="clusterId", required=true)
     private Output<String> clusterId;
 
     /**
-     * @return The id of the cluster
+     * @return The id of the cluster.
      * 
      */
     public Output<String> clusterId() {
@@ -88,14 +88,14 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      * 
      */
     @Import(name="clusterName")
     private @Nullable Output<String> clusterName;
 
     /**
-     * @return The exact name of the cluster to search
+     * @return The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      * 
      */
     public Optional<Output<String>> clusterName() {
@@ -498,7 +498,7 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clusterId The id of the cluster
+         * @param clusterId The id of the cluster.
          * 
          * @return builder
          * 
@@ -509,7 +509,7 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clusterId The id of the cluster
+         * @param clusterId The id of the cluster.
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clusterName The exact name of the cluster to search
+         * @param clusterName The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clusterName The exact name of the cluster to search
+         * @param clusterName The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
          * 
          * @return builder
          * 

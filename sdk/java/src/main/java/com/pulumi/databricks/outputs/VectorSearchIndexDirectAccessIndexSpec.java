@@ -19,6 +19,10 @@ public final class VectorSearchIndexDirectAccessIndexSpec {
      * 
      */
     private @Nullable List<VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
+    /**
+     * @return array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     * 
+     */
     private @Nullable List<VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
     /**
      * @return The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
@@ -34,6 +38,10 @@ public final class VectorSearchIndexDirectAccessIndexSpec {
     public List<VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn> embeddingSourceColumns() {
         return this.embeddingSourceColumns == null ? List.of() : this.embeddingSourceColumns;
     }
+    /**
+     * @return array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     * 
+     */
     public List<VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn> embeddingVectorColumns() {
         return this.embeddingVectorColumns == null ? List.of() : this.embeddingVectorColumns;
     }

@@ -10784,6 +10784,100 @@ func (o ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorksp
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ConnectionProvisioningInfo struct {
+	State *string `pulumi:"state"`
+}
+
+// ConnectionProvisioningInfoInput is an input type that accepts ConnectionProvisioningInfoArgs and ConnectionProvisioningInfoOutput values.
+// You can construct a concrete instance of `ConnectionProvisioningInfoInput` via:
+//
+//	ConnectionProvisioningInfoArgs{...}
+type ConnectionProvisioningInfoInput interface {
+	pulumi.Input
+
+	ToConnectionProvisioningInfoOutput() ConnectionProvisioningInfoOutput
+	ToConnectionProvisioningInfoOutputWithContext(context.Context) ConnectionProvisioningInfoOutput
+}
+
+type ConnectionProvisioningInfoArgs struct {
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (ConnectionProvisioningInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProvisioningInfo)(nil)).Elem()
+}
+
+func (i ConnectionProvisioningInfoArgs) ToConnectionProvisioningInfoOutput() ConnectionProvisioningInfoOutput {
+	return i.ToConnectionProvisioningInfoOutputWithContext(context.Background())
+}
+
+func (i ConnectionProvisioningInfoArgs) ToConnectionProvisioningInfoOutputWithContext(ctx context.Context) ConnectionProvisioningInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProvisioningInfoOutput)
+}
+
+// ConnectionProvisioningInfoArrayInput is an input type that accepts ConnectionProvisioningInfoArray and ConnectionProvisioningInfoArrayOutput values.
+// You can construct a concrete instance of `ConnectionProvisioningInfoArrayInput` via:
+//
+//	ConnectionProvisioningInfoArray{ ConnectionProvisioningInfoArgs{...} }
+type ConnectionProvisioningInfoArrayInput interface {
+	pulumi.Input
+
+	ToConnectionProvisioningInfoArrayOutput() ConnectionProvisioningInfoArrayOutput
+	ToConnectionProvisioningInfoArrayOutputWithContext(context.Context) ConnectionProvisioningInfoArrayOutput
+}
+
+type ConnectionProvisioningInfoArray []ConnectionProvisioningInfoInput
+
+func (ConnectionProvisioningInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionProvisioningInfo)(nil)).Elem()
+}
+
+func (i ConnectionProvisioningInfoArray) ToConnectionProvisioningInfoArrayOutput() ConnectionProvisioningInfoArrayOutput {
+	return i.ToConnectionProvisioningInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionProvisioningInfoArray) ToConnectionProvisioningInfoArrayOutputWithContext(ctx context.Context) ConnectionProvisioningInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProvisioningInfoArrayOutput)
+}
+
+type ConnectionProvisioningInfoOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProvisioningInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProvisioningInfo)(nil)).Elem()
+}
+
+func (o ConnectionProvisioningInfoOutput) ToConnectionProvisioningInfoOutput() ConnectionProvisioningInfoOutput {
+	return o
+}
+
+func (o ConnectionProvisioningInfoOutput) ToConnectionProvisioningInfoOutputWithContext(ctx context.Context) ConnectionProvisioningInfoOutput {
+	return o
+}
+
+func (o ConnectionProvisioningInfoOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProvisioningInfo) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProvisioningInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProvisioningInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionProvisioningInfo)(nil)).Elem()
+}
+
+func (o ConnectionProvisioningInfoArrayOutput) ToConnectionProvisioningInfoArrayOutput() ConnectionProvisioningInfoArrayOutput {
+	return o
+}
+
+func (o ConnectionProvisioningInfoArrayOutput) ToConnectionProvisioningInfoArrayOutputWithContext(ctx context.Context) ConnectionProvisioningInfoArrayOutput {
+	return o
+}
+
+func (o ConnectionProvisioningInfoArrayOutput) Index(i pulumi.IntInput) ConnectionProvisioningInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionProvisioningInfo {
+		return vs[0].([]ConnectionProvisioningInfo)[vs[1].(int)]
+	}).(ConnectionProvisioningInfoOutput)
+}
+
 type CredentialAwsIamRole struct {
 	ExternalId *string `pulumi:"externalId"`
 	// The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
@@ -82428,181 +82522,6 @@ func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) Email() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-type StorageCredentialGcpServiceAccountKey struct {
-	// The email of the GCP service account created, to be granted access to relevant buckets.
-	//
-	// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-	Email        string `pulumi:"email"`
-	PrivateKey   string `pulumi:"privateKey"`
-	PrivateKeyId string `pulumi:"privateKeyId"`
-}
-
-// StorageCredentialGcpServiceAccountKeyInput is an input type that accepts StorageCredentialGcpServiceAccountKeyArgs and StorageCredentialGcpServiceAccountKeyOutput values.
-// You can construct a concrete instance of `StorageCredentialGcpServiceAccountKeyInput` via:
-//
-//	StorageCredentialGcpServiceAccountKeyArgs{...}
-type StorageCredentialGcpServiceAccountKeyInput interface {
-	pulumi.Input
-
-	ToStorageCredentialGcpServiceAccountKeyOutput() StorageCredentialGcpServiceAccountKeyOutput
-	ToStorageCredentialGcpServiceAccountKeyOutputWithContext(context.Context) StorageCredentialGcpServiceAccountKeyOutput
-}
-
-type StorageCredentialGcpServiceAccountKeyArgs struct {
-	// The email of the GCP service account created, to be granted access to relevant buckets.
-	//
-	// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-	Email        pulumi.StringInput `pulumi:"email"`
-	PrivateKey   pulumi.StringInput `pulumi:"privateKey"`
-	PrivateKeyId pulumi.StringInput `pulumi:"privateKeyId"`
-}
-
-func (StorageCredentialGcpServiceAccountKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialGcpServiceAccountKey)(nil)).Elem()
-}
-
-func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyOutput() StorageCredentialGcpServiceAccountKeyOutput {
-	return i.ToStorageCredentialGcpServiceAccountKeyOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialGcpServiceAccountKeyOutput)
-}
-
-func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return i.ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Background())
-}
-
-func (i StorageCredentialGcpServiceAccountKeyArgs) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialGcpServiceAccountKeyOutput).ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx)
-}
-
-// StorageCredentialGcpServiceAccountKeyPtrInput is an input type that accepts StorageCredentialGcpServiceAccountKeyArgs, StorageCredentialGcpServiceAccountKeyPtr and StorageCredentialGcpServiceAccountKeyPtrOutput values.
-// You can construct a concrete instance of `StorageCredentialGcpServiceAccountKeyPtrInput` via:
-//
-//	        StorageCredentialGcpServiceAccountKeyArgs{...}
-//
-//	or:
-//
-//	        nil
-type StorageCredentialGcpServiceAccountKeyPtrInput interface {
-	pulumi.Input
-
-	ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput
-	ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput
-}
-
-type storageCredentialGcpServiceAccountKeyPtrType StorageCredentialGcpServiceAccountKeyArgs
-
-func StorageCredentialGcpServiceAccountKeyPtr(v *StorageCredentialGcpServiceAccountKeyArgs) StorageCredentialGcpServiceAccountKeyPtrInput {
-	return (*storageCredentialGcpServiceAccountKeyPtrType)(v)
-}
-
-func (*storageCredentialGcpServiceAccountKeyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialGcpServiceAccountKey)(nil)).Elem()
-}
-
-func (i *storageCredentialGcpServiceAccountKeyPtrType) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return i.ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Background())
-}
-
-func (i *storageCredentialGcpServiceAccountKeyPtrType) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageCredentialGcpServiceAccountKeyPtrOutput)
-}
-
-type StorageCredentialGcpServiceAccountKeyOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialGcpServiceAccountKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageCredentialGcpServiceAccountKey)(nil)).Elem()
-}
-
-func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyOutput() StorageCredentialGcpServiceAccountKeyOutput {
-	return o
-}
-
-func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyOutput {
-	return o
-}
-
-func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return o.ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(context.Background())
-}
-
-func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageCredentialGcpServiceAccountKey) *StorageCredentialGcpServiceAccountKey {
-		return &v
-	}).(StorageCredentialGcpServiceAccountKeyPtrOutput)
-}
-
-// The email of the GCP service account created, to be granted access to relevant buckets.
-//
-// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-func (o StorageCredentialGcpServiceAccountKeyOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.Email }).(pulumi.StringOutput)
-}
-
-func (o StorageCredentialGcpServiceAccountKeyOutput) PrivateKey() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.PrivateKey }).(pulumi.StringOutput)
-}
-
-func (o StorageCredentialGcpServiceAccountKeyOutput) PrivateKeyId() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.PrivateKeyId }).(pulumi.StringOutput)
-}
-
-type StorageCredentialGcpServiceAccountKeyPtrOutput struct{ *pulumi.OutputState }
-
-func (StorageCredentialGcpServiceAccountKeyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageCredentialGcpServiceAccountKey)(nil)).Elem()
-}
-
-func (o StorageCredentialGcpServiceAccountKeyPtrOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutput() StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return o
-}
-
-func (o StorageCredentialGcpServiceAccountKeyPtrOutput) ToStorageCredentialGcpServiceAccountKeyPtrOutputWithContext(ctx context.Context) StorageCredentialGcpServiceAccountKeyPtrOutput {
-	return o
-}
-
-func (o StorageCredentialGcpServiceAccountKeyPtrOutput) Elem() StorageCredentialGcpServiceAccountKeyOutput {
-	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) StorageCredentialGcpServiceAccountKey {
-		if v != nil {
-			return *v
-		}
-		var ret StorageCredentialGcpServiceAccountKey
-		return ret
-	}).(StorageCredentialGcpServiceAccountKeyOutput)
-}
-
-// The email of the GCP service account created, to be granted access to relevant buckets.
-//
-// `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
-func (o StorageCredentialGcpServiceAccountKeyPtrOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Email
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o StorageCredentialGcpServiceAccountKeyPtrOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o StorageCredentialGcpServiceAccountKeyPtrOutput) PrivateKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrivateKeyId
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
@@ -82733,6 +82652,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadTypeClientsPtrInput)(nil)).Elem(), ClusterWorkloadTypeClientsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceInput)(nil)).Elem(), ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspacePtrInput)(nil)).Elem(), ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProvisioningInfoInput)(nil)).Elem(), ConnectionProvisioningInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProvisioningInfoArrayInput)(nil)).Elem(), ConnectionProvisioningInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CredentialAwsIamRoleInput)(nil)).Elem(), CredentialAwsIamRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CredentialAwsIamRolePtrInput)(nil)).Elem(), CredentialAwsIamRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CredentialAzureManagedIdentityInput)(nil)).Elem(), CredentialAzureManagedIdentityArgs{})
@@ -83596,8 +83517,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialCloudflareApiTokenPtrInput)(nil)).Elem(), StorageCredentialCloudflareApiTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccountInput)(nil)).Elem(), StorageCredentialDatabricksGcpServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialDatabricksGcpServiceAccountPtrInput)(nil)).Elem(), StorageCredentialDatabricksGcpServiceAccountArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialGcpServiceAccountKeyInput)(nil)).Elem(), StorageCredentialGcpServiceAccountKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StorageCredentialGcpServiceAccountKeyPtrInput)(nil)).Elem(), StorageCredentialGcpServiceAccountKeyArgs{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
 	pulumi.RegisterOutputType(AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput{})
@@ -83727,6 +83646,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterWorkloadTypeClientsPtrOutput{})
 	pulumi.RegisterOutputType(ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspaceOutput{})
 	pulumi.RegisterOutputType(ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspacePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProvisioningInfoOutput{})
+	pulumi.RegisterOutputType(ConnectionProvisioningInfoArrayOutput{})
 	pulumi.RegisterOutputType(CredentialAwsIamRoleOutput{})
 	pulumi.RegisterOutputType(CredentialAwsIamRolePtrOutput{})
 	pulumi.RegisterOutputType(CredentialAzureManagedIdentityOutput{})
@@ -84590,6 +84511,4 @@ func init() {
 	pulumi.RegisterOutputType(StorageCredentialCloudflareApiTokenPtrOutput{})
 	pulumi.RegisterOutputType(StorageCredentialDatabricksGcpServiceAccountOutput{})
 	pulumi.RegisterOutputType(StorageCredentialDatabricksGcpServiceAccountPtrOutput{})
-	pulumi.RegisterOutputType(StorageCredentialGcpServiceAccountKeyOutput{})
-	pulumi.RegisterOutputType(StorageCredentialGcpServiceAccountKeyPtrOutput{})
 }
