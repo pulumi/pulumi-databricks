@@ -24,18 +24,6 @@ import * as utilities from "./utilities";
  *     clusterId: __value,
  * }) })));
  * ```
- *
- * ## Related Resources
- *
- * The following resources are often used in the same context:
- *
- * * End to end workspace management guide.
- * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
- * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
- * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
- * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
- * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
- * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
  */
 export function getCluster(args?: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     args = args || {};
@@ -53,7 +41,7 @@ export function getCluster(args?: GetClusterArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetClusterArgs {
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId?: string;
     /**
@@ -61,7 +49,7 @@ export interface GetClusterArgs {
      */
     clusterInfo?: inputs.GetClusterClusterInfo;
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: string;
     /**
@@ -106,18 +94,6 @@ export interface GetClusterResult {
  *     clusterId: __value,
  * }) })));
  * ```
- *
- * ## Related Resources
- *
- * The following resources are often used in the same context:
- *
- * * End to end workspace management guide.
- * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
- * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
- * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
- * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
- * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
- * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
  */
 export function getClusterOutput(args?: GetClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterResult> {
     args = args || {};
@@ -135,7 +111,7 @@ export function getClusterOutput(args?: GetClusterOutputArgs, opts?: pulumi.Invo
  */
 export interface GetClusterOutputArgs {
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId?: pulumi.Input<string>;
     /**
@@ -143,7 +119,7 @@ export interface GetClusterOutputArgs {
      */
     clusterInfo?: pulumi.Input<inputs.GetClusterClusterInfoArgs>;
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: pulumi.Input<string>;
     /**

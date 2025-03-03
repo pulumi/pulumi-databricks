@@ -22,14 +22,14 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetClusterClusterInfoAzureAttributesResult? AzureAttributes;
         public readonly double? ClusterCores;
         /// <summary>
-        /// The id of the cluster
+        /// The id of the cluster.
         /// </summary>
         public readonly string? ClusterId;
         public readonly Outputs.GetClusterClusterInfoClusterLogConfResult? ClusterLogConf;
         public readonly Outputs.GetClusterClusterInfoClusterLogStatusResult? ClusterLogStatus;
         public readonly int? ClusterMemoryMb;
         /// <summary>
-        /// The exact name of the cluster to search
+        /// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
         /// </summary>
         public readonly string? ClusterName;
         public readonly string? ClusterSource;

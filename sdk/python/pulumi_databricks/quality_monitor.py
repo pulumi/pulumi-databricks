@@ -50,11 +50,11 @@ class QualityMonitorArgs:
         :param pulumi.Input[str] monitor_id: ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
         :param pulumi.Input['QualityMonitorNotificationsArgs'] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input['QualityMonitorScheduleArgs'] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-        :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
+        :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
         :param pulumi.Input['QualityMonitorSnapshotArgs'] snapshot: Configuration for monitoring snapshot tables.
         :param pulumi.Input['QualityMonitorTimeSeriesArgs'] time_series: Configuration for monitoring timeseries tables.
-        :param pulumi.Input[str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+        :param pulumi.Input[str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         """
         pulumi.set(__self__, "assets_dir", assets_dir)
         pulumi.set(__self__, "output_schema_name", output_schema_name)
@@ -220,7 +220,7 @@ class QualityMonitorArgs:
     @pulumi.getter(name="skipBuiltinDashboard")
     def skip_builtin_dashboard(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to skip creating a default dashboard summarizing data quality metrics.
+        Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         """
         return pulumi.get(self, "skip_builtin_dashboard")
 
@@ -268,7 +268,7 @@ class QualityMonitorArgs:
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+        Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         """
         return pulumi.get(self, "warehouse_id")
 
@@ -317,13 +317,13 @@ class _QualityMonitorState:
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         :param pulumi.Input['QualityMonitorScheduleArgs'] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-        :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
+        :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
         :param pulumi.Input['QualityMonitorSnapshotArgs'] snapshot: Configuration for monitoring snapshot tables.
         :param pulumi.Input[str] status: Status of the Monitor
         :param pulumi.Input[str] table_name: The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
         :param pulumi.Input['QualityMonitorTimeSeriesArgs'] time_series: Configuration for monitoring timeseries tables.
-        :param pulumi.Input[str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+        :param pulumi.Input[str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         """
         if assets_dir is not None:
             pulumi.set(__self__, "assets_dir", assets_dir)
@@ -538,7 +538,7 @@ class _QualityMonitorState:
     @pulumi.getter(name="skipBuiltinDashboard")
     def skip_builtin_dashboard(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to skip creating a default dashboard summarizing data quality metrics.
+        Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         """
         return pulumi.get(self, "skip_builtin_dashboard")
 
@@ -610,7 +610,7 @@ class _QualityMonitorState:
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+        Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         """
         return pulumi.get(self, "warehouse_id")
 
@@ -748,12 +748,12 @@ class QualityMonitor(pulumi.CustomResource):
         :param pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-        :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
+        :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
         :param pulumi.Input[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']] snapshot: Configuration for monitoring snapshot tables.
         :param pulumi.Input[str] table_name: The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
         :param pulumi.Input[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']] time_series: Configuration for monitoring timeseries tables.
-        :param pulumi.Input[str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+        :param pulumi.Input[str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         """
         ...
     @overload
@@ -975,13 +975,13 @@ class QualityMonitor(pulumi.CustomResource):
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         :param pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
-        :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
+        :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
         :param pulumi.Input[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']] snapshot: Configuration for monitoring snapshot tables.
         :param pulumi.Input[str] status: Status of the Monitor
         :param pulumi.Input[str] table_name: The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
         :param pulumi.Input[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']] time_series: Configuration for monitoring timeseries tables.
-        :param pulumi.Input[str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+        :param pulumi.Input[str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1124,7 +1124,7 @@ class QualityMonitor(pulumi.CustomResource):
     @pulumi.getter(name="skipBuiltinDashboard")
     def skip_builtin_dashboard(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to skip creating a default dashboard summarizing data quality metrics.
+        Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         """
         return pulumi.get(self, "skip_builtin_dashboard")
 
@@ -1172,7 +1172,7 @@ class QualityMonitor(pulumi.CustomResource):
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
+        Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         """
         return pulumi.get(self, "warehouse_id")
 

@@ -817,6 +817,10 @@ export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProf
     isEnabled: boolean;
 }
 
+export interface ConnectionProvisioningInfo {
+    state?: string;
+}
+
 export interface CredentialAwsIamRole {
     externalId: string;
     /**
@@ -1472,14 +1476,14 @@ export interface GetClusterClusterInfo {
     azureAttributes?: outputs.GetClusterClusterInfoAzureAttributes;
     clusterCores?: number;
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId?: string;
     clusterLogConf?: outputs.GetClusterClusterInfoClusterLogConf;
     clusterLogStatus?: outputs.GetClusterClusterInfoClusterLogStatus;
     clusterMemoryMb?: number;
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: string;
     clusterSource?: string;
@@ -1723,13 +1727,13 @@ export interface GetClusterClusterInfoSpec {
     awsAttributes?: outputs.GetClusterClusterInfoSpecAwsAttributes;
     azureAttributes?: outputs.GetClusterClusterInfoSpecAzureAttributes;
     /**
-     * The id of the cluster
+     * The id of the cluster.
      */
     clusterId: string;
     clusterLogConf?: outputs.GetClusterClusterInfoSpecClusterLogConf;
     clusterMountInfos?: outputs.GetClusterClusterInfoSpecClusterMountInfo[];
     /**
-     * The exact name of the cluster to search
+     * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
     clusterName?: string;
     /**
@@ -2078,6 +2082,28 @@ export interface GetCurrentMetastoreMetastoreInfo {
      * the ID of the identity that updated the current metastore.
      */
     updatedBy?: string;
+}
+
+export interface GetDashboardsDashboard {
+    /**
+     * The timestamp of when the dashboard was created.
+     */
+    createTime: string;
+    /**
+     * The unique ID of the dashboard.
+     */
+    dashboardId: string;
+    /**
+     * The display name of the dashboard.
+     */
+    displayName?: string;
+    etag: string;
+    lifecycleState: string;
+    parentPath: string;
+    path: string;
+    serializedDashboard?: string;
+    updateTime: string;
+    warehouseId?: string;
 }
 
 export interface GetDbfsFilePathsPathList {
@@ -9819,7 +9845,13 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
     embeddingSourceColumns?: outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn[];
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     */
     embeddingVectorColumns?: outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn[];
+    /**
+     * Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
+     */
     embeddingWritebackTable?: string;
     /**
      * ID of the associated Delta Live Table pipeline.
@@ -9838,17 +9870,23 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+    /**
+     * The name of the embedding model endpoint
+     */
     embeddingModelEndpointName?: string;
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column
      */
     name?: string;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector.
+     */
     embeddingDimension?: number;
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column.
      */
     name?: string;
 }
@@ -9858,6 +9896,9 @@ export interface VectorSearchIndexDirectAccessIndexSpec {
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
     embeddingSourceColumns?: outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn[];
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     */
     embeddingVectorColumns?: outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn[];
     /**
      * The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
@@ -9866,17 +9907,23 @@ export interface VectorSearchIndexDirectAccessIndexSpec {
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+    /**
+     * The name of the embedding model endpoint
+     */
     embeddingModelEndpointName?: string;
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column
      */
     name?: string;
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector.
+     */
     embeddingDimension?: number;
     /**
-     * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
+     * The name of the column.
      */
     name?: string;
 }

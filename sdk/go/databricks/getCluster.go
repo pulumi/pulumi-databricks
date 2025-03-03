@@ -26,11 +26,11 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getCluster.
 type LookupClusterArgs struct {
-	// The id of the cluster
+	// The id of the cluster.
 	ClusterId *string `pulumi:"clusterId"`
 	// block, consisting of following fields:
 	ClusterInfo *GetClusterClusterInfo `pulumi:"clusterInfo"`
-	// The exact name of the cluster to search
+	// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 	ClusterName *string `pulumi:"clusterName"`
 	// cluster ID
 	Id *string `pulumi:"id"`
@@ -58,11 +58,11 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 
 // A collection of arguments for invoking getCluster.
 type LookupClusterOutputArgs struct {
-	// The id of the cluster
+	// The id of the cluster.
 	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
 	// block, consisting of following fields:
 	ClusterInfo GetClusterClusterInfoPtrInput `pulumi:"clusterInfo"`
-	// The exact name of the cluster to search
+	// The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// cluster ID
 	Id pulumi.StringPtrInput `pulumi:"id"`
